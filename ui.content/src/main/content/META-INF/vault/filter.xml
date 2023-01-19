@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/conf/efe" mode="merge"/>
+    <filter root="/content/efe" mode="merge"/>
+    <filter root="/content/dam/efe/asset.jpg" mode="merge"/>
+    <filter root="/content/experience-fragments/efe" mode="merge"/>
+</workspaceFilter>
