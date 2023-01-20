@@ -1,0 +1,18 @@
+.cmp-teaser-banner {
+    .cmp-teaser {
+        display: flex;
+        flex-direction: column-reverse;
+       .cmp-button {
+            display: none;
+        }
+        &__content {
+            text-align: center;
+        }
+        &__title {
+            font-family: $font-nimbus-pro;
+        }
+        &__description {
+            font-family: $font-nimbus-Sans;
+        }
+    }
+}

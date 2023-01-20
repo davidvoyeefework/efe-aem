@@ -1,0 +1,110 @@
+// == Font
+//$icomoon-font-path: "../resources/fonts/icon-font/fonts";
+
+// Container Specs
+$container-max-width: rem(1255px);
+$container-padding: rem(24px);
+
+// Default Font
+$font-height: 1.5;
+$font-weight: normal;
+$font-nimbus-Sans: 'nimbus-Sans';
+$font-nimbus-pro: 'bebas-neue-pro';
+// == Color
+
+$primary-one: #304050;
+$primary-two: #00587c;
+$primary-three: #f3f9fc;
+$secondary-one: #d0df00;
+$secondary-two: #d8f5ff;
+$secondary-three: #a4c7e2;
+//efe colors
+$white-primary: #FFFFFF;
+$red-primary: #C32D37;
+// 50% opacity to RED-PRIMARY
+$red-50-percent: #E1969B;
+// Grays
+$gray-deep-charcoal: #454849;
+$gray-new: #7A7D82;
+$gray-blue: #B3B9BE;
+$gray-lightest: #F2F2F2;
+
+$color-map: (
+  "primary-one": $primary-one,
+  "primary-two": $primary-two,
+  "primary-three": $primary-three,
+  "secondary-one": $secondary-one,
+  "secondary-two": $secondary-two,
+  "secondary-three": $secondary-three,
+  "gray-deep-charcoal": $gray-deep-charcoal,
+  "red-primary": $red-primary,
+  "gray-new": $gray-new,
+  "gray-blue": $gray-blue,
+  "gray-lightest": $gray-lightest,
+  "white-primary": $white-primary
+);
+
+// Fonts
+$font-family-primary: "Polaris", arial, sans-serif;
+$font-family-primary-book: "Polaris Book", arial;
+$font-family-secondary: "Gotham Narrow";
+$font-family-secondary-book: "Gotham Narrow Book";
+$font-family-tertiary: "Klinic Slab", "Courier New", monospace;
+
+// Font Weights
+$font-weight-thin: 100;
+$font-weight-xlight: 200;
+$font-weight-light: 300;
+$font-weight-normal: normal;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+$font-weight-heavy: 900;
+
+// default config
+$font-family-default: $font-family-primary;
+$font-size: rem(16px);
+$font-weight: normal;
+
+@mixin icon-font {
+  font-family: "#{$icomoon-font-family}" !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Normal mode
+$color-foreground: $primary-one;
+$color-background: $primary-three;
+$color-link: #2020e0;
+
+// Dark mode
+$color-foreground-dark: $color-foreground;
+$color-background-dark: $color-background;
+$color-link-dark: $color-link;
+
+// ----------------- Media query --------------------
+
+// $screen-xxs: 320px;
+// $screen-xs: 375px;
+// $screen-sm: 768px;
+// $screen-md: 1024px;
+// $screen-lg: 1280px;
+// $screen-xl: 1920px;
+
+$screen-m-xxs: 320px;
+$screen-m-xs: 375px;
+$screen-m-sm: 540px;
+$screen-t-sm: 768px;
+$screen-t-lg: 900px;
+$screen-d-sm: 1024px;
+$screen-d-md: 1255px; // container max width
+$screen-d-ml: 1440px;
+$screen-d-xl: 1600px;
+$screen-d-xxl: 1920px;

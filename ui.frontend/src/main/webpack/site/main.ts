@@ -1,8 +1,6 @@
-
-// Stylesheets
-import "./main.scss";
+import A11y from "./js/a11y.js";
 
 // Javascript or Typescript
-import "./**/*.js";
-import "./**/*.ts";
-import '../components/**/*.js';
+import { Initializer } from "../framework/initializer";
+new Initializer();
+new A11y();
