@@ -1,0 +1,38 @@
+.button {
+    display:flex;
+}
+
+.cmp-button {
+    text-transform: uppercase;
+    font-size: $font-size-small;
+    background-color: $red-primary;
+    color: #FFFFFF;
+    font-family: 'nimbus-Sans';
+    font-weight: $font-weight-bold;
+    float: left;
+    height: $button-size;
+    min-width: $button-size;
+    border-radius: $button-border-radius;
+
+    .cmp-button__text {
+        padding: 1rem 2rem;
+        float:left;
+    }
+}
+
+// primary variation
+.cmp-button--primary {
+
+    .cmp-button {
+        background-color: $red-primary;
+    }
+}
+
+// secondary variation
+.cmp-button--secondary {
+
+    .cmp-button {
+        background-color: $brand-secondary;
+        color: $text-color-inverse;
+    }
+}

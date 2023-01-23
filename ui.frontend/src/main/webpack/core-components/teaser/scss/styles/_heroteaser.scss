@@ -1,0 +1,29 @@
+.cmp-teaser-hero {
+    .cmp-teaser {
+        align-items: baseline;
+        @include media("<tablet") {
+            display: flex;
+            flex-direction: column-reverse;
+        }
+        &__content {
+            @include media('>=desktop') {
+                position: absolute;
+                padding: rem(56px) 0 0 rem(56px);
+            }
+        }
+        &__title {
+            font-family: $font-nimbus-pro;
+            width: rem(450px);
+             @include media("<tablet") {
+                width: 100%;
+             }
+        }
+        &__description {
+            font-family: $font-nimbus-Sans;
+            width: rem(450px);
+             @include media("<tablet") {
+                width: 100%;
+             }
+        }
+    }
+}
