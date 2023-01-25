@@ -14,8 +14,12 @@
         &__title {
             font-family: $font-nimbus-pro;
             width: rem(450px);
+            font-size: rem(69px);
+            line-height: rem(72.45px);
              @include media("<tablet") {
                 width: 100%;
+                font-size: rem(59px);
+                line-height: rem(60.9px);
              }
         }
         &__description {
