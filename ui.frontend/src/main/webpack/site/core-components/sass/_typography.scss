@@ -1,0 +1,15 @@
+//Global BEBAS/NIMBUS ADOBE TYPE
+@import url("https://use.typekit.net/ezq2lfa.css");
+
+@mixin heading-01 {
+    font-family: bebas-neue-pro, sans-serif;
+    font-style: normal ;
+    font-weight: 700;
+    font-size: rem(69px);
+    line-height: 105%;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -o-font-smoothing: antialiased;
+  }

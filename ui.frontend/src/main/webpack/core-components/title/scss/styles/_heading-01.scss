@@ -1,3 +1,6 @@
 .cmp-title--heading-01 {
-color: red;
+    
+    *{
+        @include heading-01;
+    }
 }
