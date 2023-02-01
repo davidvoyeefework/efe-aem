@@ -1,4 +1,4 @@
-import AccordionStandard from "../title.hbs";
+import TitleEFE from "../title.hbs";
 import "../../../site/main.scss";
 
 export default {
@@ -8,8 +8,16 @@ export default {
     text: {
       control: { type: "text" },
     },
+    variant: {
+      options: ["heading-01", "heading-02", "heading-03"],
+      control: { type: "radio" },
+    }
   },
 };
 
-const TemplateStandard = ({ label, ...args }) => AccordionStandard();
-export const Standard = TemplateStandard.bind();
+const TemplateEFETitle = ({ label, ...args }) => TitleEFE({ ...args });
+export const TitleEFEDefault = TemplateEFETitle.bind();
+TitleEFEDefault.args = {
+  variant: "heading-01",
+}
+
