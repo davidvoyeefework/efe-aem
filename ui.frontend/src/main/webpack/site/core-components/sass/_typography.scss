@@ -1,15 +1,58 @@
 //Global BEBAS/NIMBUS ADOBE TYPE
 @import url("https://use.typekit.net/ezq2lfa.css");
 
-@mixin heading-01 {
+@mixin buildHeading ($font-size, 
+                    $letter-spacing, 
+                    $font-family: false, 
+                    $font-weight: false, 
+                    $text-transform: false,
+                    $line-height: false
+                    ){
+    font-size: $font-size;
+    letter-spacing: $letter-spacing;
     font-family: bebas-neue-pro, sans-serif;
-    font-style: normal ;
+    @if $font-family {font-family: $font-family, sans-serif};
+    color: $efe-gray-primary;
     font-weight: 700;
-    font-size: rem(69px);
-    line-height: 105%;
-    letter-spacing: 0.08em;
+    @if $font-weight {font-weight: $font-weight};
     text-transform: uppercase;
+    @if $text-transform {text-transform: $text-transform};
+    font-style: normal ;
+    line-height: 105%;
+    @if $line-height {line-height: $line-height};
     -webkit-font-smoothing: antialiased;
     -moz-font-smoothing: antialiased;
     -o-font-smoothing: antialiased;
+}
+
+// -----------------------------------------------------------------------------
+// HEADINGS
+// -----------------------------------------------------------------------------
+
+@mixin heading-01 {
+    @include buildHeading(rem(69px), .08em);
   }
+
+@mixin heading-02 {
+    @include buildHeading(rem(58px), .08em);
+  }
+
+@mixin heading-03 {
+    @include buildHeading(rem(48px), .08em);
+  }
+
+@mixin heading-04 {
+    @include buildHeading(rem(36px), .06em);
+}
+
+// -----------------------------------------------------------------------------
+// SUBHEADS
+// -----------------------------------------------------------------------------
+
+@mixin subhead-01 {
+    @include buildHeading(rem(24px), .02em, null, 400);
+}
+
+@mixin subhead-02 {
+    @include buildHeading(rem(22px), 0, 'nimbus-sans', 400, unset, 120% );
+}
