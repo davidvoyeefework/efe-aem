@@ -2,7 +2,7 @@ import TitleEFE from "../title.hbs";
 import "../../../site/main.scss";
 
 export default {
-  title: "Core Components/Headings",
+  title: "Core Components/Title/Headings",
   // More on argTypes: https://storybook.js.org/docs/html/api/argtypes
   argTypes: {
     text: {
@@ -16,8 +16,8 @@ export default {
 };
 
 const TemplateHeadings = ({ label, ...args }) => TitleEFE({ ...args });
-export const TitleEFEDefault = TemplateHeadings.bind();
-TitleEFEDefault.args = {
+export const Headings = TemplateHeadings.bind();
+Headings.args = {
   variant: "heading-01",
 }
 

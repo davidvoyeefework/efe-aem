@@ -1,13 +1,13 @@
 //Global BEBAS/NIMBUS ADOBE TYPE
 @import url("https://use.typekit.net/ezq2lfa.css");
 
-@mixin buildHeading ($font-size, 
-                    $letter-spacing, 
-                    $font-family: false, 
-                    $font-weight: false, 
-                    $text-transform: false,
-                    $line-height: false
-                    ){
+@mixin buildFont ($font-size, 
+                $letter-spacing, 
+                $font-family: false, 
+                $font-weight: false, 
+                $text-transform: false,
+                $line-height: false
+                ){
     font-size: $font-size;
     letter-spacing: $letter-spacing;
     font-family: bebas-neue-pro, sans-serif;
@@ -30,19 +30,19 @@
 // -----------------------------------------------------------------------------
 
 @mixin heading-01 {
-    @include buildHeading(rem(69px), .08em);
+    @include buildFont(rem(69px), .08em);
   }
 
 @mixin heading-02 {
-    @include buildHeading(rem(58px), .08em);
+    @include buildFont(rem(58px), .08em);
   }
 
 @mixin heading-03 {
-    @include buildHeading(rem(48px), .08em);
+    @include buildFont(rem(48px), .08em);
   }
 
 @mixin heading-04 {
-    @include buildHeading(rem(36px), .06em);
+    @include buildFont(rem(36px), .06em);
 }
 
 // -----------------------------------------------------------------------------
@@ -50,9 +50,25 @@
 // -----------------------------------------------------------------------------
 
 @mixin subhead-01 {
-    @include buildHeading(rem(24px), .02em, null, 400);
+    @include buildFont(rem(24px), .02em, null, 400);
 }
 
 @mixin subhead-02 {
-    @include buildHeading(rem(22px), 0, 'nimbus-sans', 400, unset, 120% );
+    @include buildFont(rem(22px), 0, 'nimbus-sans', 400, unset, 120% );
+}
+
+// -----------------------------------------------------------------------------
+// BODY COPY
+// -----------------------------------------------------------------------------
+
+@mixin body-01 {
+    @include buildFont(rem(26px), null, 'nimbus-sans', 300, unset, 120% );
+}
+
+@mixin body-02 {
+    @include buildFont(rem(20px), null, 'nimbus-sans', 300, unset, 120% );
+}
+
+@mixin body-03 {
+    @include buildFont(rem(16px), null, 'nimbus-sans', 300, unset, 120% );
 }
