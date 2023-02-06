@@ -6,13 +6,13 @@
                 $font-family: false, 
                 $font-weight: false, 
                 $text-transform: false,
-                $line-height: false
+                $line-height: false,
+                $color: false
                 ){
     font-size: $font-size;
     letter-spacing: $letter-spacing;
     font-family: bebas-neue-pro, sans-serif;
     @if $font-family {font-family: $font-family, sans-serif};
-    color: $efe-gray-primary;
     font-weight: 700;
     @if $font-weight {font-weight: $font-weight};
     text-transform: uppercase;
@@ -20,9 +20,25 @@
     font-style: normal ;
     line-height: 105%;
     @if $line-height {line-height: $line-height};
+    color: $efe-gray-primary;
+    @if $color {color: $color};
     -webkit-font-smoothing: antialiased;
     -moz-font-smoothing: antialiased;
     -o-font-smoothing: antialiased;
+}
+
+@mixin buildLink ($color: false, $hover-color: false) {
+    text-decoration: 1px solid underline $efe-gray-primary;
+    @if $color {text-decoration: 1px solid underline $color; color: $color};
+    text-underline-offset: 2px;
+    transition: $std-transition;
+
+    &:hover {
+        color: $efe-gray-deep-charcoal;
+        text-decoration: 1px solid underline $efe-gray-deep-charcoal;
+        @if $hover-color {text-decoration: 1px solid underline $hover-color; color: $hover-color};
+        transition: $std-transition;
+    }
 }
 
 // -----------------------------------------------------------------------------
@@ -71,4 +87,82 @@
 
 @mixin body-03 {
     @include buildFont(rem(16px), null, 'nimbus-sans', 300, unset, 120% );
+}
+
+// -----------------------------------------------------------------------------
+// COMPLIANCE COPY
+// -----------------------------------------------------------------------------
+
+@mixin detail {
+    @include buildFont(rem(12), 0, 'nimbus-sans', 400, unset, 116% );
+}
+
+// -----------------------------------------------------------------------------
+// BUTTONS
+// -----------------------------------------------------------------------------
+
+@mixin button {
+    @include buildFont(rem(18), .06em, 'nimbus-sans', 400, null, 100% );
+}
+
+// -----------------------------------------------------------------------------
+// LINKS
+// -----------------------------------------------------------------------------
+
+@mixin primary-nav-link {
+    @include buildFont(rem(16), .04em, 'nimbus-sans', 400, null, 100% );
+}
+
+@mixin primary-nav-link-red {
+    @include buildFont(rem(16), .04em, 'nimbus-sans', 400, null, 100%, $efe-red-primary);
+}
+
+@mixin secondary-nav-link {
+    @include buildFont(rem(16), 0, 'nimbus-sans', 400, capitalize, 100% );
+}
+
+@mixin utility-nav-link {
+    @include buildFont(rem(14), .04em, 'nimbus-sans', 400, null, 100% );
+}
+
+@mixin utility-nav-link-red {
+    @include buildFont(rem(14), .04em, 'nimbus-sans', 400, null, 100%, $efe-red-primary );
+}
+
+@mixin footer-01{
+    @include buildFont(rem(16), 0, 'nimbus-sans', 400, capitalize, 100%);
+}
+
+@mixin footer-02{
+    @include buildFont(rem(14), 0, 'nimbus-sans', 400, capitalize, 100%);
+}
+
+@mixin body-01-link {
+    @include body-01;
+    @include buildLink;
+}
+
+@mixin body-01-link-red {
+    @include body-01;
+    @include buildLink($efe-red-primary, $efe-red-hover);
+}
+
+@mixin body-02-link {
+    @include body-02;
+    @include buildLink;
+}
+
+@mixin body-02-link-red {
+    @include body-02;
+    @include buildLink($efe-red-primary, $efe-red-hover);
+}
+
+@mixin body-03-link {
+    @include body-03;
+    @include buildLink;
+}
+
+@mixin body-03-link-red {
+    @include body-03;
+    @include buildLink($efe-red-primary, $efe-red-hover);
 }

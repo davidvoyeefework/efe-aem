@@ -11,15 +11,15 @@ export default {
       control: { type: "text" },
     },
     variant: {
-      options: ["body-01", "body-02", "body-03"],
+      options: ["detail"],
       control: { type: "radio" },
     }
   },
 };
 
 const TextVariations = ({ label, ...args }) => Text({ ...args });
-export const BodyCopy = TextVariations.bind();
-BodyCopy.args = {
-  variant: "body-02",
+export const Compliance = TextVariations.bind();
+Compliance.args = {
+  variant: "detail",
 }
 
