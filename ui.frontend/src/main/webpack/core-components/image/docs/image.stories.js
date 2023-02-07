@@ -13,19 +13,26 @@ export default {
     text: {
       control: { type: "text" },
     },
+    variant: {
+      options: [ "efe-logo-primary", "barrons-logo-primary", "financial-times-logo-primary" ],
+      control: { type: "radio" },
+    }
   },
 };
-const TemplateStandard = ({ label, ...args }) => ImageStandard();
-export const Standard = TemplateStandard.bind();
+// const TemplateStandard = ({ label, ...args }) => ImageStandard();
+// export const Standard = TemplateStandard.bind();
 
-const TemplateImageEmpty = ({ label, ...args }) => ImageEmpty();
-export const EmptyImage = TemplateImageEmpty.bind();
+// const TemplateImageEmpty = ({ label, ...args }) => ImageEmpty();
+// export const EmptyImage = TemplateImageEmpty.bind();
 
-const TemplateImageCaption = ({ label, ...args }) => ImageCaption();
-export const Caption = TemplateImageCaption.bind();
+// const TemplateImageCaption = ({ label, ...args }) => ImageCaption();
+// export const Caption = TemplateImageCaption.bind();
 
-const TemplateLinkedImage = ({ label, ...args }) => LinkedImage();
-export const Linked = TemplateLinkedImage.bind();
+const TemplateLinkedImage = ({ label, ...args }) => LinkedImage({ ...args });
+export const LinkedLogo = TemplateLinkedImage.bind();
+LinkedLogo.args = {
+  variant: "efe-logo-primary"
+}
 
-const TemplateSvgGif = ({ label, ...args }) => SvgGifImage();
-export const SvgGif = TemplateSvgGif.bind();
+// const TemplateSvgGif = ({ label, ...args }) => SvgGifImage();
+// export const SvgGif = TemplateSvgGif.bind();

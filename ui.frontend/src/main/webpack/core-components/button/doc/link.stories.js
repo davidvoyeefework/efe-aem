@@ -10,6 +10,25 @@ export default {
     text: {
       control: { type: "text" },
     },
+    color : {
+      control: {
+        type: "color",
+        presetColors: [
+          {
+            "color": "#535658",
+            "title": "EFE Gray Primary"
+          },
+          {
+            "color": "#C32D37",
+            "title": "EFE Red Primary"
+          },
+          {
+            "color": "#d9d9d9",
+            "title": "EFE Gray Mid"
+          }
+        ]
+      }
+    },
     variant: {
       options: [ "primary-nav-link", "primary-nav-link-red", "secondary-nav-link", "utility-nav-link", "utility-nav-link-red", "body-01-link", "body-01-link-red", "body-02-link", "body-02-link-red", "body-03-link", "body-03-link-red"],
       control: { type: "radio" },
@@ -21,4 +40,6 @@ const TemplatePrimary = ({ label, ...args }) => Button({ ...args });
 export const NavLinks = TemplatePrimary.bind();
 NavLinks.args = {
   variant: "primary-nav-link",
+  color: "efe-gray-primary"
+
 }
