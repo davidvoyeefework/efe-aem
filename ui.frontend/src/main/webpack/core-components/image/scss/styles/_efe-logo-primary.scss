@@ -1,3 +1,7 @@
 .cmp-image--efe-logo-primary {
-    background: url('../resources/images/logos/efe/efe-logo-primary.svg') no-repeat center center / contain;
+   
+    &.cmp-image--small {
+        width: rem(200);
+        height: rem(37);
+    }
 }

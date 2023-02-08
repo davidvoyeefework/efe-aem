@@ -1,6 +1,5 @@
 import Handlebars from "handlebars/runtime.js";
-import "../../../site/main.scss";
-import Button from "../button.hbs";
+import Button from "../button-linked.hbs";
 Handlebars.registerPartial("Button", Button);
 // More on default export: https://storybook.js.org/docs/html/writing-stories/introduction#default-export
 export default {
@@ -11,26 +10,11 @@ export default {
       control: { type: "text" },
     },
     color : {
-      control: {
-        type: "color",
-        presetColors: [
-          {
-            "color": "#535658",
-            "title": "EFE Gray Primary"
-          },
-          {
-            "color": "#C32D37",
-            "title": "EFE Red Primary"
-          },
-          {
-            "color": "#d9d9d9",
-            "title": "EFE Gray Mid"
-          }
-        ]
-      }
+      options: [ "efe-gray-primary", "efe-red-primary" ],
+      control: { type: "select" },
     },
     variant: {
-      options: [ "primary-nav-link", "primary-nav-link-red", "secondary-nav-link", "utility-nav-link", "utility-nav-link-red", "body-01-link", "body-01-link-red", "body-02-link", "body-02-link-red", "body-03-link", "body-03-link-red"],
+      options: [ "primary-nav-link", "secondary-nav-link", "utility-nav-link", "body-01-link", "body-02-link", "body-03-link"],
       control: { type: "radio" },
     },
   },
@@ -41,5 +25,4 @@ export const NavLinks = TemplatePrimary.bind();
 NavLinks.args = {
   variant: "primary-nav-link",
   color: "efe-gray-primary"
-
 }

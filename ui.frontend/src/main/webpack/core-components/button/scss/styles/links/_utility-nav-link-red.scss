@@ -1,8 +1,0 @@
-.cmp-button--utility-nav-link-red {
-    @include utility-nav-link-red;
-    transition: $std-transition;
-
-    &:hover {
-        color: $efe-red-hover;
-    }
-}

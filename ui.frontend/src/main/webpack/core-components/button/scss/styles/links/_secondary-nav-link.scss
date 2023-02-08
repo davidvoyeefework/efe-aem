@@ -1,3 +1,11 @@
 .cmp-button--secondary-nav-link {
-    @include secondary-nav-link;
+    a {
+        @include secondary-nav-link;
+    }
+
+    &.cmp-button--efe-red-primary {
+        a {
+            @include secondary-nav-link-red;
+        }
+    }
 }

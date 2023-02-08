@@ -1,3 +1,7 @@
 .cmp-button--footer-02 {
-    @include footer-02;
+
+    a {
+        @include footer-02;
+    }
+
 }

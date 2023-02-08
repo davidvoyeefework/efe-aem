@@ -1,5 +1,4 @@
 import Handlebars from "handlebars/runtime.js";
-import "../../../site/main.scss";
 import Seperator from "../seperator.hbs";
 Handlebars.registerPartial("Seperator", Seperator);
 // More on default export: https://storybook.js.org/docs/html/writing-stories/introduction#default-export
@@ -14,6 +13,10 @@ export default {
       options: ["primary"],
       control: { type: "radio" },
     },
+    color : {
+      options: [ "efe-gray-mid", "efe-gray-blue" ],
+      control: { type: "select" },
+    },
   },
 };
 
@@ -21,4 +24,5 @@ const TemplatePrimary = ({ label, ...args }) => Seperator({ ...args });
 export const SeperatorPrimary = TemplatePrimary.bind();
 SeperatorPrimary.args = {
   variant: "primary",
+  color: "efe-gray-blue"
 }

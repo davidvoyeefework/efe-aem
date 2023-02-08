@@ -1,3 +1,11 @@
 .cmp-button--body-03-link {
-    @include body-03-link;
+    a {
+        @include body-03-link;
+    }
+
+    &.cmp-button--efe-red-primary {
+        a {
+            @include body-03-link-red;
+        }
+    }
 }

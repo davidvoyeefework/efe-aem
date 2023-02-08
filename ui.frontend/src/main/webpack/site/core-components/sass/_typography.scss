@@ -121,12 +121,28 @@
     @include buildFont(rem(16), 0, 'nimbus-sans', 400, capitalize, 100% );
 }
 
+@mixin secondary-nav-link-red {
+    @include secondary-nav-link;
+    color: $efe-red-primary;
+    transition: $std-transition;
+    &:hover {
+        color: $efe-red-hover;
+        transition: $std-transition;
+    }
+}
+
 @mixin utility-nav-link {
     @include buildFont(rem(14), .04em, 'nimbus-sans', 400, null, 100% );
 }
 
 @mixin utility-nav-link-red {
-    @include buildFont(rem(14), .04em, 'nimbus-sans', 400, null, 100%, $efe-red-primary );
+    @include utility-nav-link;
+    color: $efe-red-primary;
+    transition: $std-transition;
+    &:hover {
+        color: $efe-red-hover;
+        transition: $std-transition;
+    }
 }
 
 @mixin footer-01{

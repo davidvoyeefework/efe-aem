@@ -1,6 +1,5 @@
 import Handlebars from "handlebars/runtime.js";
 import Text from "../text.hbs";
-import "../../../site/main.scss";
 
 Handlebars.registerPartial("Text", Text);
 export default {

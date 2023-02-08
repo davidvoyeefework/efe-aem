@@ -1,6 +1,5 @@
 import Handlebars from "handlebars/runtime.js";
-import "../../../site/main.scss";
-import Button from "../button.hbs";
+import Button from "../button-linked.hbs";
 Handlebars.registerPartial("Button", Button);
 // More on default export: https://storybook.js.org/docs/html/writing-stories/introduction#default-export
 export default {

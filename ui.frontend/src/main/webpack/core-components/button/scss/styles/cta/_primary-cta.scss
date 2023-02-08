@@ -1,5 +1,5 @@
 .cmp-button--cta-primary {
-    * {
+    button {
         @include cta-primary;
     }
 }

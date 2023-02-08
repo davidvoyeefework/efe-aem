@@ -1,11 +1,6 @@
-import ImageCaption from "../caption.hbs";
-import ImageStandard from "../image.hbs";
-import ImageEmpty from "../empty-image.hbs";
-import LinkedImage from "../linked.hbs";
-import SvgGifImage from "../svg-gif.hbs";
+import LinkedImage from "../efe-logo-linked.hbs";
 import Handlebars from "handlebars/runtime.js";
-import "../../../site/main.scss";
-Handlebars.registerPartial("Image", ImageStandard);
+Handlebars.registerPartial("Image", LinkedImage);
 export default {
   title: "Core Components/Image",
   // More on argTypes: https://storybook.js.org/docs/html/api/argtypes
@@ -13,9 +8,22 @@ export default {
     text: {
       control: { type: "text" },
     },
+    link: {
+      control: { type: "text" },
+    },
     variant: {
-      options: [ "efe-logo-primary", "barrons-logo-primary", "financial-times-logo-primary" ],
+      options: [ "efe-logo-primary" ],
       control: { type: "radio" },
+    },
+    altText : {
+      control: 'text'
+    },
+    titleText : {
+      control: 'text'
+    },
+    size: {
+      control: {type: "select"},
+      options: ["small"]
     }
   },
 };
@@ -29,9 +37,13 @@ export default {
 // export const Caption = TemplateImageCaption.bind();
 
 const TemplateLinkedImage = ({ label, ...args }) => LinkedImage({ ...args });
-export const LinkedLogo = TemplateLinkedImage.bind();
-LinkedLogo.args = {
-  variant: "efe-logo-primary"
+export const LinkedEFELogo = TemplateLinkedImage.bind();
+LinkedEFELogo.args = {
+  link: "https://www.edelmanfinancialengines.com/", 
+  variant: "efe-logo-primary",
+  altText: "Edelman Financial Engines Logo",
+  size: "small",
+  titleText: "Edelman Financial Engines Homepage"
 }
 
 // const TemplateSvgGif = ({ label, ...args }) => SvgGifImage();

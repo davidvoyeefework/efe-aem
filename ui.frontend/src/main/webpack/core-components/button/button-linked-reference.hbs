@@ -1,0 +1,12 @@
+<div class="button cmp-button--wrapper {{#if mobileFullWidth}}cmp-button--mobile-full-width{{/if}} {{#if iconName}}cmp-button__icon--{{iconName}}{{/if}} cmp-button--{{variant}} cmp-button--{{size}} cmp-button--{{theme}} {{#if showIcon}}cmp-button--{{iconPosition}}{{/if}}">
+  <a
+    href="#"
+    id="{{id}}"
+    class="cmp-button"
+    {{#if disable}}disabled{{/if}}
+    aria-label="{{accessibilityLabel}}"
+  >
+    {{#if showIcon}}<span class="cmp-button__icon"></span>{{/if}}
+    {{#if text}}<span class="cmp-button__text">{{text}}</span>{{/if}}
+  </a>
+</div>

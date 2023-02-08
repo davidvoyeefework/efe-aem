@@ -1,9 +1,0 @@
-.cmp-button--primary-nav-link-red {
-    @include primary-nav-link-red;
-    transform: $std-transition;
-
-    &:hover {
-        color: $efe-red-hover;
-        transform: $std-transition;
-    }
-}
