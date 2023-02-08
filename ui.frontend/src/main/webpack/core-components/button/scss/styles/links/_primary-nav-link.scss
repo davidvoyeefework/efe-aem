@@ -1,0 +1,12 @@
+.cmp-button--primary-nav-link {
+    a {
+        @include primary-nav-link;
+    }
+
+    &.cmp-button--efe-red-primary {
+        a {
+            @include primary-nav-link-red;
+        }
+    }
+
+}

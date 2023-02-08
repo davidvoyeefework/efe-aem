@@ -118,3 +118,6 @@ $list-item-border: 5px solid $brand-third;
 
 $button-size: var(--buttonSize, 48px);
 $button-border-radius: var(--buttonBorderRadius, 0px);
+
+// Transitions
+$std-transition: all 250ms cubic-bezier(.165,.84,.44,1);

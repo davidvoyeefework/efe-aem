@@ -1,0 +1,11 @@
+.cmp-button--utility-nav-link {
+    a {
+        @include utility-nav-link;
+    }
+
+    &.cmp-button--efe-red-primary {
+        a {
+            @include utility-nav-link-red;
+        }
+    }
+}

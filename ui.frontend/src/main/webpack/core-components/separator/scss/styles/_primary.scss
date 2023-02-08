@@ -1,0 +1,18 @@
+.cmp-separator--primary {
+    hr{
+        color: $efe-gray-mid;
+        border-top: unset !important;
+    }
+
+    &.cmp-separator--efe-gray-mid {
+        hr {
+            color: $efe-gray-mid;
+        }
+    }
+
+    &.cmp-separator--efe-gray-blue {
+        hr {
+            color: $efe-gray-blue;
+        }
+    }
+}

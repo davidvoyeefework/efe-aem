@@ -1,0 +1,11 @@
+.cmp-button--body-01-link {
+    a {
+        @include body-01-link;
+    }
+
+    &.cmp-button--efe-red-primary {
+        a {
+            @include body-01-link-red;
+        }
+    }
+}

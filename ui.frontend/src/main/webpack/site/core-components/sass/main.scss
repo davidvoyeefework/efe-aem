@@ -5,6 +5,13 @@
 @import './wkndicons';
 @import '../../scss/variables';
 @import '../../scss/include-media';
+@import './colors';
+@import './typography';
+@import './buttons/cta-primary';
+@import './layout/flexbox';
+
+
+
 /* Core Components */
 @import '../../../core-components/accordion/scss/accordion.scss';
 @import '../../../core-components/breadcrumb/scss/breadcrumb.scss';
