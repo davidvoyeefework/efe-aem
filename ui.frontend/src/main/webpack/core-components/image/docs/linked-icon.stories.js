@@ -1,20 +1,17 @@
-import LinkedImage from "../efe-logo-linked.hbs";
+import LinkedImage from "../linked-image.hbs";
 import Handlebars from "handlebars/runtime.js";
 Handlebars.registerPartial("Image", LinkedImage);
 export default {
   title: "Core Components/Image",
   // More on argTypes: https://storybook.js.org/docs/html/api/argtypes
   argTypes: {
-    text: {
-      control: { type: "text" },
-    },
-    link: {
-      control: { type: "text" },
-    },
     variant: {
-      options: [ "efe-logo-primary" ],
+      options: [ "facebook", "twitter", "linkedin"],
       control: { type: "radio" },
     },
+    link: {
+        control: { type: "text" },
+      },
     altText : {
       control: 'text'
     },
@@ -24,18 +21,20 @@ export default {
     size: {
       control: {type: "select"},
       options: ["small"]
+    },
+    source: {
+        control: 'text'
     }
   },
 };
 
 const TemplateLinkedImage = ({ label, ...args }) => LinkedImage({ ...args });
-export const EFELogo = TemplateLinkedImage.bind();
-EFELogo.args = {
-  link: "https://www.edelmanfinancialengines.com/", 
-  variant: "efe-logo-primary",
-  altText: "Edelman Financial Engines Logo",
+export const SocialIcons = TemplateLinkedImage.bind();
+SocialIcons.args = {
+variant: "facebook",
+  link: "https://www.facebook.com/edelmanfinancialengines", 
   size: "small",
-  titleText: "Edelman Financial Engines Homepage"
+  source: "data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
 }
 
 // const TemplateSvgGif = ({ label, ...args }) => SvgGifImage();

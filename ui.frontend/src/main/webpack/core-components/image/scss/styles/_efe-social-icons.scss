@@ -1,0 +1,28 @@
+
+@mixin socialSpec {
+    width: rem(30);
+    height: rem(30);
+    margin: 0;
+    padding: 0;
+}
+
+.cmp-image--facebook {
+    img.cmp-image__image{
+        background: url("../resources/images/icons/efe-facebook.svg") no-repeat center center / contain;
+        @include socialSpec();
+    }
+}
+
+.cmp-image--twitter {
+    img.cmp-image__image{
+        background: url("../resources/images/icons/efe-twitter.svg") no-repeat center center / contain;
+        @include socialSpec();
+    }
+}
+
+.cmp-image--linkedin {
+    img.cmp-image__image{
+        background: url("../resources/images/icons/efe-linkedin.svg") no-repeat center center / contain;
+        @include socialSpec();
+    }
+}
