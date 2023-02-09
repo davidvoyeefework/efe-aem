@@ -6,7 +6,7 @@ export default {
   // More on argTypes: https://storybook.js.org/docs/html/api/argtypes
   argTypes: {
     variant: {
-      options: [ "facebook", "twitter", "linkedin"],
+      options: [ "facebook", "twitter", "linkedin", "search", "close", "hamburger"],
       control: { type: "radio" },
     },
     link: {
@@ -29,8 +29,8 @@ export default {
 };
 
 const TemplateLinkedImage = ({ label, ...args }) => LinkedImage({ ...args });
-export const SocialIcons = TemplateLinkedImage.bind();
-SocialIcons.args = {
+export const LinkedIcons = TemplateLinkedImage.bind();
+LinkedIcons.args = {
 variant: "facebook",
   link: "https://www.facebook.com/edelmanfinancialengines", 
   size: "small",
