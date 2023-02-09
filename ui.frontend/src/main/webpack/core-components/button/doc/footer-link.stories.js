@@ -13,6 +13,10 @@ export default {
       options: [ "footer-01", "footer-02" ],
       control: { type: "radio" },
     },
+    color: {
+      options: [ "efe-gray-primary", "efe-gray-new"],
+      control: { type: "radio" },
+    },
   },
 };
 
@@ -20,4 +24,5 @@ const TemplatePrimary = ({ label, ...args }) => Button({ ...args });
 export const FooterLinks = TemplatePrimary.bind();
 FooterLinks.args = {
   variant: "footer-01",
+  color: "efe-gray-primary",
 }

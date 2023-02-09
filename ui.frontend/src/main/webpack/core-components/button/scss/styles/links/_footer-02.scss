@@ -4,4 +4,15 @@
         @include footer-02;
     }
 
+    &.cmp-button--efe-gray-primary {
+        a {
+            @include efe-gray-primary;
+        }
+    }
+
+    &.cmp-button--efe-gray-new {
+        a {
+            @include efe-gray-new;
+        }
+    }
 }

@@ -1,0 +1,19 @@
+.cmp-navigation--primary {
+
+    .cmp-navigation__group {
+        @include flexbox(
+            $gap: rem(40)
+        );
+
+        h2.footer-02 {
+            @include efe-gray-new;
+        }
+    }
+    .cmp-navigation__item--level-0  {
+
+        a {
+            @include primary-nav-link;
+        }
+
+    }
+}
