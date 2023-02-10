@@ -1,4 +1,4 @@
-.cmp-teaser-service-details-block {
+.cmp-teaser--image-left {
     .cmp-teaser {
         display: flex;
         flex-direction: row-reverse;
@@ -12,22 +12,38 @@
             padding: rem(56px) 0 0 rem(51px);
         }
         &__title {
-            font-family: $font-nimbus-pro;
+            @include buildFont(rem(48), 0.06em, $font-nimbus-pro, 700, uppercase, 105%, $gray-deep-charcoal);
             margin-top: 0;
-            font-style: normal;
-            font-weight: 700;
-            font-size: rem(36px);
-            line-height: 105%;
-            /* identical to box height, or 38px */
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            color: $gray-deep-charcoal;
         }
         &__description {
-            font-family: $font-nimbus-Sans;
             font-style: normal;
             font-weight: 400;
-            font-size: rem(22px);
+            font-size: rem(26px);
+            line-height: 120%;
+        }
+    }
+}
+.cmp-teaser--image-right {
+    .cmp-teaser {
+        display: flex;
+        flex-direction: row;
+        @include media("<tablet") {
+            flex-direction: column;
+        }
+        &__content {
+            @include media("<tablet") {
+                padding: rem(15px)
+            }
+            padding: rem(51px) rem(56px) 0 rem(56px);
+        }
+        &__title {
+            @include buildFont(rem(48), 0.06em, $font-nimbus-pro, 700, uppercase, 105%, $gray-deep-charcoal);
+            margin-top: 0;
+        }
+        &__description {
+            font-style: normal;
+            font-weight: 400;
+            font-size: rem(26px);
             line-height: 120%;
         }
     }
