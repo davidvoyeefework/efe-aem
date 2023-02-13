@@ -28,6 +28,8 @@
 }
 
 .cmp-image--search {
+    width: rem(20);
+    height: rem(19);
     img.cmp-image__image{
         background: url("../resources/images/icons/efe-search.svg") no-repeat center center / contain;
         width: rem(20);
@@ -43,7 +45,7 @@
     }
 }
 
-.cmp-image--hamburger {
+.cmp-image--close {
     img.cmp-image__image{
         background: url("../resources/images/icons/efe-close.svg") no-repeat center center / contain;
         width: rem(19);

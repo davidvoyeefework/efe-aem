@@ -1,7 +1,28 @@
+
+@mixin maxWidth() {
+    &.cmp-container--1920 {
+        max-width: $xxxl;
+        margin: auto;
+    }
+
+    &.cmp-container--1400 {
+        max-width: $xxl;
+        margin: auto;
+    }
+}
+
+
 .cmp-container--bg-efe-gray-light {
     @include bg-efe-gray-light;
+    @include maxWidth();
 }
 
 .cmp-container--bg-efe-gray-mid {
     @include bg-efe-gray-mid;
+    @include maxWidth();
+}
+
+.cmp-container--unset {
+    background: transparent;
+    @include maxWidth();
 }

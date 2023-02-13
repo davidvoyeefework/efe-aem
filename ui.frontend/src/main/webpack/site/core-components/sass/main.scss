@@ -12,7 +12,8 @@
 @import './forms/efe-forms-primary';
 
 //BASE
-@import  './base/breakpoints';
+@import './base/breakpoints',
+        './base/padding';
 
 //LAYOUT
 @import './layout/flexbox';

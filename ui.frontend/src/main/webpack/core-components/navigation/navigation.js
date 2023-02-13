@@ -14,6 +14,9 @@
  *  limitations under the License.
  */
 
+
+
+console.log("test");
 import jQuery from "jquery";
 
 // Wrap bindings in anonymous namespace to prevent collisions

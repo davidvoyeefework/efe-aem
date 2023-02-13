@@ -1,0 +1,23 @@
+#efe-global-nav-header {
+    .cmp-container--1920 { 
+        min-height: rem(60);
+        padding: $efe-padding-default;
+        @include flexbox(
+            $justify-content: space-between,
+            $align-items: center
+        );
+    }
+
+    @media screen and (min-width: $sm) {
+        .cmp-container--1920 { 
+            min-height: rem(34);
+            padding: rem(7) rem(48);
+            @include flexbox(
+                $justify-content: end,
+                $gap: rem(30),
+                $align-items: center
+            );
+        }
+    }
+
+}
