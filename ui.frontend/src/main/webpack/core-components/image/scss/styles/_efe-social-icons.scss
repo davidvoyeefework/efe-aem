@@ -38,17 +38,22 @@
 }
 
 .cmp-image--hamburger {
-    img.cmp-image__image{
-        background: url("../resources/images/icons/efe-hamburger.svg") no-repeat center center / contain;
+    * {
         width: rem(23);
         height: rem(16);
+    }
+    img.cmp-image__image{
+        background: url("../resources/images/icons/efe-hamburger.svg") no-repeat center center / contain;
+
     }
 }
 
 .cmp-image--close {
-    img.cmp-image__image{
-        background: url("../resources/images/icons/efe-close.svg") no-repeat center center / contain;
+    * {
         width: rem(19);
         height: rem(17);
+    }
+    img.cmp-image__image{
+        background: url("../resources/images/icons/efe-close.svg") no-repeat center center / contain;
     }
 }

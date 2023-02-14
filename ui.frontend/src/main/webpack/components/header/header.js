@@ -5,12 +5,10 @@
 export default class Header {
   constructor(el) {
     this.el = el;
-    document.querySelector("#nav-search-icon a").addEventListener("click", function() {
-      showElement("efe-nav-search");
-    });
-    document.querySelector("#search-close").addEventListener("click", function() {
-      showElement("efe-nav-search");
-    });
+
+    clickFunction("#nav-search-icon a","efe-nav-search");
+    clickFunction("#search-close", "efe-nav-search");
+    clickFunction("#nav-hamburger", "nav-list-cta-group");
   }
 
   static init(el) {
@@ -21,15 +19,18 @@ export default class Header {
 
 
 const showElement = (e) => {
-
   const domElement = document.getElementById(e);
   let displayStyle = getComputedStyle(domElement, "display", null ).getPropertyValue("display");
-
   if (displayStyle == "none") {
     domElement.style.display = 'block';
   }
   else if (displayStyle == "block") {
     domElement.style.display = 'none';
   }
+}
 
+const clickFunction = (listenItem, elmToShow) => {
+  document.querySelector(listenItem).addEventListener("click", function() {
+    showElement(elmToShow);
+  });
 }
