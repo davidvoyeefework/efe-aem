@@ -1,0 +1,29 @@
+#efe-nav-main {
+
+    #nav-list-cta-group {
+        display: none;
+    }
+
+    @media screen and (min-width: 1230px) {
+        #nav-list-cta-group {
+            display: block;
+        }
+    }
+
+    .cmp-container--26 {
+        @include flexbox(
+            $gap: rem(40),
+            $justify-content: space-between,
+        );
+
+        #nav-list-cta-group {
+            .cmp-container {
+                @include flexbox(
+                    $align-items: center,
+                    $gap: rem(40)
+                );
+            }
+         
+        }
+    }
+}

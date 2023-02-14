@@ -15,6 +15,9 @@ export default {
     variant: {
       options: ["primary"],
       control: { type: "radio" },
+    },
+    id: {
+      control: { type: "text" },
     }
   },
 };
@@ -24,6 +27,7 @@ export const SearchPrimary = SearchEFE.bind();
 SearchPrimary.args = {
   variant: "primary",
   text: "search",
-  placeholder: "Search ..."
+  placeholder: "Search ...",
+  id:""
 }
 

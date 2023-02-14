@@ -1,6 +1,96 @@
 <header class="header" data-component="header">
-    <div class="container">
-       Header
-        
+    {{! --------------------- NAV HEADER  --------------------- }}
+    <div class="container responsivegrid" id="efe-global-nav-header">
+        <div id="container-99d779a4e6" class="cmp-container cmp-container--bg-efe-gray-light">
+            <div class="container responsivegrid" id="efe-nav-search">
+                <div id="container-99d779a4e6" class="cmp-container cmp-container--unset cmp-container--1920 efe-nav-search" >
+                    {{! --------------------- SEARCH FORM  --------------------- }}
+                    {{>Search
+                      variant= "primary"
+                        text="search"
+                        placeholder="Search ..."
+                        id="search-form"
+                    }}
+
+                    {{! --------------------- CLOSE SEARCH ICON  --------------------- }}
+                    {{>LinkedImage
+                        variant= "close"
+                        text="search"
+                        placeholder="Search ..."
+                        id="search-close"
+                    }}
+                </div>
+            </div>
+
+        {{! --------------------- 1920 CONTAINER  --------------------- }}
+            <div class="container responsivegrid">
+                <div id="container-99d779a4e6" class="cmp-container cmp-container--unset cmp-container--1920 efe-nav-header">
+
+                    {{! --------------------- CLICK TO CALL  --------------------- }}
+                    {{>Button
+                        variant="footer-01"
+                        text="(833) PLAN-EFE"
+                        color="efe-gray-new"
+                        link="tel:+18337526333"
+                    }}
+
+                    {{! --------------------- LOG IN  --------------------- }}
+                    {{>Button
+                        variant="primary-nav-link"
+                        text="Log in"
+                        color="efe-red-primary"
+                        link="https://login.financialengines.com/"
+                    }}
+
+                    {{! --------------------- SEARCH BUTTON  --------------------- }}
+                    {{>LinkedImage
+                        variant="search"
+                        source="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
+                        link="#"
+                        id="nav-search-icon"
+                    }}
+
+                </div>
+            </div>
+        </div>
     </div>
+
+    {{! --------------------- NAV MAIN  --------------------- }}
+    <div class="container responsivegrid" id="">
+        <div id="container-99d779a4e6" class="cmp-container cmp-container--white">
+            <div class="container responsivegrid" id="efe-nav-main">
+                <div id="container-99d779a4e6" class="cmp-container--white cmp-container--unset cmp-container--1920 cmp-container--26">
+
+                {{! --------------------- LINKED EFE LOGO  --------------------- }}
+                {{>EfeLogo
+                    link="https://www.edelmanfinancialengines.com/"
+                    variant="efe-logo-primary"
+                    altText="Edelman Financial Engines Logo"
+                    size="small"
+                    titleText="Edelman Financial Engines"
+                }}
+
+                <div class="container responsivegrid" id="nav-list-cta-group">
+                    <div id="container-99d779a4e6" class="cmp-container cmp-container--white cmp-container--unset cmp-container--unset">
+
+                    {{! --------------------- MAIN NAV  --------------------- }}
+                    {{>Nav
+                        variant="primary"
+                    }}
+
+                    {{! --------------------- CTA  --------------------- }}
+                    {{>CTA
+                        variant="cta-primary"
+                        link="/connect-with-a-planner/"
+                        text="connect with a planner"
+                    }}
+                    </div>
+                </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
 </header>

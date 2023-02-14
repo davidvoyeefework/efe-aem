@@ -1,11 +1,8 @@
 .cmp-navigation--primary {
 
-    min-height: rem(100);
-
     .cmp-navigation__group--level-0 {
         position: relative;
-        @include grid(
-            $template-columns: 1fr 1fr 1fr 1fr,
+        @include flexbox(
             $gap: rem(40)
         );
 
@@ -46,6 +43,8 @@
         }
     }
     .cmp-navigation__item--level-0  {
+
+        width: fit-content;
 
          > a  {
             @include primary-nav-link;

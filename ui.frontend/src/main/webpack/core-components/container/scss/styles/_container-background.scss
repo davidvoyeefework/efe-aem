@@ -11,18 +11,33 @@
     }
 }
 
+@mixin padding() {
+    &.cmp-container--26 {
+        padding: rem(26);
+    }
+}
+
 
 .cmp-container--bg-efe-gray-light {
     @include bg-efe-gray-light;
     @include maxWidth();
+    @include padding();
 }
 
 .cmp-container--bg-efe-gray-mid {
     @include bg-efe-gray-mid;
     @include maxWidth();
+    @include padding();
 }
 
 .cmp-container--unset {
     background: transparent;
     @include maxWidth();
+    @include padding();
+}
+
+.cmp-container--white {
+    background: white;
+    @include maxWidth();
+    @include padding();
 }

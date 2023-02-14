@@ -1,6 +1,6 @@
 import LinkedImage from "../efe-logo-linked.hbs";
 import Handlebars from "handlebars/runtime.js";
-Handlebars.registerPartial("Image", LinkedImage);
+Handlebars.registerPartial("EfeLogo", LinkedImage);
 export default {
   title: "Core Components/Image",
   // More on argTypes: https://storybook.js.org/docs/html/api/argtypes
