@@ -11,9 +11,11 @@
     }
 
     .cmp-container--26 {
+        padding: rem(26) rem(48);
         @include flexbox(
             $gap: rem(40),
             $justify-content: space-between,
+            $align-items: center
         );
 
         #nav-list-cta-group {
