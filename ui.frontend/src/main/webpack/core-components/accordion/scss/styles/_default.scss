@@ -1,61 +1,56 @@
 
 .cmp-accordion {
-
+    &__item {
+        margin: 0 auto rem(20px)
+    }
     .cmp-accordion__button {
-        border: none;
-        border-bottom: 2px solid $gray-light;
-        padding: 1em;
-        cursor: pointer;
-        background: none;
-        display: block;
         width: 100%;
-        text-align: left;
+        background: $white-primary;
+        border: 1px solid $efe-gray-mid;
+        border-radius: rem(3px);
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
         &:focus {
             outline: none;
         }
     }
-
     .cmp-accordion__icon {
+        margin-top: rem(10px);
         float: right;
-        &:before { content: $wkndicon-plus; }
+        font-family: '#{$icomoon-icon-font-family}' !important;
+        &:before { content: $icon-Chevron-Property-1Default1; }
     }
 
     .cmp-accordion__button--expanded {
-        border: none;
-
+        border: 2px solid $efe-gray-blue;
+       
         .cmp-accordion__icon {
-            &:before { content: $wkndicon-minus; }
+            transform: rotate(180deg);
+            //&:before { content: $icon-Chevron-Property-1Default1; }
         }
     }
 
     .cmp-accordion__title {
-        font-family: $font-family-base;
-        font-size: $font-size-h4;
-        text-transform: uppercase;
-        font-weight: $font-weight-bold;
-        padding-left: 0.5em;
+       @include body-02;
     }
 
    
 
     .cmp-accordion__panel {
         font-size: $font-size-small;
-        padding-left: 0.5em;
-        padding-top: 0.5em;
+        padding: rem(20px);
+        background: $white-primary;
         @include animated();
         @include fadeIn();
-
-        p {
-            font-size: $font-size-small;
-            line-height: $line-height-base + 0.25;
-        }
-        
-
     }
 
     .cmp-accordion__panel--expanded {
         display: block;
-
+        border: 2px solid $efe-gray-blue;
+        border-top: 0;
+        border-radius: rem(3px);
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
     }
 
     .cmp-accordion__panel--hidden {
