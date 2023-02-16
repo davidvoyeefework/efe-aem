@@ -1,6 +1,6 @@
 import Handlebars from "handlebars/runtime.js";
-import Button from "../button-linked.hbs";
-Handlebars.registerPartial("Button", Button);
+import LinkedButton from "../button-linked.hbs";
+Handlebars.registerPartial("LinkedButton", LinkedButton);
 // More on default export: https://storybook.js.org/docs/html/writing-stories/introduction#default-export
 export default {
   title: "Core Components/Links",
@@ -20,9 +20,10 @@ export default {
   },
 };
 
-const TemplatePrimary = ({ label, ...args }) => Button({ ...args });
+const TemplatePrimary = ({ label, ...args }) => LinkedButton({ ...args });
 export const NavLinks = TemplatePrimary.bind();
 NavLinks.args = {
   variant: "primary-nav-link",
-  color: "efe-gray-primary"
+  color: "efe-gray-primary",
+  text: "test"
 }
