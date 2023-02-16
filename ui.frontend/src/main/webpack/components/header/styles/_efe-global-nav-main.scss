@@ -16,7 +16,7 @@
 
     #nav-list-cta-group {
         display: block;
-        width: 100vw;
+        width: 100%;
         position: absolute;
         top: 89px;
         left: 0;
@@ -38,16 +38,51 @@
     }
 
     .ul-cta-group, .cmp-navigation__group--level-0 {
+
+
         @include flexbox(
             $flex-direction: column,
             $gap: rem(40)
         );
+
+    }
+
+    li.cmp-navigation__item--level-0 {
+        width: 100%;
+        position: relative;
+
+         > a {
+            @include primary-nav-link;
+        }
+
+        #nav-arrow {
+            position: absolute;
+            top: rem(2);
+            right: 0;
+            width: fit-content;
+        }
+
+        &.cmp-navigation__item--active {
+           > a {
+                text-decoration: underline rem(3) solid $efe-red-primary;
+                text-underline-offset: rem(10);
+            }
+   
+
+            #nav-arrow {
+                position: absolute;
+                left: rem(-35);
+                top: rem(2);
+                transform: rotate(180deg);
+            }
+        }
+
     }
 
 
     @media screen and (min-width: 1230px) {
 
-        #nav-hamburger {
+        #nav-hamburger, #nav-arrow {
             display: none;
         }
 

@@ -2,6 +2,8 @@
  * Header class
  */
 
+
+// import $ from 'jquery';
 export default class Header {
   constructor(el) {
     this.el = el;
@@ -9,6 +11,7 @@ export default class Header {
     clickFunction("#nav-search-icon a","efe-nav-search");
     clickFunction("#search-close", "efe-nav-search");
     clickFunction("#nav-hamburger", "nav-list-cta-group");
+    // $('body').style('background,' )
   }
 
   static init(el) {

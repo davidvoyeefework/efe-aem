@@ -15,6 +15,10 @@ export default {
     },
     link: {
       control: { type: "text" },
+    },
+    position: {
+      options: ["unset", "right", "center"],
+      control: { type: "radio" },
     }
   },
 };
@@ -24,5 +28,6 @@ export const CallToActions = TemplatePrimary.bind();
 CallToActions.args = {
   variant: "cta-primary",
   link: "#",
-  text: "connect with a planner"
+  text: "connect with a planner",
+  position: "unset"
 }
