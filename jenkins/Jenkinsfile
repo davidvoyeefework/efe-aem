@@ -10,14 +10,12 @@ pipeline {
     timeout(time: 15, unit: 'MINUTES')
     // This is required if you want to clean before build
     skipDefaultCheckout(true)
+    gitLabConnection('Gitlab.com')
   }
   environment {
     project = "aem"
     emailRecipients = "cfoon@edelmanfinancialengines.com"
   }
-  options([
-    gitLabConnection('Gitlab.com')
-  ])
   stages {
     stage ('Setup') {
       when { anyOf { branch 'main'; branch 'develop' } }
