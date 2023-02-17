@@ -15,7 +15,9 @@ pipeline {
     project = "aem"
     emailRecipients = "cfoon@edelmanfinancialengines.com"
   }
-  properties([gitLabConnection('GitlabProd')])
+  options([
+    gitLabConnection('Gitlab.com')
+  ])
   stages {
     stage ('Setup') {
       when { anyOf { branch 'main'; branch 'develop' } }
