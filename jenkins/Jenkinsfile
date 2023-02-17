@@ -1,4 +1,3 @@
-// Test
 pipeline {
   agent {
     kubernetes {
@@ -47,10 +46,11 @@ pipeline {
       when { anyOf { branch 'main'; branch 'develop' } }
       steps {
         echo "Sync the env.gitlabSourceBranch branch to Adobe Git"
-        git remote add sync https://${AEM_SYNC_USER_NAME}:${AEM_SYNC_USER_ACCESS_TOKEN}@git.cloudmanager.adobe.com/financialengines/FinancialEnginesSites-p91602-uk32541/
-        //git checkout env.gitlabSourceBranch
-        //git pull    
-        //git push sync env.gitlabSourceBranch
+        sh "#!/bin/bash \n" +
+           "git remote add sync https://$AEM_SYNC_USER_NAME:$AEM_SYNC_USER_ACCESS_TOKEN@git.cloudmanager.adobe.com/financialengines/FinancialEnginesSites-p91602-uk32541/; \n"
+        // "git checkout env.gitlabSourceBranch; \n" +
+        // "git pull; \n" +   
+        // "git push sync env.gitlabSourceBranch \n"
       }
     }
   }
