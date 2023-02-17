@@ -55,6 +55,7 @@ pipeline {
             git remote -v
             git checkout ${BRANCH_NAME}
             git pull
+            git push adobe_sync ${BRANCH_NAME}
           '''
         }
       }
