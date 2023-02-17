@@ -31,6 +31,7 @@ pipeline {
       when { anyOf { branch 'main'; branch 'develop' } }
       steps {
         echo "run checkmarxSCA placeholder"
+      }
     }
     stage ('Checkmarx SAST') {
       when { anyOf { branch 'main'; branch 'develop' } }
@@ -55,4 +56,3 @@ pipeline {
     }
   }
 }
-
