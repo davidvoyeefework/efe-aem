@@ -49,7 +49,9 @@ pipeline {
       steps {
         echo "Sync the env.gitlabSourceBranch branch to Adobe Git"
         sh "#!/bin/bash \n" +
-           "git remote add sync https://$AEM_SYNC_USER_NAME:$AEM_SYNC_USER_ACCESS_TOKEN@git.cloudmanager.adobe.com/financialengines/FinancialEnginesSites-p91602-uk32541/; \n"
+           "ls -l; \n" +
+           "git remote add adobe_sync https://$AEM_SYNC_USER_NAME:$AEM_SYNC_USER_ACCESS_TOKEN@git.cloudmanager.adobe.com/financialengines/FinancialEnginesSites-p91602-uk32541/; \n" +
+           " git remote -v; \n";
         // "git checkout env.gitlabSourceBranch; \n" +
         // "git pull; \n" +   
         // "git push sync env.gitlabSourceBranch \n"
