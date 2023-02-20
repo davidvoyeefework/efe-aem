@@ -36,7 +36,7 @@
 
         &.efe-nav-header { 
             min-height: rem(34);
-            padding: rem(7) rem(48);
+            padding: rem(7) rem(26);
             @include flexbox(
                 $justify-content: end,
                 $gap: rem(30),
@@ -46,6 +46,14 @@
 
             &.efe-nav-search {
                 padding: $efe-gutter rem(48);
+            }
+        }
+    }
+
+    @media screen and (min-width: $xl) {
+        .cmp-container--1920{
+        &.efe-nav-header { 
+            padding: rem(7) rem(48);
             }
         }
     }

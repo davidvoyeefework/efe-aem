@@ -1,6 +1,7 @@
+import Handlebars from "handlebars/runtime.js";
 import TitleEFE from "../title.hbs";
 import "../../../site/main.scss";
-
+Handlebars.registerPartial("Title", TitleEFE);
 export default {
   title: "Core Components/Title/Headings",
   // More on argTypes: https://storybook.js.org/docs/html/api/argtypes
