@@ -163,6 +163,40 @@
                             jcr:primaryType="nt:unstructured"
                             features="-"/>
                     </rtePlugins>
+                    <cq:styleGroups jcr:primaryType="nt:unstructured">
+                        <item0
+                            cq:styleGroupLabel="Compliance"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-text--detail"
+                                    cq:styleId="1676971721370"
+                                    cq:styleLabel="details"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item0>
+                        <item1
+                            cq:styleGroupLabel="Body-copy"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-text--body-01"
+                                    cq:styleId="1676971760619"
+                                    cq:styleLabel="body-01"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-text--body-02"
+                                    cq:styleId="1676971771779"
+                                    cq:styleLabel="body-02"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item2
+                                    cq:styleClasses="cmp-text--body-03"
+                                    cq:styleId="1676971779421"
+                                    cq:styleLabel="body-03"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item1>
+                    </cq:styleGroups>
                 </policy_641562756958017>
             </text>
             <title jcr:primaryType="nt:unstructured">
@@ -185,6 +219,44 @@
                     linkDisabled="false"
                     type="h2">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
+                    <cq:styleGroups jcr:primaryType="nt:unstructured">
+                        <item0
+                            cq:styleGroupLabel="Headings"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-title--heading-01"
+                                    cq:styleId="1676971549269"
+                                    cq:styleLabel="heading-01"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-title--heading-02"
+                                    cq:styleId="1676971559095"
+                                    cq:styleLabel="heading-02"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item2
+                                    cq:styleClasses="cmp-title--heading-03"
+                                    cq:styleId="1676971566471"
+                                    cq:styleLabel="heading-03"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item3
+                                    cq:styleClasses="cmp-title--heading-04"
+                                    cq:styleId="1676971575070"
+                                    cq:styleLabel="heading-04"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item4
+                                    cq:styleClasses="cmp-title--subhead-01"
+                                    cq:styleId="1676971585832"
+                                    cq:styleLabel="subhead-01"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item5
+                                    cq:styleClasses="cmp-title--subhead-02"
+                                    cq:styleId="1676971594743"
+                                    cq:styleLabel="sunhead-02"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item0>
+                    </cq:styleGroups>
                 </policy_641528232375303>
             </title>
             <experiencefragment jcr:primaryType="nt:unstructured">
@@ -265,6 +337,24 @@
                                 resourceType="efe/components/contentfragment"/>
                         </assetToComponentMapping>
                     </cq:authoring>
+                    <cq:styleGroups jcr:primaryType="nt:unstructured">
+                        <item0
+                            cq:styleGroupLabel="Background color"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-container--bg-efe-gray-light"
+                                    cq:styleId="1676986525881"
+                                    cq:styleLabel="light-gray"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-container--bg-efe-gray-mid"
+                                    cq:styleId="1676986578707"
+                                    cq:styleLabel="mid-grey"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item0>
+                    </cq:styleGroups>
                 </policy_1574695586800>
                 <policy_649128221558427
                     cq:styleDefaultElement="main"
@@ -313,6 +403,39 @@
                     sling:resourceType="wcm/core/components/policy/policy"
                     titleType="h3">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
+                    <cq:styleGroups jcr:primaryType="nt:unstructured">
+                        <item0
+                            cq:styleGroupLabel="Variant"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-teaser--hero"
+                                    cq:styleId="1676970826099"
+                                    cq:styleLabel="hero"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-teaser--banner"
+                                    cq:styleId="1676970855141"
+                                    cq:styleLabel="banner"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item2
+                                    cq:styleClasses="cmp-teaser--image-left"
+                                    cq:styleId="1676970863495"
+                                    cq:styleLabel="image-left"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item3
+                                    cq:styleClasses="cmp-teaser--image-right"
+                                    cq:styleId="1676970872091"
+                                    cq:styleLabel="image-right"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item4
+                                    cq:styleClasses="cmp-teaser--image-bottom"
+                                    cq:styleId="1676970877223"
+                                    cq:styleLabel="image-bottom"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item0>
+                    </cq:styleGroups>
                 </policy_1575031387650>
             </teaser>
             <download jcr:primaryType="nt:unstructured">
@@ -340,6 +463,45 @@
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                 </policy>
             </page>
+			<separator jcr:primaryType="nt:unstructured">
+                <policy_1676882715048/>
+                <policy_574326459688700
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Separater policy"
+                    sling:resourceType="wcm/core/components/policy/policy">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                    <cq:styleGroups jcr:primaryType="nt:unstructured">
+                        <item0
+                            cq:styleGroupLabel="Variant"
+                            cq:styleGroupMultiple="true"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-separator--primary"
+                                    cq:styleId="1676971932658"
+                                    cq:styleLabel="primary"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item0>
+                        <item1
+                            cq:styleGroupLabel="color"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-separator--efe-gray-blue"
+                                    cq:styleId="1676971962761"
+                                    cq:styleLabel="efe-gray-blue"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-separator--efe-gray-mid"
+                                    cq:styleId="1676971989928"
+                                    cq:styleLabel="efe-gray-mid"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item1>
+                    </cq:styleGroups>
+                </policy_574326459688700>
+            </separator>
         </components>
     </efe>
 </jcr:root>
