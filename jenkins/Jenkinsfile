@@ -53,9 +53,10 @@ pipeline {
             ls -l
             git remote add adobe_sync https://$AEM_SYNC_USER_NAME:$AEM_SYNC_USER_ACCESS_TOKEN@git.cloudmanager.adobe.com/financialengines/FinancialEnginesSites-p91602-uk32541/
             git remote -v
+            git branch
             git checkout ${BRANCH_NAME}
             git pull
-            git push adobe_sync ${BRANCH_NAME}
+            //git push adobe_sync ${BRANCH_NAME}
           '''
         }
       }
