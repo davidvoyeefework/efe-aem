@@ -26,6 +26,13 @@
             }
 
             .cmp-navigation-dropdown-grid--50-50-split {
+
+                .cmp-title--heading-04 {
+                    h1 {
+                        max-width: 40ch;
+                    }
+                }
+                
                 > div {
                     &:last-of-type {
                         display: none;
@@ -43,7 +50,6 @@
                 .cmp-navigation-dropdown-grid{
                     @include flexbox(
                         $flex-direction: column,
-                        $gap: rem(26)
                     );
 
                     li {

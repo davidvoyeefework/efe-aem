@@ -84,21 +84,87 @@
                 }}
 
                 <div class="container responsivegrid" id="nav-list-cta-group">
-                    <div id="container-99d779a4e6" class="cmp-container cmp-container--white cmp-container--unset cmp-container--unset ul-cta-group">
 
-                    {{! --------------------- MAIN NAV  --------------------- }}
-                    {{>Nav
-                        variant="primary"
-                    }}
+                    <div class="test">
+                        <div id="container-99d779a4e6" class="cmp-container cmp-container--white cmp-container--unset cmp-container--unset ul-cta-group">
 
-                    {{! --------------------- CTA  --------------------- }}
-                    {{>CTA
-                        variant="cta-primary"
-                        link="/connect-with-a-planner/"
-                        text="connect with a planner"
-                        position="center"
-                    }}
+                        {{! --------------------- MAIN NAV  --------------------- }}
+                        {{>Nav
+                            variant="primary"
+                        }}
+
+                        {{! --------------------- CTA  --------------------- }}
+                        {{>CTA
+                            variant="cta-primary"
+                            link="/connect-with-a-planner/"
+                            text="connect with a planner"
+                            position="center"
+                        }}
+                        </div>
+
+                    {{! --------------------- NAV HEADER  --------------------- }}
+                    <div class="container responsivegrid" id="efe-global-nav-header">
+                        <div id="container-99d779a4e6" class="cmp-container cmp-container--bg-efe-gray-light">
+                            <div class="container responsivegrid" id="efe-nav-searchT">
+                                <div id="container-99d779a4e6" class="cmp-container cmp-container--unset cmp-container--1920 efe-nav-search">
+                                    
+                                    {{! --------------------- SEARCH FORM  --------------------- }}
+                                    {{>Search
+                                        variant= "primary"
+                                        text="search"
+                                        placeholder="Search ..."
+                                        id="search-form"
+                                    }}
+
+                                    {{! --------------------- CLOSE SEARCH ICON  --------------------- }}
+                                    {{>LinkedImage
+                                        variant="close"
+                                        source="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
+                                        id="search-closeT"
+                                        link="#"
+
+                                    }}
+                                </div>
+                            </div>
+
+                        {{! --------------------- 1920 CONTAINER  --------------------- }}
+                            <div class="container responsivegrid">
+                                <div id="container-99d779a4e6" class="cmp-container cmp-container--unset cmp-container--1920 efe-nav-header">
+
+                                    {{! --------------------- CLICK TO CALL  --------------------- }}
+                                    {{>Button
+                                        variant="footer-01"
+                                        text="(833) PLAN-EFE"
+                                        color="efe-gray-new"
+                                        link="tel:+18337526333"
+                                    }}
+
+                                    {{! --------------------- LOG IN  --------------------- }}
+                                    {{>Button
+                                        variant="primary-nav-link"
+                                        text="Log in"
+                                        color="efe-red-primary"
+                                        link="https://login.financialengines.com/"
+                                    }}
+
+                                    {{! --------------------- SEARCH BUTTON  --------------------- }}
+                                    {{>LinkedImage
+                                        variant="search"
+                                        source="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
+                                        link="#"
+                                        id="nav-search-iconT"
+                                    }}
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    </div>
+
+
+    
+
+
                 </div>
 
 

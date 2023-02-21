@@ -1,6 +1,8 @@
 #efe-global-nav-header {
 
-    #efe-nav-search{
+    display: none;
+
+    #efe-nav-search, #efe-nav-searchT{
             display: none;
             .cmp-search__field {
                 height: fit-content;
@@ -45,9 +47,13 @@
         }
 
             &.efe-nav-search {
-                padding: $efe-gutter rem(48);
+                padding: $efe-gutter rem(63);
             }
         }
+    }
+
+    @media screen and (min-width: 1230px) {
+        display: block;
     }
 
     @media screen and (min-width: $xl) {

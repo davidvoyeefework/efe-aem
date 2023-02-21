@@ -1,6 +1,10 @@
 #efe-nav-main {
     position: relative;
 
+    #cmp-navigation-dropdown {
+        display: none;
+    }
+
     #nav-list-cta-group {
         display: none;
     }
@@ -22,10 +26,59 @@
         left: 0;
         right: 0;
         bottom: 0;
-        padding: rem(30) rem(26) rem(26) rem(63);
+        padding: rem(30) rem(26) rem(0) rem(63);
         background: white;
         height: fit-content;
         border-top: 2px solid #d8d8d8;
+
+        #efe-global-nav-header {
+            width: calc(100% + rem(89));
+            position: relative;
+            right: rem(63);
+            display: block;
+
+            .efe-nav-search {
+                padding: rem(48) rem(26) rem(26) rem(26);
+                position: relative;
+                @include flexbox(
+                    $align-items: start
+                );
+
+                .cmp-image--close {
+                    position: absolute;
+                    top: rem(17);
+                    right: rem(39);
+                }
+
+                .cmp-search--primary {
+                    width: 100%;
+
+                    .cmp-search__field {
+                        max-width: rem(305);
+                        margin: auto;
+                        @include flexbox(
+                            $flex-direction: column
+                        );
+
+                        input, button {
+                            margin: auto;
+                            max-width: unset;
+                            width: 100%;
+                            min-width: unset;
+                        }
+                    }
+                }
+
+     
+            }
+        }
+
+        .cmp-button--cta-primary {
+            margin-bottom: rem(22);
+            width: 100vw;
+            position: relative;
+            right: rem(63);
+        }
 
         #ul-cta-group {
             @include flexbox (
@@ -91,6 +144,17 @@
             position: unset;
             padding: 0;
             border: unset;
+
+            .cmp-button--cta-primary {
+                margin-bottom: 0;
+                width: unset;
+                position: unset;
+            }
+
+
+        #efe-global-nav-header { 
+            display: none;
+        }
 
             .ul-cta-group, .cmp-navigation__group--level-0 {
                 position: unset;
