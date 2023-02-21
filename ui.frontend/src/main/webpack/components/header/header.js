@@ -2,8 +2,6 @@
  * Header class
  */
 
-
-// import $ from 'jquery';
 export default class Header {
   constructor(el) {
     this.el = el;
@@ -14,7 +12,6 @@ export default class Header {
     clickFunction("#search-closeT", "efe-nav-searchT");
     clickFunction("#nav-hamburger", "nav-list-cta-group");
     clickNav(".cmp-navigation__item--level-0 ");
-    // $('body').style('background,' )
   }
 
   static init(el) {
@@ -22,7 +19,9 @@ export default class Header {
   }
 }
 
-
+var windowWidth = document.documentElement.clientWidth || document.body.clientWidth || window.innerWidth;
+const NavBreakpoint = 1230;
+window.onresize = resize;
 
 const showElement = (e) => {
   const domElement = document.getElementById(e);
@@ -43,20 +42,26 @@ const clickFunction = (listenItem, elmToShow) => {
 
 const clickNav = (listenItem) => {
   let NavItems = document.querySelectorAll(listenItem);
+  window.onresize = resize;
   
   NavItems.forEach(element => 
       element.addEventListener("click", function() {
-
         NavItems.forEach( el => {
           if(el.classList.contains("cmp-navigation__item--active")) {
             el.classList.remove("cmp-navigation__item--active");
             let dropDownNav = el.children[2];
             dropDownNav.style.display = 'none';
           }
+          if (windowWidth <= NavBreakpoint) {
+            if(!el.classList.contains("cmp-navigation__item--active")) {
+              el.style.display = "none";
+            }
+          }
         }
         );
    
         element.classList.add("cmp-navigation__item--active");
+        element.style.display = "block";
         let dropDownNav = element.children[2];
         let displayStyle = getComputedStyle(dropDownNav, "display", null ).getPropertyValue("display");
         if (displayStyle == "none") {
@@ -66,6 +71,25 @@ const clickNav = (listenItem) => {
           dropDownNav.style.display = 'none';
         }
 
+        if (windowWidth <= NavBreakpoint) {
+              NavItems.forEach(el => 
+                element.addEventListener("click", function() {
+                  if(el.classList.contains("cmp-navigation__item--active")) {
+                    el.classList.remove("cmp-navigation__item--active");
+                    let dropDownNav = el.children[2];
+                    dropDownNav.style.display = 'none';
+                  }
+                  if(!el.classList.contains("cmp-navigation__item--active")) {
+                    el.style.display = "block";
+                  }
+              }));
+        }
       })
     );
+}
+
+const resize = () => {
+  let ww = document.documentElement.clientWidth || document.body.clientWidth || window.innerWidth;
+  windowWidth = ww;
+  location.reload();
 }
