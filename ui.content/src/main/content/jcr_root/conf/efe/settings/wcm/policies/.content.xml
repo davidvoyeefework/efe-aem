@@ -181,17 +181,17 @@
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
                                     cq:styleClasses="cmp-text--body-01"
-                                    cq:styleId="body-01"
+                                    cq:styleId="large"
                                     cq:styleLabel="Large"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item1
                                     cq:styleClasses="cmp-text--body-02"
-                                    cq:styleId="body-02"
+                                    cq:styleId="medium"
                                     cq:styleLabel="Medium"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item2
                                     cq:styleClasses="cmp-text--body-03"
-                                    cq:styleId="body-03"
+                                    cq:styleId="small"
                                     cq:styleLabel="Small"
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
@@ -226,32 +226,32 @@
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
                                     cq:styleClasses="cmp-title--heading-01"
-                                    cq:styleId="heading-01"
+                                    cq:styleId="h1"
                                     cq:styleLabel="H1"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item1
                                     cq:styleClasses="cmp-title--heading-02"
-                                    cq:styleId="heading-02"
+                                    cq:styleId="h2"
                                     cq:styleLabel="H2"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item2
                                     cq:styleClasses="cmp-title--heading-03"
-                                    cq:styleId="heading-03"
+                                    cq:styleId="h3"
                                     cq:styleLabel="H3"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item3
                                     cq:styleClasses="cmp-title--heading-04"
-                                    cq:styleId="heading-04"
+                                    cq:styleId="h4"
                                     cq:styleLabel="H4"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item4
                                     cq:styleClasses="cmp-title--subhead-01"
-                                    cq:styleId="subhead-01"
+                                    cq:styleId="h5"
                                     cq:styleLabel="H5"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item5
                                     cq:styleClasses="cmp-title--subhead-02"
-                                    cq:styleId="subhead-02"
+                                    cq:styleId="h6"
                                     cq:styleLabel="H6"
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
@@ -420,17 +420,17 @@
                                     jcr:primaryType="nt:unstructured"/>
                                 <item2
                                     cq:styleClasses="cmp-teaser--image-left"
-                                    cq:styleId="image-left"
+                                    cq:styleId="hero-image-left"
                                     cq:styleLabel="Hero Image Left"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item3
                                     cq:styleClasses="cmp-teaser--image-right"
-                                    cq:styleId="image-right"
+                                    cq:styleId="hero-image-right"
                                     cq:styleLabel="Hero Image Right"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item4
                                     cq:styleClasses="cmp-teaser--image-bottom"
-                                    cq:styleId="image-bottom"
+                                    cq:styleId="hero-image-bottom"
                                     cq:styleLabel="Hero Image Bottom"
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
@@ -489,12 +489,12 @@
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
                                     cq:styleClasses="cmp-separator--efe-gray-blue"
-                                    cq:styleId="efe-gray-blue"
+                                    cq:styleId="blue-gray"
                                     cq:styleLabel="Blue Gray"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item1
                                     cq:styleClasses="cmp-separator--efe-gray-mid"
-                                    cq:styleId="efe-gray-mid"
+                                    cq:styleId="mid-gray"
                                     cq:styleLabel="Mid Gray"
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
