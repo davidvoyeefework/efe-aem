@@ -464,7 +464,6 @@
                 </policy>
             </page>
 			<separator jcr:primaryType="nt:unstructured">
-                <policy_1676882715048/>
                 <policy
                     jcr:primaryType="nt:unstructured"
                     jcr:title="Separater policy"
