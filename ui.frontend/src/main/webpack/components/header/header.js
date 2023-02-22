@@ -19,7 +19,7 @@ export default class Header {
   }
 }
 
-var windowWidth = document.documentElement.clientWidth || document.body.clientWidth || window.innerWidth;
+let windowWidth = document.documentElement.clientWidth || document.body.clientWidth || window.innerWidth;
 const NavBreakpoint = 1230;
 window.onresize = resize;
 
@@ -42,7 +42,7 @@ const clickFunction = (listenItem, elmToShow) => {
 
 const clickNav = (listenItem) => {
   let NavItems = document.querySelectorAll(listenItem);
-  window.onresize = resize;
+
   
   NavItems.forEach(element => 
       element.addEventListener("click", function() {
@@ -64,10 +64,10 @@ const clickNav = (listenItem) => {
         element.style.display = "block";
         let dropDownNav = element.children[2];
         let displayStyle = getComputedStyle(dropDownNav, "display", null ).getPropertyValue("display");
-        if (displayStyle == "none") {
+        if (displayStyle === "none") {
           dropDownNav.style.display = 'block';
         }
-        else if (displayStyle == "block") {
+        else if (displayStyle === "block") {
           dropDownNav.style.display = 'none';
         }
 
@@ -84,6 +84,7 @@ const clickNav = (listenItem) => {
                   }
               }));
         }
+
       })
     );
 }
@@ -91,5 +92,4 @@ const clickNav = (listenItem) => {
 const resize = () => {
   let ww = document.documentElement.clientWidth || document.body.clientWidth || window.innerWidth;
   windowWidth = ww;
-  location.reload();
 }

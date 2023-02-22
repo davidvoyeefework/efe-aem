@@ -180,7 +180,7 @@
 
         .cmp-navigation__item--level-0 {
             width: fit-content;
-    
+            display: block !important;
              > a  {
                 @include primary-nav-link;
             }

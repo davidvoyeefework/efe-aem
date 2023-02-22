@@ -16,9 +16,6 @@
 
 
 
-console.log("test");
-import jQuery from "jquery";
-
 // Wrap bindings in anonymous namespace to prevent collisions
 jQuery(function ($) {
     "use strict";
