@@ -465,7 +465,7 @@
             </page>
 			<separator jcr:primaryType="nt:unstructured">
                 <policy_1676882715048/>
-                <policy-separator
+                <policy
                     jcr:primaryType="nt:unstructured"
                     jcr:title="Separater policy"
                     sling:resourceType="wcm/core/components/policy/policy">
@@ -500,7 +500,7 @@
                             </cq:styles>
                         </item1>
                     </cq:styleGroups>
-                </policy-separator>
+                </policy>
             </separator>
         </components>
     </efe>
