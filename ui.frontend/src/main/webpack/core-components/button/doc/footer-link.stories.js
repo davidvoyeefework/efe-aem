@@ -1,6 +1,6 @@
 import Handlebars from "handlebars/runtime.js";
-import Button from "../button-linked.hbs";
-Handlebars.registerPartial("Button", Button);
+import FooterLinkedButton from "../button-linked.hbs";
+Handlebars.registerPartial("FooterLinkedButton", FooterLinkedButton);
 // More on default export: https://storybook.js.org/docs/html/writing-stories/introduction#default-export
 export default {
   title: "Core Components/Links",
@@ -24,7 +24,7 @@ export default {
   },
 };
 
-const TemplatePrimary = ({ label, ...args }) => Button({ ...args });
+const TemplatePrimary = ({ label, ...args }) => FooterLinkedButton({ ...args });
 export const FooterLinks = TemplatePrimary.bind();
 FooterLinks.args = {
   variant: "footer-01",

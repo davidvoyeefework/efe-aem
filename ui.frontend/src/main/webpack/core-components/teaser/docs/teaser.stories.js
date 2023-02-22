@@ -7,13 +7,16 @@ export default {
   title: "Core Components/Teaser",
   // More on argTypes: https://storybook.js.org/docs/html/api/argtypes
   argTypes: {
+    variant: {
+      options: ["hero", "banner", "image-left", "image-right", "image-bottom"],
+      control: { type: "radio" },
+    },
+    showButton: {
+      control: { type: "boolean" },
+    },
     text: {
       control: { type: "text" },
     },
-    variant: {
-      options: ["hero", "banner", "service-details-block"],
-      control: { type: "radio" },
-    }
   },
 };
 const TemplateEfeTeaser = ({ label, ...args }) => HeroTeaser({ ...args });
