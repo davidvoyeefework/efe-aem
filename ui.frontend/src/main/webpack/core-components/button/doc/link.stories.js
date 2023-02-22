@@ -11,11 +11,14 @@ export default {
     },
     color : {
       options: [ "efe-gray-primary", "efe-red-primary" ],
-      control: { type: "select" },
+      control: { type: "radio" },
     },
     variant: {
       options: [ "primary-nav-link", "secondary-nav-link", "utility-nav-link", "body-01-link", "body-02-link", "body-03-link"],
       control: { type: "radio" },
+    },
+    link: {
+      control: { type: "text" },
     },
   },
 };
@@ -25,5 +28,6 @@ export const NavLinks = TemplatePrimary.bind();
 NavLinks.args = {
   variant: "primary-nav-link",
   color: "efe-gray-primary",
-  text: "test"
+  link: "#",
+  text: "connect with a planner"
 }

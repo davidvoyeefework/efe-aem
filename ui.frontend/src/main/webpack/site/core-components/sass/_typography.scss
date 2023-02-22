@@ -153,6 +153,10 @@
     @include buildFont(rem(14), 0, 'nimbus-sans', 400, capitalize, 100%);
 }
 
+.footer-02 {
+    @include footer-02;
+}
+
 @mixin body-01-link {
     @include body-01;
     @include buildLink;

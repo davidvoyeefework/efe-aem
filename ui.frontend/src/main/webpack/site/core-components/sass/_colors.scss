@@ -25,3 +25,12 @@ $efe-red-75-percent: #D8666C;
 @mixin bg-efe-gray-mid {
     background-color: $efe-gray-mid;
 }
+
+// Font Color Utility Classes
+@mixin efe-gray-primary {
+    color: $efe-gray-primary;
+}
+
+@mixin efe-gray-new {
+    color: $efe-gray-new;
+}

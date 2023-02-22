@@ -2,4 +2,18 @@
     button {
         @include cta-primary;
     }
+
+    &.cmp-button--center {
+        button {
+            margin: auto;
+            text-align: center;
+        }
+    }
+
+
+    &.cmp-button--right{
+        @include flexbox(
+            $justify-content: end
+        )
+    }
 }

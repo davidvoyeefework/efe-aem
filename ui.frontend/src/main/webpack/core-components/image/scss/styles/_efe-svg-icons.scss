@@ -1,0 +1,19 @@
+.cmp-img--arrow {
+    display: inline-block;
+    * {
+        height: rem(18);
+        width: rem(18);
+    }
+    background: url("../resources/images/icons/arrows/efe-arrow-right.svg") no-repeat center center / contain;
+
+    &.cmp-img--left {
+        transform: rotate(180deg);
+    }
+    &.cmp-img--down {
+        transform: rotate(90deg);
+    }
+    &.cmp-img--up {
+        transform: rotate(-90deg);
+    }
+
+}

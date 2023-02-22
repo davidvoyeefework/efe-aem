@@ -13,6 +13,14 @@ export default {
       options: [ "footer-01", "footer-02" ],
       control: { type: "radio" },
     },
+    color: {
+      options: [ "efe-gray-primary", "efe-gray-new"],
+      control: { type: "radio" },
+    },
+
+    link: {
+      control: { type: "text" },
+    },
   },
 };
 
@@ -20,4 +28,7 @@ const TemplatePrimary = ({ label, ...args }) => FooterLinkedButton({ ...args });
 export const FooterLinks = TemplatePrimary.bind();
 FooterLinks.args = {
   variant: "footer-01",
+  color: "efe-gray-primary",
+  text: "connect with a planner",
+  link: "#"
 }

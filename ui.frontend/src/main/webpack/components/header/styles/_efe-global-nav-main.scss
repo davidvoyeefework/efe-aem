@@ -1,0 +1,233 @@
+#efe-nav-main {
+    position: relative;
+
+    #cmp-navigation-dropdown {
+        display: none;
+    }
+
+    #nav-list-cta-group {
+        display: none;
+    }
+
+    .cmp-container--26 {
+        padding: rem(26);
+        @include flexbox(
+            $gap: rem(40),
+            $justify-content: space-between,
+            $align-items: center
+        );
+    }
+
+    #nav-list-cta-group {
+        display: block;
+        width: 100%;
+        position: absolute;
+        top: 89px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: rem(30) rem(26) rem(0) rem(63);
+        background: white;
+        height: fit-content;
+        border-top: 2px solid #d8d8d8;
+
+        #efe-global-nav-header {
+            width: calc(100% + rem(89));
+            position: relative;
+            right: rem(63);
+            display: block;
+
+            .efe-nav-search {
+                padding: rem(48) rem(26) rem(26) rem(26);
+                position: relative;
+                @include flexbox(
+                    $align-items: start
+                );
+
+                .cmp-image--close {
+                    position: absolute;
+                    top: rem(17);
+                    right: rem(39);
+                }
+
+                .cmp-search--primary {
+                    width: 100%;
+
+                    .cmp-search__field {
+                        max-width: rem(305);
+                        margin: auto;
+                        @include flexbox(
+                            $flex-direction: column
+                        );
+
+                        input, button {
+                            margin: auto;
+                            max-width: unset;
+                            width: 100%;
+                            min-width: unset;
+                        }
+                    }
+                }
+
+     
+            }
+        }
+
+        .cmp-button--cta-primary {
+            margin-bottom: rem(22);
+            width: 100vw;
+            position: relative;
+            right: rem(79);
+        }
+
+        #ul-cta-group {
+            @include flexbox (
+                $flex-direction: column,
+                $align-items: start,
+                $justify-content: space-between,
+
+            );
+        }
+    }
+
+    .ul-cta-group, .cmp-navigation__group--level-0 {
+
+
+        @include flexbox(
+            $flex-direction: column,
+            $gap: rem(40)
+        );
+
+    }
+
+    li.cmp-navigation__item--level-0 {
+        width: 100%;
+        position: relative;
+
+         > a {
+            @include primary-nav-link;
+        }
+
+        #nav-arrow {
+            position: absolute;
+            top: rem(2);
+            right: 0;
+            width: fit-content;
+        }
+
+        &.cmp-navigation__item--active {
+           > a {
+                text-decoration: underline rem(3) solid $efe-red-primary;
+                text-underline-offset: rem(10);
+            }
+   
+
+            #nav-arrow {
+                position: absolute;
+                left: rem(-35);
+                top: rem(2);
+                transform: rotate(180deg);
+            }
+        }
+
+    }
+
+
+    @media screen and (min-width: 1230px) {
+
+        #nav-hamburger, #nav-arrow {
+            display: none;
+        }
+
+        #nav-list-cta-group {
+            display: block;
+            position: unset;
+            padding: 0;
+            border: unset;
+
+            .cmp-button--cta-primary {
+                margin-bottom: 0;
+                width: unset;
+                position: unset;
+            }
+
+
+        #efe-global-nav-header { 
+            display: none;
+        }
+
+            .ul-cta-group, .cmp-navigation__group--level-0 {
+                position: unset;
+                @include flexbox(
+                    $flex-direction: row,
+                    $justify-content: end,
+                );
+            }
+
+            .ul-cta-group {
+                @include flexbox (
+                    $justify-content: end
+                );
+
+                .navigation {
+                    width: 100%;
+                    nav {
+                        ul.cmp-navigation__group {
+                            @include flexbox (
+                                $gap: 40
+                            );
+
+                            li {
+                                position: unset;
+                                width: fit-content;
+
+                            .cmp-navigation-dropdown {
+                                padding: rem(26) rem(40) rem(16) rem(86);
+                                position: absolute;
+                                top: rem(102);
+                                background: white;
+
+                                .cmp-navigation__group {
+                                    @include flexbox(
+                                        $flex-direction: column,
+                                    );
+                                    .cmp-navigation-dropdown-grid {
+                                        padding: rem(16) 0;
+                                        @include flexbox(
+                                            $flex-direction: row
+                                        );
+                                        li {
+                                            margin: 0;
+                                            @include flexbox(
+                                                $flex: 1
+                                            );
+                                        }
+           
+                                    }
+                                }
+                            }
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .cmp-container--26 {
+            position: relative;
+            padding: rem(26) rem(48);
+            @include flexbox(
+                $align-items: end
+            );
+        }
+        #nav-list-cta-group {
+            .cmp-container {
+                @include flexbox(
+                    $align-items: center,
+                    $gap: rem(40)
+                );
+            }
+        }
+    }
+}
