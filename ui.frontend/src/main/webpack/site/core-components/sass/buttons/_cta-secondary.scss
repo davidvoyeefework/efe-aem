@@ -1,0 +1,24 @@
+@mixin cta-secondary {
+    @include button;
+    padding: rem(7) rem(26);
+    background: transparent;
+    border-radius: 3px;
+    border: 1px solid $efe-gray-blue;
+    text-transform: uppercase;
+    min-height: rem(50);
+    min-width: rem(200);
+    width: fit-content;
+    box-sizing: border-box;
+    text-decoration: none;
+    @include flexbox(
+        $align-items: center,
+        $justify-content: center
+    );
+
+    &:hover {
+        border: 1px solid $efe-gray-primary;
+        box-sizing: border-box;
+        text-decoration: none;
+    }
+
+}

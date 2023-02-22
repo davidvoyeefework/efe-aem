@@ -10,7 +10,7 @@ export default {
       control: { type: "text" },
     },
     variant: {
-      options: ["cta-primary"],
+      options: ["cta-primary", "cta-secondary"],
       control: { type: "radio" },
     },
     link: {
