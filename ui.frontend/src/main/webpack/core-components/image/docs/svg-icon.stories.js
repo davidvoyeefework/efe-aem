@@ -6,7 +6,7 @@ export default {
   // More on argTypes: https://storybook.js.org/docs/html/api/argtypes
   argTypes: {
     variant: {
-      options: [ "arrow"],
+      options: [ "arrow", "service-financial", "service-giving", "service-corporate", "service-tax", "service-estate", "service-insurance", "service-investment", "service-small-business", "service-estate", "service-retirement"],
       control: { type: "radio" }
     },
     direction: {

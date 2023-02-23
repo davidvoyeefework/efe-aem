@@ -17,3 +17,106 @@
     }
 
 }
+
+.cmp-img--service-financial {
+    display: inline-block;
+    * {
+        width: rem(40);
+        height: rem(41);
+    }
+
+    background: url("../resources/images/icons/service-icons/financial-icon.svg") no-repeat center center / contain;
+}
+
+.cmp-img--service-giving {
+    display: inline-block;
+    * {
+        width: rem(40);
+        height: rem(41);
+    }
+
+    background: url("../resources/images/icons/service-icons/charitable-giving-icon.svg") no-repeat center center / contain;
+}
+
+.cmp-img--service-corporate {
+    display: inline-block;
+    * {
+        width: rem(38);
+        height: rem(39);
+    }
+    background: url("../resources/images/icons/service-icons/corporate-solutions-icon.svg") no-repeat center center / contain;
+}
+
+.cmp-img--service-tax {
+    display: inline-block;
+    * {
+        width: rem(41);
+        height: rem(39);
+    }
+    background: url("../resources/images/icons/service-icons/tax-icon.svg") no-repeat center center / contain;
+}
+
+.cmp-img--service-giving {
+    display: inline-block;
+    * {
+        width: rem(37);
+        height: rem(39);
+    }
+    background: url("../resources/images/icons/service-icons/charitable-giving-icon.svg") no-repeat center center / contain;
+}
+
+.cmp-img--service-corporate {
+    display: inline-block;
+    * {
+        width: rem(38);
+        height: rem(39);
+    }
+    background: url("../resources/images/icons/service-icons/corporate-solutions-icon.svg") no-repeat center center / contain;
+}
+
+.cmp-img--service-estate {
+    display: inline-block;
+    * {
+        width: rem(39);
+        height: rem(36);
+    }
+    background: url("../resources/images/icons/service-icons/estate-icon.svg") no-repeat center center / contain;
+}
+
+.cmp-img--service-insurance {
+    display: inline-block;
+    * {
+        width: rem(34);
+        height: rem(39);
+    }
+    background: url("../resources/images/icons/service-icons/insurance-icon.svg") no-repeat center center / contain;
+}
+
+.cmp-img--service-investment {
+    display: inline-block;
+    * {
+        width: rem(39);
+        height: rem(39);
+    }
+    background: url("../resources/images/icons/service-icons/investment-icon.svg") no-repeat center center / contain;
+}
+
+.cmp-img--service-small-business {
+    display: inline-block;
+    * {
+        width: rem(39);
+        height: rem(39);
+    }
+    background: url("../resources/images/icons/service-icons/small-business-icon.svg") no-repeat center center / contain;
+}
+
+.cmp-img--service-retirement {
+    display: inline-block;
+    * {
+        width: rem(45);
+        height: rem(45);
+    }
+    background: url("../resources/images/icons/service-icons/retirement-icon.svg") no-repeat center center / contain;
+}
+
+
