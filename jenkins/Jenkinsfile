@@ -26,8 +26,10 @@ pipeline {
         cleanWs(
           deleteDirs: true
         )
+        // Multibranch
         //checkout scm
-        //git branch: '${branchName}', credentialsId: 'gitlab-saas-devtools-ssh-key', url: 'git@gitlab.com:FNGN/aem/efe-aem.git'
+        // Freestyle
+        git branch: '${branchName}', credentialsId: 'gitlab-saas-devtools-ssh-key', url: 'git@gitlab.com:FNGN/aem/efe-aem.git'
       }
     }
     stage ('Checkmarx SCA') {
