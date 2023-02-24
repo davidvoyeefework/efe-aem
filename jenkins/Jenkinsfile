@@ -19,7 +19,7 @@ pipeline {
   }
   stages {
     stage ('Setup') {
-      when { anyOf { branch 'main'; branch 'develop' } }
+      //when { anyOf { branch 'main'; branch 'develop' } }
       steps {
         // Clean dir before build
         cleanWs(
@@ -29,13 +29,13 @@ pipeline {
       }
     }
     stage ('Checkmarx SCA') {
-      when { anyOf { branch 'main'; branch 'develop' } }
+      //when { anyOf { branch 'main'; branch 'develop' } }
       steps {
         echo "run checkmarxSCA placeholder"
       }
     }
     stage ('Checkmarx SAST') {
-      when { anyOf { branch 'main'; branch 'develop' } }
+      //when { anyOf { branch 'main'; branch 'develop' } }
       steps {
         echo "run checkmarxSAST placeholder"
       }
@@ -45,7 +45,7 @@ pipeline {
         AEM_SYNC_USER_NAME = "cfoon-edelman-financial-engines-com"
         AEM_SYNC_USER_ACCESS_TOKEN = credentials('jenkins/aem-sync-user-access-token-tmp')
       }
-      when { anyOf { branch 'main'; branch 'develop' } }
+      //when { anyOf { branch 'main'; branch 'develop' } }
       steps {
         echo "Sync the ${BRANCH_NAME} branch to Adobe Git"
         sshagent(credentials: ['gitlab-saas-devtools-ssh-key']) {
