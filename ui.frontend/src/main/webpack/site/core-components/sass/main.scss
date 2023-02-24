@@ -7,7 +7,7 @@
 @import '../../scss/include-media';
 @import './colors';
 @import './typography';
-@import './buttons/cta-primary';
+;
 @import './layout/flexbox';
 @import './forms/efe-forms-primary';
 @import '../../../resources/fonts/icon-font/style.scss';
@@ -18,6 +18,10 @@
 //LAYOUT
 @import './layout/flexbox';
 @import './layout/grid';
+
+//BUTTONS
+@import './buttons/cta-primary';
+@import './buttons/cta-secondary';
 
 
 /* Components */
