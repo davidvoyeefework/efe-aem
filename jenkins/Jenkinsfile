@@ -1,0 +1,64 @@
+@Library('shared-library@main') _
+pipeline {
+  agent {
+    kubernetes {
+      cloud 'fngn-k8s-core-west-1'
+      yaml libraryResource ('agents/java11.yaml')
+    }
+  }
+  options {
+    buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5'))
+    timeout(time: 15, unit: 'MINUTES')
+    // This is required if you want to clean before build
+    skipDefaultCheckout(true)
+    gitLabConnection('Gitlab.com')
+  }
+  environment {
+    project = "aem"
+    emailRecipients = "cfoon@edelmanfinancialengines.com"
+  }
+  stages {
+    stage ('Setup') {
+      when { anyOf { branch 'main'; branch 'develop' } }
+      steps {
+        // Clean dir before build
+        cleanWs(
+          deleteDirs: true
+        )
+        checkout scm
+      }
+    }
+    stage ('Checkmarx SCA') {
+      when { anyOf { branch 'main'; branch 'develop' } }
+      steps {
+        echo "run checkmarxSCA placeholder"
+      }
+    }
+    stage ('Checkmarx SAST') {
+      when { anyOf { branch 'main'; branch 'develop' } }
+      steps {
+        echo "run checkmarxSAST placeholder"
+      }
+    }
+    stage ('Adobe Sync') {
+      environment {
+        AEM_SYNC_USER_NAME = "cfoon-edelman-financial-engines-com"
+        AEM_SYNC_USER_ACCESS_TOKEN = credentials('jenkins/aem-sync-user-access-token-tmp')
+      }
+      when { anyOf { branch 'main'; branch 'develop' } }
+      steps {
+        echo "Sync the ${BRANCH_NAME} branch to Adobe Git"
+        sshagent(credentials: ['gitlab-saas-devtools-ssh-key']) {
+          sh '''
+            git remote add cmgit https://$AEM_SYNC_USER_NAME:$AEM_SYNC_USER_ACCESS_TOKEN@git.cloudmanager.adobe.com/financialengines/FinancialEnginesSites-p91602-uk32541/
+            git remote -v
+            git checkout ${BRANCH_NAME}
+            git branch -l
+            git pull
+            git push cmgit ${BRANCH_NAME}
+          '''
+        }
+      }
+    }
+  }
+}
