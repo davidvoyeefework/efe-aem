@@ -52,7 +52,7 @@ pipeline {
             git remote -v
             git checkout ${branchName}
             git branch -l
-            git pull origin main
+            git pull origin ${branchName}
             git push cmgit ${branchName}
           '''
         }
