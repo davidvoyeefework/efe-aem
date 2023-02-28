@@ -24,6 +24,9 @@ export default {
     size: {
       control: {type: "select"},
       options: ["small"]
+    },
+    id: {
+      control: 'text'
     }
   },
 };

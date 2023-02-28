@@ -10,8 +10,15 @@ export default {
       control: { type: "text" },
     },
     variant: {
-      options: ["body-01", "body-02", "body-03"],
+      options: ["body-01", "body-02", "body-03", "footer-01"],
       control: { type: "radio" },
+    },
+    color: {
+      options: ["deep-charcoal"],
+      control: { type: "radio" },
+    },
+    class: {
+      control: { type: "text" },
     }
   },
 };
@@ -20,5 +27,6 @@ const TextVariations = ({ label, ...args }) => Text({ ...args });
 export const BodyCopy = TextVariations.bind();
 BodyCopy.args = {
   variant: "body-02",
+  text: "Edelman Financial Engines"
 }
 

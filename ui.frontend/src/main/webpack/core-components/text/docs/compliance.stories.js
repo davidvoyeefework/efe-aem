@@ -20,5 +20,6 @@ const TextVariations = ({ label, ...args }) => Text({ ...args });
 export const Compliance = TextVariations.bind();
 Compliance.args = {
   variant: "detail",
+  text: "Edelman Financial Engines"
 }
 

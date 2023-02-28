@@ -97,6 +97,16 @@
     @include buildFont(rem(12), 0, 'nimbus-sans', 400, unset, 116% );
 }
 
+.detail {
+    @include detail;
+
+    i,em {
+        font-style: italic;
+    }
+}
+
+
+
 // -----------------------------------------------------------------------------
 // BUTTONS
 // -----------------------------------------------------------------------------
@@ -186,3 +196,5 @@
     @include body-03;
     @include buildLink($efe-red-primary, $efe-red-hover);
 }
+
+

@@ -13,7 +13,7 @@ export default {
       control: { type: "radio" },
     },
     maxWidth: {
-      options: ["1920", "1400", "unset"],
+      options: ["1920", "1400", "none"],
       control: { type: "radio" },
     },
     id: {

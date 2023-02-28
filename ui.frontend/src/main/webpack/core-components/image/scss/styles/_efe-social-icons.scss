@@ -7,6 +7,9 @@
 }
 
 .cmp-image--facebook {
+    * {
+        @include socialSpec();
+    }
     img.cmp-image__image{
         background: url("../resources/images/icons/efe-facebook.svg") no-repeat center center / contain;
         @include socialSpec();
@@ -14,6 +17,9 @@
 }
 
 .cmp-image--twitter {
+    * {
+        @include socialSpec();
+    }
     img.cmp-image__image{
         background: url("../resources/images/icons/efe-twitter.svg") no-repeat center center / contain;
         @include socialSpec();
@@ -21,6 +27,9 @@
 }
 
 .cmp-image--linkedin {
+    * {
+        @include socialSpec();
+    }
     img.cmp-image__image{
         background: url("../resources/images/icons/efe-linkedin.svg") no-repeat center center / contain;
         @include socialSpec();
