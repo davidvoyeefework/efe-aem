@@ -32,13 +32,13 @@ const showElement = (e) => {
   else if (displayStyle == "block") {
     domElement.style.display = 'none';
   }
-}
+};
 
 const clickFunction = (listenItem, elmToShow) => {
   document.querySelector(listenItem).addEventListener("click", function() {
     showElement(elmToShow);
   });
-}
+};
 
 const clickNav = (listenItem) => {
   let NavItems = document.querySelectorAll(listenItem);
@@ -87,9 +87,9 @@ const clickNav = (listenItem) => {
 
       })
     );
-}
+};
 
 const resize = () => {
   let ww = document.documentElement.clientWidth || document.body.clientWidth || window.innerWidth;
   windowWidth = ww;
-}
+};
