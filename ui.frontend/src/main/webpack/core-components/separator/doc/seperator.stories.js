@@ -17,6 +17,9 @@ export default {
       options: [ "efe-gray-mid", "efe-gray-blue" ],
       control: { type: "select" },
     },
+    id: {
+      control: { type: "text" },
+    },
   },
 };
 

@@ -1,0 +1,156 @@
+#efe-footer {
+
+    .cmp-container--1920 {
+        padding: 50px 26px;
+
+        @include flexbox(
+            $flex-direction: column
+        );
+
+        #logo-social-container {
+            #social-block {
+                display: none;
+            }
+        }
+
+        #efe-logo {
+            margin-bottom: 32px;
+        }
+
+        #list-links {
+
+            @include grid(
+                
+            );
+
+            .list-title {
+                padding-bottom: 20px;
+                p {
+                    color: black;
+                }
+            }
+
+            ul {
+                margin-bottom: 32px;
+                li {
+                    margin-bottom: 4px;
+                }
+            }
+        }
+
+        #social-block, #social-block-mobile {
+            @include flexbox(
+                $gap: 20px,
+                $flex-direction: column
+            );
+        }
+
+        #efe-hr {
+            hr {
+                margin: 20px 0;
+            }
+        }
+
+        #disclosure-links {
+            @include flexbox(
+                $flex-wrap: wrap,
+                $gap: 16px
+            );
+            margin-bottom: 28px;
+
+            * {
+                color: $efe-gray-new;
+                text-decoration: unset;
+            }
+        }
+
+        #disclosure-copy {
+            p {
+                margin-bottom: rem(14);
+            }
+
+            * {
+                color: $efe-gray-new;
+            }
+        }
+
+
+    
+    }
+
+    @media screen and (min-width: $sm) {
+
+
+    }
+
+    @media screen and (min-width: $lg) {
+
+        .cmp-container--1920 { 
+            @include flexbox(
+            );
+
+            #list-links {
+                @include grid(
+                    $template-columns: 1fr 1fr 1fr 1fr,
+                    $gap: 26px
+                );
+            }
+
+            #logo-social-container {
+                @include flexbox(
+                    $justify-content: space-between
+                );
+
+                #social-block {
+                    display: block;
+                    @include flexbox(
+                        $flex-direction: row
+                    );
+                }
+            }
+
+            #social-block-mobile {
+                display: none;
+            }
+        
+            #disclosure-links {
+                column-gap: 52px;
+            }
+
+            #efe-hr {
+                hr {
+                    margin: 20px 0 40px;
+                }
+            }
+         }
+
+        #efe-logo {
+            margin-bottom: 40px;
+        }
+
+        #disclosure-links {
+            margin-bottom: 36px;
+        }
+
+
+
+
+
+    }
+
+    @media screen and (min-width: $xl) {
+
+        .cmp-container--1920 { 
+            padding: 50px 48px;
+
+            #disclosure-links {
+                @include flexbox (
+                    $justify-content: space-between
+                );
+            }
+        }
+    }
+
+
+
+}

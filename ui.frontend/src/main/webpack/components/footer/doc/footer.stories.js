@@ -1,35 +1,23 @@
+import Handlebars from "handlebars/runtime.js";
 import Footer from "../footer.hbs";
-import footerJSON from "./footer.json";
+Handlebars.registerPartial("Footer", Footer);
 
 export default {
   title: "Components/Footer",
   argTypes: {
-    variation: {
-      control: { type: "select", options: ["primary", "secondary"] },
+    variant: {
+      options: ["primary"],
+      control: { type: "radio" },
     },
     content: {
       control: { type: "text" },
     },
   },
-  parameters: {
-    docs: {
-      source: {
-        code: `${JSON.stringify(footerJSON)}`,
-      },
-    },
-  },
 };
 
-const Template = ({ ...args }) => Footer(args);
-export const Primary = Template.bind({});
-Primary.args = footerJSON;
-Primary.parameters = {
-  docs: {
-    source: {
-      code: `${JSON.stringify(footerJSON, null, " ")}`,
-    },
-  },
+const Template = ({ label, ...args }) => Footer({...args});
+export const Primary = Template.bind();
+Primary.args = {
+  variation: "primary"
 };
 
-// export const Primary = (args, { loaded }) => `${JSON.stringify(loaded, null, 1)} ${Object.keys(loaded).map((key) => loaded[key] )}`;
-// Primary.loaders = [async () => await render({ name: "Alex" })];
