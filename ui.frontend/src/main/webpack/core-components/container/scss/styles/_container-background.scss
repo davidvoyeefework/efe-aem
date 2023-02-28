@@ -41,3 +41,15 @@
     @include maxWidth();
     @include padding();
 }
+.border-radius-top-left {
+    border-top-left-radius: rem(40px);
+}
+.border-radius-top-right {
+    border-top-right-radius: rem(40px);
+}
+.border-radius-bottom-right {
+    border-bottom-right-radius: rem(40px);
+}
+.border-radius-bottom-left {
+    border-bottom-left-radius: rem(40px);
+}

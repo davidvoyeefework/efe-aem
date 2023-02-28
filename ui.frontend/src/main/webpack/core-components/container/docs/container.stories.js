@@ -22,7 +22,11 @@ export default {
     padding: {
       options: ["unset", "26"],
       control: { type: "radio" },
-    }
+    },
+    borderRadius:{
+    options: ['top-left', 'top-right','bottom-left', 'bottom-right'],
+    control: { type: "select" },
+  },
   },
 };
 
