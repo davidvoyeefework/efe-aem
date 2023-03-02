@@ -28,9 +28,15 @@ const showElement = (e) => {
   let displayStyle = getComputedStyle(domElement, "display", null ).getPropertyValue("display");
   if (displayStyle == "none") {
     domElement.style.display = 'block';
+    if (e == "nav-list-cta-group") {
+      animateHamburger('hideClose');
+    }
   }
   else if (displayStyle == "block") {
     domElement.style.display = 'none';
+    if (e == "nav-list-cta-group") {
+      animateHamburger('showClose');
+    }
   }
 };
 
@@ -92,4 +98,29 @@ const clickNav = (listenItem) => {
 const resize = () => {
   let ww = document.documentElement.clientWidth || document.body.clientWidth || window.innerWidth;
   windowWidth = ww;
-};
+}
+
+const animateHamburger = (state) => {
+  if (state == "showClose") {
+    
+    let topBar = document.getElementById("top-hamburger-line");
+    let middleBar = document.getElementById("middle-hamburger-line");
+    let bottomBar = document.getElementById("bottom-hamburger-line");
+    middleBar.style.opacity = 0;
+    topBar.style.transform = 'rotate(225deg)';
+    topBar.style.top = '9px';
+    bottomBar.style.transform = 'rotate(-225deg)';
+    bottomBar.style.top = '9px';
+  }
+
+  if (state == "hideClose") {
+    let topBar = document.getElementById("top-hamburger-line");
+    let middleBar = document.getElementById("middle-hamburger-line");
+    let bottomBar = document.getElementById("bottom-hamburger-line");
+    middleBar.style.opacity = 1;
+    topBar.style.transform = 'rotate(0deg)';
+    topBar.style.top = '0px';
+    bottomBar.style.transform = 'rotate(0deg)';
+    bottomBar.style.top = '17px';
+  }
+}

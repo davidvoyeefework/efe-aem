@@ -30,7 +30,7 @@
                 <div id="container-99d779a4e6" class="cmp-container cmp-container--unset cmp-container--1920 efe-nav-header">
 
                     {{! --------------------- CLICK TO CALL  --------------------- }}
-                    {{>Button
+                    {{>LinkedButton
                         variant="footer-01"
                         text="(833) PLAN-EFE"
                         color="efe-gray-new"
@@ -38,7 +38,7 @@
                     }}
 
                     {{! --------------------- LOG IN  --------------------- }}
-                    {{>Button
+                    {{>LinkedButton
                         variant="primary-nav-link"
                         text="Log in"
                         color="efe-red-primary"
@@ -73,19 +73,21 @@
                     titleText="Edelman Financial Engines"
                 }}
 
-                {{>LinkedImage
-                    variant="hamburger"
-                    link="#"
-                    source="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"  
-                    id="nav-hamburger"  
-                    size="small"
-                    altText="show navigation"
-                    titleText="navigation"
-                }}
+                <button id="nav-hamburger" aria-expanded="false" aria-label="main menu" class="top-bar__hamburger-button" data-analytics-trigger="cta-hamburger"> 
+                    <svg id="top-hamburger-line" width="23px" height="2px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="top-bar__hamburger-button-line-wrapper top-bar__hamburger-button-line-wrapper--top"> 
+                        <line stroke="#7A7D82" stroke-width="2" x1="0" x2="24" y1="0" y2="0" class="top-bar__hamburger-button-line top-bar__hamburger-button-line--top"></line> 
+                    </svg>
+                    <svg id="middle-hamburger-line" width="23px" height="2px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="top-bar__hamburger-button-line-wrapper top-bar__hamburger-button-line-wrapper--middle"> 
+                        <line stroke="#7A7D82" stroke-width="2" x1="0" x2="24" y1="0" y2="0" class="top-bar__hamburger-button-line top-bar__hamburger-button-line--top"></line> 
+                    </svg>
+
+                    <svg id="bottom-hamburger-line" width="23px" height="2px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="top-bar__hamburger-button-line-wrapper top-bar__hamburger-button-line-wrapper--middle"> 
+                        <line stroke="#7A7D82" stroke-width="2" x1="0" x2="24" y1="0" y2="0" class="top-bar__hamburger-button-line top-bar__hamburger-button-line--bottom"></line> 
+                    </svg>
+                </button>
 
                 <div class="container responsivegrid" id="nav-list-cta-group">
 
-    
                     <div id="container-99d779a4e6" class="cmp-container cmp-container--white cmp-container--unset cmp-container--unset ul-cta-group">
 
                     {{! --------------------- MAIN NAV  --------------------- }}
@@ -122,7 +124,6 @@
                                         source="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
                                         id="search-closeT"
                                         link="#"
-
                                     }}
                                 </div>
                             </div>
@@ -132,7 +133,7 @@
                                 <div id="container-99d779a4e6" class="cmp-container cmp-container--unset cmp-container--1920 efe-nav-header">
 
                                     {{! --------------------- CLICK TO CALL  --------------------- }}
-                                    {{>Button
+                                    {{>LinkedButton
                                         variant="footer-01"
                                         text="(833) PLAN-EFE"
                                         color="efe-gray-new"
@@ -140,7 +141,7 @@
                                     }}
 
                                     {{! --------------------- LOG IN  --------------------- }}
-                                    {{>Button
+                                    {{>LinkedButton
                                         variant="primary-nav-link"
                                         text="Log in"
                                         color="efe-red-primary"
@@ -159,18 +160,9 @@
                             </div>
                         </div>
                     </div>
-            
-
-
-    
-
-
                 </div>
-
-
                 </div>
             </div>
         </div>
     </div>
-
 </header>
