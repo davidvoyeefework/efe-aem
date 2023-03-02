@@ -78,6 +78,9 @@
             width: 100vw;
             position: relative;
             right: rem(79);
+            .cmp-button__text {
+                white-space: nowrap;
+            }
         }
 
         #ul-cta-group {
@@ -130,6 +133,32 @@
             }
         }
 
+    }
+
+    #nav-hamburger {
+        width: 25px;
+        height: 20px;
+        position: relative;
+
+        svg {
+            position: absolute;
+            left: 0px;
+            transition: all .4s ease;
+            transform-origin: center;
+            width: 24px;
+        }
+
+        #top-hamburger-line {
+            top: 0px;
+        }
+
+        #middle-hamburger-line {
+            top: 9px;
+        }
+
+        #bottom-hamburger-line {
+            top: 17px;
+        }
     }
 
 
