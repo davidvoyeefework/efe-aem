@@ -1,6 +1,6 @@
 import Handlebars from "handlebars/runtime.js";
 import LinkedButton from "../button-linked.hbs";
-Handlebars.registerPartial("BodyLink", LinkedButton);
+Handlebars.registerPartial("BodyButton", LinkedButton);
 export default {
   title: "Core Components/Links",
   // More on argTypes: https://storybook.js.org/docs/html/api/argtypes
