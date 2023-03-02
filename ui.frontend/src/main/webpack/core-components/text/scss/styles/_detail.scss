@@ -2,4 +2,8 @@
     * {
         @include detail;
     }
+
+    a {
+        @include detail-link;
+    }
 }

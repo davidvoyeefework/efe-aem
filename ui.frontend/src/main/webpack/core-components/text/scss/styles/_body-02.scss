@@ -2,4 +2,8 @@
     * {
         @include body-02;
     }
+
+    a {
+        @include body-02-link;
+    }
 }

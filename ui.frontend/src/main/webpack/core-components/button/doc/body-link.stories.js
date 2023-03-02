@@ -1,7 +1,6 @@
 import Handlebars from "handlebars/runtime.js";
 import LinkedButton from "../button-linked.hbs";
-Handlebars.registerPartial("Button", LinkedButton);
-// More on default export: https://storybook.js.org/docs/html/writing-stories/introduction#default-export
+Handlebars.registerPartial("BodyLink", LinkedButton);
 export default {
   title: "Core Components/Links",
   // More on argTypes: https://storybook.js.org/docs/html/api/argtypes
@@ -14,7 +13,7 @@ export default {
       control: { type: "radio" },
     },
     variant: {
-      options: [ "primary-nav-link", "secondary-nav-link", "utility-nav-link"],
+      options: ["body-01-link", "body-02-link", "body-03-link"],
       control: { type: "radio" },
     },
     link: {
@@ -24,8 +23,8 @@ export default {
 };
 
 const TemplatePrimary = ({ label, ...args }) => LinkedButton({ ...args });
-export const NavLinks = TemplatePrimary.bind();
-NavLinks.args = {
+export const BodyLinks = TemplatePrimary.bind();
+BodyLinks.args = {
   variant: "primary-nav-link",
   color: "efe-gray-primary",
   link: "#",

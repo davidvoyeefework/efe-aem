@@ -30,7 +30,7 @@
 @mixin buildLink ($color: false, $hover-color: false) {
     text-decoration: 1px solid underline $efe-gray-primary;
     @if $color {text-decoration: 1px solid underline $color; color: $color};
-    text-underline-offset: 2px;
+    text-underline-offset: 3px;
     transition: $std-transition;
 
     &:hover {
@@ -44,6 +44,15 @@
 // -----------------------------------------------------------------------------
 // HEADINGS
 // -----------------------------------------------------------------------------
+
+
+@mixin stats-01 {
+    @include buildFont(rem(160px), .02em, null, 400);
+  }
+
+  @mixin stats-02 {
+    @include buildFont(rem(69px), .02em, null, 400);
+  }
 
 @mixin heading-01 {
     @include buildFont(rem(69px), .08em);
@@ -87,6 +96,14 @@
 
 @mixin body-03 {
     @include buildFont(rem(16px), null, 'nimbus-sans', 300, unset, 120% );
+}
+
+@mixin caption {
+    @include buildFont(rem(14), null, 'nimbus-sans', 400, unset, 100% );
+}
+
+@mixin button-text {
+    @include buildFont(rem(18), .06em, 'nimbus-sans', 400, null, 100% );
 }
 
 // -----------------------------------------------------------------------------
@@ -153,6 +170,11 @@
         color: $efe-red-hover;
         transition: $std-transition;
     }
+}
+
+@mixin detail-link {
+    @include detail;
+    @include buildLink;
 }
 
 @mixin footer-01{
