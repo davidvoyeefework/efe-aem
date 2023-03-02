@@ -1,0 +1,5 @@
+.cmp-text--button-text {
+    * {
+        @include button-text;
+    }
+}

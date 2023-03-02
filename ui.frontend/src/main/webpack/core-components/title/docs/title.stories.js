@@ -10,7 +10,7 @@ export default {
       control: { type: "text" },
     },
     variant: {
-      options: ["heading-01", "heading-02", "heading-03", "heading-04", "subhead-01", "subhead-02"],
+      options: ["stats-01", "stats-02","heading-01", "heading-02", "heading-03", "heading-04", "subhead-01", "subhead-02"],
       control: { type: "radio" },
     }
   },
@@ -20,5 +20,6 @@ const TemplateHeadings = ({ label, ...args }) => TitleEFE({ ...args });
 export const Headings = TemplateHeadings.bind();
 Headings.args = {
   variant: "heading-01",
+  text:"Edelman Financial Engines Typography styles"
 }
 
