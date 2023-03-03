@@ -14,51 +14,59 @@
  *  limitations under the License.
  */
 
-.cmp-breadcrumb {
+ .cmp-breadcrumb {
 
-      display: inline-block;
-      list-style: none;
-      padding: 0;
+    display: inline-block;
+    list-style: none;
+    padding: 0;
 
-    .cmp-breadcrumb__list {
-         padding: rem(12px) rem(12px) 0 0;
-         margin-bottom: 0px;
-         list-style: none;
-         border-radius: 0px;
-         font-size: $font-size-small;
+  .cmp-breadcrumb__list {
+      border-top: rem(1) solid $efe-gray-mid;
+       padding: rem(16) rem(24);
+       margin-bottom: 0;
+       list-style: none;
+       border-radius: 0;
+       font-size: $font-size-small;
+      
+     @media (max-width: $screen-medium) {
+         margin-top: 0;
+     } 
+     @media (max-width: $screen-small) {
+         font-size: $font-size-xsmall;
+     }
+ }
+       
+  .cmp-breadcrumb__item {
+     display: inline-block;
+     padding: rem(10) rem(5);
+     vertical-align: top;
         
-       @media (max-width: $screen-medium) {
-           margin-top: 0px;
-       } 
-       @media (max-width: $screen-small) {
-           font-size: $font-size-xsmall;
-       }
-   }
-         
-    .cmp-breadcrumb__item {
+     &:before {
+       content: " ";
+       width: rem(14);
+       height: rem(14);
        display: inline-block;
-       padding: rem(10px) rem(5px);
-       vertical-align: top;
-          
-       &:before {
-        @include footer-02;
-        font-family: '#{$icomoon-icon-font-family}' !important;
-         content: $icon-PositionLeft;
-       }
-        
-       &:first-child {
-           padding-left: 0;
-           &:before {
-               content: none;
-           }
-       }
+       background: url("../resources/images/icons/arrows/efe-arrow-right.svg") no-repeat center center / contain;
      }
       
-     .cmp-breadcrumb__item-link {
-        @include footer-02;
-        &:first {
-            padding-left: 0px;
-        }
+     &:first-child {
+         padding-left: 0;
+         &:before {
+             content: none;
+         }
      }
-      
-    }
+   }
+    
+   .cmp-breadcrumb__item-link {
+      @include body-03;
+      &:first {
+          padding-left: 0;
+      }
+   }
+  .cmp-breadcrumb__item--active {
+      span {
+          @include body-03;
+          font-weight: 400;
+      }
+  }
+  }
