@@ -14,33 +14,8 @@
                             id="efe-logo"
                         }}
 
-                        <div id="social-block">
-                            {{>LinkedImage
-                                variant="facebook"
-                                link="https://www.facebook.com/edelmanfinancialengines"
-                                size="small"
-                                source="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
-                                titleText="Edelman Facebook"
-                            }}
-
-                            {{>LinkedImage
-                                variant="twitter"
-                                link="https://twitter.com/edelmanfe"
-                                size="small"
-                                source="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
-                                titleText="Edelman Twitter"
-                            }}
-
-
-                            {{>LinkedImage
-                                variant="linkedin"
-                                link="https://www.linkedin.com/company/edelman-financial-engines"
-                                size="small"
-                                source="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
-                                titleText="Edelman LinkedIn"
-                            }}
-                        </div>    
-                    </span>
+												{{>SocialLinks }}
+												</span>
 
                     <div id="list-links">
 
@@ -283,32 +258,7 @@
                         </span>
                     </div>
 
-                    <div id="social-block-mobile">
-                        {{>LinkedImage
-                            variant="facebook"
-                            link="https://www.facebook.com/edelmanfinancialengines"
-                            size="small"
-                            source="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
-                            titleText="Edelman Facebook"
-                        }}
-
-                        {{>LinkedImage
-                            variant="twitter"
-                            link="https://twitter.com/edelmanfe"
-                            size="small"
-                            source="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
-                            titleText="Edelman Twitter"
-                        }}
-
-
-                        {{>LinkedImage
-                            variant="linkedin"
-                            link="https://www.linkedin.com/company/edelman-financial-engines"
-                            size="small"
-                            source="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
-                            titleText="Edelman LinkedIn"
-                        }}
-                    </div>   
+										{{>SocialLinksMobile variant="mobile"}}
   
 
                     {{>Seperator

@@ -1,0 +1,25 @@
+.cmp-social-links {
+  &__images {
+    @include flexbox($gap: rem(20), $flex-direction: row, $flex-wrap: true);
+
+    @media screen and (max-width: $sm) {
+      display: none;
+    }
+
+  }
+
+  &__image {
+    width: rem(30);
+    height: rem(30);
+  }
+}
+
+.cmp-social-links--mobile {
+  .cmp-social-links__images {
+    @include flexbox($gap: rem(20), $flex-direction: column, $flex-wrap: true);
+
+    @media screen and (min-width: $lg) {
+      display: none;
+    }
+  }
+}

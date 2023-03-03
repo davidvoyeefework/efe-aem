@@ -1,5 +1,6 @@
 import Handlebars from "handlebars/runtime.js";
 import Footer from "../footer.hbs";
+import data from "../../social-links/docs/social-links.json";
 Handlebars.registerPartial("Footer", Footer);
 
 export default {
@@ -18,6 +19,7 @@ export default {
 const Template = ({ label, ...args }) => Footer({...args});
 export const Primary = Template.bind();
 Primary.args = {
-  variation: "primary"
+  variation: "mobile",
+  data
 };
 

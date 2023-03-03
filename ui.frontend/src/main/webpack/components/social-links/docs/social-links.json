@@ -1,0 +1,35 @@
+{
+  "id": "social-links",
+  "icons": [
+    {
+      "href": "https://www.facebook.com/",
+      "src": "http://localhost:6006/static/media/src/main/webpack/resources/images/icons/efe-facebook.svg",
+      "alt": "Facebook",
+      "title": "Facebook"
+    },
+    {
+      "href": "https://www.google.com/",
+      "src": "http://localhost:6006/static/media/src/main/webpack/resources/images/icons/efe-linkedin.svg",
+      "alt": "Google",
+      "title": "Google"
+    },
+    {
+      "href": "https://www.twitter.com/",
+      "src": "http://localhost:6006/static/media/src/main/webpack/resources/images/icons/efe-twitter.svg",
+      "alt": "Twitter",
+      "title": "Twitter"
+    },
+    {
+      "href": "https://www.verge.com/",
+      "src": "http://localhost:6006/static/media/src/main/webpack/resources/images/icons/efe-linkedin.svg",
+      "alt": "Verge",
+      "title": "Verge"
+    },
+    {
+      "href": "https://www.test.com/",
+      "src": "http://localhost:6006/static/media/src/main/webpack/resources/images/icons/efe-twitter.svg",
+      "alt": "Test",
+      "title": "Test"
+    }
+  ]
+}
