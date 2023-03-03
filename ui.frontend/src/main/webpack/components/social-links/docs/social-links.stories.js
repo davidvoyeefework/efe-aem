@@ -24,3 +24,9 @@ Mobile.args = {
   variation: "mobile",
   data,
 };
+
+Mobile.parameters = {
+  viewport: {
+    defaultViewport: 'mobile2',
+  }
+};
