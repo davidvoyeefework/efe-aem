@@ -1,0 +1,26 @@
+.cmp-button--robust {
+    width: rem(200px);
+    height: rem(130px);
+    background-color: $efe-gray-light;
+    border: rem(2px) solid $efe-gray-mid;
+    padding: rem(20px) rem(15px);
+    border-radius: rem(3px);
+    &:hover {
+        background-color: $white-primary;
+    }
+    a {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        justify-content: space-between;
+        height: -webkit-fill-available;
+        span {
+            @include primary-nav-link;
+            text-align: center;
+        }
+        img {
+            display: none;
+        }
+    }
+}
