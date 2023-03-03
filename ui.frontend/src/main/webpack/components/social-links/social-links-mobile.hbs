@@ -1,0 +1,12 @@
+<div id="#{{id}}" class="cmp-social-links {{#if variation}}cmp-social-links--{{variation}}{{/if}}">
+{{#with data}}
+  <div class="cmp-social-links__images">
+    {{#each icons}}
+    <a href="{{this.href}}" target="_blank" class="cmp-image" itemscope="">
+      <img src="{{this.src}}" loading="lazy" class="cmp-social-links__image" itemprop="contentUrl" alt="{{this.alt}}"
+        title="{{this.title}}">
+    </a>
+    {{/each}}
+  </div>
+{{/with}}
+</div>
