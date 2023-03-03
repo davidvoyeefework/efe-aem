@@ -1,0 +1,30 @@
+.cmp-list--horizontal {
+  .cmp-list {
+    @include flexbox($gap: rem(22) rem(52), $flex-wrap: wrap);
+    margin-bottom: rem(28);
+    @media screen and (min-width: $lg) {
+      justify-content: space-between;
+    }
+
+    .cmp-list__item {
+      margin-bottom: unset;
+      width: unset;
+    }
+
+    .cmp-list__item-link {
+      color: $efe-gray-new;
+      text-decoration: none;
+      @include footer-02;
+      padding: 0;
+      &:hover {
+        .cmp-list__item-title {
+          text-decoration: none;
+        }
+      }
+    }
+
+    .cmp-list__item-title {
+      color: $efe-gray-new;
+    }
+  }
+}
