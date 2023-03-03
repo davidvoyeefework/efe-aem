@@ -10,12 +10,13 @@
         border-radius: rem(3px);
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
+        padding: rem(20) rem(16) rem(20) rem(50);
         &:focus {
             outline: none;
         }
     }
     .cmp-accordion__icon {
-        margin-top: rem(10px);
+        //margin-top: rem(10px);
         float: right;
         font-family: '#{$icomoon-icon-font-family}' !important;
         &:before { content: $icon-Chevron-Property-1Default1; }
@@ -26,16 +27,8 @@
        
         .cmp-accordion__icon {
             transform: rotate(180deg);
-            //&:before { content: $icon-Chevron-Property-1Default1; }
         }
     }
-
-    .cmp-accordion__title {
-       @include body-02;
-    }
-
-   
-
     .cmp-accordion__panel {
         font-size: $font-size-small;
         padding: rem(20px);
@@ -58,7 +51,13 @@
     }
 
     .cmp-accordion__header{
-        margin:0
+        margin:0;
+        @include body-02;
+    }
+    .cmp-text {
+        p {
+            @include body-02;
+        }
     }
 }
 
