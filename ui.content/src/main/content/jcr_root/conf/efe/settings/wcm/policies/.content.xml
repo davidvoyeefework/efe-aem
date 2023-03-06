@@ -227,32 +227,32 @@
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
                                     cq:styleClasses="cmp-title--heading-01"
-                                    cq:styleId="h1"
+                                    cq:styleId="heading-1"
                                     cq:styleLabel="Heading 1"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item1
                                     cq:styleClasses="cmp-title--heading-02"
-                                    cq:styleId="h2"
+                                    cq:styleId="heading-2"
                                     cq:styleLabel="Heading 2"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item2
                                     cq:styleClasses="cmp-title--heading-03"
-                                    cq:styleId="h3"
+                                    cq:styleId="heading-3"
                                     cq:styleLabel="Heading 3"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item3
                                     cq:styleClasses="cmp-title--heading-04"
-                                    cq:styleId="h4"
+                                    cq:styleId="heading-4"
                                     cq:styleLabel="Heading 4"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item4
                                     cq:styleClasses="cmp-title--subhead-01"
-                                    cq:styleId="h5"
+                                    cq:styleId="sub-heading-1"
                                     cq:styleLabel="Sub Heading 1"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item5
                                     cq:styleClasses="cmp-title--subhead-02"
-                                    cq:styleId="h6"
+                                    cq:styleId="sub-heading-2"
                                     cq:styleLabel="Sub Heading 2"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item6
