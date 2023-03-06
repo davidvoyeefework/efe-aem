@@ -5,6 +5,7 @@ const resolver = createScriptResolver([path.resolve(__dirname)]);
 
 module.exports = {
   stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
+  staticDirs: ['../src/main/webpack/resources/images', '../static'],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
