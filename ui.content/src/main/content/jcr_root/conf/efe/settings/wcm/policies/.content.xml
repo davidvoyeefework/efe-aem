@@ -387,7 +387,7 @@
                         </assetToComponentMapping>
                     </cq:authoring>
                 </policy_1575040440977>
-				<policy_486479180174400
+				<policy
                     jcr:primaryType="nt:unstructured"
                     jcr:title="Container Policy"
                     sling:resourceType="wcm/core/components/policy/policy"
@@ -458,7 +458,7 @@
                             </cq:styles>
                         </item2>
                     </cq:styleGroups>
-                </policy_486479180174400>
+                </policy>
             </container>
             <teaser jcr:primaryType="nt:unstructured">
                 <policy_1575031387650

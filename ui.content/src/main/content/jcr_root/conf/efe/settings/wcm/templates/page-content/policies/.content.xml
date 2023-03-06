@@ -60,7 +60,7 @@
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="wcm/core/components/policies/mapping"/>
 							<container
-                                cq:policy="efe/components/container/policy_486479180174400"
+                                cq:policy="efe/components/container/policy"
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="wcm/core/components/policies/mapping"/>
                         </components>
