@@ -4,6 +4,7 @@ import BreadcrumbStartLevel  from '../start-level.hbs';
 import BreadcrumbShowHidden  from '../show-hidden.hbs';
 import BreadcrumbHideCurrentPage  from '../hide-current-page.hbs';
 import BreadcrumbDisableShadowing  from '../disable-shadowing.hbs';
+import BreadcrumbBorder  from '../breadcrumb-border.hbs';
 
 export default {
   title: 'Core Components/Breadcrumb',
@@ -26,3 +27,9 @@ export const HideCurrentPage = TemplateHideCurrentPage.bind();
 
 const TemplateDisableShadowing = ({ label, ...args }) => BreadcrumbDisableShadowing();
 export const DisableShadowing = TemplateDisableShadowing.bind();
+
+const TemplateShowBorder = args => BreadcrumbBorder({...args});
+export const BreadcrumbWithBorder = TemplateShowBorder.bind({});
+BreadcrumbWithBorder.args = {
+  variation: 'border'
+}

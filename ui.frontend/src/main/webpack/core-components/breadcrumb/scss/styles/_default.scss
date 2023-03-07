@@ -21,7 +21,6 @@
     padding: 0;
 
   .cmp-breadcrumb__list {
-      border-top: rem(1) solid $efe-gray-mid;
        padding: rem(16) rem(24);
        margin-bottom: 0;
        list-style: none;
@@ -38,13 +37,13 @@
        
   .cmp-breadcrumb__item {
      display: inline-block;
-     padding: rem(10) rem(5);
+     padding: rem(10) 0;
      vertical-align: top;
         
-     &:before {
+     &:after {
        content: " ";
-       width: rem(14);
-       height: rem(14);
+       width: rem(10);
+       height: rem(10);
        display: inline-block;
        background: url("../resources/images/icons/arrows/efe-arrow-right.svg") no-repeat center center / contain;
      }
