@@ -1,16 +1,16 @@
 
 .cmp-accordion {
     &__item {
-        margin: 0 auto rem(20px)
+        margin: 0 rem(26) rem(20px) rem(20);
     }
     .cmp-accordion__button {
         width: 100%;
         background: $white-primary;
-        border: 1px solid $efe-gray-mid;
+        border: 1px solid $efe-gray-mid-new;
         border-radius: rem(3px);
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
-        padding: rem(20) rem(16) rem(20) rem(50);
+        padding: rem(20) rem(52);
         &:focus {
             outline: none;
         }
@@ -31,7 +31,7 @@
     }
     .cmp-accordion__panel {
         font-size: $font-size-small;
-        padding: rem(20px);
+        padding: rem(20) rem(20) rem(36) rem(20);
         background: $white-primary;
         @include animated();
         @include fadeIn();
@@ -50,9 +50,12 @@
         display: none;
     }
 
-    .cmp-accordion__header{
+    .cmp-accordion__header {
         margin:0;
-        @include body-02;
+        line-height: 0;
+        .cmp-accordion__title {
+            @include body-02;
+        }
     }
     .cmp-text {
         p {
