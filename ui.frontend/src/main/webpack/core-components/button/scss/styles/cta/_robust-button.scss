@@ -15,12 +15,66 @@
         align-items: center;
         justify-content: space-between;
         height: -webkit-fill-available;
-        span {
+        .cmp-button__text {
             @include primary-nav-link;
             text-align: center;
         }
-        img {
-            display: none;
+        .cmp-button__icon {
+            display: inline-block;
+            width: rem(40);
+            height: rem(41);
+            &--service-financial {
+                background: url("../resources/images/icons/service-icons/financial-icon.svg") no-repeat center center /
+                    contain;
+            }
+            &--service-giving {
+                background: url("../resources/images/icons/service-icons/charitable-giving-icon.svg") no-repeat center
+                    center / contain;
+            }
+            &--service-corporate {
+                background: url("../resources/images/icons/service-icons/corporate-solutions-icon.svg") no-repeat center
+                    center / contain;
+            }
+
+            &--service-tax {
+                background: url("../resources/images/icons/service-icons/tax-icon.svg") no-repeat center center /
+                    contain;
+            }
+
+            &--service-giving {
+                background: url("../resources/images/icons/service-icons/charitable-giving-icon.svg") no-repeat center
+                    center / contain;
+            }
+
+            &--service-corporate {
+                background: url("../resources/images/icons/service-icons/corporate-solutions-icon.svg") no-repeat center
+                    center / contain;
+            }
+
+            &--service-estate {
+                background: url("../resources/images/icons/service-icons/estate-icon.svg") no-repeat center center /
+                    contain;
+            }
+
+            &--service-insurance {
+                background: url("../resources/images/icons/service-icons/insurance-icon.svg") no-repeat center center /
+                    contain;
+            }
+
+            &--service-investment {
+                background: url("../resources/images/icons/service-icons/investment-icon.svg") no-repeat center center /
+                    contain;
+            }
+
+            &--service-small-business {
+                background: url("../resources/images/icons/service-icons/small-business-icon.svg") no-repeat center
+                    center / contain;
+            }
+
+            &--service-retirement {
+                background: url("../resources/images/icons/service-icons/retirement-icon.svg") no-repeat center center /
+                    contain;
+            }
         }
     }
 }
