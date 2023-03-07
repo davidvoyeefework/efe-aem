@@ -37,17 +37,17 @@
        
   .cmp-breadcrumb__item {
      display: inline-block;
-     padding: rem(10) 0;
+     margin-bottom: 6px;
      vertical-align: top;
-        
-     &:after {
-       content: " ";
-       width: rem(10);
-       height: rem(10);
-       display: inline-block;
-       background: url("../resources/images/icons/arrows/efe-arrow-right.svg") no-repeat center center / contain;
+     &:not(:last-child) {
+        &:after {
+            content: " ";
+            width: rem(10);
+            height: rem(10);
+            display: inline-block;
+            background: url("../resources/images/icons/arrows/efe-arrow-right.svg") no-repeat center center / contain;
+          }
      }
-      
      &:first-child {
          padding-left: 0;
          &:before {
