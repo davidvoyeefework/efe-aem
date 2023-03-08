@@ -3,3 +3,12 @@
         @include stats-01;
     }
 }
+
+.cmp-title--superplus {
+  .cmp-title__text:after {
+      content: '+';
+      color: $red-primary;
+      vertical-align: super;
+      line-height: 0;
+  }
+}
