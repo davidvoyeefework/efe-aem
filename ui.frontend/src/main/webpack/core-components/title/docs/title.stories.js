@@ -23,3 +23,10 @@ Headings.args = {
   text:"Edelman Financial Engines Typography styles"
 }
 
+const TitleSuperScriptTemplate = (args) => TitleEFE({...args});
+export const TitleWithSuperScript = TitleSuperScriptTemplate.bind({});
+TitleWithSuperScript.args = {
+  variation: "superplus",
+  variant: "stats-01",
+  text: "145",
+}
