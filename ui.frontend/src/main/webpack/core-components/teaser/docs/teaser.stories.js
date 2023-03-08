@@ -14,6 +14,9 @@ export default {
     showButton: {
       control: { type: "boolean" },
     },
+    showPretitle: {
+      control: { type: "boolean" },
+    },
     text: {
       control: { type: "text" },
     },
