@@ -503,7 +503,6 @@
             </separator>
 			<button jcr:primaryType="nt:unstructured">
                 <policy
-                    cq:styleDefaultClasses="cmp-button--body-01-link cmp-button--cta-primary"
                     jcr:primaryType="nt:unstructured"
                     jcr:title="Button Policy"
                     sling:resourceType="wcm/core/components/policy/policy">
