@@ -59,6 +59,10 @@
                                 cq:policy="efe/components/separator/policy"
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="wcm/core/components/policies/mapping"/>
+							<container
+                                cq:policy="efe/components/container/policy"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="wcm/core/components/policies/mapping"/>
                         </components>
                     </efe>
                 </container>
