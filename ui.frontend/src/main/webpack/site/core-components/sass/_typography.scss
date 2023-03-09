@@ -48,6 +48,9 @@
 
 @mixin stats-01 {
     @include buildFont(rem(160px), .02em, null, 400);
+    @media screen and (max-width: $lg) {
+        font-size: rem(69);
+    }
   }
 
   @mixin stats-02 {
@@ -56,14 +59,23 @@
 
 @mixin heading-01 {
     @include buildFont(rem(69px), .08em);
+    @media screen and (max-width: $lg) {
+        font-size: rem(58);
+    }
   }
 
 @mixin heading-02 {
     @include buildFont(rem(58px), .08em);
+    @media screen and (max-width: $lg) {
+        font-size: rem(48);
+    }
   }
 
 @mixin heading-03 {
     @include buildFont(rem(48px), .08em);
+    @media screen and (max-width: $lg) {
+        font-size: rem(36);
+    }
   }
 
 @mixin heading-04 {
@@ -219,4 +231,18 @@
     @include buildLink($efe-red-primary, $efe-red-hover);
 }
 
+// -----------------------------------------------------------------------------
+// TITLE MARGIN BOTTOM SPECS
+// -----------------------------------------------------------------------------
 
+@mixin title-margin-large {
+    margin-bottom: 44px;
+}
+
+@mixin title-margin-medium {
+    margin-bottom: 32px;
+}
+
+@mixin title-margin-small {
+    margin-bottom: 24px;
+}
