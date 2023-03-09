@@ -1,18 +1,18 @@
 
 @mixin maxWidth() {
-    &.cmp-container--1920 {
+    &.cmp-container-width--1920 {
         max-width: $xxxl;
         margin: auto;
     }
 
-    &.cmp-container--1400 {
+    &.cmp-container-width--1400 {
         max-width: $xxl;
         margin: auto;
     }
 }
 
 @mixin padding() {
-    &.cmp-container--26 {
+    &.cmp-container-padding--26 {
         padding: rem(26);
     }
 }
@@ -32,10 +32,15 @@
 
 .cmp-container--unset {
     background: transparent;
-    @include maxWidth();
+    // @include maxWidth();
+    // @include padding();
+}
+.cmp-container-padding--unset {
     @include padding();
 }
-
+.cmp-container-width--none, .cmp-container-width--unset {
+    @include maxWidth();
+}
 .cmp-container--white {
     background: white;
     @include maxWidth();
