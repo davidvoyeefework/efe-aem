@@ -11,6 +11,7 @@ module.exports = {
     "@storybook/addon-essentials",
     "@storybook/theming",
     "@storybook/addon-a11y",
+    '@storybook/addon-viewport',
   ],
   webpackFinal: async (config, { configType }) => {
     config.module.rules.push({
