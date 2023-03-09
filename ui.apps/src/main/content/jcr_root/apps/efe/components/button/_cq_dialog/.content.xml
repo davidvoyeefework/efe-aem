@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Button"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    extraClientlibs="[core.wcm.components.button.v2.editor]"
+    helpPath="https://www.adobe.com/go/aem_cmp_button_v2"
+    trackingFeature="core-components:button:v2">
+    <content
+        granite:class="cmp-button__editor"
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <properties
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Properties"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <icon
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldDescription="Icon identifier for displaying an icon in the button."
+                                                fieldLabel="Icon"
+                                                name="./icon">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <service-financial
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Service Financial"
+                                                        value="service-financial"/>
+                                                    <service-giving
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Service Giving"
+                                                        value="service-giving"/>
+                                                    <service-corporate
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Service Corporate"
+                                                        value="service-corporate"/>
+                                                    <service-tax
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Service Tax"
+                                                        value="service-tax"/>
+                                                    <service-estate
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Service Estate"
+                                                        value="service-estate"/>
+                                                    <service-insurance
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Service Insurance"
+                                                        value="service-insurance"/>
+                                                    <service-investment
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Service Investment"
+                                                        value="service-investment"/>
+                                                    <service-small-business
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Service Small Business"
+                                                        value="service-small-business"/>
+                                                    <service-retirement
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Service Retirement"
+                                                        value="service-retirement"/>
+                                                    <none
+                                                        jcr:primaryType="nt:unstructured"
+                                                        selected="{Boolean}true"
+                                                        text="None"
+                                                        value=""/>
+                                                </items>
+                                            </icon>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </properties>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>
