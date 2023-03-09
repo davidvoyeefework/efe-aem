@@ -685,18 +685,18 @@
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
                                     cq:styleClasses="cmp-button--primary-nav-link"
-                                    cq:styleId="primary"
-                                    cq:styleLabel="Primary"
+                                    cq:styleId="navigation-primary"
+                                    cq:styleLabel="Navigation Primary "
                                     jcr:primaryType="nt:unstructured"/>
                                 <item1
                                     cq:styleClasses="cmp-button--secondary-nav-link"
-                                    cq:styleId="secondary"
-                                    cq:styleLabel="Secondary"
+                                    cq:styleId="navigation-secondary"
+                                    cq:styleLabel="Navigation Secondary"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item2
                                     cq:styleClasses="cmp-button--utility-nav-link"
-                                    cq:styleId="utility"
-                                    cq:styleLabel="Utility"
+                                    cq:styleId="navigation-utility"
+                                    cq:styleLabel="Navigation Utility"
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item6>
