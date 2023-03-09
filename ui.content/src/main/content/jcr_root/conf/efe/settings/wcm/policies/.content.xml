@@ -447,8 +447,8 @@
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
                                     cq:styleClasses="cmp-container--unset"
-                                    cq:styleId="unset"
-                                    cq:styleLabel="Unset"
+                                    cq:styleId="padding-unset"
+                                    cq:styleLabel="Padding Unset"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item1
                                     cq:styleClasses="cmp-container--26"
@@ -579,13 +579,13 @@
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
                                     cq:styleClasses="cmp-button--cta-primary"
-                                    cq:styleId="primary"
-                                    cq:styleLabel="Primary"
+                                    cq:styleId="primary-cta"
+                                    cq:styleLabel="Primary CTA"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item1
                                     cq:styleClasses="cmp-button--cta-secondary"
-                                    cq:styleId="secondary"
-                                    cq:styleLabel="Secondary"
+                                    cq:styleId="secondary-cta"
+                                    cq:styleLabel="Secondary CTA"
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item0>
@@ -595,18 +595,18 @@
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
                                     cq:styleClasses="cmp-button--unset"
-                                    cq:styleId="unset"
-                                    cq:styleLabel="Unset"
+                                    cq:styleId="alignment-unset"
+                                    cq:styleLabel="Alignment Unset"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item1
                                     cq:styleClasses="cmp-button--right"
-                                    cq:styleId="right"
-                                    cq:styleLabel="Right"
+                                    cq:styleId="align-right"
+                                    cq:styleLabel="Align Right"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item2
                                     cq:styleClasses="cmp-button--center"
-                                    cq:styleId="center"
-                                    cq:styleLabel="Center"
+                                    cq:styleId="align-center"
+                                    cq:styleLabel="Align Center"
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item1>
@@ -616,18 +616,18 @@
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
                                     cq:styleClasses="cmp-button--body-01-link"
-                                    cq:styleId="large"
-                                    cq:styleLabel="Large"
+                                    cq:styleId="body-links-large"
+                                    cq:styleLabel="Body Links Large"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item1
                                     cq:styleClasses="cmp-button--body-02-link"
-                                    cq:styleId="medium"
-                                    cq:styleLabel="Medium"
+                                    cq:styleId="body-links-medium"
+                                    cq:styleLabel="Body Links Medium"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item2
                                     cq:styleClasses="cmp-button--body-03-link"
-                                    cq:styleId="small"
-                                    cq:styleLabel="Small"
+                                    cq:styleId="body-links-small"
+                                    cq:styleLabel="Body Links Small"
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item2>
@@ -637,13 +637,13 @@
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
                                     cq:styleClasses="cmp-button--efe-gray-primary"
-                                    cq:styleId="gray"
-                                    cq:styleLabel="Gray"
+                                    cq:styleId="body-links-gray"
+                                    cq:styleLabel="Body Links Gray"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item1
                                     cq:styleClasses="cmp-button--efe-red-primary"
-                                    cq:styleId="red"
-                                    cq:styleLabel="Red"
+                                    cq:styleId="body-links-red"
+                                    cq:styleLabel="Body Links Red"
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item3>
@@ -653,13 +653,13 @@
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
                                     cq:styleClasses="cmp-button--footer-01"
-                                    cq:styleId="large"
-                                    cq:styleLabel="Large"
+                                    cq:styleId="footer-links-large"
+                                    cq:styleLabel="Footer Links Large"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item1
                                     cq:styleClasses="cmp-button--footer-02"
-                                    cq:styleId="small"
-                                    cq:styleLabel="Small"
+                                    cq:styleId="footer-links-small"
+                                    cq:styleLabel="Footer Links Small"
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item4>
@@ -669,13 +669,13 @@
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
                                     cq:styleClasses="cmp-button--efe-gray-primary"
-                                    cq:styleId="gray-dark"
-                                    cq:styleLabel="Gray Dark"
+                                    cq:styleId="footer-gray-dark"
+                                    cq:styleLabel="Footer Gray Dark"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item1
                                     cq:styleClasses="cmp-button--efe-gray-new"
-                                    cq:styleId="gray-light"
-                                    cq:styleLabel="Gray Light"
+                                    cq:styleId="footer-gray-light"
+                                    cq:styleLabel="Footer Gray Light"
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item5>
@@ -685,18 +685,18 @@
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
                                     cq:styleClasses="cmp-button--primary-nav-link"
-                                    cq:styleId="primary"
-                                    cq:styleLabel="Primary"
+                                    cq:styleId="navigation-links-primary"
+                                    cq:styleLabel="Navigation Links Primary"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item1
                                     cq:styleClasses="cmp-button--secondary-nav-link"
-                                    cq:styleId="secondary"
-                                    cq:styleLabel="Secondary"
+                                    cq:styleId="navigation-links-secondary"
+                                    cq:styleLabel="Navigation Links Secondary"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item2
                                     cq:styleClasses="cmp-button--utility-nav-link"
-                                    cq:styleId="utility"
-                                    cq:styleLabel="Utility"
+                                    cq:styleId="navigation-links-utility"
+                                    cq:styleLabel="Navigation Links Utility"
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item6>
@@ -706,13 +706,13 @@
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
                                     cq:styleClasses="cmp-button--efe-gray-primary"
-                                    cq:styleId="gray"
-                                    cq:styleLabel="Gray"
+                                    cq:styleId="navigation-links-gray"
+                                    cq:styleLabel="Navigation Links Gray"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item1
                                     cq:styleClasses="cmp-button--efe-red-primary"
-                                    cq:styleId="red"
-                                    cq:styleLabel="Red"
+                                    cq:styleId="navigation-links-red"
+                                    cq:styleLabel="Navigation Links Red"
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item7>
