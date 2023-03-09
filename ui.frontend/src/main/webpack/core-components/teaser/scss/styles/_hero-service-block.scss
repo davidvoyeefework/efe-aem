@@ -96,8 +96,10 @@
         }
 
         &--service-tax {
-            content: " ";
-            background: url("../resources/images/icons/service-icons/tax-icon.svg") no-repeat center center / contain;
+            .cmp-teaser__image:before {
+                content: " ";
+                background: url("../resources/images/icons/service-icons/tax-icon.svg") no-repeat center center / contain;
+            }
         }
 
         &--service-giving {
