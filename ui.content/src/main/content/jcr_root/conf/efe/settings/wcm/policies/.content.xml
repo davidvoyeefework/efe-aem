@@ -391,6 +391,10 @@
                     jcr:primaryType="nt:unstructured"
                     jcr:title="Container Policy"
                     sling:resourceType="wcm/core/components/policy/policy"
+                    allowedColorSwatches="[rgb(194\,127\,127),rgb(127\,171\,127),rgb(127\,127\,26),rgb(127\,127\,206),,rgba(127\,127\,127\,0.54)]"
+                    backgroundColorEnabled="true"
+                    backgroundColorSwatchesOnly="true"
+                    backgroundImageEnabled="true"
                     layoutDisabled="false">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                     <cq:styleGroups jcr:primaryType="nt:unstructured">
@@ -459,6 +463,7 @@
                         </item2>
 						<item3
                             cq:styleGroupLabel="Border Radius"
+							cq:styleGroupMultiple="true"
                             jcr:primaryType="nt:unstructured">
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
