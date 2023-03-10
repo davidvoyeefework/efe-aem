@@ -457,6 +457,32 @@
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item2>
+						<item3
+                            cq:styleGroupLabel="Border Radius"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="border-radius--top-left"
+                                    cq:styleId="top-left"
+                                    cq:styleLabel="Top Left"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="border-radius--top-right"
+                                    cq:styleId="top-radius"
+                                    cq:styleLabel="Top Right"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item2
+                                    cq:styleClasses="border-radius--bottom-left"
+                                    cq:styleId="bottom-left"
+                                    cq:styleLabel="Bottom Left"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item3
+                                    cq:styleClasses="border-radius--bottom-right"
+                                    cq:styleId="bottom-right"
+                                    cq:styleLabel="Bottom Right"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item3>
                     </cq:styleGroups>
                 </policy>
             </container>
