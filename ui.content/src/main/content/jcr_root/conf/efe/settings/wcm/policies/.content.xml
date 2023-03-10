@@ -400,8 +400,8 @@
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
                                     cq:styleClasses="cmp-container--unset"
-                                    cq:styleId="unset"
-                                    cq:styleLabel="Unset"
+                                    cq:styleId="color-unset"
+                                    cq:styleLabel="Color Unset"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item1
                                     cq:styleClasses="cmp-container--white"
@@ -425,17 +425,17 @@
                             jcr:primaryType="nt:unstructured">
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
-                                    cq:styleClasses="cmp-container--none"
+                                    cq:styleClasses="cmp-container--width-none"
                                     cq:styleId="none"
                                     cq:styleLabel="None"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item1
-                                    cq:styleClasses="cmp-container--1400"
+                                    cq:styleClasses="cmp-container--width-1400"
                                     cq:styleId="large"
                                     cq:styleLabel="Large"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item2
-                                    cq:styleClasses="cmp-container--1920"
+                                    cq:styleClasses="cmp-container--width-1920"
                                     cq:styleId="extra-large"
                                     cq:styleLabel="Extra Large"
                                     jcr:primaryType="nt:unstructured"/>
@@ -446,12 +446,12 @@
                             jcr:primaryType="nt:unstructured">
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
-                                    cq:styleClasses="cmp-container--unset"
+                                    cq:styleClasses="cmp-container--padding-unset"
                                     cq:styleId="padding-unset"
                                     cq:styleLabel="Padding Unset"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item1
-                                    cq:styleClasses="cmp-container--26"
+                                    cq:styleClasses="cmp-container--padding-26"
                                     cq:styleId="default-padding"
                                     cq:styleLabel="Default Padding"
                                     jcr:primaryType="nt:unstructured"/>
