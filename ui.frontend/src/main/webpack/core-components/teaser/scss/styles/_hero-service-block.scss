@@ -6,17 +6,14 @@
             flex-direction: column-reverse;
         }
         &__content {
-
+            padding: rem(40) rem(26);
             b {
                 @include subhead-02;
             }
             @include media('>tablet') {
                 width: 55%;
+                margin-left: rem(50);
             }
-            @include media("<tablet") {
-                padding: rem(15px);
-            }
-            padding: rem(56px) 0 0 rem(51px);
         }
         &__action-container {
             .button {
