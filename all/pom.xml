@@ -77,6 +77,14 @@
                             <type>zip</type>
                             <target>/apps/efe-packages/application/install</target>
                         </embedded>
+                        <embedded>
+                            <groupId>com.adobe.acs</groupId>
+                            <artifactId>acs-aem-commons-content</artifactId>
+                            <type>zip</type>
+                            <target>/apps/efe-vendor-packages/container/install</target>
+                            <filter>true</filter>
+                            <isAllVersionsFilter>true</isAllVersionsFilter>
+                        </embedded>
                     </embeddeds>
                 </configuration>
             </plugin>
@@ -194,6 +202,14 @@
             <groupId>com.efe</groupId>
             <artifactId>efe.ui.config</artifactId>
             <version>${project.version}</version>
+            <type>zip</type>
+        </dependency>
+
+        <!-- ACS AEM Commons dependency-->
+        <dependency>
+            <groupId>com.adobe.acs</groupId>
+            <artifactId>acs-aem-commons-content</artifactId>
+            <version>${acs.commons.version}</version>
             <type>zip</type>
         </dependency>
 

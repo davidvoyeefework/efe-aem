@@ -86,6 +86,8 @@
     <aemanalyser.version>1.4.10</aemanalyser.version>
             
     <componentGroupName>EFE</componentGroupName>
+
+    <acs.commons.version>5.7.0</acs.commons.version>
         
   </properties>
       
