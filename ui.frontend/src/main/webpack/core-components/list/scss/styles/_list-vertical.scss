@@ -1,0 +1,23 @@
+.cmp-list--vertical {
+    .cmp-list {
+        display: block;
+        column-count: 4;
+        @include media('>=phone-sm', '<phone-m') {
+            column-count: 1;
+        }
+        @include media('>=phone-m', '<tablet') {
+            column-count: 2;
+        }
+        @include media('>tablet', '<desktop') {
+            column-count: 3;
+        }
+        .cmp-teaser--thumbnail {
+            break-inside: avoid;
+        }
+        .cmp-list__item {
+            break-inside: avoid;
+            margin-bottom: unset;
+            width: unset;
+        }
+    }
+}
