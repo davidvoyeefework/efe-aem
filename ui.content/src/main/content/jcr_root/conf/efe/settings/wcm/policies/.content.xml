@@ -210,7 +210,7 @@
                     type="h1">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                 </policy_641475696923109>
-                <policy_641528232375303
+                <policy
                     cq:styleDefaultClasses="cmp-title--heading-02"
                     jcr:description="Lets you choose between H1-H6"
                     jcr:primaryType="nt:unstructured"
@@ -268,7 +268,7 @@
                             </cq:styles>
                         </item0>
                     </cq:styleGroups>
-                </policy_641528232375303>
+                </policy>
             </title>
             <experiencefragment jcr:primaryType="nt:unstructured">
                 <policy_header
@@ -391,6 +391,7 @@
                     jcr:primaryType="nt:unstructured"
                     jcr:title="Container Policy"
                     sling:resourceType="wcm/core/components/policy/policy"
+                    backgroundImageEnabled="true"
                     layoutDisabled="false">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                     <cq:styleGroups jcr:primaryType="nt:unstructured">
@@ -400,8 +401,8 @@
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
                                     cq:styleClasses="cmp-container--unset"
-                                    cq:styleId="unset"
-                                    cq:styleLabel="Unset"
+                                    cq:styleId="color-unset"
+                                    cq:styleLabel="Color Unset"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item1
                                     cq:styleClasses="cmp-container--white"
@@ -425,17 +426,17 @@
                             jcr:primaryType="nt:unstructured">
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
-                                    cq:styleClasses="cmp-container--none"
+                                    cq:styleClasses="cmp-container--width-none"
                                     cq:styleId="none"
                                     cq:styleLabel="None"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item1
-                                    cq:styleClasses="cmp-container--1400"
+                                    cq:styleClasses="cmp-container--width-1400"
                                     cq:styleId="large"
                                     cq:styleLabel="Large"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item2
-                                    cq:styleClasses="cmp-container--1920"
+                                    cq:styleClasses="cmp-container--width-1920"
                                     cq:styleId="extra-large"
                                     cq:styleLabel="Extra Large"
                                     jcr:primaryType="nt:unstructured"/>
@@ -446,17 +447,44 @@
                             jcr:primaryType="nt:unstructured">
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
-                                    cq:styleClasses="cmp-container--unset"
+                                    cq:styleClasses="cmp-container--padding-unset"
                                     cq:styleId="padding-unset"
                                     cq:styleLabel="Padding Unset"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item1
-                                    cq:styleClasses="cmp-container--26"
+                                    cq:styleClasses="cmp-container--padding-26"
                                     cq:styleId="default-padding"
                                     cq:styleLabel="Default Padding"
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item2>
+						<item3
+                            cq:styleGroupLabel="Border Radius"
+							cq:styleGroupMultiple="true"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="border-radius--top-left"
+                                    cq:styleId="top-left"
+                                    cq:styleLabel="Top Left"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="border-radius--top-right"
+                                    cq:styleId="top-radius"
+                                    cq:styleLabel="Top Right"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item2
+                                    cq:styleClasses="border-radius--bottom-left"
+                                    cq:styleId="bottom-left"
+                                    cq:styleLabel="Bottom Left"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item3
+                                    cq:styleClasses="border-radius--bottom-right"
+                                    cq:styleId="bottom-right"
+                                    cq:styleLabel="Bottom Right"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item3>
                     </cq:styleGroups>
                 </policy>
             </container>
@@ -716,17 +744,6 @@
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item7>
-                        <item8
-                            cq:styleGroupLabel="Services Link"
-                            jcr:primaryType="nt:unstructured">
-                            <cq:styles jcr:primaryType="nt:unstructured">
-                                <item0
-                                    cq:styleClasses="cmp-button--robust"
-                                    cq:styleId="services"
-                                    cq:styleLabel="Services"
-                                    jcr:primaryType="nt:unstructured"/>
-                            </cq:styles>
-                        </item8>
                     </cq:styleGroups>
                 </policy>
             </button>
