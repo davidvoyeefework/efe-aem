@@ -210,7 +210,7 @@
                     type="h1">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                 </policy_641475696923109>
-                <policy_641528232375303
+                <policy
                     cq:styleDefaultClasses="cmp-title--heading-02"
                     jcr:description="Lets you choose between H1-H6"
                     jcr:primaryType="nt:unstructured"
@@ -268,7 +268,7 @@
                             </cq:styles>
                         </item0>
                     </cq:styleGroups>
-                </policy_641528232375303>
+                </policy>
             </title>
             <experiencefragment jcr:primaryType="nt:unstructured">
                 <policy_header
@@ -391,9 +391,6 @@
                     jcr:primaryType="nt:unstructured"
                     jcr:title="Container Policy"
                     sling:resourceType="wcm/core/components/policy/policy"
-                    allowedColorSwatches="[rgb(194\,127\,127),rgb(127\,171\,127),rgb(127\,127\,26),rgb(127\,127\,206),,rgba(127\,127\,127\,0.54)]"
-                    backgroundColorEnabled="true"
-                    backgroundColorSwatchesOnly="true"
                     backgroundImageEnabled="true"
                     layoutDisabled="false">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
@@ -747,17 +744,6 @@
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item7>
-                        <item8
-                            cq:styleGroupLabel="Services Link"
-                            jcr:primaryType="nt:unstructured">
-                            <cq:styles jcr:primaryType="nt:unstructured">
-                                <item0
-                                    cq:styleClasses="cmp-button--robust"
-                                    cq:styleId="services"
-                                    cq:styleLabel="Services"
-                                    jcr:primaryType="nt:unstructured"/>
-                            </cq:styles>
-                        </item8>
                     </cq:styleGroups>
                 </policy>
             </button>
