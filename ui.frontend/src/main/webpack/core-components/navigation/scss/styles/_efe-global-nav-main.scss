@@ -126,7 +126,7 @@
                 right: 0;
                 width: 100%;
                 .cmp-navigation-dropdown-grid--4col {
-                    padding-top: 1rem;
+                    padding-top: 1.5rem;
                     @include grid(
                         $template-columns: 1fr 1fr 1fr 1fr,
                         $gap: rem(60)
