@@ -12,19 +12,19 @@
             }
         }
         &__pretitle {
-           @include buildFont (rem(26), rem(2),$font-nimbus-Sans,400, uppercase,rem(31),$efe-gray-deep-charcoal);
+           @include buildFont (rem(26), rem(2),$font-nimbus-Sans,400, uppercase,rem(31),$efe-gray-primary);
            &::before {
                 content: ' ';
                 background: url('../resources/images/icons/live-event-icon.svg')no-repeat;
                 display: inline-block;
                 width: rem(20);
                 height: rem(20);
-                margin-right: rem(20);
+                margin-right: rem(15);
            }     
         }
         &__content {
             max-width: rem(600);
-            padding: rem(40) rem(24);
+            padding: rem(48) rem(24);
             @include media('>=desktop') {
                 position: absolute;
                 padding: rem(32px);
@@ -38,24 +38,26 @@
         }
         &__title {
              @include heading-01;
-             @include media(">=tablet") {
+             margin-top: rem(30);
+             margin-bottom: rem(20);
+             @include media("<desktop") {
                 width: 100%;
-                font-size: rem(59px);
-                line-height: rem(60.9px);
+                @include heading-02;
+                margin-top: rem(32);
              }
-             @include media(">phone-sm") {
-                font-size: rem(58px);
+             @include media("<tablet") {
+                @include heading-03;
             }
         }
         &__description {
+            margin-bottom: rem(36);
+            @include media(">=tablet") {
+                margin-bottom: rem(32);
+            }
+            @include media('>=desktop') {
+                margin-bottom: rem(30);
+            }
             p {
-                @include media('>=desktop') {
-                    font-family: $font-nimbus-Sans;
-                    font-style: normal;
-                    font-weight: 400;
-                    font-size: rem(34);
-                    line-height: 120%;
-                }  
                 @include body-01;
             }
         }
