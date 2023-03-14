@@ -38,10 +38,14 @@ listLayout.argTypes = {
             "bottom-align",
         ],
     },
+    'border-radius': {
+        control: 'boolean',
+    }
 };
 
 listLayout.args = {
     variation: "horizontal",
     gap: "moderate",
     alignment: "left-align",
+    'border-radius': false,
 };

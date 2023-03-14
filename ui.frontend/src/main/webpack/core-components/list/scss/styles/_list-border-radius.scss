@@ -1,0 +1,9 @@
+.cmp-list--border-radius {
+    .cmp-list {
+        .teaser:first-child {
+            .cmp-image__image {
+                border-top-left-radius: 40px;
+            }
+        }
+    }
+}
