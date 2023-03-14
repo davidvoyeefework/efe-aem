@@ -485,6 +485,17 @@
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item3>
+						<item4
+                            cq:styleGroupLabel="Container Border"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-container--border"
+                                    cq:styleId="border"
+                                    cq:styleLabel="Border"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item4>
                     </cq:styleGroups>
                 </policy>
             </container>
