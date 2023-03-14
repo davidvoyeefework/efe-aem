@@ -1,4 +1,4 @@
-.cmp-list--vertical {
+.cmp-list--column {
     &.cmp-list--tight {
         .cmp-teaser--thumbnail {
             margin-bottom: 8px;
@@ -29,20 +29,40 @@
 
 .cmp-list--horizontal {
     &.cmp-list--tight {
-        .cmp-teaser--thumbnail {
-            padding: 4px;
+        .cmp-list {
+            gap: 8px;
         }
     }
 
     &.cmp-list--moderate {
-        .cmp-teaser--thumbnail {
-            padding: 12px;
+        .cmp-list {
+            gap: 24px;
         }
     }
 
     &.cmp-list--loose {
-        .cmp-teaser--thumbnail {
-            padding: 24px;
+        .cmp-list {
+            gap: 48px;
+        }
+    }
+}
+
+.cmp-list--vertical {
+    &.cmp-list--tight {
+        .cmp-list {
+            gap: 8px;
+        }
+    }
+
+    &.cmp-list--moderate {
+        .cmp-list {
+            gap: 24px;
+        }
+    }
+
+    &.cmp-list--loose {
+        .cmp-list {
+            gap: 48px;
         }
     }
 }
