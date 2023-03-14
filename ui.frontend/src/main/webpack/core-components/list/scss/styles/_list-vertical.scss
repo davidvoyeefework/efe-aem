@@ -1,23 +1,25 @@
 .cmp-list--vertical {
     .cmp-list {
-        display: block;
-        column-count: 4;
-        @include media('>=phone-sm', '<phone-m') {
-            column-count: 1;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        height: 2500px;
+        gap: 8px;
+        float: unset;
+    }
+    &.cmp-list--top-align {
+        .cmp-list {
+            justify-content: left;
         }
-        @include media('>=phone-m', '<tablet') {
-            column-count: 2;
+    }
+    &.cmp-list--middle-align {
+        .cmp-list {
+            justify-content: center;
         }
-        @include media('>tablet', '<desktop') {
-            column-count: 3;
-        }
-        .cmp-teaser--thumbnail {
-            break-inside: avoid;
-        }
-        .cmp-list__item {
-            break-inside: avoid;
-            margin-bottom: unset;
-            width: unset;
+    }
+    &.cmp-list--bottom-align {
+        .cmp-list {
+            justify-content: end;
         }
     }
 }
