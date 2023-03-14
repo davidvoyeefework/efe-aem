@@ -29,13 +29,13 @@ const showElement = (e) => {
   if (displayStyle == "none") {
     domElement.style.display = 'block';
     if (e == "nav-list-cta-group") {
-      animateHamburger('hideClose');
+      animateHamburger('showClose');
     }
   }
   else if (displayStyle == "block") {
     domElement.style.display = 'none';
     if (e == "nav-list-cta-group") {
-      animateHamburger('showClose');
+      animateHamburger('hideClose');
     }
   }
 };
@@ -57,11 +57,6 @@ const clickNav = (listenItem) => {
             el.classList.remove("cmp-navigation__item--active");
             let dropDownNav = el.children[2];
             dropDownNav.style.display = 'none';
-          }
-          if (windowWidth <= NavBreakpoint) {
-            if(!el.classList.contains("cmp-navigation__item--active")) {
-              el.style.display = "none";
-            }
           }
         }
         );
