@@ -8,7 +8,9 @@
         }
         .cmp-teaser--thumbnail {
             display: inline-block;
-            width: 100%;
+            @include media('<tablet') {
+                width: 100%;
+            }
         }
     }
     &.cmp-list--left-align {
