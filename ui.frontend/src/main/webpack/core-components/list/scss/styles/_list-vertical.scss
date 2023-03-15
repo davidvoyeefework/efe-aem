@@ -6,6 +6,10 @@
         height: 2500px;
         gap: 8px;
         float: unset;
+        @include media('<tablet') {
+            flex-wrap: nowrap;
+            height: unset;
+        }
     }
     &.cmp-list--top-align {
         .cmp-list {
