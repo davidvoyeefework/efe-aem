@@ -4,6 +4,7 @@
         column-count: 4;
         @include media('>=phone-sm', '<phone-m') {
             column-count: 1;
+            width: 100%;
         }
         @include media('>=phone-m', '<tablet') {
             column-count: 2;
