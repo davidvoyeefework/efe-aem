@@ -40,7 +40,8 @@
         }
         &__action-link {
             background-color: unset;
-            padding:0
+            padding:0;
+            @include body-02-link-red;
         }
     }
 }
