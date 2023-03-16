@@ -8,11 +8,8 @@ export default {
   // More on argTypes: https://storybook.js.org/docs/html/api/argtypes
   argTypes: {
     variant: {
-      options: ["hero", "banner", "image-left", "image-right", "image-bottom"],
+      options: ["hero"],
       control: { type: "radio" },
-    },
-    showButton: {
-      control: { type: "boolean" },
     },
     showPretitle: {
       control: { type: "boolean" },
