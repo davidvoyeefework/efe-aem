@@ -758,6 +758,31 @@
                     </cq:styleGroups>
                 </policy>
             </button>
+			<breadcrumb jcr:primaryType="nt:unstructured">
+                <policy
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Breadcrumb Policy"
+                    sling:resourceType="wcm/core/components/policy/policy"
+                    disableShadowing="false"
+                    hideCurrent="false"
+                    showHidden="false"
+                    startLevel="2">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                    <cq:styleGroups jcr:primaryType="nt:unstructured">
+                        <item0
+                            cq:styleGroupLabel="Styles"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-breadcrumb--border"
+                                    cq:styleId="border"
+                                    cq:styleLabel="Border"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item0>
+                    </cq:styleGroups>
+                </policy>
+            </breadcrumb>
         </components>
     </efe>
 </jcr:root>
