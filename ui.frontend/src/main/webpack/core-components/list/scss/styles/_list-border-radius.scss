@@ -3,7 +3,7 @@
         @include media('>tablet') {
             .teaser:first-child {
                 .cmp-image__image {
-                    border-top-left-radius: 40px;
+                    border-top-left-radius: rem(40);
                 }
             }
         }

@@ -17,6 +17,9 @@ export default {
     showPretitle: {
       control: { type: "boolean" },
     },
+    showlivepulse: {
+      control: {type: "boolean"}
+    },
     text: {
       control: { type: "text" },
     },

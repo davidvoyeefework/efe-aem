@@ -12,15 +12,7 @@
             }
         }
         &__pretitle {
-           @include buildFont (rem(26), rem(2),$font-nimbus-Sans,400, uppercase,rem(31),$efe-gray-primary);
-           &::before {
-                content: ' ';
-                background: url('../resources/images/icons/live-event-icon.svg')no-repeat;
-                display: inline-block;
-                width: rem(20);
-                height: rem(20);
-                margin-right: rem(15);
-           }     
+           @include buildFont (rem(26), rem(2),$font-nimbus-Sans,400, uppercase,rem(31),$efe-gray-primary);    
         }
         &__content {
             max-width: rem(600);
@@ -42,11 +34,11 @@
              margin-bottom: rem(20);
              @include media("<desktop") {
                 width: 100%;
-                @include heading-02;
+                @include buildFont(rem(58px), .08em);
                 margin-top: rem(32);
              }
              @include media("<tablet") {
-                @include heading-03;
+                @include buildFont(rem(48px), .08em);
             }
         }
         &__description {
@@ -59,6 +51,20 @@
             }
             p {
                 @include body-01;
+            }
+        }
+    }
+    &.cmp-teaser--show-live-pulse {
+        .cmp-teaser {
+            &__pretitle {
+                &::before {
+                    content: ' ';
+                    background: url('../resources/images/icons/live-event-icon.svg')no-repeat;
+                    display: inline-block;
+                    width: rem(20);
+                    height: rem(20);
+                    margin-right: rem(15);
+               } 
             }
         }
     }
