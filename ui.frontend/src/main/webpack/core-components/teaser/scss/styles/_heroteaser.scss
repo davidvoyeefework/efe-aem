@@ -59,15 +59,20 @@
     }
     &.cmp-teaser--show-live-pulse {
         .cmp-teaser {
-            &__pretitle {
+            &__content {
                 &::before {
                     content: ' ';
                     background: url('../resources/images/icons/live-event-icon.svg')no-repeat;
                     display: inline-block;
                     width: rem(20);
                     height: rem(20);
-                    margin-right: rem(15);
+                    position: absolute;
+                    left: rem(25);
+                    top: rem(30);
                } 
+            }
+            &__pretitle {
+                margin-left: rem(30);
             }
         }
     }
