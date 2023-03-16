@@ -10,12 +10,6 @@ export default {
       options: ["service-financial", "service-giving", "service-corporate", "service-tax", "service-estate", "service-insurance", "service-investment", "service-small-business", "service-estate", "service-retirement"],
       control: { type: "radio" },
     },
-    showButton: {
-      control: { type: "boolean" },
-    },
-    showPretitle: {
-      control: { type: "boolean" },
-    },
     text: {
       control: { type: "text" },
     },

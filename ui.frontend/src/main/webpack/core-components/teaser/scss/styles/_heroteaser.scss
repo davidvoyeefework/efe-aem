@@ -53,6 +53,9 @@
                 @include body-01;
             }
         }
+        &__action-link {
+            @include cta-primary;
+        }
     }
     &.cmp-teaser--show-live-pulse {
         .cmp-teaser {

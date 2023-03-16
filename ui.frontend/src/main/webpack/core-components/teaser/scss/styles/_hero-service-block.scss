@@ -20,14 +20,13 @@
         }
         &__action-container {
             margin: rem(24) 0 rem(36) 0;
-            .button {
-                .cmp-button {
-                    padding: rem(16) rem(40) rem(12) rem(40);
+        }
+        &__action-link {
+            @include cta-primary;
+            padding: rem(16) rem(40) rem(12) rem(40);
                     color: $efe-gray-primary;
                     border: rem(1) solid $efe-gray-blue;
                     background-color: buttonface;
-                }
-            }
         }
         &__image {
             .cmp-image {
@@ -63,11 +62,9 @@
         }
         &:hover {
             .cmp-teaser__action-container {
-                .button {
-                    .cmp-button {
-                        @include cta-primary;
-                        padding: 16px 40px 12px 40px;
-                    }
+                .cmp-teaser__action-link {
+                    @include cta-primary;
+                    padding: 16px 40px 12px 40px;
                 }
             }
             .cmp-teaser__image {
