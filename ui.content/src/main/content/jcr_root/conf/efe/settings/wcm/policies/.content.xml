@@ -500,8 +500,8 @@
                 </policy>
             </container>
             <teaser jcr:primaryType="nt:unstructured">
-                <policy_1575031387650
-                    jcr:description="Sets the title size to H3."
+                <policy
+				    jcr:description="Sets the title size to H3."
                     jcr:primaryType="nt:unstructured"
                     jcr:title="Content Teaser"
                     sling:resourceType="wcm/core/components/policy/policy"
@@ -509,38 +509,96 @@
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                     <cq:styleGroups jcr:primaryType="nt:unstructured">
                         <item0
-                            cq:styleGroupLabel="Style"
+                            cq:styleGroupLabel="Teaser Styles"
                             jcr:primaryType="nt:unstructured">
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
                                     cq:styleClasses="cmp-teaser--hero"
-                                    cq:styleId="hero"
-                                    cq:styleLabel="Hero"
+                                    cq:styleId="banner-hero"
+                                    cq:styleLabel="Banner Hero"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item1
-                                    cq:styleClasses="cmp-teaser--banner"
-                                    cq:styleId="banner"
-                                    cq:styleLabel="Banner"
-                                    jcr:primaryType="nt:unstructured"/>
-                                <item2
                                     cq:styleClasses="cmp-teaser--image-left"
                                     cq:styleId="hero-image-left"
                                     cq:styleLabel="Hero Image Left"
                                     jcr:primaryType="nt:unstructured"/>
-                                <item3
-                                    cq:styleClasses="cmp-teaser--image-right"
-                                    cq:styleId="hero-image-right"
-                                    cq:styleLabel="Hero Image Right"
-                                    jcr:primaryType="nt:unstructured"/>
-                                <item4
-                                    cq:styleClasses="cmp-teaser--image-bottom"
-                                    cq:styleId="hero-image-bottom"
-                                    cq:styleLabel="Hero Image Bottom"
-                                    jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item0>
+                        <item1
+                            cq:styleGroupLabel="Icon"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-teaser--show-live-pulse"
+                                    cq:styleId="eyebrow-icon"
+                                    cq:styleLabel="EyeBrow Icon"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item1>
+                        <item2
+                            cq:styleGroupLabel="Planner Thumbnail"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-teaser--thumbnail"
+                                    cq:styleId="planner-thumbnail"
+                                    cq:styleLabel="Planner Thumbnail"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item2>
+                        <item3
+                            cq:styleGroupLabel="Services"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="top-icon--service-financial"
+                                    cq:styleId="service-financial"
+                                    cq:styleLabel="Service Financial"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="top-icon--service-giving"
+                                    cq:styleId="service-giving"
+                                    cq:styleLabel="Service Giving"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item2
+                                    cq:styleClasses="top-icon--service-corporate"
+                                    cq:styleId="service-corporate"
+                                    cq:styleLabel="Service Corporate"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item3
+                                    cq:styleClasses="top-icon--service-tax"
+                                    cq:styleId="service-tax"
+                                    cq:styleLabel="Service Tax"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item4
+                                    cq:styleClasses="top-icon--service-estate"
+                                    cq:styleId="service-estate"
+                                    cq:styleLabel="Service Estate"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item5
+                                    cq:styleClasses="top-icon--service-insurance"
+                                    cq:styleId="service-insurance"
+                                    cq:styleLabel="Service Insurance"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item6
+                                    cq:styleClasses="top-icon--service-investment"
+                                    cq:styleId="service-investment"
+                                    cq:styleLabel="Service Investment"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item7
+                                    cq:styleClasses="top-icon--service-small-business"
+                                    cq:styleId="service-small-business"
+                                    cq:styleLabel="Service Small Business"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item8
+                                    cq:styleClasses="top-icon--service-retirement"
+                                    cq:styleId="service-retirement"
+                                    cq:styleLabel="Service Retirement"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item3>
                     </cq:styleGroups>
-                </policy_1575031387650>
+                </policy>
             </teaser>
             <download jcr:primaryType="nt:unstructured">
                 <policy_1575032193319
