@@ -1,25 +1,14 @@
-<section class="cmp-content-collage {{#if variation}}cmp-content-collage--{{variation}}{{/if}}">
+<section class="cmp-content-collage {{#if variation}}cmp-content-collage--{{variation}}{{/if}} 
+         {{#if variant}}cmp-content-collage--{{variant}}{{/if}} {{#if border-top-left}}cmp-content-collage--border-top-left{{/if}}">
     <ul class="cmp-collage">
         <li class="cmp-collage__item1">
-            <img
-                src="https://fastly.picsum.photos/id/92/3568/2368.jpg?hmac=k-61p7oMQe6U59dEgm0Gu6bWTJGPfHblWxMskxTBZMo"
-                class="cmp-image__image"
-                itemprop="contentUrl"
-            />
+            {{>ImageStandard source="https://fastly.picsum.photos/id/92/3568/2368.jpg?hmac=k-61p7oMQe6U59dEgm0Gu6bWTJGPfHblWxMskxTBZMo"}}
         </li>
         <li class="cmp-collage__item2">
-            <img
-                src="https://fastly.picsum.photos/id/237/536/354.jpg?hmac=i0yVXW1ORpyCZpQ-CknuyV-jbtU7_x9EBQVhvT5aRr0"
-                class="cmp-image__image"
-                itemprop="contentUrl"
-            />
+            {{>ImageStandard source="https://fastly.picsum.photos/id/237/536/354.jpg?hmac=i0yVXW1ORpyCZpQ-CknuyV-jbtU7_x9EBQVhvT5aRr0"}}
         </li>
         <li class="cmp-collage__item3">
-            <img
-                src="https://fastly.picsum.photos/id/29/4000/2670.jpg?hmac=rCbRAl24FzrSzwlR5tL-Aqzyu5tX_PA95VJtnUXegGU"
-                class="cmp-image__image"
-                itemprop="contentUrl"
-            />
+            {{>ImageStandard source="https://fastly.picsum.photos/id/29/4000/2670.jpg?hmac=rCbRAl24FzrSzwlR5tL-Aqzyu5tX_PA95VJtnUXegGU"}}
         </li>
     </ul>
 </section>

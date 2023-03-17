@@ -73,3 +73,11 @@ animation-name: fadeIn;
   -moz-box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.25);
   box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.25);
 }
+
+@mixin border-top-left-radius($radius: 40) {
+    border-top-left-radius: rem($radius);
+}
+
+@mixin border-bottom-left-radius($radius: 40) {
+    border-bottom-left-radius: rem($radius);
+}
