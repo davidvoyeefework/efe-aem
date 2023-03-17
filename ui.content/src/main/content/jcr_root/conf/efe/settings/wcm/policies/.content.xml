@@ -501,7 +501,7 @@
             </container>
             <teaser jcr:primaryType="nt:unstructured">
                 <policy
-				    jcr:description="Sets the title size to H3."
+                    jcr:description="Sets the title size to H3."
                     jcr:primaryType="nt:unstructured"
                     jcr:title="Content Teaser"
                     sling:resourceType="wcm/core/components/policy/policy"
