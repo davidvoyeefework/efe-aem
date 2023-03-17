@@ -1,37 +1,32 @@
 import Handlebars from "handlebars/runtime.js";
 import ContentCollage from "../content-collage.hbs";
+import ImageStandard from "../../../core-components/image/image-standard.hbs";
 
 Handlebars.registerPartial("ContentCollage", ContentCollage);
+Handlebars.registerPartial("ImageStandard", ImageStandard);
 
 export default {
-  title: "Components/Content-Collage",
-  argTypes: {
-  },
+    title: "Components/Content-Collage",
+    argTypes: {},
 };
 
 const TemplateCollageRight = (args) => ContentCollage({ ...args });
 export const RightLarge = TemplateCollageRight.bind({});
 RightLarge.args = {
-    variation: 'right-large'
+    variation: "right-large",
 };
 
-const TemplateCollageLeft = (args) => ContentCollage({ ...args });
-export const LeftLarge = TemplateCollageLeft.bind({});
-LeftLarge.args = {
-    variation: 'left-large'
+RightLarge.argTypes = {
+    variant: {
+        options: ["border-top-left", "border-multiple"],
+        control: {
+            type: "radio",
+        },
+    },
 };
 
-const TemplateCollageTop = (args) => ContentCollage({ ...args });
-export const TopLarge = TemplateCollageTop.bind({});
-TopLarge.args = {
-    variation: 'top-large'
-};
+ContentCollage.args = {
+    "border-top-left": false,
+}
 
-const TemplateCollageBottom = (args) => ContentCollage({ ...args });
-export const BottomLarge = TemplateCollageBottom.bind({});
-BottomLarge.args = {
-    variation: 'bottom-large'
-};
-
-export { ContentCollage };
-
+export { ContentCollage as Default };
