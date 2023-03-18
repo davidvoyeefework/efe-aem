@@ -1,12 +1,16 @@
 package com.efe.core.models;
 
-import com.adobe.cq.wcm.core.components.models.BreadcrumbModel;
+import com.adobe.cq.wcm.core.components.models.Breadcrumb;
 import com.adobe.cq.wcm.core.components.models.NavigationItem;
+
+
+import java.util.List;
+
 import org.osgi.annotation.versioning.ProviderType;
 
 @ProviderType
-public interface BreadcrumbModel extends BreadcrumbModel {
+public interface BreadcrumbModel extends Breadcrumb {
 
-    private List<NavigationItem> createItemsWithSelector();
+    public List<NavigationItem> createItemsWithSelector();
 
 }
