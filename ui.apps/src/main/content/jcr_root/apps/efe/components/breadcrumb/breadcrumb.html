@@ -13,13 +13,20 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
-  <nav data-sly-use.breadcrumb="com.efe.core.models.BreadcrumbModel"
+  <nav data-sly-use.breadcrumb="com.adobe.cq.wcm.core.components.models.Breadcrumb"
   data-sly-use.template="core/wcm/components/commons/v1/templates.html"
   id="${breadcrumb.id}"
   class="cmp-breadcrumb"
   aria-label="${'Breadcrumb' @ i18n}"
   data-sly-test="${breadcrumb.items.size > 0}"
   data-cmp-data-layer="${breadcrumb.data.json}">
+  <sly data-sly-test="${properties.showSelectorAsLeaf}" data-sly-use.items="breadcrumb.js">
+    <!--
+    Show Leaf: ${properties.showSelectorAsLeaf}
+    Selector Value: ${request.requestPathInfo.selectors[1]}
+    test value: ${items}
+    -->
+   </sly>
  <ol class="cmp-breadcrumb__list"
      itemscope itemtype="http://schema.org/BreadcrumbList"
      data-sly-list.navItem="${breadcrumb.items}">
@@ -35,11 +42,13 @@
              <span itemprop="name">${navItem.title}</span>
          </a>
          <meta itemprop="position" content="${navItemList.count}" />
+         <sly data-sly-test.lastItem="${breadcrumb.items.size == navItemList.count?'true':'false'}" /> 
+     </li>
+     <li data-sly-test="${lastItem && properties.showSelectorAsLeaf}" class="cmp-breadcrumb__item cmp-breadcrumb__item--active"
+        aria-current="page" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <span itemprop="name">${request.requestPathInfo.selectors[1]}</span>
+        <meta itemprop="position" content="${navItemList.count}" />
      </li>
  </ol>
 </nav>
-<!--
-    Show Leaf: ${properties.showSelectorAsLeaf}
-    Selector Value: <div data-sly-test="${properties.showSelectorAsLeaf == 'true'}">${request.requestPathInfo.selectors[1]}</div>
--->
 <sly data-sly-call="${template.placeholder @ isEmpty=breadcrumb.items.size == 0, classAppend='cmp-breadcrumb'}"></sly>
