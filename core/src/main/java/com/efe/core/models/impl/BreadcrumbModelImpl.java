@@ -3,13 +3,14 @@ package com.efe.core.models.impl;
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.adobe.cq.wcm.core.components.models.Breadcrumb;
-import com.adobe.cq.wcm.core.components.models.Image;
 import com.adobe.cq.wcm.core.components.models.NavigationItem;
+import com.efe.core.models.BreadcrumbModel;
 
 import org.apache.sling.models.annotations.*;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.models.annotations.Model;
@@ -19,11 +20,11 @@ import org.apache.sling.models.annotations.via.ResourceSuperType;
 
 @Model(
     adaptables = SlingHttpServletRequest.class,
-    adapters = { BreadcrumbModelImpl.class,ComponentExporter.class},
+    adapters = { BreadcrumbModel.class,ComponentExporter.class},
     resourceType = BreadcrumbModelImpl.RESOURCE_TYPE,
     defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL
 )
-public class BreadcrumbModelImpl {
+public class BreadcrumbModelImpl implements BreadcrumbModel {
 
         // points to the the component resource path in ui.apps
         static final String RESOURCE_TYPE = "efe/components/breadcrumb";
@@ -38,16 +39,15 @@ public class BreadcrumbModelImpl {
         @Via(type = ResourceSuperType.class)
         private Breadcrumb breadcrumb;
     
-        // method required by `ComponentExporter` interface
-        // exposes a JSON property named `:type` with a value of `wknd-spa-react/components/banner`
-        // required to map the JSON export to the SPA component props via the `MapTo`
-        @Override
         public String getExportedType() {
             return BreadcrumbModelImpl.RESOURCE_TYPE;
         }
 
-        @Override
         public Collection<NavigationItem> getItems() {
             return breadcrumb.getItems();
+        }
+
+        public List<NavigationItem> createItemsWithSelector() {
+            return null;
         }
 }
