@@ -1,6 +1,6 @@
 .cmp-list--column {
     &.cmp-list--tight {
-        .cmp-teaser--thumbnail {
+        .teaser {
             margin-bottom: 8px;
         }
         .cmp-list {
@@ -9,7 +9,7 @@
     }
 
     &.cmp-list--moderate {
-        .cmp-teaser--thumbnail {
+        .teaser {
             margin-bottom: 24px;
         }
         .cmp-list {
@@ -18,7 +18,7 @@
     }
 
     &.cmp-list--loose {
-        .cmp-teaser--thumbnail {
+        .teaser {
             margin-bottom: 48px;
         }
         .cmp-list {

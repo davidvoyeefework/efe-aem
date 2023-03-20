@@ -12,7 +12,7 @@
         @include media('>tablet', '<desktop') {
             column-count: 3;
         }
-        .cmp-teaser--thumbnail {
+        .teaser {
             break-inside: avoid;
         }
         .cmp-list__item {

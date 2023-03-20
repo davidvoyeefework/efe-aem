@@ -1,24 +1,16 @@
 import HandleBars from "handlebars/runtime";
-import List from "../list.hbs";
-import ListWithTeaser from "../list-with-teaser.hbs";
+import ServiceButtonList from "../service-btn-list.hbs";
 
-HandleBars.registerPartial("List", List);
-HandleBars.registerPartial("ListWithTeaser", ListWithTeaser);
+HandleBars.registerPartial("ServiceButtonList", ServiceButtonList);
 
 export default {
     title: "Core Components/List",
 };
 
-const FooterList = ({ ...args }) => List({ ...args });
-export const footer = FooterList.bind({});
-footer.args = {
-    variation: "footer",
-};
+const TemplateServiceButtonList = args => ServiceButtonList({ ...args });
+export const serviceButtonList = TemplateServiceButtonList.bind({});
 
-const TemplateList = (args) => ListWithTeaser({ ...args });
-export const listLayout = TemplateList.bind({});
-
-listLayout.argTypes = {
+serviceButtonList.argTypes = {
     gap: {
         control: "radio",
         options: ["tight", "moderate", "loose"],
@@ -40,7 +32,7 @@ listLayout.argTypes = {
     }
 };
 
-listLayout.args = {
+serviceButtonList.args = {
     variation: "horizontal",
     gap: "tight",
     alignment: "left-align",
