@@ -3,7 +3,7 @@ import FooterLinkedButton from "../button-linked.hbs";
 Handlebars.registerPartial("FooterButton", FooterLinkedButton);
 // More on default export: https://storybook.js.org/docs/html/writing-stories/introduction#default-export
 export default {
-  title: "Core Components/Links",
+  title: "Core Components/Buttons",
   // More on argTypes: https://storybook.js.org/docs/html/api/argtypes
   argTypes: {
     text: {

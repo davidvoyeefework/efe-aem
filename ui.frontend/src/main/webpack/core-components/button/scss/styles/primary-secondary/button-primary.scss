@@ -1,0 +1,33 @@
+.cmp-button--button-primary {
+    transition: $std-transition;
+    button {
+        @include cta-primary;
+    }
+
+    &.cmp-button--center {
+        button {
+            margin: auto;
+            text-align: center;
+        }
+    }
+
+    &.cmp-button--right{
+        @include flexbox(
+            $justify-content: end
+        )
+    }
+
+    &.cmp-button--disabled {
+        button {
+            transition: $std-transition;
+            background-color: $efe-red-50-percent;
+        }
+    }
+
+    &.cmp-button--hover {
+        button {
+            transition: $std-transition;
+            background-color: $efe-red-hover;
+        }
+    }
+}

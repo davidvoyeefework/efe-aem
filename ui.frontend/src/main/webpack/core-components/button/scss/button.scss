@@ -1,8 +1,12 @@
 @import './styles/icon';
 
-//CTAS
-@import './styles/cta/primary-cta';
-@import './styles/cta/secondary-cta';
+//PRIMARY & SECONDARY LINKS/BUTTONS
+@import './styles/primary-secondary/button-primary';
+@import './styles/primary-secondary/button-secondary';
+@import './styles/primary-secondary/link-primary';
+@import './styles/primary-secondary/link-secondary';
+@import './styles/primary-secondary/icon-button';
+
 
 //LINKS
 @import './styles/links/primary-nav-link';

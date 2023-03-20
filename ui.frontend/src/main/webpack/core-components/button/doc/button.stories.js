@@ -10,7 +10,7 @@ export default {
       control: { type: "text" },
     },
     variant: {
-      options: ["cta-primary", "cta-secondary"],
+      options: ["button-primary", "button-secondary", "link-primary", "link-secondary", "icon-button"],
       control: { type: "radio" },
     },
     link: {
@@ -19,15 +19,25 @@ export default {
     position: {
       options: ["unset", "right", "center"],
       control: { type: "radio" },
+    },
+    buttonstate: {
+      options: ["default", "hover", "disabled"],
+      control: { type: "radio" },
+    }, 
+    texttransform: {
+      options: ["default", "sentence-case"],
+      control: { type: "radio" },
     }
-  },
+  }
 };
 
 const TemplatePrimary = ({ label, ...args }) => Button({ ...args });
-export const CallToActions = TemplatePrimary.bind();
-CallToActions.args = {
-  variant: "cta-primary",
+export const PrimarySecondary = TemplatePrimary.bind();
+PrimarySecondary.args = {
+  variant: "button-primary",
   link: "#",
   text: "connect with a planner",
-  position: "unset"
+  position: "unset",
+  buttonstate: "default",
+  texttransform: "default"
 }
