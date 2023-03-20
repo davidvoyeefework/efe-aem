@@ -19,6 +19,11 @@ export default class Header {
   }
 }
 
+const resize = () => {
+  let ww = document.documentElement.clientWidth || document.body.clientWidth || window.innerWidth;
+  windowWidth = ww;
+}
+
 let windowWidth = document.documentElement.clientWidth || document.body.clientWidth || window.innerWidth;
 const NavBreakpoint = 1230;
 window.onresize = resize;
@@ -46,6 +51,7 @@ const clickFunction = (listenItem, elmToShow) => {
   });
 };
 
+
 const clickNav = (listenItem) => {
   let NavItems = document.querySelectorAll(listenItem);
 
@@ -53,7 +59,9 @@ const clickNav = (listenItem) => {
   NavItems.forEach(element => 
       element.addEventListener("click", function() {
         NavItems.forEach( el => {
+
           if(el.classList.contains("cmp-navigation__item--active")) {
+            console.log("This fires");
             el.classList.remove("cmp-navigation__item--active");
             let dropDownNav = el.children[2];
             dropDownNav.style.display = 'none';
@@ -72,28 +80,9 @@ const clickNav = (listenItem) => {
           dropDownNav.style.display = 'none';
         }
 
-        if (windowWidth <= NavBreakpoint) {
-              NavItems.forEach(el => 
-                element.addEventListener("click", function() {
-                  if(el.classList.contains("cmp-navigation__item--active")) {
-                    el.classList.remove("cmp-navigation__item--active");
-                    let dropDownNav = el.children[2];
-                    dropDownNav.style.display = 'none';
-                  }
-                  if(!el.classList.contains("cmp-navigation__item--active")) {
-                    el.style.display = "block";
-                  }
-              }));
-        }
-
       })
     );
 };
-
-const resize = () => {
-  let ww = document.documentElement.clientWidth || document.body.clientWidth || window.innerWidth;
-  windowWidth = ww;
-}
 
 const animateHamburger = (state) => {
   if (state == "showClose") {
@@ -116,6 +105,6 @@ const animateHamburger = (state) => {
     topBar.style.transform = 'rotate(0deg)';
     topBar.style.top = '0px';
     bottomBar.style.transform = 'rotate(0deg)';
-    bottomBar.style.top = '17px';
+    bottomBar.style.top = '20px';
   }
 }

@@ -7,6 +7,7 @@
         }
 
         .cmp-navigation__group{
+            padding-left: 1rem;
             h2 {
                 display: none;
             }
@@ -67,7 +68,7 @@
     }
 
     .cmp-navigation__item--level-1 {
-        margin-bottom: rem(20);
+        margin-bottom: rem(36);
         a {
             @include footer-01;
         }
@@ -85,6 +86,7 @@
             }
 
             .cmp-navigation__group{
+                padding-left: 0;
 
                 .cmp-button--efe-red-primary {
                     margin-bottom: rem(0);
@@ -93,6 +95,10 @@
                 h2 {
                     display: block;
                 }
+                .cmp-navigation__item--level-1 {
+                    margin-bottom: rem(24);
+                }
+
 
                 .cmp-navigation-dropdown-grid--75-25-split {
                     margin-bottom: 0;
@@ -105,8 +111,8 @@
                     }
                 }
 
-
             .cmp-navigation-dropdown-grid--50-50-split {
+
                 > div {
                     &:last-of-type {
                         display: block;
@@ -126,7 +132,7 @@
                 right: 0;
                 width: 100%;
                 .cmp-navigation-dropdown-grid--4col {
-                    padding-top: 1.5rem;
+                    padding-top: rem(20) !important;
                     @include grid(
                         $template-columns: 1fr 1fr 1fr 1fr,
                         $gap: rem(60)
@@ -153,7 +159,7 @@
 
 
                 &:last-of-type {
-                    margin-bottom: rem(22);
+                    margin-bottom: 0;
                 }
                 };
 
