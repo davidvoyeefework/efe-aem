@@ -2,6 +2,6 @@
 <workspaceFilter version="1.0">
     <filter root="/conf/efe" mode="update"/>
     <filter root="/content/efe" mode="merge"/>
-    <filter root="/content/dam/efe/asset.jpg" mode="merge"/>
+    <filter root="/content/dam/efe" mode="merge"/>
     <filter root="/content/experience-fragments/efe" mode="merge"/>
 </workspaceFilter>
