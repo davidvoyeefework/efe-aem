@@ -48,7 +48,7 @@
      <li data-sly-test="${lastItem && properties.showSelectorAsLeaf && leafitem.selector}" class="cmp-breadcrumb__item cmp-breadcrumb__item--active"
         aria-current="page" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
         <span itemprop="name">${leafitem.selector}</span>
-        <meta itemprop="position" content="${navItemList.count}" />
+        <meta data-sly-use.leafitem="${'breadcrumb.js' @ count=navItemList.count}" itemprop="position" content="${leafitem.count}" />
      </li>
  </ol>
 </nav>
