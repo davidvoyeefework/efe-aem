@@ -85,6 +85,13 @@
                             <filter>true</filter>
                             <isAllVersionsFilter>true</isAllVersionsFilter>
                         </embedded>
+                        <!-- Workfront Tools -->
+                        <embedded>
+                            <groupId>digital.hoodoo</groupId>
+                            <artifactId>workfront-tools.ui.apps</artifactId>
+                            <type>zip</type>
+                            <target>/apps/efe-vendor-packages/container/install</target>
+                        </embedded>
                     </embeddeds>
                 </configuration>
             </plugin>
@@ -211,6 +218,15 @@
             <artifactId>acs-aem-commons-content</artifactId>
             <version>${acs.commons.version}</version>
             <type>zip</type>
+        </dependency>
+
+        <!-- workfront dependency -->
+        <dependency>
+            <groupId>digital.hoodoo</groupId>
+            <artifactId>workfront-tools.ui.apps</artifactId>
+            <type>zip</type>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/../ui.apps/src/main/resources/workfront-tools.ui.apps.zip</systemPath>
         </dependency>
 
     </dependencies>

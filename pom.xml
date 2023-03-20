@@ -1098,7 +1098,17 @@ Bundle-DocURL:
         <scope>test</scope>
                     
       </dependency>
-              
+
+        <!-- For workfront integration -->
+      <dependency>
+          <groupId>digital.hoodoo</groupId>
+          <artifactId>workfront-tools.ui.apps</artifactId>
+          <type>zip</type>
+          <version>1.9.8</version>
+          <scope>system</scope>
+          <systemPath>${project.basedir}/ui.apps/src/main/resources/workfront-tools.ui.apps.zip</systemPath>
+      </dependency> 
+                   
     </dependencies>
         
   </dependencyManagement>
