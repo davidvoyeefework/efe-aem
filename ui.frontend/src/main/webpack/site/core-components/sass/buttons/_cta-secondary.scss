@@ -1,6 +1,6 @@
 @mixin cta-secondary {
     @include button;
-    padding: rem(7) rem(26);
+    padding: rem(8) rem(28) rem(7);
     background: transparent;
     border-radius: 3px;
     border: 1px solid $efe-gray-blue;
@@ -15,7 +15,7 @@
     );
 
     &:hover {
-        border: 1px solid $efe-gray-primary;
+        border: 2px solid $efe-gray-primary;
         box-sizing: border-box;
     }
 
