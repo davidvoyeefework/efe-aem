@@ -1,0 +1,44 @@
+{
+  "options": [
+    {
+      "value": "Corporate",
+      "text": "Corporate"
+    },
+    {
+      "value": "Employee Planning",
+      "text": "Employee Planning"
+    },
+    {
+      "value": "Institutional",
+      "text": "Institutional"
+    },
+    {
+      "value": "Wealth Planning",
+      "text": "Wealth Planning"
+    },
+    {
+      "value": "Workplace",
+      "text": "Workplace"
+    },
+    {
+      "value": "Enterprise PMO",
+      "text": "Enterprise PMO"
+    },
+    {
+      "value": "Human Resources",
+      "text": "Human Resources"
+    },
+    {
+      "value": "Investment Management",
+      "text": "Investment Management"
+    },
+    {
+      "value": "Legal and Compliance",
+      "text": "Legal and Compliance"
+    },
+    {
+      "value": "Small Business",
+      "text": "Small Business"
+    }
+  ]
+}
