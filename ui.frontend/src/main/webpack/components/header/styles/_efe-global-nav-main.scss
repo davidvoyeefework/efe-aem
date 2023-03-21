@@ -26,7 +26,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        padding: rem(30) rem(26) rem(0) rem(63);
+        padding: rem(48) rem(26) rem(0) rem(63);
         background: white;
         height: fit-content;
         border-top: 2px solid #d8d8d8;
@@ -73,7 +73,7 @@
             }
         }
 
-        .cmp-button--cta-primary {
+        .cmp-button--button-primary {
             margin-bottom: rem(22);
             width: 100vw;
             position: relative;
@@ -98,7 +98,7 @@
 
         @include flexbox(
             $flex-direction: column,
-            $gap: rem(40)
+            $gap: rem(60)
         );
 
     }
@@ -106,6 +106,7 @@
     li.cmp-navigation__item--level-0 {
         width: 100%;
         position: relative;
+        z-index: 9;
 
          > a {
             @include primary-nav-link;
@@ -158,8 +159,8 @@
     }
 
     #nav-hamburger {
-        width: 25px;
-        height: 20px;
+        width: 24px;
+        height: 22px;
         position: relative;
 
         svg {
@@ -175,11 +176,11 @@
         }
 
         #middle-hamburger-line {
-            top: 9px;
+            top: 10px;
         }
 
         #bottom-hamburger-line {
-            top: 17px;
+            top: 20px;
         }
     }
 
@@ -196,7 +197,7 @@
             padding: 0;
             border: unset;
 
-            .cmp-button--cta-primary {
+            .cmp-button--button-primary {
                 margin-bottom: 0;
                 width: unset;
                 position: unset;
@@ -228,6 +229,14 @@
                                 $gap: 40
                             );
 
+                            span {
+                                li{
+                                    &:last-child {
+                                        margin-bottom: 0;
+                                    }
+                                }
+                            }
+
                             li {
                                 position: unset;
                                 width: fit-content;
@@ -243,7 +252,7 @@
                                         $flex-direction: column,
                                     );
                                     .cmp-navigation-dropdown-grid {
-                                        padding: 1.5rem 0;
+                                        padding: 1.5rem 0 0;
                                         @include flexbox(
                                             $flex-direction: row
                                         );

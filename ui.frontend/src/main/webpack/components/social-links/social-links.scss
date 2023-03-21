@@ -16,7 +16,7 @@
 
 .cmp-social-links--mobile {
   .cmp-social-links__images {
-    @include flexbox($gap: rem(20), $flex-direction: column, $flex-wrap: true);
+    @include flexbox($gap: rem(20), $flex-direction: row, $flex-wrap: true);
 
     @media screen and (min-width: $lg) {
       display: none;
