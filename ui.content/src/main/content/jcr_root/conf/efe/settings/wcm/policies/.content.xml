@@ -684,6 +684,11 @@
                                     cq:styleId="secondary-cta"
                                     cq:styleLabel="Secondary CTA"
                                     jcr:primaryType="nt:unstructured"/>
+								<item2
+                                    cq:styleClasses="cmp-button--icon-button"
+                                    cq:styleId="icon"
+                                    cq:styleLabel="Icon "
+                                    jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item0>
                         <item1
@@ -813,6 +818,27 @@
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item7>
+						<item8
+                            cq:styleGroupLabel="States"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-button--default"
+                                    cq:styleId="default"
+                                    cq:styleLabel="Default"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-button--hover"
+                                    cq:styleId="hover"
+                                    cq:styleLabel="Hover"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item2
+                                    cq:styleClasses="cmp-button--disabled"
+                                    cq:styleId="disabled"
+                                    cq:styleLabel="Disabled"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item8>
                     </cq:styleGroups>
                 </policy>
             </button>
