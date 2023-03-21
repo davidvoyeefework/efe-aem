@@ -109,26 +109,25 @@
             transition: $std-transition;
             position: relative;
 
+            &:after {
+                content: "";
+                display: block;
+                position: absolute;
+                height: 3px;
+                bottom: -9px;
+                transition: width .33s ease-out,left .33s ease-out;
+                width: 0;
+                left: 50%;
+                background-color: $efe-red-primary;
+            }
 
-            // &:after {
-            //     content: "";
-            //     display: block;
-            //     position: absolute;
-            //     height: 3px;
-            //     bottom: -10px;
-            //     transition: width .33s ease-out,left .33s ease-out;
-            //     width: 0;
-            //     left: 50%;
-            //     background-color: $efe-red-primary;
-            // }
-
-            // &:hover {
-            //     &:after {
-            //         left: 0;
-            //         width: 100%;
-            //         height: 3px;
-            //     }
-            // }
+            &:hover {
+                &:after {
+                    left: 0;
+                    width: 100%;
+                    height: 3px;
+                }
+            }
 
         
         }

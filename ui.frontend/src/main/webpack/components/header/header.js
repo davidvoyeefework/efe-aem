@@ -57,75 +57,29 @@ const clickNav = (listenItem) => {
 
   NavItems.forEach( (element) => {
       element.addEventListener("click", function() {
-
         NavItems.forEach( (el) => {
         if(el.classList.contains("act")) {
-          el.classList.remove("act");
+          el.classList.toggle("act");
           let dropDownNav = el.children[2];
           let displayStyle = getComputedStyle(dropDownNav, "display", null ).getPropertyValue("display");
           if (displayStyle == "block") {
-            // console.log("This fires none");
-            dropDownNav.style.display = "none !important";
+            dropDownNav.style.display = "none";
           }
-            // const list = el.classList;
-            // list.remove("act"); // Seem to be able to add a class
-            // let dropDownNav = el.children[2];
-            // dropDownNav.style.display = "none !important";
-          }
-
-          // if(!el.classList.contains("act")) {
-          //   let dropDownNav = el.children[2];
-          //   dropDownNav.style.display = "block !important";
-          // }
-
+        }
       });
 
       if(!element.classList.contains("act")) {
         element.classList.toggle("act");
-
         let dropDownNav = element.children[2];
         let displayStyle = getComputedStyle(dropDownNav, "display", null ).getPropertyValue("display");
-        console.log(displayStyle);
         if (displayStyle === "none") {
-          console.log("This fires none");
           dropDownNav.style.display = "block";
         }
         if (displayStyle === "block") {
-          console.log("This fires block");
-          dropDownNav.style.display = "none !important;";
-
+          dropDownNav.style.display = "none";
         }
-      } else {
-        console.log("This block fires");
-        element.classList.remove("act");
-        let dropDownNav = element.children[2];
-        let displayStyle = getComputedStyle(dropDownNav, "display", null ).getPropertyValue("display");
-        console.log(displayStyle);
-        if (displayStyle === "none") {
-          
-          dropDownNav.style.display = "block";
-        }
-        if (displayStyle === "block") {
-        
-          dropDownNav.style.display = "none !important;";
-
-        }
-        // let dropDownNav = element.children[2];
-        // dropDownNav.style.display = "none !important";
       }
       
-
-
-
-      // let dropDownNav = element.children[2];
-      // let displayStyle = getComputedStyle(dropDownNav, "display", null ).getPropertyValue("display");
-      // if (displayStyle === "none") {
-      //   dropDownNav.style.display = 'block';
-      // }
-      // else if (displayStyle === "block") {
-      //   dropDownNav.style.display = 'none !important';
-      // }
-
       })
      });
 };
