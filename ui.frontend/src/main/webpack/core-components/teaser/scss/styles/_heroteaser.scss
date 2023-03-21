@@ -1,6 +1,5 @@
 .cmp-teaser--hero {
     .cmp-teaser {
-        align-items: baseline;
         @include media(">phone-sm") {
             display: flex;
             flex-direction: column-reverse;
