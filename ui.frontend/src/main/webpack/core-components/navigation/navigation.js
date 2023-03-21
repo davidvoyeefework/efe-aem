@@ -23,7 +23,7 @@ jQuery(function ($) {
     var HEADER_CONTAINER_SELECTOR          = '.cmp-experiencefragment--header',
         FOOTER_CONTAINER_SELECTOR          = '.cmp-experiencefragment--footer',
         HEADER_NAVIGATION_SELECTOR         = '.cmp-navigation--header .cmp-navigation',
-        ROOT_LEVEL_NAVIGATION_SELECTOR     = '.cmp-navigation__item--level-0.cmp-navigation__item--active > .cmp-navigation__item-link',
+        ROOT_LEVEL_NAVIGATION_SELECTOR     = '.cmp-navigation__item--level-0.active > .cmp-navigation__item-link',
         LOGO_SELECTOR                      = '.cmp-image--logo .cmp-image__link',
         DATA_PROCESSED                     = 'data-processed';
 

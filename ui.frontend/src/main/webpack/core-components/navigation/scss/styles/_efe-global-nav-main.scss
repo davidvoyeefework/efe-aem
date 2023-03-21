@@ -74,7 +74,7 @@
         }
     }
 
-    @media screen and (min-width: 1230px ) {
+    @media screen and (min-width: 1290px ) {
         .cmp-navigation__group--level-0 {
             position: relative;
             @include flexbox(
@@ -191,8 +191,5 @@
                 @include primary-nav-link;
             }
         }
-
     }
-
-
 }

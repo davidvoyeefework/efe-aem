@@ -5,10 +5,6 @@
         display: none;
     }
 
-    #nav-list-cta-group {
-        display: none;
-    }
-
     .cmp-container--26 {
         padding: rem(26) rem(26) rem(20);
         @include flexbox(
@@ -113,25 +109,28 @@
             transition: $std-transition;
             position: relative;
 
-            &:after {
-                content: "";
-                display: block;
-                position: absolute;
-                height: 3px;
-                bottom: -10px;
-                transition: width .33s ease-out,left .33s ease-out;
-                width: 0;
-                left: 50%;
-                background-color: $efe-red-primary;
-            }
 
-            &:hover {
-                &:after {
-                    left: 0;
-                    width: 100%;
-                    height: 3px;
-                }
-            }
+            // &:after {
+            //     content: "";
+            //     display: block;
+            //     position: absolute;
+            //     height: 3px;
+            //     bottom: -10px;
+            //     transition: width .33s ease-out,left .33s ease-out;
+            //     width: 0;
+            //     left: 50%;
+            //     background-color: $efe-red-primary;
+            // }
+
+            // &:hover {
+            //     &:after {
+            //         left: 0;
+            //         width: 100%;
+            //         height: 3px;
+            //     }
+            // }
+
+        
         }
 
         #nav-arrow {
@@ -141,7 +140,7 @@
             width: fit-content;
         }
 
-        &.cmp-navigation__item--active {
+        &.act {
            > a {
                 text-decoration: underline rem(3) solid $efe-red-primary;
                 text-underline-offset: rem(10);
@@ -185,14 +184,14 @@
     }
 
 
-    @media screen and (min-width: 1230px) {
+    @media screen and (min-width: 1290px) {
 
         #nav-hamburger, #nav-arrow {
             display: none;
         }
 
         #nav-list-cta-group {
-            display: block;
+            display: block !important;
             position: unset;
             padding: 0;
             border: unset;
