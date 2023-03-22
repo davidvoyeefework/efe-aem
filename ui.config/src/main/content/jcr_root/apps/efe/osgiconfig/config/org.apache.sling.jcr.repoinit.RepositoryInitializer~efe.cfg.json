@@ -2,6 +2,7 @@
     "scripts": [
         "create path (sling:OrderedFolder) /content/dam/efe",
         "create path (nt:unstructured) /content/dam/efe/jcr:content",
-        "set properties on /content/dam/efe/jcr:content\n  set cq:conf{String} to /conf/efe\n  set jcr:title{String} to \"EFE\"\nend"
+        "set properties on /content/dam/efe/jcr:content\n  set cq:conf{String} to /conf/efe\n  set jcr:title{String} to \"EFE\"\nend",
+		"register namespace (efe) https://www.edelmanfinancialengines.com"
     ]
 }

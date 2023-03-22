@@ -6,5 +6,4 @@
     <filter root="/content/efe" mode="merge"/>
     <filter root="/content/dam/efe" mode="merge"/>
     <filter root="/content/experience-fragments/efe" mode="merge"/>
-	<filter root="/oak:index/damAssetLucene-efe-custom-1"/>
 </workspaceFilter>

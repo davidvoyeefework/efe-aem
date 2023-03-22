@@ -4,4 +4,7 @@
     <filter root="/apps/efe/components"/>
     <filter root="/apps/efe/i18n"/>
 	<filter root="/apps/efe/search"/>
+	<filter root="/oak:index">
+		<include pattern="/oak:index/damAssetLucene-.*-custom-.*(/.*)?"/>
+    </filter>
 </workspaceFilter>
