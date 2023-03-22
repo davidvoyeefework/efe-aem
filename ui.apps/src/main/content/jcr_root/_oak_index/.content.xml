@@ -2,13 +2,12 @@
 <jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:dam="http://www.day.com/dam/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:oak="http://jackrabbit.apache.org/oak/ns/1.0" xmlns:rep="internal"
     jcr:mixinTypes="[rep:AccessControllable]"
     jcr:primaryType="nt:unstructured">
-    <damAssetLucene-efe-custom-1
+    <damAssetLucene-8-custom-1
         jcr:primaryType="oak:QueryIndexDefinition"
         async="[async,nrt]"
         compatVersion="{Long}2"
         evaluatePathRestrictions="{Boolean}true"
         includedPaths="[/content/dam/efe]"
-        maxFieldLength="{Long}100000"
         reindex="{Boolean}false"
         tags="[visualSimilaritySearch]"
         type="lucene">
@@ -311,5 +310,10 @@
                 </properties>
             </dam:Asset>
         </indexRules>
-    </damAssetLucene-efe-custom-1>
+		<tika jcr:primaryType="nt:unstructured">
+			<config.xml jcr:primaryType="nt:file" >
+				<jcr:content jcr:primaryType="nt:unstructured" />
+			</config.xml>
+		</tika>
+    </damAssetLucene-8-custom-1>
 </jcr:root>
