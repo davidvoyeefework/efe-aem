@@ -38,7 +38,7 @@
 
         &.efe-nav-header { 
             min-height: rem(34);
-            padding: rem(7) rem(26);
+            padding: rem(7) rem(24);
             @include flexbox(
                 $justify-content: end,
                 $gap: rem(30),

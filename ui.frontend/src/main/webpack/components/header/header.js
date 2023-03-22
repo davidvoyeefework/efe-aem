@@ -50,25 +50,58 @@ const clickFunction = (listenItem, elmToShow) => {
   });
 };
 
+const test = () => {
+  const NavItems = document.querySelectorAll(".act");
+  NavItems.forEach( (element) => {
+
+    console.log(element);
+    element.classList.remove("act");
+    // console.log(element.classList[1]);
+  });
+
+  // for (let item of NavItems) {
+  //   // console.log(item);
+
+  //   if (item.classList.contains("act")) {
+  //     item.classList.add("add");
+  //     item.classList.remove("act");
+  //   }
+  // }
+
+  // var list = document.querySelectorAll(".cmp-navigation__item--level-0.act");
+  // // console.log(list[0]);
+  // // list[0].className = "zoro";
+
+  // for (let i = 0; i < NavItems.length; i++) {
+  //   // console.log(NavItems[i]);
+  //   // NavItems[i].classList.toggle("act");
+  // }
+
+
+
+};
+
 
 const clickNav = (listenItem) => {
-  const topList = document.querySelectorAll(listenItem);
-  const NavItems = Array.prototype.slice.call(topList);
-
+  const NavItems = document.querySelectorAll(listenItem);
+ 
   NavItems.forEach( (element) => {
       element.addEventListener("click", function() {
         NavItems.forEach( (el) => {
         if(el.classList.contains("act")) {
-          el.classList.toggle("act");
+          test();
+          el.classList.remove("act");
           let dropDownNav = el.children[2];
           let displayStyle = getComputedStyle(dropDownNav, "display", null ).getPropertyValue("display");
           if (displayStyle == "block") {
             dropDownNav.style.display = "none";
           }
         }
+
       });
 
       if(!element.classList.contains("act")) {
+       
         element.classList.toggle("act");
         let dropDownNav = element.children[2];
         let displayStyle = getComputedStyle(dropDownNav, "display", null ).getPropertyValue("display");
@@ -79,6 +112,9 @@ const clickNav = (listenItem) => {
           dropDownNav.style.display = "none";
         }
       }
+
+
+
       
       })
      });
@@ -92,8 +128,12 @@ const animateHamburger = (state) => {
     let bottomBar = document.getElementById("bottom-hamburger-line");
     middleBar.style.opacity = 0;
     topBar.style.transform = 'rotate(225deg)';
+    topBar.style["-webkit-transform"] = 'rotate(225deg)';
+    topBar.style["-ms-transform"] = 'rotate(225deg)';
     topBar.style.top = '9px';
     bottomBar.style.transform = 'rotate(-225deg)';
+    bottomBar.style["-webkit-transform"] = 'rotate(-225deg)';
+    bottomBar.style["-ms-transform"] = 'rotate(-225deg)';
     bottomBar.style.top = '9px';
   }
 
