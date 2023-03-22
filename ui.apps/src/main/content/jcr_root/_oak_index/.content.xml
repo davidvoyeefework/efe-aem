@@ -8,7 +8,7 @@
         compatVersion="{Long}2"
         evaluatePathRestrictions="{Boolean}true"
         includedPaths="[/content/dam/efe]"
-        reindex="{Boolean}false"
+		excludedPaths="[/var,/etc/replication,/etc/workflow/instances,/jcr:system]"
         tags="[visualSimilaritySearch]"
         type="lucene">
         <aggregates jcr:primaryType="nt:unstructured">
