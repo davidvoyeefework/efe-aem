@@ -1,16 +1,16 @@
-.cmp-content-collage {
+.cmp-image-collage {
     .cmp-collage {
         display: grid;
         grid-template-areas:
-            "content1 content2"
-            "content1 content3";
+            "image1 image2"
+            "image1 image3";
         grid-template-columns: repeat(2, 1fr);
         grid-auto-rows: auto;
         @include media('<=tablet') {
             min-height: 370px;
         }
         &__item1 {
-            grid-area: content1;
+            grid-area: image1;
         }
         li {
             .image {
@@ -27,7 +27,7 @@
             }
         }
     }
-    &.cmp-content-collage--border-top-left {
+    &.cmp-image-collage--border-top-left {
         .cmp-collage {
             &__item1 {
                 img {
@@ -38,16 +38,16 @@
     }
 }
 
-.cmp-content-collage--right-large {
+.cmp-image-collage--right-large {
     .cmp-collage {
         grid-template-areas:
-        "content1 content2"
-        "content3 content2";
+        "image1 image2"
+        "image3 image2";
         &__item2 {
-            grid-area: content2;
+            grid-area: image2;
         }
     }
-    &.cmp-content-collage--border-top-left {
+    &.cmp-image-collage--border-top-left {
         .cmp-collage {
             &__item1 {
                 img {
@@ -56,7 +56,7 @@
             }
         }
     }
-    &.cmp-content-collage--border-multiple {
+    &.cmp-image-collage--border-multiple {
         .cmp-collage {
             &__item1 {
                 img {
@@ -71,4 +71,3 @@
         }
     }
 }
-
