@@ -49,73 +49,32 @@ const clickFunction = (listenItem, elmToShow) => {
     showElement(elmToShow);
   });
 };
-
-const test = () => {
-  const NavItems = document.querySelectorAll(".act");
-  NavItems.forEach( (element) => {
-
-    console.log(element);
-    element.classList.remove("act");
-    // console.log(element.classList[1]);
-  });
-
-  // for (let item of NavItems) {
-  //   // console.log(item);
-
-  //   if (item.classList.contains("act")) {
-  //     item.classList.add("add");
-  //     item.classList.remove("act");
-  //   }
-  // }
-
-  // var list = document.querySelectorAll(".cmp-navigation__item--level-0.act");
-  // // console.log(list[0]);
-  // // list[0].className = "zoro";
-
-  // for (let i = 0; i < NavItems.length; i++) {
-  //   // console.log(NavItems[i]);
-  //   // NavItems[i].classList.toggle("act");
-  // }
-
-
-
-};
-
-
 const clickNav = (listenItem) => {
   const NavItems = document.querySelectorAll(listenItem);
  
   NavItems.forEach( (element) => {
       element.addEventListener("click", function() {
-        NavItems.forEach( (el) => {
-        if(el.classList.contains("act")) {
-          test();
-          el.classList.remove("act");
-          let dropDownNav = el.children[2];
+        if(!element.classList.contains("act")) {
+       
+          element.classList.toggle("act");
+          let dropDownNav = element.children[2];
           let displayStyle = getComputedStyle(dropDownNav, "display", null ).getPropertyValue("display");
-          if (displayStyle == "block") {
+          if (displayStyle === "none") {
+            dropDownNav.style.display = "block";
+          }
+          if (displayStyle === "block") {
             dropDownNav.style.display = "none";
           }
         }
-
-      });
-
-      if(!element.classList.contains("act")) {
-       
-        element.classList.toggle("act");
-        let dropDownNav = element.children[2];
-        let displayStyle = getComputedStyle(dropDownNav, "display", null ).getPropertyValue("display");
-        if (displayStyle === "none") {
-          dropDownNav.style.display = "block";
+        else {
+           
+              element.classList.remove("act");
+              let dropDownNav = element.children[2];
+              let displayStyle = getComputedStyle(dropDownNav, "display", null ).getPropertyValue("display");
+              if (displayStyle == "block") {
+                dropDownNav.style.display = "none";
+              }
         }
-        if (displayStyle === "block") {
-          dropDownNav.style.display = "none";
-        }
-      }
-
-
-
-      
       })
      });
 };
