@@ -5,8 +5,8 @@
         cq:lastModified="{Date}2019-12-02T17:37:24.544+01:00"
         cq:lastModifiedBy="admin"
         cq:templateType="/conf/efe/settings/wcm/template-types/page"
-        jcr:description="Content Template full header and footer"
+        jcr:description="Content template full header and footer"
         jcr:primaryType="cq:PageContent"
-        jcr:title="Content Template full header and footer"
+        jcr:title="Content template full header and footer"
         status="enabled"/>
 </jcr:root>
