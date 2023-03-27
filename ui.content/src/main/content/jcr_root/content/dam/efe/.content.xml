@@ -5,7 +5,8 @@
         cq:conf="/conf/efe"
         dam:noThumbnail="{Boolean}true"
         jcr:primaryType="nt:unstructured"
-        jcr:title="EFE">
+        jcr:title="EFE"
+        metadataSchema="/conf/global/settings/dam/adminui-extension/metadataschema/EFE-GlobalMetadataSchema">
         <folderThumbnail/>
     </jcr:content>
     <corporate-brand/>
