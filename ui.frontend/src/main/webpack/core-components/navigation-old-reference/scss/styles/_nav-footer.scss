@@ -29,7 +29,7 @@
         }
     }
 
-    .cmp-navigation__item--level-1.cmp-navigation__item--active .cmp-navigation__item-link {
+    .cmp-navigation__item--level-1.act .cmp-navigation__item-link {
         background-color: unset;
         text-decoration: underline;
         color: $gray-lighter;

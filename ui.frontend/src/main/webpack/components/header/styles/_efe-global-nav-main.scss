@@ -5,12 +5,8 @@
         display: none;
     }
 
-    #nav-list-cta-group {
-        display: none;
-    }
-
     .cmp-container--26 {
-        padding: rem(26) rem(26) rem(20);
+        padding: rem(24) rem(24) rem(20);
         @include flexbox(
             $gap: rem(40),
             $justify-content: space-between,
@@ -26,7 +22,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        padding: rem(48) rem(26) rem(0) rem(63);
+        padding: rem(48) rem(24) rem(0) rem(63);
         background: white;
         height: fit-content;
         border-top: 2px solid #d8d8d8;
@@ -38,7 +34,7 @@
             display: block;
 
             .efe-nav-search {
-                padding: rem(48) rem(26) rem(26) rem(26);
+                padding: rem(48) rem(24) rem(24) rem(24);
                 position: relative;
                 @include flexbox(
                     $align-items: start
@@ -118,7 +114,7 @@
                 display: block;
                 position: absolute;
                 height: 3px;
-                bottom: -10px;
+                bottom: -9px;
                 transition: width .33s ease-out,left .33s ease-out;
                 width: 0;
                 left: 50%;
@@ -132,6 +128,8 @@
                     height: 3px;
                 }
             }
+
+        
         }
 
         #nav-arrow {
@@ -141,7 +139,7 @@
             width: fit-content;
         }
 
-        &.cmp-navigation__item--active {
+        &.act {
            > a {
                 text-decoration: underline rem(3) solid $efe-red-primary;
                 text-underline-offset: rem(10);
@@ -162,6 +160,7 @@
         width: 24px;
         height: 22px;
         position: relative;
+        left: 2px;
 
         svg {
             position: absolute;
@@ -185,14 +184,14 @@
     }
 
 
-    @media screen and (min-width: 1230px) {
+    @media screen and (min-width: 1290px) {
 
         #nav-hamburger, #nav-arrow {
             display: none;
         }
 
         #nav-list-cta-group {
-            display: block;
+            display: block !important;
             position: unset;
             padding: 0;
             border: unset;
@@ -242,7 +241,7 @@
                                 width: fit-content;
 
                             .cmp-navigation-dropdown {
-                                padding: rem(26) rem(40) rem(48) rem(86);
+                                padding: rem(24) rem(40) rem(48) rem(86);
                                 position: absolute;
                                 top: rem(102);
                                 background: white;
@@ -276,7 +275,7 @@
 
         .cmp-container--26 {
             position: relative;
-            padding: rem(26) rem(48);
+            padding: rem(24) rem(48);
             @include flexbox(
                 $align-items: end
             );

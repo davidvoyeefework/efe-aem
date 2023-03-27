@@ -55,7 +55,7 @@ header.experiencefragment {
     .cmp-navigation__item-link {
         display: block;
     }
-    .cmp-navigation__item--active > .cmp-navigation__item-link {
+    .active > .cmp-navigation__item-link {
         font-weight: bold;
     }
 #end

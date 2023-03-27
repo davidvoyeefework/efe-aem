@@ -18,7 +18,7 @@
 
             .cmp-navigation-dropdown-grid--75-25-split {
                 .cmp-navigation__item--level-1 {
-                    margin-left: rem(26);
+                    margin-left: rem(24);
                 }
 
                 &:last-of-type {
@@ -74,7 +74,7 @@
         }
     }
 
-    @media screen and (min-width: 1230px ) {
+    @media screen and (min-width: 1290px ) {
         .cmp-navigation__group--level-0 {
             position: relative;
             @include flexbox(
@@ -191,8 +191,5 @@
                 @include primary-nav-link;
             }
         }
-
     }
-
-
 }
