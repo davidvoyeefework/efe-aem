@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0"
     jcr:primaryType="sling:OrderedFolder"
-    jcr:title="EFE-GlobalMetadataSchema">
+    jcr:title="efe-globalmetadataschema">
     <image/>
     <application/>
     <video/>
@@ -1891,7 +1891,7 @@
                                     sling:resourceType="dam/gui/components/admin/schemafield"
                                     emptyText="Select Option"
                                     fieldLabel="Corporate Brand"
-                                    jsonPath="/apps/efe/utils/dropdown/corporate_brand.json"
+                                    jsonPath="/conf/efe/settings/dam/utils/dropdown/corporate_brand.json"
                                     name="./jcr:content/metadata/efe:corporateBrand"
                                     resourceType="dam/gui/coral/components/admin/schemaforms/formbuilder/formfields/v2/metadataselect">
                                     <granite:data
@@ -1906,7 +1906,7 @@
                                     sling:resourceType="dam/gui/components/admin/schemafield"
                                     emptyText="Select Option"
                                     fieldLabel="Portfolio"
-                                    jsonPath="/apps/efe/utils/dropdown/portfolio.json"
+                                    jsonPath="/conf/efe/settings/dam/utils/dropdown/portfolio.json"
                                     name="./jcr:content/metadata/efe:portfolio"
                                     resourceType="dam/gui/coral/components/admin/schemaforms/formbuilder/formfields/v2/metadataselect">
                                     <granite:data
@@ -1979,7 +1979,7 @@
                                     sling:resourceType="dam/gui/components/admin/schemafield"
                                     emptyText="Select Option"
                                     fieldLabel="Record Keeper"
-                                    jsonPath="/apps/efe/utils/dropdown/record_keeper.json"
+                                    jsonPath="/conf/efe/settings/dam/utils/dropdown/record_keeper.json"
                                     multiple="true"
                                     name="./jcr:content/metadata/efe:recordKeeper"
                                     resourceType="dam/gui/coral/components/admin/schemaforms/formbuilder/formfields/v2/metadataselect">
@@ -1995,7 +1995,7 @@
                                     sling:resourceType="dam/gui/components/admin/schemafield"
                                     emptyText="Select Option"
                                     fieldLabel="Employer"
-                                    jsonPath="/apps/efe/utils/dropdown/employer.json"
+                                    jsonPath="/conf/efe/settings/dam/utils/dropdown/employer.json"
                                     multiple="true"
                                     name="./jcr:content/metadata/efe:provider"
                                     resourceType="dam/gui/coral/components/admin/schemaforms/formbuilder/formfields/v2/metadataselect">

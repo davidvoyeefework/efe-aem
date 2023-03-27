@@ -6,7 +6,8 @@
         dam:noThumbnail="{Boolean}true"
         jcr:primaryType="nt:unstructured"
         jcr:title="EFE"
-        metadataSchema="/conf/global/settings/dam/adminui-extension/metadataschema/EFE-GlobalMetadataSchema">
+        metadataProfile="/conf/global/settings/dam/adminui-extension/metadataprofile/efe-default-metadata"
+        metadataSchema="/conf/global/settings/dam/adminui-extension/metadataschema/efe-globalmetadataschema">
         <folderThumbnail/>
     </jcr:content>
     <corporate-brand/>
