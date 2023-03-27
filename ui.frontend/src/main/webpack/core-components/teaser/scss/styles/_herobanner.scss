@@ -21,7 +21,6 @@
         }
         &__title {
             @include subhead-01;
-            color: $efe-black-color;
             margin: rem(20) rem(0) rem(10) 0;
             @include media('<tablet') {
                 margin: 0 0 rem(10) 0;
