@@ -1,8 +1,8 @@
 <footer id="efe-footer" class="footer {{#if variation}}footer--{{variation}}{{/if}}" data-component="footer">
     <div class="container responsivegrid">
-        <div id="container-99d779a4e6" class="cmp-container cmp-container--bg-efe-gray-light cmp-container--unset cmp-container--unset">
+        <div id="container-99d779a4e6" class="cmp-container cmp-container--bg-efe-gray-light">
             <div class="container responsivegrid">
-                <div id="container-99d779a4e6" class="cmp-container cmp-container--bg-efe-gray-light cmp-container--1920 cmp-container--unset">
+                <div id="container-99d779a4e6" class="cmp-container cmp-container--bg-efe-gray-light cmp-container--1920 cmp-container--width-1920  cmp-container--unset">
           
                     <span id="logo-social-container">
                         {{>EfeLogo
@@ -12,10 +12,8 @@
                             size="small"
                             titleText="Edelman Financial Engines Homepage"
                             id="efe-logo"
-                        }}
-
-												{{>SocialLinks }}
-												</span>
+                        }}							
+					</span>
 
                     <div id="list-links">
 
@@ -182,7 +180,7 @@
                                 class="list-title"
                             }}          
                             
-                            <div class="list">
+                            <div class="list list-last">
                                 <ul id="list-c4be94eba2" data-cmp-data-layer="{&quot;list-c4be94eba2&quot;:{&quot;@type&quot;:&quot;core-components-examples/components/list&quot;}}" class="cmp-list">
 
                                     <li class="cmp-list__item" data-cmp-data-layer="{&quot;list-c4be94eba2-item-a14d1c5a62&quot;:{&quot;@type&quot;:&quot;core-components-examples/components/list/item&quot;,&quot;repo:modifyDate&quot;:&quot;2022-03-08T10:11:57Z&quot;,&quot;dc:title&quot;:&quot;AEM Forms Container&quot;,&quot;xdm:linkURL&quot;:&quot;/content/core-components-examples/library/core-content/aemform.html&quot;}}">
@@ -258,9 +256,8 @@
                         </div>
                     </div>
 
-										{{>SocialLinksMobile variant="mobile"}}
+                    {{>SocialLinks }}
   
-
                     {{>Seperator
                     variant="primary"
                     color="efe-gray-blue"
