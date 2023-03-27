@@ -1,9 +1,15 @@
-.cmp-teaser--thumbnail {
-    .cmp-teaser {
-        display: flex;
+@mixin teaserThumbnail {
+    display: flex;
         flex-direction: column-reverse;
         @include media('<tablet') {
             flex-direction: row-reverse;
+        }
+}
+.cmp-teaser--thumbnail {
+    .cmp-teaser {
+        @include teaserThumbnail;
+        &__link {
+            @include teaserThumbnail;
         }
         &__content {
             @include media('<tablet') {
@@ -26,7 +32,12 @@
                 margin: 0 0 rem(10) 0;
             }
         }
+        &__title-link {
+            @include subhead-01;
+        }
         &__description {
+            @include caption;
+            color: $gray-new;
             p {
                 @include caption;
                 color: $gray-new
@@ -44,26 +55,30 @@
         }
     }
 }
+@mixin serviceButtonTeaser {
+    display: flex;
+    flex-direction: column-reverse;
+}
 .cmp-teaser--service-button {
     .cmp-teaser {
-        a {
-        display: flex;
-        flex-direction: column-reverse;
-        justify-content: center;
-        align-items: center;
-        min-width: rem(184);
-        max-width: rem(234);
-        border: rem(2) solid $efe-gray-mid-new;
-        border-radius: rem(3);
-        min-height: rem(133);
-        padding: rem(18) rem(42);
-        .cmp-teaser__title {
+        @include serviceButtonTeaser;
+        &__link {
+            @include serviceButtonTeaser;
+            justify-content: center;
+            align-items: center;
+            min-width: rem(184);
+            max-width: rem(234);
+            border: rem(2) solid $efe-gray-mid-new;
+            border-radius: rem(3);
+            min-height: rem(133);
+            padding: rem(18) rem(42);
+            &:hover {
+                background-color: $efe-gray-light;
+            }
+        }
+        &__title ,&__title-link {
             @include primary-nav-link;
             text-align: center;
-        }
-        &:hover {
-            background-color: $efe-gray-light;
-        }
         }
     }
 }

@@ -1,9 +1,15 @@
+@mixin teaserImageLeft {
+    display: flex;
+    flex-direction: row-reverse;
+    @include media("<tablet") {
+        flex-direction: column-reverse;
+    }
+}
 .cmp-teaser--image-left {
     .cmp-teaser {
-        display: flex;
-        flex-direction: row-reverse;
-        @include media("<tablet") {
-            flex-direction: column-reverse;
+       @include teaserImageLeft;
+        &__link {
+            @include teaserImageLeft;
         }
         &__content {
             @include media("<tablet") {
@@ -55,7 +61,11 @@
             margin-top: 0;
             margin-bottom: rem(24);
         }
+        &__title-link {
+            @include heading-04;
+        }
         &__description {
+            @include body-02;
             p {
                 @include body-02;
             }
