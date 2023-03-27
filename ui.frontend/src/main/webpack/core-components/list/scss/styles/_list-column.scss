@@ -15,6 +15,18 @@
         .teaser {
             break-inside: avoid;
         }
+        .cmp-teaser--thumbnail {
+            width: rem(260);
+            min-height: rem(353);
+            @include media('<tablet') {
+                width: auto;
+                min-height: auto;
+            }
+            .cmp-teaser__image img {
+                width: 100%;
+                height: auto;
+            }
+        }
         .cmp-list__item {
             break-inside: avoid;
             margin-bottom: unset;
