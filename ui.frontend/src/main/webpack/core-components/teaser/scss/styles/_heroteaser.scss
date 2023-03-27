@@ -1,8 +1,14 @@
+@mixin teaserHero {
+    @include media(">phone-sm") {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+}
 .cmp-teaser--hero {
     .cmp-teaser {
-        @include media(">phone-sm") {
-            display: flex;
-            flex-direction: column-reverse;
+       @include teaserHero;
+        &__link {
+            @include teaserHero;
         }
         &__image {
             .cmp-image__image {
@@ -20,6 +26,9 @@
                 position: absolute;
                 padding: rem(32px);
                 margin-left: rem(112);
+            }
+            @include media(">phone-sm") {
+                position: relative;
             }
             @include media(">=tablet") {
                 padding: rem(24);
@@ -40,7 +49,11 @@
                 @include buildFont(rem(48px), .08em);
             }
         }
+        &__title-link {
+            @include heading-01;
+        }
         &__description {
+            @include body-01;
             margin-bottom: rem(36);
             @include media(">=tablet") {
                 margin-bottom: rem(32);
@@ -68,6 +81,9 @@
                     position: absolute;
                     left: rem(25);
                     top: rem(30);
+                    @include media("<tablet") {
+                        top: rem(52);
+                    }
                } 
             }
             &__pretitle {
