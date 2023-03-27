@@ -8,8 +8,15 @@
         }
         .cmp-teaser--thumbnail {
             display: inline-block;
+            width: rem(260);
+            min-height: rem(353);
             @include media('<tablet') {
                 width: 100%;
+                min-height: auto;
+            }
+            .cmp-teaser__image img {
+                width: 100%;
+                height: auto;
             }
         }
     }
