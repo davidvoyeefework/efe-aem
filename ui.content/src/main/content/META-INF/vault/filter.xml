@@ -6,4 +6,5 @@
     <filter root="/content/efe" mode="merge"/>
     <filter root="/content/dam/efe" mode="merge"/>
     <filter root="/content/experience-fragments/efe" mode="merge"/>
+    <filter root="/conf/global/settings/dam/adminui-extension/metadataschema" mode="merge"/>
 </workspaceFilter>
