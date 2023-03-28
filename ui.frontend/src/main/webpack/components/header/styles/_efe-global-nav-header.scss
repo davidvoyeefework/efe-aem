@@ -10,6 +10,8 @@
     }
 
     .cmp-container--1920 {
+        max-width: 1920px;
+        margin: auto;
 
         &.efe-nav-header { 
             min-height: rem(60);
