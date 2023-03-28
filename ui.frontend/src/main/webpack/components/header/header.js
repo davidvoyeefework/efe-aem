@@ -56,6 +56,11 @@ const clickNav = (listenItem) => {
       element.addEventListener("click", function() {
         if(!element.classList.contains("act")) {
        
+          NavItems.forEach((element) => {
+            element.classList.remove("act");
+            let dropDownNav = element.children[2];
+            dropDownNav.style.display = "none";
+          })
           element.classList.toggle("act");
           let dropDownNav = element.children[2];
           let displayStyle = getComputedStyle(dropDownNav, "display", null ).getPropertyValue("display");
@@ -67,7 +72,6 @@ const clickNav = (listenItem) => {
           }
         }
         else {
-           
               element.classList.remove("act");
               let dropDownNav = element.children[2];
               let displayStyle = getComputedStyle(dropDownNav, "display", null ).getPropertyValue("display");
