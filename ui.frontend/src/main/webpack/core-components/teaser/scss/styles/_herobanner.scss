@@ -72,6 +72,7 @@
             border-radius: rem(3);
             min-height: rem(133);
             padding: rem(18) rem(42);
+            overflow: hidden;
             &:hover {
                 background-color: $efe-gray-light;
             }
@@ -80,20 +81,11 @@
             @include primary-nav-link;
             text-align: center;
         }
-    }
-}
-.cmp-teaser--image-bottom {
-    .cmp-teaser {
-        display: flex;
-        flex-direction: column;
-        &__content {
-            margin-bottom: rem(39px);
+        &__image {
+            .cmp-image__image {
+                width: rem(41.03);
+                height: rem(52.33);
+            }
         }
-        // &__action-container {
-        //     width: 100%;
-        //     .button {
-        //         justify-content: center;
-        //     }
-        // }
     }
 }
