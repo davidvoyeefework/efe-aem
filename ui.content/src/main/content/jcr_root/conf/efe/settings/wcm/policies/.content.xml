@@ -675,19 +675,29 @@
                             jcr:primaryType="nt:unstructured">
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
-                                    cq:styleClasses="cmp-button--cta-primary"
+                                    cq:styleClasses="cmp-button--button-primary"
                                     cq:styleId="primary-cta"
                                     cq:styleLabel="Primary CTA"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item1
-                                    cq:styleClasses="cmp-button--cta-secondary"
+                                    cq:styleClasses="cmp-button--button-secondary"
                                     cq:styleId="secondary-cta"
                                     cq:styleLabel="Secondary CTA"
                                     jcr:primaryType="nt:unstructured"/>
-								<item2
+                                <item2
+                                    cq:styleClasses="cmp-button--link-primary"
+                                    cq:styleId="primary-link"
+                                    cq:styleLabel="Primary Link"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item3
+                                    cq:styleClasses="cmp-button--button-secondary"
+                                    cq:styleId="secondary-link"
+                                    cq:styleLabel=" Secondary Link"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item4
                                     cq:styleClasses="cmp-button--icon-button"
                                     cq:styleId="icon"
-                                    cq:styleLabel="Icon "
+                                    cq:styleLabel="Icon"
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item0>
