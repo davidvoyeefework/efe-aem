@@ -19,7 +19,7 @@
             <corporatebrand
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="dam/gui/coral/components/admin/customsearch/searchpredicates/optionspredicate"
-                jsonpath="/apps/efe/search/facets/corporateBrand.json"
+                jsonpath="/conf/efe/settings/dam/utils/dropdown/corporate_brand.json"
                 listOrder="21"
                 metaType="listoptions"
                 name="jcr:content/metadata/efe:corporateBrand"
@@ -28,7 +28,7 @@
             <portfolio
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="dam/gui/coral/components/admin/customsearch/searchpredicates/optionspredicate"
-                jsonpath="/apps/efe/search/facets/portfolio.json"
+                jsonpath="/conf/efe/settings/dam/utils/dropdown/portfolio.json"
                 listOrder="22"
                 metaType="listoptions"
                 name="jcr:content/metadata/efe:portfolio"
@@ -37,7 +37,7 @@
             <recordkeeper
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="dam/gui/coral/components/admin/customsearch/searchpredicates/optionspredicate"
-                jsonpath="/apps/efe/search/facets/recordKeeper.json"
+                jsonpath="/conf/efe/settings/dam/utils/dropdown/record_keeper.json"
                 listOrder="23"
                 metaType="listoptions"
                 name="jcr:content/metadata/efe:recordKeeper"
@@ -46,7 +46,7 @@
             <employer
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="dam/gui/coral/components/admin/customsearch/searchpredicates/optionspredicate"
-                jsonpath="/apps/efe/search/facets/employer.json"
+                jsonpath="/conf/efe/settings/dam/utils/dropdown/employer.json"
                 listOrder="24"
                 metaType="listoptions"
                 name="jcr:content/metadata/efe:provider"
