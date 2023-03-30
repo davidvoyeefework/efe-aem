@@ -41,8 +41,9 @@
                             name="cardOrder"
                             renderReadOnly="false"
                             showEmptyInReadOnly="true"
-                            step="any"
-                            valueType="double">
+                            step="1"
+                            valueType="long"
+                            typeHint="long">
                             <granite:data jcr:primaryType="nt:unstructured"/>
                         </cardOrder>
                         <categoryCard
