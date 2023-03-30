@@ -633,33 +633,21 @@
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                     <cq:styleGroups jcr:primaryType="nt:unstructured">
                         <item0
-                            cq:styleGroupLabel="Spacing"
-                            cq:styleGroupMultiple="true"
-                            jcr:primaryType="nt:unstructured">
-                            <cq:styles jcr:primaryType="nt:unstructured">
-                                <item0
-                                    cq:styleClasses="cmp-separator--primary"
-                                    cq:styleId="primary"
-                                    cq:styleLabel="Primary"
-                                    jcr:primaryType="nt:unstructured"/>
-                            </cq:styles>
-                        </item0>
-                        <item1
                             cq:styleGroupLabel="Color"
                             jcr:primaryType="nt:unstructured">
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
-                                    cq:styleClasses="cmp-separator--efe-gray-blue"
+                                    cq:styleClasses="cmp-separator--primary cmp-separator--efe-gray-blue"
                                     cq:styleId="blue-gray"
                                     cq:styleLabel="Blue Gray"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item1
-                                    cq:styleClasses="cmp-separator--efe-gray-mid"
+                                    cq:styleClasses="cmp-separator--primary cmp-separator--efe-gray-mid"
                                     cq:styleId="mid-gray"
                                     cq:styleLabel="Mid Gray"
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
-                        </item1>
+                        </item0>
                     </cq:styleGroups>
                 </policy>
             </separator>
