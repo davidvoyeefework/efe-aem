@@ -1,5 +1,5 @@
 .cmp-image-collage {
-    .cmp-collage {
+    .cmp-container {
         display: grid;
         grid-template-areas:
             "image1 image2"
@@ -9,27 +9,25 @@
         @include media('<=tablet') {
             min-height: 370px;
         }
-        &__item1 {
+        .image:nth-child(1) {
             grid-area: image1;
         }
-        li {
-            .image {
-                height: 100%;
-                .cmp-image {
-                    height: inherit;
-                    img {
-                        height: 100%;
-                        width: 100%;
-                        object-fit: cover;
-                        display: block;
-                    }
+        .image {
+            height: 100%;
+            .cmp-image {
+                height: inherit;
+                img {
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+                    display: block;
                 }
             }
         }
     }
     &.cmp-image-collage--border-top-left {
-        .cmp-collage {
-            &__item1 {
+        .cmp-container {
+            .image:nth-child(1) {
                 img {
                     @include border-top-left-radius();
                 }
@@ -39,17 +37,17 @@
 }
 
 .cmp-image-collage--right-large {
-    .cmp-collage {
+    .cmp-container {
         grid-template-areas:
         "image1 image2"
         "image3 image2";
-        &__item2 {
+        .image:nth-child(2) {
             grid-area: image2;
         }
     }
     &.cmp-image-collage--border-top-left {
-        .cmp-collage {
-            &__item1 {
+        .cmp-container {
+            .image:nth-child(1) {
                 img {
                     @include border-top-left-radius();
                 }
@@ -57,13 +55,13 @@
         }
     }
     &.cmp-image-collage--border-multiple {
-        .cmp-collage {
-            &__item1 {
+        .cmp-container {
+            .image:nth-child(1) {
                 img {
                     @include border-bottom-left-radius();
                 }
             }
-            &__item3 {
+            .image:nth-child(3) {
                 img {
                     @include border-top-left-radius();
                 }
