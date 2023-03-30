@@ -628,7 +628,7 @@
 			<separator jcr:primaryType="nt:unstructured">
                 <policy
                     jcr:primaryType="nt:unstructured"
-                    jcr:title="Separater policy"
+                    jcr:title="Separator policy"
                     sling:resourceType="wcm/core/components/policy/policy">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                     <cq:styleGroups jcr:primaryType="nt:unstructured">
