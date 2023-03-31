@@ -1,6 +1,6 @@
-.cmp-languagenavigation--newspaper {
+.cmp-languagenavigation--country-list {
     .cmp-languagenavigation {
-        >.cmp-languagenavigation__group {
+        > .cmp-languagenavigation__group {
             column-count: 4;
             column-gap: rem(30);
 
@@ -11,7 +11,7 @@
                 column-count: 2;
             }
             @include media(">phone-sm", "<phone-m") {
-              column-count: 1;
+                column-count: 1;
             }
         }
 
@@ -33,6 +33,27 @@
                 &:hover {
                     text-decoration: 1px solid $efe-red-hover underline;
                     color: $efe-red-hover;
+                }
+            }
+        }
+    }
+    &.cmp-languagenavigation--enable-last-title {
+        .cmp-languagenavigation {
+            &__item {
+                &--level-0 {
+                    &:last-child {
+                        .cmp-languagenavigation__item-title {
+                            display: none;
+                        }
+                        .cmp-languagenavigation__item-link {
+                            @include subhead-02;
+                            text-transform: uppercase;
+                            &:hover {
+                                text-decoration: none;
+                                color: $gray-deep-charcoal;
+                            }
+                        }
+                    }
                 }
             }
         }
