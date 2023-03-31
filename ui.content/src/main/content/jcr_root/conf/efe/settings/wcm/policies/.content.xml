@@ -678,7 +678,7 @@
                                     cq:styleLabel="Primary Link"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item3
-                                    cq:styleClasses="cmp-button--button-secondary"
+                                    cq:styleClasses="cmp-button--link-secondary"
                                     cq:styleId="secondary-link"
                                     cq:styleLabel=" Secondary Link"
                                     jcr:primaryType="nt:unstructured"/>
