@@ -1,12 +1,11 @@
 import "../../../site/main.scss";
 import LanguageNavSingleLevel from "../singlelevel.hbs";
 import LanguageNavMultiLevel from "../multilevel.hbs";
-import LanguageNavNewspaper from "../language-navigation-newspaper.hbs";
+import LanguageNavCountryList from "../language-navigation-country-list.hbs";
 
 export default {
-  title: "Core Components/LanguageNavigation",
-  // More on argTypes: https://storybook.js.org/docs/html/api/argtypes
-  argTypes: {},
+    title: "Core Components/LanguageNavigation",
+    argTypes: {},
 };
 const TemplateSingleLevel = ({ label, ...args }) => LanguageNavSingleLevel();
 export const SingleLevel = TemplateSingleLevel.bind();
@@ -14,8 +13,10 @@ export const SingleLevel = TemplateSingleLevel.bind();
 const TemplateMultiLevel = ({ label, ...args }) => LanguageNavMultiLevel();
 export const MultiLevel = TemplateMultiLevel.bind();
 
-const TemplateLanguageNavNewspaper = (args) => LanguageNavNewspaper({...args});
-export const Newspaper = TemplateLanguageNavNewspaper.bind();
-Newspaper.args = {
-  variation: 'newspaper',
-}
+const TemplateLanguageNavCountryList = (args) =>
+    LanguageNavCountryList({ ...args });
+export const countryList = TemplateLanguageNavCountryList.bind();
+countryList.args = {
+    variation: "country-list",
+    enableLastTitle: false,
+};
