@@ -4,7 +4,7 @@
     allowedPaths="[/content/entities(/.*)?]"
     ranking="{Long}100">
     <jcr:content
-        cq:scaffolding="/conf/efe/settings/dam/cfm/models/planner-model0/jcr:content/model"
+        cq:scaffolding="/conf/efe/settings/dam/cfm/models/planner/jcr:content/model"
         cq:templateType="/libs/settings/dam/cfm/model-types/fragment"
         jcr:primaryType="cq:PageContent"
         jcr:title="Planner"
@@ -699,23 +699,6 @@
                             valueType="string">
                             <granite:data jcr:primaryType="nt:unstructured"/>
                         </efeUrl>
-                        <efeBooks
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="dam/cfm/models/editor/components/fragmentreference"
-                            allowNew="{Boolean}true"
-                            fieldLabel="EFE Books"
-                            filter="hierarchy"
-                            fragmentmodelreference="/conf/efe/settings/dam/cfm/models/efe-books"
-                            listOrder="9"
-                            metaType="fragment-reference"
-                            name="efeBooks"
-                            nameSuffix="contentReference"
-                            renderReadOnly="false"
-                            showEmptyInReadOnly="true"
-                            valueType="string/content-fragment">
-                            <field jcr:primaryType="nt:unstructured"/>
-                            <granite:data jcr:primaryType="nt:unstructured"/>
-                        </efeBooks>
                         <adv2bUrl
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
