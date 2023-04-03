@@ -523,10 +523,10 @@
                                     cq:styleLabel="Hero Image Left"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item2
-                                        cq:styleClasses="cmp-teaser--service-button"
-                                        cq:styleId="service-button"
-                                        cq:styleLabel="Service Button"
-                                        jcr:primaryType="nt:unstructured"/>
+                                    cq:styleClasses="cmp-teaser--service-button"
+                                    cq:styleId="service-button"
+                                    cq:styleLabel="Service Button"
+                                    jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item0>
                         <item1
