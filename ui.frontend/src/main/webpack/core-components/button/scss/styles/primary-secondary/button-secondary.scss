@@ -1,11 +1,11 @@
 .cmp-button--button-secondary {
     transition: $std-transition;
-    button {
+    .cmp-button {
         @include  cta-secondary;
     }
 
     &.cmp-button--center {
-        button {
+        .cmp-button {
             margin: auto;
             text-align: center;
         }
@@ -19,14 +19,14 @@
     }
 
     &.cmp-button--disabled {
-        button {
+        .cmp-button {
             transition: $std-transition;
             background-color: $efe-gray-light;
         }
     }
 
     &.cmp-button--hover {
-        button {
+        .cmp-button {
             transition: $std-transition;
             border: 2px solid $efe-gray-primary;
             box-sizing: border-box;
