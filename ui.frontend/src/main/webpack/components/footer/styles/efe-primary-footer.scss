@@ -98,7 +98,7 @@
             #list-links {
                 @include grid(
                     $template-columns: 1fr 1fr 1fr 1fr,
-                    $gap: 26px
+                    $gap: 76px
                 );
             }
 
