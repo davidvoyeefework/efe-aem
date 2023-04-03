@@ -1,0 +1,733 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    jcr:primaryType="cq:Template"
+    allowedPaths="[/content/entities(/.*)?]"
+    ranking="{Long}100">
+    <jcr:content
+        cq:scaffolding="/conf/efe/settings/dam/cfm/models/planner/jcr:content/model"
+        cq:templateType="/libs/settings/dam/cfm/model-types/fragment"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="Planner"
+        sling:resourceSuperType="dam/cfm/models/console/components/data/entity"
+        sling:resourceType="dam/cfm/models/console/components/data/entity/default"
+        status="enabled">
+        <metadata jcr:primaryType="nt:unstructured"/>
+        <model
+            cq:targetPath="/content/entities"
+            jcr:primaryType="cq:PageContent"
+            sling:resourceType="wcm/scaffolding/components/scaffolding"
+            dataTypesConfig="/mnt/overlay/settings/dam/cfm/models/formbuilderconfig/datatypes"
+            maxGeneratedOrder="20">
+            <cq:dialog
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="cq/gui/components/authoring/dialog">
+                <content
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                    <items
+                        jcr:primaryType="nt:unstructured"
+                        maxGeneratedOrder="20">
+                        <includeInAdv2b
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                            listOrder="4"
+                            metaType="boolean"
+                            name="includeInAdv2b"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            text="Include In ADV2B"
+                            valueType="boolean">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </includeInAdv2b>
+                        <includeInApipayload
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                            listOrder="4"
+                            metaType="boolean"
+                            name="includeInApipayload"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            text="Include In ApiPayload"
+                            valueType="boolean">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </includeInApipayload>
+                        <firstName
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="First Name"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="firstName"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </firstName>
+                        <id
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                            fieldLabel="ID"
+                            listOrder="3"
+                            metaType="number"
+                            name="id"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            step="1"
+                            typeHint="long"
+                            valueType="long">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </id>
+                        <firstNameAlias
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="First Name Alias"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="firstNameAlias"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </firstNameAlias>
+                        <middleName
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Middle Name"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="middleName"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </middleName>
+                        <lastName
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Last Name"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="lastName"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </lastName>
+                        <birthYear
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                            fieldLabel="Birth Year"
+                            listOrder="3"
+                            metaType="number"
+                            name="birthYear"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            step="1"
+                            typeHint="long"
+                            valueType="long">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </birthYear>
+                        <yearJoined
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                            fieldLabel="Year Joined"
+                            listOrder="3"
+                            metaType="number"
+                            name="yearJoined"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            step="1"
+                            typeHint="long"
+                            valueType="long">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </yearJoined>
+                        <advisorCrd
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                            fieldLabel="Advisor CRD"
+                            listOrder="3"
+                            metaType="number"
+                            name="advisorCrd"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            step="1"
+                            typeHint="long"
+                            valueType="long">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </advisorCrd>
+                        <suffix
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Suffix"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="suffix"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </suffix>
+                        <title
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Title"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="title"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </title>
+                        <educationIndicator
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Education Indicator"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="educationIndicator"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </educationIndicator>
+                        <directLinePhone
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Direct Line Phone"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="directLinePhone"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </directLinePhone>
+                        <desktopImageurl
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Desktop Image Url"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="desktopImageurl"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </desktopImageurl>
+                        <mobileImageurl
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Mobile Image Url"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="mobileImageurl"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </mobileImageurl>
+                        <circleImageurl
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Circle Image Url"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="circleImageurl"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </circleImageurl>
+                        <primaryOffice
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="dam/cfm/models/editor/components/fragmentreference"
+                            allowNew="{Boolean}true"
+                            fieldLabel="Primary Office"
+                            filter="hierarchy"
+                            fragmentmodelreference="/conf/efe/settings/dam/cfm/models/office-locations"
+                            listOrder="9"
+                            metaType="fragment-reference"
+                            name="primaryOffice"
+                            nameSuffix="contentReference"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string/content-fragment">
+                            <field jcr:primaryType="nt:unstructured"/>
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </primaryOffice>
+                        <officesLocations
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="dam/cfm/models/editor/components/fragmentreference"
+                            allowNew="{Boolean}true"
+                            fieldLabel="Offices Locations"
+                            filter="hierarchy"
+                            fragmentmodelreference="/conf/efe/settings/dam/cfm/models/office-locations"
+                            listOrder="9"
+                            metaType="fragment-reference"
+                            name="officesLocations"
+                            nameSuffix="contentReference"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string/content-fragment">
+                            <field jcr:primaryType="nt:unstructured"/>
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </officesLocations>
+                        <education
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="dam/cfm/models/editor/components/fragmentreference"
+                            allowNew="{Boolean}true"
+                            fieldLabel="Education"
+                            filter="hierarchy"
+                            fragmentmodelreference="/conf/efe/settings/dam/cfm/models/education"
+                            listOrder="9"
+                            metaType="fragment-reference"
+                            name="education"
+                            nameSuffix="contentReference"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string/content-fragment">
+                            <field jcr:primaryType="nt:unstructured"/>
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </education>
+                        <taxPlanner
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                            listOrder="4"
+                            metaType="boolean"
+                            name="taxPlanner"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            text="Tax Planner"
+                            valueType="boolean">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </taxPlanner>
+                        <advancedPlanning
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                            listOrder="4"
+                            metaType="boolean"
+                            name="advancedPlanning"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            text="Advanced Planning"
+                            valueType="boolean">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </advancedPlanning>
+                        <estatePlanning
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                            listOrder="4"
+                            metaType="boolean"
+                            name="estatePlanning"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            text="Estate Planning"
+                            valueType="boolean">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </estatePlanning>
+                        <insurancePlanning
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                            listOrder="4"
+                            metaType="boolean"
+                            name="insurancePlanning"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            text="Insurance Planning"
+                            valueType="boolean">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </insurancePlanning>
+                        <honorAward
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="dam/cfm/models/editor/components/fragmentreference"
+                            allowNew="{Boolean}true"
+                            fieldLabel="Honor Award"
+                            filter="hierarchy"
+                            fragmentmodelreference="/conf/efe/settings/dam/cfm/models/honor-award"
+                            listOrder="9"
+                            metaType="fragment-reference"
+                            name="honorAward"
+                            nameSuffix="contentReference"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string/content-fragment">
+                            <field jcr:primaryType="nt:unstructured"/>
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </honorAward>
+                        <funFacts
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Fun Facts"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="funFacts"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </funFacts>
+                        <employmentHistory
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="dam/cfm/models/editor/components/fragmentreference"
+                            allowNew="{Boolean}true"
+                            fieldLabel="Employment History"
+                            filter="hierarchy"
+                            fragmentmodelreference="/conf/efe/settings/dam/cfm/models/employment-history"
+                            listOrder="9"
+                            metaType="fragment-reference"
+                            name="employmentHistory"
+                            nameSuffix="contentReference"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string/content-fragment">
+                            <field jcr:primaryType="nt:unstructured"/>
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </employmentHistory>
+                        <certifications
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="dam/cfm/models/editor/components/fragmentreference"
+                            allowNew="{Boolean}true"
+                            fieldLabel="Certifications"
+                            filter="hierarchy"
+                            fragmentmodelreference="/conf/efe/settings/dam/cfm/models/certification"
+                            listOrder="9"
+                            metaType="fragment-reference"
+                            name="certifications"
+                            nameSuffix="contentReference"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string/content-fragment">
+                            <field jcr:primaryType="nt:unstructured"/>
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </certifications>
+                        <investmentManagement
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                            listOrder="4"
+                            metaType="boolean"
+                            name="investmentManagement"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            text="Investment Management"
+                            valueType="boolean">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </investmentManagement>
+                        <bio
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Bio"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="bio"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </bio>
+                        <email
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Email"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="email"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </email>
+                        <teamDistributionEmailAddress
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Team Distribution Email Address"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="teamDistributionEmailAddress"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </teamDistributionEmailAddress>
+                        <smartVestorProIndicator
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                            listOrder="4"
+                            metaType="boolean"
+                            name="smartVestorProIndicator"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            text="Smart Vestor Pro Indicator"
+                            valueType="boolean">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </smartVestorProIndicator>
+                        <favoriteSportsTeam
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Favorite Sports Team"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="favoriteSportsTeam"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </favoriteSportsTeam>
+                        <interestsHobbies
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                            fieldLabel="Interests Hobbies"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="interestsHobbies"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string[]">
+                            <field
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                maxlength="255"
+                                name="interestsHobbies"
+                                renderReadOnly="false">
+                                <granite:data jcr:primaryType="nt:unstructured"/>
+                            </field>
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </interestsHobbies>
+                        <favoriteSport
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Favorite Sport"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="favoriteSport"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </favoriteSport>
+                        <linkedinUrl
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="LinkedIn Url"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="linkedinUrl"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </linkedinUrl>
+                        <industryExams
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="dam/cfm/models/editor/components/fragmentreference"
+                            allowNew="{Boolean}true"
+                            fieldLabel="Industry Exams"
+                            filter="hierarchy"
+                            fragmentmodelreference="/conf/efe/settings/dam/cfm/models/industry-exam"
+                            listOrder="9"
+                            metaType="fragment-reference"
+                            name="industryExams"
+                            nameSuffix="contentReference"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string/content-fragment">
+                            <field jcr:primaryType="nt:unstructured"/>
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </industryExams>
+                        <mostInspirationalMoment
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Most Inspirational Moment"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="mostInspirationalMoment"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </mostInspirationalMoment>
+                        <anyBusinessRelatedActivitiesCommissions
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                            listOrder="4"
+                            metaType="boolean"
+                            name="anyBusinessRelatedActivitiesCommissions"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            text="Any Business Related Activities Commissions"
+                            valueType="boolean">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </anyBusinessRelatedActivitiesCommissions>
+                        <hasDisciplinaryInformation
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                            listOrder="4"
+                            metaType="boolean"
+                            name="hasDisciplinaryInformation"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            text="Has Disciplinary Information"
+                            valueType="boolean">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </hasDisciplinaryInformation>
+                        <disciplinaryInformationText
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Disciplinary Information Text"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="disciplinaryInformationText"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </disciplinaryInformationText>
+                        <anyAdditionalCompensation
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                            listOrder="4"
+                            metaType="boolean"
+                            name="anyAdditionalCompensation"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            text="Any Additional Compensation"
+                            valueType="boolean">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </anyAdditionalCompensation>
+                        <lastUpdated
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="dam/cfm/models/editor/components/datatypes/datepicker"
+                            displayedFormat="YYYY-MM-DD HH:mm"
+                            emptyText="YYYY-MM-DD HH:mm:ss"
+                            fieldLabel="Last Updated"
+                            listOrder="5"
+                            metaType="date"
+                            name="lastUpdated"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            type="datetime"
+                            valueFormat="YYYY-MM-DD[T]HH:mm:ss.000Z"
+                            valueType="calendar/datetime">
+                            <granite:data
+                                jcr:primaryType="nt:unstructured"
+                                typeHint="Date"/>
+                        </lastUpdated>
+                        <businessRelatedActivitiesCommissionsText
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Business Related Activities Commissions Text"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="businessRelatedActivitiesCommissionsText"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </businessRelatedActivitiesCommissionsText>
+                        <additionalCompensationText
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Additional Compensation Text"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="additionalCompensationText"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </additionalCompensationText>
+                        <favoriteLifeHack
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Favorite Life Hack"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="favoriteLifeHack"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </favoriteLifeHack>
+                        <yearStartedIndustry
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                            fieldLabel="Year Started Industry"
+                            listOrder="3"
+                            metaType="number"
+                            name="yearStartedIndustry"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            step="1"
+                            typeHint="long"
+                            valueType="long">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </yearStartedIndustry>
+                        <efeUrl
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Efe Url"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="efeUrl"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </efeUrl>
+                        <adv2bUrl
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Adv2b Url"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="adv2bUrl"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </adv2bUrl>
+                        <htmlUrl
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Html Url"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="htmlUrl"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </htmlUrl>
+                    </items>
+                </content>
+            </cq:dialog>
+        </model>
+    </jcr:content>
+</jcr:root>
