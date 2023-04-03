@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
         jcr:primaryType="nt:unstructured"
@@ -8,6 +8,13 @@
         maxGeneratedOrder="25"
         predicatesConfig="/mnt/overlay/settings/dam/search/facets/formbuilderconfig/predicatetypes">
         <items jcr:primaryType="nt:unstructured">
+		    <fulltext
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="dam/gui/coral/components/admin/customsearch/searchpredicates/fulltextpredicate"
+                emptyText="Enter Keyword(s)"
+                fieldLabel="Fulltext Predicate"
+                listOrder="1"
+                metaType="fulltext"/>
             <pathbrowser
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="dam/gui/coral/components/admin/customsearch/searchpredicates/pathbrowserpredicate"
@@ -16,6 +23,11 @@
                 listOrder="2"
                 metaType="pathbrowser"
                 rootPath="/content/dam"/>
+            <searchtype
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="dam/gui/coral/components/admin/customsearch/searchpredicates/searchtypepredicate"
+                fieldLabel="Show"
+                metaType="searchtype"/>
             <corporatebrand
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="dam/gui/coral/components/admin/customsearch/searchpredicates/optionspredicate"
@@ -52,11 +64,6 @@
                 name="jcr:content/metadata/efe:provider"
                 text="Employer "
                 value="true"/>
-            <searchtype
-                jcr:primaryType="nt:unstructured"
-                sling:resourceType="dam/gui/coral/components/admin/customsearch/searchpredicates/searchtypepredicate"
-                fieldLabel="Show"
-                metaType="searchtype"/>
             <mimetype
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="dam/gui/coral/components/admin/customsearch/omnisearchpredicates/filetypepredicate"
@@ -66,6 +73,32 @@
                 optionPaths="/libs/dam/content/predicates/omnisearch/mimetypes"
                 text="File Type"
                 value="true"/>
+            <dms7
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <granite:rendercondition
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/foundation/renderconditions/and">
+                    <dms7feature
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/renderconditions/feature"
+                        feature="com.adobe.dam.asset.scene7.feature.flag"/>
+                </granite:rendercondition>
+                <items jcr:primaryType="nt:unstructured">
+                    <dmscene7
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="dam/gui/coral/components/admin/customsearch/searchpredicates/optionspredicate"
+                        fieldLabel="File Type"
+                        isSuggestable="{Boolean}true"
+                        listOrder="3"
+                        metaType="listoptions"
+                        name="jcr:content/metadata/dc:format"
+                        open="{Boolean}false"
+                        optionPaths="/libs/dam/content/predicates/dmscene7"
+                        text="Dynamic Media"
+                        value="true"/>
+                </items>
+            </dms7>
             <filesize
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="dam/gui/coral/components/admin/customsearch/searchpredicates/filesizepredicate"
@@ -74,6 +107,47 @@
                 name="jcr:content/metadata/dam:size"
                 optionPaths="[/libs/dam/options/predicates/filesize]"
                 text="File Size"/>
+            <createdcontainer
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <createddate
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="dam/gui/coral/components/admin/customsearch/omnisearchpredicates/daterangepredicate"
+                        afterLabel="Created After"
+                        beforeLabel="Created Before"
+                        displayedFormat="D MMMM YYYY hh:mm a"
+                        fieldLabel="Created Date"
+                        listOrder="27"
+                        metaType="daterange"
+                        name="jcr:created"
+                        numericOffset="1"
+                        open="{Boolean}false"
+                        text="Created Date"/>
+                    <createdbygroup
+                        granite:class="group-predicate--overflow-visible"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="dam/gui/coral/components/admin/customsearch/searchpredicates/grouppredicate"
+                        fieldLabel="Created By"
+                        headingLevel="3"
+                        listOrder="28"
+                        metaType="createdbygroup"
+                        open="{Boolean}false"
+                        text="Created By">
+                        <items jcr:primaryType="nt:unstructured">
+                            <createdbypredicate
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="dam/gui/coral/components/admin/customsearch/searchpredicates/userpredicate"
+                                emptyText="Created By"
+                                fieldLabel="Created By"
+                                listOrder="29"
+                                metaType="user"
+                                name="jcr:createdBy"
+                                text="Created By"/>
+                        </items>
+                    </createdbygroup>
+                </items>
+            </createdcontainer>
             <assetlastmodified
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="dam/gui/coral/components/admin/customsearch/omnisearchpredicates/daterangepredicate"
@@ -84,6 +158,62 @@
                 listOrder="5"
                 metaType="daterange"
                 name="jcr:content/jcr:lastModified"/>
+            <lastmodifiedbycontainer
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <lastmodifiedbygroup
+                        granite:class="group-predicate--overflow-visible"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="dam/gui/coral/components/admin/customsearch/searchpredicates/grouppredicate"
+                        fieldLabel="Last Modified By"
+                        headingLevel="3"
+                        listOrder="30"
+                        metaType="lastmodifiedbygroup"
+                        open="{Boolean}false"
+                        text="Last Modified By">
+                        <items jcr:primaryType="nt:unstructured">
+                            <lastmodifiedbypredicate
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="dam/gui/coral/components/admin/customsearch/searchpredicates/userpredicate"
+                                emptyText="Last Modified By"
+                                fieldLabel="Last Modified By"
+                                listOrder="31"
+                                metaType="user"
+                                name="jcr:content/jcr:lastModifiedBy"
+                                text="Last Modified By"/>
+                        </items>
+                    </lastmodifiedbygroup>
+                </items>
+            </lastmodifiedbycontainer>
+            <languagecontainer
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <languagegroup
+                        granite:class="group-predicate--overflow-visible"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="dam/gui/coral/components/admin/customsearch/searchpredicates/grouppredicate"
+                        fieldLabel="Language"
+                        headingLevel="3"
+                        listOrder="35"
+                        metaType="languagegroup"
+                        open="{Boolean}false"
+                        text="Language">
+                        <items jcr:primaryType="nt:unstructured">
+                            <languagepredicate
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="dam/gui/coral/components/admin/customsearch/searchpredicates/languagepredicate"
+                                emptyText="Language"
+                                fieldLabel="Language"
+                                listOrder="36"
+                                metaType="language"
+                                name="language"
+                                text="Language"/>
+                        </items>
+                    </languagegroup>
+                </items>
+            </languagecontainer>
             <statusgroup
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="dam/gui/coral/components/admin/customsearch/searchpredicates/grouppredicate"
@@ -206,7 +336,56 @@
                         value="true"/>
                 </items>
             </insightsgroup>
-            <channels jcr:primaryType="nt:unstructured"/>
+            <stock
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <granite:rendercondition
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/foundation/renderconditions/and">
+                    <stockfeature
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/renderconditions/feature"
+                        feature="com.adobe.dam.asset.stock.feature.flag"/>
+                </granite:rendercondition>
+                <items jcr:primaryType="nt:unstructured">
+                    <stockgroup
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="dam/gui/coral/components/admin/customsearch/searchpredicates/grouppredicate"
+                        fieldLabel="Adobe Stock"
+                        headingLevel="3"
+                        listOrder="23"
+                        metaType="stockgroup"
+                        open="{Boolean}false"
+                        text="Adobe Stock">
+                        <items jcr:primaryType="nt:unstructured">
+                            <licensestate
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="dam/gui/coral/components/admin/customsearch/searchpredicates/optionspredicate"
+                                headingLevel="4"
+                                listOrder="24"
+                                metaType="listoptions"
+                                name="jcr:content/metadata/stock:isLicensed"
+                                optionPaths="/libs/dam/options/predicates/stock/licensestate"
+                                selectAllMode="{Boolean}true"
+                                text="License State"
+                                value="true"/>
+                            <filenumber
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="/libs/dam/gui/coral/components/admin/customsearch/searchpredicates/propertypredicate"
+                                emptyText="Enter Adobe Stock File #"
+                                equalsIgnoreCase="{Boolean}false"
+                                fieldLabel="File Number"
+                                headingLevel="4"
+                                listOrder="25"
+                                metaType="property"
+                                name="jcr:content/metadata/stock:id"
+                                open="{Boolean}true"
+                                text="File Number"
+                                value="true"/>
+                        </items>
+                    </stockgroup>
+                </items>
+            </stock>
             <mainasset
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="granite/ui/components/foundation/form/hidden"
@@ -220,12 +399,16 @@
                 fieldLabel="Member of  Collection"
                 metaType="memberof"
                 text="Collection"/>
+            <hidden
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="dam/gui/coral/components/admin/customsearch/searchpredicates/hiddenpredicate"/>
             <asset
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="granite/ui/components/foundation/form/hidden"
                 metaType="hidden"
                 name="group.2_group.type"
                 value="dam:Asset"/>
+            <channels jcr:primaryType="nt:unstructured"/>
             <directory
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="granite/ui/components/foundation/form/hidden"
@@ -248,6 +431,20 @@
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="dam/gui/coral/components/admin/customsearch/searchpredicates/similaritysearchpredicate"
                 metaType="similaritysearch"/>
+            <colorcontainer
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <granite:rendercondition
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/renderconditions/featuretoggle"
+                    toggleName="ft_cq-4295351"/>
+                <items jcr:primaryType="nt:unstructured">
+                    <color
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="dam/gui/coral/components/admin/customsearch/searchpredicates/assetcolorpredicate"
+                        metaType="colorsearch"/>
+                </items>
+            </colorcontainer>
             <contentfragment
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="dam/gui/coral/components/admin/customsearch/searchpredicates/multipathvaluepropertypredicate"
