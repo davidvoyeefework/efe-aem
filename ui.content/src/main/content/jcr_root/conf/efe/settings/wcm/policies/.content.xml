@@ -870,6 +870,85 @@
                     </cq:styleGroups>
                 </policy>
             </breadcrumb>
+            <list jcr:primaryType="nt:unstructured">
+                <policy
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="List Style Policy"
+                    sling:resourceType="wcm/core/components/policy/policy">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                    <cq:styleGroups jcr:primaryType="nt:unstructured">
+                        <item0
+                            cq:styleGroupLabel="Styles"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-teaser--service-button"
+                                    cq:styleId="service-button"
+                                    cq:styleLabel="Service Button"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item0>
+                        <item1
+                            cq:styleGroupLabel="Variation"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-list--horizontal"
+                                    cq:styleId="horizontal"
+                                    cq:styleLabel="Horizontal"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-list--column"
+                                    cq:styleId="column"
+                                    cq:styleLabel="Column"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item1>
+                        <item2
+                            cq:styleGroupLabel="Gap"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-list--tight"
+                                    cq:styleId="tight"
+                                    cq:styleLabel="Tight"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-list--moderate"
+                                    cq:styleId="moderate"
+                                    cq:styleLabel="Moderate"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item2
+                                    cq:styleClasses="cmp-list--loose"
+                                    cq:styleId="loose"
+                                    cq:styleLabel="Loose"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item2>
+                        <item3
+                            cq:styleGroupLabel="Alignment"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-list--left-align"
+                                    cq:styleId="left-align"
+                                    cq:styleLabel="Left-align"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-list--right-align"
+                                    cq:styleId="right-align"
+                                    cq:styleLabel="Right-align"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item2
+                                    cq:styleClasses="cmp-list--center-align"
+                                    cq:styleId="center-align"
+                                    cq:styleLabel="Center-align"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item3>
+                    </cq:styleGroups>
+                </policy>
+            </list>
         </components>
     </efe>
 </jcr:root>
