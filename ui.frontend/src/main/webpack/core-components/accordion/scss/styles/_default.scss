@@ -10,8 +10,9 @@
         border-radius: rem(3px);
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
-        padding: rem(20) rem(52);
+        padding: rem(20) rem(60) rem(12);
         text-align: center;
+        position: relative;
         &:focus {
             outline: none;
         }
@@ -20,6 +21,8 @@
         //margin-top: rem(10px);
         float: right;
         font-family: '#{$icomoon-icon-font-family}' !important;
+        position: absolute;
+        right: rem(6);
         &:before { content: $icon-Chevron-Property-1Default1; }
     }
 
