@@ -1,6 +1,6 @@
 .cmp-button--link-secondary {
 
-    button {
+    .cmp-button {
         background: transparent;
         @include primary-nav-link;
         transition: $std-transition;
@@ -24,7 +24,7 @@
     }
 
     &.cmp-button--hover {
-        button {
+        .cmp-button {
             transition: $std-transition;
             text-decoration: 1px solid $efe-gray-primary underline;
             text-underline-offset: 6px;
@@ -33,7 +33,7 @@
     }
 
     &.cmp-button--sentence-case {
-        button {
+        .cmp-button {
             text-transform: unset;
         }
 
