@@ -1,11 +1,11 @@
 .cmp-button--button-primary {
     transition: $std-transition;
-    button {
+    .cmp-button {
         @include cta-primary;
     }
 
     &.cmp-button--center {
-        button {
+        .cmp-button {
             margin: auto;
             text-align: center;
         }
@@ -18,14 +18,14 @@
     }
 
     &.cmp-button--disabled {
-        button {
+        .cmp-button {
             transition: $std-transition;
             background-color: $efe-red-50-percent;
         }
     }
 
     &.cmp-button--hover {
-        button {
+        .cmp-button {
             transition: $std-transition;
             background-color: $efe-red-hover;
         }
