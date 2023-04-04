@@ -2,16 +2,14 @@
     .cmp-languagenavigation {
         > .cmp-languagenavigation__group {
             column-count: 4;
-            column-gap: rem(30);
+            column-gap: rem(60);
 
-            @include media(">tablet", "<desktop") {
+            @include media("<=tablet-lg") {
                 column-count: 3;
             }
-            @include media(">phone-m", "<tablet") {
+            @include media("<=phone-m") {
                 column-count: 2;
-            }
-            @include media(">phone-sm", "<phone-m") {
-                column-count: 1;
+                column-gap: rem(30);
             }
         }
 
