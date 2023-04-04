@@ -1,11 +1,11 @@
 .cmp-list--footer {
   margin-top: 8px;
   .cmp-list {
-    @include flexbox($gap: rem(20) rem(16), $flex-wrap: wrap);
+    @include flexbox($gap: 20px 16px, $flex-wrap: wrap);
     width: 100%;
     margin-bottom: rem(32);
     @media screen and (min-width: $lg) {
-      justify-content: space-between;
+      @include flexbox($gap: 20px 51px);
     }
 
     .cmp-list__item {
