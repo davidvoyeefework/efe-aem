@@ -870,6 +870,94 @@
                     </cq:styleGroups>
                 </policy>
             </breadcrumb>
+            <list jcr:primaryType="nt:unstructured">
+                <policy
+                    jcr:lastModified="{Date}2023-04-03T08:43:20.141+05:30"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="List Style Policy"
+                    sling:resourceType="wcm/core/components/policy/policy"
+                    disableChildren="false"
+                    disableSearch="false"
+                    disableStatic="false"
+                    disableTags="false"
+                    linkItems="false"
+                    showDescription="false"
+                    showModificationDate="false">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                    <cq:styleGroups jcr:primaryType="nt:unstructured">
+                        <item0
+                            cq:styleGroupLabel="Styles"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-teaser--service-button"
+                                    cq:styleId="1680257345603"
+                                    cq:styleLabel="Service Button"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item0>
+                        <item1
+                            cq:styleGroupLabel="Variation"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-list--horizontal"
+                                    cq:styleId="1680246546150"
+                                    cq:styleLabel="Horizontal"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-list--column"
+                                    cq:styleId="1680246552760"
+                                    cq:styleLabel="Column"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item1>
+                        <item2
+                            cq:styleGroupLabel="Gap"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-list--tight"
+                                    cq:styleId="1680243134169"
+                                    cq:styleLabel="Tight"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-list--moderate"
+                                    cq:styleId="1680243151774"
+                                    cq:styleLabel="Moderate"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item2
+                                    cq:styleClasses="cmp-list--loose"
+                                    cq:styleId="1680243167414"
+                                    cq:styleLabel="Loose"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item2>
+                        <item3
+                            cq:styleGroupLabel="Alignment"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-list--left-align"
+                                    cq:styleId="1680243962128"
+                                    cq:styleLabel="Left-align"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-list--right-align"
+                                    cq:styleId="1680243978957"
+                                    cq:styleLabel="Right-align"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item2
+                                    cq:styleClasses="cmp-list--center-align"
+                                    cq:styleId="1680243992828"
+                                    cq:styleLabel="Center-align"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item3>
+                    </cq:styleGroups>
+                </policy>
+            </list>
         </components>
     </efe>
 </jcr:root>
