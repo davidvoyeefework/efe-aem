@@ -892,7 +892,7 @@
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
                                     cq:styleClasses="cmp-teaser--service-button"
-                                    cq:styleId="1680257345603"
+                                    cq:styleId="service-button"
                                     cq:styleLabel="Service Button"
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
@@ -903,12 +903,12 @@
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
                                     cq:styleClasses="cmp-list--horizontal"
-                                    cq:styleId="1680246546150"
+                                    cq:styleId="horizontal"
                                     cq:styleLabel="Horizontal"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item1
                                     cq:styleClasses="cmp-list--column"
-                                    cq:styleId="1680246552760"
+                                    cq:styleId="column"
                                     cq:styleLabel="Column"
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
@@ -919,17 +919,17 @@
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
                                     cq:styleClasses="cmp-list--tight"
-                                    cq:styleId="1680243134169"
+                                    cq:styleId="tight"
                                     cq:styleLabel="Tight"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item1
                                     cq:styleClasses="cmp-list--moderate"
-                                    cq:styleId="1680243151774"
+                                    cq:styleId="moderate"
                                     cq:styleLabel="Moderate"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item2
                                     cq:styleClasses="cmp-list--loose"
-                                    cq:styleId="1680243167414"
+                                    cq:styleId="loose"
                                     cq:styleLabel="Loose"
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
@@ -940,17 +940,17 @@
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
                                     cq:styleClasses="cmp-list--left-align"
-                                    cq:styleId="1680243962128"
+                                    cq:styleId="left-align"
                                     cq:styleLabel="Left-align"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item1
                                     cq:styleClasses="cmp-list--right-align"
-                                    cq:styleId="1680243978957"
+                                    cq:styleId="right-align"
                                     cq:styleLabel="Right-align"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item2
                                     cq:styleClasses="cmp-list--center-align"
-                                    cq:styleId="1680243992828"
+                                    cq:styleId="center-align"
                                     cq:styleLabel="Center-align"
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
