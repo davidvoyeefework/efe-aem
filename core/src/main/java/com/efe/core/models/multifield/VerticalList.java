@@ -1,6 +1,8 @@
 package com.efe.core.models.multifield;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 import javax.inject.Inject;
 
@@ -38,7 +40,10 @@ public class VerticalList {
 	 * @return the vertical links
 	 */
 	public List<Link> getVerticalLinks() {
-		return verticalLinks;
+		if (Objects.nonNull(verticalLinks)) {
+			return verticalLinks;
+		}
+		return Collections.emptyList();
 	}
 
 }

@@ -21,6 +21,8 @@ import com.efe.core.models.multifield.SocialLink;
 import com.efe.core.models.multifield.VerticalList;
 import com.efe.core.utils.EFEUtil;
 import com.efe.core.utils.LinkUtil;
+import java.util.Objects;
+import java.util.Collections;
 
 /**
  * The Class FooterImpl.
@@ -133,7 +135,10 @@ public class FooterImpl implements Footer {
 	 * @return the social links
 	 */
 	public List<SocialLink> getSocialLinks() {
-		return socialLinks;
+		if (Objects.nonNull(horizontalList)) {
+			return socialLinks;
+		}
+		return Collections.emptyList();
 	}
 
 	/**
@@ -151,7 +156,10 @@ public class FooterImpl implements Footer {
 	 * @return the horizontal list
 	 */
 	public List<Link> getHorizontalList() {
-		return horizontalList;
+		if (Objects.nonNull(horizontalList)) {
+			return horizontalList;
+		}
+		return Collections.emptyList();
 	}
 
 	/**
@@ -160,7 +168,10 @@ public class FooterImpl implements Footer {
 	 * @return the vertical list
 	 */
 	public List<VerticalList> getVerticalList() {
-		return verticalList;
+		if (Objects.nonNull(verticalList)) {
+			return verticalList;
+		}
+		return Collections.emptyList();
 	}
 
 }
