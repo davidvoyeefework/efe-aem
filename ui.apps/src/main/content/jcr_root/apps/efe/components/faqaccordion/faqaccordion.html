@@ -1,27 +1,13 @@
-<!--/*
-    Copyright 2015 Adobe Systems Incorporated
-  
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-  
-        http://www.apache.org/licenses/LICENSE-2.0
-  
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
-*/-->
-<div class="cmp-helloworld" data-cmp-is="helloworld">
-    <h2 class="cmp-helloworld__title">Hello World Component</h2>
-    <div class="cmp-helloworld__item" data-sly-test="${properties.text}">
-        <p class="cmp-helloworld__item-label">Text property:</p>
-        <pre class="cmp-helloworld__item-output" data-cmp-hook-helloworld="property">${properties.text}</pre>
-    </div>
-    <div class="cmp-helloworld__item" data-sly-use.model="com.efe.core.models.FAQAccordionModel" data-sly-test="${model.list}">
-        <ul data-sly-list.faq="${model.list}">
-            <li>${faq.question}</li>
-        </ul>
-    </div>
+<div data-sly-use.accordion="com.efe.core.models.FAQAccordion"
+  data-panelcontainer="${wcmmode.edit && 'accordion'}"
+  id="${accordion.id}"
+  class="cmp-accordion"
+  data-cmp-is="accordion"
+  data-cmp-data-layer="${accordion.data.json}"
+  data-cmp-single-expansion="${accordion.singleExpansion}"
+  data-placeholder-text="${wcmmode.edit && 'Please add content fragment in dialog'}">
+  <div data-sly-list.faqItem="${accordion.faqList}">
+    <p>${faqItem.question}</p>
+    <p>${faqItem.answer}</p>
+  </div>
 </div>
