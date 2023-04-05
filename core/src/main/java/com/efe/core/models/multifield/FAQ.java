@@ -16,6 +16,7 @@ import org.slf4j.LoggerFactory;
 
 import com.adobe.cq.dam.cfm.ContentElement;
 import com.adobe.cq.dam.cfm.ContentFragment;
+import com.efe.core.utils.EFEUtil;
 
 
 
@@ -44,6 +45,11 @@ public class FAQ {
     private String question = "";
 
     private String answer = "";
+
+    /** The id. */
+	@ValueMapValue
+	private String id;
+
 
     @PostConstruct
     protected void init() {
@@ -91,4 +97,16 @@ public class FAQ {
     public String getAnswer() {
         return answer;
     }
+
+    /**
+	 * Gets the id.
+	 *
+	 * @return the id
+	 */
+	public String getId() {
+		if (id == null) {
+			id = EFEUtil.getId(currentResource);
+		}
+		return id;
+	}
 }
