@@ -1,5 +1,6 @@
 package com.efe.core.models.multifield;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -41,7 +42,7 @@ public class VerticalList {
 	 */
 	public List<Link> getVerticalLinks() {
 		if (Objects.nonNull(verticalLinks)) {
-			return verticalLinks;
+			return new ArrayList<>(verticalLinks);
 		}
 		return Collections.emptyList();
 	}

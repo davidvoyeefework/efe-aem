@@ -23,6 +23,7 @@ import com.efe.core.utils.EFEUtil;
 import com.efe.core.utils.LinkUtil;
 import java.util.Objects;
 import java.util.Collections;
+import java.util.ArrayList;
 
 /**
  * The Class FooterImpl.
@@ -135,8 +136,8 @@ public class FooterImpl implements Footer {
 	 * @return the social links
 	 */
 	public List<SocialLink> getSocialLinks() {
-		if (Objects.nonNull(horizontalList)) {
-			return socialLinks;
+		if (Objects.nonNull(socialLinks)) {
+			return new ArrayList<>(socialLinks);
 		}
 		return Collections.emptyList();
 	}
@@ -157,7 +158,7 @@ public class FooterImpl implements Footer {
 	 */
 	public List<Link> getHorizontalList() {
 		if (Objects.nonNull(horizontalList)) {
-			return horizontalList;
+			return new ArrayList<>(horizontalList);
 		}
 		return Collections.emptyList();
 	}
@@ -169,7 +170,7 @@ public class FooterImpl implements Footer {
 	 */
 	public List<VerticalList> getVerticalList() {
 		if (Objects.nonNull(verticalList)) {
-			return verticalList;
+			return new ArrayList<>(verticalList);
 		}
 		return Collections.emptyList();
 	}
