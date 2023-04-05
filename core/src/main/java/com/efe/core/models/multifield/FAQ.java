@@ -67,6 +67,10 @@ public class FAQ {
             answer = contentFragment.map(cf -> cf.getElement(ANSWER_ELEMENNT_NAME)).map(ContentElement::getContent).orElse(StringUtils.EMPTY);            
         }
 
+        if (!question.isEmpty()) {
+            question = question.replaceAll("</?p>", "");
+        }
+
         LOG.debug("Question: " + question);
         LOG.debug("Answer: " + answer);
     }
