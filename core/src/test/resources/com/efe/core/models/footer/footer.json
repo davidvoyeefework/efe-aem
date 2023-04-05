@@ -186,6 +186,31 @@
 							"label": "Do Not Share My Personal Information"
 						}
 					}
+				},
+				"footer1": {
+					"jcr:primaryType": "nt:unstructured",
+					"fileReference": "/content/dam/efe/logo-official.svg",
+					"logoTarget": "_self",
+					"alt": "Alt text",
+					"linkTarget": "_blank",
+					"sling:resourceType": "efe/components/footer",
+					"logoLink": "/content/efe/us/en/corp/home?q=1"
+				},
+				"footer2": {
+					"jcr:primaryType": "nt:unstructured",
+					"fileReference": "/content/dam/efe/logo-official.svg",
+					"logoTarget": "_self",
+					"alt": "Alt text",
+					"linkTarget": "_blank",
+					"sling:resourceType": "efe/components/footer",
+					"logoLink": "/content/efe/us/en/corp/home?q=1",
+					"verticalList": {
+						"jcr:primaryType": "nt:unstructured",
+						"item0": {
+							"jcr:primaryType": "nt:unstructured",
+							"heading": "Quick links"
+						}
+					}
 				}
 			}
 		}
