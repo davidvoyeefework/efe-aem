@@ -54,11 +54,10 @@ class FAQAccordionImplTest {
 	 */
 	@Test
 	public void simpleLoadAndGetterTest() {
-		assertEquals("faq-9819dd0ec1", model.getId());
-		FAQ faq = model.getFaqList().get(0);
+		assertEquals("faqaccordion-ad22d8b121", model.getId());
+ 		FAQ faq = model.getFaqList().get(0);
 		assertEquals("sample question", faq.getQuestion());
 		assertEquals("sample answer", faq.getAnswer());
-
 	}
 
 	/**
