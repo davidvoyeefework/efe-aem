@@ -3,10 +3,14 @@
     jcr:primaryType="sling:OrderedFolder">
     <jcr:content
         jcr:primaryType="nt:unstructured"
-        jcr:title="Corporate Brand"
+        jcr:title="Momentum"
         sourcing="false"/>
-    <efe/>
-    <everyday-wealth/>
-    <fidelity/>
-	<momentum/>
+    <downloadable-content/>
+    <fonts/>
+    <graphics/>
+    <guidelines/>
+    <icons/>
+    <logos/>
+    <photography/>
+    <signatures/>
 </jcr:root>
