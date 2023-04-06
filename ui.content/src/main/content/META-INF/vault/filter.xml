@@ -8,4 +8,5 @@
     <filter root="/content/experience-fragments/efe" mode="merge"/>
     <filter root="/conf/global/settings/dam/adminui-extension/metadataschema" mode="merge"/>
     <filter root="/conf/global/settings/dam/adminui-extension/metadataprofile" mode="merge"/>
+    <filter root="/conf/global/settings/dam/dm/presets/macros" mode="merge"/>
 </workspaceFilter>
