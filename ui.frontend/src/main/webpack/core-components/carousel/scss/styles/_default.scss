@@ -80,14 +80,12 @@
         width: 40px;
         height: 40px;
         background-size: 50% 50%;
-        background-color: $efe-gray-carosel-indicators;
+        background-color:unset;
         border-radius: 50%;
         filter: invert(1) grayscale(100);
         position: absolute;
-        top: 50%;
-        @include media("<tablet") {
-            top: 25%;
-        }
+        bottom: rem(-15);
+        top: unset;
         &:hover {
             opacity: .9;
         }
@@ -133,22 +131,6 @@
     .cmp-carousel {
         &__actions {
             display: none;
-        }
-    }
-}
-.cmp-carousel--without-indicators {
-    .cmp-carousel {
-        &__indicators {
-            display: none;
-        }
-    }
-}
-.cmp-carousel--with-nested-arrows {
-    .cmp-carousel {
-        &__action {
-            background-color: unset;
-            bottom: rem(-15);
-            top: unset;
         }
     }
 }

@@ -7,11 +7,6 @@ Handlebars.registerPartial("CarouselImage", CarouselImage);
 export default {
   title: 'Core Components/Carousel',
   argTypes: {
-    variant: {
-      options: ["cmp-carousel--without-actions", "cmp-carousel--without-indicators"
-                , "cmp-carousel--with-nested-arrows"],
-      control: { type: "radio" },
-    },
   },
 };
 
