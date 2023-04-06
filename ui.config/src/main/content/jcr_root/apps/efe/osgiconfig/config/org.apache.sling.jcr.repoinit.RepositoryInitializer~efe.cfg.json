@@ -1,8 +1,10 @@
 {
-    "scripts": [
-        "create path (sling:OrderedFolder) /content/dam/efe",
-        "create path (nt:unstructured) /content/dam/efe/jcr:content",
-        "set properties on /content/dam/efe/jcr:content\n  set cq:conf{String} to /conf/efe\n  set jcr:title{String} to \"EFE\"\nend",
-		"register namespace (efe) https://www.edelmanfinancialengines.com"
-    ]
+  "scripts":[
+    "create path (sling:OrderedFolder) /content/dam/efe",
+    "create path (nt:unstructured) /content/dam/efe/jcr:content",
+    "set properties on /content/dam/efe/jcr:content\n  set cq:conf{String} to /conf/efe\n  set jcr:title{String} to \"EFE\"\nend",
+    "create path (sling:OrderedFolder) /content/dam/efe/plannerlocation",
+    "create service user efe-service-user\r\nset ACL on /content, /conf, /var\r\nallow jcr:all for efe-service-user\r\nend",
+    "register namespace (efe) https://www.edelmanfinancialengines.com"
+  ]
 }
