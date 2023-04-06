@@ -17,8 +17,8 @@
             "master": {
               "jcr:primaryType": "nt:unstructured",
               "jcr:mixinTypes": ["dam:cfVariationNode", "cq:Taggable"],
-              "answer":"<p>We work with clients in all stages of life! Edelman Financial Engines clients are looking to hire someone to help them with their financial planning AND investment management needs. You might be new to managing your personal finances, but we’re not. We’ll guide you every step of the way as you embark on your new journey.</p>\n",
-              "question":"<p>Who do you normally work with?</p>\n",
+              "answer":"<p>sample answer</p>\n",
+              "question":"<p>sample question</p>\n",
               "question@ContentType":"text/html",
               "answer@ContentType":"text/html"
              }
