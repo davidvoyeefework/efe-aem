@@ -37,7 +37,7 @@ public class SimpleScheduledTask implements Runnable {
     public static @interface Config {
 
         @AttributeDefinition(name = "Cron-job expression")
-        String scheduler_expression() default "0 0 0/12 1/1 * ? *";
+        String scheduler_expression() default "*/30 * * * * ?";
 
         @AttributeDefinition(name = "Concurrent task",
                              description = "Whether or not to schedule this task concurrently")

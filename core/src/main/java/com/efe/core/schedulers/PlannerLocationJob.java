@@ -95,7 +95,7 @@ public class PlannerLocationJob {
 		 * @return schedulerExpression
 		 */
 		@AttributeDefinition(name = "Corn Expression", description = "Corn Expression default: once a day", type = AttributeType.STRING)
-		public String schedulerExpression() default "0 0/10 * 1/1 * ? *";
+		public String schedulerExpression() default "0 0 0/12 1/1 * ? *";
 
 		/**
 		 * serviceEnabled
