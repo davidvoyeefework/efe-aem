@@ -84,7 +84,6 @@ class PlannerLocationJobTest {
 	@Test
 	void testSuccess() {
 
-		// Given
 		lenient().when(config.schedulerExpression()).thenReturn("0 0/2 * 1/1 * ? *");
 		lenient().when(config.serviceEnabled()).thenReturn("true");
 
@@ -102,10 +101,8 @@ class PlannerLocationJobTest {
 
 		lenient().when(scheduleBuilder.add()).thenReturn(jobInfo);
 
-		// When
 		plannerLocationJob.activate(config);
 
-		// Then
 		Mockito.verify(scheduleBuilder, Mockito.times(1)).add();
 
 	}
@@ -113,7 +110,6 @@ class PlannerLocationJobTest {
 	@Test
 	void testSchedulerDisabled() {
 
-		// Given
 		lenient().when(config.schedulerExpression()).thenReturn("false");
 
 		List<ScheduledJobInfo> scheduledJobs = new ArrayList<>();
@@ -121,10 +117,8 @@ class PlannerLocationJobTest {
 		lenient().when(jobManager.getScheduledJobs(JOB_TOPIC, 0, (Map<String, Object>[]) null))
 				.thenReturn(scheduledJobs);
 
-		// When
 		plannerLocationJob.activate(config);
 
-		// Then
 		Mockito.verify(scheduleBuilder, Mockito.times(0)).add();
 
 	}
@@ -132,7 +126,6 @@ class PlannerLocationJobTest {
 	@Test
 	void testSchedulerFailed() {
 
-		// Given
 		lenient().when(config.schedulerExpression()).thenReturn("0 0/2 * 1/1 * ? *");
 		lenient().when(config.serviceEnabled()).thenReturn("true");
 
@@ -150,10 +143,8 @@ class PlannerLocationJobTest {
 
 		lenient().when(scheduleBuilder.add()).thenReturn(null);
 
-		// When
 		plannerLocationJob.activate(config);
 
-		// Then
 		Mockito.verify(scheduleBuilder, Mockito.times(1)).add();
 
 	}
