@@ -3,10 +3,6 @@
     jcr:primaryType="sling:OrderedFolder">
     <jcr:content
         jcr:primaryType="nt:unstructured"
-        jcr:title="Corporate Brand"
+        jcr:title="Logos"
         sourcing="false"/>
-    <efe/>
-    <everyday-wealth/>
-    <fidelity/>
-	<momentum/>
 </jcr:root>
