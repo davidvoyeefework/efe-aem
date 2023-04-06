@@ -1,0 +1,20 @@
+<sly data-sly-use.imageCollageModel="com.efe.core.models.ImageCollage"/>
+<div id=${imageCollageModel.id}" class="container responsivegrid cmp-image-collage">
+    <div id="container-97c410ebe3" class="cmp-container">
+        <div class="image">
+            <div class="cmp-image" itemscope="" itemtype="http://schema.org/ImageObject">
+                <img src="${imageCollageModel.primaryImage}" alt="${imageCollageModel.primaryImageAltText}">
+            </div>
+        </div>
+        <div class="image">
+            <div class="cmp-image" itemscope="" itemtype="http://schema.org/ImageObject">
+                <img src="${imageCollageModel.firstSecondaryImage}" alt="${imageCollageModel.firstSecondaryImageAltText}">
+            </div>
+        </div>
+        <div class="image">
+            <div class="cmp-image" itemscope="" itemtype="http://schema.org/ImageObject">
+                <img src="${imageCollageModel.secondSecondaryImage}" alt="${imageCollageModel.secondSecondaryImageAltText}">
+            </div>
+        </div>
+    </div>
+</div>
