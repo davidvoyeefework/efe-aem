@@ -76,11 +76,10 @@ public class PlannerLocationJob {
 		ScheduledJobInfo scheduledJobInfo = scheduleBuilder.add();
 
 		if (scheduledJobInfo == null) {
-			LOGGER.error("Error adding scheduledJobInfo");
+			LOGGER.info("Error adding scheduledJobInfo");
 		} else {
 			LOGGER.debug("Scheduler Job added to the Queue {} with cron {}");
 		}
-
 	}
 
 	/**
