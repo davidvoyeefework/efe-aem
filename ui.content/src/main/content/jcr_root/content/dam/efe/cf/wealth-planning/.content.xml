@@ -3,12 +3,11 @@
     jcr:primaryType="sling:OrderedFolder">
     <jcr:content
         jcr:primaryType="nt:unstructured"
-        jcr:title="Content Fragments"
-		 metadataSchema="/conf/global/settings/dam/adminui-extension/metadataschema/efe-contentfragmentschema"
+        jcr:title="Wealth Planning"
         sourcing="false"/>
-    <corporate/>
-    <wealth-planning/>
-    <workplace/>
-    <employee-planning/>
-    <institutional/>
+    <bios/>
+    <disclosures/>
+    <footnotes/>
+    <testimonials/>
+    <locations-planners/>
 </jcr:root>
