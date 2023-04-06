@@ -20,7 +20,6 @@
 					"sling:resourceType": "efe/components/imagecollage",
 					"primaryImage": "/content/dam/test1.png",
 					"primaryImageAltText": "alt text",
-					"id": "cmp_test",
 					"firstSecondaryImage": "/content/dam/test2.png",
 					"firstSecondaryImageAltText": "alt text",
 					"secondSecondaryImage": "/content/dam/test3.png",

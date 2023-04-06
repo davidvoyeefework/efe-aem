@@ -36,7 +36,7 @@ public class ImageCollageImplTest {
 
     @Test
     public void modelGetterTest() {
-        assertEquals("cmp_test", imageCollageModel.getId());
+        assertEquals("imageCollage-6bd918b4ef", imageCollageModel.getId());
         assertEquals("/content/dam/test1.png", imageCollageModel.getPrimaryImage());
         assertEquals("/content/dam/test2.png", imageCollageModel.getFirstSecondaryImage());
         assertEquals("/content/dam/test3.png", imageCollageModel.getSecondSecondaryImage());
