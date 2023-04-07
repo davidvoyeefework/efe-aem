@@ -1,0 +1,218 @@
+{
+	"jcr:primaryType": "cq:Page",
+	"jcr:content": {
+		"jcr:primaryType": "cq:PageContent",
+		"jcr:title": "Footer",
+		"cq:template": "/conf/efe/settings/wcm/templates/xf-web-variation",
+		"cq:xfMasterVariation": true,
+		"cq:xfVariantType": "web",
+		"cq:tags": [],
+		"sling:resourceType": "efe/components/xfpage",
+		"root": {
+			"jcr:primaryType": "nt:unstructured",
+			"layout": "responsiveGrid",
+			"sling:resourceType": "efe/components/container",
+			"container": {
+				"jcr:primaryType": "nt:unstructured",
+				"sling:resourceType": "hbff/components/container",
+				"footer": {
+					"jcr:primaryType": "nt:unstructured",
+					"fileReference": "/content/dam/efe/logo-official.svg",
+					"logoTarget": "_self",
+					"alt": "Alt text",
+					"linkTarget": "_blank",
+					"sling:resourceType": "efe/components/footer",
+					"logoLink": "/content/efe/us/en/corp/home?q=1",
+					"socialLinks": {
+						"jcr:primaryType": "nt:unstructured",
+						"item0": {
+							"jcr:primaryType": "nt:unstructured",
+							"alt": "facebook",
+							"icon": "efe-facebook.svg",
+							"link": "https://www.facebook.com"
+						},
+						"item1": {
+							"jcr:primaryType": "nt:unstructured",
+							"alt": "twitter",
+							"icon": "efe-twitter.svg",
+							"link": "https://www.twitter.com"
+						},
+						"item2": {
+							"jcr:primaryType": "nt:unstructured",
+							"alt": "linkedin",
+							"icon": "efe-linkedin.svg",
+							"link": "https://www.linkedin.com"
+						}
+					},
+					"verticalList": {
+						"jcr:primaryType": "nt:unstructured",
+						"item0": {
+							"jcr:primaryType": "nt:unstructured",
+							"heading": "Quick links",
+							"verticalLinks": {
+								"jcr:primaryType": "nt:unstructured",
+								"item0": {
+									"jcr:primaryType": "nt:unstructured",
+									"target": "_self",
+									"link": "/content/efe/us/en/corp/home#data",
+									"label": "Location"
+								},
+								"item1": {
+									"jcr:primaryType": "nt:unstructured",
+									"target": "_self",
+									"link": "/content/dam/efe/education.jpg",
+									"label": "Education"
+								}
+							}
+						},
+						"item1": {
+							"jcr:primaryType": "nt:unstructured",
+							"heading": "Contact Us",
+							"verticalLinks": {
+								"jcr:primaryType": "nt:unstructured",
+								"item0": {
+									"jcr:primaryType": "nt:unstructured",
+									"target": "_self",
+									"link": "tel:+18337526333",
+									"label": "Call: (833) PLAN-EFE"
+								},
+								"item1": {
+									"jcr:primaryType": "nt:unstructured",
+									"target": "_self",
+									"link": "/content/efe/us/en/corp/home",
+									"label": "Contact Us"
+								}
+							}
+						},
+						"item2": {
+							"jcr:primaryType": "nt:unstructured",
+							"heading": "About Us",
+							"verticalLinks": {
+								"jcr:primaryType": "nt:unstructured",
+								"item0": {
+									"jcr:primaryType": "nt:unstructured",
+									"target": "_self",
+									"link": "/content/efe/us/en/corp/home",
+									"label": "About Our Company"
+								},
+								"item1": {
+									"jcr:primaryType": "nt:unstructured",
+									"target": "_self",
+									"link": "/content/efe/us/en/corp/home",
+									"label": "Team"
+								},
+								"item2": {
+									"jcr:primaryType": "nt:unstructured",
+									"target": "_self",
+									"link": "/content/efe/us/en/corp/home",
+									"label": "FAQs"
+								},
+								"item3": {
+									"jcr:primaryType": "nt:unstructured",
+									"target": "_self",
+									"link": "/content/efe/us/en/corp/home",
+									"label": "Careers"
+								}
+							}
+						},
+						"item3": {
+							"jcr:primaryType": "nt:unstructured",
+							"heading": "Client logins",
+							"verticalLinks": {
+								"jcr:primaryType": "nt:unstructured",
+								"item0": {
+									"jcr:primaryType": "nt:unstructured",
+									"target": "_self",
+									"link": "/content/efe/us/en/corp/home",
+									"label": "Client portal login"
+								},
+								"item1": {
+									"jcr:primaryType": "nt:unstructured",
+									"target": "_self",
+									"link": "/content/efe/us/en/corp/home",
+									"label": "E. Trade"
+								}
+							}
+						}
+					},
+					"horizontalList": {
+						"jcr:primaryType": "nt:unstructured",
+						"item0": {
+							"jcr:primaryType": "nt:unstructured",
+							"target": "_blank",
+							"link": "#",
+							"label": "Legal Information"
+						},
+						"item1": {
+							"jcr:primaryType": "nt:unstructured",
+							"target": "_self",
+							"link": "/content/efe/us/en/corp/home",
+							"label": "Privacy Policy"
+						},
+						"item2": {
+							"jcr:primaryType": "nt:unstructured",
+							"target": "_self",
+							"link": "/content/efe/us/en/corp/home.html",
+							"label": "Terms Of Use"
+						},
+						"item3": {
+							"jcr:primaryType": "nt:unstructured",
+							"target": "_self",
+							"link": "/content/efe/us/en/corp/home",
+							"label": "Form CRS"
+						},
+						"item4": {
+							"jcr:primaryType": "nt:unstructured",
+							"target": "_self",
+							"link": "/content/efe/us/en/corp/home",
+							"label": "Edelman Financial Engines ADV"
+						},
+						"item5": {
+							"jcr:primaryType": "nt:unstructured",
+							"target": "_self",
+							"link": "/content/efe/us/en/corp/home",
+							"label": "Business Continuity"
+						},
+						"item6": {
+							"jcr:primaryType": "nt:unstructured",
+							"target": "_self",
+							"link": "/content/efe/us/en/corp/home",
+							"label": "Wrap Fee Brochure"
+						},
+						"item7": {
+							"jcr:primaryType": "nt:unstructured",
+							"target": "_self",
+							"link": "/content/efe/us/en/corp/home",
+							"label": "Do Not Share My Personal Information"
+						}
+					}
+				},
+				"footer1": {
+					"jcr:primaryType": "nt:unstructured",
+					"fileReference": "/content/dam/efe/logo-official.svg",
+					"logoTarget": "_self",
+					"alt": "Alt text",
+					"linkTarget": "_blank",
+					"sling:resourceType": "efe/components/footer",
+					"logoLink": "/content/efe/us/en/corp/home?q=1"
+				},
+				"footer2": {
+					"jcr:primaryType": "nt:unstructured",
+					"fileReference": "/content/dam/efe/logo-official.svg",
+					"logoTarget": "_self",
+					"alt": "Alt text",
+					"linkTarget": "_blank",
+					"sling:resourceType": "efe/components/footer",
+					"logoLink": "/content/efe/us/en/corp/home?q=1",
+					"verticalList": {
+						"jcr:primaryType": "nt:unstructured",
+						"item0": {
+							"jcr:primaryType": "nt:unstructured",
+							"heading": "Quick links"
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -4,6 +4,11 @@
     <jcr:content
         jcr:primaryType="nt:unstructured"
         jcr:title="Content Fragments"
-        metadataSchema="/conf/global/settings/dam/adminui-extension/metadataschema/efe-contentfragmentschema"
+		 metadataSchema="/conf/global/settings/dam/adminui-extension/metadataschema/efe-contentfragmentschema"
         sourcing="false"/>
+    <corporate/>
+    <wealth-planning/>
+    <workplace/>
+    <employee-planning/>
+    <institutional/>
 </jcr:root>

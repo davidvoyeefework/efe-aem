@@ -20,11 +20,13 @@ export default {
             control: { type: "text" },
         },
         padding: {
-            options: ["unset", "26"],
-            control: { type: "radio" },
+            control: 'boolean',
+        },
+        center: {
+            control: 'boolean',
         },
         borderRadius: {
-            options: ["top-left", "top-right", "bottom-left", "bottom-right"],
+            options: ["top-left", "top-right", "bottom-left", "bottom-right", "none"],
             control: { type: "select" },
         },
         border: {
@@ -38,6 +40,7 @@ export const BackgroundColor = TemplateContainer.bind();
 BackgroundColor.args = {
     variant: "bg-efe-gray-light",
     maxWidth: "unset",
-    padding: "unset",
     border: false,
+    center: false,
+    padding: false,
 };

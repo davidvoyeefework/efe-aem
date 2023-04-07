@@ -522,6 +522,11 @@
                                     cq:styleId="hero-image-left"
                                     cq:styleLabel="Hero Image Left"
                                     jcr:primaryType="nt:unstructured"/>
+                                <item2
+                                    cq:styleClasses="cmp-teaser--service-button"
+                                    cq:styleId="service-button"
+                                    cq:styleLabel="Service Button"
+                                    jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item0>
                         <item1
@@ -628,38 +633,26 @@
 			<separator jcr:primaryType="nt:unstructured">
                 <policy
                     jcr:primaryType="nt:unstructured"
-                    jcr:title="Separater policy"
+                    jcr:title="Separator policy"
                     sling:resourceType="wcm/core/components/policy/policy">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                     <cq:styleGroups jcr:primaryType="nt:unstructured">
                         <item0
-                            cq:styleGroupLabel="Spacing"
-                            cq:styleGroupMultiple="true"
-                            jcr:primaryType="nt:unstructured">
-                            <cq:styles jcr:primaryType="nt:unstructured">
-                                <item0
-                                    cq:styleClasses="cmp-separator--primary"
-                                    cq:styleId="primary"
-                                    cq:styleLabel="Primary"
-                                    jcr:primaryType="nt:unstructured"/>
-                            </cq:styles>
-                        </item0>
-                        <item1
                             cq:styleGroupLabel="Color"
                             jcr:primaryType="nt:unstructured">
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
-                                    cq:styleClasses="cmp-separator--efe-gray-blue"
+                                    cq:styleClasses="cmp-separator--primary cmp-separator--efe-gray-blue"
                                     cq:styleId="blue-gray"
                                     cq:styleLabel="Blue Gray"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item1
-                                    cq:styleClasses="cmp-separator--efe-gray-mid"
+                                    cq:styleClasses="cmp-separator--primary cmp-separator--efe-gray-mid"
                                     cq:styleId="mid-gray"
                                     cq:styleLabel="Mid Gray"
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
-                        </item1>
+                        </item0>
                     </cq:styleGroups>
                 </policy>
             </separator>
@@ -675,19 +668,29 @@
                             jcr:primaryType="nt:unstructured">
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
-                                    cq:styleClasses="cmp-button--cta-primary"
+                                    cq:styleClasses="cmp-button--button-primary"
                                     cq:styleId="primary-cta"
                                     cq:styleLabel="Primary CTA"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item1
-                                    cq:styleClasses="cmp-button--cta-secondary"
+                                    cq:styleClasses="cmp-button--button-secondary"
                                     cq:styleId="secondary-cta"
                                     cq:styleLabel="Secondary CTA"
                                     jcr:primaryType="nt:unstructured"/>
-								<item2
+                                <item2
+                                    cq:styleClasses="cmp-button--link-primary"
+                                    cq:styleId="primary-link"
+                                    cq:styleLabel="Primary Link"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item3
+                                    cq:styleClasses="cmp-button--link-secondary"
+                                    cq:styleId="secondary-link"
+                                    cq:styleLabel=" Secondary Link"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item4
                                     cq:styleClasses="cmp-button--icon-button"
                                     cq:styleId="icon"
-                                    cq:styleLabel="Icon "
+                                    cq:styleLabel="Icon"
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item0>
@@ -867,6 +870,138 @@
                     </cq:styleGroups>
                 </policy>
             </breadcrumb>
+            <list jcr:primaryType="nt:unstructured">
+                <policy
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="List Style Policy"
+                    sling:resourceType="wcm/core/components/policy/policy">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                    <cq:styleGroups jcr:primaryType="nt:unstructured">
+                        <item0
+                            cq:styleGroupLabel="Styles"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-teaser--service-button"
+                                    cq:styleId="service-button"
+                                    cq:styleLabel="Service Button"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item0>
+                        <item1
+                            cq:styleGroupLabel="Variation"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-list--horizontal"
+                                    cq:styleId="horizontal"
+                                    cq:styleLabel="Horizontal"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-list--column"
+                                    cq:styleId="column"
+                                    cq:styleLabel="Column"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item1>
+                        <item2
+                            cq:styleGroupLabel="Gap"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-list--tight"
+                                    cq:styleId="tight"
+                                    cq:styleLabel="Tight"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-list--moderate"
+                                    cq:styleId="moderate"
+                                    cq:styleLabel="Moderate"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item2
+                                    cq:styleClasses="cmp-list--loose"
+                                    cq:styleId="loose"
+                                    cq:styleLabel="Loose"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item2>
+                        <item3
+                            cq:styleGroupLabel="Alignment"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-list--left-align"
+                                    cq:styleId="left-align"
+                                    cq:styleLabel="Left-align"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-list--right-align"
+                                    cq:styleId="right-align"
+                                    cq:styleLabel="Right-align"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item2
+                                    cq:styleClasses="cmp-list--center-align"
+                                    cq:styleId="center-align"
+                                    cq:styleLabel="Center-align"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item3>
+                    </cq:styleGroups>
+                </policy>
+            </list>
+            <imagecollage jcr:primaryType="nt:unstructured">
+                <policy
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Image Collage Policy"
+                    sling:resourceType="wcm/core/components/policy/policy">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                    <cq:styleGroups jcr:primaryType="nt:unstructured">
+                        <item0
+                            cq:styleGroupLabel="Primary(Large) Image Position"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-image-collage "
+                                    cq:styleId="left"
+                                    cq:styleLabel="Left"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-image-collage cmp-image-collage--right-large"
+                                    cq:styleId="right"
+                                    cq:styleLabel="Right"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item0>
+                        <item1
+                            cq:styleGroupLabel="Apply Top left corner Radius"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-image-collage--left-large cmp-image-collage--border-top-left"
+                                    cq:styleId="topleftcornerradius"
+                                    cq:styleLabel="Top left corner Radius"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item1>
+                        <item2
+                            cq:styleGroupLabel="Apply secondary image corner radius"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-image-collage--border-top-left"
+                                    cq:styleId="border-top-left"
+                                    cq:styleLabel="border-top-left"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-image-collage--border-multiple"
+                                    cq:styleId="border-multiple"
+                                    cq:styleLabel="border-multiple"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item2>
+                    </cq:styleGroups>
+                </policy>
+            </imagecollage>
         </components>
     </efe>
 </jcr:root>
