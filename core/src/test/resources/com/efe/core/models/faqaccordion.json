@@ -20,7 +20,7 @@
 						"jcr:primaryType": "nt:unstructured",
 						"item0": {
 							"jcr:primaryType": "nt:unstructured",
-                            "fragmentPath": "/content/dam/efe/cf/test"
+                            "fragmentPath": "/cf/dam/content-fragment"
 						}
 					}
 				},

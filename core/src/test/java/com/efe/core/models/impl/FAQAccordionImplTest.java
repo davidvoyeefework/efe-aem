@@ -22,6 +22,8 @@ class FAQAccordionImplTest {
 	/** The Constant RESOURCE_CONTENT. */
 	private static final String RESOURCE_CONTENT = "/com/efe/core/models/faqaccordion.json";
 
+    private static final String CF_RESOURCE_CONTENT = "/com/efe/core/models/faq.json";
+
 	/** The Constant TEST_CONTENT_ROOT. */
 	private static final String TEST_CONTENT_ROOT = "/content/efe/us/en/corp/home";
 
@@ -44,6 +46,7 @@ class FAQAccordionImplTest {
 	public void setup() {
 		Class<FAQAccordion> modelClass = FAQAccordion.class;
 		aemContext.load().json(RESOURCE_CONTENT, TEST_CONTENT_ROOT);
+        aemContext.load().json(CF_RESOURCE_CONTENT, "/cf");
 		aemContext.addModelsForClasses(modelClass);
 		resource = aemContext.currentResource(RESOURCE);
 		model = resource.adaptTo(modelClass);
@@ -56,15 +59,15 @@ class FAQAccordionImplTest {
 	public void simpleLoadAndGetterTest() {
 		assertEquals("faqaccordion-ad22d8b121", model.getId());
  		FAQ faq = model.getFaqList().get(0);
-		assertEquals("sample question", faq.getQuestion());
-		assertEquals("sample answer", faq.getAnswer());
+		assertEquals("sample question\n", faq.getQuestion());
+		assertEquals("<p>sample answer</p>\n", faq.getAnswer());
 	}
 
 	/**
 	 * Test footer null attributes.
 	 */
 	@Test
-	void testFooterNullAttributes() {
+	void testFAQNullAttributes() {
 		model = aemContext.currentResource(TEST_CONTENT_ROOT + "/jcr:content/root/container/faqaccordion1")
 				.adaptTo(FAQAccordion.class);
 		assertEquals(0, model.getFaqList().size());
