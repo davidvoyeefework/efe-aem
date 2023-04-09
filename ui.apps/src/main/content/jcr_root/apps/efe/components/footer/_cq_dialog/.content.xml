@@ -169,7 +169,8 @@
 				                            <vertical
 				                                jcr:primaryType="nt:unstructured"
 				                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
-				                                fieldLabel="Vertical Rows"
+				                                fieldLabel="Vertical Column"
+												fieldDescription="Add upto four vertical columns"
 				                                composite="{Boolean}true">
 				                                <field
 				                                    jcr:primaryType="nt:unstructured"
@@ -251,6 +252,7 @@
 				                                jcr:primaryType="nt:unstructured"
 				                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
 				                                fieldLabel="Text and Page Path(s)"
+												fieldDescription="Add Text and Page Path(s)"
 				                                composite="{Boolean}true">
 				                                <field
 				                                    jcr:primaryType="nt:unstructured"

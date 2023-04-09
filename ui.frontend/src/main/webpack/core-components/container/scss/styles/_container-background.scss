@@ -1,4 +1,3 @@
-
 @mixin maxWidth() {
     &.cmp-container--width-1920 {
         max-width: $xxxl;
@@ -11,38 +10,30 @@
     }
 }
 
-@mixin padding() {
-    &.cmp-container--padding-26 {
-        padding: rem(24);
-    }
-}
-
-
 .cmp-container--bg-efe-gray-light {
     @include bg-efe-gray-light;
     @include maxWidth();
-    @include padding();
 }
 
 .cmp-container--bg-efe-gray-mid {
     @include bg-efe-gray-mid;
     @include maxWidth();
-    @include padding();
 }
 
 .cmp-container--unset {
     background: transparent;
 }
 .cmp-container--padding-unset {
-    @include padding();
+    @extend .cmp-container--padding;
 }
-.cmp-container--width-none, .cmp-container--width-unset {
+.cmp-container--width-none,
+.cmp-container--width-unset {
     @include maxWidth();
 }
 .cmp-container--white {
     background: white;
     @include maxWidth();
-    @include padding();
+    @extend .cmp-container--padding;
 }
 .border-radius--top-left {
     border-top-left-radius: rem(40px);
@@ -59,4 +50,11 @@
 
 .cmp-container--border {
     border: 1px solid $gray-border;
+}
+
+.cmp-container--padding {
+    padding: 56px 88px;
+    @include media("<=phone-m") {
+        padding: 40px 24px;
+    }
 }
