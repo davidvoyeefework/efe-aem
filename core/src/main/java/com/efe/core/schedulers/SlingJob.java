@@ -23,13 +23,13 @@ public class SlingJob implements JobConsumer {
 	 * PlannerModelServices injected
 	 */
 	@Reference
-	PlannerModelServices plannerModelServices;
+	private	PlannerModelServices plannerModelServices;
 
 	/**
 	 * LocationModelServices injected
 	 */
 	@Reference
-	LocationModelServices locationModelServices;
+	private LocationModelServices locationModelServices;
 
 	/**
 	 * The Constant LOGGER
@@ -44,7 +44,7 @@ public class SlingJob implements JobConsumer {
 	@Override
 	public JobResult process(Job job) {
 		try {
-			LOGGER.error("Sling JOB Called");
+			LOGGER.info("Sling JOB Called");
 			plannerModelServices.addDataToCFModelPlanner();
 			locationModelServices.addDataToCFModelLocation();
 			return JobConsumer.JobResult.OK;

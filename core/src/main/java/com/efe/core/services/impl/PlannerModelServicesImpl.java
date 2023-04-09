@@ -1,28 +1,37 @@
 package com.efe.core.services.impl;
 
+import java.util.List;
+
 import javax.jcr.Node;
-import javax.jcr.Session;
+import javax.jcr.RepositoryException;
+
 import org.apache.sling.api.resource.PersistenceException;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ResourceResolverFactory;
-
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.adobe.cq.dam.cfm.ContentFragmentException;
 import com.adobe.cq.dam.cfm.FragmentTemplate;
+import com.efe.core.constants.PlannerLocationConstants;
 import com.efe.core.services.PlannerApiService;
 import com.efe.core.services.PlannerModelServices;
 import com.efe.core.services.RestService;
+import com.efe.core.services.impl.bean.Certifications;
+import com.efe.core.services.impl.bean.Education;
+import com.efe.core.services.impl.bean.EmploymentHistory;
+import com.efe.core.services.impl.bean.HonorAward;
+import com.efe.core.services.impl.bean.IndustryExams;
+import com.efe.core.services.impl.bean.OfficesLocations;
+import com.efe.core.services.impl.bean.PlannerResponse;
+import com.efe.core.services.impl.bean.PrimaryOffice;
+import com.efe.core.utils.FolderUtil;
+import com.efe.core.utils.NodePropertyManagerUtil;
 import com.efe.core.utils.ResourceUtil;
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.adobe.cq.dam.cfm.ContentFragmentException;
 
 /**
  * The Class PlannerModelServicesImpl
@@ -30,526 +39,6 @@ import com.adobe.cq.dam.cfm.ContentFragmentException;
  */
 @Component(service = PlannerModelServices.class, immediate = true)
 public class PlannerModelServicesImpl implements PlannerModelServices {
-
-	/**
-	 * Root Folder Path
-	 */
-	private static final String ROOT_FOLDER_PATH = "/content/dam/efe/plannerlocation";
-
-	/**
-	 * Planner Folder Name
-	 */
-	private static final String PLANNER = "planners";
-
-	/**
-	 * Planner Model
-	 */
-	private static final String PLANNER_MODEL = "/conf/efe/settings/dam/cfm/models/planner";
-
-	/**
-	 * Planner Model
-	 */
-	private static final String FIRST_NAME = "firstName";
-
-	/**
-	 * Forward Slash
-	 */
-	private static final String FORWARD_SLASH = "/";
-
-	/**
-	 * Sling Ordered Folder
-	 */
-	private static final String SLING_ORDERED_FOLDER = "sling:OrderedFolder";
-
-	/**
-	 * Forward Slash
-	 */
-	private static final String MASTER_NODE = "/jcr:content/data/master";
-
-	/**
-	 * Underscore
-	 */
-	private static final String UNDERSCORE = "_";
-
-	/**
-	 * Fragment Name Prefix
-	 */
-	private static final String FRAGMENT_NAME_PREFIX = "fragment_";
-
-	/**
-	 * ID
-	 */
-	private static final String ID = "id";
-
-	/**
-	 * Jcr Title
-	 */
-	private static final String JCR_TITLE_PLANNER = "Planner Fragment";
-
-	/**
-	 * Include In Adv2b
-	 */
-	private static final String INCLUDE_IN_ADV2B = "includeInADV2B";
-
-	/**
-	 * Include In API PAYLOAD
-	 */
-	private static final String INCLUDE_IN_API_PAYLOAD = "includeInApiPayload";
-
-	/**
-	 * First Name Alias
-	 */
-	private static final String FIRST_NAME_ALIAS = "firstNameAlias";
-
-	/**
-	 * Middle Name
-	 */
-	private static final String MIDDLE_NAME = "middleName";
-
-	/**
-	 * Last Name
-	 */
-	private static final String LAST_NAME = "lastName";
-
-	/**
-	 * Suffix
-	 */
-	private static final String SUFFIX = "suffix";
-
-	/**
-	 * Title
-	 */
-	private static final String TITLE = "title";
-
-	/**
-	 * Birth Year
-	 */
-	private static final String BIRTH_YEAR = "birthYear";
-
-	/**
-	 * Year Joined
-	 */
-	private static final String YEAR_JOINED = "yearJoined";
-
-	/**
-	 * Direct Line Phone
-	 */
-	private static final String DIRECT_LINE_PHONE = "directLinePhone";
-
-	/**
-	 * Advisor Crd From Json
-	 */
-	private static final String ADVISOR_CRD_FROM_JSON = "advisorCRD";
-
-	/**
-	 * Advisor Crd To Fragment
-	 */
-	private static final String ADVISOR_CRD_TO_FRAGMENT = "advisorCrd";
-
-	/**
-	 * Desktop Image Url
-	 */
-	private static final String DESKTOP_IMAGE_URL_FROM_JSON = "desktopImageUrl";
-
-	/**
-	 * Desktop Image Url
-	 */
-	private static final String DESKTOP_IMAGE_URL_TO_FRAGMENT = "desktopImageurl";
-
-	/**
-	 * Mobile Image Url
-	 */
-	private static final String MOBILE_IMAGE_URL_FROM_URL = "mobileImageUrl";
-
-	/**
-	 * Mobile Image Url
-	 */
-	private static final String MOBILE_IMAGE_URL_TO_FRAGMENT = "mobileImageurl";
-
-	/**
-	 * Circle Image Url
-	 */
-	private static final String CIRCLE_IMAGE_URL_FROM_JSON = "circleImageUrl";
-
-	/**
-	 * Circle Image Url
-	 */
-	private static final String CIRCLE_IMAGE_URL_TO_FRAGMENT = "circleImageurl";
-
-	/**
-	 * Education Indicator
-	 */
-	private static final String EDUCATION_INDICATOR = "educationIndicator";
-
-	/**
-	 * Tax Planner
-	 */
-	private static final String TAX_PLANNER = "taxPlanner";
-
-	/**
-	 * Advanced Planning
-	 */
-	private static final String ADVANCED_PLANNING = "advancedPlanning";
-
-	/**
-	 * Estate Planning
-	 */
-	private static final String ESTATE_PLANNING = "estatePlanning";
-
-	/**
-	 * Insurance Planning
-	 */
-	private static final String INSURANCE_PLANNING = "insurancePlanning";
-
-	/**
-	 * Investment Management
-	 */
-	private static final String INVESTMENT_MANAGEMENT = "investmentManagement";
-
-	/**
-	 * Bio
-	 */
-	private static final String BIO = "bio";
-
-	/**
-	 * Email
-	 */
-	private static final String EMAIL = "email";
-
-	/**
-	 * Team Distribution Address
-	 */
-	private static final String TEAM_DISTRIBUTION_ADDRESS = "teamDistributionEmailAddress";
-
-	/**
-	 * Year Started Industry
-	 */
-	private static final String YEAR_STARTED_INDUSTRY = "yearStartedIndustry";
-
-	/**
-	 * Smart Vestor Indicator
-	 */
-	private static final String SMART_VESTOR_PRO_INDICATOR = "smartVestorProIndicator";
-
-	/**
-	 * Fun Facts
-	 */
-	private static final String FUN_FACTS = "funFacts";
-
-	/**
-	 * Favourite Sport
-	 */
-	private static final String FAVOURITE_SPORT = "favoriteSport";
-
-	/**
-	 * Favourite Sports Team
-	 */
-	private static final String FAVOURITE_SPORTS_TEAM = "favoriteSportsTeam";
-
-	/**
-	 * Favourite Life Hack
-	 */
-	private static final String FAVOURITE_LIFE_HACK = "favoriteLifeHack";
-
-	/**
-	 * Linked In Url
-	 */
-	private static final String LINKED_IN_URL_FROM_JSON = "linkedInUrl";
-
-	/**
-	 * Linked In Url
-	 */
-	private static final String LINKED_IN_URL_TO_FRAGMENT = "linkedinUrl";
-
-	/**
-	 * Most Inspiration Moment
-	 */
-	private static final String MOST_INSPIRATION_MOMENT = "mostInspirationalMoment";
-
-	/**
-	 * Disciplinary Information Text
-	 */
-	private static final String DISCIPLINARY_INFORMATION_TEXT = "disciplinaryInformationText";
-
-	/**
-	 * Any Business Related Activities Commissions
-	 */
-	private static final String ANY_BUSINESS_RELATED_ACTIVITIES_COMMISSIONS = "anyBusinessRelatedActivitiesCommissions";
-
-	/**
-	 * Business Related Activities Commissions
-	 */
-	private static final String BUSINESS_RELATED_ACTIVITIES_COMMISSIONS_TEXT = "businessRelatedActivitiesCommissionsText";
-
-	/**
-	 * Any Additional Compensation
-	 */
-	private static final String ANY_ADDITIONAL_COMPENSATION = "anyAdditionalCompensation";
-
-	/**
-	 * Additional Compensation Text
-	 */
-	private static final String ADDITIONAL_COMPENSATION_TEXT = "additionalCompensationText";
-
-	/**
-	 * EFE Url
-	 */
-	private static final String EFE_URL = "efeUrl";
-
-	/**
-	 * Adv2b url
-	 */
-	private static final String ADV2B_URL = "adv2bUrl";
-
-	/**
-	 * Html Url
-	 */
-	private static final String HTML_URL = "htmlUrl";
-
-	/**
-	 * Last Updated
-	 */
-	private static final String LAST_UPDATED = "lastUpdated";
-
-	/**
-	 * Primary Office
-	 */
-	private static final String PRIMARY_OFFICE = "primaryOffice";
-
-	/**
-	 * Primary Office Postfix
-	 */
-	private static final String PRIMARY_OFFICE_POSTFIX = "_primaryOffice";
-
-	/**
-	 * Interests Hobbies
-	 */
-	private static final String INTERESTS_HOBBIES = "interestsHobbies";
-
-	/**
-	 * Address Model
-	 */
-	private static final String ADDRESS_MODEL = "/conf/efe/settings/dam/cfm/models/address";
-
-	/**
-	 * Jcr Title Primary Office
-	 */
-	private static final String JCR_TITLE_PRIMARY_OFFICE = "primary Office fragment";
-
-	/**
-	 * Name
-	 */
-	private static final String NAME = "name";
-
-	/**
-	 * City
-	 */
-	private static final String CITY = "city";
-
-	/**
-	 * State
-	 */
-	private static final String STATE = "state";
-
-	/**
-	 * Interests Hobbies
-	 */
-	private static final String ZIP = "zip";
-
-	/**
-	 * Office Locations
-	 */
-	private static final String OFFICE_LOCATIONS = "officesLocations";
-
-	/**
-	 * Office Locations Prefix
-	 */
-	private static final String OFFICE_LOCATIONS_PREFIX = "officesLocations_";
-
-	/**
-	 * Jcr Title Office Locations
-	 */
-	private static final String JCR_TITLE_OFFICE_LOCATIONS = "officesLocations fragment";
-
-	/**
-	 * Employment History
-	 */
-	private static final String EMPLOYMENT_HISTORY = "employmentHistory";
-
-	/**
-	 * Employment History Prefix
-	 */
-	private static final String EMPLOYMENT_HISTORY_PREFIX = "employmentHistory_";
-
-	/**
-	 * Employment History Model
-	 */
-	private static final String EMPLOYMENT_HISTORY_MODEL = "/conf/efe/settings/dam/cfm/models/employment-history";
-
-	/**
-	 * Jrc Title Employment History
-	 */
-	private static final String JCR_TITLE_EMPLOYMENT_HISTORY = "employmentHistory fragment";
-
-	/**
-	 * Start Date
-	 */
-	private static final String START_DATE = "startDate";
-
-	/**
-	 * End Date
-	 */
-	private static final String END_DATE = "endDate";
-
-	/**
-	 * Job Title
-	 */
-	private static final String JOB_TITLE = "jobTitle";
-
-	/**
-	 * Company Name
-	 */
-	private static final String COMPANY_NAME = "companyName";
-
-	/**
-	 * Current
-	 */
-	private static final String CURRENT = "current";
-
-	/**
-	 * Certifications
-	 */
-	private static final String CERTIFICATIONS = "certifications";
-
-	/**
-	 * Certification Prefix
-	 */
-	private static final String CERTIFICATION_PREFIX = "certification_";
-
-	/**
-	 * Job Title
-	 */
-	private static final String CERTIFICATION_MODEL = "/conf/efe/settings/dam/cfm/models/certification";
-
-	/**
-	 * Jcr Certification
-	 */
-	private static final String JCR_TITLE_CERTIFICATION = "certification fragment";
-
-	/**
-	 * Abbreviation
-	 */
-	private static final String ABBREVIATION = "abbreviation";
-
-	/**
-	 * Marketing Disclosure
-	 */
-	private static final String MARKETING_DISCLOSURE = "marketingDisclosure";
-
-	/**
-	 * Legal Compliance Disclosure
-	 */
-	private static final String LEGAL_COMPLIANCE_DISCLOSURE = "legalComplianceDisclosure";
-
-	/**
-	 * Honor Award
-	 */
-	private static final String HONOR_AWARD = "honorAward";
-
-	/**
-	 * Honor Award Model
-	 */
-	private static final String HONOR_AWARD_MODEL = "/conf/efe/settings/dam/cfm/models/honor-award";
-
-	/**
-	 * Jcr Title Honor Award
-	 */
-	private static final String JCR_TITLE_HONOR_AWARD = "honorAward fragment";
-
-	/**
-	 * Date Of Award
-	 */
-	private static final String DATE_OF_AWARD = "dateOfAward";
-
-	/**
-	 * Disclosure
-	 */
-	private static final String DISCLOSURE = "disclosure";
-
-	/**
-	 * Honor Award Name
-	 */
-	private static final String HONOR_AWARD_NAME = "honorAwardName";
-
-	/**
-	 * Organisation
-	 */
-	private static final String ORGANISATION = "organization";
-
-	/**
-	 * Education
-	 */
-	private static final String EDUCATION = "education";
-
-	/**
-	 * Education Fragment Prefix
-	 */
-	private static final String EDUCATION_FRAGMENT_PREFIX = "educationfragment_";
-
-	/**
-	 * Education Model
-	 */
-	private static final String EDUCATION_MODEL = "/conf/efe/settings/dam/cfm/models/education";
-
-	/**
-	 * Jcr Title Education
-	 */
-	private static final String JCR_TITLE_EDUCATION = "education fragment";
-
-	/**
-	 * Honor Award
-	 */
-	private static final String DEGREE = "degree";
-
-	/**
-	 * Major
-	 */
-	private static final String MAJOR = "major";
-
-	/**
-	 * Major
-	 */
-	private static final String UNIVERSITY = "university";
-
-	/**
-	 * Industry Exams
-	 */
-	private static final String INDUSTRY_EXAMS = "industryExams";
-
-	/**
-	 * Major
-	 */
-	private static final String INDUSTRY_EXAMS_PREFIX = "industryExam_";
-
-	/**
-	 * Industry Exam Model
-	 */
-	private static final String INDUSTRY_EXAM_MODEL = "/conf/efe/settings/dam/cfm/models/industry-exam";
-
-	/**
-	 * Jcr Title Industry Exam
-	 */
-	private static final String JCR_TITLE_INDUSTRY_EXAM = "industryExam fragment";
-
-	/**
-	 * Exam Name Long
-	 */
-	private static final String EXAM_NAME_LONG = "examNameLong";
-
-	/**
-	 * Exam Name Short
-	 */
-	private static final String EXAM_NAME_SHORT = "examNameShort";
 
 	/**
 	 * The Constant LOGGER
@@ -575,59 +64,37 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 	private PlannerApiService plannerApiService;
 
 	/**
-	 * This method is used to create Folder
-	 */
-	public String createFolder(String parentPath, String folderName, ResourceResolver resourceResolver) {
-		Session session = resourceResolver.adaptTo(Session.class);
-		Resource parentResource = resourceResolver.getResource(parentPath);
-
-		// Check if folder already exists
-		if (parentResource.getChild(folderName) == null) {
-			// Create new folder node
-			Node parentNode = parentResource.adaptTo(Node.class);
-			try {
-				Node folderNode = parentNode.addNode(folderName, SLING_ORDERED_FOLDER);
-			} catch (Exception e) {
-				LOGGER.error("ContentFragmentException:", e);
-			}
-			try {
-				session.save();
-			} catch (Exception e) {
-				LOGGER.error("ContentFragmentException:", e);
-			}
-		}
-		return (parentPath + FORWARD_SLASH + folderName);
-	}
-
-	/**
 	 * This method is used to create Fragment for Planner
 	 */
 	public void createFragmentPlanner(ResourceResolver resourceResolver) {
 		String jsonObjectPlanner = restService.getData(plannerApiService.getPlannersAPIEndpoint(),
 				plannerApiService.getAuthHeader());// Calling API to Get JSON Response
 		Gson gson = new Gson();
-		JsonElement jsonElement = gson.fromJson(jsonObjectPlanner, JsonElement.class);
-		JsonArray jsonArray = jsonElement.getAsJsonArray();
 
-		String rootPath = createFolder(ROOT_FOLDER_PATH, PLANNER, resourceResolver);
-		for (Object obj : jsonArray) {
+		PlannerResponse[] jsonElement = gson.fromJson(jsonObjectPlanner, PlannerResponse[].class);
 
-			JsonObject jsonObj = (JsonObject) obj;
-			String firstName = jsonObj.get(FIRST_NAME).toString();
-			int id = Integer.parseInt(jsonObj.get(ID).getAsString());
+		String rootPath = FolderUtil.createFolder(PlannerLocationConstants.ROOT_FOLDER_PATH,
+				PlannerLocationConstants.PLANNER, resourceResolver);
+		for (PlannerResponse jsonObj : jsonElement) {
 
-			String childPathPlanner = createFolder(rootPath, firstName + Integer.toString(id), resourceResolver);
+			String firstName = jsonObj.getfirstName();
+			int id = jsonObj.getId();
 
-			String fragmentNamePlanners = FRAGMENT_NAME_PREFIX + firstName + UNDERSCORE + Integer.toString(id);
+
+			String childPathPlanner = FolderUtil.createFolder(rootPath, firstName + Integer.toString(id),
+					resourceResolver);
+
+			String fragmentName = PlannerLocationConstants.FRAGMENT_NAME_PREFIX + firstName.trim()
+					+ PlannerLocationConstants.UNDERSCORE + Integer.toString(id);
 
 			Resource existingFragement = resourceResolver
-					.getResource(childPathPlanner + FORWARD_SLASH + fragmentNamePlanners);
+					.getResource(childPathPlanner + PlannerLocationConstants.FORWARD_SLASH + fragmentName);
 			if (existingFragement == null) {
-				Resource templateOrModelRsc = resourceResolver.getResource(PLANNER_MODEL);
+				Resource templateOrModelRsc = resourceResolver.getResource(PlannerLocationConstants.PLANNER_MODEL);
 				Resource parentRsc = resourceResolver.getResource(childPathPlanner);
 				FragmentTemplate tpl = templateOrModelRsc.adaptTo(FragmentTemplate.class);
 				try {
-					tpl.createFragment(parentRsc, fragmentNamePlanners, JCR_TITLE_PLANNER);
+					tpl.createFragment(parentRsc, fragmentName, PlannerLocationConstants.JCR_TITLE_PLANNER);
 					if (resourceResolver.hasChanges()) {
 						resourceResolver.commit();
 					}
@@ -638,183 +105,156 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 				}
 			}
 			Resource plannerMasterResource = resourceResolver
-					.getResource(childPathPlanner + FORWARD_SLASH + fragmentNamePlanners + MASTER_NODE);
+					.getResource(childPathPlanner + PlannerLocationConstants.FORWARD_SLASH + fragmentName
+							+ PlannerLocationConstants.MASTER_NODE);
 			Node plannerMasterNode = plannerMasterResource.adaptTo(Node.class);
 
-			try {
+			updatePlannerFragmentProperties(resourceResolver, plannerMasterNode, jsonObj, childPathPlanner, firstName,
+					id);
 
-				if (jsonObj.get(INCLUDE_IN_ADV2B) != null && !jsonObj.get(INCLUDE_IN_ADV2B).isJsonNull()) {
-					plannerMasterNode.setProperty(INCLUDE_IN_ADV2B, jsonObj.get(INCLUDE_IN_ADV2B).getAsBoolean());
-				}
-				if (jsonObj.get(INCLUDE_IN_API_PAYLOAD) != null && !jsonObj.get(INCLUDE_IN_API_PAYLOAD).isJsonNull()) {
-					plannerMasterNode.setProperty(INCLUDE_IN_API_PAYLOAD,
-							jsonObj.get(INCLUDE_IN_API_PAYLOAD).getAsBoolean());
-				}
-				if (jsonObj.get(FIRST_NAME) != null && !jsonObj.get(FIRST_NAME).isJsonNull()) {
-					plannerMasterNode.setProperty(FIRST_NAME, jsonObj.get(FIRST_NAME).toString());
+		}
+	}
 
-				}
-				if (jsonObj.get(FIRST_NAME_ALIAS) != null && !jsonObj.get(FIRST_NAME_ALIAS).isJsonNull()) {
-					plannerMasterNode.setProperty(FIRST_NAME_ALIAS, jsonObj.get(FIRST_NAME_ALIAS).toString());
-				}
-				if (jsonObj.get(MIDDLE_NAME) != null && !jsonObj.get(MIDDLE_NAME).isJsonNull()) {
-					plannerMasterNode.setProperty(MIDDLE_NAME, jsonObj.get(MIDDLE_NAME).toString());
-				}
-				if (jsonObj.get(LAST_NAME) != null && !jsonObj.get(LAST_NAME).isJsonNull()) {
-					plannerMasterNode.setProperty(LAST_NAME, jsonObj.get(LAST_NAME).toString());
-				}
-				if (jsonObj.get(ID) != null && !jsonObj.get(ID).isJsonNull()) {
-					plannerMasterNode.setProperty(ID, Integer.parseInt(jsonObj.get(ID).getAsString()));
-				}
-				if (jsonObj.get(SUFFIX) != null && !jsonObj.get(SUFFIX).isJsonNull()) {
-					plannerMasterNode.setProperty(SUFFIX, jsonObj.get(SUFFIX).toString());
-				}
-				if (jsonObj.get(TITLE) != null && !jsonObj.get(TITLE).isJsonNull()) {
-					plannerMasterNode.setProperty(TITLE, jsonObj.get(TITLE).toString());
-				}
-				if (jsonObj.get(BIRTH_YEAR) != null && !jsonObj.get(BIRTH_YEAR).isJsonNull()) {
-					plannerMasterNode.setProperty(BIRTH_YEAR, Integer.parseInt(jsonObj.get(BIRTH_YEAR).getAsString()));
-				}
-				if (jsonObj.get(YEAR_JOINED) != null && !jsonObj.get(YEAR_JOINED).isJsonNull()) {
-					plannerMasterNode.setProperty(YEAR_JOINED,Integer.parseInt(jsonObj.get(YEAR_JOINED).getAsString()));
-				}
-				if (jsonObj.get(DIRECT_LINE_PHONE) != null && !jsonObj.get(DIRECT_LINE_PHONE).isJsonNull()) {
-					plannerMasterNode.setProperty(DIRECT_LINE_PHONE, jsonObj.get(DIRECT_LINE_PHONE).toString());
-				}
-				if (jsonObj.get(ADVISOR_CRD_FROM_JSON) != null && !jsonObj.get(ADVISOR_CRD_FROM_JSON).isJsonNull()) {
-					plannerMasterNode.setProperty(ADVISOR_CRD_TO_FRAGMENT,Integer.parseInt(jsonObj.get(ADVISOR_CRD_FROM_JSON).getAsString()));
-				}
-				if (jsonObj.get(DESKTOP_IMAGE_URL_FROM_JSON) != null
-						&& !jsonObj.get(DESKTOP_IMAGE_URL_FROM_JSON).isJsonNull()) {
-					plannerMasterNode.setProperty(DESKTOP_IMAGE_URL_TO_FRAGMENT,
-							jsonObj.get(DESKTOP_IMAGE_URL_FROM_JSON).toString());
-				}
-				if (jsonObj.get(MOBILE_IMAGE_URL_FROM_URL) != null
-						&& !jsonObj.get(MOBILE_IMAGE_URL_FROM_URL).isJsonNull()) {
-					plannerMasterNode.setProperty(MOBILE_IMAGE_URL_TO_FRAGMENT,
-							jsonObj.get(MOBILE_IMAGE_URL_FROM_URL).toString());
-				}
-				if (jsonObj.get(CIRCLE_IMAGE_URL_FROM_JSON) != null
-						&& !jsonObj.get(CIRCLE_IMAGE_URL_FROM_JSON).isJsonNull()) {
-					plannerMasterNode.setProperty(CIRCLE_IMAGE_URL_TO_FRAGMENT,
-							jsonObj.get(CIRCLE_IMAGE_URL_FROM_JSON).toString());
-				}
-				if (jsonObj.get(EDUCATION_INDICATOR) != null && !jsonObj.get(EDUCATION_INDICATOR).isJsonNull()) {
-					plannerMasterNode.setProperty(EDUCATION_INDICATOR, jsonObj.get(EDUCATION_INDICATOR).toString());
-				}
+	private void updatePlannerFragmentProperties(ResourceResolver resourceResolver, Node plannerMasterNode,
+			PlannerResponse jsonObj, String childPathPlanner, String firstName, int id) {
 
-				if (jsonObj.get(TAX_PLANNER) != null && !jsonObj.get(TAX_PLANNER).isJsonNull()) {
-					plannerMasterNode.setProperty(TAX_PLANNER, jsonObj.get(TAX_PLANNER).toString());
-				}
-				if (jsonObj.get(ADVANCED_PLANNING) != null && !jsonObj.get(ADVANCED_PLANNING).isJsonNull()) {
-					plannerMasterNode.setProperty(ADVANCED_PLANNING, jsonObj.get(ADVANCED_PLANNING).getAsBoolean());
-				}
-				if (jsonObj.get(ESTATE_PLANNING) != null && !jsonObj.get(ESTATE_PLANNING).isJsonNull()) {
-					plannerMasterNode.setProperty(ESTATE_PLANNING, jsonObj.get(ESTATE_PLANNING).getAsBoolean());
-				}
-				if (jsonObj.get(INSURANCE_PLANNING) != null && !jsonObj.get(INSURANCE_PLANNING).isJsonNull()) {
-					plannerMasterNode.setProperty(INSURANCE_PLANNING, jsonObj.get(INSURANCE_PLANNING).getAsBoolean());
-				}
-				if (jsonObj.get(INVESTMENT_MANAGEMENT) != null && !jsonObj.get(INVESTMENT_MANAGEMENT).isJsonNull()) {
-					plannerMasterNode.setProperty(INVESTMENT_MANAGEMENT,
-							jsonObj.get(INVESTMENT_MANAGEMENT).getAsBoolean());
-				}
-				if (jsonObj.get(BIO) != null && !jsonObj.get(BIO).isJsonNull()) {
-					plannerMasterNode.setProperty(BIO, jsonObj.get(BIO).toString());
-				}
-				if (jsonObj.get(EMAIL) != null && !jsonObj.get(EMAIL).isJsonNull()) {
-					plannerMasterNode.setProperty(EMAIL, jsonObj.get(EMAIL).toString());
-				}
-				if (jsonObj.get(TEAM_DISTRIBUTION_ADDRESS) != null
-						&& !jsonObj.get(TEAM_DISTRIBUTION_ADDRESS).isJsonNull()) {
-					plannerMasterNode.setProperty(TEAM_DISTRIBUTION_ADDRESS,
-							jsonObj.get(TEAM_DISTRIBUTION_ADDRESS).toString());
-				}
-				if (jsonObj.get(YEAR_STARTED_INDUSTRY) != null && !jsonObj.get(YEAR_STARTED_INDUSTRY).isJsonNull()) {
-					plannerMasterNode.setProperty(YEAR_STARTED_INDUSTRY,
-							Integer.parseInt(jsonObj.get(YEAR_STARTED_INDUSTRY).getAsString()));
-				}
-				if (jsonObj.get(SMART_VESTOR_PRO_INDICATOR) != null
-						&& !jsonObj.get(SMART_VESTOR_PRO_INDICATOR).isJsonNull()) {
-					plannerMasterNode.setProperty(SMART_VESTOR_PRO_INDICATOR,
-							jsonObj.get(SMART_VESTOR_PRO_INDICATOR).getAsBoolean());
-				}
-				if (jsonObj.get(FUN_FACTS) != null && !jsonObj.get(FUN_FACTS).isJsonNull()) {
-					plannerMasterNode.setProperty(FUN_FACTS, jsonObj.get(FUN_FACTS).toString());
-				}
-				if (jsonObj.get(FAVOURITE_SPORT) != null && !jsonObj.get(FAVOURITE_SPORT).isJsonNull()) {
-					plannerMasterNode.setProperty(FAVOURITE_SPORT, jsonObj.get(FAVOURITE_SPORT).toString());
-				}
-				if (jsonObj.get(FAVOURITE_SPORTS_TEAM) != null && !jsonObj.get(FAVOURITE_SPORTS_TEAM).isJsonNull()) {
-					plannerMasterNode.setProperty(FAVOURITE_SPORTS_TEAM, jsonObj.get(FAVOURITE_SPORTS_TEAM).toString());
-				}
-				if (jsonObj.get(FAVOURITE_LIFE_HACK) != null && !jsonObj.get(FAVOURITE_LIFE_HACK).isJsonNull()) {
-					plannerMasterNode.setProperty(FAVOURITE_LIFE_HACK, jsonObj.get(FAVOURITE_LIFE_HACK).toString());
-				}
-				if (jsonObj.get(LINKED_IN_URL_FROM_JSON) != null
-						&& !jsonObj.get(LINKED_IN_URL_FROM_JSON).isJsonNull()) {
-					plannerMasterNode.setProperty(LINKED_IN_URL_TO_FRAGMENT,
-							jsonObj.get(LINKED_IN_URL_FROM_JSON).toString());
-				}
-				if (jsonObj.get(MOST_INSPIRATION_MOMENT) != null
-						&& !jsonObj.get(MOST_INSPIRATION_MOMENT).isJsonNull()) {
-					plannerMasterNode.setProperty(MOST_INSPIRATION_MOMENT,
-							jsonObj.get(MOST_INSPIRATION_MOMENT).toString());
-				}
-				if (jsonObj.get(DISCIPLINARY_INFORMATION_TEXT) != null
-						&& !jsonObj.get(DISCIPLINARY_INFORMATION_TEXT).isJsonNull()) {
-					plannerMasterNode.setProperty(DISCIPLINARY_INFORMATION_TEXT,
-							jsonObj.get(DISCIPLINARY_INFORMATION_TEXT).toString());
-				}
-				if (jsonObj.get(ANY_BUSINESS_RELATED_ACTIVITIES_COMMISSIONS) != null
-						&& !jsonObj.get(ANY_BUSINESS_RELATED_ACTIVITIES_COMMISSIONS).isJsonNull()) {
-					plannerMasterNode.setProperty(ANY_BUSINESS_RELATED_ACTIVITIES_COMMISSIONS,
-							jsonObj.get(ANY_BUSINESS_RELATED_ACTIVITIES_COMMISSIONS).getAsBoolean());
-				}
-				if (jsonObj.get(BUSINESS_RELATED_ACTIVITIES_COMMISSIONS_TEXT) != null
-						&& !jsonObj.get(BUSINESS_RELATED_ACTIVITIES_COMMISSIONS_TEXT).isJsonNull()) {
-					plannerMasterNode.setProperty(BUSINESS_RELATED_ACTIVITIES_COMMISSIONS_TEXT,
-							jsonObj.get(BUSINESS_RELATED_ACTIVITIES_COMMISSIONS_TEXT).toString());
-				}
-				if (jsonObj.get(ANY_ADDITIONAL_COMPENSATION) != null
-						&& !jsonObj.get(ANY_ADDITIONAL_COMPENSATION).isJsonNull()) {
-					plannerMasterNode.setProperty(ANY_ADDITIONAL_COMPENSATION,
-							jsonObj.get(ANY_ADDITIONAL_COMPENSATION).getAsBoolean());
-				}
-				if (jsonObj.get(ADDITIONAL_COMPENSATION_TEXT) != null
-						&& !jsonObj.get(ADDITIONAL_COMPENSATION_TEXT).isJsonNull()) {
-					plannerMasterNode.setProperty(ADDITIONAL_COMPENSATION_TEXT,
-							jsonObj.get(ADDITIONAL_COMPENSATION_TEXT).toString());
-				}
-				if (jsonObj.get(EFE_URL) != null && !jsonObj.get(EFE_URL).isJsonNull()) {
-					plannerMasterNode.setProperty(EFE_URL, jsonObj.get(EFE_URL).toString());
-				}
-				if (jsonObj.get(ADV2B_URL) != null && !jsonObj.get(ADV2B_URL).isJsonNull()) {
-					plannerMasterNode.setProperty(ADV2B_URL, jsonObj.get(ADV2B_URL).toString());
-				}
-				if (jsonObj.get(HTML_URL) != null && !jsonObj.get(HTML_URL).isJsonNull()) {
-					plannerMasterNode.setProperty(HTML_URL, jsonObj.get(HTML_URL).toString());
-				}
-				if (jsonObj.get(LAST_UPDATED) != null && !jsonObj.get(LAST_UPDATED).isJsonNull()) {
-					plannerMasterNode.setProperty(LAST_UPDATED, jsonObj.get(LAST_UPDATED).toString());
-				}
-				JsonArray interestsHobbiesArr = jsonObj.get(INTERESTS_HOBBIES).getAsJsonArray();
+		try {
 
-				String[] interestsHobbiesStringArray = new String[interestsHobbiesArr.size()];
-				if (interestsHobbiesArr != null) {
-					for (int i = 0; i < interestsHobbiesArr.size(); i++) {
-						interestsHobbiesStringArray[i] = interestsHobbiesArr.get(i).getAsString();
-					}
-					if (interestsHobbiesStringArray != null) {
-						plannerMasterNode.setProperty(INTERESTS_HOBBIES, interestsHobbiesStringArray);
-					}
-				}
-				createChildFragment(childPathPlanner, jsonObj, firstName, id, resourceResolver);
+			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode, PlannerLocationConstants.INCLUDE_IN_ADV2B,
+					jsonObj.isIncludeInADV2B());
 
-			} catch (Exception e) {
-				LOGGER.error("Exception occured.");
-			}
+			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode,
+					PlannerLocationConstants.INCLUDE_IN_API_PAYLOAD, jsonObj.isIncludeInApiPayload());
 
+			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode, PlannerLocationConstants.FIRST_NAME,
+					jsonObj.getfirstName());
+
+			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode, PlannerLocationConstants.FIRST_NAME_ALIAS,
+					jsonObj.getFirstNameAlias());
+
+			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode, PlannerLocationConstants.MIDDLE_NAME,
+					jsonObj.getMiddleName());
+
+			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode, PlannerLocationConstants.LAST_NAME,
+					jsonObj.getLastName());
+
+			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode, PlannerLocationConstants.ID,
+					jsonObj.getId());
+
+			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode, PlannerLocationConstants.SUFFIX,
+					jsonObj.getSuffix());
+
+			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode, PlannerLocationConstants.TITLE,
+					jsonObj.getTitle());
+
+			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode, PlannerLocationConstants.BIRTH_YEAR,
+					jsonObj.getBirthYear());
+
+			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode, PlannerLocationConstants.YEAR_JOINED,
+					jsonObj.getYearJoined());
+
+			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode, PlannerLocationConstants.DIRECT_LINE_PHONE,
+					jsonObj.getDirectLinePhone());
+
+			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode, PlannerLocationConstants.ADVISOR_CRD,
+					jsonObj.getAdvisorCrd());
+
+			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode, PlannerLocationConstants.DESKTOP_IMAGE_URL,
+					jsonObj.getDesktopImageUrl());
+
+			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode, PlannerLocationConstants.MOBILE_IMAGE_URL,
+					jsonObj.getMobileImageUrl());
+
+			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode, PlannerLocationConstants.CIRCLE_IMAGE,
+					jsonObj.getCircleImageUrl());
+
+			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode,
+					PlannerLocationConstants.EDUCATION_INDICATOR, jsonObj.getEducationIndicator());
+
+			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode, PlannerLocationConstants.TAX_PLANNER,
+					jsonObj.isTaxPlanner());
+
+			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode, PlannerLocationConstants.ADVANCED_PLANNING,
+					jsonObj.isAdvancedPlanning());
+
+			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode, PlannerLocationConstants.ESTATE_PLANNING,
+					jsonObj.isEstatePlanning());
+
+			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode, PlannerLocationConstants.INSURANCE_PLANNING,
+					jsonObj.isInsurancePlanning());
+
+			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode,
+					PlannerLocationConstants.INVESTMENT_MANAGEMENT, jsonObj.isInvestmentManagement());
+
+			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode, PlannerLocationConstants.BIO,
+					jsonObj.getBio());
+
+			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode, PlannerLocationConstants.EMAIL,
+					jsonObj.getEmail());
+
+			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode,
+					PlannerLocationConstants.TEAM_DISTRIBUTION_ADDRESS, jsonObj.getTeamDistributionEmailAddress());
+
+			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode,
+					PlannerLocationConstants.YEAR_STARTED_INDUSTRY, jsonObj.getYearStartedIndustry());
+
+			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode,
+					PlannerLocationConstants.SMART_VESTOR_PRO_INDICATOR, jsonObj.isSmartVestorProIndicator());
+
+			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode, PlannerLocationConstants.FUN_FACTS,
+					jsonObj.getFunFacts());
+
+			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode, PlannerLocationConstants.FAVOURITE_SPORT,
+					jsonObj.getFavoriteSport());
+
+			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode,
+					PlannerLocationConstants.FAVOURITE_SPORTS_TEAM, jsonObj.getFavoriteSportsTeam());
+
+			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode,
+					PlannerLocationConstants.FAVOURITE_LIFE_HACK, jsonObj.getFavoriteLifeHack());
+
+			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode, PlannerLocationConstants.LINKED_IN_URL,
+					jsonObj.getLinkedInUrl());
+
+			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode,
+					PlannerLocationConstants.MOST_INSPIRATION_MOMENT, jsonObj.getMostInspirationalMoment());
+
+			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode,
+					PlannerLocationConstants.DISCIPLINARY_INFORMATION_TEXT, jsonObj.getDisciplinaryInformationText());
+
+			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode,
+					PlannerLocationConstants.ANY_BUSINESS_RELATED_ACTIVITIES_COMMISSIONS,
+					jsonObj.isAnyBusinessRelatedActivitiesCommissions());
+
+			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode,
+					PlannerLocationConstants.BUSINESS_RELATED_ACTIVITIES_COMMISSIONS_TEXT,
+					jsonObj.getBusinessRelatedActivitiesCommissionsText());
+
+			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode,
+					PlannerLocationConstants.ANY_ADDITIONAL_COMPENSATION, jsonObj.isAnyAdditionalCompensation());
+
+			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode,
+					PlannerLocationConstants.ADDITIONAL_COMPENSATION_TEXT, jsonObj.getAdditionalCompensationText());
+
+			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode, PlannerLocationConstants.EFE_URL,
+					jsonObj.getEfeUrl());
+
+			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode, PlannerLocationConstants.ADV2B_URL,
+					jsonObj.getAdv2bUrl());
+
+			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode, PlannerLocationConstants.HTML_URL,
+					jsonObj.getHtmlUrl());
+
+			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode, PlannerLocationConstants.LAST_UPDATED,
+					jsonObj.getLastUpdated());
+
+			String[] interestsHobbiesArr = jsonObj.getInterestsHobbies().toArray(new String[0]);
+			plannerMasterNode.setProperty(PlannerLocationConstants.INTERESTS_HOBBIES, interestsHobbiesArr);
+
+			createChildFragment(childPathPlanner, jsonObj, firstName, id, resourceResolver);
+
+		} catch (RepositoryException e) {
+			LOGGER.error("RepositoryException occured.", e);
 		}
 	}
 
@@ -828,7 +268,7 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 	 * @param id
 	 * @param resourceResolver
 	 */
-	public void createChildFragment(String childPathPlanner, JsonObject jsonObj, String firstName, int id,
+	private void createChildFragment(String childPathPlanner, PlannerResponse jsonObj, String firstName, int id,
 			ResourceResolver resourceResolver) {
 		createPrimaryOfficeFragmentPlanner(childPathPlanner, jsonObj, firstName, id, resourceResolver);
 		createEducationFragmentPlanner(childPathPlanner, jsonObj, resourceResolver);
@@ -848,23 +288,28 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 	 * @param id
 	 * @param resourceResolver
 	 */
-	public void createPrimaryOfficeFragmentPlanner(String childPathPlanner, JsonObject jsonObj, String firstName,
+	private void createPrimaryOfficeFragmentPlanner(String childPathPlanner, PlannerResponse jsonObj, String firstName,
 			int id, ResourceResolver resourceResolver) {
+
 		try {
-			JsonObject primaryOffice = jsonObj.get(PRIMARY_OFFICE).getAsJsonObject();
+
+			PrimaryOffice primaryOffice = jsonObj.getPrimaryOffice();
+
 			if (primaryOffice != null) {
 
-				String primaryOfficeFragmentName = FRAGMENT_NAME_PREFIX + firstName + UNDERSCORE + Integer.toString(id)
-						+ PRIMARY_OFFICE_POSTFIX;
+				String primaryOfficeFragmentName = PlannerLocationConstants.FRAGMENT_NAME_PREFIX + firstName
+						+ PlannerLocationConstants.UNDERSCORE + Integer.toString(id)
+						+ PlannerLocationConstants.PRIMARY_OFFICE_POSTFIX;
 
-				Resource primaryOfficeexistingFragement = resourceResolver
-						.getResource(childPathPlanner + FORWARD_SLASH + primaryOfficeFragmentName);
-				if (primaryOfficeexistingFragement == null) {
-					Resource templateOrModelRsc = resourceResolver.getResource(ADDRESS_MODEL);
+				Resource primaryOfficeExistingFragement = resourceResolver.getResource(
+						childPathPlanner + PlannerLocationConstants.FORWARD_SLASH + primaryOfficeFragmentName);
+				if (primaryOfficeExistingFragement == null) {
+					Resource templateOrModelRsc = resourceResolver.getResource(PlannerLocationConstants.ADDRESS_MODEL);
 					Resource parentRsc = resourceResolver.getResource(childPathPlanner);
 					FragmentTemplate tpl = templateOrModelRsc.adaptTo(FragmentTemplate.class);
 					try {
-						tpl.createFragment(parentRsc, primaryOfficeFragmentName, JCR_TITLE_PRIMARY_OFFICE);
+						tpl.createFragment(parentRsc, primaryOfficeFragmentName,
+								PlannerLocationConstants.JCR_TITLE_PRIMARY_OFFICE);
 						if (resourceResolver.hasChanges()) {
 							resourceResolver.commit();
 						}
@@ -875,37 +320,27 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 					}
 				}
 				Resource plannerPrimaryOfficeResource = resourceResolver
-						.getResource(childPathPlanner + FORWARD_SLASH + primaryOfficeFragmentName + MASTER_NODE);
+						.getResource(childPathPlanner + PlannerLocationConstants.FORWARD_SLASH
+								+ primaryOfficeFragmentName + PlannerLocationConstants.MASTER_NODE);
 				Node plannerPrimaryOfficeNode = plannerPrimaryOfficeResource.adaptTo(Node.class);
 
-				if (primaryOffice.get(ID) != null && !primaryOffice.get(ID).isJsonNull()) {
+				NodePropertyManagerUtil.setPropertyIfNonNull(plannerPrimaryOfficeNode, PlannerLocationConstants.ID,
+						primaryOffice.getId());
 
-					plannerPrimaryOfficeNode.setProperty(ID, primaryOffice.get(ID).getAsString());
-				}
+				NodePropertyManagerUtil.setPropertyIfNonNull(plannerPrimaryOfficeNode, PlannerLocationConstants.NAME,
+						primaryOffice.getName());
 
-				if (primaryOffice.get(NAME) != null && !primaryOffice.get(NAME).isJsonNull()) {
+				NodePropertyManagerUtil.setPropertyIfNonNull(plannerPrimaryOfficeNode, PlannerLocationConstants.STATE,
+						primaryOffice.getState());
 
-					plannerPrimaryOfficeNode.setProperty(NAME, primaryOffice.get(NAME).getAsString());
-				}
+				NodePropertyManagerUtil.setPropertyIfNonNull(plannerPrimaryOfficeNode, PlannerLocationConstants.ZIP,
+						primaryOffice.getZip());
 
-				if (primaryOffice.get(CITY) != null && !primaryOffice.get(CITY).isJsonNull()) {
-
-					plannerPrimaryOfficeNode.setProperty(CITY, primaryOffice.get(CITY).getAsString());
-				}
-
-				if (primaryOffice.get(STATE) != null && !primaryOffice.get(STATE).isJsonNull()) {
-
-					plannerPrimaryOfficeNode.setProperty(STATE, primaryOffice.get(STATE).getAsString());
-				}
-
-				if (primaryOffice.get(ZIP) != null && !primaryOffice.get(ZIP).isJsonNull()) {
-
-					plannerPrimaryOfficeNode.setProperty(ZIP, primaryOffice.get(ZIP).getAsString());
-				}
 			}
-		} catch (Exception e) {
-			LOGGER.error("Exception occured.");
+		} catch (RepositoryException e) {
+			LOGGER.error("RepositoryException occured.", e);
 		}
+
 	}
 
 	/**
@@ -915,25 +350,28 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 	 * @param jsonObj
 	 * @param resourceResolver
 	 */
-	public void createOfficesLocationsFragmentPlanner(String childPathPlanner, JsonObject jsonObj,
+	private void createOfficesLocationsFragmentPlanner(String childPathPlanner, PlannerResponse jsonObj,
 			ResourceResolver resourceResolver) {
+
 		try {
-			JsonArray officesLocationsArr = jsonObj.get(OFFICE_LOCATIONS).getAsJsonArray();
-			String officesLocationsRootPath = createFolder(childPathPlanner, OFFICE_LOCATIONS, resourceResolver);
+			List<OfficesLocations> officesLocations = jsonObj.getOfficesLocations();
+
+			String officesLocationsRootPath = FolderUtil.createFolder(childPathPlanner,
+					PlannerLocationConstants.OFFICE_LOCATIONS, resourceResolver);
 			int officesLocationsCount = 1;
-			for (Object officesLocationsObj : officesLocationsArr) {
+			for (OfficesLocations officesLocationsObj : officesLocations) {
 
-				JsonObject officesLocations = (JsonObject) officesLocationsObj;
-
-				String officesLocationsFragmentName = OFFICE_LOCATIONS_PREFIX + Integer.toString(officesLocationsCount);
-				Resource officesLocationsExistingFragement = resourceResolver
-						.getResource(officesLocationsRootPath + FORWARD_SLASH + officesLocationsFragmentName);
+				String officesLocationsFragmentName = PlannerLocationConstants.OFFICE_LOCATIONS_PREFIX
+						+ Integer.toString(officesLocationsCount);
+				Resource officesLocationsExistingFragement = resourceResolver.getResource(officesLocationsRootPath
+						+ PlannerLocationConstants.FORWARD_SLASH + officesLocationsFragmentName);
 				if (officesLocationsExistingFragement == null) {
-					Resource templateOrModelRsc = resourceResolver.getResource(ADDRESS_MODEL);
+					Resource templateOrModelRsc = resourceResolver.getResource(PlannerLocationConstants.ADDRESS_MODEL);
 					Resource parentRsc = resourceResolver.getResource(officesLocationsRootPath);
 					FragmentTemplate tpl = templateOrModelRsc.adaptTo(FragmentTemplate.class);
 					try {
-						tpl.createFragment(parentRsc, officesLocationsFragmentName, JCR_TITLE_OFFICE_LOCATIONS);
+						tpl.createFragment(parentRsc, officesLocationsFragmentName,
+								PlannerLocationConstants.JCR_TITLE_OFFICE_LOCATIONS);
 						if (resourceResolver.hasChanges()) {
 							resourceResolver.commit();
 						}
@@ -943,37 +381,30 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 						LOGGER.error("PersistenceException:", e);
 					}
 				}
-				Resource plannerOfficesLocationsResource = resourceResolver.getResource(
-						officesLocationsRootPath + FORWARD_SLASH + officesLocationsFragmentName + MASTER_NODE);
+				Resource plannerOfficesLocationsResource = resourceResolver
+						.getResource(officesLocationsRootPath + PlannerLocationConstants.FORWARD_SLASH
+								+ officesLocationsFragmentName + PlannerLocationConstants.MASTER_NODE);
 				Node plannerOfficesLocationsNode = plannerOfficesLocationsResource.adaptTo(Node.class);
 
-				if (officesLocations.get(ID) != null && !officesLocations.get(ID).isJsonNull()) {
+				NodePropertyManagerUtil.setPropertyIfNonNull(plannerOfficesLocationsNode, PlannerLocationConstants.ID,
+						officesLocationsObj.getId());
 
-					plannerOfficesLocationsNode.setProperty(ID, officesLocations.get(ID).getAsString());
-				}
+				NodePropertyManagerUtil.setPropertyIfNonNull(plannerOfficesLocationsNode, PlannerLocationConstants.CITY,
+						officesLocationsObj.getCity());
 
-				if (officesLocations.get(CITY) != null && !officesLocations.get(CITY).isJsonNull()) {
+				NodePropertyManagerUtil.setPropertyIfNonNull(plannerOfficesLocationsNode, PlannerLocationConstants.NAME,
+						officesLocationsObj.getName());
 
-					plannerOfficesLocationsNode.setProperty(CITY, officesLocations.get(CITY).getAsString());
-				}
-				if (officesLocations.get(NAME) != null && !officesLocations.get(NAME).isJsonNull()) {
+				NodePropertyManagerUtil.setPropertyIfNonNull(plannerOfficesLocationsNode,
+						PlannerLocationConstants.STATE, officesLocationsObj.getState());
 
-					plannerOfficesLocationsNode.setProperty(NAME, officesLocations.get(NAME).getAsString());
-				}
-
-				if (officesLocations.get(STATE) != null && !officesLocations.get(STATE).isJsonNull()) {
-
-					plannerOfficesLocationsNode.setProperty(STATE, officesLocations.get(STATE).getAsString());
-				}
-				if (officesLocations.get(ZIP) != null && !officesLocations.get(ZIP).isJsonNull()) {
-
-					plannerOfficesLocationsNode.setProperty(ZIP, officesLocations.get(ZIP).getAsString());
-				}
+				NodePropertyManagerUtil.setPropertyIfNonNull(plannerOfficesLocationsNode, PlannerLocationConstants.ZIP,
+						officesLocationsObj.getZip());
 
 				officesLocationsCount++;
 			}
-		} catch (Exception e) {
-			LOGGER.error("Exception occured.");
+		} catch (RepositoryException e) {
+			LOGGER.error("Exception occured.", e);
 		}
 	}
 
@@ -984,26 +415,29 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 	 * @param jsonObj
 	 * @param resourceResolver
 	 */
-	public void createEmploymentHistoryFragmentPlanner(String childPathPlanner, JsonObject jsonObj,
+	private void createEmploymentHistoryFragmentPlanner(String childPathPlanner, PlannerResponse jsonObj,
 			ResourceResolver resourceResolver) {
+
 		try {
-			JsonArray employmentHistoryArr = jsonObj.get(EMPLOYMENT_HISTORY).getAsJsonArray();
-			String employmentHistoryRootPath = createFolder(childPathPlanner, EMPLOYMENT_HISTORY, resourceResolver);
+			List<EmploymentHistory> employmentHistory = jsonObj.getEmploymentHistory();
+
+			String employmentHistoryRootPath = FolderUtil.createFolder(childPathPlanner,
+					PlannerLocationConstants.EMPLOYMENT_HISTORY, resourceResolver);
 			int employmentHistoryCount = 1;
-			for (Object employmentHistoryObj : employmentHistoryArr) {
+			for (EmploymentHistory employmentHistoryObj : employmentHistory) {
 
-				JsonObject employmentHistory = (JsonObject) employmentHistoryObj;
-
-				String employmentHistoryFragmentName = EMPLOYMENT_HISTORY_PREFIX
+				String employmentHistoryFragmentName = PlannerLocationConstants.EMPLOYMENT_HISTORY_PREFIX
 						+ Integer.toString(employmentHistoryCount);
-				Resource employmentHistoryExistingFragement = resourceResolver
-						.getResource(employmentHistoryRootPath + FORWARD_SLASH + employmentHistoryFragmentName);
+				Resource employmentHistoryExistingFragement = resourceResolver.getResource(employmentHistoryRootPath
+						+ PlannerLocationConstants.FORWARD_SLASH + employmentHistoryFragmentName);
 				if (employmentHistoryExistingFragement == null) {
-					Resource templateOrModelRsc = resourceResolver.getResource(EMPLOYMENT_HISTORY_MODEL);
+					Resource templateOrModelRsc = resourceResolver
+							.getResource(PlannerLocationConstants.EMPLOYMENT_HISTORY_MODEL);
 					Resource parentRsc = resourceResolver.getResource(employmentHistoryRootPath);
 					FragmentTemplate tpl = templateOrModelRsc.adaptTo(FragmentTemplate.class);
 					try {
-						tpl.createFragment(parentRsc, employmentHistoryFragmentName, JCR_TITLE_EMPLOYMENT_HISTORY);
+						tpl.createFragment(parentRsc, employmentHistoryFragmentName,
+								PlannerLocationConstants.JCR_TITLE_EMPLOYMENT_HISTORY);
 						if (resourceResolver.hasChanges()) {
 							resourceResolver.commit();
 						}
@@ -1013,42 +447,32 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 						LOGGER.error("PersistenceException:", e);
 					}
 				}
-				Resource plannerEmploymentHistoryResource = resourceResolver.getResource(
-						employmentHistoryRootPath + FORWARD_SLASH + employmentHistoryFragmentName + MASTER_NODE);
+				Resource plannerEmploymentHistoryResource = resourceResolver
+						.getResource(employmentHistoryRootPath + PlannerLocationConstants.FORWARD_SLASH
+								+ employmentHistoryFragmentName + PlannerLocationConstants.MASTER_NODE);
 				Node plannerEmploymentHistoryExamNode = plannerEmploymentHistoryResource.adaptTo(Node.class);
 
-				if (employmentHistory.get(START_DATE) != null && !employmentHistory.get(START_DATE).isJsonNull()) {
+				NodePropertyManagerUtil.setPropertyIfNonNull(plannerEmploymentHistoryExamNode,
+						PlannerLocationConstants.START_DATE, employmentHistoryObj.getStartDate());
 
-					plannerEmploymentHistoryExamNode.setProperty(START_DATE,
-							employmentHistory.get(START_DATE).getAsString());
-				}
+				NodePropertyManagerUtil.setPropertyIfNonNull(plannerEmploymentHistoryExamNode,
+						PlannerLocationConstants.END_DATE, employmentHistoryObj.getEndDate());
 
-				if (employmentHistory.get(END_DATE) != null && !employmentHistory.get(END_DATE).isJsonNull()) {
+				NodePropertyManagerUtil.setPropertyIfNonNull(plannerEmploymentHistoryExamNode,
+						PlannerLocationConstants.JOB_TITLE, employmentHistoryObj.getJobTitle());
 
-					plannerEmploymentHistoryExamNode.setProperty(END_DATE,
-							employmentHistory.get(END_DATE).getAsString());
-				}
-				if (employmentHistory.get(JOB_TITLE) != null && !employmentHistory.get(JOB_TITLE).isJsonNull()) {
+				NodePropertyManagerUtil.setPropertyIfNonNull(plannerEmploymentHistoryExamNode,
+						PlannerLocationConstants.COMPANY_NAME, employmentHistoryObj.getCompanyName());
 
-					plannerEmploymentHistoryExamNode.setProperty(JOB_TITLE,
-							employmentHistory.get(JOB_TITLE).getAsString());
-				}
-
-				if (employmentHistory.get(COMPANY_NAME) != null && !employmentHistory.get(COMPANY_NAME).isJsonNull()) {
-
-					plannerEmploymentHistoryExamNode.setProperty(COMPANY_NAME,
-							employmentHistory.get(COMPANY_NAME).getAsString());
-				}
-				if (employmentHistory.get(CURRENT) != null && !employmentHistory.get(CURRENT).isJsonNull()) {
-					plannerEmploymentHistoryExamNode.setProperty(CURRENT,
-							employmentHistory.get(CURRENT).getAsBoolean());
-				}
+				NodePropertyManagerUtil.setPropertyIfNonNull(plannerEmploymentHistoryExamNode,
+						PlannerLocationConstants.CURRENT, employmentHistoryObj.isCurrent());
 
 				employmentHistoryCount++;
 			}
-		} catch (Exception e) {
-			LOGGER.error("Exception occured.");
+		} catch (RepositoryException e) {
+			LOGGER.error("RepositoryException occured.", e);
 		}
+
 	}
 
 	/**
@@ -1058,25 +482,29 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 	 * @param jsonObj
 	 * @param resourceResolver
 	 */
-	public void createCertificationsFragmentPlanner(String childPathPlanner, JsonObject jsonObj,
+	private void createCertificationsFragmentPlanner(String childPathPlanner, PlannerResponse jsonObj,
 			ResourceResolver resourceResolver) {
+
 		try {
-			JsonArray certificationArr = jsonObj.get(CERTIFICATIONS).getAsJsonArray();
-			String certificationsRootPath = createFolder(childPathPlanner, CERTIFICATIONS, resourceResolver);
+			List<Certifications> certifications = jsonObj.getCertifications();
+
+			String certificationsRootPath = FolderUtil.createFolder(childPathPlanner,
+					PlannerLocationConstants.CERTIFICATIONS, resourceResolver);
 			int certificationsCount = 1;
-			for (Object certificationsObj : certificationArr) {
+			for (Certifications certificationsObj : certifications) {
 
-				JsonObject certification = (JsonObject) certificationsObj;
-
-				String certificationFragmentName = CERTIFICATION_PREFIX + Integer.toString(certificationsCount);
-				Resource certificationExistingFragement = resourceResolver
-						.getResource(certificationsRootPath + FORWARD_SLASH + certificationFragmentName);
+				String certificationFragmentName = PlannerLocationConstants.CERTIFICATION_PREFIX
+						+ Integer.toString(certificationsCount);
+				Resource certificationExistingFragement = resourceResolver.getResource(
+						certificationsRootPath + PlannerLocationConstants.FORWARD_SLASH + certificationFragmentName);
 				if (certificationExistingFragement == null) {
-					Resource templateOrModelRsc = resourceResolver.getResource(CERTIFICATION_MODEL);
+					Resource templateOrModelRsc = resourceResolver
+							.getResource(PlannerLocationConstants.CERTIFICATION_MODEL);
 					Resource parentRsc = resourceResolver.getResource(certificationsRootPath);
 					FragmentTemplate tpl = templateOrModelRsc.adaptTo(FragmentTemplate.class);
 					try {
-						tpl.createFragment(parentRsc, certificationFragmentName, JCR_TITLE_CERTIFICATION);
+						tpl.createFragment(parentRsc, certificationFragmentName,
+								PlannerLocationConstants.JCR_TITLE_CERTIFICATION);
 						if (resourceResolver.hasChanges()) {
 							resourceResolver.commit();
 						}
@@ -1087,37 +515,26 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 					}
 				}
 				Resource plannerCertificationResource = resourceResolver
-						.getResource(certificationsRootPath + FORWARD_SLASH + certificationFragmentName + MASTER_NODE);
+						.getResource(certificationsRootPath + PlannerLocationConstants.FORWARD_SLASH
+								+ certificationFragmentName + PlannerLocationConstants.MASTER_NODE);
 				Node plannerCertificationExamNode = plannerCertificationResource.adaptTo(Node.class);
 
-				if (certification.get(ABBREVIATION) != null && !certification.get(ABBREVIATION).isJsonNull()) {
+				NodePropertyManagerUtil.setPropertyIfNonNull(plannerCertificationExamNode,
+						PlannerLocationConstants.ABBREVIATION, certificationsObj.getAbbreviation());
 
-					plannerCertificationExamNode.setProperty(ABBREVIATION,
-							certification.get(ABBREVIATION).getAsString());
-				}
+				NodePropertyManagerUtil.setPropertyIfNonNull(plannerCertificationExamNode,
+						PlannerLocationConstants.LEGAL_COMPLIANCE_DISCLOSURE,
+						certificationsObj.getLegalComplianceDisclosure());
 
-				if (certification.get(LEGAL_COMPLIANCE_DISCLOSURE) != null
-						&& !certification.get(LEGAL_COMPLIANCE_DISCLOSURE).isJsonNull()) {
+				NodePropertyManagerUtil.setPropertyIfNonNull(plannerCertificationExamNode,
+						PlannerLocationConstants.MARKETING_DISCLOSURE, certificationsObj.getMarketingDisclosure());
 
-					plannerCertificationExamNode.setProperty(LEGAL_COMPLIANCE_DISCLOSURE,
-							certification.get(LEGAL_COMPLIANCE_DISCLOSURE).getAsString());
-				}
-				if (certification.get(MARKETING_DISCLOSURE) != null
-						&& !certification.get(MARKETING_DISCLOSURE).isJsonNull()) {
-
-					plannerCertificationExamNode.setProperty(MARKETING_DISCLOSURE,
-							certification.get(MARKETING_DISCLOSURE).getAsString());
-				}
-
-				if (certification.get(NAME) != null && !certification.get(NAME).isJsonNull()) {
-
-					plannerCertificationExamNode.setProperty(NAME, certification.get(NAME).getAsString());
-				}
-
+				NodePropertyManagerUtil.setPropertyIfNonNull(plannerCertificationExamNode,
+						PlannerLocationConstants.NAME, certificationsObj.getName());
 				certificationsCount++;
 			}
-		} catch (Exception e) {
-			LOGGER.error("Exception occured.");
+		} catch (RepositoryException e) {
+			LOGGER.error("RepositoryException occured.", e);
 		}
 	}
 
@@ -1128,25 +545,29 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 	 * @param jsonObj
 	 * @param resourceResolver
 	 */
-	public void createHonorAwardFragmentPlanner(String childPathPlanner, JsonObject jsonObj,
+	private void createHonorAwardFragmentPlanner(String childPathPlanner, PlannerResponse jsonObj,
 			ResourceResolver resourceResolver) {
+
 		try {
-			JsonArray HonorAward = jsonObj.get(HONOR_AWARD).getAsJsonArray();
-			String honorAwardrootPath = createFolder(childPathPlanner, HONOR_AWARD, resourceResolver);
+			List<HonorAward> honorAward = jsonObj.getHonorAward();
+
+			String honorAwardrootPath = FolderUtil.createFolder(childPathPlanner, PlannerLocationConstants.HONOR_AWARD,
+					resourceResolver);
 			int honorAwardCount = 1;
-			for (Object honorAwardObj : HonorAward) {
+			for (HonorAward honorAwardObj : honorAward) {
 
-				JsonObject honorAward = (JsonObject) honorAwardObj;
-
-				String honorAwardFragmentName = HONOR_AWARD + Integer.toString(honorAwardCount);
-				Resource honorAwardexistingFragement = resourceResolver
-						.getResource(honorAwardrootPath + FORWARD_SLASH + honorAwardFragmentName);
+				String honorAwardFragmentName = PlannerLocationConstants.HONOR_AWARD
+						+ Integer.toString(honorAwardCount);
+				Resource honorAwardexistingFragement = resourceResolver.getResource(
+						honorAwardrootPath + PlannerLocationConstants.FORWARD_SLASH + honorAwardFragmentName);
 				if (honorAwardexistingFragement == null) {
-					Resource templateOrModelRsc = resourceResolver.getResource(HONOR_AWARD_MODEL);
+					Resource templateOrModelRsc = resourceResolver
+							.getResource(PlannerLocationConstants.HONOR_AWARD_MODEL);
 					Resource parentRsc = resourceResolver.getResource(honorAwardrootPath);
 					FragmentTemplate tpl = templateOrModelRsc.adaptTo(FragmentTemplate.class);
 					try {
-						tpl.createFragment(parentRsc, honorAwardFragmentName, JCR_TITLE_HONOR_AWARD);
+						tpl.createFragment(parentRsc, honorAwardFragmentName,
+								PlannerLocationConstants.JCR_TITLE_HONOR_AWARD);
 						if (resourceResolver.hasChanges()) {
 							resourceResolver.commit();
 						}
@@ -1157,30 +578,25 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 					}
 				}
 				Resource plannerHonorAwardResource = resourceResolver
-						.getResource(honorAwardrootPath + FORWARD_SLASH + honorAwardFragmentName + MASTER_NODE);
-				Node HonorAwardNode = plannerHonorAwardResource.adaptTo(Node.class);
+						.getResource(honorAwardrootPath + PlannerLocationConstants.FORWARD_SLASH
+								+ honorAwardFragmentName + PlannerLocationConstants.MASTER_NODE);
+				Node honorAwardNode = plannerHonorAwardResource.adaptTo(Node.class);
 
-				if (honorAward.get(DATE_OF_AWARD) != null && !honorAward.get(DATE_OF_AWARD).isJsonNull()) {
+				NodePropertyManagerUtil.setPropertyIfNonNull(honorAwardNode, PlannerLocationConstants.DATE_OF_AWARD,
+						honorAwardObj.getDateOfAward());
 
-					HonorAwardNode.setProperty(DATE_OF_AWARD, honorAward.get(DATE_OF_AWARD).getAsString());
-				}
-				if (honorAward.get(DISCLOSURE) != null && !honorAward.get(DISCLOSURE).isJsonNull()) {
+				NodePropertyManagerUtil.setPropertyIfNonNull(honorAwardNode, PlannerLocationConstants.DISCLOSURE,
+						honorAwardObj.getDisclosure());
 
-					HonorAwardNode.setProperty(DISCLOSURE, honorAward.get(DISCLOSURE).getAsString());
-				}
-				if (honorAward.get(HONOR_AWARD_NAME) != null && !honorAward.get(HONOR_AWARD_NAME).isJsonNull()) {
+				NodePropertyManagerUtil.setPropertyIfNonNull(honorAwardNode, PlannerLocationConstants.HONOR_AWARD_NAME,
+						honorAwardObj.getHonorAwardName());
 
-					HonorAwardNode.setProperty(HONOR_AWARD_NAME, honorAward.get(HONOR_AWARD_NAME).getAsString());
-				}
-				if (honorAward.get(ORGANISATION) != null && !honorAward.get(ORGANISATION).isJsonNull()) {
-
-					HonorAwardNode.setProperty(ORGANISATION, honorAward.get(ORGANISATION).getAsString());
-				}
-
+				NodePropertyManagerUtil.setPropertyIfNonNull(honorAwardNode, PlannerLocationConstants.ORGANISATION,
+						honorAwardObj.getOrganization());
 				honorAwardCount++;
 			}
-		} catch (Exception e) {
-			LOGGER.error("Exception occured.");
+		} catch (RepositoryException e) {
+			LOGGER.error("RepositoryException occured.", e);
 		}
 	}
 
@@ -1191,24 +607,29 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 	 * @param jsonObj
 	 * @param resourceResolver
 	 */
-	public void createEducationFragmentPlanner(String childPathPlanner, JsonObject jsonObj,
+	private void createEducationFragmentPlanner(String childPathPlanner, PlannerResponse jsonObj,
 			ResourceResolver resourceResolver) {
-		try {
-			JsonArray education = jsonObj.get(EDUCATION).getAsJsonArray();
-			String educationrootPath = createFolder(childPathPlanner, EDUCATION, resourceResolver);
-			int educationCount = 1;
-			for (Object eduObj : education) {
-				JsonObject edu = (JsonObject) eduObj;
 
-				String educationFragmentName = EDUCATION_FRAGMENT_PREFIX + Integer.toString(educationCount);
-				Resource educationexistingFragement = resourceResolver
-						.getResource(educationrootPath + FORWARD_SLASH + educationFragmentName);
+		try {
+			List<Education> education = jsonObj.getEducation();
+
+			String educationRootPath = FolderUtil.createFolder(childPathPlanner, PlannerLocationConstants.EDUCATION,
+					resourceResolver);
+			int educationCount = 1;
+			for (Education eduObj : education) {
+
+				String educationFragmentName = PlannerLocationConstants.EDUCATION_FRAGMENT_PREFIX
+						+ Integer.toString(educationCount);
+				Resource educationexistingFragement = resourceResolver.getResource(
+						educationRootPath + PlannerLocationConstants.FORWARD_SLASH + educationFragmentName);
 				if (educationexistingFragement == null) {
-					Resource templateOrModelRsc = resourceResolver.getResource(EDUCATION_MODEL);
-					Resource parentRsc = resourceResolver.getResource(educationrootPath);
+					Resource templateOrModelRsc = resourceResolver
+							.getResource(PlannerLocationConstants.EDUCATION_MODEL);
+					Resource parentRsc = resourceResolver.getResource(educationRootPath);
 					FragmentTemplate tpl = templateOrModelRsc.adaptTo(FragmentTemplate.class);
 					try {
-						tpl.createFragment(parentRsc, educationFragmentName, JCR_TITLE_EDUCATION);
+						tpl.createFragment(parentRsc, educationFragmentName,
+								PlannerLocationConstants.JCR_TITLE_EDUCATION);
 						if (resourceResolver.hasChanges()) {
 							resourceResolver.commit();
 						}
@@ -1219,27 +640,22 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 					}
 				}
 				Resource plannerEducationResource = resourceResolver
-						.getResource(educationrootPath + FORWARD_SLASH + educationFragmentName + MASTER_NODE);
+						.getResource(educationRootPath + PlannerLocationConstants.FORWARD_SLASH + educationFragmentName
+								+ PlannerLocationConstants.MASTER_NODE);
 				Node plannerEducationNode = plannerEducationResource.adaptTo(Node.class);
 
-				if (edu.get(DEGREE) != null && !edu.get(DEGREE).isJsonNull()) {
+				NodePropertyManagerUtil.setPropertyIfNonNull(plannerEducationNode, PlannerLocationConstants.DEGREE,
+						eduObj.getDegree());
 
-					plannerEducationNode.setProperty(DEGREE, edu.get(DEGREE).getAsString());
-				}
+				NodePropertyManagerUtil.setPropertyIfNonNull(plannerEducationNode, PlannerLocationConstants.MAJOR,
+						eduObj.getMajor());
 
-				if (edu.get(MAJOR) != null && !edu.get(MAJOR).isJsonNull()) {
-
-					plannerEducationNode.setProperty(MAJOR, edu.get(MAJOR).getAsString());
-				}
-
-				if (edu.get(UNIVERSITY) != null && !edu.get(UNIVERSITY).isJsonNull()) {
-
-					plannerEducationNode.setProperty(UNIVERSITY, edu.get(UNIVERSITY).getAsString());
-				}
+				NodePropertyManagerUtil.setPropertyIfNonNull(plannerEducationNode, PlannerLocationConstants.UNIVERSITY,
+						eduObj.getUniversity());
 				educationCount++;
 			}
-		} catch (Exception e) {
-			LOGGER.error("Exception occured.");
+		} catch (RepositoryException e) {
+			LOGGER.error("RepositoryException occured.", e);
 		}
 	}
 
@@ -1250,25 +666,27 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 	 * @param jsonObj
 	 * @param resourceResolver
 	 */
-	public void createIndustryExamFragmentPlanner(String childPathPlanner, JsonObject jsonObj,
+	private void createIndustryExamFragmentPlanner(String childPathPlanner, PlannerResponse jsonObj,
 			ResourceResolver resourceResolver) {
+
 		try {
-			JsonArray industryExam = jsonObj.get(INDUSTRY_EXAMS).getAsJsonArray();
-			String industryExamrootPath = createFolder(childPathPlanner, INDUSTRY_EXAMS, resourceResolver);
+			List<IndustryExams> industryExams = jsonObj.getIndustryExams();
+			String industryExamRootPath = FolderUtil.createFolder(childPathPlanner,
+					PlannerLocationConstants.INDUSTRY_EXAMS, resourceResolver);
 			int industryExamCount = 1;
-			for (Object industryExamObj : industryExam) {
-
-				JsonObject industryexam = (JsonObject) industryExamObj;
-
-				String industryExamFragmentName = INDUSTRY_EXAMS_PREFIX + Integer.toString(industryExamCount);
-				Resource industryExamexistingFragement = resourceResolver
-						.getResource(industryExamrootPath + FORWARD_SLASH + industryExamFragmentName);
+			for (IndustryExams industryExamObj : industryExams) {
+				String industryExamFragmentName = PlannerLocationConstants.INDUSTRY_EXAMS_PREFIX
+						+ Integer.toString(industryExamCount);
+				Resource industryExamexistingFragement = resourceResolver.getResource(
+						industryExamRootPath + PlannerLocationConstants.FORWARD_SLASH + industryExamFragmentName);
 				if (industryExamexistingFragement == null) {
-					Resource templateOrModelRsc = resourceResolver.getResource(INDUSTRY_EXAM_MODEL);
-					Resource parentRsc = resourceResolver.getResource(industryExamrootPath);
+					Resource templateOrModelRsc = resourceResolver
+							.getResource(PlannerLocationConstants.INDUSTRY_EXAM_MODEL);
+					Resource parentRsc = resourceResolver.getResource(industryExamRootPath);
 					FragmentTemplate tpl = templateOrModelRsc.adaptTo(FragmentTemplate.class);
 					try {
-						tpl.createFragment(parentRsc, industryExamFragmentName, JCR_TITLE_INDUSTRY_EXAM);
+						tpl.createFragment(parentRsc, industryExamFragmentName,
+								PlannerLocationConstants.JCR_TITLE_INDUSTRY_EXAM);
 						if (resourceResolver.hasChanges()) {
 							resourceResolver.commit();
 						}
@@ -1279,24 +697,19 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 					}
 				}
 				Resource plannerIndustryExamResource = resourceResolver
-						.getResource(industryExamrootPath + FORWARD_SLASH + industryExamFragmentName + MASTER_NODE);
+						.getResource(industryExamRootPath + PlannerLocationConstants.FORWARD_SLASH
+								+ industryExamFragmentName + PlannerLocationConstants.MASTER_NODE);
 				Node plannerIndustryExamNode = plannerIndustryExamResource.adaptTo(Node.class);
 
-				if (industryexam.get(EXAM_NAME_LONG) != null && !industryexam.get(EXAM_NAME_LONG).isJsonNull()) {
+				NodePropertyManagerUtil.setPropertyIfNonNull(plannerIndustryExamNode,
+						PlannerLocationConstants.EXAM_NAME_LONG, industryExamObj.getExamNameLong());
 
-					plannerIndustryExamNode.setProperty(EXAM_NAME_LONG, industryexam.get(EXAM_NAME_LONG).getAsString());
-				}
-
-				if (industryexam.get(EXAM_NAME_SHORT) != null && !industryexam.get(EXAM_NAME_SHORT).isJsonNull()) {
-
-					plannerIndustryExamNode.setProperty(EXAM_NAME_SHORT,
-							industryexam.get(EXAM_NAME_SHORT).getAsString());
-				}
-
+				NodePropertyManagerUtil.setPropertyIfNonNull(plannerIndustryExamNode,
+						PlannerLocationConstants.EXAM_NAME_SHORT, industryExamObj.getExamNameShort());
 				industryExamCount++;
 			}
-		} catch (Exception e) {
-			LOGGER.error("Exception occured.");
+		} catch (RepositoryException e) {
+			LOGGER.error("RepositoryException occured.", e);
 		}
 	}
 

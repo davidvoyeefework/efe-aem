@@ -78,7 +78,7 @@ public class PlannerLocationJob {
 		if (scheduledJobInfo == null) {
 			LOGGER.info("Error adding scheduledJobInfo");
 		} else {
-			LOGGER.debug("Scheduler Job added to the Queue {} with cron {}");
+			LOGGER.info("Scheduler Job added to the Queue with cron");
 		}
 	}
 
@@ -88,6 +88,7 @@ public class PlannerLocationJob {
 	 */
 	@ObjectClassDefinition(name = "Planner and Location Scheduler Configuration")
 	public @interface PlannerConfiguration {
+		
 		/**
 		 * schedulerExpression
 		 * 
@@ -103,6 +104,5 @@ public class PlannerLocationJob {
 		 */
 		@AttributeDefinition(name = "Enabled", description = "Enable Scheduler", type = AttributeType.BOOLEAN)
 		public String serviceEnabled() default "true";
-
 	}
 }
