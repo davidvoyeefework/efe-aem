@@ -43,7 +43,7 @@
                                                 name="./alt"/>
                                             <logoLink
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                 fieldDescription="Add footer logo link url here"
                                                 fieldLabel="Logo Link"
                                                 name="./logoLink"
