@@ -5,7 +5,7 @@
     width: 100%;
     margin-bottom: 0;
     @media screen and (min-width: $lg) {
-      @include flexbox($gap: 20px 51px);
+      @include flexbox($gap: 25px 51px);
     }
 
     .cmp-list__item {
