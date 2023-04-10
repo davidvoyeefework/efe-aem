@@ -14,7 +14,7 @@ import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 
 /**
- * The Class FooterImplTest.
+ * The Class FAQAccordionImplTest.
  */
 @ExtendWith(AemContextExtension.class)
 class FAQAccordionImplTest {
@@ -59,12 +59,14 @@ class FAQAccordionImplTest {
 	public void simpleLoadAndGetterTest() {
 		assertEquals("faqaccordion-ad22d8b121", model.getId());
  		FAQ faq = model.getFaqList().get(0);
+ 		assertEquals("/cf/dam/content-fragment", faq.getFragmentPath());
+ 		assertEquals("content-fragment-2d166d187a", faq.getId());
 		assertEquals("sample question\n", faq.getQuestion());
 		assertEquals("<p>sample answer</p>\n", faq.getAnswer());
 	}
 
 	/**
-	 * Test footer null attributes.
+	 * Test FAQ null attributes.
 	 */
 	@Test
 	void testFAQNullAttributes() {
