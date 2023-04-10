@@ -4,6 +4,9 @@ import java.util.List;
 
 import com.efe.core.models.multifield.FAQ;
 
+/**
+ * The Interface FAQAccordion.
+ */
 public interface FAQAccordion {
 
 	/**
