@@ -1,6 +1,6 @@
 .cmp-social-links {
   &__images {
-    @include flexbox($gap: rem(20), $flex-direction: row, $flex-wrap: true);
+    @include flexbox($gap: rem(13), $flex-direction: row, $flex-wrap: true);
   }
 
   &__image {

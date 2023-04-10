@@ -1,9 +1,9 @@
 .cmp-list--footer {
-  margin-top: 8px;
+  margin: 41px 0;
   .cmp-list {
     @include flexbox($gap: 20px 16px, $flex-wrap: wrap);
     width: 100%;
-    margin-bottom: rem(32);
+    margin-bottom: 0;
     @media screen and (min-width: $lg) {
       @include flexbox($gap: 20px 51px);
     }
@@ -31,9 +31,9 @@
   }
 
   @media screen and (min-width: $lg) {
-    margin-top: 28px;
+    margin: 41px 0;
     .cmp-list {
-      margin-bottom: 64px;
+      margin-bottom: 0;
     }
   }
 }
