@@ -2,6 +2,7 @@ package com.efe.core.services.impl;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.lenient;
+import static org.mockito.Mockito.mockStatic;
 
 import javax.jcr.Node;
 
@@ -9,6 +10,7 @@ import org.apache.sling.api.resource.PersistenceException;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.testing.mock.sling.ResourceResolverType;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -50,11 +52,11 @@ class PlannerModelServicesImplTest {
 	/** The Resource. */
 	@Mock
 	private Resource templateOrModelRsc, templateOrModelRscPo, templateOrModelRscEd, templateOrModelIex,
-			templateOrModelRscCer, templateOrModelRscEh, templateOrModelRscAdd;
+			templateOrModelRscCer, templateOrModelRscEh, templateOrModelRscAdd,templateOrModelRscHr;
 
 	/** The FragmentTemplate. */
 	@Mock
-	private FragmentTemplate tpl, tplPo, tplEd, tplIex, tplCer, tplEh, tplAdd;
+	private FragmentTemplate tpl, tplPo, tplEd, tplIex, tplCer, tplEh, tplAdd, tplHr;
 
 	/** The parentRsc. */
 	@Mock
@@ -68,7 +70,7 @@ class PlannerModelServicesImplTest {
 	@Mock
 	private Resource plannerMasterResource, plannerPrimaryOfficeResource, plannerEducationResource,
 			plannerIndustryExamResource, plannerCertificationResource, plannerEmploymentHistoryResource,
-			plannerOfficesLocationsResource;
+			plannerOfficesLocationsResource,plannerHonorAwardResource;
 
 	/** The Node. */
 	@Mock
@@ -77,6 +79,9 @@ class PlannerModelServicesImplTest {
 	/** The plannerApiService. */
 	@Mock
 	private PlannerApiService plannerApiService;
+	
+	private MockedStatic<FolderUtil> mockStatic1;
+	private MockedStatic<NodePropertyManagerUtil> mockStatic2;
 
 	/** The plannerModelServicesImpl. */
 	@InjectMocks
@@ -87,7 +92,7 @@ class PlannerModelServicesImplTest {
 	 */
 	@BeforeEach
 	void setUp() throws Exception {
-	    
+
 		aemContext.registerService(ResourceResolver.class, resourceResolver);
 		aemContext.registerService(RestService.class, restService);
 		aemContext.registerService(PlannerApiService.class, plannerApiService);
@@ -102,6 +107,8 @@ class PlannerModelServicesImplTest {
 		aemContext.registerService(Resource.class, plannerCertificationResource);
 		aemContext.registerService(Resource.class, plannerEmploymentHistoryResource);
 		aemContext.registerService(Resource.class, plannerOfficesLocationsResource);
+		aemContext.registerService(Resource.class, plannerHonorAwardResource);
+		
 		aemContext.registerService(Node.class, plannerMasterNode);
 		aemContext.registerService(Node.class, plannerPrimaryOfficeNode);
 		aemContext.registerService(Node.class, plannerEducationNode);
@@ -114,15 +121,27 @@ class PlannerModelServicesImplTest {
 		aemContext.registerService(Resource.class, templateOrModelIex);
 		aemContext.registerService(Resource.class, templateOrModelRscCer);
 		aemContext.registerService(Resource.class, templateOrModelRscAdd);
+		aemContext.registerService(Resource.class, templateOrModelRscHr);
+		
 
 		aemContext.registerService(FragmentTemplate.class, tplIex);
 		aemContext.registerService(FragmentTemplate.class, tplCer);
 		aemContext.registerService(FragmentTemplate.class, tplEh);
 		aemContext.registerService(FragmentTemplate.class, tplAdd);
-		 
-		Mockito.mockStatic(FolderUtil.class);
-		Mockito.mockStatic(NodePropertyManagerUtil.class);
+		aemContext.registerService(FragmentTemplate.class, tplHr);
+		
 
+		mockStatic1 = Mockito.mockStatic(FolderUtil.class);
+		mockStatic2 = Mockito.mockStatic(NodePropertyManagerUtil.class);
+
+	}
+
+
+
+	@AfterEach
+	void close() {
+		mockStatic1.close();
+		mockStatic2.close();
 	}
 
 	@Test
@@ -169,9 +188,19 @@ class PlannerModelServicesImplTest {
 				+ "        \"yearStartedIndustry\": 2001,\r\n" + "        \"smartVestorProIndicator\": false,\r\n"
 				+ "        \"interestsHobbies\": [\r\n" + "            \"Faith\",\r\n"
 				+ "            \"Recreation\",\r\n" + "            \"Family\",\r\n" + "            \"Reading\"\r\n"
-				+ "        ],\r\n" + "        \"funFacts\": \"\",\r\n" + "        \"honorAward\": [],\r\n"
-				+ "        \"favoriteSport\": \"\",\r\n" + "        \"favoriteSportsTeam\": \"\",\r\n"
-				+ "        \"favoriteLifeHack\": \"\",\r\n" + "        \"linkedInUrl\": \"\",\r\n"
+				+ "        ],\r\n" + "        \"funFacts\": \"\",\r\n" 
+				+ "        \"honorAward\": [\r\n"
+				+ "            {\r\n"
+				+ "                \"dateOfAward\": \"2010-01-01\",\r\n"
+				+ "                \"disclosure\": \"\",\r\n"
+				+ "                \"honorAwardName\": \"Hewett-Kautz Fellowship\",\r\n"
+				+ "                \"organization\": \"Carl H. Lindner College of Business - Department of Economics\"\r\n"
+				+ "            }\r\n"
+				+ "        ],\r\n"
+				+ "        \"favoriteSport\": \"\",\r\n" 
+				+ "        \"favoriteSportsTeam\": \"\",\r\n"
+				+ "        \"favoriteLifeHack\": \"\",\r\n" 
+				+ "        \"linkedInUrl\": \"\",\r\n"
 				+ "        \"mostInspirationalMoment\": \"\",\r\n" + "        \"industryExams\": [\r\n"
 				+ "            {\r\n" + "                \"examNameShort\": \"Series 66\",\r\n"
 				+ "                \"examNameLong\": \"Series 66\"\r\n" + "            }\r\n" + "        ],\r\n"
@@ -196,7 +225,8 @@ class PlannerModelServicesImplTest {
 		String certificationsRootPath = "/content/dam/efe/plannerlocation/planners/Johnathan179/certifications";
 		String employmentHistoryRootPath = "/content/dam/efe/plannerlocation/planners/Johnathan179/employmentHistory";
 		String officesLocationsRootPath = "/content/dam/efe/plannerlocation/planners/Johnathan179/officesLocations";
-
+        String honorAwardrootPath = "/content/dam/efe/plannerlocation/planners/Johnathan179/honorAward";
+		
 		String fragmentName = PlannerLocationConstants.FRAGMENT_NAME_PREFIX + firstName
 				+ PlannerLocationConstants.UNDERSCORE + Integer.toString(id);
 		String primaryOfficeFragmentName = fragmentName + PlannerLocationConstants.PRIMARY_OFFICE_POSTFIX;
@@ -206,6 +236,7 @@ class PlannerModelServicesImplTest {
 		String certificationFragmentName = PlannerLocationConstants.CERTIFICATION_PREFIX + "1";
 		String employmentHistoryFragmentName = PlannerLocationConstants.EMPLOYMENT_HISTORY_PREFIX + "1";
 		String officesLocationsFragmentName = PlannerLocationConstants.OFFICE_LOCATIONS_PREFIX + "1";
+		String honorAwardFragmentName = PlannerLocationConstants.HONOR_AWARD + "1";
 
 		lenient().when(
 				restService.getData(plannerApiService.getPlannersAPIEndpoint(), plannerApiService.getAuthHeader()))
@@ -215,7 +246,23 @@ class PlannerModelServicesImplTest {
 				PlannerLocationConstants.PLANNER, resourceResolver)).thenReturn(rootPath);
 		lenient().when(FolderUtil.createFolder(rootPath, firstName + id, resourceResolver))
 				.thenReturn(childPathPlanner);
+		lenient().when(FolderUtil.createFolder(childPathPlanner, PlannerLocationConstants.EDUCATION, resourceResolver))
+				.thenReturn(educationRootPath);
+		lenient().when(
+				FolderUtil.createFolder(childPathPlanner, PlannerLocationConstants.INDUSTRY_EXAMS, resourceResolver))
+				.thenReturn(industryExamRootPath);
+		lenient().when(
+				FolderUtil.createFolder(childPathPlanner, PlannerLocationConstants.CERTIFICATIONS, resourceResolver))
+				.thenReturn(certificationsRootPath);
+		lenient().when(FolderUtil.createFolder(childPathPlanner, PlannerLocationConstants.EMPLOYMENT_HISTORY,
+				resourceResolver)).thenReturn(employmentHistoryRootPath);
+		lenient().when(FolderUtil.createFolder(childPathPlanner, PlannerLocationConstants.OFFICE_LOCATIONS, resourceResolver))
+				.thenReturn(officesLocationsRootPath);
+		lenient().when(FolderUtil.createFolder(childPathPlanner, PlannerLocationConstants.HONOR_AWARD,
+				resourceResolver))
+		.thenReturn(honorAwardrootPath);
 
+		
 		lenient().when(resourceResolver.getResource(PlannerLocationConstants.PLANNER_MODEL))
 				.thenReturn(templateOrModelRsc);
 
@@ -249,8 +296,6 @@ class PlannerModelServicesImplTest {
 						+ primaryOfficeFragmentName + PlannerLocationConstants.MASTER_NODE))
 				.thenReturn(plannerPrimaryOfficeResource);
 
-		lenient().when(FolderUtil.createFolder(childPathPlanner, PlannerLocationConstants.EDUCATION, resourceResolver))
-				.thenReturn(educationRootPath);
 		lenient()
 				.when(resourceResolver.getResource(educationRootPath + PlannerLocationConstants.FORWARD_SLASH
 						+ educationFragmentName + PlannerLocationConstants.MASTER_NODE))
@@ -259,9 +304,6 @@ class PlannerModelServicesImplTest {
 		lenient().when(templateOrModelRscPo.adaptTo(FragmentTemplate.class)).thenReturn(tplPo);
 		lenient().when(templateOrModelRscEd.adaptTo(FragmentTemplate.class)).thenReturn(tplEd);
 
-		lenient().when(
-				FolderUtil.createFolder(childPathPlanner, PlannerLocationConstants.INDUSTRY_EXAMS, resourceResolver))
-				.thenReturn(industryExamRootPath);
 		lenient()
 				.when(resourceResolver.getResource(
 						industryExamRootPath + PlannerLocationConstants.FORWARD_SLASH + industryExamFragmentName))
@@ -274,9 +316,6 @@ class PlannerModelServicesImplTest {
 						+ industryExamFragmentName + PlannerLocationConstants.MASTER_NODE))
 				.thenReturn(plannerIndustryExamResource);
 
-		lenient().when(
-				FolderUtil.createFolder(childPathPlanner, PlannerLocationConstants.CERTIFICATIONS, resourceResolver))
-				.thenReturn(certificationsRootPath);
 		lenient()
 				.when(resourceResolver.getResource(
 						certificationsRootPath + PlannerLocationConstants.FORWARD_SLASH + certificationFragmentName))
@@ -289,8 +328,6 @@ class PlannerModelServicesImplTest {
 						+ certificationFragmentName + PlannerLocationConstants.MASTER_NODE))
 				.thenReturn(plannerCertificationResource);
 
-		lenient().when(FolderUtil.createFolder(childPathPlanner, PlannerLocationConstants.EMPLOYMENT_HISTORY,
-				resourceResolver)).thenReturn(employmentHistoryRootPath);
 		lenient().when(resourceResolver.getResource(
 				employmentHistoryRootPath + PlannerLocationConstants.FORWARD_SLASH + employmentHistoryFragmentName))
 				.thenReturn(null);
@@ -302,20 +339,26 @@ class PlannerModelServicesImplTest {
 						+ employmentHistoryFragmentName + PlannerLocationConstants.MASTER_NODE))
 				.thenReturn(plannerEmploymentHistoryResource);
 
-		lenient().when(
-				FolderUtil.createFolder(childPathPlanner, PlannerLocationConstants.OFFICE_LOCATIONS, resourceResolver))
-				.thenReturn(officesLocationsRootPath);
-		lenient().when(resourceResolver.getResource(
-				officesLocationsRootPath + PlannerLocationConstants.FORWARD_SLASH + officesLocationsFragmentName))
+		lenient().when(resourceResolver.getResource(officesLocationsRootPath + PlannerLocationConstants.FORWARD_SLASH + officesLocationsFragmentName))
 				.thenReturn(null);
 		lenient().when(resourceResolver.getResource(PlannerLocationConstants.ADDRESS_MODEL))
 				.thenReturn(templateOrModelRscAdd);
 		lenient().when(templateOrModelRscAdd.adaptTo(FragmentTemplate.class)).thenReturn(tplAdd);
-		lenient()
-				.when(resourceResolver.getResource(officesLocationsRootPath + PlannerLocationConstants.FORWARD_SLASH
+		lenient().when(resourceResolver.getResource(officesLocationsRootPath + PlannerLocationConstants.FORWARD_SLASH
 						+ officesLocationsFragmentName + PlannerLocationConstants.MASTER_NODE))
 				.thenReturn(plannerOfficesLocationsResource);
 
+		lenient().when(resourceResolver.getResource(honorAwardrootPath + PlannerLocationConstants.FORWARD_SLASH + honorAwardFragmentName))
+		.thenReturn(null);
+		lenient().when(resourceResolver.getResource(PlannerLocationConstants.HONOR_AWARD_MODEL))
+		.thenReturn(templateOrModelRscHr);
+		lenient().when(templateOrModelRscHr.adaptTo(FragmentTemplate.class)).thenReturn(tplHr);
+		lenient().when(resourceResolver.getResource(honorAwardrootPath + PlannerLocationConstants.FORWARD_SLASH
+				+ honorAwardFragmentName + PlannerLocationConstants.MASTER_NODE))
+		.thenReturn(plannerHonorAwardResource);
+
+
+		
 		plannerModelServicesImpl.createFragmentPlanner(resourceResolver);
 
 		assertNotNull(plannerModelServicesImpl);
