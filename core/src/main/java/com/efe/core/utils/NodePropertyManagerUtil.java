@@ -7,10 +7,22 @@ import javax.jcr.RepositoryException;
 import javax.jcr.Value;
 import javax.jcr.ValueFactory;
 
+/**
+ * The NodePropertyManagerUtil.
+ *
+ */
 public class NodePropertyManagerUtil {
 
+	/**
+	 * Setting the Property.
+	 * 
+	 * @param locationMasterNode
+	 * @param propertyName
+	 * @param value
+	 * @throws RepositoryException
+	 */
 	public static void setPropertyIfNonNull(Node locationMasterNode, String propertyName, Object value) throws RepositoryException {
-	    if (Objects.nonNull(value)) {
+	    if (Objects.nonNull(value) && Objects.nonNull(locationMasterNode)) {
 	        ValueFactory valueFactory = locationMasterNode.getSession().getValueFactory();
 	        Value jcrValue;
 	        if (value instanceof Boolean) {

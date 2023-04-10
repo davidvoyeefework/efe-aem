@@ -2,13 +2,15 @@ package com.efe.core.services.impl;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.lenient;
-import static org.mockito.Mockito.mockStatic;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import javax.jcr.Node;
 
 import org.apache.sling.api.resource.PersistenceException;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.api.resource.ResourceResolverFactory;
 import org.apache.sling.testing.mock.sling.ResourceResolverType;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -25,6 +27,7 @@ import com.adobe.cq.dam.cfm.FragmentTemplate;
 import com.efe.core.constants.PlannerLocationConstants;
 import com.efe.core.services.PlannerApiService;
 import com.efe.core.services.RestService;
+import com.efe.core.utils.EducationPlannerUtil;
 import com.efe.core.utils.FolderUtil;
 import com.efe.core.utils.NodePropertyManagerUtil;
 
@@ -44,27 +47,28 @@ class PlannerModelServicesImplTest {
 	/** The resourceResolver. */
 	@Mock
 	private ResourceResolver resourceResolver;
+	
+	/** Mock ResourceResolverFactory. */
+	@Mock
+	private ResourceResolverFactory resourceResolverFactory;
 
-	/** The resourceResolver. */
+	/** Mock RestService. */
 	@Mock
 	private RestService restService;
 
-	/** The Resource. */
+	/** Mock Resource. */
 	@Mock
 	private Resource templateOrModelRsc, templateOrModelRscPo, templateOrModelRscEd, templateOrModelIex,
 			templateOrModelRscCer, templateOrModelRscEh, templateOrModelRscAdd,templateOrModelRscHr;
 
-	/** The FragmentTemplate. */
+	/** Mock FragmentTemplate. */
 	@Mock
 	private FragmentTemplate tpl, tplPo, tplEd, tplIex, tplCer, tplEh, tplAdd, tplHr;
 
-	/** The parentRsc. */
+	/** Mock Resource. */
 	@Mock
-	private Resource parentRsc;
+	private Resource parentRsc,existingFragement;
 
-	/** The existingFragement. */
-	@Mock
-	private Resource existingFragement;
 
 	/** The Resource. */
 	@Mock
@@ -82,6 +86,8 @@ class PlannerModelServicesImplTest {
 	
 	private MockedStatic<FolderUtil> mockStatic1;
 	private MockedStatic<NodePropertyManagerUtil> mockStatic2;
+	//private MockedStatic<EducationPlannerUtil> mockStatic3;
+	//private MockedStatic<FragmentUtil> mockStatic4;
 
 	/** The plannerModelServicesImpl. */
 	@InjectMocks
@@ -92,8 +98,14 @@ class PlannerModelServicesImplTest {
 	 */
 	@BeforeEach
 	void setUp() throws Exception {
+		
+		final Map<String, Object> subServiceUser = new ConcurrentHashMap<>();
+		subServiceUser.put(ResourceResolverFactory.SUBSERVICE,"efe-service-user");
 
 		aemContext.registerService(ResourceResolver.class, resourceResolver);
+		aemContext.registerService(ResourceResolverFactory.class, resourceResolverFactory);
+		lenient().when(resourceResolverFactory.getServiceResourceResolver(subServiceUser)).thenReturn(resourceResolver);
+		
 		aemContext.registerService(RestService.class, restService);
 		aemContext.registerService(PlannerApiService.class, plannerApiService);
 		aemContext.registerService(FragmentTemplate.class, tpl);
@@ -133,6 +145,8 @@ class PlannerModelServicesImplTest {
 
 		mockStatic1 = Mockito.mockStatic(FolderUtil.class);
 		mockStatic2 = Mockito.mockStatic(NodePropertyManagerUtil.class);
+		//mockStatic3 = Mockito.mockStatic(EducationPlannerUtil.class);
+		//mockStatic4 = Mockito.mockStatic(FragmentUtil.class);
 
 	}
 
@@ -142,6 +156,8 @@ class PlannerModelServicesImplTest {
 	void close() {
 		mockStatic1.close();
 		mockStatic2.close();
+		//mockStatic3.close();
+		//mockStatic4.close();
 	}
 
 	@Test
@@ -241,9 +257,13 @@ class PlannerModelServicesImplTest {
 		lenient().when(
 				restService.getData(plannerApiService.getPlannersAPIEndpoint(), plannerApiService.getAuthHeader()))
 				.thenReturn(jsonObjectPlanner);
-
+        
+		lenient().when(resourceResolver.getResource(PlannerLocationConstants.PLANNER_MODEL))
+		.thenReturn(parentRsc);
+		
 		lenient().when(FolderUtil.createFolder(PlannerLocationConstants.ROOT_FOLDER_PATH,
 				PlannerLocationConstants.PLANNER, resourceResolver)).thenReturn(rootPath);
+		
 		lenient().when(FolderUtil.createFolder(rootPath, firstName + id, resourceResolver))
 				.thenReturn(childPathPlanner);
 		lenient().when(FolderUtil.createFolder(childPathPlanner, PlannerLocationConstants.EDUCATION, resourceResolver))
@@ -356,10 +376,8 @@ class PlannerModelServicesImplTest {
 		lenient().when(resourceResolver.getResource(honorAwardrootPath + PlannerLocationConstants.FORWARD_SLASH
 				+ honorAwardFragmentName + PlannerLocationConstants.MASTER_NODE))
 		.thenReturn(plannerHonorAwardResource);
-
-
 		
-		plannerModelServicesImpl.createFragmentPlanner(resourceResolver);
+		plannerModelServicesImpl.addDataToCFModelPlanner();
 
 		assertNotNull(plannerModelServicesImpl);
 	}

@@ -1,6 +1,7 @@
 package com.efe.core.services.impl;
 
 import java.util.List;
+import java.util.Objects;
 
 import javax.jcr.Node;
 import javax.jcr.RepositoryException;
@@ -32,7 +33,7 @@ import com.google.gson.Gson;
  *
  */
 @Component(service = LocationModelServices.class, immediate = true)
-public class LocationModelServicesImpl implements LocationModelServices { 
+public class LocationModelServicesImpl implements LocationModelServices {
 
 	/**
 	 * The Constant LOGGER
@@ -56,11 +57,34 @@ public class LocationModelServicesImpl implements LocationModelServices {
 	 */
 	@Reference
 	private PlannerApiService plannerApiService;
+	
+	
+	/**
+	 * This method is used to create Fragment for Location
+	 */
+	private void createFragment(String modelResource, String rootPath, String fragmentName, String fragmentResource,
+			ResourceResolver resourceResolver) {
+		Resource templateOrModelRsc = resourceResolver.getResource(modelResource);
+		FragmentTemplate tpl = templateOrModelRsc.adaptTo(FragmentTemplate.class);
+		if (Objects.nonNull(tpl)) {
+			try {
+				Resource parentRsc = resourceResolver.getResource(rootPath);
+				tpl.createFragment(parentRsc, fragmentName, fragmentResource);
+				if (resourceResolver.hasChanges()) {
+					resourceResolver.commit();
+				}
+			} catch (ContentFragmentException e) {
+				LOGGER.error("ContentFragmentException:", e);
+			} catch (PersistenceException e) {
+				LOGGER.error("PersistenceException:", e);
+			}
+		}
+	}
 
 	/**
 	 * This method is used to create and update Fragments for Locations
 	 */
-	public void createFragmentLocation(ResourceResolver resourceResolver) {
+	private void createFragmentLocation(ResourceResolver resourceResolver) {
 		String jsonObjectLocation = restService.getData(plannerApiService.getLocationsAPIEndpoint(),
 				plannerApiService.getAuthHeader());
 		Gson gson = new Gson();
@@ -77,20 +101,10 @@ public class LocationModelServicesImpl implements LocationModelServices {
 					+ PlannerLocationConstants.UNDERSCORE + officeId;
 
 			Resource existingFragement = resourceResolver.getResource(childPathLocation + PlannerLocationConstants.FORWARD_SLASH + fragmentName);
-			if (existingFragement == null) {
-				Resource templateOrModelRsc = resourceResolver.getResource(PlannerLocationConstants.LOCATION_MODEL);
-				Resource parentRsc = resourceResolver.getResource(childPathLocation);
-				FragmentTemplate tpl = templateOrModelRsc.adaptTo(FragmentTemplate.class);
-				try {
-					tpl.createFragment(parentRsc, fragmentName, PlannerLocationConstants.JCR_TITLE_LOCATION);
-					if (resourceResolver.hasChanges()) {
-						resourceResolver.commit();
-					}
-				} catch (ContentFragmentException e) {
-					LOGGER.error("ContentFragmentException:", e);
-				} catch (PersistenceException e) {
-					LOGGER.error("PersistenceException:", e);
-				}
+			if (Objects.isNull(existingFragement)) {
+				
+				createFragment(PlannerLocationConstants.LOCATION_MODEL, childPathLocation, fragmentName, PlannerLocationConstants.JCR_TITLE_LOCATION, resourceResolver);
+				
 				Resource locationMasterResource = resourceResolver.getResource(childPathLocation+ PlannerLocationConstants.FORWARD_SLASH + fragmentName + PlannerLocationConstants.MASTER_NODE);
 				Node locationMasterNode = locationMasterResource.adaptTo(Node.class);
 				updateLocationFragmentProperties(resourceResolver, locationMasterNode, jsonObj, childPathLocation);
@@ -102,7 +116,7 @@ public class LocationModelServicesImpl implements LocationModelServices {
 	/**
 	 * This method is used to create and update Fragments for Business Hours
 	 */
-	public void createBusinessHoursFragmentLocation(String childPathLocation, LocationResponse jsonObj,
+	private void createBusinessHoursFragmentLocation(String childPathLocation, LocationResponse jsonObj,
 			ResourceResolver resourceResolver) {
 			List<BusinessHours> businessHours = jsonObj.getBusinessHours();
 			String businessHoursRootPath = FolderUtil.createFolder(childPathLocation,
@@ -113,22 +127,12 @@ public class LocationModelServicesImpl implements LocationModelServices {
 						+ Integer.toString(businessHoursCount);
 				Resource businessHoursExistingFragement = resourceResolver.getResource(
 						businessHoursRootPath + PlannerLocationConstants.FORWARD_SLASH + businessHoursFragmentName);
-				if (businessHoursExistingFragement == null) {
-					Resource templateOrModelRsc = resourceResolver
-							.getResource(PlannerLocationConstants.BUSINESS_HOUR_MODEL);
-					Resource parentRsc = resourceResolver.getResource(businessHoursRootPath);
-					FragmentTemplate tpl = templateOrModelRsc.adaptTo(FragmentTemplate.class); 
-					try {
-						tpl.createFragment(parentRsc, businessHoursFragmentName,
-								PlannerLocationConstants.BUSINESS_HOUR_MODEL_DESCRIPTION);
-						if (resourceResolver.hasChanges()) {
-							resourceResolver.commit();
-						}
-					} catch (ContentFragmentException e) {
-						LOGGER.error("ContentFragmentException:", e);
-					} catch (PersistenceException e) {
-						LOGGER.error("PersistenceException:", e);
-					}
+				if (Objects.isNull(businessHoursExistingFragement)) {
+					
+					createFragment(PlannerLocationConstants.BUSINESS_HOUR_MODEL, businessHoursRootPath, businessHoursFragmentName,
+							PlannerLocationConstants.BUSINESS_HOUR_MODEL_DESCRIPTION, resourceResolver);
+					
+				
 				}
 				updateBusinessHoursFragmentLocation(resourceResolver, businessHoursRootPath, businessHoursFragmentName,
 						businessHoursObj);
@@ -225,6 +229,7 @@ public class LocationModelServicesImpl implements LocationModelServices {
 	public void addDataToCFModelLocation() {
 		ResourceResolver resourceResolver = ResourceUtil.getServiceResourceResolver(resourceResolverFactory);
 		createFragmentLocation(resourceResolver);
+		ResourceUtil.closeResourceResolver(resourceResolver);
 		LOGGER.info("Content Fragment created for Location");
 	}
 }

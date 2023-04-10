@@ -187,11 +187,11 @@ public class PlannerResponse {
 		return includeInApiPayload;
 	}
 
-	public void setIncludeinapipayload(boolean includeinapipayload) {
-		this.includeInApiPayload = includeinapipayload;
+	public void setIncludeInApiPayload(boolean includeInApiPayload) {
+		this.includeInApiPayload = includeInApiPayload;
 	}
 
-	public String getfirstName() {
+	public String getFirstName() {
 		return firstName;
 	}
 
@@ -271,11 +271,11 @@ public class PlannerResponse {
 		this.directLinePhone = directLinePhone;
 	}
 
-	public int getAdvisorCrd() {
+	public int getAdvisorCRD() {
 		return advisorCRD;
 	}
 
-	public void setAdvisorCrd(int advisorCrd) {
+	public void setAdvisorCRD(int advisorCRD) {
 		this.advisorCRD = advisorCRD;
 	}
 
@@ -283,7 +283,7 @@ public class PlannerResponse {
 		return desktopImageUrl;
 	}
 
-	public void setDesktopimageurl(String desktopImageUrl) {
+	public void setDesktopImageUrl(String desktopImageUrl) {
 		this.desktopImageUrl = desktopImageUrl;
 	}
 
@@ -291,7 +291,7 @@ public class PlannerResponse {
 		return mobileImageUrl;
 	}
 
-	public void setMobileimageurl(String mobileImageUrl) {
+	public void setMobileImageUrl(String mobileImageUrl) {
 		this.mobileImageUrl = mobileImageUrl;
 	}
 
@@ -299,7 +299,7 @@ public class PlannerResponse {
 		return circleImageUrl;
 	}
 
-	public void setCircleimageurl(String circleimageurl) {
+	public void setCircleImageUrl(String circleImageUrl) {
 		this.circleImageUrl = circleImageUrl;
 	}
 
@@ -379,7 +379,7 @@ public class PlannerResponse {
 		return employmentHistory;
 	}
 
-	public void setEmploymenthistory(List<EmploymentHistory> employmenthistory) {
+	public void setEmploymentHistory(List<EmploymentHistory> employmentHistory) {
 		this.employmentHistory = employmentHistory;
 	}
 

@@ -18,7 +18,7 @@ public class EmploymentHistory {
 		return companyName;
 	}
 
-	public void setCompanyname(String companyName) {
+	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
 	}
 

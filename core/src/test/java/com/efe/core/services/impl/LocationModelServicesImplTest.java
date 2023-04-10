@@ -3,13 +3,20 @@ package com.efe.core.services.impl;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.lenient;
-import static org.mockito.Mockito.mock;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import javax.jcr.Node;
+import javax.jcr.RepositoryException;
+import javax.jcr.Session;
+import javax.jcr.UnsupportedRepositoryOperationException;
+import javax.jcr.ValueFactory;
 
+import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.PersistenceException;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.api.resource.ResourceResolverFactory;
 import org.apache.sling.testing.mock.sling.ResourceResolverType;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -45,6 +52,13 @@ class LocationModelServicesImplTest {
 	/** Mock ResourceResolver. */
 	@Mock
 	private ResourceResolver resourceResolver;
+	
+	@Mock
+	private Session locationMasterNodeSession,locationBusinessHoursNodeSession;
+	
+	/** Mock ResourceResolverFactory. */
+	@Mock
+	private ResourceResolverFactory resourceResolverFactory;
 
 	/** Mock RestService. */
 	@Mock
@@ -53,6 +67,9 @@ class LocationModelServicesImplTest {
 	/** Mock PlannerApiService. */
 	@Mock
 	private PlannerApiService plannerApiService;
+	
+	@Mock
+	private ValueFactory valueFactory,valueFactoryBh;
 
 	/** Mock FragmentTemplate. */
 	@Mock
@@ -61,7 +78,7 @@ class LocationModelServicesImplTest {
 	/** Mock Resource. */
 	@Mock
 	private Resource existingFragement, templateOrModelRscBh, locationBusinessHoursResource, templateOrModelRsc,
-			parentRsc, locationMasterResource;
+			parentRsc, locationMasterResource,parentResource,rootPathParentResource,childPathLocationResource;
 
 	/** Mock Node. */
 	@Mock
@@ -72,16 +89,20 @@ class LocationModelServicesImplTest {
 	private LocationModelServicesImpl locationModelServicesImpl = new LocationModelServicesImpl();
 
 	/** mockStatic for FolderUtil. */
-	private MockedStatic<FolderUtil> mockStatic1;
+	//private MockedStatic<FolderUtil> mockStatic1;
 
 	/** mockStatic for NodePropertyManagerUtil. */
-	private MockedStatic<NodePropertyManagerUtil> mockStatic2;
+	//private MockedStatic<NodePropertyManagerUtil> mockStatic2;
 
 	@BeforeEach
-	void setUp() {
-		resourceResolver = mock(ResourceResolver.class);
-		plannerApiService = mock(PlannerApiService.class);
+	void setUp() throws LoginException {
+		final Map<String, Object> subServiceUser = new ConcurrentHashMap<>();
+		subServiceUser.put(ResourceResolverFactory.SUBSERVICE,"efe-service-user");
+
 		aemContext.registerService(ResourceResolver.class, resourceResolver);
+		aemContext.registerService(ResourceResolverFactory.class, resourceResolverFactory);
+		lenient().when(resourceResolverFactory.getServiceResourceResolver(subServiceUser)).thenReturn(resourceResolver);
+		
 		aemContext.registerService(RestService.class, restService);
 		aemContext.registerService(PlannerApiService.class, plannerApiService);
 		aemContext.registerService(FragmentTemplate.class, tpl);
@@ -89,27 +110,38 @@ class LocationModelServicesImplTest {
 		aemContext.registerService(Resource.class, existingFragement);
 		aemContext.registerService(Resource.class, templateOrModelRsc);
 		aemContext.registerService(Resource.class, parentRsc);
-		aemContext.registerService(Resource.class, locationMasterResource);
-
+		aemContext.registerService(Resource.class, locationMasterResource); 
+		aemContext.registerService(Resource.class, parentResource);
 		aemContext.registerService(Resource.class, locationBusinessHoursResource);
 		aemContext.registerService(Node.class, locationBusinessHoursNode);
 
-		aemContext.registerService(Resource.class, templateOrModelRscBh);
+		aemContext.registerService(Resource.class, templateOrModelRscBh); 
+		aemContext.registerService(Resource.class, rootPathParentResource);
+		aemContext.registerService(Resource.class, childPathLocationResource);
 
 		aemContext.registerService(Node.class, parentNode);
 		aemContext.registerService(Node.class, locationMasterNode);
-		mockStatic1 = Mockito.mockStatic(FolderUtil.class);
-		mockStatic2 = Mockito.mockStatic(NodePropertyManagerUtil.class);
+
+		aemContext.registerService(ValueFactory.class, valueFactory);
+		aemContext.registerService(ValueFactory.class, valueFactoryBh);
+		aemContext.registerService(Session.class, locationMasterNodeSession);
+		aemContext.registerService(Session.class, locationBusinessHoursNodeSession);
+		
+		
+		
+		
+		//mockStatic1 = Mockito.mockStatic(FolderUtil.class);
+		//mockStatic2 = Mockito.mockStatic(NodePropertyManagerUtil.class);
 	}
 
 	@AfterEach
 	void close() {
-		mockStatic1.close();
-		mockStatic2.close();
+		//mockStatic1.close();
+		//mockStatic2.close();
 	}
 
 	@Test
-	void testCreateFragmentLocation() throws ContentFragmentException, PersistenceException
+	void testCreateFragmentLocation() throws ContentFragmentException, PersistenceException, UnsupportedRepositoryOperationException, RepositoryException
 
 	{
 		// setup test data
@@ -146,19 +178,35 @@ class LocationModelServicesImplTest {
 		String businessHoursFragmentName = PlannerLocationConstants.BUSINESS_HOURS_FRAGMENT_PREFIX + "1";
 
 		// mock method calls
+		
 		lenient().when(
 				restService.getData(plannerApiService.getLocationsAPIEndpoint(), plannerApiService.getAuthHeader()))
 				.thenReturn(jsonObjectLocation);
 
-		lenient().when(FolderUtil.createFolder(PlannerLocationConstants.ROOT_FOLDER_PATH,
-				PlannerLocationConstants.LOCATIONS, resourceResolver)).thenReturn(rootPath);
-
-		lenient().when(FolderUtil.createFolder(rootPath, officeName + officeId, resourceResolver))
-				.thenReturn(childPathLocation);
-
-		lenient().when(
-				FolderUtil.createFolder(childPathLocation, PlannerLocationConstants.BUSINESS_HOURS, resourceResolver))
-				.thenReturn(businessHoursRootPath);
+		lenient().when(resourceResolver.getResource(PlannerLocationConstants.ROOT_FOLDER_PATH))
+		.thenReturn(parentResource);
+		
+		/*
+		 * lenient().when(FolderUtil.createFolder(PlannerLocationConstants.
+		 * ROOT_FOLDER_PATH, PlannerLocationConstants.LOCATIONS,
+		 * resourceResolver)).thenReturn(rootPath);
+		 */
+		lenient().when(resourceResolver.getResource(rootPath))
+		.thenReturn(rootPathParentResource);
+		
+		/*
+		 * lenient().when(FolderUtil.createFolder(rootPath, officeName + officeId,
+		 * resourceResolver)) .thenReturn(childPathLocation);
+		 */
+         
+		lenient().when(resourceResolver.getResource(childPathLocation))
+		.thenReturn(childPathLocationResource);
+		
+		/*
+		 * lenient().when( FolderUtil.createFolder(childPathLocation,
+		 * PlannerLocationConstants.BUSINESS_HOURS, resourceResolver))
+		 * .thenReturn(businessHoursRootPath);
+		 */
 
 		lenient().when(resourceResolver.getResource(PlannerLocationConstants.LOCATION_MODEL))
 				.thenReturn(templateOrModelRsc);
@@ -174,6 +222,9 @@ class LocationModelServicesImplTest {
 		lenient().when(resourceResolver.hasChanges()).thenReturn(true);
 
 		lenient().when(locationMasterResource.adaptTo(Node.class)).thenReturn(locationMasterNode);
+		lenient().when(locationMasterNode.getSession()).thenReturn(locationMasterNodeSession);
+		lenient().when(locationMasterNode.getSession().getValueFactory()).thenReturn(valueFactory);
+		
 
 		lenient()
 				.when(resourceResolver.getResource(
@@ -190,9 +241,11 @@ class LocationModelServicesImplTest {
 				.thenReturn(locationBusinessHoursResource);
 
 		lenient().when(locationBusinessHoursResource.adaptTo(Node.class)).thenReturn(locationBusinessHoursNode);
+		lenient().when(locationBusinessHoursNode.getSession()).thenReturn(locationBusinessHoursNodeSession);
+		lenient().when(locationBusinessHoursNode.getSession().getValueFactory()).thenReturn(valueFactoryBh);
 
 		// invoke method under test
-		locationModelServicesImpl.createFragmentLocation(resourceResolver);
+		locationModelServicesImpl.addDataToCFModelLocation();
 
 		assertNotNull(locationModelServicesImpl);
 	}
