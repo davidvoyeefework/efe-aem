@@ -81,6 +81,10 @@
             @include primary-nav-link;
             text-align: center;
         }
+        &__title {
+            margin-top: rem(20);
+            margin-bottom: 0;
+        }
         &__image {
             .cmp-image__image {
                 width: rem(41.03);
