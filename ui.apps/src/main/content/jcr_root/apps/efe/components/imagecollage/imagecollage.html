@@ -1,20 +1,27 @@
 <sly data-sly-use.imageCollageModel="com.efe.core.models.ImageCollage"/>
-<div id=${imageCollageModel.id}" class="container responsivegrid cmp-image-collage">
+<div id="${imageCollageModel.id}" class="container responsivegrid cmp-image-collage">
     <div id="container-97c410ebe3" class="cmp-container">
-        <div class="image">
-            <div class="cmp-image" itemscope="" itemtype="http://schema.org/ImageObject">
-                <img src="${imageCollageModel.primaryImage}" alt="${imageCollageModel.primaryImageAltText}">
+        <sly data-sly-test="${imageCollageModel.primaryImage}">
+            <div class="image">
+                <div class="cmp-image" itemscope="" itemtype="http://schema.org/ImageObject">
+                    <img src="${imageCollageModel.primaryImage}" alt="${imageCollageModel.primaryImageAltText}">
+                </div>
             </div>
-        </div>
-        <div class="image">
-            <div class="cmp-image" itemscope="" itemtype="http://schema.org/ImageObject">
-                <img src="${imageCollageModel.firstSecondaryImage}" alt="${imageCollageModel.firstSecondaryImageAltText}">
+        </sly>
+        <sly data-sly-test="${imageCollageModel.firstSecondaryImage}">
+            <div class="image">
+                <div class="cmp-image" itemscope="" itemtype="http://schema.org/ImageObject">
+                    <img src="${imageCollageModel.firstSecondaryImage}" alt="${imageCollageModel.firstSecondaryImageAltText}">
+                </div>
             </div>
-        </div>
-        <div class="image">
-            <div class="cmp-image" itemscope="" itemtype="http://schema.org/ImageObject">
-                <img src="${imageCollageModel.secondSecondaryImage}" alt="${imageCollageModel.secondSecondaryImageAltText}">
+        </sly>
+        <sly data-sly-test="${imageCollageModel.secondSecondaryImage}">
+            <div class="image">
+                <div class="cmp-image" itemscope="" itemtype="http://schema.org/ImageObject">
+                    <img src="${imageCollageModel.secondSecondaryImage}" alt="${imageCollageModel.secondSecondaryImageAltText}">
+                </div>
             </div>
-        </div>
+        </sly>
     </div>
 </div>
+
