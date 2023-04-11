@@ -8,8 +8,14 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Education {
+	
+	/* degree */
     private String degree;
+    
+    /* major */
     private String major;
+    
+    /* university */
     private String university;
 	public String getDegree() {
 		return degree;

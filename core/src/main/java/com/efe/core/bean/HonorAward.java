@@ -8,9 +8,17 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class HonorAward {
+	
+	/* dateOfAward */
     private String dateOfAward;   
-    private String disclosure;   
+    
+    /* disclosure */
+    private String disclosure; 
+    
+    /* honorAwardName */
     private String honorAwardName;   
+    
+    /* organization */
     private String organization;
 	public String getDateOfAward() {
 		return dateOfAward;

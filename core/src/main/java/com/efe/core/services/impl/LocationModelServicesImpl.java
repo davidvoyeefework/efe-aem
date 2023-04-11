@@ -81,7 +81,7 @@ public class LocationModelServicesImpl implements LocationModelServices {
 	}
 
 	/**
-	 * This method is used to create and update Fragments for Locations
+	 * This method is used to create Fragments for Locations
 	 */
 	private void createFragmentLocation(ResourceResolver resourceResolver) {
 		String jsonObjectLocation = restService.getData(plannerApiService.getLocationsAPIEndpoint(),
@@ -113,7 +113,7 @@ public class LocationModelServicesImpl implements LocationModelServices {
 	}
 
 	/**
-	 * This method is used to create and update Fragments for Business Hours
+	 * This method is used to create Fragments for Business Hours
 	 */
 	private void createBusinessHoursFragmentLocation(String childPathLocation, LocationResponse jsonObj,
 			ResourceResolver resourceResolver) {
@@ -140,6 +140,9 @@ public class LocationModelServicesImpl implements LocationModelServices {
 			}
 	}
 
+	/**
+	 * This method is used to update the properties of Location Fragments
+	 */
 	private void updateLocationFragmentProperties(ResourceResolver resourceResolver, Node locationMasterNode,
 			LocationResponse jsonObj, String childPathLocation) {
 		try {
@@ -201,6 +204,9 @@ public class LocationModelServicesImpl implements LocationModelServices {
 		}
 	}
 
+	/**
+	 * This method is used to update Fragments for Business Hours
+	 */
 	private void updateBusinessHoursFragmentLocation(ResourceResolver resourceResolver, String businessHoursRootPath,
 			String businessHoursFragmentName, BusinessHours businessHoursObj) {
 		try {

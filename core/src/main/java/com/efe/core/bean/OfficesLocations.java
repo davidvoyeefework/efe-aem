@@ -8,10 +8,20 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class OfficesLocations {
+	
+	/* id */
     private String id;
+    
+    /* name */
     private String name;
+    
+    /* city */
     private String city;
+    
+    /* state */
     private String state;
+    
+    /* zip */
     private String zip;
 	public String getId() {
 		return id;

@@ -108,6 +108,9 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 		}
 	}
 
+	/**
+	 * This method is used to update Fragment for Planner
+	 */
 	private void updatePlannerFragmentProperties(Node plannerMasterNode,
 			PlannerResponse jsonObj) {
 

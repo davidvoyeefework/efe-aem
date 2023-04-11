@@ -10,45 +10,79 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class LocationResponse {
 
+	/* officeId */
     private String officeId;
 
+    /* RD */
     private String RD;
 
+    /* officeName */
     private String officeName;
 
+    /* externalName */
     private String externalName;
 
+    /* desktopImage */
     private String desktopImage;
-
+    
+    /* mobileImage */
     private String mobileImage;
 
+    /* emergencyClosure */
     private boolean emergencyClosure;
 
+    /* testLocation */
     private boolean testLocation;
 
+    /* buildingComplexName */
     private String buildingComplexName;
+    
+    /* address1 */
     private String address1;
+    
+    /* address2 */
     private String address2;
+    
+    /* city */
     private String city;
+    
+    /* state */
     private String state;
+    
+    /* zip */
     private String zip;
+    
+    /* phone */
     private String phone;
+    
+    /* fax */
     private String fax;
 
+    /* tollFree */
     private String tollFree;
+    
+    /* latitude */
     private String latitude;
     
+    /* longitude */
     private String longitude;
 
+    /* appointmentOnly */
     private boolean appointmentOnly;
 
+    /* googleReviewLink */
     private String googleReviewLink;
+    
+    /* planners */
     private List<String> planners;
   
+    /* overrideCorporateOfficeHours */
     private boolean overrideCorporateOfficeHours;
 
+    /* businessHours */
     private List<BusinessHours> businessHours;
 
+    /* lastUpdated */
     private String lastUpdated;
 
     public String getOfficeId() {
