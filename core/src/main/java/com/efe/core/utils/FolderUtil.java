@@ -53,7 +53,7 @@ public class FolderUtil {
 			try {
 				resourceResolver.commit();
 			} catch (PersistenceException e) {
-				LOGGER.error("RepositoryException:", e);
+				LOGGER.error("PersistenceException:", e);
 			}
 
 		}
