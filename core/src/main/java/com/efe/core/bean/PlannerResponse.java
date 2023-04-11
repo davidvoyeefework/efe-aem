@@ -245,7 +245,8 @@ public class PlannerResponse {
 	}
 
 	public List<OfficesLocations> getOfficesLocations() {
-		return officesLocations;
+		List officesLocationsList = List.copyOf(officesLocations);
+		return officesLocationsList;
 	}
 
 	public String getEducationIndicator() {
@@ -254,7 +255,8 @@ public class PlannerResponse {
 
 
 	public List<Education> getEducation() {
-		return education;
+		List educationList = List.copyOf(education);
+		return educationList;
 	}
 
 
@@ -279,11 +281,13 @@ public class PlannerResponse {
 	}
 
 	public List<EmploymentHistory> getEmploymentHistory() {
-		return employmentHistory;
+		List employmentHistoryList = List.copyOf(employmentHistory);
+		return employmentHistoryList;
 	}
 
 	public List<Certifications> getCertifications() {
-		return certifications;
+		List certificationsList = List.copyOf(certifications);
+		return certificationsList;
 	}
 
 
@@ -309,7 +313,8 @@ public class PlannerResponse {
 
 
 	public List<String> getInterestsHobbies() {
-		return interestsHobbies;
+		List interestsHobbiesList = List.copyOf(interestsHobbies);
+		return interestsHobbiesList;
 	}
 
 	public String getFunFacts() {
@@ -317,7 +322,8 @@ public class PlannerResponse {
 	}
 
 	public List<HonorAward> getHonorAward() {
-		return honorAward;
+		List honorAwardList = List.copyOf(honorAward);
+		return honorAwardList;
 	}
 
 	public String getFavoriteSport() {
@@ -341,7 +347,8 @@ public class PlannerResponse {
 	}
 
 	public List<IndustryExams> getIndustryExams() {
-		return industryExams;
+		List industryExamsList = List.copyOf(industryExams);
+		return industryExamsList;
 	}
 
 	public boolean isHasDisciplinaryInformation() {

@@ -44,9 +44,7 @@ public class LocationResponse {
 
     private String googleReviewLink;
     private List<String> planners;
-
-    
-    
+  
     private boolean overrideCorporateOfficeHours;
 
     private List<BusinessHours> businessHours;
@@ -146,7 +144,9 @@ public class LocationResponse {
 		return googleReviewLink;
 	}
 	
-	  public List<String> getPlanners() { return planners; }
+	  public List<String> getPlanners() { 
+		  List plannersList = List.copyOf(planners);
+		  return plannersList; }
 
 	 
 	public boolean isOverrideCorporateOfficeHours() {
@@ -155,7 +155,8 @@ public class LocationResponse {
 
 
 	public List<BusinessHours> getBusinessHours() {
-		return businessHours;
+		List businessHoursList = List.copyOf(businessHours);
+		return businessHoursList;
 	}
 
 
