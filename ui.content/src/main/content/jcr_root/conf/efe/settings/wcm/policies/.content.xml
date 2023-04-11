@@ -962,28 +962,28 @@
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
                                         cq:styleClasses="cmp-image-collage "
-                                        cq:styleId="left"
-                                        cq:styleLabel="Left"
+                                        cq:styleId="primaryLeft"
+                                        cq:styleLabel="Primary left"
                                         jcr:primaryType="nt:unstructured"/>
                                 <item1
                                         cq:styleClasses="cmp-image-collage cmp-image-collage--left-large cmp-image-collage--border-top-left"
-                                        cq:styleId="left-top-corner-radius"
-                                        cq:styleLabel="Left (Top left corner Radius)"
+                                        cq:styleId="primaryLeft-top-corner-radius"
+                                        cq:styleLabel="Primary left - top corner radius"
                                         jcr:primaryType="nt:unstructured"/>
                                 <item2
                                         cq:styleClasses="cmp-image-collage cmp-image-collage--right-large"
-                                        cq:styleId="right"
-                                        cq:styleLabel="Right"
+                                        cq:styleId="primaryRight"
+                                        cq:styleLabel="Primary right"
                                         jcr:primaryType="nt:unstructured"/>
                                 <item3
                                         cq:styleClasses="cmp-image-collage cmp-image-collage--right-large cmp-image-collage--border-top-left"
-                                        cq:styleId="right-order-top-left"
-                                        cq:styleLabel="Right (border-top-left)"
+                                        cq:styleId="secondaryLeft-top-corner-radius"
+                                        cq:styleLabel="Secondary left - top corner radius"
                                         jcr:primaryType="nt:unstructured"/>
                                 <item4
                                         cq:styleClasses="cmp-image-collage cmp-image-collage--right-large cmp-image-collage--border-multiple"
-                                        cq:styleId="right-border-multiple"
-                                        cq:styleLabel="Right (border-multiple)"
+                                        cq:styleId="secondaryLeft-multi-corner-radius"
+                                        cq:styleLabel="Secondary left - multi corner radius"
                                         jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item0>
