@@ -23,7 +23,13 @@
         font-family: '#{$icomoon-icon-font-family}' !important;
         position: absolute;
         right: rem(6);
-        &:before { content: $icon-Chevron-Property-1Default1; }
+        top: 25%;
+        &:before { 
+            content: $icon-Chevron-Property-1Default1; 
+            display: block;
+            width: rem(18);
+            height: rem(18);
+        }
     }
 
     .cmp-accordion__button--expanded {
@@ -35,8 +41,9 @@
     }
     .cmp-accordion__panel {
         font-size: $font-size-small;
-        padding: rem(20) rem(20) rem(36) rem(20);
+        padding: rem(36) rem(80) rem(24) rem(80);
         background: $white-primary;
+        max-width: rem(888);
         @include animated();
         @include fadeIn();
     }
