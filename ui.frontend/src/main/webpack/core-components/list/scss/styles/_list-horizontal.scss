@@ -2,7 +2,7 @@
     .cmp-list {
         @include flexbox($flex-wrap: wrap);
         .cmp-list__item {
-            display: inline-block;
+            @include flexbox();
             margin-bottom: unset;
             width: unset;
         }

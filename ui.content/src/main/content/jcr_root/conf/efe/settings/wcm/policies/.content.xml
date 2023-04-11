@@ -957,48 +957,36 @@
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                     <cq:styleGroups jcr:primaryType="nt:unstructured">
                         <item0
-                            cq:styleGroupLabel="Primary(Large) Image Position"
+                            cq:styleGroupLabel="Primary(Large) Image Position and Variation"
                             jcr:primaryType="nt:unstructured">
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
-                                    cq:styleClasses="cmp-image-collage "
-                                    cq:styleId="left"
-                                    cq:styleLabel="Left"
-                                    jcr:primaryType="nt:unstructured"/>
+                                        cq:styleClasses="cmp-image-collage "
+                                        cq:styleId="primaryLeft"
+                                        cq:styleLabel="Primary left"
+                                        jcr:primaryType="nt:unstructured"/>
                                 <item1
-                                    cq:styleClasses="cmp-image-collage cmp-image-collage--right-large"
-                                    cq:styleId="right"
-                                    cq:styleLabel="Right"
-                                    jcr:primaryType="nt:unstructured"/>
+                                        cq:styleClasses="cmp-image-collage cmp-image-collage--left-large cmp-image-collage--border-top-left"
+                                        cq:styleId="primaryLeft-top-corner-radius"
+                                        cq:styleLabel="Primary left - top corner radius"
+                                        jcr:primaryType="nt:unstructured"/>
+                                <item2
+                                        cq:styleClasses="cmp-image-collage cmp-image-collage--right-large"
+                                        cq:styleId="primaryRight"
+                                        cq:styleLabel="Primary right"
+                                        jcr:primaryType="nt:unstructured"/>
+                                <item3
+                                        cq:styleClasses="cmp-image-collage cmp-image-collage--right-large cmp-image-collage--border-top-left"
+                                        cq:styleId="secondaryLeft-top-corner-radius"
+                                        cq:styleLabel="Secondary left - top corner radius"
+                                        jcr:primaryType="nt:unstructured"/>
+                                <item4
+                                        cq:styleClasses="cmp-image-collage cmp-image-collage--right-large cmp-image-collage--border-multiple"
+                                        cq:styleId="secondaryLeft-multi-corner-radius"
+                                        cq:styleLabel="Secondary left - multi corner radius"
+                                        jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item0>
-                        <item1
-                            cq:styleGroupLabel="Apply Top left corner Radius"
-                            jcr:primaryType="nt:unstructured">
-                            <cq:styles jcr:primaryType="nt:unstructured">
-                                <item0
-                                    cq:styleClasses="cmp-image-collage--left-large cmp-image-collage--border-top-left"
-                                    cq:styleId="topleftcornerradius"
-                                    cq:styleLabel="Top left corner Radius"
-                                    jcr:primaryType="nt:unstructured"/>
-                            </cq:styles>
-                        </item1>
-                        <item2
-                            cq:styleGroupLabel="Apply secondary image corner radius"
-                            jcr:primaryType="nt:unstructured">
-                            <cq:styles jcr:primaryType="nt:unstructured">
-                                <item0
-                                    cq:styleClasses="cmp-image-collage--border-top-left"
-                                    cq:styleId="border-top-left"
-                                    cq:styleLabel="border-top-left"
-                                    jcr:primaryType="nt:unstructured"/>
-                                <item1
-                                    cq:styleClasses="cmp-image-collage--border-multiple"
-                                    cq:styleId="border-multiple"
-                                    cq:styleLabel="border-multiple"
-                                    jcr:primaryType="nt:unstructured"/>
-                            </cq:styles>
-                        </item2>
                     </cq:styleGroups>
                 </policy>
             </imagecollage>
