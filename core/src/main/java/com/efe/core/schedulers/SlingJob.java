@@ -1,5 +1,7 @@
 package com.efe.core.schedulers;
 
+import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.api.resource.ResourceResolverFactory;
 import org.apache.sling.event.jobs.Job;
 import org.apache.sling.event.jobs.consumer.JobConsumer;
 import org.osgi.service.component.annotations.Component;
@@ -9,6 +11,7 @@ import org.slf4j.LoggerFactory;
 
 import com.efe.core.services.LocationModelServices;
 import com.efe.core.services.PlannerModelServices;
+import com.efe.core.utils.ResourceUtil;
 
 /**
  * The SlingJob class is a job consumer that is triggered by a job topic
@@ -17,13 +20,19 @@ import com.efe.core.services.PlannerModelServices;
  */
 @Component(service = JobConsumer.class, immediate = true, property = {
 		JobConsumer.PROPERTY_TOPICS + "=daily/job/topic" })
-public class SlingJob implements JobConsumer {
+public class SlingJob implements JobConsumer { 
 
 	/**
 	 * PlannerModelServices injected
 	 */
 	@Reference
 	private	PlannerModelServices plannerModelServices;
+	
+	/**
+	 * ResourceResolverFactory injected
+	 */
+	@Reference
+	private transient ResourceResolverFactory resourceResolverFactory;
 
 	/**
 	 * LocationModelServices injected
@@ -42,15 +51,12 @@ public class SlingJob implements JobConsumer {
 	 * the methods, the method returns a JobResult of FAILED.
 	 */
 	@Override
-	public JobResult process(Job job) {
-		try {
+	public JobResult process(Job job) { 
+		try(ResourceResolver resourceResolver = ResourceUtil.getServiceResourceResolver(resourceResolverFactory)) {
 			LOGGER.info("Sling JOB Called");
-			plannerModelServices.addDataToCFModelPlanner();
-			locationModelServices.addDataToCFModelLocation();
+			plannerModelServices.addDataToCFModelPlanner(resourceResolver);
+			locationModelServices.addDataToCFModelLocation(resourceResolver);
 			return JobConsumer.JobResult.OK;
-		} catch (Exception exception) {
-			LOGGER.error("Exception ", exception);
-			return JobResult.FAILED;
-		}
+		} 
 	}
 }

@@ -11,10 +11,10 @@ import org.apache.sling.api.resource.ResourceResolver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.efe.core.bean.IndustryExams;
+import com.efe.core.bean.PlannerResponse;
 import com.efe.core.constants.PlannerLocationConstants;
 import com.efe.core.services.impl.PlannerModelServicesImpl;
-import com.efe.core.services.impl.bean.IndustryExams;
-import com.efe.core.services.impl.bean.PlannerResponse;
 
 /**
  * IndustryExamUtil

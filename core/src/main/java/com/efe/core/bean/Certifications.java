@@ -1,4 +1,4 @@
-package com.efe.core.services.impl.bean;
+package com.efe.core.bean;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
@@ -23,26 +23,17 @@ public class Certifications {
 	public String getAbbreviation() {
 		return abbreviation;
 	}
-	public void setAbbreviation(String abbreviation) {
-		this.abbreviation = abbreviation;
-	}
+
 	public String getLegalComplianceDisclosure() {
 		return legalComplianceDisclosure;
 	}
-	public void setLegalComplianceDisclosure(String legalComplianceDisclosure) {
-		this.legalComplianceDisclosure = legalComplianceDisclosure;
-	}
+
 	public String getMarketingDisclosure() {
 		return marketingDisclosure;
 	}
-	public void setMarketingDisclosure(String marketingDisclosure) {
-		this.marketingDisclosure = marketingDisclosure;
-	}
+
 	public String getName() {
 		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
 	}
 
 }

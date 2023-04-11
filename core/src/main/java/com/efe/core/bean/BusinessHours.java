@@ -1,4 +1,4 @@
-package com.efe.core.services.impl.bean;
+package com.efe.core.bean;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
@@ -12,6 +12,10 @@ public class BusinessHours {
 	/* day */
 	private String day; 
 	
+	public String getDay() {
+        return day;
+    }
+	
 	/* openingHours */
     private String openingHours;
 
@@ -21,28 +25,14 @@ public class BusinessHours {
     /* isClosed */
     private boolean isClosed;
     
-    public void setDay(String day) {
-         this.day = day;
-     }
-     public String getDay() {
-         return day;
-     }
 	public String getOpeningHours() {
 		return openingHours;
-	}
-	public void setOpeningHours(String openingHours) {
-		this.openingHours = openingHours;
 	}
 	public String getClosingHours() {
 		return closingHours;
 	}
-	public void setClosingHours(String closingHours) {
-		this.closingHours = closingHours;
-	}
 	public boolean isClosed() {
 		return isClosed;
 	}
-	public void setClosed(boolean isClosed) {
-		this.isClosed = isClosed;
-	}
+
 }

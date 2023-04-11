@@ -3,6 +3,7 @@ package com.efe.core.services.impl;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.lenient;
+
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -18,14 +19,11 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ResourceResolverFactory;
 import org.apache.sling.testing.mock.sling.ResourceResolverType;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockedStatic;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.adobe.cq.dam.cfm.ContentFragmentException;
@@ -33,8 +31,6 @@ import com.adobe.cq.dam.cfm.FragmentTemplate;
 import com.efe.core.constants.PlannerLocationConstants;
 import com.efe.core.services.PlannerApiService;
 import com.efe.core.services.RestService;
-import com.efe.core.utils.FolderUtil;
-import com.efe.core.utils.NodePropertyManagerUtil;
 
 import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
@@ -82,17 +78,11 @@ class LocationModelServicesImplTest {
 
 	/** Mock Node. */
 	@Mock
-	private Node parentNode, locationMasterNode, locationBusinessHoursNode;
+	private Node parentNode, locationMasterNode, locationBusinessHoursNode, parentPathNode,rootPathParentNode,businessResource;
 
 	/** Mock LocationModelServicesImpl. */
 	@InjectMocks
 	private LocationModelServicesImpl locationModelServicesImpl = new LocationModelServicesImpl();
-
-	/** mockStatic for FolderUtil. */
-	//private MockedStatic<FolderUtil> mockStatic1;
-
-	/** mockStatic for NodePropertyManagerUtil. */
-	//private MockedStatic<NodePropertyManagerUtil> mockStatic2;
 
 	@BeforeEach
 	void setUp() throws LoginException {
@@ -117,27 +107,18 @@ class LocationModelServicesImplTest {
 
 		aemContext.registerService(Resource.class, templateOrModelRscBh); 
 		aemContext.registerService(Resource.class, rootPathParentResource);
-		aemContext.registerService(Resource.class, childPathLocationResource);
+		aemContext.registerService(Resource.class, childPathLocationResource); 
 
 		aemContext.registerService(Node.class, parentNode);
 		aemContext.registerService(Node.class, locationMasterNode);
-
+		aemContext.registerService(Node.class, parentPathNode);
+		aemContext.registerService(Node.class, rootPathParentNode);
+		aemContext.registerService(Node.class, businessResource);
+		
 		aemContext.registerService(ValueFactory.class, valueFactory);
 		aemContext.registerService(ValueFactory.class, valueFactoryBh);
 		aemContext.registerService(Session.class, locationMasterNodeSession);
 		aemContext.registerService(Session.class, locationBusinessHoursNodeSession);
-		
-		
-		
-		
-		//mockStatic1 = Mockito.mockStatic(FolderUtil.class);
-		//mockStatic2 = Mockito.mockStatic(NodePropertyManagerUtil.class);
-	}
-
-	@AfterEach
-	void close() {
-		//mockStatic1.close();
-		//mockStatic2.close();
 	}
 
 	@Test
@@ -168,7 +149,10 @@ class LocationModelServicesImplTest {
 
 		String officeName = "Birmingham";
 		String officeId = "28";
-
+		String folderNameLocation = "locations"; 
+        String folderNameChild = "Birmingham28"; 
+        String folderNameBusiness = "businessHours";
+        
 		String rootPath = "/content/dam/efe/plannerlocation/locations";
 		String childPathLocation = "/content/dam/efe/plannerlocation/locations/" + officeName + officeId;
 		String businessHoursRootPath = childPathLocation + "/businessHours";
@@ -179,41 +163,33 @@ class LocationModelServicesImplTest {
 
 		// mock method calls
 		
-		lenient().when(
-				restService.getData(plannerApiService.getLocationsAPIEndpoint(), plannerApiService.getAuthHeader()))
+		lenient().when(restService.getData(plannerApiService.getLocationsAPIEndpoint(), plannerApiService.getAuthHeader()))
 				.thenReturn(jsonObjectLocation);
 
 		lenient().when(resourceResolver.getResource(PlannerLocationConstants.ROOT_FOLDER_PATH))
-		.thenReturn(parentResource);
+		.thenReturn(parentResource);		
+		lenient().when(parentResource.getChild(folderNameLocation))
+		.thenReturn(null);
+		lenient().when(parentResource.adaptTo(Node.class)).thenReturn(parentPathNode);
 		
-		/*
-		 * lenient().when(FolderUtil.createFolder(PlannerLocationConstants.
-		 * ROOT_FOLDER_PATH, PlannerLocationConstants.LOCATIONS,
-		 * resourceResolver)).thenReturn(rootPath);
-		 */
+		
 		lenient().when(resourceResolver.getResource(rootPath))
 		.thenReturn(rootPathParentResource);
-		
-		/*
-		 * lenient().when(FolderUtil.createFolder(rootPath, officeName + officeId,
-		 * resourceResolver)) .thenReturn(childPathLocation);
-		 */
-         
+		lenient().when(rootPathParentResource.getChild(folderNameChild))
+		.thenReturn(null);
+		lenient().when(rootPathParentResource.adaptTo(Node.class)).thenReturn(rootPathParentNode);
+			
 		lenient().when(resourceResolver.getResource(childPathLocation))
 		.thenReturn(childPathLocationResource);
+		lenient().when(childPathLocationResource.getChild(folderNameBusiness))
+		.thenReturn(null);
+		lenient().when(childPathLocationResource.adaptTo(Node.class)).thenReturn(businessResource);
 		
-		/*
-		 * lenient().when( FolderUtil.createFolder(childPathLocation,
-		 * PlannerLocationConstants.BUSINESS_HOURS, resourceResolver))
-		 * .thenReturn(businessHoursRootPath);
-		 */
-
+		
 		lenient().when(resourceResolver.getResource(PlannerLocationConstants.LOCATION_MODEL))
 				.thenReturn(templateOrModelRsc);
-		lenient().when(resourceResolver.getResource(childPathLocation)).thenReturn(parentRsc);
-		lenient()
-				.when(resourceResolver
-						.getResource(childPathLocation + PlannerLocationConstants.FORWARD_SLASH + fragmentName))
+		//lenient().when(resourceResolver.getResource(childPathLocation)).thenReturn(parentRsc);
+		lenient().when(resourceResolver.getResource(childPathLocation + PlannerLocationConstants.FORWARD_SLASH + fragmentName))
 				.thenReturn(null);
 		lenient().when(resourceResolver.getResource(childPathLocation + PlannerLocationConstants.FORWARD_SLASH
 				+ fragmentName + PlannerLocationConstants.MASTER_NODE)).thenReturn(locationMasterResource);
@@ -225,27 +201,20 @@ class LocationModelServicesImplTest {
 		lenient().when(locationMasterNode.getSession()).thenReturn(locationMasterNodeSession);
 		lenient().when(locationMasterNode.getSession().getValueFactory()).thenReturn(valueFactory);
 		
-
-		lenient()
-				.when(resourceResolver.getResource(
-						businessHoursRootPath + PlannerLocationConstants.FORWARD_SLASH + businessHoursFragmentName))
-				.thenReturn(null);
-		lenient().when(resourceResolver.getResource(PlannerLocationConstants.BUSINESS_HOUR_MODEL))
-				.thenReturn(templateOrModelRscBh);
+		
+		lenient().when(resourceResolver.getResource(businessHoursRootPath + PlannerLocationConstants.FORWARD_SLASH + businessHoursFragmentName)).thenReturn(null);
+		lenient().when(resourceResolver.getResource(PlannerLocationConstants.BUSINESS_HOUR_MODEL)).thenReturn(templateOrModelRscBh);
 
 		lenient().when(templateOrModelRscBh.adaptTo(FragmentTemplate.class)).thenReturn(tplBh);
 
-		lenient()
-				.when(resourceResolver.getResource(businessHoursRootPath + PlannerLocationConstants.FORWARD_SLASH
-						+ businessHoursFragmentName + PlannerLocationConstants.MASTER_NODE))
-				.thenReturn(locationBusinessHoursResource);
+		lenient().when(resourceResolver.getResource(businessHoursRootPath + PlannerLocationConstants.FORWARD_SLASH + businessHoursFragmentName + PlannerLocationConstants.MASTER_NODE)).thenReturn(locationBusinessHoursResource);
 
 		lenient().when(locationBusinessHoursResource.adaptTo(Node.class)).thenReturn(locationBusinessHoursNode);
 		lenient().when(locationBusinessHoursNode.getSession()).thenReturn(locationBusinessHoursNodeSession);
 		lenient().when(locationBusinessHoursNode.getSession().getValueFactory()).thenReturn(valueFactoryBh);
 
 		// invoke method under test
-		locationModelServicesImpl.addDataToCFModelLocation();
+		locationModelServicesImpl.addDataToCFModelLocation(resourceResolver);
 
 		assertNotNull(locationModelServicesImpl);
 	}

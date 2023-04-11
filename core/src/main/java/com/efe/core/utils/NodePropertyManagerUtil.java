@@ -11,7 +11,7 @@ import javax.jcr.ValueFactory;
  * The NodePropertyManagerUtil.
  *
  */
-public class NodePropertyManagerUtil {
+public class NodePropertyManagerUtil { 
 
 	/**
 	 * Setting the Property.

@@ -1,4 +1,4 @@
-package com.efe.core.services.impl.bean;
+package com.efe.core.bean;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
@@ -14,20 +14,11 @@ public class Education {
 	public String getDegree() {
 		return degree;
 	}
-	public void setDegree(String degree) {
-		this.degree = degree;
-	}
+
 	public String getMajor() {
 		return major;
-	}
-	public void setMajor(String major) {
-		this.major = major;
 	}
 	public String getUniversity() {
 		return university;
 	}
-	public void setUniversity(String university) {
-		this.university = university;
-	}
-
 }

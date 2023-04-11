@@ -1,7 +1,6 @@
 package com.efe.core.utils;
 
 import java.util.Map;
-import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.apache.sling.api.resource.LoginException;
@@ -33,13 +32,5 @@ public class ResourceUtil{
 			LOGGER.error("Could not login as SubService user {}", subServiceUser, e);
 			return null;
 		}
-	}
-	
-	public static void closeResourceResolver(ResourceResolver resourceResolver) {
-		if (Objects.nonNull(resourceResolver)) {
-			resourceResolver.close();
-			resourceResolver = null;
-		}
-				
 	}
 }

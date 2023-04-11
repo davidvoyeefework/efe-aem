@@ -1,4 +1,4 @@
-package com.efe.core.services.impl.bean;
+package com.efe.core.bean;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
@@ -18,17 +18,7 @@ public class IndustryExams {
 	public String getExamNameShort() {
 		return examNameShort;
 	}
-
-	public void setExamNameShort(String examNameShort) {
-		this.examNameShort = examNameShort;
-	}
-
 	public String getExamNameLong() {
 		return examNameLong;
 	}
-
-	public void setExamNameLong(String examNameLong) {
-		this.examNameLong = examNameLong;
-	}
-
 }

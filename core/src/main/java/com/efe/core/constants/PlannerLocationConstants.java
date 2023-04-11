@@ -28,11 +28,6 @@ public class PlannerLocationConstants {
 	public static final String OFFICE_NAME = "officeName";
 
 	/**
-	 * Sling Ordered Folder
-	 */
-	public static final String SLING_ORDERED_FOLDER = "sling:OrderedFolder";
-
-	/**
 	 * Underscore
 	 */
 	public static final String UNDERSCORE = "_";
@@ -111,6 +106,11 @@ public class PlannerLocationConstants {
 	 * State
 	 */
 	public static final String PHONE = "phone";
+	
+	/**
+	 * State
+	 */
+	public static final String FAX = "phone";
 
 	/**
 	 * Toll Free
@@ -368,6 +368,11 @@ public class PlannerLocationConstants {
 	 * Most Inspiration Moment
 	 */
 	public static final String MOST_INSPIRATION_MOMENT = "mostInspirationalMoment";
+	
+	/**
+	 * Disciplinary Information Text
+	 */
+	public static final String HAS_DISCIPLINARY_INFORMATION_TEXT = "hasdisciplinaryInformationText";
 
 	/**
 	 * Disciplinary Information Text

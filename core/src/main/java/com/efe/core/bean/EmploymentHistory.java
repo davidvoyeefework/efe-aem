@@ -1,4 +1,4 @@
-package com.efe.core.services.impl.bean;
+package com.efe.core.bean;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
@@ -18,40 +18,20 @@ public class EmploymentHistory {
 		return companyName;
 	}
 
-	public void setCompanyName(String companyName) {
-		this.companyName = companyName;
-	}
-
 	public boolean isCurrent() {
 		return current;
-	}
-
-	public void setCurrent(boolean current) {
-		this.current = current;
 	}
 
 	public String getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(String startDate) {
-		this.startDate = startDate;
-	}
-
 	public String getEndDate() {
 		return endDate;
 	}
-
-	public void setEndDate(String endDate) {
-		this.endDate = endDate;
-	}
-
+	
 	public String getJobTitle() {
 		return jobTitle;
-	}
-
-	public void setJobTitle(String jobTitle) {
-		this.jobTitle = jobTitle;
 	}
 
 }

@@ -11,9 +11,9 @@ import org.apache.sling.api.resource.ResourceResolver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.efe.core.bean.Education;
+import com.efe.core.bean.PlannerResponse;
 import com.efe.core.constants.PlannerLocationConstants;
-import com.efe.core.services.impl.bean.Education;
-import com.efe.core.services.impl.bean.PlannerResponse;
 
 public class EducationPlannerUtil {
 	

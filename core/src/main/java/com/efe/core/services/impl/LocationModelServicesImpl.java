@@ -17,15 +17,14 @@ import org.slf4j.LoggerFactory;
 
 import com.adobe.cq.dam.cfm.ContentFragmentException;
 import com.adobe.cq.dam.cfm.FragmentTemplate;
+import com.efe.core.bean.BusinessHours;
+import com.efe.core.bean.LocationResponse;
 import com.efe.core.constants.PlannerLocationConstants;
 import com.efe.core.services.LocationModelServices;
 import com.efe.core.services.PlannerApiService;
 import com.efe.core.services.RestService;
-import com.efe.core.services.impl.bean.BusinessHours;
-import com.efe.core.services.impl.bean.LocationResponse;
 import com.efe.core.utils.FolderUtil;
 import com.efe.core.utils.NodePropertyManagerUtil;
-import com.efe.core.utils.ResourceUtil;
 import com.google.gson.Gson;
 
 /**
@@ -178,7 +177,9 @@ public class LocationModelServicesImpl implements LocationModelServices {
 			NodePropertyManagerUtil.setPropertyIfNonNull(locationMasterNode, PlannerLocationConstants.ZIP,
 					jsonObj.getZip());
 			NodePropertyManagerUtil.setPropertyIfNonNull(locationMasterNode, PlannerLocationConstants.PHONE,
-					jsonObj.getZip());
+					jsonObj.getPhone());
+			NodePropertyManagerUtil.setPropertyIfNonNull(locationMasterNode, PlannerLocationConstants.FAX,
+					jsonObj.getFax());
 			NodePropertyManagerUtil.setPropertyIfNonNull(locationMasterNode, PlannerLocationConstants.TOLL_FREE,
 					jsonObj.getTollFree());
 			NodePropertyManagerUtil.setPropertyIfNonNull(locationMasterNode, PlannerLocationConstants.LATITUDE,
@@ -226,10 +227,8 @@ public class LocationModelServicesImpl implements LocationModelServices {
 	 * fragment
 	 */
 	@Override
-	public void addDataToCFModelLocation() {
-		ResourceResolver resourceResolver = ResourceUtil.getServiceResourceResolver(resourceResolverFactory);
-		createFragmentLocation(resourceResolver);
-		ResourceUtil.closeResourceResolver(resourceResolver);
+	public void addDataToCFModelLocation(ResourceResolver resourceResolver) {
+		 createFragmentLocation(resourceResolver);
 		LOGGER.info("Content Fragment created for Location");
 	}
 }

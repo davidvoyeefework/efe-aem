@@ -7,18 +7,17 @@ import javax.jcr.RepositoryException;
 
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
-import org.apache.sling.api.resource.ResourceResolverFactory;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.efe.core.bean.PlannerResponse;
+import com.efe.core.bean.PrimaryOffice;
 import com.efe.core.constants.PlannerLocationConstants;
 import com.efe.core.services.PlannerApiService;
 import com.efe.core.services.PlannerModelServices;
 import com.efe.core.services.RestService;
-import com.efe.core.services.impl.bean.PlannerResponse;
-import com.efe.core.services.impl.bean.PrimaryOffice;
 import com.efe.core.utils.CertificationsUtil;
 import com.efe.core.utils.EducationPlannerUtil;
 import com.efe.core.utils.EmploymentHistoryUtil;
@@ -28,7 +27,6 @@ import com.efe.core.utils.HonorAwardUtil;
 import com.efe.core.utils.IndustryExamUtil;
 import com.efe.core.utils.NodePropertyManagerUtil;
 import com.efe.core.utils.OfficeLocationsUtil;
-import com.efe.core.utils.ResourceUtil;
 import com.google.gson.Gson;
 
 /**
@@ -42,12 +40,6 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 	 * The Constant LOGGER
 	 */
 	private static final Logger LOGGER = LoggerFactory.getLogger(PlannerModelServicesImpl.class);
-
-	/**
-	 * ResourceResolverFactory injected
-	 */
-	@Reference
-	private transient ResourceResolverFactory resourceResolverFactory;
 
 	/**
 	 * RestService injected
@@ -65,10 +57,8 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 	 * This method is called by Scheduler to create fragment and adds data to that
 	 * fragment
 	 */
-	public void addDataToCFModelPlanner() {
-		ResourceResolver resourceResolver = ResourceUtil.getServiceResourceResolver(resourceResolverFactory);
+	public void addDataToCFModelPlanner(ResourceResolver resourceResolver) {
 		createFragmentPlanner(resourceResolver);
-		ResourceUtil.closeResourceResolver(resourceResolver);
 		LOGGER.info("Content Fragment created and Updated for Planner");
 	}
 
@@ -221,9 +211,12 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 
 			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode,
 					PlannerLocationConstants.MOST_INSPIRATION_MOMENT, jsonObj.getMostInspirationalMoment());
+			
+			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode,
+					PlannerLocationConstants.HAS_DISCIPLINARY_INFORMATION_TEXT, jsonObj.isHasDisciplinaryInformation()); 
 
 			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode,
-					PlannerLocationConstants.DISCIPLINARY_INFORMATION_TEXT, jsonObj.getDisciplinaryInformationText());
+					PlannerLocationConstants.DISCIPLINARY_INFORMATION_TEXT, jsonObj.getDisciplinaryInformationText()); 
 
 			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode,
 					PlannerLocationConstants.ANY_BUSINESS_RELATED_ACTIVITIES_COMMISSIONS,
@@ -300,6 +293,9 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 
 				NodePropertyManagerUtil.setPropertyIfNonNull(plannerPrimaryOfficeNode, PlannerLocationConstants.NAME,
 						primaryOffice.getName());
+				
+				NodePropertyManagerUtil.setPropertyIfNonNull(plannerPrimaryOfficeNode, PlannerLocationConstants.CITY,
+						primaryOffice.getCity());
 
 				NodePropertyManagerUtil.setPropertyIfNonNull(plannerPrimaryOfficeNode, PlannerLocationConstants.STATE,
 						primaryOffice.getState());
