@@ -23,7 +23,7 @@
         font-family: '#{$icomoon-icon-font-family}' !important;
         position: absolute;
         right: rem(6);
-        top: 25%;
+        top: 37%;
         &:before { 
             content: $icon-Chevron-Property-1Default1; 
             display: block;
@@ -34,16 +34,20 @@
 
     .cmp-accordion__button--expanded {
         border: 2px solid $efe-gray-blue;
-       
         .cmp-accordion__icon {
             transform: rotate(180deg);
+            top: 40%;
         }
     }
     .cmp-accordion__panel {
         font-size: $font-size-small;
-        padding: rem(36) rem(80) rem(24) rem(80);
+        @include media('>=tablet') {
+            padding: rem(36) rem(80) rem(24) rem(80);
+        }
+        @include media("<tablet") {
+            padding: rem(28) rem(24) rem(16) rem(24);
+        }
         background: $white-primary;
-        max-width: rem(888);
         @include animated();
         @include fadeIn();
     }
