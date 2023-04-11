@@ -1,5 +1,6 @@
 package com.efe.core.bean;
 
+import java.util.Collections;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -12,158 +13,158 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 public class PlannerResponse {
 
 	/* includeInADV2B */
-    private boolean includeInADV2B;
-    
-    /* includeInApiPayload */
-    private boolean includeInApiPayload;
-    
-    /* firstName */
-    private String firstName;
-    
-    /* firstNameAlias */
-    private String firstNameAlias;
-    
-    /* middleName */
-    private String middleName;
-    
-    /* lastName */
-    private String lastName;
-    
-    /* id */
-    private int id;
-    
-    /* suffix */
-    private String suffix;
-    
-    /* title */
-    private String title;
-    
-    /* birthYear */
-    private int birthYear;
-    
-    /* yearJoined */
-    private int yearJoined;
-    
-    /* directLinePhone */
-    private String directLinePhone;
-    
-    /* advisorCRD */
-    private int advisorCRD;
-    
-    /* desktopImageUrl */
-    private String desktopImageUrl;
-    
-    /* mobileImageUrl */
-    private String mobileImageUrl;
-    
-    /* circleImageUrl */
-    private String circleImageUrl;
-    
-    /* primaryOffice */
-    private PrimaryOffice primaryOffice;
-    
-    /* officesLocations */
-    private List<OfficesLocations> officesLocations;
-    
-    /* educationIndicator */
-    private String educationIndicator;
-    
-    /* education */
-    private List<Education> education;
-    
-    /* taxPlanner */
-    private boolean taxPlanner;
-    
-    /* advancedPlanning */
-    private boolean advancedPlanning;
-    
-    /* estatePlanning */
-    private boolean estatePlanning;
-    
-    /* insurancePlanning */
-    private boolean insurancePlanning;
-    
-    /* investmentManagement */
-    private boolean investmentManagement;
-    
-    /* employmentHistory */
-    private List<EmploymentHistory> employmentHistory;
-    
-    /* certifications */
-    private List<Certifications> certifications;
-    
-    /* bio */
-    private String bio;
-    
-    /* email */
-    private String email;
-    
-    /* teamDistributionEmailAddress */
-    private String teamDistributionEmailAddress;
-    
-    /* yearStartedIndustry */
-    private int yearStartedIndustry;
-    
-    /* smartVestorProIndicator */
-    private boolean smartVestorProIndicator;
-    
-    /* interestsHobbies */
-    private List<String> interestsHobbies;
-    
-    /* funFacts */
-    private String funFacts;
-    
-    /* honorAward */
-    private List<HonorAward> honorAward;
-    
-    /* favoriteSport */
-    private String favoriteSport;
-    
-    /* favoriteSportsTeam */
-    private String favoriteSportsTeam;
-    
-    /* favoriteLifeHack */
-    private String favoriteLifeHack;
-    
-    /* linkedInUrl */
-    private String linkedInUrl;
-    
-    /* mostInspirationalMoment */
-    private String mostInspirationalMoment;
-    
-    /* industryExams */
-    private List<IndustryExams> industryExams;
-    
-    /* hasDisciplinaryInformation */
-    private boolean hasDisciplinaryInformation;
-    
-    /* disciplinaryInformationText */
-    private String disciplinaryInformationText;
-    
-    /* anyBusinessRelatedActivitiesCommissions */
-    private boolean anyBusinessRelatedActivitiesCommissions;
-    
-    /* businessRelatedActivitiesCommissionsText */
-    private String businessRelatedActivitiesCommissionsText;
-    
-    /* anyAdditionalCompensation */
-    private boolean anyAdditionalCompensation;
-    
-    /* additionalCompensationText */
-    private String additionalCompensationText;
-    
-    /* efeUrl */
-    private String efeUrl;
-    
-    /* adv2bUrl */
-    private String adv2bUrl;
-    
-    /* htmlUrl */
-    private String htmlUrl;
+	private boolean includeInADV2B;
 
-    /* lastUpdated */
-    private String lastUpdated;
-    
+	/* includeInApiPayload */
+	private boolean includeInApiPayload;
+
+	/* firstName */
+	private String firstName;
+
+	/* firstNameAlias */
+	private String firstNameAlias;
+
+	/* middleName */
+	private String middleName;
+
+	/* lastName */
+	private String lastName;
+
+	/* id */
+	private int id;
+
+	/* suffix */
+	private String suffix;
+
+	/* title */
+	private String title;
+
+	/* birthYear */
+	private int birthYear;
+
+	/* yearJoined */
+	private int yearJoined;
+
+	/* directLinePhone */
+	private String directLinePhone;
+
+	/* advisorCRD */
+	private int advisorCRD;
+
+	/* desktopImageUrl */
+	private String desktopImageUrl;
+
+	/* mobileImageUrl */
+	private String mobileImageUrl;
+
+	/* circleImageUrl */
+	private String circleImageUrl;
+
+	/* primaryOffice */
+	private PrimaryOffice primaryOffice;
+
+	/* officesLocations */
+	private List<OfficesLocations> officesLocations;
+
+	/* educationIndicator */
+	private String educationIndicator;
+
+	/* education */
+	private List<Education> education;
+
+	/* taxPlanner */
+	private boolean taxPlanner;
+
+	/* advancedPlanning */
+	private boolean advancedPlanning;
+
+	/* estatePlanning */
+	private boolean estatePlanning;
+
+	/* insurancePlanning */
+	private boolean insurancePlanning;
+
+	/* investmentManagement */
+	private boolean investmentManagement;
+
+	/* employmentHistory */
+	private List<EmploymentHistory> employmentHistory = Collections.emptyList();
+
+	/* certifications */
+	private List<Certifications> certifications = Collections.emptyList();
+
+	/* bio */
+	private String bio;
+
+	/* email */
+	private String email;
+
+	/* teamDistributionEmailAddress */
+	private String teamDistributionEmailAddress;
+
+	/* yearStartedIndustry */
+	private int yearStartedIndustry;
+
+	/* smartVestorProIndicator */
+	private boolean smartVestorProIndicator;
+
+	/* interestsHobbies */
+	private List<String> interestsHobbies = Collections.emptyList();
+
+	/* funFacts */
+	private String funFacts;
+
+	/* honorAward */
+	private List<HonorAward> honorAward = Collections.emptyList();
+
+	/* favoriteSport */
+	private String favoriteSport;
+
+	/* favoriteSportsTeam */
+	private String favoriteSportsTeam;
+
+	/* favoriteLifeHack */
+	private String favoriteLifeHack;
+
+	/* linkedInUrl */
+	private String linkedInUrl;
+
+	/* mostInspirationalMoment */
+	private String mostInspirationalMoment;
+
+	/* industryExams */
+	private List<IndustryExams> industryExams = Collections.emptyList();
+
+	/* hasDisciplinaryInformation */
+	private boolean hasDisciplinaryInformation;
+
+	/* disciplinaryInformationText */
+	private String disciplinaryInformationText;
+
+	/* anyBusinessRelatedActivitiesCommissions */
+	private boolean anyBusinessRelatedActivitiesCommissions;
+
+	/* businessRelatedActivitiesCommissionsText */
+	private String businessRelatedActivitiesCommissionsText;
+
+	/* anyAdditionalCompensation */
+	private boolean anyAdditionalCompensation;
+
+	/* additionalCompensationText */
+	private String additionalCompensationText;
+
+	/* efeUrl */
+	private String efeUrl;
+
+	/* adv2bUrl */
+	private String adv2bUrl;
+
+	/* htmlUrl */
+	private String htmlUrl;
+
+	/* lastUpdated */
+	private String lastUpdated;
+
 	public String getLastUpdated() {
 		return lastUpdated;
 	}
@@ -176,21 +177,17 @@ public class PlannerResponse {
 		return includeInApiPayload;
 	}
 
-
 	public String getFirstName() {
 		return firstName;
 	}
-
 
 	public String getFirstNameAlias() {
 		return firstNameAlias;
 	}
 
-
 	public String getMiddleName() {
 		return middleName;
 	}
-
 
 	public String getLastName() {
 		return lastName;
@@ -216,7 +213,6 @@ public class PlannerResponse {
 		return yearJoined;
 	}
 
-
 	public String getDirectLinePhone() {
 		return directLinePhone;
 	}
@@ -225,11 +221,9 @@ public class PlannerResponse {
 		return advisorCRD;
 	}
 
-
 	public String getDesktopImageUrl() {
 		return desktopImageUrl;
 	}
-
 
 	public String getMobileImageUrl() {
 		return mobileImageUrl;
@@ -239,26 +233,21 @@ public class PlannerResponse {
 		return circleImageUrl;
 	}
 
-
 	public PrimaryOffice getPrimaryOffice() {
 		return primaryOffice;
 	}
 
 	public List<OfficesLocations> getOfficesLocations() {
-		List officesLocationsList = List.copyOf(officesLocations);
-		return officesLocationsList;
+		return officesLocations;
 	}
 
 	public String getEducationIndicator() {
 		return educationIndicator;
 	}
 
-
 	public List<Education> getEducation() {
-		List educationList = List.copyOf(education);
-		return educationList;
+		return education;
 	}
-
 
 	public boolean isTaxPlanner() {
 		return taxPlanner;
@@ -281,15 +270,13 @@ public class PlannerResponse {
 	}
 
 	public List<EmploymentHistory> getEmploymentHistory() {
-		List employmentHistoryList = List.copyOf(employmentHistory);
-		return employmentHistoryList;
+
+		return employmentHistory;
 	}
 
 	public List<Certifications> getCertifications() {
-		List certificationsList = List.copyOf(certifications);
-		return certificationsList;
+		return certifications;
 	}
-
 
 	public String getBio() {
 		return bio;
@@ -311,10 +298,9 @@ public class PlannerResponse {
 		return smartVestorProIndicator;
 	}
 
-
 	public List<String> getInterestsHobbies() {
-		List interestsHobbiesList = List.copyOf(interestsHobbies);
-		return interestsHobbiesList;
+
+		return interestsHobbies;
 	}
 
 	public String getFunFacts() {
@@ -322,8 +308,7 @@ public class PlannerResponse {
 	}
 
 	public List<HonorAward> getHonorAward() {
-		List honorAwardList = List.copyOf(honorAward);
-		return honorAwardList;
+		return honorAward;
 	}
 
 	public String getFavoriteSport() {
@@ -347,8 +332,7 @@ public class PlannerResponse {
 	}
 
 	public List<IndustryExams> getIndustryExams() {
-		List industryExamsList = List.copyOf(industryExams);
-		return industryExamsList;
+		return industryExams;
 	}
 
 	public boolean isHasDisciplinaryInformation() {

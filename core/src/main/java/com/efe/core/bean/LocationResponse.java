@@ -1,4 +1,6 @@
 package com.efe.core.bean;
+
+import java.util.Collections;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -11,81 +13,81 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 public class LocationResponse {
 
 	/* officeId */
-    private String officeId;
+	private String officeId;
 
-    /* RD */
-    private String RD;
+	/* RD */
+	private String RD;
 
-    /* officeName */
-    private String officeName;
+	/* officeName */
+	private String officeName;
 
-    /* externalName */
-    private String externalName;
+	/* externalName */
+	private String externalName;
 
-    /* desktopImage */
-    private String desktopImage;
-    
-    /* mobileImage */
-    private String mobileImage;
+	/* desktopImage */
+	private String desktopImage;
 
-    /* emergencyClosure */
-    private boolean emergencyClosure;
+	/* mobileImage */
+	private String mobileImage;
 
-    /* testLocation */
-    private boolean testLocation;
+	/* emergencyClosure */
+	private boolean emergencyClosure;
 
-    /* buildingComplexName */
-    private String buildingComplexName;
-    
-    /* address1 */
-    private String address1;
-    
-    /* address2 */
-    private String address2;
-    
-    /* city */
-    private String city;
-    
-    /* state */
-    private String state;
-    
-    /* zip */
-    private String zip;
-    
-    /* phone */
-    private String phone;
-    
-    /* fax */
-    private String fax;
+	/* testLocation */
+	private boolean testLocation;
 
-    /* tollFree */
-    private String tollFree;
-    
-    /* latitude */
-    private String latitude;
-    
-    /* longitude */
-    private String longitude;
+	/* buildingComplexName */
+	private String buildingComplexName;
 
-    /* appointmentOnly */
-    private boolean appointmentOnly;
+	/* address1 */
+	private String address1;
 
-    /* googleReviewLink */
-    private String googleReviewLink;
-    
-    /* planners */
-    private List<String> planners;
-  
-    /* overrideCorporateOfficeHours */
-    private boolean overrideCorporateOfficeHours;
+	/* address2 */
+	private String address2;
 
-    /* businessHours */
-    private List<BusinessHours> businessHours;
+	/* city */
+	private String city;
 
-    /* lastUpdated */
-    private String lastUpdated;
+	/* state */
+	private String state;
 
-    public String getOfficeId() {
+	/* zip */
+	private String zip;
+
+	/* phone */
+	private String phone;
+
+	/* fax */
+	private String fax;
+
+	/* tollFree */
+	private String tollFree;
+
+	/* latitude */
+	private String latitude;
+
+	/* longitude */
+	private String longitude;
+
+	/* appointmentOnly */
+	private boolean appointmentOnly;
+
+	/* googleReviewLink */
+	private String googleReviewLink;
+
+	/* planners */
+	private List<String> planners = Collections.emptyList();
+
+	/* overrideCorporateOfficeHours */
+	private boolean overrideCorporateOfficeHours;
+
+	/* businessHours */
+	private List<BusinessHours> businessHours = Collections.emptyList();
+
+	/* lastUpdated */
+	private String lastUpdated;
+
+	public String getOfficeId() {
 		return officeId;
 	}
 
@@ -93,11 +95,9 @@ public class LocationResponse {
 		return RD;
 	}
 
-
 	public String getOfficeName() {
 		return officeName;
 	}
-
 
 	public String getExternalName() {
 		return externalName;
@@ -107,16 +107,13 @@ public class LocationResponse {
 		return desktopImage;
 	}
 
-
 	public String getMobileImage() {
 		return mobileImage;
 	}
 
-
 	public boolean isEmergencyClosure() {
 		return emergencyClosure;
 	}
-
 
 	public boolean isTestLocation() {
 		return testLocation;
@@ -125,7 +122,6 @@ public class LocationResponse {
 	public String getBuildingComplexName() {
 		return buildingComplexName;
 	}
-
 
 	public String getAddress1() {
 		return address1;
@@ -139,7 +135,6 @@ public class LocationResponse {
 		return city;
 	}
 
-
 	public String getState() {
 		return state;
 	}
@@ -148,11 +143,9 @@ public class LocationResponse {
 		return zip;
 	}
 
-
 	public String getPhone() {
 		return phone;
 	}
-
 
 	public String getFax() {
 		return fax;
@@ -177,22 +170,18 @@ public class LocationResponse {
 	public String getGoogleReviewLink() {
 		return googleReviewLink;
 	}
-	
-	  public List<String> getPlanners() { 
-		  List plannersList = List.copyOf(planners);
-		  return plannersList; }
 
-	 
+	public List<String> getPlanners() {
+		return planners;
+	}
+
 	public boolean isOverrideCorporateOfficeHours() {
 		return overrideCorporateOfficeHours;
 	}
 
-
 	public List<BusinessHours> getBusinessHours() {
-		List businessHoursList = List.copyOf(businessHours);
-		return businessHoursList;
+		return businessHours;
 	}
-
 
 	public String getLastUpdated() {
 		return lastUpdated;
