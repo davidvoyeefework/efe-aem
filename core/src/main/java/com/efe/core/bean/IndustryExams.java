@@ -15,9 +15,12 @@ public class IndustryExams {
     /* examNameLong */
     private String examNameLong;
 
+    /* getter ExamNameShort */
 	public String getExamNameShort() {
 		return examNameShort;
 	}
+	
+	/* getter ExamNameLong */
 	public String getExamNameLong() {
 		return examNameLong;
 	}

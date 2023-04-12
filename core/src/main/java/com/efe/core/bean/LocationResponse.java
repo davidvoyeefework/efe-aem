@@ -89,90 +89,112 @@ public class LocationResponse {
 	/* lastUpdated */
 	private String lastUpdated;
 
+	/* getter OfficeId */
 	public String getOfficeId() {
 		return officeId;
 	}
 
+	/* getter RD */
 	public String getRD() {
 		return RD;
 	}
 
+	/* getter OfficeName */
 	public String getOfficeName() {
 		return officeName;
 	}
 
+	/* getter ExternalName */
 	public String getExternalName() {
 		return externalName;
 	}
 
+	/* getter DesktopImage */
 	public String getDesktopImage() {
 		return desktopImage;
 	}
 
+	/* getter MobileImage */
 	public String getMobileImage() {
 		return mobileImage;
 	}
-
+	
+	/* getter EmergencyClosure */
 	public boolean isEmergencyClosure() {
 		return emergencyClosure;
 	}
 
+	/* getter TestLocation */
 	public boolean isTestLocation() {
 		return testLocation;
 	}
 
+	/* getter BuildingComplexName */
 	public String getBuildingComplexName() {
 		return buildingComplexName;
 	}
 
+	/* getter Address1 */
 	public String getAddress1() {
 		return address1;
 	}
 
+	/* getter Address2 */
 	public String getAddress2() {
 		return address2;
 	}
 
+	/* getter City */
 	public String getCity() {
 		return city;
 	}
 
+	/* getter State */
 	public String getState() {
 		return state;
 	}
 
+	/* getter Zip */
 	public String getZip() {
 		return zip;
 	}
 
+	/* getter Phone */
 	public String getPhone() {
 		return phone;
 	}
 
+	/* getter Fax */
 	public String getFax() {
 		return fax;
 	}
 
+	/* getter TollFree */
 	public String getTollFree() {
 		return tollFree;
 	}
 
+	/* getter Latitude */
 	public String getLatitude() {
 		return latitude;
 	}
 
+	/* getter Longitude */
 	public String getLongitude() {
 		return longitude;
 	}
 
+	/* getter AppointmentOnly */
 	public boolean isAppointmentOnly() {
 		return appointmentOnly;
 	}
 
+	/* getter GoogleReviewLink */
 	public String getGoogleReviewLink() {
 		return googleReviewLink;
 	}
 
+	/* getter Planners */
 	public List<String> getPlanners() {
         if (Objects.nonNull(planners)) {
 			return new ArrayList<>(planners);
@@ -180,10 +202,12 @@ public class LocationResponse {
 		return Collections.emptyList();
 	}
 
+	/* getter OverrideCorporateOfficeHours */
 	public boolean isOverrideCorporateOfficeHours() {
 		return overrideCorporateOfficeHours;
 	}
 
+	/* getter BusinessHours */
 	public List<BusinessHours> getBusinessHours() {
         if (Objects.nonNull(businessHours)) {
 			return new ArrayList<>(businessHours);
@@ -191,6 +215,7 @@ public class LocationResponse {
 		return Collections.emptyList();
 	}
 
+	/* getter LastUpdated */
 	public String getLastUpdated() {
 		return lastUpdated;
 	}

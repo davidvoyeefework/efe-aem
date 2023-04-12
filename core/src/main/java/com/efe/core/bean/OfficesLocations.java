@@ -23,22 +23,28 @@ public class OfficesLocations {
     
     /* zip */
     private String zip;
+    
+    /* getter id */
 	public String getId() {
 		return id;
 	}
 
+	/* getter name */
 	public String getName() {
 		return name;
 	}
 
+	/* getter city */
 	public String getCity() {
 		return city;
 	}
 
+	/* getter State */
 	public String getState() {
 		return state;
 	}
 
+	/* getter Zip */
 	public String getZip() {
 		return zip;
 	}

@@ -24,22 +24,27 @@ public class EmploymentHistory {
 	/* current */
     private boolean current;
     
+    /* getter CompanyName */
 	public String getCompanyName() {
 		return companyName;
 	}
 
+	/* getter isCurrent */
 	public boolean isCurrent() {
 		return current;
 	}
 
+	/* getter StartDate */
 	public String getStartDate() {
 		return startDate;
 	}
 
+	/* getter EndDate */
 	public String getEndDate() {
 		return endDate;
 	}
 	
+	/* getter JobTitle */
 	public String getJobTitle() {
 		return jobTitle;
 	}

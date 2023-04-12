@@ -17,13 +17,17 @@ public class Education {
     
     /* university */
     private String university;
+    
 	public String getDegree() {
 		return degree;
 	}
 
+	/* getter for Major */
 	public String getMajor() {
 		return major;
 	}
+	
+	/* getter for university */
 	public String getUniversity() {
 		return university;
 	}

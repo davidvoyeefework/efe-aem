@@ -24,14 +24,17 @@ public class Certifications {
 		return abbreviation;
 	}
 
+	/* getter for LegalComplianceDisclosure */
 	public String getLegalComplianceDisclosure() {
 		return legalComplianceDisclosure;
 	}
 
+	/* getter for MarketingDisclosure */
 	public String getMarketingDisclosure() {
 		return marketingDisclosure;
 	}
 
+	/* getter for Name */
 	public String getName() {
 		return name;
 	}

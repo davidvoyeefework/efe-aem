@@ -23,12 +23,18 @@ public class HonorAward {
 	public String getDateOfAward() {
 		return dateOfAward;
 	}
+	
+	/* getter Disclosure */
 	public String getDisclosure() {
 		return disclosure;
 	}
+	
+	/* getter HonorAwardName */
 	public String getHonorAwardName() {
 		return honorAwardName;
 	}
+	
+	/* getter Organization */
 	public String getOrganization() {
 		return organization;
 	}  

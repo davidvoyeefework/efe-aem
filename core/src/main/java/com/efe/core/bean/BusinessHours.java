@@ -12,6 +12,7 @@ public class BusinessHours {
 	/* day */
 	private String day; 
 	
+	/* Getter for day */
 	public String getDay() {
         return day;
     }
@@ -25,14 +26,18 @@ public class BusinessHours {
     /* isClosed */
     private boolean isClosed;
     
+    /* Getter for getOpeningHours */
 	public String getOpeningHours() {
 		return openingHours;
 	}
+	
+	/* Getter for getClosingHours */
 	public String getClosingHours() {
 		return closingHours;
 	}
+	
+	/* Getter for isClosed */
 	public boolean isClosed() {
 		return isClosed;
 	}
-
 }

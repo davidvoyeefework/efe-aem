@@ -166,79 +166,98 @@ public class PlannerResponse {
 
 	/* lastUpdated */
 	private String lastUpdated;
-
+	
+	/* getter lastUpdated */
 	public String getLastUpdated() {
 		return lastUpdated;
 	}
 
+	/* getter IncludeInADV2B */
 	public boolean isIncludeInADV2B() {
 		return includeInADV2B;
 	}
 
+	/* getter IncludeInApiPayload */
 	public boolean isIncludeInApiPayload() {
 		return includeInApiPayload;
 	}
 
+	/* getter FirstName */
 	public String getFirstName() {
 		return firstName;
 	}
 
+	/* getter FirstNameAlias */
 	public String getFirstNameAlias() {
 		return firstNameAlias;
 	}
 
+	/* getter MiddleName */
 	public String getMiddleName() {
 		return middleName;
 	}
 
+	/* getter LastName */
 	public String getLastName() {
 		return lastName;
 	}
 
+	/* getter LastName */
 	public int getId() {
 		return id;
 	}
-
+	
+	/* getter Suffix */
 	public String getSuffix() {
 		return suffix;
 	}
 
+	/* getter Title */
 	public String getTitle() {
 		return title;
 	}
 
+	/* getter BirthYear */
 	public int getBirthYear() {
 		return birthYear;
 	}
 
+	/* getter YearJoined */
 	public int getYearJoined() {
 		return yearJoined;
 	}
 
+	/* getter DirectLinePhone */
 	public String getDirectLinePhone() {
 		return directLinePhone;
 	}
 
+	/* getter AdvisorCRD */
 	public int getAdvisorCRD() {
 		return advisorCRD;
 	}
 
+	/* getter DesktopImageUrl */
 	public String getDesktopImageUrl() {
 		return desktopImageUrl;
 	}
 
+	/* getter MobileImageUrl */
 	public String getMobileImageUrl() {
 		return mobileImageUrl;
 	}
 
+	/* getter CircleImageUrl */
 	public String getCircleImageUrl() {
 		return circleImageUrl;
 	}
 
+	/* getter PrimaryOffice */
 	public PrimaryOffice getPrimaryOffice() {
 		return primaryOffice;
 	}
 
+	/* getter OfficesLocations */
 	public List<OfficesLocations> getOfficesLocations() {
         if (Objects.nonNull(officesLocations)) {
 			return new ArrayList<>(officesLocations);
@@ -246,10 +265,12 @@ public class PlannerResponse {
 		return Collections.emptyList();
 	}
 
+	/* getter EducationIndicator */
 	public String getEducationIndicator() {
 		return educationIndicator;
 	}
 
+	/* getter Education */
 	public List<Education> getEducation() {
         if (Objects.nonNull(education)) {
 			return new ArrayList<>(education);
@@ -257,26 +278,32 @@ public class PlannerResponse {
 		return Collections.emptyList();
 	}
 
+	/* getter TaxPlanner */
 	public boolean isTaxPlanner() {
 		return taxPlanner;
 	}
 
+	/* getter AdvancedPlanning */
 	public boolean isAdvancedPlanning() {
 		return advancedPlanning;
 	}
 
+	/* getter EstatePlanning */
 	public boolean isEstatePlanning() {
 		return estatePlanning;
 	}
 
+	/* getter InsurancePlanning */
 	public boolean isInsurancePlanning() {
 		return insurancePlanning;
 	}
 
+	/* getter InvestmentManagement */
 	public boolean isInvestmentManagement() {
 		return investmentManagement;
 	}
 
+	/* getter EmploymentHistory */
 	public List<EmploymentHistory> getEmploymentHistory() {
         if (Objects.nonNull(employmentHistory)) {
 			return new ArrayList<>(employmentHistory);
@@ -284,6 +311,7 @@ public class PlannerResponse {
 		return Collections.emptyList();
 	}
 
+	/* getter Certifications */
 	public List<Certifications> getCertifications() {
         if (Objects.nonNull(certifications)) {
 			return new ArrayList<>(certifications);
@@ -291,26 +319,32 @@ public class PlannerResponse {
 		return Collections.emptyList();
 	}
 
+	/* getter Bio */
 	public String getBio() {
 		return bio;
 	}
 
+	/* getter Email */
 	public String getEmail() {
 		return email;
 	}
 
+	/* getter TeamDistributionEmailAddress */
 	public String getTeamDistributionEmailAddress() {
 		return teamDistributionEmailAddress;
 	}
 
+	/* getter YearStartedIndustry */
 	public int getYearStartedIndustry() {
 		return yearStartedIndustry;
 	}
 
+	/* getter SmartVestorProIndicator */
 	public boolean isSmartVestorProIndicator() {
 		return smartVestorProIndicator;
 	}
 
+	/* getter InterestsHobbies */
 	public List<String> getInterestsHobbies() {
         if (Objects.nonNull(interestsHobbies)) {
 			return new ArrayList<>(interestsHobbies);
@@ -318,10 +352,12 @@ public class PlannerResponse {
 		return Collections.emptyList();
 	}
 
+	/* getter FunFacts */
 	public String getFunFacts() {
 		return funFacts;
 	}
 
+	/* getter HonorAward */
 	public List<HonorAward> getHonorAward() {
 		 if (Objects.nonNull(honorAward)) {
 			return new ArrayList<>(honorAward);
@@ -329,26 +365,32 @@ public class PlannerResponse {
 		return Collections.emptyList();
 	}
 
+	/* getter FavoriteSport */
 	public String getFavoriteSport() {
 		return favoriteSport;
 	}
 
+	/* getter FavoriteSportsTeam */
 	public String getFavoriteSportsTeam() {
 		return favoriteSportsTeam;
 	}
 
+	/* getter FavoriteLifeHack */
 	public String getFavoriteLifeHack() {
 		return favoriteLifeHack;
 	}
 
+	/* getter LinkedInUrl */
 	public String getLinkedInUrl() {
 		return linkedInUrl;
 	}
 
+	/* getter MostInspirationalMoment */
 	public String getMostInspirationalMoment() {
 		return mostInspirationalMoment;
 	}
 
+	/* getter IndustryExams */
 	public List<IndustryExams> getIndustryExams() {
         if (Objects.nonNull(industryExams)) {
 			return new ArrayList<>(industryExams);
@@ -356,38 +398,47 @@ public class PlannerResponse {
 		return Collections.emptyList();
 	}
 
+	/* getter HasDisciplinaryInformation */
 	public boolean isHasDisciplinaryInformation() {
 		return hasDisciplinaryInformation;
 	}
 
+	/* getter DisciplinaryInformationText */
 	public String getDisciplinaryInformationText() {
 		return disciplinaryInformationText;
 	}
 
+	/* getter AnyBusinessRelatedActivitiesCommissions */
 	public boolean isAnyBusinessRelatedActivitiesCommissions() {
 		return anyBusinessRelatedActivitiesCommissions;
 	}
 
+	/* getter BusinessRelatedActivitiesCommissionsText */
 	public String getBusinessRelatedActivitiesCommissionsText() {
 		return businessRelatedActivitiesCommissionsText;
 	}
 
+	/* getter AnyAdditionalCompensation */
 	public boolean isAnyAdditionalCompensation() {
 		return anyAdditionalCompensation;
 	}
 
+	/* getter AdditionalCompensationText */
 	public String getAdditionalCompensationText() {
 		return additionalCompensationText;
 	}
 
+	/* getter EfeUrl */
 	public String getEfeUrl() {
 		return efeUrl;
 	}
 
+	/* getter Adv2bUrl */
 	public String getAdv2bUrl() {
 		return adv2bUrl;
 	}
 
+	/* getter HtmlUrl */
 	public String getHtmlUrl() {
 		return htmlUrl;
 	}
