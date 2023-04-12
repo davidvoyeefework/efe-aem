@@ -5,7 +5,6 @@
 class Footer {
     constructor(el) {
         this.el = el;
-        console.log("Footer Initialized");
     }
 
     static init(el) {
