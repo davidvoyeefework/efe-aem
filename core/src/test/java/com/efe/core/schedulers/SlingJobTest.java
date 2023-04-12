@@ -65,14 +65,12 @@ class SlingJobTest {
 	/** set Up method. */
 	@BeforeEach
 	void setUp() throws Exception {
-		//mockJob = mock(Job.class);
 		
 		final Map<String, Object> subServiceUser = new ConcurrentHashMap<>();
 		subServiceUser.put(ResourceResolverFactory.SUBSERVICE,"efe-service-user");
 
 		aemContext.registerService(ResourceResolver.class, resourceResolver);
 		aemContext.registerService(ResourceResolverFactory.class, new MockResourceResolverFactory());
-		//aemContext.registerService(ResourceResolverFactory.class, resourceResolverFactory);
 		lenient().when(resourceResolverFactory.getServiceResourceResolver(subServiceUser)).thenReturn(resourceResolver);
 		
 		aemContext.registerService(LocationModelServicesImpl.class, locationModelServices);

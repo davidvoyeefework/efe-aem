@@ -67,7 +67,7 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 	 */
 	private void createFragmentPlanner(ResourceResolver resourceResolver) {
 		String jsonObjectPlanner = restService.getData(plannerApiService.getPlannersAPIEndpoint(),
-				plannerApiService.getAuthHeader());// Calling API to Get JSON Response
+				plannerApiService.getAuthHeader());
 		Gson gson = new Gson();
 
 		PlannerResponse[] jsonElement = gson.fromJson(jsonObjectPlanner, PlannerResponse[].class);

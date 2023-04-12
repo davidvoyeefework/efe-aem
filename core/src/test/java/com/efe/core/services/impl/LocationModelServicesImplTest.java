@@ -188,7 +188,6 @@ class LocationModelServicesImplTest {
 		
 		lenient().when(resourceResolver.getResource(PlannerLocationConstants.LOCATION_MODEL))
 				.thenReturn(templateOrModelRsc);
-		//lenient().when(resourceResolver.getResource(childPathLocation)).thenReturn(parentRsc);
 		lenient().when(resourceResolver.getResource(childPathLocation + PlannerLocationConstants.FORWARD_SLASH + fragmentName))
 				.thenReturn(null);
 		lenient().when(resourceResolver.getResource(childPathLocation + PlannerLocationConstants.FORWARD_SLASH

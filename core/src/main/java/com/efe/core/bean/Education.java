@@ -18,6 +18,7 @@ public class Education {
     /* university */
     private String university;
     
+    /* getter for Degree */
 	public String getDegree() {
 		return degree;
 	}
