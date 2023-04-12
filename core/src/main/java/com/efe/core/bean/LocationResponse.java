@@ -1,7 +1,9 @@
 package com.efe.core.bean;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
@@ -76,13 +78,13 @@ public class LocationResponse {
 	private String googleReviewLink;
 
 	/* planners */
-	private List<String> planners = Collections.emptyList();
+	private List<String> planners;
 
 	/* overrideCorporateOfficeHours */
 	private boolean overrideCorporateOfficeHours;
 
 	/* businessHours */
-	private List<BusinessHours> businessHours = Collections.emptyList();
+	private List<BusinessHours> businessHours;
 
 	/* lastUpdated */
 	private String lastUpdated;
@@ -172,7 +174,10 @@ public class LocationResponse {
 	}
 
 	public List<String> getPlanners() {
-		return planners;
+        if (Objects.nonNull(planners)) {
+			return new ArrayList<>(planners);
+		}
+		return Collections.emptyList();
 	}
 
 	public boolean isOverrideCorporateOfficeHours() {
@@ -180,7 +185,10 @@ public class LocationResponse {
 	}
 
 	public List<BusinessHours> getBusinessHours() {
-		return businessHours;
+        if (Objects.nonNull(businessHours)) {
+			return new ArrayList<>(businessHours);
+		}
+		return Collections.emptyList();
 	}
 
 	public String getLastUpdated() {

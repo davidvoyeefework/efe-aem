@@ -45,7 +45,7 @@ public class PlannerLocationConstants {
 	/**
 	 * Forward Slash
 	 */
-	public static final String LOCATION_MODEL = "/conf/efe/settings/dam/cfm/models/location";
+	public static final String LOCATION_MODEL = "/conf/efe/settings/dam/cfm/models/locations";
 
 	/**
 	 * Forward Slash
@@ -190,7 +190,7 @@ public class PlannerLocationConstants {
 	/**
 	 * Planner Model
 	 */
-	public static final String PLANNER_MODEL = "/conf/efe/settings/dam/cfm/models/planner";
+	public static final String PLANNER_MODEL = "/conf/efe/settings/dam/cfm/models/planners";
 
 	/**
 	 * Planner Model

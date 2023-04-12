@@ -1,7 +1,9 @@
 package com.efe.core.bean;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
@@ -88,10 +90,10 @@ public class PlannerResponse {
 	private boolean investmentManagement;
 
 	/* employmentHistory */
-	private List<EmploymentHistory> employmentHistory = Collections.emptyList();
+	private List<EmploymentHistory> employmentHistory;
 
 	/* certifications */
-	private List<Certifications> certifications = Collections.emptyList();
+	private List<Certifications> certifications;
 
 	/* bio */
 	private String bio;
@@ -109,13 +111,13 @@ public class PlannerResponse {
 	private boolean smartVestorProIndicator;
 
 	/* interestsHobbies */
-	private List<String> interestsHobbies = Collections.emptyList();
+	private List<String> interestsHobbies;
 
 	/* funFacts */
 	private String funFacts;
 
 	/* honorAward */
-	private List<HonorAward> honorAward = Collections.emptyList();
+	private List<HonorAward> honorAward;
 
 	/* favoriteSport */
 	private String favoriteSport;
@@ -133,7 +135,7 @@ public class PlannerResponse {
 	private String mostInspirationalMoment;
 
 	/* industryExams */
-	private List<IndustryExams> industryExams = Collections.emptyList();
+	private List<IndustryExams> industryExams;
 
 	/* hasDisciplinaryInformation */
 	private boolean hasDisciplinaryInformation;
@@ -238,7 +240,10 @@ public class PlannerResponse {
 	}
 
 	public List<OfficesLocations> getOfficesLocations() {
-		return officesLocations;
+        if (Objects.nonNull(officesLocations)) {
+			return new ArrayList<>(officesLocations);
+		}
+		return Collections.emptyList();
 	}
 
 	public String getEducationIndicator() {
@@ -246,7 +251,10 @@ public class PlannerResponse {
 	}
 
 	public List<Education> getEducation() {
-		return education;
+        if (Objects.nonNull(education)) {
+			return new ArrayList<>(education);
+		}
+		return Collections.emptyList();
 	}
 
 	public boolean isTaxPlanner() {
@@ -270,12 +278,17 @@ public class PlannerResponse {
 	}
 
 	public List<EmploymentHistory> getEmploymentHistory() {
-
-		return employmentHistory;
+        if (Objects.nonNull(employmentHistory)) {
+			return new ArrayList<>(employmentHistory);
+		}
+		return Collections.emptyList();
 	}
 
 	public List<Certifications> getCertifications() {
-		return certifications;
+        if (Objects.nonNull(certifications)) {
+			return new ArrayList<>(certifications);
+		}
+		return Collections.emptyList();
 	}
 
 	public String getBio() {
@@ -299,7 +312,9 @@ public class PlannerResponse {
 	}
 
 	public List<String> getInterestsHobbies() {
-
+        if (Objects.nonNull(interestsHobbies)) {
+			return new ArrayList<>(interestsHobbies);
+		}
 		return interestsHobbies;
 	}
 
@@ -308,7 +323,10 @@ public class PlannerResponse {
 	}
 
 	public List<HonorAward> getHonorAward() {
-		return honorAward;
+		 if (Objects.nonNull(honorAward)) {
+			return new ArrayList<>(honorAward);
+		}
+		return Collections.emptyList();
 	}
 
 	public String getFavoriteSport() {
@@ -332,7 +350,10 @@ public class PlannerResponse {
 	}
 
 	public List<IndustryExams> getIndustryExams() {
-		return industryExams;
+        if (Objects.nonNull(industryExams)) {
+			return new ArrayList<>(industryExams);
+		}
+		return Collections.emptyList();
 	}
 
 	public boolean isHasDisciplinaryInformation() {
