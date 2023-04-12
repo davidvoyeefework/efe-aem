@@ -315,7 +315,7 @@ public class PlannerResponse {
         if (Objects.nonNull(interestsHobbies)) {
 			return new ArrayList<>(interestsHobbies);
 		}
-		return interestsHobbies;
+		return Collections.emptyList();
 	}
 
 	public String getFunFacts() {
