@@ -70,7 +70,7 @@
                                                 fieldLabel="Planner CTA Link"
                                                 name="./ctaLink"
                                                 rootPath="/content/efe"/>
-                                            <target
+                                            <cta-target
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                                                     fieldDescription="If checked the link will be opened in a new browser tab."
@@ -103,7 +103,7 @@
                                                 fieldLabel="Login Link Path"
                                                 name="./loginLink"
                                                 rootPath="/content/efe"/>
-                                            <target
+                                            <login-target
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                                                     fieldDescription="If checked the link will be opened in a new browser tab."
