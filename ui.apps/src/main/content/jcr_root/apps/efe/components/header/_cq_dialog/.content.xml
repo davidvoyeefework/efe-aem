@@ -42,7 +42,7 @@
                                                     fieldDescription="Add header logo alt text here"
                                                     fieldLabel="Alt Text"
                                                     name="./alt"/>
-                                            <logoLink
+                                            <logolink
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                     fieldDescription="Add header logo link url here"
