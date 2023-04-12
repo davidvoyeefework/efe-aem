@@ -105,6 +105,10 @@
 							"heading": "Working"
 						}
 					}
+				},
+				"header_nav2":{
+					"jcr:primaryType": "nt:unstructured",
+					"sling:resourceType": "efe/components/header-nav"
 				}
 			}
 		}
