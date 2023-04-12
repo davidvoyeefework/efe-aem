@@ -27,19 +27,6 @@
                     <items
                         jcr:primaryType="nt:unstructured"
                         maxGeneratedOrder="20">
-                        <lastUpdated
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                            fieldLabel="Last Updated"
-                            listOrder="21"
-                            maxlength="255"
-                            metaType="text-single"
-                            name="lastUpdated"
-                            renderReadOnly="false"
-                            showEmptyInReadOnly="true"
-                            valueType="string">
-                            <granite:data jcr:primaryType="nt:unstructured"/>
-                        </lastUpdated>
                         <includeInAdv2b
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
@@ -630,21 +617,16 @@
                         </anyAdditionalCompensation>
                         <lastUpdated
                             jcr:primaryType="nt:unstructured"
-                            sling:resourceType="dam/cfm/models/editor/components/datatypes/datepicker"
-                            displayedFormat="YYYY-MM-DD HH:mm"
-                            emptyText="YYYY-MM-DD HH:mm:ss"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                             fieldLabel="Last Updated"
-                            listOrder="5"
-                            metaType="date"
+                            listOrder="21"
+                            maxlength="255"
+                            metaType="text-single"
                             name="lastUpdated"
                             renderReadOnly="false"
                             showEmptyInReadOnly="true"
-                            type="datetime"
-                            valueFormat="YYYY-MM-DD[T]HH:mm:ss.000Z"
-                            valueType="calendar/datetime">
-                            <granite:data
-                                jcr:primaryType="nt:unstructured"
-                                typeHint="Date"/>
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
                         </lastUpdated>
                         <businessRelatedActivitiesCommissionsText
                             jcr:primaryType="nt:unstructured"
