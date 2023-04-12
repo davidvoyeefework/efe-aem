@@ -1,4 +1,11 @@
 .cmp-list--horizontal {
+    .cmp-teaser--service-button {
+        .cmp-teaser__link {
+            padding: 10px;
+            width: 232px;
+        }
+    }
+
     .cmp-list {
         @include flexbox($flex-wrap: wrap);
         .cmp-list__item {
