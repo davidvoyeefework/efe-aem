@@ -74,6 +74,10 @@
             min-height: rem(133);
             padding: rem(18) rem(42);
             overflow: hidden;
+            width: 234px;
+            @include media("<tablet") {
+                width: 184px;
+            }
             &:hover {
                 background-color: $efe-gray-light;
             }
