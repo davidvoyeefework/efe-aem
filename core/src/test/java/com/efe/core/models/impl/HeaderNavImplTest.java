@@ -1,10 +1,8 @@
 package com.efe.core.models.impl;
 
-import com.efe.core.models.Footer;
 import com.efe.core.models.HeaderNav;
 import com.efe.core.models.multifield.Link;
 import com.efe.core.models.multifield.NavigationList;
-import com.efe.core.models.multifield.VerticalList;
 import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 import org.apache.sling.api.resource.Resource;
@@ -70,7 +68,7 @@ class HeaderNavImplTest {
 	 * Test secondary links null attributes.
 	 */
 	@Test
-	void testVerticalLinksNullAttributes() {
+	void testSecondaryLinksNullAttributes() {
 		model = aemContext.currentResource(TEST_CONTENT_ROOT + "/jcr:content/root/container/header_nav1")
 				.adaptTo(HeaderNav.class);
 		NavigationList navigationList = model.getPrimaryList().get(0);

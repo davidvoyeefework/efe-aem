@@ -1,6 +1,5 @@
 package com.efe.core.models.impl;
 
-import com.efe.core.models.Footer;
 import com.efe.core.models.Header;
 import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
