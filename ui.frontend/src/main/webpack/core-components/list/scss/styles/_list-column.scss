@@ -1,11 +1,5 @@
 .cmp-list--column {
-    .cmp-teaser--service-button {
-        .cmp-teaser__link {
-            padding: 10px;
-            box-sizing: content-box; // hack for box to take up equal height
-        }
-    }
-    .cmp-list {
+     .cmp-list {
         display: block;
         column-count: 4;
         @include media('>=phone-sm', '<phone-m') {
@@ -41,3 +35,11 @@
         }
     }
 }
+
+.cmp-teaser--service-button.cmp-list--column {
+    .cmp-teaser__link {
+        padding: 10px;
+        box-sizing: content-box; // hack for box to take up equal height
+    }
+}
+
