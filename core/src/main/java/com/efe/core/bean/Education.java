@@ -18,17 +18,29 @@ public class Education {
     /* university */
     private String university;
     
-    /* getter for Degree */
+    /**
+     * Returns the Degree.
+     *
+     * @return the Degree
+     */
 	public String getDegree() {
 		return degree;
 	}
 
-	/* getter for Major */
+	/**
+     * Returns the Major.
+     *
+     * @return the Major
+     */
 	public String getMajor() {
 		return major;
 	}
 	
-	/* getter for university */
+	/**
+     * Returns the University.
+     *
+     * @return the University
+     */
 	public String getUniversity() {
 		return university;
 	}

@@ -89,112 +89,200 @@ public class LocationResponse {
 	/* lastUpdated */
 	private String lastUpdated;
 
-	/* getter OfficeId */
+	/**
+     * Returns the Office Id.
+     *
+     * @return the Office Id
+     */
 	public String getOfficeId() {
 		return officeId;
 	}
 
-	/* getter RD */
+	/**
+     * Returns the RD.
+     *
+     * @return the RD
+     */
 	public String getRD() {
 		return RD;
 	}
 
-	/* getter OfficeName */
+	/**
+     * Returns the Office Name.
+     *
+     * @return the Office Name
+     */
 	public String getOfficeName() {
 		return officeName;
 	}
 
-	/* getter ExternalName */
+	/**
+     * Returns the External Name.
+     *
+     * @return the External Name
+     */
 	public String getExternalName() {
 		return externalName;
 	}
 
-	/* getter DesktopImage */
+	/**
+     * Returns the Desktop Image.
+     *
+     * @return the Desktop Image
+     */
 	public String getDesktopImage() {
 		return desktopImage;
 	}
 
-	/* getter MobileImage */
+	/**
+     * Returns the Mobile Image.
+     *
+     * @return the Mobile Image
+     */
 	public String getMobileImage() {
 		return mobileImage;
 	}
 	
-	/* getter EmergencyClosure */
+	/**
+	 * Returns whether this object is marked for emergency closure.
+	 *
+	 * @return true if this object is marked for emergency closure, false otherwise
+	 */
 	public boolean isEmergencyClosure() {
 		return emergencyClosure;
 	}
 
-	/* getter TestLocation */
+	/**
+	 * Returns whether this object is a test location.
+	 *
+	 * @return true if this object is a test location, false otherwise
+	 */
 	public boolean isTestLocation() {
 		return testLocation;
 	}
 
-	/* getter BuildingComplexName */
+	/**
+     * Returns the Building Complex Name.
+     *
+     * @return the Building Complex Name
+     */
 	public String getBuildingComplexName() {
 		return buildingComplexName;
 	}
 
-	/* getter Address1 */
+	/**
+     * Returns the Address1.
+     *
+     * @return the Address1
+     */
 	public String getAddress1() {
 		return address1;
 	}
 
-	/* getter Address2 */
+	/**
+     * Returns the Address2.
+     *
+     * @return the Address2
+     */
 	public String getAddress2() {
 		return address2;
 	}
 
-	/* getter City */
+	/**
+     * Returns the City.
+     *
+     * @return the City
+     */
 	public String getCity() {
 		return city;
 	}
 
-	/* getter State */
+	/**
+     * Returns the State.
+     *
+     * @return the State
+     */
 	public String getState() {
 		return state;
 	}
 
-	/* getter Zip */
+	/**
+     * Returns the Zip.
+     *
+     * @return the Zip
+     */
 	public String getZip() {
 		return zip;
 	}
 
-	/* getter Phone */
+	/**
+     * Returns the Phone.
+     *
+     * @return the Phone
+     */
 	public String getPhone() {
 		return phone;
 	}
 
-	/* getter Fax */
+	/**
+     * Returns the Fax.
+     *
+     * @return the Fax
+     */
 	public String getFax() {
 		return fax;
 	}
 
-	/* getter TollFree */
+	/**
+     * Returns the Toll Free.
+     *
+     * @return the Toll Free
+     */
 	public String getTollFree() {
 		return tollFree;
 	}
 
-	/* getter Latitude */
+	/**
+     * Returns the Latitude.
+     *
+     * @return the Latitude
+     */
 	public String getLatitude() {
 		return latitude;
 	}
 
-	/* getter Longitude */
+	/**
+     * Returns the Longitude.
+     *
+     * @return the Longitude
+     */
 	public String getLongitude() {
 		return longitude;
 	}
 
-	/* getter AppointmentOnly */
+	/**
+	 * Returns whether this location is appointment only.
+	 *
+	 * @return true if this location is appointment only, false otherwise
+	 */
 	public boolean isAppointmentOnly() {
 		return appointmentOnly;
 	}
 
-	/* getter GoogleReviewLink */
+	/**
+     * Returns the Google Review Link.
+     *
+     * @return the Google Review Link
+     */
 	public String getGoogleReviewLink() {
 		return googleReviewLink;
 	}
 
-	/* getter Planners */
+	/**
+     * Returns the Planners.
+     *
+     * @return the Planners
+     */
 	public List<String> getPlanners() {
         if (Objects.nonNull(planners)) {
 			return new ArrayList<>(planners);
@@ -202,12 +290,20 @@ public class LocationResponse {
 		return Collections.emptyList();
 	}
 
-	/* getter OverrideCorporateOfficeHours */
+	/**
+	 * Returns whether the corporate office hours are overridden for this object.
+	 *
+	 * @return true if the corporate office hours are overridden for this object, false otherwise
+	 */
 	public boolean isOverrideCorporateOfficeHours() {
 		return overrideCorporateOfficeHours;
 	}
 
-	/* getter BusinessHours */
+	/**
+     * Returns the Business Hours.
+     *
+     * @return the Business Hours
+     */
 	public List<BusinessHours> getBusinessHours() {
         if (Objects.nonNull(businessHours)) {
 			return new ArrayList<>(businessHours);
@@ -215,7 +311,11 @@ public class LocationResponse {
 		return Collections.emptyList();
 	}
 
-	/* getter LastUpdated */
+	/**
+	 * Returns the timestamp when this object was last updated.
+	 *
+	 * @return the timestamp when this object was last updated
+	 */
 	public String getLastUpdated() {
 		return lastUpdated;
 	}

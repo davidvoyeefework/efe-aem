@@ -24,17 +24,29 @@ public class HonorAward {
 		return dateOfAward;
 	}
 	
-	/* getter Disclosure */
+	/**
+     * Returns the Disclosure.
+     *
+     * @return the Disclosure
+     */
 	public String getDisclosure() {
 		return disclosure;
 	}
 	
-	/* getter HonorAwardName */
+	/**
+     * Returns the Honor Award Name.
+     *
+     * @return the Honor Award Name
+     */
 	public String getHonorAwardName() {
 		return honorAwardName;
 	}
 	
-	/* getter Organization */
+	/**
+     * Returns the Organization.
+     *
+     * @return the Organization
+     */
 	public String getOrganization() {
 		return organization;
 	}  

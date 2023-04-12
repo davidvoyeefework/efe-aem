@@ -24,27 +24,47 @@ public class EmploymentHistory {
 	/* current */
     private boolean current;
     
-    /* getter CompanyName */
+    /**
+     * Returns the Company Name.
+     *
+     * @return the Company Name
+     */
 	public String getCompanyName() {
 		return companyName;
 	}
 
-	/* getter isCurrent */
+	/**
+	 * Returns whether this object is current.
+	 *
+	 * @return true if this object is current, false otherwise
+	 */
 	public boolean isCurrent() {
 		return current;
 	}
 
-	/* getter StartDate */
+	/**
+     * Returns the Start Date.
+     *
+     * @return the Start Date
+     */
 	public String getStartDate() {
 		return startDate;
 	}
 
-	/* getter EndDate */
+	/**
+     * Returns the End Date.
+     *
+     * @return the End Date
+     */
 	public String getEndDate() {
 		return endDate;
 	}
 	
-	/* getter JobTitle */
+	/**
+     * Returns the Job Title.
+     *
+     * @return the Job Title
+     */
 	public String getJobTitle() {
 		return jobTitle;
 	}

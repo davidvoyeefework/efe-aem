@@ -26,17 +26,29 @@ public class BusinessHours {
     /* isClosed */
     private boolean isClosed;
     
-    /* Getter for getOpeningHours */
+    /**
+     * Returns the Opening Hours.
+     *
+     * @return the name of this person
+     */
 	public String getOpeningHours() {
 		return openingHours;
 	}
 	
-	/* Getter for getClosingHours */
+	/**
+     * Returns the Closing Hours.
+     *
+     * @return the Closing Hours
+     */
 	public String getClosingHours() {
 		return closingHours;
 	}
 	
-	/* Getter for isClosed */
+	/**
+	 * Returns whether this object is closed.
+	 *
+	 * @return true if this object is closed, false otherwise
+	 */
 	public boolean isClosed() {
 		return isClosed;
 	}

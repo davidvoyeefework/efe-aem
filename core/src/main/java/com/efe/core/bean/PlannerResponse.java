@@ -182,82 +182,146 @@ public class PlannerResponse {
 		return includeInApiPayload;
 	}
 
-	/* getter FirstName */
+	/**
+     * Returns the First Name.
+     *
+     * @return the First Name
+     */
 	public String getFirstName() {
 		return firstName;
 	}
 
-	/* getter FirstNameAlias */
+	/**
+     * Returns the First Name Alias.
+     *
+     * @return the First Name Alias
+     */
 	public String getFirstNameAlias() {
 		return firstNameAlias;
 	}
 
-	/* getter MiddleName */
+	/**
+     * Returns the Middle Name.
+     *
+     * @return the Middle Name
+     */
 	public String getMiddleName() {
 		return middleName;
 	}
 
-	/* getter LastName */
+	/**
+     * Returns the Last Name.
+     *
+     * @return the Last Name
+     */
 	public String getLastName() {
 		return lastName;
 	}
 
-	/* getter LastName */
+	/**
+     * Returns the Id.
+     *
+     * @return the Id
+     */
 	public int getId() {
 		return id;
 	}
 	
-	/* getter Suffix */
+	/**
+     * Returns the Suffix.
+     *
+     * @return the Suffix
+     */
 	public String getSuffix() {
 		return suffix;
 	}
 
-	/* getter Title */
+	/**
+     * Returns the Title.
+     *
+     * @return the Title
+     */
 	public String getTitle() {
 		return title;
 	}
 
-	/* getter BirthYear */
+	/**
+     * Returns the Birth Year.
+     *
+     * @return the Birth Year
+     */
 	public int getBirthYear() {
 		return birthYear;
 	}
 
-	/* getter YearJoined */
+	/**
+     * Returns the Year Joined.
+     *
+     * @return the Year Joined
+     */
 	public int getYearJoined() {
 		return yearJoined;
 	}
 
-	/* getter DirectLinePhone */
+	/**
+     * Returns the Direct Line Phone.
+     *
+     * @return the Direct Line Phone
+     */
 	public String getDirectLinePhone() {
 		return directLinePhone;
 	}
 
-	/* getter AdvisorCRD */
+	/**
+     * Returns the Advisor CRD.
+     *
+     * @return the Advisor CRD
+     */
 	public int getAdvisorCRD() {
 		return advisorCRD;
 	}
 
-	/* getter DesktopImageUrl */
+	/**
+     * Returns the Desktop Image Url.
+     *
+     * @return the Desktop Image Url
+     */
 	public String getDesktopImageUrl() {
 		return desktopImageUrl;
 	}
 
-	/* getter MobileImageUrl */
+	/**
+     * Returns the Mobile Image Url.
+     *
+     * @return the Mobile Image Url
+     */
 	public String getMobileImageUrl() {
 		return mobileImageUrl;
 	}
 
-	/* getter CircleImageUrl */
+	/**
+     * Returns the Circle Image Url.
+     *
+     * @return the Circle Image Url
+     */
 	public String getCircleImageUrl() {
 		return circleImageUrl;
 	}
 
-	/* getter PrimaryOffice */
+	/**
+     * Returns the Primary Office.
+     *
+     * @return the Primary Office
+     */
 	public PrimaryOffice getPrimaryOffice() {
 		return primaryOffice;
 	}
 
-	/* getter OfficesLocations */
+	/**
+     * Returns the Offices Locations.
+     *
+     * @return the Offices Locations
+     */
 	public List<OfficesLocations> getOfficesLocations() {
         if (Objects.nonNull(officesLocations)) {
 			return new ArrayList<>(officesLocations);
@@ -265,12 +329,20 @@ public class PlannerResponse {
 		return Collections.emptyList();
 	}
 
-	/* getter EducationIndicator */
+	/**
+     * Returns the Education Indicator.
+     *
+     * @return the Education Indicator
+     */
 	public String getEducationIndicator() {
 		return educationIndicator;
 	}
 
-	/* getter Education */
+	/**
+     * Returns the Education.
+     *
+     * @return the Education
+     */
 	public List<Education> getEducation() {
         if (Objects.nonNull(education)) {
 			return new ArrayList<>(education);
@@ -278,32 +350,56 @@ public class PlannerResponse {
 		return Collections.emptyList();
 	}
 
-	/* getter TaxPlanner */
+	/**
+	 * Returns whether this object is a tax planner.
+	 *
+	 * @return true if this object is a tax planner, false otherwise
+	 */
 	public boolean isTaxPlanner() {
 		return taxPlanner;
 	}
 
-	/* getter AdvancedPlanning */
+	/**
+	 * Returns whether this object offers advanced planning services.
+	 *
+	 * @return true if this object offers advanced planning services, false otherwise
+	 */
 	public boolean isAdvancedPlanning() {
 		return advancedPlanning;
 	}
 
-	/* getter EstatePlanning */
+	/**
+	 * Returns whether this object offers estate planning services.
+	 *
+	 * @return true if this object offers estate planning services, false otherwise
+	 */
 	public boolean isEstatePlanning() {
 		return estatePlanning;
 	}
 
-	/* getter InsurancePlanning */
+	/**
+	 * Returns whether this object offers insurance planning services.
+	 *
+	 * @return true if this object offers insurance planning services, false otherwise
+	 */
 	public boolean isInsurancePlanning() {
 		return insurancePlanning;
 	}
 
-	/* getter InvestmentManagement */
+	/**
+	 * Returns whether this object offers investment management services.
+	 *
+	 * @return true if this object offers investment management services, false otherwise
+	 */
 	public boolean isInvestmentManagement() {
 		return investmentManagement;
 	}
 
-	/* getter EmploymentHistory */
+	/**
+     * Returns the Employment History.
+     *
+     * @return the Employment History
+     */
 	public List<EmploymentHistory> getEmploymentHistory() {
         if (Objects.nonNull(employmentHistory)) {
 			return new ArrayList<>(employmentHistory);
@@ -311,7 +407,11 @@ public class PlannerResponse {
 		return Collections.emptyList();
 	}
 
-	/* getter Certifications */
+	/**
+     * Returns the Certifications.
+     *
+     * @return the Certifications
+     */
 	public List<Certifications> getCertifications() {
         if (Objects.nonNull(certifications)) {
 			return new ArrayList<>(certifications);
@@ -319,32 +419,56 @@ public class PlannerResponse {
 		return Collections.emptyList();
 	}
 
-	/* getter Bio */
+	/**
+     * Returns the Bio.
+     *
+     * @return the Bio
+     */
 	public String getBio() {
 		return bio;
 	}
 
-	/* getter Email */
+	/**
+     * Returns the Email.
+     *
+     * @return the Email
+     */
 	public String getEmail() {
 		return email;
 	}
 
-	/* getter TeamDistributionEmailAddress */
+	/**
+     * Returns the Team Distribution EmailAddress.
+     *
+     * @return the Team Distribution EmailAddress
+     */
 	public String getTeamDistributionEmailAddress() {
 		return teamDistributionEmailAddress;
 	}
 
-	/* getter YearStartedIndustry */
+	/**
+     * Returns the Year Started Industry.
+     *
+     * @return the Year Started Industry
+     */
 	public int getYearStartedIndustry() {
 		return yearStartedIndustry;
 	}
 
-	/* getter SmartVestorProIndicator */
+	/**
+     * Returns the Zip.
+     *
+     * @return the Zip
+     */
 	public boolean isSmartVestorProIndicator() {
 		return smartVestorProIndicator;
 	}
 
-	/* getter InterestsHobbies */
+	/**
+     * Returns the Zip.
+     *
+     * @return the Zip
+     */
 	public List<String> getInterestsHobbies() {
         if (Objects.nonNull(interestsHobbies)) {
 			return new ArrayList<>(interestsHobbies);
@@ -352,12 +476,20 @@ public class PlannerResponse {
 		return Collections.emptyList();
 	}
 
-	/* getter FunFacts */
+	/**
+     * Returns the Fun Facts.
+     *
+     * @return the Fun Facts
+     */
 	public String getFunFacts() {
 		return funFacts;
 	}
 
-	/* getter HonorAward */
+	/**
+     * Returns the Honor Award.
+     *
+     * @return the Honor Award
+     */
 	public List<HonorAward> getHonorAward() {
 		 if (Objects.nonNull(honorAward)) {
 			return new ArrayList<>(honorAward);
@@ -365,32 +497,56 @@ public class PlannerResponse {
 		return Collections.emptyList();
 	}
 
-	/* getter FavoriteSport */
+	/**
+     * Returns the Favorite Sport.
+     *
+     * @return the Favorite Sport
+     */
 	public String getFavoriteSport() {
 		return favoriteSport;
 	}
 
-	/* getter FavoriteSportsTeam */
+	/**
+     * Returns the Favorite Sports Team.
+     *
+     * @return the Favorite Sports Team
+     */
 	public String getFavoriteSportsTeam() {
 		return favoriteSportsTeam;
 	}
 
-	/* getter FavoriteLifeHack */
+	/**
+     * Returns the Favorite Life Hack.
+     *
+     * @return the Favorite Life Hack
+     */
 	public String getFavoriteLifeHack() {
 		return favoriteLifeHack;
 	}
 
-	/* getter LinkedInUrl */
+	/**
+     * Returns the Linked In Url.
+     *
+     * @return the Linked In Url
+     */
 	public String getLinkedInUrl() {
 		return linkedInUrl;
 	}
 
-	/* getter MostInspirationalMoment */
+	/**
+     * Returns the Most Inspirational Moment.
+     *
+     * @return the Most Inspirational Moment
+     */
 	public String getMostInspirationalMoment() {
 		return mostInspirationalMoment;
 	}
 
-	/* getter IndustryExams */
+	/**
+     * Returns the Industry Exams.
+     *
+     * @return the Industry Exams
+     */
 	public List<IndustryExams> getIndustryExams() {
         if (Objects.nonNull(industryExams)) {
 			return new ArrayList<>(industryExams);
@@ -398,47 +554,83 @@ public class PlannerResponse {
 		return Collections.emptyList();
 	}
 
-	/* getter HasDisciplinaryInformation */
+	/**
+	 * Returns whether this object has any disciplinary information on record.
+	 *
+	 * @return true if this object has disciplinary information on record, false otherwise
+	 */
 	public boolean isHasDisciplinaryInformation() {
 		return hasDisciplinaryInformation;
 	}
 
-	/* getter DisciplinaryInformationText */
+	/**
+     * Returns the Disciplinary Information Text.
+     *
+     * @return the Disciplinary Information Text
+     */
 	public String getDisciplinaryInformationText() {
 		return disciplinaryInformationText;
 	}
 
-	/* getter AnyBusinessRelatedActivitiesCommissions */
+	/**
+	 * Returns whether this object offers any commissions related to business-related activities.
+	 *
+	 * @return true if this object offers commissions related to business-related activities, false otherwise
+	 */
 	public boolean isAnyBusinessRelatedActivitiesCommissions() {
 		return anyBusinessRelatedActivitiesCommissions;
 	}
 
-	/* getter BusinessRelatedActivitiesCommissionsText */
+	/**
+     * Returns the Business Related Activities Commissions Text.
+     *
+     * @return the Business Related Activities Commissions Text
+     */
 	public String getBusinessRelatedActivitiesCommissionsText() {
 		return businessRelatedActivitiesCommissionsText;
 	}
 
-	/* getter AnyAdditionalCompensation */
+	/**
+	 * Returns whether this object offers any additional compensation for employees.
+	 *
+	 * @return true if this object offers additional compensation, false otherwise
+	 */
 	public boolean isAnyAdditionalCompensation() {
 		return anyAdditionalCompensation;
 	}
 
-	/* getter AdditionalCompensationText */
+	/**
+     * Returns the Additional Compensation Text.
+     *
+     * @return the Additional Compensation Text
+     */
 	public String getAdditionalCompensationText() {
 		return additionalCompensationText;
 	}
 
-	/* getter EfeUrl */
+	/**
+     * Returns the EfeUrl.
+     *
+     * @return the EfeUrl
+     */
 	public String getEfeUrl() {
 		return efeUrl;
 	}
 
-	/* getter Adv2bUrl */
+	/**
+     * Returns the Adv2bUrl.
+     *
+     * @return the Adv2bUrl
+     */
 	public String getAdv2bUrl() {
 		return adv2bUrl;
 	}
 
-	/* getter HtmlUrl */
+	/**
+     * Returns the HtmlUrl.
+     *
+     * @return the HtmlUrl
+     */
 	public String getHtmlUrl() {
 		return htmlUrl;
 	}

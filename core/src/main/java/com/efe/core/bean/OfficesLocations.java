@@ -24,27 +24,47 @@ public class OfficesLocations {
     /* zip */
     private String zip;
     
-    /* getter id */
+    /**
+     * Returns the Id.
+     *
+     * @return the Id
+     */
 	public String getId() {
 		return id;
 	}
 
-	/* getter name */
+	/**
+     * Returns the Name.
+     *
+     * @return the Name
+     */
 	public String getName() {
 		return name;
 	}
 
-	/* getter city */
+	/**
+     * Returns the City.
+     *
+     * @return the City
+     */
 	public String getCity() {
 		return city;
 	}
 
-	/* getter State */
+	/**
+     * Returns the State.
+     *
+     * @return the State
+     */
 	public String getState() {
 		return state;
 	}
 
-	/* getter Zip */
+	/**
+     * Returns the Zip.
+     *
+     * @return the Zip
+     */
 	public String getZip() {
 		return zip;
 	}
