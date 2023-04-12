@@ -15,6 +15,9 @@
 
         #efe-logo {
             margin-bottom: 41px;
+            @include media('<=phone-m') {
+                margin-bottom: 20px;
+            }
         }
 
         #list-links {
@@ -32,8 +35,11 @@
 
             ul {
                 margin-bottom: 36px;
+                @include media('<=phone-m') {
+                    margin-bottom: 20px;
+                }
                 li {
-                    margin-bottom: 8px;
+                    margin-bottom: 6px;
                 }
             }
 
