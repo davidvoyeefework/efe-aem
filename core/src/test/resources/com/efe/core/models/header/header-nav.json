@@ -1,0 +1,101 @@
+{
+	"jcr:primaryType": "cq:Page",
+	"jcr:content": {
+		"jcr:primaryType": "cq:PageContent",
+		"jcr:title": "Header nav",
+		"cq:template": "/conf/efe/settings/wcm/templates/xf-web-variation",
+		"cq:xfMasterVariation": true,
+		"cq:xfVariantType": "web",
+		"cq:tags": [],
+		"sling:resourceType": "efe/components/xfpage",
+		"root": {
+			"jcr:primaryType": "nt:unstructured",
+			"layout": "responsiveGrid",
+			"sling:resourceType": "efe/components/container",
+			"container": {
+				"jcr:primaryType": "nt:unstructured",
+				"sling:resourceType": "hbff/components/container",
+				"header_nav": {
+					"jcr:primaryType": "nt:unstructured",
+					"sling:resourceType": "efe/components/header-nav",
+					"primaryList": {
+						"jcr:primaryType": "nt:unstructured",
+						"item0": {
+							"jcr:primaryType": "nt:unstructured",
+							"heading": "working",
+							"headingLink": "/content/efe/us/en",
+							"primaryTarget": "_blank",
+							"secondaryLinks": {
+								"jcr:primaryType": "nt:unstructured",
+								"item0": {
+									"jcr:primaryType": "nt:unstructured",
+									"target": "_self",
+									"link": "/content/efe/us/en",
+									"label": "Location"
+								},
+								"item1": {
+									"jcr:primaryType": "nt:unstructured",
+									"target": "_self",
+									"link": "/content/efe/us/en",
+									"label": "Education"
+								}
+							}
+						},
+						"item1": {
+							"jcr:primaryType": "nt:unstructured",
+							"heading": "Contact Us",
+							"verticalLinks": {
+								"jcr:primaryType": "nt:unstructured",
+								"item0": {
+									"jcr:primaryType": "nt:unstructured",
+									"target": "_self",
+									"link": "/content/efe/us/en",
+									"label": "planner"
+								},
+								"item1": {
+									"jcr:primaryType": "nt:unstructured",
+									"target": "_self",
+									"link": "/content/efe/us/en",
+									"label": "Contact Us"
+								}
+							}
+						},
+						"item2": {
+							"jcr:primaryType": "nt:unstructured",
+							"heading": "About Us",
+							"headingLink": "/content/efe/us/en",
+							"primaryTarget": "_blank",
+							"secondaryLinks": {
+								"jcr:primaryType": "nt:unstructured",
+								"item0": {
+									"jcr:primaryType": "nt:unstructured",
+									"target": "_self",
+									"link": "/content/efe/us/en",
+									"label": "About Our Company"
+								},
+								"item1": {
+									"jcr:primaryType": "nt:unstructured",
+									"target": "_self",
+									"link": "/content/efe/us/en",
+									"label": "Team"
+								},
+								"item2": {
+									"jcr:primaryType": "nt:unstructured",
+									"target": "_self",
+									"link": "/content/efe/us/en",
+									"label": "FAQs"
+								},
+								"item3": {
+									"jcr:primaryType": "nt:unstructured",
+									"target": "_self",
+									"link": "/content/efe/us/en",
+									"label": "Careers"
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
