@@ -914,8 +914,8 @@
                                     jcr:primaryType="nt:unstructured"/>
                                 <item4
                                     cq:styleClasses="cmp-list--column"
-                                    cq:styleId="column"
-                                    cq:styleLabel="Column"
+                                    cq:styleId="vertical"
+                                    cq:styleLabel="Vertical"
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item1>
