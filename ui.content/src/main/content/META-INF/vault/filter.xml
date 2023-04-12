@@ -2,6 +2,7 @@
 <workspaceFilter version="1.0">
     <filter root="/conf/efe" mode="update"/>
 	<filter root="/content/cq:tags/efe" mode="update"/>
+	<filter root="/conf/efe/settings/dam/cfm/models" mode="replace"/>
 	<filter root="/conf/global/settings/dam/search" mode="update"/>
     <filter root="/content/efe" mode="merge"/>
     <filter root="/content/dam/efe" mode="merge"/>
