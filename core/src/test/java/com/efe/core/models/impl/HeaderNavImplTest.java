@@ -64,5 +64,26 @@ class HeaderNavImplTest {
 
 	}
 
+	/**
+	 * Test secondary links null attributes.
+	 */
+	@Test
+	void testSecondaryLinksNullAttributes() {
+		model = aemContext.currentResource(TEST_CONTENT_ROOT + "/jcr:content/root/container/header_nav1")
+				.adaptTo(HeaderNav.class);
+		NavigationList navigationList = model.getPrimaryList().get(0);
+		assertEquals(0, navigationList.getSecondaryLinks().size());
+	}
+
+	/**
+	 * Test Primary list null attributes.
+	 */
+	@Test
+	void testPrimaryListNullAttributes() {
+		model = aemContext.currentResource(TEST_CONTENT_ROOT + "/jcr:content/root/container/header_nav2")
+				.adaptTo(HeaderNav.class);
+		assertEquals(0, model.getPrimaryList().size());
+	}
+
 
 }

@@ -42,7 +42,7 @@
                                                     fieldDescription="Add header logo alt text here"
                                                     fieldLabel="Alt Text"
                                                     name="./alt"/>
-                                            <logoLink
+                                            <logolink
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                     fieldDescription="Add header logo link url here"
@@ -57,20 +57,20 @@
                                                     text="Open header logo in new tab"
                                                     uncheckedValue="_self"
                                                     value="_blank"/>
-                                            <cta-title
+                                            <ctatitle
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldDescription="The text to display on the CTA."
                                                 fieldLabel="Planner CTA  Text"
                                                 name="./ctaTitle"/>
-                                            <cta-link
+                                            <ctalink
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="cq/gui/components/coral/common/form/pagefield"
                                                 fieldDescription="Link to a content page, external URL or page anchor."
                                                 fieldLabel="Planner CTA Link"
                                                 name="./ctaLink"
                                                 rootPath="/content/efe"/>
-                                            <target
+                                            <ctatarget
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                                                     fieldDescription="If checked the link will be opened in a new browser tab."
@@ -78,32 +78,32 @@
                                                     text="Open CTA in new tab"
                                                     uncheckedValue="_self"
                                                     value="_blank"/>
-                                            <search-title
+                                            <searchtitle
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldDescription="The text to display on the Search button."
                                                 fieldLabel="Quick Search Button Text"
                                                 name="./searchBtn"/>
-                                            <searchbox-label
+                                            <searchboxlabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldDescription="The label to display on the quick search input box."
                                                 fieldLabel="Quick Search Inputbox  Label"
                                                 name="./searchLabel"/>
-                                            <login-title
+                                            <logintitle
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldDescription="The text to display on the Login Button."
                                                 fieldLabel="Login Link title"
                                                 name="./loginTitle"/>
-                                            <login-link
+                                            <loginlink
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="cq/gui/components/coral/common/form/pagefield"
                                                 fieldDescription="Link to a content page, external URL or page anchor."
                                                 fieldLabel="Login Link Path"
                                                 name="./loginLink"
                                                 rootPath="/content/efe"/>
-                                            <target
+                                            <logintarget
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                                                     fieldDescription="If checked the link will be opened in a new browser tab."
@@ -111,13 +111,13 @@
                                                     text="Open Login in new tab"
                                                     uncheckedValue="_self"
                                                     value="_blank"/>
-                                            <contact-title
+                                            <contacttitle
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldDescription="The text to display on the Contact Telephone Number"
                                                 fieldLabel="Contact Telephone Number Title"
                                                 name="./contactTitle"/>
-                                            <contact-number
+                                            <contactnumber
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
                                                 fieldDescription="The Contact Telephone Number"

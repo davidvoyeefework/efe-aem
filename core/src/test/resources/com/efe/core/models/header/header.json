@@ -24,6 +24,7 @@
 					"contactTitle": "(833) PLAN-EFE",
 					"ctaLink" :"/content/efe/us/en",
 					"ctaTitle": "Planner CTA",
+					"ctaTarget": "_self",
 					"id" : "2332",
 					"loginTitle": "Log In",
 					"loginLink": "/content/efe/us/en",
@@ -47,7 +48,16 @@
 							"label": "Products"
 						}
 					}
-				}
+				},
+				"header1": {
+					"jcr:primaryType": "nt:unstructured",
+					"fileReference": "/content/dam/efe/logo-official.svg",
+					"logoTarget": "_self",
+					"alt": "Alt text",
+					"linkTarget": "_blank",
+					"sling:resourceType": "efe/components/header",
+					"logoLink": "/content/efe/us/en"
+					}
 			}
 		}
 	}

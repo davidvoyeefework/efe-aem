@@ -94,6 +94,21 @@
 							}
 						}
 					}
+				},
+				"header_nav1":{
+					"jcr:primaryType": "nt:unstructured",
+					"sling:resourceType": "efe/components/header-nav",
+					"primaryList": {
+						"jcr:primaryType": "nt:unstructured",
+						"item0": {
+							"jcr:primaryType": "nt:unstructured",
+							"heading": "Working"
+						}
+					}
+				},
+				"header_nav2":{
+					"jcr:primaryType": "nt:unstructured",
+					"sling:resourceType": "efe/components/header-nav"
 				}
 			}
 		}

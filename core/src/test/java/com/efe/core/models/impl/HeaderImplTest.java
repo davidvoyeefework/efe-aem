@@ -62,10 +62,24 @@ class HeaderImplTest {
 		assertEquals("Search..", model.getSearchLabel());
 		assertEquals("Search", model.getSearchBtn());
 		assertEquals("Planner CTA", model.getCtaTitle());
+		assertEquals("_self", model.getCtaTarget());
 		assertEquals("/content/efe/us/en.html", model.getCtaLink());
+		assertEquals("234929212", model.getContactNumber());
+		assertEquals("(833) PLAN-EFE", model.getContactTitle());
 		assertEquals("Home", model.getHeaderList().get(0).getLabel());
 		assertEquals("Customer", model.getHeaderList().get(1).getLabel());
 		assertEquals("Products", model.getHeaderList().get(2).getLabel());
+	}
+
+	/**
+	 * Test header null attributes.
+	 */
+	@Test
+	void testHeaderNullAttributes() {
+		model = aemContext.currentResource(TEST_CONTENT_ROOT + "/jcr:content/root/container/header1")
+				.adaptTo(Header.class);
+		assertEquals(0, model.getHeaderList().size());
+		assertEquals("header1-2ca1ac9f46", model.getId());
 	}
 
 
