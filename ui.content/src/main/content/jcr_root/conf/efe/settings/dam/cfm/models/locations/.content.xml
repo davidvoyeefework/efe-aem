@@ -4,10 +4,10 @@
     allowedPaths="[/content/entities(/.*)?]"
     ranking="{Long}100">
     <jcr:content
-        cq:scaffolding="/conf/efe/settings/dam/cfm/models/location/jcr:content/model"
+        cq:scaffolding="/conf/efe/settings/dam/cfm/models/locations/jcr:content/model"
         cq:templateType="/libs/settings/dam/cfm/model-types/fragment"
         jcr:primaryType="cq:PageContent"
-        jcr:title="Location"
+        jcr:title="Locations"
         sling:resourceSuperType="dam/cfm/models/console/components/data/entity"
         sling:resourceType="dam/cfm/models/console/components/data/entity/default"
         status="enabled">

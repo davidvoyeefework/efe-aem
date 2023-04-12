@@ -4,10 +4,10 @@
     allowedPaths="[/content/entities(/.*)?]"
     ranking="{Long}100">
     <jcr:content
-        cq:scaffolding="/conf/efe/settings/dam/cfm/models/planner/jcr:content/model"
+        cq:scaffolding="/conf/efe/settings/dam/cfm/models/planners/jcr:content/model"
         cq:templateType="/libs/settings/dam/cfm/model-types/fragment"
         jcr:primaryType="cq:PageContent"
-        jcr:title="Planner"
+        jcr:title="Planners"
         sling:resourceSuperType="dam/cfm/models/console/components/data/entity"
         sling:resourceType="dam/cfm/models/console/components/data/entity/default"
         status="enabled">
@@ -27,6 +27,19 @@
                     <items
                         jcr:primaryType="nt:unstructured"
                         maxGeneratedOrder="20">
+                        <lastUpdated
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Last Updated"
+                            listOrder="21"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="lastUpdated"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </lastUpdated>
                         <includeInAdv2b
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
