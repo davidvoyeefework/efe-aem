@@ -6,7 +6,7 @@ import com.efe.core.models.multifield.NavigationList;
 import java.util.List;
 
 /**
- * The Interface Header Model.
+ * The Interface Header Nav Model.
  */
 
 public interface HeaderNav {
