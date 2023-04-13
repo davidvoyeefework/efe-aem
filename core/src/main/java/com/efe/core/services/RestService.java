@@ -12,6 +12,6 @@ public interface RestService {
 	 * @param token the token
 	 * @return the data
 	 */
-	String  getData(String apiUrl, String authHeader);
+	String getData(String apiUrl, String authHeader);
 
 }

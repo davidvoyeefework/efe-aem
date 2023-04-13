@@ -16,12 +16,12 @@ import com.efe.core.bean.PlannerResponse;
 import com.efe.core.constants.PlannerLocationConstants;
 
 public class CertificationsUtil {
-	
+
 	/**
 	 * The Constant LOGGER
 	 */
 	private static final Logger LOGGER = LoggerFactory.getLogger(CertificationsUtil.class);
-	
+
 	/**
 	 * This method is used to create and update certification fragment
 	 * 
@@ -73,6 +73,5 @@ public class CertificationsUtil {
 			LOGGER.error("RepositoryException occured.", e);
 		}
 	}
-
 
 }

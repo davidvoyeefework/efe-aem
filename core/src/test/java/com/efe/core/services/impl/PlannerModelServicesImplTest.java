@@ -2,6 +2,7 @@ package com.efe.core.services.impl;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.lenient;
+
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -27,7 +28,6 @@ import com.adobe.cq.dam.cfm.FragmentTemplate;
 import com.efe.core.constants.PlannerLocationConstants;
 import com.efe.core.services.PlannerApiService;
 import com.efe.core.services.RestService;
-import com.efe.core.utils.EducationPlannerUtil;
 import com.efe.core.utils.FolderUtil;
 import com.efe.core.utils.NodePropertyManagerUtil;
 

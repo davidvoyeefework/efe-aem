@@ -90,59 +90,59 @@ public class LocationResponse {
 	private String lastUpdated;
 
 	/**
-     * Returns the Office Id.
-     *
-     * @return the Office Id
-     */
+	 * Returns the Office Id.
+	 *
+	 * @return the Office Id
+	 */
 	public String getOfficeId() {
 		return officeId;
 	}
 
 	/**
-     * Returns the RD.
-     *
-     * @return the RD
-     */
+	 * Returns the RD.
+	 *
+	 * @return the RD
+	 */
 	public String getRD() {
 		return RD;
 	}
 
 	/**
-     * Returns the Office Name.
-     *
-     * @return the Office Name
-     */
+	 * Returns the Office Name.
+	 *
+	 * @return the Office Name
+	 */
 	public String getOfficeName() {
 		return officeName;
 	}
 
 	/**
-     * Returns the External Name.
-     *
-     * @return the External Name
-     */
+	 * Returns the External Name.
+	 *
+	 * @return the External Name
+	 */
 	public String getExternalName() {
 		return externalName;
 	}
 
 	/**
-     * Returns the Desktop Image.
-     *
-     * @return the Desktop Image
-     */
+	 * Returns the Desktop Image.
+	 *
+	 * @return the Desktop Image
+	 */
 	public String getDesktopImage() {
 		return desktopImage;
 	}
 
 	/**
-     * Returns the Mobile Image.
-     *
-     * @return the Mobile Image
-     */
+	 * Returns the Mobile Image.
+	 *
+	 * @return the Mobile Image
+	 */
 	public String getMobileImage() {
 		return mobileImage;
 	}
-	
+
 	/**
 	 * Returns whether this object is marked for emergency closure.
 	 *
@@ -162,100 +162,100 @@ public class LocationResponse {
 	}
 
 	/**
-     * Returns the Building Complex Name.
-     *
-     * @return the Building Complex Name
-     */
+	 * Returns the Building Complex Name.
+	 *
+	 * @return the Building Complex Name
+	 */
 	public String getBuildingComplexName() {
 		return buildingComplexName;
 	}
 
 	/**
-     * Returns the Address1.
-     *
-     * @return the Address1
-     */
+	 * Returns the Address1.
+	 *
+	 * @return the Address1
+	 */
 	public String getAddress1() {
 		return address1;
 	}
 
 	/**
-     * Returns the Address2.
-     *
-     * @return the Address2
-     */
+	 * Returns the Address2.
+	 *
+	 * @return the Address2
+	 */
 	public String getAddress2() {
 		return address2;
 	}
 
 	/**
-     * Returns the City.
-     *
-     * @return the City
-     */
+	 * Returns the City.
+	 *
+	 * @return the City
+	 */
 	public String getCity() {
 		return city;
 	}
 
 	/**
-     * Returns the State.
-     *
-     * @return the State
-     */
+	 * Returns the State.
+	 *
+	 * @return the State
+	 */
 	public String getState() {
 		return state;
 	}
 
 	/**
-     * Returns the Zip.
-     *
-     * @return the Zip
-     */
+	 * Returns the Zip.
+	 *
+	 * @return the Zip
+	 */
 	public String getZip() {
 		return zip;
 	}
 
 	/**
-     * Returns the Phone.
-     *
-     * @return the Phone
-     */
+	 * Returns the Phone.
+	 *
+	 * @return the Phone
+	 */
 	public String getPhone() {
 		return phone;
 	}
 
 	/**
-     * Returns the Fax.
-     *
-     * @return the Fax
-     */
+	 * Returns the Fax.
+	 *
+	 * @return the Fax
+	 */
 	public String getFax() {
 		return fax;
 	}
 
 	/**
-     * Returns the Toll Free.
-     *
-     * @return the Toll Free
-     */
+	 * Returns the Toll Free.
+	 *
+	 * @return the Toll Free
+	 */
 	public String getTollFree() {
 		return tollFree;
 	}
 
 	/**
-     * Returns the Latitude.
-     *
-     * @return the Latitude
-     */
+	 * Returns the Latitude.
+	 *
+	 * @return the Latitude
+	 */
 	public String getLatitude() {
 		return latitude;
 	}
 
 	/**
-     * Returns the Longitude.
-     *
-     * @return the Longitude
-     */
+	 * Returns the Longitude.
+	 *
+	 * @return the Longitude
+	 */
 	public String getLongitude() {
 		return longitude;
 	}
@@ -270,21 +270,21 @@ public class LocationResponse {
 	}
 
 	/**
-     * Returns the Google Review Link.
-     *
-     * @return the Google Review Link
-     */
+	 * Returns the Google Review Link.
+	 *
+	 * @return the Google Review Link
+	 */
 	public String getGoogleReviewLink() {
 		return googleReviewLink;
 	}
 
 	/**
-     * Returns the Planners.
-     *
-     * @return the Planners
-     */
+	 * Returns the Planners.
+	 *
+	 * @return the Planners
+	 */
 	public List<String> getPlanners() {
-        if (Objects.nonNull(planners)) {
+		if (Objects.nonNull(planners)) {
 			return new ArrayList<>(planners);
 		}
 		return Collections.emptyList();
@@ -293,19 +293,20 @@ public class LocationResponse {
 	/**
 	 * Returns whether the corporate office hours are overridden for this object.
 	 *
-	 * @return true if the corporate office hours are overridden for this object, false otherwise
+	 * @return true if the corporate office hours are overridden for this object,
+	 *         false otherwise
 	 */
 	public boolean isOverrideCorporateOfficeHours() {
 		return overrideCorporateOfficeHours;
 	}
 
 	/**
-     * Returns the Business Hours.
-     *
-     * @return the Business Hours
-     */
+	 * Returns the Business Hours.
+	 *
+	 * @return the Business Hours
+	 */
 	public List<BusinessHours> getBusinessHours() {
-        if (Objects.nonNull(businessHours)) {
+		if (Objects.nonNull(businessHours)) {
 			return new ArrayList<>(businessHours);
 		}
 		return Collections.emptyList();

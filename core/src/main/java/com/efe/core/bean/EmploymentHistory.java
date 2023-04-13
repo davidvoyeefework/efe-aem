@@ -8,27 +8,27 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class EmploymentHistory {
-	
+
 	/* startDate */
 	private String startDate;
-	
+
 	/* endDate */
 	private String endDate;
-	
+
 	/* jobTitle */
 	private String jobTitle;
-	
+
 	/* companyName */
 	private String companyName;
-	
+
 	/* current */
-    private boolean current;
-    
-    /**
-     * Returns the Company Name.
-     *
-     * @return the Company Name
-     */
+	private boolean current;
+
+	/**
+	 * Returns the Company Name.
+	 *
+	 * @return the Company Name
+	 */
 	public String getCompanyName() {
 		return companyName;
 	}
@@ -43,28 +43,28 @@ public class EmploymentHistory {
 	}
 
 	/**
-     * Returns the Start Date.
-     *
-     * @return the Start Date
-     */
+	 * Returns the Start Date.
+	 *
+	 * @return the Start Date
+	 */
 	public String getStartDate() {
 		return startDate;
 	}
 
 	/**
-     * Returns the End Date.
-     *
-     * @return the End Date
-     */
+	 * Returns the End Date.
+	 *
+	 * @return the End Date
+	 */
 	public String getEndDate() {
 		return endDate;
 	}
-	
+
 	/**
-     * Returns the Job Title.
-     *
-     * @return the Job Title
-     */
+	 * Returns the Job Title.
+	 *
+	 * @return the Job Title
+	 */
 	public String getJobTitle() {
 		return jobTitle;
 	}

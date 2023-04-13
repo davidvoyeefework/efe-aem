@@ -9,7 +9,7 @@ import org.apache.sling.api.resource.ResourceResolver;
 public interface PlannerModelServices {
 
 	/**
-	 *  Adds Data to CFModel
+	 * Adds Data to CFModel
 	 */
 	public void addDataToCFModelPlanner(ResourceResolver resourceResolver);
 }

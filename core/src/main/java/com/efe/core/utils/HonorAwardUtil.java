@@ -17,12 +17,12 @@ import com.efe.core.constants.PlannerLocationConstants;
 import com.efe.core.services.impl.PlannerModelServicesImpl;
 
 public class HonorAwardUtil {
-	
+
 	/**
 	 * The Constant LOGGER
 	 */
 	private static final Logger LOGGER = LoggerFactory.getLogger(PlannerModelServicesImpl.class);
-	
+
 	/**
 	 * This method is used to create and update honor award fragment
 	 * 

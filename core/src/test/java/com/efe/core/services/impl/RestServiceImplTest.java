@@ -20,7 +20,7 @@ class RestServiceImplTest {
 	 */
 	@Mock
 	private RestServiceImpl restService;
-		
+
 	/**
 	 * Sets the up.
 	 * 
@@ -37,9 +37,9 @@ class RestServiceImplTest {
 	 * 
 	 */
 	@Test
-    void testGetData() throws IOException {
-        String apiUrl = "https://jsonplaceholder.typicode.com/todos/1";
-        String result = restService.getData(apiUrl, null);
-        assertNotNull(result);
-    }
+	void testGetData() throws IOException {
+		String apiUrl = "https://jsonplaceholder.typicode.com/todos/1";
+		String result = restService.getData(apiUrl, null);
+		assertNotNull(result);
+	}
 }

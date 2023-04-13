@@ -166,7 +166,7 @@ public class PlannerResponse {
 
 	/* lastUpdated */
 	private String lastUpdated;
-	
+
 	/* getter lastUpdated */
 	public String getLastUpdated() {
 		return lastUpdated;
@@ -183,168 +183,168 @@ public class PlannerResponse {
 	}
 
 	/**
-     * Returns the First Name.
-     *
-     * @return the First Name
-     */
+	 * Returns the First Name.
+	 *
+	 * @return the First Name
+	 */
 	public String getFirstName() {
 		return firstName;
 	}
 
 	/**
-     * Returns the First Name Alias.
-     *
-     * @return the First Name Alias
-     */
+	 * Returns the First Name Alias.
+	 *
+	 * @return the First Name Alias
+	 */
 	public String getFirstNameAlias() {
 		return firstNameAlias;
 	}
 
 	/**
-     * Returns the Middle Name.
-     *
-     * @return the Middle Name
-     */
+	 * Returns the Middle Name.
+	 *
+	 * @return the Middle Name
+	 */
 	public String getMiddleName() {
 		return middleName;
 	}
 
 	/**
-     * Returns the Last Name.
-     *
-     * @return the Last Name
-     */
+	 * Returns the Last Name.
+	 *
+	 * @return the Last Name
+	 */
 	public String getLastName() {
 		return lastName;
 	}
 
 	/**
-     * Returns the Id.
-     *
-     * @return the Id
-     */
+	 * Returns the Id.
+	 *
+	 * @return the Id
+	 */
 	public int getId() {
 		return id;
 	}
-	
+
 	/**
-     * Returns the Suffix.
-     *
-     * @return the Suffix
-     */
+	 * Returns the Suffix.
+	 *
+	 * @return the Suffix
+	 */
 	public String getSuffix() {
 		return suffix;
 	}
 
 	/**
-     * Returns the Title.
-     *
-     * @return the Title
-     */
+	 * Returns the Title.
+	 *
+	 * @return the Title
+	 */
 	public String getTitle() {
 		return title;
 	}
 
 	/**
-     * Returns the Birth Year.
-     *
-     * @return the Birth Year
-     */
+	 * Returns the Birth Year.
+	 *
+	 * @return the Birth Year
+	 */
 	public int getBirthYear() {
 		return birthYear;
 	}
 
 	/**
-     * Returns the Year Joined.
-     *
-     * @return the Year Joined
-     */
+	 * Returns the Year Joined.
+	 *
+	 * @return the Year Joined
+	 */
 	public int getYearJoined() {
 		return yearJoined;
 	}
 
 	/**
-     * Returns the Direct Line Phone.
-     *
-     * @return the Direct Line Phone
-     */
+	 * Returns the Direct Line Phone.
+	 *
+	 * @return the Direct Line Phone
+	 */
 	public String getDirectLinePhone() {
 		return directLinePhone;
 	}
 
 	/**
-     * Returns the Advisor CRD.
-     *
-     * @return the Advisor CRD
-     */
+	 * Returns the Advisor CRD.
+	 *
+	 * @return the Advisor CRD
+	 */
 	public int getAdvisorCRD() {
 		return advisorCRD;
 	}
 
 	/**
-     * Returns the Desktop Image Url.
-     *
-     * @return the Desktop Image Url
-     */
+	 * Returns the Desktop Image Url.
+	 *
+	 * @return the Desktop Image Url
+	 */
 	public String getDesktopImageUrl() {
 		return desktopImageUrl;
 	}
 
 	/**
-     * Returns the Mobile Image Url.
-     *
-     * @return the Mobile Image Url
-     */
+	 * Returns the Mobile Image Url.
+	 *
+	 * @return the Mobile Image Url
+	 */
 	public String getMobileImageUrl() {
 		return mobileImageUrl;
 	}
 
 	/**
-     * Returns the Circle Image Url.
-     *
-     * @return the Circle Image Url
-     */
+	 * Returns the Circle Image Url.
+	 *
+	 * @return the Circle Image Url
+	 */
 	public String getCircleImageUrl() {
 		return circleImageUrl;
 	}
 
 	/**
-     * Returns the Primary Office.
-     *
-     * @return the Primary Office
-     */
+	 * Returns the Primary Office.
+	 *
+	 * @return the Primary Office
+	 */
 	public PrimaryOffice getPrimaryOffice() {
 		return primaryOffice;
 	}
 
 	/**
-     * Returns the Offices Locations.
-     *
-     * @return the Offices Locations
-     */
+	 * Returns the Offices Locations.
+	 *
+	 * @return the Offices Locations
+	 */
 	public List<OfficesLocations> getOfficesLocations() {
-        if (Objects.nonNull(officesLocations)) {
+		if (Objects.nonNull(officesLocations)) {
 			return new ArrayList<>(officesLocations);
 		}
 		return Collections.emptyList();
 	}
 
 	/**
-     * Returns the Education Indicator.
-     *
-     * @return the Education Indicator
-     */
+	 * Returns the Education Indicator.
+	 *
+	 * @return the Education Indicator
+	 */
 	public String getEducationIndicator() {
 		return educationIndicator;
 	}
 
 	/**
-     * Returns the Education.
-     *
-     * @return the Education
-     */
+	 * Returns the Education.
+	 *
+	 * @return the Education
+	 */
 	public List<Education> getEducation() {
-        if (Objects.nonNull(education)) {
+		if (Objects.nonNull(education)) {
 			return new ArrayList<>(education);
 		}
 		return Collections.emptyList();
@@ -362,7 +362,8 @@ public class PlannerResponse {
 	/**
 	 * Returns whether this object offers advanced planning services.
 	 *
-	 * @return true if this object offers advanced planning services, false otherwise
+	 * @return true if this object offers advanced planning services, false
+	 *         otherwise
 	 */
 	public boolean isAdvancedPlanning() {
 		return advancedPlanning;
@@ -380,7 +381,8 @@ public class PlannerResponse {
 	/**
 	 * Returns whether this object offers insurance planning services.
 	 *
-	 * @return true if this object offers insurance planning services, false otherwise
+	 * @return true if this object offers insurance planning services, false
+	 *         otherwise
 	 */
 	public boolean isInsurancePlanning() {
 		return insurancePlanning;
@@ -389,166 +391,167 @@ public class PlannerResponse {
 	/**
 	 * Returns whether this object offers investment management services.
 	 *
-	 * @return true if this object offers investment management services, false otherwise
+	 * @return true if this object offers investment management services, false
+	 *         otherwise
 	 */
 	public boolean isInvestmentManagement() {
 		return investmentManagement;
 	}
 
 	/**
-     * Returns the Employment History.
-     *
-     * @return the Employment History
-     */
+	 * Returns the Employment History.
+	 *
+	 * @return the Employment History
+	 */
 	public List<EmploymentHistory> getEmploymentHistory() {
-        if (Objects.nonNull(employmentHistory)) {
+		if (Objects.nonNull(employmentHistory)) {
 			return new ArrayList<>(employmentHistory);
 		}
 		return Collections.emptyList();
 	}
 
 	/**
-     * Returns the Certifications.
-     *
-     * @return the Certifications
-     */
+	 * Returns the Certifications.
+	 *
+	 * @return the Certifications
+	 */
 	public List<Certifications> getCertifications() {
-        if (Objects.nonNull(certifications)) {
+		if (Objects.nonNull(certifications)) {
 			return new ArrayList<>(certifications);
 		}
 		return Collections.emptyList();
 	}
 
 	/**
-     * Returns the Bio.
-     *
-     * @return the Bio
-     */
+	 * Returns the Bio.
+	 *
+	 * @return the Bio
+	 */
 	public String getBio() {
 		return bio;
 	}
 
 	/**
-     * Returns the Email.
-     *
-     * @return the Email
-     */
+	 * Returns the Email.
+	 *
+	 * @return the Email
+	 */
 	public String getEmail() {
 		return email;
 	}
 
 	/**
-     * Returns the Team Distribution EmailAddress.
-     *
-     * @return the Team Distribution EmailAddress
-     */
+	 * Returns the Team Distribution EmailAddress.
+	 *
+	 * @return the Team Distribution EmailAddress
+	 */
 	public String getTeamDistributionEmailAddress() {
 		return teamDistributionEmailAddress;
 	}
 
 	/**
-     * Returns the Year Started Industry.
-     *
-     * @return the Year Started Industry
-     */
+	 * Returns the Year Started Industry.
+	 *
+	 * @return the Year Started Industry
+	 */
 	public int getYearStartedIndustry() {
 		return yearStartedIndustry;
 	}
 
 	/**
-     * Returns the Zip.
-     *
-     * @return the Zip
-     */
+	 * Returns the Zip.
+	 *
+	 * @return the Zip
+	 */
 	public boolean isSmartVestorProIndicator() {
 		return smartVestorProIndicator;
 	}
 
 	/**
-     * Returns the Zip.
-     *
-     * @return the Zip
-     */
+	 * Returns the Zip.
+	 *
+	 * @return the Zip
+	 */
 	public List<String> getInterestsHobbies() {
-        if (Objects.nonNull(interestsHobbies)) {
+		if (Objects.nonNull(interestsHobbies)) {
 			return new ArrayList<>(interestsHobbies);
 		}
 		return Collections.emptyList();
 	}
 
 	/**
-     * Returns the Fun Facts.
-     *
-     * @return the Fun Facts
-     */
+	 * Returns the Fun Facts.
+	 *
+	 * @return the Fun Facts
+	 */
 	public String getFunFacts() {
 		return funFacts;
 	}
 
 	/**
-     * Returns the Honor Award.
-     *
-     * @return the Honor Award
-     */
+	 * Returns the Honor Award.
+	 *
+	 * @return the Honor Award
+	 */
 	public List<HonorAward> getHonorAward() {
-		 if (Objects.nonNull(honorAward)) {
+		if (Objects.nonNull(honorAward)) {
 			return new ArrayList<>(honorAward);
 		}
 		return Collections.emptyList();
 	}
 
 	/**
-     * Returns the Favorite Sport.
-     *
-     * @return the Favorite Sport
-     */
+	 * Returns the Favorite Sport.
+	 *
+	 * @return the Favorite Sport
+	 */
 	public String getFavoriteSport() {
 		return favoriteSport;
 	}
 
 	/**
-     * Returns the Favorite Sports Team.
-     *
-     * @return the Favorite Sports Team
-     */
+	 * Returns the Favorite Sports Team.
+	 *
+	 * @return the Favorite Sports Team
+	 */
 	public String getFavoriteSportsTeam() {
 		return favoriteSportsTeam;
 	}
 
 	/**
-     * Returns the Favorite Life Hack.
-     *
-     * @return the Favorite Life Hack
-     */
+	 * Returns the Favorite Life Hack.
+	 *
+	 * @return the Favorite Life Hack
+	 */
 	public String getFavoriteLifeHack() {
 		return favoriteLifeHack;
 	}
 
 	/**
-     * Returns the Linked In Url.
-     *
-     * @return the Linked In Url
-     */
+	 * Returns the Linked In Url.
+	 *
+	 * @return the Linked In Url
+	 */
 	public String getLinkedInUrl() {
 		return linkedInUrl;
 	}
 
 	/**
-     * Returns the Most Inspirational Moment.
-     *
-     * @return the Most Inspirational Moment
-     */
+	 * Returns the Most Inspirational Moment.
+	 *
+	 * @return the Most Inspirational Moment
+	 */
 	public String getMostInspirationalMoment() {
 		return mostInspirationalMoment;
 	}
 
 	/**
-     * Returns the Industry Exams.
-     *
-     * @return the Industry Exams
-     */
+	 * Returns the Industry Exams.
+	 *
+	 * @return the Industry Exams
+	 */
 	public List<IndustryExams> getIndustryExams() {
-        if (Objects.nonNull(industryExams)) {
+		if (Objects.nonNull(industryExams)) {
 			return new ArrayList<>(industryExams);
 		}
 		return Collections.emptyList();
@@ -557,35 +560,38 @@ public class PlannerResponse {
 	/**
 	 * Returns whether this object has any disciplinary information on record.
 	 *
-	 * @return true if this object has disciplinary information on record, false otherwise
+	 * @return true if this object has disciplinary information on record, false
+	 *         otherwise
 	 */
 	public boolean isHasDisciplinaryInformation() {
 		return hasDisciplinaryInformation;
 	}
 
 	/**
-     * Returns the Disciplinary Information Text.
-     *
-     * @return the Disciplinary Information Text
-     */
+	 * Returns the Disciplinary Information Text.
+	 *
+	 * @return the Disciplinary Information Text
+	 */
 	public String getDisciplinaryInformationText() {
 		return disciplinaryInformationText;
 	}
 
 	/**
-	 * Returns whether this object offers any commissions related to business-related activities.
+	 * Returns whether this object offers any commissions related to
+	 * business-related activities.
 	 *
-	 * @return true if this object offers commissions related to business-related activities, false otherwise
+	 * @return true if this object offers commissions related to business-related
+	 *         activities, false otherwise
 	 */
 	public boolean isAnyBusinessRelatedActivitiesCommissions() {
 		return anyBusinessRelatedActivitiesCommissions;
 	}
 
 	/**
-     * Returns the Business Related Activities Commissions Text.
-     *
-     * @return the Business Related Activities Commissions Text
-     */
+	 * Returns the Business Related Activities Commissions Text.
+	 *
+	 * @return the Business Related Activities Commissions Text
+	 */
 	public String getBusinessRelatedActivitiesCommissionsText() {
 		return businessRelatedActivitiesCommissionsText;
 	}
@@ -600,37 +606,37 @@ public class PlannerResponse {
 	}
 
 	/**
-     * Returns the Additional Compensation Text.
-     *
-     * @return the Additional Compensation Text
-     */
+	 * Returns the Additional Compensation Text.
+	 *
+	 * @return the Additional Compensation Text
+	 */
 	public String getAdditionalCompensationText() {
 		return additionalCompensationText;
 	}
 
 	/**
-     * Returns the EfeUrl.
-     *
-     * @return the EfeUrl
-     */
+	 * Returns the EfeUrl.
+	 *
+	 * @return the EfeUrl
+	 */
 	public String getEfeUrl() {
 		return efeUrl;
 	}
 
 	/**
-     * Returns the Adv2bUrl.
-     *
-     * @return the Adv2bUrl
-     */
+	 * Returns the Adv2bUrl.
+	 *
+	 * @return the Adv2bUrl
+	 */
 	public String getAdv2bUrl() {
 		return adv2bUrl;
 	}
 
 	/**
-     * Returns the HtmlUrl.
-     *
-     * @return the HtmlUrl
-     */
+	 * Returns the HtmlUrl.
+	 *
+	 * @return the HtmlUrl
+	 */
 	public String getHtmlUrl() {
 		return htmlUrl;
 	}

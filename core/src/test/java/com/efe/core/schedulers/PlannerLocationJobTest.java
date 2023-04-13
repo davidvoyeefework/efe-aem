@@ -10,17 +10,16 @@ import java.util.Map;
 
 import org.apache.sling.event.jobs.JobBuilder;
 import org.apache.sling.event.jobs.JobBuilder.ScheduleBuilder;
+import org.apache.sling.event.jobs.JobManager;
 import org.apache.sling.event.jobs.ScheduledJobInfo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.MockitoAnnotations;
-import org.apache.sling.event.jobs.ScheduledJobInfo;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.apache.sling.event.jobs.JobManager;
 
 /**
  * The Class PlannerLocationJobTest
@@ -33,7 +32,7 @@ class PlannerLocationJobTest {
 	 * Job Topic
 	 */
 	private static final String JOB_TOPIC = "PlannerLocationJobTopic";
-	
+
 	/**
 	 * Injects PlannerLocationJob
 	 */
@@ -45,31 +44,31 @@ class PlannerLocationJobTest {
 	 */
 	@Mock
 	private JobManager jobManager;
-	
+
 	/**
 	 * ScheduledJobInfo
 	 */
 	@Mock
 	private ScheduledJobInfo jobInfo;
-	
+
 	/**
 	 * PlannerConfiguration
 	 */
 	@Mock
 	private PlannerLocationJob.PlannerConfiguration config;
-		
+
 	/**
 	 * JobBuilder
 	 */
 	@Mock
 	private JobBuilder builder;
-	
+
 	/**
 	 * ScheduleBuilder
 	 */
 	@Mock
 	private ScheduleBuilder scheduleBuilder;
-	
+
 	/**
 	 * Sets the up.
 	 * 
@@ -106,7 +105,7 @@ class PlannerLocationJobTest {
 		Mockito.verify(scheduleBuilder, Mockito.times(1)).add();
 
 	}
-	
+
 	@Test
 	void testSchedulerDisabled() {
 
@@ -122,7 +121,7 @@ class PlannerLocationJobTest {
 		Mockito.verify(scheduleBuilder, Mockito.times(0)).add();
 
 	}
-	
+
 	@Test
 	void testSchedulerFailed() {
 

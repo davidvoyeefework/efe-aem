@@ -88,7 +88,7 @@ public class PlannerLocationJob {
 	 */
 	@ObjectClassDefinition(name = "Planner and Location Scheduler Configuration")
 	public @interface PlannerConfiguration {
-		
+
 		/**
 		 * schedulerExpression
 		 * 

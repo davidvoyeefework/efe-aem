@@ -21,7 +21,7 @@ import com.efe.core.services.impl.PlannerModelServicesImpl;
  *
  */
 public class IndustryExamUtil {
-	
+
 	/**
 	 * The Constant LOGGER
 	 */

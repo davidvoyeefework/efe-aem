@@ -16,12 +16,12 @@ import com.efe.core.bean.PlannerResponse;
 import com.efe.core.constants.PlannerLocationConstants;
 
 public class EducationPlannerUtil {
-	
+
 	/**
 	 * The Constant LOGGER
 	 */
 	private static final Logger LOGGER = LoggerFactory.getLogger(EducationPlannerUtil.class);
-	
+
 	/**
 	 * This method is used to create and update education fragments
 	 * 
@@ -46,8 +46,8 @@ public class EducationPlannerUtil {
 						educationRootPath + PlannerLocationConstants.FORWARD_SLASH + educationFragmentName);
 				if (Objects.isNull(educationexistingFragement)) {
 
-					FragmentUtil.createFragment(PlannerLocationConstants.EDUCATION_MODEL, educationRootPath, educationFragmentName,
-							PlannerLocationConstants.JCR_TITLE_EDUCATION, resourceResolver);
+					FragmentUtil.createFragment(PlannerLocationConstants.EDUCATION_MODEL, educationRootPath,
+							educationFragmentName, PlannerLocationConstants.JCR_TITLE_EDUCATION, resourceResolver);
 
 				}
 				Resource plannerEducationResource = resourceResolver

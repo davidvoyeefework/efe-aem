@@ -106,7 +106,7 @@ public class PlannerLocationConstants {
 	 * State
 	 */
 	public static final String PHONE = "phone";
-	
+
 	/**
 	 * State
 	 */
@@ -277,7 +277,6 @@ public class PlannerLocationConstants {
 	 */
 	public static final String MOBILE_IMAGE_URL = "mobileImageurl";
 
-
 	/**
 	 * Circle Image Url
 	 */
@@ -358,7 +357,6 @@ public class PlannerLocationConstants {
 	 */
 	public static final String FAVOURITE_LIFE_HACK = "favoriteLifeHack";
 
-	
 	/**
 	 * Linked In Url
 	 */
@@ -368,7 +366,7 @@ public class PlannerLocationConstants {
 	 * Most Inspiration Moment
 	 */
 	public static final String MOST_INSPIRATION_MOMENT = "mostInspirationalMoment";
-	
+
 	/**
 	 * Disciplinary Information Text
 	 */

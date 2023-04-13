@@ -21,7 +21,7 @@ public class EmploymentHistoryUtil {
 	 * The Constant LOGGER
 	 */
 	private static final Logger LOGGER = LoggerFactory.getLogger(EmploymentHistoryUtil.class);
-	
+
 	/**
 	 * This method is used to create and update Employment History Fragment
 	 * 
@@ -43,9 +43,9 @@ public class EmploymentHistoryUtil {
 				Resource employmentHistoryExistingFragement = resourceResolver.getResource(employmentHistoryRootPath
 						+ PlannerLocationConstants.FORWARD_SLASH + employmentHistoryFragmentName);
 				if (Objects.isNull(employmentHistoryExistingFragement)) {
-					FragmentUtil.createFragment(PlannerLocationConstants.EMPLOYMENT_HISTORY_MODEL, employmentHistoryRootPath,
-							employmentHistoryFragmentName, PlannerLocationConstants.JCR_TITLE_EMPLOYMENT_HISTORY,
-							resourceResolver);
+					FragmentUtil.createFragment(PlannerLocationConstants.EMPLOYMENT_HISTORY_MODEL,
+							employmentHistoryRootPath, employmentHistoryFragmentName,
+							PlannerLocationConstants.JCR_TITLE_EMPLOYMENT_HISTORY, resourceResolver);
 				}
 				Resource plannerEmploymentHistoryResource = resourceResolver
 						.getResource(employmentHistoryRootPath + PlannerLocationConstants.FORWARD_SLASH
@@ -74,5 +74,5 @@ public class EmploymentHistoryUtil {
 		}
 
 	}
-	
+
 }

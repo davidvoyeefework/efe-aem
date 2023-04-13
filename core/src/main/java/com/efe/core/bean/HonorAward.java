@@ -8,46 +8,47 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class HonorAward {
-	
+
 	/* dateOfAward */
-    private String dateOfAward;   
-    
-    /* disclosure */
-    private String disclosure; 
-    
-    /* honorAwardName */
-    private String honorAwardName;   
-    
-    /* organization */
-    private String organization;
+	private String dateOfAward;
+
+	/* disclosure */
+	private String disclosure;
+
+	/* honorAwardName */
+	private String honorAwardName;
+
+	/* organization */
+	private String organization;
+
 	public String getDateOfAward() {
 		return dateOfAward;
 	}
-	
+
 	/**
-     * Returns the Disclosure.
-     *
-     * @return the Disclosure
-     */
+	 * Returns the Disclosure.
+	 *
+	 * @return the Disclosure
+	 */
 	public String getDisclosure() {
 		return disclosure;
 	}
-	
+
 	/**
-     * Returns the Honor Award Name.
-     *
-     * @return the Honor Award Name
-     */
+	 * Returns the Honor Award Name.
+	 *
+	 * @return the Honor Award Name
+	 */
 	public String getHonorAwardName() {
 		return honorAwardName;
 	}
-	
+
 	/**
-     * Returns the Organization.
-     *
-     * @return the Organization
-     */
+	 * Returns the Organization.
+	 *
+	 * @return the Organization
+	 */
 	public String getOrganization() {
 		return organization;
-	}  
+	}
 }

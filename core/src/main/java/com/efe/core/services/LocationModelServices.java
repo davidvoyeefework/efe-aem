@@ -9,7 +9,7 @@ import org.apache.sling.api.resource.ResourceResolver;
 public interface LocationModelServices {
 
 	/**
-	 *  Adds Data to CFModel
+	 * Adds Data to CFModel
 	 */
 	public void addDataToCFModelLocation(ResourceResolver resourceResolver);
 }

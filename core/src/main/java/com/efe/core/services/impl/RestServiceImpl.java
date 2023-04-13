@@ -21,14 +21,14 @@ import com.efe.core.services.RestService;
  */
 @Component(service = RestService.class)
 public class RestServiceImpl implements RestService {
-	
+
 	/** The Constant LOGGER. */
 	private static final Logger LOGGER = LoggerFactory.getLogger(RestServiceImpl.class);
 
 	/**
 	 * Gets the data.
 	 *
-	 * @param apiUrl the token
+	 * @param apiUrl     the token
 	 * @param authHeader the authHeader
 	 * @return the data
 	 */

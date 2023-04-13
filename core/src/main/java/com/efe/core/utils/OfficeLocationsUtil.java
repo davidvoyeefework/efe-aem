@@ -16,12 +16,12 @@ import com.efe.core.bean.PlannerResponse;
 import com.efe.core.constants.PlannerLocationConstants;
 
 public class OfficeLocationsUtil {
-	
+
 	/**
 	 * The Constant LOGGER
 	 */
 	private static final Logger LOGGER = LoggerFactory.getLogger(EmploymentHistoryUtil.class);
-	
+
 	/**
 	 * This method is used to create and update fragments for office locations
 	 * 

@@ -111,8 +111,7 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 	/**
 	 * This method is used to update Fragment for Planner
 	 */
-	private void updatePlannerFragmentProperties(Node plannerMasterNode,
-			PlannerResponse jsonObj) {
+	private void updatePlannerFragmentProperties(Node plannerMasterNode, PlannerResponse jsonObj) {
 
 		try {
 
@@ -214,12 +213,12 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 
 			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode,
 					PlannerLocationConstants.MOST_INSPIRATION_MOMENT, jsonObj.getMostInspirationalMoment());
-			
-			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode,
-					PlannerLocationConstants.HAS_DISCIPLINARY_INFORMATION_TEXT, jsonObj.isHasDisciplinaryInformation()); 
 
 			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode,
-					PlannerLocationConstants.DISCIPLINARY_INFORMATION_TEXT, jsonObj.getDisciplinaryInformationText()); 
+					PlannerLocationConstants.HAS_DISCIPLINARY_INFORMATION_TEXT, jsonObj.isHasDisciplinaryInformation());
+
+			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode,
+					PlannerLocationConstants.DISCIPLINARY_INFORMATION_TEXT, jsonObj.getDisciplinaryInformationText());
 
 			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode,
 					PlannerLocationConstants.ANY_BUSINESS_RELATED_ACTIVITIES_COMMISSIONS,
@@ -296,7 +295,7 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 
 				NodePropertyManagerUtil.setPropertyIfNonNull(plannerPrimaryOfficeNode, PlannerLocationConstants.NAME,
 						primaryOffice.getName());
-				
+
 				NodePropertyManagerUtil.setPropertyIfNonNull(plannerPrimaryOfficeNode, PlannerLocationConstants.CITY,
 						primaryOffice.getCity());
 

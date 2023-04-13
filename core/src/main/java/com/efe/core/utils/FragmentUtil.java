@@ -12,7 +12,7 @@ import com.adobe.cq.dam.cfm.ContentFragmentException;
 import com.adobe.cq.dam.cfm.FragmentTemplate;
 
 public class FragmentUtil {
-	
+
 	/**
 	 * The Constant LOGGER
 	 */
@@ -21,8 +21,8 @@ public class FragmentUtil {
 	/**
 	 * This method is used to create Fragment for Planner
 	 */
-	public static void createFragment(String modelResource, String rootPath, String fragmentName, String fragmentResource,
-			ResourceResolver resourceResolver) {
+	public static void createFragment(String modelResource, String rootPath, String fragmentName,
+			String fragmentResource, ResourceResolver resourceResolver) {
 		Resource templateOrModelRsc = resourceResolver.getResource(modelResource);
 		FragmentTemplate tpl = templateOrModelRsc.adaptTo(FragmentTemplate.class);
 		if (Objects.nonNull(tpl)) {

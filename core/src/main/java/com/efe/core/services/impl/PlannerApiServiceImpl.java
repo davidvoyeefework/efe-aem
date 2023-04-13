@@ -43,7 +43,7 @@ public class PlannerApiServiceImpl implements PlannerApiService {
 	 */
 	@ObjectClassDefinition(name = "EFE Planner API End Point", description = "EFE Planner API End Point")
 	public static @interface Config {
-		
+
 		/**
 		 * @return plannersAPIEndpoint
 		 */

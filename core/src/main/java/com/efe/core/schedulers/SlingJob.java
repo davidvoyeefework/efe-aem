@@ -20,14 +20,14 @@ import com.efe.core.utils.ResourceUtil;
  */
 @Component(service = JobConsumer.class, immediate = true, property = {
 		JobConsumer.PROPERTY_TOPICS + "=daily/job/topic" })
-public class SlingJob implements JobConsumer { 
+public class SlingJob implements JobConsumer {
 
 	/**
 	 * PlannerModelServices injected
 	 */
 	@Reference
-	private	PlannerModelServices plannerModelServices;
-	
+	private PlannerModelServices plannerModelServices;
+
 	/**
 	 * ResourceResolverFactory injected
 	 */
@@ -51,12 +51,12 @@ public class SlingJob implements JobConsumer {
 	 * the methods, the method returns a JobResult of FAILED.
 	 */
 	@Override
-	public JobResult process(Job job) { 
-		try(ResourceResolver resourceResolver = ResourceUtil.getServiceResourceResolver(resourceResolverFactory)) {
+	public JobResult process(Job job) {
+		try (ResourceResolver resourceResolver = ResourceUtil.getServiceResourceResolver(resourceResolverFactory)) {
 			LOGGER.info("Sling JOB Called");
 			plannerModelServices.addDataToCFModelPlanner(resourceResolver);
 			locationModelServices.addDataToCFModelLocation(resourceResolver);
 			return JobConsumer.JobResult.OK;
-		} 
+		}
 	}
 }

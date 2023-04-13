@@ -48,10 +48,10 @@ class LocationModelServicesImplTest {
 	/** Mock ResourceResolver. */
 	@Mock
 	private ResourceResolver resourceResolver;
-	
+
 	@Mock
-	private Session locationMasterNodeSession,locationBusinessHoursNodeSession;
-	
+	private Session locationMasterNodeSession, locationBusinessHoursNodeSession;
+
 	/** Mock ResourceResolverFactory. */
 	@Mock
 	private ResourceResolverFactory resourceResolverFactory;
@@ -63,9 +63,9 @@ class LocationModelServicesImplTest {
 	/** Mock PlannerApiService. */
 	@Mock
 	private PlannerApiService plannerApiService;
-	
+
 	@Mock
-	private ValueFactory valueFactory,valueFactoryBh;
+	private ValueFactory valueFactory, valueFactoryBh;
 
 	/** Mock FragmentTemplate. */
 	@Mock
@@ -74,11 +74,12 @@ class LocationModelServicesImplTest {
 	/** Mock Resource. */
 	@Mock
 	private Resource existingFragement, templateOrModelRscBh, locationBusinessHoursResource, templateOrModelRsc,
-			parentRsc, locationMasterResource,parentResource,rootPathParentResource,childPathLocationResource;
+			parentRsc, locationMasterResource, parentResource, rootPathParentResource, childPathLocationResource;
 
 	/** Mock Node. */
 	@Mock
-	private Node parentNode, locationMasterNode, locationBusinessHoursNode, parentPathNode,rootPathParentNode,businessResource;
+	private Node parentNode, locationMasterNode, locationBusinessHoursNode, parentPathNode, rootPathParentNode,
+			businessResource;
 
 	/** Mock LocationModelServicesImpl. */
 	@InjectMocks
@@ -87,12 +88,12 @@ class LocationModelServicesImplTest {
 	@BeforeEach
 	void setUp() throws LoginException {
 		final Map<String, Object> subServiceUser = new ConcurrentHashMap<>();
-		subServiceUser.put(ResourceResolverFactory.SUBSERVICE,"efe-service-user");
+		subServiceUser.put(ResourceResolverFactory.SUBSERVICE, "efe-service-user");
 
 		aemContext.registerService(ResourceResolver.class, resourceResolver);
 		aemContext.registerService(ResourceResolverFactory.class, resourceResolverFactory);
 		lenient().when(resourceResolverFactory.getServiceResourceResolver(subServiceUser)).thenReturn(resourceResolver);
-		
+
 		aemContext.registerService(RestService.class, restService);
 		aemContext.registerService(PlannerApiService.class, plannerApiService);
 		aemContext.registerService(FragmentTemplate.class, tpl);
@@ -100,21 +101,21 @@ class LocationModelServicesImplTest {
 		aemContext.registerService(Resource.class, existingFragement);
 		aemContext.registerService(Resource.class, templateOrModelRsc);
 		aemContext.registerService(Resource.class, parentRsc);
-		aemContext.registerService(Resource.class, locationMasterResource); 
+		aemContext.registerService(Resource.class, locationMasterResource);
 		aemContext.registerService(Resource.class, parentResource);
 		aemContext.registerService(Resource.class, locationBusinessHoursResource);
 		aemContext.registerService(Node.class, locationBusinessHoursNode);
 
-		aemContext.registerService(Resource.class, templateOrModelRscBh); 
+		aemContext.registerService(Resource.class, templateOrModelRscBh);
 		aemContext.registerService(Resource.class, rootPathParentResource);
-		aemContext.registerService(Resource.class, childPathLocationResource); 
+		aemContext.registerService(Resource.class, childPathLocationResource);
 
 		aemContext.registerService(Node.class, parentNode);
 		aemContext.registerService(Node.class, locationMasterNode);
 		aemContext.registerService(Node.class, parentPathNode);
 		aemContext.registerService(Node.class, rootPathParentNode);
 		aemContext.registerService(Node.class, businessResource);
-		
+
 		aemContext.registerService(ValueFactory.class, valueFactory);
 		aemContext.registerService(ValueFactory.class, valueFactoryBh);
 		aemContext.registerService(Session.class, locationMasterNodeSession);
@@ -122,7 +123,8 @@ class LocationModelServicesImplTest {
 	}
 
 	@Test
-	void testCreateFragmentLocation() throws ContentFragmentException, PersistenceException, UnsupportedRepositoryOperationException, RepositoryException
+	void testCreateFragmentLocation() throws ContentFragmentException, PersistenceException,
+			UnsupportedRepositoryOperationException, RepositoryException
 
 	{
 		// setup test data
@@ -149,10 +151,10 @@ class LocationModelServicesImplTest {
 
 		String officeName = "Birmingham";
 		String officeId = "28";
-		String folderNameLocation = "locations"; 
-        String folderNameChild = "Birmingham28"; 
-        String folderNameBusiness = "businessHours";
-        
+		String folderNameLocation = "locations";
+		String folderNameChild = "Birmingham28";
+		String folderNameBusiness = "businessHours";
+
 		String rootPath = "/content/dam/efe/plannerlocation/locations";
 		String childPathLocation = "/content/dam/efe/plannerlocation/locations/" + officeName + officeId;
 		String businessHoursRootPath = childPathLocation + "/businessHours";
@@ -162,33 +164,29 @@ class LocationModelServicesImplTest {
 		String businessHoursFragmentName = PlannerLocationConstants.BUSINESS_HOURS_FRAGMENT_PREFIX + "1";
 
 		// mock method calls
-		
-		lenient().when(restService.getData(plannerApiService.getLocationsAPIEndpoint(), plannerApiService.getAuthHeader()))
+
+		lenient().when(
+				restService.getData(plannerApiService.getLocationsAPIEndpoint(), plannerApiService.getAuthHeader()))
 				.thenReturn(jsonObjectLocation);
 
 		lenient().when(resourceResolver.getResource(PlannerLocationConstants.ROOT_FOLDER_PATH))
-		.thenReturn(parentResource);		
-		lenient().when(parentResource.getChild(folderNameLocation))
-		.thenReturn(null);
+				.thenReturn(parentResource);
+		lenient().when(parentResource.getChild(folderNameLocation)).thenReturn(null);
 		lenient().when(parentResource.adaptTo(Node.class)).thenReturn(parentPathNode);
-		
-		
-		lenient().when(resourceResolver.getResource(rootPath))
-		.thenReturn(rootPathParentResource);
-		lenient().when(rootPathParentResource.getChild(folderNameChild))
-		.thenReturn(null);
+
+		lenient().when(resourceResolver.getResource(rootPath)).thenReturn(rootPathParentResource);
+		lenient().when(rootPathParentResource.getChild(folderNameChild)).thenReturn(null);
 		lenient().when(rootPathParentResource.adaptTo(Node.class)).thenReturn(rootPathParentNode);
-			
-		lenient().when(resourceResolver.getResource(childPathLocation))
-		.thenReturn(childPathLocationResource);
-		lenient().when(childPathLocationResource.getChild(folderNameBusiness))
-		.thenReturn(null);
+
+		lenient().when(resourceResolver.getResource(childPathLocation)).thenReturn(childPathLocationResource);
+		lenient().when(childPathLocationResource.getChild(folderNameBusiness)).thenReturn(null);
 		lenient().when(childPathLocationResource.adaptTo(Node.class)).thenReturn(businessResource);
-		
-		
+
 		lenient().when(resourceResolver.getResource(PlannerLocationConstants.LOCATION_MODEL))
 				.thenReturn(templateOrModelRsc);
-		lenient().when(resourceResolver.getResource(childPathLocation + PlannerLocationConstants.FORWARD_SLASH + fragmentName))
+		lenient()
+				.when(resourceResolver
+						.getResource(childPathLocation + PlannerLocationConstants.FORWARD_SLASH + fragmentName))
 				.thenReturn(null);
 		lenient().when(resourceResolver.getResource(childPathLocation + PlannerLocationConstants.FORWARD_SLASH
 				+ fragmentName + PlannerLocationConstants.MASTER_NODE)).thenReturn(locationMasterResource);
@@ -199,14 +197,20 @@ class LocationModelServicesImplTest {
 		lenient().when(locationMasterResource.adaptTo(Node.class)).thenReturn(locationMasterNode);
 		lenient().when(locationMasterNode.getSession()).thenReturn(locationMasterNodeSession);
 		lenient().when(locationMasterNode.getSession().getValueFactory()).thenReturn(valueFactory);
-		
-		
-		lenient().when(resourceResolver.getResource(businessHoursRootPath + PlannerLocationConstants.FORWARD_SLASH + businessHoursFragmentName)).thenReturn(null);
-		lenient().when(resourceResolver.getResource(PlannerLocationConstants.BUSINESS_HOUR_MODEL)).thenReturn(templateOrModelRscBh);
+
+		lenient()
+				.when(resourceResolver.getResource(
+						businessHoursRootPath + PlannerLocationConstants.FORWARD_SLASH + businessHoursFragmentName))
+				.thenReturn(null);
+		lenient().when(resourceResolver.getResource(PlannerLocationConstants.BUSINESS_HOUR_MODEL))
+				.thenReturn(templateOrModelRscBh);
 
 		lenient().when(templateOrModelRscBh.adaptTo(FragmentTemplate.class)).thenReturn(tplBh);
 
-		lenient().when(resourceResolver.getResource(businessHoursRootPath + PlannerLocationConstants.FORWARD_SLASH + businessHoursFragmentName + PlannerLocationConstants.MASTER_NODE)).thenReturn(locationBusinessHoursResource);
+		lenient()
+				.when(resourceResolver.getResource(businessHoursRootPath + PlannerLocationConstants.FORWARD_SLASH
+						+ businessHoursFragmentName + PlannerLocationConstants.MASTER_NODE))
+				.thenReturn(locationBusinessHoursResource);
 
 		lenient().when(locationBusinessHoursResource.adaptTo(Node.class)).thenReturn(locationBusinessHoursNode);
 		lenient().when(locationBusinessHoursNode.getSession()).thenReturn(locationBusinessHoursNodeSession);
