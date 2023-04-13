@@ -1,0 +1,5 @@
+{
+  "plannersAPIEndpoint": "https://planners.edelmanfinancialengines.com/api/v2/planners",
+  "locationsAPIEndpoint": "https://planners.edelmanfinancialengines.com/api/v2/locations",
+  "authHeader": "$[secret:authHeaderkey]"
+}
