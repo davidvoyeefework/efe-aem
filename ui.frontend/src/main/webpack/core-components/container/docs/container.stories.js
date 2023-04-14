@@ -1,5 +1,5 @@
 import Handlebars from "handlebars/runtime.js";
-import Container from "../bg-color.hbs";
+import Container from "../container.hbs";
 Handlebars.registerPartial("Container", Container);
 export default {
     title: "Core Components/Container",
@@ -31,6 +31,9 @@ export default {
         },
         border: {
             control: 'boolean',
+        },
+        minHeight: {
+            control: 'boolean',
         }
     },
 };
@@ -43,4 +46,5 @@ BackgroundColor.args = {
     border: false,
     center: false,
     padding: false,
+    minHeight: false,
 };
