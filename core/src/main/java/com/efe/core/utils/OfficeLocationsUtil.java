@@ -35,7 +35,7 @@ public class OfficeLocationsUtil {
 			List<OfficesLocations> officesLocations = jsonObj.getOfficesLocations();
 
 			String officesLocationsRootPath = FolderUtil.createFolder(childPathPlanner,
-					PlannerLocationConstants.OFFICE_LOCATIONS, resourceResolver);
+					PlannerLocationConstants.OFFICE_LOCATIONS,PlannerLocationConstants.OFFICE_LOCATIONS, resourceResolver);
 			int officesLocationsCount = 1;
 			for (OfficesLocations officesLocationsObj : officesLocations) {
 

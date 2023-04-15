@@ -36,7 +36,7 @@ public class EducationPlannerUtil {
 			List<Education> education = jsonObj.getEducation();
 
 			String educationRootPath = FolderUtil.createFolder(childPathPlanner, PlannerLocationConstants.EDUCATION,
-					resourceResolver);
+					PlannerLocationConstants.EDUCATION, resourceResolver);
 			int educationCount = 1;
 			for (Education eduObj : education) {
 

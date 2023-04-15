@@ -37,7 +37,7 @@ public class HonorAwardUtil {
 			List<HonorAward> honorAward = jsonObj.getHonorAward();
 
 			String honorAwardRootPath = FolderUtil.createFolder(childPathPlanner, PlannerLocationConstants.HONOR_AWARD,
-					resourceResolver);
+					PlannerLocationConstants.HONOR_AWARD, resourceResolver);
 			int honorAwardCount = 1;
 			for (HonorAward honorAwardObj : honorAward) {
 

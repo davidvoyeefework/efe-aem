@@ -12,6 +12,7 @@ import org.apache.sling.jcr.resource.api.JcrResourceConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.day.cq.commons.jcr.JcrConstants;
 import com.efe.core.constants.PlannerLocationConstants;
 
 /**
@@ -31,7 +32,7 @@ public class FolderUtil {
 	 * @param resourceResolver
 	 * @return
 	 */
-	public static String createFolder(String parentPath, String folderName, ResourceResolver resourceResolver) {
+	public static String createFolder(String parentPath, String folderName, String title, ResourceResolver resourceResolver) {
 		Resource parentResource = resourceResolver.getResource(parentPath);
 		// Check if folder already exists
 		if (Objects.isNull(parentResource.getChild(folderName))) {
@@ -39,7 +40,9 @@ public class FolderUtil {
 			Node parentNode = parentResource.adaptTo(Node.class);
 
 			try {
-				parentNode.addNode(folderName, JcrResourceConstants.NT_SLING_ORDERED_FOLDER);
+				Node newNode = parentNode.addNode(folderName, JcrResourceConstants.NT_SLING_ORDERED_FOLDER);
+				// Set jcr:title and jcr:description properties
+				newNode.setProperty(JcrConstants.JCR_TITLE, title);
 			} catch (RepositoryException e1) {
 				LOGGER.error("RepositoryException:", e1);
 			}

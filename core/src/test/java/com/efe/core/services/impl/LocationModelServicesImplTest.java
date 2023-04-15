@@ -18,6 +18,7 @@ import org.apache.sling.api.resource.PersistenceException;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ResourceResolverFactory;
+import org.apache.sling.jcr.resource.api.JcrResourceConstants;
 import org.apache.sling.testing.mock.sling.ResourceResolverType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -74,12 +75,12 @@ class LocationModelServicesImplTest {
 	/** Mock Resource. */
 	@Mock
 	private Resource existingFragement, templateOrModelRscBh, locationBusinessHoursResource, templateOrModelRsc,
-			parentRsc, locationMasterResource, parentResource, rootPathParentResource, childPathLocationResource;
+			parentRsc, locationMasterResource, parentResource, rootPathParentResource, cityPathLocationResource,statePathResource,rootPathStateResource,locationResource,locationPathResource,businessHoursResource;
 
 	/** Mock Node. */
 	@Mock
 	private Node parentNode, locationMasterNode, locationBusinessHoursNode, parentPathNode, rootPathParentNode,
-			businessResource;
+			cityPathNode,statePathNode,locationPathNode,stateFolderNode,cityFolderNode,businessHoursNode,businessHoursFolderNode;
 
 	/** Mock LocationModelServicesImpl. */
 	@InjectMocks
@@ -105,16 +106,28 @@ class LocationModelServicesImplTest {
 		aemContext.registerService(Resource.class, parentResource);
 		aemContext.registerService(Resource.class, locationBusinessHoursResource);
 		aemContext.registerService(Node.class, locationBusinessHoursNode);
+		aemContext.registerService(Node.class, businessHoursNode);
 
 		aemContext.registerService(Resource.class, templateOrModelRscBh);
 		aemContext.registerService(Resource.class, rootPathParentResource);
-		aemContext.registerService(Resource.class, childPathLocationResource);
-
+		aemContext.registerService(Resource.class, cityPathLocationResource); 
+		aemContext.registerService(Resource.class, rootPathStateResource); 
+		aemContext.registerService(Resource.class, locationResource); 
+		aemContext.registerService(Resource.class, locationPathResource); 
+		aemContext.registerService(Resource.class, businessHoursResource);
+		
 		aemContext.registerService(Node.class, parentNode);
 		aemContext.registerService(Node.class, locationMasterNode);
 		aemContext.registerService(Node.class, parentPathNode);
 		aemContext.registerService(Node.class, rootPathParentNode);
-		aemContext.registerService(Node.class, businessResource);
+		aemContext.registerService(Node.class, cityPathNode); 
+		aemContext.registerService(Node.class, locationPathNode);
+		aemContext.registerService(Node.class, stateFolderNode);
+		aemContext.registerService(Node.class, cityFolderNode); 
+		aemContext.registerService(Node.class, businessHoursFolderNode);
+		
+		aemContext.registerService(Resource.class, statePathResource);
+		aemContext.registerService(Node.class, statePathNode);
 
 		aemContext.registerService(ValueFactory.class, valueFactory);
 		aemContext.registerService(ValueFactory.class, valueFactoryBh);
@@ -152,43 +165,58 @@ class LocationModelServicesImplTest {
 		String officeName = "Birmingham";
 		String officeId = "28";
 		String folderNameLocation = "locations";
-		String folderNameChild = "Birmingham28";
-		String folderNameBusiness = "businessHours";
 
-		String rootPath = "/content/dam/efe/plannerlocation/locations";
-		String childPathLocation = "/content/dam/efe/plannerlocation/locations/" + officeName + officeId;
-		String businessHoursRootPath = childPathLocation + "/businessHours";
+		String folderNameBusiness = "businessHours";
+		String stateFolderName = "AL";
+		String cityFolderName = "Birmingham";
+		
+		String rootPath = "/content/dam/efe/cf/plannerlocation/locations";
+		String stateFolderPath = rootPath + PlannerLocationConstants.FORWARD_SLASH + stateFolderName;
+		String cityPathLocation = stateFolderPath + PlannerLocationConstants.FORWARD_SLASH + cityFolderName;
+		String businessHoursRootPath = cityPathLocation + PlannerLocationConstants.FORWARD_SLASH + folderNameBusiness;
+		
 
 		String fragmentName = PlannerLocationConstants.FRAGMENT_NAME_PREFIX + officeName
 				+ PlannerLocationConstants.UNDERSCORE + officeId;
 		String businessHoursFragmentName = PlannerLocationConstants.BUSINESS_HOURS_FRAGMENT_PREFIX + "1";
 
 		// mock method calls
-
 		lenient().when(
 				restService.getData(plannerApiService.getLocationsAPIEndpoint(), plannerApiService.getAuthHeader()))
 				.thenReturn(jsonObjectLocation);
-
+        // root path plannerlocation
 		lenient().when(resourceResolver.getResource(PlannerLocationConstants.ROOT_FOLDER_PATH))
 				.thenReturn(parentResource);
 		lenient().when(parentResource.getChild(folderNameLocation)).thenReturn(null);
 		lenient().when(parentResource.adaptTo(Node.class)).thenReturn(parentPathNode);
+		lenient().when(parentPathNode.addNode(folderNameLocation, JcrResourceConstants.NT_SLING_ORDERED_FOLDER)).thenReturn(rootPathParentNode);
+		
+		// root path location		
+		lenient().when(rootPathParentResource.getChild(stateFolderName)).thenReturn(null); // null check for state folder creation
+		
+		lenient().when(resourceResolver.getResource("/content/dam/efe/cf/plannerlocation/locations")).thenReturn(locationPathResource);
+        lenient().when(locationPathResource.getChild(stateFolderName)).thenReturn(null);
+        lenient().when(locationPathResource.adaptTo(Node.class)).thenReturn(locationPathNode);
+        lenient().when(locationPathNode.addNode(stateFolderName, JcrResourceConstants.NT_SLING_ORDERED_FOLDER)).thenReturn(stateFolderNode);
+		
+		//lenient().when(rootPathParentResource.adaptTo(Node.class)).thenReturn(rootPathParentNode);
+		
+		// city folder creation
+		lenient().when(resourceResolver.getResource("/content/dam/efe/cf/plannerlocation/locations/AL")).thenReturn(statePathResource);
+        lenient().when(statePathResource.getChild(cityFolderName)).thenReturn(null);
+        lenient().when(statePathResource.adaptTo(Node.class)).thenReturn(statePathNode);
+        lenient().when(statePathNode.addNode(cityFolderName, JcrResourceConstants.NT_SLING_ORDERED_FOLDER)).thenReturn(cityFolderNode);
+		
+		//lenient().when(rootPathParentResource.adaptTo(Node.class)).thenReturn(rootPathParentNode);
 
-		lenient().when(resourceResolver.getResource(rootPath)).thenReturn(rootPathParentResource);
-		lenient().when(rootPathParentResource.getChild(folderNameChild)).thenReturn(null);
-		lenient().when(rootPathParentResource.adaptTo(Node.class)).thenReturn(rootPathParentNode);
-
-		lenient().when(resourceResolver.getResource(childPathLocation)).thenReturn(childPathLocationResource);
-		lenient().when(childPathLocationResource.getChild(folderNameBusiness)).thenReturn(null);
-		lenient().when(childPathLocationResource.adaptTo(Node.class)).thenReturn(businessResource);
+		
 
 		lenient().when(resourceResolver.getResource(PlannerLocationConstants.LOCATION_MODEL))
 				.thenReturn(templateOrModelRsc);
-		lenient()
-				.when(resourceResolver
-						.getResource(childPathLocation + PlannerLocationConstants.FORWARD_SLASH + fragmentName))
+		lenient().when(resourceResolver
+						.getResource(cityPathLocation + PlannerLocationConstants.FORWARD_SLASH + fragmentName))
 				.thenReturn(null);
-		lenient().when(resourceResolver.getResource(childPathLocation + PlannerLocationConstants.FORWARD_SLASH
+		lenient().when(resourceResolver.getResource(cityPathLocation + PlannerLocationConstants.FORWARD_SLASH
 				+ fragmentName + PlannerLocationConstants.MASTER_NODE)).thenReturn(locationMasterResource);
 
 		lenient().when(templateOrModelRsc.adaptTo(FragmentTemplate.class)).thenReturn(tpl);
@@ -215,6 +243,18 @@ class LocationModelServicesImplTest {
 		lenient().when(locationBusinessHoursResource.adaptTo(Node.class)).thenReturn(locationBusinessHoursNode);
 		lenient().when(locationBusinessHoursNode.getSession()).thenReturn(locationBusinessHoursNodeSession);
 		lenient().when(locationBusinessHoursNode.getSession().getValueFactory()).thenReturn(valueFactoryBh);
+		
+		
+		
+		lenient().when(resourceResolver.getResource("/content/dam/efe/cf/plannerlocation/locations/AL/Birmingham"))
+		.thenReturn(businessHoursResource);
+        lenient().when(businessHoursResource.getChild(folderNameBusiness)).thenReturn(null);
+        lenient().when(businessHoursResource.adaptTo(Node.class)).thenReturn(businessHoursNode);
+        lenient().when(businessHoursNode.addNode(folderNameBusiness, JcrResourceConstants.NT_SLING_ORDERED_FOLDER)).thenReturn(businessHoursFolderNode);
+        
+        lenient().when(businessHoursResource.getChild(folderNameBusiness)).thenReturn(null);
+        
+      
 
 		// invoke method under test
 		locationModelServicesImpl.addDataToCFModelLocation(resourceResolver);
