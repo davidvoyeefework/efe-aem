@@ -93,13 +93,16 @@ public class LocationModelServicesImpl implements LocationModelServices {
 		String rootPath = FolderUtil.createFolder(PlannerLocationConstants.ROOT_FOLDER_PATH,
 				PlannerLocationConstants.LOCATIONS, PlannerLocationConstants.LOCATIONS, resourceResolver);
 		for (LocationResponse jsonObj : jsonElement) {
-
 			String officeId = jsonObj.getOfficeId();
 			String stateFolderName = jsonObj.getState();
 			String cityFolderName = jsonObj.getCity();
 			String officeName = jsonObj.getOfficeName();
 			String stateFolderPath = rootPath + PlannerLocationConstants.FORWARD_SLASH + stateFolderName;
-
+			
+			//validation of json data
+			if (stateFolderName.isBlank() || cityFolderName.isBlank()) {
+				continue;
+			}
 			Resource childResource = resourceResolver.getResource(stateFolderPath);
 			if (Objects.isNull(childResource)) {
 				stateFolderPath = FolderUtil.createFolder(rootPath, stateFolderName, stateFolderName, resourceResolver);
