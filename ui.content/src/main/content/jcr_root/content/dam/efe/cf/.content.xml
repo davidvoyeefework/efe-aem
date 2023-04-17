@@ -9,7 +9,7 @@
 		  <policies jcr:primaryType="nt:unstructured">
             <cfm
                 jcr:primaryType="nt:unstructured"
-                policy-cfm-allowedModelsByPaths="[/conf/efe/settings/dam/cfm/models/faqs,/conf/efe/settings/dam/cfm/models/authors,/conf/efe/settings/dam/cfm/models/momentum---header-details,/conf/efe/settings/dam/cfm/models/address,/conf/efe/settings/dam/cfm/models/category-card,/conf/efe/settings/dam/cfm/models/locations,/conf/efe/settings/dam/cfm/models/planners]"/>
+                policy-cfm-allowedModelsByPaths="[/conf/efe/settings/dam/cfm/models/faqs,/conf/efe/settings/dam/cfm/models/authors,/conf/efe/settings/dam/cfm/models/momentum---header-details,/conf/efe/settings/dam/cfm/models/category-card,/conf/efe/settings/dam/cfm/models/planners]"/>
         </policies>
 	</jcr:content>	
     <corporate/>
