@@ -77,7 +77,7 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 				PlannerLocationConstants.PLANNER, PlannerLocationConstants.PLANNER, resourceResolver);
 		for (PlannerResponse jsonObj : jsonElement) {
 
-			String firstName = jsonObj.getFirstName();
+			String firstName = jsonObj.getFirstName().toLowerCase();
 			int id = jsonObj.getId();
 
 			String childPathPlanner = FolderUtil.createFolder(rootPath, Integer.toString(id),
