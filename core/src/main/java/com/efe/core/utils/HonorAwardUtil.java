@@ -43,9 +43,9 @@ public class HonorAwardUtil {
 
 				String honorAwardFragmentName = PlannerLocationConstants.HONOR_AWARD
 						+ Integer.toString(honorAwardCount);
-				Resource honorAwardexistingFragement = resourceResolver.getResource(
+				Resource honorAwardExistingFragement = resourceResolver.getResource(
 						honorAwardRootPath + PlannerLocationConstants.FORWARD_SLASH + honorAwardFragmentName);
-				if (Objects.isNull(honorAwardexistingFragement)) {
+				if (Objects.isNull(honorAwardExistingFragement)) {
 
 					FragmentUtil.createFragment(PlannerLocationConstants.HONOR_AWARD_MODEL, honorAwardRootPath,
 							honorAwardFragmentName, PlannerLocationConstants.JCR_TITLE_HONOR_AWARD, resourceResolver);

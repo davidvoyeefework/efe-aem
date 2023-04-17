@@ -224,18 +224,18 @@ class PlannerModelServicesImplTest {
 				+ "        \"adv2bUrl\": \"https://planners.edelmanfinancialengines.com/api/v2/pdf/aaron-cherry/\",\r\n"
 				+ "        \"htmlUrl\": \"https://planners.edelmanfinancialengines.com/planners/aaron-cherry/\",\r\n"
 				+ "        \"lastUpdated\": \"2022-07-27T10:03:23.233Z\"\r\n" + "    }]";
-		String firstName = "Johnathan";
+		String firstName = "Johnathan".toLowerCase();
 		int id = 179;
 		int educationCount = 1;
 
 		String rootPath = "/content/dam/efe/cf/plannerlocation/planners";
 		String childPathPlanner = "/content/dam/efe/cf/plannerlocation/planners/" + firstName + Integer.toString(id);
-		String educationRootPath = "/content/dam/efe/cf/plannerlocation/planners/Johnathan179/education";
-		String industryExamRootPath = "/content/dam/efe/cf/plannerlocation/planners/Johnathan179/industryExams";
-		String certificationsRootPath = "/content/dam/efe/cf/plannerlocation/planners/Johnathan179/certifications";
-		String employmentHistoryRootPath = "/content/dam/efe/cf/plannerlocation/planners/Johnathan179/employmentHistory";
-		String officesLocationsRootPath = "/content/dam/efe/cf/plannerlocation/planners/Johnathan179/officesLocations";
-		String honorAwardrootPath = "/content/dam/efe/cf/plannerlocation/planners/Johnathan179/honorAward";
+		String educationRootPath = "/content/dam/efe/cf/plannerlocation/planners/johnathan179/education";
+		String industryExamRootPath = "/content/dam/efe/cf/plannerlocation/planners/johnathan179/industryexams";
+		String certificationsRootPath = "/content/dam/efe/cf/plannerlocation/planners/johnathan179/certifications";
+		String employmentHistoryRootPath = "/content/dam/efe/cf/plannerlocation/planners/johnathan179/employmenthistory";
+		String officesLocationsRootPath = "/content/dam/efe/cf/plannerlocation/planners/johnathan179/officeslocations";
+		String honorAwardrootPath = "/content/dam/efe/cf/plannerlocation/planners/johnathan179/honoraward";
 
 		String fragmentName = PlannerLocationConstants.FRAGMENT_NAME_PREFIX + firstName
 				+ PlannerLocationConstants.UNDERSCORE + Integer.toString(id);

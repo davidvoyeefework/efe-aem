@@ -36,6 +36,11 @@ public class PlannerLocationConstants {
 	 * Forward Slash
 	 */
 	public static final String FORWARD_SLASH = "/";
+	
+	/**
+	 * Dot
+	 */
+	public static final String DOT = ".";
 
 	/**
 	 * Jcr Title
@@ -140,12 +145,12 @@ public class PlannerLocationConstants {
 	/**
 	 * Longitude
 	 */
-	public static final String BUSINESS_HOURS = "businessHours";
+	public static final String BUSINESS_HOURS = "businesshours";
 
 	/**
 	 * Longitude
 	 */
-	public static final String BUSINESS_HOURS_FRAGMENT_PREFIX = "businessHoursfragment_";
+	public static final String BUSINESS_HOURS_FRAGMENT_PREFIX = "businesshoursfragment_";
 
 	/**
 	 * Longitude
@@ -425,7 +430,7 @@ public class PlannerLocationConstants {
 	/**
 	 * Primary Office Postfix
 	 */
-	public static final String PRIMARY_OFFICE_POSTFIX = "_primaryOffice";
+	public static final String PRIMARY_OFFICE_POSTFIX = "_primaryoffice";
 
 	/**
 	 * Interests Hobbies
@@ -465,12 +470,12 @@ public class PlannerLocationConstants {
 	/**
 	 * Office Locations
 	 */
-	public static final String OFFICE_LOCATIONS = "officesLocations";
+	public static final String OFFICE_LOCATIONS = "officeslocations";
 
 	/**
 	 * Office Locations Prefix
 	 */
-	public static final String OFFICE_LOCATIONS_PREFIX = "officesLocations_";
+	public static final String OFFICE_LOCATIONS_PREFIX = "officeslocations_";
 
 	/**
 	 * Jcr Title Office Locations
@@ -480,12 +485,12 @@ public class PlannerLocationConstants {
 	/**
 	 * Employment History
 	 */
-	public static final String EMPLOYMENT_HISTORY = "employmentHistory";
+	public static final String EMPLOYMENT_HISTORY = "employmenthistory";
 
 	/**
 	 * Employment History Prefix
 	 */
-	public static final String EMPLOYMENT_HISTORY_PREFIX = "employmentHistory_";
+	public static final String EMPLOYMENT_HISTORY_PREFIX = "employmenthistory_";
 
 	/**
 	 * Employment History Model
@@ -560,7 +565,7 @@ public class PlannerLocationConstants {
 	/**
 	 * Honor Award
 	 */
-	public static final String HONOR_AWARD = "honorAward";
+	public static final String HONOR_AWARD = "honoraward";
 
 	/**
 	 * Honor Award Model
@@ -630,12 +635,12 @@ public class PlannerLocationConstants {
 	/**
 	 * Industry Exams
 	 */
-	public static final String INDUSTRY_EXAMS = "industryExams";
+	public static final String INDUSTRY_EXAMS = "industryexams";
 
 	/**
 	 * Major
 	 */
-	public static final String INDUSTRY_EXAMS_PREFIX = "industryExam_";
+	public static final String INDUSTRY_EXAMS_PREFIX = "industryexam_";
 
 	/**
 	 * Industry Exam Model
@@ -656,4 +661,9 @@ public class PlannerLocationConstants {
 	 * Exam Name Short
 	 */
 	public static final String EXAM_NAME_SHORT = "examNameShort";
+	
+	/**
+	 * Exam Name Short
+	 */
+	public static final String LOCATION_PATH = ROOT_FOLDER_PATH + FORWARD_SLASH + LOCATIONS;
 }

@@ -52,6 +52,7 @@ class LocationModelServicesImplTest {
 	@Mock
 	private ResourceResolver resourceResolver;
 
+	/** Mock Session. */
 	@Mock
 	private Session locationMasterNodeSession, locationBusinessHoursNodeSession;
 
@@ -172,14 +173,14 @@ class LocationModelServicesImplTest {
 				+ "            }\r\n" + "        ],\r\n" + "        \"lastUpdated\": \"2022-12-06T11:45:44.173Z\"\r\n"
 				+ "    }\r\n" + "  ]";
 
-		String officeName = "Birmingham";
+		String officeName = "Birmingham".toLowerCase();
 		String officeId = "28";
 		String plannerId = "29";
 		String folderNameLocation = "locations";
 
-		String folderNameBusiness = "businessHours";
-		String stateFolderName = "AL";
-		String cityFolderName = "Birmingham";
+		String folderNameBusiness = "businesshours";
+		String stateFolderName = "AL".toLowerCase();
+		String cityFolderName = "Birmingham".toLowerCase();
 
 		String rootPath = "/content/dam/efe/cf/plannerlocation/locations";
 		String stateFolderPath = rootPath + PlannerLocationConstants.FORWARD_SLASH + stateFolderName;
@@ -215,18 +216,17 @@ class LocationModelServicesImplTest {
 		lenient().when(locationPathResource.adaptTo(Node.class)).thenReturn(locationPathNode);
 		lenient().when(locationPathNode.addNode(stateFolderName, JcrResourceConstants.NT_SLING_ORDERED_FOLDER))
 				.thenReturn(stateFolderNode);
-
-		// lenient().when(rootPathParentResource.adaptTo(Node.class)).thenReturn(rootPathParentNode);
+		
 
 		// city folder creation
-		lenient().when(resourceResolver.getResource("/content/dam/efe/cf/plannerlocation/locations/AL"))
+		lenient().when(resourceResolver.getResource("/content/dam/efe/cf/plannerlocation/locations/al"))
 				.thenReturn(statePathResource);
 		lenient().when(statePathResource.getChild(cityFolderName)).thenReturn(null);
 		lenient().when(statePathResource.adaptTo(Node.class)).thenReturn(statePathNode);
 		lenient().when(statePathNode.addNode(cityFolderName, JcrResourceConstants.NT_SLING_ORDERED_FOLDER))
 				.thenReturn(cityFolderNode);
 
-		// lenient().when(rootPathParentResource.adaptTo(Node.class)).thenReturn(rootPathParentNode);
+	
 
 		lenient().when(resourceResolver.getResource(PlannerLocationConstants.LOCATION_MODEL))
 				.thenReturn(templateOrModelRsc);
@@ -262,7 +262,7 @@ class LocationModelServicesImplTest {
 		lenient().when(locationBusinessHoursNode.getSession()).thenReturn(locationBusinessHoursNodeSession);
 		lenient().when(locationBusinessHoursNode.getSession().getValueFactory()).thenReturn(valueFactoryBh);
 
-		lenient().when(resourceResolver.getResource("/content/dam/efe/cf/plannerlocation/locations/AL/Birmingham"))
+		lenient().when(resourceResolver.getResource("/content/dam/efe/cf/plannerlocation/locations/al/birmingham"))
 				.thenReturn(businessHoursResource);
 		lenient().when(businessHoursResource.getChild(folderNameBusiness)).thenReturn(null);
 		lenient().when(businessHoursResource.adaptTo(Node.class)).thenReturn(businessHoursNode);

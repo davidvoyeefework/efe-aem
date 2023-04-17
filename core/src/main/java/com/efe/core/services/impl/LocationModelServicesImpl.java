@@ -94,9 +94,9 @@ public class LocationModelServicesImpl implements LocationModelServices {
 				PlannerLocationConstants.LOCATIONS, PlannerLocationConstants.LOCATIONS, resourceResolver);
 		for (LocationResponse jsonObj : jsonElement) {
 			String officeId = jsonObj.getOfficeId();
-			String stateFolderName = jsonObj.getState();
-			String cityFolderName = jsonObj.getCity();
-			String officeName = jsonObj.getOfficeName();
+			String stateFolderName = jsonObj.getState().toLowerCase();
+			String cityFolderName = jsonObj.getCity().toLowerCase();
+			String officeName = jsonObj.getOfficeName().toLowerCase();
 			String stateFolderPath = rootPath + PlannerLocationConstants.FORWARD_SLASH + stateFolderName;
 			
 			//validation of json data
@@ -149,7 +149,6 @@ public class LocationModelServicesImpl implements LocationModelServices {
 			Resource businessHoursExistingFragement = resourceResolver.getResource(
 					businessHoursRootPath + PlannerLocationConstants.FORWARD_SLASH + businessHoursFragmentName);
 			if (Objects.isNull(businessHoursExistingFragement)) {
-
 				createFragment(PlannerLocationConstants.BUSINESS_HOUR_MODEL, businessHoursRootPath,
 						businessHoursFragmentName, PlannerLocationConstants.BUSINESS_HOUR_MODEL_DESCRIPTION,
 						resourceResolver);
