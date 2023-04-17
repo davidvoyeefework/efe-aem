@@ -100,7 +100,7 @@ public class LocationModelServicesImpl implements LocationModelServices {
 			String stateFolderPath = rootPath + PlannerLocationConstants.FORWARD_SLASH + stateFolderName;
 			
 			//validation of json data
-			if (stateFolderName.isBlank() || cityFolderName.isBlank()) {
+			if (stateFolderName.trim().isEmpty() || cityFolderName.trim().isEmpty()) {
 				continue;
 			}
 			Resource childResource = resourceResolver.getResource(stateFolderPath);
