@@ -1,11 +1,9 @@
 import A11yDialog from 'a11y-dialog'
-
+import { trapFocus } from "../../site/js/helper"; 
 var dialogEl = document.getElementById('my-dialog')
 var dialog = new A11yDialog(dialogEl)
 
 dialog.on('show', function (dialogEl, event) {
-  // console.log(dialogEl)
-  // console.log(event)
 })
 
 // To manually control the dialog:
@@ -22,35 +20,38 @@ dialog.on('show', function (dialogEl, event) {
                                  'https://linkedin.com/company/edelman-financial-engines',
                                  'https://event.on24.com/wcc/r/3650900/14658F6E878B575EFBB30EF0AA357733/3428297'
                                   ]
+        const modalEle = document.querySelector(".cmp-modal--leaving");
         let externalLinks = document.querySelectorAll("a"); 
         externalLinks.forEach((extlink)=>{
         let linkhn = extlink.hostname.split('.').reverse();
-		let linkHref = linkhn[1] + "." + linkhn[0];
-		let domainhn = window.location.hostname.split('.').reverse();
-		let domainHref = domainhn[1] + "." + domainhn[0];
+        let linkHref = linkhn[1] + "." + linkhn[0];
+        let domainhn = window.location.hostname.split('.').reverse();
+        let domainHref = domainhn[1] + "." + domainhn[0];
         const getLinkHref = extlink.getAttribute("href")
         //console.log(extlink.getAttribute("href"))
         const checkExlcusionLink = exlusionExtlinks.includes(getLinkHref)
-        console.log(checkExlcusionLink)
         if(linkHref !== domainHref && !checkExlcusionLink) {
             extlink.addEventListener("click", (e)=>{
                 e.preventDefault();
                 dialog.show();
-                document.querySelector('.dialog-close').focus();
+                document.querySelector('.cmp-modal__button-secondary').focus();
+                trapFocus(modalEle);
         });
         }
+        document.querySelector('.cmp-modal__button-primary').addEventListener("click", (ev)=>{
+          window.open(getLinkHref);
+          dialog.hide();
+        });
+        document.querySelector('.cmp-modal__button-secondary').addEventListener("click", (ev)=>{
+          dialog.hide();
+        });
         })
         
         
     }
     if (document.readyState !== "loading") {
         init();
-        document.querySelector('#email').focus();
-        // dialog.show();
-        // document.querySelector('.dialog-content').focus();
       } else {
         document.addEventListener("DOMContentLoaded", init);
-        // document.addEventListener("DOMContentLoaded", dialog.show);
-        // document.querySelector('#email').focus();
       }
 }())
