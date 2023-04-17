@@ -36,7 +36,7 @@ public class CertificationsUtil {
 			List<Certifications> certifications = jsonObj.getCertifications();
 
 			String certificationsRootPath = FolderUtil.createFolder(childPathPlanner,
-					PlannerLocationConstants.CERTIFICATIONS, resourceResolver);
+					PlannerLocationConstants.CERTIFICATIONS, PlannerLocationConstants.CERTIFICATIONS, resourceResolver);
 			int certificationsCount = 1;
 			for (Certifications certificationsObj : certifications) {
 

@@ -6,7 +6,7 @@ public class PlannerLocationConstants {
 	 * Location Folder Name
 	 */
 	public static final String LOCATIONS = "locations";
-
+	
 	/**
 	 * Office Id
 	 */
@@ -43,17 +43,17 @@ public class PlannerLocationConstants {
 	public static final String JCR_TITLE_LOCATION = "location fragment";
 
 	/**
-	 * Forward Slash
+	 * Location Model
 	 */
 	public static final String LOCATION_MODEL = "/conf/efe/settings/dam/cfm/models/locations";
 
 	/**
-	 * Forward Slash
+	 * Master Node
 	 */
 	public static final String MASTER_NODE = "/jcr:content/data/master";
 
 	/**
-	 * Forward Slash
+	 * Emergency Closure
 	 */
 	public static final String EMERGENCY_CLOSURE = "emergencyClosure";
 
@@ -90,7 +90,7 @@ public class PlannerLocationConstants {
 	/**
 	 * Building Complex Name
 	 */
-	public static final String Building_COMPLEX_NAME = "buildingComplexName";
+	public static final String BUILDING_COMPLEX_NAME = "buildingComplexName";
 
 	/**
 	 * Address 1
@@ -180,7 +180,7 @@ public class PlannerLocationConstants {
 	/**
 	 * Root Folder Path
 	 */
-	public static final String ROOT_FOLDER_PATH = "/content/dam/efe/plannerlocation";
+	public static final String ROOT_FOLDER_PATH = "/content/dam/efe/cf/plannerlocation";
 
 	/**
 	 * Planner Folder Name
@@ -215,12 +215,12 @@ public class PlannerLocationConstants {
 	/**
 	 * Include In Adv2b
 	 */
-	public static final String INCLUDE_IN_ADV2B = "includeInADV2B";
+	public static final String INCLUDE_IN_ADV2B = "includeInAdv2b";
 
 	/**
 	 * Include In API PAYLOAD
 	 */
-	public static final String INCLUDE_IN_API_PAYLOAD = "includeInApiPayload";
+	public static final String INCLUDE_IN_API_PAYLOAD = "includeInApipayload";
 
 	/**
 	 * First Name Alias
@@ -596,7 +596,7 @@ public class PlannerLocationConstants {
 	 * Education
 	 */
 	public static final String EDUCATION = "education";
-
+	
 	/**
 	 * Education Fragment Prefix
 	 */

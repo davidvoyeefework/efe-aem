@@ -40,7 +40,7 @@ public class IndustryExamUtil {
 		try {
 			List<IndustryExams> industryExams = jsonObj.getIndustryExams();
 			String industryExamRootPath = FolderUtil.createFolder(childPathPlanner,
-					PlannerLocationConstants.INDUSTRY_EXAMS, resourceResolver);
+					PlannerLocationConstants.INDUSTRY_EXAMS,PlannerLocationConstants.INDUSTRY_EXAMS, resourceResolver);
 			int industryExamCount = 1;
 			for (IndustryExams industryExamObj : industryExams) {
 				String industryExamFragmentName = PlannerLocationConstants.INDUSTRY_EXAMS_PREFIX

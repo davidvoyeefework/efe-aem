@@ -228,14 +228,14 @@ class PlannerModelServicesImplTest {
 		int id = 179;
 		int educationCount = 1;
 
-		String rootPath = "/content/dam/efe/plannerlocation/planners";
-		String childPathPlanner = "/content/dam/efe/plannerlocation/planners/" + firstName + Integer.toString(id);
-		String educationRootPath = "/content/dam/efe/plannerlocation/planners/Johnathan179/education";
-		String industryExamRootPath = "/content/dam/efe/plannerlocation/planners/Johnathan179/industryExams";
-		String certificationsRootPath = "/content/dam/efe/plannerlocation/planners/Johnathan179/certifications";
-		String employmentHistoryRootPath = "/content/dam/efe/plannerlocation/planners/Johnathan179/employmentHistory";
-		String officesLocationsRootPath = "/content/dam/efe/plannerlocation/planners/Johnathan179/officesLocations";
-		String honorAwardrootPath = "/content/dam/efe/plannerlocation/planners/Johnathan179/honorAward";
+		String rootPath = "/content/dam/efe/cf/plannerlocation/planners";
+		String childPathPlanner = "/content/dam/efe/cf/plannerlocation/planners/" + firstName + Integer.toString(id);
+		String educationRootPath = "/content/dam/efe/cf/plannerlocation/planners/Johnathan179/education";
+		String industryExamRootPath = "/content/dam/efe/cf/plannerlocation/planners/Johnathan179/industryExams";
+		String certificationsRootPath = "/content/dam/efe/cf/plannerlocation/planners/Johnathan179/certifications";
+		String employmentHistoryRootPath = "/content/dam/efe/cf/plannerlocation/planners/Johnathan179/employmentHistory";
+		String officesLocationsRootPath = "/content/dam/efe/cf/plannerlocation/planners/Johnathan179/officesLocations";
+		String honorAwardrootPath = "/content/dam/efe/cf/plannerlocation/planners/Johnathan179/honorAward";
 
 		String fragmentName = PlannerLocationConstants.FRAGMENT_NAME_PREFIX + firstName
 				+ PlannerLocationConstants.UNDERSCORE + Integer.toString(id);
@@ -255,31 +255,31 @@ class PlannerModelServicesImplTest {
 		lenient().when(resourceResolver.getResource(PlannerLocationConstants.PLANNER_MODEL)).thenReturn(parentRsc);
 
 		lenient().when(FolderUtil.createFolder(PlannerLocationConstants.ROOT_FOLDER_PATH,
-				PlannerLocationConstants.PLANNER, resourceResolver)).thenReturn(rootPath);
+				PlannerLocationConstants.PLANNER,PlannerLocationConstants.PLANNER, resourceResolver)).thenReturn(rootPath);
 
-		lenient().when(FolderUtil.createFolder(rootPath, firstName + id, resourceResolver))
+		lenient().when(FolderUtil.createFolder(rootPath, Integer.toString(id), firstName + PlannerLocationConstants.UNDERSCORE + id, resourceResolver))
 				.thenReturn(childPathPlanner);
 
-		lenient().when(FolderUtil.createFolder(childPathPlanner, PlannerLocationConstants.EDUCATION, resourceResolver))
+		lenient().when(FolderUtil.createFolder(childPathPlanner, PlannerLocationConstants.EDUCATION, PlannerLocationConstants.EDUCATION, resourceResolver))
 				.thenReturn(educationRootPath);
 
 		lenient().when(
-				FolderUtil.createFolder(childPathPlanner, PlannerLocationConstants.INDUSTRY_EXAMS, resourceResolver))
+				FolderUtil.createFolder(childPathPlanner, PlannerLocationConstants.INDUSTRY_EXAMS, PlannerLocationConstants.INDUSTRY_EXAMS, resourceResolver))
 				.thenReturn(industryExamRootPath);
 
 		lenient().when(
-				FolderUtil.createFolder(childPathPlanner, PlannerLocationConstants.CERTIFICATIONS, resourceResolver))
+				FolderUtil.createFolder(childPathPlanner, PlannerLocationConstants.CERTIFICATIONS, PlannerLocationConstants.CERTIFICATIONS, resourceResolver))
 				.thenReturn(certificationsRootPath);
 
-		lenient().when(FolderUtil.createFolder(childPathPlanner, PlannerLocationConstants.EMPLOYMENT_HISTORY,
+		lenient().when(FolderUtil.createFolder(childPathPlanner, PlannerLocationConstants.EMPLOYMENT_HISTORY, PlannerLocationConstants.EMPLOYMENT_HISTORY,
 				resourceResolver)).thenReturn(employmentHistoryRootPath);
 
 		lenient().when(
-				FolderUtil.createFolder(childPathPlanner, PlannerLocationConstants.OFFICE_LOCATIONS, resourceResolver))
+				FolderUtil.createFolder(childPathPlanner, PlannerLocationConstants.OFFICE_LOCATIONS, PlannerLocationConstants.OFFICE_LOCATIONS, resourceResolver))
 				.thenReturn(officesLocationsRootPath);
 
 		lenient()
-				.when(FolderUtil.createFolder(childPathPlanner, PlannerLocationConstants.HONOR_AWARD, resourceResolver))
+				.when(FolderUtil.createFolder(childPathPlanner, PlannerLocationConstants.HONOR_AWARD, PlannerLocationConstants.HONOR_AWARD, resourceResolver))
 				.thenReturn(honorAwardrootPath);
 
 		lenient().when(resourceResolver.getResource(PlannerLocationConstants.PLANNER_MODEL))
