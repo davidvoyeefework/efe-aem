@@ -39,6 +39,13 @@ public class ResourceUtil {
 		}
 	}
 	
+	/**
+	 * Retrieves a specific property from a resource identified by its path, using a given ResourceResolver.
+	 * @param resourceResolver The ResourceResolver to use to access the resource.
+	 * @param resourcePath The path of the resource to retrieve the property from.
+	 * @param propertyName The name of the property to retrieve.
+	 * @return The value of the requested property as a String, or null if the resource or property cannot be found.
+	 */
 	public static String getProperty(ResourceResolver resourceResolver, String resourcePath, String propertyName) {	
 		Resource resource = resourceResolver.getResource(resourcePath);
 		if (Objects.nonNull(resource)) {
@@ -48,6 +55,12 @@ public class ResourceUtil {
 		return null;		
 	}
 	
+	/**
+	 * Returns an array of child resource names for the given resource path using the provided {@link ResourceResolver}.
+	 * @param resourcePath the path of the parent resource whose children are to be retrieved
+	 * @param resourceResolver the {@link ResourceResolver} instance to be used for retrieving the resources
+	 * @return an array of child resource names for the given parent resource path; an empty array is returned if no child resources exist
+	 */
 	public static String[] getResourceChildNames(String resourcePath,
 			ResourceResolver resourceResolver) {
 		List<String> businessHoursResources = new ArrayList<>();

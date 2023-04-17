@@ -170,7 +170,6 @@ public class LocationModelServicesImpl implements LocationModelServices {
 		try {
 			NodePropertyManagerUtil.setPropertyIfNonNull(locationMasterNode, PlannerLocationConstants.EMERGENCY_CLOSURE,
 					jsonObj.isEmergencyClosure());
-
 			NodePropertyManagerUtil.setPropertyIfNonNull(locationMasterNode, PlannerLocationConstants.TEST_LOCATION,
 					jsonObj.isTestLocation());
 			NodePropertyManagerUtil.setPropertyIfNonNull(locationMasterNode, PlannerLocationConstants.APPOINTMENT_ONLY,
@@ -232,6 +231,13 @@ public class LocationModelServicesImpl implements LocationModelServices {
 		}
 	}
 
+	/**
+	 * This method creates an array of strings representing planner fragments based on the given LocationResponse object and
+     * ResourceResolver.
+	 * @param jsonObj
+	 * @param resourceResolver
+	 * @return an array of strings representing the planner fragments for the given location
+	 */
 	private String[] createPlannerFragmentReference(LocationResponse jsonObj, ResourceResolver resourceResolver) {
 		List<String> planners = jsonObj.getPlanners();
 		String[] plannersStringArray = new String[planners.size()];
