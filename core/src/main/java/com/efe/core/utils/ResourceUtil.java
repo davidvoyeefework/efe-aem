@@ -54,6 +54,19 @@ public class ResourceUtil {
 		}
 		return null;		
 	}
+
+	public static String[] getProperties(ResourceResolver resourceResolver, String resourcePath, String propertyName) {
+		List<String> results = new ArrayList<>();
+		Resource resource = resourceResolver.getResource(resourcePath);
+		if (Objects.nonNull(resource)) {
+			ValueMap properties = resource.adaptTo(ValueMap.class);
+			String[] value = properties.get("planners", new String[] {});
+			for(String planner :value){
+				results.add(planner);
+			}
+		}
+		return  results.toArray(new String[0]);
+	}
 	
 	/**
 	 * Returns an array of child resource names for the given resource path using the provided {@link ResourceResolver}.
