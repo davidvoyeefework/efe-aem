@@ -36,15 +36,15 @@ public class EducationPlannerUtil {
 			List<Education> education = jsonObj.getEducation();
 
 			String educationRootPath = FolderUtil.createFolder(childPathPlanner, PlannerLocationConstants.EDUCATION,
-					resourceResolver);
+					PlannerLocationConstants.EDUCATION, resourceResolver);
 			int educationCount = 1;
 			for (Education eduObj : education) {
 
 				String educationFragmentName = PlannerLocationConstants.EDUCATION_FRAGMENT_PREFIX
 						+ Integer.toString(educationCount);
-				Resource educationexistingFragement = resourceResolver.getResource(
+				Resource educationExistingFragement = resourceResolver.getResource(
 						educationRootPath + PlannerLocationConstants.FORWARD_SLASH + educationFragmentName);
-				if (Objects.isNull(educationexistingFragement)) {
+				if (Objects.isNull(educationExistingFragement)) {
 
 					FragmentUtil.createFragment(PlannerLocationConstants.EDUCATION_MODEL, educationRootPath,
 							educationFragmentName, PlannerLocationConstants.JCR_TITLE_EDUCATION, resourceResolver);

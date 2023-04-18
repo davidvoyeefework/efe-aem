@@ -297,23 +297,28 @@
                             valueType="string">
                             <granite:data jcr:primaryType="nt:unstructured"/>
                         </googleReviewLink>
-                        <planners
+						<planners
                             jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                            sling:resourceType="dam/cfm/models/editor/components/fragmentreference/multifield"
+                            allowNew="{Boolean}true"
                             fieldLabel="Planners"
+                            filter="hierarchy"
+                            fragmentmodelreference="/conf/efe/settings/dam/cfm/models/planners"
                             listOrder="1"
-                            maxlength="255"
-                            metaType="text-single"
+                            metaType="fragment-reference"
                             name="planners"
+                            nameSuffix="contentReference"
                             renderReadOnly="false"
+                            rootPath="/content/dam/efe"
                             showEmptyInReadOnly="true"
-                            valueType="string[]">
+                            valueType="string/content-fragment[]">
                             <field
                                 jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                maxlength="255"
+                                sling:resourceType="dam/cfm/models/editor/components/fragmentreference"
+                                fragmentmodelreference="/conf/efe/settings/dam/cfm/models/planners"
                                 name="planners"
-                                renderReadOnly="false">
+                                renderReadOnly="false"
+                                rootPath="/content/dam/efe">
                                 <granite:data jcr:primaryType="nt:unstructured"/>
                             </field>
                             <granite:data jcr:primaryType="nt:unstructured"/>
@@ -330,23 +335,30 @@
                             valueType="boolean">
                             <granite:data jcr:primaryType="nt:unstructured"/>
                         </overrideCorporateOfficehours>
-                        <businessHour
+                        <businessHours
                             jcr:primaryType="nt:unstructured"
-                            sling:resourceType="dam/cfm/models/editor/components/fragmentreference"
+                            sling:resourceType="dam/cfm/models/editor/components/fragmentreference/multifield"
                             allowNew="{Boolean}true"
-                            fieldLabel="Business Hour"
+                            fieldLabel="Business Hours"
                             filter="hierarchy"
                             fragmentmodelreference="/conf/efe/settings/dam/cfm/models/businesshour"
-                            listOrder="21"
+                            listOrder="1"
                             metaType="fragment-reference"
-                            name="businessHour"
+                            name="businessHours"
                             nameSuffix="contentReference"
                             renderReadOnly="false"
                             showEmptyInReadOnly="true"
-                            valueType="string/content-fragment">
-                            <field jcr:primaryType="nt:unstructured"/>
+                            valueType="string/content-fragment[]">
+                            <field
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="dam/cfm/models/editor/components/fragmentreference"
+                                fragmentmodelreference="/conf/efe/settings/dam/cfm/models/businesshour"
+                                name="businessHours"
+                                renderReadOnly="false">
+                                <granite:data jcr:primaryType="nt:unstructured"/>
+                            </field>
                             <granite:data jcr:primaryType="nt:unstructured"/>
-                        </businessHour>
+                        </businessHours>
                         <lastUpdated
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

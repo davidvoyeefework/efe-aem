@@ -63,7 +63,7 @@ class SlingJobTest {
 	@BeforeEach
 	void setUp() throws Exception {
 
-		final Map<String, Object> subServiceUser = new ConcurrentHashMap<>();
+		final Map<String, Object> subServiceUser = new ConcurrentHashMap<>(); 
 		subServiceUser.put(ResourceResolverFactory.SUBSERVICE, "efe-service-user");
 
 		aemContext.registerService(ResourceResolver.class, resourceResolver);

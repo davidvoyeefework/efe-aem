@@ -17,6 +17,7 @@ import org.slf4j.LoggerFactory;
 
 import com.adobe.cq.dam.cfm.ContentFragmentException;
 import com.adobe.cq.dam.cfm.FragmentTemplate;
+import com.day.cq.commons.jcr.JcrConstants;
 import com.efe.core.bean.BusinessHours;
 import com.efe.core.bean.LocationResponse;
 import com.efe.core.constants.PlannerLocationConstants;
@@ -25,6 +26,7 @@ import com.efe.core.services.PlannerApiService;
 import com.efe.core.services.RestService;
 import com.efe.core.utils.FolderUtil;
 import com.efe.core.utils.NodePropertyManagerUtil;
+import com.efe.core.utils.ResourceUtil;
 import com.google.gson.Gson;
 
 /**
@@ -89,12 +91,31 @@ public class LocationModelServicesImpl implements LocationModelServices {
 		LocationResponse[] jsonElement = gson.fromJson(jsonObjectLocation, LocationResponse[].class);
 
 		String rootPath = FolderUtil.createFolder(PlannerLocationConstants.ROOT_FOLDER_PATH,
-				PlannerLocationConstants.LOCATIONS, resourceResolver);
+				PlannerLocationConstants.LOCATIONS, PlannerLocationConstants.LOCATIONS, resourceResolver);
 		for (LocationResponse jsonObj : jsonElement) {
-
 			String officeId = jsonObj.getOfficeId();
-			String officeName = jsonObj.getOfficeName();
-			String childPathLocation = FolderUtil.createFolder(rootPath, officeName + officeId, resourceResolver);
+			String stateFolderName = jsonObj.getState().toLowerCase();
+			String cityFolderName = jsonObj.getCity().toLowerCase();
+			String officeName = jsonObj.getOfficeName().toLowerCase();
+			String stateFolderPath = rootPath + PlannerLocationConstants.FORWARD_SLASH + stateFolderName;
+			
+			//validation of json data
+			if (stateFolderName.trim().isEmpty() || cityFolderName.trim().isEmpty()) {
+				continue;
+			}
+			Resource childResource = resourceResolver.getResource(stateFolderPath);
+			if (Objects.isNull(childResource)) {
+				stateFolderPath = FolderUtil.createFolder(rootPath, stateFolderName, stateFolderName, resourceResolver);
+			}
+
+			String childPathLocation = FolderUtil.createFolder(stateFolderPath, cityFolderName, cityFolderName,
+					resourceResolver);
+
+			// create business hrs folder first then create fragments as a dependency on
+			// business hours
+			createBusinessHoursFragmentLocation(childPathLocation, jsonObj, resourceResolver);
+
+			// start creating the fragment folder
 			String fragmentName = PlannerLocationConstants.FRAGMENT_NAME_PREFIX + officeName
 					+ PlannerLocationConstants.UNDERSCORE + officeId;
 
@@ -110,7 +131,6 @@ public class LocationModelServicesImpl implements LocationModelServices {
 				Node locationMasterNode = locationMasterResource.adaptTo(Node.class);
 				updateLocationFragmentProperties(resourceResolver, locationMasterNode, jsonObj, childPathLocation);
 			}
-
 		}
 	}
 
@@ -121,7 +141,7 @@ public class LocationModelServicesImpl implements LocationModelServices {
 			ResourceResolver resourceResolver) {
 		List<BusinessHours> businessHours = jsonObj.getBusinessHours();
 		String businessHoursRootPath = FolderUtil.createFolder(childPathLocation,
-				PlannerLocationConstants.BUSINESS_HOURS, resourceResolver);
+				PlannerLocationConstants.BUSINESS_HOURS, PlannerLocationConstants.BUSINESS_HOURS, resourceResolver);
 		int businessHoursCount = 1;
 		for (BusinessHours businessHoursObj : businessHours) {
 			String businessHoursFragmentName = PlannerLocationConstants.BUSINESS_HOURS_FRAGMENT_PREFIX
@@ -129,7 +149,6 @@ public class LocationModelServicesImpl implements LocationModelServices {
 			Resource businessHoursExistingFragement = resourceResolver.getResource(
 					businessHoursRootPath + PlannerLocationConstants.FORWARD_SLASH + businessHoursFragmentName);
 			if (Objects.isNull(businessHoursExistingFragement)) {
-
 				createFragment(PlannerLocationConstants.BUSINESS_HOUR_MODEL, businessHoursRootPath,
 						businessHoursFragmentName, PlannerLocationConstants.BUSINESS_HOUR_MODEL_DESCRIPTION,
 						resourceResolver);
@@ -150,7 +169,6 @@ public class LocationModelServicesImpl implements LocationModelServices {
 		try {
 			NodePropertyManagerUtil.setPropertyIfNonNull(locationMasterNode, PlannerLocationConstants.EMERGENCY_CLOSURE,
 					jsonObj.isEmergencyClosure());
-
 			NodePropertyManagerUtil.setPropertyIfNonNull(locationMasterNode, PlannerLocationConstants.TEST_LOCATION,
 					jsonObj.isTestLocation());
 			NodePropertyManagerUtil.setPropertyIfNonNull(locationMasterNode, PlannerLocationConstants.APPOINTMENT_ONLY,
@@ -170,7 +188,7 @@ public class LocationModelServicesImpl implements LocationModelServices {
 			NodePropertyManagerUtil.setPropertyIfNonNull(locationMasterNode, PlannerLocationConstants.MOBILE_IMAGE,
 					jsonObj.getMobileImage());
 			NodePropertyManagerUtil.setPropertyIfNonNull(locationMasterNode,
-					PlannerLocationConstants.Building_COMPLEX_NAME, jsonObj.getBuildingComplexName());
+					PlannerLocationConstants.BUILDING_COMPLEX_NAME, jsonObj.getBuildingComplexName());
 			NodePropertyManagerUtil.setPropertyIfNonNull(locationMasterNode, PlannerLocationConstants.ADDRESS_1,
 					jsonObj.getAddress1());
 			NodePropertyManagerUtil.setPropertyIfNonNull(locationMasterNode, PlannerLocationConstants.ADDRESS_2,
@@ -198,12 +216,42 @@ public class LocationModelServicesImpl implements LocationModelServices {
 			NodePropertyManagerUtil.setPropertyIfNonNull(locationMasterNode, PlannerLocationConstants.LAST_UPDATED,
 					jsonObj.getLastUpdated());
 
-			String[] plannersStringArray = jsonObj.getPlanners().toArray(new String[0]);
-			locationMasterNode.setProperty(PlannerLocationConstants.PLANNERS, plannersStringArray);
-			createBusinessHoursFragmentLocation(childPathLocation, jsonObj, resourceResolver);
+			locationMasterNode.setProperty(PlannerLocationConstants.PLANNERS,
+					createPlannerFragmentReference(jsonObj, resourceResolver));
+
+			locationMasterNode
+					.setProperty(PlannerLocationConstants.BUSINESS_HOURS,
+							ResourceUtil.getResourceChildNames(childPathLocation
+									+ PlannerLocationConstants.FORWARD_SLASH + PlannerLocationConstants.BUSINESS_HOURS,
+									resourceResolver));
+
 		} catch (RepositoryException e) {
 			LOGGER.error("RepositoryException occurred.", e);
 		}
+	}
+
+	/**
+	 * This method creates an array of strings representing planner fragments based on the given LocationResponse object and
+     * ResourceResolver.
+	 * @param jsonObj
+	 * @param resourceResolver
+	 * @return an array of strings representing the planner fragments for the given location
+	 */
+	private String[] createPlannerFragmentReference(LocationResponse jsonObj, ResourceResolver resourceResolver) {
+		List<String> planners = jsonObj.getPlanners();
+		String[] plannersStringArray = new String[planners.size()];
+		int i = 0;
+		for (String id : planners) {
+			String refPath = PlannerLocationConstants.ROOT_FOLDER_PATH + PlannerLocationConstants.FORWARD_SLASH
+					+ PlannerLocationConstants.PLANNER + PlannerLocationConstants.FORWARD_SLASH + id;
+			String fragmentNameSuffix = ResourceUtil.getProperty(resourceResolver, refPath, JcrConstants.JCR_TITLE);
+			if (Objects.nonNull(fragmentNameSuffix)) {
+				plannersStringArray[i] = refPath + PlannerLocationConstants.FORWARD_SLASH
+						+ PlannerLocationConstants.FRAGMENT_NAME_PREFIX + fragmentNameSuffix;
+				i++;
+			}
+		}
+		return plannersStringArray;
 	}
 
 	/**
@@ -216,7 +264,6 @@ public class LocationModelServicesImpl implements LocationModelServices {
 					.getResource(businessHoursRootPath + PlannerLocationConstants.FORWARD_SLASH
 							+ businessHoursFragmentName + PlannerLocationConstants.MASTER_NODE);
 			Node locationBusinessHoursNode = locationBusinessHoursResource.adaptTo(Node.class);
-
 			NodePropertyManagerUtil.setPropertyIfNonNull(locationBusinessHoursNode,
 					PlannerLocationConstants.CLOSING_HOURS, businessHoursObj.getClosingHours());
 			NodePropertyManagerUtil.setPropertyIfNonNull(locationBusinessHoursNode, PlannerLocationConstants.DAY,

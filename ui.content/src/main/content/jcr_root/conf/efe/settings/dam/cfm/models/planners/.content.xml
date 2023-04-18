@@ -262,14 +262,14 @@
                             name="primaryOffice"
                             nameSuffix="contentReference"
                             renderReadOnly="false"
+                            rootPath="/content/dam/efe"
                             showEmptyInReadOnly="true"
                             valueType="string/content-fragment">
-                            <field jcr:primaryType="nt:unstructured"/>
                             <granite:data jcr:primaryType="nt:unstructured"/>
                         </primaryOffice>
                         <officesLocations
                             jcr:primaryType="nt:unstructured"
-                            sling:resourceType="dam/cfm/models/editor/components/fragmentreference"
+                            sling:resourceType="dam/cfm/models/editor/components/fragmentreference/multifield"
                             allowNew="{Boolean}true"
                             fieldLabel="Offices Locations"
                             filter="hierarchy"
@@ -280,13 +280,20 @@
                             nameSuffix="contentReference"
                             renderReadOnly="false"
                             showEmptyInReadOnly="true"
-                            valueType="string/content-fragment">
-                            <field jcr:primaryType="nt:unstructured"/>
+                            valueType="string/content-fragment[]">
+                            <field
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="dam/cfm/models/editor/components/fragmentreference"
+                                fragmentmodelreference="/conf/efe/settings/dam/cfm/models/address"
+                                name="officesLocations"
+                                renderReadOnly="false">
+                                <granite:data jcr:primaryType="nt:unstructured"/>
+                            </field>
                             <granite:data jcr:primaryType="nt:unstructured"/>
                         </officesLocations>
                         <education
                             jcr:primaryType="nt:unstructured"
-                            sling:resourceType="dam/cfm/models/editor/components/fragmentreference"
+                            sling:resourceType="dam/cfm/models/editor/components/fragmentreference/multifield"
                             allowNew="{Boolean}true"
                             fieldLabel="Education"
                             filter="hierarchy"
@@ -297,8 +304,15 @@
                             nameSuffix="contentReference"
                             renderReadOnly="false"
                             showEmptyInReadOnly="true"
-                            valueType="string/content-fragment">
-                            <field jcr:primaryType="nt:unstructured"/>
+                            valueType="string/content-fragment[]">
+                            <field
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="dam/cfm/models/editor/components/fragmentreference"
+                                fragmentmodelreference="/conf/efe/settings/dam/cfm/models/education"
+                                name="education"
+                                renderReadOnly="false">
+                                <granite:data jcr:primaryType="nt:unstructured"/>
+                            </field>
                             <granite:data jcr:primaryType="nt:unstructured"/>
                         </education>
                         <taxPlanner
@@ -351,7 +365,7 @@
                         </insurancePlanning>
                         <honorAward
                             jcr:primaryType="nt:unstructured"
-                            sling:resourceType="dam/cfm/models/editor/components/fragmentreference"
+                            sling:resourceType="dam/cfm/models/editor/components/fragmentreference/multifield"
                             allowNew="{Boolean}true"
                             fieldLabel="Honor Award"
                             filter="hierarchy"
@@ -362,8 +376,15 @@
                             nameSuffix="contentReference"
                             renderReadOnly="false"
                             showEmptyInReadOnly="true"
-                            valueType="string/content-fragment">
-                            <field jcr:primaryType="nt:unstructured"/>
+                            valueType="string/content-fragment[]">
+                            <field
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="dam/cfm/models/editor/components/fragmentreference"
+                                fragmentmodelreference="/conf/efe/settings/dam/cfm/models/honor-award"
+                                name="honorAward"
+                                renderReadOnly="false">
+                                <granite:data jcr:primaryType="nt:unstructured"/>
+                            </field>
                             <granite:data jcr:primaryType="nt:unstructured"/>
                         </honorAward>
                         <funFacts
@@ -381,7 +402,7 @@
                         </funFacts>
                         <employmentHistory
                             jcr:primaryType="nt:unstructured"
-                            sling:resourceType="dam/cfm/models/editor/components/fragmentreference"
+                            sling:resourceType="dam/cfm/models/editor/components/fragmentreference/multifield"
                             allowNew="{Boolean}true"
                             fieldLabel="Employment History"
                             filter="hierarchy"
@@ -392,13 +413,20 @@
                             nameSuffix="contentReference"
                             renderReadOnly="false"
                             showEmptyInReadOnly="true"
-                            valueType="string/content-fragment">
-                            <field jcr:primaryType="nt:unstructured"/>
+                            valueType="string/content-fragment[]">
+                            <field
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="dam/cfm/models/editor/components/fragmentreference"
+                                fragmentmodelreference="/conf/efe/settings/dam/cfm/models/employment-history"
+                                name="employmentHistory"
+                                renderReadOnly="false">
+                                <granite:data jcr:primaryType="nt:unstructured"/>
+                            </field>
                             <granite:data jcr:primaryType="nt:unstructured"/>
                         </employmentHistory>
                         <certifications
                             jcr:primaryType="nt:unstructured"
-                            sling:resourceType="dam/cfm/models/editor/components/fragmentreference"
+                            sling:resourceType="dam/cfm/models/editor/components/fragmentreference/multifield"
                             allowNew="{Boolean}true"
                             fieldLabel="Certifications"
                             filter="hierarchy"
@@ -409,8 +437,15 @@
                             nameSuffix="contentReference"
                             renderReadOnly="false"
                             showEmptyInReadOnly="true"
-                            valueType="string/content-fragment">
-                            <field jcr:primaryType="nt:unstructured"/>
+                            valueType="string/content-fragment[]">
+                            <field
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="dam/cfm/models/editor/components/fragmentreference"
+                                fragmentmodelreference="/conf/efe/settings/dam/cfm/models/certification"
+                                name="certifications"
+                                renderReadOnly="false">
+                                <granite:data jcr:primaryType="nt:unstructured"/>
+                            </field>
                             <granite:data jcr:primaryType="nt:unstructured"/>
                         </certifications>
                         <investmentManagement
@@ -538,7 +573,7 @@
                         </linkedinUrl>
                         <industryExams
                             jcr:primaryType="nt:unstructured"
-                            sling:resourceType="dam/cfm/models/editor/components/fragmentreference"
+                            sling:resourceType="dam/cfm/models/editor/components/fragmentreference/multifield"
                             allowNew="{Boolean}true"
                             fieldLabel="Industry Exams"
                             filter="hierarchy"
@@ -549,8 +584,15 @@
                             nameSuffix="contentReference"
                             renderReadOnly="false"
                             showEmptyInReadOnly="true"
-                            valueType="string/content-fragment">
-                            <field jcr:primaryType="nt:unstructured"/>
+                            valueType="string/content-fragment[]">
+                            <field
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="dam/cfm/models/editor/components/fragmentreference"
+                                fragmentmodelreference="/conf/efe/settings/dam/cfm/models/industry-exam"
+                                name="industryExams"
+                                renderReadOnly="false">
+                                <granite:data jcr:primaryType="nt:unstructured"/>
+                            </field>
                             <granite:data jcr:primaryType="nt:unstructured"/>
                         </industryExams>
                         <mostInspirationalMoment
@@ -619,7 +661,7 @@
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                             fieldLabel="Last Updated"
-                            listOrder="21"
+                            listOrder="1"
                             maxlength="255"
                             metaType="text-single"
                             name="lastUpdated"

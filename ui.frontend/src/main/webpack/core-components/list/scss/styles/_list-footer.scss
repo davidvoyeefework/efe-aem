@@ -1,6 +1,6 @@
 .cmp-list--footer {
   margin: 41px 0;
-  @include media('<=phone-m') {
+  @include media('<=tablet-lg') {
       margin: 20px 0;
   }
   .cmp-list {

@@ -35,7 +35,8 @@ public class EmploymentHistoryUtil {
 			List<EmploymentHistory> employmentHistory = jsonObj.getEmploymentHistory();
 
 			String employmentHistoryRootPath = FolderUtil.createFolder(childPathPlanner,
-					PlannerLocationConstants.EMPLOYMENT_HISTORY, resourceResolver);
+					PlannerLocationConstants.EMPLOYMENT_HISTORY, PlannerLocationConstants.EMPLOYMENT_HISTORY,
+					resourceResolver);
 			int employmentHistoryCount = 1;
 			for (EmploymentHistory employmentHistoryObj : employmentHistory) {
 				String employmentHistoryFragmentName = PlannerLocationConstants.EMPLOYMENT_HISTORY_PREFIX

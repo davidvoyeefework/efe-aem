@@ -27,6 +27,7 @@ import com.efe.core.utils.HonorAwardUtil;
 import com.efe.core.utils.IndustryExamUtil;
 import com.efe.core.utils.NodePropertyManagerUtil;
 import com.efe.core.utils.OfficeLocationsUtil;
+import com.efe.core.utils.ResourceUtil;
 import com.google.gson.Gson;
 
 /**
@@ -73,15 +74,28 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 		PlannerResponse[] jsonElement = gson.fromJson(jsonObjectPlanner, PlannerResponse[].class);
 
 		String rootPath = FolderUtil.createFolder(PlannerLocationConstants.ROOT_FOLDER_PATH,
-				PlannerLocationConstants.PLANNER, resourceResolver);
+				PlannerLocationConstants.PLANNER, PlannerLocationConstants.PLANNER, resourceResolver);
 		for (PlannerResponse jsonObj : jsonElement) {
 
-			String firstName = jsonObj.getFirstName();
+			String firstName = jsonObj.getFirstName().toLowerCase();
 			int id = jsonObj.getId();
 
-			String childPathPlanner = FolderUtil.createFolder(rootPath, firstName + Integer.toString(id),
-					resourceResolver);
+			String childPathPlanner = FolderUtil.createFolder(rootPath, Integer.toString(id),
+					firstName + PlannerLocationConstants.UNDERSCORE + Integer.toString(id), resourceResolver);
 
+			// create child folder first then create fragments as a dependency on
+			// child folder
+			EducationPlannerUtil.createEducationFragmentPlanner(childPathPlanner, jsonObj, resourceResolver);
+			IndustryExamUtil.createIndustryExamFragmentPlanner(childPathPlanner, jsonObj, resourceResolver);
+			HonorAwardUtil.createHonorAwardFragmentPlanner(childPathPlanner, jsonObj, resourceResolver);
+			CertificationsUtil.createCertificationsFragmentPlanner(childPathPlanner, jsonObj, resourceResolver);
+			EmploymentHistoryUtil.createEmploymentHistoryFragmentPlanner(childPathPlanner, jsonObj, resourceResolver);
+			OfficeLocationsUtil.createOfficesLocationsFragmentPlanner(childPathPlanner, jsonObj, resourceResolver);
+
+			// create content fragment for primary office
+			createPrimaryOfficeFragmentPlanner(childPathPlanner, jsonObj, firstName, id, resourceResolver);
+
+			// start creating the planner fragment
 			String fragmentName = PlannerLocationConstants.FRAGMENT_NAME_PREFIX + firstName.trim()
 					+ PlannerLocationConstants.UNDERSCORE + Integer.toString(id);
 
@@ -96,14 +110,8 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 					+ PlannerLocationConstants.FORWARD_SLASH + fragmentName + PlannerLocationConstants.MASTER_NODE);
 			Node plannerMasterNode = plannerMasterResource.adaptTo(Node.class);
 
-			updatePlannerFragmentProperties(plannerMasterNode, jsonObj);
-			createPrimaryOfficeFragmentPlanner(childPathPlanner, jsonObj, firstName, id, resourceResolver);
-			EducationPlannerUtil.createEducationFragmentPlanner(childPathPlanner, jsonObj, resourceResolver);
-			IndustryExamUtil.createIndustryExamFragmentPlanner(childPathPlanner, jsonObj, resourceResolver);
-			HonorAwardUtil.createHonorAwardFragmentPlanner(childPathPlanner, jsonObj, resourceResolver);
-			CertificationsUtil.createCertificationsFragmentPlanner(childPathPlanner, jsonObj, resourceResolver);
-			EmploymentHistoryUtil.createEmploymentHistoryFragmentPlanner(childPathPlanner, jsonObj, resourceResolver);
-			OfficeLocationsUtil.createOfficesLocationsFragmentPlanner(childPathPlanner, jsonObj, resourceResolver);
+			updatePlannerFragmentProperties(plannerMasterNode, jsonObj, childPathPlanner, resourceResolver);
+			updatePlannerFragmentReferences(plannerMasterNode, childPathPlanner, firstName, id, resourceResolver);
 
 		}
 	}
@@ -111,7 +119,8 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 	/**
 	 * This method is used to update Fragment for Planner
 	 */
-	private void updatePlannerFragmentProperties(Node plannerMasterNode, PlannerResponse jsonObj) {
+	private void updatePlannerFragmentProperties(Node plannerMasterNode, PlannerResponse jsonObj,
+			String childPathPlanner, ResourceResolver resourceResolver) {
 
 		try {
 
@@ -254,6 +263,45 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 		}
 	}
 
+	private void updatePlannerFragmentReferences(Node plannerMasterNode, String childPathPlanner, String firstName,
+			int id, ResourceResolver resourceResolver) {
+		// updating content fragment reference
+		try {
+			String primaryOfficeFragmentName = PlannerLocationConstants.FRAGMENT_NAME_PREFIX + firstName
+					+ PlannerLocationConstants.UNDERSCORE + Integer.toString(id)
+					+ PlannerLocationConstants.PRIMARY_OFFICE_POSTFIX;
+
+			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode, PlannerLocationConstants.PRIMARY_OFFICE,
+					childPathPlanner + PlannerLocationConstants.FORWARD_SLASH + primaryOfficeFragmentName);
+
+			plannerMasterNode.setProperty(PlannerLocationConstants.EDUCATION, ResourceUtil.getResourceChildNames(
+					childPathPlanner + PlannerLocationConstants.FORWARD_SLASH + PlannerLocationConstants.EDUCATION,
+					resourceResolver));
+
+			plannerMasterNode.setProperty(PlannerLocationConstants.INDUSTRY_EXAMS, ResourceUtil.getResourceChildNames(
+					childPathPlanner + PlannerLocationConstants.FORWARD_SLASH + PlannerLocationConstants.INDUSTRY_EXAMS,
+					resourceResolver));
+
+			plannerMasterNode.setProperty(PlannerLocationConstants.HONOR_AWARD, ResourceUtil.getResourceChildNames(
+					childPathPlanner + PlannerLocationConstants.FORWARD_SLASH + PlannerLocationConstants.HONOR_AWARD,
+					resourceResolver));
+
+			plannerMasterNode.setProperty(PlannerLocationConstants.CERTIFICATIONS, ResourceUtil.getResourceChildNames(
+					childPathPlanner + PlannerLocationConstants.FORWARD_SLASH + PlannerLocationConstants.CERTIFICATIONS,
+					resourceResolver));
+
+			plannerMasterNode.setProperty(PlannerLocationConstants.EMPLOYMENT_HISTORY,
+					ResourceUtil.getResourceChildNames(childPathPlanner + PlannerLocationConstants.FORWARD_SLASH
+							+ PlannerLocationConstants.EMPLOYMENT_HISTORY, resourceResolver));
+
+			plannerMasterNode.setProperty(PlannerLocationConstants.OFFICE_LOCATIONS,
+					ResourceUtil.getResourceChildNames(childPathPlanner + PlannerLocationConstants.FORWARD_SLASH
+							+ PlannerLocationConstants.OFFICE_LOCATIONS, resourceResolver));
+		} catch (RepositoryException e) {
+			LOGGER.error("RepositoryException occured.", e);
+		}
+	}
+
 	/**
 	 * This method is used to create and update Primary Office Fragment
 	 * 
@@ -310,5 +358,4 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 			LOGGER.error("RepositoryException occured.", e);
 		}
 	}
-
 }
