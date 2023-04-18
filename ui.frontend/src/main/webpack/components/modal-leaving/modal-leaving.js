@@ -38,12 +38,12 @@ dialog.on('show', function (dialogEl, event) {
                 dialog.show();
                 document.querySelector('.cmp-modal__button-secondary').focus();
                 trapFocus(modalEle);
+                document.querySelector('.cmp-modal__button-primary').addEventListener("click", (ev)=>{
+                  window.open(getLinkHref);
+                  dialog.hide();
+                });
         });
         }
-        document.querySelector('.cmp-modal__button-primary').addEventListener("click", (ev)=>{
-          window.open(getLinkHref);
-          dialog.hide();
-        });
         document.querySelector('.cmp-modal__button-secondary').addEventListener("click", (ev)=>{
           dialog.hide();
         });
