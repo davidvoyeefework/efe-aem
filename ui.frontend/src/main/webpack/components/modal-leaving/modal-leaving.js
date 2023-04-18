@@ -31,7 +31,8 @@ dialog.on('show', function (dialogEl, event) {
         const getLinkHref = extlink.getAttribute("href")
         //console.log(extlink.getAttribute("href"))
         const checkExlcusionLink = exlusionExtlinks.includes(getLinkHref)
-        if(linkHref !== domainHref && !checkExlcusionLink) {
+        if(linkHref !== domainHref && !checkExlcusionLink && 
+          !getLinkHref.match(/^tel\:/) && !getLinkHref.match(/^mailto\:/)) {
             extlink.addEventListener("click", (e)=>{
                 e.preventDefault();
                 dialog.show();
