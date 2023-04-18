@@ -8,10 +8,10 @@
 Include conf.d/rewrites/default_rewrite.rules
 
 # rewrite for root redirect
-RewriteRule ^/?$ /content/${CONTENT_FOLDER_NAME}/us/en/corp/home.html [PT,L]
+RewriteRule ^/?$ /content/${CONTENT_FOLDER_NAME}/us/en/home.html [PT,L]
 
 #Shorten the URL
-RewriteRule ^/content/efe/us/en/corp/(.*).html$ $1 [R=301]
+RewriteRule ^/content/efe/us/en/(.*).html$ $1 [R=301]
 RewriteRule ^(.+)/$ $1
 
 RewriteCond %{REQUEST_URI} !^/apps
@@ -25,4 +25,4 @@ RewriteCond %{REQUEST_URI} !^/system
 RewriteCond %{REQUEST_URI} !^/tmp
 RewriteCond %{REQUEST_URI} !^/var
 RewriteCond %{REQUEST_URI} !(.jpe?g|.png|.svg|.xml|.pdf)$
-RewriteRule ^/(.*)$ /content/${CONTENT_FOLDER_NAME}/us/en/corp/$1.html [PT,L]
+RewriteRule ^/(.*)$ /content/${CONTENT_FOLDER_NAME}/us/en/$1.html [PT,L]
