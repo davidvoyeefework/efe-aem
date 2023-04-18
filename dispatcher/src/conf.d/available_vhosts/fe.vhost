@@ -5,7 +5,7 @@ Include conf.d/variables/custom.vars
 <VirtualHost *:80>
 	ServerName	"publish"
 	# Put names of which domains are used for your published site/content here
-	ServerAlias	 "*.efe.com"
+	ServerAlias	 "*.fe.com"
 	# Use a document root that matches the one in conf.dispatcher.d/default.farm
 	DocumentRoot "${DOCROOT}"
 	# URI dereferencing algorithm is applied at Sling's level, do not decode parameters here
@@ -47,9 +47,27 @@ Include conf.d/variables/custom.vars
 	</IfModule>
 	<IfModule mod_rewrite.c>
 		RewriteEngine	on
-		#Restrict fe paths
-		RewriteRule ^/content/fe - [R=404,L,NC]
-		Include conf.d/rewrites/rewrite.rules
+		#Restrict efe paths
+		RewriteRule ^/content/efe - [R=404,L,NC]
+		# rewrite for root redirect
+		RewriteRule ^/?$ /content/${CONTENT_FOLDER_NAME_FE}/us/en/home.html [PT,L]
+
+		#Shorten the URL
+		RewriteRule ^/content/fe/us/en/(.*).html$ $1 [R=301]
+		RewriteRule ^(.+)/$ $1
+
+		RewriteCond %{REQUEST_URI} !^/apps
+		RewriteCond %{REQUEST_URI} !^/bin
+		RewriteCond %{REQUEST_URI} !^/content
+		RewriteCond %{REQUEST_URI} !^/etc
+		RewriteCond %{REQUEST_URI} !^/home/
+		RewriteCond %{REQUEST_URI} !^/libs
+		RewriteCond %{REQUEST_URI} !^/saml_login
+		RewriteCond %{REQUEST_URI} !^/system
+		RewriteCond %{REQUEST_URI} !^/tmp
+		RewriteCond %{REQUEST_URI} !^/var
+		RewriteCond %{REQUEST_URI} !(.jpe?g|.png|.svg|.xml|.pdf)$
+		RewriteRule ^/(.*)$ /content/${CONTENT_FOLDER_NAME_FE}/us/en/$1.html [PT,L]
 
 		# Rewrite index page internally, pass through (PT)
 		RewriteRule "^(/?)$" "/index.html" [PT]
