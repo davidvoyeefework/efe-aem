@@ -18,7 +18,8 @@ dialog.on('show', function (dialogEl, event) {
                                  'https://twitter.com/edelmanfe',
                                  'https://instagram.com/edelmanfinancialengines',
                                  'https://linkedin.com/company/edelman-financial-engines',
-                                 'https://event.on24.com/wcc/r/3650900/14658F6E878B575EFBB30EF0AA357733/3428297'
+                                 'https://event.on24.com/wcc/r/3650900/14658F6E878B575EFBB30EF0AA357733/3428297',
+                                 'https://edelmandev.wpengine.com/',
                                   ]
         const modalEle = document.querySelector(".cmp-modal--leaving");
         let externalLinks = document.querySelectorAll("a"); 
