@@ -8,6 +8,16 @@ public class PlannerLocationConstants {
 	public static final String LOCATIONS = "locations";
 	
 	/**
+	 * Empty Space
+	 */
+	public static final String SPACE = " ";
+	
+	/**
+	 * html
+	 */
+	public static final String HTML = ".html";
+	
+	/**
 	 * Office Id
 	 */
 	public static final String OFFICE_ID = "officeId";

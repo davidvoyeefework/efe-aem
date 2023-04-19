@@ -984,6 +984,15 @@
                     </cq:styleGroups>
                 </policy>
             </imagecollage>
+			<locationlist jcr:primaryType="nt:unstructured">
+                <policy
+                    cq:styleDefaultClasses="cmp-languagenavigation--country-list"
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Location Policy"
+                    sling:resourceType="wcm/core/components/policy/policy">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                </policy>
+            </locationlist>
         </components>
     </efe>
 </jcr:root>
