@@ -1,0 +1,52 @@
+<section data-component="location-map-directions" class="cmp-location--map-directions">
+    <div class="cmp-location--map-directions__map">
+        <div id="map_canvas" style="position:absolute;height:100%;width:100%;"></div>
+    </div>
+    <div class="cmp-location--map-directions__items">
+        <div class="cmp-location--map-directions__items--item">
+            <h2>City / Office Name</h2>
+            <p>Street line 1</p>
+            <p>Street line 2</p>
+            <p><span>City</span> <span>State</span> <span>ZIP</span></p>
+            <button type="button" id="button-5487aab983" class="cmp-location--map-directions__button-secondary" data-cmp-clickable=""
+                data-cmp-data-layer="{&quot;button-5487aab983&quot;:{&quot;@type&quot;:&quot;core-components-examples/components/button&quot;,&quot;dc:title&quot;:&quot;Button&quot;}}">
+                <span class="cmp-modal__button-secondary-text">Driving directions</span>
+            </button>
+            <p>
+               Already work with us? <a href="#">Leave a review</a>
+            </p>
+        </div>
+    </div>
+</section>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASNIvr770pL6OphL5ZgBetnoPrcSvgbls&v=weekly"></script>
+<script type="text/javascript">
+    var myLatLng = new google.maps.LatLng(39.828175, - 98.5795);
+    var styles = [
+        {
+            stylers: [
+                { saturation: -100 }
+            ]
+        }
+    ];
+    var styledMap = new google.maps.StyledMapType(styles,
+        { name: "Styled Map" });
+    var options = {
+        zoom: 5,
+        center: new google.maps.LatLng(39.828175, -98.5795), // centered US
+        mapTypeControl: false,
+        mapTypeControlOptions: {
+            mapTypeIds: [google.maps.MapTypeId.TERRAIN, 'map_style']
+        }
+    };
+    var map = new google.maps.Map(document.getElementById('map_canvas'), options);
+    map.mapTypes.set('map_style', styledMap);
+    map.setMapTypeId('map_style');
+    var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(
+            39.828175,
+            -98.5795
+        ),
+        map: map,
+        title: 'Middle of America PIN',
+    });
+</script>
