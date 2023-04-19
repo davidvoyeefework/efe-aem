@@ -1,0 +1,53 @@
+{
+	"jcr:primaryType": "cq:Page",
+	"jcr:content": {
+		"jcr:primaryType": "cq:PageContent",
+		"jcr:title": "Planner List",
+		"cq:template": "/conf/efe/settings/wcm/templates/page-content",
+		"cq:tags": [],
+		"sling:resourceType": "efe/components/page",
+		"root": {
+			"jcr:primaryType": "nt:unstructured",
+			"layout": "responsiveGrid",
+			"sling:resourceType": "efe/components/container",
+			"container": {
+				"jcr:primaryType": "nt:unstructured",
+				"sling:resourceType": "efe/components/container",
+				"plannerlist": {
+					"jcr:primaryType": "nt:unstructured",
+					"sling:resourceType": "efe/components/plannerlist",
+					"ctaLabel": "Read Bio",
+					"plannerTarget": "_blank",
+					"plannerTitle": "THE {0}  , {1}, TEAM",
+					"state": "co",
+					"id" : "2332",
+					"city": "westminster",
+					"plannerList": {
+						"jcr:primaryType": "nt:unstructured",
+						"item0": {
+							"jcr:primaryType": "nt:unstructured",
+							"firstName": "Chad",
+							"lastName": "Ernzen",
+							"desktopurl": "https://planners.edelmanfinancialengines.com/media/1085/efe_ernzen_chad_897_desktop_308x308.png",
+							"title": "Executive Director, Financial Planning",
+							"buttonurl": "/content/efe/us/en/plannerdata.Chad.Ernzen.27.html"
+						},
+						"item1": {
+							"jcr:primaryType": "nt:unstructured",
+							"firstName": "Claire",
+							"lastName": "Mork",
+							"desktopurl": "https://planners.edelmanfinancialengines.com/media/1187/efe_mork_claire_073_desktop_308x308.png",
+							"title": "Director, Financial Planning",
+							"buttonurl": "/content/efe/us/en/plannerdata.Claire.Mork.68.html"
+						}
+					}
+				},
+				"plannerlist1": {
+					"jcr:primaryType": "nt:unstructured",
+					"id" : "list-2833b18972",
+					"sling:resourceType": "efe/components/plannerlist"
+				}
+			}
+		}
+	}
+}
