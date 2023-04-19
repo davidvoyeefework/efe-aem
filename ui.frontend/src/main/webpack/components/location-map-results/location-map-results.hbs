@@ -1,4 +1,4 @@
-<section data-component="location-map-results" class="cmp-location--results">
+<section data-component="location-map-results" class="cmp-location--results cmp-location--results-default">
     <form class="cmp-location--results__search-form" method="POST" action="/locations/">
         <div class="input-container">
             <label for="location">City, State or ZIP Code</label>
@@ -18,6 +18,14 @@
         <div id="map_canvas" style="position:absolute;height:100%;width:100%;"></div>
     </div>
     <div class="cmp-location--results__items">
+        <div class="cmp-location--results__items--item no-results">
+            <h2>National Planner Center</h2>
+            <p>833-PLAN-EFE</p>
+            <a href="/location">Explore location</a>
+            <p>
+                Currently, we don’t have any planners in your immediate area, but we’re still here to help! Connect with a member of the experienced team at our National Planner Center to get started.
+            </p>
+        </div>
         <div class="cmp-location--results__items--item">
             <h2>City / Office Name</h2>
             <p>Street line 1</p>
@@ -128,4 +136,8 @@
     map: map,
     title: 'Middle of America PIN',
 });
+//to be changed in future
+document.querySelector('.efe-cta-primary').addEventListener('click', ()=>{
+    document.querySelector('.cmp-location--results').classList.remove('cmp-location--results-default')
+})
 </script>
