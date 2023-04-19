@@ -3,7 +3,7 @@
      data-sly-set.city="${model.city}">
 </sly>
 <div class="list cmp-list--horizontal cmp-list--tight cmp-list--left-align" id="${model.id}">
-  <h2>${model.plannerTitle @ format=[city,state]}</h2>
+  <h2 class="cmp-list--title">${model.plannerTitle @ format=[city,state]}</h2>
   <ul id="list-2833b18972" class="cmp-list">
     <sly data-sly-list.plannerList="${model.plannerList}">
     <div class="teaser cmp-teaser--thumbnail">
