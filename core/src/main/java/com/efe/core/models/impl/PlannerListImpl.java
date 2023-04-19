@@ -75,10 +75,10 @@ public class PlannerListImpl implements PlannerList {
     private String plannerTitle;
 
     /** The State. */
-    private String STATE ;
+    private String state ;
 
     /** The City. */
-    private String CITY ;
+    private String city ;
 
 
     /** The header list. */
@@ -90,49 +90,47 @@ public class PlannerListImpl implements PlannerList {
     protected void init(){
     String[] selectors = request.getRequestPathInfo().getSelectors();
     if(selectors.length == 2 ) {
-        List<String> cf_list = new ArrayList<>();
-        STATE = selectors[0];
-        CITY = selectors[1];
-        String locationPath = LOCATION_PATH+ PlannerLocationConstants.FORWARD_SLASH + STATE + PlannerLocationConstants.FORWARD_SLASH + CITY;
-        Resource resource = resourceResolver.getResource(locationPath);
-        if(Objects.nonNull(resource)){
-            for (Resource item : resource.getChildren()) {
+        List<String> cfList = new ArrayList<>();
+        state = selectors[0];
+        city = selectors[1];
+        String locationPath = LOCATION_PATH+ PlannerLocationConstants.FORWARD_SLASH + state + PlannerLocationConstants.FORWARD_SLASH + city;
+        Resource resourceLocation = resourceResolver.getResource(locationPath);
+        if(Objects.nonNull(resourceLocation)){
+            for (Resource item : resourceLocation.getChildren()) {
 
                 if (item.isResourceType("dam:Asset")) {
 
                     Resource masterResource = resourceResolver.getResource(item.getPath() + PlannerLocationConstants.MASTER_NODE);
                     String[] plannerList = ResourceUtil.getProperties(resourceResolver,masterResource.getPath(),"planners");
                     for(String list : plannerList){
-                        cf_list.add(list);
+                        cfList.add(list);
                     }
 
                 }
 
             }
         }
-        if(Objects.nonNull(cf_list)){
 
-            for(String item : cf_list){
+            for(String item : cfList){
                 PlannerDetail plannerObj = new PlannerDetail();
                 Resource planner = resourceResolver.getResource(item);
                 if (Objects.nonNull(planner)){
                     Resource plannerMaster = resourceResolver.getResource(planner.getPath() +PlannerLocationConstants.MASTER_NODE);
-                    String First_Name = ResourceUtil.getProperty(resourceResolver,plannerMaster.getPath(),"firstName");
-                    String Last_Name = ResourceUtil.getProperty(resourceResolver,plannerMaster.getPath(),"lastName");
-                    String Title = ResourceUtil.getProperty(resourceResolver,plannerMaster.getPath(),"title");
-                    String Image_url = ResourceUtil.getProperty(resourceResolver,plannerMaster.getPath(),"desktopImageurl");
-                    String Planner_id = ResourceUtil.getProperty(resourceResolver,plannerMaster.getPath(),"id");
-                  //  PlannerDetail plannerObj = new PlannerDetail(First_Name,Last_Name,Title,Image_url);
+                    String firstName = ResourceUtil.getProperty(resourceResolver,plannerMaster.getPath(),"firstName");
+                    String lastName = ResourceUtil.getProperty(resourceResolver,plannerMaster.getPath(),"lastName");
+                    String title = ResourceUtil.getProperty(resourceResolver,plannerMaster.getPath(),"title");
+                    String imageUrl = ResourceUtil.getProperty(resourceResolver,plannerMaster.getPath(),"desktopImageurl");
+                    String plannerId = ResourceUtil.getProperty(resourceResolver,plannerMaster.getPath(),"id");
 
-                    plannerObj.setFirstName(First_Name);
-                    plannerObj.setLastName(Last_Name);
-                    plannerObj.setTitle(Title);
-                    plannerObj.setDesktopurl(Image_url);
-                    plannerObj.setButtonurl(PLANNER_PATH+PlannerLocationConstants.DOT+First_Name+PlannerLocationConstants.DOT+Last_Name+PlannerLocationConstants.DOT+Planner_id+".html");
+                    plannerObj.setFirstName(firstName);
+                    plannerObj.setLastName(lastName);
+                    plannerObj.setTitle(title);
+                    plannerObj.setDesktopurl(imageUrl);
+                    plannerObj.setButtonurl(PLANNER_PATH+PlannerLocationConstants.DOT+firstName+PlannerLocationConstants.DOT+lastName+PlannerLocationConstants.DOT+plannerId+".html");
                 }
                 plannerDetails.add(plannerObj);
             }
-        }
+
 
 
 
@@ -192,7 +190,7 @@ public class PlannerListImpl implements PlannerList {
      */
     @Override
     public String getState() {
-        return STATE.toUpperCase();
+        return state.toUpperCase();
     }
     /**
      * Gets the City.
@@ -201,7 +199,7 @@ public class PlannerListImpl implements PlannerList {
      */
     @Override
     public String getCity() {
-        return CITY.toUpperCase();
+        return city.toUpperCase();
     }
 
     /**

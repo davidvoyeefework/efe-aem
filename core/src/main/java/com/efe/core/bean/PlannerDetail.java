@@ -8,13 +8,6 @@ public class PlannerDetail {
     String title;
     String buttonurl;
 
-
-  /*public PlannerDetail(String firstName, String lastName, String desktopurl, String title) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.desktopurl = desktopurl;
-        this.title = title;
-    }*/
     public String getFirstName() {
         return firstName;
     }

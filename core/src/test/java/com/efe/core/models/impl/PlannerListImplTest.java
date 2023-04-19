@@ -48,11 +48,12 @@ class PlannerListImplTest {
 		aemContext.load().json(RESOURCE_CONTENT, TEST_CONTENT_ROOT);
 		aemContext.addModelsForClasses(modelClass);
 
-		Resource resource1 = aemContext.resourceResolver().getResource(RESOURCE);
+		//Resource resource1 = aemContext.resourceResolver().getResource(RESOURCE);
+		request.setResource(aemContext.resourceResolver().getResource(RESOURCE));
 		//Resource resource1= aemContext.resourceResolver().getResource(RESOURCE);
 		//model = resource.adaptTo(modelClass);
-		model = aemContext.request().adaptTo(PlannerList.class);
-
+		//model = aemContext.request().adaptTo(PlannerList.class);
+model = request.adaptTo(PlannerList.class);
 		//model = aemContext.getService(ModelFactory.class).createModel(resource1, PlannerList.class);
 		//aemContext.load().json("plannerlist.json", "/com/efe/core/models");
 	}
