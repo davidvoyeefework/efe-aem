@@ -81,3 +81,12 @@ animation-name: fadeIn;
 @mixin border-bottom-left-radius($radius: 40) {
     border-bottom-left-radius: rem($radius);
 }
+
+@mixin border-top-right-radius($radius: 40) {
+    border-top-right-radius: rem($radius);
+}
+
+@mixin border-bottom-right-radius($radius: 40) {
+    border-bottom-right-radius: rem($radius);
+}
+

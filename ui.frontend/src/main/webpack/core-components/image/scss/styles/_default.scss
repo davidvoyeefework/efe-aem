@@ -42,3 +42,26 @@
 	}
 	
 }
+
+.cmp-image--top-left {
+    .cmp-image img {
+        @include border-top-left-radius();
+    }
+}
+
+.cmp-image--top-right {
+    .cmp-image img {
+        @include border-top-right-radius();
+    }
+}
+
+.cmp-image--bottom-left {
+    .cmp-image img {
+        @include border-bottom-left-radius();
+    }
+}
+.cmp-image--bottom-right {
+    .cmp-image img {
+        @include border-bottom-right-radius();
+    }
+}
