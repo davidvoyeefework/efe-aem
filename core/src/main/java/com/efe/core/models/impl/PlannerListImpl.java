@@ -27,7 +27,7 @@ import java.util.Objects;
 /**
  * The Class PlannerListImpl.
  */
-@Model(adaptables = {SlingHttpServletRequest.class,Resource.class}, adapters = PlannerList.class, resourceType = {
+@Model(adaptables = {Resource.class,SlingHttpServletRequest.class}, adapters = PlannerList.class, resourceType = {
         PlannerListImpl.RESOURCE_TYPE }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
 public class PlannerListImpl implements PlannerList {
@@ -35,15 +35,17 @@ public class PlannerListImpl implements PlannerList {
     /** The Constant RESOURCE_TYPE. */
     public static final String RESOURCE_TYPE="efe/components/plannerlist";
 
-
+    /** The Constant LOCATION_PATH. */
     public static final  String LOCATION_PATH ="/content/dam/efe/cf/plannerlocation/locations";
 
+    /** The Constant PLANNER_PATH. */
     public static final String PLANNER_PATH ="/content/efe/us/en/plannerdata";
 
-
+    /** The SlingHttpServletRequest. */
     @Inject
     SlingHttpServletRequest request;
 
+    /** The PlannerDetails. */
      private List<PlannerDetail> plannerDetails = new ArrayList<>();
 
     /** The resource resolver. */
@@ -72,8 +74,10 @@ public class PlannerListImpl implements PlannerList {
     @ValueMapValue
     private String plannerTitle;
 
+    /** The State. */
     private String STATE ;
 
+    /** The City. */
     private String CITY ;
 
 
@@ -200,6 +204,11 @@ public class PlannerListImpl implements PlannerList {
         return CITY.toUpperCase();
     }
 
+    /**
+     * Gets the PlannerList.
+     *
+     * @return the PlannerList
+     */
 
     @Override
     public List<PlannerDetail> getPlannerList() {

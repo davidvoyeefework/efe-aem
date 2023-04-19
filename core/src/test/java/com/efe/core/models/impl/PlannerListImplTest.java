@@ -4,6 +4,7 @@ import com.efe.core.models.PlannerList;
 import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.testing.mock.sling.servlet.MockSlingHttpServletRequest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -31,6 +32,8 @@ class PlannerListImplTest {
 	/** The resource. */
 	private Resource resource;
 
+	private MockSlingHttpServletRequest request;
+
 	/** The aem context. */
 	private AemContext aemContext = new AemContext();
 
@@ -38,12 +41,20 @@ class PlannerListImplTest {
 	 * Sets the up.
 	 */
 	@BeforeEach
-	public void setup() {
+	public void setup() throws Exception{
+
+		request = aemContext.request();
 		Class<PlannerList> modelClass = PlannerList.class;
 		aemContext.load().json(RESOURCE_CONTENT, TEST_CONTENT_ROOT);
 		aemContext.addModelsForClasses(modelClass);
-		resource = aemContext.currentResource(RESOURCE);
-		model = resource.adaptTo(modelClass);
+
+		Resource resource1 = aemContext.resourceResolver().getResource(RESOURCE);
+		//Resource resource1= aemContext.resourceResolver().getResource(RESOURCE);
+		//model = resource.adaptTo(modelClass);
+		model = aemContext.request().adaptTo(PlannerList.class);
+
+		//model = aemContext.getService(ModelFactory.class).createModel(resource1, PlannerList.class);
+		//aemContext.load().json("plannerlist.json", "/com/efe/core/models");
 	}
 
 	/**
@@ -65,7 +76,7 @@ class PlannerListImplTest {
 	}
 
 	/**
-	 * Test header null attributes.
+	 * Test Planner list null attributes.
 	 */
 	@Test
 	void testPlannerListNullAttributes() {
