@@ -56,10 +56,7 @@ button,
         border-bottom: rem(1px) solid get-color("nero-grey");
         color: get-color("nero-grey");
     }
-    input[type="checkbox"] {
-        display: inline;
-        width: rem(20px);
-    }
+
 }
 
 ::placeholder {
