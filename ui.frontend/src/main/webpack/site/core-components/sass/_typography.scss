@@ -123,7 +123,7 @@
 // -----------------------------------------------------------------------------
 
 @mixin detail {
-    @include buildFont(rem(12), 0, 'nimbus-sans', 400, unset, 116% );
+    @include buildFont(rem(12), 0, 'nimbus-sans', 400, unset, rem(14) );
 }
 
 .detail {
