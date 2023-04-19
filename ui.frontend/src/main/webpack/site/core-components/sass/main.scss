@@ -32,6 +32,9 @@
 @import '../../../components/social-links/social-links.scss';
 @import '../../../components/image-collage/image-collage.scss';
 @import '../../../components/content-collage/content-collage.scss';
+@import '../../../components/modal-leaving/modal-leaving.scss';
+@import '../../../components/location-map-results/location-map-results.scss';
+@import '../../../components/skip-to-main-menu/skip-main-menu.scss';
 
 
 /* Core Components */
@@ -58,6 +61,7 @@
 @import '../../../core-components/title/scss/title.scss';
 
 /* Form */
+@import '../../../core-components/forms/forms.scss';
 @import '../../../core-components/form/sign-in-form/scss/sign-in-form.scss';
 @import '../../../core-components/form/sign-in-buttons/scss/sign-in-buttons.scss';
 @import '../../../core-components/form/text/scss/text.scss';
