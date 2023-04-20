@@ -12,7 +12,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import io.wcm.testing.mock.aem.junit5.AemContext;
 
 @ExtendWith(MockitoExtension.class)
-class PlannerApiServiceImplTest {
+class EfeServiceImplTest {
 
 	/** Planner API END POINT **/
 	private final String PLANNER_API_ENDPOINT = "https://planners.edelmanfinancialengines.com/api/v2/planners";
@@ -22,25 +22,31 @@ class PlannerApiServiceImplTest {
 
 	/** Planner AUTH_HEAD **/
 	private final String AUTH_HEAD = "dummy header";
+	
+	/** Planner PLANNER_PAGE_URL **/
+	private final String PLANNER_PAGE_URL = "/content/efe/us/en/location";
+	
+	/** Planner PLANNER_BIO_PAGE_URL **/
+	private final String PLANNER_BIO_PAGE_URL = "/content/efe/us/en/financial-planners";
 
 	@Mock
-	/** The plannerApiServiceImpl. */
-	private PlannerApiServiceImpl plannerApiServiceImpl;
+	/** The efeServiceImpl. */
+	private EfeServiceImpl efeServiceImpl;
 
 	@Mock
 	/** The configuration. */
-	private PlannerApiServiceImpl.Config configuration;
+	private EfeServiceImpl.Config configuration;
 
 	public final AemContext aemContext = new AemContext();
 
 	@BeforeEach
 	void setUp() throws Exception {
 
-		plannerApiServiceImpl = aemContext.registerService(new PlannerApiServiceImpl());
+		efeServiceImpl = aemContext.registerService(new EfeServiceImpl());
 
-		aemContext.registerService(PlannerApiServiceImpl.class, plannerApiServiceImpl);
-		configuration = Mockito.mock(PlannerApiServiceImpl.Config.class);
-		aemContext.addModelsForClasses(PlannerApiServiceImpl.class);
+		aemContext.registerService(EfeServiceImpl.class, efeServiceImpl);
+		configuration = Mockito.mock(EfeServiceImpl.Config.class);
+		aemContext.addModelsForClasses(EfeServiceImpl.class);
 	}
 
 	@Test
@@ -48,17 +54,23 @@ class PlannerApiServiceImplTest {
 		Mockito.lenient().when(configuration.plannersAPIEndpoint()).thenReturn(PLANNER_API_ENDPOINT);
 		Mockito.lenient().when(configuration.locationsAPIEndpoint()).thenReturn(LOCATION_API_ENDPOINT);
 		Mockito.lenient().when(configuration.authHeader()).thenReturn(AUTH_HEAD);
+		Mockito.lenient().when(configuration.plannerPageUrl()).thenReturn(PLANNER_PAGE_URL);
+		Mockito.lenient().when(configuration.plannerBioPageUrl()).thenReturn(PLANNER_BIO_PAGE_URL);
 
-		plannerApiServiceImpl.getPlannersAPIEndpoint();
-		plannerApiServiceImpl.getLocationsAPIEndpoint();
-		plannerApiServiceImpl.getAuthHeader();
+		efeServiceImpl.getPlannersAPIEndpoint();
+		efeServiceImpl.getLocationsAPIEndpoint();
+		efeServiceImpl.getAuthHeader();
+		efeServiceImpl.getPlannerPageUrl();
+		efeServiceImpl.getPlannerBioPageUrl();
 
-		assertNotNull(plannerApiServiceImpl);
+		assertNotNull(efeServiceImpl);
 
 		assertEquals(configuration.plannersAPIEndpoint(), PLANNER_API_ENDPOINT);
 		assertEquals(configuration.locationsAPIEndpoint(), LOCATION_API_ENDPOINT);
 		assertEquals(configuration.authHeader(), AUTH_HEAD);
-		plannerApiServiceImpl.activate(configuration);
+		assertEquals(configuration.plannerPageUrl(), PLANNER_PAGE_URL);
+		assertEquals(configuration.plannerBioPageUrl(), PLANNER_BIO_PAGE_URL);
+		efeServiceImpl.activate(configuration);
 
 	}
 

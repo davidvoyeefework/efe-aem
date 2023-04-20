@@ -9,18 +9,18 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.efe.core.services.PlannerApiService;
+import com.efe.core.services.EfeService;
 
 /**
- * The Class PlannerApiServiceImpl
+ * The Class EfeServiceImpl
  *
  */
-@Designate(ocd = PlannerApiServiceImpl.Config.class)
-@Component(service = PlannerApiService.class)
-public class PlannerApiServiceImpl implements PlannerApiService {
+@Designate(ocd = EfeServiceImpl.Config.class)
+@Component(service = EfeService.class)
+public class EfeServiceImpl implements EfeService {
 
 	/** The Constant LOGGER. */
-	private static final Logger LOGGER = LoggerFactory.getLogger(PlannerApiServiceImpl.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(EfeServiceImpl.class);
 
 	/**
 	 * Planner API Endpoint
@@ -36,12 +36,22 @@ public class PlannerApiServiceImpl implements PlannerApiService {
 	 * AuthHeader
 	 */
 	private String authHeader;
+	
+	/**
+	 * Planner Page Url
+	 */
+	private String plannerPageUrl;
+	
+	/**
+	 * Planner Bio Page Url
+	 */
+	private String plannerBioPageUrl;
 
 	/**
 	 * The Interface Config
 	 *
 	 */
-	@ObjectClassDefinition(name = "EFE Planner API End Point", description = "EFE Planner API End Point")
+	@ObjectClassDefinition(name = "EFE Common Configurations", description = "EFE Common Configurations")
 	public static @interface Config {
 
 		/**
@@ -61,6 +71,18 @@ public class PlannerApiServiceImpl implements PlannerApiService {
 		 */
 		@AttributeDefinition(name = "EFE UPLS authHeader", description = "EFE UPLS authHeader")
 		String authHeader();
+		
+		/**
+		 * @return plannerPageUrl
+		 */
+		@AttributeDefinition(name = "Planner Page Url", description = "Planner Page Url")
+		String plannerPageUrl();
+		
+		/**
+		 * @return plannerBioPageUrl
+		 */
+		@AttributeDefinition(name = "Planner Bio Page Url", description = "Planner Bio Page Url")
+		String plannerBioPageUrl();
 	}
 
 	/**
@@ -70,11 +92,13 @@ public class PlannerApiServiceImpl implements PlannerApiService {
 	 */
 	@Activate
 	@Modified
-	protected void activate(final PlannerApiServiceImpl.Config config) {
-		LOGGER.debug("PlannerApiServiceImpl.activate method called {}", "{}");
+	protected void activate(final EfeServiceImpl.Config config) {
+		LOGGER.debug("EfeServiceImpl.activate method called {}", "{}");
 		this.plannersAPIEndpoint = config.plannersAPIEndpoint();
 		this.locationsAPIEndpoint = config.locationsAPIEndpoint();
 		this.authHeader = config.authHeader();
+		this.plannerPageUrl = config.plannerPageUrl();
+		this.plannerBioPageUrl = config.plannerBioPageUrl();
 
 	}
 
@@ -100,5 +124,21 @@ public class PlannerApiServiceImpl implements PlannerApiService {
 	@Override
 	public String getAuthHeader() {
 		return authHeader;
+	}
+
+	/**
+	 * @return the plannerPageUrl
+	 */
+	@Override
+	public String getPlannerPageUrl() {
+		return plannerPageUrl;
+	}
+
+	/**
+	 * @return the plannerBioPageUrl
+	 */
+	@Override
+	public String getPlannerBioPageUrl() {
+		return plannerBioPageUrl;
 	}
 }

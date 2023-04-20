@@ -13,10 +13,10 @@ public class PlannerLocationConstants {
 	public static final String SPACE = " ";
 	
 	/**
-	 * html
+	 * Empty Space
 	 */
-	public static final String HTML = ".html";
-	
+	public static final String HYPHEN = "-";
+		
 	/**
 	 * Office Id
 	 */

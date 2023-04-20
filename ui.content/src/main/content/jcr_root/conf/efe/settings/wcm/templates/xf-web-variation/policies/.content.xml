@@ -39,10 +39,6 @@
                             cq:policy="efe/components/imagecollage/policy"
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="wcm/core/components/policies/mapping"/>
-					<locationlist
-                            cq:policy="efe/components/locationlist/policy"
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="wcm/core/components/policies/mapping"/>
                 </components>
             </mysite>
         </root>

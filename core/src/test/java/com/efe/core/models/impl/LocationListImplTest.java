@@ -2,6 +2,7 @@ package com.efe.core.models.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Map;
 
@@ -9,9 +10,12 @@ import org.apache.sling.api.resource.Resource;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
 
 import com.efe.core.constants.PlannerLocationConstants;
 import com.efe.core.models.LocationList;
+import com.efe.core.services.EfeService;
+import com.efe.core.services.impl.EfeServiceImpl;
 
 import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
@@ -34,6 +38,8 @@ class LocationListImplTest {
 	/** The model. */
 	private LocationList model;
 	
+	private EfeServiceImpl efeService = new EfeServiceImpl();
+	
 	/**
 	 * Sets the up.
 	 */
@@ -41,9 +47,12 @@ class LocationListImplTest {
 	public void setUp() {
 		Class<LocationList> modelClass = LocationList.class;
 		aemContext.load().json(RESOURCE_CONTENT, PlannerLocationConstants.LOCATION_PATH + "/al");
+		aemContext.registerInjectActivateService(efeService);
 		aemContext.addModelsForClasses(modelClass);
 		resource = aemContext.currentResource(PlannerLocationConstants.LOCATION_PATH + "/al");
 		model = resource.adaptTo(modelClass);
+		
+		
 	}
 
 	/**
@@ -60,8 +69,8 @@ class LocationListImplTest {
 		Map<String, String> cities = states.get("Alabama");
 		assertNotNull(cities);
 		assertEquals(2, cities.size());
-		assertEquals("/locations.al.Birmingham.html", cities.get("Birmingham"));
-		assertEquals("/locations.al.Huntsville.html", cities.get("Huntsville"));
+		assertTrue(cities.get("Birmingham").contains(".AL.Birmingham"));
+		assertTrue(cities.get("Huntsville").contains(".AL.Huntsville"));
 	}
 
 }

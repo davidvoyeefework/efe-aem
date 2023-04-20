@@ -2,18 +2,15 @@
   "jcr:primaryType": "sling:OrderedFolder",
   "jcr:createdBy": "efe-service-user",
   "jcr:title": "AL",
-  "jcr:created": "Sun Apr 16 2023 00:02:46 GMT+0530",
-  "Birmingham": {
+  "birmingham": {
     "jcr:primaryType": "sling:OrderedFolder",
     "jcr:createdBy": "efe-service-user",
-    "jcr:title": "Birmingham",
-    "jcr:created": "Sun Apr 16 2023 00:02:46 GMT+0530"
+    "jcr:title": "Birmingham"
   },
-  "Huntsville": {
+  "huntsville": {
     "jcr:primaryType": "sling:OrderedFolder",
     "jcr:createdBy": "efe-service-user",
-    "jcr:title": "Huntsville",
-    "jcr:created": "Sun Apr 16 2023 00:02:47 GMT+0530"
+    "jcr:title": "Huntsville"
   }
 }
 
