@@ -1,5 +1,6 @@
 //Global BEBAS/NIMBUS ADOBE TYPE
 @import url("https://use.typekit.net/ezq2lfa.css");
+@import './base/breakpoints';
 
 @mixin buildFont ($font-size, 
                 $letter-spacing, 
@@ -53,33 +54,67 @@
     }
   }
 
+  .cmp-text--stats-01 {
+    @include stats-01;
+  }
+
   @mixin stats-02 {
     @include buildFont(rem(69px), .02em, null, 400);
   }
 
-@mixin heading-01 {
-    @include buildFont(rem(69px), .08em);
-    @media screen and (max-width: $lg) {
-        font-size: rem(58);
-    }
+  .cmp-text--stats-02 {
+    @include stats-02;
   }
 
-@mixin heading-02 {
-    @include buildFont(rem(58px), .08em);
-    @media screen and (max-width: $lg) {
-        font-size: rem(48);
-    }
+  @mixin stats-02-underline {
+    @include stats-02;
+    text-decoration: solid underline $efe-red-primary 6px;
+  }
+
+  .cmp-text--stats-02-underline {
+    @include stats-02-underline;
+  }
+
+
+    @mixin heading-01 {
+        @include buildFont(rem(69px), .08em);
+            @media screen and (max-width: $lg) {
+                font-size: rem(58);
+            }
+  }
+
+  .cmp-text--heading-01 {
+    @include heading-01;
+  }
+
+    @mixin heading-02 {
+        @include buildFont(rem(58px), .08em);
+        @media screen and (max-width: $lg) {
+            font-size: rem(48);
+        }
+  }
+
+  .cmp-text--heading-02 {
+    @include heading-02;
   }
 
 @mixin heading-03 {
     @include buildFont(rem(48px), .08em);
-    @media screen and (max-width: $lg) {
-        font-size: rem(36);
-    }
+        @media screen and (max-width: $lg) {
+            font-size: rem(36);
+        }
   }
+
+.cmp-text--heading-03 {
+    @include heading-03;
+}
 
 @mixin heading-04 {
     @include buildFont(rem(36px), .06em);
+}
+
+.cmp-text--heading-04 {
+    @include heading-04;
 }
 
 // -----------------------------------------------------------------------------
@@ -90,8 +125,17 @@
     @include buildFont(rem(24px), .02em, null, 400);
 }
 
+.cmp-text--subhead-01 {
+    @include subhead-01;
+}
+
+
 @mixin subhead-02 {
     @include buildFont(rem(22px), 0, 'nimbus-sans', 400, unset, 120% );
+}
+
+.cmp-text--subhead-02 {
+    @include subhead-02;
 }
 
 // -----------------------------------------------------------------------------
@@ -102,12 +146,24 @@
     @include buildFont(rem(26px), null, 'nimbus-sans', 300, unset, 120% );
 }
 
+.cmp-text--body-01 {
+    @include body-01;
+}
+
 @mixin body-02 {
     @include buildFont(rem(20px), null, 'nimbus-sans', 300, unset, 120% );
 }
 
+.cmp-text--body-02 {
+    @include body-02;
+}
+
 @mixin body-03 {
     @include buildFont(rem(16px), null, 'nimbus-sans', 300, unset, 120% );
+}
+
+.cmp-text--body-03 {
+    @include body-03;
 }
 
 @mixin caption {
@@ -126,7 +182,7 @@
     @include buildFont(rem(12), 0, 'nimbus-sans', 400, unset, rem(14) );
 }
 
-.detail {
+.detail, .cmp-text--detail {
     @include detail;
 
     i,em {
@@ -137,8 +193,6 @@
         text-decoration: underline;
     }
 }
-
-
 
 // -----------------------------------------------------------------------------
 // BUTTONS
