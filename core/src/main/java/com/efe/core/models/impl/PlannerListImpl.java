@@ -85,7 +85,9 @@ public class PlannerListImpl implements PlannerList {
     @Inject
     private List<Link> headerList;
 
-
+    /**
+     * This method sets the planner values in bean class according to selectors value.
+     */
     @PostConstruct
     protected void init(){
     String[] selectors = request.getRequestPathInfo().getSelectors();
@@ -130,19 +132,14 @@ public class PlannerListImpl implements PlannerList {
                 }
                 plannerDetails.add(plannerObj);
             }
-
-
-
-
-
     }
     }
+
     /**
      * Gets the id.
      *
      * @return the id
      */
-
     @Override
     public String getId() {
         if (id == null) {
@@ -207,7 +204,6 @@ public class PlannerListImpl implements PlannerList {
      *
      * @return the PlannerList
      */
-
     @Override
     public List<PlannerDetail> getPlannerList() {
         if (Objects.nonNull(plannerDetails)) {

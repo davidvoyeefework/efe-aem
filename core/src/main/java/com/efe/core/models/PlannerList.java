@@ -54,9 +54,9 @@ public interface PlannerList {
      */
     String getCity();
     /**
-     * Gets the header list.
+     * Gets the planner list.
      *
-     * @return the header list
+     * @return the planner list
      */
     List<PlannerDetail> getPlannerList();
 }
