@@ -15,94 +15,97 @@
         >SEARCH LOCATIONS</a>
     </form>
     <div class="cmp-location--results__map">
-        <div id="map_canvas" style="position:absolute;height:100%;width:100%;"></div>
+        <div id="map_canvas" style="position:absolute;height:100%;width:100%"></div>
     </div>
     <div class="cmp-location--results__items">
+        {{#if variant}}
         <div class="cmp-location--results__items--item no-results">
             <h2>National Planner Center</h2>
             <p>833-PLAN-EFE</p>
-            <a href="/location">Explore location</a>
+            <a href="/?path=/story/components-locationmapdirections--map-directions">Explore location</a>
             <p>
                 Currently, we don’t have any planners in your immediate area, but we’re still here to help! Connect with a member of the experienced team at our National Planner Center to get started.
             </p>
         </div>
+        {{else}}
         <div class="cmp-location--results__items--item">
             <h2>City / Office Name</h2>
             <p>Street line 1</p>
             <p>Street line 2</p>
             <p><span>City</span> <span>State</span> <span>ZIP</span></p>
-            <a href="/location">Explore location</a>
+            <a href="/?path=/story/components-locationmapdirections--map-directions">Explore location</a>
         </div>
         <div class="cmp-location--results__items--item">
             <h2>City / Office Name</h2>
             <p>Street line 1</p>
             <p>Street line 2</p>
             <p><span>City</span> <span>State</span> <span>ZIP</span></p>
-            <a href="/location">Explore location</a>
+            <a href="/?path=/story/components-locationmapdirections--map-directions">Explore location</a>
         </div>
         <div class="cmp-location--results__items--item">
             <h2>City / Office Name</h2>
             <p>Street line 1</p>
             <p>Street line 2</p>
             <p><span>City</span> <span>State</span> <span>ZIP</span></p>
-            <a href="/location">Explore location</a>
+            <a href="/?path=/story/components-locationmapdirections--map-directions">Explore location</a>
         </div>
         <div class="cmp-location--results__items--item">
             <h2>City / Office Name</h2>
             <p>Street line 1</p>
             <p>Street line 2</p>
             <p><span>City</span> <span>State</span> <span>ZIP</span></p>
-            <a href="/location">Explore location</a>
+            <a href="/?path=/story/components-locationmapdirections--map-directions">Explore location</a>
         </div>
         <div class="cmp-location--results__items--item">
             <h2>City / Office Name</h2>
             <p>Street line 1</p>
             <p>Street line 2</p>
             <p><span>City</span> <span>State</span> <span>ZIP</span></p>
-            <a href="/location">Explore location</a>
+            <a href="/?path=/story/components-locationmapdirections--map-directions">Explore location</a>
         </div>
         <div class="cmp-location--results__items--item">
             <h2>City / Office Name</h2>
             <p>Street line 1</p>
             <p>Street line 2</p>
             <p><span>City</span> <span>State</span> <span>ZIP</span></p>
-            <a href="/location">Explore location</a>
+            <a href="/?path=/story/components-locationmapdirections--map-directions">Explore location</a>
         </div>
         <div class="cmp-location--results__items--item">
             <h2>City / Office Name</h2>
             <p>Street line 1</p>
             <p>Street line 2</p>
             <p><span>City</span> <span>State</span> <span>ZIP</span></p>
-            <a href="/location">Explore location</a>
+            <a href="/?path=/story/components-locationmapdirections--map-directions">Explore location</a>
         </div>
         <div class="cmp-location--results__items--item">
             <h2>City / Office Name</h2>
             <p>Street line 1</p>
             <p>Street line 2</p>
             <p><span>City</span> <span>State</span> <span>ZIP</span></p>
-            <a href="/location">Explore location</a>
+            <a href="/?path=/story/components-locationmapdirections--map-directions">Explore location</a>
         </div>
         <div class="cmp-location--results__items--item">
             <h2>City / Office Name</h2>
             <p>Street line 1</p>
             <p>Street line 2</p>
             <p><span>City</span> <span>State</span> <span>ZIP</span></p>
-            <a href="/location">Explore location</a>
+            <a href="/?path=/story/components-locationmapdirections--map-directions">Explore location</a>
         </div>
         <div class="cmp-location--results__items--item">
             <h2>City / Office Name</h2>
             <p>Street line 1</p>
             <p>Street line 2</p>
             <p><span>City</span> <span>State</span> <span>ZIP</span></p>
-            <a href="/location">Explore location</a>
+            <a href="/?path=/story/components-locationmapdirections--map-directions">Explore location</a>
         </div>
         <div class="cmp-location--results__items--item">
             <h2>City / Office Name</h2>
             <p>Street line 1</p>
             <p>Street line 2</p>
             <p><span>City</span> <span>State</span> <span>ZIP</span></p>
-            <a href="/location">Explore location</a>
+            <a href="/?path=/story/components-locationmapdirections--map-directions">Explore location</a>
         </div>
+        {{/if}}
     </div>
 </section>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASNIvr770pL6OphL5ZgBetnoPrcSvgbls&v=weekly"></script>

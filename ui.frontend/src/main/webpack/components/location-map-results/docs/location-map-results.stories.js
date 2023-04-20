@@ -5,7 +5,12 @@ Handlebars.registerPartial("LocationMapResults", LocationMapResults);
 
 export default {
     title: "Components/LocationMapResults",
-    argTypes: {},
+    argTypes: {
+        variant: {
+            options: ["no-results"],
+            control: { type: "radio" },
+          }
+    },
 };
 
 const TemplateLocationMapResults = (args) => LocationMapResults({ ...args });
