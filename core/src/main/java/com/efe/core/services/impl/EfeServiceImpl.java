@@ -92,7 +92,7 @@ public class EfeServiceImpl implements EfeService {
 	 */
 	@Activate
 	@Modified
-	protected void activate(final EfeServiceImpl.Config config) {
+	public void activate(final EfeServiceImpl.Config config) {
 		LOGGER.debug("EfeServiceImpl.activate method called {}", "{}");
 		this.plannersAPIEndpoint = config.plannersAPIEndpoint();
 		this.locationsAPIEndpoint = config.locationsAPIEndpoint();

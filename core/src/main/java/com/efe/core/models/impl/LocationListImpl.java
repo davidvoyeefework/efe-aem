@@ -105,12 +105,12 @@ public class LocationListImpl implements LocationList {
 	 */
 	private String toCamelCase(String inputString) {
 		String[] stringArr = inputString.split(PlannerLocationConstants.SPACE);
-		String resString = StringUtils.EMPTY;
-		for (String a : stringArr) {
-			resString = resString.concat(PlannerLocationConstants.SPACE).concat(a.substring(0, 1).toUpperCase())
-					.concat(a.substring(1));
-		}
-		return resString.trim();
+		StringBuilder formattedStringSb = new StringBuilder();
+		formattedStringSb.append(StringUtils.capitalize(stringArr[0]));
 
+		for (int i=1; i<stringArr.length; i++){
+			formattedStringSb.append(PlannerLocationConstants.SPACE + StringUtils.capitalize(stringArr[i]));
+		}
+		return formattedStringSb.toString();
 	}
 }

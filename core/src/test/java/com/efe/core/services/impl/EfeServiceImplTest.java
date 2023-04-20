@@ -29,9 +29,9 @@ class EfeServiceImplTest {
 	/** Planner PLANNER_BIO_PAGE_URL **/
 	private final String PLANNER_BIO_PAGE_URL = "/content/efe/us/en/financial-planners";
 
-	@Mock
+
 	/** The efeServiceImpl. */
-	private EfeServiceImpl efeServiceImpl;
+	private EfeServiceImpl efeServiceImpl = new EfeServiceImpl();
 
 	@Mock
 	/** The configuration. */
@@ -40,13 +40,9 @@ class EfeServiceImplTest {
 	public final AemContext aemContext = new AemContext();
 
 	@BeforeEach
-	void setUp() throws Exception {
-
-		efeServiceImpl = aemContext.registerService(new EfeServiceImpl());
-
+	void setUp() {
 		aemContext.registerService(EfeServiceImpl.class, efeServiceImpl);
 		configuration = Mockito.mock(EfeServiceImpl.Config.class);
-		aemContext.addModelsForClasses(EfeServiceImpl.class);
 	}
 
 	@Test
@@ -57,20 +53,14 @@ class EfeServiceImplTest {
 		Mockito.lenient().when(configuration.plannerPageUrl()).thenReturn(PLANNER_PAGE_URL);
 		Mockito.lenient().when(configuration.plannerBioPageUrl()).thenReturn(PLANNER_BIO_PAGE_URL);
 
-		efeServiceImpl.getPlannersAPIEndpoint();
-		efeServiceImpl.getLocationsAPIEndpoint();
-		efeServiceImpl.getAuthHeader();
-		efeServiceImpl.getPlannerPageUrl();
-		efeServiceImpl.getPlannerBioPageUrl();
-
-		assertNotNull(efeServiceImpl);
-
-		assertEquals(configuration.plannersAPIEndpoint(), PLANNER_API_ENDPOINT);
-		assertEquals(configuration.locationsAPIEndpoint(), LOCATION_API_ENDPOINT);
-		assertEquals(configuration.authHeader(), AUTH_HEAD);
-		assertEquals(configuration.plannerPageUrl(), PLANNER_PAGE_URL);
-		assertEquals(configuration.plannerBioPageUrl(), PLANNER_BIO_PAGE_URL);
 		efeServiceImpl.activate(configuration);
+		
+		assertEquals(efeServiceImpl.getPlannersAPIEndpoint(), PLANNER_API_ENDPOINT);
+		assertEquals(efeServiceImpl.getLocationsAPIEndpoint(), LOCATION_API_ENDPOINT);
+		assertEquals(efeServiceImpl.getAuthHeader(), AUTH_HEAD);
+		assertEquals(efeServiceImpl.getPlannerPageUrl(), PLANNER_PAGE_URL);
+		assertEquals(efeServiceImpl.getPlannerBioPageUrl(), PLANNER_BIO_PAGE_URL);
+		
 
 	}
 

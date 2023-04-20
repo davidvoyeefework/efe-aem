@@ -7,10 +7,10 @@
     "jcr:createdBy": "efe-service-user",
     "jcr:title": "Birmingham"
   },
-  "huntsville": {
+  "walnut creek": {
     "jcr:primaryType": "sling:OrderedFolder",
     "jcr:createdBy": "efe-service-user",
-    "jcr:title": "Huntsville"
+    "jcr:title": "walnut creek"
   }
 }
 
