@@ -12,14 +12,14 @@ public class PlannerDetail {
     /** The lastName. */
     String lastName;
 
-    /** The desktopurl. */
-    String desktopurl;
+    /** The desktopUrl. */
+    String desktopUrl;
 
     /** The title. */
     String title;
 
-    /** The buttonurl. */
-    String buttonurl;
+    /** The buttonUrl. */
+    String buttonUrl;
 
     /**
      * Gets the firstName.
@@ -54,19 +54,19 @@ public class PlannerDetail {
     }
 
     /**
-     * Gets the desktopurl.
+     * Gets the desktopUrl.
      *
-     * @return the desktopurl
+     * @return the desktopUrl
      */
-    public String getDesktopurl() {
-        return desktopurl;
+    public String getDesktopUrl() {
+        return desktopUrl;
     }
 
     /**
-     * Sets the desktopurl.
+     * Sets the desktopUrl.
      */
-    public void setDesktopurl(String desktopurl) {
-        this.desktopurl = desktopurl;
+    public void setDesktopUrl(String desktopUrl) {
+        this.desktopUrl = desktopUrl;
     }
 
     /**
@@ -86,19 +86,19 @@ public class PlannerDetail {
     }
 
     /**
-     * Gets the buttonurl.
+     * Gets the buttonUrl.
      *
-     * @return the buttonurl
+     * @return the buttonUrl
      */
-    public String getButtonurl() {
-        return buttonurl;
+    public String getButtonUrl() {
+        return buttonUrl;
     }
 
     /**
-     * Sets the buttonurl.
+     * Sets the buttonUrl.
      */
-    public void setButtonurl(String buttonurl) {
-        this.buttonurl = buttonurl;
+    public void setButtonUrl(String buttonUrl) {
+        this.buttonUrl = buttonUrl;
     }
 
 }

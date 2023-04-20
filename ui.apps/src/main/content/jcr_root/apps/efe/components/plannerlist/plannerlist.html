@@ -6,28 +6,28 @@
   <h2 class="cmp-list--title">${model.plannerTitle @ format=[city,state]}</h2>
   <ul id="list-2833b18972" class="cmp-list">
     <sly data-sly-list.plannerList="${model.plannerList}">
-    <div class="teaser cmp-teaser--thumbnail">
-      <div id="teaser-3a8e3acfdb" class="cmp-teaser">
-        <div class="cmp-teaser__content">
+      <div class="teaser cmp-teaser--thumbnail">
+        <div id="teaser-3a8e3acfdb" class="cmp-teaser">
+          <div class="cmp-teaser__content">
             <h2 class="cmp-teaser__title"> ${plannerList.firstName} ${plannerList.lastName}</h2>
-          <div class="cmp-teaser__description">
-            <p>${plannerList.title}</p>
+            <div class="cmp-teaser__description">
+              <p>${plannerList.title}</p>
+            </div>
+            <div class="cmp-teaser__action-container">
+              <a class="cmp-teaser__action-link"  target="${model.plannerTarget}" data-cmp-clickable="" x-cq-linkchecker="valid" href="${plannerList.buttonUrl}" >${model.ctaLabel}</a>
+            </div>
           </div>
-          <div class="cmp-teaser__action-container">
-            <a class="cmp-teaser__action-link" id="teaser-3a8e3acfdb-cta-641eff4586" target="${model.plannerTarget}" data-cmp-clickable="" x-cq-linkchecker="valid" href="${plannerList.buttonurl}" >${model.ctaLabel}</a>
-          </div>
-        </div>
-        <div class="cmp-teaser__image">
-          <div data-cmp-src="/content/core-components-examples/library/core-content/teaser/_jcr_content/root/responsivegrid/demo_1878698139/component/teaser.coreimg.82{.width}.jpeg" data-asset-id="c0a39183-23f4-48f0-8db7-bb41ba2b0122" id="teaser-3a8e3acfdb-image"  data-cmp-hook-image="imageV3" class="cmp-image" itemscope="" itemtype="http://schema.org/ImageObject">
-            <img srcset="${plannerList.desktopurl}"
-                        src="${plannerList.desktopurl}"
-                        loading="lazy" class="cmp-image__image" itemprop="contentUrl"
-                        alt="Aerial photo of mountain range" title="Aerial photo of mountain range" />
-            <meta itemprop="caption" content="Aerial photo of mountain range">
+          <div class="cmp-teaser__image">
+            <div data-cmp-hook-image="imageV3" class="cmp-image">
+              <img srcset="${plannerList.desktopUrl}"
+                   src="${plannerList.desktopUrl}"
+                   loading="lazy" class="cmp-image__image" itemprop="contentUrl"
+                   alt="Planner detail" title="Planner detail" />
+              <meta itemprop="caption" content="Planner Details">
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </sly>
-</ul>
+  </ul>
 </div>

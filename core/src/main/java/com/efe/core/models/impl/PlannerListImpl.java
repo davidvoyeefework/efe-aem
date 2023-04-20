@@ -1,7 +1,6 @@
 package com.efe.core.models.impl;
 
 import com.adobe.cq.export.json.ExporterConstants;
-import com.day.cq.commons.jcr.JcrConstants;
 import com.day.cq.dam.api.DamConstants;
 import com.efe.core.bean.PlannerDetail;
 import com.efe.core.constants.PlannerLocationConstants;
@@ -124,8 +123,8 @@ public class PlannerListImpl implements PlannerList {
 				plannerObj.setFirstName(firstName);
 				plannerObj.setLastName(lastName);
 				plannerObj.setTitle(title);
-				plannerObj.setDesktopurl(imageUrl);
-				plannerObj.setButtonurl(LinkUtil.getFormattedLink(
+				plannerObj.setDesktopUrl(imageUrl);
+				plannerObj.setButtonUrl(LinkUtil.getFormattedLink(
 						"/content/efe/us/en/plannerdata" + PlannerLocationConstants.DOT + firstName
 								+ PlannerLocationConstants.DOT + lastName + PlannerLocationConstants.DOT + plannerId,
 						resourceResolver));

@@ -82,10 +82,10 @@ class PlannerListImplTest {
 		assertEquals("Dale", model.getPlannerList().get(0).getFirstName());
 		assertEquals("Hansen", model.getPlannerList().get(0).getLastName());
 		assertEquals("https://planners.edelmanfinancialengines.com/media/1112/efe_hansen_dale_016_desktop_308x308.png",
-				model.getPlannerList().get(0).getDesktopurl());
+				model.getPlannerList().get(0).getDesktopUrl());
 		assertEquals("Director, Financial Planning", model.getPlannerList().get(0).getTitle());
 		assertEquals("/content/efe/us/en/plannerdata.Dale.Hansen.29.html",
-				model.getPlannerList().get(0).getButtonurl());
+				model.getPlannerList().get(0).getButtonUrl());
 	}
 
 }
