@@ -67,7 +67,7 @@ public class ResourceUtil {
 		Resource resource = resourceResolver.getResource(resourcePath);
 		if (Objects.nonNull(resource)) {
 			ValueMap properties = resource.adaptTo(ValueMap.class);
-			String[] value = properties.get("planners", new String[] {});
+			String[] value = properties.get(propertyName, new String[] {});
 			for(String planner :value){
 				results.add(planner);
 			}

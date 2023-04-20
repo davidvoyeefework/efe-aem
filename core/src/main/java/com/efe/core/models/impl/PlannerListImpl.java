@@ -1,10 +1,11 @@
 package com.efe.core.models.impl;
 
 import com.adobe.cq.export.json.ExporterConstants;
+import com.day.cq.commons.jcr.JcrConstants;
+import com.day.cq.dam.api.DamConstants;
 import com.efe.core.bean.PlannerDetail;
 import com.efe.core.constants.PlannerLocationConstants;
 import com.efe.core.models.PlannerList;
-import com.efe.core.models.multifield.Link;
 import com.efe.core.utils.EFEUtil;
 import com.efe.core.utils.ResourceUtil;
 import org.apache.sling.api.SlingHttpServletRequest;
@@ -35,8 +36,6 @@ public class PlannerListImpl implements PlannerList {
     /** The Constant RESOURCE_TYPE. */
     public static final String RESOURCE_TYPE="efe/components/plannerlist";
 
-    /** The Constant LOCATION_PATH. */
-    public static final  String LOCATION_PATH ="/content/dam/efe/cf/plannerlocation/locations";
 
     /** The Constant PLANNER_PATH. */
     public static final String PLANNER_PATH ="/content/efe/us/en/plannerdata";
@@ -81,10 +80,6 @@ public class PlannerListImpl implements PlannerList {
     private String city ;
 
 
-    /** The header list. */
-    @Inject
-    private List<Link> headerList;
-
     /**
      * This method sets the planner values in bean class according to selectors value.
      */
@@ -95,13 +90,12 @@ public class PlannerListImpl implements PlannerList {
         List<String> cfList = new ArrayList<>();
         state = selectors[0];
         city = selectors[1];
-        String locationPath = LOCATION_PATH+ PlannerLocationConstants.FORWARD_SLASH + state + PlannerLocationConstants.FORWARD_SLASH + city;
+        String locationPath = PlannerLocationConstants.ROOT_FOLDER_PATH+PlannerLocationConstants.FORWARD_SLASH+PlannerLocationConstants.LOCATIONS+ PlannerLocationConstants.FORWARD_SLASH + state + PlannerLocationConstants.FORWARD_SLASH + city;
         Resource resourceLocation = resourceResolver.getResource(locationPath);
         if(Objects.nonNull(resourceLocation)){
             for (Resource item : resourceLocation.getChildren()) {
 
-                if (item.isResourceType("dam:Asset")) {
-
+                if (item.isResourceType(DamConstants.NT_DAM_ASSET)) {
                     Resource masterResource = resourceResolver.getResource(item.getPath() + PlannerLocationConstants.MASTER_NODE);
                     String[] plannerList = ResourceUtil.getProperties(resourceResolver,masterResource.getPath(),"planners");
                     for(String list : plannerList){
