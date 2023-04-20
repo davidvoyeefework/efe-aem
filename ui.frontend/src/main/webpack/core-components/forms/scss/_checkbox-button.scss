@@ -14,10 +14,10 @@
     }
 
     span {
-        @include body-02;
+        @include secondary-nav-link;
         position: relative;
-        bottom: 2px;
-        left: 3px;
+        bottom: 6px;
+        left: 16px;
     }
 
     &:hover, &.radio-item--hover {
