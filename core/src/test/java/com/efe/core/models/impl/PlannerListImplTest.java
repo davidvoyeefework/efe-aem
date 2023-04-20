@@ -21,10 +21,10 @@ class PlannerListImplTest {
 	/** The Constant RESOURCE_CONTENT. */
 	private static final String RESOURCE_CONTENT = "/com/efe/core/models/plannerlist/plannerlist.json";
 
-	/** The Constant RESOURCE_CONTENT. */
+	/** The Constant CF_CONTENT. */
 	private static final String CF_CONTENT = "/com/efe/core/models/plannerlist/cf.json";
 
-	/** The Constant RESOURCE_CONTENT. */
+	/** The Constant PLANNER_CONTENT. */
 	private static final String PLANNER_CONTENT = "/com/efe/core/models/plannerlist/planner.json";
 
 	/** The Constant TEST_CONTENT_ROOT. */
@@ -33,9 +33,10 @@ class PlannerListImplTest {
 	/** The Constant RESOURCE. */
 	private static final String RESOURCE = TEST_CONTENT_ROOT + "/jcr:content/root/container/plannerlist";
 
+	/** The Constant CF_PATH. */
+	private static final String CF_PATH = "/content/dam/efe/cf/plannerlocation/locations/al/birmingham/fragment_birmingham_28";
 
-	private static final String CF_PATH = "/content/dam/efe/cf/plannerlocation/locations/al/birmingham/fragment_birmingham_28/jcr:content/data/master";
-
+	/** The Constant PLANNER_PATH. */
 	private static final String PLANNER_PATH = "/content/dam/efe/cf/plannerlocation/planners/29/fragment_dale_29/jcr:content/data/master";
 	/** The model. */
 	private PlannerList model;
@@ -43,15 +44,16 @@ class PlannerListImplTest {
 	/** The resource. */
 	private Resource resource;
 
-
 	/** The aem context. */
 	private AemContext aemContext = new AemContext();
 
 	/**
 	 * Sets the up.
+	 *
+	 * @throws Exception the exception
 	 */
 	@BeforeEach
-	public void setup() throws Exception{
+	public void setup() throws Exception {
 
 		MockSlingHttpServletRequest request = aemContext.request();
 		Class<PlannerList> modelClass = PlannerList.class;
@@ -77,8 +79,13 @@ class PlannerListImplTest {
 		assertEquals("Read Bio", model.getCtaLabel());
 		assertEquals("BIRMINGHAM", model.getCity());
 		assertEquals("AL", model.getState());
-		assertEquals("Chad", model.getPlannerList().get(0).getFirstName());
+		assertEquals("Dale", model.getPlannerList().get(0).getFirstName());
+		assertEquals("Hansen", model.getPlannerList().get(0).getLastName());
+		assertEquals("https://planners.edelmanfinancialengines.com/media/1112/efe_hansen_dale_016_desktop_308x308.png",
+				model.getPlannerList().get(0).getDesktopurl());
+		assertEquals("Director, Financial Planning", model.getPlannerList().get(0).getTitle());
+		assertEquals("/content/efe/us/en/plannerdata.Dale.Hansen.29.html",
+				model.getPlannerList().get(0).getButtonurl());
 	}
-
 
 }
