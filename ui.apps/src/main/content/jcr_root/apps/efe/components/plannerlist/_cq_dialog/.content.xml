@@ -15,7 +15,6 @@
                     <plannerlabel
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Planner List Labels "
-                        sling:orderBefore="cq:styles"
                         sling:resourceType="granite/ui/components/coral/foundation/container"
                         maximized="{Boolean}true">
                         <items jcr:primaryType="nt:unstructured">
