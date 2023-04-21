@@ -15,7 +15,7 @@ import org.slf4j.LoggerFactory;
 import com.efe.core.bean.PlannerResponse;
 import com.efe.core.bean.PrimaryOffice;
 import com.efe.core.constants.PlannerLocationConstants;
-import com.efe.core.services.PlannerApiService;
+import com.efe.core.services.EfeService;
 import com.efe.core.services.PlannerModelServices;
 import com.efe.core.services.RestService;
 import com.efe.core.utils.CertificationsUtil;
@@ -49,10 +49,10 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 	private RestService restService;
 
 	/**
-	 * PlannerApiService injected
+	 * EfeService injected
 	 */
 	@Reference
-	private PlannerApiService plannerApiService;
+	private EfeService efeService;
 
 	/**
 	 * This method is called by Scheduler to create fragment and adds data to that
@@ -67,8 +67,8 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 	 * This method is used to create Fragment for Planner
 	 */
 	private void createFragmentPlanner(ResourceResolver resourceResolver) {
-		String jsonObjectPlanner = restService.getData(plannerApiService.getPlannersAPIEndpoint(),
-				plannerApiService.getAuthHeader());
+		String jsonObjectPlanner = restService.getData(efeService.getPlannersAPIEndpoint(),
+				efeService.getAuthHeader());
 		Gson gson = new Gson();
 
 		PlannerResponse[] jsonElement = gson.fromJson(jsonObjectPlanner, PlannerResponse[].class);

@@ -22,7 +22,7 @@ import com.efe.core.bean.BusinessHours;
 import com.efe.core.bean.LocationResponse;
 import com.efe.core.constants.PlannerLocationConstants;
 import com.efe.core.services.LocationModelServices;
-import com.efe.core.services.PlannerApiService;
+import com.efe.core.services.EfeService;
 import com.efe.core.services.RestService;
 import com.efe.core.utils.FolderUtil;
 import com.efe.core.utils.NodePropertyManagerUtil;
@@ -54,10 +54,10 @@ public class LocationModelServicesImpl implements LocationModelServices {
 	private RestService restService;
 
 	/**
-	 * PlannerApiService injected
+	 * EfeService injected
 	 */
 	@Reference
-	private PlannerApiService plannerApiService;
+	private EfeService efeService;
 
 	/**
 	 * This method is used to create Fragment for Location
@@ -85,8 +85,8 @@ public class LocationModelServicesImpl implements LocationModelServices {
 	 * This method is used to create Fragments for Locations
 	 */
 	private void createFragmentLocation(ResourceResolver resourceResolver) {
-		String jsonObjectLocation = restService.getData(plannerApiService.getLocationsAPIEndpoint(),
-				plannerApiService.getAuthHeader());
+		String jsonObjectLocation = restService.getData(efeService.getLocationsAPIEndpoint(),
+				efeService.getAuthHeader());
 		Gson gson = new Gson();
 		LocationResponse[] jsonElement = gson.fromJson(jsonObjectLocation, LocationResponse[].class);
 

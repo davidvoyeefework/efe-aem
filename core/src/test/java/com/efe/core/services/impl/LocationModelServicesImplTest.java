@@ -32,7 +32,7 @@ import com.adobe.cq.dam.cfm.ContentFragmentException;
 import com.adobe.cq.dam.cfm.FragmentTemplate;
 import com.day.cq.commons.jcr.JcrConstants;
 import com.efe.core.constants.PlannerLocationConstants;
-import com.efe.core.services.PlannerApiService;
+import com.efe.core.services.EfeService;
 import com.efe.core.services.RestService;
 
 import io.wcm.testing.mock.aem.junit5.AemContext;
@@ -64,9 +64,9 @@ class LocationModelServicesImplTest {
 	@Mock
 	private RestService restService;
 
-	/** Mock PlannerApiService. */
+	/** Mock EfeService. */
 	@Mock
-	private PlannerApiService plannerApiService;
+	private EfeService efeService;
 
 	@Mock
 	private ValueFactory valueFactory, valueFactoryBh;
@@ -105,7 +105,7 @@ class LocationModelServicesImplTest {
 		lenient().when(resourceResolverFactory.getServiceResourceResolver(subServiceUser)).thenReturn(resourceResolver);
 
 		aemContext.registerService(RestService.class, restService);
-		aemContext.registerService(PlannerApiService.class, plannerApiService);
+		aemContext.registerService(EfeService.class, efeService);
 		aemContext.registerService(FragmentTemplate.class, tpl);
 		aemContext.registerService(FragmentTemplate.class, tplBh);
 		aemContext.registerService(Resource.class, existingFragement);
@@ -196,7 +196,7 @@ class LocationModelServicesImplTest {
 
 		// mock method calls
 		lenient().when(
-				restService.getData(plannerApiService.getLocationsAPIEndpoint(), plannerApiService.getAuthHeader()))
+				restService.getData(efeService.getLocationsAPIEndpoint(), efeService.getAuthHeader()))
 				.thenReturn(jsonObjectLocation);
 		// root path plannerlocation
 		lenient().when(resourceResolver.getResource(PlannerLocationConstants.ROOT_FOLDER_PATH))

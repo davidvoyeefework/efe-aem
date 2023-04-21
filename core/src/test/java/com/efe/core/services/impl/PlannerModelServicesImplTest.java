@@ -26,7 +26,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import com.adobe.cq.dam.cfm.ContentFragmentException;
 import com.adobe.cq.dam.cfm.FragmentTemplate;
 import com.efe.core.constants.PlannerLocationConstants;
-import com.efe.core.services.PlannerApiService;
+import com.efe.core.services.EfeService;
 import com.efe.core.services.RestService;
 import com.efe.core.utils.FolderUtil;
 import com.efe.core.utils.NodePropertyManagerUtil;
@@ -82,9 +82,9 @@ class PlannerModelServicesImplTest {
 	@Mock
 	private Node parentNode, plannerMasterNode, plannerPrimaryOfficeNode, plannerEducationNode;
 
-	/** The plannerApiService. */
+	/** The efeService. */
 	@Mock
-	private PlannerApiService plannerApiService;
+	private EfeService efeService;
 
 	private MockedStatic<FolderUtil> mockStatic1;
 	private MockedStatic<NodePropertyManagerUtil> mockStatic2;
@@ -107,7 +107,7 @@ class PlannerModelServicesImplTest {
 		lenient().when(resourceResolverFactory.getServiceResourceResolver(subServiceUser)).thenReturn(resourceResolver);
 
 		aemContext.registerService(RestService.class, restService);
-		aemContext.registerService(PlannerApiService.class, plannerApiService);
+		aemContext.registerService(EfeService.class, efeService);
 		aemContext.registerService(FragmentTemplate.class, tpl);
 		aemContext.registerService(Resource.class, existingFragement);
 		aemContext.registerService(Resource.class, templateOrModelRsc);
@@ -249,7 +249,7 @@ class PlannerModelServicesImplTest {
 		String honorAwardFragmentName = PlannerLocationConstants.HONOR_AWARD + "1";
 
 		lenient().when(
-				restService.getData(plannerApiService.getPlannersAPIEndpoint(), plannerApiService.getAuthHeader()))
+				restService.getData(efeService.getPlannersAPIEndpoint(), efeService.getAuthHeader()))
 				.thenReturn(jsonObjectPlanner);
 
 		lenient().when(resourceResolver.getResource(PlannerLocationConstants.PLANNER_MODEL)).thenReturn(parentRsc);

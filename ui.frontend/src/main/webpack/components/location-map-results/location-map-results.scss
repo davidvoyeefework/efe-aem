@@ -7,8 +7,8 @@
                 position: absolute;
                 min-width: 366px;
                 z-index: 1;
-                left: 10px;
-                top: 10px;
+                left: 15px;
+                top: 15px;
             }
         }
         .cmp-location--results__items {
@@ -22,6 +22,8 @@
         "result map";
     @include media("<tablet-lg") {
         @include flexbox($flex-direction: column);
+        background-color: $efe-gray-light;
+        padding: 0 30px;
     }
     &__map {
         grid-area: map;
@@ -41,13 +43,13 @@
         }
     }
     &__search-form {
-        padding: rem(34.5) rem(55);
+        padding: rem(25) rem(45);
         background: $efe-gray-light;
         border-bottom: 2px solid $efe-gray-mid;
-        @include flexbox($flex-direction: row, $align-items: flex-end, $justify-content: center, $gap: 10px);
+        @include flexbox($flex-direction: row, $align-items: flex-end, $justify-content: center, $gap: 20px);
         @include media("<tablet-lg") {
-            padding: 30px 26px;
-            @include flexbox($flex-direction: column, $align-items: center);
+            padding: 30px 0;
+            @include flexbox($flex-direction: column, $align-items: center, $gap: 15px);
         }
         .input-container {
             max-width: rem(172);
@@ -67,6 +69,7 @@
                 width: rem(172);
                 min-width: rem(172);
                 max-width: rem(172);
+                border-radius: 4px ;
                 @media screen and (min-width: $sm) {
                     min-width: rem(172);
                 }
@@ -81,7 +84,7 @@
         @include cta-primary;
         margin: 0;
         flex: 1;
-        font-size: rem(14);
+        font-size: rem(18);
         &:hover {
             cursor: pointer;
         }
@@ -94,7 +97,7 @@
         padding: 40px 40px 0 40px;
         max-height: 455px;
         @include media("<tablet-lg") {
-            padding: 30px 26px 0 26px;
+            padding: 30px 0 0 0;
             max-height: unset;
         }
         overflow-y: auto;

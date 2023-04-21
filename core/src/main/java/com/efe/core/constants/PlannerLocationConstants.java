@@ -8,6 +8,16 @@ public class PlannerLocationConstants {
 	public static final String LOCATIONS = "locations";
 	
 	/**
+	 * Empty Space
+	 */
+	public static final String SPACE = " ";
+	
+	/**
+	 * Hyphen
+	 */
+	public static final String HYPHEN = "-";
+		
+	/**
 	 * Office Id
 	 */
 	public static final String OFFICE_ID = "officeId";

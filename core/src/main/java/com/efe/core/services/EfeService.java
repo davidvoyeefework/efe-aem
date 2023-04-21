@@ -1,9 +1,9 @@
 package com.efe.core.services;
 
 /**
- * The Interface PlannerApiService.
+ * The Interface EfeService.
  */
-public interface PlannerApiService {
+public interface EfeService {
 
 	/**
 	 * Gets the planners.
@@ -25,5 +25,19 @@ public interface PlannerApiService {
 	 * @return the username
 	 */
 	String getAuthHeader();
+	
+	/**
+	 * Gets the plannerPageUrl.
+	 *
+	 * @return the plannerPageUrl
+	 */
+	String getPlannerPageUrl();
+	
+	/**
+	 * Gets the plannerBioPageUrl.
+	 *
+	 * @return the plannerBioPageUrl
+	 */
+	String getPlannerBioPageUrl();
 
 }
