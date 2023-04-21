@@ -1,0 +1,16 @@
+{
+  "jcr:primaryType": "sling:OrderedFolder",
+  "jcr:createdBy": "efe-service-user",
+  "jcr:title": "AL",
+  "birmingham": {
+    "jcr:primaryType": "sling:OrderedFolder",
+    "jcr:createdBy": "efe-service-user",
+    "jcr:title": "Birmingham"
+  },
+  "walnut creek": {
+    "jcr:primaryType": "sling:OrderedFolder",
+    "jcr:createdBy": "efe-service-user",
+    "jcr:title": "walnut creek"
+  }
+}
+
