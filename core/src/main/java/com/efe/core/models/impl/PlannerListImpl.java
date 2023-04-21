@@ -91,7 +91,7 @@ public class PlannerListImpl implements PlannerList {
 		if (selectors.length == 2) {
 			List<String> cfList = new ArrayList<>();
 			state = selectors[0].toLowerCase();
-			city = selectors[1].toLowerCase();
+			city = selectors[1].toLowerCase().replaceAll(PlannerLocationConstants.HYPHEN,PlannerLocationConstants.SPACE);
 			String locationPath = PlannerLocationConstants.ROOT_FOLDER_PATH + PlannerLocationConstants.FORWARD_SLASH
 					+ PlannerLocationConstants.LOCATIONS + PlannerLocationConstants.FORWARD_SLASH + state
 					+ PlannerLocationConstants.FORWARD_SLASH + city;
