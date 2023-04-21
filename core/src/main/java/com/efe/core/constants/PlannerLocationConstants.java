@@ -13,7 +13,7 @@ public class PlannerLocationConstants {
 	public static final String SPACE = " ";
 	
 	/**
-	 * Empty Space
+	 * Hyphen
 	 */
 	public static final String HYPHEN = "-";
 		

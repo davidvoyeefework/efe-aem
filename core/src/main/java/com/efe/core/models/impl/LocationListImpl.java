@@ -30,10 +30,14 @@ import com.efe.core.utils.LinkUtil;
 /**
  * The Class LocationListImpl.
  */
-@Model(adaptables = Resource.class, adapters = LocationList.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@Model(adaptables = Resource.class, adapters = LocationList.class, resourceType = {
+		LocationListImpl.RESOURCE_TYPE }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
 public class LocationListImpl implements LocationList {
 
+	/** The Constant RESOURCE_TYPE. */
+    public static final String RESOURCE_TYPE="efe/components/locationlist";
+    
 	/**
 	 * The Constant LOGGER
 	 */
