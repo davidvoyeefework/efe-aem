@@ -32,8 +32,14 @@ class LocationListImplTest {
 	/** The Constant ID_CONTENT. */
 	private static final String ID_CONTENT = "/com/efe/core/models/location/locationlistid.json";
 	
+	
 	/** The LOCATION. */
 	private static final String LOCATION = "/content/efe/us/en/location";
+	
+	/** The Constant RESOURCE. */
+	private static final String RESOURCE = LOCATION  + "/jcr:content/root/container/locationlist";
+	
+	
 
 	/** The aem context. */
 	private AemContext aemContext = new AemContext();
@@ -59,14 +65,14 @@ class LocationListImplTest {
 
 		Class<LocationList> modelClass = LocationList.class;
 		aemContext.load().json(RESOURCE_CONTENT, PlannerLocationConstants.LOCATION_PATH + "/al");
-		aemContext.load().json(ID_CONTENT, LOCATION);
-		configuration = Mockito.mock(EfeServiceImpl.Config.class);
+		aemContext.load().json(ID_CONTENT, RESOURCE);
+		configuration = Mockito.mock(EfeServiceImpl.Config.class); 
 		Mockito.lenient().when(configuration.plannerPageUrl()).thenReturn("/content/efe/us/en/locations");
 
 		aemContext.registerInjectActivateService(efeService);
 		efeService.activate(configuration);
 		aemContext.addModelsForClasses(modelClass);
-		resource = aemContext.currentResource(PlannerLocationConstants.LOCATION_PATH + "/al");
+		resource = aemContext.currentResource(RESOURCE);
 		model = resource.adaptTo(modelClass);
 
 	}
@@ -87,7 +93,7 @@ class LocationListImplTest {
 		assertEquals(2, cities.size());
 		assertEquals("/content/efe/us/en/locations.AL.Birmingham.html", cities.get("Birmingham"));
 		assertEquals("/content/efe/us/en/locations.AL.Walnut-Creek.html", cities.get("Walnut Creek"));
-		assertEquals("al-19e4988c61", model.getId());
+		assertEquals("locationlist-6ad3f982c4", model.getId());
 	}
 
 }
