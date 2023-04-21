@@ -1,5 +1,5 @@
 <sly data-sly-use.model="com.efe.core.models.LocationList"/>
-<div class="languagenavigation cmp-languagenavigation--country-list">
+<div id="${model.id}" class="languagenavigation cmp-languagenavigation--country-list">
 <nav class="cmp-languagenavigation">
 <ul class="cmp-languagenavigation__group">
 <sly data-sly-list="${model.states.keySet.iterator}">

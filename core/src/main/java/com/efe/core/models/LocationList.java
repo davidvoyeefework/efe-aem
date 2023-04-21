@@ -7,6 +7,13 @@ import java.util.Map;
  *
  */
 public interface LocationList {
+	
+	/**
+     * Gets the id.
+     *
+     * @return the id
+     */
+    String getId();
 
 	/**
 	 * Returns a map of states and their cities.

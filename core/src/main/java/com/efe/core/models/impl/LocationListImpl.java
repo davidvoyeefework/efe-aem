@@ -16,7 +16,9 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.OSGiService;
+import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
+import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,6 +27,7 @@ import com.efe.core.constants.PlannerLocationConstants;
 import com.efe.core.constants.StatesEnum;
 import com.efe.core.models.LocationList;
 import com.efe.core.services.EfeService;
+import com.efe.core.utils.EFEUtil;
 import com.efe.core.utils.LinkUtil;
 
 /**
@@ -53,6 +56,16 @@ public class LocationListImpl implements LocationList {
 	 */
 	@OSGiService
 	private EfeService efeService;
+	
+	/**
+	 * The current resource.
+	 */
+	@Self
+	private Resource resource;
+	
+	/** The id. */
+	@ValueMapValue
+	private String id;
 
 	/** The States Map. */
 	private Map<String, Map<String, String>> states;
@@ -72,6 +85,18 @@ public class LocationListImpl implements LocationList {
 		return Collections.emptyMap();
 	}
 
+	/**
+	 * Gets the id.
+	 *
+	 * @return the id
+	 */
+	public String getId() {
+		if (id == null) {
+			id = EFEUtil.getId(resource);
+		}
+		return id;
+	}
+	
 	/**
 	 * This method generates a list of locations grouped by state and city, and
 	 * stores it in the "states" HashMap.

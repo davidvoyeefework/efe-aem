@@ -2,7 +2,6 @@ package com.efe.core.models.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Map;
 
@@ -16,7 +15,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.efe.core.constants.PlannerLocationConstants;
 import com.efe.core.models.LocationList;
-import com.efe.core.services.EfeService;
 import com.efe.core.services.impl.EfeServiceImpl;
 
 import io.wcm.testing.mock.aem.junit5.AemContext;
@@ -29,7 +27,19 @@ import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 class LocationListImplTest {
 
 	/** The Constant RESOURCE_CONTENT. */
-	private static final String RESOURCE_CONTENT = "/com/efe/core/models/locationlist.json";
+	private static final String RESOURCE_CONTENT = "/com/efe/core/models/location/locationlist.json";
+	
+	/** The Constant ID_CONTENT. */
+	private static final String ID_CONTENT = "/com/efe/core/models/location/locationlistid.json";
+	
+	
+	/** The LOCATION. */
+	private static final String LOCATION = "/content/efe/us/en/location";
+	
+	/** The Constant RESOURCE. */
+	private static final String RESOURCE = LOCATION  + "/jcr:content/root/container/locationlist";
+	
+	
 
 	/** The aem context. */
 	private AemContext aemContext = new AemContext();
@@ -40,6 +50,7 @@ class LocationListImplTest {
 	/** The model. */
 	private LocationList model;
 
+	/** The EfeServiceImpl. */
 	private EfeServiceImpl efeService = new EfeServiceImpl();
 
 	@Mock
@@ -54,13 +65,14 @@ class LocationListImplTest {
 
 		Class<LocationList> modelClass = LocationList.class;
 		aemContext.load().json(RESOURCE_CONTENT, PlannerLocationConstants.LOCATION_PATH + "/al");
-		configuration = Mockito.mock(EfeServiceImpl.Config.class);
+		aemContext.load().json(ID_CONTENT, RESOURCE);
+		configuration = Mockito.mock(EfeServiceImpl.Config.class); 
 		Mockito.lenient().when(configuration.plannerPageUrl()).thenReturn("/content/efe/us/en/locations");
 
 		aemContext.registerInjectActivateService(efeService);
 		efeService.activate(configuration);
 		aemContext.addModelsForClasses(modelClass);
-		resource = aemContext.currentResource(PlannerLocationConstants.LOCATION_PATH + "/al");
+		resource = aemContext.currentResource(RESOURCE);
 		model = resource.adaptTo(modelClass);
 
 	}
@@ -81,6 +93,7 @@ class LocationListImplTest {
 		assertEquals(2, cities.size());
 		assertEquals("/content/efe/us/en/locations.AL.Birmingham.html", cities.get("Birmingham"));
 		assertEquals("/content/efe/us/en/locations.AL.Walnut-Creek.html", cities.get("Walnut Creek"));
+		assertEquals("locationlist-6ad3f982c4", model.getId());
 	}
 
 }
