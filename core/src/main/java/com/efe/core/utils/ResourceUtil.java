@@ -1,9 +1,6 @@
 package com.efe.core.utils;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.apache.sling.api.resource.LoginException;
@@ -53,6 +50,26 @@ public class ResourceUtil {
 			return property.get(propertyName, String.class);		
 		}
 		return null;		
+	}
+
+	/**
+	 * Retrieves a specific property from a resource identified by its path, using a given ResourceResolver.
+	 * @param resourceResolver The ResourceResolver to use to access the resource.
+	 * @param resourcePath The path of the resource to retrieve the property from.
+	 * @param propertyName The name of the property to retrieve.
+	 * @return The value of the requested property as a String array, or null if the resource or property cannot be found.
+	 */
+	public static String[] getProperties(ResourceResolver resourceResolver, String resourcePath, String propertyName) {
+		List<String> results = new ArrayList<>();
+		Resource resource = resourceResolver.getResource(resourcePath);
+		if (Objects.nonNull(resource)) {
+			ValueMap properties = resource.adaptTo(ValueMap.class);
+			String[] value = properties.get(propertyName, new String[] {});
+			for(String planner :value){
+				results.add(planner);
+			}
+		}
+		return results != null ? Arrays.copyOf(results.toArray(new String[0]), results.size()) : null;
 	}
 	
 	/**
