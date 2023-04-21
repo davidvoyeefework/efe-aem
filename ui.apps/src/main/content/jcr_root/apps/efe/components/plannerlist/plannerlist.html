@@ -4,8 +4,7 @@
 </sly>
 <div class="list cmp-list--horizontal cmp-list--tight cmp-list--left-align" id="${model.id}">
   <h2 class="cmp-list--title">${model.plannerTitle @ format=[city,state]}</h2>
-  <ul class="cmp-list">
-    <sly  data-sly-test="${model.plannerList}">
+  <ul class="cmp-list" data-sly-test="${model.plannerList}">
     <sly data-sly-list.plannerList="${model.plannerList}">
       <div class="teaser cmp-teaser--thumbnail">
         <div  class="cmp-teaser">
@@ -29,7 +28,6 @@
           </div>
         </div>
       </div>
-    </sly>
     </sly>
   </ul>
 </div>
