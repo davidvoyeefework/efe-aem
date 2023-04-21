@@ -117,9 +117,13 @@
             border-right: 38px solid $efe-gray-light;
         }
         &--item {
+            @include media("<tablet-lg") {
+                margin-bottom: 30px;
+            }
             margin-bottom: 40px;
             h2 {
                 @include subhead-01;
+                margin-bottom: 10px;
             }
             p {
                 @include body-02;
@@ -129,10 +133,17 @@
                 margin-top: 15px;
                 display: inline-block;
             }
-            &.no-results {
+        }
+        &.no-results {
+            padding: 40px 30px 0 40px;
+            @include media("<tablet-lg") {
+                padding: 30px 0 40px 0;
+            }
+            .cmp-location--results__items--item {
                 a {
                     margin-bottom: 40px;
                 }
+
             }
         }
     }
