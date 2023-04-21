@@ -13,6 +13,6 @@
   ],
   "linkcheckertransformer.disableRewriting":false,
   "linkcheckertransformer.disableChecking":true,
-  "linkcheckertransformer.stripHtmltExtension":true,
+  "linkcheckertransformer.stripHtmltExtension":false,
   "linkcheckertransformer.mapCacheSize:Integer":5000
 }
