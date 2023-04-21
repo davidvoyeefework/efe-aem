@@ -1,9 +1,6 @@
 package com.efe.core.utils;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.apache.sling.api.resource.LoginException;
@@ -72,7 +69,7 @@ public class ResourceUtil {
 				results.add(planner);
 			}
 		}
-		return  results.toArray(new String[0]);
+		return results != null ? Arrays.copyOf(results.toArray(new String[0]), results.size()) : null;
 	}
 	
 	/**

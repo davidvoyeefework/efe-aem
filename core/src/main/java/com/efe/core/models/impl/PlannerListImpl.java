@@ -40,7 +40,7 @@ public class PlannerListImpl implements PlannerList {
 	public static final String PLANNER_PATH = "/content/efe/us/en/plannerdata";
 
 	/** The SlingHttpServletRequest. */
-	@Inject
+	@SlingObject
 	private SlingHttpServletRequest request;
 
 	/** The PlannerDetails. */

@@ -1,9 +1,7 @@
 {
-	"jcr:created": "Mon Apr 17 2023 16:07:02 GMT+0000",
 	"jcr:mixinTypes": [
 		"mix:referenceable"
 	],
-	"jcr:createdBy": "efe-service-user",
 	"jcr:uuid": "a5ea32ec-fe28-4602-b3e2-ef30a8974046",
 	"jcr:primaryType": "dam:Asset",
 	"jcr:content": {
@@ -15,43 +13,26 @@
 			"jcr:primaryType": "nt:unstructured",
 			"cq:model": "/conf/efe/settings/dam/cfm/models/locations",
 			"master": {
-				"officeId@LastModified": "Mon Apr 17 2023 16:07:02 GMT+0000",
 				"officeName": "Birmingham",
-				"appointmentOnly@LastModified": "Mon Apr 17 2023 16:07:02 GMT+0000",
 				"testLocation": false,
-				"zip@LastModified": "Mon Apr 17 2023 16:07:02 GMT+0000",
-				"officeName@LastModified": "Mon Apr 17 2023 16:07:02 GMT+0000",
 				"planners": [
 					"/content/dam/efe/cf/plannerlocation/planners/29/fragment_dale_29",
 					"/content/dam/efe/cf/plannerlocation/planners/358/fragment_christopher_358"
 				],
-				"address2@LastModified": "Mon Apr 17 2023 16:07:02 GMT+0000",
-				"emergencyClosure@LastModified": "Mon Apr 17 2023 16:07:02 GMT+0000",
-				"lastUpdated": "2022-12-06T11:45:44.173Z",
 				"officeId": "28",
 				"externalName": "Birmingham",
 				"state": "AL",
-				"phone@LastModified": "Mon Apr 17 2023 16:07:02 GMT+0000",
 				"longitude": "-86.719533",
 				"googleReviewLink": "https://g.page/r/CfKJkFPHD7lFEBM/review",
 				"zip": "35243",
 				"mobileImage": "https://planners.edelmanfinancialengines.com/media/2358/birmingham-mobile-414x192.png",
-				"externalName@LastModified": "Mon Apr 17 2023 16:07:02 GMT+0000",
 				"overrideCorporateOfficeHours": false,
-				"overrideCorporateOfficehours@LastModified": "Mon Apr 17 2023 16:07:02 GMT+0000",
 				"buildingComplexName": "",
-				"lastUpdated@LastModified": "Mon Apr 17 2023 16:07:02 GMT+0000",
 				"rd": "Matthew Ulrick",
 				"emergencyClosure": false,
 				"phone": "(866) 742-7222",
 				"jcr:primaryType": "nt:unstructured",
-				"buildingComplexName@LastModified": "Mon Apr 17 2023 16:07:02 GMT+0000",
 				"appointmentOnly": false,
-				"planners@LastModified": "Mon Apr 17 2023 16:07:02 GMT+0000",
-				"city@LastModified": "Mon Apr 17 2023 16:07:02 GMT+0000",
-				"longitude@LastModified": "Mon Apr 17 2023 16:07:02 GMT+0000",
-				"rd@LastModified": "Mon Apr 17 2023 16:07:02 GMT+0000",
-				"mobileImage@LastModified": "Mon Apr 17 2023 16:07:02 GMT+0000",
 				"businesshours": [
 					"/content/dam/efe/cf/plannerlocation/locations/al/birmingham/businesshours/businesshoursfragment_1",
 					"/content/dam/efe/cf/plannerlocation/locations/al/birmingham/businesshours/businesshoursfragment_2",
@@ -62,25 +43,15 @@
 					"/content/dam/efe/cf/plannerlocation/locations/al/birmingham/businesshours/businesshoursfragment_7"
 				],
 				"city": "Birmingham",
-				"businessHour@LastModified": "Mon Apr 17 2023 16:07:02 GMT+0000",
 				"latitude": "33.437489",
-				"tollFree@LastModified": "Mon Apr 17 2023 16:07:02 GMT+0000",
-				"businessHours@LastModified": "Mon Apr 17 2023 16:07:02 GMT+0000",
-				"googleReviewLink@LastModified": "Mon Apr 17 2023 16:07:02 GMT+0000",
-				"address1@LastModified": "Mon Apr 17 2023 16:07:02 GMT+0000",
-				"desktopImage@LastModified": "Mon Apr 17 2023 16:07:02 GMT+0000",
 				"address2": "Suite 475",
 				"address1": "3595 Grandview Parkway",
-				"fax@LastModified": "Mon Apr 17 2023 16:07:02 GMT+0000",
-				"state@LastModified": "Mon Apr 17 2023 16:07:02 GMT+0000",
 				"jcr:mixinTypes": [
 					"dam:cfVariationNode",
 					"cq:Taggable"
 				],
-				"testLocation@LastModified": "Mon Apr 17 2023 16:07:02 GMT+0000",
 				"desktopImage": "https://planners.edelmanfinancialengines.com/media/2511/birmingham-desktop-780x508.png",
-				"tollFree": "(833) PLAN-EFE",
-				"latitude@LastModified": "Mon Apr 17 2023 16:07:02 GMT+0000"
+				"tollFree": "(833) PLAN-EFE"
 			}
 		},
 		"indexedData": {
@@ -105,8 +76,6 @@
 			"jcr:primaryType": "nt:unstructured"
 		},
 		"renditions": {
-			"jcr:created": "Mon Apr 17 2023 16:07:02 GMT+0000",
-			"jcr:createdBy": "efe-service-user",
 			"jcr:primaryType": "nt:folder"
 		}
 	}
