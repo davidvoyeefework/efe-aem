@@ -95,12 +95,16 @@
                                     tag="p"/>
                                 <item1
                                     jcr:primaryType="nt:unstructured"
-                                    description="Quote"
+                                    description="Block Quote"
                                     tag="blockquote"/>
                                 <item2
                                     jcr:primaryType="nt:unstructured"
                                     description="Preformatted"
                                     tag="pre"/>
+								<item3
+                                    jcr:primaryType="nt:unstructured"
+                                    description="Quote"
+                                    tag="q"/>
                             </formats>
                         </paraformat>
                         <misctools
