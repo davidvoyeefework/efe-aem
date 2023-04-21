@@ -60,16 +60,13 @@ public class ResourceUtil {
 	 * @return The value of the requested property as a String array, or null if the resource or property cannot be found.
 	 */
 	public static String[] getProperties(ResourceResolver resourceResolver, String resourcePath, String propertyName) {
-		List<String> results = new ArrayList<>();
+		String[] value = null;
 		Resource resource = resourceResolver.getResource(resourcePath);
 		if (Objects.nonNull(resource)) {
 			ValueMap properties = resource.adaptTo(ValueMap.class);
-			String[] value = properties.get(propertyName, new String[] {});
-			for(String planner :value){
-				results.add(planner);
-			}
+			value = properties.get(propertyName, new String[] {});
 		}
-		return results.toArray(new String[0]);
+		return value != null ? Arrays.copyOf(value, value.length) : null;
 	}
 	
 	/**
