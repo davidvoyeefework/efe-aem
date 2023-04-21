@@ -69,7 +69,7 @@ public class ResourceUtil {
 				results.add(planner);
 			}
 		}
-		return results != null ? Arrays.copyOf(results.toArray(new String[0]), results.size()) : null;
+		return results.toArray(new String[0]);
 	}
 	
 	/**
