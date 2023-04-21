@@ -5,6 +5,7 @@ import com.day.cq.dam.api.DamConstants;
 import com.efe.core.bean.PlannerDetail;
 import com.efe.core.constants.PlannerLocationConstants;
 import com.efe.core.models.PlannerList;
+import com.efe.core.services.EfeService;
 import com.efe.core.utils.EFEUtil;
 import com.efe.core.utils.LinkUtil;
 import com.efe.core.utils.ResourceUtil;
@@ -14,12 +15,12 @@ import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import javax.annotation.PostConstruct;
-import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -36,9 +37,6 @@ public class PlannerListImpl implements PlannerList {
 	/** The Constant RESOURCE_TYPE. */
 	public static final String RESOURCE_TYPE = "efe/components/plannerlist";
 
-	/** The Constant PLANNER_PATH. */
-	public static final String PLANNER_PATH = "/content/efe/us/en/plannerdata";
-
 	/** The SlingHttpServletRequest. */
 	@SlingObject
 	private SlingHttpServletRequest request;
@@ -49,6 +47,13 @@ public class PlannerListImpl implements PlannerList {
 	/** The resource resolver. */
 	@SlingObject
 	private ResourceResolver resourceResolver;
+
+	/**
+	 * Injecting efeService
+	 *
+	 */
+	@OSGiService
+	private EfeService efeService;
 
 	/** The current resource. */
 	@Self
@@ -124,8 +129,7 @@ public class PlannerListImpl implements PlannerList {
 				plannerObj.setLastName(lastName);
 				plannerObj.setTitle(title);
 				plannerObj.setDesktopUrl(imageUrl);
-				plannerObj.setButtonUrl(LinkUtil.getFormattedLink(
-						"/content/efe/us/en/plannerdata" + PlannerLocationConstants.DOT + firstName
+				plannerObj.setButtonUrl(LinkUtil.getFormattedLink(efeService.getPlannerBioPageUrl()+ PlannerLocationConstants.DOT + firstName
 								+ PlannerLocationConstants.DOT + lastName + PlannerLocationConstants.DOT + plannerId,
 						resourceResolver));
 			}

@@ -1,6 +1,7 @@
 package com.efe.core.models.impl;
 
 import com.efe.core.models.PlannerList;
+import com.efe.core.services.impl.EfeServiceImpl;
 import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 import org.apache.sling.api.resource.Resource;
@@ -9,6 +10,8 @@ import org.apache.sling.testing.mock.sling.servlet.MockSlingHttpServletRequest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -47,6 +50,13 @@ class PlannerListImplTest {
 	/** The aem context. */
 	private AemContext aemContext = new AemContext();
 
+	/** The EfeServiceImpl. */
+	private EfeServiceImpl efeService = new EfeServiceImpl();
+
+	@Mock
+	/** The configuration. */
+	private EfeServiceImpl.Config configuration;
+
 	/**
 	 * Sets the up.
 	 *
@@ -60,6 +70,10 @@ class PlannerListImplTest {
 		aemContext.load().json(RESOURCE_CONTENT, TEST_CONTENT_ROOT);
 		aemContext.load().json(CF_CONTENT, CF_PATH);
 		aemContext.load().json(PLANNER_CONTENT, PLANNER_PATH);
+		configuration = Mockito.mock(EfeServiceImpl.Config.class);
+		Mockito.lenient().when(configuration.plannerBioPageUrl()).thenReturn("/content/efe/us/en/financial-planners");
+		aemContext.registerInjectActivateService(efeService);
+		efeService.activate(configuration);
 		aemContext.addModelsForClasses(modelClass);
 		resource = aemContext.currentResource(RESOURCE);
 		MockRequestPathInfo requestPathInfo = (MockRequestPathInfo) request.getRequestPathInfo();
@@ -84,7 +98,7 @@ class PlannerListImplTest {
 		assertEquals("https://planners.edelmanfinancialengines.com/media/1112/efe_hansen_dale_016_desktop_308x308.png",
 				model.getPlannerList().get(0).getDesktopUrl());
 		assertEquals("Director, Financial Planning", model.getPlannerList().get(0).getTitle());
-		assertEquals("/content/efe/us/en/plannerdata.Dale.Hansen.29.html",
+		assertEquals("/content/efe/us/en/financial-planners.Dale.Hansen.29.html",
 				model.getPlannerList().get(0).getButtonUrl());
 	}
 
