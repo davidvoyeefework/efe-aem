@@ -17,9 +17,9 @@
     <div class="cmp-location--results__map">
         <div id="map_canvas" style="position:absolute;height:100%;width:100%"></div>
     </div>
-    <div class="cmp-location--results__items">
+    <div class="cmp-location--results__items {{variant}}">
         {{#if variant}}
-        <div class="cmp-location--results__items--item no-results">
+        <div class="cmp-location--results__items--item">
             <h2>National Planner Center</h2>
             <p>833-PLAN-EFE</p>
             <a href="/?path=/story/components-locationmapdirections--map-directions">Explore location</a>
@@ -118,6 +118,7 @@
             ]
         }
     ];
+    var image = "https://www.edelmanfinancialengines.com/wp-content/themes/EFE_Divi_Child_Theme/images/efe-marker.svg";
     var styledMap = new google.maps.StyledMapType(styles,
         {name: "Styled Map"});
     var options = {
@@ -138,6 +139,7 @@
     ),
     map: map,
     title: 'Middle of America PIN',
+    icon: image,
 });
 //to be changed in future
 document.querySelector('.efe-cta-primary').addEventListener('click', ()=>{
