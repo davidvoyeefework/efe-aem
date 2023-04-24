@@ -1,3 +1,5 @@
+# Retrieves a list of all Category Cards
+
 query getAllCategoryCards{
   momentumCategoryCardsList {
     items {

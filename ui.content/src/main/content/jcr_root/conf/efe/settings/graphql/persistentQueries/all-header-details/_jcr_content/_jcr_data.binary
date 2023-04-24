@@ -1,3 +1,5 @@
+# Retrieves a list of all Header Details
+
 query getAllHeaderDetails{
   momentumHeaderDetailsList {
     items {
