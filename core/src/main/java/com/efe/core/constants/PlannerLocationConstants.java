@@ -673,7 +673,13 @@ public class PlannerLocationConstants {
 	public static final String EXAM_NAME_SHORT = "examNameShort";
 	
 	/**
-	 * Exam Name Short
+	 * Location Path
 	 */
 	public static final String LOCATION_PATH = ROOT_FOLDER_PATH + FORWARD_SLASH + LOCATIONS;
+	
+	/**
+	 * Regex for Dot
+	 */
+	public static final String REGEX_FOR_DOT = "[.]";
+	
 }
