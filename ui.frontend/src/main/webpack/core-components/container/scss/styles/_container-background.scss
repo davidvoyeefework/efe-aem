@@ -33,7 +33,6 @@
 .cmp-container--white {
     background: white;
     @include maxWidth();
-    @extend .cmp-container--padding;
 }
 .border-radius--top-left {
     border-top-left-radius: rem(40px);
