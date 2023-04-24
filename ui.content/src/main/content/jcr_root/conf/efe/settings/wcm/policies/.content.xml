@@ -109,7 +109,7 @@
                         </paraformat>
                         <misctools
                             jcr:primaryType="nt:unstructured"
-                            features="-">
+                            features="specialchars,sourceedit">
                             <specialCharsConfig jcr:primaryType="nt:unstructured">
                                 <chars
                                     jcr:primaryType="nt:unstructured"
@@ -135,37 +135,37 @@
                         </misctools>
                         <edit
                             jcr:primaryType="nt:unstructured"
-                            features="-"/>
+                            features="paste-plaintext,paste-wordhtml"/>
                         <findreplace
                             jcr:primaryType="nt:unstructured"
-                            features="-"/>
+                            features="*"/>
                         <undo
                             jcr:primaryType="nt:unstructured"
                             features="-"/>
                         <spellcheck
                             jcr:primaryType="nt:unstructured"
-                            features="-"/>
+                            features="*"/>
                         <image
                             jcr:primaryType="nt:unstructured"
                             features="-"/>
                         <table
                             jcr:primaryType="nt:unstructured"
-                            features="-"/>
+                            features="*"/>
                         <lists
                             jcr:primaryType="nt:unstructured"
                             features="*"/>
                         <justify
                             jcr:primaryType="nt:unstructured"
-                            features="-"/>
+                            features="*"/>
                         <format
                             jcr:primaryType="nt:unstructured"
-                            features="bold,italic"/>
+                            features="bold,italic,underline"/>
                         <links
                             jcr:primaryType="nt:unstructured"
                             features="modifylink,unlink"/>
                         <subsuperscript
                             jcr:primaryType="nt:unstructured"
-                            features="-"/>
+                            features="subscript"/>
                     </rtePlugins>
                     <cq:styleGroups jcr:primaryType="nt:unstructured">
                         <item0
