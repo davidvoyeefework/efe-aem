@@ -1,0 +1,32 @@
+# Retrieves a list of all Category Cards
+
+query getAllCategoryCards{
+  momentumCategoryCardsList {
+    items {
+      _path
+      cardOrder
+      categoryCard
+      description {
+        plaintext
+      }
+      ctaText 
+	  	ctaLink {
+      	...on  PageRef{
+          type
+          _path
+          _authorUrl
+          _publishUrl
+      	}
+    	}
+      cardImage {
+        ...on  ImageRef{
+          _path
+          _authorUrl
+          _publishUrl
+          width
+          height
+        }
+      }
+    }
+  }
+}
