@@ -1,0 +1,92 @@
+.cmp-text--table {
+
+
+    table {
+        width: 100%;
+        height: auto;
+        color: white;
+        @include secondary-nav-link;
+    }
+
+    th {
+        white-space: nowrap;
+        background: $efe-gray-primary;
+        color: white;
+        padding: 12px 20px;
+        text-transform: uppercase;
+        text-align: left;
+
+        &:first-of-type {
+            font-weight: 700;
+        }
+    }
+
+    tr {
+        background: white;
+        td {
+            border-bottom: 2px solid $efe-gray-mid;
+            padding: 12px 20px;
+            &:first-of-type {
+                text-transform: uppercase;
+            }
+        }
+
+    }
+
+    @media screen and (max-width: $sm) {
+        table {
+            border: 0;
+          }
+        
+          table caption {
+            font-size: 1.3em;
+          }
+          
+          table thead {
+            border: none;
+            clip: rect(0 0 0 0);
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+            padding: 0;
+            position: absolute;
+            width: 1px;
+          }
+          
+          table tr {
+            border-bottom: 1px solid $efe-gray-primary;
+            display: block;
+
+            th {
+                display: none;
+                &:first-child {
+                    display: block;
+                    font-weight: 400;
+                    text-align: left;
+                }
+            }
+          }
+          
+          table td {
+            border-bottom: 1px solid #ddd;
+            display: block;
+            text-align: right;
+          }
+          
+          table td::before {
+            /*
+            * aria-label has no advantage, it won't be read inside a table
+            content: attr(aria-label);
+            */
+            content: attr(data-label);
+            float: left;
+            text-transform: uppercase;
+          }
+          
+          table td:last-child {
+            border-bottom: 0;
+          }
+    }
+}
+
+

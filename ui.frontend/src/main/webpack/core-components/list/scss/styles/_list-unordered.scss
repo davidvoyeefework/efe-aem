@@ -1,0 +1,15 @@
+.cmp-list--ul {
+    li.cmp-list__item {
+        &:before {
+            content: "\2022"; 
+            color: $efe-red-primary;
+            font-weight: bold; 
+            display: inline-block;
+            width: rem(5);
+            margin-right: 16px;
+        }
+        span {
+            @include body-02;
+        }
+    }
+}
