@@ -10,4 +10,5 @@
     <filter root="/conf/global/settings/dam/adminui-extension/metadataschema" mode="merge"/>
     <filter root="/conf/global/settings/dam/adminui-extension/metadataprofile" mode="merge"/>
     <filter root="/conf/global/settings/dam/dm/presets/macros" mode="merge"/>
+    <filter root="/content/cq:graphql/efe" mode="update_properties"/>
 </workspaceFilter>
