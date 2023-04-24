@@ -451,12 +451,7 @@
                             jcr:primaryType="nt:unstructured">
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
-                                    cq:styleClasses="cmp-container--padding-unset"
-                                    cq:styleId="padding-unset"
-                                    cq:styleLabel="Padding Unset"
-                                    jcr:primaryType="nt:unstructured"/>
-                                <item1
-                                    cq:styleClasses="cmp-container--padding-26"
+                                    cq:styleClasses="cmp-container--padding"
                                     cq:styleId="default-padding"
                                     cq:styleLabel="Default Padding"
                                     jcr:primaryType="nt:unstructured"/>
@@ -500,6 +495,22 @@
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item4>
+                        <item5
+                            cq:styleGroupLabel="Alignment"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-container--min-height"
+                                    cq:styleId="minimum-height"
+                                    cq:styleLabel="Minimum Height"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-container--center"
+                                    cq:styleId="container-center"
+                                    cq:styleLabel="Center"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item5>
                     </cq:styleGroups>
                 </policy>
             </container>
