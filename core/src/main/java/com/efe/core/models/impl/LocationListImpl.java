@@ -4,9 +4,9 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.TreeMap;
 
 import javax.annotation.PostConstruct;
-import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
@@ -66,9 +66,9 @@ public class LocationListImpl implements LocationList {
 	/** The id. */
 	@ValueMapValue
 	private String id;
-
-	/** The States Map. */
-	private Map<String, Map<String, String>> states;
+	
+	/** The Tree Map. */
+	private TreeMap<String, Map<String, String>> states = new TreeMap<>();
 
 	/**
 	 * Returns a Map containing state names as keys and another Map as city and url.
@@ -79,7 +79,7 @@ public class LocationListImpl implements LocationList {
 	 */
 	public Map<String, Map<String, String>> getStates() {
 		if (Objects.nonNull(states)) {
-			return new HashMap<String, Map<String, String>>(states);
+			return new TreeMap<String, Map<String, String>>(states);
 		}
 
 		return Collections.emptyMap();
@@ -103,7 +103,7 @@ public class LocationListImpl implements LocationList {
 	 */
 	@PostConstruct
 	public void init() {
-		states = new HashMap<String, Map<String, String>>();
+		HashMap<String, Map<String, String>> unsortedStates = new HashMap<String, Map<String, String>>();
 		Resource locationResource = resourceResolver.getResource(PlannerLocationConstants.LOCATION_PATH);
 		if (Objects.nonNull(locationResource)) {
 			for (Resource stateResource : locationResource.getChildren()) {
@@ -120,9 +120,12 @@ public class LocationListImpl implements LocationList {
 						cityMap.put(toCamelCase(cityResource.getName()), cityUrl);
 					}
 					StatesEnum stateEnum = StatesEnum.valueOf(stateResource.getName().toUpperCase());
-					states.put(stateEnum.getStateName(), cityMap);
+					unsortedStates.put(stateEnum.getStateName(), cityMap);
 				}
 			}
+				 
+	        // Copy all data from hashMap into TreeMap
+	        states.putAll(unsortedStates);
 		}
 	}
 

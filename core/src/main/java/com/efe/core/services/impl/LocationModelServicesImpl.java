@@ -108,7 +108,7 @@ public class LocationModelServicesImpl implements LocationModelServices {
 				stateFolderPath = FolderUtil.createFolder(rootPath, stateFolderName, stateFolderName, resourceResolver);
 			}
 
-			String childPathLocation = FolderUtil.createFolder(stateFolderPath, cityFolderName, cityFolderName,
+			String childPathLocation = FolderUtil.createFolder(stateFolderPath, cityFolderName.replaceAll("[.]",""), cityFolderName,
 					resourceResolver);
 
 			// create business hrs folder first then create fragments as a dependency on
