@@ -18,7 +18,6 @@
  
 @import 'styles/default';
 @import 'styles/size';
-@import 'styles/quote';
 
 //BODY COPY
 @import 'styles/body-01';
@@ -27,9 +26,18 @@
 @import 'styles/caption';
 @import 'styles/button';
 
+//QUOTE
+@import 'styles/quote1';
+@import 'styles/quote2';
+
+//HIGHLIGHT
+@import 'styles/highlight';
+
+//TABLE
+@import 'styles/table';
+
 //FOOTER STYLES
 @import 'styles/footer-01';
-
 
 //COMPLIANCE
 @import 'styles/detail';
