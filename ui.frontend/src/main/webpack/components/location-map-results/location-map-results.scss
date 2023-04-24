@@ -43,7 +43,7 @@
         }
     }
     &__search-form {
-        padding: rem(25) rem(45);
+        padding: rem(25) rem(40);
         background: $efe-gray-light;
         border-bottom: 2px solid $efe-gray-mid;
         @include flexbox($flex-direction: row, $align-items: flex-end, $justify-content: center, $gap: 20px);
