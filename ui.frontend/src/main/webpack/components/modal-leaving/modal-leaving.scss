@@ -65,11 +65,14 @@
     @include subhead-01;
     font-weight: 700;
     margin-bottom: 24px;
+    letter-spacing: .04em;
   }
   &__text {
     @include body-03;
+    line-height: 150%;
     p {
       @include body-03;
+      line-height: 150%;
     }
   }
   &__action-container {
