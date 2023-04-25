@@ -16,6 +16,12 @@
                 margin-bottom: rem(36);
             }
 
+            .cmp-navigation-dropdown-grid--default {
+                .cmp-navigation__item--level-1 {
+                    margin-left: rem(24);
+                }
+            }
+
             .cmp-navigation-dropdown-grid--75-25-split {
                 .cmp-navigation__item--level-1 {
                     margin-left: rem(24);
@@ -23,6 +29,9 @@
             }
 
             .cmp-navigation-dropdown-grid--50-50-split {
+                .cmp-navigation__item--level-1 {
+                    margin-left: rem(24);
+                }
 
                 .cmp-title--heading-04 {
                     h1 {
@@ -76,29 +85,29 @@
                     );
                 }
 
+                .cmp-navigation-dropdown-grid--default {
+                    @include flexbox(
+                        $flex-wrap: wrap,
+                        $gap: 30px,
+                        $flex-direction: column,
+                    );
+                    &>div {
+                        flex: 1 0 auto;
+                        .cmp-navigation__list {
+                            flex-direction: column;
+                        }
+                    }
+                }
 
                 .cmp-navigation-dropdown-grid--75-25-split {
                     >div:not(:last-child) {
                         margin-bottom: 36px;
-                    }
-                    .cmp-navigation__list--column {
-                        @include flexbox(
-                            $flex-direction: column,
-                            $gap: 36px 0,
-                        );
                     }
                 };
 
                 .cmp-navigation-dropdown-grid--50-50-split {
                     >div:not(:last-child) {
                         margin-bottom: 36px;
-                    }
-                    .cmp-navigation__list--column {
-                        @include flexbox(
-                            $flex-wrap: wrap,
-                            $flex-direction: column,
-                            $gap: 36px 0,
-                        );
                     }
                 };
             }
@@ -131,7 +140,11 @@
                 // .cmp-navigation__item--level-1 {
                 //     margin-bottom: rem(24);
                 // }
-
+                .cmp-navigation-dropdown-grid--default {
+                    .cmp-navigation__item--level-1 {
+                        margin-left: rem(0);
+                    }
+                }
 
                 .cmp-navigation-dropdown-grid--75-25-split {
                     margin-bottom: 0;
@@ -145,7 +158,9 @@
                 }
 
                 .cmp-navigation-dropdown-grid--50-50-split {
-
+                    .cmp-navigation__item--level-1 {
+                        margin-left: rem(0);
+                    }
                     > div {
                         &:last-of-type {
                             display: block;
@@ -179,6 +194,18 @@
                     )
                 }
 
+                .cmp-navigation-dropdown-grid--default {
+                    @include flexbox(
+                        $flex-wrap: wrap,
+                        $gap: 30px,
+                    );
+                    &>div {
+                        flex: 1 0 auto;
+                        .cmp-navigation__list {
+                            flex-direction: column;
+                        }
+                    }
+                }
     
                 .cmp-navigation-dropdown-grid--75-25-split {
                     margin-bottom: 0;
@@ -195,14 +222,6 @@
                         @include grid(
                             $template-columns: 1fr 1fr 1fr,
                             $gap: rem(30)
-                        );
-                    }
-
-                    .cmp-navigation__list--column {
-                        @include flexbox(
-                            $flex-wrap: wrap,
-                            $gap: 24px 130px,
-                            $flex-direction: column,
                         );
                     }
 
@@ -226,13 +245,6 @@
                         @include grid(
                             $template-columns: 1fr 1fr 1fr,
                             $gap: rem(30)
-                        );
-                    }
-
-                    .cmp-navigation__list--column {
-                        @include flexbox(
-                            $flex-wrap: wrap,
-                            $gap: 24px 130px,
                         );
                     }
                 };
