@@ -15,7 +15,7 @@
 
         #efe-logo {
             margin-bottom: 41px;
-            @include media('<=tablet-lg') {
+            @include media('<tablet-lg') {
                 margin-bottom: 20px;
             }
         }
@@ -35,12 +35,12 @@
 
             ul {
                 margin-bottom: 36px;
-                @include media('<=tablet-lg') {
+                @include media('<tablet-lg') {
                     margin-bottom: 20px;
                 }
                 li {
                     margin-bottom: 6px;
-                    @include media('<=tablet-lg') {
+                    @include media('<tablet-lg') {
                         margin-bottom: 5px;
                     }
                 }
@@ -141,7 +141,7 @@
 
         #efe-logo {
             margin-bottom: 40px;
-            @include media("<=tablet-lg") {
+            @include media("<tablet-lg") {
                 margin-bottom: 20px;
             }
         }
