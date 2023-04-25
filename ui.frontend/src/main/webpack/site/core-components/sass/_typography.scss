@@ -344,14 +344,15 @@
 
 @mixin blockquote2 {
     @include blockquote1;
+    position: relative;
     max-width: rem(567);
     @include buildFont(rem(24), .02em, null, 400, uppercase, 105% );
     text-align: left;
 
     &:before {
         position: absolute;
-        top: 58px;
-        left: 34px;
+        top: 1px;
+        left: -21px;
     }
 }
 
