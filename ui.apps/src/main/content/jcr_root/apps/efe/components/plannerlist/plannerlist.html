@@ -2,7 +2,7 @@
      data-sly-set.state="${model.state}"
      data-sly-set.city="${model.city}">
 </sly>
-<div class="list cmp-list--horizontal cmp-list--tight cmp-list--left-align cmp-list--border-radius" id="${model.id}">
+<div class="list cmp-list--horizontal cmp-list--loose cmp-list--left-align cmp-list--border-radius" id="${model.id}">
   <h2 class="cmp-list--title">${model.plannerTitle @ format=[city,state]}</h2>
   <ul class="cmp-list" data-sly-test="${model.plannerList}">
     <sly data-sly-list.plannerList="${model.plannerList}">
