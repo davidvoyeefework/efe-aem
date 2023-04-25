@@ -45,7 +45,7 @@
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                                                 fieldDescription="If checked the link will be opened in a new browser tab."
                                                 name="./plannerTarget"
-                                                text="Open Login in new tab"
+                                                text="Open Planner Bio in new tab"
                                                 uncheckedValue="_self"
                                                 value="_blank"/>
                                             <id
