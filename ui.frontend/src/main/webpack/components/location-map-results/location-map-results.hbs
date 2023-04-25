@@ -17,8 +17,8 @@
     <div class="cmp-location--results__map">
         <div id="map_canvas" style="position:absolute;height:100%;width:100%"></div>
     </div>
-    <div class="cmp-location--results__items {{variant}}">
-        {{#if variant}}
+    <div class="cmp-location--results__items {{#if no-results}} no-results {{/if}}">
+        {{#if no-results}}
         <div class="cmp-location--results__items--item">
             <h2>National Planner Center</h2>
             <p>833-PLAN-EFE</p>

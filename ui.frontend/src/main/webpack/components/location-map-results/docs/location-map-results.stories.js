@@ -6,14 +6,13 @@ Handlebars.registerPartial("LocationMapResults", LocationMapResults);
 export default {
     title: "Components/LocationMapResults",
     argTypes: {
-        variant: {
-            options: ["no-results"],
-            control: { type: "radio" },
-          }
     },
 };
 
 const TemplateLocationMapResults = (args) => LocationMapResults({ ...args });
 TemplateLocationMapResults.bind({});
+TemplateLocationMapResults.args = {
+    'no-results': false
+}
 
 export { TemplateLocationMapResults as MapResults };

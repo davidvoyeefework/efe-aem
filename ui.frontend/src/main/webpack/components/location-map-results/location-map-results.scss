@@ -20,6 +20,7 @@
     grid-template-areas:
         "searchbox map"
         "result map";
+    grid-template-rows: 145px;
     @include media("<tablet-lg") {
         @include flexbox($flex-direction: column);
         background-color: $efe-gray-light;
@@ -135,7 +136,7 @@
             }
         }
         &.no-results {
-            padding: 0px 30px 0px 40px;
+            padding: 44px 30px 0px 40px;
             @include media("<tablet-lg") {
                 padding: 30px 0 40px 0;
             }
