@@ -12,11 +12,14 @@
         white-space: nowrap;
         background: $efe-gray-primary;
         color: white;
-        padding: 12px 20px;
+        padding: 17px 20px;
         text-transform: uppercase;
         text-align: left;
+        letter-spacing: .04em;
 
         &:first-of-type {
+            @include button-text;
+            color: white;
             font-weight: 700;
         }
     }
@@ -24,10 +27,12 @@
     tr {
         background: white;
         td {
+            color: $efe-gray-new;
             border-bottom: 2px solid $efe-gray-mid;
-            padding: 12px 20px;
+            padding: 17px 20px;
             &:first-of-type {
                 text-transform: uppercase;
+                letter-spacing: .04em;
             }
         }
 
@@ -36,10 +41,6 @@
     @media screen and (max-width: $sm) {
         table {
             border: 0;
-          }
-        
-          table caption {
-            font-size: 1.3em;
           }
           
           table thead {
@@ -58,6 +59,7 @@
             display: block;
 
             th {
+              padding: 18px 20px;
                 display: none;
                 &:first-child {
                     display: block;
