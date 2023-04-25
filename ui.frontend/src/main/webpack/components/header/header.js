@@ -58,7 +58,6 @@ const clickNav = (listenItem) => {
        
           NavItems.forEach((element) => {
             element.classList.remove("act");
-              // debugger;
             let dropDownNav = element.children[2];
             dropDownNav.style.display = "none";
           })
