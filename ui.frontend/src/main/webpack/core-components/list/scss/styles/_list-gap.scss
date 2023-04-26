@@ -1,28 +1,28 @@
 .cmp-list--column {
     &.cmp-list--tight {
         .cmp-list__item {
-            margin-bottom: 8px;
+            margin-bottom: $small;
         }
         .cmp-list {
-            column-gap: 8px;
+            column-gap: $small;
         }
     }
 
     &.cmp-list--moderate {
         .cmp-list__item {
-            margin-bottom: 24px;
+            margin-bottom: $medium;
         }
         .cmp-list {
-            column-gap: 24px;
+            column-gap: $medium;
         }
     }
 
     &.cmp-list--loose {
         .cmp-list__item {
-            margin-bottom: 48px;
+            margin-bottom: $large;
         }
         .cmp-list {
-            column-gap: 48px;
+            column-gap: $large;
         }
     }
 }
@@ -30,19 +30,19 @@
 .cmp-list--horizontal {
     &.cmp-list--tight {
         .cmp-list {
-            gap: 8px;
+            gap: $small;
         }
     }
 
     &.cmp-list--moderate {
         .cmp-list {
-            gap: 24px;
+            gap: $medium;
         }
     }
 
     &.cmp-list--loose {
         .cmp-list {
-            gap: 48px;
+            gap: $large;
         }
     }
 }
@@ -50,19 +50,19 @@
 .cmp-list--vertical {
     &.cmp-list--tight {
         .cmp-list {
-            gap: 8px;
+            gap: $small;
         }
     }
 
     &.cmp-list--moderate {
         .cmp-list {
-            gap: 24px;
+            gap: $medium;
         }
     }
 
     &.cmp-list--loose {
         .cmp-list {
-            gap: 48px;
+            gap: $large;
         }
     }
 }
