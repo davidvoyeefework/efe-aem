@@ -5,10 +5,13 @@
 export default class Header {
   constructor(el) {
     this.el = el;
-    clickFunction("#nav-search-icon a","efe-nav-search");
-    clickFunction("#nav-search-iconT a","efe-nav-searchT");
-    clickFunction("#search-close", "efe-nav-search");
-    clickFunction("#search-closeT", "efe-nav-searchT");
+    let minimalHeader = el.classList.contains('minimal-header');
+    if(!minimalHeader) {
+      clickFunction("#nav-search-icon a","efe-nav-search");
+      clickFunction("#nav-search-iconT a","efe-nav-searchT");
+      clickFunction("#search-close", "efe-nav-search");
+      clickFunction("#search-closeT", "efe-nav-searchT");
+    }
     clickFunction("#nav-hamburger", "nav-list-cta-group");
     clickNav(".cmp-navigation__item--level-0");
   }
