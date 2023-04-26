@@ -14,5 +14,19 @@
     top: 50px;
   }
 }
-
-
+.cmp-social-share {
+  width: 100%;
+  &__images {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+    align-items: center;
+  }
+  &__link {
+    &:hover {
+      svg path {
+        fill: $red-primary;
+      }
+    }
+  }
+}
