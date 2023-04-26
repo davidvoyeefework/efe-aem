@@ -108,7 +108,7 @@ public class LocationListImpl implements LocationList {
 		if (Objects.nonNull(locationResource)) {
 			for (Resource stateResource : locationResource.getChildren()) {
 				if (stateResource.isResourceType(JcrResourceConstants.NT_SLING_ORDERED_FOLDER)) {
-					Map<String, String> cityMap = new HashMap<String, String>();
+					Map<String, String> unsortedCityMap = new HashMap<String, String>();
 					for (Resource cityResource : stateResource.getChildren()) {
 						String cityUrl = LinkUtil.getFormattedLink(
 								efeService.getPlannerPageUrl()
@@ -117,10 +117,10 @@ public class LocationListImpl implements LocationList {
 												PlannerLocationConstants.SPACE, PlannerLocationConstants.HYPHEN),
 								resourceResolver);
 						LOGGER.info("City Url {}", cityUrl);
-						cityMap.put(toCamelCase(cityResource.getName()), cityUrl);
+						unsortedCityMap.put(toCamelCase(cityResource.getName()), cityUrl);
 					}
 					StatesEnum stateEnum = StatesEnum.valueOf(stateResource.getName().toUpperCase());
-					unsortedStates.put(stateEnum.getStateName(), cityMap);
+					unsortedStates.put(stateEnum.getStateName(),sortCity(unsortedCityMap));
 				}
 			}
 				 
@@ -144,5 +144,20 @@ public class LocationListImpl implements LocationList {
 			formattedStringSb.append(PlannerLocationConstants.SPACE + StringUtils.capitalize(stringArr[i]));
 		}
 		return formattedStringSb.toString();
+	}
+
+	/**
+	 * Converts a city map in sorted format.
+	 *
+	 * @return the map in sorted format.
+	 */
+	public static TreeMap<String, String> sortCity(Map<String,String> map)
+	{
+		// TreeMap to store values of HashMap
+		TreeMap<String, String> cities = new TreeMap<>();
+
+		// Copy all data from hashMap into TreeMap
+		cities.putAll(map);
+		return  cities;
 	}
 }
