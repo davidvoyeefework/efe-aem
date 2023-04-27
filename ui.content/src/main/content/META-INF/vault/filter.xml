@@ -12,4 +12,5 @@
     <filter root="/conf/global/settings/dam/dm/presets/macros" mode="merge"/>
     <filter root="/content/cq:graphql/efe" mode="update_properties"/>
 	<filter root="/etc/acs-commons/lists/efe/social-share-links" mode="merge"/>
+    <filter root="/etc/acs-commons/lists/efe/modal-exclusion" mode="merge"/>
 </workspaceFilter>
