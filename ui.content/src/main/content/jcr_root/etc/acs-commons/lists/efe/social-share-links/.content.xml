@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        jcr:primaryType="nt:unstructured"
+        jcr:title="Social Share Links"
+        sling:resourceType="acs-commons/components/utilities/genericlist">
+        <image
+            jcr:primaryType="nt:unstructured"
+            fileReference="/apps/acs-commons/components/utilities/genericlist/generic-list.png"/>
+        <list jcr:primaryType="nt:unstructured">
+            <item0
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Facebook"
+                value="fb;https://www.facebook.com/sharer/sharer.php?u=$[[pageUrl]]"/>
+            <item1
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Twitter"
+                value="twitter;https://twitter.com/share?text=$[[pageTitle]]&amp;url=$[[pageUrl]]"/>
+            <item2
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Mail"
+                value="mail;mailto:?subject=$[[pageTitle]]&amp;amp;body=Title of the article is: $[[pageTitle]] and article url is: $[[pageUrl]]"/>
+            <item3
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Linkedin"
+                value="linkedin;https://www.linkedin.com/sharing/share-offsite/?url=$[[pageUrl]]"/>
+            <item4
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Print"
+                value="print;window.print()"/>
+        </list>
+    </jcr:content>
+</jcr:root>
