@@ -19,6 +19,24 @@
                 fieldDescription="Address Heading to be displayed on top of the Address."
                 fieldLabel="Address Heading"
                 name="./heading"/>
+            <directionButtonLabel
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                fieldDescription="Direction Button Label."
+                fieldLabel="Direction Button Label"
+                name="./directionButtonLabel"/>
+            <reviewQuestion
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                fieldDescription="Review Question displayed before the link."
+                fieldLabel="Review Link Question"
+                name="./reviewQuestion"/>
+            <reviewLinkLabel
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                fieldDescription="Review link label."
+                fieldLabel="Review Link Label"
+                name="./reviewLinkLabel"/>
             <zoom
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"

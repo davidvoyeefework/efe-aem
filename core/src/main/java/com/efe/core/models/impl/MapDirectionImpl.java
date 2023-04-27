@@ -12,6 +12,7 @@ import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
@@ -25,6 +26,7 @@ import com.day.cq.dam.api.DamConstants;
 import com.efe.core.bean.LocationResponse;
 import com.efe.core.constants.PlannerLocationConstants;
 import com.efe.core.models.MapDirection;
+import com.efe.core.services.EfeService;
 import com.efe.core.utils.EFEUtil;
 import com.efe.core.utils.LocationPlannerUtil;
 
@@ -68,11 +70,25 @@ public class MapDirectionImpl implements MapDirection {
 	@ValueMapValue
 	private int zoomLevel;
 
+	@ValueMapValue
+	private String directionButtonLabel;
+
+	@ValueMapValue
+	private String reviewQuestion;
+
+	@ValueMapValue
+	private String reviewLinkLabel;
+
+	@OSGiService
+	private EfeService efeService;
+
 	private LocationResponse locationResponse;
 
 	private boolean isEmpty;
 
 	private String googleDirectionPath;
+
+	private String mapKey;
 
 	@PostConstruct
 	public void init() {
@@ -94,7 +110,7 @@ public class MapDirectionImpl implements MapDirection {
 
 						locationResponse.setCity(locationCF.map(cf -> cf.getElement(PlannerLocationConstants.CITY))
 								.map(ContentElement::getContent).orElse(StringUtils.EMPTY));
-						
+
 						locationResponse.setState(locationCF.map(cf -> cf.getElement(PlannerLocationConstants.STATE))
 								.map(ContentElement::getContent).orElse(StringUtils.EMPTY));
 						locationResponse
@@ -115,9 +131,11 @@ public class MapDirectionImpl implements MapDirection {
 								locationCF.map(cf -> cf.getElement(PlannerLocationConstants.GOOGLE_REVIEW_LINK))
 										.map(ContentElement::getContent).orElse(StringUtils.EMPTY));
 
-						googleDirectionPath = "https://www.google.com/maps/search/?api=1&query=Edelman+Financial+Engines,"
-								+ locationResponse.getAddress1() + "," + locationResponse.getCity() + "+"
-								+ locationResponse.getState();
+						googleDirectionPath = efeService.getGoogleDirectionPrefixUrl() +locationResponse.getAddress1()
+								+ "," + locationResponse.getCity() + "+" + locationResponse.getState();
+						
+						mapKey = efeService.getGooglePublicKey();
+						
 						isEmpty = false;
 					}
 				}
@@ -176,6 +194,38 @@ public class MapDirectionImpl implements MapDirection {
 	@Override
 	public String getGoogleDirectionPath() {
 		return googleDirectionPath;
+	}
+
+	/**
+	 * @return the directionButtonLabel
+	 */
+	@Override
+	public String getDirectionButtonLabel() {
+		return directionButtonLabel;
+	}
+
+	/**
+	 * @return the reviewQuestion
+	 */
+	@Override
+	public String getReviewQuestion() {
+		return reviewQuestion;
+	}
+
+	/**
+	 * @return the reviewLinkLabel
+	 */
+	@Override
+	public String getReviewLinkLabel() {
+		return reviewLinkLabel;
+	}
+
+	/**
+	 * @return the mapKey
+	 */
+	@Override
+	public String getMapKey() {
+		return mapKey;
 	}
 
 }

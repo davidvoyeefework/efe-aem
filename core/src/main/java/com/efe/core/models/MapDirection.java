@@ -51,4 +51,32 @@ public interface MapDirection {
 	 */
 	String getGoogleDirectionPath();
 
+	/**
+	 * Method to return the Review Link Label
+	 * 
+	 * @return the reviewLinkLabel
+	 */
+	String getReviewLinkLabel();
+
+	/**
+	 * Method to return the Review Question
+	 * 
+	 * @return the reviewQuestion
+	 */
+	String getReviewQuestion();
+
+	/**
+	 * Method to return the 
+	 * 
+	 * @return the directionButtonLabel
+	 */
+	String getDirectionButtonLabel();
+
+	/**
+	 * Method to return the Map Key
+	 * 
+	 * @return the mapKey
+	 */
+	String getMapKey();
+
    }
