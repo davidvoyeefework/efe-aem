@@ -3,6 +3,8 @@ package com.efe.core.utils;
 import java.util.Objects;
 
 import org.apache.commons.lang3.StringUtils;
+import com.day.cq.wcm.api.Page;
+import com.day.cq.commons.Externalizer;
 import org.apache.sling.api.resource.ResourceResolver;
 
 /**
@@ -87,6 +89,23 @@ public class LinkUtil {
 	 */
 	private static boolean isDam(String link) {
 		return StringUtils.contains(link, DAM_PATH);
+	}
+
+	/**
+	 * Gets the absolute url.
+	 *
+	 * @param page             the page
+	 * @param resourceResolver the resource resolver
+	 * @param externalizer     the externalizer
+	 * @return absolute URL.
+	 */
+	public static String getAbsoluteUrl(final Page page, final ResourceResolver resourceResolver,
+			final Externalizer externalizer) {
+		if (Objects.nonNull(page)) {
+			String formattedLink = getFormattedLink(page.getPath(), resourceResolver);
+			return externalizer.publishLink(resourceResolver, formattedLink);
+		}
+		return StringUtils.EMPTY;
 	}
 
 }
