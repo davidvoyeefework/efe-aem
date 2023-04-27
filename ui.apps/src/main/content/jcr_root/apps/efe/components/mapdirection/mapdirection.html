@@ -1,7 +1,7 @@
 
-<script src="https://maps.googleapis.com/maps/api/js?key=${model.mapKey}&v=weekly"></script>
-<section id="${model.id}" data-sly-use.model="com.efe.core.models.MapDirection" data-component="location-map-directions" class="cmp-location--map-directions" data-latitude="${model.locationResponse.latitude}" data-longitude="${model.locationResponse.longitude}" data-zoomlevel="${model.zoomLevel}">
-
+<sly data-sly-use.model="com.efe.core.models.MapDirection">
+<script src="https://maps.googleapis.com/maps/api/js?key=${model.mapKey @ context='scriptToken'}&v=weekly"></script>
+<section id="${model.id}"  data-component="location-map-directions" class="cmp-location--map-directions" data-latitude="${model.locationResponse.latitude}" data-longitude="${model.locationResponse.longitude}" data-zoomlevel="${model.zoomLevel}">
     <div class="cmp-location--map-directions__map">
         <div id="map_canvas" style="position:absolute;height:100%;width:100%;"></div>
     </div>
@@ -11,13 +11,11 @@
             <p>${model.locationResponse.address1}</p>
             <p>${model.locationResponse.address2}</p>
             <p><span>${model.locationResponse.city}</span>, <span>${model.locationResponse.state}</span> <span>${model.locationResponse.zip}</span></p>
-            <button type="button" data-href="${model.googleDirectionPath}" id="button-5487aab983" class="cmp-location--map-directions__button-secondary" data-cmp-clickable=""
-                data-cmp-data-layer="{&quot;button-5487aab983&quot;:{&quot;@type&quot;:&quot;core-components-examples/components/button&quot;,&quot;dc:title&quot;:&quot;Button&quot;}}">
-                <span class="cmp-modal__button-secondary-text">${model.directionButtonLabel}</span>
-            </button>
+            <a class="cmp-location--map-directions__action-link" data-cmp-clickable="" href="${model.googleDirectionPath}">${model.directionButtonLabel}</a>
             <p>
                ${model.reviewQuestion} <a href="${model.locationResponse.googleReviewLink}">${model.reviewLinkLabel}</a>
             </p>
         </div>
     </div>
 </section>
+</sly>
