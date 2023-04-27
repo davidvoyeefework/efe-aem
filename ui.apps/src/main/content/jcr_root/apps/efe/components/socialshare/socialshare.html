@@ -1,0 +1,23 @@
+<sly data-sly-use.social="com.efe.core.models.SocialShare" />
+<div id="${social.id}" class="cmp-social-share">
+   <div class="cmp-social-share__images">
+      <sly data-sly-list.socialLinks="${social.socialMediaSharing}">
+		  <sly data-sly-test="${socialLinks.icon !='print'}">
+			 <a href="${socialLinks.link}" target="${social.linkTarget}" class="cmp-social-share__link">
+				<img class="cmp-social-share__default-img" src="/etc.clientlibs/efe/clientlibs/clientlib-site/resources/images/social-share-icons/${socialLinks.icon}.svg">
+				<sly data-sly-test="${!wcmmode.edit}">
+				   <img class="cmp-social-share__hover-img" src="/etc.clientlibs/efe/clientlibs/clientlib-site/resources/images/social-share-icons/${socialLinks.icon}-hover.svg">
+				</sly>
+			 </a>
+		  </sly>
+		  <sly data-sly-test="${socialLinks.icon=='print'}">
+			  <a onClick="${socialLinks.link @ context='attribute'}"  class="cmp-social-share__link">
+				 <img class="cmp-social-share__default-img" src="/etc.clientlibs/efe/clientlibs/clientlib-site/resources/images/social-share-icons/${socialLinks.icon}.svg">
+				 <sly data-sly-test="${!wcmmode.edit}">
+					<img class="cmp-social-share__hover-img" src="/etc.clientlibs/efe/clientlibs/clientlib-site/resources/images/social-share-icons/${socialLinks.icon}-hover.svg">
+				 </sly>
+			  </a>
+		  <sly>
+      </sly>
+   </div>
+</div>
