@@ -1,4 +1,7 @@
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASNIvr770pL6OphL5ZgBetnoPrcSvgbls&v=weekly"></script>
 <section data-sly-use.model="com.efe.core.models.MapDirection" data-component="location-map-directions" class="cmp-location--map-directions" data-latitude="${model.locationResponse.latitude}" data-longitude="${model.locationResponse.longitude}" data-zoomlevel="${model.zoomLevel}">
+
     <div class="cmp-location--map-directions__map">
         <div id="map_canvas" style="position:absolute;height:100%;width:100%;"></div>
     </div>
@@ -18,37 +21,3 @@
         </div>
     </div>
 </section>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASNIvr770pL6OphL5ZgBetnoPrcSvgbls&v=weekly"></script>
-<script type="text/javascript">
-    var myLatLng = new google.maps.LatLng(39.828175, - 98.5795);
-    var styles = [
-        {
-            stylers: [
-                { saturation: -100 }
-            ]
-        }
-    ];
-    var image = "https://www.edelmanfinancialengines.com/wp-content/themes/EFE_Divi_Child_Theme/images/efe-marker.svg";
-    var styledMap = new google.maps.StyledMapType(styles,
-        { name: "Styled Map" });
-    var options = {
-        zoom: 5,
-        center: new google.maps.LatLng(39.828175, -98.5795), // centered US
-        mapTypeControl: false,
-        mapTypeControlOptions: {
-            mapTypeIds: [google.maps.MapTypeId.TERRAIN, 'map_style']
-        }
-    };
-    var map = new google.maps.Map(document.getElementById('map_canvas'), options);
-    map.mapTypes.set('map_style', styledMap);
-    map.setMapTypeId('map_style');
-    var marker = new google.maps.Marker({
-        position: new google.maps.LatLng(
-            39.828175,
-            -98.5795
-        ),
-        map: map,
-        title: 'Middle of America PIN',
-        icon: image
-    });
-</script>
