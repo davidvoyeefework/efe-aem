@@ -11,7 +11,7 @@
                 <p data-sly-test="${model.locationResponse.address2}">${model.locationResponse.address2}</p>
                 <p><span data-sly-test="${model.locationResponse.city}">${model.locationResponse.city}, </span><span>${model.locationResponse.state}</span> <span>${model.locationResponse.zip}</span></p>
                 <a class="cmp-location--map-directions__action-link" data-cmp-clickable="" href="${model.googleDirectionPath}">${model.directionButtonLabel}</a>
-                <p>
+                <p class="cmp-location--map-directions__btn-below-text">
                   ${model.reviewQuestion} <a href="${model.locationResponse.googleReviewLink}">${model.reviewLinkLabel}</a>
                 </p>
             </div>
