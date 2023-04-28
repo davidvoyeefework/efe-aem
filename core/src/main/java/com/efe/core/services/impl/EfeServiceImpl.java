@@ -46,6 +46,12 @@ public class EfeServiceImpl implements EfeService {
 	 * Planner Bio Page Url
 	 */
 	private String plannerBioPageUrl;
+	
+	/** Google Api Key **/
+	private String googlePublicApiKey;
+	
+	/** Google Direction Prefix Url **/
+	private String googleDirectionPrefixUrl;
 
 	/**
 	 * The Interface Config
@@ -83,6 +89,12 @@ public class EfeServiceImpl implements EfeService {
 		 */
 		@AttributeDefinition(name = "Planner Bio Page Url", description = "Planner Bio Page Url")
 		String plannerBioPageUrl();
+		
+		@AttributeDefinition(name = "Google Map API Key", description = "Google Map API Key for Map integration")
+		String googleMapPublicApi();
+		
+		@AttributeDefinition(name = "Google Map Direction Prefix Url", description = "Google Map Direction Prefix Url for forming office direction url")
+		String googleDirectionPrefixUrl();
 	}
 
 	/**
@@ -99,6 +111,8 @@ public class EfeServiceImpl implements EfeService {
 		this.authHeader = config.authHeader();
 		this.plannerPageUrl = config.plannerPageUrl();
 		this.plannerBioPageUrl = config.plannerBioPageUrl();
+		this.googlePublicApiKey = config.googleMapPublicApi();
+		this.googleDirectionPrefixUrl = config.googleDirectionPrefixUrl();
 
 	}
 
@@ -140,5 +154,15 @@ public class EfeServiceImpl implements EfeService {
 	@Override
 	public String getPlannerBioPageUrl() {
 		return plannerBioPageUrl;
+	}
+
+	@Override
+	public String getGooglePublicKey() {
+		return googlePublicApiKey;
+	}
+
+	@Override
+	public String getGoogleDirectionPrefixUrl() {
+		return googleDirectionPrefixUrl;
 	}
 }

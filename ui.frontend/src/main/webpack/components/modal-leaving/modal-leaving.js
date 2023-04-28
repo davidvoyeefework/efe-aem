@@ -1,27 +1,19 @@
 import A11yDialog from 'a11y-dialog'
 import { trapFocus } from "../../site/js/helper";
-var dialogEl = document.getElementById('my-dialog')
-var dialog = new A11yDialog(dialogEl)
-dialog.on('show', function (dialogEl, event) {
-})
 class ModalLeaving {
   constructor(el) {
+    var dialogEl = document.querySelector(".cmp-modal--leaving");
+    this.dialog = new A11yDialog(dialogEl);
     this.el = el;
-    this.intializeModal();
+    this.intializeModal(el);
   }
 
   static init(el) {
     return new ModalLeaving(el);
   }
-  intializeModal() {
-    const exlusionExtlinks = ['https://www.facebook.com/edelmanfinancialengines/',
-      'https://www.jobvite.com/edelmanfinancialengines',
-      'https://twitter.com/edelmanfe',
-      'https://instagram.com/edelmanfinancialengines',
-      'https://linkedin.com/company/edelman-financial-engines',
-      'https://event.on24.com/wcc/r/3650900/14658F6E878B575EFBB30EF0AA357733/3428297',
-      'https://edelmandev.wpengine.com/',
-    ]
+  intializeModal(el) {
+    const exclusionLinksList = JSON.parse(el.getAttribute('modal-list'));
+    const exlusionExtlinks =  Object.keys(exclusionLinksList).map((m)=>exclusionLinksList[m]);
     const modalEle = document.querySelector(".cmp-modal--leaving");
     let externalLinks = document.querySelectorAll("a");
     let currentExtUrl;
@@ -36,8 +28,8 @@ class ModalLeaving {
         !getLinkHref.match(/^tel\:/) && !getLinkHref.match(/^mailto\:/)) {
         extlink.addEventListener("click", (e) => {
           e.preventDefault();
-          currentExtUrl = e.target.href;
-          dialog.show();
+          currentExtUrl = extlink.getAttribute("href");
+          this.dialog.show();
           document.querySelector('.cmp-modal__button-secondary').focus();
           trapFocus(modalEle);
         });
@@ -45,10 +37,10 @@ class ModalLeaving {
     })
     document.querySelector('.cmp-modal__button-primary').addEventListener("click", (ev) => {
       window.open(currentExtUrl);
-      dialog.hide();
+      this.dialog.hide();
     });
     document.querySelector('.cmp-modal__button-secondary').addEventListener("click", (ev) => {
-      dialog.hide();
+      this.dialog.hide();
     });
   }
 }

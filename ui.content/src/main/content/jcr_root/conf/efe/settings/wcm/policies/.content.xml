@@ -5,6 +5,39 @@
     <rep:policy/>
     <efe jcr:primaryType="nt:unstructured">
         <components jcr:primaryType="nt:unstructured">
+            <header-nav jcr:primaryType="nt:unstructured">
+                <policy_header_nav
+                        jcr:lastModified="{Date}2023-04-25T18:49:51.639+05:30"
+                        jcr:lastModifiedBy="admin"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Header Nav Style"
+                        sling:resourceType="wcm/core/components/policy/policy">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                    <cq:styleGroups jcr:primaryType="nt:unstructured">
+                        <item0
+                                cq:styleGroupLabel="Header Nav Splits"
+                                jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                        cq:styleClasses="cmp-navigation__aem-container cmp-navigation-dropdown-grid--default"
+                                        cq:styleId="1682421476823"
+                                        cq:styleLabel="default"
+                                        jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                        cq:styleClasses="cmp-navigation__aem-container cmp-navigation-dropdown-grid--50-50-split"
+                                        cq:styleId="1682421508537"
+                                        cq:styleLabel="50-50 Split"
+                                        jcr:primaryType="nt:unstructured"/>
+                                <item2
+                                        cq:styleClasses="cmp-navigation__aem-container cmp-navigation-dropdown-grid--75-25-split"
+                                        cq:styleId="1682421527354"
+                                        cq:styleLabel="75-25 Split"
+                                        jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item0>
+                    </cq:styleGroups>
+                </policy_header_nav>
+            </header-nav>
             <form jcr:primaryType="nt:unstructured">
                 <container jcr:primaryType="nt:unstructured">
                     <form-container

@@ -1,0 +1,20 @@
+<sly data-sly-use.model="com.efe.core.models.MapDirection">
+    <script src="https://maps.googleapis.com/maps/api/js?key=${model.mapKey @ context='scriptToken'}&v=weekly"></script>
+    <section id="${model.id}"  data-component="location-map-directions" class="cmp-location--map-directions" data-latitude="${model.locationResponse.latitude}" data-longitude="${model.locationResponse.longitude}" data-zoomlevel="${model.zoomLevel}">
+        <div class="cmp-location--map-directions__map">
+            <div id="map_canvas" style="position:absolute;height:100%;width:100%;"></div>
+        </div>
+        <div class="cmp-location--map-directions__items">
+            <div class="cmp-location--map-directions__items--item">
+                <h2>${model.heading}</h2>
+                <p data-sly-test="${model.locationResponse.address1}">${model.locationResponse.address1}</p>
+                <p data-sly-test="${model.locationResponse.address2}">${model.locationResponse.address2}</p>
+                <p><span data-sly-test="${model.locationResponse.city}">${model.locationResponse.city}, </span><span>${model.locationResponse.state}</span> <span>${model.locationResponse.zip}</span></p>
+                <a class="cmp-location--map-directions__action-link" data-cmp-clickable="" href="${model.googleDirectionPath}">${model.directionButtonLabel}</a>
+                <p>
+                  ${model.reviewQuestion} <a href="${model.locationResponse.googleReviewLink}">${model.reviewLinkLabel}</a>
+                </p>
+            </div>
+        </div>
+    </section>
+</sly>

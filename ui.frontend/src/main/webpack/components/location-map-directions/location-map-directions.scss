@@ -52,19 +52,20 @@
                 }
             }
             p {
-                @include body-02;
-                font-size: 22px;
-                font-weight: 400;
+                @include subhead-02;
                 white-space: nowrap;
-            }
-            a {
-                @include body-02-link-red;;
-                margin-top: 15px;
-                display: inline-block;
+                &.cmp-location--map-directions__btn-below-text {
+                    @include body-02;
+                    a {
+                        @include body-02-link-red;;
+                        margin-top: 15px;
+                        display: inline-block;
+                    }
+                }
             }
         }
     }
-    &__button-secondary {
+    &__action-link {
         @include cta-secondary;
         margin:30px 0;
     }

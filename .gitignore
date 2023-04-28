@@ -112,3 +112,4 @@ ui.tests/test-module/assets/form/themes/**/*current.png
 .DS_Store
 .vscode/settings.json
 ui.frontend/package-lock.json
+*.MF
