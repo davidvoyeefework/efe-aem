@@ -2,7 +2,7 @@
    margin: auto; /* 1 */
    z-index: 2; /* 2 */
    position: relative; /* 2 */
-   background-color: white; /* 3 */
+   background-color: $efe-gray-modal-bg; /* 3 */
  
    // animation: fade-in 400ms 200ms both, slide-up 400ms 200ms both;
    width: 100%;
@@ -10,7 +10,7 @@
    height: 500px;
    @include media("<tablet") {
      width: 100%;
-     height: 100%;
+     height: 567px;
      overflow-y: auto;
    }
    border-radius: 5px;
@@ -29,9 +29,19 @@
    }
    &__description {
     padding: 52px 36px 52px 55px;
+    @include media(">tablet") {
+      .text {
+        margin-bottom: 20px;
+      }
+    }
     .button {
         position: absolute;
-        bottom: 52px;
+        bottom: 42px;
+    }
+   }
+   &__image {
+    @include media("<tablet") {
+      display: none;
     }
    }
  }
