@@ -1,4 +1,4 @@
-<header class="header minimal-header" data-component="header">
+<header class="header minimal-header {{#if with-two-logos}} minimal-header--with-two-logos{{/if}}" data-component="header">
     {{! --------------------- NAV HEADER  --------------------- }}
     <div class="container responsivegrid" id="efe-global-nav-header">
         <div id="container-99d779a4e6" class="cmp-container cmp-container--bg-efe-gray-light">
@@ -32,6 +32,8 @@
                     size="small"
                     titleText="Edelman Financial Engines"
                 }}
+                <div class="minimal-header__vertical-line"></div>
+                {{#if with-two-logos}}
                 {{>EfeLogo
                     link="https://www.edelmanfinancialengines.com/"
                     variant="efe-logo-primary"
@@ -39,7 +41,7 @@
                     size="small"
                     titleText="Edelman Financial Engines"
                 }}
-
+                {{/if}}
                 <button id="nav-hamburger" aria-expanded="false" aria-label="main menu" class="top-bar__hamburger-button" data-analytics-trigger="cta-hamburger"> 
                     <svg id="top-hamburger-line" width="24px" height="3px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="top-bar__hamburger-button-line-wrapper top-bar__hamburger-button-line-wrapper--top"> 
                         <line stroke="#7A7D82" stroke-width="3" x1="0" x2="24" y1="0" y2="0" class="top-bar__hamburger-button-line top-bar__hamburger-button-line--top"></line> 
