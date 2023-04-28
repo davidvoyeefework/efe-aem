@@ -202,34 +202,29 @@
                     </rtePlugins>
                     <cq:styleGroups jcr:primaryType="nt:unstructured">
                         <item0
-                            cq:styleGroupLabel="Styles"
+                            cq:styleGroupLabel="Table style"
                             jcr:primaryType="nt:unstructured">
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
-                                    cq:styleClasses="cmp-text--detail"
-                                    cq:styleId="text-details"
-                                    cq:styleLabel="Text Details"
+                                    cq:styleClasses="cmp-text--table"
+                                    cq:styleId="table"
+                                    cq:styleLabel="Table"
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item0>
                         <item1
-                            cq:styleGroupLabel="Font Size"
+                            cq:styleGroupLabel="Quote style"
                             jcr:primaryType="nt:unstructured">
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
-                                    cq:styleClasses="cmp-text--body-01"
-                                    cq:styleId="large"
-                                    cq:styleLabel="Large"
+                                    cq:styleClasses="cmp-text--quote1"
+                                    cq:styleId="quote1"
+                                    cq:styleLabel="Quote1"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item1
-                                    cq:styleClasses="cmp-text--body-02"
-                                    cq:styleId="medium"
-                                    cq:styleLabel="Medium"
-                                    jcr:primaryType="nt:unstructured"/>
-                                <item2
-                                    cq:styleClasses="cmp-text--body-03"
-                                    cq:styleId="small"
-                                    cq:styleLabel="Small"
+                                    cq:styleClasses="cmp-text--quote2"
+                                    cq:styleId="quote2"
+                                    cq:styleLabel="Quote2"
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item1>
