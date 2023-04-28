@@ -43,17 +43,9 @@ public class ContentCollageImpl implements ContentCollage {
     @ValueMapValue
     private String secondaryImageAltText;
 
-    /** The quote. */
+    /** The contentCard. */
     @ValueMapValue
     private String contentCard;
-
-    /** The author name. */
-    @ValueMapValue
-    private String authorName;
-
-    /** The title. */
-    @ValueMapValue
-    private String title;
 
     /**
      * Gets the id.

@@ -27,7 +27,7 @@
                                             <primaryimage
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                fieldDescription="Add Primary (Large) image here"
+                                                fieldDescription="Add Primary image here"
                                                 fieldLabel="Primary Image"
                                                 name="./primaryImage"
                                                 rootPath="/content/dam/efe"/>
