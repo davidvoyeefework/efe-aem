@@ -1,7 +1,7 @@
 <sly data-sly-use.model="com.efe.core.models.HeaderNav"/>
 <div class="cmp-navigation-dropdown" id="cmp-navigation-dropdown">
     <ul class="cmp-navigation__group">
-        <div class="cmp-navigation-dropdown-grid--75-25-split">
+        <div class="cmp-navigation-dropdown-grid__container">
             <sly data-sly-list.navItem ="${model.primaryList}">
                 <div>
                     <div class="button cmp-button--primary-nav-link cmp-button--efe-red-primary">
@@ -9,24 +9,18 @@
                             <span class="cmp-button__text">${navItem.heading}</span>
                         </a>
                     </div>
-
                     <div class="separator cmp-separator--primary cmp-separator--efe-gray-mid">
                         <div id="separator-6e548b2b7e">
                             <hr class="cmp-separator__horizontal-rule">
                         </div>
                     </div>
-
-                    <div class="grid-3-col">
-                                        <span>
-                                              <sly data-sly-list.secondaryLinks ="${navItem.secondaryLinks}">
-                                          <li class="cmp-navigation__item cmp-navigation__item--level-1">
-                                            <a data-cmp-clickable="" target="${secondaryLinks.target}" class="cmp-navigation__item-link" href ="${secondaryLinks.link}">${secondaryLinks.label}</a>
-                                          </li>
-                                              </sly>
-                                        </span>
-
-                    </div>
-
+                    <ul class="cmp-navigation__list">
+                        <sly data-sly-list.secondaryLinks ="${navItem.secondaryLinks}">
+                            <li class="cmp-navigation__item cmp-navigation__item--level-1" >
+                                <a data-cmp-clickable=""target="${secondaryLinks.target}" class="cmp-navigation__item-link" href="${secondaryLinks.link}">${secondaryLinks.label}</a>
+                            </li>
+                        </sly>
+                    </ul>
                 </div>
             </sly>
         </div>
