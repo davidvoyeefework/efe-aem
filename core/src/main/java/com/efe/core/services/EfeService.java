@@ -39,5 +39,18 @@ public interface EfeService {
 	 * @return the plannerBioPageUrl
 	 */
 	String getPlannerBioPageUrl();
+	
+	/**
+	 * Method to get the Google Public Key
+	 * @return the GooglePublicKey
+	 */
+	String getGooglePublicKey();
+	
+	/**
+	 * Method to get Google direction prefix URL
+	 * 
+	 * @return the GoogleDirectionPrefixUrl
+	 */
+	String getGoogleDirectionPrefixUrl();
 
 }
