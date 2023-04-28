@@ -5,5 +5,9 @@ export default {
   // More on argTypes: https://storybook.js.org/docs/html/api/argtypes
   argTypes: {},
 };
-
-export { MinimalHeader };
+const TemplateMinimalHeader = (args) => MinimalHeader({ ...args });
+TemplateMinimalHeader.bind({});
+TemplateMinimalHeader.args = {
+  'with-two-logos': false
+}
+export { TemplateMinimalHeader };
