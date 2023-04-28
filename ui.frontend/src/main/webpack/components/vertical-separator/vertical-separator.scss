@@ -1,0 +1,117 @@
+.cmp-vertical-separator--one {
+    @include flexbox(
+        $justify-content: center,
+        $gap: 140px,
+        $flex-wrap: wrap,
+    );
+    &__item {
+        position: relative;
+        &::after {
+            content: "";
+            position: absolute;
+            right: -70px;
+            top: 0;
+            bottom: 0;
+            width: 0.5px;
+            background-color: $efe-gray-blue;
+        }
+        &:first-child::before {
+            width: 0;
+        }
+        &:last-child::after {
+            width: 0;
+        }
+    }
+    @include media("<tablet-lg") {
+        flex-direction: column;
+        gap: 0;
+        &__item {
+            margin-bottom: 10px;
+            // width: 100%;
+            &::before, &::after {
+                content: unset;
+            }
+        }
+    }
+    &__middle {
+        align-items: center;
+    }
+    &__top {
+        align-items: flex-start;
+    }
+    &__bottom {
+        align-items: flex-end;
+    }
+    @include media("<tablet-lg") {
+        &.cmp-horizontal-separator {
+            .cmp-vertical-separator--one__item:not(:last-child) {
+                padding-bottom: 20px;
+                margin-bottom: 20px;
+                border-bottom: 1px solid $efe-gray-blue;
+            }
+        }
+        align-items: center;
+    }
+}
+
+.cmp-vertical-separator--two {
+    @include flexbox(
+        $justify-content: center,
+        $gap: 244px,
+        $flex-wrap: wrap,
+    );
+    &__item {
+        position: relative;
+        max-width: 360px;
+        >div:not(:last-child) {
+            margin-bottom: 20px;
+        }
+        &::after {
+            content: "";
+            position: absolute;
+            right: -122px;
+            top: 0;
+            bottom: 0;
+            width: 0.5px;
+            background-color: $efe-gray-blue;
+        }
+        &:first-child::before {
+            width: 0;
+        }
+        &:last-child::after {
+            width: 0;
+        } 
+    }
+    @include media("<tablet-lg") {
+        flex-direction: column;
+        gap: 0;
+        &__item {
+            margin-bottom: 10px;
+            width: 100%;
+            &::before, &::after {
+                content: unset;
+            }
+        }
+    }
+    &__middle {
+        align-items: center;
+    }
+    &__top {
+        align-items: flex-start;
+    }
+    &__bottom {
+        align-items: flex-end;
+    }
+    @include media("<tablet-lg") {
+        &.cmp-horizontal-separator {
+            .cmp-vertical-separator--two__item:not(:last-child) {
+                padding-bottom: 20px;
+                margin-bottom: 20px;
+                border-bottom: 1px solid $efe-gray-blue;
+            }
+        }
+        &__middle, &__top, &__bottom {
+            align-items: center;
+        }
+    }
+}

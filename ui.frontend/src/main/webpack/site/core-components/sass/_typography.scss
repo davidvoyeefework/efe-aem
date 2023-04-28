@@ -65,6 +65,12 @@
     @include stats-02;
   }
 
+  .cmp-text--efe-blue {
+      .cmp-text p, .cmp-text sup {
+          color: $efe-gray-blue;
+      }
+  }
+
   @mixin stats-02-underline {
     @include stats-02;
     text-decoration: solid underline $efe-red-primary 6px;
