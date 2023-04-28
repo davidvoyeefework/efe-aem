@@ -19,14 +19,14 @@ export default {
     },
     class: {
       control: { type: "text" },
-    }
+    },
   },
 };
 
 const TextVariations = ({ label, ...args }) => Text({ ...args });
 export const BodyCopy = TextVariations.bind();
 BodyCopy.args = {
-  variant: "body-02",
-  text:"Edelman Financial Engines Typography styles"
+    variant: "body-02",
+    text:"Edelman Financial Engines Typography styles",
 }
 
