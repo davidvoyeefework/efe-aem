@@ -1027,6 +1027,43 @@
                     </cq:styleGroups>
                 </policy>
             </imagecollage>
+            <contentcollage jcr:primaryType="nt:unstructured">
+                <policy
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Content Collage Policy"
+                    sling:resourceType="wcm/core/components/policy/policy">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                    <cq:styleGroups jcr:primaryType="nt:unstructured">
+                        <item0
+                            cq:styleGroupLabel="Variation"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-content-collage cmp-content-collage--border-top-left"
+                                    cq:styleId="top-left-corner-radius"
+                                    cq:styleLabel="Top Left Corner Radius"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item0>
+                        <item1
+                            cq:styleGroupLabel="Quote"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-text--quote1"
+                                    cq:styleId="quote1"
+                                    cq:styleLabel="Quote 1"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-text--quote2"
+                                    cq:styleId="quote2"
+                                    cq:styleLabel="Quote 2"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item1>
+                    </cq:styleGroups>
+                </policy>
+            </contentcollage>
         </components>
     </efe>
 </jcr:root>
