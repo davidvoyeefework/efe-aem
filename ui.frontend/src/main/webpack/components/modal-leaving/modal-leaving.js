@@ -22,10 +22,10 @@ class ModalLeaving {
       let linkHref = linkhn[1] + "." + linkhn[0];
       let domainhn = window.location.hostname.split('.').reverse();
       let domainHref = domainhn[1] + "." + domainhn[0];
-      const getLinkHref = extlink.getAttribute("href");
-      const checkExlcusionLink = exlusionExtlinks.includes(getLinkHref)
+      const getLinkHref = extlink.getAttribute("href")?extlink.getAttribute("href"):'#';
+      const checkExlcusionLink = exlusionExtlinks.includes(getLinkHref);
       if (linkHref !== domainHref && !checkExlcusionLink &&
-        !getLinkHref.match(/^tel\:/) && !getLinkHref.match(/^mailto\:/)) {
+        !getLinkHref.match(/^tel\:/) && !getLinkHref.match(/^mailto\:/) && getLinkHref !=='javascript:void(0)') {
         extlink.addEventListener("click", (e) => {
           e.preventDefault();
           currentExtUrl = extlink.getAttribute("href");
