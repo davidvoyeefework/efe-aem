@@ -180,8 +180,8 @@ p {
   @include p12;
 }
 
-*[tabindex] {
-  &:focus {
-    opacity: 0.8;
-  }
-}
+// *[tabindex] {
+//   &:focus {
+//     opacity: 0.8;
+//   }
+// }
