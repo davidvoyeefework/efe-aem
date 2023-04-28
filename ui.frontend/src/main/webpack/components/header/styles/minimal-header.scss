@@ -1,0 +1,10 @@
+.minimal-header__vertical-line {
+    display: none;
+}
+.minimal-header--with-two-logos {
+    .minimal-header__vertical-line {
+        border-left:1px solid $efe-gray-blue;
+        height: 40px;
+        display: block;
+    }
+}
