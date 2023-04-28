@@ -106,10 +106,10 @@
                             jcr:primaryType="cq:WidgetCollection"
                             cssName="cmp-text--stats-02"
                             text="Stats 02"/>
-                        <stats03underline
+                        <stats02underline
                             jcr:primaryType="cq:WidgetCollection"
                             cssName="cmp-text--stats-02-underline"
-                            text="Stats03-Underline"/>
+                            text="Stats 02 - Underline"/>
                         <heading01
                             jcr:primaryType="cq:WidgetCollection"
                             cssName="cmp-text--heading-01"
@@ -146,10 +146,14 @@
                             jcr:primaryType="cq:WidgetCollection"
                             cssName="cmp-text--body-03"
                             text="Body 03"/>
-                        <detail
+                        <compliance
                             jcr:primaryType="cq:WidgetCollection"
-                            cssName="cmp-text--body-03"
-                            text="Detail"/>
+                            cssName="cmp-text--detail"
+                            text="Compliance"/>
+                        <highlight
+                            jcr:primaryType="cq:WidgetCollection"
+                            cssName="cmp-text--highlight"
+                            text="Highlight"/>
                     </styles>
                 </styles>
             </rtePlugins>
