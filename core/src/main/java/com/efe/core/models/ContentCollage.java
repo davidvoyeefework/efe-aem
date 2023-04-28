@@ -1,7 +1,7 @@
 package com.efe.core.models;
 
 /**
- * The Interface ImageCollage.
+ * The Interface ContentCollage.
  */
 public interface ContentCollage {
 
