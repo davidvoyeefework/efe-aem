@@ -3,15 +3,19 @@ package com.efe.core.models.impl;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.efe.core.models.ModalLeaving;
 import com.efe.core.utils.EFEUtil;
+import com.efe.core.utils.ResourceUtil;
 import com.google.gson.JsonObject;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.api.resource.ResourceResolverFactory;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+import org.osgi.service.component.annotations.Reference;
 
 import java.util.Objects;
 
@@ -33,10 +37,6 @@ public class ModalLeavingImpl implements ModalLeaving {
      */
     @Self
     private Resource resource;
-
-    /** The resource resolver. */
-    @SlingObject
-    private ResourceResolver resourceResolver;
 
     /** The logo. */
     @ValueMapValue
@@ -65,6 +65,12 @@ public class ModalLeavingImpl implements ModalLeaving {
     /** The id. */
     @ValueMapValue
     private String id;
+
+    /**
+     * ResourceResolverFactory injected
+     */
+    @OSGiService
+    private transient ResourceResolverFactory resourceResolverFactory;
 
     /** The modal list. */
     JsonObject modalList = new JsonObject();
@@ -149,15 +155,16 @@ public class ModalLeavingImpl implements ModalLeaving {
      */
     @Override
     public JsonObject getModalList() {
-        Resource resource = resourceResolver.getResource(GENERIC_LIST_RESOURCE);
-        if (Objects.nonNull(resource)) {
-            Iterable<Resource> children = resource.getChildren();
-            for (Resource childResource : children) {
-                String title = childResource.getValueMap().get("jcr:title", String.class);
-                String nodevalue = childResource.getValueMap().get("value", String.class);
-                modalList.addProperty(title,nodevalue);
+        ResourceResolver resourceResolver = ResourceUtil.getServiceResourceResolver(resourceResolverFactory);
+            Resource resource = resourceResolver.getResource(GENERIC_LIST_RESOURCE);
+            if (Objects.nonNull(resource)) {
+                Iterable<Resource> children = resource.getChildren();
+                for (Resource childResource : children) {
+                    String title = childResource.getValueMap().get("jcr:title", String.class);
+                    String nodevalue = childResource.getValueMap().get("value", String.class);
+                    modalList.addProperty(title,nodevalue);
+                }
             }
-        }
-        return modalList;
+            return modalList;
     }
 }
