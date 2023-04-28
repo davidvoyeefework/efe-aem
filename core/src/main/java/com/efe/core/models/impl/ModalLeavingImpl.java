@@ -155,7 +155,7 @@ public class ModalLeavingImpl implements ModalLeaving {
      */
     @Override
     public JsonObject getModalList() {
-        ResourceResolver resourceResolver = ResourceUtil.getServiceResourceResolver(resourceResolverFactory);
+        try(ResourceResolver resourceResolver = ResourceUtil.getServiceResourceResolver(resourceResolverFactory)){
             Resource resource = resourceResolver.getResource(GENERIC_LIST_RESOURCE);
             if (Objects.nonNull(resource)) {
                 Iterable<Resource> children = resource.getChildren();
@@ -166,5 +166,5 @@ public class ModalLeavingImpl implements ModalLeaving {
                 }
             }
             return modalList;
-    }
+    }}
 }
