@@ -28,3 +28,7 @@ button.cmp-form-button--answer {
         border: 2px solid $efe-red-primary;
     }
 }
+.cmp-form-button[type="submit"] {
+    @include cta-primary;
+
+}
