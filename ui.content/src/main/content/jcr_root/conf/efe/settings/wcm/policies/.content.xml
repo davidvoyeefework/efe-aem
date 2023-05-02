@@ -7,8 +7,6 @@
         <components jcr:primaryType="nt:unstructured">
             <header-nav jcr:primaryType="nt:unstructured">
                 <policy_header_nav
-                        jcr:lastModified="{Date}2023-04-25T18:49:51.639+05:30"
-                        jcr:lastModifiedBy="admin"
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Header Nav Style"
                         sling:resourceType="wcm/core/components/policy/policy">
@@ -19,20 +17,20 @@
                                 jcr:primaryType="nt:unstructured">
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
-                                        cq:styleClasses="cmp-navigation__aem-container cmp-navigation-dropdown-grid--default"
-                                        cq:styleId="1682421476823"
-                                        cq:styleLabel="default"
-                                        jcr:primaryType="nt:unstructured"/>
+									cq:styleClasses="cmp-navigation__aem-container cmp-navigation-dropdown-grid--default"
+									cq:styleId="1682421476823"
+									cq:styleLabel="default"
+									jcr:primaryType="nt:unstructured"/>
                                 <item1
-                                        cq:styleClasses="cmp-navigation__aem-container cmp-navigation-dropdown-grid--50-50-split"
-                                        cq:styleId="1682421508537"
-                                        cq:styleLabel="50-50 Split"
-                                        jcr:primaryType="nt:unstructured"/>
+									cq:styleClasses="cmp-navigation__aem-container cmp-navigation-dropdown-grid--50-50-split"
+									cq:styleId="1682421508537"
+									cq:styleLabel="50-50 Split"
+									jcr:primaryType="nt:unstructured"/>
                                 <item2
-                                        cq:styleClasses="cmp-navigation__aem-container cmp-navigation-dropdown-grid--75-25-split"
-                                        cq:styleId="1682421527354"
-                                        cq:styleLabel="75-25 Split"
-                                        jcr:primaryType="nt:unstructured"/>
+									cq:styleClasses="cmp-navigation__aem-container cmp-navigation-dropdown-grid--75-25-split"
+									cq:styleId="1682421527354"
+									cq:styleLabel="75-25 Split"
+									jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item0>
                     </cq:styleGroups>
@@ -998,35 +996,57 @@
                             jcr:primaryType="nt:unstructured">
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
-                                        cq:styleClasses="cmp-image-collage "
-                                        cq:styleId="primaryLeft"
-                                        cq:styleLabel="Primary left"
-                                        jcr:primaryType="nt:unstructured"/>
+									cq:styleClasses="cmp-image-collage "
+									cq:styleId="primaryLeft"
+									cq:styleLabel="Primary left"
+									jcr:primaryType="nt:unstructured"/>
                                 <item1
-                                        cq:styleClasses="cmp-image-collage cmp-image-collage--left-large cmp-image-collage--border-top-left"
-                                        cq:styleId="primaryLeft-top-corner-radius"
-                                        cq:styleLabel="Primary left - top corner radius"
-                                        jcr:primaryType="nt:unstructured"/>
+									cq:styleClasses="cmp-image-collage cmp-image-collage--left-large cmp-image-collage--border-top-left"
+									cq:styleId="primaryLeft-top-corner-radius"
+									cq:styleLabel="Primary left - top corner radius"
+									jcr:primaryType="nt:unstructured"/>
                                 <item2
-                                        cq:styleClasses="cmp-image-collage cmp-image-collage--right-large"
-                                        cq:styleId="primaryRight"
-                                        cq:styleLabel="Primary right"
-                                        jcr:primaryType="nt:unstructured"/>
+									cq:styleClasses="cmp-image-collage cmp-image-collage--right-large"
+									cq:styleId="primaryRight"
+									cq:styleLabel="Primary right"
+									jcr:primaryType="nt:unstructured"/>
                                 <item3
-                                        cq:styleClasses="cmp-image-collage cmp-image-collage--right-large cmp-image-collage--border-top-left"
-                                        cq:styleId="secondaryLeft-top-corner-radius"
-                                        cq:styleLabel="Secondary left - top corner radius"
-                                        jcr:primaryType="nt:unstructured"/>
+									cq:styleClasses="cmp-image-collage cmp-image-collage--right-large cmp-image-collage--border-top-left"
+									cq:styleId="secondaryLeft-top-corner-radius"
+									cq:styleLabel="Secondary left - top corner radius"
+									jcr:primaryType="nt:unstructured"/>
                                 <item4
-                                        cq:styleClasses="cmp-image-collage cmp-image-collage--right-large cmp-image-collage--border-multiple"
-                                        cq:styleId="secondaryLeft-multi-corner-radius"
-                                        cq:styleLabel="Secondary left - multi corner radius"
-                                        jcr:primaryType="nt:unstructured"/>
+									cq:styleClasses="cmp-image-collage cmp-image-collage--right-large cmp-image-collage--border-multiple"
+									cq:styleId="secondaryLeft-multi-corner-radius"
+									cq:styleLabel="Secondary left - multi corner radius"
+									jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item0>
                     </cq:styleGroups>
                 </policy>
             </imagecollage>
+            <embed jcr:primaryType="nt:unstructured">
+                <policy
+					jcr:primaryType="nt:unstructured"
+					jcr:title="Embed Policy"
+					sling:resourceType="wcm/core/components/policy/policy"
+					allowedEmbeddables="core/wcm/components/embed/v1/embed/embeddable/youtube"
+					embeddablesDisabled="false"
+					htmlDisabled="false"
+					urlDisabled="false"
+					youtubeAutoPlayDefaultValue="false"
+					youtubeAutoPlayEnabled="true"
+					youtubeLoopDefaultValue="false"
+					youtubeLoopEnabled="true"
+					youtubeMuteDefaultValue="false"
+					youtubeMuteEnabled="true"
+					youtubePlaysInlineDefaultValue="false"
+					youtubePlaysInlineEnabled="true"
+					youtubeRelatedVideosDefaultValue="false"
+					youtubeRelatedVideosEnabled="true">
+				<jcr:content jcr:primaryType="nt:unstructured"/>
+                </policy>
+            </embed>
             <contentcollage jcr:primaryType="nt:unstructured">
                 <policy
                     jcr:primaryType="nt:unstructured"
