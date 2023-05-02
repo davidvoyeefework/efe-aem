@@ -81,6 +81,10 @@
                                 cq:policy="efe/components/embed/policy"
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="wcm/core/components/policies/mapping"/>
+                            <contentcollage
+                                cq:policy="efe/components/contentcollage/policy"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="wcm/core/components/policies/mapping"/>
                         </components>
                     </efe>
                 </container>

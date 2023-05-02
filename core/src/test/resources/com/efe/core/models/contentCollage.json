@@ -1,0 +1,32 @@
+{
+	"jcr:primaryType": "cq:Page",
+	"jcr:content": {
+		"jcr:primaryType": "cq:PageContent",
+		"jcr:title": "Content Collage",
+		"cq:template": "/conf/efe/settings/wcm/templates/xf-web-variation",
+		"cq:xfMasterVariation": true,
+		"cq:xfVariantType": "web",
+		"cq:tags": [],
+		"sling:resourceType": "efe/components/xfpage",
+		"root": {
+			"jcr:primaryType": "nt:unstructured",
+			"layout": "responsiveGrid",
+			"sling:resourceType": "efe/components/container",
+			"container": {
+				"jcr:primaryType": "nt:unstructured",
+				"sling:resourceType": "hbff/components/container",
+				"contentCollage": {
+					"jcr:primaryType": "nt:unstructured",
+					"sling:resourceType": "efe/components/contentcollage",
+					"primaryImage": "/content/dam/test1.png",
+					"primaryImageAltText": "alt text1",
+					"secondaryImage": "/content/dam/test2.png",
+					"secondaryImageAltText": "alt text2",
+					"contentCard": "test quote",
+					"author": "test author name",
+					"title": "test title"
+				}
+			}
+		}
+	}
+}
