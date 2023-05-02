@@ -60,6 +60,10 @@
 					}
 				}
 			}
+		},
+		"image": {
+			"jcr:primaryType": "nt:unstructured",
+			"fileReference": "/content/dam/hbff/test/poirier-libraries-06.jpg"
 		}
 	}
 }
