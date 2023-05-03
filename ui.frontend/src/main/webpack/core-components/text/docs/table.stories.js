@@ -7,7 +7,7 @@ export default {
   // More on argTypes: https://storybook.js.org/docs/html/api/argtypes
   argTypes: {
     variant: {
-      options: ["table"],
+      options: ["table", "table-horizontal-scroll"],
       control: { type: "radio" },
     }
   },
