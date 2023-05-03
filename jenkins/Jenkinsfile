@@ -26,7 +26,7 @@ pipeline {
           deleteDirs: true
         )
         // SCM
-        git branch: 'main', credentialsId: 'gitlab-saas-devtools-ssh-key', url: 'git@gitlab.com:FNGN/aem/efe-aem.git'
+        git branch: 'main', credentialsId: 'Gitlab-SaaS-Ssh-Key', url: 'git@gitlab.com:FNGN/aem/efe-aem.git'
       }
     }
     stage ('Checkmarx SCA') {
