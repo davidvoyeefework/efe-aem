@@ -3,12 +3,6 @@
     jcr:primaryType="sling:OrderedFolder">
     <jcr:content
         jcr:primaryType="nt:unstructured"
-        jcr:title="Employee Planning"
+        jcr:title="Articles"
         sourcing="false"/>
-    <bios/>
-    <disclosures/>
-    <footnotes/>
-    <testimonials/>
-    <locations-planners/>
-	<articles/>
 </jcr:root>

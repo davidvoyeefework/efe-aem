@@ -29,8 +29,16 @@
             $justify-content: center,
         );
         >img {
-            width: 44px;
-            height: 48px;
+            width: 43.33px;
+            height: 48.33px;
+        }
+        @include media("<tablet-lg") {
+            height: 75px;
+            width: 75px;
+            >img {
+                width: 32.5px;
+                height: 36.25px;
+            }
         }
     }
 

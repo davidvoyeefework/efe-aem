@@ -52,6 +52,7 @@
   // animation: fade-in 400ms 200ms both, slide-up 400ms 200ms both;
   width: 544px;
   height: 495px;
+  max-width: 576px;
   @include media("<tablet") {
     width: 100%;
     height: 100%;
@@ -60,7 +61,7 @@
   border-radius: 5px;
   text-align: center;
   &__container {
-    padding: 0 44px 44px 44px;
+    padding: 44px;
   }
   &__title {
     @include subhead-01;
@@ -74,6 +75,9 @@
     p {
       @include body-03;
       line-height: 150%;
+      @include media("<tablet") {
+        word-wrap: break-word;
+      }
     }
   }
   &__action-container {
@@ -99,6 +103,7 @@
   }
   &__close {
     float: right;
+    cursor: pointer;
     &:focus {
       outline: none;
     }
@@ -107,7 +112,7 @@
     margin: 24px;
   }
   &__action-container {
-    padding: 44px;
+    padding: 0 44px;
   }
 }
 @keyframes fade-in {
