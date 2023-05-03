@@ -16,7 +16,6 @@ export default class CustomVideo {
         this.initVideo();
 
         this.onIframeReady = this.onIframeReady.bind(this);
-        this.onPlayerReady = this.onPlayerReady.bind(this);
         this.hideDefaults = this.hideDefaults.bind(this);
     }
 
@@ -54,16 +53,9 @@ export default class CustomVideo {
             playerVars: {
                 playsinline: 1,
             },
-            events: {
-                onReady: this.onPlayerReady,
-            },
         });
 
         this.playerEl = this.player.getIframe();
-    }
-
-    onPlayerReady(event) {
-        event.target.playVideo();
     }
 
     initVideo() {
