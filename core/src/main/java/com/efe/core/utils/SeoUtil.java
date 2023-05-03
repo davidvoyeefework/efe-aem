@@ -54,8 +54,7 @@ public class SeoUtil {
 		ResourceResolver resolver = request.getResourceResolver();
 
 		jsonLd.setUrl(externalizer.publishLink(resolver, request.getPathInfo()));
-		jsonLd.setUrl1(externalizer.publishLink(resolver, resolver.map(request.getPathInfo())));
-
+	
 		Geo geo = new Geo();
 		geo.setType(seoService.getGeoType());
 		geo.setLatitude(locationResponse.getLatitude());

@@ -115,7 +115,7 @@ public class HeaderImpl implements Header {
     
     @PostConstruct
     protected void init() {
-    	if(null != request && StringUtils.isNotEmpty(contactNumber)) {
+    	if(null != request) {
     		request.setAttribute("logo", fileReference);
     		request.setAttribute("contactNumber", contactNumber);
     	}  	

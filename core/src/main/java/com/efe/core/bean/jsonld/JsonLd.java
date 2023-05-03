@@ -42,10 +42,6 @@ public class JsonLd {
 	@Expose
 	private List<String> sameAs;
 
-	@SerializedName("url1")
-	@Expose
-	private String url1;
-
 	@SerializedName("geo")
 	@Expose
 	private Geo geo;
@@ -110,19 +106,6 @@ public class JsonLd {
 		this.geo = geo;
 	}
 
-	/**
-	 * @return the url1
-	 */
-	public String getUrl1() {
-		return url1;
-	}
-
-	/**
-	 * @param url1 the url1 to set
-	 */
-	public void setUrl1(String url1) {
-		this.url1 = url1;
-	}
 
 	/**
 	 * @return the sameAs
