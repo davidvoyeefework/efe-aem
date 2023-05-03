@@ -2,8 +2,6 @@
 <jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0"
     jcr:primaryType="cq:Template">
     <jcr:content
-        cq:lastModified="{Date}2023-05-03T06:38:05.708+05:30"
-        cq:lastModifiedBy="admin"
         cq:templateType="/conf/efe/settings/wcm/template-types/xftarget"
         jcr:description="Template to create the Target variation with no script or styling"
         jcr:primaryType="cq:PageContent"
