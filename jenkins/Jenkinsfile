@@ -46,7 +46,7 @@ pipeline {
       }
       steps {
         echo "Sync the ${branchName} branch to Adobe Git"
-        sshagent(credentials: ['gitlab-saas-devtools-ssh-key']) {
+        sshagent(credentials: ['Gitlab-SaaS-Ssh-Key']) {
           sh '''
             git remote add cmgit https://$AEM_SYNC_USER_NAME:$AEM_SYNC_USER_ACCESS_TOKEN@git.cloudmanager.adobe.com/financialengines/FinancialEnginesSites-p91602-uk32541/
             git remote -v
