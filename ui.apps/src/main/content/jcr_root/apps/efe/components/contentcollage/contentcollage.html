@@ -1,0 +1,28 @@
+<sly data-sly-use.contentCollageModel="com.efe.core.models.ContentCollage"/>
+<div id="${contentCollageModel.id}" class="container responsivegrid cmp-content-collage">
+    <div id="container-97c410ebe3" class="cmp-container">
+        <sly data-sly-test="${contentCollageModel.primaryImage}">
+            <div class="image">
+                <div class="cmp-image" itemscope="" itemtype="http://schema.org/ImageObject">
+                    <img src="${contentCollageModel.primaryImage}" alt="${contentCollageModel.primaryImageAltText}">
+                </div>
+            </div>
+        </sly>
+        <sly data-sly-test="${contentCollageModel.secondaryImage}">
+            <div class="image">
+                <div class="cmp-image" itemscope="" itemtype="http://schema.org/ImageObject">
+                    <img src="${contentCollageModel.secondaryImage}" alt="${contentCollageModel.secondaryImageAltText}">
+                </div>
+            </div>
+        </sly>
+        <div>
+            <sly data-sly-test="${contentCollageModel.contentCard}">
+                <div class="text">
+                    <div class="cmp-text">
+                        ${contentCollageModel.contentCard @ context = 'html'}
+                    </div>
+                </div>
+            </sly>
+        </div>
+    </div>
+</div>

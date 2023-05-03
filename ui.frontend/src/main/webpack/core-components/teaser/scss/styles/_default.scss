@@ -30,11 +30,7 @@
 
     .cmp-teaser__pretitle {
         @include buildFont (rem(26), rem(2),$font-nimbus-Sans,400, uppercase,rem(31),$efe-gray-primary);
-    }
-    .cmp-teaser__content {
-        float: left;
-    }
-    
+    } 
     .cmp-teaser__title {
         font-family: $font-nimbus-pro;
         margin: 0.5em 0;
