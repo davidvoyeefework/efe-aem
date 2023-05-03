@@ -1,88 +1,175 @@
 
 package com.efe.core.bean.jsonld;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class JsonLd {
 
-    @SerializedName("@context")
-    @Expose
-    private String context = "https://schema.org";
-    
-    @SerializedName("@type")
-    @Expose
-    private String type;
-    @SerializedName("name")
-    @Expose
-    private String name;
-    @SerializedName("address")
-    @Expose
-    private Address address;
-    @SerializedName("telePhone")
-    @Expose
-    private String telePhone;
-    @SerializedName("url")
-    @Expose
-    private String url;
-    @SerializedName("geo")
-    @Expose
-    private Geo geo;
+	@SerializedName("@context")
+	@Expose
+	private String context;
 
-    public String getContext() {
-        return context;
-    }
+	@SerializedName("@type")
+	@Expose
+	private String type;
 
-    public void setContext(String context) {
-        this.context = context;
-    }
+	@SerializedName("name")
+	@Expose
+	private String name;
 
-    public String getType() {
-        return type;
-    }
+	@SerializedName("address")
+	@Expose
+	private Address address;
 
-    public void setType(String type) {
-        this.type = type;
-    }
+	@SerializedName("telePhone")
+	@Expose
+	private String telePhone;
 
-    public String getName() {
-        return name;
-    }
+	@SerializedName("url")
+	@Expose
+	private String url;
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	@SerializedName("logo")
+	@Expose
+	private String logo;
 
-    public Address getAddress() {
-        return address;
-    }
+	@SerializedName("sameAs")
+	@Expose
+	private List<String> sameAs;
 
-    public void setAddress(Address address) {
-        this.address = address;
-    }
+	@SerializedName("url1")
+	@Expose
+	private String url1;
 
-    public String getTelePhone() {
-        return telePhone;
-    }
+	@SerializedName("geo")
+	@Expose
+	private Geo geo;
 
-    public void setTelePhone(String telePhone) {
-        this.telePhone = telePhone;
-    }
+	@SerializedName("contactPoint")
+	@Expose
+	private List<ContactPoint> contactPoint;
 
-    public String getUrl() {
-        return url;
-    }
+	public String getContext() {
+		return context;
+	}
 
-    public void setUrl(String url) {
-        this.url = url;
-    }
+	public void setContext(String context) {
+		this.context = context;
+	}
 
-    public Geo getGeo() {
-        return geo;
-    }
+	public String getType() {
+		return type;
+	}
 
-    public void setGeo(Geo geo) {
-        this.geo = geo;
-    }
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public String getTelePhone() {
+		return telePhone;
+	}
+
+	public void setTelePhone(String telePhone) {
+		this.telePhone = telePhone;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public Geo getGeo() {
+		return geo;
+	}
+
+	public void setGeo(Geo geo) {
+		this.geo = geo;
+	}
+
+	/**
+	 * @return the url1
+	 */
+	public String getUrl1() {
+		return url1;
+	}
+
+	/**
+	 * @param url1 the url1 to set
+	 */
+	public void setUrl1(String url1) {
+		this.url1 = url1;
+	}
+
+	/**
+	 * @return the sameAs
+	 */
+	public List<String> getSameAs() {
+		if(null == sameAs) {
+			return Collections.emptyList();
+		}
+		return Collections.unmodifiableList(sameAs);
+	}
+
+	/**
+	 * @param sameAs the sameAs to set
+	 */
+	public void setSameAs(List<String> sameAs) {
+		this.sameAs = new ArrayList<>(sameAs);
+	}
+
+	/**
+	 * @return the logo
+	 */
+	public String getLogo() {
+		return logo;
+	}
+
+	/**
+	 * @param logo the logo to set
+	 */
+	public void setLogo(String logo) {
+		this.logo = logo;
+	}
+
+	/**
+	 * @return the contactPoint
+	 */
+	public List<ContactPoint> getContactPoint() {
+		if(null == contactPoint) {
+			return Collections.emptyList();
+		}
+		return Collections.unmodifiableList(contactPoint);
+	}
+
+	/**
+	 * @param contactPoint the contactPoint to set
+	 */
+	public void setContactPoint(List<ContactPoint> contactPoint) {
+		this.contactPoint = new ArrayList<>(contactPoint);
+	}
 
 }

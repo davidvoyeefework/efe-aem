@@ -8,7 +8,7 @@ public class Address {
 
     @SerializedName("@type")
     @Expose
-    private String type = "PostalAddress";
+    private String type;
     @SerializedName("streetAddress")
     @Expose
     private String streetAddress;

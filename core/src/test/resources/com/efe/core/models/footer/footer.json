@@ -6,6 +6,7 @@
 		"cq:template": "/conf/efe/settings/wcm/templates/xf-web-variation",
 		"cq:xfMasterVariation": true,
 		"cq:xfVariantType": "web",
+		"showOrgSeoSchema":"true",
 		"cq:tags": [],
 		"sling:resourceType": "efe/components/xfpage",
 		"root": {

@@ -8,7 +8,7 @@ public class Geo {
 
     @SerializedName("@type")
     @Expose
-    private String type = "GeoCoordinates";
+    private String type;
     
     @SerializedName("latitude")
     @Expose

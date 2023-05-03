@@ -23,11 +23,13 @@ import org.slf4j.LoggerFactory;
 import com.adobe.cq.dam.cfm.ContentElement;
 import com.adobe.cq.dam.cfm.ContentFragment;
 import com.adobe.cq.export.json.ExporterConstants;
+import com.day.cq.commons.Externalizer;
 import com.day.cq.dam.api.DamConstants;
 import com.efe.core.bean.LocationResponse;
 import com.efe.core.constants.PlannerLocationConstants;
 import com.efe.core.models.MapDirection;
 import com.efe.core.services.EfeService;
+import com.efe.core.services.SeoService;
 import com.efe.core.utils.EFEUtil;
 import com.efe.core.utils.LocationPlannerUtil;
 import com.efe.core.utils.SeoUtil;
@@ -55,6 +57,9 @@ public class MapDirectionImpl implements MapDirection {
 	/** The resource resolver. */
 	@SlingObject
 	private ResourceResolver resourceResolver;
+	
+	@OSGiService
+	private SeoService seoService;
 
 	/** The current resource. */
 	@Self
@@ -84,7 +89,10 @@ public class MapDirectionImpl implements MapDirection {
 
 	@OSGiService
 	private EfeService efeService;
-
+	
+	@OSGiService
+	private Externalizer externalizer;
+	
 	private LocationResponse locationResponse;
 
 	private boolean isEmpty;
@@ -141,7 +149,7 @@ public class MapDirectionImpl implements MapDirection {
 						
 						mapKey = efeService.getGooglePublicKey();
 						
-						jsonLd = SeoUtil.getLocationSEO(locationResponse);
+						jsonLd = SeoUtil.getLocationSEO(request, externalizer, locationResponse, seoService);
 						
 						isEmpty = false;
 					}
