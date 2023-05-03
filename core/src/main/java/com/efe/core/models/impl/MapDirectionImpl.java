@@ -9,6 +9,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.models.annotations.Default;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
@@ -29,6 +30,7 @@ import com.efe.core.models.MapDirection;
 import com.efe.core.services.EfeService;
 import com.efe.core.utils.EFEUtil;
 import com.efe.core.utils.LocationPlannerUtil;
+import com.efe.core.utils.SeoUtil;
 
 /**
  * The Class MapDirectionImpl.
@@ -68,6 +70,7 @@ public class MapDirectionImpl implements MapDirection {
 
 	/** The zoom level. */
 	@ValueMapValue
+	@Default(intValues = 15)
 	private int zoomLevel;
 
 	@ValueMapValue
@@ -89,6 +92,8 @@ public class MapDirectionImpl implements MapDirection {
 	private String googleDirectionPath;
 
 	private String mapKey;
+
+	private String jsonLd;
 
 	@PostConstruct
 	public void init() {
@@ -135,6 +140,8 @@ public class MapDirectionImpl implements MapDirection {
 								+ "," + locationResponse.getCity() + "+" + locationResponse.getState();
 						
 						mapKey = efeService.getGooglePublicKey();
+						
+						jsonLd = SeoUtil.getLocationSEO(locationResponse);
 						
 						isEmpty = false;
 					}
@@ -226,6 +233,11 @@ public class MapDirectionImpl implements MapDirection {
 	@Override
 	public String getMapKey() {
 		return mapKey;
+	}
+
+	@Override
+	public String getJsonLd() {
+		return jsonLd;
 	}
 
 }

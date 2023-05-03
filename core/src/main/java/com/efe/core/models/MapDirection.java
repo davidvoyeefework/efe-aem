@@ -78,5 +78,7 @@ public interface MapDirection {
 	 * @return the mapKey
 	 */
 	String getMapKey();
+	
+	String getJsonLd();
 
    }
