@@ -52,20 +52,38 @@
                             renderReadOnly="false"
                             showEmptyInReadOnly="true"
                             valueType="string/multiline"/>
-                        <body
+                        <articleSummary
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="dam/cfm/admin/components/authoring/contenteditor/multieditor"
-                            cfm-element="Body"
+                            cfm-element="Article Summary"
                             checked="false"
                             default-mime-type="text/html"
-                            fieldDescription="Article body text"
+                            fieldDescription="Article Summary"
                             listOrder="2"
                             metaType="text-multi"
-                            name="body"
+                            name="articleSummary"
                             renderReadOnly="false"
                             required="on"
                             showEmptyInReadOnly="true"
                             valueType="string/multiline"/>
+                        <body
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="dam/cfm/models/editor/components/contentreference"
+                            fieldLabel="Article Body"
+                            filter="hierarchy"
+                            listOrder="8"
+                            metaType="reference"
+                            name="body"
+                            nameSuffix="contentReference"
+                            renderReadOnly="false"
+                            rootPath="/content/experience-fragments/efe"
+                            showEmptyInReadOnly="true"
+                            showThumbnail="false"
+                            valueType="string/reference">
+                            <granite:data
+                                jcr:primaryType="nt:unstructured"
+                                thumbnail-validation="cfm.validation.thumbnail.show"/>
+                        </body>
                         <heroImage
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="dam/cfm/models/editor/components/contentreference"
@@ -101,12 +119,12 @@
                             <optionsmultifield jcr:primaryType="nt:unstructured">
                                 <item0
                                     jcr:primaryType="nt:unstructured"
-                                    fieldLabel="Author 1 Type"
-                                    fieldValue="Author 1 Type"/>
+                                    fieldLabel="Regular Author"
+                                    fieldValue="Regular Author"/>
                                 <item1
                                     jcr:primaryType="nt:unstructured"
-                                    fieldLabel="Author 2 Type"
-                                    fieldValue="Author 2 Type"/>
+                                    fieldLabel="Planner"
+                                    fieldValue="Planner"/>
                             </optionsmultifield>
                             <datasource
                                 jcr:primaryType="nt:unstructured"
@@ -116,38 +134,52 @@
                         </authorType>
                         <author1
                             jcr:primaryType="nt:unstructured"
-                            sling:resourceType="dam/cfm/models/editor/components/fragmentreference"
+                            sling:resourceType="dam/cfm/models/editor/components/fragmentreference/multifield"
                             allowNew="{Boolean}true"
                             fieldDescription="Referenced CF with author info"
-                            fieldLabel="Author1"
+                            fieldLabel="Regular Author"
                             filter="hierarchy"
                             fragmentmodelreference="[/conf/efe/settings/dam/cfm/models/authors,/conf/efe/settings/dam/cfm/models/planner]"
                             listOrder="9"
                             metaType="fragment-reference"
-                            name="author1"
+                            name="regularAuthor"
                             nameSuffix="contentReference"
                             renderReadOnly="false"
                             showEmptyInReadOnly="true"
-                            valueType="string/content-fragment">
-                            <field jcr:primaryType="nt:unstructured"/>
+                            valueType="string/content-fragment[]">
+                            <field
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="dam/cfm/models/editor/components/fragmentreference"
+                                fragmentmodelreference="[/conf/efe/settings/dam/cfm/models/authors,/conf/efe/settings/dam/cfm/models/planner]"
+                                name="regularAuthor"
+                                renderReadOnly="false">
+                                <granite:data jcr:primaryType="nt:unstructured"/>
+                            </field>
                             <granite:data jcr:primaryType="nt:unstructured"/>
                         </author1>
                         <author2
                             jcr:primaryType="nt:unstructured"
-                            sling:resourceType="dam/cfm/models/editor/components/fragmentreference"
+                            sling:resourceType="dam/cfm/models/editor/components/fragmentreference/multifield"
                             allowNew="{Boolean}true"
                             fieldDescription="Referenced CF with author info"
-                            fieldLabel="Author2"
+                            fieldLabel="Planner"
                             filter="hierarchy"
                             fragmentmodelreference="[/conf/efe/settings/dam/cfm/models/authors,/conf/efe/settings/dam/cfm/models/planner]"
                             listOrder="9"
                             metaType="fragment-reference"
-                            name="author2"
+                            name="planner"
                             nameSuffix="contentReference"
                             renderReadOnly="false"
                             showEmptyInReadOnly="true"
-                            valueType="string/content-fragment">
-                            <field jcr:primaryType="nt:unstructured"/>
+                            valueType="string/content-fragment[]">
+                            <field
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="dam/cfm/models/editor/components/fragmentreference"
+                                fragmentmodelreference="[/conf/efe/settings/dam/cfm/models/authors,/conf/efe/settings/dam/cfm/models/planner]"
+                                name="planner"
+                                renderReadOnly="false">
+                                <granite:data jcr:primaryType="nt:unstructured"/>
+                            </field>
                             <granite:data jcr:primaryType="nt:unstructured"/>
                         </author2>
                         <datePublished
