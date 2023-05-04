@@ -26,7 +26,8 @@ export default class LocationMapDirections {
         }
 
         const markerImg =
-            "https://www.edelmanfinancialengines.com/wp-content/themes/EFE_Divi_Child_Theme/images/efe-marker.svg";
+            "./icons/efe-marker.svg" || "https://www.edelmanfinancialengines.com/wp-content/themes/EFE_Divi_Child_Theme/images/efe-marker.svg";
+
         const myLatLng = new google.maps.LatLng(LAT, LNG);
         const styles = [
             {
