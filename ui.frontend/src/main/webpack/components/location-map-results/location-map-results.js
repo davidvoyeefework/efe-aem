@@ -94,7 +94,7 @@ export default class LocationMapResults {
                         if (nearbyLocations.length === 0) {
                             this.handleEmptyResults(results);
                         } else {
-                            console.log("nearby locations");
+                            this.furthestOffice =  48280 / 1.8;
                             this.showSearchResultsContainer(nearbyLocations, {
                                 showNationalAdvisor: false,
                                 lat: results.latitude,
@@ -115,10 +115,18 @@ export default class LocationMapResults {
             } else {
                 this.geocodeAddress(searchInput)
                     .then((results) => {
+                        this.furthestOffice =
+                            this.getDynamicRadiusForFurthestOffice(
+                                results.latitude,
+                                results.longitude,
+                                data,
+                            );
+
                         this.showSearchResultsContainer(data, {
                             showNationalAdvisor: false,
                             lat: results.latitude,
                             lng: results.longitude,
+                            showBounds: true,
                         });
                     })
                     .catch((error) => {
@@ -279,6 +287,23 @@ export default class LocationMapResults {
         return nearbyLocations;
     }
 
+    getDynamicRadiusForFurthestOffice(lat, lng, locations) {
+        let furthestLocation = 0;
+        locations.forEach(location => {
+            const locationLat = parseFloat(location.latitude);
+            const locationLng = parseFloat(location.longitude);
+            const distance =
+                google.maps.geometry.spherical.computeDistanceBetween(
+                    new google.maps.LatLng(lat, lng),
+                    new google.maps.LatLng(locationLat, locationLng)
+                ) * 0.000621371; // Convert meters to miles
+            if (!isNaN(distance)) {
+                furthestLocation = Math.max(furthestLocation, distance);
+            }
+        })
+        return (furthestLocation * 1609.34) / 1.8;
+    }
+
     filterArray(value) {
         return this.offices.filter(function (obj) {
             return Object.entries(obj).some(function ([key, val]) {
@@ -293,7 +318,7 @@ export default class LocationMapResults {
     initMap(data, obj) {
         const SATURATION = -100;
         const markerImg =
-            "https://www.edelmanfinancialengines.com/wp-content/themes/EFE_Divi_Child_Theme/images/efe-marker.svg";
+            "./icons/efe-marker.svg" || "https://www.edelmanfinancialengines.com/wp-content/themes/EFE_Divi_Child_Theme/images/efe-marker.svg";
 
         if (
             typeof google === "undefined" ||
@@ -351,7 +376,7 @@ export default class LocationMapResults {
                 fillOpacity: 0,
                 strokeOpacity: 0,
                 map: map,
-                radius: obj.showNationalAdvisor ? this.furthestOffice / 1.8 : 30 * 1609.34,
+                radius: this.furthestOffice,
             };
 
             const myCircle = new google.maps.Circle(circleOptions);
