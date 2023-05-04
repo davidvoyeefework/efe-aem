@@ -50,12 +50,15 @@ public class FooterImpl implements Footer {
 	@SlingObject
 	private ResourceResolver resourceResolver;
 	
+	/** The request. */
 	@SlingObject
 	private SlingHttpServletRequest request;
 
+	/** The externalizer. */
 	@OSGiService
 	private Externalizer externalizer;
 	
+	/** The seo service. */
 	@OSGiService
 	private SeoService seoService;
 	
@@ -65,6 +68,7 @@ public class FooterImpl implements Footer {
 	@Self
 	private Resource resource;
 	
+	/** The current page. */
 	@Inject
 	private Page currentPage;    
 
@@ -104,8 +108,12 @@ public class FooterImpl implements Footer {
 	@ChildResource
 	private List<VerticalList> verticalList;
 	
+	/** The json ld. */
 	private String jsonLd;
 
+	/**
+	 * Inits the model.
+	 */
 	@PostConstruct
 	protected void init() {
 		
@@ -155,6 +163,11 @@ public class FooterImpl implements Footer {
 		return LinkUtil.getFormattedLink(logoLink, resourceResolver);
 	}
 	
+	/**
+	 * Gets the json ld.
+	 *
+	 * @return the json ld
+	 */
 	@Override
 	public String getJsonLd() {
 		return jsonLd;

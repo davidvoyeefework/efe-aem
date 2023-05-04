@@ -7,7 +7,6 @@ import java.util.Objects;
 
 import javax.annotation.PostConstruct;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -40,6 +39,7 @@ public class HeaderImpl implements Header {
     @SlingObject
     private ResourceResolver resourceResolver;
     
+    /** The request. */
     @SlingObject
 	private SlingHttpServletRequest request;
 
@@ -113,6 +113,9 @@ public class HeaderImpl implements Header {
     @ChildResource
     private List<Link> headerList;
     
+    /**
+     * Inits the model
+     */
     @PostConstruct
     protected void init() {
     	if(null != request) {

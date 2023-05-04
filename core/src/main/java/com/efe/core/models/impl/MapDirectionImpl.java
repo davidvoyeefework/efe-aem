@@ -34,6 +34,7 @@ import com.efe.core.utils.EFEUtil;
 import com.efe.core.utils.LocationPlannerUtil;
 import com.efe.core.utils.SeoUtil;
 
+
 /**
  * The Class MapDirectionImpl.
  */
@@ -45,9 +46,7 @@ public class MapDirectionImpl implements MapDirection {
 	/** The Constant RESOURCE_TYPE. */
 	public static final String RESOURCE_TYPE = "efe/components/mapdirection";
 
-	/**
-	 * The Constant LOGGER
-	 */
+	/** The Constant LOGGER. */
 	private static final Logger LOGGER = LoggerFactory.getLogger(MapDirectionImpl.class);
 
 	/** The SlingHttpServletRequest. */
@@ -58,6 +57,7 @@ public class MapDirectionImpl implements MapDirection {
 	@SlingObject
 	private ResourceResolver resourceResolver;
 	
+	/** The seo service. */
 	@OSGiService
 	private SeoService seoService;
 
@@ -78,31 +78,44 @@ public class MapDirectionImpl implements MapDirection {
 	@Default(intValues = 15)
 	private int zoomLevel;
 
+	/** The direction button label. */
 	@ValueMapValue
 	private String directionButtonLabel;
 
+	/** The review question. */
 	@ValueMapValue
 	private String reviewQuestion;
 
+	/** The review link label. */
 	@ValueMapValue
 	private String reviewLinkLabel;
 
+	/** The efe service. */
 	@OSGiService
 	private EfeService efeService;
 	
+	/** The externalizer. */
 	@OSGiService
 	private Externalizer externalizer;
 	
+	/** The location response. */
 	private LocationResponse locationResponse;
 
+	/** The is empty. */
 	private boolean isEmpty;
 
+	/** The google direction path. */
 	private String googleDirectionPath;
 
+	/** The map key. */
 	private String mapKey;
 
+	/** The json ld. */
 	private String jsonLd;
 
+	/**
+	 * Inits the.
+	 */
 	@PostConstruct
 	public void init() {
 		isEmpty = true;
@@ -174,12 +187,19 @@ public class MapDirectionImpl implements MapDirection {
 		return id;
 	}
 
+	/**
+	 * Gets the location response.
+	 *
+	 * @return the location response
+	 */
 	@Override
 	public LocationResponse getLocationResponse() {
 		return locationResponse;
 	}
 
 	/**
+	 * Gets the heading.
+	 *
 	 * @return the heading
 	 */
 	@Override
@@ -188,6 +208,8 @@ public class MapDirectionImpl implements MapDirection {
 	}
 
 	/**
+	 * Gets the zoom level.
+	 *
 	 * @return the zoomLevel
 	 */
 	@Override
@@ -196,6 +218,8 @@ public class MapDirectionImpl implements MapDirection {
 	}
 
 	/**
+	 * Checks if is empty.
+	 *
 	 * @return the isEmpty
 	 */
 	@Override
@@ -204,6 +228,8 @@ public class MapDirectionImpl implements MapDirection {
 	}
 
 	/**
+	 * Gets the google direction path.
+	 *
 	 * @return the googleDirectionPath
 	 */
 	@Override
@@ -212,6 +238,8 @@ public class MapDirectionImpl implements MapDirection {
 	}
 
 	/**
+	 * Gets the direction button label.
+	 *
 	 * @return the directionButtonLabel
 	 */
 	@Override
@@ -220,6 +248,8 @@ public class MapDirectionImpl implements MapDirection {
 	}
 
 	/**
+	 * Gets the review question.
+	 *
 	 * @return the reviewQuestion
 	 */
 	@Override
@@ -228,6 +258,8 @@ public class MapDirectionImpl implements MapDirection {
 	}
 
 	/**
+	 * Gets the review link label.
+	 *
 	 * @return the reviewLinkLabel
 	 */
 	@Override
@@ -236,6 +268,8 @@ public class MapDirectionImpl implements MapDirection {
 	}
 
 	/**
+	 * Gets the map key.
+	 *
 	 * @return the mapKey
 	 */
 	@Override
@@ -243,6 +277,11 @@ public class MapDirectionImpl implements MapDirection {
 		return mapKey;
 	}
 
+	/**
+	 * Gets the json ld.
+	 *
+	 * @return the json ld
+	 */
 	@Override
 	public String getJsonLd() {
 		return jsonLd;

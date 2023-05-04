@@ -21,11 +21,26 @@ import com.efe.core.services.SeoService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+/**
+ * The Class SeoUtil.
+ */
 public class SeoUtil {
 
+	/**
+	 * Instantiates a new seo util.
+	 */
 	private SeoUtil() {
 	}
 
+	/**
+	 * Gets the location SEO.
+	 *
+	 * @param request the request
+	 * @param externalizer the externalizer
+	 * @param locationResponse the location response
+	 * @param seoService the seo service
+	 * @return the location SEO
+	 */
 	public static String getLocationSEO(SlingHttpServletRequest request, Externalizer externalizer,
 			LocationResponse locationResponse, SeoService seoService) {
 		GsonBuilder builder = new GsonBuilder();
@@ -65,6 +80,16 @@ public class SeoUtil {
 
 	}
 
+	/**
+	 * Gets the org SEO.
+	 *
+	 * @param externalizer the externalizer
+	 * @param request the request
+	 * @param resolver the resolver
+	 * @param seoService the seo service
+	 * @param socialLinks the social links
+	 * @return the org SEO
+	 */
 	public static String getOrgSEO(Externalizer externalizer, SlingHttpServletRequest request,
 			ResourceResolver resolver, SeoService seoService, List<SocialLink> socialLinks) {
 
@@ -114,10 +139,10 @@ public class SeoUtil {
 	}
 
 	/**
-	 * Method to return attribute string value
-	 * 
-	 * @param request
-	 * @param attribute
+	 * Method to return attribute string value.
+	 *
+	 * @param request the request
+	 * @param attribute the attribute
 	 * @return attribute value
 	 */
 	private static String getStringValueFromRequest(SlingHttpServletRequest request, String attribute) {

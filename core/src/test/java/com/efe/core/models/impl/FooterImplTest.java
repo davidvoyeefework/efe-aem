@@ -19,6 +19,7 @@ import com.efe.core.services.SeoService;
 import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 
+
 /**
  * The Class FooterImplTest.
  */
@@ -43,9 +44,11 @@ class FooterImplTest {
 	/** The aem context. */
 	private AemContext aemContext = new AemContext();
 	
+	/** The seo service. */
 	@Mock
 	SeoService seoService;
 	
+	/** The externalizer. */
 	@Mock
 	Externalizer externalizer;
 
