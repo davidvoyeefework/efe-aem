@@ -77,7 +77,6 @@ public class SeoUtil {
 		jsonLd.setUrl(externalizer.publishLink(resolver, request.getPathInfo()));
 
 		String logoVal = getStringValueFromRequest(request, "logo");
-
 		if (Objects.nonNull(logoVal)) {
 			jsonLd.setLogo(externalizer.publishLink(resolver, logoVal));
 		}
@@ -90,7 +89,7 @@ public class SeoUtil {
 		contactPoint.setAreaServed(seoService.getAreaServed());
 
 		String contactNumber = getStringValueFromRequest(request, "contactNumber");
-		if (Objects.nonNull(logoVal)) {
+		if (Objects.nonNull(contactNumber)) {
 			contactPoint.setTelephone(contactNumber);
 		}
 		contactPoints.add(contactPoint);

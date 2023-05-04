@@ -1,5 +1,5 @@
 <sly data-sly-use.model="com.efe.core.models.MapDirection">
-    <script type="application/ld+json">
+    <script data-sly-test="${model.jsonLd}" type="application/ld+json">
         ${model.jsonLd @context ='unsafe'}
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=${model.mapKey @ context='scriptToken'}&v=weekly"></script>

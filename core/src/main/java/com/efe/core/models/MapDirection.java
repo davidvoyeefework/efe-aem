@@ -79,6 +79,11 @@ public interface MapDirection {
 	 */
 	String getMapKey();
 	
+	/**
+	 * Method to return the JSON LD Schema
+	 * 
+	 * @return json ld
+	 */
 	String getJsonLd();
 
    }
