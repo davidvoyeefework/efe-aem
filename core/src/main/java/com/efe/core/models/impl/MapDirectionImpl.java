@@ -1,11 +1,9 @@
 package com.efe.core.models.impl;
 
 import java.util.Objects;
-import java.util.Optional;
 
 import javax.annotation.PostConstruct;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -20,8 +18,6 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.adobe.cq.dam.cfm.ContentElement;
-import com.adobe.cq.dam.cfm.ContentFragment;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.day.cq.commons.Externalizer;
 import com.day.cq.dam.api.DamConstants;
@@ -132,30 +128,7 @@ public class MapDirectionImpl implements MapDirection {
 
 					if (item.isResourceType(DamConstants.NT_DAM_ASSET)) {
 
-						Optional<ContentFragment> locationCF = Optional.ofNullable(item.adaptTo(ContentFragment.class));
-
-						locationResponse.setCity(locationCF.map(cf -> cf.getElement(PlannerLocationConstants.CITY))
-								.map(ContentElement::getContent).orElse(StringUtils.EMPTY));
-
-						locationResponse.setState(locationCF.map(cf -> cf.getElement(PlannerLocationConstants.STATE))
-								.map(ContentElement::getContent).orElse(StringUtils.EMPTY));
-						locationResponse
-								.setAddress1(locationCF.map(cf -> cf.getElement(PlannerLocationConstants.ADDRESS_1))
-										.map(ContentElement::getContent).orElse(StringUtils.EMPTY));
-						locationResponse
-								.setAddress2(locationCF.map(cf -> cf.getElement(PlannerLocationConstants.ADDRESS_2))
-										.map(ContentElement::getContent).orElse(StringUtils.EMPTY));
-						locationResponse.setZip(locationCF.map(cf -> cf.getElement(PlannerLocationConstants.ZIP))
-								.map(ContentElement::getContent).orElse(StringUtils.EMPTY));
-						locationResponse
-								.setLatitude(locationCF.map(cf -> cf.getElement(PlannerLocationConstants.LATITUDE))
-										.map(ContentElement::getContent).orElse(StringUtils.EMPTY));
-						locationResponse
-								.setLongitude(locationCF.map(cf -> cf.getElement(PlannerLocationConstants.LONGITUTE))
-										.map(ContentElement::getContent).orElse(StringUtils.EMPTY));
-						locationResponse.setGoogleReviewLink(
-								locationCF.map(cf -> cf.getElement(PlannerLocationConstants.GOOGLE_REVIEW_LINK))
-										.map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+						locationResponse = LocationPlannerUtil.getLocationInfo(item);
 
 						googleDirectionPath = efeService.getGoogleDirectionPrefixUrl() +locationResponse.getAddress1()
 								+ "," + locationResponse.getCity() + "+" + locationResponse.getState();
@@ -173,6 +146,8 @@ public class MapDirectionImpl implements MapDirection {
 			}
 		}
 	}
+
+
 
 	/**
 	 * Gets the id.

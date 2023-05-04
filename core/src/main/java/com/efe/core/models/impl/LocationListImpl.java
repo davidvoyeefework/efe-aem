@@ -29,6 +29,7 @@ import com.efe.core.models.LocationList;
 import com.efe.core.services.EfeService;
 import com.efe.core.utils.EFEUtil;
 import com.efe.core.utils.LinkUtil;
+import com.efe.core.utils.LocationPlannerUtil;
 
 /**
  * The Class LocationListImpl.
@@ -113,11 +114,11 @@ public class LocationListImpl implements LocationList {
 						String cityUrl = LinkUtil.getFormattedLink(
 								efeService.getPlannerPageUrl()
 										+ PlannerLocationConstants.DOT + stateResource.getName().toUpperCase()
-										+ PlannerLocationConstants.DOT + toCamelCase(cityResource.getName()).replaceAll(
+										+ PlannerLocationConstants.DOT + LocationPlannerUtil.toCamelCase(cityResource.getName()).replaceAll(
 												PlannerLocationConstants.SPACE, PlannerLocationConstants.HYPHEN),
 								resourceResolver);
 						LOGGER.info("City Url {}", cityUrl);
-						unsortedCityMap.put(toCamelCase(cityResource.getName()), cityUrl);
+						unsortedCityMap.put(LocationPlannerUtil.toCamelCase(cityResource.getName()), cityUrl);
 					}
 					StatesEnum stateEnum = StatesEnum.valueOf(stateResource.getName().toUpperCase());
 					unsortedStates.put(stateEnum.getStateName(),sortCity(unsortedCityMap));
@@ -129,22 +130,7 @@ public class LocationListImpl implements LocationList {
 		}
 	}
 
-	/**
-	 * Converts a given string to camel case format.
-	 * 
-	 * @param inputString the string to be converted to camel case.
-	 * @return the string in camel case format.
-	 */
-	private String toCamelCase(String inputString) {
-		String[] stringArr = inputString.split(PlannerLocationConstants.SPACE);
-		StringBuilder formattedStringSb = new StringBuilder();
-		formattedStringSb.append(StringUtils.capitalize(stringArr[0]));
 
-		for (int i=1; i<stringArr.length; i++){
-			formattedStringSb.append(PlannerLocationConstants.SPACE + StringUtils.capitalize(stringArr[i]));
-		}
-		return formattedStringSb.toString();
-	}
 
 	/**
 	 * Converts a city map in sorted format.

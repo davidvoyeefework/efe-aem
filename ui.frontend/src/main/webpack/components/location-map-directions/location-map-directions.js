@@ -25,6 +25,8 @@ export default class LocationMapDirections {
             return;
         }
 
+        const markerImg =
+            "https://www.edelmanfinancialengines.com/wp-content/themes/EFE_Divi_Child_Theme/images/efe-marker.svg";
         const myLatLng = new google.maps.LatLng(LAT, LNG);
         const styles = [
             {
@@ -52,6 +54,7 @@ export default class LocationMapDirections {
 
         new google.maps.Marker({
             position: myLatLng,
+            icon: markerImg,
             map: map,
             title: "Middle of America PIN",
         });
