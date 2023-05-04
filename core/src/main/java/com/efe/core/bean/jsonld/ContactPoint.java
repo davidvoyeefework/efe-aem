@@ -9,19 +9,15 @@ public class ContactPoint {
 	@Expose
 	private String type;
 
-	@SerializedName("telephone")
 	@Expose
 	private String telephone;
 
-	@SerializedName("contactType")
 	@Expose
 	private String contactType;
 
-	@SerializedName("contactOption")
 	@Expose
 	private String contactOption;
 
-	@SerializedName("areaServed")
 	@Expose
 	private String areaServed;
 

@@ -9,16 +9,16 @@ public class Address {
     @SerializedName("@type")
     @Expose
     private String type;
-    @SerializedName("streetAddress")
+   
     @Expose
     private String streetAddress;
-    @SerializedName("addressLocality")
+    
     @Expose
     private String addressLocality;
-    @SerializedName("addressRegion")
+    
     @Expose
     private String addressRegion;
-    @SerializedName("postalCode")
+   
     @Expose
     private String postalCode;
 

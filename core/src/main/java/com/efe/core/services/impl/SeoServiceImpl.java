@@ -9,6 +9,10 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 
 import com.efe.core.services.SeoService;
 
+/**
+ * The Class SeoServiceImpl
+ *
+ */
 @Designate(ocd = SeoServiceImpl.Config.class)
 @Component(service = SeoService.class)
 public class SeoServiceImpl implements SeoService{

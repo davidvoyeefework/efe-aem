@@ -18,35 +18,27 @@ public class JsonLd {
 	@Expose
 	private String type;
 
-	@SerializedName("name")
 	@Expose
 	private String name;
 
-	@SerializedName("address")
 	@Expose
 	private Address address;
 
-	@SerializedName("telePhone")
 	@Expose
 	private String telePhone;
 
-	@SerializedName("url")
 	@Expose
 	private String url;
 
-	@SerializedName("logo")
 	@Expose
 	private String logo;
 
-	@SerializedName("sameAs")
 	@Expose
 	private List<String> sameAs;
 
-	@SerializedName("geo")
 	@Expose
 	private Geo geo;
 
-	@SerializedName("contactPoint")
 	@Expose
 	private List<ContactPoint> contactPoint;
 

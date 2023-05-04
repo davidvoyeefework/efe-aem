@@ -10,10 +10,9 @@ public class Geo {
     @Expose
     private String type;
     
-    @SerializedName("latitude")
     @Expose
     private String latitude;
-    @SerializedName("longitude")
+    
     @Expose
     private String longitude;
 
