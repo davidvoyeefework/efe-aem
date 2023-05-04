@@ -132,10 +132,6 @@
                                     jcr:primaryType="nt:unstructured"
                                     description="Preformatted"
                                     tag="pre"/>
-								<item3
-                                    jcr:primaryType="nt:unstructured"
-                                    description="Quote"
-                                    tag="q"/>
                             </formats>
                         </paraformat>
                         <misctools
@@ -1083,10 +1079,6 @@
                                     jcr:primaryType="nt:unstructured"
                                     description="Preformatted"
                                     tag="pre"/>
-                                <item3
-                                    jcr:primaryType="nt:unstructured"
-                                    description="Quote"
-                                    tag="q"/>
                             </formats>
                         </paraformat>
                     </rtePlugins>
