@@ -11,7 +11,7 @@
             jcr:primaryType="nt:unstructured"
             sling:resourceType="foundation/components/parsys">
             <participant
-                jcr:description="Validate the Content Fragment"
+                jcr:description="Approve the CF to publish or Reject and send it back to the contributors."
                 jcr:primaryType="nt:unstructured"
                 jcr:title="Validate the Content Fragment"
                 sling:resourceType="cq/workflow/components/model/participant">
@@ -32,9 +32,9 @@
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="cq/flow/components/parsys">
                     <participant
-                        jcr:description="Reject the Content Fragment "
+                        jcr:description="Complete to end the workflow or step back to approvers."
                         jcr:primaryType="nt:unstructured"
-                        jcr:title="Reject the Content Fragment "
+                        jcr:title="Reject the Content Fragment"
                         sling:resourceType="cq/workflow/components/model/participant">
                         <metaData
                             jcr:primaryType="nt:unstructured"
