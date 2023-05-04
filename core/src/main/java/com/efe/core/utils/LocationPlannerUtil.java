@@ -1,8 +1,14 @@
 package com.efe.core.utils;
 
+import java.util.Optional;
+
+import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 
+import com.adobe.cq.dam.cfm.ContentElement;
+import com.adobe.cq.dam.cfm.ContentFragment;
+import com.efe.core.bean.LocationResponse;
 import com.efe.core.constants.PlannerLocationConstants;
 
 public class LocationPlannerUtil {
@@ -23,5 +29,58 @@ public class LocationPlannerUtil {
 				+ PlannerLocationConstants.LOCATIONS + PlannerLocationConstants.FORWARD_SLASH + state
 				+ PlannerLocationConstants.FORWARD_SLASH + city;
 		return resourceResolver.getResource(locationPath);
+	}
+
+	/**
+	 * Method to return the location info from the location content fragment
+	 * 
+	 * @param locationCFResource location content fragment resource
+	 * @return location bean object
+	 */
+	public static LocationResponse getLocationInfo(Resource locationCFResource) {
+
+		LocationResponse locationResponse = new LocationResponse();
+
+		Optional<ContentFragment> locationCF = Optional.ofNullable(locationCFResource.adaptTo(ContentFragment.class));
+
+		locationResponse.setCity(locationCF.map(cf -> cf.getElement(PlannerLocationConstants.CITY))
+				.map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+
+		locationResponse.setState(locationCF.map(cf -> cf.getElement(PlannerLocationConstants.STATE))
+				.map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+		locationResponse.setAddress1(locationCF.map(cf -> cf.getElement(PlannerLocationConstants.ADDRESS_1))
+				.map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+		locationResponse.setAddress2(locationCF.map(cf -> cf.getElement(PlannerLocationConstants.ADDRESS_2))
+				.map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+		locationResponse.setZip(locationCF.map(cf -> cf.getElement(PlannerLocationConstants.ZIP))
+				.map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+		locationResponse.setLatitude(locationCF.map(cf -> cf.getElement(PlannerLocationConstants.LATITUDE))
+				.map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+		locationResponse.setLongitude(locationCF.map(cf -> cf.getElement(PlannerLocationConstants.LONGITUTE))
+				.map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+		locationResponse.setExternalName(locationCF.map(cf -> cf.getElement(PlannerLocationConstants.EXTERNAL_NAME))
+				.map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+		locationResponse
+				.setGoogleReviewLink(locationCF.map(cf -> cf.getElement(PlannerLocationConstants.GOOGLE_REVIEW_LINK))
+						.map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+
+		return locationResponse;
+	}
+	
+	/**
+	 * Converts a given string to camel case format.
+	 * 
+	 * @param inputString the string to be converted to camel case.
+	 * @return the string in camel case format.
+	 */
+	public static String toCamelCase(String inputString) {
+		String[] stringArr = inputString.split(PlannerLocationConstants.SPACE);
+		StringBuilder formattedStringSb = new StringBuilder();
+		formattedStringSb.append(StringUtils.capitalize(stringArr[0]));
+
+		for (int i=1; i<stringArr.length; i++){
+			formattedStringSb.append(PlannerLocationConstants.SPACE + StringUtils.capitalize(stringArr[i]));
+		}
+		return formattedStringSb.toString();
 	}
 }

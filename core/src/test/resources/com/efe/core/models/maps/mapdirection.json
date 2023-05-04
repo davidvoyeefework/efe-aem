@@ -6,11 +6,23 @@
 				"reviewLinkLabel": "Leave a review.",
 				"id": "22",
 				"heading": "VISITING OUR OFFICE",
-				"jcr:lastModified": "Thu Apr 27 2023 17:10:08 GMT+0530",
 				"sling:resourceType": "efe/components/mapdirection",
 				"reviewQuestion": "Already work with us?",
 				"zoomLevel": "9",
 				"directionButtonLabel": "DIRECTIONS"
+			},
+			"mapsearchresults": {
+				"id":"1",
+				"plannerSearchPlaceHolder": "Minneapolis, MN",
+				"exploreLinkLabel": "Explore location",
+				"plannerButtonLabel": "Find a Planner",
+				"plannerSearchLabel": "City, State or ZIP Code",
+				"searchButtonLabel": "SEARCH LOCATIONS",
+				"sling:resourceType": "efe/components/mapsearchresults",
+				"nationalTitle":"title",
+				"nationalDetails":"details",
+				"nationalCallbackNumber":"111",
+				"nationalLink":"link"
 			}
 		}
 	},
@@ -20,14 +32,12 @@
 				"plannerlocation": {
 					"locations": {
 						"ks": {
+							"jcr:primaryType": "sling:OrderedFolder",
 							"wichita": {
 								"jcr:primaryType": "sling:OrderedFolder",
 								"jcr:title": "wichita",
 								"fragment_wichita_74": {
 									"jcr:primaryType": "dam:Asset",
-									"jcr:createdBy": "efe-service-user",
-									"jcr:created": "Thu Apr 27 2023 12:02:40 GMT+0530",
-									"jcr:uuid": "1623aa0f-e2d5-40bf-ad1d-f6bf5fde85ac",
 									"jcr:content": {
 										"jcr:primaryType": "dam:AssetContent",
 										"jcr:title": "location fragment",
@@ -36,7 +46,6 @@
 											"jcr:primaryType": "nt:unstructured",
 											"jcr:mixinTypes": ["cq:Taggable"]
 										},
-
 										"data": {
 											"jcr:primaryType": "nt:unstructured",
 											"_strucVersion": 1,
@@ -56,7 +65,6 @@
 												"phone": "(866) 742-7222",
 												"state": "KS",
 												"longitude": "-97.23856"
-
 											}
 										}
 									}
