@@ -2,6 +2,7 @@ export default class LocationMapDirections {
     constructor(el) {
         this.el = el;
         if (!el) return;
+        this.markerImg = "/etc.clientlibs/efe/clientlibs/clientlib-site/resources/images/icons/efe-marker.svg";
         this.mount(el);
     }
 
@@ -24,9 +25,6 @@ export default class LocationMapDirections {
             );
             return;
         }
-
-        const markerImg =
-            "./icons/efe-marker.svg" || "https://www.edelmanfinancialengines.com/wp-content/themes/EFE_Divi_Child_Theme/images/efe-marker.svg";
 
         const myLatLng = new google.maps.LatLng(LAT, LNG);
         const styles = [
@@ -55,7 +53,7 @@ export default class LocationMapDirections {
 
         new google.maps.Marker({
             position: myLatLng,
-            icon: markerImg,
+            icon: this.markerImg,
             map: map,
             title: "Middle of America PIN",
         });

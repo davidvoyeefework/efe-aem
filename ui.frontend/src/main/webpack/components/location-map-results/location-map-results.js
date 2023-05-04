@@ -2,6 +2,7 @@ export default class LocationMapResults {
     constructor(el) {
         this.el = el;
         if (!el) return;
+        this.markerImg = "/etc.clientlibs/efe/clientlibs/clientlib-site/resources/images/icons/efe-marker.svg";
         this.searchBtn = el.querySelector(".search-location-btn");
         this.searchInput = el.querySelector("#location");
         this.handleLocationSearch = this.searchBtn.addEventListener(
@@ -317,8 +318,6 @@ export default class LocationMapResults {
 
     initMap(data, obj) {
         const SATURATION = -100;
-        const markerImg =
-            "./icons/efe-marker.svg" || "https://www.edelmanfinancialengines.com/wp-content/themes/EFE_Divi_Child_Theme/images/efe-marker.svg";
 
         if (
             typeof google === "undefined" ||
@@ -364,7 +363,7 @@ export default class LocationMapResults {
                         office.longitude
                     ),
                     map: map,
-                    icon: markerImg,
+                    icon: this.markerImg,
                     title: office.city,
                 });
             });
