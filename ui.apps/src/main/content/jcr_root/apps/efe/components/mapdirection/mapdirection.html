@@ -1,4 +1,7 @@
 <sly data-sly-use.model="com.efe.core.models.MapDirection">
+    <script data-sly-test="${model.jsonLd}" type="application/ld+json">
+        ${model.jsonLd @context ='unsafe'}
+    </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=${model.mapKey @ context='scriptToken'}&v=weekly"></script>
     <section id="${model.id}"  data-component="location-map-directions" class="cmp-location--map-directions" data-latitude="${model.locationResponse.latitude}" data-longitude="${model.locationResponse.longitude}" data-zoomlevel="${model.zoomLevel}">
         <div class="cmp-location--map-directions__map">

@@ -12,8 +12,10 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.adobe.cq.dam.cfm.ContentFragment;
+import com.day.cq.commons.Externalizer;
 import com.efe.core.models.MapDirection;
 import com.efe.core.services.impl.EfeServiceImpl;
+import com.efe.core.services.impl.SeoServiceImpl;
 
 import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
@@ -26,6 +28,11 @@ class MapDirectionImplTest {
 
 	/** The EfeServiceImpl. */
 	private EfeServiceImpl efeService = new EfeServiceImpl();
+	
+	private SeoServiceImpl seoServiceImpl = new SeoServiceImpl();
+	
+	@Mock
+	private Externalizer externalizer;
 
 	@Mock
 	/** The configuration. */
@@ -38,8 +45,11 @@ class MapDirectionImplTest {
 		MockRequestPathInfo requestPathInfo = (MockRequestPathInfo) request.getRequestPathInfo();
 		aemContext.addModelsForClasses(ContentFragment.class);
 		aemContext.registerInjectActivateService(efeService);
+		aemContext.registerInjectActivateService(seoServiceImpl);
+		aemContext.registerService(externalizer);
 		aemContext.load().json("/com/efe/core/models/maps/mapdirection.json", "/content");
 		aemContext.currentResource("/content/efe/jcr:content/mapdirection");
+		aemContext.request().setPathInfo("/content/efe/location.ks.wichita.html");
 		requestPathInfo.setSelectorString("ks.wichita");
 
 		MapDirection mapDirectionModel = aemContext.request().adaptTo(MapDirection.class);

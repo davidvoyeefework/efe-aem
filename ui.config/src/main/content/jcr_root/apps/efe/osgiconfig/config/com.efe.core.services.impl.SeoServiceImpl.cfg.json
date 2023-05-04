@@ -1,0 +1,12 @@
+{
+	"contextUrl": "http://schema.org",
+	"siteName": "Edelman Financial Engines",
+	"orgType": "Organization",
+	"contactType": "ContactPoint",
+	"contactTypeName": "customer service",
+	"contactOption": "TollFree",
+	"areaServed": "US",
+	"businessType": "FinancialService",
+	"addressType": "PostalAddress",
+	"geoType": "GeoCoordinates"
+}

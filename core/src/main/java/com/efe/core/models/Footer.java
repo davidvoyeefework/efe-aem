@@ -73,5 +73,12 @@ public interface Footer {
 	 * @return the vertical list
 	 */
 	List<VerticalList> getVerticalList();
+	
+    /**
+     * Gets the jsonLd
+     * 
+     * @return jsonLD
+     */
+	String getJsonLd();
 
 }
