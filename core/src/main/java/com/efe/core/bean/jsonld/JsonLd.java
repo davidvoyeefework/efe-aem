@@ -8,7 +8,6 @@ import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-
 /**
  * The Class JsonLd.
  */
@@ -55,6 +54,9 @@ public class JsonLd {
 	/** The contact point. */
 	@Expose
 	private List<ContactPoint> contactPoint;
+
+	/** The main entity. */
+	private List<MainEntity> mainEntity;
 
 	/**
 	 * Gets the context.
@@ -182,14 +184,13 @@ public class JsonLd {
 		this.geo = geo;
 	}
 
-
 	/**
 	 * Gets the same as.
 	 *
 	 * @return the sameAs
 	 */
 	public List<String> getSameAs() {
-		if(null == sameAs) {
+		if (null == sameAs) {
 			return Collections.emptyList();
 		}
 		return Collections.unmodifiableList(sameAs);
@@ -228,7 +229,7 @@ public class JsonLd {
 	 * @return the contactPoint
 	 */
 	public List<ContactPoint> getContactPoint() {
-		if(null == contactPoint) {
+		if (null == contactPoint) {
 			return Collections.emptyList();
 		}
 		return Collections.unmodifiableList(contactPoint);
@@ -241,6 +242,28 @@ public class JsonLd {
 	 */
 	public void setContactPoint(List<ContactPoint> contactPoint) {
 		this.contactPoint = new ArrayList<>(contactPoint);
+	}
+
+	/**
+	 * Gets the main entity.
+	 *
+	 * @return the mainEntity
+	 */
+	public List<MainEntity> getMainEntity() {
+		if (null == contactPoint) {
+			return Collections.emptyList();
+		}
+		return Collections.unmodifiableList(mainEntity);
+
+	}
+
+	/**
+	 * Sets the main entity.
+	 *
+	 * @param mainEntity the mainEntity to set
+	 */
+	public void setMainEntity(List<MainEntity> mainEntity) {
+		this.mainEntity = new ArrayList<>(mainEntity);
 	}
 
 }

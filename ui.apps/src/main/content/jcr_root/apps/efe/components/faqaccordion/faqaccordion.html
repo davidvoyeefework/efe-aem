@@ -4,6 +4,9 @@
   class="cmp-accordion"
   data-cmp-is="accordion"
   data-cmp-single-expansion="${accordion.singleExpansion}">
+  <script data-sly-test="${accordion.jsonLd}" type="application/ld+json">
+        ${accordion.jsonLd@context='unsafe'}
+  </script>
   <div data-sly-test="${accordion.faqList.size > 0}"
     data-sly-repeat.item="${accordion.faqList}"
     class="cmp-accordion__item"

@@ -1,6 +1,7 @@
 package com.efe.core.models.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.apache.sling.api.resource.Resource;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,6 +10,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 
 import com.efe.core.models.FAQAccordion;
 import com.efe.core.models.multifield.FAQ;
+import com.efe.core.services.SeoService;
+import com.efe.core.services.impl.SeoServiceImpl;
 
 import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
@@ -48,6 +51,7 @@ class FAQAccordionImplTest {
 		aemContext.load().json(RESOURCE_CONTENT, TEST_CONTENT_ROOT);
         aemContext.load().json(CF_RESOURCE_CONTENT, "/cf");
 		aemContext.addModelsForClasses(modelClass);
+		aemContext.registerService(SeoService.class, new SeoServiceImpl());
 		resource = aemContext.currentResource(RESOURCE);
 		model = resource.adaptTo(modelClass);
 	}
@@ -63,6 +67,7 @@ class FAQAccordionImplTest {
  		assertEquals("content-fragment-2d166d187a", faq.getId());
 		assertEquals("sample question\n", faq.getQuestion());
 		assertEquals("<p>sample answer</p>\n", faq.getAnswer());
+		assertNotNull(model.getJsonLd());
 	}
 
 	/**
