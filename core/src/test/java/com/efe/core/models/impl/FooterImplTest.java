@@ -6,19 +6,24 @@ import org.apache.sling.api.resource.Resource;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
+import com.day.cq.commons.Externalizer;
 import com.efe.core.models.Footer;
 import com.efe.core.models.multifield.Link;
 import com.efe.core.models.multifield.SocialLink;
 import com.efe.core.models.multifield.VerticalList;
+import com.efe.core.services.SeoService;
 
 import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 
+
 /**
  * The Class FooterImplTest.
  */
-@ExtendWith(AemContextExtension.class)
+@ExtendWith({AemContextExtension.class,  MockitoExtension.class})
 class FooterImplTest {
 
 	/** The Constant RESOURCE_CONTENT. */
@@ -38,6 +43,15 @@ class FooterImplTest {
 
 	/** The aem context. */
 	private AemContext aemContext = new AemContext();
+	
+	/** The seo service. */
+	@Mock
+	SeoService seoService;
+	
+	/** The externalizer. */
+	@Mock
+	Externalizer externalizer;
+
 
 	/**
 	 * Sets the up.
@@ -47,6 +61,10 @@ class FooterImplTest {
 		Class<Footer> modelClass = Footer.class;
 		aemContext.load().json(RESOURCE_CONTENT, TEST_CONTENT_ROOT);
 		aemContext.addModelsForClasses(modelClass);
+		
+		aemContext.registerService(Externalizer.class, externalizer);
+		aemContext.registerService(SeoService.class, seoService);
+		
 		resource = aemContext.currentResource(RESOURCE);
 		model = resource.adaptTo(modelClass);
 	}

@@ -1,0 +1,28 @@
+<sly data-sly-use.model="com.efe.core.models.MapSearchResults">
+    <script src="https://maps.googleapis.com/maps/api/js?key=${model.mapKey @ context='scriptToken'}&v=weekly&libraries=geometry,places"></script>
+    <section id="${model.id}" data-component="location-map-results" class="cmp-location--results cmp-location--results-default"
+        data-explorelink-label="${model.exploreLinkLabel}"
+        data-search-btn-label="${model.searchButtonLabel}"
+        data-national-title="${model.nationalTitle}"
+        data-national-details="${model.nationalDetails}"
+        data-national-callback="${model.nationalCallbackNumber}"
+        data-national-link="${model.nationalLink}"
+        data-offices='${model.officesJson}'>
+        <div class="cmp-location--results__search-form">
+            <div class="input-container">
+                <label for="location">${model.plannerSearchLabel}</label>
+                <input
+                    id="location"
+                    name="location"
+                    type="text"
+                    placeholder="${model.plannerSearchPlaceHolder}"
+                />
+            </div>
+            <a href="#" class="efe-cta-primary search-location-btn" >${model.plannerButtonLabel}</a>
+        </div>
+        <div class="cmp-location--results__map">
+            <div id="map_canvas" style="position:absolute;height:100%;width:100%"></div>
+        </div>
+        <div class="cmp-location--results__items"></div>
+    </section>
+</sly>

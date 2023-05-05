@@ -2,6 +2,7 @@ export default class LocationMapDirections {
     constructor(el) {
         this.el = el;
         if (!el) return;
+        this.markerImg = "/etc.clientlibs/efe/clientlibs/clientlib-site/resources/images/icons/efe-marker.svg";
         this.mount(el);
     }
 
@@ -52,6 +53,7 @@ export default class LocationMapDirections {
 
         new google.maps.Marker({
             position: myLatLng,
+            icon: this.markerImg,
             map: map,
             title: "Middle of America PIN",
         });

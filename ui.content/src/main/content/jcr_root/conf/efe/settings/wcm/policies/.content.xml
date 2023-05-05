@@ -132,10 +132,6 @@
                                     jcr:primaryType="nt:unstructured"
                                     description="Preformatted"
                                     tag="pre"/>
-								<item3
-                                    jcr:primaryType="nt:unstructured"
-                                    description="Quote"
-                                    tag="q"/>
                             </formats>
                         </paraformat>
                         <misctools
@@ -200,7 +196,7 @@
                     </rtePlugins>
                     <cq:styleGroups jcr:primaryType="nt:unstructured">
                         <item0
-                            cq:styleGroupLabel="Table style"
+                            cq:styleGroupLabel="RTE Table Style"
                             jcr:primaryType="nt:unstructured">
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
@@ -211,7 +207,7 @@
                             </cq:styles>
                         </item0>
                         <item1
-                            cq:styleGroupLabel="Quote style"
+                            cq:styleGroupLabel="RTE Quote Style"
                             jcr:primaryType="nt:unstructured">
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
@@ -226,6 +222,17 @@
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item1>
+                        <item2
+                            cq:styleGroupLabel="RTE List Style"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-text--list-large"
+                                    cq:styleId="large-ordered-list"
+                                    cq:styleLabel="Large Ordered List"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item2>
                     </cq:styleGroups>
                 </policy_641562756958017>
             </text>
@@ -1072,16 +1079,12 @@
                                     jcr:primaryType="nt:unstructured"
                                     description="Preformatted"
                                     tag="pre"/>
-                                <item3
-                                    jcr:primaryType="nt:unstructured"
-                                    description="Quote"
-                                    tag="q"/>
                             </formats>
                         </paraformat>
                     </rtePlugins>
                     <cq:styleGroups jcr:primaryType="nt:unstructured">
                         <item0
-                            cq:styleGroupLabel="Variation"
+                            cq:styleGroupLabel="Content Collage Variation"
                             jcr:primaryType="nt:unstructured">
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
@@ -1092,7 +1095,7 @@
                             </cq:styles>
                         </item0>
                         <item1
-                            cq:styleGroupLabel="Quote"
+                            cq:styleGroupLabel="RTE Quote Style"
                             jcr:primaryType="nt:unstructured">
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
@@ -1107,14 +1110,25 @@
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item1>
-                        <item3>
-                            cq:styleGroupLabel="Table style"
+                        <item2
+                            cq:styleGroupLabel="RTE Table style"
                             jcr:primaryType="nt:unstructured">
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
                                     cq:styleClasses="cmp-text--table"
                                     cq:styleId="table"
                                     cq:styleLabel="Table"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item2>
+                        <item3
+                            cq:styleGroupLabel="RTE List Style"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-text--list-large"
+                                    cq:styleId="large-ordered-list"
+                                    cq:styleLabel="Large Ordered List"
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item3>

@@ -9,6 +9,7 @@
         "result";
     @include media("<tablet-lg") {
         @include flexbox($flex-direction: column);
+        position: relative;
     }
     &__map {
         @include media("<tablet-lg") {
@@ -44,7 +45,7 @@
                 margin-bottom: 30px;
                 @include media("<tablet-lg") {
                     position: absolute;
-                    top: 40px;
+                    top: 20px;
                     margin-bottom: 0;
                     left: 0;
                     width: 100%;

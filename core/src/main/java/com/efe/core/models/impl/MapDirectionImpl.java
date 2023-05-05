@@ -1,14 +1,13 @@
 package com.efe.core.models.impl;
 
 import java.util.Objects;
-import java.util.Optional;
 
 import javax.annotation.PostConstruct;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.models.annotations.Default;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
@@ -19,16 +18,18 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.adobe.cq.dam.cfm.ContentElement;
-import com.adobe.cq.dam.cfm.ContentFragment;
 import com.adobe.cq.export.json.ExporterConstants;
+import com.day.cq.commons.Externalizer;
 import com.day.cq.dam.api.DamConstants;
 import com.efe.core.bean.LocationResponse;
 import com.efe.core.constants.PlannerLocationConstants;
 import com.efe.core.models.MapDirection;
 import com.efe.core.services.EfeService;
+import com.efe.core.services.SeoService;
 import com.efe.core.utils.EFEUtil;
 import com.efe.core.utils.LocationPlannerUtil;
+import com.efe.core.utils.SeoUtil;
+
 
 /**
  * The Class MapDirectionImpl.
@@ -41,9 +42,7 @@ public class MapDirectionImpl implements MapDirection {
 	/** The Constant RESOURCE_TYPE. */
 	public static final String RESOURCE_TYPE = "efe/components/mapdirection";
 
-	/**
-	 * The Constant LOGGER
-	 */
+	/** The Constant LOGGER. */
 	private static final Logger LOGGER = LoggerFactory.getLogger(MapDirectionImpl.class);
 
 	/** The SlingHttpServletRequest. */
@@ -53,6 +52,10 @@ public class MapDirectionImpl implements MapDirection {
 	/** The resource resolver. */
 	@SlingObject
 	private ResourceResolver resourceResolver;
+	
+	/** The seo service. */
+	@OSGiService
+	private SeoService seoService;
 
 	/** The current resource. */
 	@Self
@@ -68,28 +71,47 @@ public class MapDirectionImpl implements MapDirection {
 
 	/** The zoom level. */
 	@ValueMapValue
+	@Default(intValues = 15)
 	private int zoomLevel;
 
+	/** The direction button label. */
 	@ValueMapValue
 	private String directionButtonLabel;
 
+	/** The review question. */
 	@ValueMapValue
 	private String reviewQuestion;
 
+	/** The review link label. */
 	@ValueMapValue
 	private String reviewLinkLabel;
 
+	/** The efe service. */
 	@OSGiService
 	private EfeService efeService;
-
+	
+	/** The externalizer. */
+	@OSGiService
+	private Externalizer externalizer;
+	
+	/** The location response. */
 	private LocationResponse locationResponse;
 
+	/** The is empty. */
 	private boolean isEmpty;
 
+	/** The google direction path. */
 	private String googleDirectionPath;
 
+	/** The map key. */
 	private String mapKey;
 
+	/** The json ld. */
+	private String jsonLd;
+
+	/**
+	 * Inits the.
+	 */
 	@PostConstruct
 	public void init() {
 		isEmpty = true;
@@ -106,35 +128,14 @@ public class MapDirectionImpl implements MapDirection {
 
 					if (item.isResourceType(DamConstants.NT_DAM_ASSET)) {
 
-						Optional<ContentFragment> locationCF = Optional.ofNullable(item.adaptTo(ContentFragment.class));
-
-						locationResponse.setCity(locationCF.map(cf -> cf.getElement(PlannerLocationConstants.CITY))
-								.map(ContentElement::getContent).orElse(StringUtils.EMPTY));
-
-						locationResponse.setState(locationCF.map(cf -> cf.getElement(PlannerLocationConstants.STATE))
-								.map(ContentElement::getContent).orElse(StringUtils.EMPTY));
-						locationResponse
-								.setAddress1(locationCF.map(cf -> cf.getElement(PlannerLocationConstants.ADDRESS_1))
-										.map(ContentElement::getContent).orElse(StringUtils.EMPTY));
-						locationResponse
-								.setAddress2(locationCF.map(cf -> cf.getElement(PlannerLocationConstants.ADDRESS_2))
-										.map(ContentElement::getContent).orElse(StringUtils.EMPTY));
-						locationResponse.setZip(locationCF.map(cf -> cf.getElement(PlannerLocationConstants.ZIP))
-								.map(ContentElement::getContent).orElse(StringUtils.EMPTY));
-						locationResponse
-								.setLatitude(locationCF.map(cf -> cf.getElement(PlannerLocationConstants.LATITUDE))
-										.map(ContentElement::getContent).orElse(StringUtils.EMPTY));
-						locationResponse
-								.setLongitude(locationCF.map(cf -> cf.getElement(PlannerLocationConstants.LONGITUTE))
-										.map(ContentElement::getContent).orElse(StringUtils.EMPTY));
-						locationResponse.setGoogleReviewLink(
-								locationCF.map(cf -> cf.getElement(PlannerLocationConstants.GOOGLE_REVIEW_LINK))
-										.map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+						locationResponse = LocationPlannerUtil.getLocationInfo(item);
 
 						googleDirectionPath = efeService.getGoogleDirectionPrefixUrl() +locationResponse.getAddress1()
 								+ "," + locationResponse.getCity() + "+" + locationResponse.getState();
 						
 						mapKey = efeService.getGooglePublicKey();
+						
+						jsonLd = SeoUtil.getLocationSEO(request, externalizer, locationResponse, seoService);
 						
 						isEmpty = false;
 					}
@@ -145,6 +146,8 @@ public class MapDirectionImpl implements MapDirection {
 			}
 		}
 	}
+
+
 
 	/**
 	 * Gets the id.
@@ -159,12 +162,19 @@ public class MapDirectionImpl implements MapDirection {
 		return id;
 	}
 
+	/**
+	 * Gets the location response.
+	 *
+	 * @return the location response
+	 */
 	@Override
 	public LocationResponse getLocationResponse() {
 		return locationResponse;
 	}
 
 	/**
+	 * Gets the heading.
+	 *
 	 * @return the heading
 	 */
 	@Override
@@ -173,6 +183,8 @@ public class MapDirectionImpl implements MapDirection {
 	}
 
 	/**
+	 * Gets the zoom level.
+	 *
 	 * @return the zoomLevel
 	 */
 	@Override
@@ -181,6 +193,8 @@ public class MapDirectionImpl implements MapDirection {
 	}
 
 	/**
+	 * Checks if is empty.
+	 *
 	 * @return the isEmpty
 	 */
 	@Override
@@ -189,6 +203,8 @@ public class MapDirectionImpl implements MapDirection {
 	}
 
 	/**
+	 * Gets the google direction path.
+	 *
 	 * @return the googleDirectionPath
 	 */
 	@Override
@@ -197,6 +213,8 @@ public class MapDirectionImpl implements MapDirection {
 	}
 
 	/**
+	 * Gets the direction button label.
+	 *
 	 * @return the directionButtonLabel
 	 */
 	@Override
@@ -205,6 +223,8 @@ public class MapDirectionImpl implements MapDirection {
 	}
 
 	/**
+	 * Gets the review question.
+	 *
 	 * @return the reviewQuestion
 	 */
 	@Override
@@ -213,6 +233,8 @@ public class MapDirectionImpl implements MapDirection {
 	}
 
 	/**
+	 * Gets the review link label.
+	 *
 	 * @return the reviewLinkLabel
 	 */
 	@Override
@@ -221,11 +243,23 @@ public class MapDirectionImpl implements MapDirection {
 	}
 
 	/**
+	 * Gets the map key.
+	 *
 	 * @return the mapKey
 	 */
 	@Override
 	public String getMapKey() {
 		return mapKey;
+	}
+
+	/**
+	 * Gets the json ld.
+	 *
+	 * @return the json ld
+	 */
+	@Override
+	public String getJsonLd() {
+		return jsonLd;
 	}
 
 }

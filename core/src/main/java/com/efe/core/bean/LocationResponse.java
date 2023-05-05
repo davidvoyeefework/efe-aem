@@ -377,4 +377,11 @@ public class LocationResponse {
 		this.state = state;
 	}
 
+	/**
+	 * @param externalName the externalName to set
+	 */
+	public void setExternalName(String externalName) {
+		this.externalName = externalName;
+	}
+
 }
