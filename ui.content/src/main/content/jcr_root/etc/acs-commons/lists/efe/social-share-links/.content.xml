@@ -20,7 +20,7 @@
             <item2
                 jcr:primaryType="nt:unstructured"
                 jcr:title="Mail"
-                value="mail;mailto:?subject=$[[pageTitle]]&amp;amp;body=Title of the article is: $[[pageTitle]] and article url is: $[[pageUrl]]"/>
+                value="mail;mailto:?subject=A friend thought you might enjoy this article from Edelman Financial Engines&amp;amp;body=I thought you might find this article from Edelman Financial Engines interesting:$[[pageUrl]] this is an example of a link to a page that is included in the email body."/>
             <item3
                 jcr:primaryType="nt:unstructured"
                 jcr:title="Linkedin"
