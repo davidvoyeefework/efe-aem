@@ -43,7 +43,7 @@
             padding: rem(7) rem(24);
             @include flexbox(
                 $justify-content: end,
-                $gap: rem(30),
+                $gap: rem(28),
                 $align-items: center
             );
         }
@@ -60,8 +60,8 @@
 
     @media screen and (min-width: $xl) {
         .cmp-container--1920{
-        &.efe-nav-header { 
-            padding: rem(7) rem(48);
+            &.efe-nav-header { 
+                padding: rem(8) rem(48);
             }
         }
     }

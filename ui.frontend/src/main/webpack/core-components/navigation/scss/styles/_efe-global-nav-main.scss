@@ -193,6 +193,7 @@
                 @include flexbox(
                 $flex-wrap: wrap,
                 $gap: 24px 130px,
+                padding-top: 24px;
                 )
             }
 
@@ -216,7 +217,7 @@
                     margin-bottom: 0;
                     @include grid(
                     $template-columns: 3fr 1fr,
-                    $gap: rem(60)
+                    $gap: rem(40)
                     );
 
                     hr {
@@ -241,7 +242,7 @@
                     margin-bottom: 0;
                     @include grid(
                     $template-columns: 2fr 2fr,
-                    $gap: rem(60)
+                    $gap: rem(40)
                     );
 
                     hr {
