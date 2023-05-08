@@ -13,7 +13,7 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
-  <nav data-sly-use.breadcrumb="com.adobe.cq.wcm.core.components.models.Breadcrumb"
+  <nav data-sly-use.breadcrumb="com.efe.core.models.EfeBreadCrumb"
   data-sly-use.template="core/wcm/components/commons/v1/templates.html"
   id="${breadcrumb.id}"
   class="cmp-breadcrumb"
@@ -21,6 +21,9 @@
   data-sly-test="${breadcrumb.items.size > 0}"
   data-cmp-data-layer="${breadcrumb.data.json}">
   <sly data-sly-test="${properties.showSelectorAsLeaf}" data-sly-use.leafitem="breadcrumb.js"></sly>
+  <script data-sly-test="${breadcrumb.jsonLd}" type="application/ld+json">
+    ${breadcrumb.jsonLd@context='unsafe'}
+  </script>
  <ol class="cmp-breadcrumb__list"
      itemscope itemtype="http://schema.org/BreadcrumbList"
      data-sly-list.navItem="${breadcrumb.items}">

@@ -8,5 +8,10 @@
 	"areaServed": "US",
 	"businessType": "FinancialService",
 	"addressType": "PostalAddress",
-	"geoType": "GeoCoordinates"
+	"geoType": "GeoCoordinates",
+	"faqType":"FAQPage",
+	"questionType":"Question",
+	"answerType":"Answer",
+	"breadCrumbType":"BreadcrumbList",
+	"breadCrumbItemType":"ListItem"
 }

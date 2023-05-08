@@ -30,30 +30,12 @@ public class ContactPoint {
 	private String areaServed;
 
 	/**
-	 * Gets the type.
-	 *
-	 * @return the type
-	 */
-	public String getType() {
-		return type;
-	}
-
-	/**
 	 * Sets the type.
 	 *
 	 * @param type the type to set
 	 */
 	public void setType(String type) {
 		this.type = type;
-	}
-
-	/**
-	 * Gets the telephone.
-	 *
-	 * @return the telephone
-	 */
-	public String getTelephone() {
-		return telephone;
 	}
 
 	/**
@@ -66,15 +48,6 @@ public class ContactPoint {
 	}
 
 	/**
-	 * Gets the contact type.
-	 *
-	 * @return the contactType
-	 */
-	public String getContactType() {
-		return contactType;
-	}
-
-	/**
 	 * Sets the contact type.
 	 *
 	 * @param contactType the contactType to set
@@ -84,30 +57,12 @@ public class ContactPoint {
 	}
 
 	/**
-	 * Gets the contact option.
-	 *
-	 * @return the contactOption
-	 */
-	public String getContactOption() {
-		return contactOption;
-	}
-
-	/**
 	 * Sets the contact option.
 	 *
 	 * @param contactOption the contactOption to set
 	 */
 	public void setContactOption(String contactOption) {
 		this.contactOption = contactOption;
-	}
-
-	/**
-	 * Gets the area served.
-	 *
-	 * @return the areaServed
-	 */
-	public String getAreaServed() {
-		return areaServed;
 	}
 
 	/**

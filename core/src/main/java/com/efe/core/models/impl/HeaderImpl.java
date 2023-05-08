@@ -14,7 +14,6 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
-import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
@@ -46,7 +45,7 @@ public class HeaderImpl implements Header {
     /**
      * The current resource.
      */
-    @Self
+    @SlingObject
     private Resource resource;
 
     /** The id. */

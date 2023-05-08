@@ -46,6 +46,21 @@ public class SeoServiceImpl implements SeoService{
 	/** The business type. */
 	private String businessType;
 	
+	/** The faq type. */
+	private String faqType;
+	
+	/** The question type. */
+	private String questionType;
+	
+	/** The answer type. */
+	private String answerType;
+	
+	/** The breadcrumb item type. */
+	private String breadcrumbItemType;
+	
+	/** The breadcrumb type. */
+	private String breadcrumbType;
+	
 	/**
 	 * The Interface Config.
 	 */
@@ -130,7 +145,47 @@ public class SeoServiceImpl implements SeoService{
 			 * @return the string
 			 */
 			@AttributeDefinition(name = "Geo Type")
-			String geoType();		
+			String geoType();
+			
+			/**
+			 * Faq type.
+			 *
+			 * @return the string
+			 */
+			@AttributeDefinition(name = "Faq Type")
+			String faqType();
+			
+			/**
+			 * Question type.
+			 *
+			 * @return the string
+			 */
+			@AttributeDefinition(name = "Faq Question Type")
+			String questionType();
+			
+			/**
+			 * Answer type.
+			 *
+			 * @return the string
+			 */
+			@AttributeDefinition(name = "Faq Answer Type")
+			String answerType();
+			
+			/**
+			 * Bread crumb type.
+			 *
+			 * @return the string
+			 */
+			@AttributeDefinition(name = "Breadcrumb Type")
+			String breadCrumbType();
+			
+			/**
+			 * Bread crumb item type.
+			 *
+			 * @return the string
+			 */
+			@AttributeDefinition(name = "Breadcrumb Item Type")
+			String breadCrumbItemType();
 	}
 	
 	/**
@@ -151,6 +206,11 @@ public class SeoServiceImpl implements SeoService{
 		addressType = config.addressType();
 		geoType = config.geoType();
 		businessType = config.businessType();
+		faqType = config.faqType();
+		answerType = config.answerType();
+		questionType = config.questionType();
+		breadcrumbType = config.breadCrumbType();
+		breadcrumbItemType = config.breadCrumbItemType();
 	}
 
 	/**
@@ -251,6 +311,56 @@ public class SeoServiceImpl implements SeoService{
 	@Override
 	public String getBusinessType() {
 		return businessType;
+	}
+
+	/**
+	 * Gets the faq type.
+	 *
+	 * @return the faq type
+	 */
+	@Override
+	public String getFaqType() {	
+		return faqType;
+	}
+
+	/**
+	 * Gets the question type.
+	 *
+	 * @return the question type
+	 */
+	@Override
+	public String getQuestionType() {
+		return questionType;
+	}
+
+	/**
+	 * Gets the answer type.
+	 *
+	 * @return the answer type
+	 */
+	@Override
+	public String getAnswerType() {
+		return answerType;
+	}
+
+	/**
+	 * Gets the bread crumb type.
+	 *
+	 * @return the bread crumb type
+	 */
+	@Override
+	public String getBreadCrumbType() {
+		return breadcrumbType;
+	}
+
+	/**
+	 * Gets the bread crumb item type.
+	 *
+	 * @return the bread crumb item type
+	 */
+	@Override
+	public String getBreadCrumbItemType() {
+		return breadcrumbItemType;
 	}
 
 }

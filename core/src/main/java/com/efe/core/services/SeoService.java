@@ -75,4 +75,39 @@ public interface SeoService {
 	 */
 	String getBusinessType();
 	
+	/**
+	 * Gets the faq type.
+	 *
+	 * @return the faq type
+	 */
+	String getFaqType();
+	
+	/**
+	 * Gets the question type.
+	 *
+	 * @return the question type
+	 */
+	String getQuestionType();
+	
+	/**
+	 * Gets the answer type.
+	 *
+	 * @return the answer type
+	 */
+	String getAnswerType();
+	
+	/**
+	 * Gets the bread crumb type.
+	 *
+	 * @return the bread crumb type
+	 */
+	String getBreadCrumbType();
+	
+	/**
+	 * Gets the bread crumb item type.
+	 *
+	 * @return the bread crumb item type
+	 */
+	String getBreadCrumbItemType();
+	
 }
