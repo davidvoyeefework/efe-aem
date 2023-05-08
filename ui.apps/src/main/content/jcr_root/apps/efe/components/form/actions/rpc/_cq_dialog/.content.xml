@@ -10,7 +10,7 @@
             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
             fieldDescription="EFE Endpoint URL of the RESTful service"
             fieldLabel="EFE Endpoint"
-            name="./efeEternalServiceEndPointUrl"
+            name="./efeExternalServiceEndPointUrl"
             required="{Boolean}true"/>
         <errorMessage
             jcr:primaryType="nt:unstructured"
