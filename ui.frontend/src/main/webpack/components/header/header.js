@@ -61,11 +61,11 @@ const clickNav = (listenItem) => {
        
           NavItems.forEach((element) => {
             element.classList.remove("act");
-            let dropDownNav = element.children[2];
+            let dropDownNav = element.children[2].children[0];
             dropDownNav.style.display = "none";
           })
           element.classList.toggle("act");
-          let dropDownNav = element.children[2];
+          let dropDownNav = element.children[2].children[0];
           let displayStyle = getComputedStyle(dropDownNav, "display", null ).getPropertyValue("display");
           if (displayStyle === "none") {
             dropDownNav.style.display = "block";
@@ -76,7 +76,7 @@ const clickNav = (listenItem) => {
         }
         else {
               element.classList.remove("act");
-              let dropDownNav = element.children[2];
+              let dropDownNav = element.children[2].children[0];
               let displayStyle = getComputedStyle(dropDownNav, "display", null ).getPropertyValue("display");
               if (displayStyle == "block") {
                 dropDownNav.style.display = "none";
