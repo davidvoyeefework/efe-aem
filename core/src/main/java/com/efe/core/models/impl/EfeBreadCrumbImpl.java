@@ -36,32 +36,43 @@ public class EfeBreadCrumbImpl implements EfeBreadCrumb {
 	/** The Constant RESOURCE_TYPE. */
 	protected static final String RESOURCE_TYPE = "efe/components/breadcrumb";
 
+	/** The seo service. */
 	@OSGiService
 	private SeoService seoService;
 
+	/** The externalizer. */
 	@OSGiService
 	private Externalizer externalizer;
 
+	/** The current page. */
 	@ScriptVariable
 	private Page currentPage;
 
+	/** The model factory. */
 	@OSGiService
 	private ModelFactory modelFactory;
 
+	/** The request. */
 	@Self
 	private SlingHttpServletRequest request;
 
+	/** The show selector as leaf. */
 	@ValueMapValue
 	private boolean showSelectorAsLeaf;
 
+	/** The selector index. */
 	@ValueMapValue
 	private int selectorIndex;
 
 	/** The json ld. */
 	private String jsonLd;
 
+	/** The breadcrumb. */
 	private Breadcrumb breadcrumb;
 
+	/**
+	 * Inits the.
+	 */
 	@PostConstruct
 	protected void init() {
 
