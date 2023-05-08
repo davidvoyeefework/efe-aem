@@ -6,7 +6,7 @@
             "image1 content";
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(2, 1fr);
-        @include media("<=tablet-lg") {
+        @include media("<=tablet-xs") {
             grid-template-areas:
                 "image1 image2"
                 "content content";
@@ -33,13 +33,9 @@
             blockquote {
                 margin: 0 0 24px;
                 max-width: 100%;
-                &:before, &:after {
-                    width: rem(8);
-                    height: rem(9);
-                }
             }
 
-            @include media("<=tablet-lg") {
+            @include media("<=tablet-xs") {
                 padding: 49px 62px 49px 60px;
                 grid-area: 2 / 1 / 3 / 3;
             }
