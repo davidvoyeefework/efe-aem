@@ -12,6 +12,7 @@
     &.cmp-button--efe-gray-new {
         a {
             @include efe-gray-new;
+            text-transform: uppercase;
         }
     }
 }
