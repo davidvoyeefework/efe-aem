@@ -14,19 +14,12 @@ public class MainEntity {
 	private String type;
 
 	/** The name. */
+	@Expose
 	private String name;
-	
-	/** The accepted answer. */
-	private Answer acceptedAnswer;
 
-	/**
-	 * Gets the type.
-	 *
-	 * @return the type
-	 */
-	public String getType() {
-		return type;
-	}
+	/** The accepted answer. */
+	@Expose
+	private Answer acceptedAnswer;
 
 	/**
 	 * Sets the type.
@@ -38,30 +31,12 @@ public class MainEntity {
 	}
 
 	/**
-	 * Gets the name.
-	 *
-	 * @return the name
-	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
 	 * Sets the name.
 	 *
 	 * @param name the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	/**
-	 * Gets the accepted answer.
-	 *
-	 * @return the acceptedAnswer
-	 */
-	public Answer getAcceptedAnswer() {
-		return acceptedAnswer;
 	}
 
 	/**

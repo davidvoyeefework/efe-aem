@@ -28,7 +28,6 @@ import com.efe.core.services.SeoService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class SeoUtil.
  */

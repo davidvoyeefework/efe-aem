@@ -14,16 +14,8 @@ public class Answer {
 	private String type;
 
 	/** The text. */
+	@Expose
 	private String text;
-
-	/**
-	 * Gets the type.
-	 *
-	 * @return the type
-	 */
-	public String getType() {
-		return type;
-	}
 
 	/**
 	 * Sets the type.
@@ -32,15 +24,6 @@ public class Answer {
 	 */
 	public void setType(String type) {
 		this.type = type;
-	}
-
-	/**
-	 * Gets the text.
-	 *
-	 * @return the text
-	 */
-	public String getText() {
-		return text;
 	}
 
 	/**

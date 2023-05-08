@@ -12,7 +12,6 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.OSGiService;
-import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.slf4j.Logger;
@@ -58,7 +57,7 @@ public class MapDirectionImpl implements MapDirection {
 	private SeoService seoService;
 
 	/** The current resource. */
-	@Self
+	@SlingObject
 	private Resource resource;
 
 	/** The id. */
