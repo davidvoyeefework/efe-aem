@@ -1,6 +1,7 @@
 package com.efe.core.utils;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -11,12 +12,14 @@ import org.apache.commons.text.StringEscapeUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.ResourceResolver;
 
+import com.adobe.cq.wcm.core.components.models.NavigationItem;
 import com.day.cq.commons.Externalizer;
 import com.efe.core.bean.LocationResponse;
 import com.efe.core.bean.jsonld.Address;
 import com.efe.core.bean.jsonld.Answer;
 import com.efe.core.bean.jsonld.ContactPoint;
 import com.efe.core.bean.jsonld.Geo;
+import com.efe.core.bean.jsonld.ItemListElement;
 import com.efe.core.bean.jsonld.JsonLd;
 import com.efe.core.bean.jsonld.MainEntity;
 import com.efe.core.models.multifield.FAQ;
@@ -172,6 +175,52 @@ public class SeoUtil {
 					return mainEntity;
 				}).collect(Collectors.toList());
 		jsonLd.setMainEntity(mainEntities);
+		return gson.toJson(jsonLd);
+	}
+
+	/**
+	 * Gets the bread crumb SEO schema.
+	 *
+	 * @param seoService the seo service
+	 * @param items the items
+	 * @param showSelectorAsLeaf 
+	 * @param selectorIndex 
+	 * @param selector the selector
+	 * @return the bread crumb SEO schema
+	 */
+	public static String getBreadCrumbSEOSchema(SeoService seoService, SlingHttpServletRequest request,
+			Externalizer externalizer, Collection<NavigationItem> items, boolean showSelectorAsLeaf, int selectorIndex) {
+
+		Gson gson = getGsonInstance();
+		JsonLd jsonLd = new JsonLd();
+		jsonLd.setContext(seoService.getContextUrl());
+		jsonLd.setType(seoService.getBreadCrumbType());
+
+		int index = 1;
+		List<ItemListElement> itemListElements = new ArrayList<>();
+		for(NavigationItem item: items) {
+			ItemListElement element = new ItemListElement();
+			element.setItem(item.getLink().getExternalizedURL());
+			element.setName(item.getTitle());
+			element.setType(seoService.getBreadCrumbItemType());
+			element.setPosition(index++);
+			itemListElements.add(element);
+		}
+			
+		if(showSelectorAsLeaf) {
+			String []selectors = request.getRequestPathInfo().getSelectors();
+			if(selectors.length > 0 && selectors.length > selectorIndex) {
+				String selector = selectors[selectorIndex];	
+				String pagePath = externalizer.publishLink(request.getResourceResolver(), request.getPathInfo());	
+				ItemListElement element = new ItemListElement();
+				element.setType(seoService.getBreadCrumbItemType());
+				element.setName(selector);
+				element.setItem(pagePath);
+				element.setPosition(index);
+				itemListElements.add(element);
+			}
+		}		
+		jsonLd.setItemListElement(itemListElements);	
 		return gson.toJson(jsonLd);
 	}
 

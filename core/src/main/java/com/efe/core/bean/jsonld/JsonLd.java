@@ -58,6 +58,9 @@ public class JsonLd {
 	/** The main entity. */
 	private List<MainEntity> mainEntity;
 
+	/** The item list element. */
+	private List<ItemListElement> itemListElement;
+
 	/**
 	 * Gets the context.
 	 *
@@ -250,7 +253,7 @@ public class JsonLd {
 	 * @return the mainEntity
 	 */
 	public List<MainEntity> getMainEntity() {
-		if (null == contactPoint) {
+		if (null == mainEntity) {
 			return Collections.emptyList();
 		}
 		return Collections.unmodifiableList(mainEntity);
@@ -264,6 +267,27 @@ public class JsonLd {
 	 */
 	public void setMainEntity(List<MainEntity> mainEntity) {
 		this.mainEntity = new ArrayList<>(mainEntity);
+	}
+
+	/**
+	 * Gets the item list element.
+	 *
+	 * @return the itemListElement
+	 */
+	public List<ItemListElement> getItemListElement() {
+		if (null == itemListElement) {
+			return Collections.emptyList();
+		}
+		return Collections.unmodifiableList(itemListElement);
+	}
+
+	/**
+	 * Sets the item list element.
+	 *
+	 * @param itemListElement the itemListElement to set
+	 */
+	public void setItemListElement(List<ItemListElement> itemListElement) {
+		this.itemListElement = new ArrayList<>(itemListElement);
 	}
 
 }
