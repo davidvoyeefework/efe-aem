@@ -193,8 +193,8 @@
                 @include flexbox(
                 $flex-wrap: wrap,
                 $gap: 24px 130px,
+                );
                 padding-top: 24px;
-                )
             }
 
             .cmp-navigation-dropdown-grid--default {
