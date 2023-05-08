@@ -16,7 +16,7 @@ class ModalPromotional {
     }
     showModal() {
         let splitValue = document.cookie.split(`; pop_up_displayed=`);
-        if(splitValue.length < 2 || !splitValue[1].startsWith('true')) {
+        if(splitValue.length < 1 || !splitValue[0]?.includes('pop_up_displayed=true')) {
             dialog.show();
             let pop_disp = new Date();
             pop_disp.setTime(pop_disp.getTime() + (4 * 60 * 60 * 1000));

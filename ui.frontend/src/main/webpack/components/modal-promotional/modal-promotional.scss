@@ -32,9 +32,11 @@
   }
   &__description {
     .cmp-title--subhead-02 {
-      line-height: 26px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
+      h1 {
+        line-height: 26px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
       margin-bottom: 20px;
     }
     .cmp-title--heading-03 {
