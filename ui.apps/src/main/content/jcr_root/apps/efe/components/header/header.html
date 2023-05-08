@@ -120,7 +120,7 @@
                                     class="cmp-image__link"
                                     data-cmp-clickable=""
                                     href="${model.logoLink}"
-                                    target="${model.logotarget}"
+                                    target="${model.logoTarget}"
 
                             >
                                 <img
@@ -157,7 +157,7 @@
                                     <ul class="cmp-navigation__group cmp-navigation__group--level-0">
                                         <sly data-sly-list.headerList="${model.headerList}">
                                             <li class="cmp-navigation__item cmp-navigation__item--level-0">
-                                                <a data-cmp-clickable="" class="cmp-navigation__item-link" data-sly-test.newPath="${'nav{0}' @format =headerListList.index}" href="javascript:void(0)">${headerList.label}</a>
+                                              <a data-cmp-clickable="" class="cmp-navigation__item-link" data-sly-test.newPath="${'nav{0}' @format =headerListList.index}" href="javascript:void(0)"><span>${headerList.label}</span></a>
                                                 <div class="image cmp-img--arrow cmp-img--down" id="nav-arrow">
                                                     <div data-cmp-src="/content/core-components-examples/library/core-content/image/_jcr_content/root/responsivegrid/demo/component/image.coreimg{.width}.svg" data-asset-id="bf8419f0-1d78-4ce8-9af8-80d3ea45da26" id="image-777c52be2d"  data-cmp-hook-image="imageV3" class="cmp-image" itemscope="" itemtype="http://schema.org/ImageObject">
                                                         <img src="data:image/svg+xml;charset&#x3D;utf8,%3Csvg%20xmlns&#x3D;&#x27;http://www.w3.org/2000/svg&#x27;%3E%3C/svg%3E" loading="lazy" class="cmp-image__image" itemprop="contentUrl" alt="Component" title="Component">
@@ -172,9 +172,9 @@
                             </div>
 
                             <div class="button cmp-button--button-primary cmp-button--center cmp-button-- cmp-button--">
-                                <button type="button" id="button-5487aab983" class="cmp-button" data-cmp-clickable="">
+                                <a type="button" class="cmp-button" data-cmp-clickable="" href="${model.ctaLink}" target="${model.ctaTarget}">
                                     <span class="cmp-button__text">${model.ctaTitle}</span>
-                                </button>
+                                </a>
                             </div>                    </div>
 
                         <div class="container responsivegrid" id="efe-global-nav-header">
@@ -198,7 +198,7 @@
                                                     </div>
                                                 </form>
                                                 <div class="cmp-search__results" aria-label="Search results" data-cmp-hook-search="results" role="listbox" aria-multiselectable="false" id="cmp-search-results-1"></div>
-                                                <script data-cmp-hook-search="itemTemplate" type="x-template"> <a class="cmp-search__item" data-cmp-hook-search="item" role="option" aria-selected="false">
+                                                <script data-cmp-hook-search="itemTemplate" type="x-template"><a class="cmp-search__item" data-cmp-hook-search="item" role="option" aria-selected="false">
                                                     <span class="cmp-search__item-title" data-cmp-hook-search="itemTitle"></span>
                                                 </a>
                                                 </script>
