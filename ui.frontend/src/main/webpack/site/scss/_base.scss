@@ -18,11 +18,7 @@ body {
 }
 
 body {
-    padding-top: rem(65);
     overflow-x: hidden;
-    @include media('>=desktop') {
-        padding-top:rem(90);
-    }
 }
 
 a {
