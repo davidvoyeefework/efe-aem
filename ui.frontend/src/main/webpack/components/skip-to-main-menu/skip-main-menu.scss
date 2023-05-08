@@ -1,26 +1,26 @@
 a.skip-main {
-    left: -999px;
-    position: absolute;
-    top: auto;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    z-index: -999;
+  left: -999px;
+  position: absolute;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  z-index: -999;
 }
 
 a.skip-main:focus,
 a.skip-main:active {
-    color: $efe-gray-primary;
-    background-color: $efe-gray-light;
-    left: auto;
-    top: auto;
-    width: auto;
-    height: auto;
-    overflow: auto;
-    padding: 10px 20px;
-    text-align: center;
-    font-size: 1.2em;
-    z-index: 999;
-    outline: rem(2) solid $efe-red-primary;
-    outline-offset: 0;
+  color: $efe-gray-primary;
+  background-color: $efe-gray-light;
+  left: auto;
+  top: auto;
+  width: auto;
+  height: auto;
+  overflow: auto;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 1.2em;
+  z-index: 999;
+  outline: rem(2) solid $efe-red-primary;
+  outline-offset: 0;
 }

@@ -24,23 +24,28 @@ class ModalLeaving {
       let domainHref = domainhn[1] + "." + domainhn[0];
       const getLinkHref = extlink.getAttribute("href")?extlink.getAttribute("href"):'#';
       const checkExlcusionLink = exlusionExtlinks.includes(getLinkHref);
+      const checkClickAttribute = extlink.getAttribute("onClick")?extlink.getAttribute("onClick"):false;
       if (linkHref !== domainHref && !checkExlcusionLink &&
-        !getLinkHref.match(/^tel\:/) && !getLinkHref.match(/^mailto\:/) && getLinkHref !=='javascript:void(0)') {
+        !getLinkHref.match(/^tel\:/) && !getLinkHref.match(/^mailto\:/) && getLinkHref !=='javascript:void(0)'
+        && !checkClickAttribute) {
         extlink.addEventListener("click", (e) => {
           e.preventDefault();
           currentExtUrl = extlink.getAttribute("href");
           this.dialog.show();
+          document.querySelector('body').classList.toggle("modal-open");
           document.querySelector('.cmp-modal__button-secondary').focus();
           trapFocus(modalEle);
         });
       }
     })
     document.querySelector('.cmp-modal__button-primary').addEventListener("click", (ev) => {
-      window.open(currentExtUrl);
+      window.location.href = currentExtUrl;
+      document.querySelector('body').classList.toggle("modal-open");
       this.dialog.hide();
     });
     document.querySelector('.cmp-modal__button-secondary').addEventListener("click", (ev) => {
       this.dialog.hide();
+      document.querySelector('body').classList.toggle("modal-open");
     });
   }
 }
