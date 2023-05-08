@@ -1,0 +1,43 @@
+.cmp-tabs--horizontal {
+    .cmp-tabs {
+        &__tablist {
+            border: 0;
+            border-bottom: 1px solid $efe-gray-mid;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            &::-webkit-scrollbar {
+                display: none;
+                width: 0;  /* Remove scrollbar space */
+                background: transparent;  /* Optional: just make scrollbar invisible */
+            }
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        &__tab {
+            &:first-child {
+                margin-left: 48px;
+            }
+            margin: 0 30px;
+            @include subhead-01;
+            min-width: fit-content;
+            @include media("<=phone-m") {
+                &:first-child {
+                    margin-left: 24px;
+                }
+                margin: 0 16px;
+                font-size: rem(20);
+            }
+        }
+        &__tab--active {
+            background: none;
+            color: $efe-gray-primary;
+            border: 0;
+            padding-left: 0;
+            padding-right: 0;
+            border-bottom: 3px solid $efe-red-primary;
+        }
+        &__tabpanel {
+            margin-top: 10px;
+        }
+    }
+}
