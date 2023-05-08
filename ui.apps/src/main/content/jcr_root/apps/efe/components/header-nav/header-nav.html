@@ -5,7 +5,7 @@
             <sly data-sly-list.navItem ="${model.primaryList}">
                 <div>
                     <div class="button cmp-button--primary-nav-link cmp-button--efe-red-primary">
-                        <a id="button-a1f53d50c2" target="${navItem.headingTarget}" data-cmp-clickable=""  href="${navItem.headingLink}">
+                        <a id="button-a1f53d50c2" target="${navItem.headingTarget}" href="${navItem.headingLink}">
                             <span class="cmp-button__text">${navItem.heading}</span>
                         </a>
                     </div>
@@ -17,7 +17,7 @@
                     <ul class="cmp-navigation__list">
                         <sly data-sly-list.secondaryLinks ="${navItem.secondaryLinks}">
                             <li class="cmp-navigation__item cmp-navigation__item--level-1" >
-                                <a data-cmp-clickable=""target="${secondaryLinks.target}" class="cmp-navigation__item-link" href="${secondaryLinks.link}">${secondaryLinks.label}</a>
+                                <a target="${secondaryLinks.target}" class="cmp-navigation__item-link" href="${secondaryLinks.link}">${secondaryLinks.label}</a>
                             </li>
                         </sly>
                     </ul>
