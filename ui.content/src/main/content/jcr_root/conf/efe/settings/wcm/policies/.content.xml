@@ -8,6 +8,7 @@
             <header-nav jcr:primaryType="nt:unstructured">
                 <policy_header_nav
                         jcr:primaryType="nt:unstructured"
+						cq:styleDefaultClasses="cmp-navigation__aem-container"
                         jcr:title="Header Nav Style"
                         sling:resourceType="wcm/core/components/policy/policy">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
