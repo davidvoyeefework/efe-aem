@@ -47,6 +47,15 @@
                         <jcr:content jcr:primaryType="nt:unstructured"/>
                     </form-container>
                 </container>
+                <text jcr:primaryType="nt:unstructured">
+                    <policy
+                        cq:styleDefaultClasses=" cmp-form-text--efe-default"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Form Text"
+                        sling:resourceType="wcm/core/components/policy/policy">
+                        <jcr:content jcr:primaryType="nt:unstructured"/>
+                    </policy>
+                </text>
             </form>
             <languagenavigation jcr:primaryType="nt:unstructured">
                 <policy_xfm

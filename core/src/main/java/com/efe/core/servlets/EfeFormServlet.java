@@ -6,29 +6,31 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map.Entry;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.ContentType;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.BasicResponseHandler;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
+import org.apache.sling.api.resource.NonExistingResource;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.api.servlets.HttpConstants;
 import org.apache.sling.api.servlets.SlingAllMethodsServlet;
 import org.apache.sling.servlets.annotations.SlingServletResourceTypes;
-import org.apache.sling.servlets.post.JSONResponse;
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.propertytypes.ServiceDescription;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.day.cq.wcm.api.components.ComponentContext;
+import com.day.cq.wcm.foundation.forms.FormsHandlingRequest;
+import com.day.cq.wcm.foundation.forms.FormsHandlingServletHelper;
+import com.day.cq.wcm.foundation.forms.ValidationInfo;
+import com.efe.core.services.FormHandler;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
@@ -55,6 +57,17 @@ public class EfeFormServlet extends SlingAllMethodsServlet {
 	private static final List<String> IGNORE_KEYS = new ArrayList<>(
 			Arrays.asList(":formstart", "_charset_", ":redirect", ":cq_csrf_token"));
 
+	/** The Constant ATTR_RESOURCE. */
+	private static final String ATTR_RESOURCE = FormsHandlingServletHelper.class.getName() + "/resource";
+	
+	/** The Constant HTML_SUFFIX. */
+	private static final String HTML_SUFFIX = ".html";
+
+	
+	/** The form handler. */
+	@Reference
+	private transient FormHandler formHandler;
+
 	/**
 	 * Do post.
 	 *
@@ -66,33 +79,82 @@ public class EfeFormServlet extends SlingAllMethodsServlet {
 	@Override
 	protected void doPost(final SlingHttpServletRequest request, final SlingHttpServletResponse response)
 			throws ServletException, IOException {
-
+		boolean processFormApiSuccess = false;
 		Resource formContainerResource = request.getResource();
 		ValueMap valueMap = formContainerResource.adaptTo(ValueMap.class);
 		if (valueMap != null) {
 			String endPointUrl = valueMap.get(PN_FORM_ENDPOINT_URL, String.class);
 			if (StringUtils.isNotEmpty(endPointUrl)) {
 				String formJsonInput = getFormJsonInput(request);
-
-				try (CloseableHttpClient client = HttpClients.createDefault()) {
-
-					HttpPost post = new HttpPost(endPointUrl);
-					post.setHeader("content-type", "application/json");
-					post.setEntity(new StringEntity(formJsonInput,
-							ContentType.create(JSONResponse.RESPONSE_CONTENT_TYPE, "UTF-8")));
-
-					String resp = client.execute(post, new BasicResponseHandler());
-
-					LOG.info("Response : {}", resp);
-
-				} catch (IOException e) {
-					LOG.info(e.getMessage());
-				}
-
+				processFormApiSuccess = formHandler.forwardFormData(endPointUrl, formJsonInput);
 			}
-
+			sendRedirect(valueMap, request, response, processFormApiSuccess);
 		}
 	}
+
+	/**
+	 * Send redirect.
+	 *
+	 * @param valueMap the value map
+	 * @param request the request
+	 * @param response the response
+	 * @param processFormApiSuccess the process form api success
+	 * @throws ServletException the servlet exception
+	 */
+	private void sendRedirect(ValueMap valueMap, SlingHttpServletRequest request, SlingHttpServletResponse response,
+			boolean processFormApiSuccess) throws ServletException {
+		
+		String redirect = getMappedRedirect(valueMap.get("redirect", String.class), request.getResourceResolver());
+		String errorMessage = valueMap.get("errorMessage", String.class);
+		FormsHandlingRequest formRequest = new FormsHandlingRequest(request);
+		try {
+			if (StringUtils.isNotEmpty(redirect) && processFormApiSuccess) {
+				response.sendRedirect(redirect);
+			} else {
+				if (!processFormApiSuccess && StringUtils.isNotEmpty(errorMessage)) {
+					ValidationInfo validationInfo = ValidationInfo.createValidationInfo(request);
+					validationInfo.addErrorMessage(null, errorMessage);
+				}
+				final Resource formResource = (Resource) request.getAttribute(ATTR_RESOURCE);
+				request.removeAttribute(ATTR_RESOURCE);
+				request.removeAttribute(ComponentContext.BYPASS_COMPONENT_HANDLING_ON_INCLUDE_ATTRIBUTE);
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher(formResource);
+				if (requestDispatcher != null) {
+					requestDispatcher.forward(formRequest, response);
+				} else {
+					throw new IOException("can't get request dispatcher to forward the response");
+				}
+			}
+		} catch (IOException var13) {
+			LOG.error("Error redirecting to {}", redirect);
+		}
+	}
+	
+    /**
+     * Gets the mapped redirect.
+     *
+     * @param redirect the redirect
+     * @param resourceResolver the resource resolver
+     * @return the mapped redirect
+     */
+    private String getMappedRedirect(String redirect, ResourceResolver resourceResolver) {
+        String mappedRedirect = null;
+        if (StringUtils.isNotEmpty(redirect)) {
+            if (StringUtils.endsWith(redirect, HTML_SUFFIX)) {
+                Resource resource = resourceResolver.resolve(redirect);
+                if (!(resource instanceof NonExistingResource)) {
+                    mappedRedirect = redirect;
+                }
+            } else {
+                Resource resource = resourceResolver.getResource(redirect);
+                if (resource != null) {
+                    redirect += HTML_SUFFIX;
+                    mappedRedirect = resourceResolver.map(redirect);
+                }
+            }
+        }
+        return mappedRedirect;
+    }
 
 	/**
 	 * Gets the form json input.
