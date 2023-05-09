@@ -3,7 +3,7 @@
         ${model.jsonLd @context ='unsafe'}
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=${model.mapKey @ context='scriptToken'}&v=weekly"></script>
-    <section id="${model.id}"  data-component="location-map-directions" class="cmp-location--map-directions" data-latitude="${model.locationResponse.latitude}" data-longitude="${model.locationResponse.longitude}" data-zoomlevel="${model.zoomLevel}">
+    <section id="${model.id}"  data-component="location-map-directions" class="cmp-location--map-directions" data-city="${model.locationResponse.city}" data-latitude="${model.locationResponse.latitude}" data-longitude="${model.locationResponse.longitude}" data-zoomlevel="${model.zoomLevel}">
         <div class="cmp-location--map-directions__map">
             <div id="map_canvas" style="position:absolute;height:100%;width:100%;"></div>
         </div>

@@ -14,6 +14,7 @@ export default class LocationMapDirections {
         const LAT = +el.dataset?.latitude;
         const LNG = +el.dataset?.longitude;
         const ZOOM = +el.dataset?.zoomlevel || 5;
+        const city = el.dataset?.city || "Middle of America";
         const SATURATION = -100;
 
         if (
@@ -55,7 +56,7 @@ export default class LocationMapDirections {
             position: myLatLng,
             icon: this.markerImg,
             map: map,
-            title: "Middle of America PIN",
+            title: city,
         });
     }
 }
