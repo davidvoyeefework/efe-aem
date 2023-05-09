@@ -20,7 +20,7 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.adobe.granite.rest.Constants;
+import com.efe.core.constants.Constants;
 import com.efe.core.services.FormHandler;
 
 /**
@@ -38,9 +38,6 @@ public class FormHandlerImpl implements FormHandler {
 
 	/** The Constant LOG. */
 	private static final Logger LOG = LoggerFactory.getLogger(FormHandlerImpl.class);
-
-	/** The Constant CHARSET. */
-	private static final String CHARSET = "UTF-8";
 
 	/** The client. */
 	private CloseableHttpClient client;
@@ -61,8 +58,8 @@ public class FormHandlerImpl implements FormHandler {
 		boolean isSuccess = false;
 
 		HttpPost post = new HttpPost(endPointUrl);
-		post.setHeader("content-type", Constants.CT_JSON);
-		post.setEntity(new StringEntity(formData, ContentType.create(JSONResponse.RESPONSE_CONTENT_TYPE, CHARSET)));
+		post.setHeader(Constants.CONTENT_TYPE, Constants.CT_JSON);
+		post.setEntity(new StringEntity(formData, ContentType.create(JSONResponse.RESPONSE_CONTENT_TYPE, Constants.UTF_CHARSET)));
 		try {
 			String apiResponse = client.execute(post, new BasicResponseHandler());
 			LOG.debug("POSTing form data to '{}' succeeded: response: {}", endPointUrl, apiResponse);

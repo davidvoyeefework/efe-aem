@@ -48,13 +48,13 @@
                     </form-container>
                 </container>
                 <text jcr:primaryType="nt:unstructured">
-                    <policy_1683621338558
+                    <policy
                         cq:styleDefaultClasses=" cmp-form-text--efe-default"
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Form Text"
                         sling:resourceType="wcm/core/components/policy/policy">
                         <jcr:content jcr:primaryType="nt:unstructured"/>
-                    </policy_1683621338558>
+                    </policy>
                 </text>
             </form>
             <languagenavigation jcr:primaryType="nt:unstructured">
