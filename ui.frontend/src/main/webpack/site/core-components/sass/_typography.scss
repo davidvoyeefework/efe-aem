@@ -31,7 +31,7 @@
 @mixin buildLink ($color: false, $hover-color: false) {
     text-decoration: 1px solid underline $efe-gray-primary;
     @if $color {text-decoration: 1px solid underline $color; color: $color};
-    text-underline-offset: 3px;
+    text-underline-offset: 2px;
     transition: $std-transition;
 
     &:hover {
@@ -125,6 +125,11 @@
 // -----------------------------------------------------------------------------
 // SUBHEADS
 // -----------------------------------------------------------------------------
+
+
+@mixin subhead-00 {
+    @include buildFont(rem(32), .06em, null, 400);
+}
 
 @mixin subhead-01 {
     @include buildFont(rem(24px), .02em, null, 400);
@@ -292,6 +297,11 @@
 @mixin body-03-link-red {
     @include body-03;
     @include buildLink($efe-red-primary, $efe-red-hover);
+}
+
+@mixin caption-link {
+    @include caption;
+    @include buildLink;
 }
 
 // -----------------------------------------------------------------------------

@@ -2,4 +2,8 @@
     * {
         @include caption;
     }
+
+    a {
+        @include caption-link;
+    }
 }

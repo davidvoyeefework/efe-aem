@@ -1,0 +1,111 @@
+.cmp-text--table-dark {
+
+    table {
+        width: 100%;
+        height: auto;
+        color: white;
+        @include secondary-nav-link;
+    }
+
+    th {
+        white-space: nowrap;
+        background: $efe-gray-new;
+        color: white;
+        padding: 17px 20px;
+        text-transform: uppercase;
+        text-align: left;
+        letter-spacing: .04em;
+
+        &:first-of-type {
+            background: $efe-gray-primary;
+        }
+
+        &:first-of-type {
+            @include button-text;
+            color: white;
+            font-weight: 700;
+        }
+    }
+
+    tr {
+        background: white;
+
+        &:nth-child(even) {
+            background: $efe-gray-light;
+        }
+
+        &:nth-child(odd) {
+            background: #e6e6e6;
+        }
+
+
+        td {
+            color: $efe-gray-primary;
+            padding: 17px 20px;
+            &:first-of-type {
+                text-transform: uppercase;
+                letter-spacing: .04em;
+            }
+        }
+
+    }
+
+    @media screen and (max-width: $sm) {
+        table {
+            border: 0;
+          }
+          
+          table thead {
+            border: none;
+            clip: rect(0 0 0 0);
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+            padding: 0;
+            position: absolute;
+            width: 1px;
+          }
+          
+          table tr {
+            border-bottom: 1px solid $efe-gray-primary;
+            display: block;
+
+            th {
+              padding: 18px 20px;
+                display: none;
+                &:first-child {
+                    display: block;
+                    font-weight: 400;
+                    text-align: left;
+                }
+            }
+          }
+          
+          table td {
+            border-bottom: 1px solid #ddd;
+            display: block;
+            text-align: right;
+
+            &:first-of-type {
+              background: $efe-gray-light;
+              border-bottom: unset;
+            }
+          }
+          
+          table td::before {
+            /*
+            * aria-label has no advantage, it won't be read inside a table
+            content: attr(aria-label);
+            */
+            content: attr(data-label);
+            float: left;
+            text-transform: uppercase;
+          }
+          
+          table td:last-child {
+            border-bottom: 0;
+          }
+    }
+}
+
+

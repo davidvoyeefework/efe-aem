@@ -77,4 +77,8 @@
             transition: $std-transition;
         }
     }
+
+    &:last-of-type {
+        margin-bottom: 44px;
+    }
 }
