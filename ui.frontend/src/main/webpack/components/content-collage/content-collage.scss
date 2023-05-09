@@ -4,9 +4,9 @@
         grid-template-areas:
             "image1 image2"
             "image1 content";
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(2, 1fr);
-        @include media("<=tablet-xs") {
+        grid-template-columns: auto;
+        grid-template-rows: auto;
+        @include media("<=tablet") {
             grid-template-areas:
                 "image1 image2"
                 "content content";
@@ -28,7 +28,7 @@
             }
         }
         > div:nth-child(3) {
-            padding: 0 40px;
+            padding: 67px 24px 94px 36px;
 
             blockquote {
                 margin: 0 0 20px;
