@@ -1,0 +1,14 @@
+.cmp-image--image-rte {
+    max-width: rem(704);
+    max-height: rem(439);
+    background-size: cover;
+
+
+
+    &.cmp-image--round {
+        img {
+            border-bottom-right-radius: 40px;
+        }
+    }
+
+}

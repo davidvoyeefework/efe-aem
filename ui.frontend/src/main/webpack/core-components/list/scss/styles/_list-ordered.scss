@@ -24,7 +24,7 @@
             color: $efe-red-primary;
             display: block;
             position: absolute;
-            top: 0;
+            top: 2px;
             bottom: 0;
             left: 0;
             bottom: 0;
@@ -47,6 +47,7 @@
             &:before {
                 @include heading-04;
                 color: $efe-red-primary;
+                top: -1px;
             }
         }
     }
