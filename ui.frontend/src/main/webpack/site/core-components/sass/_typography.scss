@@ -337,7 +337,7 @@
         width: rem(14);
         height: rem(15);
         position: relative;
-        bottom: rem(4);
+        bottom: rem(5);
         right: rem(7);
     }
 
@@ -367,7 +367,7 @@
 
     &:before {
         position: absolute;
-        top: 1px;
+        top: 0;
         left: -21px;
     }
 }

@@ -6,11 +6,13 @@ export default class Header {
     constructor(el) {
         this.el = el;
         let minimalHeader = el.classList.contains('minimal-header');
+        this.subHeaderDesktop = el.querySelectorAll('.efe-nav-header')[0];
+        this.subHeaderMobile = el.querySelectorAll('.efe-nav-header')[1];
         if(!minimalHeader) {
-            clickFunction("#nav-search-iconT a","efe-nav-searchT");
-            clickFunction("#search-closeT", "efe-nav-searchT");
             this.handleSearchIconClick = el.querySelector('#nav-search-icon').addEventListener('click', this.handleSearchIconClick.bind(this))
             this.handleSearchCloseClick = el.querySelector('#search-close').addEventListener('click', this.handleSearchCloseClick.bind(this))
+            this.handleSearchIconMobileClick = el.querySelector('#nav-search-iconT').addEventListener('click', this.handleSearchIconMobileClick.bind(this))
+            this.handleSearchCloseMobileClick = el.querySelector('#search-closeT').addEventListener('click', this.handleSearchCloseMobileClick.bind(this))
         }
         clickFunction("#nav-hamburger", "nav-list-cta-group");
         clickNav(".cmp-navigation__item--level-0");
@@ -23,13 +25,25 @@ export default class Header {
     handleSearchIconClick() {
         const searchBar = this.el.querySelector('#efe-nav-search');
         searchBar.style.display = 'block';
-        this.el.querySelector('.efe-nav-header').style.display = 'none';
+        this.subHeader.style.display = 'none';
     }
 
     handleSearchCloseClick() {
         const searchBar = this.el.querySelector('#efe-nav-search');
         searchBar.style.display = 'none';
-        this.el.querySelector('.efe-nav-header').style.display = 'flex';
+        this.subHeader.style.display = 'flex';
+    }
+
+    handleSearchIconMobileClick() {
+        const searchBarMobile = this.el.querySelector('#efe-nav-searchT');
+        searchBarMobile.style.display = 'block';
+        this.subHeaderMobile.style.display = 'none';
+    }
+
+    handleSearchCloseMobileClick() {
+        const searchBarMobile = this.el.querySelector('#efe-nav-searchT');
+        searchBarMobile.style.display = 'none';
+        this.subHeaderMobile.style.display = 'flex';
     }
 }
 
