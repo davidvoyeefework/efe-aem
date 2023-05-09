@@ -3,22 +3,34 @@
  */
 
 export default class Header {
-  constructor(el) {
-    this.el = el;
-    let minimalHeader = el.classList.contains('minimal-header');
-    if(!minimalHeader) {
-      clickFunction("#nav-search-icon a","efe-nav-search");
-      clickFunction("#nav-search-iconT a","efe-nav-searchT");
-      clickFunction("#search-close", "efe-nav-search");
-      clickFunction("#search-closeT", "efe-nav-searchT");
+    constructor(el) {
+        this.el = el;
+        let minimalHeader = el.classList.contains('minimal-header');
+        if(!minimalHeader) {
+            clickFunction("#nav-search-iconT a","efe-nav-searchT");
+            clickFunction("#search-closeT", "efe-nav-searchT");
+            this.handleSearchIconClick = el.querySelector('#nav-search-icon').addEventListener('click', this.handleSearchIconClick.bind(this))
+            this.handleSearchCloseClick = el.querySelector('#search-close').addEventListener('click', this.handleSearchCloseClick.bind(this))
+        }
+        clickFunction("#nav-hamburger", "nav-list-cta-group");
+        clickNav(".cmp-navigation__item--level-0");
     }
-    clickFunction("#nav-hamburger", "nav-list-cta-group");
-    clickNav(".cmp-navigation__item--level-0");
-  }
 
-  static init(el) {
-    return new Header(el);
-  }
+    static init(el) {
+        return new Header(el);
+    }
+
+    handleSearchIconClick() {
+        const searchBar = this.el.querySelector('#efe-nav-search');
+        searchBar.style.display = 'block';
+        this.el.querySelector('.efe-nav-header').style.display = 'none';
+    }
+
+    handleSearchCloseClick() {
+        const searchBar = this.el.querySelector('#efe-nav-search');
+        searchBar.style.display = 'none';
+        this.el.querySelector('.efe-nav-header').style.display = 'flex';
+    }
 }
 
 let windowWidth = document.documentElement.clientWidth || document.body.clientWidth || window.innerWidth;
