@@ -70,4 +70,10 @@
         text-align: -webkit-match-parent;
         line-height: $line-height-base + .5;
     }
+
+    img {
+        max-width: rem(704);
+        max-height: rem(439);
+        background-size: cover;
+    }
 }

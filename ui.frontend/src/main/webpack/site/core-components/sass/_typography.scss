@@ -131,6 +131,10 @@
     @include buildFont(rem(32), .06em, null, 400);
 }
 
+.cmp-text--subhead-00 {
+    @include subhead-00;
+}
+
 @mixin subhead-01 {
     @include buildFont(rem(24px), .02em, null, 400);
 }
@@ -178,6 +182,10 @@
 
 @mixin caption {
     @include buildFont(rem(14), null, 'nimbus-sans', 400, unset, 100% );
+}
+
+.cmp-text--caption {
+    @include caption;
 }
 
 @mixin button-text {
