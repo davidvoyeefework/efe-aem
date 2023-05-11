@@ -18,7 +18,9 @@
                 margin-left: 48px;
             }
             margin: 0 30px;
+            padding: 12px 0;
             @include subhead-01;
+            color: $efe-gray-new;
             min-width: fit-content;
             @include media("<=phone-m") {
                 &:first-child {
