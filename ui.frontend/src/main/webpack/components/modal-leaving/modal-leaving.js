@@ -18,7 +18,7 @@ class ModalLeaving {
     let externalLinks = document.querySelectorAll("a");
     let currentExtUrl;
     externalLinks.forEach((extlink) => {
-      if (extlink.hasAttribute("href")) {
+      if (extlink.hasAttribute("href") && !extlink.classList.contains('cmp-social-share__link')) {
         let linkhn = extlink.hostname.split('.').reverse();
         let linkHref = linkhn[1] + "." + linkhn[0];
         let domainhn = window.location.hostname.split('.').reverse();
