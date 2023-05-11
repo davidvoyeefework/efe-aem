@@ -25,13 +25,13 @@ export default class Header {
     handleSearchIconClick() {
         const searchBar = this.el.querySelector('#efe-nav-search');
         searchBar.style.display = 'block';
-        this.subHeader.style.display = 'none';
+        this.subHeaderDesktop.style.display = 'none';
     }
 
     handleSearchCloseClick() {
         const searchBar = this.el.querySelector('#efe-nav-search');
         searchBar.style.display = 'none';
-        this.subHeader.style.display = 'flex';
+        this.subHeaderDesktop.style.display = 'flex';
     }
 
     handleSearchIconMobileClick() {
