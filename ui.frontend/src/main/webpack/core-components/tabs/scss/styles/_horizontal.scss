@@ -1,17 +1,15 @@
 .cmp-tabs--horizontal {
     .cmp-tabs {
+        @include media("<=phone-m") {
+            padding: 24px;
+        }
         &__tablist {
             border: 0;
             border-bottom: 1px solid $efe-gray-mid;
-            flex-wrap: nowrap;
-            overflow-x: auto;
-            &::-webkit-scrollbar {
-                display: none;
-                width: 0;  /* Remove scrollbar space */
-                background: transparent;  /* Optional: just make scrollbar invisible */
+            @include media("<=phone-m") {
+                display: flex;
+                flex-direction: column;
             }
-            -ms-overflow-style: none;
-            scrollbar-width: none;
         }
         &__tab {
             &:first-child {
@@ -24,10 +22,11 @@
             min-width: fit-content;
             @include media("<=phone-m") {
                 &:first-child {
-                    margin-left: 24px;
+                    margin-left: 0;
                 }
-                margin: 0 16px;
+                margin: 0;
                 font-size: rem(20);
+                max-width: fit-content;
             }
         }
         &__tab--active {
