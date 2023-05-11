@@ -3,7 +3,8 @@
         counter-reset: di-count;
         display: list-item;
         list-style-type: auto;
-        padding: 0;
+        margin: 0;
+        padding: 20px 24px;
     
         &::marker {
             font-size: 0;
@@ -15,10 +16,10 @@
             position: relative;
             display: block;
             padding-left: rem(28);
-            padding-bottom: rem(17);
+            padding-bottom: rem(8);
     
             &:before {
-                margin-right: 2px;
+                margin-right: 8px;
                 content: counters(di-count, ".") ".\00a0 ";
                 @include body-02;
                 font-weight: 400;
