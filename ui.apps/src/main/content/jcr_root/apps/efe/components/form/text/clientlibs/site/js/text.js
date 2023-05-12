@@ -14,11 +14,11 @@
  * limitations under the License.
  ******************************************************************************/
 (function() {
+    console.log("apps");
     "use strict";
-console.log("apps2");
     var NS = "cmp";
-    var IS = "formText";
-    var IS_DASH = "form-text";
+    var IS = "efeText";
+    var IS_DASH = "efe-text";
 
     var selectors = {
         self: "[data-" + NS + '-is="' + IS + '"]'
@@ -86,7 +86,8 @@ console.log("apps2");
         } else if (event.target.validity.valueMissing) {
             if (this._properties.requiredMessage) {
                 event.target.setCustomValidity(this._properties.requiredMessage);
-
+                event.target.parentElement.classList.add('cmp-form-text--error');
+                event.target.parentElement.classList.add('cmp-form-text--efe-default');
             }
         }
     };
