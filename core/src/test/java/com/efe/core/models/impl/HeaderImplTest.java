@@ -4,6 +4,7 @@ import com.efe.core.models.Header;
 import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.testing.mock.sling.servlet.MockSlingHttpServletRequest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -40,10 +41,11 @@ class HeaderImplTest {
 	@BeforeEach
 	public void setup() {
 		Class<Header> modelClass = Header.class;
+		MockSlingHttpServletRequest request = aemContext.request();
 		aemContext.load().json(RESOURCE_CONTENT, TEST_CONTENT_ROOT);
 		aemContext.addModelsForClasses(modelClass);
 		resource = aemContext.currentResource(RESOURCE);
-		model = resource.adaptTo(modelClass);
+		model = aemContext.request().adaptTo(modelClass);
 	}
 
 	/**
@@ -55,10 +57,12 @@ class HeaderImplTest {
 		assertEquals("/content/dam/efe/logo-official.svg", model.getFileReference());
 		assertEquals("Alt text", model.getAlt());
 		assertEquals("_self", model.getLogoTarget());
+		assertEquals(true, model.isDisableLogin());
 		assertEquals("/content/efe/us/en.html", model.getLogoLink());
 		assertEquals("/content/efe/us/en.html", model.getLoginLink());
 		assertEquals("_blank", model.getLoginTarget());
 		assertEquals("Log In", model.getLoginTitle());
+		assertEquals(true, model.isDisableSearch());
 		assertEquals("Search..", model.getSearchLabel());
 		assertEquals("Search", model.getSearchBtn());
 		assertEquals("Planner CTA", model.getCtaTitle());

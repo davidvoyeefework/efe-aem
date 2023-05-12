@@ -3,6 +3,8 @@ package com.efe.core.models.impl;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import org.apache.sling.testing.mock.sling.servlet.MockRequestPathInfo;
 import org.apache.sling.testing.mock.sling.servlet.MockSlingHttpServletRequest;
@@ -13,6 +15,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.adobe.cq.dam.cfm.ContentFragment;
 import com.day.cq.commons.Externalizer;
+import com.efe.core.models.FAQAccordion;
 import com.efe.core.models.MapDirection;
 import com.efe.core.services.impl.EfeServiceImpl;
 import com.efe.core.services.impl.SeoServiceImpl;
@@ -27,7 +30,7 @@ class MapDirectionImplTest {
 	private AemContext aemContext = new AemContext();
 
 	/** The EfeServiceImpl. */
-	private EfeServiceImpl efeService = new EfeServiceImpl();
+	private EfeServiceImpl efeService;
 	
 	private SeoServiceImpl seoServiceImpl = new SeoServiceImpl();
 	
@@ -37,6 +40,8 @@ class MapDirectionImplTest {
 	@Mock
 	/** The configuration. */
 	private EfeServiceImpl.Config configuration;
+	
+	private MapDirection mapDirectionModel;
 
 	@Test
 	void testPositive() {
@@ -44,7 +49,11 @@ class MapDirectionImplTest {
 		MockSlingHttpServletRequest request = aemContext.request();
 		MockRequestPathInfo requestPathInfo = (MockRequestPathInfo) request.getRequestPathInfo();
 		aemContext.addModelsForClasses(ContentFragment.class);
-		aemContext.registerInjectActivateService(efeService);
+		efeService = aemContext.registerService(new EfeServiceImpl());
+		EfeServiceImpl.Config config = mock(EfeServiceImpl.Config.class);
+		when(config.googleMapPublicApi()).thenReturn("googleMapPublicApi");
+		efeService.activate(config);
+		
 		aemContext.registerInjectActivateService(seoServiceImpl);
 		aemContext.registerService(externalizer);
 		aemContext.load().json("/com/efe/core/models/maps/mapdirection.json", "/content");
@@ -52,7 +61,7 @@ class MapDirectionImplTest {
 		aemContext.request().setPathInfo("/content/efe/location.ks.wichita.html");
 		requestPathInfo.setSelectorString("ks.wichita");
 
-		MapDirection mapDirectionModel = aemContext.request().adaptTo(MapDirection.class);
+		mapDirectionModel = aemContext.request().adaptTo(MapDirection.class);
 		assertEquals("37.721030", mapDirectionModel.getLocationResponse().getLatitude());
 		assertEquals("-97.23856", mapDirectionModel.getLocationResponse().getLongitude());
 		assertEquals("8621 E. 21st Street North", mapDirectionModel.getLocationResponse().getAddress1());
@@ -70,6 +79,8 @@ class MapDirectionImplTest {
 		assertEquals("22", mapDirectionModel.getId());
 		assertNotNull(mapDirectionModel.getGoogleDirectionPath());
 		assertFalse(mapDirectionModel.isEmpty());
+		assertEquals("googleMapPublicApi", mapDirectionModel.getMapKey());
+		assertNotNull( mapDirectionModel.getJsonLd());
 
 	}
 

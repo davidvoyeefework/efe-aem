@@ -63,13 +63,13 @@
                         </a>
                     </div>
 
-                    <div class="button cmp-button--primary-nav-link cmp-button--efe-red-primary">
+                    <div data-sly-test="${!model.disableLogin}" class="button cmp-button--primary-nav-link cmp-button--efe-red-primary">
                         <a id="button-a1f53d50c2" target="${model.loginTarget}" href="${model.loginLink}">
                             <span class="cmp-button__text">${model.loginTitle}</span>
                         </a>
                     </div>
 
-                    <div class="image cmp-image--search cmp-image--" id="nav-search-icon">
+                    <div data-sly-test="${!model.disableSearch}" class="image cmp-image--search cmp-image--" id="nav-search-icon">
                         <div
                                 data-asset-id="45c6ee92-90e1-4af2-af69-b6dcbc7daeb7"
                                 id="image-72c95dc7ac"

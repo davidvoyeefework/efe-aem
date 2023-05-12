@@ -24,6 +24,10 @@
           "sling:resourceType": "efe/components/modalleaving",
           "modalDescriptionText": "Edelman Financial Engines",
           "textIsRich": "true"
+        },
+		"modalleaving2": {
+          "jcr:primaryType": "nt:unstructured",
+          "sling:resourceType": "efe/components/modalleaving"
         }
       }
     }
