@@ -45,6 +45,10 @@
                                                                 jcr:primaryType="cq:WidgetCollection"
                                                                 cssName="cmp-text--heading-04"
                                                                 text="Heading 04"/>
+                                                            <subheading00
+                                                                jcr:primaryType="cq:WidgetCollection"
+                                                                cssName="cmp-text--subhead-00"
+                                                                text="Subheading 00"/>
                                                             <subheading01
                                                                 jcr:primaryType="cq:WidgetCollection"
                                                                 cssName="cmp-text--subhead-01"
@@ -65,6 +69,10 @@
                                                                 jcr:primaryType="cq:WidgetCollection"
                                                                 cssName="cmp-text--body-03"
                                                                 text="Body 03"/>
+                                                            <caption
+                                                                jcr:primaryType="cq:WidgetCollection"
+                                                                cssName="cmp-text--caption"
+                                                                text="Caption"/>
                                                             <compliance
                                                                 jcr:primaryType="cq:WidgetCollection"
                                                                 cssName="cmp-text--detail"
