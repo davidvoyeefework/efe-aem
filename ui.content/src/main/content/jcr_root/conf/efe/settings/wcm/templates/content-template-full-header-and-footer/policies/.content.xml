@@ -89,6 +89,10 @@
                                 cq:policy="efe/components/contentcollage/policy"
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="wcm/core/components/policies/mapping"/>
+                            <tabs
+                                cq:policy="efe/components/tabs/policy"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="wcm/core/components/policies/mapping"/>
                         </components>
                     </efe>
                 </container>

@@ -1144,6 +1144,70 @@
                     </cq:styleGroups>
                 </policy>
             </contentcollage>
+            <tabs jcr:primaryType="nt:unstructured">
+                <policy
+                    cq:styleDefaultClasses="cmp-tabs--horizontal"
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Tabs" 
+                    sling:resourceType="wcm/core/components/policy/policy">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                    <cq:styleGroups jcr:primaryType="nt:unstructured">
+                        <item0
+                            cq:styleGroupLabel="Variation"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-tabs--horizontal"
+                                    cq:styleId="1683794758276"
+                                    cq:styleLabel="Horizontal"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-tabs--vertical"
+                                    cq:styleId="1683794795385"
+                                    cq:styleLabel="Vertical"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item0>
+                        <item1
+                            cq:styleGroupLabel="Background Color"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-tabs--white"
+                                    cq:styleId="1683794864781"
+                                    cq:styleLabel="White"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-tabs--light-gray"
+                                    cq:styleId="1683794869041"
+                                    cq:styleLabel="Grey"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item1>
+                        <item2
+                            cq:styleGroupLabel="Alignment"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-tabs--left"
+                                    cq:styleId="1683795466949"
+                                    cq:styleLabel="Left"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-tabs--center"
+                                    cq:styleId="1683795487526"
+                                    cq:styleLabel="Center"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item2
+                                    cq:styleClasses="cmp-tabs--right"
+                                    cq:styleId="1683795492018"
+                                    cq:styleLabel="Right"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item2>
+                    </cq:styleGroups>
+                </policy>
+            </tabs>
         </components>
     </efe>
 </jcr:root>
