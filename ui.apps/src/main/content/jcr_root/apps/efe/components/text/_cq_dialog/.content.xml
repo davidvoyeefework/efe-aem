@@ -73,10 +73,10 @@
                                                                 jcr:primaryType="cq:WidgetCollection"
                                                                 cssName="cmp-text--caption"
                                                                 text="Caption"/>
-                                                            <compliance
+                                                            <detail
                                                                 jcr:primaryType="cq:WidgetCollection"
                                                                 cssName="cmp-text--detail"
-                                                                text="Compliance"/>
+                                                                text="Detail"/>
                                                             <highlight
                                                                 jcr:primaryType="cq:WidgetCollection"
                                                                 cssName="cmp-text--highlight"
