@@ -3,6 +3,9 @@
         display: flex;
         gap: 20px;
         padding: 60px 40px;
+        @include media("<=tablet-lg") {
+            flex-direction: column;
+        }
         &__tablist {
             flex-direction: column;
             min-width: 267px;
