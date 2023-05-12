@@ -45,6 +45,10 @@
                                                                 jcr:primaryType="cq:WidgetCollection"
                                                                 cssName="cmp-text--heading-04"
                                                                 text="Heading 04"/>
+                                                            <subheading00
+                                                                jcr:primaryType="cq:WidgetCollection"
+                                                                cssName="cmp-text--subhead-00"
+                                                                text="Subheading 00"/>
                                                             <subheading01
                                                                 jcr:primaryType="cq:WidgetCollection"
                                                                 cssName="cmp-text--subhead-01"
@@ -65,10 +69,14 @@
                                                                 jcr:primaryType="cq:WidgetCollection"
                                                                 cssName="cmp-text--body-03"
                                                                 text="Body 03"/>
-                                                            <compliance
+                                                            <caption
+                                                                jcr:primaryType="cq:WidgetCollection"
+                                                                cssName="cmp-text--caption"
+                                                                text="Caption"/>
+                                                            <detail
                                                                 jcr:primaryType="cq:WidgetCollection"
                                                                 cssName="cmp-text--detail"
-                                                                text="Compliance"/>
+                                                                text="Detail"/>
                                                             <highlight
                                                                 jcr:primaryType="cq:WidgetCollection"
                                                                 cssName="cmp-text--highlight"

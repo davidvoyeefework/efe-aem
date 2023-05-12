@@ -242,6 +242,17 @@
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item2>
+                        <item3
+                            cq:styleGroupLabel="RTE Image Style"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-image--image-rte cmp-image--round"
+                                    cq:styleId="rounded-corner"
+                                    cq:styleLabel="Rounded Corner(Bottom Right)"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item3>
                     </cq:styleGroups>
                 </policy_641562756958017>
             </text>
@@ -1141,6 +1152,17 @@
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item3>
+                        <item4
+                            cq:styleGroupLabel="RTE Image Style"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-image--image-rte cmp-image--round"
+                                    cq:styleId="rounded-corner"
+                                    cq:styleLabel="Rounded Corner(Bottom Right)"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item4>
                     </cq:styleGroups>
                 </policy>
             </contentcollage>
