@@ -26,6 +26,10 @@
           text-decoration: none;
         }
       }
+      &.ot-sdk-show-settings {
+          color: $efe-gray-new;
+          cursor: pointer;
+      }
     }
 
     .cmp-list__item-title {
