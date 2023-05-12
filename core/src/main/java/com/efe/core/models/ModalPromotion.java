@@ -1,7 +1,7 @@
 package com.efe.core.models;
 
 /**
- * The Interface ModalLeaving Model.
+ * The Interface ModalPromotion Model.
  */
 public interface ModalPromotion {
 

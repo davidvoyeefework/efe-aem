@@ -74,15 +74,9 @@
                                                     <findreplace
                                                         jcr:primaryType="nt:unstructured"
                                                         features="*"/>
-                                                    <undo
-                                                        jcr:primaryType="nt:unstructured"
-                                                        features="-"/>
                                                     <spellcheck
                                                         jcr:primaryType="nt:unstructured"
                                                         features="*"/>
-                                                    <image
-                                                        jcr:primaryType="nt:unstructured"
-                                                        features="-"/>
                                                     <table
                                                         jcr:primaryType="nt:unstructured"
                                                         features="*"/>
