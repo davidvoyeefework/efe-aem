@@ -291,12 +291,6 @@
                                                 text="Add One Trust Link"
                                                 uncheckedValue="false"
                                                 value="true"/>
-                                            <onetrustLinkLabel
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="Add One Trust link label here"
-                                                fieldLabel="One Trust Link Label"
-                                                name="./onetrustLinkLabel"/>
                                         </items>
                                     </column>
                                 </items>

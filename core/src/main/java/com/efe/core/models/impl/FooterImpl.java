@@ -239,16 +239,6 @@ public class FooterImpl implements Footer {
 	}
 	
 	/**
-	 * Gets the one trust label.
-	 *
-	 * @return the one trust label
-	 */
-	@Override
-	public String getOneTrustLabel() {
-		return onetrustLinkLabel;
-	}
-	
-	/**
 	 * Checks if is enable one trust.
 	 *
 	 * @return true, if is enable one trust

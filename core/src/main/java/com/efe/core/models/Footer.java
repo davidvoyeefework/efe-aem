@@ -82,13 +82,6 @@ public interface Footer {
 	String getJsonLd();
 	
 	/**
-	 * Gets the one trust label.
-	 *
-	 * @return the one trust label
-	 */
-	String getOneTrustLabel();
-	
-	/**
 	 * Checks if is enable one trust.
 	 *
 	 * @return true, if is enable one trust
