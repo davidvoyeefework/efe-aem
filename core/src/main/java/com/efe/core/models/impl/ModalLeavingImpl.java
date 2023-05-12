@@ -30,7 +30,7 @@ public class ModalLeavingImpl implements ModalLeaving {
     /** The Constant RESOURCE_TYPE. */
     public static final String RESOURCE_TYPE = "efe/components/modalleaving";
 
-    private static final  String GENERIC_LIST_RESOURCE ="/etc/acs-commons/lists/efe/modal-exclusion/jcr:content/list";
+    private static final String GENERIC_LIST_RESOURCE ="/etc/acs-commons/lists/efe/modal-exclusion/jcr:content/list";
 
     /**
      * The current resource.

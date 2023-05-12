@@ -29,34 +29,34 @@
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
                                             <logo
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
-                                                    allowUpload="{Boolean}false"
-                                                    fieldDescription="Add header logo here"
-                                                    fieldLabel="Logo"
-                                                    rootPath="/content/dam/efe"
-                                                    name="./logo"/>
+												jcr:primaryType="nt:unstructured"
+												sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+												allowUpload="{Boolean}false"
+												fieldDescription="Add header logo here"
+												fieldLabel="Logo"
+												rootPath="/content/dam/efe"
+												name="./logo"/>
                                             <alt
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                    fieldDescription="Add header logo alt text here"
-                                                    fieldLabel="Alt Text"
-                                                    name="./alt"/>
+												jcr:primaryType="nt:unstructured"
+												sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+												fieldDescription="Add header logo alt text here"
+												fieldLabel="Alt Text"
+												name="./alt"/>
                                             <logolink
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                    fieldDescription="Add header logo link url here"
-                                                    fieldLabel="Logo Link"
-                                                    name="./logoLink"
-                                                    rootPath="/content/efe"/>
+												jcr:primaryType="nt:unstructured"
+												sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+												fieldDescription="Add header logo link url here"
+												fieldLabel="Logo Link"
+												name="./logoLink"
+												rootPath="/content/efe"/>
                                             <target
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                    fieldDescription="If checked the link will be opened in a new browser tab."
-                                                    name="./logoTarget"
-                                                    text="Open header logo in new tab"
-                                                    uncheckedValue="_self"
-                                                    value="_blank"/>
+												jcr:primaryType="nt:unstructured"
+												sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+												fieldDescription="If checked the link will be opened in a new browser tab."
+												name="./logoTarget"
+												text="Open header logo in new tab"
+												uncheckedValue="_self"
+												value="_blank"/>
                                             <ctatitle
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -71,13 +71,21 @@
                                                 name="./ctaLink"
                                                 rootPath="/content/efe"/>
                                             <ctatarget
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                    fieldDescription="If checked the link will be opened in a new browser tab."
-                                                    name="./ctaTarget"
-                                                    text="Open CTA in new tab"
-                                                    uncheckedValue="_self"
-                                                    value="_blank"/>
+												jcr:primaryType="nt:unstructured"
+												sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+												fieldDescription="If checked the link will be opened in a new browser tab."
+												name="./ctaTarget"
+												text="Open CTA in new tab"
+												uncheckedValue="_self"
+												value="_blank"/>
+											<disablesearch
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                fieldDescription="Disable Search"
+                                                name="./disableSearch"
+                                                text="Disable Search"
+                                                uncheckedValue="false"
+                                                value="true"/>
                                             <searchtitle
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -90,6 +98,14 @@
                                                 fieldDescription="The label to display on the quick search input box."
                                                 fieldLabel="Quick Search Inputbox  Label"
                                                 name="./searchLabel"/>
+											<disablelogin
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                fieldDescription="Disable Login"
+                                                name="./disableLogin"
+                                                text="Disable Login"
+                                                uncheckedValue="false"
+                                                value="true"/>
                                             <logintitle
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -104,13 +120,13 @@
                                                 name="./loginLink"
                                                 rootPath="/content/efe"/>
                                             <logintarget
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                    fieldDescription="If checked the link will be opened in a new browser tab."
-                                                    name="./loginTarget"
-                                                    text="Open Login in new tab"
-                                                    uncheckedValue="_self"
-                                                    value="_blank"/>
+												jcr:primaryType="nt:unstructured"
+												sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+												fieldDescription="If checked the link will be opened in a new browser tab."
+												name="./loginTarget"
+												text="Open Login in new tab"
+												uncheckedValue="_self"
+												value="_blank"/>
                                             <contacttitle
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -124,11 +140,11 @@
                                                 fieldLabel="Contact Number"
                                                 name="./contactNumber"/>
                                             <id
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                    fieldDescription="HTML ID attribute to apply to the component."
-                                                    fieldLabel="ID"
-                                                    name="./id"/>
+												jcr:primaryType="nt:unstructured"
+												sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+												fieldDescription="HTML ID attribute to apply to the component."
+												fieldLabel="ID"
+												name="./id"/>
                                         </items>
                                     </column>
                                 </items>
@@ -151,22 +167,22 @@
                                             sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
                                             <text
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
-                                                    fieldLabel="Text for Header Naviagtion"
-                                                    fieldDescription="Add Text for Header Navigation"
-                                                    composite="{Boolean}true">
+												jcr:primaryType="nt:unstructured"
+												sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+												fieldLabel="Text for Header Naviagtion"
+												fieldDescription="Add Text for Header Navigation"
+												composite="{Boolean}true">
                                                 <field
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/container"
                                                         name="./headerList">
                                                     <items jcr:primaryType="nt:unstructured">
                                                         <label
-                                                                jcr:primaryType="nt:unstructured"
-                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                fieldDescription="Add label here"
-                                                                fieldLabel="Label"
-                                                                name="./label"/>
+															jcr:primaryType="nt:unstructured"
+															sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+															fieldDescription="Add label here"
+															fieldLabel="Label"
+															name="./label"/>
                                                     </items>
                                                 </field>
                                             </text>
