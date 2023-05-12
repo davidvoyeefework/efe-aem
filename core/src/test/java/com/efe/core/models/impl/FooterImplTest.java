@@ -3,7 +3,6 @@ package com.efe.core.models.impl;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.lenient;
-import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -51,6 +50,7 @@ class FooterImplTest {
 	@Mock
 	Externalizer externalizer;
 	
+	/** The efe service. */
 	@Mock
 	EfeService efeService;
 
