@@ -11,6 +11,7 @@ import javax.inject.Inject;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.models.annotations.Default;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
@@ -26,6 +27,7 @@ import com.efe.core.models.Footer;
 import com.efe.core.models.multifield.Link;
 import com.efe.core.models.multifield.SocialLink;
 import com.efe.core.models.multifield.VerticalList;
+import com.efe.core.services.EfeService;
 import com.efe.core.services.SeoService;
 import com.efe.core.utils.EFEUtil;
 import com.efe.core.utils.LinkUtil;
@@ -103,6 +105,19 @@ public class FooterImpl implements Footer {
 	/** The vertical list. */
 	@ChildResource
 	private List<VerticalList> verticalList;
+	
+	/** The enable onetrust. */
+	@ValueMapValue
+	@Default(booleanValues = false)
+	private boolean enableOnetrust;
+	
+	/** The onetrust link label. */
+	@ValueMapValue
+	private String onetrustLinkLabel;
+	
+	/** The efe service. */
+	@OSGiService
+	private EfeService efeService;
 	
 	/** The json ld. */
 	private String jsonLd;
@@ -221,6 +236,36 @@ public class FooterImpl implements Footer {
 			return new ArrayList<>(verticalList);
 		}
 		return Collections.emptyList();
+	}
+	
+	/**
+	 * Checks if is enable one trust.
+	 *
+	 * @return true, if is enable one trust
+	 */
+	@Override
+	public boolean isEnableOneTrust() {
+		return enableOnetrust;
+	}
+	
+	/**
+	 * Gets the one trust script.
+	 *
+	 * @return the one trust script
+	 */
+	@Override
+	public String getOneTrustScript() {
+		return efeService.getOneTrustScript();
+	}
+	
+	/**
+	 * Gets the one trust script id.
+	 *
+	 * @return the one trust script id
+	 */
+	@Override
+	public String getOneTrustScriptId() {
+		return efeService.getOneTrustScriptId();
 	}
 
 }
