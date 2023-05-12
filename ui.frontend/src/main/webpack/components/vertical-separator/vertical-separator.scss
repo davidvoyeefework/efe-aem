@@ -45,6 +45,22 @@
                 grid-area: footnote;
             }
         }
+        .cmp-text--body-03 p {
+            font-weight: 400;
+            sup {
+                top: -5px;
+                font-size: rem(10);
+            }
+        }
+        >div:nth-child(1) {
+            padding-bottom: 2.25px;
+        }
+        >div:nth-child(2) {
+            @include media("<=tablet-lg") {
+                padding-bottom: 8px;
+            }
+            padding-bottom: 9.81px;
+        }
     }
     @include media("<=tablet-lg") {
         flex-direction: column;
