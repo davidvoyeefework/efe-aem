@@ -1,0 +1,36 @@
+{
+	"jcr:primaryType": "cq:Page",
+	"jcr:content": {
+		"jcr:primaryType": "cq:PageContent",
+		"jcr:title": "Modal Promotion",
+		"cq:template": "/conf/efe/settings/wcm/templates/xf-web-variation",
+		"cq:xfMasterVariation": true,
+		"cq:xfVariantType": "web",
+		"cq:tags": [],
+		"sling:resourceType": "efe/components/xfpage",
+		"root": {
+			"jcr:primaryType": "nt:unstructured",
+			"layout": "responsiveGrid",
+			"sling:resourceType": "efe/components/container",
+			"container": {
+				"jcr:primaryType": "nt:unstructured",
+				"sling:resourceType": "hbff/components/container",
+				"modalpromotion": {
+					"jcr:primaryType": "nt:unstructured",
+					"sling:resourceType": "efe/components/modalpromotion",
+					"pretitle": "pretitle test",
+					"title": "title test",
+					"description": "description test",
+					"buttonText": "get started",
+					"buttonUrl": "https://abc.com",
+					"promotionImage": "/content/dam/test.jpg",
+					"promotionImageAltText": "alt1",
+					"closeButtonColor": "white",
+					"closeButtonAltText": "alt2",
+					"startDate": "2023-05-11T12:56:00Z",
+					"endDate": "2023-05-11T12:58:00Z"
+				}
+			}
+		}
+	}
+}
