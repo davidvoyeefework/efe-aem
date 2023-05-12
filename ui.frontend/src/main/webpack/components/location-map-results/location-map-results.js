@@ -191,6 +191,7 @@ export default class LocationMapResults {
         const nationalTitle = this.el.dataset?.nationalTitle;
         const nationalDetails = this.el.dataset?.nationalDetails;
         const nationalCallback = this.el.dataset?.nationalCallback;
+        const nationalCallbackLabel = this.el.dataset?.nationalCallbackLabel;
         const nationalLink = this.el.dataset?.nationalLink;
 
         const resultsContainer = this.el.querySelector(
@@ -207,7 +208,7 @@ export default class LocationMapResults {
         const telLink = document.createElement("a");
         telLink.classList.add('cmp-tel-link');
         telLink.href = "tel:" + nationalCallback;
-        telLink.innerText = nationalCallback;
+        telLink.innerText = nationalCallbackLabel;
         item.appendChild(telLink);
 
         const link = document.createElement("a");
