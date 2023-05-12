@@ -1,6 +1,9 @@
 package com.efe.core.models.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.lenient;
+import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,6 +16,7 @@ import com.efe.core.models.Footer;
 import com.efe.core.models.multifield.Link;
 import com.efe.core.models.multifield.SocialLink;
 import com.efe.core.models.multifield.VerticalList;
+import com.efe.core.services.EfeService;
 import com.efe.core.services.SeoService;
 
 import io.wcm.testing.mock.aem.junit5.AemContext;
@@ -46,6 +50,9 @@ class FooterImplTest {
 	/** The externalizer. */
 	@Mock
 	Externalizer externalizer;
+	
+	@Mock
+	EfeService efeService;
 
 	/**
 	 * Sets the up.
@@ -58,7 +65,11 @@ class FooterImplTest {
 
 		aemContext.registerService(Externalizer.class, externalizer);
 		aemContext.registerService(SeoService.class, seoService);
+		aemContext.registerService(EfeService.class, efeService);
 
+		lenient().when(efeService.getOneTrustScript()).thenReturn("sdk-url");
+		lenient().when(efeService.getOneTrustScriptId()).thenReturn("sdk-id");
+		
 		aemContext.currentResource(RESOURCE);
 		model = aemContext.request().adaptTo(modelClass);
 	}
@@ -94,6 +105,11 @@ class FooterImplTest {
 		assertEquals("/content/efe/us/en/corp/home.html", horizontalList1.getLink());
 		Link horizontalList2 = model.getHorizontalList().get(2);
 		assertEquals("/content/efe/us/en/corp/home.html", horizontalList2.getLink());
+		assertTrue(model.isEnableOneTrust());
+		assertEquals("onetrustLinkLabel", model.getOneTrustLabel());
+		assertEquals("sdk-url", model.getOneTrustScript());
+		assertEquals("sdk-id", model.getOneTrustScriptId());
+		
 	}
 
 	/**

@@ -1,0 +1,12 @@
+<template data-sly-template.onetrust="${@ model}">
+    <li class="cmp-list__item">
+        <a class="cmp-list__item-link ot-sdk-show-settings" href="#">
+            <span class="cmp-list__item-title">${model.oneTrustLabel}</span>
+        </a>
+    </li>
+    <script src=${model.oneTrustScript} type="text/javascript" charset="UTF-8"
+        data-domain-script="${model.oneTrustScriptId}"></script>
+    <script type="text/javascript">
+        function OptanonWrapper() { }
+    </script>
+</template>

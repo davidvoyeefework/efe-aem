@@ -75,10 +75,38 @@ public interface Footer {
 	List<VerticalList> getVerticalList();
 	
     /**
-     * Gets the jsonLd
-     * 
+     * Gets the jsonLd.
+     *
      * @return jsonLD
      */
 	String getJsonLd();
+	
+	/**
+	 * Gets the one trust label.
+	 *
+	 * @return the one trust label
+	 */
+	String getOneTrustLabel();
+	
+	/**
+	 * Checks if is enable one trust.
+	 *
+	 * @return true, if is enable one trust
+	 */
+	boolean isEnableOneTrust();
+	
+	/**
+	 * Gets the one trust script.
+	 *
+	 * @return the one trust script
+	 */
+	String getOneTrustScript();
+	
+	/**
+	 * Gets the one trust script id.
+	 *
+	 * @return the one trust script id
+	 */
+	String getOneTrustScriptId();
 
 }

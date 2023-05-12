@@ -41,16 +41,31 @@ public interface EfeService {
 	String getPlannerBioPageUrl();
 	
 	/**
-	 * Method to get the Google Public Key
+	 * Method to get the Google Public Key.
+	 *
 	 * @return the GooglePublicKey
 	 */
 	String getGooglePublicKey();
 	
 	/**
-	 * Method to get Google direction prefix URL
-	 * 
+	 * Method to get Google direction prefix URL.
+	 *
 	 * @return the GoogleDirectionPrefixUrl
 	 */
 	String getGoogleDirectionPrefixUrl();
+	
+	/**
+	 * Gets the one trust script.
+	 *
+	 * @return the one trust script
+	 */
+	String getOneTrustScript();
+	
+	/**
+	 * Gets the one trust script id.
+	 *
+	 * @return the one trust script id
+	 */
+	String getOneTrustScriptId();
 
 }
