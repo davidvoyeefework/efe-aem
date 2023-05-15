@@ -32,7 +32,6 @@ public class ArticleDetailUtil {
      * @return list of articleDetails
      */
     public static ArticleDetailsBean getArticleDetails(Resource articleDetailsCFResource, ResourceResolver resolver) {
-        LOGGER.error("ENtered method");
         ArticleDetailsBean articleDetails = new ArticleDetailsBean();
         SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
         SimpleDateFormat outputFormat = new SimpleDateFormat("MMMM dd, yyyy");
