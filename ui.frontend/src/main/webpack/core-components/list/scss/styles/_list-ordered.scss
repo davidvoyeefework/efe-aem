@@ -1,4 +1,4 @@
-.cmp-list--ol {
+.cmp-text--ol {
     counter-reset: di-count;
     display: list-item;
     list-style-type: auto;
@@ -39,7 +39,7 @@
         }
     }
 
-    &.cmp-list--large {
+    &.cmp-text--large {
         li.cmp-list__item {
             padding-left: rem(48);
             padding-bottom: rem(32);

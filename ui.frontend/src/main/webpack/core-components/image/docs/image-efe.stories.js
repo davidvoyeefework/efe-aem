@@ -5,7 +5,7 @@ export default {
   title: "Core Components/Image",
   argTypes: {
     variant: {
-      options: [ "image-rte"],
+      options: [ "image-rte", "profile-thumb", "planner-hero"],
       control: { type: "radio" },
     },
     borderradius: {
@@ -16,8 +16,8 @@ export default {
 };
 
 const TemplateRTEImage = ({ label, ...args }) => ImageRTE({ ...args });
-export const RTEImage = TemplateRTEImage.bind();
-RTEImage.args = {
+export const EFEImage = TemplateRTEImage.bind();
+EFEImage.args = {
   variant: "image-rte",
   borderradius: "round"
 }
