@@ -14,7 +14,6 @@
  * limitations under the License.
  ******************************************************************************/
 (function() {
-    console.log("apps");
     "use strict";
     var NS = "cmp";
     var IS = "efeText";
