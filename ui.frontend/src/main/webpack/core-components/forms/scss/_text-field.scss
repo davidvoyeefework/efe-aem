@@ -11,6 +11,8 @@
         padding: 0 rem(20);
         min-height: rem(50);
         border: 1.5px solid $efe-gray-mid;
+        margin-bottom: rem(12);
+        margin-top: rem(16);
         @include flexbox(
             $align-items: center,
             $justify-content: center
@@ -37,7 +39,6 @@
             border-style: solid;
         }
     }
-
     &::-webkit-input-placeholder {
         color: $efe-gray-blue;
     }
@@ -67,6 +68,9 @@
             background-color: $efe-red-15-percent;
             transition: $std-transition;
         }
+        .cmp-form-text__error {
+            color: $efe-red-primary;
+        }
     }
 
     &.cmp-form-text--disabled {
@@ -79,6 +83,12 @@
     }
 
     &:last-of-type {
-        margin-bottom: 44px;
+        // margin-bottom: 44px;
+    }
+}
+.efe-form {
+    form {
+        max-width: 375px;
+        margin: 0 auto;
     }
 }
