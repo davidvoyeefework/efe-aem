@@ -27,6 +27,18 @@ public class Education {
 		return degree;
 	}
 
+	public void setDegree(String degree) {
+		this.degree = degree;
+	}
+
+	public void setMajor(String major) {
+		this.major = major;
+	}
+
+	public void setUniversity(String university) {
+		this.university = university;
+	}
+
 	/**
 	 * Returns the Major.
 	 *

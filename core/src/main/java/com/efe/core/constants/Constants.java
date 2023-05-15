@@ -40,4 +40,7 @@ public class Constants {
 	/** The Constant CONTENT_TYPE. */
 	public static final String CONTENT_TYPE = "content-type";
 
+	/** The Constant CONTENT_FRAGMENT_MODEL_DATA. */
+	public static final String CONTENT_FRAGMENT_MODEL_DATA = "/jcr:content/data/master";
+
 }

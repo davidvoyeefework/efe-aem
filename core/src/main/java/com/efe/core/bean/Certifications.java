@@ -52,4 +52,19 @@ public class Certifications {
 		return name;
 	}
 
+	public void setAbbreviation(String abbreviation) {
+		this.abbreviation = abbreviation;
+	}
+
+	public void setLegalComplianceDisclosure(String legalComplianceDisclosure) {
+		this.legalComplianceDisclosure = legalComplianceDisclosure;
+	}
+
+	public void setMarketingDisclosure(String marketingDisclosure) {
+		this.marketingDisclosure = marketingDisclosure;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 }

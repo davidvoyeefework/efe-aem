@@ -1,0 +1,57 @@
+{
+  "jcr:primaryType": "dam:Asset",
+  "jcr:mixinTypes": [
+    "mix:referenceable",
+    "mix:versionable"
+  ],
+  "jcr:createdBy": "admin",
+  "jcr:versionHistory": "635df878-61a2-4a8a-ad01-59a88151823a",
+  "jcr:predecessors": ["8c6d00d4-69ff-4a99-9aff-14f5840db292"],
+  "jcr:created": "Sun May 07 2023 22:13:02 GMT+0530",
+  "jcr:baseVersion": "8c6d00d4-69ff-4a99-9aff-14f5840db292",
+  "jcr:isCheckedOut": true,
+  "jcr:uuid": "109c3d63-9b03-4689-948c-7e59be1ea38e",
+  "jcr:content" : {
+    "jcr:primaryType": "dam:AssetContent",
+    "jcr:title": "Plan1",
+    "contentFragment": true,
+    "cq:name": "plan1",
+    "cq:parentPath": "/content/dam/efe/cf",
+    "data" : {
+      "jcr:primaryType": "nt:unstructured",
+      "_strucVersion": 1,
+      "cq:model": "/conf/efe/settings/dam/cfm/models/planners",
+      "master" :
+      {
+        "jcr:primaryType": "nt:unstructured",
+        "jcr:mixinTypes": [
+          "dam:cfVariationNode",
+          "cq:Taggable"
+        ],
+        "anyBusinessRelatedActivitiesCommissions": false,
+        "advancedPlanning": false,
+        "smartVestorProIndicator": false,
+        "estatePlanning": false,
+        "middleName": "Aaron",
+        "taxPlanner": false,
+        "education": ["/content/dam/efe/test-education-cf"],
+        "investmentManagement": false,
+        "hasDisciplinaryInformation": false,
+        "bio": "As a financial planner since 2006, I enjoy serving families and business owners in the areas of investments, financial planning, estate planning, income distribution strategies, insurance planning and multi-generational wealth accumulation and transfer. Outside of work I enjoy spending time with my family, the outdoors and reading.",
+        "title": "Director, Financial Planning",
+        "firstName": "Johnathan",
+        "includeInApipayload": false,
+        "anyAdditionalCompensation": false,
+        "insurancePlanning": false,
+        "includeInAdv2b": false,
+        "certifications": ["/content/dam/efe/test-certification"]
+      }
+    },
+    "metadata" : {
+      "jcr:primaryType": "nt:unstructured",
+      "jcr:mixinTypes": ["cq:Taggable"]
+    }
+
+  }
+}
+

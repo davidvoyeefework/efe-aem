@@ -1,0 +1,44 @@
+{
+  "jcr:primaryType": "dam:Asset",
+  "jcr:mixinTypes": [
+    "mix:referenceable",
+    "mix:versionable"
+  ],
+  "jcr:createdBy": "admin",
+  "jcr:versionHistory": "9ff9a8e6-55b0-4ad2-81fe-e799fa5c4a30",
+  "jcr:predecessors": ["f6c53b37-532a-4ea8-9254-a8051f4d4cb2"],
+  "jcr:created": "Thu May 11 2023 22:26:52 GMT+0530",
+  "jcr:baseVersion": "f6c53b37-532a-4ea8-9254-a8051f4d4cb2",
+  "jcr:isCheckedOut": true,
+  "jcr:uuid": "30c9d687-c368-4a95-9f72-518ac7035c0e",
+  "jcr:content" : {
+    "jcr:primaryType": "dam:AssetContent",
+    "jcr:title": "test-certification",
+    "jcr:lastModifiedBy": "admin",
+    "contentFragment": true,
+    "cq:name": "test-certification",
+    "cq:parentPath": "/content/dam/efe",
+    "data" : {
+      "jcr:primaryType": "nt:unstructured",
+      "_strucVersion": 1,
+      "cq:model": "/conf/efe/settings/dam/cfm/models/certification",
+      "master": {
+        "jcr:primaryType": "nt:unstructured",
+        "jcr:mixinTypes": [
+          "dam:cfVariationNode",
+          "cq:Taggable"
+        ],
+        "abbreviation": "AEMSDP-",
+        "marketingDisclosure": "Marketing Disclosure",
+        "name": "author",
+        "legalComplianceDisclosure": "Legal Compliance Disclosure"
+      }
+    },
+    "metadata" : {
+      "jcr:primaryType": "nt:unstructured",
+      "jcr:mixinTypes": ["cq:Taggable"]
+    }
+  }
+
+}
+

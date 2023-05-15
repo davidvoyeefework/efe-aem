@@ -23,6 +23,210 @@ public class PlannerResponse {
 	/* firstName */
 	private String firstName;
 
+	public void setIncludeInADV2B(boolean includeInADV2B) {
+		this.includeInADV2B = includeInADV2B;
+	}
+
+	public void setIncludeInApiPayload(boolean includeInApiPayload) {
+		this.includeInApiPayload = includeInApiPayload;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public void setFirstNameAlias(String firstNameAlias) {
+		this.firstNameAlias = firstNameAlias;
+	}
+
+	public void setMiddleName(String middleName) {
+		this.middleName = middleName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setSuffix(String suffix) {
+		this.suffix = suffix;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public void setBirthYear(int birthYear) {
+		this.birthYear = birthYear;
+	}
+
+	public void setYearJoined(int yearJoined) {
+		this.yearJoined = yearJoined;
+	}
+
+	public void setDirectLinePhone(String directLinePhone) {
+		this.directLinePhone = directLinePhone;
+	}
+
+	public void setAdvisorCRD(int advisorCRD) {
+		this.advisorCRD = advisorCRD;
+	}
+
+	public void setDesktopImageUrl(String desktopImageUrl) {
+		this.desktopImageUrl = desktopImageUrl;
+	}
+
+	public void setMobileImageUrl(String mobileImageUrl) {
+		this.mobileImageUrl = mobileImageUrl;
+	}
+
+	public void setCircleImageUrl(String circleImageUrl) {
+		this.circleImageUrl = circleImageUrl;
+	}
+
+	public void setPrimaryOffice(PrimaryOffice primaryOffice) {
+		this.primaryOffice = primaryOffice;
+	}
+
+	public void setOfficesLocations(List<OfficesLocations> officesLocations) {
+		this.officesLocations = officesLocations;
+	}
+
+	public void setEducationIndicator(String educationIndicator) {
+		this.educationIndicator = educationIndicator;
+	}
+
+	public void setEducation(List<Education> education) {
+		this.education = education;
+	}
+
+	public void setTaxPlanner(boolean taxPlanner) {
+		this.taxPlanner = taxPlanner;
+	}
+
+	public void setAdvancedPlanning(boolean advancedPlanning) {
+		this.advancedPlanning = advancedPlanning;
+	}
+
+	public void setEstatePlanning(boolean estatePlanning) {
+		this.estatePlanning = estatePlanning;
+	}
+
+	public void setInsurancePlanning(boolean insurancePlanning) {
+		this.insurancePlanning = insurancePlanning;
+	}
+
+	public void setInvestmentManagement(boolean investmentManagement) {
+		this.investmentManagement = investmentManagement;
+	}
+
+	public void setEmploymentHistory(List<EmploymentHistory> employmentHistory) {
+		this.employmentHistory = employmentHistory;
+	}
+
+	public void setCertifications(List<Certifications> certifications) {
+		this.certifications = certifications;
+	}
+
+	public void setBio(String bio) {
+		this.bio = bio;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public void setTeamDistributionEmailAddress(String teamDistributionEmailAddress) {
+		this.teamDistributionEmailAddress = teamDistributionEmailAddress;
+	}
+
+	public void setYearStartedIndustry(int yearStartedIndustry) {
+		this.yearStartedIndustry = yearStartedIndustry;
+	}
+
+	public void setSmartVestorProIndicator(boolean smartVestorProIndicator) {
+		this.smartVestorProIndicator = smartVestorProIndicator;
+	}
+
+	public void setInterestsHobbies(List<String> interestsHobbies) {
+		this.interestsHobbies = interestsHobbies;
+	}
+
+	public void setFunFacts(String funFacts) {
+		this.funFacts = funFacts;
+	}
+
+	public void setHonorAward(List<HonorAward> honorAward) {
+		this.honorAward = honorAward;
+	}
+
+	public void setFavoriteSport(String favoriteSport) {
+		this.favoriteSport = favoriteSport;
+	}
+
+	public void setFavoriteSportsTeam(String favoriteSportsTeam) {
+		this.favoriteSportsTeam = favoriteSportsTeam;
+	}
+
+	public void setFavoriteLifeHack(String favoriteLifeHack) {
+		this.favoriteLifeHack = favoriteLifeHack;
+	}
+
+	public void setLinkedInUrl(String linkedInUrl) {
+		this.linkedInUrl = linkedInUrl;
+	}
+
+	public void setMostInspirationalMoment(String mostInspirationalMoment) {
+		this.mostInspirationalMoment = mostInspirationalMoment;
+	}
+
+	public void setIndustryExams(List<IndustryExams> industryExams) {
+		this.industryExams = industryExams;
+	}
+
+	public void setHasDisciplinaryInformation(boolean hasDisciplinaryInformation) {
+		this.hasDisciplinaryInformation = hasDisciplinaryInformation;
+	}
+
+	public void setDisciplinaryInformationText(String disciplinaryInformationText) {
+		this.disciplinaryInformationText = disciplinaryInformationText;
+	}
+
+	public void setAnyBusinessRelatedActivitiesCommissions(boolean anyBusinessRelatedActivitiesCommissions) {
+		this.anyBusinessRelatedActivitiesCommissions = anyBusinessRelatedActivitiesCommissions;
+	}
+
+	public void setBusinessRelatedActivitiesCommissionsText(String businessRelatedActivitiesCommissionsText) {
+		this.businessRelatedActivitiesCommissionsText = businessRelatedActivitiesCommissionsText;
+	}
+
+	public void setAnyAdditionalCompensation(boolean anyAdditionalCompensation) {
+		this.anyAdditionalCompensation = anyAdditionalCompensation;
+	}
+
+	public void setAdditionalCompensationText(String additionalCompensationText) {
+		this.additionalCompensationText = additionalCompensationText;
+	}
+
+	public void setEfeUrl(String efeUrl) {
+		this.efeUrl = efeUrl;
+	}
+
+	public void setAdv2bUrl(String adv2bUrl) {
+		this.adv2bUrl = adv2bUrl;
+	}
+
+	public void setHtmlUrl(String htmlUrl) {
+		this.htmlUrl = htmlUrl;
+	}
+
+	public void setLastUpdated(String lastUpdated) {
+		this.lastUpdated = lastUpdated;
+	}
+
 	/* firstNameAlias */
 	private String firstNameAlias;
 

@@ -1,0 +1,43 @@
+  {
+    "jcr:primaryType": "dam:Asset",
+    "jcr:mixinTypes": [
+      "mix:referenceable",
+      "mix:versionable"
+    ],
+    "jcr:createdBy": "admin",
+    "jcr:versionHistory": "c9d666bd-150e-4c0e-8d8f-77c5e5bf01ce",
+    "jcr:predecessors": ["2fa26beb-15f1-4a45-a35e-39aeed65ec7e"],
+    "jcr:created": "Sun May 07 2023 22:11:51 GMT+0530",
+    "jcr:baseVersion": "2fa26beb-15f1-4a45-a35e-39aeed65ec7e",
+    "jcr:isCheckedOut": true,
+    "jcr:uuid": "8b55145e-e5b6-4d09-9403-af192aada7a0",
+    "jcr:content":{
+        "jcr:primaryType": "dam:AssetContent",
+        "jcr:title": "author1",
+        "jcr:lastModifiedBy": "admin",
+        "contentFragment": true,
+        "cq:name": "author1",
+        "cq:parentPath": "/content/dam/efe",
+        "data":{
+            "jcr:primaryType": "nt:unstructured",
+            "_strucVersion": 1,
+            "cq:model": "/conf/efe/settings/dam/cfm/models/authors",
+            "master" : {
+              "jcr:primaryType": "nt:unstructured",
+              "jcr:mixinTypes": [
+                "dam:cfVariationNode",
+                "cq:Taggable"
+              ],
+              "biography@ContentType": "text/html",
+              "name": "Author Test",
+              "biography": "<p style=\"text-align: center;\">Testing the Content Fragment for Author CF Model.</p>\n",
+              "photo": "/content/dam/efe/image5.png",
+              "title": "Content Writter"
+            }
+        },
+        "metadata": {
+          "jcr:primaryType": "nt:unstructured",
+          "jcr:mixinTypes": ["cq:Taggable"]
+          }
+    }
+  }
