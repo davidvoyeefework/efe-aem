@@ -9,8 +9,6 @@ import com.efe.core.constants.*;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.*;
 
@@ -18,9 +16,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * ArticleDetailUtil
+ */
 public class ArticleDetailUtil {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ArticleDetailUtil.class);
 
     private ArticleDetailUtil() {
     }
@@ -31,14 +31,13 @@ public class ArticleDetailUtil {
      * @param resolver
      * @return list of articleDetails
      */
-    public static ArticleDetailsBean getArticleDetails(Resource articleDetailsCFResource, ResourceResolver resolver) {
-        ArticleDetailsBean articleDetails = new ArticleDetailsBean();
+    public static Articles getArticleDetails(Resource articleDetailsCFResource, ResourceResolver resolver) {
+        Articles articleDetails = new Articles();
         SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
         SimpleDateFormat outputFormat = new SimpleDateFormat("MMMM dd, yyyy");
 
 
         Optional<ContentFragment> articleDetailsCF = Optional.ofNullable(articleDetailsCFResource.adaptTo(ContentFragment.class));
-System.out.println(articleDetailsCF);
         articleDetails.setTitle(articleDetailsCF.map(cf -> cf.getElement(ArticleDetailsConstants.TITLE))
                 .map(ContentElement::getContent).orElse(StringUtils.EMPTY));
 
@@ -80,8 +79,6 @@ System.out.println(articleDetailsCF);
         String regularAuthorsCF = articleDetailsCF.map(cf -> cf.getElement(ArticleDetailsConstants.REGULAR_AUTHOR))
                 .map(ContentElement::getContent).orElse(StringUtils.EMPTY);
         articleDetails.setRegularAuthor(regularAuthorsCF.split("\n"));
-        System.out.println("\t regular" + regularAuthorsCF);
-
         String tagsCF = articleDetailsCF.map(cf -> cf.getElement(ArticleDetailsConstants.TAGS))
                 .map(ContentElement::getContent).orElse(StringUtils.EMPTY);
         String[] authorTags = tagsCF.split("\n");
@@ -113,7 +110,7 @@ System.out.println(articleDetailsCF);
      * @param resourceResolver
      * @return articleAuthors
      */
-    public static List<ArticleAuthor> setArticleAuthorDetails(ArticleDetailsBean articleDetails, ResourceResolver resourceResolver) {
+    public static List<ArticleAuthor> setArticleAuthorDetails(Articles articleDetails, ResourceResolver resourceResolver) {
         String[] authors = articleDetails.getRegularAuthor();
 
         List<ArticleAuthor> articleAuthors = new ArrayList<>();
@@ -121,7 +118,6 @@ System.out.println(articleDetailsCF);
             for (String authorFragmentPath : authors) {
             	 
                 Resource articleAuthorResource = resourceResolver.getResource(authorFragmentPath);
-                System.out.println("\t abbabsbba" + authorFragmentPath);
                 if (null != articleAuthorResource) {
                     ArticleAuthor articleAuthor = new ArticleAuthor();
                     Optional<ContentFragment> authorDetailsCF = Optional.ofNullable(articleAuthorResource.adaptTo(ContentFragment.class));
@@ -151,14 +147,13 @@ System.out.println(articleDetailsCF);
      * @param resourceResolver
      * @return plannerResponseList
      */
-    public static List<PlannerResponse> setArticlePlannerDetails(ArticleDetailsBean articleDetails, ResourceResolver resourceResolver) {
+    public static List<PlannerResponse> setArticlePlannerDetails(Articles articleDetails, ResourceResolver resourceResolver) {
         String[] planners = articleDetails.getPlanner();
 
         List<PlannerResponse> plannerResponseList = new ArrayList<>();
         if (planners != null) {
             for (String plannersFragmentPath : planners) {
                 PlannerResponse plannerResponse = new PlannerResponse();
-            	System.out.println(plannersFragmentPath);
                 Resource articlePlannerResource = resourceResolver.getResource(plannersFragmentPath);
                 if (null != articlePlannerResource) {
                     Optional<ContentFragment> plannerDetailsCF = Optional.ofNullable(articlePlannerResource.adaptTo(ContentFragment.class));
@@ -178,12 +173,12 @@ System.out.println(articleDetailsCF);
                     String certifications = plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.CERTIFICATIONS))
                             .map(ContentElement::getContent).orElse(StringUtils.EMPTY);
                     String[] certificationsList = certifications.split("\n");
-                    plannerResponse.setCertifications(setPlannerCertificationDetails(plannerResponse, certificationsList, resourceResolver));
+                    plannerResponse.setCertifications(setPlannerCertificationDetails(certificationsList, resourceResolver));
 
                     String educations = plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.EDUCATION))
                             .map(ContentElement::getContent).orElse(StringUtils.EMPTY);
                     String[] educationsList = educations.split("\n");
-                    plannerResponse.setEducation(setPlannerEducationDetails(plannerResponse, educationsList, resourceResolver));
+                    plannerResponse.setEducation(setPlannerEducationDetails(educationsList, resourceResolver));
 
                     plannerResponseList.add(plannerResponse);
                 }
@@ -194,25 +189,23 @@ System.out.println(articleDetailsCF);
 
     /**
      *
-     * @param plannerResponse
      * @param certifications
      * @param resourceResolver
      * @return certificationsList
      */
-    public static List<Certifications> setPlannerCertificationDetails(PlannerResponse plannerResponse, String[] certifications, ResourceResolver resourceResolver) {
+    public static List<Certifications> setPlannerCertificationDetails(String[] certifications, ResourceResolver resourceResolver) {
         List<Certifications> certificationsList = new ArrayList<>();
         if (null != certifications) {
             for (String certification : certifications) {
-            	System.out.println(certification);
                 Resource certificationResource = resourceResolver.getResource(certification);
                 if (null != certificationResource) {
                     Certifications certificationsBean = new Certifications();
                     Optional<ContentFragment> plannerDetailsCF = Optional.ofNullable(certificationResource.adaptTo(ContentFragment.class));
 
-                    certificationsBean.setName(plannerDetailsCF.map(cf -> cf.getElement(CertificationConstants.NAME)).map(ContentElement::getContent).orElse(StringUtils.EMPTY));
-                    certificationsBean.setAbbreviation(plannerDetailsCF.map(cf -> cf.getElement(CertificationConstants.ABBREVIATION)).map(ContentElement::getContent).orElse(StringUtils.EMPTY));
-                    certificationsBean.setMarketingDisclosure(plannerDetailsCF.map(cf -> cf.getElement(CertificationConstants.MARKETING_DISCLOSURE)).map(ContentElement::getContent).orElse(StringUtils.EMPTY));
-                    certificationsBean.setLegalComplianceDisclosure(plannerDetailsCF.map(cf -> cf.getElement(CertificationConstants.LEGAL_COMPLIANCE_DISCLOSURE)).map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+                    certificationsBean.setName(plannerDetailsCF.map(cf -> cf.getElement(ArticleDetailsConstants.NAME)).map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+                    certificationsBean.setAbbreviation(plannerDetailsCF.map(cf -> cf.getElement(ArticleDetailsConstants.ABBREVIATION)).map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+                    certificationsBean.setMarketingDisclosure(plannerDetailsCF.map(cf -> cf.getElement(ArticleDetailsConstants.MARKETING_DISCLOSURE)).map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+                    certificationsBean.setLegalComplianceDisclosure(plannerDetailsCF.map(cf -> cf.getElement(ArticleDetailsConstants.LEGAL_COMPLIANCE_DISCLOSURE)).map(ContentElement::getContent).orElse(StringUtils.EMPTY));
                     certificationsList.add(certificationsBean);
                 }
             }
@@ -222,24 +215,22 @@ System.out.println(articleDetailsCF);
 
     /**
      *
-     * @param plannerResponse
      * @param education
      * @param resourceResolver
      * @return educationList
      */
-        public static List<Education> setPlannerEducationDetails (PlannerResponse plannerResponse, String[] education, ResourceResolver resourceResolver) {
+        public static List<Education> setPlannerEducationDetails (String[] education, ResourceResolver resourceResolver) {
         List<Education> educationList = new ArrayList<>();
         if(null != education) {
             for (String educations : education){
-            	System.out.println(educations);
         Resource educationResource=resourceResolver.getResource(educations);
         if(null!=educationResource){
             Education educationBean=new Education();
         Optional<ContentFragment> plannerDetailsCF=Optional.ofNullable(educationResource.adaptTo(ContentFragment.class));
 
-            educationBean.setMajor(plannerDetailsCF.map(cf->cf.getElement(EducationConstants.MAJOR)).map(ContentElement::getContent).orElse(StringUtils.EMPTY));
-            educationBean.setUniversity(plannerDetailsCF.map(cf->cf.getElement(EducationConstants.UNIVERSITY)).map(ContentElement::getContent).orElse(StringUtils.EMPTY));
-            educationBean.setDegree(plannerDetailsCF.map(cf->cf.getElement(EducationConstants.DEGREE)).map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+            educationBean.setMajor(plannerDetailsCF.map(cf->cf.getElement(ArticleDetailsConstants.MAJOR)).map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+            educationBean.setUniversity(plannerDetailsCF.map(cf->cf.getElement(ArticleDetailsConstants.UNIVERSITY)).map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+            educationBean.setDegree(plannerDetailsCF.map(cf->cf.getElement(ArticleDetailsConstants.DEGREE)).map(ContentElement::getContent).orElse(StringUtils.EMPTY));
             educationList.add(educationBean);
         }
         }

@@ -3,10 +3,9 @@ package com.efe.core.bean;
 import java.util.List;
 
 /**
- * The ArticleDetails bean class.
+ * The Articles bean class.
  */
-
-public class ArticleDetailsBean {
+public class Articles {
 
     /** The articleSummary. */
     private String articleSummary;

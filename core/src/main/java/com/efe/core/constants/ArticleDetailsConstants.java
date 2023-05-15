@@ -1,8 +1,12 @@
 package com.efe.core.constants;
 
-import javax.inject.Inject;
 
 public class ArticleDetailsConstants {
+	
+	
+	private ArticleDetailsConstants() {
+		
+	}
 
     /**
      * ARTICLE SUMMARY
@@ -73,5 +77,38 @@ public class ArticleDetailsConstants {
      * BIOGRAPHY
      */
     public static final String BIOGRAPHY = "biography";
+
+
+
+    /**
+     * MARKETING DISCLOSURE
+     */
+    public static final String MARKETING_DISCLOSURE = "marketingDisclosure";
+
+    /**
+     * LEGAL COMPLIANCE DISCLOSURE
+     */
+    public static final String LEGAL_COMPLIANCE_DISCLOSURE = "legalComplianceDisclosure";
+
+    /**
+     * ABBREVIATION
+     */
+    public static final String ABBREVIATION = "abbreviation";
+
+
+
+    /**
+     * DEGREE
+     */
+    public static final String DEGREE = "degree";
+
+    /**
+     * UNIVERSITY
+     */
+    public static final String UNIVERSITY = "university";
+    /**
+     * MAJOR
+     */
+    public static final String MAJOR = "major";
 
 }

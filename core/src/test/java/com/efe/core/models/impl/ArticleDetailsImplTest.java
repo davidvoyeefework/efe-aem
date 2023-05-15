@@ -1,7 +1,7 @@
 package com.efe.core.models.impl;
 
 import com.adobe.cq.dam.cfm.ContentFragment;
-import com.efe.core.bean.ArticleDetailsBean;
+import com.efe.core.bean.Articles;
 
 import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
@@ -55,7 +55,7 @@ class ArticleDetailsImplTest {
     	Resource authorFragment = aemContext.currentResource("/content/dam/efe/author1");
     	contentFragment = authorFragment.adaptTo(ContentFragment.class);
 
-        ArticleDetailsBean articleDetailsBean = new ArticleDetailsBean();
+        Articles articleDetailsBean = new Articles();
 
     }
 

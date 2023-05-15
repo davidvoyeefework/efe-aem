@@ -1,5 +1,5 @@
 <sly data-sly-use.model="com.efe.core.models.ArticleDetails">
-    <div data-sly-test=${properties.articleFragmentPath} id="container-99d779a4e6" class="cmp-container cmp-container--white cmp-container--width-1400 border-radius-- cmp-container--center cmp-container--padding">
+    <div data-sly-test=${properties.articleFragmentPath} class="cmp-container cmp-container--white cmp-container--width-1400 border-radius-- cmp-container--center cmp-container--padding" id="${model.id}">
         <div class="title cmp-title--heading-03 ">
             <div class="cmp-title">
                 <h1 class="cmp-title__text">${model.articleFragmentPath.title @context='html'}</h1>
@@ -16,7 +16,7 @@
             </div>
         </div>
         <div class="image cmp-image-- cmp-image--top-left">
-            <div class="cmp-image"><img src="${model.articleFragmentPath.heroImage}"></div>
+            <div class="cmp-image"><img src="${model.articleFragmentPath.heroImage}" alt=""></div>
         </div>
         by:<div class="title cmp-title--stats-02-underline ">
         <div class="cmp-title">
@@ -32,26 +32,22 @@
         </div>
     </div>
         <div class="text cmp-text--body-02 cmp-text-- ">
-            <div id="text-e58d65c472" class="cmp-text">
+            <div class="cmp-text">
                 <div data-sly-resource="${@path=model.articleFragmentPath.body, selectors='content', wcmmode='disabled'}"></div>
             </div>
         </div>
         <div class="list cmp-list--horizontal cmp-list--tight cmp-list--left-align">
-            <h2 class="cmp-list--title">THE MOKENA, IL, TEAM</h2>
-            <ul data-sly-list.item = ${model.articleFragmentPath.articleAuthors} id="list-2833b18972" data-cmp-data-layer="{&quot;list-2833b18972&quot;:{&quot;@type&quot;:&quot;core-components-examples/components/list&quot;}}" class="cmp-list">
+            <ul data-sly-list.item = ${model.articleFragmentPath.articleAuthors} class="cmp-list">
                 <div class="teaser cmp-teaser--thumbnail">
-                    <div id="teaser-3a8e3acfdb" class="cmp-teaser" data-cmp-data-layer="{&quot;teaser-3a8e3acfdb&quot;:{&quot;@type&quot;:&quot;core-components-examples/components/teaser&quot;,&quot;dc:title&quot;:&quot;Teaser Title&quot;,&quot;dc:description&quot;:&quot;<p>Teaser Description</p>&quot;}}">
+                    <div class="cmp-teaser">
                         <div class="cmp-teaser__content">
                             <h2 class="cmp-teaser__title">${item.title} ${item.name}</h2>
                             <div class="cmp-teaser__description">
                                 <p>${item.biography @context='html'}</p>
                             </div>
-                            <div class="cmp-teaser__action-container">
-                                <a class="cmp-teaser__action-link" id="teaser-3a8e3acfdb-cta-641eff4586" data-cmp-data-layer="{&quot;teaser-3a8e3acfdb-cta-641eff4586&quot;:{&quot;@type&quot;:&quot;core-components-examples/components/teaser/cta&quot;,&quot;dc:title&quot;:&quot;Call To Action&quot;,&quot;xdm:linkURL&quot;:&quot;/content/core-components-examples/library/core-content/teaser.html&quot;}}" data-cmp-clickable="" href="/content/core-components-examples/library/core-content/teaser.html">Call To Action</a>
-                            </div>
                         </div>
                         <div class="cmp-teaser__image">
-                            <div data-cmp-src="/content/core-components-examples/library/core-content/teaser/_jcr_content/root/responsivegrid/demo_1878698139/component/teaser.coreimg.82{.width}.jpeg" data-asset-id="c0a39183-23f4-48f0-8db7-bb41ba2b0122" id="teaser-3a8e3acfdb-image" data-cmp-data-layer="{&quot;teaser-3a8e3acfdb-image&quot;:{&quot;@type&quot;:&quot;core-components-examples/components/image&quot;,&quot;dc:title&quot;:&quot;Aerial photo of mountain range&quot;,&quot;xdm:linkURL&quot;:&quot;/content/core-components-examples/library/core-content/teaser.html&quot;,&quot;image&quot;:{&quot;repo:id&quot;:&quot;c0a39183-23f4-48f0-8db7-bb41ba2b0122&quot;,&quot;repo:modifyDate&quot;:&quot;1970-01-01T00:00:00Z&quot;,&quot;@type&quot;:&quot;image/jpeg&quot;,&quot;repo:path&quot;:&quot;/content/dam/core-components-examples/library/sample-assets/mountain-range.jpg&quot;}}}" data-cmp-hook-image="imageV3" class="cmp-image" itemscope="" itemtype="http://schema.org/ImageObject">
+                            <div data-asset-id="c0a39183-23f4-48f0-8db7-bb41ba2b0122" data-cmp-hook-image="imageV3" class="cmp-image" itemscope="" itemtype="http://schema.org/ImageObject">
                                 <img srcset="${item.photo} 1600w"
                                      src="${item.photo}"
                                      loading="lazy" class="cmp-image__image" itemprop="contentUrl"

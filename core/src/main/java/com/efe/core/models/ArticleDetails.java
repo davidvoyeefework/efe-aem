@@ -1,6 +1,6 @@
 package com.efe.core.models;
 
-import com.efe.core.bean.ArticleDetailsBean;
+import com.efe.core.bean.Articles;
 
 public interface ArticleDetails {
 
@@ -9,5 +9,11 @@ public interface ArticleDetails {
      *
      * @return the articleFragmentPath
      */
-    public ArticleDetailsBean getArticleFragmentPath();
+    public Articles getArticleFragmentPath();
+
+    /**
+     *
+     * @return the id.
+     */
+    public String getId();
 }

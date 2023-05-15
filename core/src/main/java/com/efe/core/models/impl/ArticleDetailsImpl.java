@@ -1,7 +1,7 @@
 package com.efe.core.models.impl;
 
 import com.adobe.cq.export.json.ExporterConstants;
-import com.efe.core.bean.ArticleDetailsBean;
+import com.efe.core.bean.Articles;
 import com.efe.core.models.ArticleDetails;
 import com.efe.core.utils.ArticleDetailUtil;
 import org.apache.sling.api.SlingHttpServletRequest;
@@ -42,11 +42,22 @@ public class ArticleDetailsImpl implements ArticleDetails {
     @ValueMapValue
     String articleFragmentPath;
 
-    ArticleDetailsBean articleDetails;
+    /** the id **/
+    @ValueMapValue
+    String id;
 
+
+    /**
+     * ArticleDetail
+     */
+    Articles articleDetails;
+
+    /**
+     * Inits the Model.
+     */
     @PostConstruct
     public void init() {
-        articleDetails = new ArticleDetailsBean();
+        articleDetails = new Articles();
         if(null != articleFragmentPath){
             Resource articlesFragmentResource = resourceResolver.getResource(articleFragmentPath);
             if(null != articlesFragmentResource) {
@@ -66,8 +77,17 @@ public class ArticleDetailsImpl implements ArticleDetails {
      * @return the articleDetails
      */
     @Override
-    public ArticleDetailsBean getArticleFragmentPath() {
+    public Articles getArticleFragmentPath() {
         return articleDetails;
+    }
+
+    /**
+     * Gets the id.
+     * @return the id
+     */
+    @Override
+    public String getId() {
+        return id;
     }
 
 

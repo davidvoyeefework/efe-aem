@@ -27,14 +27,23 @@ public class Education {
 		return degree;
 	}
 
+	/**
+	 * Sets the degree
+	 */
 	public void setDegree(String degree) {
 		this.degree = degree;
 	}
 
+	/**
+	 * Sets the Major.
+	 */
 	public void setMajor(String major) {
 		this.major = major;
 	}
 
+	/**
+	 * Sets the University.
+	 */
 	public void setUniversity(String university) {
 		this.university = university;
 	}
