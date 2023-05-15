@@ -1,0 +1,41 @@
+.cmp-form-text--efe-default {
+
+    label {
+        @include detail;
+        display: block;
+        margin-bottom: 2px;
+    }
+
+    textarea {
+        max-width: rem(372);
+        width: 100%;
+        max-height: rem(154);
+        height: 100%;
+        padding: 20px;
+        border: 1.5px solid $efe-gray-mid;
+        border-radius: 4px;
+        @include body-03;
+        font-weight: 400;
+        transition: $std-transition;
+
+        &::-webkit-input-placeholder {
+            color: $efe-gray-blue;
+        }
+
+        &:hover {
+            border-color: $efe-gray-blue;
+            transition: $std-transition;
+        }
+
+        &:focus, &:focus-visible {
+            border-color: $efe-gray-primary;
+            transition: $std-transition;
+            color: $efe-gray-primary;
+            outline: unset;
+            border-width: 1.5px;
+            border-style: solid;
+        }
+    }
+
+
+}
