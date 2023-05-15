@@ -1,0 +1,43 @@
+{
+	"jcr:primaryType": "nt:unstructured",
+	"item0": {
+		"jcr:primaryType": "nt:unstructured",
+		"jcr:title": "Edelman",
+		"value": "https://edelmandev.wpengine.com/"
+	},
+	"item1": {
+		"jcr:primaryType": "nt:unstructured",
+		"jcr:title": "Edelman Engine",
+		"value": "https://www.edelmanfinancialengines.com/"
+	},
+	"item2": {
+		"jcr:primaryType": "nt:unstructured",
+		"jcr:title": "Facebook",
+		"value": "https://www.facebook.com/edelmanfinancialengines/"
+	},
+	"item3": {
+		"jcr:primaryType": "nt:unstructured",
+		"jcr:title": "Twitter",
+		"value": "https://twitter.com/edelmanfe"
+	},
+	"item4": {
+		"jcr:primaryType": "nt:unstructured",
+		"jcr:title": "Instagram",
+		"value": "https://www.instagram.com/edelmanfinancialengines/"
+	},
+	"item5": {
+		"jcr:primaryType": "nt:unstructured",
+		"jcr:title": "Linkedin",
+		"value": "https://www.linkedin.com/company/edelman-financial-engines/"
+	},
+	"item6": {
+		"jcr:primaryType": "nt:unstructured",
+		"jcr:title": "Jobvite",
+		"value": "https://www.jobvite.com/edelmanfinancialengines"
+	},
+	"item7": {
+		"jcr:primaryType": "nt:unstructured",
+		"jcr:title": "Event",
+		"value": "https://event.on24.com/wcc/r/3650900/14658F6E878B575EFBB30EF0AA357733/3428297"
+	}
+}

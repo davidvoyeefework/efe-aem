@@ -1,0 +1,27 @@
+.cmp-button--title-tag {
+
+    display: inline-block;
+    margin-right: 8px;
+
+    button {
+        min-height: rem(28);
+        @include body-03;
+        font-size: rem(14);
+        background-color: $efe-gray-mid;
+        padding: 0 12px;
+        border-radius: 3px;
+        @include flexbox(
+            $align-items: center,
+            $justify-content: center
+        );
+        width: fit-content;
+        transition: $std-transition;
+    }
+
+
+
+    &:hover {
+
+    }
+
+}

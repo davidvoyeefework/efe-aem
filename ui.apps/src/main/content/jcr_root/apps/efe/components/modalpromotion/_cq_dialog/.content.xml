@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Modal Promotion"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs">
+                <items jcr:primaryType="nt:unstructured">
+                    <edit
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Edit"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <pretitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Add pre-title here"
+                                                fieldLabel="Pre-title"
+                                                name="./pretitle"/>
+                                            <title
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Add title here"
+                                                fieldLabel="Title"
+                                                name="./title"/>
+                                            <description
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                fieldDescription="Add description text here"
+                                                fieldLabel="Description"
+                                                name="./description"
+                                                useFixedInlineToolbar="{Boolean}true">
+                                                <rtePlugins
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceSuperType="efe/components/text/cq:dialog/content/items/tabs/items/properties/items/columns/items/column/items/text/rtePlugins">
+                                                    <paraformat
+                                                        jcr:primaryType="nt:unstructured"
+                                                        features="*">
+                                                        <formats jcr:primaryType="nt:unstructured">
+                                                            <item0
+                                                                jcr:primaryType="nt:unstructured"
+                                                                description="Paragraph"
+                                                                tag="p"/>
+                                                            <item1
+                                                                jcr:primaryType="nt:unstructured"
+                                                                description="Block Quote"
+                                                                tag="blockquote"/>
+                                                            <item2
+                                                                jcr:primaryType="nt:unstructured"
+                                                                description="Preformatted"
+                                                                tag="pre"/>
+                                                        </formats>
+                                                    </paraformat>
+                                                    <misctools
+                                                        jcr:primaryType="nt:unstructured"
+                                                        features="specialchars,sourceedit">
+                                                    </misctools>
+                                                    <edit
+                                                        jcr:primaryType="nt:unstructured"
+                                                        features="paste-plaintext,paste-wordhtml"/>
+                                                    <findreplace
+                                                        jcr:primaryType="nt:unstructured"
+                                                        features="*"/>
+                                                    <spellcheck
+                                                        jcr:primaryType="nt:unstructured"
+                                                        features="*"/>
+                                                    <table
+                                                        jcr:primaryType="nt:unstructured"
+                                                        features="*"/>
+                                                    <lists
+                                                        jcr:primaryType="nt:unstructured"
+                                                        features="*"/>
+                                                    <justify
+                                                        jcr:primaryType="nt:unstructured"
+                                                        features="*"/>
+                                                    <format
+                                                        jcr:primaryType="nt:unstructured"
+                                                        features="bold,italic,underline"/>
+                                                    <links
+                                                        jcr:primaryType="nt:unstructured"
+                                                        features="modifylink,unlink"/>
+                                                    <subsuperscript
+                                                        jcr:primaryType="nt:unstructured"
+                                                        features="subscript"/>
+                                                </rtePlugins>
+                                            </description>
+                                            <buttontext
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Add button text here"
+                                                fieldLabel="Button Text"
+                                                name="./buttonText"/>
+                                            <buttonurl
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/coral/common/form/pagefield"
+                                                fieldDescription="Add button url here"
+                                                fieldLabel="Button Url"
+                                                name="./buttonUrl"
+                                                rootPath="/content/efe"/>
+                                            <promotionimage
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldDescription="Add promotion image here"
+                                                fieldLabel="Promotion Image"
+                                                name="./promotionImage"
+                                                rootPath="/content/dam/efe"/>
+                                            <promotionimagealttext
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Add promotion image alt text here"
+                                                fieldLabel="Promotion Image Alt Text"
+                                                name="./promotionImageAltText"/>
+                                            <closebuttoncolor
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldDescription="Select close button color"
+                                                fieldLabel="Close Button Color"
+                                                name="./closeButtonColor">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <white
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="White"
+                                                        value="modal-close-white.svg"/>
+                                                    <black
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Black"
+                                                        value="modal-close-black.svg"/>
+                                                </items>
+                                            </closebuttoncolor>
+                                            <closebuttonalttext
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Add close button alt text here"
+                                                fieldLabel="Close Button Alt Text"
+                                                name="./closeButtonAltText"/>
+                                            <startdate
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/datepicker"
+                                                fieldDescription="Add start date here"
+                                                fieldLabel="Start Date"
+                                                name="./startDate"
+                                                type="datetime"/>
+                                            <enddate
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/datepicker"
+                                                fieldDescription="Add end date here"
+                                                fieldLabel="End Date"
+                                                name="./endDate"
+                                                type="datetime"/>
+                                            <id
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="HTML ID attribute to apply to the component."
+                                                fieldLabel="ID"
+                                                name="./id"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </edit>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

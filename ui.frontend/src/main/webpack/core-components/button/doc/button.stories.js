@@ -10,7 +10,7 @@ export default {
       control: { type: "text" },
     },
     variant: {
-      options: ["button-primary", "button-secondary", "link-primary", "link-secondary", "icon-button"],
+      options: ["button-primary", "button-secondary", "link-primary", "link-secondary", "icon-button", "title-tag"],
       control: { type: "radio" },
     },
     link: {
@@ -32,8 +32,8 @@ export default {
 };
 
 const TemplatePrimary = ({ label, ...args }) => Button({ ...args });
-export const PrimarySecondary = TemplatePrimary.bind();
-PrimarySecondary.args = {
+export const LinkedButton = TemplatePrimary.bind();
+LinkedButton.args = {
   variant: "button-primary",
   link: "#",
   text: "connect with a planner",

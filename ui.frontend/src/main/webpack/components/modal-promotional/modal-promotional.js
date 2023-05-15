@@ -4,19 +4,24 @@ var dialog = new A11yDialog(dialogEl);
 class ModalPromotional {
     constructor(el) {
       this.el = el;
-      this.intializeModal();
+      this.intializeModal(el);
     }
     static init(el) {
         return new ModalPromotional(el);
       }
-    intializeModal() {
-        setTimeout(()=>{
-            this.showModal();
-        }, 1000)
+    intializeModal(el) {
+        const startDate = new Date(el.getAttribute('startDate'));
+        const endDate = new Date(el.getAttribute('endDate'));
+        const currentDate = new Date();
+        if(currentDate > startDate && currentDate<endDate) {
+            setTimeout(()=>{
+                this.showModal();
+            }, 1000)
+        }
     }
     showModal() {
-        let splitValue = document.cookie.split(`; pop_up_displayed=`);
-        if(splitValue.length < 1 || !splitValue[0]?.includes('pop_up_displayed=true')) {
+        let popupDisplayed=(document.cookie.match('(^|;) *'+'pop_up_displayed'+'=([^;]*)')||[])[2];
+        if(!popupDisplayed) {
             dialog.show();
             let pop_disp = new Date();
             pop_disp.setTime(pop_disp.getTime() + (4 * 60 * 60 * 1000));
