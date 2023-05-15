@@ -101,7 +101,7 @@
         event.target.parentElement.classList.remove('cmp-form-text--error');
         event.target.parentElement.classList.remove('cmp-form-text--efe-default');
         event.target.nextElementSibling.innerText='';
-        if (this._properties.constraintMessage) {
+        if (event.target.getAttribute("type") === 'email') {
             event.target.setCustomValidity(this._properties.constraintMessage);
             event.target.parentElement.classList.add('cmp-form-text--error');
             event.target.parentElement.classList.add('cmp-form-text--efe-default');
@@ -109,12 +109,22 @@
             const validEmail = String(event.target.value)
             .toLowerCase()
             .match(
-              /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                /^[^\s@]+@[^\s@]+\.[^\s@]+$/
             );
             if(validEmail) {
                 event.target.parentElement.classList.remove('cmp-form-text--error');
                 event.target.parentElement.classList.remove('cmp-form-text--efe-default');
                 event.target.nextElementSibling.innerText='';
+            }
+        }
+        if (event.target.getAttribute("type") === 'tel') {
+            const phoneRegex = /^[ (]?[0-9]{3}[) -]?[) -]?[0-9]{3}[ -]?[0-9]{4}$/;
+            const validPhone  = phoneRegex.test(event.target.value);
+            if(!validPhone) {
+                event.target.setCustomValidity(this._properties.requiredMessage);
+                event.target.parentElement.classList.add('cmp-form-text--error');
+                event.target.parentElement.classList.add('cmp-form-text--efe-default');
+                event.target.nextElementSibling.innerText=this._properties.constraintMessage;
             }
         }
     };

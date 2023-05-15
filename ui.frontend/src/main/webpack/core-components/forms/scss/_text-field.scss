@@ -1,10 +1,11 @@
 .cmp-form-text--efe-default {
-
     label {
         @include detail;
         margin-bottom: 2px;
     }
-
+    .cmp-form-text {
+        margin-bottom: rem(12);
+    }
     input.cmp-form-text__text {
         max-width: rem(372);
         width: 100%;
@@ -12,12 +13,7 @@
         padding: 0 rem(20);
         min-height: rem(50);
         border: 1.5px solid $efe-gray-mid;
-        margin-bottom: rem(12);
-        margin-top: rem(16);
-        @include flexbox(
-            $align-items: center,
-            $justify-content: center
-        );
+        @include flexbox($align-items: center, $justify-content: center);
         @include secondary-nav-link;
         color: $efe-gray-blue;
         transition: $std-transition;
@@ -31,7 +27,8 @@
             transition: $std-transition;
         }
 
-        &:focus, &:focus-visible {
+        &:focus,
+        &:focus-visible {
             border-color: $efe-gray-primary;
             transition: $std-transition;
             color: $efe-gray-primary;
@@ -44,7 +41,8 @@
         color: $efe-gray-blue;
     }
 
-    &:focus, &:focus-visible {
+    &:focus,
+    &:focus-visible {
         border-color: $efe-gray-primary;
         transition: $std-transition;
         color: $efe-gray-primary;
@@ -70,7 +68,7 @@
             transition: $std-transition;
         }
         .cmp-form-text__error {
-            color: $efe-red-primary;
+            @include buildFont(rem(12), null, "nimbus-sans", 400, capitalize, rem(14), $efe-red-primary);
         }
     }
 
@@ -81,10 +79,6 @@
             background-color: $efe-gray-mid;
             transition: $std-transition;
         }
-    }
-
-    &:last-of-type {
-        // margin-bottom: 44px;
     }
 }
 .efe-form {
