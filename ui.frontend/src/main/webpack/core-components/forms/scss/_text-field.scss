@@ -1,10 +1,11 @@
 .cmp-form-text--efe-default {
-
     label {
         @include detail;
         margin-bottom: 2px;
     }
-
+    .cmp-form-text {
+        margin-bottom: rem(12);
+    }
     input.cmp-form-text__text {
         max-width: rem(372);
         width: 100%;
@@ -12,10 +13,7 @@
         padding: 0 rem(20);
         min-height: rem(50);
         border: 1.5px solid $efe-gray-mid;
-        @include flexbox(
-            $align-items: center,
-            $justify-content: center
-        );
+        @include flexbox($align-items: center, $justify-content: center);
         @include secondary-nav-link;
         color: $efe-gray-blue;
         transition: $std-transition;
@@ -29,7 +27,8 @@
             transition: $std-transition;
         }
 
-        &:focus, &:focus-visible {
+        &:focus,
+        &:focus-visible {
             border-color: $efe-gray-primary;
             transition: $std-transition;
             color: $efe-gray-primary;
@@ -38,12 +37,12 @@
             border-style: solid;
         }
     }
-
     &::-webkit-input-placeholder {
         color: $efe-gray-blue;
     }
 
-    &:focus, &:focus-visible {
+    &:focus,
+    &:focus-visible {
         border-color: $efe-gray-primary;
         transition: $std-transition;
         color: $efe-gray-primary;
@@ -68,6 +67,9 @@
             background-color: $efe-red-15-percent;
             transition: $std-transition;
         }
+        .cmp-form-text__error {
+            @include buildFont(rem(12), null, "nimbus-sans", 400, capitalize, rem(14), $efe-red-primary);
+        }
     }
 
     &.cmp-form-text--disabled {
@@ -78,8 +80,10 @@
             transition: $std-transition;
         }
     }
-
-    &:last-of-type {
-        margin-bottom: 44px;
+}
+.efe-form {
+    form {
+        max-width: 375px;
+        margin: 0 auto;
     }
 }
