@@ -164,11 +164,18 @@ public class ArticleDetailUtil {
                     plannerResponse.setFirstName(plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.FIRST_NAME))
                             .map(ContentElement::getContent).orElse(StringUtils.EMPTY));
 
+                    plannerResponse.setMiddleName(plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.MIDDLE_NAME))
+                            .map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+
                     plannerResponse.setLastName(plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.LAST_NAME))
                             .map(ContentElement::getContent).orElse(StringUtils.EMPTY));
 
                     plannerResponse.setBio(plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.BIO))
                             .map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+
+                    plannerResponse.setDesktopImageUrl(plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.DESKTOP_IMAGE_URL))
+                            .map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+
 
                     String certifications = plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.CERTIFICATIONS))
                             .map(ContentElement::getContent).orElse(StringUtils.EMPTY);

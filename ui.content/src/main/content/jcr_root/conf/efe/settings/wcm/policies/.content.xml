@@ -115,6 +115,34 @@
                             jcr:primaryType="nt:unstructured"
                             features="-"/>
                     </plugins>
+                    <cq:styleGroups
+                            jcr:primaryType="nt:unstructured">
+                        <item0 cq:styleGroupLabel="Rounder Corner"
+                               jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                       cq:styleClasses="cmp-image--bottom-right"
+                                       cq:styleLabel="Bottom-right"
+                                       cq:styleId="bottom-right"
+                                       jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                       cq:styleClasses="cmp-image--bottom-left"
+                                       cq:styleLabel="Bottom-left"
+                                       cq:styleId="bottom-left"
+                                       jcr:primaryType="nt:unstructured"/>
+                                <item2
+                                        cq:styleClasses="cmp-image--top-left"
+                                        cq:styleLabel="Top-left"
+                                        cq:styleId="top-left"
+                                        jcr:primaryType="nt:unstructured"/>
+                                <item3
+                                        cq:styleClasses="cmp-image--top-right"
+                                        cq:styleLabel="Top-right"
+                                        cq:styleId="top-right"
+                                        jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item0>
+                    </cq:styleGroups>
                 </policy_651483963895698>
             </image>
             <text jcr:primaryType="nt:unstructured">

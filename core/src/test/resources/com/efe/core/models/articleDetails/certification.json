@@ -28,9 +28,9 @@
           "dam:cfVariationNode",
           "cq:Taggable"
         ],
-        "abbreviation": "AEMSDP-",
+        "abbreviation": "CFP",
         "marketingDisclosure": "Marketing Disclosure",
-        "name": "author",
+        "name": "CERTIFIED FINANCIAL PLANNER",
         "legalComplianceDisclosure": "Legal Compliance Disclosure"
       }
     },
