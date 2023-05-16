@@ -5,7 +5,7 @@
 export default class Header {
     constructor(el) {
         this.el = el;
-        let minimalHeader = el.classList.contains('minimal-header');
+        let minimalHeader = el.parentElement.classList.contains('minimal-header');
         this.subHeaderDesktop = el.querySelectorAll('.efe-nav-header')[0];
         this.subHeaderMobile = el.querySelectorAll('.efe-nav-header')[1];
         if(!minimalHeader) {
