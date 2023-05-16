@@ -2,6 +2,7 @@
      .cmp-list {
         display: block;
         column-count: 4;
+        width: max-content;
         @include media('>=phone-sm', '<phone-m') {
             column-count: 1;
             width: 100%;
