@@ -13,12 +13,11 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 */-->
+<!--/* Favicons */-->
+<sly data-sly-include="favicons.html"></sly>
 <a class="skip-main" data-component="skip-to-main-menu" href="#main" style="display: none;">Skip to main content</a>
 <sly data-sly-use.clientlib="core/wcm/components/commons/v1/templates/clientlib.html">
     <sly data-sly-call="${clientlib.css @ categories='efe.base'}"/>
 </sly>
 
 <sly data-sly-resource="${'contexthub' @ resourceType='granite/contexthub/components/contexthub'}"/>
-
-<!--/* Favicons */-->
-<sly data-sly-include="favicons.html"></sly>
