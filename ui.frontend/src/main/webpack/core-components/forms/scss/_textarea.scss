@@ -1,7 +1,13 @@
-.efe-form .cmp-form-text--efe-default, .cmp-form-text--efe-default {
+.cmp-form-text--efe-default {
 
     label {
-        @include detail;
+        font-size: 12px;
+        letter-spacing: 0;
+        font-weight: 400;
+        color: $efe-gray-primary;
+        font-style: normal;
+        line-height: 14px;
+        font-family: "nimbus-sans";
         display: block;
         margin-bottom: 2px;
     }
@@ -36,6 +42,4 @@
             border-style: solid;
         }
     }
-
-
 }
