@@ -24,15 +24,26 @@ import com.efe.core.bean.jsonld.JsonLd;
 import com.efe.core.bean.jsonld.MainEntity;
 import com.efe.core.models.multifield.FAQ;
 import com.efe.core.models.multifield.SocialLink;
+import com.efe.core.services.RestService;
 import com.efe.core.services.SeoService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 /**
  * The Class SeoUtil.
  */
 public class SeoUtil {
 
+	/** The Constant TITLE. */
+	public static final String TITLE = "title";
+	
+	/** The Constant JSON_LD. */
+	public static final String JSON_LD = "jsonLd";
+	
 	/** The Constant REGEX_HTML_ELEMENTS. */
 	private static final String REGEX_HTML_ELEMENTS = "<[^>]*>|\n|\t";
 
@@ -180,15 +191,17 @@ public class SeoUtil {
 	/**
 	 * Gets the bread crumb SEO schema.
 	 *
-	 * @param seoService the seo service
-	 * @param items the items
-	 * @param showSelectorAsLeaf 
-	 * @param selectorIndex 
-	 * @param selector the selector
+	 * @param seoService         the seo service
+	 * @param request the request
+	 * @param externalizer the externalizer
+	 * @param items              the items
+	 * @param showSelectorAsLeaf the show selector as leaf
+	 * @param selectorIndex the selector index
 	 * @return the bread crumb SEO schema
 	 */
 	public static String getBreadCrumbSEOSchema(SeoService seoService, SlingHttpServletRequest request,
-			Externalizer externalizer, Collection<NavigationItem> items, boolean showSelectorAsLeaf, int selectorIndex) {
+			Externalizer externalizer, Collection<NavigationItem> items, boolean showSelectorAsLeaf,
+			int selectorIndex) {
 
 		Gson gson = getGsonInstance();
 		JsonLd jsonLd = new JsonLd();
@@ -197,7 +210,7 @@ public class SeoUtil {
 
 		int index = 1;
 		List<ItemListElement> itemListElements = new ArrayList<>();
-		for(NavigationItem item: items) {
+		for (NavigationItem item : items) {
 			ItemListElement element = new ItemListElement();
 			element.setItem(item.getLink().getExternalizedURL());
 			element.setName(item.getTitle());
@@ -205,12 +218,12 @@ public class SeoUtil {
 			element.setPosition(index++);
 			itemListElements.add(element);
 		}
-			
-		if(showSelectorAsLeaf) {
-			String []selectors = request.getRequestPathInfo().getSelectors();
-			if(selectors.length > 0 && selectors.length > selectorIndex) {
-				String selector = selectors[selectorIndex];	
-				String pagePath = externalizer.publishLink(request.getResourceResolver(), request.getPathInfo());	
+
+		if (showSelectorAsLeaf) {
+			String[] selectors = request.getRequestPathInfo().getSelectors();
+			if (selectors.length > 0 && selectors.length > selectorIndex) {
+				String selector = selectors[selectorIndex];
+				String pagePath = externalizer.publishLink(request.getResourceResolver(), request.getPathInfo());
 				ItemListElement element = new ItemListElement();
 				element.setType(seoService.getBreadCrumbItemType());
 				element.setName(selector);
@@ -218,9 +231,119 @@ public class SeoUtil {
 				element.setPosition(index);
 				itemListElements.add(element);
 			}
-		}		
-		jsonLd.setItemListElement(itemListElements);	
+		}
+		jsonLd.setItemListElement(itemListElements);
 		return gson.toJson(jsonLd);
+	}
+
+	/**
+	 * Gets the video seo.
+	 *
+	 * @param restService the rest service
+	 * @param seoService the seo service
+	 * @param externalizer the externalizer
+	 * @param request the request
+	 * @param videoId the video id
+	 * @param fileReference the file reference
+	 * @return the video seo
+	 */
+	public static JsonObject getVideoSeo(RestService restService, SeoService seoService, Externalizer externalizer,
+			SlingHttpServletRequest request, String videoId, String fileReference) {
+
+		JsonObject videoDetailsJson = new JsonObject();
+		
+		if(StringUtils.isEmpty(seoService.getYoutubeAPIUrl())) {
+			return videoDetailsJson;
+		}
+
+		String api = seoService.getYoutubeAPIUrl().replace("{videoid}", videoId);
+		String response = restService.getData(api, null);
+
+		if (StringUtils.isNotEmpty(response)) {
+			JsonLd jsonLd = new JsonLd();
+			jsonLd.setContext(seoService.getContextUrl());
+			jsonLd.setType(seoService.getVideoType());
+
+			if (StringUtils.isNoneEmpty(fileReference)) {
+				jsonLd.setThumbnailUrl(externalizer.publishLink(request.getResourceResolver(), fileReference));
+			}
+
+			JsonElement rootElement = JsonParser.parseString(response);
+			if (rootElement != null && rootElement.isJsonObject()) {
+				JsonObject rootJsonObject = rootElement.getAsJsonObject();
+
+				if (rootJsonObject.has("items")) {
+					JsonArray items = rootElement.getAsJsonObject().getAsJsonArray("items");
+					populateVideoSchema(jsonLd, videoId, videoDetailsJson, items);
+				}
+			}
+		}
+		return videoDetailsJson;
+	}
+
+	/**
+	 * Populate video schema.
+	 *
+	 * @param jsonLd the json ld
+	 * @param videoId the video id
+	 * @param object the object
+	 * @param items the items
+	 */
+	private static void populateVideoSchema(JsonLd jsonLd, String videoId, JsonObject object, JsonArray items) {
+
+		if (!items.isEmpty() && items.get(0).isJsonObject()) {
+			Gson gson = getGsonInstance();
+
+			JsonObject snippet = items.get(0).getAsJsonObject().getAsJsonObject("snippet");
+			getYoutubeSnippetInfo(jsonLd, videoId, object, snippet);
+
+			JsonObject contentDetails = items.get(0).getAsJsonObject().getAsJsonObject("contentDetails");
+			getDurationDetails(jsonLd, contentDetails);
+
+			object.addProperty("jsonLd", gson.toJson(jsonLd));
+		}
+	}
+
+	/**
+	 * Gets the youtube snippet info.
+	 *
+	 * @param jsonLd the json ld
+	 * @param videoId the video id
+	 * @param object the object
+	 * @param snippet the snippet
+	 * @return the youtube snippet info
+	 */
+	private static JsonLd getYoutubeSnippetInfo(JsonLd jsonLd, String videoId, JsonObject object, JsonObject snippet) {
+		if (null != snippet) {
+			String title = snippet.has(TITLE) ? snippet.get(TITLE).getAsString() : StringUtils.EMPTY;
+
+			String desc = snippet.has("description") ? snippet.get("description").getAsString() : StringUtils.EMPTY;
+			String publishedAt = snippet.has("publishedAt") ? snippet.get("publishedAt").getAsString()
+					: StringUtils.EMPTY;
+
+			jsonLd.setName(title);
+			jsonLd.setDescription(desc);
+			jsonLd.setUploadDate(publishedAt);
+			jsonLd.setEmbedUrl("https://www.youtube.com/embed/" + videoId);
+			object.addProperty(TITLE, title);
+		}
+		return jsonLd;
+	}
+
+	/**
+	 * Gets the duration details.
+	 *
+	 * @param jsonLd the json ld
+	 * @param contentDetails the content details
+	 * @return the duration details
+	 */
+	private static void getDurationDetails(JsonLd jsonLd, JsonObject contentDetails) {
+		if (null != contentDetails && null != jsonLd) {
+			String duration = contentDetails.has("duration") ? contentDetails.get("duration").getAsString()
+					: StringUtils.EMPTY;
+
+			jsonLd.setDuration(duration);
+		}
 	}
 
 	/**
@@ -240,7 +363,7 @@ public class SeoUtil {
 	 * @return the string
 	 */
 	private static String removeElementsNUnescapeHTML(String input) {
-		return StringEscapeUtils.unescapeHtml4(input.replaceAll(REGEX_HTML_ELEMENTS, ""));
+		return StringEscapeUtils.unescapeHtml4(input.replaceAll(REGEX_HTML_ELEMENTS, "").trim());
 	}
 
 	/**

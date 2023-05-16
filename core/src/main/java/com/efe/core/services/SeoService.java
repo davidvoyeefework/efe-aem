@@ -110,4 +110,19 @@ public interface SeoService {
 	 */
 	String getBreadCrumbItemType();
 	
+	
+	/**
+	 * Gets the youtube API url.
+	 *
+	 * @return the youtube API url
+	 */
+	String getYoutubeAPIUrl();
+	
+	/**
+	 * Gets the video type.
+	 *
+	 * @return the video type
+	 */
+	String getVideoType();
+	
 }
