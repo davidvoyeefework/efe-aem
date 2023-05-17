@@ -63,10 +63,10 @@ public class EFEDatalayerImpl implements EFEDatalayer {
 	protected void init() {
 		DataLayerObj dataLayerObj = null;
 
-		System.out.println(request.getAttribute("test"));
 		if ("page".equals(type)) {
 			dataLayerObj = DataLayerUtils.createPageLoadEventObj(currentPage, request, resolver, externalizer);
 		}
+		
 		if (null != dataLayerObj) {
 			dataLayer = new Gson().toJson(dataLayerObj, DataLayerObj.class);
 		}

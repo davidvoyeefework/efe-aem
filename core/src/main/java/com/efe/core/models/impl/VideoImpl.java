@@ -17,6 +17,7 @@ import com.day.cq.commons.Externalizer;
 import com.efe.core.models.Video;
 import com.efe.core.services.RestService;
 import com.efe.core.services.SeoService;
+import com.efe.core.utils.DataLayerUtils;
 import com.efe.core.utils.EFEUtil;
 import com.efe.core.utils.SeoUtil;
 import com.google.gson.JsonObject;
@@ -35,7 +36,7 @@ public class VideoImpl implements Video {
 	/** The SlingHttpServletRequest. */
 	@SlingObject
 	private SlingHttpServletRequest request;
-	
+
 	/** The externalizer. */
 	@OSGiService
 	private Externalizer externalizer;
@@ -43,7 +44,7 @@ public class VideoImpl implements Video {
 	/** The seo service. */
 	@OSGiService
 	private SeoService seoService;
-	
+
 	/** The rest service. */
 	@OSGiService
 	private RestService restService;
@@ -74,19 +75,27 @@ public class VideoImpl implements Video {
 	/** The video title. */
 	private String videoTitle;
 
+	/** The data layer. */
+	private String dataLayer;
+
 	/**
 	 * Inits the model.
 	 */
 	@PostConstruct
 	public void init() {
 		if (StringUtils.isNotEmpty(videoId)) {
-			JsonObject videoDetails = SeoUtil.getVideoSeo(restService, seoService, externalizer, request, videoId, fileReference);
-			if(videoDetails.has(SeoUtil.TITLE)) {
+			JsonObject videoDetails = SeoUtil.getVideoSeo(restService, seoService, externalizer, request, videoId,
+					fileReference);
+			if (videoDetails.has(SeoUtil.TITLE)) {
 				videoTitle = videoDetails.get(SeoUtil.TITLE).getAsString();
 			}
-			
-			if(videoDetails.has(SeoUtil.JSON_LD)) {
+
+			if (videoDetails.has(SeoUtil.JSON_LD)) {
 				jsonLd = videoDetails.get(SeoUtil.JSON_LD).getAsString();
+			}
+
+			if (StringUtils.isNotEmpty(videoTitle)) {
+				dataLayer = DataLayerUtils.createVideoDataObject(videoTitle);
 			}
 		}
 	}
@@ -152,6 +161,16 @@ public class VideoImpl implements Video {
 	@Override
 	public String getVideoTitle() {
 		return videoTitle;
+	}
+
+	/**
+	 * Gets the data layer.
+	 *
+	 * @return the dataLayer
+	 */
+	@Override
+	public String getDataLayer() {
+		return dataLayer;
 	}
 
 	/**
