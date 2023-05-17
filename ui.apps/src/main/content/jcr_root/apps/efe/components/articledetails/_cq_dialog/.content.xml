@@ -28,7 +28,8 @@
                                 <items jcr:primaryType="nt:unstructured">
                                     <articleFragmentPath
                                         jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="dam/cfm/components/cfpicker"
+                                        sling:resourceType="dam/cfm/models/editor/components/fragmentreference"
+                                        fragmentmodelreference="/conf/efe/settings/dam/cfm/models/articles"
                                         emptyText="Enter or select Content Fragment"
                                         fieldDescription="Path to the Content Fragment to display."
                                         fieldLabel="Content Fragment"
