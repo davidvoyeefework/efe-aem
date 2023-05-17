@@ -82,7 +82,7 @@
             position: relative;
             right: rem(79);
             @media screen and (max-width: 1290px) {
-                display: none;
+                margin-bottom: 0;
             }
             .cmp-button__text {
                 white-space: nowrap;

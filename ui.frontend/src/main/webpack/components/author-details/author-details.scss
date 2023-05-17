@@ -1,0 +1,13 @@
+.cmp-author-details {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    margin: 48px 0;
+    &__credits {
+        p {
+            @include body-02;
+        }
+        @include body-02;
+        margin-top: 20px;
+    }
+}

@@ -5,7 +5,6 @@ import javax.annotation.PostConstruct;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
-import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
@@ -36,10 +35,6 @@ public class VideoImpl implements Video {
 	/** The SlingHttpServletRequest. */
 	@SlingObject
 	private SlingHttpServletRequest request;
-
-	/** The resource resolver. */
-	@SlingObject
-	private ResourceResolver resourceResolver;
 	
 	@OSGiService
 	private Externalizer externalizer;

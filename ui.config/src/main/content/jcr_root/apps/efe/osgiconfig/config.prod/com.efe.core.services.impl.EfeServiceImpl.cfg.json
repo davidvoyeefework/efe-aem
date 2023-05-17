@@ -1,0 +1,11 @@
+{
+  "plannersAPIEndpoint": "https://planners.edelmanfinancialengines.com/api/v2/planners",
+  "locationsAPIEndpoint": "https://planners.edelmanfinancialengines.com/api/v2/locations",
+  "authHeader": "$[secret:authHeaderkey]",
+  "plannerPageUrl": "/content/efe/us/en/location",
+  "plannerBioPageUrl": "/content/efe/us/en/financial-planners",
+  "googleMapPublicApi":"AIzaSyASNIvr770pL6OphL5ZgBetnoPrcSvgbls",
+  "googleDirectionPrefixUrl":"https://www.google.com/maps/search/?api=1&query=Edelman+Financial+Engines,",
+  "onetrustScript":"$[env:onetrust_script;default=https://cdn.cookielaw.org/scripttemplates/otSDKStub.js]",
+  "onetrustScriptId":"$[env:onetrust_script_id;default=d261e71f-2585-4170-b54c-0e4f2aec33ea-test]"
+}

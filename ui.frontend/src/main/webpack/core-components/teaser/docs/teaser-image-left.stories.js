@@ -10,8 +10,15 @@ export default {
       options: ["service-financial", "service-giving", "service-corporate", "service-tax", "service-estate", "service-insurance", "service-investment", "service-small-business", "service-estate", "service-retirement"],
       control: { type: "radio" },
     },
+    varaition: {
+      options: ["cmp-teaser--image-left", "cmp-teaser--image-left-rte"],
+      control: {type:"radio"}
+    },
     text: {
       control: { type: "text" },
+    },
+    showPretitle: {
+      control: { type: "boolean" },
     },
   },
 };

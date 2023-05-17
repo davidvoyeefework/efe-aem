@@ -39,6 +39,7 @@
             <form jcr:primaryType="nt:unstructured">
                 <container jcr:primaryType="nt:unstructured">
                     <form-container
+                        cq:styleDefaultClasses="efe-form"
                         jcr:description="Allows the form components to be dropped into this core form container."
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Content Form"
@@ -1322,6 +1323,27 @@
                     </cq:styleGroups>
                 </policy>
             </modalpromotion>
+			<header jcr:primaryType="nt:unstructured">
+                <policy
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Header Policy"
+                    sling:resourceType="wcm/core/components/policy/policy">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                    <cq:styleGroups jcr:primaryType="nt:unstructured">
+                        <item0
+                            cq:styleGroupLabel="Styles"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="minimal-header"
+                                    cq:styleId="mini-header"
+                                    cq:styleLabel="Mini header"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item0>
+                    </cq:styleGroups>
+                </policy>
+            </header>
         </components>
     </efe>
 </jcr:root>

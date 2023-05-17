@@ -264,7 +264,7 @@ public class SeoUtil {
 			jsonLd.setContext(seoService.getContextUrl());
 			jsonLd.setType(seoService.getVideoType());
 
-			if (StringUtils.isNoneEmpty(fileReference)) {
+			if (StringUtils.isNotEmpty(fileReference)) {
 				jsonLd.setThumbnailUrl(externalizer.publishLink(request.getResourceResolver(), fileReference));
 			}
 
@@ -300,7 +300,7 @@ public class SeoUtil {
 			JsonObject contentDetails = items.get(0).getAsJsonObject().getAsJsonObject("contentDetails");
 			getDurationDetails(jsonLd, contentDetails);
 
-			object.addProperty("jsonLd", gson.toJson(jsonLd));
+			object.addProperty(JSON_LD, gson.toJson(jsonLd));
 		}
 	}
 

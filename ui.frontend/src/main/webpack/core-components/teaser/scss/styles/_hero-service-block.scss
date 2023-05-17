@@ -172,28 +172,56 @@
         }
     }
 }
-.cmp-teaser--image-right {
+.cmp-teaser--image-left-rte {
     .cmp-teaser {
-        display: flex;
-        flex-direction: row;
-        @include media("<tablet") {
-            flex-direction: column;
-        }
-        &__content {
-            @include media("<tablet") {
-                padding: rem(15px);
-            }
-            padding: rem(51px) rem(56px) 0 rem(56px);
-        }
-        &__title {
-            @include buildFont(rem(48), 0.06em, $font-nimbus-pro, 700, uppercase, 105%, $gray-deep-charcoal);
-            margin-top: 0;
-        }
-        &__description {
-            font-style: normal;
-            font-weight: 400;
-            font-size: rem(26px);
-            line-height: 120%;
-        }
-    }
+        @include teaserImageLeft;
+         &__link {
+             @include teaserImageLeft;
+         }
+         &__pretitle {
+            @include buildFont (rem(16), 4%,$font-nimbus-Sans,400, uppercase,rem(16),$efe-gray-primary);    
+         }
+         &__content {
+             @include media("<tablet") {
+                 padding: rem(32) rem(24);
+             }
+             padding: rem(36) rem(40);
+             @include media('>tablet') {
+                 width: 55%;
+             }
+         }
+         &__action-container {
+             margin: rem(24) 0 rem(36) 0;
+         }
+         &__action-link {
+             @include cta-secondary;
+             padding: rem(16) rem(40) rem(12) rem(40);
+         }
+         &__image {
+             .cmp-image {
+                 position: relative;
+             }
+             .cmp-image__image {
+                 width: 100%;
+             }
+             @include media('>tablet') {
+                 width: 45%;
+             }
+             overflow: hidden;
+         }
+         &__title {
+             @include heading-04;
+             margin-top: 0;
+             margin-bottom: rem(24);
+         }
+         &__title-link {
+             @include heading-04;
+         }
+         &__description {
+             @include body-02;
+             p {
+                 @include body-02;
+             }
+         }
+     }
 }

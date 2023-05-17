@@ -74,6 +74,13 @@ public interface MapSearchResults {
 	 * @return the callback number
 	 */
 	String getNationalCallbackNumber();
+	
+	/**
+	 * Method to return National Advisor Callback label.
+	 *
+	 * @return the callback label
+	 */
+	String getNationalCallbackLabel();
 
 	/**
 	 * Method to return National Advisor CTA Link.
