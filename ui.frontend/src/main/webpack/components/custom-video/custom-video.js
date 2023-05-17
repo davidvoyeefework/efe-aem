@@ -18,7 +18,7 @@
       const thumbnailContainerEl = playerElement.querySelector(
         ".thumbnail_container"
       );
-      const dataLayer = JSON.parse(playerElement.dataset?.layer);
+      const dataEfeLayer = JSON.parse(playerElement.dataset?.efeLayer);
       const thumbnailUrl = playerElement.dataset?.thumbnailImage;
       const thumbnailEl = playerElement.querySelector(".thumbnail");
       thumbnailEl.src = thumbnailUrl;
@@ -30,24 +30,24 @@
         },
         events: {
           onReady: onPlayerReady(playerEl, playButton, thumbnailContainerEl),
-          onStateChange: onPlayerStateChange(dataLayer),
+          onStateChange: onPlayerStateChange(dataEfeLayer),
         },
       });
 
       players.push(player);
     }
 
-    function onPlayerStateChange(dataLayer) {
+    function onPlayerStateChange(dataEfeLayer) {
       return function (event) {
         if (event?.data === YT?.PlayerState?.PLAYING) {
           window?.adobeDataLayer?.push({
-            ...dataLayer,
+            ...dataEfeLayer,
             start: 1,
           })
         }
         if (event?.data === YT?.PlayerState?.ENDED) {
           window?.adobeDataLayer?.push({
-            ...dataLayer,
+            ...dataEfeLayer,
             completes: 1,
           })
         }
