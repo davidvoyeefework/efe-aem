@@ -11,9 +11,9 @@
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="granite/ui/components/coral/foundation/tabs">
                 <items jcr:primaryType="nt:unstructured">
-                    <edit
+                    <details
                         jcr:primaryType="nt:unstructured"
-                        jcr:title="Edit"
+                        jcr:title="Details"
                         sling:resourceType="granite/ui/components/coral/foundation/container">
                         <items jcr:primaryType="nt:unstructured">
                             <columns
@@ -171,7 +171,11 @@
                                 </items>
                             </columns>
                         </items>
-                    </edit>
+                    </details>
+                    <styletab
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/include"
+                        path="/mnt/overlay/cq/gui/components/authoring/dialog/style/tab_edit/styletab"/>
                 </items>
             </tabs>
         </items>
