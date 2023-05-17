@@ -206,12 +206,14 @@ public class PlannerResponse {
 
 	/* Sets education */
 	public void setEducation(List<Education> education) {
-		this.education = education;
+
+		this.education = new ArrayList<>(education);
 	}
 
 	/* Sets certifications */
 	public void setCertifications(List<Certifications> certifications) {
-		this.certifications = certifications;
+
+		this.certifications = new ArrayList<>(certifications);
 	}
 
 	/* Sets bio */
