@@ -27,7 +27,6 @@ import com.efe.core.models.Footer;
 import com.efe.core.models.multifield.Link;
 import com.efe.core.models.multifield.SocialLink;
 import com.efe.core.models.multifield.VerticalList;
-import com.efe.core.services.EfeService;
 import com.efe.core.services.SeoService;
 import com.efe.core.utils.EFEUtil;
 import com.efe.core.utils.LinkUtil;
@@ -110,15 +109,7 @@ public class FooterImpl implements Footer {
 	@ValueMapValue
 	@Default(booleanValues = false)
 	private boolean enableOnetrust;
-	
-	/** The onetrust link label. */
-	@ValueMapValue
-	private String onetrustLinkLabel;
-	
-	/** The efe service. */
-	@OSGiService
-	private EfeService efeService;
-	
+		
 	/** The json ld. */
 	private String jsonLd;
 
@@ -248,24 +239,4 @@ public class FooterImpl implements Footer {
 		return enableOnetrust;
 	}
 	
-	/**
-	 * Gets the one trust script.
-	 *
-	 * @return the one trust script
-	 */
-	@Override
-	public String getOneTrustScript() {
-		return efeService.getOneTrustScript();
-	}
-	
-	/**
-	 * Gets the one trust script id.
-	 *
-	 * @return the one trust script id
-	 */
-	@Override
-	public String getOneTrustScriptId() {
-		return efeService.getOneTrustScriptId();
-	}
-
 }

@@ -1,7 +1,5 @@
 package com.efe.core.models.impl;
 
-import java.util.Enumeration;
-
 import javax.annotation.PostConstruct;
 
 import org.apache.sling.api.SlingHttpServletRequest;
@@ -20,6 +18,7 @@ import com.day.cq.commons.Externalizer;
 import com.day.cq.wcm.api.Page;
 import com.efe.core.bean.datalayer.DataLayerObj;
 import com.efe.core.models.EFEDatalayer;
+import com.efe.core.services.EfeService;
 import com.efe.core.utils.DataLayerUtils;
 import com.google.gson.Gson;
 
@@ -42,6 +41,10 @@ public class EFEDatalayerImpl implements EFEDatalayer {
 	/** The externalizer. */
 	@OSGiService
 	private Externalizer externalizer;
+	
+	/** The efe service. */
+	@OSGiService
+	private EfeService efeService;
 
 	/** The request. */
 	@Self
@@ -77,6 +80,26 @@ public class EFEDatalayerImpl implements EFEDatalayer {
 	@Override
 	public String getDataLayer() {
 		return dataLayer;
+	}
+	
+	/**
+	 * Gets the one trust script.
+	 *
+	 * @return the one trust script
+	 */
+	@Override
+	public String getOneTrustScript() {
+		return efeService.getOneTrustScript();
+	}
+	
+	/**
+	 * Gets the one trust script id.
+	 *
+	 * @return the one trust script id
+	 */
+	@Override
+	public String getOneTrustScriptId() {
+		return efeService.getOneTrustScriptId();
 	}
 
 }
