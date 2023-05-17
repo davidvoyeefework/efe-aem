@@ -11,13 +11,14 @@
 
     for (let i = 0; i < playerElements.length; i++) {
       const playerElement = playerElements[i];
-      const videoId = playerElement.dataset.videoId;
+      const videoId = playerElement.dataset?.videoId;
       const playerEl = playerElement.querySelector(".player");
       const playButton = playerElement.querySelector(".start-video");
       const thumbnailContainerEl = playerElement.querySelector(
         ".thumbnail_container"
       );
-      const thumbnailUrl = playerElement.dataset.thumbnailImage;
+      const dataEfeLayer = JSON.parse(playerElement.dataset?.efeLayer);
+      const thumbnailUrl = playerElement.dataset?.thumbnailImage;
       const thumbnailEl = playerElement.querySelector(".thumbnail");
       thumbnailEl.src = thumbnailUrl;
 
@@ -28,10 +29,26 @@
         },
         events: {
           onReady: onPlayerReady(playerEl, playButton, thumbnailContainerEl),
+          onStateChange: onPlayerStateChange(dataEfeLayer),
         },
       });
 
       players.push(player);
+    }
+
+    function onPlayerStateChange(dataEfeLayer) {
+      return function (event) {
+        if (event?.data === YT?.PlayerState?.PLAYING) {
+          const updatedEfeLayer = JSON.parse(JSON.stringify(dataEfeLayer));
+          updatedEfeLayer.video.videoTimed.starts.value = 1;
+          window?.adobeDataLayer?.push(updatedEfeLayer);
+        }
+        if (event?.data === YT?.PlayerState?.ENDED) {
+          const updatedEfeLayer = JSON.parse(JSON.stringify(dataEfeLayer));
+          updatedEfeLayer.video.videoTimed.completes.value = 1;
+          window?.adobeDataLayer?.push(updatedEfeLayer)
+        }
+      }
     }
 
     function onPlayerReady(playerEl, playButton, thumbnailContainerEl) {

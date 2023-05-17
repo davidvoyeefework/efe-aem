@@ -87,19 +87,5 @@ public interface Footer {
 	 * @return true, if is enable one trust
 	 */
 	boolean isEnableOneTrust();
-	
-	/**
-	 * Gets the one trust script.
-	 *
-	 * @return the one trust script
-	 */
-	String getOneTrustScript();
-	
-	/**
-	 * Gets the one trust script id.
-	 *
-	 * @return the one trust script id
-	 */
-	String getOneTrustScriptId();
 
 }

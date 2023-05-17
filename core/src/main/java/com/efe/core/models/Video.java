@@ -48,6 +48,15 @@ public interface Video {
 	String getJsonLd();
 
 	/**
+	 * Gets the data layer.
+	 *
+	 * @return the dataLayer
+	 */
+	String getDataLayer();
+	
+	/**
+	 * Checks if is empty.
+	 *
 	 * @return the empty
 	 */
 	boolean isEmpty();
