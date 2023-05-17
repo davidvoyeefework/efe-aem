@@ -214,6 +214,11 @@
                                     cq:styleId="table"
                                     cq:styleLabel="Table"
                                     jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-text--table-dark"
+                                    cq:styleId="table-dark"
+                                    cq:styleLabel="Table Dark"
+                                    jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item0>
                         <item1
@@ -595,6 +600,11 @@
                                     cq:styleClasses="cmp-teaser--service-button"
                                     cq:styleId="service-button"
                                     cq:styleLabel="Service Button"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item3
+                                    cq:styleClasses="cmp-teaser--image-left-rte"
+                                    cq:styleId="two-column"
+                                    cq:styleLabel="2 Column"
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item0>
@@ -1140,6 +1150,11 @@
                                     cq:styleId="table"
                                     cq:styleLabel="Table"
                                     jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-text--table-dark"
+                                    cq:styleId="table-dark"
+                                    cq:styleLabel="Table Dark"
+                                    jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item2>
                         <item3
@@ -1295,6 +1310,11 @@
                                     cq:styleClasses="cmp-text--table"
                                     cq:styleId="table"
                                     cq:styleLabel="Table"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-text--table-dark"
+                                    cq:styleId="table-dark"
+                                    cq:styleLabel="Table Dark"
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item2>
