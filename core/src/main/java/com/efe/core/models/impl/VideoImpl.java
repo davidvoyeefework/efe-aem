@@ -36,6 +36,7 @@ public class VideoImpl implements Video {
 	@SlingObject
 	private SlingHttpServletRequest request;
 	
+	/** The externalizer. */
 	@OSGiService
 	private Externalizer externalizer;
 
@@ -43,6 +44,7 @@ public class VideoImpl implements Video {
 	@OSGiService
 	private SeoService seoService;
 	
+	/** The rest service. */
 	@OSGiService
 	private RestService restService;
 
@@ -54,12 +56,15 @@ public class VideoImpl implements Video {
 	@ValueMapValue
 	private String id;
 
+	/** The button icon reference. */
 	@ValueMapValue
 	private String buttonIconReference;
 
+	/** The file reference. */
 	@ValueMapValue
 	private String fileReference;
 
+	/** The video id. */
 	@ValueMapValue
 	private String videoId;
 
@@ -150,6 +155,8 @@ public class VideoImpl implements Video {
 	}
 
 	/**
+	 * Checks if is empty.
+	 *
 	 * @return the empty
 	 */
 	@Override
