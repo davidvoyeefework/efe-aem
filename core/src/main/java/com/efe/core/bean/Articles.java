@@ -1,6 +1,9 @@
 package com.efe.core.bean;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * The Articles bean class.
@@ -53,7 +56,10 @@ public class Articles {
      */
 
     public List<PlannerResponse> getPlannerResponse() {
-        return plannerResponse;
+        if (Objects.nonNull(plannerResponse)) {
+            return new ArrayList<>(plannerResponse);
+        }
+        return Collections.emptyList();
     }
 
     /**
@@ -71,7 +77,10 @@ public class Articles {
      * @return the articleAuthors
      */
     public List<ArticleAuthor> getArticleAuthors() {
-        return articleAuthors;
+        if (Objects.nonNull(articleAuthors)) {
+            return new ArrayList<>(articleAuthors);
+        }
+        return Collections.emptyList();
     }
 
     /**
@@ -143,7 +152,10 @@ public class Articles {
      * @return the tags
      */
     public List<String> getTags() {
-        return tags;
+        if (Objects.nonNull(tags)) {
+            return new ArrayList<>(tags);
+        }
+        return Collections.emptyList();
     }
 
     /**

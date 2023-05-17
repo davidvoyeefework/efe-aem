@@ -75,7 +75,7 @@ public class ArticleAuthor {
 
 
     /**
-     * Gets the pgoto.
+     * Gets the photo.
      *
      * @return the photo
      */
