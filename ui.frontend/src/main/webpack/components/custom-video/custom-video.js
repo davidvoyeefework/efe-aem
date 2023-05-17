@@ -1,5 +1,4 @@
 (function (window) {
-  console.log(window);
   // Load the IFrame Player API code asynchronously
   const tag = document.createElement("script");
   tag.src = "https://www.youtube.com/iframe_api";
