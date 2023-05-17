@@ -112,7 +112,7 @@ public class DataLayerUtils {
 		videoTimed.add("primaryAssetViewDetails", primaryAssetViewDetails);
 		
 		JsonObject starts = new JsonObject();
-		starts.addProperty("starts", 0);
+		starts.addProperty("value", 0);
 		videoTimed.add("starts", starts);
 		
 		JsonObject completes = new JsonObject();
