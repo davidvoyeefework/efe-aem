@@ -1,4 +1,5 @@
 (function (window) {
+  console.log(window);
   // Load the IFrame Player API code asynchronously
   const tag = document.createElement("script");
   tag.src = "https://www.youtube.com/iframe_api";
@@ -11,13 +12,14 @@
 
     for (let i = 0; i < playerElements.length; i++) {
       const playerElement = playerElements[i];
-      const videoId = playerElement.dataset.videoId;
+      const videoId = playerElement.dataset?.videoId;
       const playerEl = playerElement.querySelector(".player");
       const playButton = playerElement.querySelector(".start-video");
       const thumbnailContainerEl = playerElement.querySelector(
         ".thumbnail_container"
       );
-      const thumbnailUrl = playerElement.dataset.thumbnailImage;
+      const dataLayer = JSON.parse(playerElement.dataset?.layer);
+      const thumbnailUrl = playerElement.dataset?.thumbnailImage;
       const thumbnailEl = playerElement.querySelector(".thumbnail");
       thumbnailEl.src = thumbnailUrl;
 
@@ -28,10 +30,28 @@
         },
         events: {
           onReady: onPlayerReady(playerEl, playButton, thumbnailContainerEl),
+          onStateChange: onPlayerStateChange(dataLayer),
         },
       });
 
       players.push(player);
+    }
+
+    function onPlayerStateChange(dataLayer) {
+      return function (event) {
+        if (event?.data === YT?.PlayerState?.PLAYING) {
+          window?.adobeDataLayer?.push({
+            ...dataLayer,
+            start: 1,
+          })
+        }
+        if (event?.data === YT?.PlayerState?.ENDED) {
+          window?.adobeDataLayer?.push({
+            ...dataLayer,
+            completes: 1,
+          })
+        }
+      }
     }
 
     function onPlayerReady(playerEl, playButton, thumbnailContainerEl) {
