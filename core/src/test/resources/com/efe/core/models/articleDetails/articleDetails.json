@@ -4,7 +4,8 @@
       "articleDetails": {
         "jcr:primaryType": "nt:unstructured",
         "sling:resourceType": "efe/components/articledetails",
-        "articleFragmentPath": "/content/dam/efe/test-article-cf/master"
+        "articleFragmentPath": "/content/dam/efe/test-article-cf/master",
+        "id": "1"
       }
     }
   }
