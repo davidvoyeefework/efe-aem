@@ -40,16 +40,14 @@
     function onPlayerStateChange(dataEfeLayer) {
       return function (event) {
         if (event?.data === YT?.PlayerState?.PLAYING) {
-          window?.adobeDataLayer?.push({
-            ...dataEfeLayer,
-            start: 1,
-          })
+          const updatedEfeLayer = JSON.parse(JSON.stringify(dataEfeLayer));
+          updatedEfeLayer.video.videoTimed.starts.value = 1;
+          window?.adobeDataLayer?.push(updatedEfeLayer);
         }
         if (event?.data === YT?.PlayerState?.ENDED) {
-          window?.adobeDataLayer?.push({
-            ...dataEfeLayer,
-            completes: 1,
-          })
+          const updatedEfeLayer = JSON.parse(JSON.stringify(dataEfeLayer));
+          updatedEfeLayer.video.videoTimed.completes.value = 1;
+          window?.adobeDataLayer?.push(updatedEfeLayer)
         }
       }
     }
