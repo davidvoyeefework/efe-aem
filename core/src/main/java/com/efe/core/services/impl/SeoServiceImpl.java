@@ -61,6 +61,12 @@ public class SeoServiceImpl implements SeoService{
 	/** The breadcrumb type. */
 	private String breadcrumbType;
 	
+	/** The video type. */
+	private String videoType;
+	
+	/** The youtube API url. */
+	private String youtubeAPIUrl;
+	
 	/**
 	 * The Interface Config.
 	 */
@@ -186,6 +192,22 @@ public class SeoServiceImpl implements SeoService{
 			 */
 			@AttributeDefinition(name = "Breadcrumb Item Type")
 			String breadCrumbItemType();
+			
+			/**
+			 * Youtube API url.
+			 *
+			 * @return the string
+			 */
+			@AttributeDefinition(name = "Youtube API")
+			String youtubeAPIUrl();
+			
+			/**
+			 * Video type.
+			 *
+			 * @return the string
+			 */
+			@AttributeDefinition(name = "Video Type")
+			String videoType();
 	}
 	
 	/**
@@ -211,6 +233,8 @@ public class SeoServiceImpl implements SeoService{
 		questionType = config.questionType();
 		breadcrumbType = config.breadCrumbType();
 		breadcrumbItemType = config.breadCrumbItemType();
+		youtubeAPIUrl = config.youtubeAPIUrl();
+		videoType = config.videoType();
 	}
 
 	/**
@@ -361,6 +385,26 @@ public class SeoServiceImpl implements SeoService{
 	@Override
 	public String getBreadCrumbItemType() {
 		return breadcrumbItemType;
+	}
+
+	/**
+	 * Gets the youtube API url.
+	 *
+	 * @return the youtube API url
+	 */
+	@Override
+	public String getYoutubeAPIUrl() {
+		return youtubeAPIUrl;
+	}
+
+	/**
+	 * Gets the video type.
+	 *
+	 * @return the video type
+	 */
+	@Override
+	public String getVideoType() {
+		return videoType;
 	}
 
 }

@@ -34,7 +34,7 @@ import com.efe.core.utils.SeoUtil;
  * The Class MapDirectionImpl.
  */
 @Model(adaptables = { Resource.class, SlingHttpServletRequest.class }, adapters = MapDirection.class, resourceType = {
-		LocationListImpl.RESOURCE_TYPE }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+		MapDirectionImpl.RESOURCE_TYPE }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
 public class MapDirectionImpl implements MapDirection {
 

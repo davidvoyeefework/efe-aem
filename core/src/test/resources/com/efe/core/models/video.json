@@ -1,0 +1,14 @@
+{
+	"efe": {
+		"jcr:content": {
+			"video": {
+				"jcr:primaryType": "nt:unstructured",
+				"id": "1",
+				"videoId": "12345",
+				"sling:resourceType": "efe/components/video",
+				"fileReference": "/thumbnail.png",
+				"buttonIconReference": "/btn-icon.png"
+			}
+		}
+	}
+}

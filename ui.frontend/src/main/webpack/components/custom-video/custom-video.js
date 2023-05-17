@@ -1,71 +1,52 @@
-export default class CustomVideo {
-    constructor(el) {
-        this.el = el;
-        this.player;
-        this.thumbnailContainerEl = el.querySelector(".thumbnail_container");
-        this.thumbnailEl =
-            this.thumbnailContainerEl.querySelector("#thumbnail");
-        this.playButton = el.querySelector(".start-video");
-        this.playerEl = el.querySelector("#player");
-        this.playButton.addEventListener(
-            "click",
-            this.handleCustomPlayButton.bind(this)
-        );
-        this.thumbnailImage = el.dataset.thumbnailImage || '';
-        this.videoId = el.dataset.videoId;
-        this.initVideo();
+(function (window) {
+  // Load the IFrame Player API code asynchronously
+  const tag = document.createElement("script");
+  tag.src = "https://www.youtube.com/iframe_api";
+  const firstScriptTag = document.getElementsByTagName("script")[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-        this.onIframeReady = this.onIframeReady.bind(this);
-        this.hideDefaults = this.hideDefaults.bind(this);
+  let players = [];
+  window.onYouTubeIframeAPIReady = function onYouTubeIframeAPIReady() {
+    const playerElements = document.getElementsByClassName("cmp-custom-video");
+
+    for (let i = 0; i < playerElements.length; i++) {
+      const playerElement = playerElements[i];
+      const videoId = playerElement.dataset.videoId;
+      const playerEl = playerElement.querySelector(".player");
+      const playButton = playerElement.querySelector(".start-video");
+      const thumbnailContainerEl = playerElement.querySelector(
+        ".thumbnail_container"
+      );
+      const thumbnailUrl = playerElement.dataset.thumbnailImage;
+      const thumbnailEl = playerElement.querySelector(".thumbnail");
+      thumbnailEl.src = thumbnailUrl;
+
+      const player = new YT.Player(playerEl, {
+        videoId: videoId,
+        playerVars: {
+          playsInline: 1,
+        },
+        events: {
+          onReady: onPlayerReady(playerEl, playButton, thumbnailContainerEl),
+        },
+      });
+
+      players.push(player);
     }
 
-    static init(el) {
-        return new CustomVideo(el);
-    }
+    function onPlayerReady(playerEl, playButton, thumbnailContainerEl) {
+      return function (event) {
+        var player = event.target;
+        playerEl = player.getIframe();
+        playerEl.style.display = "none";
 
-    async loadYTIframeAPI() {
-        const tag = document.createElement("script");
-        tag.src = "https://www.youtube.com/iframe_api";
-
-        const firstScriptTag = document.getElementsByTagName("script")[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-        await new Promise((resolve) => {
-            window.onYouTubeIframeAPIReady = () => {
-                this.onIframeReady();
-                resolve();
-            };
-        }).then(() => {
-            this.hideDefaults();
+        playButton.addEventListener("click", function () {
+          playButton.style.display = "none";
+          playerEl.style.display = "block";
+          thumbnailContainerEl.style.display = "none";
+          player.playVideo();
         });
+      };
     }
-
-    hideDefaults() {
-        this.playerEl.style.display = "none";
-        this.thumbnailEl.src = this.thumbnailImage;
-    }
-
-    onIframeReady() {
-        this.player = new YT.Player("player", {
-            width: "100%",
-            height: "100%",
-            videoId: this.videoId,
-            playerVars: {
-                playsinline: 1,
-            },
-        });
-
-        this.playerEl = this.player.getIframe();
-    }
-
-    initVideo() {
-        this.loadYTIframeAPI(this.onIframeReady);
-    }
-
-    handleCustomPlayButton() {
-        this.playButton.style.display = "none";
-        this.playerEl.style.display = "block";
-        this.thumbnailContainerEl.style.display = "none";
-        this.player.playVideo();
-    }
-}
+  };
+})(window);

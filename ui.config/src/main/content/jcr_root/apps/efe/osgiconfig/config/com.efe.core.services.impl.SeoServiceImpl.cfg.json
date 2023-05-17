@@ -13,5 +13,8 @@
 	"questionType":"Question",
 	"answerType":"Answer",
 	"breadCrumbType":"BreadcrumbList",
-	"breadCrumbItemType":"ListItem"
+	"breadCrumbItemType":"ListItem",
+	"videoType":"VideoObject",
+	"youtubeAPIUrl":"$[env:youtube_api;default=https://youtube.googleapis.com/youtube/v3/videos?key=AIzaSyC_6sxg28ASbugNw39hzBxFfKkMbUUkyWs&part=contentDetails,snippet&id={videoid}]"
+	
 }
