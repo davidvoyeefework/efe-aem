@@ -1,0 +1,42 @@
+{
+  "jcr:primaryType": "dam:Asset",
+  "jcr:mixinTypes": [
+    "mix:referenceable",
+    "mix:versionable"
+  ],
+  "jcr:createdBy": "admin",
+  "jcr:versionHistory": "86216b1c-20ed-4d6e-9087-be923d6f53b2",
+  "jcr:predecessors": ["d1a920bc-dcd5-4937-85c3-fc7075ffeaea"],
+  "jcr:created": "Thu May 11 2023 22:25:59 GMT+0530",
+  "jcr:baseVersion": "d1a920bc-dcd5-4937-85c3-fc7075ffeaea",
+  "jcr:isCheckedOut": true,
+  "jcr:uuid": "574cfd32-fc3a-4997-8d7c-e38372199cf5",
+  "jcr:content": {
+    "jcr:primaryType": "dam:AssetContent",
+    "jcr:title": "test-education-cf",
+    "contentFragment": true,
+    "cq:name": "test-education-cf",
+    "cq:parentPath": "/content/dam/efe",
+    "data" : {
+      "jcr:primaryType": "nt:unstructured",
+      "_strucVersion": 1,
+      "cq:model": "/conf/efe/settings/dam/cfm/models/education"
+    },
+    "master" : {
+      "jcr:primaryType": "nt:unstructured",
+      "jcr:mixinTypes": [
+        "dam:cfVariationNode",
+        "cq:Taggable"
+      ],
+      "university@LastModified": "Thu May 11 2023 22:26:28 GMT+0530",
+      "degree": "Bachelor of Business Administration",
+      "major": "Marketing",
+      "university": "Stephen F. Austin State University"
+    },
+    "metadata" : {
+      "jcr:primaryType": "nt:unstructured",
+      "jcr:mixinTypes": ["cq:Taggable"]
+    }
+  }
+}
+

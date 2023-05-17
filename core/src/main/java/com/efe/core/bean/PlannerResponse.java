@@ -167,6 +167,58 @@ public class PlannerResponse {
 	/* lastUpdated */
 	private String lastUpdated;
 
+
+
+	/* Sets firstName */
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	/* Sets middleName */
+	public void setMiddleName(String middleName) {
+		this.middleName = middleName;
+	}
+
+	/* Sets lastName */
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	/* Sets id */
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	/* Sets title */
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	/* Sets desktopImageUrl */
+	public void setDesktopImageUrl(String desktopImageUrl) {
+		this.desktopImageUrl = desktopImageUrl;
+	}
+
+	/* Sets mobileImageUrl */
+	public void setMobileImageUrl(String mobileImageUrl) {
+		this.mobileImageUrl = mobileImageUrl;
+	}
+
+	/* Sets education */
+	public void setEducation(List<Education> education) {
+		this.education = education;
+	}
+
+	/* Sets certifications */
+	public void setCertifications(List<Certifications> certifications) {
+		this.certifications = certifications;
+	}
+
+	/* Sets bio */
+	public void setBio(String bio) {
+		this.bio = bio;
+	}
+
 	/* getter lastUpdated */
 	public String getLastUpdated() {
 		return lastUpdated;

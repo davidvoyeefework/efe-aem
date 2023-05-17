@@ -1,0 +1,11 @@
+{
+  "efe": {
+    "jcr:content": {
+      "articleDetails": {
+        "jcr:primaryType": "nt:unstructured",
+        "sling:resourceType": "efe/components/articledetails",
+        "articleFragmentPath": "/content/dam/efe/test-article-cf/master"
+      }
+    }
+  }
+}
