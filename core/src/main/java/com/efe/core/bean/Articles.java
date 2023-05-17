@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+
 /**
  * The Articles bean class.
  */
@@ -68,7 +69,7 @@ public class Articles {
      * @return the plannerResponse
      */
     public void setPlannerResponse(List<PlannerResponse> plannerResponse) {
-        this.plannerResponse = plannerResponse;
+        this.plannerResponse = new ArrayList<>(plannerResponse);
     }
 
     /**
@@ -89,7 +90,7 @@ public class Articles {
      * @return the articleAuthors
      */
     public void setArticleAuthors(List<ArticleAuthor> articleAuthors) {
-        this.articleAuthors = articleAuthors;
+        this.articleAuthors = new ArrayList<>(articleAuthors);
     }
 
     /**
@@ -116,7 +117,7 @@ public class Articles {
      * @return the authorType
      */
     public String[] getAuthorType() {
-        return authorType;
+        return authorType.clone();
     }
 
     /**
@@ -125,7 +126,8 @@ public class Articles {
      * @return the authorType
      */
     public void setAuthorType(String[] authorType) {
-        this.authorType = authorType;
+
+        this.authorType =  authorType.clone();
     }
 
     /**
@@ -164,7 +166,8 @@ public class Articles {
      * @return the tags
      */
     public void setTags(List<String> tags) {
-        this.tags = tags;
+
+        this.tags = new ArrayList<>(tags);
     }
 
     /**
@@ -263,7 +266,8 @@ public class Articles {
      * @return the planner
      */
     public String[] getPlanner() {
-        return planner;
+
+        return planner.clone();
     }
 
     /**
@@ -272,7 +276,8 @@ public class Articles {
      * @return the planner
      */
     public void setPlanner(String[] planner) {
-        this.planner = planner;
+
+        this.planner = planner.clone();
     }
 
     /**
@@ -281,7 +286,8 @@ public class Articles {
      * @return the RegularAuthor
      */
     public String[] getRegularAuthor() {
-        return regularAuthor;
+
+        return regularAuthor.clone();
     }
 
     /**
@@ -290,7 +296,8 @@ public class Articles {
      * @return the RegularAuthor
      */
     public void setRegularAuthor(String[] regularAuthor) {
-        this.regularAuthor = regularAuthor;
+
+        this.regularAuthor = regularAuthor.clone();
     }
 
 }
