@@ -1,0 +1,18 @@
+<section data-sly-use.model="com.efe.core.models.Video" 
+         data-sly-use.template="core/wcm/components/commons/v1/templates.html"
+         data-component="custom-video" class="cmp-custom-video" data-video-id="${model.videoId}"
+         data-thumbnail-image="${model.videoThumbnail}"
+         data-sly-test.isNotEmpty="${!model.empty}"
+         data-video-title="${model.videoTitle}">
+    <div class="player"></div>
+    <div class="thumbnail_container">
+        <img class="thumbnail" />
+    </div>
+    <a class="start-video">
+        <img src="${model.buttonIcon}" alt="play button" />
+    </a>
+    <script data-sly-test="${model.jsonLd}" type="application/ld+json">
+        ${model.jsonLd @context ='unsafe'}
+    </script>
+</section>
+<sly data-sly-call="${template.placeholder @ isEmpty=!isNotEmpty, classAppend='cmp-video'}"></sly>

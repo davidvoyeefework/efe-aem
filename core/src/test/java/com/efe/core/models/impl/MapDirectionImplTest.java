@@ -15,7 +15,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.adobe.cq.dam.cfm.ContentFragment;
 import com.day.cq.commons.Externalizer;
-import com.efe.core.models.FAQAccordion;
 import com.efe.core.models.MapDirection;
 import com.efe.core.services.impl.EfeServiceImpl;
 import com.efe.core.services.impl.SeoServiceImpl;

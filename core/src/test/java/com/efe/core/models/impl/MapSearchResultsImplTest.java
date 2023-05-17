@@ -56,6 +56,7 @@ class MapSearchResultsImplTest {
 		assertEquals("SEARCH LOCATIONS", mapSearchResults.getSearchButtonLabel());
 		assertEquals("title", mapSearchResults.getNationalTitle());
 		assertEquals("111", mapSearchResults.getNationalCallbackNumber());
+		assertEquals("Callback label", mapSearchResults.getNationalCallbackLabel());
 		assertEquals("link", mapSearchResults.getNationalLink());
 		assertEquals("details", mapSearchResults.getNationalDetails());
 		assertEquals("1", mapSearchResults.getId());

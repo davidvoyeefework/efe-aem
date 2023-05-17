@@ -25,6 +25,26 @@ public class JsonLd {
 	/** The name. */
 	@Expose
 	private String name;
+	
+	/** The description. */
+	@Expose
+	private String description;
+	
+	/** The thumbnail url. */
+	@Expose
+	private String thumbnailUrl;
+	
+	/** The upload date. */
+	@Expose
+	private String uploadDate;
+	
+	/** The duration. */
+	@Expose
+	private String duration;
+	
+	/** The embed url. */
+	@Expose
+	private String embedUrl;
 
 	/** The address. */
 	@Expose
@@ -168,6 +188,51 @@ public class JsonLd {
 	 */
 	public void setItemListElement(List<ItemListElement> itemListElement) {
 		this.itemListElement = new ArrayList<>(itemListElement);
+	}
+
+	/**
+	 * Sets the description.
+	 *
+	 * @param description the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	/**
+	 * Sets the thumbnail url.
+	 *
+	 * @param thumbnailUrl the thumbnailUrl to set
+	 */
+	public void setThumbnailUrl(String thumbnailUrl) {
+		this.thumbnailUrl = thumbnailUrl;
+	}
+
+	/**
+	 * Sets the upload date.
+	 *
+	 * @param uploadDate the uploadDate to set
+	 */
+	public void setUploadDate(String uploadDate) {
+		this.uploadDate = uploadDate;
+	}
+
+	/**
+	 * Sets the duration.
+	 *
+	 * @param duration the duration to set
+	 */
+	public void setDuration(String duration) {
+		this.duration = duration;
+	}
+
+	/**
+	 * Sets the embed url.
+	 *
+	 * @param embedUrl the embedUrl to set
+	 */
+	public void setEmbedUrl(String embedUrl) {
+		this.embedUrl = embedUrl;
 	}
 
 }

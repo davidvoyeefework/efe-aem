@@ -4,6 +4,7 @@ import java.util.Objects;
 
 import javax.annotation.PostConstruct;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -92,6 +93,10 @@ public class MapSearchResultsImpl implements MapSearchResults {
 	/** The national advisor title. */
 	@ValueMapValue
 	private String nationalTitle;
+	
+	/** The national advisor callback label. */
+	@ValueMapValue
+	private String nationalCallbackNumberLabel;
 	
 	/** The national advisor callback number. */
 	@ValueMapValue
@@ -285,7 +290,11 @@ public class MapSearchResultsImpl implements MapSearchResults {
 	 */
 	@Override
 	public String getNationalLink() {
-		return nationalLink;
+		String nationalLinkVal = null;
+		if(StringUtils.isNotEmpty(nationalLink)) {
+			nationalLinkVal =  LinkUtil.getFormattedLink(nationalLink, resourceResolver);
+		}
+		return nationalLinkVal;
 	}
 
 	/**
@@ -296,6 +305,11 @@ public class MapSearchResultsImpl implements MapSearchResults {
 	@Override
 	public String getNationalDetails() {
 		return nationalDetails;
+	}
+
+	@Override
+	public String getNationalCallbackLabel() {
+		return nationalCallbackNumberLabel;
 	}
 
 }
