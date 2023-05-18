@@ -8,6 +8,8 @@
   let players = [];
   window.onYouTubeIframeAPIReady = function onYouTubeIframeAPIReady() {
     const playerElements = document.getElementsByClassName("cmp-custom-video");
+    let videoStart = false;
+    window.adobeDataLayer = [];
 
     for (let i = 0; i < playerElements.length; i++) {
       const playerElement = playerElements[i];
@@ -29,24 +31,26 @@
         },
         events: {
           onReady: onPlayerReady(playerEl, playButton, thumbnailContainerEl),
-          onStateChange: onPlayerStateChange(dataEfeLayer),
+          onStateChange: onPlayerStateChange(dataEfeLayer, videoStart),
         },
       });
 
       players.push(player);
     }
 
-    function onPlayerStateChange(dataEfeLayer) {
+    function onPlayerStateChange(dataEfeLayer, videoStart) {
       return function (event) {
-        if (event?.data === YT?.PlayerState?.PLAYING) {
+        if (event?.data === YT?.PlayerState?.PLAYING && !videoStart) {
           const updatedEfeLayer = JSON.parse(JSON.stringify(dataEfeLayer));
           updatedEfeLayer.video.videoTimed.starts.value = 1;
           window?.adobeDataLayer?.push(updatedEfeLayer);
+          videoStart = true;
         }
         if (event?.data === YT?.PlayerState?.ENDED) {
           const updatedEfeLayer = JSON.parse(JSON.stringify(dataEfeLayer));
           updatedEfeLayer.video.videoTimed.completes.value = 1;
           window?.adobeDataLayer?.push(updatedEfeLayer)
+          videoStart = false;
         }
       }
     }
