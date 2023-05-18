@@ -38,12 +38,12 @@
         </node3>
         <node4
             jcr:primaryType="cq:WorkflowNode"
-            description="Complete to end the workflow or step back to approvers."
+            description="The approval was denied and the content was not published. Click on complete to end the workflow or step back to approvers."
             title="Reject the Content Fragment"
             type="PARTICIPANT">
             <metaData
                 jcr:primaryType="nt:unstructured"
-                PARTICIPANT="EFE Assets Content Fragment Contributors"/>
+                PARTICIPANT="EFE AEM Assets CF Contributors"/>
         </node4>
         <node5
             jcr:primaryType="cq:WorkflowNode"
