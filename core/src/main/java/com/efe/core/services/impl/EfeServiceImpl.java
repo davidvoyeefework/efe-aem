@@ -4,6 +4,7 @@ import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Modified;
 import org.osgi.service.metatype.annotations.AttributeDefinition;
+import org.osgi.service.metatype.annotations.AttributeType;
 import org.osgi.service.metatype.annotations.Designate;
 import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 import org.slf4j.Logger;
@@ -47,6 +48,12 @@ public class EfeServiceImpl implements EfeService {
 
 	/** The onetrust script id. */
 	private String onetrustScriptId;
+	
+	/** The analytics site root level. */
+	private int analyticsSiteRootLevel;
+	
+	/** The link tracking list path. */
+	private String linkTrackingListPath;
 
 	/** The form base url. */
 	private String formBaseUrl;
@@ -131,6 +138,23 @@ public class EfeServiceImpl implements EfeService {
 		 */
 		@AttributeDefinition(name = "One Trust Script Domain Key", description = "One Trust JS SDK Domain Key")
 		String onetrustScriptId();
+		
+		/**
+		 * Analytics site root level.
+		 *
+		 * @return the string
+		 */
+		@AttributeDefinition(name = "Site Root level", description = "Site root level to form site sections", type = AttributeType.INTEGER)
+		int analyticsSiteRootLevel();
+		
+		/**
+		 * Link tracking list path.
+		 *
+		 * @return the string
+		 */
+		@AttributeDefinition(name = "Link tracking Generic list path", description = "Analytics Link tracking Generic list path")
+		String linkTrackingListPath();
+		
 
 		/**
 		 * Form base url.
@@ -168,6 +192,8 @@ public class EfeServiceImpl implements EfeService {
 		this.googleDirectionPrefixUrl = config.googleDirectionPrefixUrl();
 		this.onetrustScript = config.onetrustScript();
 		this.onetrustScriptId = config.onetrustScriptId();
+		this.analyticsSiteRootLevel = config.analyticsSiteRootLevel();
+		this.linkTrackingListPath = config.linkTrackingListPath();
 		this.formBaseUrl = config.formBaseUrl();
 		this.formJsUrl = config.formJsUrl();
 
@@ -264,7 +290,27 @@ public class EfeServiceImpl implements EfeService {
 	}
 
 	/**
-	 * Gets the form base url.
+	 * Gets the analytics site root level.
+	 *
+	 * @return the analyticsSiteRootLevel
+	 */
+	@Override
+	public int getAnalyticsSiteRootLevel() {
+		return analyticsSiteRootLevel;
+	}
+
+	/**
+	 * Gets the link tracking list path.
+	 *
+	 * @return the linkTrackingListPath
+	 */
+	@Override
+	public String getLinkTrackingListPath() {
+		return linkTrackingListPath;
+	}
+
+	/**
+	 *  Gets the form base url.
 	 *
 	 * @return the form base url
 	 */

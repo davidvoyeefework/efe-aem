@@ -37,6 +37,7 @@ class EFEDatalayerImplTest {
 		aemContext.registerService(EfeService.class, efeService);
 		
 		aemContext.request().setAttribute("type", "page");
+		aemContext.requestPathInfo().setSelectorString("formevent.form name");
 		aemContext.load().json("/com/efe/core/models/efedatalayer.json", "/content");
 		aemContext.currentResource("/content/efe/page1/page2");
 		
@@ -48,6 +49,7 @@ class EFEDatalayerImplTest {
 		assertNotNull(datalayer.getDataLayer());
 		assertEquals("test", datalayer.getOneTrustScript());
 		assertEquals("id", datalayer.getOneTrustScriptId());
+		assertEquals("form name", datalayer.getFormName());
 		
 	}
 
