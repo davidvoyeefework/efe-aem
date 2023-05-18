@@ -1,4 +1,5 @@
-<sly data-sly-use.model="com.efe.core.models.ArticleDetails">
+<sly data-sly-use.model="com.efe.core.models.ArticleDetails"
+     data-sly-use.template="core/wcm/components/commons/v1/templates.html" data-sly-test.isNotEmpty="${properties.articleFragmentPath}">
     <div data-sly-test=${properties.articleFragmentPath} class="cmp-container cmp-container--white cmp-container--width-1400 border-radius-- cmp-container--center cmp-container--padding" id="${model.id}">
         <div class="title cmp-title--heading-03 ">
             <div class="cmp-title">
@@ -122,3 +123,4 @@
         </div>
     </div>
 </sly>
+<sly data-sly-call="${template.placeholder @ isEmpty=!isNotEmpty, classAppend='cmp-articledetails'}"></sly>
