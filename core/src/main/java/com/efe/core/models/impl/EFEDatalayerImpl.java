@@ -64,6 +64,9 @@ public class EFEDatalayerImpl implements EFEDatalayer {
 
 	/** The tracking links json. */
 	private String trackingLinksJson;
+	
+	/** The form name. */
+	private String formName;
 
 	/**
 	 * Inits the model.
@@ -76,6 +79,13 @@ public class EFEDatalayerImpl implements EFEDatalayer {
 			dataLayerObj = DataLayerUtils.createPageLoadEventObj(efeService, currentPage, request, resolver,
 					externalizer);
 			trackingLinksJson = DataLayerUtils.getTrackingLinksList(resolverFactory, efeService);
+			
+			if(request.getRequestPathInfo().getSelectors() != null) {
+				String []requestSelectors = request.getRequestPathInfo().getSelectors();
+				if(requestSelectors.length >= 2 && "formevent".equals(requestSelectors[0])) {
+					formName = requestSelectors[1];
+				}
+			}
 		}
 
 		if (null != dataLayerObj) {
@@ -121,6 +131,16 @@ public class EFEDatalayerImpl implements EFEDatalayer {
 	@Override
 	public String getTrackingLinksJson() {
 		return trackingLinksJson;
+	}
+
+	/**
+	 * Gets the form name.
+	 *
+	 * @return the formName
+	 */
+	@Override
+	public String getFormName() {
+		return formName;
 	}
 
 }

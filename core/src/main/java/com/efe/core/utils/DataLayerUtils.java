@@ -13,7 +13,6 @@ import org.apache.sling.api.resource.ResourceResolverFactory;
 
 import com.day.cq.commons.Externalizer;
 import com.day.cq.wcm.api.Page;
-import com.day.cq.wcm.api.PageManager;
 import com.efe.core.bean.datalayer.DataLayerObj;
 import com.efe.core.bean.datalayer.Web;
 import com.efe.core.bean.datalayer.WebDetails;
@@ -26,6 +25,7 @@ import com.google.gson.JsonObject;
  */
 public class DataLayerUtils {
 
+	private static final String VALUE = "value";
 	/** The Constant PAGE_LOADED_EVENT. */
 	private static final String PAGE_LOADED_EVENT = "page_loaded";
 
@@ -120,11 +120,11 @@ public class DataLayerUtils {
 		videoTimed.add("primaryAssetViewDetails", primaryAssetViewDetails);
 
 		JsonObject starts = new JsonObject();
-		starts.addProperty("value", 0);
+		starts.addProperty(VALUE, 0);
 		videoTimed.add("starts", starts);
 
 		JsonObject completes = new JsonObject();
-		completes.addProperty("value", 0);
+		completes.addProperty(VALUE, 0);
 		videoTimed.add("completes", completes);
 
 		video.add("videoTimed", videoTimed);
@@ -150,7 +150,7 @@ public class DataLayerUtils {
 				if (Objects.nonNull(resource)) {
 					Iterable<Resource> children = resource.getChildren();
 					for (Resource link : children) {
-						final String linkLabel = link.getValueMap().get("value", StringUtils.EMPTY);
+						final String linkLabel = link.getValueMap().get(VALUE, StringUtils.EMPTY);
 						if (StringUtils.isNotEmpty(linkLabel)) {
 							array.add(linkLabel.trim());
 						}

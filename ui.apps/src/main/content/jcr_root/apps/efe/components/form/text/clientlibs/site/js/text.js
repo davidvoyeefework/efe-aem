@@ -223,24 +223,32 @@
                 }
             },0)
         })
-        var element =  document.querySelector('.cmp-form-error .cmp-form-error__item');
-        if (typeof(element) != 'undefined' && element != null) {
-            let errorMessage = element.innerText;
-            window.adobeDataLayer.push({ 
-                event : 'form_validation_error',
-                _efe : { 
-                    formInfo :{
-                    formName : formName, 
-                    errorCode:'', 
-                    formStart : {
-                        value: 0
-                    }, 
-                    errorMessage
-                    }
-                }
-            })
-        }
+
     }
+
+    window.addEventListener("analyticsloaded",
+        (e) => {
+            var element =  document.querySelector('.cmp-form-error .cmp-form-error__item');
+            if (typeof(element) != 'undefined' && element != null) {
+                let errorMessage = element.innerText;
+                window.adobeDataLayer.push({ 
+                    event : 'form_validation_error',
+                    _efe : { 
+                        formInfo :{
+                        formName : formName, 
+                        errorCode:'500', 
+                        formStart : {
+                            value: 0
+                        }, 
+                        errorMessage
+                        }
+                    }
+                })
+            }
+        },
+        false
+    ); // end of listener
+
 
     if (document.readyState !== "loading") {
         onDocumentReady();

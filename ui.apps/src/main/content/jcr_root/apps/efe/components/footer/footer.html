@@ -14,7 +14,7 @@
                <span id="logo-social-container" data-sly-test="${model.fileReference}">
                   <div class="image cmp-image--efe-logo-primary cmp-image--small" id="efe-logo">
                      <div class="cmp-image" itemscope="" itemtype="http://schema.org/ImageObject">
-                        <a class="cmp-image__link" data-cmp-clickable="" href="${model.logoLink}">
+                        <a class="cmp-image__link" href="${model.logoLink}">
                         <img src="${model.fileReference}" loading="lazy" class="cmp-image__image" itemprop="contentUrl" alt="${model.alt}" title="${model.alt}"/>
                         </a>
                         <meta itemprop="caption" content="${model.alt}" />
@@ -35,7 +35,7 @@
                                  <li class="cmp-list__item">
                                     <span class="cmp-list__item-title">
                                        <div class="button cmp-button--footer-02 cmp-button--efe-gray-primary">
-                                          <a target="${verticalLinks.target}"  data-cmp-clickable="" href="${verticalLinks.link}">
+                                          <a target="${verticalLinks.target}"  href="${verticalLinks.link}">
                                           <span class="cmp-button__text">${verticalLinks.label}</span>
                                           </a>
                                        </div>
@@ -66,7 +66,7 @@
                   <ul class="cmp-list">
                      <sly data-sly-list.horizontalList="${model.horizontalList}">
                         <li class="cmp-list__item">
-                           <a class="cmp-list__item-link" target="${horizontalList.target}" data-cmp-clickable="" href="${horizontalList.link}">
+                           <a class="cmp-list__item-link" target="${horizontalList.target}" href="${horizontalList.link}">
                            <span class="cmp-list__item-title">${horizontalList.label}</span>
                            </a>
                         </li>

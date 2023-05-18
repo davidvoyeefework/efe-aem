@@ -33,4 +33,11 @@ public interface EFEDatalayer {
 	 */
 	String getTrackingLinksJson();
 
+	/**
+	 * Gets the form name.
+	 *
+	 * @return the formName
+	 */
+	String getFormName();
+
 }
