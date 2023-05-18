@@ -38,7 +38,7 @@
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                                                 fieldDescription="If checked the separator will be hidden in mobile configuration"
                                                 name="./hiddenSeparator"
-                                                text="Hide the separator in mobile configuration"
+                                                text="Hide the separator in mobile devices"
                                                 uncheckedValue="false"
                                                 value="true"/>
                                             <id
