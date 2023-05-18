@@ -18,11 +18,12 @@
     var NS = "cmp";
     var IS = "efeText";
     var IS_DASH = "efe-text";
-
+    var formStart = false;
+    var formErrors = [];
+    var formName = document.querySelector('.efe-form form')?.getAttribute("name");
     var selectors = {
         self: "[data-" + NS + '-is="' + IS + '"]'
     };
-
     var properties = {
         /**
          * A validation message to display if there is a type mismatch between the user input and expected input.
@@ -37,7 +38,6 @@
          */
         requiredMessage: ""
     };
-
     function readData(element) {
         var data = element.dataset;
         var options = [];
@@ -59,7 +59,6 @@
                 }
             }
         }
-
         return options;
     }
 
@@ -75,11 +74,11 @@
         this._elements.input.addEventListener("invalid", this._onInvalid.bind(this));
         this._elements.input.addEventListener("input", this._onInput.bind(this));
     }
-
-    FormText.prototype._onInvalid = function(event) {
+    FormText.prototype._onInvalid = function(event) { 
         event.target.setCustomValidity("");
         if (event.target.validity.typeMismatch) {
             if (this._properties.constraintMessage) {
+                formErrors.push(this._properties.constraintMessage);
                 event.target.setCustomValidity(this._properties.constraintMessage);
                 event.target.parentElement.classList.add('cmp-form-text--error');
                 event.target.parentElement.classList.add('cmp-form-text--efe-default');
@@ -87,6 +86,7 @@
             }
         } else if (event.target.validity.valueMissing) {
             if (this._properties.requiredMessage) {
+                formErrors.push(this._properties.requiredMessage);
                 event.target.setCustomValidity(this._properties.requiredMessage);
                 event.target.parentElement.classList.add('cmp-form-text--error');
                 event.target.parentElement.classList.add('cmp-form-text--efe-default');
@@ -94,17 +94,31 @@
             }
         }
     };
-
     FormText.prototype._onInput = function(event) {
+        if(!formStart) {
+            window.adobeDataLayer.push({
+                event : 'form_start',
+                _efe : { 
+                    formInfo :{
+                    formName : formName, 
+                    formStart : {
+                        value: 1
+                    }, 
+                    }
+                }
+            })
+            formStart = true;
+        }
         event.target.setCustomValidity("");
         event.target.parentElement.classList.remove('cmp-form-text--error');
         event.target.parentElement.classList.remove('cmp-form-text--efe-default');
         event.target.nextElementSibling.innerText='';
         if (event.target.getAttribute("type") === 'email') {
-            event.target.setCustomValidity(this._properties.constraintMessage);
-            event.target.parentElement.classList.add('cmp-form-text--error');
-            event.target.parentElement.classList.add('cmp-form-text--efe-default');
-            event.target.nextElementSibling.innerText=this._properties.constraintMessage;
+            if(this._properties.constraintMessage) {
+                event.target.parentElement.classList.add('cmp-form-text--error');
+                event.target.parentElement.classList.add('cmp-form-text--efe-default');
+                event.target.nextElementSibling.innerText=this._properties.constraintMessage;
+            }
             const validEmail = String(event.target.value)
             .toLowerCase()
             .match(
@@ -165,7 +179,6 @@
         for (var i = 0; i < elements.length; i++) {
             new FormText({ element: elements[i], options: readData(elements[i]) });
         }
-
         var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
         var body = document.querySelector("body");
         var observer = new MutationObserver(function(mutations) {
@@ -190,7 +203,52 @@
             childList: true,
             characterData: true
         });
+        document.querySelector('.efe-form button[type="submit"]')?.addEventListener('click',()=>{
+            setTimeout(()=>{
+                if(formErrors.length >0) {
+                    window.adobeDataLayer.push({ 
+                        event : 'form_validation_error',
+                        _efe : { 
+                            formInfo :{
+                            formName : formName, 
+                            errorCode:'', 
+                            formStart : {
+                                value: 0
+                            }, 
+                            errorMessage: formErrors.join('|')
+                            }
+                        }
+                    })
+                    formErrors = [];
+                }
+            },0)
+        })
+
     }
+
+    window.addEventListener("analyticsloaded",
+        (e) => {
+            var element =  document.querySelector('.cmp-form-error .cmp-form-error__item');
+            if (typeof(element) != 'undefined' && element != null) {
+                let errorMessage = element.innerText;
+                window.adobeDataLayer.push({ 
+                    event : 'form_validation_error',
+                    _efe : { 
+                        formInfo :{
+                        formName : formName, 
+                        errorCode:'500', 
+                        formStart : {
+                            value: 0
+                        }, 
+                        errorMessage
+                        }
+                    }
+                })
+            }
+        },
+        false
+    ); // end of listener
+
 
     if (document.readyState !== "loading") {
         onDocumentReady();

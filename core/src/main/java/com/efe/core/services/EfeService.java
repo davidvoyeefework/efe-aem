@@ -69,7 +69,20 @@ public interface EfeService {
 	String getOneTrustScriptId();
 
 	/**
-	 * Gets the form base URL.
+	 * Gets the analytics site root level.
+	 *
+	 * @return the analyticsSiteRootLevel
+	 */
+	int getAnalyticsSiteRootLevel();
+
+	/**
+	 * Gets the link tracking list path.
+	 *
+	 * @return the linkTrackingListPath
+	 */
+	String getLinkTrackingListPath();
+	 
+	/* Gets the form base URL.
 	 *
 	 * @return the form base URL
 	 */
@@ -81,5 +94,19 @@ public interface EfeService {
 	 * @return the form js URL
 	 */
 	String getFormJsUrl();
+
+	/**
+	 * Checks if is enabled GA.
+	 *
+	 * @return true, if is enabled GA
+	 */
+	boolean isEnabledGA();
+
+	/**
+	 * Gets the ga tag value.
+	 *
+	 * @return the ga tag value
+	 */
+	String getGaTagValue();
 
 }

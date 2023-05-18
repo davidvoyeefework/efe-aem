@@ -4,6 +4,7 @@ import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Modified;
 import org.osgi.service.metatype.annotations.AttributeDefinition;
+import org.osgi.service.metatype.annotations.AttributeType;
 import org.osgi.service.metatype.annotations.Designate;
 import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 import org.slf4j.Logger;
@@ -47,12 +48,24 @@ public class EfeServiceImpl implements EfeService {
 
 	/** The onetrust script id. */
 	private String onetrustScriptId;
+	
+	/** The analytics site root level. */
+	private int analyticsSiteRootLevel;
+	
+	/** The link tracking list path. */
+	private String linkTrackingListPath;
 
 	/** The form base url. */
 	private String formBaseUrl;
 
 	/** The form js url. */
 	private String formJsUrl;
+	
+	/** The ga enabled. */
+	private boolean gaEnabled;
+	
+	/** The ga tag value. */
+	private String gaTagValue;
 
 	/**
 	 * The Interface Config.
@@ -131,6 +144,23 @@ public class EfeServiceImpl implements EfeService {
 		 */
 		@AttributeDefinition(name = "One Trust Script Domain Key", description = "One Trust JS SDK Domain Key")
 		String onetrustScriptId();
+		
+		/**
+		 * Analytics site root level.
+		 *
+		 * @return the string
+		 */
+		@AttributeDefinition(name = "Site Root level", description = "Site root level to form site sections", type = AttributeType.INTEGER)
+		int analyticsSiteRootLevel();
+		
+		/**
+		 * Link tracking list path.
+		 *
+		 * @return the string
+		 */
+		@AttributeDefinition(name = "Link tracking Generic list path", description = "Analytics Link tracking Generic list path")
+		String linkTrackingListPath();
+		
 
 		/**
 		 * Form base url.
@@ -147,6 +177,22 @@ public class EfeServiceImpl implements EfeService {
 		 */
 		@AttributeDefinition(name = "Wealth Management forms Javascript Url", description = "Wealth Management forms Javascript Url")
 		String formJsUrl();
+		
+		/**
+		 * Enable GA.
+		 *
+		 * @return true, if successful
+		 */
+		@AttributeDefinition(name = "Enable GA?", description = "Check to enable GA")
+		boolean enableGA();
+		
+		/**
+		 * Ga tag value.
+		 *
+		 * @return the string
+		 */
+		@AttributeDefinition(name = "GA Tag value", description = "GA Tag Value for different environments")
+		String gaTagValue();
 
 	}
 
@@ -168,8 +214,12 @@ public class EfeServiceImpl implements EfeService {
 		this.googleDirectionPrefixUrl = config.googleDirectionPrefixUrl();
 		this.onetrustScript = config.onetrustScript();
 		this.onetrustScriptId = config.onetrustScriptId();
+		this.analyticsSiteRootLevel = config.analyticsSiteRootLevel();
+		this.linkTrackingListPath = config.linkTrackingListPath();
 		this.formBaseUrl = config.formBaseUrl();
 		this.formJsUrl = config.formJsUrl();
+		this.gaEnabled = config.enableGA();
+		this.gaTagValue = config.gaTagValue();
 
 	}
 
@@ -264,7 +314,27 @@ public class EfeServiceImpl implements EfeService {
 	}
 
 	/**
-	 * Gets the form base url.
+	 * Gets the analytics site root level.
+	 *
+	 * @return the analyticsSiteRootLevel
+	 */
+	@Override
+	public int getAnalyticsSiteRootLevel() {
+		return analyticsSiteRootLevel;
+	}
+
+	/**
+	 * Gets the link tracking list path.
+	 *
+	 * @return the linkTrackingListPath
+	 */
+	@Override
+	public String getLinkTrackingListPath() {
+		return linkTrackingListPath;
+	}
+
+	/**
+	 *  Gets the form base url.
 	 *
 	 * @return the form base url
 	 */
@@ -281,5 +351,25 @@ public class EfeServiceImpl implements EfeService {
 	@Override
 	public String getFormJsUrl() {
 		return formJsUrl;
+	}
+
+	/**
+	 * Checks if is enabled GA.
+	 *
+	 * @return true, if is enabled GA
+	 */
+	@Override
+	public boolean isEnabledGA() {
+		return gaEnabled;
+	}
+
+	/**
+	 * Gets the ga tag value.
+	 *
+	 * @return the ga tag value
+	 */
+	@Override
+	public String getGaTagValue() {
+		return gaTagValue;
 	}
 }
