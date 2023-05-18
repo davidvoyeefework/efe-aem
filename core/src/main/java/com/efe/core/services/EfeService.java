@@ -95,4 +95,18 @@ public interface EfeService {
 	 */
 	String getFormJsUrl();
 
+	/**
+	 * Checks if is enabled GA.
+	 *
+	 * @return true, if is enabled GA
+	 */
+	boolean isEnabledGA();
+
+	/**
+	 * Gets the ga tag value.
+	 *
+	 * @return the ga tag value
+	 */
+	String getGaTagValue();
+
 }

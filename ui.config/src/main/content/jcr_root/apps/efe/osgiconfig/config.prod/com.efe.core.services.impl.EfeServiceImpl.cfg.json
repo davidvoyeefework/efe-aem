@@ -11,5 +11,7 @@
   "analyticsSiteRootLevel":"$[env:site_root_level;default=4]",
   "linkTrackingListPath":"$[env:link_tracking_listpath;default=/etc/acs-commons/lists/efe/tracking-links-list]",
   "formBaseUrl":"$[env:wm_form_base_url]",
-  "formJsUrl":"$[env:wm_form_js_url]"
+  "formJsUrl":"$[env:wm_form_js_url]",
+  "enableGA":"$[env:enable_ga;default=true]",
+  "gaTagValue":"$[env:ga_tag_value;default=GTM-TSXJ98M]"
 }

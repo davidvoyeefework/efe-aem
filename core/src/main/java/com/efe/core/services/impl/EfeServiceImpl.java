@@ -60,6 +60,12 @@ public class EfeServiceImpl implements EfeService {
 
 	/** The form js url. */
 	private String formJsUrl;
+	
+	/** The ga enabled. */
+	private boolean gaEnabled;
+	
+	/** The ga tag value. */
+	private String gaTagValue;
 
 	/**
 	 * The Interface Config.
@@ -171,6 +177,22 @@ public class EfeServiceImpl implements EfeService {
 		 */
 		@AttributeDefinition(name = "Wealth Management forms Javascript Url", description = "Wealth Management forms Javascript Url")
 		String formJsUrl();
+		
+		/**
+		 * Enable GA.
+		 *
+		 * @return true, if successful
+		 */
+		@AttributeDefinition(name = "Enable GA?", description = "Check to enable GA")
+		boolean enableGA();
+		
+		/**
+		 * Ga tag value.
+		 *
+		 * @return the string
+		 */
+		@AttributeDefinition(name = "GA Tag value", description = "GA Tag Value for different environments")
+		String gaTagValue();
 
 	}
 
@@ -196,6 +218,8 @@ public class EfeServiceImpl implements EfeService {
 		this.linkTrackingListPath = config.linkTrackingListPath();
 		this.formBaseUrl = config.formBaseUrl();
 		this.formJsUrl = config.formJsUrl();
+		this.gaEnabled = config.enableGA();
+		this.gaTagValue = config.gaTagValue();
 
 	}
 
@@ -327,5 +351,25 @@ public class EfeServiceImpl implements EfeService {
 	@Override
 	public String getFormJsUrl() {
 		return formJsUrl;
+	}
+
+	/**
+	 * Checks if is enabled GA.
+	 *
+	 * @return true, if is enabled GA
+	 */
+	@Override
+	public boolean isEnabledGA() {
+		return gaEnabled;
+	}
+
+	/**
+	 * Gets the ga tag value.
+	 *
+	 * @return the ga tag value
+	 */
+	@Override
+	public String getGaTagValue() {
+		return gaTagValue;
 	}
 }
