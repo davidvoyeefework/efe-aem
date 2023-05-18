@@ -15,51 +15,53 @@
             width: 0.5px;
             background-color: $efe-gray-blue;
         }
-        &:first-child::before {
-            width: 0;
-        }
-        &:last-child::after {
-            width: 0;
-        }
-        >div .cmp-text {
-            margin-bottom: 7px;
-        }
-        @include media("<=tablet-lg") {
-            width: 342px;
-            text-align: center;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-template-areas:
-                "stat info"
-                "footnote footnote";
-            column-gap: 10px;
+        .column_0 .cmp-container {
+            &:first-child::before {
+                width: 0;
+            }
+            &:last-child::after {
+                width: 0;
+            }
+            >div .cmp-text {
+                margin-bottom: 7px;
+            }
+            @include media("<=tablet-lg") {
+                width: 342px;
+                text-align: center;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-template-areas:
+                    "stat info"
+                    "footnote footnote";
+                column-gap: 10px;
+                >div:nth-child(1) {
+                    text-align: right;
+                }
+                >div:nth-child(2) {
+                    width: 108px;
+                    text-align: left;
+                    margin: auto auto 0 0;
+                }
+                >div:nth-child(3) {
+                    grid-area: footnote;
+                }
+            }
+            .cmp-text--body-03 p {
+                font-weight: 400;
+                sup {
+                    top: -5px;
+                    font-size: rem(10);
+                }
+            }
             >div:nth-child(1) {
-                text-align: right;
+                padding-bottom: 2.25px;
             }
             >div:nth-child(2) {
-                width: 108px;
-                text-align: left;
-                margin: auto auto 0 0;
+                @include media("<=tablet-lg") {
+                    padding-bottom: 8px;
+                }
+                padding-bottom: 9.81px;
             }
-            >div:nth-child(3) {
-                grid-area: footnote;
-            }
-        }
-        .cmp-text--body-03 p {
-            font-weight: 400;
-            sup {
-                top: -5px;
-                font-size: rem(10);
-            }
-        }
-        >div:nth-child(1) {
-            padding-bottom: 2.25px;
-        }
-        >div:nth-child(2) {
-            @include media("<=tablet-lg") {
-                padding-bottom: 8px;
-            }
-            padding-bottom: 9.81px;
         }
     }
     @include media("<=tablet-lg") {
@@ -72,15 +74,6 @@
                 content: unset;
             }
         }
-    }
-    &__middle {
-        align-items: center;
-    }
-    &__top {
-        align-items: flex-start;
-    }
-    &__bottom {
-        align-items: flex-end;
     }
     @include media("<=tablet-lg") {
         &.cmp-horizontal-separator {
@@ -103,8 +96,10 @@
     &__item {
         position: relative;
         max-width: 360px;
-        >div:not(:last-child) {
-            margin-bottom: 20px;
+        .column_0 .cmp-container {
+            >div:not(:last-child) {
+                margin-bottom: 20px;
+            }
         }
         &::after {
             content: "";
@@ -133,15 +128,6 @@
             }
         }
     }
-    &__middle {
-        align-items: center;
-    }
-    &__top {
-        align-items: flex-start;
-    }
-    &__bottom {
-        align-items: flex-end;
-    }
     @include media("<=tablet-lg") {
         &.cmp-horizontal-separator {
             .cmp-vertical-separator--two__item:not(:last-child) {
@@ -151,7 +137,30 @@
             }
         }
         &__middle, &__top, &__bottom {
-            align-items: center;
+            >ul {
+                align-items: center;
+            }
         }
     }
 }
+
+.cmp-vertical-separator--two {
+    @include media(">tablet-lg") {
+        &__middle {
+            >ul {
+                align-items: center;
+            }
+        }
+        &__top {
+            >ul {
+                align-items: flex-start;
+            }
+        }
+        &__bottom {
+            >ul {
+                align-items: flex-end;
+            }
+        }
+    }
+}
+
