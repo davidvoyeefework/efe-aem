@@ -3,9 +3,9 @@
     <script src="${model.oneTrustScript}" type="text/javascript" charset="UTF-8"
     data-domain-script="${model.oneTrustScriptId}"></script>
 
+    <input data-sly-test="${model.trackingLinksJson}" name="tracking-links" type="hidden" data-tracking-list="${model.trackingLinksJson}"/>
 
     <script data-sly-test="${model.dataLayer}">
-
         var isEventPushed = false;
         function OptanonWrapper() {
 

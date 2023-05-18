@@ -68,4 +68,18 @@ public interface EfeService {
 	 */
 	String getOneTrustScriptId();
 
+	/**
+	 * Gets the analytics site root level.
+	 *
+	 * @return the analyticsSiteRootLevel
+	 */
+	int getAnalyticsSiteRootLevel();
+
+	/**
+	 * Gets the link tracking list path.
+	 *
+	 * @return the linkTrackingListPath
+	 */
+	String getLinkTrackingListPath();
+
 }

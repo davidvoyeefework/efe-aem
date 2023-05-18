@@ -4,6 +4,7 @@ import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Modified;
 import org.osgi.service.metatype.annotations.AttributeDefinition;
+import org.osgi.service.metatype.annotations.AttributeType;
 import org.osgi.service.metatype.annotations.Designate;
 import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 import org.slf4j.Logger;
@@ -12,8 +13,7 @@ import org.slf4j.LoggerFactory;
 import com.efe.core.services.EfeService;
 
 /**
- * The Class EfeServiceImpl
- *
+ * The Class EfeServiceImpl.
  */
 @Designate(ocd = EfeServiceImpl.Config.class)
 @Component(service = EfeService.class)
@@ -22,35 +22,25 @@ public class EfeServiceImpl implements EfeService {
 	/** The Constant LOGGER. */
 	private static final Logger LOGGER = LoggerFactory.getLogger(EfeServiceImpl.class);
 
-	/**
-	 * Planner API Endpoint
-	 */
+	/** Planner API Endpoint. */
 	private String plannersAPIEndpoint;
 
-	/**
-	 * Location API Endpoint
-	 */
+	/** Location API Endpoint. */
 	private String locationsAPIEndpoint;
 
-	/**
-	 * AuthHeader
-	 */
+	/** AuthHeader. */
 	private String authHeader;
 	
-	/**
-	 * Planner Page Url
-	 */
+	/** Planner Page Url. */
 	private String plannerPageUrl;
 	
-	/**
-	 * Planner Bio Page Url
-	 */
+	/** Planner Bio Page Url. */
 	private String plannerBioPageUrl;
 	
-	/** Google Api Key **/
+	/**  Google Api Key *. */
 	private String googlePublicApiKey;
 	
-	/** Google Direction Prefix Url **/
+	/**  Google Direction Prefix Url *. */
 	private String googleDirectionPrefixUrl;
 	
 	/** The onetrust script. */
@@ -58,21 +48,29 @@ public class EfeServiceImpl implements EfeService {
 	
 	/** The onetrust script id. */
 	private String onetrustScriptId;
+	
+	/** The analytics site root level. */
+	private int analyticsSiteRootLevel;
+	
+	/** The link tracking list path. */
+	private String linkTrackingListPath;
 
 	/**
-	 * The Interface Config
-	 *
+	 * The Interface Config.
 	 */
 	@ObjectClassDefinition(name = "EFE Common Configurations", description = "EFE Common Configurations")
 	public static @interface Config {
 
 		/**
+		 * Planners API endpoint.
+		 *
 		 * @return plannersAPIEndpoint
 		 */
 		@AttributeDefinition(name = "Planner API Endpoint URL")
 		String plannersAPIEndpoint();
 
 		/**
+		 * Locations API endpoint.
 		 *
 		 * @return locationsAPIEndpoint
 		 */
@@ -80,18 +78,24 @@ public class EfeServiceImpl implements EfeService {
 		String locationsAPIEndpoint();
 
 		/**
+		 * Auth header.
+		 *
 		 * @return authHeader
 		 */
 		@AttributeDefinition(name = "EFE UPLS authHeader", description = "EFE UPLS authHeader")
 		String authHeader();
 		
 		/**
+		 * Planner page url.
+		 *
 		 * @return plannerPageUrl
 		 */
 		@AttributeDefinition(name = "Planner Page Url", description = "Planner Page Url")
 		String plannerPageUrl();
 		
 		/**
+		 * Planner bio page url.
+		 *
 		 * @return plannerBioPageUrl
 		 */
 		@AttributeDefinition(name = "Planner Bio Page Url", description = "Planner Bio Page Url")
@@ -129,12 +133,28 @@ public class EfeServiceImpl implements EfeService {
 		@AttributeDefinition(name = "One Trust Script Domain Key", description = "One Trust JS SDK Domain Key")
 		String onetrustScriptId();
 		
+		/**
+		 * Analytics site root level.
+		 *
+		 * @return the string
+		 */
+		@AttributeDefinition(name = "Site Root level", description = "Site root level to form site sections", type = AttributeType.INTEGER)
+		int analyticsSiteRootLevel();
+		
+		/**
+		 * Link tracking list path.
+		 *
+		 * @return the string
+		 */
+		@AttributeDefinition(name = "Link tracking Generic list path", description = "Analytics Link tracking Generic list path")
+		String linkTrackingListPath();
+		
 	}
 
 	/**
-	 * Activate method to initialize stuff
-	 * 
-	 * @param config
+	 * Activate method to initialize stuff.
+	 *
+	 * @param config the config
 	 */
 	@Activate
 	@Modified
@@ -149,9 +169,13 @@ public class EfeServiceImpl implements EfeService {
 		this.googleDirectionPrefixUrl = config.googleDirectionPrefixUrl();
 		this.onetrustScript = config.onetrustScript();
 		this.onetrustScriptId = config.onetrustScriptId();
+		this.analyticsSiteRootLevel = config.analyticsSiteRootLevel();
+		this.linkTrackingListPath = config.linkTrackingListPath();
 	}
 
 	/**
+	 * Gets the planners API endpoint.
+	 *
 	 * @return the plannersAPIEndpoint
 	 */
 	@Override
@@ -160,6 +184,8 @@ public class EfeServiceImpl implements EfeService {
 	}
 
 	/**
+	 * Gets the locations API endpoint.
+	 *
 	 * @return the locationsAPIEndpoint
 	 */
 	@Override
@@ -235,5 +261,25 @@ public class EfeServiceImpl implements EfeService {
 	@Override
 	public String getOneTrustScriptId() {
 		return onetrustScriptId;
+	}
+
+	/**
+	 * Gets the analytics site root level.
+	 *
+	 * @return the analyticsSiteRootLevel
+	 */
+	@Override
+	public int getAnalyticsSiteRootLevel() {
+		return analyticsSiteRootLevel;
+	}
+
+	/**
+	 * Gets the link tracking list path.
+	 *
+	 * @return the linkTrackingListPath
+	 */
+	@Override
+	public String getLinkTrackingListPath() {
+		return linkTrackingListPath;
 	}
 }

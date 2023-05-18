@@ -4,6 +4,7 @@ import javax.annotation.PostConstruct;
 
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.api.resource.ResourceResolverFactory;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
@@ -41,7 +42,7 @@ public class EFEDatalayerImpl implements EFEDatalayer {
 	/** The externalizer. */
 	@OSGiService
 	private Externalizer externalizer;
-	
+
 	/** The efe service. */
 	@OSGiService
 	private EfeService efeService;
@@ -50,11 +51,19 @@ public class EFEDatalayerImpl implements EFEDatalayer {
 	@Self
 	private SlingHttpServletRequest request;
 
+	/** The resolver factory. */
+	@OSGiService
+	private ResourceResolverFactory resolverFactory;
+
+	/** The type. */
 	@RequestAttribute
 	private String type;
 
 	/** The data layer. */
 	private String dataLayer;
+
+	/** The tracking links json. */
+	private String trackingLinksJson;
 
 	/**
 	 * Inits the model.
@@ -64,9 +73,11 @@ public class EFEDatalayerImpl implements EFEDatalayer {
 		DataLayerObj dataLayerObj = null;
 
 		if ("page".equals(type)) {
-			dataLayerObj = DataLayerUtils.createPageLoadEventObj(currentPage, request, resolver, externalizer);
+			dataLayerObj = DataLayerUtils.createPageLoadEventObj(efeService, currentPage, request, resolver,
+					externalizer);
+			trackingLinksJson = DataLayerUtils.getTrackingLinksList(resolverFactory, efeService);
 		}
-		
+
 		if (null != dataLayerObj) {
 			dataLayer = new Gson().toJson(dataLayerObj, DataLayerObj.class);
 		}
@@ -81,7 +92,7 @@ public class EFEDatalayerImpl implements EFEDatalayer {
 	public String getDataLayer() {
 		return dataLayer;
 	}
-	
+
 	/**
 	 * Gets the one trust script.
 	 *
@@ -91,7 +102,7 @@ public class EFEDatalayerImpl implements EFEDatalayer {
 	public String getOneTrustScript() {
 		return efeService.getOneTrustScript();
 	}
-	
+
 	/**
 	 * Gets the one trust script id.
 	 *
@@ -100,6 +111,16 @@ public class EFEDatalayerImpl implements EFEDatalayer {
 	@Override
 	public String getOneTrustScriptId() {
 		return efeService.getOneTrustScriptId();
+	}
+
+	/**
+	 * Gets the tracking links json.
+	 *
+	 * @return the trackingLinksJson
+	 */
+	@Override
+	public String getTrackingLinksJson() {
+		return trackingLinksJson;
 	}
 
 }

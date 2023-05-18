@@ -9,7 +9,6 @@
   window.onYouTubeIframeAPIReady = function onYouTubeIframeAPIReady() {
     const playerElements = document.getElementsByClassName("cmp-custom-video");
     let videoStart = false;
-    window.adobeDataLayer = [];
 
     for (let i = 0; i < playerElements.length; i++) {
       const playerElement = playerElements[i];
