@@ -114,10 +114,11 @@
         event.target.parentElement.classList.remove('cmp-form-text--efe-default');
         event.target.nextElementSibling.innerText='';
         if (event.target.getAttribute("type") === 'email') {
-            event.target.setCustomValidity(this._properties.constraintMessage);
-            event.target.parentElement.classList.add('cmp-form-text--error');
-            event.target.parentElement.classList.add('cmp-form-text--efe-default');
-            event.target.nextElementSibling.innerText=this._properties.constraintMessage;
+            if(this._properties.constraintMessage) {
+                event.target.parentElement.classList.add('cmp-form-text--error');
+                event.target.parentElement.classList.add('cmp-form-text--efe-default');
+                event.target.nextElementSibling.innerText=this._properties.constraintMessage;
+            }
             const validEmail = String(event.target.value)
             .toLowerCase()
             .match(
