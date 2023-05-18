@@ -30,22 +30,22 @@ public class EfeServiceImpl implements EfeService {
 
 	/** AuthHeader. */
 	private String authHeader;
-	
+
 	/** Planner Page Url. */
 	private String plannerPageUrl;
-	
+
 	/** Planner Bio Page Url. */
 	private String plannerBioPageUrl;
-	
-	/**  Google Api Key *. */
+
+	/** Google Api Key *. */
 	private String googlePublicApiKey;
-	
-	/**  Google Direction Prefix Url *. */
+
+	/** Google Direction Prefix Url *. */
 	private String googleDirectionPrefixUrl;
-	
+
 	/** The onetrust script. */
 	private String onetrustScript;
-	
+
 	/** The onetrust script id. */
 	private String onetrustScriptId;
 	
@@ -54,6 +54,12 @@ public class EfeServiceImpl implements EfeService {
 	
 	/** The link tracking list path. */
 	private String linkTrackingListPath;
+
+	/** The form base url. */
+	private String formBaseUrl;
+
+	/** The form js url. */
+	private String formJsUrl;
 
 	/**
 	 * The Interface Config.
@@ -84,7 +90,7 @@ public class EfeServiceImpl implements EfeService {
 		 */
 		@AttributeDefinition(name = "EFE UPLS authHeader", description = "EFE UPLS authHeader")
 		String authHeader();
-		
+
 		/**
 		 * Planner page url.
 		 *
@@ -92,7 +98,7 @@ public class EfeServiceImpl implements EfeService {
 		 */
 		@AttributeDefinition(name = "Planner Page Url", description = "Planner Page Url")
 		String plannerPageUrl();
-		
+
 		/**
 		 * Planner bio page url.
 		 *
@@ -100,7 +106,7 @@ public class EfeServiceImpl implements EfeService {
 		 */
 		@AttributeDefinition(name = "Planner Bio Page Url", description = "Planner Bio Page Url")
 		String plannerBioPageUrl();
-		
+
 		/**
 		 * Google map public api.
 		 *
@@ -108,7 +114,7 @@ public class EfeServiceImpl implements EfeService {
 		 */
 		@AttributeDefinition(name = "Google Map API Key", description = "Google Map API Key for Map integration")
 		String googleMapPublicApi();
-		
+
 		/**
 		 * Google direction prefix url.
 		 *
@@ -116,7 +122,7 @@ public class EfeServiceImpl implements EfeService {
 		 */
 		@AttributeDefinition(name = "Google Map Direction Prefix Url", description = "Google Map Direction Prefix Url for forming office direction url")
 		String googleDirectionPrefixUrl();
-		
+
 		/**
 		 * Onetrust script.
 		 *
@@ -124,7 +130,7 @@ public class EfeServiceImpl implements EfeService {
 		 */
 		@AttributeDefinition(name = "One Trust Script Url", description = "One Trust JS SDK Script URL")
 		String onetrustScript();
-		
+
 		/**
 		 * Onetrust script id.
 		 *
@@ -149,6 +155,23 @@ public class EfeServiceImpl implements EfeService {
 		@AttributeDefinition(name = "Link tracking Generic list path", description = "Analytics Link tracking Generic list path")
 		String linkTrackingListPath();
 		
+
+		/**
+		 * Form base url.
+		 *
+		 * @return the string
+		 */
+		@AttributeDefinition(name = "Wealth Management forms base Url", description = "Wealth Management forms base Url")
+		String formBaseUrl();
+
+		/**
+		 * Form js url.
+		 *
+		 * @return the string
+		 */
+		@AttributeDefinition(name = "Wealth Management forms Javascript Url", description = "Wealth Management forms Javascript Url")
+		String formJsUrl();
+
 	}
 
 	/**
@@ -171,6 +194,9 @@ public class EfeServiceImpl implements EfeService {
 		this.onetrustScriptId = config.onetrustScriptId();
 		this.analyticsSiteRootLevel = config.analyticsSiteRootLevel();
 		this.linkTrackingListPath = config.linkTrackingListPath();
+		this.formBaseUrl = config.formBaseUrl();
+		this.formJsUrl = config.formJsUrl();
+
 	}
 
 	/**
@@ -281,5 +307,25 @@ public class EfeServiceImpl implements EfeService {
 	@Override
 	public String getLinkTrackingListPath() {
 		return linkTrackingListPath;
+	}
+
+	/**
+	 *  Gets the form base url.
+	 *
+	 * @return the form base url
+	 */
+	@Override
+	public String getFormBaseUrl() {
+		return formBaseUrl;
+	}
+
+	/**
+	 * Gets the form js url.
+	 *
+	 * @return the form js url
+	 */
+	@Override
+	public String getFormJsUrl() {
+		return formJsUrl;
 	}
 }

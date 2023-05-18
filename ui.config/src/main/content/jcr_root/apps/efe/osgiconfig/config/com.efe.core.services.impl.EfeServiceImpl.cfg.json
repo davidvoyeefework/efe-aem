@@ -9,5 +9,7 @@
   "onetrustScript":"$[env:onetrust_script;default=https://cdn.cookielaw.org/scripttemplates/otSDKStub.js]",
   "onetrustScriptId":"$[env:onetrust_script_id;default=d261e71f-2585-4170-b54c-0e4f2aec33ea-test]",
   "analyticsSiteRootLevel":"$[env:site_root_level;default=4]",
-  "linkTrackingListPath":"$[env:link_tracking_listpath;default=/etc/acs-commons/lists/efe/tracking-links-list]"
+  "linkTrackingListPath":"$[env:link_tracking_listpath;default=/etc/acs-commons/lists/efe/tracking-links-list]",
+  "formBaseUrl":"$[env:wm_form_base_url]",
+  "formJsUrl":"$[env:wm_form_js_url]"
 }
