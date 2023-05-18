@@ -356,6 +356,11 @@
                                     cq:styleId="stats-02"
                                     cq:styleLabel="Stats 2"
                                     jcr:primaryType="nt:unstructured"/>
+                                <item8
+                                    cq:styleClasses="cmp-title--stats-01 cmp-title--superplus"
+                                    cq:styleId="stats-01-superplus"
+                                    cq:styleLabel="Stats 1 plus superscript"
+                                    jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item0>
                     </cq:styleGroups>
