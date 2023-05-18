@@ -1,14 +1,8 @@
 export default class Analytics {
     constructor() {
-        // TODO: Change to get the array dynamically
-        const linksToTarget = [
-            "connect with a Planner",
-            "Breadcrumb",
-            "Level 2",
-            "(833) PLAN-EFE",
-            "Call TO Action",
-            "Do Not Share My Personal Information",
-        ];
+        const linksToTarget = JSON.parse(document.querySelector('[data-tracking-list]')?.dataset.trackingList);
+        if (!linksToTarget) return;
+
         this.linksToTarget = linksToTarget.map((str) => str.toLowerCase());
         this.handleLinksForAnalytics = document.addEventListener(
             "click",
