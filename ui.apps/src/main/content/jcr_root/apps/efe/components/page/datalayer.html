@@ -6,60 +6,44 @@
     <input data-sly-test="${model.trackingLinksJson}" name="tracking-links" type="hidden"
         data-tracking-list="${model.trackingLinksJson}" />
 
+    <!--/** Adobe Tag Manager **/-->
     <script data-sly-test="${model.dataLayer}">
-        var isEventPushed = false;
         function OptanonWrapper() {
+        }
+        
+        window.adobeDataLayer = [];
+        adobeDataLayer.push(JSON.parse("${model.dataLayer @ context='scriptString'}"));
 
-            if (!isEventPushed) {
-                window.adobeDataLayer = [];
-                var ontrustevent = {
-                    "OnetrustActiveGroups": window.OnetrustActiveGroups,
-                    "event": "LaunchOTLoaded"
-                }
-                adobeDataLayer.push(ontrustevent);
-                window.adobeDataLayer = window.adobeDataLayer || [];
-                adobeDataLayer.push(JSON.parse("${model.dataLayer @ context='scriptString'}"));
-                isEventPushed = true;
-
-                var formName = "${model.formName @ context='scriptString'}";
-                if(formName){
-                    window.adobeDataLayer.push({ 
-                    event : 'form_complete',
-                    _efe : { 
-                        formInfo :{
-                        formName : formName, 
-                        formComplete : {
+        var formName = "${model.formName @ context='scriptString'}";
+        if (formName) {
+            window.adobeDataLayer.push({
+                event: 'form_complete',
+                _efe: {
+                    formInfo: {
+                        formName: formName,
+                        formComplete: {
                             value: 1
                         }
-                        }
                     }
-                })
                 }
-
-                const event = new Event("analyticsloaded");
-                window.dispatchEvent(event);
-            }
+            })
         }
-      
-    </script>
+        const event = new Event("analyticsloaded");
+        window.dispatchEvent(event);
 
+    </script>
+    <!--/**End Adobe Tag Manager **/-->
+
+    <!--/** Google Tag Manager **/-->
     <sly data-sly-test="${model.enableGA}">
         <script>
             window.dataLayer = window.dataLayer || [];
         </script>
-
-        <!-- Google Tag Manager -->
-        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    
-                    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    
-                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    
-                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    
-            })(window,document,'script','dataLayer','${model.gaTagValue@ context="scriptString" }');</script>
-    
-        <!-- End Google Tag Manager -->
+        <script>(function (w, d, s, l, i) {
+                w[l] = w[l] || []; w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' }); var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', '${model.gaTagValue@ context="unsafe" }');
+        </script>
     </sly>
-    
+    <!--/** End Google Tag Manager **/-->
 </sly>

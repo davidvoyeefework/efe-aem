@@ -183,7 +183,7 @@ public class EfeServiceImpl implements EfeService {
 		 *
 		 * @return true, if successful
 		 */
-		@AttributeDefinition(name = "Enable GA?", description = "Check to enable GA",  type = AttributeType.BOOLEAN)
+		@AttributeDefinition(name = "Enable GA?", description = "Check to enable GA")
 		boolean enableGA();
 		
 		/**
@@ -218,6 +218,8 @@ public class EfeServiceImpl implements EfeService {
 		this.linkTrackingListPath = config.linkTrackingListPath();
 		this.formBaseUrl = config.formBaseUrl();
 		this.formJsUrl = config.formJsUrl();
+		this.gaEnabled = config.enableGA();
+		this.gaTagValue = config.gaTagValue();
 
 	}
 
