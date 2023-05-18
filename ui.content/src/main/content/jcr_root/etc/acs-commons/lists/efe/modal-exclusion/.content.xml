@@ -5,7 +5,9 @@
         jcr:primaryType="nt:unstructured"
         jcr:title="Modal Exclusion List"
         sling:resourceType="acs-commons/components/utilities/genericlist">
-        <image/>
+        <image
+            jcr:primaryType="nt:unstructured"
+            fileReference="/apps/acs-commons/components/utilities/genericlist/generic-list.png"/>
         <list jcr:primaryType="nt:unstructured">
             <item0
                 jcr:primaryType="nt:unstructured"

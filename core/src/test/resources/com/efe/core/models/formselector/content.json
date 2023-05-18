@@ -1,0 +1,34 @@
+{
+	"jcr:primaryType": "cq:Page",
+	"jcr:content": {
+		"jcr:primaryType": "cq:PageContent",
+		"jcr:title": "Social Share",
+		"cq:template": "/conf/efe/settings/wcm/templates/content-template-full-header-and-footer",
+		"sling:resourceType": "efe/components/page",
+		"root": {
+			"jcr:primaryType": "nt:unstructured",
+			"layout": "responsiveGrid",
+			"sling:resourceType": "efe/components/container",
+			"container": {
+				"jcr:primaryType": "nt:unstructured",
+				"layout": "responsiveGrid",
+				"sling:resourceType": "efe/components/container",
+				"container": {
+					"jcr:primaryType": "nt:unstructured",
+					"layout": "responsiveGrid",
+					"sling:resourceType": "efe/components/container",
+					"formselector": {
+						"jcr:primaryType": "nt:unstructured",
+						"formId": "7f579d0245f57ec5d39795d061aab415",
+						"sling:resourceType": "efe/components/formselector"
+					},
+					"formselector2": {
+						"jcr:primaryType": "nt:unstructured",
+						"id": "1234",
+						"sling:resourceType": "efe/components/socialshare"
+					}
+				}
+			}
+		}
+	}
+}
