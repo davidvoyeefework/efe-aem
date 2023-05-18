@@ -1,8 +1,9 @@
 package com.efe.core.models.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.lenient;
 
-import org.apache.sling.api.resource.Resource;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -14,16 +15,16 @@ import com.efe.core.models.Footer;
 import com.efe.core.models.multifield.Link;
 import com.efe.core.models.multifield.SocialLink;
 import com.efe.core.models.multifield.VerticalList;
+import com.efe.core.services.EfeService;
 import com.efe.core.services.SeoService;
 
 import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 
-
 /**
  * The Class FooterImplTest.
  */
-@ExtendWith({AemContextExtension.class,  MockitoExtension.class})
+@ExtendWith({ AemContextExtension.class, MockitoExtension.class })
 class FooterImplTest {
 
 	/** The Constant RESOURCE_CONTENT. */
@@ -38,20 +39,20 @@ class FooterImplTest {
 	/** The model. */
 	private Footer model;
 
-	/** The resource. */
-	private Resource resource;
-
 	/** The aem context. */
 	private AemContext aemContext = new AemContext();
-	
+
 	/** The seo service. */
 	@Mock
 	SeoService seoService;
-	
+
 	/** The externalizer. */
 	@Mock
 	Externalizer externalizer;
-
+	
+	/** The efe service. */
+	@Mock
+	EfeService efeService;
 
 	/**
 	 * Sets the up.
@@ -61,12 +62,16 @@ class FooterImplTest {
 		Class<Footer> modelClass = Footer.class;
 		aemContext.load().json(RESOURCE_CONTENT, TEST_CONTENT_ROOT);
 		aemContext.addModelsForClasses(modelClass);
-		
+
 		aemContext.registerService(Externalizer.class, externalizer);
 		aemContext.registerService(SeoService.class, seoService);
+		aemContext.registerService(EfeService.class, efeService);
+
+		lenient().when(efeService.getOneTrustScript()).thenReturn("sdk-url");
+		lenient().when(efeService.getOneTrustScriptId()).thenReturn("sdk-id");
 		
-		resource = aemContext.currentResource(RESOURCE);
-		model = resource.adaptTo(modelClass);
+		aemContext.currentResource(RESOURCE);
+		model = aemContext.request().adaptTo(modelClass);
 	}
 
 	/**
@@ -100,6 +105,12 @@ class FooterImplTest {
 		assertEquals("/content/efe/us/en/corp/home.html", horizontalList1.getLink());
 		Link horizontalList2 = model.getHorizontalList().get(2);
 		assertEquals("/content/efe/us/en/corp/home.html", horizontalList2.getLink());
+		assertTrue(model.isEnableOneTrust());
+		/*
+		 * assertEquals("sdk-url", model.getOneTrustScript()); assertEquals("sdk-id",
+		 * model.getOneTrustScriptId());
+		 */
+		
 	}
 
 	/**
@@ -107,8 +118,8 @@ class FooterImplTest {
 	 */
 	@Test
 	void testFooterNullAttributes() {
-		model = aemContext.currentResource(TEST_CONTENT_ROOT + "/jcr:content/root/container/footer1")
-				.adaptTo(Footer.class);
+		aemContext.currentResource(TEST_CONTENT_ROOT + "/jcr:content/root/container/footer1");
+		model = aemContext.request().adaptTo(Footer.class);
 		assertEquals(0, model.getHorizontalList().size());
 		assertEquals(0, model.getVerticalList().size());
 		assertEquals(0, model.getSocialLinks().size());
@@ -119,8 +130,8 @@ class FooterImplTest {
 	 */
 	@Test
 	void testVerticalLinksNullAttributes() {
-		model = aemContext.currentResource(TEST_CONTENT_ROOT + "/jcr:content/root/container/footer2")
-				.adaptTo(Footer.class);
+		aemContext.currentResource(TEST_CONTENT_ROOT + "/jcr:content/root/container/footer2");
+		model = aemContext.request().adaptTo(Footer.class);
 		VerticalList verticalList = model.getVerticalList().get(0);
 		assertEquals(0, verticalList.getVerticalLinks().size());
 	}

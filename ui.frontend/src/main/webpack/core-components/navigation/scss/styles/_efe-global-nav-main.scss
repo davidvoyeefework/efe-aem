@@ -52,6 +52,9 @@
 
         .cmp-navigation-dropdown {
             padding-top: rem(35);
+            @media screen and (max-width: 1290px) {
+                padding-top: rem(28);
+            }
             .cmp-navigation__group {
                 .cmp-navigation-dropdown-grid{
                     @include flexbox(
@@ -194,7 +197,7 @@
                 $flex-wrap: wrap,
                 $gap: 24px 130px,
                 );
-                padding-top: 24px;
+                padding-top: 28px;
             }
 
             .cmp-navigation-dropdown-grid--default {

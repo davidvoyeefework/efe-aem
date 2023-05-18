@@ -1,0 +1,25 @@
+<sly data-sly-use.model="${'com.efe.core.models.EFEDatalayer' @type='page'}">
+
+    <script src="${model.oneTrustScript}" type="text/javascript" charset="UTF-8"
+    data-domain-script="${model.oneTrustScriptId}"></script>
+
+
+    <script data-sly-test="${model.dataLayer}">
+
+        var isEventPushed = false;
+        function OptanonWrapper() {
+
+            if (!isEventPushed) {
+                window.adobeDataLayer = [];
+                    var ontrustevent = {
+                        "OnetrustActiveGroups": window.OnetrustActiveGroups,
+                        "event": "LaunchOTLoaded"
+                    }
+                    adobeDataLayer.push(ontrustevent);
+                    window.adobeDataLayer = window.adobeDataLayer || [];
+                    adobeDataLayer.push(JSON.parse("${model.dataLayer @ context='scriptString'}"));
+                    isEventPushed = true;               
+                }
+        }
+    </script>
+</sly>

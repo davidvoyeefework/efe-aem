@@ -14,7 +14,6 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
-import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
@@ -27,268 +26,297 @@ import com.efe.core.utils.LinkUtil;
 /**
  * The Class HeaderImpl.
  */
-@Model(adaptables = { Resource.class, SlingHttpServletRequest.class}, adapters = Header.class, resourceType = {
-        HeaderImpl.RESOURCE_TYPE }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@Model(adaptables = { Resource.class, SlingHttpServletRequest.class }, adapters = Header.class, resourceType = {
+		HeaderImpl.RESOURCE_TYPE }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
 public class HeaderImpl implements Header {
 
-    /** The Constant RESOURCE_TYPE. */
-    public static final String RESOURCE_TYPE="efe/components/header";
+	/** The Constant RESOURCE_TYPE. */
+	public static final String RESOURCE_TYPE = "efe/components/header";
 
-    /** The resource resolver. */
-    @SlingObject
-    private ResourceResolver resourceResolver;
-    
-    /** The request. */
-    @SlingObject
+	/** The resource resolver. */
+	@SlingObject
+	private ResourceResolver resourceResolver;
+
+	/** The request. */
+	@SlingObject
 	private SlingHttpServletRequest request;
 
-    /**
-     * The current resource.
-     */
-    @Self
-    private Resource resource;
+	/**
+	 * The current resource.
+	 */
+	@SlingObject
+	private Resource resource;
 
-    /** The id. */
-    @ValueMapValue
-    private String id;
+	/** The id. */
+	@ValueMapValue
+	private String id;
 
-    /** The file reference. */
-    @ValueMapValue
-    private String fileReference;
+	/** The file reference. */
+	@ValueMapValue
+	private String fileReference;
 
-    /** The alt. */
-    @ValueMapValue
-    private String alt;
+	/** The alt. */
+	@ValueMapValue
+	private String alt;
 
-    /** The logo link. */
-    @ValueMapValue
-    private String logoLink;
+	/** The logo link. */
+	@ValueMapValue
+	private String logoLink;
 
-    /** The logo target. */
-    @ValueMapValue
-    private String logoTarget;
+	/** The logo target. */
+	@ValueMapValue
+	private String logoTarget;
 
-    /** The CTA title. */
-    @ValueMapValue
-    private String ctaTitle;
+	/** The CTA title. */
+	@ValueMapValue
+	private String ctaTitle;
 
-    /** The CTA link. */
-    @ValueMapValue
-    private String ctaLink;
+	/** The CTA link. */
+	@ValueMapValue
+	private String ctaLink;
 
-    /** The CTA target. */
-    @ValueMapValue
-    private String ctaTarget;
+	/** The CTA target. */
+	@ValueMapValue
+	private String ctaTarget;
 
-    /** The Search button. */
-    @ValueMapValue
-    private String searchBtn;
+	/** The disable search. */
+	@ValueMapValue
+	private boolean disableSearch;
 
-    /** The Search Label. */
-    @ValueMapValue
-    private String searchLabel;
+	/** The Search button. */
+	@ValueMapValue
+	private String searchBtn;
 
-    /** The Login title. */
-    @ValueMapValue
-    private String loginTitle;
+	/** The Search Label. */
+	@ValueMapValue
+	private String searchLabel;
 
-    /** The Login link. */
-    @ValueMapValue
-    private String loginLink;
+	/** The disable login. */
+	@ValueMapValue
+	private boolean disableLogin;
 
-    /** The Login target. */
-    @ValueMapValue
-    private String loginTarget;
+	/** The Login title. */
+	@ValueMapValue
+	private String loginTitle;
 
-    /** The Contact title. */
-    @ValueMapValue
-    private String contactTitle;
+	/** The Login link. */
+	@ValueMapValue
+	private String loginLink;
 
-    /** The Contact Number. */
-    @ValueMapValue
-    private String contactNumber;
+	/** The Login target. */
+	@ValueMapValue
+	private String loginTarget;
 
-    /** The header list. */
-    @ChildResource
-    private List<Link> headerList;
-    
-    /**
-     * Inits the model
-     */
-    @PostConstruct
-    protected void init() {
-    	if(null != request) {
-    		request.setAttribute("logo", fileReference);
-    		request.setAttribute("contactNumber", contactNumber);
-    	}  	
-    }
+	/** The Contact title. */
+	@ValueMapValue
+	private String contactTitle;
 
-    /**
-     * Gets the id.
-     *
-     * @return the id
-     */
+	/** The Contact Number. */
+	@ValueMapValue
+	private String contactNumber;
 
-    @Override
-    public String getId() {
-        if (id == null) {
-            id = EFEUtil.getId(resource);
-        }
-        return id;
-    }
+	/** The header list. */
+	@ChildResource
+	private List<Link> headerList;
 
-    /**
-     * Gets the file reference.
-     *
-     * @return the file reference
-     */
-    @Override
-    public String getFileReference() {
-        return fileReference;
-    }
+	/**
+	 * Inits the model.
+	 */
+	@PostConstruct
+	protected void init() {
+		if (null != request) {
+			request.setAttribute("logo", fileReference);
+			request.setAttribute("contactNumber", contactNumber);
+		}
+	}
 
-    /**
-     * Gets the alt.
-     *
-     * @return the alt
-     */
-    @Override
-    public String getAlt() {
-        return alt;
-    }
+	/**
+	 * Gets the id.
+	 *
+	 * @return the id
+	 */
 
-    /**
-     * Gets the logo link.
-     *
-     * @return the logo link
-     */
-    @Override
-    public String getLogoLink() {
-        return LinkUtil.getFormattedLink(logoLink, resourceResolver);
-    }
+	@Override
+	public String getId() {
+		if (id == null) {
+			id = EFEUtil.getId(resource);
+		}
+		return id;
+	}
 
-    /**
-     * Gets the logo target.
-     *
-     * @return the logo target
-     */
-    @Override
-    public String getLogoTarget() {
-        return logoTarget;
-    }
+	/**
+	 * Gets the file reference.
+	 *
+	 * @return the file reference
+	 */
+	@Override
+	public String getFileReference() {
+		return fileReference;
+	}
 
-    /**
-     * Gets the CTA title.
-     *
-     * @return the CTA title
-     */
-    @Override
-    public String getCtaTitle() {
-        return ctaTitle;
-    }
+	/**
+	 * Gets the alt.
+	 *
+	 * @return the alt
+	 */
+	@Override
+	public String getAlt() {
+		return alt;
+	}
 
-    /**
-     * Gets the CTA link.
-     *
-     * @return the CTA link
-     */
-    @Override
-    public String getCtaLink() {
-        return LinkUtil.getFormattedLink(ctaLink, resourceResolver);
-    }
+	/**
+	 * Gets the logo link.
+	 *
+	 * @return the logo link
+	 */
+	@Override
+	public String getLogoLink() {
+		return LinkUtil.getFormattedLink(logoLink, resourceResolver);
+	}
 
-    /**
-     * Gets the CTA target.
-     *
-     * @return the CTA target
-     */
-    @Override
-    public String getCtaTarget() {
-        return ctaTarget;
-    }
+	/**
+	 * Gets the logo target.
+	 *
+	 * @return the logo target
+	 */
+	@Override
+	public String getLogoTarget() {
+		return logoTarget;
+	}
 
-    /**
-     * Gets the Search label.
-     *
-     * @return the Search label
-     */
-    @Override
-    public String getSearchLabel() {
-        return searchLabel;
-    }
+	/**
+	 * Gets the CTA title.
+	 *
+	 * @return the CTA title
+	 */
+	@Override
+	public String getCtaTitle() {
+		return ctaTitle;
+	}
 
-    /**
-     * Gets the Search button.
-     *
-     * @return the Search button
-     */
-    @Override
-    public String getSearchBtn() {
-        return searchBtn;
-    }
+	/**
+	 * Gets the CTA link.
+	 *
+	 * @return the CTA link
+	 */
+	@Override
+	public String getCtaLink() {
+		return LinkUtil.getFormattedLink(ctaLink, resourceResolver);
+	}
 
-    /**
-     * Gets the Login title.
-     *
-     * @return the Login title
-     */
-    @Override
-    public String getLoginTitle() {
-        return loginTitle;
-    }
+	/**
+	 * Gets the CTA target.
+	 *
+	 * @return the CTA target
+	 */
+	@Override
+	public String getCtaTarget() {
+		return ctaTarget;
+	}
 
-    /**
-     * Gets the Login link.
-     *
-     * @return the Login link
-     */
-    @Override
-    public String getLoginLink() {
-        return LinkUtil.getFormattedLink(loginLink, resourceResolver);
-    }
+	/**
+	 * Checks if is disable search.
+	 *
+	 * @return true, if is disable search
+	 */
+	@Override
+	public boolean isDisableSearch() {
+		return disableSearch;
+	}
 
-    /**
-     * Gets the Login target.
-     *
-     * @return the Login target
-     */
-    @Override
-    public String getLoginTarget() {
-        return loginTarget;
-    }
+	/**
+	 * Gets the Search label.
+	 *
+	 * @return the Search label
+	 */
+	@Override
+	public String getSearchLabel() {
+		return searchLabel;
+	}
 
-    /**
-     * Gets the Contact Title.
-     *
-     * @return the Contact Title
-     */
-    @Override
-    public String getContactTitle() {
-        return contactTitle;
-    }
+	/**
+	 * Gets the Search button.
+	 *
+	 * @return the Search button
+	 */
+	@Override
+	public String getSearchBtn() {
+		return searchBtn;
+	}
 
-    /**
-     * Gets the Contact Number.
-     *
-     * @return the Contact Number
-     */
-    @Override
-    public String getContactNumber() {
-        return contactNumber;
-    }
+	/**
+	 * Checks if is disable login.
+	 *
+	 * @return true, if is disable login
+	 */
+	@Override
+	public boolean isDisableLogin() {
+		return disableLogin;
+	}
 
-    /**
-     * Gets the header list.
-     *
-     * @return the header list
-     */
+	/**
+	 * Gets the Login title.
+	 *
+	 * @return the Login title
+	 */
+	@Override
+	public String getLoginTitle() {
+		return loginTitle;
+	}
 
-    @Override
-    public List<Link> getHeaderList() {
-        if (Objects.nonNull(headerList)) {
-            return new ArrayList<>(headerList);
-        }
-        return Collections.emptyList();
-    }
+	/**
+	 * Gets the Login link.
+	 *
+	 * @return the Login link
+	 */
+	@Override
+	public String getLoginLink() {
+		return LinkUtil.getFormattedLink(loginLink, resourceResolver);
+	}
+
+	/**
+	 * Gets the Login target.
+	 *
+	 * @return the Login target
+	 */
+	@Override
+	public String getLoginTarget() {
+		return loginTarget;
+	}
+
+	/**
+	 * Gets the Contact Title.
+	 *
+	 * @return the Contact Title
+	 */
+	@Override
+	public String getContactTitle() {
+		return contactTitle;
+	}
+
+	/**
+	 * Gets the Contact Number.
+	 *
+	 * @return the Contact Number
+	 */
+	@Override
+	public String getContactNumber() {
+		return contactNumber;
+	}
+
+	/**
+	 * Gets the header list.
+	 *
+	 * @return the header list
+	 */
+
+	@Override
+	public List<Link> getHeaderList() {
+		if (Objects.nonNull(headerList)) {
+			return new ArrayList<>(headerList);
+		}
+		return Collections.emptyList();
+	}
+
 }

@@ -2,12 +2,10 @@
 package com.efe.core.bean.jsonld;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-
 
 /**
  * The Class JsonLd.
@@ -27,6 +25,26 @@ public class JsonLd {
 	/** The name. */
 	@Expose
 	private String name;
+	
+	/** The description. */
+	@Expose
+	private String description;
+	
+	/** The thumbnail url. */
+	@Expose
+	private String thumbnailUrl;
+	
+	/** The upload date. */
+	@Expose
+	private String uploadDate;
+	
+	/** The duration. */
+	@Expose
+	private String duration;
+	
+	/** The embed url. */
+	@Expose
+	private String embedUrl;
 
 	/** The address. */
 	@Expose
@@ -56,14 +74,13 @@ public class JsonLd {
 	@Expose
 	private List<ContactPoint> contactPoint;
 
-	/**
-	 * Gets the context.
-	 *
-	 * @return the context
-	 */
-	public String getContext() {
-		return context;
-	}
+	/** The main entity. */
+	@Expose
+	private List<MainEntity> mainEntity;
+
+	/** The item list element. */
+	@Expose
+	private List<ItemListElement> itemListElement;
 
 	/**
 	 * Sets the context.
@@ -72,15 +89,6 @@ public class JsonLd {
 	 */
 	public void setContext(String context) {
 		this.context = context;
-	}
-
-	/**
-	 * Gets the type.
-	 *
-	 * @return the type
-	 */
-	public String getType() {
-		return type;
 	}
 
 	/**
@@ -93,30 +101,12 @@ public class JsonLd {
 	}
 
 	/**
-	 * Gets the name.
-	 *
-	 * @return the name
-	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * Sets the name.
+	 * the name.
 	 *
 	 * @param name the new name
 	 */
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	/**
-	 * Gets the address.
-	 *
-	 * @return the address
-	 */
-	public Address getAddress() {
-		return address;
 	}
 
 	/**
@@ -129,30 +119,12 @@ public class JsonLd {
 	}
 
 	/**
-	 * Gets the tele phone.
-	 *
-	 * @return the tele phone
-	 */
-	public String getTelePhone() {
-		return telePhone;
-	}
-
-	/**
 	 * Sets the tele phone.
 	 *
 	 * @param telePhone the new tele phone
 	 */
 	public void setTelePhone(String telePhone) {
 		this.telePhone = telePhone;
-	}
-
-	/**
-	 * Gets the url.
-	 *
-	 * @return the url
-	 */
-	public String getUrl() {
-		return url;
 	}
 
 	/**
@@ -165,34 +137,12 @@ public class JsonLd {
 	}
 
 	/**
-	 * Gets the geo.
-	 *
-	 * @return the geo
-	 */
-	public Geo getGeo() {
-		return geo;
-	}
-
-	/**
 	 * Sets the geo.
 	 *
 	 * @param geo the new geo
 	 */
 	public void setGeo(Geo geo) {
 		this.geo = geo;
-	}
-
-
-	/**
-	 * Gets the same as.
-	 *
-	 * @return the sameAs
-	 */
-	public List<String> getSameAs() {
-		if(null == sameAs) {
-			return Collections.emptyList();
-		}
-		return Collections.unmodifiableList(sameAs);
 	}
 
 	/**
@@ -205,15 +155,6 @@ public class JsonLd {
 	}
 
 	/**
-	 * Gets the logo.
-	 *
-	 * @return the logo
-	 */
-	public String getLogo() {
-		return logo;
-	}
-
-	/**
 	 * Sets the logo.
 	 *
 	 * @param logo the logo to set
@@ -223,24 +164,75 @@ public class JsonLd {
 	}
 
 	/**
-	 * Gets the contact point.
-	 *
-	 * @return the contactPoint
-	 */
-	public List<ContactPoint> getContactPoint() {
-		if(null == contactPoint) {
-			return Collections.emptyList();
-		}
-		return Collections.unmodifiableList(contactPoint);
-	}
-
-	/**
 	 * Sets the contact point.
 	 *
 	 * @param contactPoint the contactPoint to set
 	 */
 	public void setContactPoint(List<ContactPoint> contactPoint) {
 		this.contactPoint = new ArrayList<>(contactPoint);
+	}
+
+	/**
+	 * Sets the main entity.
+	 *
+	 * @param mainEntity the mainEntity to set
+	 */
+	public void setMainEntity(List<MainEntity> mainEntity) {
+		this.mainEntity = new ArrayList<>(mainEntity);
+	}
+
+	/**
+	 * Sets the item list element.
+	 *
+	 * @param itemListElement the itemListElement to set
+	 */
+	public void setItemListElement(List<ItemListElement> itemListElement) {
+		this.itemListElement = new ArrayList<>(itemListElement);
+	}
+
+	/**
+	 * Sets the description.
+	 *
+	 * @param description the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	/**
+	 * Sets the thumbnail url.
+	 *
+	 * @param thumbnailUrl the thumbnailUrl to set
+	 */
+	public void setThumbnailUrl(String thumbnailUrl) {
+		this.thumbnailUrl = thumbnailUrl;
+	}
+
+	/**
+	 * Sets the upload date.
+	 *
+	 * @param uploadDate the uploadDate to set
+	 */
+	public void setUploadDate(String uploadDate) {
+		this.uploadDate = uploadDate;
+	}
+
+	/**
+	 * Sets the duration.
+	 *
+	 * @param duration the duration to set
+	 */
+	public void setDuration(String duration) {
+		this.duration = duration;
+	}
+
+	/**
+	 * Sets the embed url.
+	 *
+	 * @param embedUrl the embedUrl to set
+	 */
+	public void setEmbedUrl(String embedUrl) {
+		this.embedUrl = embedUrl;
 	}
 
 }

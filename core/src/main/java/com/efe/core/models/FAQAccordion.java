@@ -22,5 +22,13 @@ public interface FAQAccordion {
 	 * @return the FAQ list
 	 */
 	List<FAQ> getFaqList();
+	
+	
+	/**
+	 * Gets the json ld.
+	 *
+	 * @return the json ld
+	 */
+	String getJsonLd();
 
 }

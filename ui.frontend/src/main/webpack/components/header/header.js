@@ -3,22 +3,48 @@
  */
 
 export default class Header {
-  constructor(el) {
-    this.el = el;
-    let minimalHeader = el.classList.contains('minimal-header');
-    if(!minimalHeader) {
-      clickFunction("#nav-search-icon a","efe-nav-search");
-      clickFunction("#nav-search-iconT a","efe-nav-searchT");
-      clickFunction("#search-close", "efe-nav-search");
-      clickFunction("#search-closeT", "efe-nav-searchT");
+    constructor(el) {
+        this.el = el;
+        let minimalHeader = el.parentElement.classList.contains('minimal-header');
+        this.subHeaderDesktop = el.querySelectorAll('.efe-nav-header')[0];
+        this.subHeaderMobile = el.querySelectorAll('.efe-nav-header')[1];
+        if(!minimalHeader) {
+            this.handleSearchIconClick = el.querySelector('#nav-search-icon').addEventListener('click', this.handleSearchIconClick.bind(this))
+            this.handleSearchCloseClick = el.querySelector('#search-close').addEventListener('click', this.handleSearchCloseClick.bind(this))
+            this.handleSearchIconMobileClick = el.querySelector('#nav-search-iconT').addEventListener('click', this.handleSearchIconMobileClick.bind(this))
+            this.handleSearchCloseMobileClick = el.querySelector('#search-closeT').addEventListener('click', this.handleSearchCloseMobileClick.bind(this))
+        }
+        clickFunction("#nav-hamburger", "nav-list-cta-group");
+        clickNav(".cmp-navigation__item--level-0");
     }
-    clickFunction("#nav-hamburger", "nav-list-cta-group");
-    clickNav(".cmp-navigation__item--level-0");
-  }
 
-  static init(el) {
-    return new Header(el);
-  }
+    static init(el) {
+        return new Header(el);
+    }
+
+    handleSearchIconClick() {
+        const searchBar = this.el.querySelector('#efe-nav-search');
+        searchBar.style.display = 'block';
+        this.subHeaderDesktop.style.display = 'none';
+    }
+
+    handleSearchCloseClick() {
+        const searchBar = this.el.querySelector('#efe-nav-search');
+        searchBar.style.display = 'none';
+        this.subHeaderDesktop.style.display = 'flex';
+    }
+
+    handleSearchIconMobileClick() {
+        const searchBarMobile = this.el.querySelector('#efe-nav-searchT');
+        searchBarMobile.style.display = 'block';
+        this.subHeaderMobile.style.display = 'none';
+    }
+
+    handleSearchCloseMobileClick() {
+        const searchBarMobile = this.el.querySelector('#efe-nav-searchT');
+        searchBarMobile.style.display = 'none';
+        this.subHeaderMobile.style.display = 'flex';
+    }
 }
 
 let windowWidth = document.documentElement.clientWidth || document.body.clientWidth || window.innerWidth;
@@ -61,11 +87,11 @@ const clickNav = (listenItem) => {
        
           NavItems.forEach((element) => {
             element.classList.remove("act");
-            let dropDownNav = element.children[2];
+            let dropDownNav = element.children[2].children[0];
             dropDownNav.style.display = "none";
           })
           element.classList.toggle("act");
-          let dropDownNav = element.children[2];
+          let dropDownNav = element.children[2].children[0];
           let displayStyle = getComputedStyle(dropDownNav, "display", null ).getPropertyValue("display");
           if (displayStyle === "none") {
             dropDownNav.style.display = "block";
@@ -76,7 +102,7 @@ const clickNav = (listenItem) => {
         }
         else {
               element.classList.remove("act");
-              let dropDownNav = element.children[2];
+              let dropDownNav = element.children[2].children[0];
               let displayStyle = getComputedStyle(dropDownNav, "display", null ).getPropertyValue("display");
               if (displayStyle == "block") {
                 dropDownNav.style.display = "none";

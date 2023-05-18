@@ -38,7 +38,6 @@
                         >
                             <a
                                     class="cmp-image__link"
-                                    data-cmp-clickable=""
                                     href="#"
                             >
                                 <img
@@ -59,18 +58,18 @@
                 <div id="container-99d779a4e6" class="cmp-container cmp-container--unset cmp-container--1920  cmp-container--width-1920 efe-nav-header">
 
                     <div class="button cmp-button--footer-02 cmp-button--efe-gray-new">
-                        <a id="button-a1f53d50c2" data-cmp-clickable=""  href="tel:+${model.contactNumber}">
+                        <a id="button-a1f53d50c2" href="tel:+${model.contactNumber}">
                             <span class="cmp-button__text">${model.contactTitle}</span>
                         </a>
                     </div>
 
-                    <div class="button cmp-button--primary-nav-link cmp-button--efe-red-primary">
-                        <a id="button-a1f53d50c2" target="${model.logintarget}" data-cmp-clickable=""  href="${model.loginLink}">
+                    <div data-sly-test="${!model.disableLogin}" class="button cmp-button--primary-nav-link cmp-button--efe-red-primary">
+                        <a id="button-a1f53d50c2" target="${model.loginTarget}" href="${model.loginLink}">
                             <span class="cmp-button__text">${model.loginTitle}</span>
                         </a>
                     </div>
 
-                    <div class="image cmp-image--search cmp-image--" id="nav-search-icon">
+                    <div data-sly-test="${!model.disableSearch}" class="image cmp-image--search cmp-image--" id="nav-search-icon">
                         <div
                                 data-asset-id="45c6ee92-90e1-4af2-af69-b6dcbc7daeb7"
                                 id="image-72c95dc7ac"
@@ -80,7 +79,6 @@
                         >
                             <a
                                     class="cmp-image__link"
-                                    data-cmp-clickable=""
                                     href="#"
                             >
                                 <img
@@ -115,7 +113,6 @@
                         >
                             <a
                                     class="cmp-image__link"
-                                    data-cmp-clickable=""
                                     href="${model.logoLink}"
                                     target="${model.logoTarget}"
 
@@ -149,12 +146,12 @@
 
                         <div id="container-99d779a4e6" class="cmp-container cmp-container--white cmp-container--unset cmp-container--unset ul-cta-group">
 
-                            <div class="navigation cmp-navigation--primary" >
+                            <div class="navigation cmp-navigation--primary" data-sly-test="${model.headerList}" >
                                 <nav id="navigation-e10abc050c" class="cmp-navigation" itemscope="" itemtype="http://schema.org/SiteNavigationElement">
                                     <ul class="cmp-navigation__group cmp-navigation__group--level-0">
                                         <sly data-sly-list.headerList="${model.headerList}">
                                             <li class="cmp-navigation__item cmp-navigation__item--level-0">
-                                              <a data-cmp-clickable="" class="cmp-navigation__item-link" data-sly-test.newPath="${'nav{0}' @format =headerListList.index}" href="javascript:void(0)"><span>${headerList.label}</span></a>
+                                              <a class="cmp-navigation__item-link" data-sly-test.newPath="${'nav{0}' @format =headerListList.index}" href="javascript:void(0)"><span>${headerList.label}</span></a>
                                                 <div class="image cmp-img--arrow cmp-img--down" id="nav-arrow">
                                                     <div data-cmp-src="/content/core-components-examples/library/core-content/image/_jcr_content/root/responsivegrid/demo/component/image.coreimg{.width}.svg" data-asset-id="bf8419f0-1d78-4ce8-9af8-80d3ea45da26" id="image-777c52be2d"  data-cmp-hook-image="imageV3" class="cmp-image" itemscope="" itemtype="http://schema.org/ImageObject">
                                                         <img src="data:image/svg+xml;charset&#x3D;utf8,%3Csvg%20xmlns&#x3D;&#x27;http://www.w3.org/2000/svg&#x27;%3E%3C/svg%3E" loading="lazy" class="cmp-image__image" itemprop="contentUrl" alt="Component" title="Component">
@@ -169,7 +166,7 @@
                             </div>
 
                             <div class="button cmp-button--button-primary cmp-button--center cmp-button-- cmp-button--">
-                                <a type="button" class="cmp-button" data-cmp-clickable="" href="${model.ctaLink}" target="${model.ctaTarget}">
+                                <a type="button" class="cmp-button" href="${model.ctaLink}" target="${model.ctaTarget}">
                                     <span class="cmp-button__text">${model.ctaTitle}</span>
                                 </a>
                             </div>                    </div>
@@ -211,7 +208,6 @@
                                             >
                                                 <a
                                                         class="cmp-image__link"
-                                                        data-cmp-clickable=""
                                                         href="#"
                                                 >
                                                     <img
@@ -232,13 +228,13 @@
                                     <div id="container-99d779a4e6" class="cmp-container cmp-container--unset cmp-container--1920 efe-nav-header">
 
                                         <div class="button cmp-button--footer-02 cmp-button--efe-gray-new">
-                                            <a id="button-a1f53d50c2" data-cmp-clickable=""  href="tel:+${model.contactNumber}">
+                                            <a id="button-a1f53d50c2" href="tel:+${model.contactNumber}">
                                                 <span class="cmp-button__text">${model.contactTitle}</span>
                                             </a>
                                         </div>
 
                                         <div class="button cmp-button--primary-nav-link cmp-button--efe-red-primary">
-                                            <a id="button-a1f53d50c2" target="${model.logintarget}" data-cmp-clickable="" href="${model.loginLink}">
+                                            <a id="button-a1f53d50c2" target="${model.logintarget}" href="${model.loginLink}">
                                                 <span class="cmp-button__text">${model.loginTitle}</span>
                                             </a>
                                         </div>
@@ -253,7 +249,6 @@
                                             >
                                                 <a
                                                         class="cmp-image__link"
-                                                        data-cmp-clickable=""
                                                         href="#"
                                                 >
                                                     <img

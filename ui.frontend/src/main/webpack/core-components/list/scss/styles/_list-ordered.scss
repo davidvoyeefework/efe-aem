@@ -1,4 +1,4 @@
-.cmp-list--ol {
+.cmp-text--ol {
     counter-reset: di-count;
     display: list-item;
     list-style-type: auto;
@@ -24,7 +24,7 @@
             color: $efe-red-primary;
             display: block;
             position: absolute;
-            top: 0;
+            top: 2px;
             bottom: 0;
             left: 0;
             bottom: 0;
@@ -39,7 +39,7 @@
         }
     }
 
-    &.cmp-list--large {
+    &.cmp-text--large {
         li.cmp-list__item {
             padding-left: rem(48);
             padding-bottom: rem(32);
@@ -47,6 +47,7 @@
             &:before {
                 @include heading-04;
                 color: $efe-red-primary;
+                top: -1px;
             }
         }
     }

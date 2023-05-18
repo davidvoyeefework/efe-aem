@@ -1,4 +1,6 @@
-<sly data-sly-use.model="com.efe.core.models.Footer"/>
+<sly data-sly-use.model="com.efe.core.models.Footer"
+     data-sly-use.template="core/wcm/components/commons/v1/templates.html"
+     data-sly-use.onetrusttemplate="onetrust.html"/>
 
 <script data-sly-test="${model.jsonLd}" type="application/ld+json">
    ${model.jsonLd @context ='unsafe'}
@@ -69,6 +71,7 @@
                            </a>
                         </li>
                      </sly>
+                     <sly data-sly-test="${model.enableOneTrust}" data-sly-call="${onetrusttemplate.onetrust @ model=model}"></li>
                   </ul>
                </div>
                <div id="disclosure-copy">

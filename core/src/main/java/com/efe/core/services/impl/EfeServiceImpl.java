@@ -52,6 +52,12 @@ public class EfeServiceImpl implements EfeService {
 	
 	/** Google Direction Prefix Url **/
 	private String googleDirectionPrefixUrl;
+	
+	/** The onetrust script. */
+	private String onetrustScript;
+	
+	/** The onetrust script id. */
+	private String onetrustScriptId;
 
 	/**
 	 * The Interface Config
@@ -67,6 +73,7 @@ public class EfeServiceImpl implements EfeService {
 		String plannersAPIEndpoint();
 
 		/**
+		 *
 		 * @return locationsAPIEndpoint
 		 */
 		@AttributeDefinition(name = "EFE Locations API End Point", description = "EFE Locations API End Point")
@@ -90,11 +97,38 @@ public class EfeServiceImpl implements EfeService {
 		@AttributeDefinition(name = "Planner Bio Page Url", description = "Planner Bio Page Url")
 		String plannerBioPageUrl();
 		
+		/**
+		 * Google map public api.
+		 *
+		 * @return the string
+		 */
 		@AttributeDefinition(name = "Google Map API Key", description = "Google Map API Key for Map integration")
 		String googleMapPublicApi();
 		
+		/**
+		 * Google direction prefix url.
+		 *
+		 * @return the string
+		 */
 		@AttributeDefinition(name = "Google Map Direction Prefix Url", description = "Google Map Direction Prefix Url for forming office direction url")
 		String googleDirectionPrefixUrl();
+		
+		/**
+		 * Onetrust script.
+		 *
+		 * @return the string
+		 */
+		@AttributeDefinition(name = "One Trust Script Url", description = "One Trust JS SDK Script URL")
+		String onetrustScript();
+		
+		/**
+		 * Onetrust script id.
+		 *
+		 * @return the string
+		 */
+		@AttributeDefinition(name = "One Trust Script Domain Key", description = "One Trust JS SDK Domain Key")
+		String onetrustScriptId();
+		
 	}
 
 	/**
@@ -113,7 +147,8 @@ public class EfeServiceImpl implements EfeService {
 		this.plannerBioPageUrl = config.plannerBioPageUrl();
 		this.googlePublicApiKey = config.googleMapPublicApi();
 		this.googleDirectionPrefixUrl = config.googleDirectionPrefixUrl();
-
+		this.onetrustScript = config.onetrustScript();
+		this.onetrustScriptId = config.onetrustScriptId();
 	}
 
 	/**
@@ -133,6 +168,8 @@ public class EfeServiceImpl implements EfeService {
 	}
 
 	/**
+	 * Gets the auth header.
+	 *
 	 * @return the authHeader
 	 */
 	@Override
@@ -141,6 +178,8 @@ public class EfeServiceImpl implements EfeService {
 	}
 
 	/**
+	 * Gets the planner page url.
+	 *
 	 * @return the plannerPageUrl
 	 */
 	@Override
@@ -149,6 +188,8 @@ public class EfeServiceImpl implements EfeService {
 	}
 
 	/**
+	 * Gets the planner bio page url.
+	 *
 	 * @return the plannerBioPageUrl
 	 */
 	@Override
@@ -156,13 +197,43 @@ public class EfeServiceImpl implements EfeService {
 		return plannerBioPageUrl;
 	}
 
+	/**
+	 * Gets the google public key.
+	 *
+	 * @return the google public key
+	 */
 	@Override
 	public String getGooglePublicKey() {
 		return googlePublicApiKey;
 	}
 
+	/**
+	 * Gets the google direction prefix url.
+	 *
+	 * @return the google direction prefix url
+	 */
 	@Override
 	public String getGoogleDirectionPrefixUrl() {
 		return googleDirectionPrefixUrl;
+	}
+
+	/**
+	 * Gets the one trust script.
+	 *
+	 * @return the one trust script
+	 */
+	@Override
+	public String getOneTrustScript() {
+		return onetrustScript;
+	}
+
+	/**
+	 * Gets the one trust script id.
+	 *
+	 * @return the one trust script id
+	 */
+	@Override
+	public String getOneTrustScriptId() {
+		return onetrustScriptId;
 	}
 }

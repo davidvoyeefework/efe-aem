@@ -28,6 +28,12 @@ class EfeServiceImplTest {
 	
 	/** Planner PLANNER_BIO_PAGE_URL **/
 	private final String PLANNER_BIO_PAGE_URL = "/content/efe/us/en/financial-planners";
+	
+	/** The one trust script. */
+	private final String ONE_TRUST_SCRIPT = "https://sdk-jd.js";
+	
+	/** The one trust script id. */
+	private final String ONE_TRUST_SCRIPT_ID = "111-222-333";
 
 
 	/** The efeServiceImpl. */
@@ -52,6 +58,8 @@ class EfeServiceImplTest {
 		Mockito.lenient().when(configuration.authHeader()).thenReturn(AUTH_HEAD);
 		Mockito.lenient().when(configuration.plannerPageUrl()).thenReturn(PLANNER_PAGE_URL);
 		Mockito.lenient().when(configuration.plannerBioPageUrl()).thenReturn(PLANNER_BIO_PAGE_URL);
+		Mockito.lenient().when(configuration.onetrustScript()).thenReturn(ONE_TRUST_SCRIPT);
+		Mockito.lenient().when(configuration.onetrustScriptId()).thenReturn(ONE_TRUST_SCRIPT_ID);
 
 		efeServiceImpl.activate(configuration);
 		
@@ -60,6 +68,8 @@ class EfeServiceImplTest {
 		assertEquals(efeServiceImpl.getAuthHeader(), AUTH_HEAD);
 		assertEquals(efeServiceImpl.getPlannerPageUrl(), PLANNER_PAGE_URL);
 		assertEquals(efeServiceImpl.getPlannerBioPageUrl(), PLANNER_BIO_PAGE_URL);
+		assertEquals(ONE_TRUST_SCRIPT, efeServiceImpl.getOneTrustScript());
+		assertEquals(ONE_TRUST_SCRIPT_ID, efeServiceImpl.getOneTrustScriptId());
 		
 
 	}

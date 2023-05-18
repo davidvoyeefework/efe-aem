@@ -3,6 +3,7 @@ package com.efe.core.services.impl;
 import java.io.IOException;
 import java.util.Objects;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.http.ParseException;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -35,22 +36,20 @@ public class RestServiceImpl implements RestService {
 	@Override
 	public String getData(String apiUrl, String authHeader) {
 		CloseableHttpClient httpClient = HttpClients.createDefault();
+		CloseableHttpResponse httpResponse = null;
 		try {
 			HttpGet httpGet = new HttpGet(apiUrl);
-			String authorization = "Basic " + authHeader;
-			httpGet.addHeader("Authorization", authorization);
+			if (StringUtils.isNotEmpty(authHeader)) {
+				String authorization = "Basic " + authHeader;
+				httpGet.addHeader("Authorization", authorization);
+			}
 			httpGet.addHeader("Content-Type", JSONResponse.RESPONSE_CONTENT_TYPE);
-			CloseableHttpResponse httpResponse = null;
-			try {
-				httpResponse = httpClient.execute(httpGet);
-			} catch (IOException ioException) {
-				LOGGER.error("IOException  occured method:", ioException);
+			httpResponse = httpClient.execute(httpGet);
 
-			}
 			if (Objects.nonNull(httpResponse)) {
-				String jsonOutput = EntityUtils.toString(httpResponse.getEntity());
-				return jsonOutput;
+				return EntityUtils.toString(httpResponse.getEntity());
 			}
+			
 		} catch (ParseException e) {
 			LOGGER.error("ParseException occured method:", e);
 		} catch (IOException e) {
@@ -58,6 +57,9 @@ public class RestServiceImpl implements RestService {
 		} finally {
 			try {
 				httpClient.close();
+				if (null != httpResponse) {
+					httpResponse.close();
+				}
 			} catch (IOException e) {
 				LOGGER.error("IOException  occured method: getLocationData cause ", e);
 

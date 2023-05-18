@@ -9,115 +9,70 @@ import com.google.gson.annotations.SerializedName;
  */
 public class Address {
 
-    /** The type. */
-    @SerializedName("@type")
-    @Expose
-    private String type;
-   
-    /** The street address. */
-    @Expose
-    private String streetAddress;
-    
-    /** The address locality. */
-    @Expose
-    private String addressLocality;
-    
-    /** The address region. */
-    @Expose
-    private String addressRegion;
-   
-    /** The postal code. */
-    @Expose
-    private String postalCode;
+	/** The type. */
+	@SerializedName("@type")
+	@Expose
+	private String type;
 
-    /**
-     * Gets the type.
-     *
-     * @return the type
-     */
-    public String getType() {
-        return type;
-    }
+	/** The street address. */
+	@Expose
+	private String streetAddress;
 
-    /**
-     * Sets the type.
-     *
-     * @param type the new type
-     */
-    public void setType(String type) {
-        this.type = type;
-    }
+	/** The address locality. */
+	@Expose
+	private String addressLocality;
 
-    /**
-     * Gets the street address.
-     *
-     * @return the street address
-     */
-    public String getStreetAddress() {
-        return streetAddress;
-    }
+	/** The address region. */
+	@Expose
+	private String addressRegion;
 
-    /**
-     * Sets the street address.
-     *
-     * @param streetAddress the new street address
-     */
-    public void setStreetAddress(String streetAddress) {
-        this.streetAddress = streetAddress;
-    }
+	/** The postal code. */
+	@Expose
+	private String postalCode;
 
-    /**
-     * Gets the address locality.
-     *
-     * @return the address locality
-     */
-    public String getAddressLocality() {
-        return addressLocality;
-    }
+	/**
+	 * Sets the type.
+	 *
+	 * @param type the new type
+	 */
+	public void setType(String type) {
+		this.type = type;
+	}
 
-    /**
-     * Sets the address locality.
-     *
-     * @param addressLocality the new address locality
-     */
-    public void setAddressLocality(String addressLocality) {
-        this.addressLocality = addressLocality;
-    }
+	/**
+	 * Sets the street address.
+	 *
+	 * @param streetAddress the new street address
+	 */
+	public void setStreetAddress(String streetAddress) {
+		this.streetAddress = streetAddress;
+	}
 
-    /**
-     * Gets the address region.
-     *
-     * @return the address region
-     */
-    public String getAddressRegion() {
-        return addressRegion;
-    }
+	/**
+	 * Sets the address locality.
+	 *
+	 * @param addressLocality the new address locality
+	 */
+	public void setAddressLocality(String addressLocality) {
+		this.addressLocality = addressLocality;
+	}
 
-    /**
-     * Sets the address region.
-     *
-     * @param addressRegion the new address region
-     */
-    public void setAddressRegion(String addressRegion) {
-        this.addressRegion = addressRegion;
-    }
+	/**
+	 * Sets the address region.
+	 *
+	 * @param addressRegion the new address region
+	 */
+	public void setAddressRegion(String addressRegion) {
+		this.addressRegion = addressRegion;
+	}
 
-    /**
-     * Gets the postal code.
-     *
-     * @return the postal code
-     */
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    /**
-     * Sets the postal code.
-     *
-     * @param postalCode the new postal code
-     */
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
-    }
+	/**
+	 * Sets the postal code.
+	 *
+	 * @param postalCode the new postal code
+	 */
+	public void setPostalCode(String postalCode) {
+		this.postalCode = postalCode;
+	}
 
 }

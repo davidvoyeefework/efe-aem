@@ -31,6 +31,9 @@
     }
   }
   &__description {
+    @include media(">tablet") {
+      min-width: 470px;
+    }
     .cmp-title--subhead-02 {
       h1 {
         line-height: 26px;
@@ -61,19 +64,21 @@
     @include media("<tablet") {
       padding: 0 26px;
     }
-    .button {
-      margin-top: 30px;
-      @include media(">tablet") {
-        position: absolute;
-        bottom: 42px;
-        margin-top: 0;
-      }
-      .cmp-button {
-        padding: 20px 26px;
-      }
+  }
+  &__action-container {
+    padding: 0;
+  }
+  &__action-link {
+    @include cta-primary;
+    margin-top: 30px;
+    @include media(">tablet") {
+      position: absolute;
+      bottom: 42px;
+      margin-top: 0;
     }
   }
   &__image {
+    min-width: 300px;
     @include media("<tablet") {
       display: none;
     }

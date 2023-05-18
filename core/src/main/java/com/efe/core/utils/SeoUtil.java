@@ -1,30 +1,51 @@
 package com.efe.core.utils;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.text.StringEscapeUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.ResourceResolver;
 
+import com.adobe.cq.wcm.core.components.models.NavigationItem;
 import com.day.cq.commons.Externalizer;
 import com.efe.core.bean.LocationResponse;
 import com.efe.core.bean.jsonld.Address;
+import com.efe.core.bean.jsonld.Answer;
 import com.efe.core.bean.jsonld.ContactPoint;
 import com.efe.core.bean.jsonld.Geo;
+import com.efe.core.bean.jsonld.ItemListElement;
 import com.efe.core.bean.jsonld.JsonLd;
+import com.efe.core.bean.jsonld.MainEntity;
+import com.efe.core.models.multifield.FAQ;
 import com.efe.core.models.multifield.SocialLink;
+import com.efe.core.services.RestService;
 import com.efe.core.services.SeoService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 /**
  * The Class SeoUtil.
  */
 public class SeoUtil {
+
+	/** The Constant TITLE. */
+	public static final String TITLE = "title";
+	
+	/** The Constant JSON_LD. */
+	public static final String JSON_LD = "jsonLd";
+	
+	/** The Constant REGEX_HTML_ELEMENTS. */
+	private static final String REGEX_HTML_ELEMENTS = "<[^>]*>|\n|\t";
 
 	/**
 	 * Instantiates a new seo util.
@@ -35,16 +56,15 @@ public class SeoUtil {
 	/**
 	 * Gets the location SEO.
 	 *
-	 * @param request the request
-	 * @param externalizer the externalizer
+	 * @param request          the request
+	 * @param externalizer     the externalizer
 	 * @param locationResponse the location response
-	 * @param seoService the seo service
+	 * @param seoService       the seo service
 	 * @return the location SEO
 	 */
 	public static String getLocationSEO(SlingHttpServletRequest request, Externalizer externalizer,
 			LocationResponse locationResponse, SeoService seoService) {
-		GsonBuilder builder = new GsonBuilder();
-		Gson gson = builder.setPrettyPrinting().create();
+		Gson gson = getGsonInstance();
 		JsonLd jsonLd = new JsonLd();
 		jsonLd.setType(seoService.getBusinessType());
 		jsonLd.setName(seoService.getSiteName());
@@ -69,7 +89,7 @@ public class SeoUtil {
 		ResourceResolver resolver = request.getResourceResolver();
 
 		jsonLd.setUrl(externalizer.publishLink(resolver, request.getPathInfo()));
-	
+
 		Geo geo = new Geo();
 		geo.setType(seoService.getGeoType());
 		geo.setLatitude(locationResponse.getLatitude());
@@ -84,17 +104,16 @@ public class SeoUtil {
 	 * Gets the org SEO.
 	 *
 	 * @param externalizer the externalizer
-	 * @param request the request
-	 * @param resolver the resolver
-	 * @param seoService the seo service
-	 * @param socialLinks the social links
+	 * @param request      the request
+	 * @param resolver     the resolver
+	 * @param seoService   the seo service
+	 * @param socialLinks  the social links
 	 * @return the org SEO
 	 */
 	public static String getOrgSEO(Externalizer externalizer, SlingHttpServletRequest request,
 			ResourceResolver resolver, SeoService seoService, List<SocialLink> socialLinks) {
 
-		GsonBuilder builder = new GsonBuilder();
-		Gson gson = builder.setPrettyPrinting().create();
+		Gson gson = getGsonInstance();
 		JsonLd jsonLd = new JsonLd();
 		jsonLd.setName(seoService.getSiteName());
 		jsonLd.setContext(seoService.getContextUrl());
@@ -126,8 +145,8 @@ public class SeoUtil {
 					socialLinksList.add(link.getLink());
 				}
 			}
-			
-			if(!socialLinksList.isEmpty()) {
+
+			if (!socialLinksList.isEmpty()) {
 				jsonLd.setSameAs(socialLinksList);
 			}
 
@@ -139,9 +158,218 @@ public class SeoUtil {
 	}
 
 	/**
+	 * Gets the faq schema.
+	 *
+	 * @param seoService the seo service
+	 * @param faqList    the faq list
+	 * @return the faq schema
+	 */
+	public static String getFaqSchema(SeoService seoService, List<FAQ> faqList) {
+
+		Gson gson = getGsonInstance();
+		JsonLd jsonLd = new JsonLd();
+		jsonLd.setContext(seoService.getContextUrl());
+		jsonLd.setType(seoService.getFaqType());
+
+		List<MainEntity> mainEntities = faqList.stream()
+				.filter(faq -> StringUtils.isNotEmpty(faq.getQuestion()) && StringUtils.isNotEmpty(faq.getAnswer()))
+				.map(faq -> {
+					final MainEntity mainEntity = new MainEntity();
+					mainEntity.setType(seoService.getQuestionType());
+					mainEntity.setName(removeElementsNUnescapeHTML(faq.getQuestion()));
+
+					final Answer answer = new Answer();
+					answer.setType(seoService.getAnswerType());
+					answer.setText(removeElementsNUnescapeHTML(faq.getAnswer()));
+					mainEntity.setAcceptedAnswer(answer);
+					return mainEntity;
+				}).collect(Collectors.toList());
+		jsonLd.setMainEntity(mainEntities);
+		return gson.toJson(jsonLd);
+	}
+
+	/**
+	 * Gets the bread crumb SEO schema.
+	 *
+	 * @param seoService         the seo service
+	 * @param request the request
+	 * @param externalizer the externalizer
+	 * @param items              the items
+	 * @param showSelectorAsLeaf the show selector as leaf
+	 * @param selectorIndex the selector index
+	 * @return the bread crumb SEO schema
+	 */
+	public static String getBreadCrumbSEOSchema(SeoService seoService, SlingHttpServletRequest request,
+			Externalizer externalizer, Collection<NavigationItem> items, boolean showSelectorAsLeaf,
+			int selectorIndex) {
+
+		Gson gson = getGsonInstance();
+		JsonLd jsonLd = new JsonLd();
+		jsonLd.setContext(seoService.getContextUrl());
+		jsonLd.setType(seoService.getBreadCrumbType());
+
+		int index = 1;
+		List<ItemListElement> itemListElements = new ArrayList<>();
+		for (NavigationItem item : items) {
+			ItemListElement element = new ItemListElement();
+			element.setItem(item.getLink().getExternalizedURL());
+			element.setName(item.getTitle());
+			element.setType(seoService.getBreadCrumbItemType());
+			element.setPosition(index++);
+			itemListElements.add(element);
+		}
+
+		if (showSelectorAsLeaf) {
+			String[] selectors = request.getRequestPathInfo().getSelectors();
+			if (selectors.length > 0 && selectors.length > selectorIndex) {
+				String selector = selectors[selectorIndex];
+				String pagePath = externalizer.publishLink(request.getResourceResolver(), request.getPathInfo());
+				ItemListElement element = new ItemListElement();
+				element.setType(seoService.getBreadCrumbItemType());
+				element.setName(selector);
+				element.setItem(pagePath);
+				element.setPosition(index);
+				itemListElements.add(element);
+			}
+		}
+		jsonLd.setItemListElement(itemListElements);
+		return gson.toJson(jsonLd);
+	}
+
+	/**
+	 * Gets the video seo.
+	 *
+	 * @param restService the rest service
+	 * @param seoService the seo service
+	 * @param externalizer the externalizer
+	 * @param request the request
+	 * @param videoId the video id
+	 * @param fileReference the file reference
+	 * @return the video seo
+	 */
+	public static JsonObject getVideoSeo(RestService restService, SeoService seoService, Externalizer externalizer,
+			SlingHttpServletRequest request, String videoId, String fileReference) {
+
+		JsonObject videoDetailsJson = new JsonObject();
+		
+		if(StringUtils.isEmpty(seoService.getYoutubeAPIUrl())) {
+			return videoDetailsJson;
+		}
+
+		String api = seoService.getYoutubeAPIUrl().replace("{videoid}", videoId);
+		String response = restService.getData(api, null);
+
+		if (StringUtils.isNotEmpty(response)) {
+			JsonLd jsonLd = new JsonLd();
+			jsonLd.setContext(seoService.getContextUrl());
+			jsonLd.setType(seoService.getVideoType());
+
+			if (StringUtils.isNotEmpty(fileReference)) {
+				jsonLd.setThumbnailUrl(externalizer.publishLink(request.getResourceResolver(), fileReference));
+			}
+
+			JsonElement rootElement = JsonParser.parseString(response);
+			if (rootElement != null && rootElement.isJsonObject()) {
+				JsonObject rootJsonObject = rootElement.getAsJsonObject();
+
+				if (rootJsonObject.has("items")) {
+					JsonArray items = rootElement.getAsJsonObject().getAsJsonArray("items");
+					populateVideoSchema(jsonLd, videoId, videoDetailsJson, items);
+				}
+			}
+		}
+		return videoDetailsJson;
+	}
+
+	/**
+	 * Populate video schema.
+	 *
+	 * @param jsonLd the json ld
+	 * @param videoId the video id
+	 * @param object the object
+	 * @param items the items
+	 */
+	private static void populateVideoSchema(JsonLd jsonLd, String videoId, JsonObject object, JsonArray items) {
+
+		if (!items.isEmpty() && items.get(0).isJsonObject()) {
+			Gson gson = getGsonInstance();
+
+			JsonObject snippet = items.get(0).getAsJsonObject().getAsJsonObject("snippet");
+			getYoutubeSnippetInfo(jsonLd, videoId, object, snippet);
+
+			JsonObject contentDetails = items.get(0).getAsJsonObject().getAsJsonObject("contentDetails");
+			getDurationDetails(jsonLd, contentDetails);
+
+			object.addProperty(JSON_LD, gson.toJson(jsonLd));
+		}
+	}
+
+	/**
+	 * Gets the youtube snippet info.
+	 *
+	 * @param jsonLd the json ld
+	 * @param videoId the video id
+	 * @param object the object
+	 * @param snippet the snippet
+	 * @return the youtube snippet info
+	 */
+	private static JsonLd getYoutubeSnippetInfo(JsonLd jsonLd, String videoId, JsonObject object, JsonObject snippet) {
+		if (null != snippet) {
+			String title = snippet.has(TITLE) ? snippet.get(TITLE).getAsString() : StringUtils.EMPTY;
+
+			String desc = snippet.has("description") ? snippet.get("description").getAsString() : StringUtils.EMPTY;
+			String publishedAt = snippet.has("publishedAt") ? snippet.get("publishedAt").getAsString()
+					: StringUtils.EMPTY;
+
+			jsonLd.setName(title);
+			jsonLd.setDescription(desc);
+			jsonLd.setUploadDate(publishedAt);
+			jsonLd.setEmbedUrl("https://www.youtube.com/embed/" + videoId);
+			object.addProperty(TITLE, title);
+		}
+		return jsonLd;
+	}
+
+	/**
+	 * Gets the duration details.
+	 *
+	 * @param jsonLd the json ld
+	 * @param contentDetails the content details
+	 * @return the duration details
+	 */
+	private static void getDurationDetails(JsonLd jsonLd, JsonObject contentDetails) {
+		if (null != contentDetails && null != jsonLd) {
+			String duration = contentDetails.has("duration") ? contentDetails.get("duration").getAsString()
+					: StringUtils.EMPTY;
+
+			jsonLd.setDuration(duration);
+		}
+	}
+
+	/**
+	 * Gets the gson instance.
+	 *
+	 * @return the gson instance
+	 */
+	private static Gson getGsonInstance() {
+		GsonBuilder builder = new GsonBuilder();
+		return builder.disableHtmlEscaping().setPrettyPrinting().create();
+	}
+
+	/**
+	 * Removes the elements N unescape HTML.
+	 *
+	 * @param input the input
+	 * @return the string
+	 */
+	private static String removeElementsNUnescapeHTML(String input) {
+		return StringEscapeUtils.unescapeHtml4(input.replaceAll(REGEX_HTML_ELEMENTS, "").trim());
+	}
+
+	/**
 	 * Method to return attribute string value.
 	 *
-	 * @param request the request
+	 * @param request   the request
 	 * @param attribute the attribute
 	 * @return attribute value
 	 */

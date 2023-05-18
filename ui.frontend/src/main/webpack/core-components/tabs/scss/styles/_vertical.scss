@@ -2,6 +2,10 @@
     .cmp-tabs {
         display: flex;
         gap: 20px;
+        padding: 60px 48px;
+        @include media("<=tablet-lg") {
+            flex-direction: column;
+        }
         &__tablist {
             flex-direction: column;
             min-width: 267px;
@@ -12,6 +16,7 @@
             padding: 0;
             margin-bottom: 24px;
             max-width: fit-content;
+            color: $efe-gray-new;
             @include media("<=phone-m") {
                 font-size: rem(20);
             }

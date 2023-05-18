@@ -1,0 +1,20 @@
+.cmp-image--profile-thumb {
+    display: inline-block;
+    * {
+        display: inline-block;
+    }
+
+    img {
+        max-width: rem(158);
+        max-height: rem(158);
+        background-size: cover;
+    }
+
+
+    &.cmp-image--round {
+        img {
+            border-bottom-right-radius: 40px;
+        }
+    }
+
+}

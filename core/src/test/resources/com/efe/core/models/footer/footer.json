@@ -23,6 +23,7 @@
 					"alt": "Alt text",
 					"linkTarget": "_blank",
 					"sling:resourceType": "efe/components/footer",
+					"enableOnetrust":"true",
 					"logoLink": "/content/efe/us/en/corp/home?q=1",
 					"socialLinks": {
 						"jcr:primaryType": "nt:unstructured",

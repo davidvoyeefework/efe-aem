@@ -26,6 +26,8 @@
 					"ctaTitle": "Planner CTA",
 					"ctaTarget": "_self",
 					"id" : "2332",
+					"disableLogin": "true",
+					"disableSearch": "true",
 					"loginTitle": "Log In",
 					"loginLink": "/content/efe/us/en",
 					"loginTarget": "_blank",

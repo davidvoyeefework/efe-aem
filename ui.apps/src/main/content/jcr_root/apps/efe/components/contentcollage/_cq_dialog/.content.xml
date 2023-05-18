@@ -50,16 +50,10 @@
                                                 fieldDescription="Add secondary image alt text here"
                                                 fieldLabel="Secondary Image Alt Text"
                                                 name="./secondaryImageAltText"/>
-                                            <id
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="HTML ID attribute to apply to the component."
-                                                fieldLabel="ID"
-                                                name="./id"/>
                                             <contentcard
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="cq/gui/components/authoring/dialog/richtext"
-                                                fieldDescription="Add quote, author, and the title here."
+                                                fieldDescription="Add quote, author, and title here. Suggested: 115 characters for quote."
                                                 fieldLabel="Content Card"
                                                 name="./contentCard"
                                                 useFixedInlineToolbar="{Boolean}true">
@@ -149,6 +143,12 @@
                                                         features="subscript"/>
                                                 </rtePlugins>
                                             </contentcard>
+											<id
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="HTML ID attribute to apply to the component."
+                                                fieldLabel="ID"
+                                                name="./id"/>
                                         </items>
                                     </column>
                                 </items>

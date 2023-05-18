@@ -31,7 +31,7 @@
 @mixin buildLink ($color: false, $hover-color: false) {
     text-decoration: 1px solid underline $efe-gray-primary;
     @if $color {text-decoration: 1px solid underline $color; color: $color};
-    text-underline-offset: 3px;
+    text-underline-offset: 2px;
     transition: $std-transition;
 
     &:hover {
@@ -126,6 +126,15 @@
 // SUBHEADS
 // -----------------------------------------------------------------------------
 
+
+@mixin subhead-00 {
+    @include buildFont(rem(32), .06em, null, 400);
+}
+
+.cmp-text--subhead-00 {
+    @include subhead-00;
+}
+
 @mixin subhead-01 {
     @include buildFont(rem(24px), .02em, null, 400);
 }
@@ -173,6 +182,10 @@
 
 @mixin caption {
     @include buildFont(rem(14), null, 'nimbus-sans', 400, unset, 100% );
+}
+
+.cmp-text--caption {
+    @include caption;
 }
 
 @mixin button-text {
@@ -294,6 +307,11 @@
     @include buildLink($efe-red-primary, $efe-red-hover);
 }
 
+@mixin caption-link {
+    @include caption;
+    @include buildLink;
+}
+
 // -----------------------------------------------------------------------------
 // TITLE MARGIN BOTTOM SPECS
 // -----------------------------------------------------------------------------
@@ -327,7 +345,7 @@
         width: rem(14);
         height: rem(15);
         position: relative;
-        bottom: rem(4);
+        bottom: rem(5);
         right: rem(7);
     }
 
@@ -357,7 +375,7 @@
 
     &:before {
         position: absolute;
-        top: 1px;
+        top: 0;
         left: -21px;
     }
 }

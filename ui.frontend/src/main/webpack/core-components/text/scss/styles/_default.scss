@@ -24,9 +24,12 @@
         margin-block-end: 1em;
         margin-inline-start: 0px;
         margin-inline-end: 0px;
+        padding: 20px 24px;
+        margin: 0;
         
         li {
             padding-left: 12px;
+            margin-bottom: 8px;
             &:before {
                 content: $wkndicon-play3;
                 font-family: '#{$icomoon-font-family}' !important;
@@ -55,11 +58,22 @@
         margin-block-end: 1em;
         margin-inline-start: 0px;
         margin-inline-end: 0px;
+        margin: 0;
+        padding: 20px 24px;
+        li {
+            padding-bottom: 8px;
+        }
     }
     
     li {
         display: list-item;
         text-align: -webkit-match-parent;
         line-height: $line-height-base + .5;
+    }
+
+    img {
+        max-width: rem(704);
+        max-height: rem(439);
+        background-size: cover;
     }
 }

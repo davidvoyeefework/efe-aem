@@ -22,7 +22,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        padding: rem(48) rem(24) rem(0) rem(63);
+        padding: rem(52) rem(24) rem(52) rem(60);
         background: white;
         height: fit-content;
         border-top: 2px solid #d8d8d8;
@@ -33,8 +33,15 @@
             right: rem(63);
             display: block;
 
+            @media screen and (max-width: 1290px) {
+                bottom: -52px;
+            }
+
             .efe-nav-search {
                 padding: rem(48) rem(24) rem(24) rem(24);
+                @media screen and (max-width: 1290px) {
+                    padding: rem(13) rem(24);
+                }
                 position: relative;
                 @include flexbox(
                     $align-items: start
@@ -74,6 +81,9 @@
             width: 100vw;
             position: relative;
             right: rem(79);
+            @media screen and (max-width: 1290px) {
+                margin-bottom: 0;
+            }
             .cmp-button__text {
                 white-space: nowrap;
             }
@@ -96,6 +106,9 @@
             $gap: rem(60)
         );
 
+        @media screen and (max-width: 1290px) {
+            gap: rem(56);
+        }
     }
 
     li.cmp-navigation__item--level-0 {

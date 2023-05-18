@@ -1,6 +1,9 @@
 package com.efe.core.models.impl;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -8,20 +11,18 @@ import javax.inject.Inject;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.models.annotations.Default;
+import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.OSGiService;
-import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import com.adobe.cq.export.json.ExporterConstants;
 import com.day.cq.commons.Externalizer;
 import com.day.cq.wcm.api.Page;
-
-import org.apache.sling.models.annotations.DefaultInjectionStrategy;
-
 import com.efe.core.models.Footer;
 import com.efe.core.models.multifield.Link;
 import com.efe.core.models.multifield.SocialLink;
@@ -30,10 +31,6 @@ import com.efe.core.services.SeoService;
 import com.efe.core.utils.EFEUtil;
 import com.efe.core.utils.LinkUtil;
 import com.efe.core.utils.SeoUtil;
-
-import java.util.Objects;
-import java.util.Collections;
-import java.util.ArrayList;
 
 /**
  * The Class FooterImpl.
@@ -65,7 +62,7 @@ public class FooterImpl implements Footer {
 	/**
 	 * The current resource.
 	 */
-	@Self
+	@SlingObject
 	private Resource resource;
 	
 	/** The current page. */
@@ -108,6 +105,11 @@ public class FooterImpl implements Footer {
 	@ChildResource
 	private List<VerticalList> verticalList;
 	
+	/** The enable onetrust. */
+	@ValueMapValue
+	@Default(booleanValues = false)
+	private boolean enableOnetrust;
+		
 	/** The json ld. */
 	private String jsonLd;
 
@@ -226,5 +228,15 @@ public class FooterImpl implements Footer {
 		}
 		return Collections.emptyList();
 	}
-
+	
+	/**
+	 * Checks if is enable one trust.
+	 *
+	 * @return true, if is enable one trust
+	 */
+	@Override
+	public boolean isEnableOneTrust() {
+		return enableOnetrust;
+	}
+	
 }

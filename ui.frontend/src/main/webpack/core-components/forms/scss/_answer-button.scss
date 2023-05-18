@@ -1,7 +1,7 @@
 
 button.cmp-form-button--answer {
     color: $efe-gray-primary;
-    padding: rem(16) rem(20) rem(12);
+    padding: rem(12) rem(20);
     background: white;
     border-radius: 4px;
     border: 1px solid $efe-gray-mid;
@@ -30,5 +30,5 @@ button.cmp-form-button--answer {
 }
 .cmp-form-button[type="submit"] {
     @include cta-primary;
-
+    margin: rem(20) 0;
 }
