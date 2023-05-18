@@ -11,20 +11,33 @@ public interface EFEDatalayer {
 	 * @return the dataLayer
 	 */
 	String getDataLayer();
-	
-	
+
 	/**
 	 * Gets the one trust script.
 	 *
 	 * @return the one trust script
 	 */
 	String getOneTrustScript();
-	
+
 	/**
 	 * Gets the one trust script id.
 	 *
 	 * @return the one trust script id
 	 */
 	String getOneTrustScriptId();
+
+	/**
+	 * Gets the tracking links json.
+	 *
+	 * @return the trackingLinksJson
+	 */
+	String getTrackingLinksJson();
+
+	/**
+	 * Gets the form name.
+	 *
+	 * @return the formName
+	 */
+	String getFormName();
 
 }

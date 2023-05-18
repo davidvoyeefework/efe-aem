@@ -104,7 +104,8 @@ public class EfeFormServlet extends SlingAllMethodsServlet {
 	private void sendRedirect(ValueMap valueMap, SlingHttpServletRequest request, SlingHttpServletResponse response,
 			boolean processFormApiSuccess) throws ServletException {
 		
-		String redirect = getMappedRedirect(valueMap.get("redirect", String.class), request.getResourceResolver());
+		String formName = valueMap.get("name", valueMap.get("id", String.class));
+		String redirect = getMappedRedirect(formName, valueMap.get("redirect", String.class), request.getResourceResolver());
 		String errorMessage = valueMap.get("errorMessage", String.class);
 		FormsHandlingRequest formRequest = new FormsHandlingRequest(request);
 		try {
@@ -137,7 +138,7 @@ public class EfeFormServlet extends SlingAllMethodsServlet {
      * @param resourceResolver the resource resolver
      * @return the mapped redirect
      */
-    private String getMappedRedirect(String redirect, ResourceResolver resourceResolver) {
+    private String getMappedRedirect(String formName, String redirect, ResourceResolver resourceResolver) {
         String mappedRedirect = null;
         if (StringUtils.isNotEmpty(redirect)) {
             if (StringUtils.endsWith(redirect, HTML_SUFFIX)) {
@@ -148,7 +149,7 @@ public class EfeFormServlet extends SlingAllMethodsServlet {
             } else {
                 Resource resource = resourceResolver.getResource(redirect);
                 if (resource != null) {
-                    redirect += HTML_SUFFIX;
+                    redirect = redirect.concat(".formevent.").concat(formName).concat(HTML_SUFFIX);
                     mappedRedirect = resourceResolver.map(redirect);
                 }
             }

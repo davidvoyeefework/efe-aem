@@ -69,7 +69,20 @@ public interface EfeService {
 	String getOneTrustScriptId();
 
 	/**
-	 * Gets the form base URL.
+	 * Gets the analytics site root level.
+	 *
+	 * @return the analyticsSiteRootLevel
+	 */
+	int getAnalyticsSiteRootLevel();
+
+	/**
+	 * Gets the link tracking list path.
+	 *
+	 * @return the linkTrackingListPath
+	 */
+	String getLinkTrackingListPath();
+	 
+	/* Gets the form base URL.
 	 *
 	 * @return the form base URL
 	 */
