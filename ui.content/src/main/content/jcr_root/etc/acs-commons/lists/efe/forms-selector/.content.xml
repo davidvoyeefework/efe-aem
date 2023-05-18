@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        jcr:primaryType="nt:unstructured"
+        jcr:title="Forms Selector"
+        sling:resourceType="acs-commons/components/utilities/genericlist">
+        <image
+            jcr:primaryType="nt:unstructured"
+            fileReference="/apps/acs-commons/components/utilities/genericlist/generic-list.png"/>
+        <list jcr:primaryType="nt:unstructured">
+            <item0
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Homepage HUHY Form"
+                value="dd39ee5a7a1da615c1bbd8a8de6f2d13"/>
+            <item1
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Find A Planner: Request Appointment Longform"
+                value="14b35560009dc6d165fc801ec9f010a5"/>
+            <item2
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Homepage HUHY Form - C"
+                value="0f1e216a70f4518c544155d99e630e69"/>
+            <item3
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Homepage HUHY Form - B"
+                value="af80a5dcfbd8b0ae92eec372373baadb"/>
+            <item4
+                jcr:primaryType="nt:unstructured"
+                jcr:title="SinglePage"
+                value="7f579d0245f57ec5d39795d061aab415"/>
+        </list>
+    </jcr:content>
+</jcr:root>
