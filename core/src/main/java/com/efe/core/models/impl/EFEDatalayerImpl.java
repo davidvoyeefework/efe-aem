@@ -143,4 +143,24 @@ public class EFEDatalayerImpl implements EFEDatalayer {
 		return formName;
 	}
 
+	/**
+	 * Checks if is enable GA.
+	 *
+	 * @return the enableGA
+	 */
+	@Override
+	public boolean isEnableGA() {
+		return efeService.isEnabledGA();
+	}
+
+	/**
+	 * Gets the ga tag value.
+	 *
+	 * @return the gaTagValue
+	 */
+	@Override
+	public String getGaTagValue() {
+		return efeService.getGaTagValue();
+	}
+
 }

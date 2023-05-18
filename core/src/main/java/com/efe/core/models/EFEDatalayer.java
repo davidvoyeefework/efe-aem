@@ -40,4 +40,18 @@ public interface EFEDatalayer {
 	 */
 	String getFormName();
 
+	/**
+	 * Gets the ga tag value.
+	 *
+	 * @return the gaTagValue
+	 */
+	String getGaTagValue();
+
+	/**
+	 * Checks if is enable GA.
+	 *
+	 * @return the enableGA
+	 */
+	boolean isEnableGA();
+
 }
