@@ -20,7 +20,7 @@
     var IS_DASH = "efe-text";
     var formStart = false;
     var formErrors = [];
-    var formName = document.querySelector('.efe-form form').getAttribute("name");
+    var formName = document.querySelector('.efe-form form')?.getAttribute("name");
     var selectors = {
         self: "[data-" + NS + '-is="' + IS + '"]'
     };
@@ -223,6 +223,23 @@
                 }
             },0)
         })
+        var element =  document.querySelector('.cmp-form-error .cmp-form-error__item');
+        if (typeof(element) != 'undefined' && element != null) {
+            let errorMessage = element.innerText;
+            window.adobeDataLayer.push({ 
+                event : 'form_validation_error',
+                _efe : { 
+                    formInfo :{
+                    formName : formName, 
+                    errorCode:'', 
+                    formStart : {
+                        value: 0
+                    }, 
+                    errorMessage
+                    }
+                }
+            })
+        }
     }
 
     if (document.readyState !== "loading") {
