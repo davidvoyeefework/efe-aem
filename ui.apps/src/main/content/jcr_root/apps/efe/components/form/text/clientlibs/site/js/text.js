@@ -203,7 +203,7 @@
             childList: true,
             characterData: true
         });
-        document.querySelector('.efe-form button[type="submit"]').addEventListener('click',()=>{
+        document.querySelector('.efe-form button[type="submit"]')?.addEventListener('click',()=>{
             setTimeout(()=>{
                 if(formErrors.length >0) {
                     window.adobeDataLayer.push({ 
