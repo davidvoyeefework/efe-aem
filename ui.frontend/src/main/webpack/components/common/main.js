@@ -1,8 +1,9 @@
 export default class Analytics {
     constructor() {
-        const linksToTarget = JSON.parse(document.querySelector('[data-tracking-list]')?.dataset.trackingList);
+        let linksToTarget = document.querySelector('[data-tracking-list]')?.dataset.trackingList;
         if (!linksToTarget) return;
 
+        linksToTarget = JSON.parse(linksToTarget);
         this.linksToTarget = linksToTarget.map((str) => str.toLowerCase());
         this.handleLinksForAnalytics = document.addEventListener(
             "click",
