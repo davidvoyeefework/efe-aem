@@ -1,0 +1,74 @@
+{
+  "jcr:primaryType": "dam:Asset",
+  "jcr:mixinTypes": [
+    "mix:referenceable",
+    "mix:versionable"
+  ],
+  "jcr:createdBy": "admin",
+  "jcr:versionHistory": "59e5f0ca-6c56-45a1-8696-0795df27093d",
+  "jcr:predecessors": [
+    "e39b5a24-6eed-492d-88d7-00024c4f2d06"
+  ],
+  "jcr:created": "Fri May 05 2023 17:09:55 GMT+0530",
+  "jcr:baseVersion": "e39b5a24-6eed-492d-88d7-00024c4f2d06",
+  "jcr:isCheckedOut": true,
+  "jcr:uuid": "c79cd548-d3a5-4235-86ac-0e7098a6027d",
+  "jcr:content" : {
+    "jcr:primaryType": "dam:AssetContent",
+    "jcr:title": "test-article-cf",
+    "jcr:lastModifiedBy": "admin",
+    "contentFragment": true,
+    "cq:name": "test-article-cf",
+    "cq:parentPath": "/content/dam/efe",
+    "data" : {
+      "jcr:primaryType": "nt:unstructured",
+      "_strucVersion": 1,
+      "cq:model": "/conf/efe/settings/dam/cfm/models/articles",
+      "master" : {
+        "jcr:primaryType": "nt:unstructured",
+        "jcr:mixinTypes": [
+          "dam:cfVariationNode",
+          "cq:Taggable"
+        ],
+        "title@LastModified": "Thu May 11 2023 19:27:12 GMT+0530",
+        "subtitle": "<p style=\"text-align: center;\">Subtitle ante egestas amet in aliquam nam porttitor tincidunt gravida uit purus. Massa id magna quisque semper euismod.</p>\n",
+        "heroImage": "/content/dam/efe/rebalance-in-a-down-market.jpg",
+        "authorType": [
+          "Regular Author",
+          "Planner"
+        ],
+        "body@LastModified": "Thu May 11 2023 13:17:17 GMT+0530",
+        "subtitle@ContentType": "text/html",
+        "regularAuthor": [
+          "/content/dam/efe/author1"
+        ],
+        "datePublished": "Tue May 09 2023 17:11:00 GMT+0530",
+        "planner": [
+          "/content/dam/efe/cf/plan1"
+        ],
+        "disclosure@LastModified": "Fri May 12 2023 10:45:18 GMT+0530",
+        "body": "/content/experience-fragments/efe/us/en/site/testArticleXF",
+        "tags": [
+          "efe:content-type/tax",
+          "efe:content-type/home-and-mortgage"
+        ],
+        "title": "<p style=\"text-align: center;\">TItLE that may have many words in it and go on two lines</p>\n",
+        "heroImage@LastModified": "Fri May 12 2023 10:42:09 GMT+0530",
+        "dateUpdated": "Sun May 07 2023 17:11:00 GMT+0530",
+        "cq:tags": [
+          "efe:content-type/tax",
+          "efe:content-type/home-and-mortgage"
+        ],
+        "articleSummary": "<p>Aliquet adipiscing lectus eros tristique nunc elementum aliquam. Eget ac enim blandit pellentesque id pellentesque bibendum felis fermentum. Elit aliquam adipiscing fusce purus. Non dictumst amet cras tincidunt porttitor porttitor ullamcorper fringilla. Et “tempor pellentesque enim tellus aliquam” maecenas orci. Mattis tristique posuere in pharetra dolor nullam ligula. Feugiat neque pretium mattis tempus erat cras purus mauris dolor. Metus pulvinar vitae dui amet. Neque sed tempor scelerisque tempus ultricies. Quis nisl eget facilisis viverra amet.<u><b></b></u></p>\n",
+        "title@ContentType": "text/html",
+        "articleSummary@ContentType": "text/html"
+      }
+
+    },
+    "metadata": {
+        "jcr:primaryType": "nt:unstructured",
+        "jcr:mixinTypes": ["cq:Taggable"]
+    }
+    }
+    
+}
