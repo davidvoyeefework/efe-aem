@@ -12,8 +12,7 @@ import org.slf4j.LoggerFactory;
 import com.efe.core.services.EfeService;
 
 /**
- * The Class EfeServiceImpl
- *
+ * The Class EfeServiceImpl.
  */
 @Designate(ocd = EfeServiceImpl.Config.class)
 @Component(service = EfeService.class)
@@ -22,57 +21,55 @@ public class EfeServiceImpl implements EfeService {
 	/** The Constant LOGGER. */
 	private static final Logger LOGGER = LoggerFactory.getLogger(EfeServiceImpl.class);
 
-	/**
-	 * Planner API Endpoint
-	 */
+	/** Planner API Endpoint. */
 	private String plannersAPIEndpoint;
 
-	/**
-	 * Location API Endpoint
-	 */
+	/** Location API Endpoint. */
 	private String locationsAPIEndpoint;
 
-	/**
-	 * AuthHeader
-	 */
+	/** AuthHeader. */
 	private String authHeader;
-	
-	/**
-	 * Planner Page Url
-	 */
+
+	/** Planner Page Url. */
 	private String plannerPageUrl;
-	
-	/**
-	 * Planner Bio Page Url
-	 */
+
+	/** Planner Bio Page Url. */
 	private String plannerBioPageUrl;
-	
-	/** Google Api Key **/
+
+	/** Google Api Key *. */
 	private String googlePublicApiKey;
-	
-	/** Google Direction Prefix Url **/
+
+	/** Google Direction Prefix Url *. */
 	private String googleDirectionPrefixUrl;
-	
+
 	/** The onetrust script. */
 	private String onetrustScript;
-	
+
 	/** The onetrust script id. */
 	private String onetrustScriptId;
 
+	/** The form base url. */
+	private String formBaseUrl;
+
+	/** The form js url. */
+	private String formJsUrl;
+
 	/**
-	 * The Interface Config
-	 *
+	 * The Interface Config.
 	 */
 	@ObjectClassDefinition(name = "EFE Common Configurations", description = "EFE Common Configurations")
 	public static @interface Config {
 
 		/**
+		 * Planners API endpoint.
+		 *
 		 * @return plannersAPIEndpoint
 		 */
 		@AttributeDefinition(name = "Planner API Endpoint URL")
 		String plannersAPIEndpoint();
 
 		/**
+		 * Locations API endpoint.
 		 *
 		 * @return locationsAPIEndpoint
 		 */
@@ -80,23 +77,29 @@ public class EfeServiceImpl implements EfeService {
 		String locationsAPIEndpoint();
 
 		/**
+		 * Auth header.
+		 *
 		 * @return authHeader
 		 */
 		@AttributeDefinition(name = "EFE UPLS authHeader", description = "EFE UPLS authHeader")
 		String authHeader();
-		
+
 		/**
+		 * Planner page url.
+		 *
 		 * @return plannerPageUrl
 		 */
 		@AttributeDefinition(name = "Planner Page Url", description = "Planner Page Url")
 		String plannerPageUrl();
-		
+
 		/**
+		 * Planner bio page url.
+		 *
 		 * @return plannerBioPageUrl
 		 */
 		@AttributeDefinition(name = "Planner Bio Page Url", description = "Planner Bio Page Url")
 		String plannerBioPageUrl();
-		
+
 		/**
 		 * Google map public api.
 		 *
@@ -104,7 +107,7 @@ public class EfeServiceImpl implements EfeService {
 		 */
 		@AttributeDefinition(name = "Google Map API Key", description = "Google Map API Key for Map integration")
 		String googleMapPublicApi();
-		
+
 		/**
 		 * Google direction prefix url.
 		 *
@@ -112,7 +115,7 @@ public class EfeServiceImpl implements EfeService {
 		 */
 		@AttributeDefinition(name = "Google Map Direction Prefix Url", description = "Google Map Direction Prefix Url for forming office direction url")
 		String googleDirectionPrefixUrl();
-		
+
 		/**
 		 * Onetrust script.
 		 *
@@ -120,7 +123,7 @@ public class EfeServiceImpl implements EfeService {
 		 */
 		@AttributeDefinition(name = "One Trust Script Url", description = "One Trust JS SDK Script URL")
 		String onetrustScript();
-		
+
 		/**
 		 * Onetrust script id.
 		 *
@@ -128,13 +131,29 @@ public class EfeServiceImpl implements EfeService {
 		 */
 		@AttributeDefinition(name = "One Trust Script Domain Key", description = "One Trust JS SDK Domain Key")
 		String onetrustScriptId();
-		
+
+		/**
+		 * Form base url.
+		 *
+		 * @return the string
+		 */
+		@AttributeDefinition(name = "Wealth Management forms base Url", description = "Wealth Management forms base Url")
+		String formBaseUrl();
+
+		/**
+		 * Form js url.
+		 *
+		 * @return the string
+		 */
+		@AttributeDefinition(name = "Wealth Management forms Javascript Url", description = "Wealth Management forms Javascript Url")
+		String formJsUrl();
+
 	}
 
 	/**
-	 * Activate method to initialize stuff
-	 * 
-	 * @param config
+	 * Activate method to initialize stuff.
+	 *
+	 * @param config the config
 	 */
 	@Activate
 	@Modified
@@ -149,9 +168,14 @@ public class EfeServiceImpl implements EfeService {
 		this.googleDirectionPrefixUrl = config.googleDirectionPrefixUrl();
 		this.onetrustScript = config.onetrustScript();
 		this.onetrustScriptId = config.onetrustScriptId();
+		this.formBaseUrl = config.formBaseUrl();
+		this.formJsUrl = config.formJsUrl();
+
 	}
 
 	/**
+	 * Gets the planners API endpoint.
+	 *
 	 * @return the plannersAPIEndpoint
 	 */
 	@Override
@@ -160,6 +184,8 @@ public class EfeServiceImpl implements EfeService {
 	}
 
 	/**
+	 * Gets the locations API endpoint.
+	 *
 	 * @return the locationsAPIEndpoint
 	 */
 	@Override
@@ -235,5 +261,25 @@ public class EfeServiceImpl implements EfeService {
 	@Override
 	public String getOneTrustScriptId() {
 		return onetrustScriptId;
+	}
+
+	/**
+	 * Gets the form base url.
+	 *
+	 * @return the form base url
+	 */
+	@Override
+	public String getFormBaseUrl() {
+		return formBaseUrl;
+	}
+
+	/**
+	 * Gets the form js url.
+	 *
+	 * @return the form js url
+	 */
+	@Override
+	public String getFormJsUrl() {
+		return formJsUrl;
 	}
 }

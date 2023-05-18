@@ -25,47 +25,61 @@ public interface EfeService {
 	 * @return the username
 	 */
 	String getAuthHeader();
-	
+
 	/**
 	 * Gets the plannerPageUrl.
 	 *
 	 * @return the plannerPageUrl
 	 */
 	String getPlannerPageUrl();
-	
+
 	/**
 	 * Gets the plannerBioPageUrl.
 	 *
 	 * @return the plannerBioPageUrl
 	 */
 	String getPlannerBioPageUrl();
-	
+
 	/**
 	 * Method to get the Google Public Key.
 	 *
 	 * @return the GooglePublicKey
 	 */
 	String getGooglePublicKey();
-	
+
 	/**
 	 * Method to get Google direction prefix URL.
 	 *
 	 * @return the GoogleDirectionPrefixUrl
 	 */
 	String getGoogleDirectionPrefixUrl();
-	
+
 	/**
 	 * Gets the one trust script.
 	 *
 	 * @return the one trust script
 	 */
 	String getOneTrustScript();
-	
+
 	/**
 	 * Gets the one trust script id.
 	 *
 	 * @return the one trust script id
 	 */
 	String getOneTrustScriptId();
+
+	/**
+	 * Gets the form base URL.
+	 *
+	 * @return the form base URL
+	 */
+	String getFormBaseUrl();
+
+	/**
+	 * Gets the form js URL.
+	 *
+	 * @return the form js URL
+	 */
+	String getFormJsUrl();
 
 }
