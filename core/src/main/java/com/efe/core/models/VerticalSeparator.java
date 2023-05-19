@@ -1,7 +1,7 @@
 package com.efe.core.models;
 
 /**
- * The Interface ContentCollage.
+ * The Interface VerticalSeparator.
  */
 public interface VerticalSeparator {
 

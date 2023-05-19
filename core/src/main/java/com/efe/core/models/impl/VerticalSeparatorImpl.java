@@ -16,9 +16,13 @@ import javax.annotation.PostConstruct;
 /**
  * The Class VerticalSeparatorImpl.
  */
-@Model(adaptables = Resource.class, adapters = VerticalSeparator.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@Model(adaptables = Resource.class, adapters = VerticalSeparator.class, resourceType = {
+        VerticalSeparatorImpl.RESOURCE_TYPE }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
 public class VerticalSeparatorImpl implements VerticalSeparator {
+
+    /** The Constant RESOURCE_TYPE. */
+    public static final String RESOURCE_TYPE = "efe/components/verticalseparator";
 
     /** The Constant COLUMN. */
     public static final String COLUMN = "column";
@@ -59,14 +63,35 @@ public class VerticalSeparatorImpl implements VerticalSeparator {
     /** The columnIndices. */
     private String[] columnIndices;
 
+    private String ulClass = StringUtils.EMPTY;
+
+    private String liClass = StringUtils.EMPTY;
+
     /**
      * Inits the model.
      */
     @PostConstruct
     protected void init() {
-        columnIndices = new String[noOfColumns];
-        for (int i = 0; i < noOfColumns; i++) {
-            columnIndices[i] = COLUMN + "_" + i;
+        int arrayLength = getNoOfColumns();
+        if (arrayLength > 0) {
+            columnIndices = new String[arrayLength];
+            for (int i = 0; i < arrayLength; i++) {
+                columnIndices[i] = COLUMN + "_" + i;
+            }
+            setClasses();
+        }
+    }
+
+    private void setClasses() {
+        if (getNoOfColumns() == 3) {
+            ulClass += VERTICAL_SEPARATOR_ONE;
+            liClass = VERTICAL_SEPARATOR_ONE_ITEM;
+        } else {
+            ulClass += VERTICAL_SEPARATOR_TWO;
+            liClass = VERTICAL_SEPARATOR_TWO_ITEM;
+        }
+        if(StringUtils.equalsIgnoreCase(getHiddenSeparator(),"false")) {
+            ulClass += HORIZONTAL_SEPARATOR;
         }
     }
 
@@ -120,15 +145,6 @@ public class VerticalSeparatorImpl implements VerticalSeparator {
      */
     @Override
     public String getUlClass() {
-        String ulClass = StringUtils.EMPTY;
-        if (getNoOfColumns() == 3) {
-            ulClass += VERTICAL_SEPARATOR_ONE;
-        } else {
-            ulClass += VERTICAL_SEPARATOR_TWO;
-        }
-        if(StringUtils.equalsIgnoreCase(getHiddenSeparator(),"false")) {
-            ulClass += HORIZONTAL_SEPARATOR;
-        }
         return ulClass;
     }
 
@@ -139,10 +155,6 @@ public class VerticalSeparatorImpl implements VerticalSeparator {
      */
     @Override
     public String getLiClass() {
-        if (noOfColumns == 3) {
-            return VERTICAL_SEPARATOR_ONE_ITEM;
-        } else {
-            return VERTICAL_SEPARATOR_TWO_ITEM;
-        }
+        return liClass;
     }
 }

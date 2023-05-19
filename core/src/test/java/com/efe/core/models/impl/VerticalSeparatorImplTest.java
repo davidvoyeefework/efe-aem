@@ -19,14 +19,8 @@ class VerticalSeparatorImplTest {
     /** The Constant RESOURCE_CONTENT. */
     private static final String RESOURCE_CONTENT = "/com/efe/core/models/verticalSeparator.json";
 
-    /** The Constant RESOURCE_CONTENT. */
-    private static final String RESOURCE_CONTENT_TWO = "/com/efe/core/models/verticalSeparatorTwo.json";
-
     /** The Constant TEST_CONTENT_ROOT. */
     private static final String TEST_CONTENT_ROOT = "/content/efe/us/en/corp/home";
-
-    /** The Constant RESOURCE. */
-    private static final String RESOURCE = TEST_CONTENT_ROOT + "/jcr:content/root/container/verticalSeparator";
 
     /** The model. */
     private VerticalSeparator verticalSeparator;
@@ -41,9 +35,9 @@ class VerticalSeparatorImplTest {
      * Simple load and getter test.
      */
     @Test
-    void testGetterOne() {
+    void testNoOfColumnThree() {
         context.load().json(RESOURCE_CONTENT, TEST_CONTENT_ROOT);
-        resource = context.currentResource(RESOURCE);
+        resource = context.currentResource(TEST_CONTENT_ROOT + "/jcr:content/root/container/verticalSeparator");
         Class<VerticalSeparator> modelClass = VerticalSeparator.class;
         context.addModelsForClasses(modelClass);
         verticalSeparator = resource.adaptTo(modelClass);
@@ -62,14 +56,14 @@ class VerticalSeparatorImplTest {
      * Simple load and getter test.
      */
     @Test
-    void testGetterTwo() {
-        context.load().json(RESOURCE_CONTENT_TWO, TEST_CONTENT_ROOT);
-        resource = context.currentResource(RESOURCE);
+    void testNoOfColumnTwo() {
+        context.load().json(RESOURCE_CONTENT, TEST_CONTENT_ROOT);
+        resource = context.currentResource(TEST_CONTENT_ROOT + "/jcr:content/root/container/verticalSeparatorTwo");
         Class<VerticalSeparator> modelClass = VerticalSeparator.class;
         context.addModelsForClasses(modelClass);
         verticalSeparator = resource.adaptTo(modelClass);
 
-        assertEquals("verticalSeparator-553e037663", verticalSeparator.getId());
+        assertEquals("verticalSeparatorTwo-e4697a02b5", verticalSeparator.getId());
         assertEquals(2, verticalSeparator.getNoOfColumns());
         assertEquals("false", verticalSeparator.getHiddenSeparator());
         assertEquals("column_0", verticalSeparator.getColumnIndices()[0]);
