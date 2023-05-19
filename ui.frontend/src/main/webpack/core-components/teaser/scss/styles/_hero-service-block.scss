@@ -210,14 +210,15 @@
              overflow: hidden;
          }
          &__title {
-             @include heading-04;
+            @include subhead-00;
              margin-top: 0;
              margin-bottom: rem(24);
          }
          &__title-link {
-             @include heading-04;
+            @include subhead-00;
          }
          &__description {
+            max-width: rem(400px);
              @include body-02;
              p {
                  @include body-02;
