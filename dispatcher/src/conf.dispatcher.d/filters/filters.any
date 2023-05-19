@@ -14,3 +14,6 @@ $include "./default_filters.any"
 
 # Allow workfront enhance connector integeraton
 /0103 { /type "allow" /method '(GET|POST|PUT)' /url "/bin/workfront-tools"}
+
+# Allow form selector
+/0104 { /type "allow" /method "GET" /extension "json" /path "/content/efe/*/formselector*"}
