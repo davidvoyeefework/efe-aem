@@ -1,5 +1,7 @@
 package com.efe.core.models;
 
+import java.util.List;
+
 /**
  * The Interface VerticalSeparator.
  */
@@ -31,7 +33,7 @@ public interface VerticalSeparator {
      *
      * @return the column indices
      */
-    String[] getColumnIndices();
+    List<String> getColumnIndices();
 
     /**
      * Gets the ul class.

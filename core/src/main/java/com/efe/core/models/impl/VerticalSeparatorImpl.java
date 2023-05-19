@@ -12,6 +12,7 @@ import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import javax.annotation.PostConstruct;
+import java.util.*;
 
 /**
  * The Class VerticalSeparatorImpl.
@@ -134,8 +135,11 @@ public class VerticalSeparatorImpl implements VerticalSeparator {
      * @return the column indices
      */
     @Override
-    public String[] getColumnIndices() {
-        return columnIndices;
+    public List<String> getColumnIndices() {
+        if (Objects.nonNull(columnIndices)) {
+            return new ArrayList<>(Arrays.asList(columnIndices));
+        }
+        return Collections.emptyList();
     }
 
     /**

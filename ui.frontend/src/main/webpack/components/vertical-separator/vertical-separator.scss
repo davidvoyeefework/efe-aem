@@ -147,17 +147,17 @@
 .cmp-vertical-separator--two {
     @include media(">tablet-lg") {
         &__middle {
-            >ul {
+            .cmp-vertical-separator--two {
                 align-items: center;
             }
         }
         &__top {
-            >ul {
+            .cmp-vertical-separator--two {
                 align-items: flex-start;
             }
         }
         &__bottom {
-            >ul {
+            .cmp-vertical-separator--two {
                 align-items: flex-end;
             }
         }
