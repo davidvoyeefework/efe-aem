@@ -81,8 +81,9 @@ public interface EfeService {
 	 * @return the linkTrackingListPath
 	 */
 	String getLinkTrackingListPath();
-	 
-	/* Gets the form base URL.
+
+	/*
+	 * Gets the form base URL.
 	 *
 	 * @return the form base URL
 	 */
@@ -94,6 +95,13 @@ public interface EfeService {
 	 * @return the form js URL
 	 */
 	String getFormJsUrl();
+
+	/**
+	 * Gets the form auth header.
+	 *
+	 * @return the form auth header
+	 */
+	String getFormAuthHeader();
 
 	/**
 	 * Checks if is enabled GA.

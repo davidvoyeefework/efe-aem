@@ -1,11 +1,12 @@
 package com.efe.core.models.impl;
 
+import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.OSGiService;
-import org.apache.sling.models.annotations.injectorspecific.Self;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import com.adobe.cq.export.json.ExporterConstants;
@@ -17,18 +18,18 @@ import com.efe.core.utils.EFEUtil;
 /**
  * The Class FormsSelectorImpl.
  */
-@Model(adaptables = {
-		Resource.class }, adapters = FormsSelector.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, resourceType = FormsSelectorImpl.RESOURCE_TYPE)
+@Model(adaptables = { Resource.class,
+		SlingHttpServletRequest.class }, adapters = FormsSelector.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, resourceType = FormsSelectorImpl.RESOURCE_TYPE)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
 public class FormsSelectorImpl implements FormsSelector {
 
 	/** The Constant RESOURCE_TYPE. */
 	protected static final String RESOURCE_TYPE = "efe/components/formselector";
-	
+
 	/**
 	 * The current resource.
 	 */
-	@Self
+	@SlingObject
 	private Resource resource;
 
 	/** The id. */
