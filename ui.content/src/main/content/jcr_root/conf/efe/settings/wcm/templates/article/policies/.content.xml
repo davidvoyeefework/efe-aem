@@ -93,6 +93,10 @@
                                 cq:policy="efe/components/header/policy"
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="wcm/core/components/policies/mapping"/>
+                        <verticalseparator
+                                cq:policy="efe/components/verticalseparator/policy"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="wcm/core/components/policies/mapping"/>
                     </components>
                 </efe>
             </container>

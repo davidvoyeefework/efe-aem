@@ -94,7 +94,7 @@
                                                         features="modifylink,unlink"/>
                                                     <subsuperscript
                                                         jcr:primaryType="nt:unstructured"
-                                                        features="subscript"/>
+                                                        features="*"/>
                                                 </rtePlugins>
                                             </description>
                                             <buttontext
