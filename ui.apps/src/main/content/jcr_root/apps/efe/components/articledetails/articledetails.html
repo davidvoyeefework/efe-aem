@@ -19,16 +19,16 @@
         <div class="image cmp-image--top-left">
             <div class="cmp-image"><img src="${model.articleFragmentPath.heroImage}" alt=""></div>
         </div>
-        <div class="text cmp-text--body-03 cmp-text--">
+        <div class="text cmp-text--body-03 cmp-text--" style="margin:20px 0;">
             <div class="cmp-text">
-                <h1 class="cmp-text">By:
-                    <span data-sly-list.item = ${model.articleFragmentPath.articleAuthors}>
-					<p>${item.name} ${item.title}</p>
-				</span>
-                    <span data-sly-list.item = ${model.articleFragmentPath.plannerResponse}>
-					<p>${item.firstName} ${item.middleName} ${item.lastName} ${item.title}</p>
-				</span>
-                </h1>
+                <span class="cmp-text"><span>By:</span>
+                    <sly data-sly-list.item = "${model.articleFragmentPath.articleAuthors}">
+						<span>${item.name} ${item.title}</span>
+					</sly></br>
+                	<sly data-sly-list.item = "${model.articleFragmentPath.plannerResponse}">
+						<span>${item.firstName} ${item.middleName} ${item.lastName} ${item.title}</span>
+					</sly>
+                </span>
             </div>
         </div>
 
@@ -55,7 +55,7 @@
             <div data-sly-test=${item.name} class="cmp-author-details__description">
                 <div class="title cmp-title--subhead-00 ">
                     <div class="cmp-title">
-                        <h1 class="cmp-title__text">${item.name} ${item.title}</h1>
+                        <h1 class="cmp-title__text">${item.name}git</h1>
                     </div>
                 </div>
                 <div class="text cmp-text--body-02 cmp-text-- ">
@@ -78,7 +78,7 @@
 
 
         <div class="cmp-author-details" data-sly-list.item = ${model.articleFragmentPath.plannerResponse}>
-            <div class="cmp-author-details__image">
+            <div data-sly-test="${item.desktopImageUrl}" class="cmp-author-details__image">
                 <div class="image cmp-image--profile-thumb cmp-image--round">
                     <div data-cmp-is="image" data-cmp-widths="600,800,1000,1200,1600" class="cmp-image">
                         <img src="${item.desktopImageUrl}" loading="lazy" class="cmp-image__image" itemprop="contentUrl" width="850" height="509" alt="" title="">
@@ -89,7 +89,7 @@
             <div data-sly-test=${item.firstName}  class="cmp-author-details__description">
                 <div class="title cmp-title--subhead-00 ">
                     <div id="title-c6fe1860ab" class="cmp-title">
-                        <h1 class="cmp-title__text">${item.firstName} ${item.middleName} ${item.lastName} ${item.title}</h1>
+                        <h1 class="cmp-title__text">${item.firstName} ${item.middleName} ${item.lastName}</h1>
                     </div>
                 </div>
                 <div class="text cmp-text--body-02 cmp-text-- ">
