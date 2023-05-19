@@ -106,13 +106,11 @@
                     <sly data-sly-test=${item.education} data-sly-list.education=${item.education}>
                         <p> ${education.degree} ${education.university}</p>
                     </sly>
+                    <div class="separator cmp-separator--primary cmp-separator">
+                        <hr class="cmp-separator__horizontal-rule">
+                    </div>
                 </div>
             </div>
-
-            <div class="separator cmp-separator--primary cmp-separator">
-                <hr class="cmp-separator__horizontal-rule">
-            </div>
-
         </div>
         <div data-sly-list.item = ${model.articleFragmentPath.tags}>
             <div class="button cmp-button--title-tag cmp-button-- cmp-button-- cmp-button--">
