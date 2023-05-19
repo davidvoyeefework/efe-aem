@@ -46,11 +46,13 @@
                     grid-area: footnote;
                 }
             }
-            .cmp-text--body-03 p {
-                font-weight: 400;
-                sup {
-                    top: -5px;
-                    font-size: rem(10);
+            p {
+                .cmp-text--body-03 {
+                    font-weight: 400;
+                    sup {
+                         top: -5px;
+                         font-size: rem(10);
+                    }
                 }
             }
             >div:nth-child(1) {
