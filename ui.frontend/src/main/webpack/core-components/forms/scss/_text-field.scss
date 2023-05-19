@@ -92,4 +92,9 @@
         max-width: 375px;
         margin: 0 auto;
     }
+    .cmp-form-error {
+       &__item {
+        @include buildFont(rem(12), null, "nimbus-sans", 400, capitalize, rem(14), $efe-red-primary);
+       }
+    } 
 }

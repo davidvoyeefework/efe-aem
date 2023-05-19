@@ -55,6 +55,8 @@ class EfeFormServletTest {
 		formComponentProperties.put("efeExternalServiceEndPointUrl", "https://testendpoint");
 		formComponentProperties.put("efeErrorMessage", "Error Message");
 		formComponentProperties.put("redirect", "/content/forms");
+		formComponentProperties.put("name", "Form name");
+		
 		Resource formResource = aemContext.create().resource("/content/forms/get-intouch", formComponentProperties);
 		aemContext.currentResource(formResource);
 
@@ -75,6 +77,7 @@ class EfeFormServletTest {
 	@Test
 	void testSuccess() throws IOException, ServletException {
 		when(formHandler.forwardFormData(anyString(), anyString())).thenReturn(true);
+		aemContext.request().setRequestDispatcherFactory(dispatcherFactory);
 		efeFormServlet.doPost(aemContext.request(), aemContext.response());
 		verify(formHandler, times(1)).forwardFormData("https://testendpoint",
 				"{\"firstName\":\"Test Name\",\"lastName\":\"Test Last Name\",\"arrayKey\":[\"item1\",\"item2\"]}");
