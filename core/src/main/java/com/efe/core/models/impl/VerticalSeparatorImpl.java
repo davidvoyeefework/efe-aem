@@ -14,7 +14,7 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import javax.annotation.PostConstruct;
 
 /**
- * The Class ContentCollageImpl.
+ * The Class VerticalSeparatorImpl.
  */
 @Model(adaptables = Resource.class, adapters = VerticalSeparator.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
@@ -84,6 +84,26 @@ public class VerticalSeparatorImpl implements VerticalSeparator {
     }
 
     /**
+     * Gets the no Of Columns.
+     *
+     * @return the no Of Columns
+     */
+    @Override
+    public int getNoOfColumns() {
+        return noOfColumns;
+    }
+
+    /**
+     * Gets the hidden separator.
+     *
+     * @return the hidden separator
+     */
+    @Override
+    public String getHiddenSeparator() {
+        return hiddenSeparator;
+    }
+
+    /**
      * Gets the column indices.
      *
      * @return the column indices
@@ -101,12 +121,12 @@ public class VerticalSeparatorImpl implements VerticalSeparator {
     @Override
     public String getUlClass() {
         String ulClass = StringUtils.EMPTY;
-        if (noOfColumns == 3) {
+        if (getNoOfColumns() == 3) {
             ulClass += VERTICAL_SEPARATOR_ONE;
         } else {
             ulClass += VERTICAL_SEPARATOR_TWO;
         }
-        if(StringUtils.equalsIgnoreCase(hiddenSeparator,"false")) {
+        if(StringUtils.equalsIgnoreCase(getHiddenSeparator(),"false")) {
             ulClass += HORIZONTAL_SEPARATOR;
         }
         return ulClass;

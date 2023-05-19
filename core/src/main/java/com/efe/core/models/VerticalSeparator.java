@@ -13,6 +13,20 @@ public interface VerticalSeparator {
     String getId();
 
     /**
+     * Gets the no Of Columns.
+     *
+     * @return the no Of Columns
+     */
+    int getNoOfColumns();
+
+    /**
+     * Gets the hidden separator.
+     *
+     * @return the hidden separator
+     */
+    String getHiddenSeparator();
+
+    /**
      * Gets the column indices.
      *
      * @return the column indices

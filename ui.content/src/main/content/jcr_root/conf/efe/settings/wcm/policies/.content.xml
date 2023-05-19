@@ -1397,6 +1397,37 @@
                     </cq:styleGroups>
                 </policy>
             </header>
+            <verticalseparator jcr:primaryType="nt:unstructured">
+                <policy
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Vertical Separator Policy"
+                    sling:resourceType="wcm/core/components/policy/policy">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                    <cq:styleGroups jcr:primaryType="nt:unstructured">
+                        <item0
+                            cq:styleGroupLabel="Column content vertical alignment"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-vertical-separator--two__top"
+                                    cq:styleId="top"
+                                    cq:styleLabel="Top"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-vertical-separator--two__middle"
+                                    cq:styleId="middle"
+                                    cq:styleLabel="Middle"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item2
+                                    cq:styleClasses="cmp-vertical-separator--two__bottom"
+                                    cq:styleId="bottom"
+                                    cq:styleLabel="Bottom"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item0>
+                    </cq:styleGroups>
+                </policy>
+            </verticalseparator>
         </components>
     </efe>
 </jcr:root>
