@@ -82,4 +82,11 @@ public interface EfeService {
 	 */
 	String getFormJsUrl();
 
+	/**
+	 * Gets the form auth header.
+	 *
+	 * @return the form auth header
+	 */
+	String getFormAuthHeader();
+
 }

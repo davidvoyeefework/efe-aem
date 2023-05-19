@@ -54,6 +54,9 @@ public class EfeServiceImpl implements EfeService {
 	/** The form js url. */
 	private String formJsUrl;
 
+	/** The form auth header. */
+	private String formAuthHeader;
+
 	/**
 	 * The Interface Config.
 	 */
@@ -148,6 +151,14 @@ public class EfeServiceImpl implements EfeService {
 		@AttributeDefinition(name = "Wealth Management forms Javascript Url", description = "Wealth Management forms Javascript Url")
 		String formJsUrl();
 
+		/**
+		 * Form auth header.
+		 *
+		 * @return the string
+		 */
+		@AttributeDefinition(name = "Wealth Management forms Auth Header", description = "Wealth Management forms Auth Header")
+		String formAuthHeader();
+
 	}
 
 	/**
@@ -170,6 +181,7 @@ public class EfeServiceImpl implements EfeService {
 		this.onetrustScriptId = config.onetrustScriptId();
 		this.formBaseUrl = config.formBaseUrl();
 		this.formJsUrl = config.formJsUrl();
+		this.formAuthHeader = config.formAuthHeader();
 
 	}
 
@@ -281,5 +293,15 @@ public class EfeServiceImpl implements EfeService {
 	@Override
 	public String getFormJsUrl() {
 		return formJsUrl;
+	}
+
+	/**
+	 * Gets the form auth header.
+	 *
+	 * @return the form auth header
+	 */
+	@Override
+	public String getFormAuthHeader() {
+		return formAuthHeader;
 	}
 }
