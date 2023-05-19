@@ -108,7 +108,7 @@ public class JsonLd {
 	
 	/** The author. */
 	@Expose
-	private Author author;
+	private List<Author> author;
 	
 
 	/**
@@ -319,10 +319,12 @@ public class JsonLd {
 	}
 
 	/**
+	 * Sets the author.
+	 *
 	 * @param author the author to set
 	 */
-	public void setAuthor(Author author) {
-		this.author = author;
+	public void setAuthor(List<Author> author) {
+		this.author = new ArrayList<>(author);
 	}
 
 }

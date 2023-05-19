@@ -282,12 +282,24 @@ public class SeoUtil {
 				Constants.DATE_FORMAT_YEAR_MONTH_DAY, article.getDatePublished()));
 		jsonLd.setDateModified(EFEUtil.formatDate(Constants.DATE_FORMAT_MONTH_DAY_YEAR,
 				Constants.DATE_FORMAT_YEAR_MONTH_DAY, article.getDateUpdated()));
-
+		
+		List<Author> authors = new ArrayList<>();
 		if (Objects.nonNull(article.getPlannerResponse()) && !article.getPlannerResponse().isEmpty()) {
-			jsonLd.setAuthor(populatePlannerDetails(seoService, efeService, externalizer, resourceResolver, article));
-		} else if (Objects.nonNull(article.getArticleAuthors()) && !article.getArticleAuthors().isEmpty()) {
-			jsonLd.setAuthor(populateRegularAuthor(seoService, externalizer, resourceResolver, article));
+			for(PlannerResponse plannerResponse: article.getPlannerResponse()) {
+				authors.add(populatePlannerDetails(seoService, efeService, externalizer, resourceResolver, plannerResponse));			
+			}
+		} 
+		
+		if (Objects.nonNull(article.getArticleAuthors()) && !article.getArticleAuthors().isEmpty()) {
+			for(ArticleAuthor articleAuthor: article.getArticleAuthors()) {
+				authors.add(populateRegularAuthor(seoService, externalizer, resourceResolver, articleAuthor));			
+			}
 		}
+		
+		if(!authors.isEmpty()) {
+			jsonLd.setAuthor(authors);
+		}
+		
 		return gson.toJson(jsonLd);
 	}
 
@@ -301,8 +313,8 @@ public class SeoUtil {
 	 * @return the author
 	 */
 	private static Author populateRegularAuthor(SeoService seoService, Externalizer externalizer, ResourceResolver resourceResolver,
-			Articles article) {
-		ArticleAuthor articleAuthor = article.getArticleAuthors().get(0);	
+			ArticleAuthor articleAuthor) {
+		
 		Author author = new Author();
 		author.setName(articleAuthor.getName());
 		author.setJobTitle(articleAuthor.getTitle());			
@@ -328,8 +340,8 @@ public class SeoUtil {
 	 * @return the author
 	 */
 	private static Author populatePlannerDetails(SeoService seoService, EfeService efeService, Externalizer externalizer,
-			ResourceResolver resourceResolver, Articles article) {
-		PlannerResponse planner = article.getPlannerResponse().get(0);
+			ResourceResolver resourceResolver, PlannerResponse planner) {
+		
 		Author author = new Author();
 		author.setName(StringUtils.isNotEmpty(planner.getLastName())
 				? planner.getFirstName().concat(" ").concat(planner.getLastName())
