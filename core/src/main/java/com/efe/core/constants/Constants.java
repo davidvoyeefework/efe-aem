@@ -44,5 +44,11 @@ public class Constants {
 
 	/** The Constant QUERY_PARAMETER_ID. */
 	public static final String QUERY_PARAMETER_ID = "?id=";
+	
+	/** The Constant DATE_FORMAT_MONTH_DAY_YEAR. e.g May 18, 2023 */
+	public static final String DATE_FORMAT_MONTH_DAY_YEAR = "MMM dd, yyyy";
+	
+	/** The Constant DATE_FORMAT_YEAR_MONTH_DAY. e.g 2023-05-18 */
+	public static final String DATE_FORMAT_YEAR_MONTH_DAY = "yyyy-MM-dd";
 
 }
