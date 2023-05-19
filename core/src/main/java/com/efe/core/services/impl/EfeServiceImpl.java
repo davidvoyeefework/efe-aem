@@ -48,10 +48,10 @@ public class EfeServiceImpl implements EfeService {
 
 	/** The onetrust script id. */
 	private String onetrustScriptId;
-	
+
 	/** The analytics site root level. */
 	private int analyticsSiteRootLevel;
-	
+
 	/** The link tracking list path. */
 	private String linkTrackingListPath;
 
@@ -60,12 +60,15 @@ public class EfeServiceImpl implements EfeService {
 
 	/** The form js url. */
 	private String formJsUrl;
-	
+
 	/** The ga enabled. */
 	private boolean gaEnabled;
-	
+
 	/** The ga tag value. */
 	private String gaTagValue;
+
+	/** The form auth header. */
+	private String formAuthHeader;
 
 	/**
 	 * The Interface Config.
@@ -144,7 +147,7 @@ public class EfeServiceImpl implements EfeService {
 		 */
 		@AttributeDefinition(name = "One Trust Script Domain Key", description = "One Trust JS SDK Domain Key")
 		String onetrustScriptId();
-		
+
 		/**
 		 * Analytics site root level.
 		 *
@@ -152,7 +155,7 @@ public class EfeServiceImpl implements EfeService {
 		 */
 		@AttributeDefinition(name = "Site Root level", description = "Site root level to form site sections", type = AttributeType.INTEGER)
 		int analyticsSiteRootLevel();
-		
+
 		/**
 		 * Link tracking list path.
 		 *
@@ -160,7 +163,6 @@ public class EfeServiceImpl implements EfeService {
 		 */
 		@AttributeDefinition(name = "Link tracking Generic list path", description = "Analytics Link tracking Generic list path")
 		String linkTrackingListPath();
-		
 
 		/**
 		 * Form base url.
@@ -177,7 +179,7 @@ public class EfeServiceImpl implements EfeService {
 		 */
 		@AttributeDefinition(name = "Wealth Management forms Javascript Url", description = "Wealth Management forms Javascript Url")
 		String formJsUrl();
-		
+
 		/**
 		 * Enable GA.
 		 *
@@ -185,7 +187,7 @@ public class EfeServiceImpl implements EfeService {
 		 */
 		@AttributeDefinition(name = "Enable GA?", description = "Check to enable GA")
 		boolean enableGA();
-		
+
 		/**
 		 * Ga tag value.
 		 *
@@ -193,6 +195,14 @@ public class EfeServiceImpl implements EfeService {
 		 */
 		@AttributeDefinition(name = "GA Tag value", description = "GA Tag Value for different environments")
 		String gaTagValue();
+
+		/**
+		 * Form auth header.
+		 *
+		 * @return the string
+		 */
+		@AttributeDefinition(name = "Wealth Management forms Auth Header", description = "Wealth Management forms Auth Header")
+		String formAuthHeader();
 
 	}
 
@@ -218,6 +228,7 @@ public class EfeServiceImpl implements EfeService {
 		this.linkTrackingListPath = config.linkTrackingListPath();
 		this.formBaseUrl = config.formBaseUrl();
 		this.formJsUrl = config.formJsUrl();
+		this.formAuthHeader = config.formAuthHeader();
 		this.gaEnabled = config.enableGA();
 		this.gaTagValue = config.gaTagValue();
 
@@ -334,7 +345,7 @@ public class EfeServiceImpl implements EfeService {
 	}
 
 	/**
-	 *  Gets the form base url.
+	 * Gets the form base url.
 	 *
 	 * @return the form base url
 	 */
@@ -351,6 +362,16 @@ public class EfeServiceImpl implements EfeService {
 	@Override
 	public String getFormJsUrl() {
 		return formJsUrl;
+	}
+
+	/**
+	 * Gets the form auth header.
+	 *
+	 * @return the form auth header
+	 */
+	@Override
+	public String getFormAuthHeader() {
+		return formAuthHeader;
 	}
 
 	/**
