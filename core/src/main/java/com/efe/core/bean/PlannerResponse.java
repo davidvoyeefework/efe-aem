@@ -695,4 +695,13 @@ public class PlannerResponse {
 		return htmlUrl;
 	}
 
+	/**
+	 * Sets the primary office.
+	 *
+	 * @param primaryOffice the primaryOffice to set
+	 */
+	public void setPrimaryOffice(PrimaryOffice primaryOffice) {
+		this.primaryOffice = primaryOffice;
+	}
+
 }

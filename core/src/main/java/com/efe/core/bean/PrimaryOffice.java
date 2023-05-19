@@ -9,19 +9,19 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PrimaryOffice {
 
-	/* id */
+	/** The id. */
 	private String id;
 
-	/* name */
+	/** The name. */
 	private String name;
 
-	/* city */
+	/** The city. */
 	private String city;
 
-	/* state */
+	/** The state. */
 	private String state;
 
-	/* zip */
+	/** The zip. */
 	private String zip;
 
 	/**
@@ -67,6 +67,51 @@ public class PrimaryOffice {
 	 */
 	public String getZip() {
 		return zip;
+	}
+
+	/**
+	 * Sets the id.
+	 *
+	 * @param id the id to set
+	 */
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	/**
+	 * Sets the name.
+	 *
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	/**
+	 * Sets the city.
+	 *
+	 * @param city the city to set
+	 */
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	/**
+	 * Sets the state.
+	 *
+	 * @param state the state to set
+	 */
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	/**
+	 * Sets the zip.
+	 *
+	 * @param zip the zip to set
+	 */
+	public void setZip(String zip) {
+		this.zip = zip;
 	}
 
 }
