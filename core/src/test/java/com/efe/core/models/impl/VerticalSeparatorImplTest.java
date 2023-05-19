@@ -45,9 +45,9 @@ class VerticalSeparatorImplTest {
         assertEquals("verticalSeparator-553e037663", verticalSeparator.getId());
         assertEquals(3, verticalSeparator.getNoOfColumns());
         assertEquals("false", verticalSeparator.getHiddenSeparator());
-        assertEquals("column_0", verticalSeparator.getColumnIndices()[0]);
-        assertEquals("column_1", verticalSeparator.getColumnIndices()[1]);
-        assertEquals("column_2", verticalSeparator.getColumnIndices()[2]);
+        assertEquals("column_0", verticalSeparator.getColumnIndices().get(0));
+        assertEquals("column_1", verticalSeparator.getColumnIndices().get(1));
+        assertEquals("column_2", verticalSeparator.getColumnIndices().get(2));
         assertEquals("cmp-vertical-separator--one cmp-horizontal-separator", verticalSeparator.getUlClass());
         assertEquals("cmp-vertical-separator--one__item", verticalSeparator.getLiClass());
     }
@@ -66,8 +66,8 @@ class VerticalSeparatorImplTest {
         assertEquals("verticalSeparatorTwo-e4697a02b5", verticalSeparator.getId());
         assertEquals(2, verticalSeparator.getNoOfColumns());
         assertEquals("false", verticalSeparator.getHiddenSeparator());
-        assertEquals("column_0", verticalSeparator.getColumnIndices()[0]);
-        assertEquals("column_1", verticalSeparator.getColumnIndices()[1]);
+        assertEquals("column_0", verticalSeparator.getColumnIndices().get(0));
+        assertEquals("column_1", verticalSeparator.getColumnIndices().get(1));
         assertEquals("cmp-vertical-separator--two cmp-horizontal-separator", verticalSeparator.getUlClass());
         assertEquals("cmp-vertical-separator--two__item", verticalSeparator.getLiClass());
     }
