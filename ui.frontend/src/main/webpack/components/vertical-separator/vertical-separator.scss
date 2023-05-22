@@ -6,6 +6,9 @@
     );
     &__item {
         position: relative;
+        @include media(">tablet-lg") {
+            max-width: 255px;
+        }
         &::after {
             content: "";
             position: absolute;
