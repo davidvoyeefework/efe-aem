@@ -1,8 +1,12 @@
 .cmp-article-details {
     &__published-date, &__authors-by { 
         margin: 32px 0;
+        text-align: center;
     }
     &__summary, &__seperator, &__body {
         width: 100%;
+    }
+    &__tags {
+        padding-left: rem(20);
     }
 }
