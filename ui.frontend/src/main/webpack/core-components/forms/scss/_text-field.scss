@@ -68,7 +68,7 @@
     }
 
     &.cmp-form-text--error {
-        input.cmp-form-text__text {
+        input.cmp-form-text__text, textarea {
             border-color: $efe-red-primary;
             background-color: $efe-red-15-percent;
             transition: $std-transition;
