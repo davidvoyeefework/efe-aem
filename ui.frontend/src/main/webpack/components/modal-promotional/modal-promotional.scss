@@ -70,11 +70,11 @@
   }
   &__action-link {
     @include cta-primary;
-    margin-top: 30px;
+    padding: 16px 28px 12px 28px;
+    margin-top: 20px;
     @include media(">tablet") {
-      position: absolute;
-      bottom: 42px;
       margin-top: 0;
+      padding: 20px 26px;
     }
   }
   &__image {
