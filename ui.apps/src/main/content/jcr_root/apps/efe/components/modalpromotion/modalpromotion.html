@@ -1,5 +1,6 @@
-<sly data-sly-use.model="com.efe.core.models.ModalPromotion"/>
-<div class="dialog-container modal-promotional" id="${model.id}" aria-hidden="true"
+<div data-sly-use.model="com.efe.core.models.ModalPromotion"
+     data-sly-use.template="core/wcm/components/commons/v1/templates.html"
+     data-sly-test.isNotEmpty="${model.title && wcmmode.disabled}" class="dialog-container modal-promotional" id="${model.id}" aria-hidden="true"
      aria-labelledby="my-dialog-title" aria-describedby="my-dialog-description" data-component="modal-promotional" data-sly-attribute.startDate="${model.startDate}" data-sly-attribute.endDate="${model.endDate}">
     <div class="dialog-overlay" data-a11y-dialog-hide></div>
     <div class="cmp-modal" role="document">
@@ -51,4 +52,5 @@
         </div>
     </div>
 </div>
+<sly data-sly-call="${template.placeholder @ isEmpty=!isNotEmpty, classAppend='modal-promotional'}"></sly>
 
