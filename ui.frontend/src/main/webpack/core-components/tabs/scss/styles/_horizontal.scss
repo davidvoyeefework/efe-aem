@@ -9,6 +9,7 @@
             @include media("<=phone-m") {
                 display: flex;
                 flex-direction: column;
+                border-bottom: 0;
             }
         }
         &__tab {
