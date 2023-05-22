@@ -1,4 +1,3 @@
-
 package com.efe.core.bean.jsonld;
 
 import java.util.ArrayList;
@@ -109,6 +108,11 @@ public class JsonLd {
 	/** The author. */
 	@Expose
 	private List<Author> author;
+	
+	/** The headline. */
+	@Expose
+	private String headline;
+	
 	
 
 	/**
@@ -325,6 +329,15 @@ public class JsonLd {
 	 */
 	public void setAuthor(List<Author> author) {
 		this.author = new ArrayList<>(author);
+	}
+
+	/**
+	 * Sets the headline.
+	 *
+	 * @param headline the headline to set
+	 */
+	public void setHeadline(String headline) {
+		this.headline = headline;
 	}
 
 }
