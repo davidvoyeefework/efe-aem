@@ -1,6 +1,8 @@
 <sly data-sly-use.model="com.efe.core.models.ArticleDetails"
      data-sly-use.template="core/wcm/components/commons/v1/templates.html" data-sly-test.isNotEmpty="${properties.articleFragmentPath}">
-    <div data-sly-test=${properties.articleFragmentPath} class="cmp-container cmp-container--white cmp-container--width-1400 border-radius-- cmp-container--center cmp-container--padding" id="${model.id}">
+    <div data-sly-test=${properties.articleFragmentPath} 
+        class="cmp-container cmp-container--white cmp-container--width-1400 
+        border-radius-- cmp-container--center cmp-container--padding cmp-article-details" id="${model.id}">
         <div class="title cmp-title--heading-03 ">
             <div class="cmp-title">
                 <h1 class="cmp-title__text">${model.articleFragmentPath.title @context='html'}</h1>
@@ -11,7 +13,7 @@
                 <p>${model.articleFragmentPath.subtitle @context='html'}</p>
             </div>
         </div>
-        <div class="text cmp-text--caption">
+        <div class="text cmp-text--caption cmp-article-details__published-date">
             <div class="cmp-text">
                 <p>Last updated: ${model.articleFragmentPath.dateUpdated}  |  Article published: ${model.articleFragmentPath.datePublished}</p>
             </div>
@@ -19,7 +21,7 @@
         <div class="image cmp-image--top-left">
             <div class="cmp-image"><img src="${model.articleFragmentPath.heroImage}" alt=""></div>
         </div>
-        <div class="text cmp-text--body-03 cmp-text--">
+        <div class="text cmp-text--body-03 cmp-article-details__authors-by">
             <div class="cmp-text">
                 <span class="cmp-text"><span>By:</span>
                     <sly data-sly-list.item = "${model.articleFragmentPath.articleAuthors}">
