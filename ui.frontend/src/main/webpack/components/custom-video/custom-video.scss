@@ -5,6 +5,14 @@
     position: relative;
     padding-bottom: 56.25%; /* 16:9 aspect ratio */
     height: 0;
+    @include media(">=tablet-lg") {
+        min-height: 600px;
+    }
+    &--curved {
+        .thumbnail {
+            border-top-left-radius: 40px;
+        }
+    }
     iframe {
         position: absolute;
         top: 0;
@@ -31,6 +39,11 @@
         >img {
             width: 43.33px;
             height: 48.33px;
+            position: relative;
+            left: 6px;
+            @include media ("<tablet-lg") {
+                left: 4px;
+            }
         }
         @include media("<tablet-lg") {
             height: 75px;
@@ -54,6 +67,9 @@
         position: relative;
         padding-bottom: 56.25%;
         height: 0;
+        @include media(">=tablet-lg") {
+            min-height: 600px;
+        }
     }
 
     .thumbnail {
