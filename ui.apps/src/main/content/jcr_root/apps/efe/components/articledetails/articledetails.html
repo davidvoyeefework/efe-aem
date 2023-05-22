@@ -1,6 +1,6 @@
 <sly data-sly-use.model="com.efe.core.models.ArticleDetails"
      data-sly-use.template="core/wcm/components/commons/v1/templates.html" data-sly-test.isNotEmpty="${properties.articleFragmentPath}">
-    <div data-sly-test=${properties.articleFragmentPath} 
+    <div data-sly-test="${properties.articleFragmentPath}"
         class="cmp-container cmp-container--white cmp-container--width-1400 cmp-container--padding cmp-article-details" id="${model.id}">
         <div class="title cmp-title--heading-03 ">
             <div class="cmp-title">
@@ -21,13 +21,13 @@
             <div class="cmp-image"><img src="${model.articleFragmentPath.heroImage}" alt=""></div>
         </div>
         <div class="text cmp-text--body-03 cmp-article-details__authors-by">
-            <div class="cmp-text">
+            <div class="cmp-text" data-sly-test.hasContent="${model.articleFragmentPath.articleAuthors || model.articleFragmentPath.plannerResponse}">
                 <span class="cmp-text"><span>By:</span>
-                    <sly data-sly-list.item = "${model.articleFragmentPath.articleAuthors}">
-						<span>${item.name} ${item.title}</span>
-					</sly></br>
-                	<sly data-sly-list.item = "${model.articleFragmentPath.plannerResponse}">
-						<span>${item.firstName} ${item.middleName} ${item.lastName} ${item.title}</span>
+                    <sly data-sly-test.hasContent="${model.articleFragmentPath.articleAuthors}" data-sly-list.item = "${model.articleFragmentPath.articleAuthors}">
+						<span>${item.name},${item.title}</span></br>
+					</sly>
+                	<sly data-sly-test.hasContent="${model.articleFragmentPath.plannerResponse}" data-sly-list.item = "${model.articleFragmentPath.plannerResponse}">
+						<span>${item.firstName} ${item.middleName} ${item.lastName},${item.title}</span>
 					</sly>
                 </span>
             </div>
@@ -37,6 +37,8 @@
             <div class="cmp-text">
                 <p>${model.articleFragmentPath.articleSummary @context='html'}</p>
             </div>
+        </div>
+        <div class="cmp-container cmp-container--white cmp-container--width-1400 cmp-article-details__seperator">
             <div class="separator cmp-separator--primary cmp-separator">
                 <hr class="cmp-separator__horizontal-rule">
             </div>
@@ -49,7 +51,7 @@
                 <hr class="cmp-separator__horizontal-rule">
             </div>
         </div>
-        <div class="cmp-author-details" data-sly-list.item = ${model.articleFragmentPath.articleAuthors}>
+        <div class="cmp-author-details" data-sly-repeat.item = "${model.articleFragmentPath.articleAuthors}">
             <div data-sly-test=${item.photo} class="cmp-author-details__image">
                 <div class="image cmp-image--profile-thumb cmp-image--round">
                     <div data-cmp-is="image" data-cmp-widths="600,800,1000,1200,1600" class="cmp-image">
@@ -58,9 +60,10 @@
                     </div>
                 </div>
             </div>
-            <div data-sly-test=${item.name} class="cmp-author-details__description">
+            <div data-sly-test="${item.name}" class="cmp-author-details__description">
                 <div class="title cmp-title--subhead-00 ">
                     <div class="cmp-title">
+                        <h1 class="cmp-title__text">${item.title}</h1>
                         <h1 class="cmp-title__text">${item.name}</h1>
                     </div>
                 </div>
@@ -69,19 +72,9 @@
                         <p>${item.biography @context='html'}</p>
                     </div>
                 </div>
-                <div class="cmp-author-details__credits" data-sly-test=${item.certifications}>
-                    <sly data-sly-list.certification=${item.certifications}>
-                        <p>
-                            ${certification.name} ${certification.abbreviation}
-                        </p>
-                    </sly>
-                    <sly data-sly-test=${item.education} data-sly-list.education=${item.education}>
-                        <p> ${education.degree} ${education.university}</p>
-                    </sly>
-                </div>
             </div>
         </div>
-        <div class="cmp-author-details" data-sly-list.item = ${model.articleFragmentPath.plannerResponse}>
+        <div class="cmp-author-details" data-sly-repeat.item = "${model.articleFragmentPath.plannerResponse}">
             <div data-sly-test="${item.desktopImageUrl}" class="cmp-author-details__image">
                 <div class="image cmp-image--profile-thumb cmp-image--round">
                     <div data-cmp-is="image" data-cmp-widths="600,800,1000,1200,1600" class="cmp-image">
@@ -93,6 +86,7 @@
             <div data-sly-test=${item.firstName}  class="cmp-author-details__description">
                 <div class="title cmp-title--subhead-00 ">
                     <div id="title-c6fe1860ab" class="cmp-title">
+                        <h1 class="cmp-title__text">${item.title}</h1>
                         <h1 class="cmp-title__text">${item.firstName} ${item.middleName} ${item.lastName}</h1>
                     </div>
                 </div>
@@ -101,18 +95,15 @@
                         <p>${item.bio @context='html'}</p>
                     </div>
                 </div>
-                <div class="cmp-author-details__credits" data-sly-test=${item.certifications}>
-                    <sly data-sly-list.certification=${item.certifications}>
+                <div class="cmp-author-details__credits" data-sly-test="${item.certifications}">
+                    <sly data-sly-list.certification="${item.certifications}">
                         <p>
                             ${certification.name} ${certification.abbreviation}
                         </p>
                     </sly>
-                    <sly data-sly-test=${item.education} data-sly-list.education=${item.education}>
+                    <sly data-sly-test="${item.education}" data-sly-list.education="${item.education}">
                         <p> ${education.degree} ${education.university}</p>
                     </sly>
-                    <div class="separator cmp-separator--primary cmp-separator">
-                        <hr class="cmp-separator__horizontal-rule">
-                    </div>
                 </div>
             </div>
         </div>
@@ -121,7 +112,7 @@
                 <hr class="cmp-separator__horizontal-rule">
             </div>
         </div>
-        <div data-sly-list.item = ${model.articleFragmentPath.tags} class="cmp-container cmp-container--white cmp-container--width-1400 cmp-article-details__tags">
+        <div data-sly-list.item = "${model.articleFragmentPath.tags}" class="cmp-container cmp-container--white cmp-container--width-1400 cmp-article-details__tags">
             <div class="button cmp-button--title-tag">
                 <button type="button" class="cmp-button" data-cmp-clickable="">
                     <span class="cmp-button__text">${item}</span>
