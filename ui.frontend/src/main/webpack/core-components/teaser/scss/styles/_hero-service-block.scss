@@ -185,7 +185,7 @@
              @include media("<tablet") {
                  padding: rem(32) rem(24);
              }
-             padding: rem(36) rem(40);
+             padding: rem(51) rem(48);
              @include media('>tablet') {
                  width: 55%;
              }
@@ -195,7 +195,9 @@
          }
          &__action-link {
              @include cta-secondary;
-             padding: rem(16) rem(40) rem(12) rem(40);
+             @include media('>tablet') {
+                padding: rem(17) rem(40) rem(11) rem(40);
+            }
          }
          &__image {
              .cmp-image {
@@ -220,8 +222,10 @@
          &__description {
             max-width: rem(400px);
              @include body-02;
+             line-height: 130%;
              p {
                  @include body-02;
+                 line-height: 130%;
              }
          }
      }
