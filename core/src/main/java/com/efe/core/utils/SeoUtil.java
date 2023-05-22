@@ -2,6 +2,7 @@ package com.efe.core.utils;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -14,16 +15,29 @@ import org.apache.sling.api.resource.ResourceResolver;
 
 import com.adobe.cq.wcm.core.components.models.NavigationItem;
 import com.day.cq.commons.Externalizer;
+import com.day.cq.wcm.api.Page;
+import com.efe.core.bean.ArticleAuthor;
+import com.efe.core.bean.Articles;
+import com.efe.core.bean.Certifications;
+import com.efe.core.bean.Education;
 import com.efe.core.bean.LocationResponse;
+import com.efe.core.bean.PlannerResponse;
+import com.efe.core.bean.PrimaryOffice;
 import com.efe.core.bean.jsonld.Address;
 import com.efe.core.bean.jsonld.Answer;
+import com.efe.core.bean.jsonld.Author;
 import com.efe.core.bean.jsonld.ContactPoint;
 import com.efe.core.bean.jsonld.Geo;
 import com.efe.core.bean.jsonld.ItemListElement;
 import com.efe.core.bean.jsonld.JsonLd;
+import com.efe.core.bean.jsonld.KnowsAbout;
 import com.efe.core.bean.jsonld.MainEntity;
+import com.efe.core.bean.jsonld.WorksFor;
+import com.efe.core.constants.Constants;
+import com.efe.core.constants.PlannerLocationConstants;
 import com.efe.core.models.multifield.FAQ;
 import com.efe.core.models.multifield.SocialLink;
+import com.efe.core.services.EfeService;
 import com.efe.core.services.RestService;
 import com.efe.core.services.SeoService;
 import com.google.gson.Gson;
@@ -40,10 +54,10 @@ public class SeoUtil {
 
 	/** The Constant TITLE. */
 	public static final String TITLE = "title";
-	
+
 	/** The Constant JSON_LD. */
 	public static final String JSON_LD = "jsonLd";
-	
+
 	/** The Constant REGEX_HTML_ELEMENTS. */
 	private static final String REGEX_HTML_ELEMENTS = "<[^>]*>|\n|\t";
 
@@ -192,11 +206,11 @@ public class SeoUtil {
 	 * Gets the bread crumb SEO schema.
 	 *
 	 * @param seoService         the seo service
-	 * @param request the request
-	 * @param externalizer the externalizer
+	 * @param request            the request
+	 * @param externalizer       the externalizer
 	 * @param items              the items
 	 * @param showSelectorAsLeaf the show selector as leaf
-	 * @param selectorIndex the selector index
+	 * @param selectorIndex      the selector index
 	 * @return the bread crumb SEO schema
 	 */
 	public static String getBreadCrumbSEOSchema(SeoService seoService, SlingHttpServletRequest request,
@@ -237,13 +251,165 @@ public class SeoUtil {
 	}
 
 	/**
-	 * Gets the video seo.
+	 * Gets the article schema.
 	 *
-	 * @param restService the rest service
+	 * @param seoService       the seo service
+	 * @param efeService 
+	 * @param externalizer     the externalizer
+	 * @param resourceResolver the resource resolver
+	 * @param currentPage      the current page
+	 * @param article          the article
+	 * @return the article schema
+	 */
+	public static String getArticleSchema(SeoService seoService, EfeService efeService, Externalizer externalizer,
+			ResourceResolver resourceResolver, Page currentPage, Articles article) {
+
+		Gson gson = getGsonInstance();
+		JsonLd jsonLd = new JsonLd();
+		jsonLd.setContext(seoService.getContextUrl());
+		jsonLd.setType("BlogPosting");
+
+		jsonLd.setHeading(removeElementsNUnescapeHTML(article.getTitle()));
+		jsonLd.setAlternativeHeadline(removeElementsNUnescapeHTML(article.getSubtitle()));
+		jsonLd.setDescription(removeElementsNUnescapeHTML(article.getArticleSummary()));
+
+		if (StringUtils.isNotEmpty(article.getHeroImage())) {
+			jsonLd.setImage(externalizer.publishLink(resourceResolver, article.getHeroImage()));
+		}
+		
+		jsonLd.setUrl(externalizer.publishLink(resourceResolver, currentPage.getPath()));
+		jsonLd.setDatePublished(EFEUtil.formatDate(Constants.DATE_FORMAT_MONTH_DAY_YEAR,
+				Constants.DATE_FORMAT_YEAR_MONTH_DAY, article.getDatePublished()));
+		jsonLd.setDateModified(EFEUtil.formatDate(Constants.DATE_FORMAT_MONTH_DAY_YEAR,
+				Constants.DATE_FORMAT_YEAR_MONTH_DAY, article.getDateUpdated()));
+		
+		List<Author> authors = new ArrayList<>();
+		if (Objects.nonNull(article.getPlannerResponse()) && !article.getPlannerResponse().isEmpty()) {
+			for(PlannerResponse plannerResponse: article.getPlannerResponse()) {
+				authors.add(populatePlannerDetails(seoService, efeService, externalizer, resourceResolver, plannerResponse));			
+			}
+		} 
+		
+		if (Objects.nonNull(article.getArticleAuthors()) && !article.getArticleAuthors().isEmpty()) {
+			for(ArticleAuthor articleAuthor: article.getArticleAuthors()) {
+				authors.add(populateRegularAuthor(seoService, externalizer, resourceResolver, articleAuthor));			
+			}
+		}
+		
+		if(!authors.isEmpty()) {
+			jsonLd.setAuthor(authors);
+		}
+		
+		return gson.toJson(jsonLd);
+	}
+
+	/**
+	 * Populate regular author.
+	 *
 	 * @param seoService the seo service
 	 * @param externalizer the externalizer
-	 * @param request the request
-	 * @param videoId the video id
+	 * @param resourceResolver the resource resolver
+	 * @param article the article
+	 * @return the author
+	 */
+	private static Author populateRegularAuthor(SeoService seoService, Externalizer externalizer, ResourceResolver resourceResolver,
+			ArticleAuthor articleAuthor) {
+		
+		Author author = new Author();
+		author.setName(articleAuthor.getName());
+		author.setJobTitle(articleAuthor.getTitle());			
+		if(StringUtils.isNotEmpty(articleAuthor.getPhoto())) {
+			author.setImage(externalizer.publishLink(resourceResolver, articleAuthor.getPhoto()));
+		}
+		
+		WorksFor worksFor = new WorksFor();
+		worksFor.setName(seoService.getSiteName());
+		author.setWorksFor(worksFor);
+		
+		return author;
+	}
+
+	/**
+	 * Populate planner details.
+	 *
+	 * @param seoService the seo service
+	 * @param efeService the efe service
+	 * @param externalizer the externalizer
+	 * @param resourceResolver the resource resolver
+	 * @param article the article
+	 * @return the author
+	 */
+	private static Author populatePlannerDetails(SeoService seoService, EfeService efeService, Externalizer externalizer,
+			ResourceResolver resourceResolver, PlannerResponse planner) {
+		
+		Author author = new Author();
+		author.setName(StringUtils.isNotEmpty(planner.getLastName())
+				? planner.getFirstName().concat(" ").concat(planner.getLastName())
+				: planner.getFirstName());
+
+		author.setJobTitle(planner.getTitle());
+
+		String url = LinkUtil.getFormattedLink(efeService.getPlannerBioPageUrl() + PlannerLocationConstants.DOT
+				+ planner.getFirstName() + PlannerLocationConstants.DOT + planner.getLastName()
+				+ PlannerLocationConstants.DOT + planner.getId(), resourceResolver);
+		
+		if(StringUtils.isNotEmpty(url)) {
+			author.setUrl(externalizer.publishLink(resourceResolver, url));	
+		}
+				
+		if (Objects.nonNull(planner.getPrimaryOffice())) {
+			PrimaryOffice office = planner.getPrimaryOffice();
+			Address address = new Address();
+			address.setType(seoService.getAdressType());
+			address.setAddressLocality(office.getCity());
+			address.setStreetAddress(office.getName());
+			address.setPostalCode(office.getZip());
+			address.setAddressRegion(office.getState());
+			author.setAddress(address);
+		}
+			
+		if(Objects.nonNull(planner.getCertifications()) && !planner.getCertifications().isEmpty()) {
+			KnowsAbout knowsAbout = new KnowsAbout();
+			List<String> certifications = new ArrayList<>();
+			for(Certifications certification: planner.getCertifications()) {
+				certifications.add(certification.getName());
+			}
+			knowsAbout.setName(certifications);
+			author.setKnowsAbout(knowsAbout);
+		}
+		
+		if(Objects.nonNull(planner.getEducation()) && !planner.getEducation().isEmpty()) {
+			StringBuilder educations = new StringBuilder();
+			
+			Iterator<Education> itr = planner.getEducation().iterator();
+			while(itr.hasNext()) {
+				Education education = itr.next();
+				
+				String degree = education.getDegree();
+				String university = education.getUniversity();
+				
+				educations.append(degree).append(" - ").append(university);
+				if(itr.hasNext()) {
+					educations.append(", ");
+				}
+			}
+			author.setHasCredential(educations.toString());
+		}
+		
+		WorksFor worksFor = new WorksFor();
+		worksFor.setName(seoService.getSiteName());
+		author.setWorksFor(worksFor);
+		return author;
+	}
+
+	/**
+	 * Gets the video seo.
+	 *
+	 * @param restService   the rest service
+	 * @param seoService    the seo service
+	 * @param externalizer  the externalizer
+	 * @param request       the request
+	 * @param videoId       the video id
 	 * @param fileReference the file reference
 	 * @return the video seo
 	 */
@@ -251,8 +417,8 @@ public class SeoUtil {
 			SlingHttpServletRequest request, String videoId, String fileReference) {
 
 		JsonObject videoDetailsJson = new JsonObject();
-		
-		if(StringUtils.isEmpty(seoService.getYoutubeAPIUrl())) {
+
+		if (StringUtils.isEmpty(seoService.getYoutubeAPIUrl())) {
 			return videoDetailsJson;
 		}
 
@@ -284,10 +450,10 @@ public class SeoUtil {
 	/**
 	 * Populate video schema.
 	 *
-	 * @param jsonLd the json ld
+	 * @param jsonLd  the json ld
 	 * @param videoId the video id
-	 * @param object the object
-	 * @param items the items
+	 * @param object  the object
+	 * @param items   the items
 	 */
 	private static void populateVideoSchema(JsonLd jsonLd, String videoId, JsonObject object, JsonArray items) {
 
@@ -307,9 +473,9 @@ public class SeoUtil {
 	/**
 	 * Gets the youtube snippet info.
 	 *
-	 * @param jsonLd the json ld
+	 * @param jsonLd  the json ld
 	 * @param videoId the video id
-	 * @param object the object
+	 * @param object  the object
 	 * @param snippet the snippet
 	 * @return the youtube snippet info
 	 */
@@ -333,7 +499,7 @@ public class SeoUtil {
 	/**
 	 * Gets the duration details.
 	 *
-	 * @param jsonLd the json ld
+	 * @param jsonLd         the json ld
 	 * @param contentDetails the content details
 	 * @return the duration details
 	 */
@@ -363,7 +529,11 @@ public class SeoUtil {
 	 * @return the string
 	 */
 	private static String removeElementsNUnescapeHTML(String input) {
-		return StringEscapeUtils.unescapeHtml4(input.replaceAll(REGEX_HTML_ELEMENTS, "").trim());
+		String formattedString = StringUtils.EMPTY;
+		if (null != input) {
+			formattedString = StringEscapeUtils.unescapeHtml4(input.replaceAll(REGEX_HTML_ELEMENTS, "").trim());
+		}
+		return formattedString;
 	}
 
 	/**

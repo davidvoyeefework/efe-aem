@@ -81,6 +81,35 @@ public class JsonLd {
 	/** The item list element. */
 	@Expose
 	private List<ItemListElement> itemListElement;
+	
+	/** The heading. */
+	@Expose
+	private String heading;
+	
+	/** The alternative headline. */
+	@Expose
+	private String alternativeHeadline;
+	
+	/** The image. */
+	@Expose
+	private String image;
+	
+	/** The wordcount. */
+	@Expose
+	private String wordcount;
+	
+	/** The date published. */
+	@Expose
+	private String datePublished;
+	
+	/** The date modified. */
+	@Expose
+	private String dateModified;
+	
+	/** The author. */
+	@Expose
+	private List<Author> author;
+	
 
 	/**
 	 * Sets the context.
@@ -233,6 +262,69 @@ public class JsonLd {
 	 */
 	public void setEmbedUrl(String embedUrl) {
 		this.embedUrl = embedUrl;
+	}
+
+	/**
+	 * Sets the heading.
+	 *
+	 * @param heading the heading to set
+	 */
+	public void setHeading(String heading) {
+		this.heading = heading;
+	}
+
+	/**
+	 * Sets the alternative headline.
+	 *
+	 * @param alternativeHeadline the alternativeHeadline to set
+	 */
+	public void setAlternativeHeadline(String alternativeHeadline) {
+		this.alternativeHeadline = alternativeHeadline;
+	}
+
+	/**
+	 * Sets the image.
+	 *
+	 * @param image the image to set
+	 */
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	/**
+	 * Sets the wordcount.
+	 *
+	 * @param wordcount the wordcount to set
+	 */
+	public void setWordcount(String wordcount) {
+		this.wordcount = wordcount;
+	}
+
+	/**
+	 * Sets the date published.
+	 *
+	 * @param datePublished the datePublished to set
+	 */
+	public void setDatePublished(String datePublished) {
+		this.datePublished = datePublished;
+	}
+
+	/**
+	 * Sets the date modified.
+	 *
+	 * @param dateModified the dateModified to set
+	 */
+	public void setDateModified(String dateModified) {
+		this.dateModified = dateModified;
+	}
+
+	/**
+	 * Sets the author.
+	 *
+	 * @param author the author to set
+	 */
+	public void setAuthor(List<Author> author) {
+		this.author = new ArrayList<>(author);
 	}
 
 }

@@ -36,7 +36,6 @@ public class ArticleDetailUtil {
         SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
         SimpleDateFormat outputFormat = new SimpleDateFormat("MMMM dd, yyyy");
 
-
         Optional<ContentFragment> articleDetailsCF = Optional.ofNullable(articleDetailsCFResource.adaptTo(ContentFragment.class));
         articleDetails.setTitle(articleDetailsCF.map(cf -> cf.getElement(ArticleDetailsConstants.TITLE))
                 .map(ContentElement::getContent).orElse(StringUtils.EMPTY));
@@ -118,7 +117,7 @@ public class ArticleDetailUtil {
             for (String authorFragmentPath : authors) {
             	 
                 Resource articleAuthorResource = resourceResolver.getResource(authorFragmentPath);
-                if (null != articleAuthorResource) {
+                if (null != articleAuthorResource && null != articleAuthorResource.adaptTo(ContentFragment.class)) {
                     ArticleAuthor articleAuthor = new ArticleAuthor();
                     Optional<ContentFragment> authorDetailsCF = Optional.ofNullable(articleAuthorResource.adaptTo(ContentFragment.class));
 
@@ -151,12 +150,19 @@ public class ArticleDetailUtil {
         String[] planners = articleDetails.getPlanner();
 
         List<PlannerResponse> plannerResponseList = new ArrayList<>();
-        if (planners != null) {
+        if (planners != null ) {
             for (String plannersFragmentPath : planners) {
                 PlannerResponse plannerResponse = new PlannerResponse();
                 Resource articlePlannerResource = resourceResolver.getResource(plannersFragmentPath);
-                if (null != articlePlannerResource) {
+                if (null != articlePlannerResource && null != articlePlannerResource.adaptTo(ContentFragment.class)) {
                     Optional<ContentFragment> plannerDetailsCF = Optional.ofNullable(articlePlannerResource.adaptTo(ContentFragment.class));
+
+                    String id = plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.ID))
+                            .map(ContentElement::getContent).orElse(StringUtils.EMPTY);
+                    
+					if (StringUtils.isNotEmpty(id)) {
+						plannerResponse.setId(Integer.parseInt(id));
+					}
 
                     plannerResponse.setTitle(plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.TITLE))
                             .map(ContentElement::getContent).orElse(StringUtils.EMPTY));
@@ -186,6 +192,10 @@ public class ArticleDetailUtil {
                             .map(ContentElement::getContent).orElse(StringUtils.EMPTY);
                     String[] educationsList = educations.split("\n");
                     plannerResponse.setEducation(setPlannerEducationDetails(educationsList, resourceResolver));
+                    
+                    String primaryOfficeCF = plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.PRIMARY_OFFICE))
+                            .map(ContentElement::getContent).orElse(StringUtils.EMPTY);
+                    plannerResponse.setPrimaryOffice(setPrimaryOfficeDetails(primaryOfficeCF, resourceResolver));
 
                     plannerResponseList.add(plannerResponse);
                 }
@@ -194,7 +204,31 @@ public class ArticleDetailUtil {
         return plannerResponseList;
     }
 
-    /**
+	/**
+	 * Sets the primary office details.
+	 *
+	 * @param primaryOfficeCF the primary office CF
+	 * @param resourceResolver the resource resolver
+	 * @return the primary office
+	 */
+	private static PrimaryOffice setPrimaryOfficeDetails(String primaryOfficeCF, ResourceResolver resourceResolver) {
+		PrimaryOffice primaryOffice = null;
+		if (null != primaryOfficeCF) {
+			Resource primaryOfficeResource = resourceResolver.getResource(primaryOfficeCF);
+			if (null != primaryOfficeResource) {
+				 Optional<ContentFragment> plannerDetailsCF = Optional.ofNullable(primaryOfficeResource.adaptTo(ContentFragment.class));
+				primaryOffice = new PrimaryOffice();
+				primaryOffice.setName(plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.NAME)).map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+				primaryOffice.setCity(plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.CITY)).map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+				primaryOffice.setZip(plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.ZIP)).map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+				primaryOffice.setState(plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.STATE)).map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+			}
+		}
+		return primaryOffice;
+
+	}
+
+	/**
      *
      * @param certifications
      * @param resourceResolver

@@ -1,5 +1,6 @@
 {
   "efe": {
+  	"jcr:primaryType": "cq:Page",
     "jcr:content": {
       "articleDetails": {
         "jcr:primaryType": "nt:unstructured",

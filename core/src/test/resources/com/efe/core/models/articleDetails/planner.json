@@ -37,6 +37,7 @@
         "taxPlanner": false,
         "desktopImageUrl": "https://planners.edelmanfinancialengines.com/media/1051/efe_cherry_aaron_076_desktop_308x308.png",
         "education": ["/content/dam/efe/test-education-cf"],
+        "primaryOffice":"/content/dam/efe/primaryoffice",
         "investmentManagement": false,
         "hasDisciplinaryInformation": false,
         "bio": "As a financial planner since 2006, I enjoy serving families and business owners in the areas of investments, financial planning, estate planning, income distribution strategies, insurance planning and multi-generational wealth accumulation and transfer. Outside of work I enjoy spending time with my family, the outdoors and reading.",
