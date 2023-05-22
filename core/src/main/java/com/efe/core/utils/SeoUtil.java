@@ -269,7 +269,7 @@ public class SeoUtil {
 		jsonLd.setContext(seoService.getContextUrl());
 		jsonLd.setType("BlogPosting");
 
-		jsonLd.setHeading(removeElementsNUnescapeHTML(article.getTitle()));
+		jsonLd.setHeadline(removeElementsNUnescapeHTML(article.getTitle()));
 		jsonLd.setAlternativeHeadline(removeElementsNUnescapeHTML(article.getSubtitle()));
 		jsonLd.setDescription(removeElementsNUnescapeHTML(article.getArticleSummary()));
 
@@ -394,6 +394,10 @@ public class SeoUtil {
 				}
 			}
 			author.setHasCredential(educations.toString());
+		}
+		
+		if(StringUtils.isNotEmpty(planner.getDesktopImageUrl())) {
+			author.setImage(externalizer.publishLink(resourceResolver, planner.getDesktopImageUrl()));
 		}
 		
 		WorksFor worksFor = new WorksFor();

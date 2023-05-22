@@ -110,6 +110,10 @@ public class JsonLd {
 	@Expose
 	private List<Author> author;
 	
+	@Expose
+	private String headline;
+	
+	
 
 	/**
 	 * Sets the context.
@@ -325,6 +329,15 @@ public class JsonLd {
 	 */
 	public void setAuthor(List<Author> author) {
 		this.author = new ArrayList<>(author);
+	}
+
+	/**
+	 * Sets the headline.
+	 *
+	 * @param headline the headline to set
+	 */
+	public void setHeadline(String headline) {
+		this.headline = headline;
 	}
 
 }
