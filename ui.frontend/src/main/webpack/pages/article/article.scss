@@ -1,7 +1,13 @@
 .cmp-article-details {
+    padding: rem(48) 0;
     &__published-date, &__authors-by { 
         margin: 32px 0;
         text-align: center;
+    }
+    &__authors-by {
+        .cmp-text, .cmp-text *{
+            font-size: rem(14);
+        }
     }
     &__summary, &__seperator, &__body {
         width: 100%;
@@ -16,7 +22,7 @@
             padding: 0 rem(196);
         }
         @include media('<tablet-lg') {
-            padding: 0 rem(108);
+            padding: 0 rem(26);
         }
     }
     .cmp-image--top-left {
