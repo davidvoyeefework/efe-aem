@@ -152,57 +152,72 @@ public class ArticleDetailUtil {
         List<PlannerResponse> plannerResponseList = new ArrayList<>();
         if (planners != null ) {
             for (String plannersFragmentPath : planners) {
-                PlannerResponse plannerResponse = new PlannerResponse();
+                
                 Resource articlePlannerResource = resourceResolver.getResource(plannersFragmentPath);
-                if (null != articlePlannerResource && null != articlePlannerResource.adaptTo(ContentFragment.class)) {
-                    Optional<ContentFragment> plannerDetailsCF = Optional.ofNullable(articlePlannerResource.adaptTo(ContentFragment.class));
-
-                    String id = plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.ID))
-                            .map(ContentElement::getContent).orElse(StringUtils.EMPTY);
-                    
-					if (StringUtils.isNotEmpty(id)) {
-						plannerResponse.setId(Integer.parseInt(id));
-					}
-
-                    plannerResponse.setTitle(plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.TITLE))
-                            .map(ContentElement::getContent).orElse(StringUtils.EMPTY));
-
-                    plannerResponse.setFirstName(plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.FIRST_NAME))
-                            .map(ContentElement::getContent).orElse(StringUtils.EMPTY));
-
-                    plannerResponse.setMiddleName(plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.MIDDLE_NAME))
-                            .map(ContentElement::getContent).orElse(StringUtils.EMPTY));
-
-                    plannerResponse.setLastName(plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.LAST_NAME))
-                            .map(ContentElement::getContent).orElse(StringUtils.EMPTY));
-
-                    plannerResponse.setBio(plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.BIO))
-                            .map(ContentElement::getContent).orElse(StringUtils.EMPTY));
-
-                    plannerResponse.setDesktopImageUrl(plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.DESKTOP_IMAGE_URL))
-                            .map(ContentElement::getContent).orElse(StringUtils.EMPTY));
-
-
-                    String certifications = plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.CERTIFICATIONS))
-                            .map(ContentElement::getContent).orElse(StringUtils.EMPTY);
-                    String[] certificationsList = certifications.split("\n");
-                    plannerResponse.setCertifications(setPlannerCertificationDetails(certificationsList, resourceResolver));
-
-                    String educations = plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.EDUCATION))
-                            .map(ContentElement::getContent).orElse(StringUtils.EMPTY);
-                    String[] educationsList = educations.split("\n");
-                    plannerResponse.setEducation(setPlannerEducationDetails(educationsList, resourceResolver));
-                    
-                    String primaryOfficeCF = plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.PRIMARY_OFFICE))
-                            .map(ContentElement::getContent).orElse(StringUtils.EMPTY);
-                    plannerResponse.setPrimaryOffice(setPrimaryOfficeDetails(primaryOfficeCF, resourceResolver));
-
+                if (null != articlePlannerResource && null != articlePlannerResource.adaptTo(ContentFragment.class)) {	
+                	PlannerResponse plannerResponse = getPlannerDetails(resourceResolver, articlePlannerResource);
                     plannerResponseList.add(plannerResponse);
                 }
             }
         }
         return plannerResponseList;
     }
+
+	/**
+	 * Gets the planner details.
+	 *
+	 * @param resourceResolver the resource resolver
+	 * @param articlePlannerResource the article planner resource
+	 * @return the planner details
+	 */
+	public static PlannerResponse getPlannerDetails(ResourceResolver resourceResolver,
+			Resource articlePlannerResource) {
+		
+		PlannerResponse plannerResponse = new PlannerResponse();
+		
+		Optional<ContentFragment> plannerDetailsCF = Optional.ofNullable(articlePlannerResource.adaptTo(ContentFragment.class));
+
+		String id = plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.ID))
+		        .map(ContentElement::getContent).orElse(StringUtils.EMPTY);
+		
+		if (StringUtils.isNotEmpty(id)) {
+			plannerResponse.setId(Integer.parseInt(id));
+		}
+
+		plannerResponse.setTitle(plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.TITLE))
+		        .map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+
+		plannerResponse.setFirstName(plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.FIRST_NAME))
+		        .map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+
+		plannerResponse.setMiddleName(plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.MIDDLE_NAME))
+		        .map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+
+		plannerResponse.setLastName(plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.LAST_NAME))
+		        .map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+
+		plannerResponse.setBio(plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.BIO))
+		        .map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+
+		plannerResponse.setDesktopImageUrl(plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.DESKTOP_IMAGE_URL))
+		        .map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+
+
+		String certifications = plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.CERTIFICATIONS))
+		        .map(ContentElement::getContent).orElse(StringUtils.EMPTY);
+		String[] certificationsList = certifications.split("\n");
+		plannerResponse.setCertifications(setPlannerCertificationDetails(certificationsList, resourceResolver));
+
+		String educations = plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.EDUCATION))
+		        .map(ContentElement::getContent).orElse(StringUtils.EMPTY);
+		String[] educationsList = educations.split("\n");
+		plannerResponse.setEducation(setPlannerEducationDetails(educationsList, resourceResolver));
+		
+		String primaryOfficeCF = plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.PRIMARY_OFFICE))
+		        .map(ContentElement::getContent).orElse(StringUtils.EMPTY);
+		plannerResponse.setPrimaryOffice(setPrimaryOfficeDetails(primaryOfficeCF, resourceResolver));
+		return plannerResponse;
+	}
 
 	/**
 	 * Sets the primary office details.
