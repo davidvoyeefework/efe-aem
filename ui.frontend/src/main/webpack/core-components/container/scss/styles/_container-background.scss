@@ -9,7 +9,14 @@
         margin: auto;
     }
 }
-
+.cmp-container--width-1920 {
+    max-width: $xxxl;
+    margin: auto;
+}
+.cmp-container--width-1400 {
+    max-width: $xxl;
+    margin: auto;
+}
 .cmp-container--bg-efe-gray-light {
     @include bg-efe-gray-light;
     @include maxWidth();

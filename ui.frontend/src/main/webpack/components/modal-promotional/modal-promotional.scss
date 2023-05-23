@@ -41,6 +41,9 @@
         text-transform: uppercase;
       }
       margin-bottom: 20px;
+      @include media("<tablet") {
+        margin-bottom: 25px;
+      }
     }
     .cmp-title--heading-03 {
       margin-bottom: 20px;
