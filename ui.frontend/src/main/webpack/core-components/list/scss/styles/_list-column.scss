@@ -10,8 +10,8 @@
         @include media('>=phone-m', '<tablet') {
             column-count: 2;
         }
-        @include media('>tablet', '<desktop') {
-            column-count: 3;
+        @include media('>=tablet', '<desktop') {
+            column-count: 2;
         }
         .teaser {
             break-inside: avoid;
