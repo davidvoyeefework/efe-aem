@@ -11,6 +11,9 @@
             flex-direction: column;
             min-width: 267px;
             border: 0;
+            @include media ("<=tablet-lg") {
+                min-width: unset;
+            }
         }
         &__tab {
             @include subhead-01;
