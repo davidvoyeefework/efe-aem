@@ -1,7 +1,7 @@
 <sly data-sly-use.model="com.efe.core.models.ArticleDetails"
      data-sly-use.template="core/wcm/components/commons/v1/templates.html" data-sly-test.isNotEmpty="${properties.articleFragmentPath}">
     <div data-sly-test="${properties.articleFragmentPath}"
-        class="cmp-container cmp-container--white cmp-container--width-1400 cmp-container--padding cmp-article-details" id="${model.id}">
+        class="cmp-container cmp-container--white cmp-container--width-1400 cmp-article-details" id="${model.id}">
         <div class="title cmp-title--heading-03 cmp-article-details__padding-108">
             <div class="cmp-title">
                 <h1 class="cmp-title__text">${model.articleFragmentPath.title @context='html'}</h1>
