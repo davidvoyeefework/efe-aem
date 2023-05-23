@@ -1,4 +1,12 @@
 .cmp-efe-plannerbio {
+    .cmp-efe--full-width {
+        &.secondary {
+            background-color: $efe-gray-light;
+        }
+        &.primary {
+            background-color: #FFFFFF;
+        }
+    }
     &--container {
         max-width: 1920px;
         min-height: 620px;

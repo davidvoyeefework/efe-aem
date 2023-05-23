@@ -29,5 +29,6 @@
         <div class="text"><div id="text-${item.id}" class="cmp-text">${item.answer @context='html'}</div></div>
     </div>
 </div>
+</div>
 <sly data-sly-call="${templates.placeholder @ isEmpty = accordion.faqList.size < 1, classAppend='cmp-text'}"></sly>
 
