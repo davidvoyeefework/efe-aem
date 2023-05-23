@@ -13,7 +13,10 @@
     }
     &__padding-108 {
         @include media('>tablet-lg') {
-            padding: 0 108px;
+            padding: 0 rem(196);
+        }
+        @include media('<tablet-lg') {
+            padding: 0 rem(108);
         }
     }
     .cmp-image--top-left {
