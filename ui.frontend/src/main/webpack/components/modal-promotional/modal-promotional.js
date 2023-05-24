@@ -5,6 +5,7 @@ class ModalPromotional {
     constructor(el) {
       this.el = el;
       this.intializeModal(el);
+      this.modalName='';
     }
     static init(el) {
         return new ModalPromotional(el);
@@ -20,14 +21,23 @@ class ModalPromotional {
         }
     }
     showModal() {
-        let popupDisplayed=(document.cookie.match('(^|;) *'+'pop_up_displayed'+'=([^;]*)')||[])[2];
+        const modalName = this.el.getAttribute('id')
+        let popupDisplayed=this.getCookie(modalName);
         if(!popupDisplayed) {
             dialog.show();
             let pop_disp = new Date();
             pop_disp.setTime(pop_disp.getTime() + (4 * 60 * 60 * 1000));
             let expires = 'expires=' + pop_disp.toUTCString();
-            document.cookie = 'pop_up_displayed=true;' + expires + ';path=/';
+            document.cookie = modalName+'=true;' + expires + ';path=/';
         }
+    }
+    getCookie(name) {
+        let cookie = {};
+        document.cookie.split(';').forEach(function(el) {
+          let [k,v] = el.split('=');
+          cookie[k.trim()] = v;
+        })
+        return cookie[name];
     }
 }
 export default ModalPromotional;
