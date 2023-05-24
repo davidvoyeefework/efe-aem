@@ -23,7 +23,6 @@ import com.adobe.granite.references.Reference;
 import com.adobe.granite.references.ReferenceAggregator;
 import com.adobe.granite.references.ReferenceList;
 import com.day.cq.commons.Externalizer;
-import com.day.cq.dam.api.AssetReferenceResolver;
 import com.efe.core.bean.LocationResponse;
 import com.efe.core.bean.PlannerResponse;
 import com.efe.core.models.PlannerBio;
@@ -33,7 +32,7 @@ import com.efe.core.utils.EFEUtil;
 import com.efe.core.utils.LocationPlannerUtil;
 
 /**
- * The Class VideoImpl.
+ * The Class PlannerBioImpl.
  */
 @Model(adaptables = { SlingHttpServletRequest.class }, adapters = PlannerBio.class, resourceType = {
 		PlannerBioImpl.RESOURCE_TYPE }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -89,24 +88,20 @@ public class PlannerBioImpl implements PlannerBio {
 					selectors[2]);
 			if (null != plannerResource && null != plannerResource.adaptTo(ContentFragment.class)) {
 				plannerResponse = ArticleDetailUtil.getPlannerDetails(resourceResolver, plannerResource);
-				resourceResolver.adaptTo(AssetReferenceResolver.class);
-
+			
 				String[] filters = new String[1];
 
 				ReferenceList referenceList = aggregator.createReferenceList(plannerResource, null);
 
-				System.out.println(referenceList);
 				for (final Reference reference : referenceList) {
 					if (reference.getTarget() != null) {
 						String refPath = reference.getTarget().getPath();
 						Resource locationresource = resourceResolver.getResource(refPath);
 						if (null != locationresource) {
+						
+							ContentFragment fragment =  locationresource.adaptTo(ContentFragment.class);
 							
-							Optional<ContentFragment> locationCF = Optional
-									.ofNullable(locationresource.adaptTo(ContentFragment.class));
-							
-							String meta = locationCF.map( cf -> cf.getMetaData()).map()
-							
+							System.out.println(fragment.getTemplate().getTitle());
 
 						}
 
