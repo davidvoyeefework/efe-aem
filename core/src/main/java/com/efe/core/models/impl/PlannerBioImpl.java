@@ -1,5 +1,8 @@
 package com.efe.core.models.impl;
 
+import java.util.List;
+import java.util.Optional;
+
 import javax.annotation.PostConstruct;
 
 import org.apache.commons.lang3.StringUtils;
@@ -16,7 +19,12 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import com.adobe.cq.dam.cfm.ContentFragment;
 import com.adobe.cq.export.json.ExporterConstants;
+import com.adobe.granite.references.Reference;
+import com.adobe.granite.references.ReferenceAggregator;
+import com.adobe.granite.references.ReferenceList;
 import com.day.cq.commons.Externalizer;
+import com.day.cq.dam.api.AssetReferenceResolver;
+import com.efe.core.bean.LocationResponse;
 import com.efe.core.bean.PlannerResponse;
 import com.efe.core.models.PlannerBio;
 import com.efe.core.services.SeoService;
@@ -50,7 +58,7 @@ public class PlannerBioImpl implements PlannerBio {
 	/** The current resource. */
 	@SlingObject
 	private Resource resource;
-	
+
 	@SlingObject
 	private ResourceResolver resourceResolver;
 
@@ -60,20 +68,51 @@ public class PlannerBioImpl implements PlannerBio {
 
 	/** The json ld. */
 	private String jsonLd;
-	
+
 	/** The planner response. */
 	private PlannerResponse plannerResponse;
+
+	/** The office locations. */
+	private List<LocationResponse> officeLocations;
+
+	@OSGiService
+	ReferenceAggregator aggregator;
 
 	/**
 	 * Inits the model.
 	 */
 	@PostConstruct
-	public void init() {	
+	public void init() {
 		String[] selectors = request.getRequestPathInfo().getSelectors();
-		if(selectors.length == 3) {
-			Resource plannerResource = LocationPlannerUtil.getPlannerResource(resourceResolver, selectors[0], selectors[2]);
-			if (null != plannerResource && null != plannerResource.adaptTo(ContentFragment.class)) {	
+		if (selectors.length == 3) {
+			Resource plannerResource = LocationPlannerUtil.getPlannerResource(resourceResolver, selectors[0],
+					selectors[2]);
+			if (null != plannerResource && null != plannerResource.adaptTo(ContentFragment.class)) {
 				plannerResponse = ArticleDetailUtil.getPlannerDetails(resourceResolver, plannerResource);
+				resourceResolver.adaptTo(AssetReferenceResolver.class);
+
+				String[] filters = new String[1];
+
+				ReferenceList referenceList = aggregator.createReferenceList(plannerResource, null);
+
+				System.out.println(referenceList);
+				for (final Reference reference : referenceList) {
+					if (reference.getTarget() != null) {
+						String refPath = reference.getTarget().getPath();
+						Resource locationresource = resourceResolver.getResource(refPath);
+						if (null != locationresource) {
+							
+							Optional<ContentFragment> locationCF = Optional
+									.ofNullable(locationresource.adaptTo(ContentFragment.class));
+							
+							String meta = locationCF.map( cf -> cf.getMetaData()).map()
+							
+
+						}
+
+					}
+				}
+
 			}
 		}
 	}
@@ -100,7 +139,6 @@ public class PlannerBioImpl implements PlannerBio {
 	public String getJsonLd() {
 		return jsonLd;
 	}
-
 
 	/**
 	 * Checks if is empty.

@@ -23,6 +23,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.adobe.cq.export.json.ExporterConstants;
+import com.day.cq.dam.api.AssetReferenceResolver;
 import com.efe.core.constants.PlannerLocationConstants;
 import com.efe.core.constants.StatesEnum;
 import com.efe.core.models.LocationList;
@@ -50,6 +51,8 @@ public class LocationListImpl implements LocationList {
 	/** The resource resolver. */
 	@SlingObject
 	private ResourceResolver resourceResolver;
+	
+
 
 	/**
 	 * Injecting efeService

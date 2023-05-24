@@ -1,20 +1,30 @@
 package com.efe.core.utils;
 
-import com.adobe.cq.dam.cfm.ContentElement;
-import com.adobe.cq.dam.cfm.ContentFragment;
-import com.day.cq.tagging.TagManager;
-import com.day.cq.tagging.Tag;
-import com.efe.core.bean.*;
-import com.efe.core.constants.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 
-import java.util.*;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import com.adobe.cq.dam.cfm.ContentElement;
+import com.adobe.cq.dam.cfm.ContentFragment;
+import com.day.cq.tagging.Tag;
+import com.day.cq.tagging.TagManager;
+import com.efe.core.bean.ArticleAuthor;
+import com.efe.core.bean.Articles;
+import com.efe.core.bean.Certifications;
+import com.efe.core.bean.Education;
+import com.efe.core.bean.OfficesLocations;
+import com.efe.core.bean.PlannerResponse;
+import com.efe.core.bean.PrimaryOffice;
+import com.efe.core.constants.ArticleDetailsConstants;
+import com.efe.core.constants.PlannerLocationConstants;
 
 /**
  * ArticleDetailUtil
@@ -205,18 +215,68 @@ public class ArticleDetailUtil {
 
 		String certifications = plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.CERTIFICATIONS))
 		        .map(ContentElement::getContent).orElse(StringUtils.EMPTY);
-		String[] certificationsList = certifications.split("\n");
-		plannerResponse.setCertifications(setPlannerCertificationDetails(certificationsList, resourceResolver));
+		
+		if(StringUtils.isNotEmpty(certifications)) {
+			String[] certificationsList = certifications.split("\n");
+			plannerResponse.setCertifications(setPlannerCertificationDetails(certificationsList, resourceResolver));
+			
+			if (!plannerResponse.getCertifications().isEmpty()) {
+				List<String> certificationAbbrevations = plannerResponse.getCertifications().stream()
+		                .map(Certifications::getAbbreviation)
+		                .collect(Collectors.toList());
+				plannerResponse.setCertificationsAbbrevations(certificationAbbrevations);
+			}
+		}
+		
 
 		String educations = plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.EDUCATION))
 		        .map(ContentElement::getContent).orElse(StringUtils.EMPTY);
-		String[] educationsList = educations.split("\n");
-		plannerResponse.setEducation(setPlannerEducationDetails(educationsList, resourceResolver));
 		
+		if(StringUtils.isNotEmpty(educations)) {
+			String[] educationsList = educations.split("\n");
+			plannerResponse.setEducation(setPlannerEducationDetails(educationsList, resourceResolver));
+		}
+		
+		String offices = plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.OFFICE_LOCATIONS))
+		        .map(ContentElement::getContent).orElse(StringUtils.EMPTY);
+		
+		if(StringUtils.isNotEmpty(offices)) {
+			String[] officesList = offices.split("\n");
+			plannerResponse.setOfficesLocations(setPlannerOfficeDetails(officesList ,resourceResolver));
+		}
 		String primaryOfficeCF = plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.PRIMARY_OFFICE))
 		        .map(ContentElement::getContent).orElse(StringUtils.EMPTY);
 		plannerResponse.setPrimaryOffice(setPrimaryOfficeDetails(primaryOfficeCF, resourceResolver));
 		return plannerResponse;
+	}
+
+	private static List<OfficesLocations> setPlannerOfficeDetails(String[] officesList,
+			ResourceResolver resourceResolver) {
+		List<OfficesLocations> officeList = new ArrayList<>();
+		if (null != officesList) {
+			for (String officePath : officesList) {
+				Resource officeResource = resourceResolver.getResource(officePath);
+				if (null != officeResource) {
+					OfficesLocations officeLocation = new OfficesLocations();
+					Optional<ContentFragment> officeCF = Optional
+							.ofNullable(officeResource.adaptTo(ContentFragment.class));
+					
+					officeLocation.setId(officeCF.map(cf -> cf.getElement(PlannerLocationConstants.ID))
+							.map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+					officeLocation.setCity(officeCF.map(cf -> cf.getElement(PlannerLocationConstants.CITY))
+							.map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+					officeLocation.setName(officeCF.map(cf -> cf.getElement(PlannerLocationConstants.NAME))
+							.map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+					officeLocation.setState(officeCF.map(cf -> cf.getElement(PlannerLocationConstants.STATE))
+							.map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+					officeLocation.setZip(officeCF.map(cf -> cf.getElement(PlannerLocationConstants.ZIP))
+							.map(ContentElement::getContent).orElse(StringUtils.EMPTY));			
+					officeList.add(officeLocation);
+				}
+			}
+
+		}
+		return officeList;
 	}
 
 	/**
@@ -269,29 +329,35 @@ public class ArticleDetailUtil {
         return certificationsList;
     }
 
-    /**
-     *
-     * @param education
-     * @param resourceResolver
-     * @return educationList
-     */
-        public static List<Education> setPlannerEducationDetails (String[] education, ResourceResolver resourceResolver) {
-        List<Education> educationList = new ArrayList<>();
-        if(null != education) {
-            for (String educations : education){
-        Resource educationResource=resourceResolver.getResource(educations);
-        if(null!=educationResource){
-            Education educationBean=new Education();
-        Optional<ContentFragment> plannerDetailsCF=Optional.ofNullable(educationResource.adaptTo(ContentFragment.class));
+	/**
+	 * Sets the planner education details.
+	 *
+	 * @param education the education
+	 * @param resourceResolver the resource resolver
+	 * @return educationList
+	 */
+	public static List<Education> setPlannerEducationDetails(String[] education, ResourceResolver resourceResolver) {
+		List<Education> educationList = new ArrayList<>();
+		if (null != education) {
+			for (String educations : education) {
+				Resource educationResource = resourceResolver.getResource(educations);
+				if (null != educationResource) {
+					Education educationBean = new Education();
+					Optional<ContentFragment> plannerDetailsCF = Optional
+							.ofNullable(educationResource.adaptTo(ContentFragment.class));
 
-            educationBean.setMajor(plannerDetailsCF.map(cf->cf.getElement(ArticleDetailsConstants.MAJOR)).map(ContentElement::getContent).orElse(StringUtils.EMPTY));
-            educationBean.setUniversity(plannerDetailsCF.map(cf->cf.getElement(ArticleDetailsConstants.UNIVERSITY)).map(ContentElement::getContent).orElse(StringUtils.EMPTY));
-            educationBean.setDegree(plannerDetailsCF.map(cf->cf.getElement(ArticleDetailsConstants.DEGREE)).map(ContentElement::getContent).orElse(StringUtils.EMPTY));
-            educationList.add(educationBean);
-        }
-        }
+					educationBean.setMajor(plannerDetailsCF.map(cf -> cf.getElement(ArticleDetailsConstants.MAJOR))
+							.map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+					educationBean
+							.setUniversity(plannerDetailsCF.map(cf -> cf.getElement(ArticleDetailsConstants.UNIVERSITY))
+									.map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+					educationBean.setDegree(plannerDetailsCF.map(cf -> cf.getElement(ArticleDetailsConstants.DEGREE))
+							.map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+					educationList.add(educationBean);
+				}
+			}
 
-        }
-            return educationList;
-    }
-        }
+		}
+		return educationList;
+	}
+}
