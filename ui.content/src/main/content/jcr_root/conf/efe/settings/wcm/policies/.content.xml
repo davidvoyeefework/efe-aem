@@ -488,6 +488,7 @@
                     jcr:title="Container Policy"
                     sling:resourceType="wcm/core/components/policy/policy"
                     backgroundImageEnabled="true"
+                    components="[group:EFE - Content,/apps/efe/components/form/container]"
                     layoutDisabled="false">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                     <cq:styleGroups jcr:primaryType="nt:unstructured">
