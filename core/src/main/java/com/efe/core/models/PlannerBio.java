@@ -1,12 +1,14 @@
 package com.efe.core.models;
 
+import java.util.List;
+
+import com.efe.core.bean.LocationResponse;
 import com.efe.core.bean.PlannerResponse;
 
 /**
  * The Planner Bio Model.
  */
 public interface PlannerBio {
-	
 	
 	/**
 	 * Gets the planner response.
@@ -22,15 +24,12 @@ public interface PlannerBio {
 	 */
 	String getId();
 
-	
 	/**
 	 * Checks if is empty.
 	 *
 	 * @return the empty
 	 */
 	boolean isEmpty();
-	
-
 
 	/**
 	 * Gets the json ld.
@@ -39,4 +38,10 @@ public interface PlannerBio {
 	 */
 	String getJsonLd();
 
+	/**
+	 * Gets the office locations.
+	 *
+	 * @return the officeLocations
+	 */
+	List<LocationResponse> getOfficeLocations();
 }

@@ -3,8 +3,8 @@
     data-sly-use.template="core/wcm/components/commons/v1/templates.html"
     data-sly-set.planner="${model.plannerResponse}"
     data-sly-test.isNotEmpty="${planner.firstName}"
-    aria-label="planner-bio" class="cmp-efe-plannerbio"
-    >
+    aria-label="planner-bio" class="cmp-efe-plannerbio">
+
     <div class="cmp-efe--full-width secondary">
         <div class="cmp-efe-plannerbio--container">
             <div class="cmp-efe-plannerbio--container__hero-text">
@@ -23,7 +23,7 @@
             </div>
         </div>
     </div>
-    <div class="cmp-efe--full-width primary">
+    <div class="cmp-efe--full-width primary" data-sly-test="${planner.bio}">
         <div class="cmp-efe-plannerbio--aboutus">
             <h2 class="cmp-efe-plannerbio--aboutus__title">One of three headline options</h2>
             <div class="cmp-efe-plannerbio--aboutus__container">
@@ -49,17 +49,17 @@
             </div>
         </div>
     </div>
-    <div class="cmp-efe--full-width secondary" data-sly-test="${planner.officesLocations}">
+    <div class="cmp-efe--full-width secondary" data-sly-test="${model.officeLocations}">
         <div class="cmp-efe-plannerbio--locations">
             <h2 class="cmp-efe-plannerbio--locations__title">Visit one of our locations</h2>
-            <div class="cmp-efe-plannerbio--locations__container" data-sly-list="${planner.officesLocations}">
+            <div class="cmp-efe-plannerbio--locations__container" data-sly-list="${model.officeLocations}">
                 <div class="cmp-efe-plannerbio--locations__location">
-                    <h3>${item.name}</h3>
-                    <p>Street line 1</p>
-                    <p>Street line 2</p>
-                    <p><span>City </span><span>State </span><span>ZIP</span></p>
+                    <h3 data-sly-test="${item.externalName}">${item.externalName}</h3>
+                    <p data-sly-test="${item.address1}">${item.address1}</p>
+                    <p data-sly-test="${item.address2}">${item.address2}</p>
+                    <p><span data-sly-test="${item.city}">${item.city}, </span><span data-sly-test="${item.state}">${item.state} </span><span data-sly-test="${item.zip}">${item.zip}</span></p>
                     <div class="button cmp-button--primary-nav-link cmp-button--efe-red-primary">
-                        <a id="button-a1f53d50c2" data-cmp-clickable="" data-cmp-data-layer="{&quot;button-a1f53d50c2&quot;:{&quot;@type&quot;:&quot;core-components-examples/components/button&quot;,&quot;dc:title&quot;:&quot;Anchor Button&quot;,&quot;xdm:linkURL&quot;:&quot;/content/core-components-examples/library/core-content/button.html&quot;}}" href="#">
+                        <a id="button-a1f53d50c2"  href="${item.url}">
                             <span class="cmp-button__text">Explore Locations</span>
                         </a>
                     </div>
