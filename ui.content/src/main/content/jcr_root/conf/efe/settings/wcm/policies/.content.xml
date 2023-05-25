@@ -978,6 +978,11 @@
                                     cq:styleId="border"
                                     cq:styleLabel="Border"
                                     jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                        cq:styleClasses="cmp-breadcrumb--no-padding-left"
+                                        cq:styleId="padding"
+                                        cq:styleLabel="Padding"
+                                        jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item0>
                     </cq:styleGroups>
