@@ -43,14 +43,16 @@ class EFEDatalayerImplTest {
 		
 		when(efeService.getOneTrustScript()).thenReturn("test");
 		when(efeService.getOneTrustScriptId()).thenReturn("id");
-		
+		when(efeService.getGaTagValue()).thenReturn("GaTagValue");
 		datalayer = aemContext.request().adaptTo(EFEDatalayer.class);
 		
 		assertNotNull(datalayer.getDataLayer());
 		assertEquals("test", datalayer.getOneTrustScript());
 		assertEquals("id", datalayer.getOneTrustScriptId());
 		assertEquals("form name", datalayer.getFormName());
-		
+		assertEquals("[]", datalayer.getTrackingLinksJson());
+		assertEquals(false, datalayer.isEnableGA());
+		assertEquals("GaTagValue", datalayer.getGaTagValue());
 	}
 
 }

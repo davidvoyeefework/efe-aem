@@ -50,6 +50,7 @@ class VideoImplTest {
 		assertEquals("12345", video.getVideoId());
 		assertEquals("/thumbnail.png", video.getVideoThumbnail());
 		assertEquals("/btn-icon.png", video.getButtonIcon());
+		
 	}
 
 	@Test
@@ -63,7 +64,15 @@ class VideoImplTest {
 		video = aemContext.request().adaptTo(Video.class);
 		assertNotNull(video.getJsonLd());
 		assertEquals("Test Title", video.getVideoTitle());
-
+		assertEquals("{\"event\":\"video_action\",\"video\":{\"videoTimed\":{\"publisher\":\"youtube\",\"primaryAssetViewDetails\":{\"videoName\":\"Test Title\"},\"starts\":{\"value\":0},\"completes\":{\"value\":0}}}}", video.getDataLayer() );
+		assertEquals(false, video.isEmpty());
+	}
+	
+	@Test
+	void testIdAttribute() {
+		video = aemContext.currentResource("/content/efe/jcr:content/video2")
+				.adaptTo(Video.class);
+		assertEquals("video2-63cd0bd9a1", video.getId());
 	}
 
 }
