@@ -1,21 +1,26 @@
+// SOME STYLES ARE INTENTIONALLY `!important` AS THEY ARE MEANT TO OVERRIDE WHEN APPLIED
 @mixin maxWidth() {
     &.cmp-container--width-1920 {
-        max-width: $xxxl;
-        margin: auto;
+        max-width: $xxl !important;
+        margin: 0 auto !important;
+        float: unset !important;
     }
 
     &.cmp-container--width-1400 {
-        max-width: $xxl;
-        margin: auto;
+        max-width: $xxl !important;
+        margin: 0 auto !important;
+        float: unset !important;
     }
 }
 .cmp-container--width-1920 {
-    max-width: $xxxl;
-    margin: auto;
+    max-width: $xxxl !important;
+    margin: 0 auto !important;
+    float: unset !important;
 }
 .cmp-container--width-1400 {
-    max-width: $xxl;
-    margin: auto;
+    max-width: $xxl !important;
+    margin: 0 auto !important;
+    float: unset !important;
 }
 .cmp-container--bg-efe-gray-light {
     @include bg-efe-gray-light;
@@ -66,5 +71,5 @@
 }
 
 .cmp-container--min-height {
-    min-height: 620px;
+    min-height: 620px !important;
 }
