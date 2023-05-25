@@ -94,6 +94,14 @@
                                 jcr:primaryType="nt:unstructured"
                                 offset="0"
                                 width="10"/>
+                            <phone
+                                 jcr:primaryType="nt:unstructured"
+                                 offset="0"
+                                 width="12"/>
+                            <tablet
+                                 jcr:primaryType="nt:unstructured"
+                                 offset="0"
+                                 width="6"/>
                         </cq:responsive>
                     </text>
                 </container>

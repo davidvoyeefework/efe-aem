@@ -488,6 +488,7 @@
                     jcr:title="Container Policy"
                     sling:resourceType="wcm/core/components/policy/policy"
                     backgroundImageEnabled="true"
+                    components="[group:EFE - Content,/apps/efe/components/form/container]"
                     layoutDisabled="false">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                     <cq:styleGroups jcr:primaryType="nt:unstructured">
@@ -979,6 +980,17 @@
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item0>
+                        <item1
+                                cq:styleGroupLabel="Padding Styles"
+                                jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                        cq:styleClasses="cmp-breadcrumb--no-padding-left"
+                                        cq:styleId="remove-padding"
+                                        cq:styleLabel="Remove Padding"
+                                        jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item1>
                     </cq:styleGroups>
                 </policy>
             </breadcrumb>
