@@ -143,7 +143,7 @@
             justify-content: center;
             margin-top: 40px;
         }
-        @include media("<=tablet-lg") {
+        @include media("<tablet") {
             padding: 40px 26px;
             width: 100%;
             &__title {
@@ -155,6 +155,9 @@
             }
             &__cta {
                 margin-top: 30px;
+            }
+            @include media(">=tablet", "<=tablet-lg") {
+                padding: 40px 26px;
             }
         }
     }
@@ -174,6 +177,9 @@
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 40px;
+            @include media(">=tablet", "<=tablet-lg") {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
         &__location {
             >.cmp-button--primary-nav-link.cmp-button--efe-red-primary {
@@ -196,7 +202,7 @@
                 @include body-02;
             }
         }
-        @include media("<=tablet-lg") {
+        @include media("<tablet") {
             padding: 40px 26px;
             width: 100%;
             &__title {
