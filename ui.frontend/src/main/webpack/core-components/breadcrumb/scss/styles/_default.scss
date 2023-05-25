@@ -69,3 +69,11 @@
       }
   }
   }
+
+.cmp-breadcrumb--no-padding-left {
+    .cmp-breadcrumb {
+        ol {
+            padding-left: 0;
+        }
+    }
+}
