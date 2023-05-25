@@ -8,33 +8,45 @@
         }
     }
     &--container {
-        max-width: 1920px;
-        min-height: 620px;
+        max-width: 1440px;
+        max-height: 620px;
         margin: auto;
         display: flex;
         background-color: $efe-gray-light;
         position: relative;
         border-top-left-radius: 40px;
-        @include media("<=tablet-lg") {
+        padding: 80px 134px;
+        align-items: center;
+        @include media("<tablet") {
             flex-direction: column;
             min-height: unset;
             width: 100%;
             text-align: left;
+            padding: 0;
+            max-height: unset;
         }
         >div {
             flex: 1 0 auto;
+            @include media(">=tablet", "<=tablet-lg") {
+                flex: 1 0 50%;
+            }
+        }
+        @include media(">=tablet", "<=tablet-lg") {
+            display: flex;
+            flex-direction: row;
+            padding: 0;
         }
         &__hero-text {
-            padding-left: 126px;
-            margin-top: 186px;
-            margin-bottom: 208.23px;
             z-index: 2;
             &--first, &--last {
                 @include heading-03;
             }
-            @include media("<=tablet-lg") {
+            @include media("<tablet") {
                 padding: 40px 26px;
                 margin: 0;
+            }
+            @include media(">=tablet", "<=tablet-lg") {
+                padding: 0 64px;
             }
             &--desc {
                 margin-top: 15px;
@@ -47,6 +59,7 @@
         &__hero-img {
             display: flex;
             align-items: center;
+            justify-content: flex-end;
             &--main {
                 width: 461px;
                 height: 461px;
@@ -61,7 +74,7 @@
                 height: auto;
                 right: 0px;
             }
-            @include media("<=tablet-lg") {
+            @include media("<tablet") {
                 flex-direction: column;
                 &--main {
                     width: 100%;
@@ -71,10 +84,15 @@
                     display: none;
                 }
             }
+            @include media(">=tablet", "<=tablet-lg") {
+                &--pattern {
+                    display: none;
+                }
+            }
         }
     }
     &--aboutus {
-        max-width: 1920px;
+        max-width: 1440px;
         margin: auto;
         padding: 80px 129px;
         background-color: #FFFFFF;
@@ -141,7 +159,7 @@
         }
     }
     &--locations {
-        max-width: 1920px;
+        max-width: 1440px;
         margin: auto;
         padding: 80px 52px;
         background-color: $efe-gray-light;
