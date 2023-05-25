@@ -23,7 +23,7 @@
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="efe/components/container">
                     <breadcrumb
-                        cq:styleIds="[padding]"
+                        cq:styleIds="[remove-padding]"
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="efe/components/breadcrumb"
                         disableShadowing="false"
