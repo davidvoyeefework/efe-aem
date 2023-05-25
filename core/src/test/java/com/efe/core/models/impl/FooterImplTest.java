@@ -1,6 +1,7 @@
 package com.efe.core.models.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.lenient;
 
@@ -106,6 +107,7 @@ class FooterImplTest {
 		Link horizontalList2 = model.getHorizontalList().get(2);
 		assertEquals("/content/efe/us/en/corp/home.html", horizontalList2.getLink());
 		assertTrue(model.isEnableOneTrust());
+		assertNotNull(model.getJsonLd());
 		/*
 		 * assertEquals("sdk-url", model.getOneTrustScript()); assertEquals("sdk-id",
 		 * model.getOneTrustScriptId());
