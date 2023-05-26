@@ -3,7 +3,7 @@
     display: inline-block;
     margin-right: 8px;
 
-    button {
+    button, a {
         min-height: rem(28);
         @include body-03;
         font-size: rem(14);
