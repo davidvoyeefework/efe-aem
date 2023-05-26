@@ -20,6 +20,10 @@
 					"plannerTarget": "_blank",
 					"plannerTitle": "THE {0}  , {1}, TEAM",
 					"id" : "2332"
+				},
+				"plannerlist2": {
+					"jcr:primaryType": "nt:unstructured",
+					"sling:resourceType": "efe/components/plannerlist"
 				}
 
 			}

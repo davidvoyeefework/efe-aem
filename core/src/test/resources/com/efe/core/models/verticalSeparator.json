@@ -25,6 +25,13 @@
 					"jcr:primaryType": "nt:unstructured",
 					"sling:resourceType": "efe/components/verticalSeparator",
 					"noOfColumns": 2,
+					"id":"1234",
+					"hiddenSeparator": "false"
+				},
+				"verticalSeparatorThree": {
+					"jcr:primaryType": "nt:unstructured",
+					"sling:resourceType": "efe/components/verticalSeparator",
+					"id":"1234",
 					"hiddenSeparator": "false"
 				}
 			}
