@@ -35,7 +35,8 @@
 				"sling:resourceType": "efe/components/plannerbio",
 				"educationHeading": "Educations",
 				"locationSectionHeading": "Visit one of our locations",
-				"exploreLinkLabel": "Explore locations"
+				"exploreLinkLabel": "Explore locations",
+				"fileReference":"#"
 			}
 		}
 	},

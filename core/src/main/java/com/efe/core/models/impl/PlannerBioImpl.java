@@ -112,6 +112,10 @@ public class PlannerBioImpl implements PlannerBio {
 	/** The explore link label. */
 	@ValueMapValue
 	private String exploreLinkLabel;
+	
+	/** The file reference. */
+	@ValueMapValue
+	private String fileReference;
 
 	/** The json ld. */
 	private String jsonLd;
@@ -342,6 +346,16 @@ public class PlannerBioImpl implements PlannerBio {
 	@Override
 	public String getExploreLinkLabel() {
 		return exploreLinkLabel;
+	}
+
+	/**
+	 * Gets the file reference.
+	 *
+	 * @return the fileReference
+	 */
+	@Override
+	public String getFileReference() {
+		return fileReference;
 	}
 
 }

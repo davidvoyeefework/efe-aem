@@ -100,4 +100,11 @@ public interface PlannerBio {
 	 * @return the exploreLinkLabel
 	 */
 	String getExploreLinkLabel();
+
+	/**
+	 * Gets the file reference.
+	 *
+	 * @return the fileReference
+	 */
+	String getFileReference();
 }

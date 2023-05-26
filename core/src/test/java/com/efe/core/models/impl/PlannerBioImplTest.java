@@ -103,6 +103,7 @@ class PlannerBioImplTest {
 		assertEquals("1", plannerBio.getId());
 		assertTrue(plannerBio.isEmpty());
 		assertEquals(0, plannerBio.getOfficeLocations().size());
+		assertEquals("#", plannerBio.getFileReference());
 	}
 	
 	@Test
