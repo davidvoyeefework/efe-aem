@@ -29,6 +29,10 @@ export default {
             options: ["top-left", "top-right", "bottom-left", "bottom-right", "none"],
             control: { type: "select" },
         },
+        containerPadding: {
+            options: ["padding-right", "padding-left", "padding-top", "padding-bottom", "none"],
+            control: { type: "select" },
+        },
         border: {
             control: 'boolean',
         },
