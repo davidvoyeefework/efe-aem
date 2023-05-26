@@ -1,0 +1,18 @@
+.cmp-podcast-archive {
+    margin-bottom: 80px;
+    &__title {
+        @include heading-04;
+        margin-bottom: 8px;
+    }
+    &__episode {
+        @include subhead-02;
+        margin-bottom: 27px;
+    }
+    &__description {
+        @include body-02;
+        margin-bottom: 40px;
+    }
+    &__link {
+        cursor: pointer;
+    }
+}

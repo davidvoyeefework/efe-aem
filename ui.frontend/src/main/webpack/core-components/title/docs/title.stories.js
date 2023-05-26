@@ -12,6 +12,10 @@ export default {
     variant: {
       options: ["stats-01", "stats-02", "stats-02-underline", "heading-01", "heading-02", "heading-03", "heading-04", "subhead-00", "subhead-01", "subhead-02"],
       control: { type: "radio" },
+    },
+    align: {
+      options: ["center"],
+      control: { type: "radio" },
     }
   },
 };

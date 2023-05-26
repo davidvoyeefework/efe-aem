@@ -15,7 +15,7 @@
                 sling:resourceType="efe/components/experiencefragment"
                 fragmentVariationPath="/content/experience-fragments/efe/us/en/site/header/master"/>
             <container_924651397
-                cq:styleIds="[background-gray-light]"
+                cq:styleIds="[background-gray-light,default-padding]"
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="efe/components/container">
                 <container_78249864
@@ -39,7 +39,7 @@
                     editable="{Boolean}true"/>
             </container_924651397>
             <container
-                cq:styleIds="[white]"
+                cq:styleIds="[white,default-padding]"
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="efe/components/container"
                 layout="responsiveGrid">
