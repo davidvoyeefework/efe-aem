@@ -8,6 +8,7 @@ import java.util.Objects;
 
 import javax.annotation.PostConstruct;
 
+import com.efe.core.services.DynamicMediaService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
@@ -68,6 +69,10 @@ public class PlannerBioImpl implements PlannerBio {
 	/** The aggregator. */
 	@OSGiService
 	private ReferenceAggregator aggregator;
+
+	/** The dynamicMediaService. */
+	@OSGiService
+	private DynamicMediaService dynamicMediaService;
 
 	/** The current resource. */
 	@SlingObject
@@ -355,7 +360,7 @@ public class PlannerBioImpl implements PlannerBio {
 	 */
 	@Override
 	public String getFileReference() {
-		return fileReference;
+		return dynamicMediaService.getDmImagePath(resourceResolver, fileReference);
 	}
 
 }

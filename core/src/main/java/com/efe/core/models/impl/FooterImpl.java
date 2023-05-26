@@ -8,6 +8,8 @@ import java.util.Objects;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
+import com.efe.core.services.DynamicMediaService;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -58,6 +60,13 @@ public class FooterImpl implements Footer {
 	/** The seo service. */
 	@OSGiService
 	private SeoService seoService;
+
+	/**
+	 * Injecting dynamicMediaService
+	 *
+	 */
+	@OSGiService
+	private DynamicMediaService dynamicMediaService;
 	
 	/**
 	 * The current resource.
@@ -144,7 +153,7 @@ public class FooterImpl implements Footer {
 	 * @return the file reference
 	 */
 	public String getFileReference() {
-		return fileReference;
+		return dynamicMediaService.getDmImagePath(resourceResolver, fileReference);
 	}
 
 	/**

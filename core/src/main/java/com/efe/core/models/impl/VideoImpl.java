@@ -2,9 +2,11 @@ package com.efe.core.models.impl;
 
 import javax.annotation.PostConstruct;
 
+import com.efe.core.services.DynamicMediaService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
@@ -49,9 +51,20 @@ public class VideoImpl implements Video {
 	@OSGiService
 	private RestService restService;
 
+	/**
+	 * Injecting dynamicMediaService
+	 *
+	 */
+	@OSGiService
+	private DynamicMediaService dynamicMediaService;
+
 	/** The current resource. */
 	@SlingObject
 	private Resource resource;
+
+	/** The resource resolver. */
+	@SlingObject
+	private ResourceResolver resourceResolver;
 
 	/** The id. */
 	@ValueMapValue
@@ -140,7 +153,7 @@ public class VideoImpl implements Video {
 	 */
 	@Override
 	public String getVideoThumbnail() {
-		return fileReference;
+		return dynamicMediaService.getDmImagePath(resourceResolver, fileReference);
 	}
 
 	/**
@@ -150,7 +163,10 @@ public class VideoImpl implements Video {
 	 */
 	@Override
 	public String getButtonIcon() {
-		return buttonIconReference;
+		if (StringUtils.isNotBlank(buttonIconReference)){
+			return dynamicMediaService.getDmImagePath(resourceResolver, buttonIconReference);
+		}
+		return StringUtils.EMPTY;
 	}
 
 	/**

@@ -1,6 +1,8 @@
 package com.efe.core.models.impl;
 
 import com.efe.core.models.ModalPromotion;
+import com.efe.core.services.impl.DynamicMediaServiceImpl;
+import com.efe.core.services.impl.EfeServiceImpl;
 import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 import org.apache.sling.api.resource.Resource;
@@ -34,6 +36,9 @@ public class ModalPromotionImplTest {
     /** The aem context. */
     private AemContext aemContext = new AemContext();
 
+    /** The DynamicMediaServiceImpl. */
+    private DynamicMediaServiceImpl dynamicMediaService = new DynamicMediaServiceImpl();
+
     /**
      * Sets the up.
      */
@@ -41,6 +46,7 @@ public class ModalPromotionImplTest {
     public void setup() {
         Class<ModalPromotion> modelClass = ModalPromotion.class;
         aemContext.load().json(RESOURCE_CONTENT, TEST_CONTENT_ROOT);
+        aemContext.registerInjectActivateService(dynamicMediaService);
         aemContext.addModelsForClasses(modelClass);
         resource = aemContext.currentResource(RESOURCE);
         modalPromotionModel = resource.adaptTo(modelClass);

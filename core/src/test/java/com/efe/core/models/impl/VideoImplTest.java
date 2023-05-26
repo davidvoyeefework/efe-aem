@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
+import com.efe.core.services.DynamicMediaService;
+import com.efe.core.services.impl.DynamicMediaServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -32,6 +34,9 @@ class VideoImplTest {
 	@Mock
 	private SeoService seoService;
 
+	/** The DynamicMediaServiceImpl. */
+	private DynamicMediaServiceImpl dynamicMediaService = new DynamicMediaServiceImpl();
+
 	private Video video;
 
 	@BeforeEach
@@ -40,6 +45,7 @@ class VideoImplTest {
 		aemContext.registerService(RestService.class, restService);
 		aemContext.registerService(SeoService.class, seoService);
 		aemContext.load().json("/com/efe/core/models/video.json", "/content");
+		aemContext.registerInjectActivateService(dynamicMediaService);
 		aemContext.currentResource("/content/efe/jcr:content/video");
 	}
 

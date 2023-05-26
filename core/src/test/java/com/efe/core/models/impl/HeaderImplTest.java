@@ -1,6 +1,7 @@
 package com.efe.core.models.impl;
 
 import com.efe.core.models.Header;
+import com.efe.core.services.impl.DynamicMediaServiceImpl;
 import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 import org.apache.sling.api.resource.Resource;
@@ -35,6 +36,9 @@ class HeaderImplTest {
 	/** The aem context. */
 	private AemContext aemContext = new AemContext();
 
+	/** The DynamicMediaServiceImpl. */
+	private DynamicMediaServiceImpl dynamicMediaService = new DynamicMediaServiceImpl();
+
 	/**
 	 * Sets the up.
 	 */
@@ -43,6 +47,7 @@ class HeaderImplTest {
 		Class<Header> modelClass = Header.class;
 		MockSlingHttpServletRequest request = aemContext.request();
 		aemContext.load().json(RESOURCE_CONTENT, TEST_CONTENT_ROOT);
+		aemContext.registerInjectActivateService(dynamicMediaService);
 		aemContext.addModelsForClasses(modelClass);
 		resource = aemContext.currentResource(RESOURCE);
 		model = aemContext.request().adaptTo(modelClass);
