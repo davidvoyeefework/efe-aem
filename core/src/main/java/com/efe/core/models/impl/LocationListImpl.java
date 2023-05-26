@@ -8,7 +8,6 @@ import java.util.TreeMap;
 
 import javax.annotation.PostConstruct;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.jcr.resource.api.JcrResourceConstants;
@@ -23,7 +22,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.adobe.cq.export.json.ExporterConstants;
-import com.day.cq.dam.api.AssetReferenceResolver;
 import com.efe.core.constants.PlannerLocationConstants;
 import com.efe.core.constants.StatesEnum;
 import com.efe.core.models.LocationList;
