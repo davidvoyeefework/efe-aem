@@ -1,0 +1,8 @@
+.cmp-tags {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    .cmp-button {
+        white-space: nowrap;
+    }
+}
