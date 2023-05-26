@@ -4,7 +4,6 @@ import com.adobe.cq.export.json.ExporterConstants;
 import com.efe.core.models.ImageCollage;
 import com.efe.core.services.DynamicMediaService;
 import com.efe.core.utils.EFEUtil;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
