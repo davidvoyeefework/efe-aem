@@ -68,11 +68,10 @@
             }
             &--pattern {
                 position: absolute;
-                left: 0;
                 z-index: 1;
                 top: 0;
                 height: auto;
-                right: 0px;
+                right: 0;
             }
             @include media("<tablet") {
                 flex-direction: column;
