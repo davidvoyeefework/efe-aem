@@ -8,7 +8,6 @@ import java.util.TreeMap;
 
 import javax.annotation.PostConstruct;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.jcr.resource.api.JcrResourceConstants;
@@ -50,6 +49,8 @@ public class LocationListImpl implements LocationList {
 	/** The resource resolver. */
 	@SlingObject
 	private ResourceResolver resourceResolver;
+	
+
 
 	/**
 	 * Injecting efeService

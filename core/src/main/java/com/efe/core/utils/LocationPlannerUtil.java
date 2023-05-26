@@ -30,6 +30,22 @@ public class LocationPlannerUtil {
 				+ PlannerLocationConstants.FORWARD_SLASH + city;
 		return resourceResolver.getResource(locationPath);
 	}
+	
+	/**
+	 * Gets the planner resource.
+	 *
+	 * @param resourceResolver the resource resolver
+	 * @param firstName the first name
+	 * @param id the id
+	 * @return the planner resource
+	 */
+	public static Resource getPlannerResource(ResourceResolver resourceResolver, String firstName, String id) {
+		//content/dam/efe/cf/plannerlocation/planners/179/fragment_johnathan_179		
+		String plannerPath = PlannerLocationConstants.ROOT_FOLDER_PATH + PlannerLocationConstants.FORWARD_SLASH
+				+ PlannerLocationConstants.PLANNERS + PlannerLocationConstants.FORWARD_SLASH + id + PlannerLocationConstants.FORWARD_SLASH + "fragment_"+ firstName.toLowerCase() + "_" + id;
+		
+		return resourceResolver.getResource(plannerPath);
+	}
 
 	/**
 	 * Method to return the location info from the location content fragment

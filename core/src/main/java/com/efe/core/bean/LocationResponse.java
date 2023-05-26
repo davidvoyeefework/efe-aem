@@ -88,6 +88,9 @@ public class LocationResponse {
 
 	/* lastUpdated */
 	private String lastUpdated;
+	
+	/** The url. */
+	private String url;
 
 	/**
 	 * Returns the Office Id.
@@ -382,6 +385,24 @@ public class LocationResponse {
 	 */
 	public void setExternalName(String externalName) {
 		this.externalName = externalName;
+	}
+
+	/**
+	 * Gets the url.
+	 *
+	 * @return the url
+	 */
+	public String getUrl() {
+		return url;
+	}
+
+	/**
+	 * Sets the url.
+	 *
+	 * @param url the url to set
+	 */
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 }

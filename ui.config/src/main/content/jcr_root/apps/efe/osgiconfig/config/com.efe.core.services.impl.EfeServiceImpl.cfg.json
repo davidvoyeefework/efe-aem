@@ -13,6 +13,6 @@
   "formBaseUrl":"$[env:wm_form_base_url]",
   "formJsUrl":"$[env:wm_form_js_url]",
   "formAuthHeader":"$[secret:wm_form_auth_header]",
-  "enableGA":"$[env:enable_ga;default=true]",
+  "enableGA":"$[env:enable_ga;default=false]",
   "gaTagValue":"$[env:ga_tag_value;default=GTM-MCQB6LQ]"
 }

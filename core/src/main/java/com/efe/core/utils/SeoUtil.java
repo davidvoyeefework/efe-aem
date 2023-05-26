@@ -249,6 +249,23 @@ public class SeoUtil {
 		jsonLd.setItemListElement(itemListElements);
 		return gson.toJson(jsonLd);
 	}
+	
+	/**
+	 * Gets the planner schema.
+	 *
+	 * @param seoService the seo service
+	 * @param efeService the efe service
+	 * @param externalizer the externalizer
+	 * @param resourceResolver the resource resolver
+	 * @param planner the planner
+	 * @return the planner schema
+	 */
+	public static String getPlannerSchema(SeoService seoService, EfeService efeService, Externalizer externalizer,
+			ResourceResolver resourceResolver, PlannerResponse planner) {
+		Gson gson = getGsonInstance();
+		Author plannerSeo = populatePlannerDetails(seoService, efeService, externalizer, resourceResolver, planner);
+		return gson.toJson(plannerSeo);
+	}
 
 	/**
 	 * Gets the article schema.
@@ -328,7 +345,7 @@ public class SeoUtil {
 		
 		return author;
 	}
-
+	
 	/**
 	 * Populate planner details.
 	 *

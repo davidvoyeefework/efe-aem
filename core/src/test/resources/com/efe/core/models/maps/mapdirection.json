@@ -12,18 +12,31 @@
 				"directionButtonLabel": "DIRECTIONS"
 			},
 			"mapsearchresults": {
-				"id":"1",
+				"id": "1",
 				"plannerSearchPlaceHolder": "Minneapolis, MN",
 				"exploreLinkLabel": "Explore location",
 				"plannerButtonLabel": "Find a Planner",
 				"plannerSearchLabel": "City, State or ZIP Code",
 				"searchButtonLabel": "SEARCH LOCATIONS",
 				"sling:resourceType": "efe/components/mapsearchresults",
-				"nationalTitle":"title",
-				"nationalDetails":"details",
-				"nationalCallbackNumber":"111",
-				"nationalCallbackNumberLabel":"Callback label",
-				"nationalLink":"link"
+				"nationalTitle": "title",
+				"nationalDetails": "details",
+				"nationalCallbackNumber": "111",
+				"nationalCallbackNumberLabel": "Callback label",
+				"nationalLink": "link"
+			},
+			"plannerbio": {
+				"id": "1",
+				"appointmentCtaLabel": "Request An Appoitnment",
+				"appointmentCta": "/content/efe",
+				"aboutSectionHeading": "Best Interests",
+				"aboutMeHeading": "About Me",
+				"certificationHeading": "Certifications",
+				"sling:resourceType": "efe/components/plannerbio",
+				"educationHeading": "Educations",
+				"locationSectionHeading": "Visit one of our locations",
+				"exploreLinkLabel": "Explore locations",
+				"fileReference":"#"
 			}
 		}
 	},
@@ -45,7 +58,9 @@
 										"contentFragment": true,
 										"metadata": {
 											"jcr:primaryType": "nt:unstructured",
-											"jcr:mixinTypes": ["cq:Taggable"]
+											"jcr:mixinTypes": [
+												"cq:Taggable"
+											]
 										},
 										"data": {
 											"jcr:primaryType": "nt:unstructured",

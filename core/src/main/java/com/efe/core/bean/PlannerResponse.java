@@ -94,6 +94,9 @@ public class PlannerResponse {
 
 	/* certifications */
 	private List<Certifications> certifications;
+	
+	/** The certifications abbrevations. */
+	private List<String> certificationsAbbrevations;
 
 	/* bio */
 	private String bio;
@@ -381,6 +384,15 @@ public class PlannerResponse {
 			return new ArrayList<>(officesLocations);
 		}
 		return Collections.emptyList();
+	}
+
+	/**
+	 * Sets the offices locations.
+	 *
+	 * @param officesLocations the officesLocations to set
+	 */
+	public void setOfficesLocations(List<OfficesLocations> officesLocations) {
+		this.officesLocations = new ArrayList<>(officesLocations);
 	}
 
 	/**
@@ -702,6 +714,27 @@ public class PlannerResponse {
 	 */
 	public void setPrimaryOffice(PrimaryOffice primaryOffice) {
 		this.primaryOffice = primaryOffice;
+	}
+
+	/**
+	 * Gets the certifications abbrevations.
+	 *
+	 * @return the certificationsAbbrevations
+	 */
+	public List<String> getCertificationsAbbrevations() {
+		if (Objects.nonNull(certificationsAbbrevations)) {
+			return new ArrayList<>(certificationsAbbrevations);
+		}
+		return Collections.emptyList();
+	}
+
+	/**
+	 * Sets the certifications abbrevations.
+	 *
+	 * @param certificationsAbbrevations the certificationsAbbrevations to set
+	 */
+	public void setCertificationsAbbrevations(List<String> certificationsAbbrevations) {
+		this.certificationsAbbrevations = new ArrayList<>(certificationsAbbrevations);
 	}
 
 }
