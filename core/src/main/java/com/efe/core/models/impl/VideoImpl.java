@@ -163,10 +163,7 @@ public class VideoImpl implements Video {
 	 */
 	@Override
 	public String getButtonIcon() {
-		if (StringUtils.isNotBlank(buttonIconReference)){
-			return dynamicMediaService.getDmImagePath(resourceResolver, buttonIconReference);
-		}
-		return StringUtils.EMPTY;
+		return dynamicMediaService.getDmImagePath(resourceResolver, buttonIconReference);
 	}
 
 	/**

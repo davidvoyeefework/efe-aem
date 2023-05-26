@@ -68,8 +68,8 @@ class PlannerBioImplTest {
 	/** The DynamicMediaServiceImpl. */
 	private DynamicMediaServiceImpl dynamicMediaService = new DynamicMediaServiceImpl();
 
-	@Mock
 	/** The configuration. */
+	@Mock
 	private EfeServiceImpl.Config configuration;
 
 	

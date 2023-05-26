@@ -7,12 +7,10 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ValueMap;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -37,15 +35,6 @@ class DynamicMediaServiceImplTest {
 	/** The valueMap. */
 	@Mock
 	private ValueMap valueMap;
-
-	/**
-	 * Sets the up.
-	 */
-	@BeforeEach
-	public void setUp() {
-		MockitoAnnotations.initMocks(this);
-		dynamicMediaService = new DynamicMediaServiceImpl();
-	}
 
 	/**
 	 * Test dynamic media image path.
