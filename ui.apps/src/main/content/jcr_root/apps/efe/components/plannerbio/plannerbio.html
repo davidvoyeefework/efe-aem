@@ -12,9 +12,9 @@
                 <h2 data-sly-test="${planner.lastName}" class="cmp-efe-plannerbio--container__hero-text--last">${planner.lastName}</h2>
                 <p data-sly-test="${!planner.certificationsAbbrevations.empty}" class="cmp-efe-plannerbio--container__hero-text--desc">${planner.certificationsAbbrevations  @ join=', '}</p>
                 <div class="button cmp-efe-plannerbio--container__hero-text--cta cmp-button--button-primary cmp-button--unset cmp-button--default cmp-button--default">
-                    <button type="button" id="button-5487aab983" class="cmp-button" data-cmp-clickable="" data-cmp-data-layer="{&quot;button-5487aab983&quot;:{&quot;@type&quot;:&quot;core-components-examples/components/button&quot;,&quot;dc:title&quot;:&quot;Button&quot;}}">
-                        <span class="cmp-button__text">Request an Appointment</span>
-                    </button>
+                    <a type="button" id="button-5487aab983" class="cmp-button" href="${model.appointmentCta}">
+                        <span class="cmp-button__text">${model.appointmentCtaLabel}</span>
+                    </a>
                 </div>
             </div>
             <div class="cmp-efe-plannerbio--container__hero-img">
@@ -25,33 +25,33 @@
     </div>
     <div class="cmp-efe--full-width primary" data-sly-test="${planner.bio}">
         <div class="cmp-efe-plannerbio--aboutus">
-            <h2 class="cmp-efe-plannerbio--aboutus__title">One of three headline options</h2>
+            <h2 class="cmp-efe-plannerbio--aboutus__title">${model.aboutSectionHeading}</h2>
             <div class="cmp-efe-plannerbio--aboutus__container">
                 <div class="cmp-efe-plannerbio--aboutus__aboutme">
-                    <h3 class="cmp-efe-plannerbio--aboutus__aboutme--subtitle">About me</h3>
+                    <h3 class="cmp-efe-plannerbio--aboutus__aboutme--subtitle">${model.aboutMeHeading}</h3>
                     <p>${planner.bio}</p>
                 </div>
                 <div class="cmp-efe-plannerbio--aboutus__block">
                     <div data-sly-test="${!planner.certifications.empty}" class="cmp-efe-plannerbio--aboutus__certification">
-                        <h3 class="cmp-efe-plannerbio--aboutus__certification--subtitle">Certifications</h3>
+                        <h3 class="cmp-efe-plannerbio--aboutus__certification--subtitle">${model.certificationHeading}</h3>
                         <p data-sly-repeat="${planner.certifications}">${item.name}</p>
                     </div>
                     <div data-sly-test="${!planner.education.empty}" class="cmp-efe-plannerbio--aboutus__education">
-                        <h3 class="cmp-efe-plannerbio--aboutus__education--subtitle">Education</h3>
+                        <h3 class="cmp-efe-plannerbio--aboutus__education--subtitle">${model.educationHeading}</h3>
                         <p data-sly-repeat="${planner.education}">${item.degree}, ${item.university}</p>                      
                     </div>
                 </div>
             </div>
             <div class="button cmp-efe-plannerbio--container__hero-text--cta cmp-button--button-primary cmp-button--unset cmp-button--default cmp-button--default cmp-efe-plannerbio--aboutus__cta">
-                <button type="button" id="button-5487aab983" class="cmp-button" data-cmp-clickable="" data-cmp-data-layer="{&quot;button-5487aab983&quot;:{&quot;@type&quot;:&quot;core-components-examples/components/button&quot;,&quot;dc:title&quot;:&quot;Button&quot;}}">
-                    <span class="cmp-button__text">Request an Appointment</span>
-                </button>
+                <a type="button" id="button-5487aab983" class="cmp-button" href="${model.appointmentCta}">
+                    <span class="cmp-button__text">${model.appointmentCtaLabel}</span>
+                </a>
             </div>
         </div>
     </div>
     <div class="cmp-efe--full-width secondary" data-sly-test="${model.officeLocations}">
         <div class="cmp-efe-plannerbio--locations">
-            <h2 class="cmp-efe-plannerbio--locations__title">Visit one of our locations</h2>
+            <h2 class="cmp-efe-plannerbio--locations__title">${model.locationSectionHeading}</h2>
             <div class="cmp-efe-plannerbio--locations__container" data-sly-list="${model.officeLocations}">
                 <div class="cmp-efe-plannerbio--locations__location">
                     <h3 data-sly-test="${item.externalName}">${item.externalName}</h3>
@@ -60,12 +60,15 @@
                     <p><span data-sly-test="${item.city}">${item.city}, </span><span data-sly-test="${item.state}">${item.state} </span><span data-sly-test="${item.zip}">${item.zip}</span></p>
                     <div class="button cmp-button--primary-nav-link cmp-button--efe-red-primary">
                         <a id="button-a1f53d50c2"  href="${item.url}">
-                            <span class="cmp-button__text">Explore Locations</span>
+                            <span class="cmp-button__text">${model.exploreLinkLabel}</span>
                         </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script data-sly-test="${model.jsonLd}" type="application/ld+json">
+        ${model.jsonLd @context ='unsafe'}
+    </script>
 </section>
 <sly data-sly-call="${template.placeholder @ isEmpty=!isNotEmpty, classAppend='cmp-plannerbio'}"></sly>

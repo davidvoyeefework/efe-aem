@@ -44,4 +44,60 @@ public interface PlannerBio {
 	 * @return the officeLocations
 	 */
 	List<LocationResponse> getOfficeLocations();
+
+	/**
+	 * Gets the location section heading.
+	 *
+	 * @return the locationSectionHeading
+	 */
+	String getLocationSectionHeading();
+
+	/**
+	 * Gets the education heading.
+	 *
+	 * @return the educationHeading
+	 */
+	String getEducationHeading();
+
+	/**
+	 * Gets the certification heading.
+	 *
+	 * @return the certificationHeading
+	 */
+	String getCertificationHeading();
+
+	/**
+	 * Gets the about me heading.
+	 *
+	 * @return the aboutMeHeading
+	 */
+	String getAboutMeHeading();
+
+	/**
+	 * Gets the about section heading.
+	 *
+	 * @return the aboutSectionHeading
+	 */
+	String getAboutSectionHeading();
+
+	/**
+	 * Gets the appointment cta.
+	 *
+	 * @return the appointmentCta
+	 */
+	String getAppointmentCta();
+
+	/**
+	 * Gets the appointment cta label.
+	 *
+	 * @return the appointmentCtaLabel
+	 */
+	String getAppointmentCtaLabel();
+
+	/**
+	 * Gets the explore link label.
+	 *
+	 * @return the exploreLinkLabel
+	 */
+	String getExploreLinkLabel();
 }

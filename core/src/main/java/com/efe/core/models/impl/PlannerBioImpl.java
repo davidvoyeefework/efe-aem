@@ -2,11 +2,13 @@ package com.efe.core.models.impl;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
 import javax.annotation.PostConstruct;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -34,6 +36,7 @@ import com.efe.core.utils.ArticleDetailUtil;
 import com.efe.core.utils.EFEUtil;
 import com.efe.core.utils.LinkUtil;
 import com.efe.core.utils.LocationPlannerUtil;
+import com.efe.core.utils.SeoUtil;
 
 /**
  * The Class PlannerBioImpl.
@@ -62,6 +65,10 @@ public class PlannerBioImpl implements PlannerBio {
 	@OSGiService
 	private EfeService efeService;
 
+	/** The aggregator. */
+	@OSGiService
+	private ReferenceAggregator aggregator;
+
 	/** The current resource. */
 	@SlingObject
 	private Resource resource;
@@ -74,6 +81,38 @@ public class PlannerBioImpl implements PlannerBio {
 	@ValueMapValue
 	private String id;
 
+	/** The appointment cta label. */
+	@ValueMapValue
+	private String appointmentCtaLabel;
+
+	/** The appointment cta. */
+	@ValueMapValue
+	private String appointmentCta;
+
+	/** The about section heading. */
+	@ValueMapValue
+	private String aboutSectionHeading;
+
+	/** The about me heading. */
+	@ValueMapValue
+	private String aboutMeHeading;
+
+	/** The certification heading. */
+	@ValueMapValue
+	private String certificationHeading;
+
+	/** The education heading. */
+	@ValueMapValue
+	private String educationHeading;
+
+	/** The location section heading. */
+	@ValueMapValue
+	private String locationSectionHeading;
+
+	/** The explore link label. */
+	@ValueMapValue
+	private String exploreLinkLabel;
+
 	/** The json ld. */
 	private String jsonLd;
 
@@ -82,13 +121,9 @@ public class PlannerBioImpl implements PlannerBio {
 
 	/** The office locations. */
 	private List<LocationResponse> officeLocations;
-	
-	/** The filter. */
-	private String []filter;
 
-	/** The aggregator. */
-	@OSGiService
-	private ReferenceAggregator aggregator;
+	/** The filter. */
+	private String[] filter;
 
 	/**
 	 * Inits the model.
@@ -97,14 +132,17 @@ public class PlannerBioImpl implements PlannerBio {
 	public void init() {
 		String[] selectors = request.getRequestPathInfo().getSelectors();
 		if (selectors.length == 3) {
+			officeLocations = new ArrayList<>();
 			Resource plannerResource = LocationPlannerUtil.getPlannerResource(resourceResolver, selectors[0],
 					selectors[2]);
 			if (null != plannerResource && null != plannerResource.adaptTo(ContentFragment.class)) {
+				
 				plannerResponse = ArticleDetailUtil.getPlannerDetails(resourceResolver, plannerResource);
 				ReferenceList referenceList = aggregator.createReferenceList(plannerResource, filter);
-				officeLocations = new ArrayList<>();
-				addPlannerOffices(referenceList);
-
+				if (null != referenceList) {
+					addPlannerOffices(referenceList);
+				}	
+				jsonLd = SeoUtil.getPlannerSchema(seoService, efeService, externalizer, resourceResolver, plannerResponse);	
 			}
 		}
 	}
@@ -115,14 +153,20 @@ public class PlannerBioImpl implements PlannerBio {
 	 * @param referenceList the reference list
 	 */
 	private void addPlannerOffices(ReferenceList referenceList) {
-		for (final Reference reference : referenceList) {
+		final Iterator<Reference> referenceItr = referenceList.iterator();
+		while (referenceItr.hasNext()) {
+			Reference reference = referenceItr.next();
 			if (reference.getTarget() != null) {
 				String refPath = reference.getTarget().getPath();
 				Resource locationresource = resourceResolver.getResource(refPath);
 				if (null != locationresource) {
 					ContentFragment fragment = locationresource.adaptTo(ContentFragment.class);
-					if (null != fragment && isLocationsCF(fragment)) {
+					if (null != fragment && isLocationsCF(fragment) && locationresource.getParent() != null
+							&& locationresource.getParent().getParent() != null) {
+
 						LocationResponse locationResponse = LocationPlannerUtil.getLocationInfo(locationresource);
+
+						// set the cta url
 						locationResponse.setUrl(LinkUtil.getFormattedLink(efeService.getPlannerPageUrl()
 								+ PlannerLocationConstants.DOT
 								+ locationresource.getParent().getParent().getName().toUpperCase()
@@ -131,11 +175,8 @@ public class PlannerBioImpl implements PlannerBio {
 										.replaceAll(PlannerLocationConstants.SPACE, PlannerLocationConstants.HYPHEN),
 								resourceResolver));
 						officeLocations.add(locationResponse);
-
 					}
-
 				}
-
 			}
 		}
 	}
@@ -148,10 +189,13 @@ public class PlannerBioImpl implements PlannerBio {
 	 */
 	private boolean isLocationsCF(ContentFragment fragment) {
 		boolean isLocationsCF = false;
-		if (null != fragment && fragment.getTemplate() != null) {
-			Resource fragmentResource = fragment.getTemplate().adaptTo(Resource.class);
-			if (fragmentResource.getPath().startsWith("/conf/efe/settings/dam/cfm/models/locations")) {
-				isLocationsCF = true;
+		if (null != fragment) {
+			Resource fragmentResource = fragment.adaptTo(Resource.class);
+			if (fragmentResource.hasChildren() && null != fragmentResource.getChild("jcr:content/data")) {
+				final String modelPath = fragmentResource.getChild("jcr:content/data").getValueMap().get("cq:model", StringUtils.EMPTY);
+				if (modelPath.startsWith("/conf/efe/settings/dam/cfm/models/locations")) {
+					isLocationsCF = true;
+				}
 			}
 		}
 		return isLocationsCF;
@@ -215,6 +259,89 @@ public class PlannerBioImpl implements PlannerBio {
 			return new ArrayList<>(officeLocations);
 		}
 		return Collections.emptyList();
+	}
+
+	/**
+	 * Gets the appointment cta label.
+	 *
+	 * @return the appointmentCtaLabel
+	 */
+	@Override
+	public String getAppointmentCtaLabel() {
+		return appointmentCtaLabel;
+	}
+
+	/**
+	 * Gets the appointment cta.
+	 *
+	 * @return the appointmentCta
+	 */
+	@Override
+	public String getAppointmentCta() {
+		if (StringUtils.isNotEmpty(appointmentCta)) {
+			appointmentCta = LinkUtil.getFormattedLink(appointmentCta, resourceResolver);
+		}
+		return appointmentCta;
+	}
+
+	/**
+	 * Gets the about section heading.
+	 *
+	 * @return the aboutSectionHeading
+	 */
+	@Override
+	public String getAboutSectionHeading() {
+		return aboutSectionHeading;
+	}
+
+	/**
+	 * Gets the about me heading.
+	 *
+	 * @return the aboutMeHeading
+	 */
+	@Override
+	public String getAboutMeHeading() {
+		return aboutMeHeading;
+	}
+
+	/**
+	 * Gets the certification heading.
+	 *
+	 * @return the certificationHeading
+	 */
+	@Override
+	public String getCertificationHeading() {
+		return certificationHeading;
+	}
+
+	/**
+	 * Gets the education heading.
+	 *
+	 * @return the educationHeading
+	 */
+	@Override
+	public String getEducationHeading() {
+		return educationHeading;
+	}
+
+	/**
+	 * Gets the location section heading.
+	 *
+	 * @return the locationSectionHeading
+	 */
+	@Override
+	public String getLocationSectionHeading() {
+		return locationSectionHeading;
+	}
+
+	/**
+	 * Gets the explore link label.
+	 *
+	 * @return the exploreLinkLabel
+	 */
+	@Override
+	public String getExploreLinkLabel() {
+		return exploreLinkLabel;
 	}
 
 }

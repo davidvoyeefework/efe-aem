@@ -20,7 +20,6 @@ import com.efe.core.bean.ArticleAuthor;
 import com.efe.core.bean.Articles;
 import com.efe.core.bean.Certifications;
 import com.efe.core.bean.Education;
-import com.efe.core.bean.OfficesLocations;
 import com.efe.core.bean.PlannerResponse;
 import com.efe.core.bean.PrimaryOffice;
 import com.efe.core.constants.ArticleDetailsConstants;
@@ -237,47 +236,12 @@ public class ArticleDetailUtil {
 			plannerResponse.setEducation(setPlannerEducationDetails(educationsList, resourceResolver));
 		}
 		
-		String offices = plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.OFFICE_LOCATIONS))
-		        .map(ContentElement::getContent).orElse(StringUtils.EMPTY);
-		
-		if(StringUtils.isNotEmpty(offices)) {
-			String[] officesList = offices.split("\n");
-			plannerResponse.setOfficesLocations(setPlannerOfficeDetails(officesList ,resourceResolver));
-		}
 		String primaryOfficeCF = plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.PRIMARY_OFFICE))
 		        .map(ContentElement::getContent).orElse(StringUtils.EMPTY);
 		plannerResponse.setPrimaryOffice(setPrimaryOfficeDetails(primaryOfficeCF, resourceResolver));
 		return plannerResponse;
 	}
 
-	private static List<OfficesLocations> setPlannerOfficeDetails(String[] officesList,
-			ResourceResolver resourceResolver) {
-		List<OfficesLocations> officeList = new ArrayList<>();
-		if (null != officesList) {
-			for (String officePath : officesList) {
-				Resource officeResource = resourceResolver.getResource(officePath);
-				if (null != officeResource) {
-					OfficesLocations officeLocation = new OfficesLocations();
-					Optional<ContentFragment> officeCF = Optional
-							.ofNullable(officeResource.adaptTo(ContentFragment.class));
-					
-					officeLocation.setId(officeCF.map(cf -> cf.getElement(PlannerLocationConstants.ID))
-							.map(ContentElement::getContent).orElse(StringUtils.EMPTY));
-					officeLocation.setCity(officeCF.map(cf -> cf.getElement(PlannerLocationConstants.CITY))
-							.map(ContentElement::getContent).orElse(StringUtils.EMPTY));
-					officeLocation.setName(officeCF.map(cf -> cf.getElement(PlannerLocationConstants.NAME))
-							.map(ContentElement::getContent).orElse(StringUtils.EMPTY));
-					officeLocation.setState(officeCF.map(cf -> cf.getElement(PlannerLocationConstants.STATE))
-							.map(ContentElement::getContent).orElse(StringUtils.EMPTY));
-					officeLocation.setZip(officeCF.map(cf -> cf.getElement(PlannerLocationConstants.ZIP))
-							.map(ContentElement::getContent).orElse(StringUtils.EMPTY));			
-					officeList.add(officeLocation);
-				}
-			}
-
-		}
-		return officeList;
-	}
 
 	/**
 	 * Sets the primary office details.
