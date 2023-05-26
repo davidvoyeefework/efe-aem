@@ -1,9 +1,7 @@
 package com.efe.core.models.impl;
 
-import com.efe.core.models.PlannerList;
-import com.efe.core.services.impl.EfeServiceImpl;
-import io.wcm.testing.mock.aem.junit5.AemContext;
-import io.wcm.testing.mock.aem.junit5.AemContextExtension;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.testing.mock.sling.servlet.MockRequestPathInfo;
 import org.apache.sling.testing.mock.sling.servlet.MockSlingHttpServletRequest;
@@ -13,7 +11,11 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import com.efe.core.models.PlannerList;
+import com.efe.core.services.impl.EfeServiceImpl;
+
+import io.wcm.testing.mock.aem.junit5.AemContext;
+import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 
 /**
  * The Class PlannerListImplTest.
@@ -53,6 +55,7 @@ class PlannerListImplTest {
 	/** The EfeServiceImpl. */
 	private EfeServiceImpl efeService = new EfeServiceImpl();
 
+	/** The configuration. */
 	@Mock
 	/** The configuration. */
 	private EfeServiceImpl.Config configuration;
@@ -101,5 +104,15 @@ class PlannerListImplTest {
 		assertEquals("/content/efe/us/en/financial-planners.Dale.Hansen.29.html",
 				model.getPlannerList().get(0).getButtonUrl());
 	}
+	
+	/**
+	 * Test null attribute.
+	 */
+	@Test
+    void testNullAttribute() {
+        aemContext.currentResource(TEST_CONTENT_ROOT + "/jcr:content/root/container/plannerlist2");
+        model = aemContext.request().adaptTo(PlannerList.class);
+        assertEquals("plannerlist2-ed6a28fce7", model.getId());
+    }
 
 }
