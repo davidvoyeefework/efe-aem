@@ -63,12 +63,26 @@ class VerticalSeparatorImplTest {
         context.addModelsForClasses(modelClass);
         verticalSeparator = resource.adaptTo(modelClass);
 
-        assertEquals("verticalSeparatorTwo-e4697a02b5", verticalSeparator.getId());
+        assertEquals("1234", verticalSeparator.getId());
         assertEquals(2, verticalSeparator.getNoOfColumns());
         assertEquals("false", verticalSeparator.getHiddenSeparator());
         assertEquals("column_0", verticalSeparator.getColumnIndices().get(0));
         assertEquals("column_1", verticalSeparator.getColumnIndices().get(1));
         assertEquals("cmp-vertical-separator--two cmp-horizontal-separator", verticalSeparator.getUlClass());
         assertEquals("cmp-vertical-separator--two__item", verticalSeparator.getLiClass());
+    }
+    
+    /**
+     * Test null attribute.
+     */
+    @Test
+    void testNullAttribute() {
+        context.load().json(RESOURCE_CONTENT, TEST_CONTENT_ROOT);
+        resource = context.currentResource(TEST_CONTENT_ROOT + "/jcr:content/root/container/verticalSeparatorThree");
+        Class<VerticalSeparator> modelClass = VerticalSeparator.class;
+        context.addModelsForClasses(modelClass);
+        verticalSeparator = resource.adaptTo(modelClass);
+        
+        assertEquals(0, verticalSeparator.getColumnIndices().size());
     }
 }
