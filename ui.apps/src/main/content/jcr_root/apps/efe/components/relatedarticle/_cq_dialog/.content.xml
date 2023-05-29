@@ -286,6 +286,13 @@
                                                     fieldLabel="ID"
                                                     name="./id"
                                                     validation="html-unique-id-validator"/>
+                                            <displayItemAsTeaser
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                                                fieldDescription="This field will be hidden, the item is displayed as a teaser."
+                                                name="./displayItemAsTeaser"
+                                                text="Display as teaser"
+                                                value="true"/>
                                         </items>
                                     </column>
                                 </items>
