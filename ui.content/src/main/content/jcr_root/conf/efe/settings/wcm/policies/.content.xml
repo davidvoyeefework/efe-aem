@@ -364,7 +364,7 @@
                             </cq:styles>
                         </item0>
                         <item1
-                                cq:styleGroupLabel="Center"
+                                cq:styleGroupLabel="Alignment"
                                 jcr:primaryType="nt:unstructured">
                         <cq:styles jcr:primaryType="nt:unstructured">
                         <item0
