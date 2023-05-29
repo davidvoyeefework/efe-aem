@@ -17,6 +17,7 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.efe.core.models.PodcastArchiveList;
 import com.efe.core.models.bean.Podcast;
+import com.efe.core.services.EfeService;
 import com.efe.core.services.RestService;
 import com.efe.core.utils.EFEUtil;
 import com.google.gson.JsonArray;
@@ -34,6 +35,10 @@ public class PodcastArchiveListImpl implements PodcastArchiveList {
 
 	/** The Constant RESOURCE_TYPE. */
 	public static final String RESOURCE_TYPE = "efe/components/podcastarchivelist";
+	
+	/** The efe service. */
+	@OSGiService
+	private EfeService efeService;
 
 	/** The rest service. */
 	@OSGiService
