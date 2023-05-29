@@ -20,6 +20,8 @@ import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.adobe.cq.dam.cfm.ContentFragment;
 import com.adobe.cq.export.json.ExporterConstants;
@@ -49,6 +51,10 @@ public class PlannerBioImpl implements PlannerBio {
 
 	/** The Constant RESOURCE_TYPE. */
 	public static final String RESOURCE_TYPE = "efe/components/plannerbio";
+	
+	/** The Constant LOGGER. */
+	private static final Logger LOGGER = LoggerFactory.getLogger(PlannerBioImpl.class);
+
 
 	/** The SlingHttpServletRequest. */
 	@Self
@@ -169,15 +175,16 @@ public class PlannerBioImpl implements PlannerBio {
 			if (reference.getTarget() != null) {
 				String refPath = reference.getTarget().getPath();
 				if(locations.contains(refPath)) {
+					LOGGER.debug("Duplicate reference : {}", refPath);
 					continue;
 				}
-				
+								
 				Resource locationresource = resourceResolver.getResource(refPath);
 				if (null != locationresource) {
 					ContentFragment fragment = locationresource.adaptTo(ContentFragment.class);
 					if (null != fragment && isLocationsCF(fragment) && locationresource.getParent() != null
 							&& locationresource.getParent().getParent() != null) {
-
+						LOGGER.debug("Office location : {}", locationresource.getPath());
 						LocationResponse locationResponse = LocationPlannerUtil.getLocationInfo(locationresource);
 
 						// set the cta url
@@ -192,6 +199,7 @@ public class PlannerBioImpl implements PlannerBio {
 						locations.add(refPath);
 					}
 				}
+				LOGGER.debug("Locations array : {}", locations);
 			}
 		}
 	}

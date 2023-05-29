@@ -72,6 +72,35 @@ export default class LocationMapResults {
     handleLocationSearch(event) {
         event.preventDefault();
         let searchInput = this.el.querySelector("#location")?.value;
+        if(this.searchBtn.textContent === "Find a Planner") {
+            window.adobeDataLayer?.push({
+                web: { 
+                    webInteraction: {
+                    name:"Find a Planner",
+                    region: "Body",
+                    type: "other",
+                    locationValue: searchInput,
+                    findPlanner: {
+                        value: 1
+                    }
+                    }
+                }
+            })
+        } else {
+            window.adobeDataLayer?.push({
+                web: { 
+                    webInteraction: {
+                    name:"Search Location",
+                    region: "Body",
+                    type: "other",
+                    locationValue: searchInput,
+                    searchLocation: {
+                        value: 1
+                    }
+                    }
+                }
+            })
+        }
         this.searchBtn.textContent = this.el.dataset?.searchBtnLabel || "Search Destinations";
         if (searchInput === "") {
             this.showSearchResultsContainer(null, {

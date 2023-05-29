@@ -10,13 +10,25 @@ export default class Analytics {
             this.handleLinksForAnalytics.bind(this)
         );
     }
-
     handleLinksForAnalytics(event) {
         const region = this.findRegion(event.target);
         let linkActualText = event.target.closest("a")?.innerText;
+        const getLinkHref = event.target.closest("a")?.getAttribute("href");
         if (!linkActualText && typeof linkActualText !== "string") return;
         linkActualText = linkActualText.toLowerCase()?.trim();
-
+        if(getLinkHref?.match(/^tel\:/) || getLinkHref?.match(/^mailto\:/)) {
+            window.adobeDataLayer.push({
+                event: "link_click",
+                web: {
+                    webInteraction: {
+                        name: getLinkHref,
+                        region: region,
+                        type: "other",
+                        linkClicks: { value: 1 },
+                    },
+                },
+            });
+        }
         if (this.linksToTarget.includes(linkActualText)) {
             window.adobeDataLayer.push({
                 event: "link_click",
