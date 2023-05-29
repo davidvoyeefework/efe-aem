@@ -2,12 +2,16 @@ package com.efe.core.models.impl;
 
 import com.adobe.cq.export.json.ExporterConstants;
 import com.efe.core.models.ImageCollage;
+import com.efe.core.services.DynamicMediaService;
 import com.efe.core.utils.EFEUtil;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.Self;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 /**
@@ -52,6 +56,17 @@ public class ImageCollageImpl implements ImageCollage {
     private String secondSecondaryImageAltText;
 
     /**
+     * Injecting dynamicMediaService
+     *
+     */
+    @OSGiService
+    private DynamicMediaService dynamicMediaService;
+
+    /** The resource resolver. */
+    @SlingObject
+    private ResourceResolver resourceResolver;
+
+    /**
      * Gets the id.
      *
      * @return the id
@@ -69,7 +84,7 @@ public class ImageCollageImpl implements ImageCollage {
      * @return the primary image
      */
     public String getPrimaryImage() {
-        return primaryImage;
+        return dynamicMediaService.getDmImagePath(resourceResolver, primaryImage);
     }
 
     /**
@@ -87,7 +102,7 @@ public class ImageCollageImpl implements ImageCollage {
      * @return the first secondary image
      */
     public String getFirstSecondaryImage() {
-        return firstSecondaryImage;
+        return dynamicMediaService.getDmImagePath(resourceResolver, firstSecondaryImage);
     }
 
     /**
@@ -105,7 +120,7 @@ public class ImageCollageImpl implements ImageCollage {
      * @return the second secondary image
      */
     public String getSecondSecondaryImage() {
-        return secondSecondaryImage;
+        return dynamicMediaService.getDmImagePath(resourceResolver, secondSecondaryImage);
     }
 
     /**

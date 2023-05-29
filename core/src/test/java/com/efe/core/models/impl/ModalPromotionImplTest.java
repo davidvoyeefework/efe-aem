@@ -1,6 +1,7 @@
 package com.efe.core.models.impl;
 
 import com.efe.core.models.ModalPromotion;
+import com.efe.core.services.impl.DynamicMediaServiceImpl;
 import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 import org.apache.sling.api.resource.Resource;
@@ -14,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * The Class ModalPromotionImplTest.
  */
 @ExtendWith(AemContextExtension.class)
-public class ModalPromotionImplTest {
+class ModalPromotionImplTest {
 
     /** The Constant RESOURCE_CONTENT. */
     private static final String RESOURCE_CONTENT = "/com/efe/core/models/modal/modal-promotion.json";
@@ -34,6 +35,9 @@ public class ModalPromotionImplTest {
     /** The aem context. */
     private AemContext aemContext = new AemContext();
 
+    /** The DynamicMediaServiceImpl. */
+    private DynamicMediaServiceImpl dynamicMediaService = new DynamicMediaServiceImpl();
+
     /**
      * Sets the up.
      */
@@ -41,6 +45,7 @@ public class ModalPromotionImplTest {
     public void setup() {
         Class<ModalPromotion> modelClass = ModalPromotion.class;
         aemContext.load().json(RESOURCE_CONTENT, TEST_CONTENT_ROOT);
+        aemContext.registerInjectActivateService(dynamicMediaService);
         aemContext.addModelsForClasses(modelClass);
         resource = aemContext.currentResource(RESOURCE);
         modalPromotionModel = resource.adaptTo(modelClass);
@@ -50,7 +55,7 @@ public class ModalPromotionImplTest {
      * Simple load and getter test.
      */
     @Test
-    public void modelGetterTest() {
+    void modelGetterTest() {
         assertEquals("modalpromotion-f9526089d6", modalPromotionModel.getId());
         assertEquals("pretitle test", modalPromotionModel.getPretitle());
         assertEquals("title test", modalPromotionModel.getTitle());
