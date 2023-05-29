@@ -6,6 +6,7 @@ import static org.mockito.Mockito.lenient;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import com.efe.core.services.impl.DynamicMediaServiceImpl;
 import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -54,6 +55,9 @@ class ModalLeavingImplTest {
 	/** The aem context. */
 	private AemContext aemContext = new AemContext();
 
+	/** The DynamicMediaServiceImpl. */
+	private DynamicMediaServiceImpl dynamicMediaService = new DynamicMediaServiceImpl();
+
 	/** The resource resolver. */
 	@Mock
 	ResourceResolver resourceResolver;
@@ -72,6 +76,7 @@ class ModalLeavingImplTest {
 		Class<ModalLeaving> modelClass = ModalLeaving.class;
 		aemContext.load().json(RESOURCE_CONTENT, TEST_CONTENT_ROOT);
 		aemContext.load().json(GENERIC_LIST_CONTENT, GENERIC_LIST_RESOURCE);
+		aemContext.registerInjectActivateService(dynamicMediaService);
 		aemContext.addModelsForClasses(modelClass);
 		resource = aemContext.currentResource(RESOURCE);
 		final Map<String, Object> subServiceUser = new ConcurrentHashMap<>();

@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.lenient;
 
+import com.efe.core.services.impl.DynamicMediaServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -55,6 +56,9 @@ class FooterImplTest {
 	@Mock
 	EfeService efeService;
 
+	/** The DynamicMediaServiceImpl. */
+	private DynamicMediaServiceImpl dynamicMediaService = new DynamicMediaServiceImpl();
+
 	/**
 	 * Sets the up.
 	 */
@@ -62,6 +66,7 @@ class FooterImplTest {
 	public void setup() {
 		Class<Footer> modelClass = Footer.class;
 		aemContext.load().json(RESOURCE_CONTENT, TEST_CONTENT_ROOT);
+		aemContext.registerInjectActivateService(dynamicMediaService);
 		aemContext.addModelsForClasses(modelClass);
 
 		aemContext.registerService(Externalizer.class, externalizer);

@@ -7,6 +7,7 @@ import java.util.Objects;
 
 import javax.annotation.PostConstruct;
 
+import com.efe.core.services.DynamicMediaService;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -14,6 +15,7 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
+import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
@@ -47,6 +49,13 @@ public class HeaderImpl implements Header {
 	 */
 	@SlingObject
 	private Resource resource;
+
+	/**
+	 * Injecting dynamicMediaService
+	 *
+	 */
+	@OSGiService
+	private DynamicMediaService dynamicMediaService;
 
 	/** The id. */
 	@ValueMapValue
@@ -152,7 +161,7 @@ public class HeaderImpl implements Header {
 	 */
 	@Override
 	public String getFileReference() {
-		return fileReference;
+		return dynamicMediaService.getDmImagePath(resourceResolver, fileReference);
 	}
 
 	/**

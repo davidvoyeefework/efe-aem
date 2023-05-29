@@ -8,6 +8,7 @@ import java.util.Objects;
 
 import javax.annotation.PostConstruct;
 
+import com.efe.core.services.DynamicMediaService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
@@ -68,6 +69,10 @@ public class PlannerBioImpl implements PlannerBio {
 	/** The aggregator. */
 	@OSGiService
 	private ReferenceAggregator aggregator;
+
+	/** The dynamicMediaService. */
+	@OSGiService
+	private DynamicMediaService dynamicMediaService;
 
 	/** The current resource. */
 	@SlingObject
@@ -158,10 +163,15 @@ public class PlannerBioImpl implements PlannerBio {
 	 */
 	private void addPlannerOffices(ReferenceList referenceList) {
 		final Iterator<Reference> referenceItr = referenceList.iterator();
+		List<String> locations = new ArrayList<>();
 		while (referenceItr.hasNext()) {
 			Reference reference = referenceItr.next();
 			if (reference.getTarget() != null) {
 				String refPath = reference.getTarget().getPath();
+				if(locations.contains(refPath)) {
+					continue;
+				}
+				
 				Resource locationresource = resourceResolver.getResource(refPath);
 				if (null != locationresource) {
 					ContentFragment fragment = locationresource.adaptTo(ContentFragment.class);
@@ -179,6 +189,7 @@ public class PlannerBioImpl implements PlannerBio {
 										.replaceAll(PlannerLocationConstants.SPACE, PlannerLocationConstants.HYPHEN),
 								resourceResolver));
 						officeLocations.add(locationResponse);
+						locations.add(refPath);
 					}
 				}
 			}
@@ -355,7 +366,7 @@ public class PlannerBioImpl implements PlannerBio {
 	 */
 	@Override
 	public String getFileReference() {
-		return fileReference;
+		return dynamicMediaService.getDmImagePath(resourceResolver, fileReference);
 	}
 
 }

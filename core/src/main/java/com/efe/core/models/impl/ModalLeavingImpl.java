@@ -2,6 +2,7 @@ package com.efe.core.models.impl;
 
 import com.adobe.cq.export.json.ExporterConstants;
 import com.efe.core.models.ModalLeaving;
+import com.efe.core.services.DynamicMediaService;
 import com.efe.core.utils.EFEUtil;
 import com.efe.core.utils.ResourceUtil;
 import com.google.gson.JsonObject;
@@ -72,6 +73,17 @@ public class ModalLeavingImpl implements ModalLeaving {
     @OSGiService
     private transient ResourceResolverFactory resourceResolverFactory;
 
+    /**
+     * Injecting dynamicMediaService
+     *
+     */
+    @OSGiService
+    private DynamicMediaService dynamicMediaService;
+
+    /** The resource resolver. */
+    @SlingObject
+    private ResourceResolver resolver;
+
     /** The modal list. */
     JsonObject modalList = new JsonObject();
 
@@ -82,7 +94,7 @@ public class ModalLeavingImpl implements ModalLeaving {
      */
     @Override
     public String getLogo() {
-        return logo;
+        return dynamicMediaService.getDmImagePath(resolver, logo);
     }
 
     /**
@@ -166,5 +178,6 @@ public class ModalLeavingImpl implements ModalLeaving {
                 }
             }
             return modalList;
-    }}
+        }
+    }
 }
