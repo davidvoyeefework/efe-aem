@@ -363,6 +363,17 @@
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item0>
+                        <item1
+                                cq:styleGroupLabel="Center"
+                                jcr:primaryType="nt:unstructured">
+                        <cq:styles jcr:primaryType="nt:unstructured">
+                        <item0
+                                cq:styleClasses="cmp-title--center"
+                                cq:styleId="center"
+                                cq:styleLabel="Center"
+                                jcr:primaryType="nt:unstructured"/>
+                        </cq:styles>
+                        </item1>
                     </cq:styleGroups>
                 </policy>
             </title>
@@ -541,6 +552,7 @@
                         </item1>
                         <item2
                             cq:styleGroupLabel="Padding"
+                            cq:styleGroupMultiple="true"
                             jcr:primaryType="nt:unstructured">
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
@@ -548,6 +560,26 @@
                                     cq:styleId="default-padding"
                                     cq:styleLabel="Default Padding"
                                     jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                        cq:styleClasses="cmp-container--padding-right"
+                                        cq:styleId="right-padding"
+                                        cq:styleLabel="Right Padding"
+                                        jcr:primaryType="nt:unstructured"/>
+                                <item2
+                                        cq:styleClasses="cmp-container--padding-left"
+                                        cq:styleId="left-padding"
+                                        cq:styleLabel="Left Padding"
+                                        jcr:primaryType="nt:unstructured"/>
+                                <item3
+                                        cq:styleClasses="cmp-container--padding-top"
+                                        cq:styleId="top-padding"
+                                        cq:styleLabel="Top Padding"
+                                        jcr:primaryType="nt:unstructured"/>
+                                <item4
+                                        cq:styleClasses="cmp-container--padding-bottom"
+                                        cq:styleId="bottom-padding"
+                                        cq:styleLabel="Bottom Padding"
+                                        jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item2>
 						<item3
