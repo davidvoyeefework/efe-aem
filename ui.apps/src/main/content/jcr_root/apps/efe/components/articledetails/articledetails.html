@@ -24,10 +24,10 @@
             <div class="cmp-text" data-sly-test.hasContent="${model.articleFragmentPath.articleAuthors || model.articleFragmentPath.plannerResponse}">
                 <span class="cmp-text"><span>By:</span>
                     <sly data-sly-test.hasContent="${model.articleFragmentPath.articleAuthors}" data-sly-list.item = "${model.articleFragmentPath.articleAuthors}">
-						<span>${item.name},${item.title}</span></br>
+						<span class="author-name">${item.name}, ${item.title}</span></br>
 					</sly>
                 	<sly data-sly-test.hasContent="${model.articleFragmentPath.plannerResponse}" data-sly-list.item = "${model.articleFragmentPath.plannerResponse}">
-						<span>${item.firstName} ${item.middleName} ${item.lastName},${item.title}</span></br>
+						<span class="author-name">${item.firstName} ${item.middleName} ${item.lastName}, ${item.title}</span></br>
 					</sly>
                 </span>
             </div>

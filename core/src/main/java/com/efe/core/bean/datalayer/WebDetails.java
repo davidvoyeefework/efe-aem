@@ -34,6 +34,9 @@ public class WebDetails {
 	/** The site section level 2. */
 	@Expose
 	private String siteSectionLevel2 = StringUtils.EMPTY;
+	
+	@Expose
+	private PageView pageView = new PageView();
 
 	/**
 	 * Sets the name.
