@@ -8,7 +8,7 @@
         @include subhead-02;
         margin-bottom: 27px;
     }
-    &__description {
+    &__description p{
         @include body-02;
         margin-bottom: 40px;
     }

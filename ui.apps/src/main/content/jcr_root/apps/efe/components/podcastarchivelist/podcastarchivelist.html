@@ -1,0 +1,11 @@
+<section data-sly-use.model="com.efe.core.models.PodcastArchiveList"
+    data-sly-test="${model.podcasts.size > 0}" class="cmp-podcast-archive" data-sly-repeat="${model.podcasts}">
+    <h4 class="cmp-podcast-archive__title">${item.title}</h4>
+    <p class="cmp-podcast-archive__episode"><span>Season 2</span> <span>Episode 2</span></p>
+    <div class="cmp-podcast-archive__description">${item.descriptionHtml @context='html'}</div>
+    <div class="button cmp-button--button-secondary cmp-button--unset cmp-button--default cmp-button--default cmp-podcast-archive__link">
+        <a id="button-5487aab983" class="cmp-button">
+            <span class="cmp-button__text">Listen to episode</span>
+        </a>
+    </div>
+</section>
