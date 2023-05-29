@@ -10,26 +10,45 @@
     <script data-sly-test="${model.dataLayer}">
         function OptanonWrapper() {
         }
-        
-        window.adobeDataLayer = [];
-        adobeDataLayer.push(JSON.parse("${model.dataLayer @ context='scriptString'}"));
 
-        var formName = "${model.formName @ context='scriptString'}";
-        if (formName) {
-            window.adobeDataLayer.push({
-                event: 'form_complete',
-                _efe: {
-                    formInfo: {
-                        formName: formName,
-                        formComplete: {
-                            value: 1
+        document.addEventListener("DOMContentLoaded", () => {
+            window.adobeDataLayer = [];
+            var pageObj = JSON.parse("${model.dataLayer @ context='scriptString'}");
+
+            // code for populating authors
+            var authors = document.getElementsByClassName("author-name");
+            if (authors && authors.length > 0) {
+                var authorNames = [];
+                Array.from(authors).forEach(function (item, index) {
+                    if (item.innerText) {
+                        authorNames.push(item.innerText.split(",")[0])
+                    }
+
+                });
+                if (authors.length > 0) {
+                    pageObj.web.webPageDetails.authorName = authorNames.join(", ");
+                }
+            }
+
+            adobeDataLayer.push(pageObj);
+
+            var formName = "${model.formName @ context='scriptString'}";
+            if (formName) {
+                window.adobeDataLayer.push({
+                    event: 'form_complete',
+                    _efe: {
+                        formInfo: {
+                            formName: formName,
+                            formComplete: {
+                                value: 1
+                            }
                         }
                     }
-                }
-            })
-        }
-        const event = new Event("analyticsloaded");
-        window.dispatchEvent(event);
+                })
+            }
+            const event = new Event("analyticsloaded");
+            window.dispatchEvent(event);
+        });
 
     </script>
     <!--/**End Adobe Tag Manager **/-->
