@@ -340,9 +340,9 @@
                             sling:resourceType="efe/components/title"
                             linkTarget="_self"
                             type="h2"/>
-                        <relatedarticles
+                        <relatedarticle
                             jcr:primaryType="nt:unstructured"
-                            sling:resourceType="efe/components/relatedarticles"/>
+                            sling:resourceType="efe/components/relatedarticle"/>
                     </container_203413243>
                     <container_1756295856
                         jcr:primaryType="nt:unstructured"
