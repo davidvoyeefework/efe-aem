@@ -9,6 +9,7 @@ import static org.mockito.Mockito.when;
 
 import java.util.Iterator;
 
+import com.efe.core.services.impl.DynamicMediaServiceImpl;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.testing.mock.sling.servlet.MockRequestPathInfo;
 import org.apache.sling.testing.mock.sling.servlet.MockSlingHttpServletRequest;
@@ -64,10 +65,11 @@ class PlannerBioImplTest {
 	@Mock
 	private Resource resource;
 
+	/** The DynamicMediaServiceImpl. */
+	private DynamicMediaServiceImpl dynamicMediaService = new DynamicMediaServiceImpl();
 
 	/** The configuration. */
 	@Mock
-	/** The configuration. */
 	private EfeServiceImpl.Config configuration;
 
 	
@@ -84,7 +86,7 @@ class PlannerBioImplTest {
         aemContext.load().json("/com/efe/core/models/articleDetails/planner.json", "/content/dam/efe/cf/plannerlocation/planners/179/fragment_johnathan_179");
         aemContext.load().json("/com/efe/core/models/articleDetails/education.json", "/content/dam/efe/test-education-cf");
         aemContext.load().json("/com/efe/core/models/articleDetails/certification.json", "/content/dam/efe/test-certification");
- 
+		aemContext.registerInjectActivateService(dynamicMediaService);
 		
 	}
 	@Test

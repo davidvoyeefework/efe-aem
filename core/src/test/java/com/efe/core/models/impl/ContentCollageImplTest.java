@@ -1,6 +1,7 @@
 package com.efe.core.models.impl;
 
 import com.efe.core.models.ContentCollage;
+import com.efe.core.services.impl.DynamicMediaServiceImpl;
 import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 import org.apache.sling.api.resource.Resource;
@@ -34,6 +35,9 @@ public class ContentCollageImplTest {
     /** The aem context. */
     private AemContext aemContext = new AemContext();
 
+    /** The DynamicMediaServiceImpl. */
+    private DynamicMediaServiceImpl dynamicMediaService = new DynamicMediaServiceImpl();
+
     /**
      * Sets the up.
      */
@@ -41,6 +45,7 @@ public class ContentCollageImplTest {
     public void setup() {
         Class<ContentCollage> modelClass = ContentCollage.class;
         aemContext.load().json(RESOURCE_CONTENT, TEST_CONTENT_ROOT);
+        aemContext.registerInjectActivateService(dynamicMediaService);
         aemContext.addModelsForClasses(modelClass);
         resource = aemContext.currentResource(RESOURCE);
         contentCollageModel = resource.adaptTo(modelClass);

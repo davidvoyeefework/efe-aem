@@ -2,6 +2,7 @@ package com.efe.core.models.impl;
 
 import com.adobe.cq.export.json.ExporterConstants;
 import com.efe.core.models.ModalPromotion;
+import com.efe.core.services.DynamicMediaService;
 import com.efe.core.utils.EFEUtil;
 import com.efe.core.utils.LinkUtil;
 import org.apache.sling.api.resource.Resource;
@@ -9,6 +10,7 @@ import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
@@ -84,6 +86,13 @@ public class ModalPromotionImpl implements ModalPromotion {
     private String id;
 
     /**
+     * Injecting dynamicMediaService
+     *
+     */
+    @OSGiService
+    private DynamicMediaService dynamicMediaService;
+
+    /**
      * Gets the Pre-title.
      *
      * @return the Pre-title
@@ -140,7 +149,7 @@ public class ModalPromotionImpl implements ModalPromotion {
      */
     @Override
     public String getPromotionImage() {
-        return promotionImage;
+        return dynamicMediaService.getDmImagePath(resourceResolver, promotionImage);
     }
 
     /**
