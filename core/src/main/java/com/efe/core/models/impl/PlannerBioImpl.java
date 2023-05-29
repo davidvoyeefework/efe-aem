@@ -163,10 +163,15 @@ public class PlannerBioImpl implements PlannerBio {
 	 */
 	private void addPlannerOffices(ReferenceList referenceList) {
 		final Iterator<Reference> referenceItr = referenceList.iterator();
+		List<String> locations = new ArrayList<>();
 		while (referenceItr.hasNext()) {
 			Reference reference = referenceItr.next();
 			if (reference.getTarget() != null) {
 				String refPath = reference.getTarget().getPath();
+				if(locations.contains(refPath)) {
+					continue;
+				}
+				
 				Resource locationresource = resourceResolver.getResource(refPath);
 				if (null != locationresource) {
 					ContentFragment fragment = locationresource.adaptTo(ContentFragment.class);
@@ -184,6 +189,7 @@ public class PlannerBioImpl implements PlannerBio {
 										.replaceAll(PlannerLocationConstants.SPACE, PlannerLocationConstants.HYPHEN),
 								resourceResolver));
 						officeLocations.add(locationResponse);
+						locations.add(refPath);
 					}
 				}
 			}
