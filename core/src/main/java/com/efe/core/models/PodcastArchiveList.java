@@ -29,4 +29,11 @@ public interface PodcastArchiveList {
 	 */
 	boolean isEmpty();
 
+	/**
+	 * Checks if is api error.
+	 *
+	 * @return the isApiError
+	 */
+	boolean isApiError();
+
 }

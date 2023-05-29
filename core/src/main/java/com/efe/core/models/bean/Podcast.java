@@ -6,6 +6,9 @@ package com.efe.core.models.bean;
  */
 public class Podcast {
 	
+	/** The id. */
+	private String id;
+	
 	/** The title. */
 	private String title;
 	
@@ -130,6 +133,24 @@ public class Podcast {
 	 */
 	public void setPageLink(String pageLink) {
 		this.pageLink = pageLink;
+	}
+
+	/**
+	 * Gets the id.
+	 *
+	 * @return the id
+	 */
+	public String getId() {
+		return id;
+	}
+
+	/**
+	 * Sets the id.
+	 *
+	 * @param id the id to set
+	 */
+	public void setId(String id) {
+		this.id = id;
 	}
 
 }

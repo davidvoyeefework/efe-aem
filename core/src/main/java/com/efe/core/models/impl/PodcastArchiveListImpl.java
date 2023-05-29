@@ -1,20 +1,27 @@
 package com.efe.core.models.impl;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 import javax.annotation.PostConstruct;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.adobe.cq.export.json.ExporterConstants;
+import com.day.cq.commons.RangeIterator;
+import com.day.cq.tagging.TagManager;
 import com.efe.core.models.PodcastArchiveList;
 import com.efe.core.models.bean.Podcast;
 import com.efe.core.services.EfeService;
@@ -23,6 +30,7 @@ import com.efe.core.utils.EFEUtil;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
 
 /**
@@ -33,9 +41,15 @@ import com.google.gson.JsonParser;
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
 public class PodcastArchiveListImpl implements PodcastArchiveList {
 
+	/** The Constant LOGGER. */
+	private static final Logger LOGGER = LoggerFactory.getLogger(PodcastArchiveListImpl.class);
+
+	/** The Constant EPISODE_KEY. */
+	private static final String EPISODE_KEY = "Clips";
+
 	/** The Constant RESOURCE_TYPE. */
 	public static final String RESOURCE_TYPE = "efe/components/podcastarchivelist";
-	
+
 	/** The efe service. */
 	@OSGiService
 	private EfeService efeService;
@@ -43,6 +57,10 @@ public class PodcastArchiveListImpl implements PodcastArchiveList {
 	/** The rest service. */
 	@OSGiService
 	private RestService restService;
+
+	/** The resolver. */
+	@SlingObject
+	private ResourceResolver resolver;
 
 	/** The current resource. */
 	@SlingObject
@@ -52,42 +70,132 @@ public class PodcastArchiveListImpl implements PodcastArchiveList {
 	@ValueMapValue
 	private String id;
 
+	/** The playlist id. */
+	@ValueMapValue
+	private String playlistId;
+
+	/** The tags. */
+	@ValueMapValue
+	private String[] tags;
+	
+	@ValueMapValue
+	private String searchPath;
+
+	/** The podcasts. */
 	private List<Podcast> podcasts;
+
+	/** The is api error. */
+	private boolean isApiError;
 
 	/**
 	 * Inits the model.
 	 */
 	@PostConstruct
 	public void init() {
+		
+		if (null == tags || tags.length < 1 || StringUtils.isEmpty(searchPath)) {
+			return;
+		}
 
 		podcasts = new ArrayList<>();
+		final String orgId = efeService.getOmnyOrgId();
+		final String playListApi = efeService.getOmnyPlaylistApi();
 
-		String response = restService.getData(
-				"https://api.omny.fm/orgs/28f40a00-40de-4bda-94f0-ade200730f75/playlists/a61156d9-5032-4334-ae50-ae0c015b375a/clips/v2",
-				null);
+		if (StringUtils.isNotBlank(orgId) && StringUtils.isNotBlank(playlistId)
+				&& StringUtils.isNotBlank(playListApi)) {
+			final String endpoint = playListApi.replace("{orgid}", orgId).replace("{playlistid}", playlistId);
+			final String playlistAPIResponse = restService.getData(endpoint, null);
+			if (StringUtils.isNotEmpty(playlistAPIResponse)) {
+				try {
+					handleApiResponse(playlistAPIResponse);
+				} catch (JsonParseException e) {
+					LOGGER.error("Invalid JSON Response", e);
+				}
+			}
+		}
+	}
 
-		if (StringUtils.isNotEmpty(response)) {
+	/**
+	 * Find archived episodes.
+	 *
+	 * @param tags     the tags
+	 * @param resolver the resolver
+	 * @return the list
+	 */
+	private List<String> findArchivedEpisodes(String[] tags, ResourceResolver resolver) {
 
-			JsonElement rootElement = JsonParser.parseString(response);
-			if (rootElement != null && rootElement.isJsonObject()) {
-				JsonObject rootJsonObject = rootElement.getAsJsonObject();
+		List<String> episodes = new ArrayList<>();
 
-				if (rootJsonObject.has("Clips") && rootJsonObject.get("Clips").isJsonArray()) {
+		TagManager manager = resolver.adaptTo(TagManager.class);
 
-					JsonArray clips = rootJsonObject.get("Clips").getAsJsonArray();
-					if (null != clips && !clips.isEmpty()) {
+		RangeIterator<Resource> resoucesItr = manager.find(searchPath, tags);
 
-						for (JsonElement clip : clips) {
-							Podcast podcast = new Podcast();
-							if (clip.isJsonObject()) {
-								JsonObject clipObj = clip.getAsJsonObject();
-								podcast.setTitle(clipObj.get("Title").getAsString());
-								podcast.setDescriptionHtml(clipObj.get("DescriptionHtml").getAsString());
-								podcasts.add(podcast);
-							}
-						}
+		while (resoucesItr.hasNext()) {
+			Resource pageResource = resoucesItr.next();
+			Resource podcastResource = traverseResourceHierarchy(pageResource, "efe/components/podcast");
+			if (null != podcastResource) {
+				String episodeId = podcastResource.getValueMap().get("episodeId", null);
+				if (StringUtils.isNotBlank(episodeId)) {
+					episodes.add(episodeId);
+				}
+			}
+
+		}
+		return episodes;
+	}
+
+	/**
+	 * Traverse resource hierarchy.
+	 *
+	 * @param resource     the resource
+	 * @param resourceType the resource type
+	 * @return the resource
+	 */
+	private Resource traverseResourceHierarchy(Resource resource, String resourceType) {
+		if (resource != null) {
+			// Check if the current resource matches the specified resource type
+			if (resource.isResourceType(resourceType)) {
+				return resource;
+			}
+
+			// Recursively check child resources
+			Iterable<Resource> childResources = resource.getChildren();
+			for (Resource childResource : childResources) {
+				Resource targetResource = traverseResourceHierarchy(childResource, resourceType);
+				if (targetResource != null) {
+					return targetResource;
+				}
+			}
+		}
+
+		return null;
+	}
+
+	/**
+	 * Handle API response.
+	 *
+	 * @param archivedEpisodes    the archived episodes
+	 * @param playlistAPIResponse the playlist API response
+	 */
+	private void handleApiResponse(final String playlistAPIResponse) {
+
+		JsonElement rootElement = JsonParser.parseString(playlistAPIResponse);
+		if (rootElement != null && rootElement.isJsonObject()) {
+			JsonObject rootJsonObject = rootElement.getAsJsonObject();
+			if (rootJsonObject.has(EPISODE_KEY) && rootJsonObject.get(EPISODE_KEY).isJsonArray()) {
+				List<String> archivedEpisodes = findArchivedEpisodes(tags, resolver);
+				boolean isArchivedListEmpty = archivedEpisodes.isEmpty();
+
+				JsonArray clips = rootJsonObject.get(EPISODE_KEY).getAsJsonArray();
+				for (JsonElement clip : clips) {
+					Podcast podcast = EFEUtil.getPodCastObj(clip);
+					if (archivedEpisodes.contains(podcast.getId()) || isArchivedListEmpty) {
+						podcasts.add(podcast);
 					}
 				}
+			} else {
+				LOGGER.debug("Required property clips not found. {}", playlistAPIResponse);
+				isApiError = true;
 			}
 		}
 	}
@@ -113,15 +221,33 @@ public class PodcastArchiveListImpl implements PodcastArchiveList {
 	@Override
 	public boolean isEmpty() {
 		boolean isEmpty = true;
-		if (!podcasts.isEmpty()) {
+		if (StringUtils.isNotBlank(playlistId) || null != tags) {
 			isEmpty = false;
 		}
 		return isEmpty;
 	}
 
+	/**
+	 * Gets the podcasts.
+	 *
+	 * @return the podcasts
+	 */
 	@Override
 	public List<Podcast> getPodcasts() {
-		return podcasts;
+		if (Objects.nonNull(podcasts)) {
+			return new ArrayList<>(podcasts);
+		}
+		return Collections.emptyList();
+	}
+
+	/**
+	 * Checks if is api error.
+	 *
+	 * @return the isApiError
+	 */
+	@Override
+	public boolean isApiError() {
+		return isApiError;
 	}
 
 }

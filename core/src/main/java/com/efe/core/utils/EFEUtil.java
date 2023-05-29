@@ -12,6 +12,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.adobe.cq.wcm.core.components.util.ComponentUtils;
+import com.efe.core.models.bean.Podcast;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 
 /**
  * The Class EFEUtil.
@@ -67,9 +70,23 @@ public class EFEUtil {
 				LOGGER.error("Error while parsing date input", e);
 			}
 		}
-
 		return formattedDate;
-
 	}
 
+	/**
+	 * Gets the pod cast obj.
+	 *
+	 * @param episode the episode
+	 * @return the pod cast obj
+	 */
+	public static Podcast getPodCastObj(JsonElement episode) {
+		Podcast podcast = new Podcast();
+		if (null != episode && episode.isJsonObject()) {
+			JsonObject clipObj = episode.getAsJsonObject();
+			podcast.setId(clipObj.get("Id").getAsString());
+			podcast.setTitle(clipObj.get("Title").getAsString());
+			podcast.setDescriptionHtml(clipObj.get("DescriptionHtml").getAsString());
+		}
+		return podcast;
+	}
 }
