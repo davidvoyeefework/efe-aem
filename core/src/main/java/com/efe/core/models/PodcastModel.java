@@ -34,4 +34,11 @@ public interface PodcastModel {
 	 */
 	boolean isApiError();
 
+	/**
+	 * Gets the file reference.
+	 *
+	 * @return the fileReference
+	 */
+	String getFileReference();
+
 }

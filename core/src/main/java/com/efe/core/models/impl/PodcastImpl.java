@@ -17,6 +17,7 @@ import org.slf4j.LoggerFactory;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.efe.core.models.PodcastModel;
 import com.efe.core.models.bean.Podcast;
+import com.efe.core.services.DynamicMediaService;
 import com.efe.core.services.EfeService;
 import com.efe.core.services.RestService;
 import com.efe.core.utils.EFEUtil;
@@ -50,6 +51,10 @@ public class PodcastImpl implements PodcastModel {
 	/** The resolver. */
 	@SlingObject
 	private ResourceResolver resolver;
+	
+	/** The dynamic media service. */
+	@OSGiService
+	private DynamicMediaService dynamicMediaService;
 
 	/** The current resource. */
 	@SlingObject
@@ -62,6 +67,10 @@ public class PodcastImpl implements PodcastModel {
 	/** The playlist id. */
 	@ValueMapValue
 	private String episodeId;
+	
+	/** The file reference. */
+	@ValueMapValue
+	private String fileReference;
 
 	/** The podcasts. */
 	private Podcast podcast;
@@ -81,6 +90,10 @@ public class PodcastImpl implements PodcastModel {
 		if (StringUtils.isEmpty(episodeId) || StringUtils.isEmpty(orgId) || StringUtils.isEmpty(episodeApi)) {
 			LOGGER.debug("Skipping get episode details.");
 			return;
+		}
+		
+		if(StringUtils.isNotEmpty(fileReference)){
+			fileReference = dynamicMediaService.getDmImagePath(resolver, fileReference);
 		}
 
 		if (StringUtils.isNotBlank(orgId) && StringUtils.isNotBlank(episodeApi)) {
@@ -161,6 +174,16 @@ public class PodcastImpl implements PodcastModel {
 	@Override
 	public boolean isApiError() {
 		return isApiError;
+	}
+
+	/**
+	 * Gets the file reference.
+	 *
+	 * @return the fileReference
+	 */
+	@Override
+	public String getFileReference() {
+		return fileReference;
 	}
 
 }

@@ -135,7 +135,7 @@ public class PodcastArchiveListImpl implements PodcastArchiveList {
 
 		while (resoucesItr.hasNext()) {
 			Resource pageResource = resoucesItr.next();
-			Resource podcastResource = traverseResourceHierarchy(pageResource, PodcastImpl.RESOURCE_TYPE);
+			Resource podcastResource = EFEUtil.traverseResourceHierarchy(pageResource, PodcastImpl.RESOURCE_TYPE);
 			if (null != podcastResource) {
 				String episodeId = podcastResource.getValueMap().get("episodeId", null);
 				if (StringUtils.isNotBlank(episodeId)) {	
@@ -144,33 +144,6 @@ public class PodcastArchiveListImpl implements PodcastArchiveList {
 			}
 		}
 		return episodesMap;
-	}
-
-	/**
-	 * Traverse resource hierarchy.
-	 *
-	 * @param resource     the resource
-	 * @param resourceType the resource type
-	 * @return the resource
-	 */
-	private Resource traverseResourceHierarchy(Resource resource, String resourceType) {
-		if (resource != null) {
-			// Check if the current resource matches the specified resource type
-			if (resource.isResourceType(resourceType)) {
-				return resource;
-			}
-
-			// Recursively check child resources
-			Iterable<Resource> childResources = resource.getChildren();
-			for (Resource childResource : childResources) {
-				Resource targetResource = traverseResourceHierarchy(childResource, resourceType);
-				if (targetResource != null) {
-					return targetResource;
-				}
-			}
-		}
-
-		return null;
 	}
 
 	/**

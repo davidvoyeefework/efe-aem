@@ -87,7 +87,43 @@ public class EFEUtil {
 			podcast.setTitle(clipObj.get("Title").getAsString());
 			podcast.setDescriptionHtml(clipObj.get("DescriptionHtml").getAsString());
 			podcast.setEmbedUrl(clipObj.get("EmbedUrl").getAsString());
+			
+			if(clipObj.has("Season")) {
+				podcast.setSeason(clipObj.get("Season").getAsInt());
+			}
+			
+			if(clipObj.has("Episode")) {
+				podcast.setEpisode(clipObj.get("Episode").getAsInt());
+			}
+			
 		}
 		return podcast;
+	}
+	
+	/**
+	 * Traverse resource hierarchy.
+	 *
+	 * @param resource     the resource
+	 * @param resourceType the resource type
+	 * @return the resource
+	 */
+	public static Resource traverseResourceHierarchy(Resource resource, String resourceType) {
+		if (resource != null) {
+			// Check if the current resource matches the specified resource type
+			if (resource.isResourceType(resourceType)) {
+				return resource;
+			}
+
+			// Recursively check child resources
+			Iterable<Resource> childResources = resource.getChildren();
+			for (Resource childResource : childResources) {
+				Resource targetResource = traverseResourceHierarchy(childResource, resourceType);
+				if (targetResource != null) {
+					return targetResource;
+				}
+			}
+		}
+
+		return null;
 	}
 }

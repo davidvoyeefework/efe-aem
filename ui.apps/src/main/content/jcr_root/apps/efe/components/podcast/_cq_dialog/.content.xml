@@ -34,7 +34,18 @@
                                                 fieldLabel="Eoisode Id"
                                                 name="./episodeId"
                                                 required="true"/>
-                                         
+                                            <thumbnail
+                                                granite:class="cmp-image__editor-file-upload"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                allowUpload="{Boolean}false"
+                                                class="cq-droptarget"
+                                                fieldDescription="Add Podcast Image here"
+                                                fieldLabel="Podcast Image"
+                                                fileNameParameter="./fileName"
+                                                fileReferenceParameter="./fileReference"
+                                                mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
+                                                name="./file"/>                                       
                                             <id
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
