@@ -74,6 +74,7 @@ export default class LocationMapResults {
         let searchInput = this.el.querySelector("#location")?.value;
         if(this.searchBtn.textContent === "Find a Planner") {
             window.adobeDataLayer?.push({
+                event: "find_planner_click",
                 web: { 
                     webInteraction: {
                     name:"Find a Planner",
@@ -88,6 +89,7 @@ export default class LocationMapResults {
             })
         } else {
             window.adobeDataLayer?.push({
+                event: "find_planner_click",
                 web: { 
                     webInteraction: {
                     name:"Search Location",
