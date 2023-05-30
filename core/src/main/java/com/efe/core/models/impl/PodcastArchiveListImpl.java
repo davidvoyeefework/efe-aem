@@ -2,7 +2,9 @@ package com.efe.core.models.impl;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 import javax.annotation.PostConstruct;
@@ -27,6 +29,7 @@ import com.efe.core.models.bean.Podcast;
 import com.efe.core.services.EfeService;
 import com.efe.core.services.RestService;
 import com.efe.core.utils.EFEUtil;
+import com.efe.core.utils.LinkUtil;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -122,9 +125,9 @@ public class PodcastArchiveListImpl implements PodcastArchiveList {
 	 * @param resolver the resolver
 	 * @return the list
 	 */
-	private List<String> findArchivedEpisodes(String[] tags, ResourceResolver resolver) {
+	private Map<String, String> findArchivedEpisodes(String[] tags, ResourceResolver resolver) {
 
-		List<String> episodes = new ArrayList<>();
+		Map<String, String> episodesMap= new HashMap<>();
 
 		TagManager manager = resolver.adaptTo(TagManager.class);
 
@@ -132,16 +135,15 @@ public class PodcastArchiveListImpl implements PodcastArchiveList {
 
 		while (resoucesItr.hasNext()) {
 			Resource pageResource = resoucesItr.next();
-			Resource podcastResource = traverseResourceHierarchy(pageResource, "efe/components/podcast");
+			Resource podcastResource = traverseResourceHierarchy(pageResource, PodcastImpl.RESOURCE_TYPE);
 			if (null != podcastResource) {
 				String episodeId = podcastResource.getValueMap().get("episodeId", null);
-				if (StringUtils.isNotBlank(episodeId)) {
-					episodes.add(episodeId);
+				if (StringUtils.isNotBlank(episodeId)) {	
+					episodesMap.put(episodeId, LinkUtil.getFormattedLink(pageResource.getPath().replace("/jcr:content", ""), resolver));
 				}
 			}
-
 		}
-		return episodes;
+		return episodesMap;
 	}
 
 	/**
@@ -183,13 +185,14 @@ public class PodcastArchiveListImpl implements PodcastArchiveList {
 		if (rootElement != null && rootElement.isJsonObject()) {
 			JsonObject rootJsonObject = rootElement.getAsJsonObject();
 			if (rootJsonObject.has(EPISODE_KEY) && rootJsonObject.get(EPISODE_KEY).isJsonArray()) {
-				List<String> archivedEpisodes = findArchivedEpisodes(tags, resolver);
+				Map<String, String> archivedEpisodes = findArchivedEpisodes(tags, resolver);
 				boolean isArchivedListEmpty = archivedEpisodes.isEmpty();
 
 				JsonArray clips = rootJsonObject.get(EPISODE_KEY).getAsJsonArray();
 				for (JsonElement clip : clips) {
 					Podcast podcast = EFEUtil.getPodCastObj(clip);
-					if (archivedEpisodes.contains(podcast.getId()) || isArchivedListEmpty) {
+					if (archivedEpisodes.containsKey(podcast.getId()) || isArchivedListEmpty) {
+						podcast.setPageLink(archivedEpisodes.get(podcast.getId()));
 						podcasts.add(podcast);
 					}
 				}

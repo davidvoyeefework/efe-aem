@@ -26,7 +26,10 @@ public class Podcast {
 	
 	/** The page link. */
 	private String pageLink;
-
+	
+	/** The embed url. */
+	private String embedUrl;
+	
 	/**
 	 * Gets the title.
 	 *
@@ -152,5 +155,24 @@ public class Podcast {
 	public void setId(String id) {
 		this.id = id;
 	}
+	
+	/**
+	 * Gets the embed url.
+	 *
+	 * @return the embedUrl
+	 */
+	public String getEmbedUrl() {
+		return embedUrl;
+	}
+
+	/**
+	 * Sets the embed url.
+	 *
+	 * @param embedUrl the embedUrl to set
+	 */
+	public void setEmbedUrl(String embedUrl) {
+		this.embedUrl = embedUrl;
+	}
+
 
 }

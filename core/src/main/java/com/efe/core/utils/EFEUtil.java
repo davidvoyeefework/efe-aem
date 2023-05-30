@@ -86,6 +86,7 @@ public class EFEUtil {
 			podcast.setId(clipObj.get("Id").getAsString());
 			podcast.setTitle(clipObj.get("Title").getAsString());
 			podcast.setDescriptionHtml(clipObj.get("DescriptionHtml").getAsString());
+			podcast.setEmbedUrl(clipObj.get("EmbedUrl").getAsString());
 		}
 		return podcast;
 	}
