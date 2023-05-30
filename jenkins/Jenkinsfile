@@ -41,8 +41,8 @@ pipeline {
     }
     stage ('Adobe Sync') {
       environment {
-        AEM_SYNC_USER_NAME = "cfoon-edelman-financial-engines-com"
-        AEM_SYNC_USER_ACCESS_TOKEN = credentials('jenkins/aem-sync-user-access-token-tmp')
+        AEM_SYNC_USER_NAME = "svc-a-e-c-aem-edelmanfinancialengines-com"
+        AEM_SYNC_USER_ACCESS_TOKEN = credentials('jenkins/aem-sync-user-access-token')
       }
       steps {
         echo "Sync the ${branchName} branch to Adobe Git"
