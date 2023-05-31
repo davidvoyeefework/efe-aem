@@ -13,24 +13,7 @@
 
         document.addEventListener("DOMContentLoaded", () => {
             window.adobeDataLayer = [];
-            var pageObj = JSON.parse("${model.dataLayer @ context='scriptString'}");
-
-            // code for populating authors
-            var authors = document.getElementsByClassName("author-name");
-            if (authors && authors.length > 0) {
-                var authorNames = [];
-                Array.from(authors).forEach(function (item, index) {
-                    if (item.innerText) {
-                        authorNames.push(item.innerText.split(",")[0])
-                    }
-
-                });
-                if (authors.length > 0) {
-                    pageObj.web.webPageDetails.authorName = authorNames.join(", ");
-                }
-            }
-
-            adobeDataLayer.push(pageObj);
+            adobeDataLayer.push(JSON.parse("${model.dataLayer @ context='scriptString'}"));
 
             var formName = "${model.formName @ context='scriptString'}";
             if (formName) {
