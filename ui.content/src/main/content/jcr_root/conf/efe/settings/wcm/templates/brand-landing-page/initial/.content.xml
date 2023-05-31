@@ -27,7 +27,6 @@
                         sling:resourceType="efe/components/container"
                         layout="responsiveGrid">
                         <container
-                            cq:styleIds="[container-center]"
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="efe/components/container"
                             layout="responsiveGrid">
@@ -43,8 +42,18 @@
                             </cq:responsive>
                             <teaser
                                 cq:styleIds="[banner-hero,center]"
+                                jcr:description="&lt;p>Teaser Description&lt;/p>&#xd;&#xa;"
+                                jcr:title="Teaser Title"
                                 jcr:primaryType="nt:unstructured"
-                                sling:resourceType="efe/components/teaser"/>
+                                sling:resourceType="efe/components/teaser"
+                                altValueFromDAM="false"
+                                descriptionFromPage="false"
+                                disableLazyLoading="false"
+                                imageFromPageImage="false"
+                                isDecorative="false"
+                                linkTarget="_self"
+                                textIsRich="true"
+                                titleFromPage="false"/>
                         </container>
                         <container_1408673375
                             jcr:primaryType="nt:unstructured"
@@ -79,6 +88,7 @@
                             linkTarget="_self"
                             type="h2"/>
                         <container
+                            cq:styleIds="[bottom-padding]"
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="efe/components/container"
                             layout="responsiveGrid">
@@ -99,6 +109,7 @@
                                 textIsRich="true"/>
                         </container>
                         <container_1008480980
+                            cq:styleIds="[bottom-padding]"
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="efe/components/container"
                             layout="responsiveGrid">
@@ -118,6 +129,7 @@
                                 textIsRich="true"/>
                         </container_1008480980>
                         <container_825307442
+                            cq:styleIds="[bottom-padding]"
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="efe/components/container"
                             layout="responsiveGrid">
@@ -215,6 +227,7 @@
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="efe/components/verticalseparator"/>
                         <container_696729651
+                            cq:styleIds="[top-padding]"
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="efe/components/container"
                             layout="responsiveGrid">
