@@ -38,7 +38,7 @@ public class DynamicMediaServiceImpl implements DynamicMediaService {
 	 */
 	@Override
 	public String getDmImagePath(ResourceResolver resourceResolver, String imagePath) {
-		if (StringUtils.isNotBlank(imagePath) && Objects.nonNull(resourceResolver)) {
+		if (Objects.nonNull(resourceResolver) && StringUtils.isNotBlank(imagePath) && !(imagePath.endsWith(".svg"))) {
 			Resource imageRes = resourceResolver.getResource(imagePath + PlannerLocationConstants.FORWARD_SLASH + JcrConstants.JCR_CONTENT
 					+ PlannerLocationConstants.FORWARD_SLASH + METADATA);
 			if (Objects.nonNull(imageRes)) {
