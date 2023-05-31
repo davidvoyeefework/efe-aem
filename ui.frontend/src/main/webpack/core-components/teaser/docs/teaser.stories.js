@@ -20,10 +20,14 @@ export default {
     text: {
       control: { type: "text" },
     },
+    center: {
+        control: "boolean",
+    }
   },
 };
 const TemplateEfeTeaser = ({ label, ...args }) => HeroTeaser({ ...args });
 export const HeroTeaserHome = TemplateEfeTeaser.bind();
 HeroTeaserHome.args = {
   variant: "hero",
+    center: false,
 }
