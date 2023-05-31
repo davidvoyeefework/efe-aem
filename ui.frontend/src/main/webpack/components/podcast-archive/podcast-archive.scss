@@ -8,9 +8,9 @@
         @include subhead-02;
         margin-bottom: 27px;
     }
-    &__description {
-        @include body-02;
-        margin-bottom: 40px;
+    &__description {  
+            @include body-02;
+            margin-bottom: 40px;
     }
     &__link {
         cursor: pointer;

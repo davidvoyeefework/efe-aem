@@ -1,0 +1,57 @@
+ {
+ 	"podcastlistpage": {
+ 		"jcr:primaryType": "cq:Page",
+ 		"jcr:content": {
+ 			"jcr:primaryType": "cq:PageContent",
+ 			"jcr:title": "Podcast 5",
+ 			"sling:resourceType": "efe/components/page",
+ 			"root": {
+ 				"jcr:primaryType": "nt:unstructured",
+ 				"layout": "responsiveGrid",
+ 				"sling:resourceType": "efe/components/container",
+ 				"podcastlist": {
+ 					"jcr:primaryType": "nt:unstructured",
+ 					"sling:resourceType": "efe/components/podcastarchivelist",
+ 					"playlistId": "b596ed8c-8300-4942-8dbe-afeb010abe08",
+ 					"searchPath": "/content/efe",
+ 					"tags": "efe:asset-type/podcast",
+ 					"id": "1"
+ 				},
+ 				"podcastlistempty": {
+ 					"jcr:primaryType": "nt:unstructured",
+ 					"sling:resourceType": "efe/components/podcastarchivelist",
+ 					"playlistId": "b596ed8c-8300-4942-8dbe-afeb010abe08",
+ 					"searchPath": "/content/efe"
+ 				}
+ 			}
+ 		},
+ 		"podcast": {
+ 			"jcr:primaryType": "cq:Page",
+ 			"jcr:content": {
+ 				"jcr:primaryType": "cq:PageContent",
+ 				"jcr:title": "Podcast 5",
+ 				"cq:tags": [
+ 					"efe:asset-type/podcast"
+ 				],
+ 				"sling:resourceType": "efe/components/page",
+ 				"root": {
+ 					"jcr:primaryType": "nt:unstructured",
+ 					"layout": "responsiveGrid",
+ 					"sling:resourceType": "efe/components/container",
+ 					"container": {
+ 						"jcr:primaryType": "nt:unstructured",
+ 						"layout": "responsiveGrid",
+ 						"sling:resourceType": "efe/components/container",
+ 						"podcast": {
+ 							"jcr:primaryType": "nt:unstructured",
+ 							"jcr:createdBy": "admin",
+ 							"fileReference": "/content/dam/wknd-shared/en/adventures/climbing-new-zealand/adobestock-140634652.jpeg",
+ 							"sling:resourceType": "efe/components/podcast",
+ 							"episodeId": "1"
+ 						}
+ 					}
+ 				}
+ 			}
+ 		}
+ 	}
+ }

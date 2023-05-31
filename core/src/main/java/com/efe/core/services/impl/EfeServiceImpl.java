@@ -69,6 +69,15 @@ public class EfeServiceImpl implements EfeService {
 
 	/** The form auth header. */
 	private String formAuthHeader;
+	
+	/** The omny playlist api. */
+	private String omnyPlaylistApi;
+	
+	/** The omny episode api. */
+	private String omnyEpisodeApi;
+	
+	/** The omny org id. */
+	private String omnyOrgId;
 
 	/**
 	 * The Interface Config.
@@ -203,6 +212,30 @@ public class EfeServiceImpl implements EfeService {
 		 */
 		@AttributeDefinition(name = "Wealth Management forms Auth Header", description = "Wealth Management forms Auth Header")
 		String formAuthHeader();
+		
+		/**
+		 * Omny playlist api.
+		 *
+		 * @return the string
+		 */
+		@AttributeDefinition(name = "Omny Podcast Playlist API", description = "Omny Podcast Playlist API")
+		String omnyPlaylistApi();
+		
+		/**
+		 * Omny episode api.
+		 *
+		 * @return the string
+		 */
+		@AttributeDefinition(name = "Omny Podcast Episode API", description = "Omny Podcast Episode API")
+		String omnyEpisodeApi();
+		
+		/**
+		 * Omny org id.
+		 *
+		 * @return the string
+		 */
+		@AttributeDefinition(name = "Omny Podcast Org ID", description = "Omny Podcast Org ID")
+		String omnyOrgId();
 
 	}
 
@@ -231,6 +264,9 @@ public class EfeServiceImpl implements EfeService {
 		this.formAuthHeader = config.formAuthHeader();
 		this.gaEnabled = config.enableGA();
 		this.gaTagValue = config.gaTagValue();
+		this.omnyEpisodeApi = config.omnyEpisodeApi();
+		this.omnyPlaylistApi = config.omnyPlaylistApi();
+		this.omnyOrgId = config.omnyOrgId();
 
 	}
 
@@ -392,5 +428,35 @@ public class EfeServiceImpl implements EfeService {
 	@Override
 	public String getGaTagValue() {
 		return gaTagValue;
+	}
+
+	/**
+	 * Gets the omny playlist api.
+	 *
+	 * @return the omny playlist api
+	 */
+	@Override
+	public String getOmnyPlaylistApi() {
+		return omnyPlaylistApi;
+	}
+
+	/**
+	 * Gets the omny episode api.
+	 *
+	 * @return the omny episode api
+	 */
+	@Override
+	public String getOmnyEpisodeApi() {
+		return omnyEpisodeApi;
+	}
+
+	/**
+	 * Gets the omny org id.
+	 *
+	 * @return the omny org id
+	 */
+	@Override
+	public String getOmnyOrgId() {
+		return omnyOrgId;
 	}
 }

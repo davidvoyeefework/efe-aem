@@ -116,5 +116,29 @@ public interface EfeService {
 	 * @return the ga tag value
 	 */
 	String getGaTagValue();
+	
+	
+	/**
+	 * Gets the omny playlist api.
+	 *
+	 * @return the omny playlist api
+	 */
+	String getOmnyPlaylistApi();
+	
+	
+	/**
+	 * Gets the omny episode api.
+	 *
+	 * @return the omny episode api
+	 */
+	String getOmnyEpisodeApi();
+	
+	
+	/**
+	 * Gets the omny org id.
+	 *
+	 * @return the omny org id
+	 */
+	String getOmnyOrgId();
 
 }

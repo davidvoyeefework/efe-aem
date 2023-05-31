@@ -4,6 +4,8 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -12,6 +14,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.adobe.cq.wcm.core.components.util.ComponentUtils;
+import com.efe.core.models.bean.Podcast;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 
 /**
  * The Class EFEUtil.
@@ -67,9 +72,70 @@ public class EFEUtil {
 				LOGGER.error("Error while parsing date input", e);
 			}
 		}
-
 		return formattedDate;
-
 	}
 
+	/**
+	 * Gets the pod cast obj.
+	 *
+	 * @param episode the episode
+	 * @return the pod cast obj
+	 */
+	public static Podcast getPodCastObj(JsonElement episode) {
+		Podcast podcast = new Podcast();
+		if (null != episode && episode.isJsonObject()) {
+			JsonObject clipObj = episode.getAsJsonObject();
+			podcast.setId(clipObj.get("Id").getAsString());
+			podcast.setTitle(clipObj.get("Title").getAsString());
+			
+			String descHtml = clipObj.get("DescriptionHtml").getAsString();
+			if (StringUtils.isNotEmpty(descHtml)) {			
+				Pattern pattern = Pattern.compile("<p>(.*?)</p>"); // Pattern to match <p> tags
+				Matcher matcher = pattern.matcher(descHtml);
+				if (matcher.find()) {
+					podcast.setShortDescriptionHtml(matcher.group(1)); // Extract the content within the first <p> tag
+				}
+				podcast.setDescriptionHtml(descHtml);		
+			}
+		
+			podcast.setEmbedUrl(clipObj.get("EmbedUrl").getAsString());
+
+			if (clipObj.has("Season")) {
+				podcast.setSeason(clipObj.get("Season").getAsInt());
+			}
+
+			if (clipObj.has("Episode")) {
+				podcast.setEpisode(clipObj.get("Episode").getAsInt());
+			}
+
+		}
+		return podcast;
+	}
+
+	/**
+	 * Traverse resource hierarchy.
+	 *
+	 * @param resource     the resource
+	 * @param resourceType the resource type
+	 * @return the resource
+	 */
+	public static Resource traverseResourceHierarchy(Resource resource, String resourceType) {
+		if (resource != null) {
+			// Check if the current resource matches the specified resource type
+			if (resource.isResourceType(resourceType)) {
+				return resource;
+			}
+
+			// Recursively check child resources
+			Iterable<Resource> childResources = resource.getChildren();
+			for (Resource childResource : childResources) {
+				Resource targetResource = traverseResourceHierarchy(childResource, resourceType);
+				if (targetResource != null) {
+					return targetResource;
+				}
+			}
+		}
+
+		return null;
+	}
 }
