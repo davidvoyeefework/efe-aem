@@ -14,6 +14,7 @@ export default class Analytics {
         const region = this.findRegion(event.target);
         let linkActualText = event.target.closest("a")?.innerText;
         const getLinkHref = event.target.closest("a")?.getAttribute("href");
+        const checkIgnorelink = event.target.closest("a")?.getAttribute("data-ignore-tracking");
         if (!linkActualText && typeof linkActualText !== "string") return;
         linkActualText = linkActualText.toLowerCase()?.trim();
         if(getLinkHref?.match(/^tel\:/) || getLinkHref?.match(/^mailto\:/)) {
@@ -29,7 +30,7 @@ export default class Analytics {
                 },
             });
         }
-        if (this.linksToTarget.includes(linkActualText)) {
+        if (this.linksToTarget.includes(linkActualText) && !checkIgnorelink) {
             window.adobeDataLayer.push({
                 event: "link_click",
                 web: {

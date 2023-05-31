@@ -11,7 +11,7 @@
         function OptanonWrapper() {
         }
 
-        document.addEventListener("DOMContentLoaded", () => {
+        //document.addEventListener("DOMContentLoaded", () => {
             window.adobeDataLayer = [];
             adobeDataLayer.push(JSON.parse("${model.dataLayer @ context='scriptString'}"));
 
@@ -31,7 +31,7 @@
             }
             const event = new Event("analyticsloaded");
             window.dispatchEvent(event);
-        });
+       // });
 
     </script>
     <!--/**End Adobe Tag Manager **/-->

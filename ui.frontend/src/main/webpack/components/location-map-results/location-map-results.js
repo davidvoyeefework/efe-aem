@@ -72,8 +72,9 @@ export default class LocationMapResults {
     handleLocationSearch(event) {
         event.preventDefault();
         let searchInput = this.el.querySelector("#location")?.value;
-        if(this.searchBtn.textContent === "Find a Planner") {
+        if(this.searchBtn.textContent.toLowerCase() === "Find a Planner".toLowerCase()) {
             window.adobeDataLayer?.push({
+                event: "find_planner_click",
                 web: { 
                     webInteraction: {
                     name:"Find a Planner",
@@ -88,6 +89,7 @@ export default class LocationMapResults {
             })
         } else {
             window.adobeDataLayer?.push({
+                event: "find_planner_click",
                 web: { 
                     webInteraction: {
                     name:"Search Location",
@@ -96,6 +98,9 @@ export default class LocationMapResults {
                     locationValue: searchInput,
                     searchLocation: {
                         value: 1
+                    },
+                    findPlanner: {
+                        value: 0
                     }
                     }
                 }
