@@ -14,11 +14,41 @@
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="efe/components/experiencefragment"
                 fragmentVariationPath="/content/experience-fragments/efe/us/en/site/header/master"/>
-            <container
-                jcr:primaryType="nt:unstructured"
-                sling:resourceType="efe/components/container"
-                editable="{Boolean}true"
-                layout="responsiveGrid"/>
+            <container_1294424715
+                    cq:styleIds="[large,white]"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="efe/components/container"
+                    layout="responsiveGrid">
+                <breadcrumb
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="efe/components/breadcrumb"
+                        disableShadowing="false"
+                        hideCurrent="false"
+                        selectorIndex="0"
+                        showHidden="false"
+                        showSelectorAsLeaf="false"
+                        startLevel="4"/>
+            </container_1294424715>
+            <container_1735562516
+                    cq:styleIds="[large]"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="efe/components/container"
+                    layout="responsiveGrid">
+                <container
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="efe/components/container"
+                        editable="{Boolean}true"/>
+            </container_1735562516>
+            <container_1974993242
+                    cq:styleIds="[large]"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="efe/components/container"
+                    layout="responsiveGrid">
+                <container
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="efe/components/container"
+                        editable="{Boolean}true"/>
+            </container_1974993242>
             <experiencefragment-footer
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="efe/components/experiencefragment"
