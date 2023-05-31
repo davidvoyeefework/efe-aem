@@ -24,6 +24,7 @@ export default class LocationMapResults {
             lng: this.defaultLongitude,
             firstLoad: true,
         });
+        this.trackFindaPlanner = false;
     }
 
     static init(el) {
@@ -72,7 +73,7 @@ export default class LocationMapResults {
     handleLocationSearch(event) {
         event.preventDefault();
         let searchInput = this.el.querySelector("#location")?.value;
-        if(this.searchBtn.textContent.toLowerCase() === "Find a Planner".toLowerCase()) {
+        if(!this.trackFindaPlanner) {
             window.adobeDataLayer?.push({
                 event: "find_planner_click",
                 web: { 
@@ -87,6 +88,7 @@ export default class LocationMapResults {
                     }
                 }
             })
+            this.trackFindaPlanner = true;
         } else {
             window.adobeDataLayer?.push({
                 event: "find_planner_click",
