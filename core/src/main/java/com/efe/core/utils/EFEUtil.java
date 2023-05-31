@@ -4,6 +4,8 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -85,21 +87,31 @@ public class EFEUtil {
 			JsonObject clipObj = episode.getAsJsonObject();
 			podcast.setId(clipObj.get("Id").getAsString());
 			podcast.setTitle(clipObj.get("Title").getAsString());
-			podcast.setDescriptionHtml(clipObj.get("DescriptionHtml").getAsString());
-			podcast.setEmbedUrl(clipObj.get("EmbedUrl").getAsString());
 			
-			if(clipObj.has("Season")) {
+			String descHtml = clipObj.get("DescriptionHtml").getAsString();
+			if (StringUtils.isNotEmpty(descHtml)) {			
+				Pattern pattern = Pattern.compile("<p>(.*?)</p>"); // Pattern to match <p> tags
+				Matcher matcher = pattern.matcher(descHtml);
+				if (matcher.find()) {
+					podcast.setShortDescriptionHtml(matcher.group(1)); // Extract the content within the first <p> tag
+				}
+				podcast.setDescriptionHtml(descHtml);		
+			}
+		
+			podcast.setEmbedUrl(clipObj.get("EmbedUrl").getAsString());
+
+			if (clipObj.has("Season")) {
 				podcast.setSeason(clipObj.get("Season").getAsInt());
 			}
-			
-			if(clipObj.has("Episode")) {
+
+			if (clipObj.has("Episode")) {
 				podcast.setEpisode(clipObj.get("Episode").getAsInt());
 			}
-			
+
 		}
 		return podcast;
 	}
-	
+
 	/**
 	 * Traverse resource hierarchy.
 	 *

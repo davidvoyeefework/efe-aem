@@ -80,7 +80,7 @@ public class PodcastArchiveListImpl implements PodcastArchiveList {
 	/** The tags. */
 	@ValueMapValue
 	private String[] tags;
-	
+
 	@ValueMapValue
 	private String searchPath;
 
@@ -95,17 +95,17 @@ public class PodcastArchiveListImpl implements PodcastArchiveList {
 	 */
 	@PostConstruct
 	public void init() {
-		
+
 		if (null == tags || tags.length < 1 || StringUtils.isEmpty(searchPath)) {
 			return;
 		}
 
-		podcasts = new ArrayList<>();
 		final String orgId = efeService.getOmnyOrgId();
 		final String playListApi = efeService.getOmnyPlaylistApi();
 
 		if (StringUtils.isNotBlank(orgId) && StringUtils.isNotBlank(playlistId)
 				&& StringUtils.isNotBlank(playListApi)) {
+			podcasts = new ArrayList<>();
 			final String endpoint = playListApi.replace("{orgid}", orgId).replace("{playlistid}", playlistId);
 			final String playlistAPIResponse = restService.getData(endpoint, null);
 			if (StringUtils.isNotEmpty(playlistAPIResponse)) {
@@ -127,7 +127,7 @@ public class PodcastArchiveListImpl implements PodcastArchiveList {
 	 */
 	private Map<String, String> findArchivedEpisodes(String[] tags, ResourceResolver resolver) {
 
-		Map<String, String> episodesMap= new HashMap<>();
+		Map<String, String> episodesMap = new HashMap<>();
 
 		TagManager manager = resolver.adaptTo(TagManager.class);
 
@@ -138,8 +138,9 @@ public class PodcastArchiveListImpl implements PodcastArchiveList {
 			Resource podcastResource = EFEUtil.traverseResourceHierarchy(pageResource, PodcastImpl.RESOURCE_TYPE);
 			if (null != podcastResource) {
 				String episodeId = podcastResource.getValueMap().get("episodeId", null);
-				if (StringUtils.isNotBlank(episodeId)) {	
-					episodesMap.put(episodeId, LinkUtil.getFormattedLink(pageResource.getPath().replace("/jcr:content", ""), resolver));
+				if (StringUtils.isNotBlank(episodeId)) {
+					episodesMap.put(episodeId,
+							LinkUtil.getFormattedLink(pageResource.getPath().replace("/jcr:content", ""), resolver));
 				}
 			}
 		}

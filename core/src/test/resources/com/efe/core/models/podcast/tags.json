@@ -1,0 +1,22 @@
+{
+	"efe": {
+		"jcr:primaryType": "cq:Tag",
+		"jcr:createdBy": "admin",
+		"jcr:title": "efe",
+		"sling:resourceType": "cq/tagging/components/tag",
+		"asset-type": {
+			"jcr:primaryType": "cq:Tag",
+			"jcr:createdBy": "admin",
+			"jcr:title": "Asset Type",
+			"jcr:description": "",
+			"sling:resourceType": "cq/tagging/components/tag",
+			"podcast": {
+				"jcr:primaryType": "cq:Tag",
+				"jcr:createdBy": "admin",
+				"jcr:title": "Podcast",
+				"jcr:description": "",
+				"sling:resourceType": "cq/tagging/components/tag"
+			}
+		}
+	}
+}

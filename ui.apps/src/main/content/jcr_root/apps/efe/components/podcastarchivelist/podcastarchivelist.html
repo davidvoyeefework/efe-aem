@@ -2,8 +2,8 @@
     data-sly-use.template="core/wcm/components/commons/v1/templates.html">
     <section data-sly-test.isNotEmpty="${!model.empty}" class="cmp-podcast-archive" data-sly-repeat="${model.podcasts}">
         <h4 class="cmp-podcast-archive__title">${item.title}</h4>
-        <p class="cmp-podcast-archive__episode"><span>Season 2</span> <span>Episode 2</span></p>
-        <div class="cmp-podcast-archive__description">${item.descriptionHtml @context='html'}</div>
+        <p class="cmp-podcast-archive__episode" data-sly-test="${item.episode > 0 && item.season > 0}"><span>Season ${item.season}</span> <span>Episode ${item.episode}</span></p>
+        <p class="cmp-podcast-archive__description">${item.shortDescriptionHtml @context='html'}</p>
         <div
             class="button cmp-button--button-secondary cmp-button--unset cmp-button--default cmp-button--default cmp-podcast-archive__link">
             <a id="button-5487aab983" class="cmp-button" href="${item.pageLink}">

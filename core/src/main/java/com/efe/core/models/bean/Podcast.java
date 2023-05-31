@@ -15,14 +15,14 @@ public class Podcast {
 	/** The description html. */
 	private String descriptionHtml;
 	
+	/** The short description html. */
+	private String shortDescriptionHtml;
+	
 	/** The season. */
 	private int season;
 	
 	/** The episode. */
 	private int episode;
-	
-	/** The season episode label. */
-	private String seasonEpisodeLabel;
 	
 	/** The page link. */
 	private String pageLink;
@@ -103,24 +103,6 @@ public class Podcast {
 	}
 
 	/**
-	 * Gets the season episode label.
-	 *
-	 * @return the seasonEpisodeLabel
-	 */
-	public String getSeasonEpisodeLabel() {
-		return seasonEpisodeLabel;
-	}
-
-	/**
-	 * Sets the season episode label.
-	 *
-	 * @param seasonEpisodeLabel the seasonEpisodeLabel to set
-	 */
-	public void setSeasonEpisodeLabel(String seasonEpisodeLabel) {
-		this.seasonEpisodeLabel = seasonEpisodeLabel;
-	}
-
-	/**
 	 * Gets the page link.
 	 *
 	 * @return the pageLink
@@ -172,6 +154,24 @@ public class Podcast {
 	 */
 	public void setEmbedUrl(String embedUrl) {
 		this.embedUrl = embedUrl;
+	}
+
+	/**
+	 * Gets the short description html.
+	 *
+	 * @return the shortDescriptionHtml
+	 */
+	public String getShortDescriptionHtml() {
+		return shortDescriptionHtml;
+	}
+
+	/**
+	 * Sets the short description html.
+	 *
+	 * @param shortDescriptionHtml the shortDescriptionHtml to set
+	 */
+	public void setShortDescriptionHtml(String shortDescriptionHtml) {
+		this.shortDescriptionHtml = shortDescriptionHtml;
 	}
 
 
