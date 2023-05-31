@@ -75,6 +75,7 @@
             }
             @include media("<tablet") {
                 flex-direction: column;
+                width: 100%;
                 &--main {
                     width: 100%;
                     height: auto;
@@ -86,6 +87,12 @@
             @include media(">=tablet", "<=tablet-lg") {
                 &--pattern {
                     display: none;
+                }
+                >img {
+                    flex: 1;
+                }
+                &--main {
+                    width: 0;
                 }
             }
         }
@@ -147,6 +154,7 @@
             width: 100%;
             &__title {
                 margin-bottom: 30px;
+                text-align: left;
             }
             &__container {
                 flex-direction: column;
