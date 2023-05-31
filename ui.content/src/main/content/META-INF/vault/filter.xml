@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workspaceFilter version="1.0">
+    <filter root="/conf/efe/settings/wcm/templates/brand-landing-page" mode="replace"/>
     <filter root="/conf/efe/settings/wcm/templates/article" mode="replace"/>
     <filter root="/conf/efe/settings/wcm/templates/leader-bio" mode="replace"/>
     <filter root="/conf/efe/settings/wcm/templates/service-detail" mode="replace"/>
