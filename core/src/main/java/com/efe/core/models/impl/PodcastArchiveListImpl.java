@@ -24,6 +24,7 @@ import org.slf4j.LoggerFactory;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.day.cq.commons.RangeIterator;
 import com.day.cq.tagging.TagManager;
+import com.efe.core.constants.Constants;
 import com.efe.core.models.PodcastArchiveList;
 import com.efe.core.models.bean.Podcast;
 import com.efe.core.services.EfeService;
@@ -44,6 +45,9 @@ import com.google.gson.JsonParser;
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
 public class PodcastArchiveListImpl implements PodcastArchiveList {
 
+	/** The Constant DEFAULT_SEARCH_PATH. */
+	private static final String DEFAULT_SEARCH_PATH = "content/efe";
+
 	/** The Constant LOGGER. */
 	private static final Logger LOGGER = LoggerFactory.getLogger(PodcastArchiveListImpl.class);
 
@@ -52,6 +56,7 @@ public class PodcastArchiveListImpl implements PodcastArchiveList {
 
 	/** The Constant RESOURCE_TYPE. */
 	public static final String RESOURCE_TYPE = "efe/components/podcastarchivelist";
+
 
 	/** The efe service. */
 	@OSGiService
@@ -96,8 +101,12 @@ public class PodcastArchiveListImpl implements PodcastArchiveList {
 	@PostConstruct
 	public void init() {
 
-		if (null == tags || tags.length < 1 || StringUtils.isEmpty(searchPath)) {
+		if (null == tags || tags.length < 1) {
 			return;
+		}
+		
+		if(StringUtils.isBlank(searchPath)) {
+			searchPath = Constants.FORWARD_SLASH + DEFAULT_SEARCH_PATH;
 		}
 
 		final String orgId = efeService.getOmnyOrgId();
@@ -160,12 +169,11 @@ public class PodcastArchiveListImpl implements PodcastArchiveList {
 			JsonObject rootJsonObject = rootElement.getAsJsonObject();
 			if (rootJsonObject.has(EPISODE_KEY) && rootJsonObject.get(EPISODE_KEY).isJsonArray()) {
 				Map<String, String> archivedEpisodes = findArchivedEpisodes(tags, resolver);
-				boolean isArchivedListEmpty = archivedEpisodes.isEmpty();
-
+			
 				JsonArray clips = rootJsonObject.get(EPISODE_KEY).getAsJsonArray();
 				for (JsonElement clip : clips) {
 					Podcast podcast = EFEUtil.getPodCastObj(clip);
-					if (archivedEpisodes.containsKey(podcast.getId()) || isArchivedListEmpty) {
+					if (archivedEpisodes.containsKey(podcast.getId())) {
 						podcast.setPageLink(archivedEpisodes.get(podcast.getId()));
 						podcasts.add(podcast);
 					}
@@ -174,6 +182,10 @@ public class PodcastArchiveListImpl implements PodcastArchiveList {
 				LOGGER.debug("Required property clips not found. {}", playlistAPIResponse);
 				isApiError = true;
 			}
+		}
+		
+		if(podcasts.isEmpty()) {
+			isApiError = true;
 		}
 	}
 
