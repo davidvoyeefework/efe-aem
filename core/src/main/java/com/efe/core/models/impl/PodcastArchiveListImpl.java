@@ -57,7 +57,6 @@ public class PodcastArchiveListImpl implements PodcastArchiveList {
 	/** The Constant RESOURCE_TYPE. */
 	public static final String RESOURCE_TYPE = "efe/components/podcastarchivelist";
 
-
 	/** The efe service. */
 	@OSGiService
 	private EfeService efeService;
