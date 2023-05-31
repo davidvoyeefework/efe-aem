@@ -73,3 +73,12 @@
 .cmp-container--min-height {
     min-height: 620px !important;
 }
+
+.cmp-container--balancedheight {
+    >.cmp-container >.aem-Grid:first-of-type {
+        display: flex;
+    }
+    >.cmp-container >.aem-Grid:first-of-type * {
+        height: 100%;
+    }
+}
