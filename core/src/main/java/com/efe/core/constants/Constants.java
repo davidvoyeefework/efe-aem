@@ -30,6 +30,9 @@ public class Constants {
 	/** The Constant PNG. */
 	public static final String PNG = ".png";
 
+	/** The Constant FORWARD_SLASH. */
+	public static final String FORWARD_SLASH = "/";
+
 	/** The Constant UTF_CHARSET. */
 	public static final String UTF_CHARSET = "UTF-8";
 
