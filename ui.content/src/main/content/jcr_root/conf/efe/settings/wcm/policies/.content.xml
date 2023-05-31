@@ -635,6 +635,11 @@
                                     cq:styleId="container-center"
                                     cq:styleLabel="Center"
                                     jcr:primaryType="nt:unstructured"/>
+                                <item2
+                                        cq:styleClasses="cmp-container--balancedheight"
+                                        cq:styleId="balanced-height"
+                                        cq:styleLabel="Balanced Height"
+                                        jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item5>
                     </cq:styleGroups>
@@ -748,6 +753,17 @@
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item3>
+                        <item4
+                                cq:styleGroupLabel="Alignment"
+                                jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                        cq:styleClasses="cmp-teaser--center"
+                                        cq:styleId="center"
+                                        cq:styleLabel="Center"
+                                        jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item4>
                     </cq:styleGroups>
                 </policy>
             </teaser>
