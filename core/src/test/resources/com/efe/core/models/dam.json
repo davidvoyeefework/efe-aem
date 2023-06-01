@@ -1,0 +1,64 @@
+{
+	"efe": {
+		"test.png": {
+			"jcr:primaryType": "dam:Asset",
+			"jcr:mixinTypes": ["mix:referenceable"],
+			"jcr:uuid": "ba341fcf-bd91-4534-b44c-a6137f638287",
+			"jcr:content": {
+				"jcr:primaryType": "dam:AssetContent",
+				"dam:assetState": "processed",
+				"renditions": {
+					"jcr:primaryType": "nt:folder",
+					"cq5dam.web.1280.1280.png": {
+						"jcr:primaryType": "nt:file",
+						"jcr:createdBy": "admin",
+						"jcr:created": "Thu May 25 2023 14:32:13 GMT+0530",
+						"jcr:content": {
+							"jcr:primaryType": "oak:Resource",
+							"jcr:lastModifiedBy": "workflow-process-service",
+							"jcr:mimeType": "image/png",
+							"jcr:lastModified": "Thu May 25 2023 14:32:13 GMT+0530",
+							":jcr:data": 46766
+						}
+					},
+					"original": {
+						"jcr:primaryType": "nt:file",
+						"jcr:createdBy": "admin",
+						"jcr:created": "Thu May 25 2023 14:32:13 GMT+0530",
+						"jcr:content": {
+							"jcr:primaryType": "oak:Resource",
+							"jcr:lastModifiedBy": "admin",
+							"jcr:mimeType": "image/png",
+							"jcr:lastModified": "Thu May 25 2023 14:32:13 GMT+0530",
+							":jcr:data": 29103
+						}
+					},
+					"related": {
+						"jcr:primaryType": "nt:unstructured"
+					},
+					"metadata": {
+						"jcr:primaryType": "nt:unstructured",
+						"jcr:mixinTypes": ["cq:Taggable"],
+						"efe:portfolio": "NA",
+						"dam:Physicalheightininches": "-1.0",
+						"dam:Physicalwidthininches": "-1.0",
+						"dam:Fileformat": "PNG",
+						"dam:Progressive": "no",
+						"tiff:ImageLength": 270,
+						"dam:extracted": "Thu May 25 2023 14:32:13 GMT+0530",
+						"dc:format": "image/png",
+						"dam:Bitsperpixel": 8,
+						"dam:MIMEtype": "image/png",
+						"dam:Physicalwidthindpi": -1,
+						"dam:Physicalheightindpi": -1,
+						"dam:Numberofimages": 1,
+						"dam:Numberoftextualcomments": 0,
+						"tiff:ImageWidth": 367,
+						"dam:sha1": "4923846886b47414bc9493616f8b82157fce93f2",
+						"dam:size": 29103
+					}
+				}
+			}
+		}
+	}
+}

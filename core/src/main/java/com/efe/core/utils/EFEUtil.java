@@ -83,12 +83,12 @@ public class EFEUtil {
 	 */
 	public static Podcast getPodCastObj(JsonElement episode) {
 		Podcast podcast = new Podcast();
-		if (null != episode && episode.isJsonObject()) {
+		if (null != episode && episode.isJsonObject() && episode.getAsJsonObject().has("Id")) {
 			JsonObject clipObj = episode.getAsJsonObject();
 			podcast.setId(clipObj.get("Id").getAsString());
-			podcast.setTitle(clipObj.get("Title").getAsString());
+			podcast.setTitle(getJsonValue(clipObj, "Title"));
 			
-			String descHtml = clipObj.get("DescriptionHtml").getAsString();
+			String descHtml = getJsonValue(clipObj, "DescriptionHtml");
 			if (StringUtils.isNotEmpty(descHtml)) {			
 				Pattern pattern = Pattern.compile("<p>(.*?)</p>"); // Pattern to match <p> tags
 				Matcher matcher = pattern.matcher(descHtml);
@@ -98,7 +98,8 @@ public class EFEUtil {
 				podcast.setDescriptionHtml(descHtml);		
 			}
 		
-			podcast.setEmbedUrl(clipObj.get("EmbedUrl").getAsString());
+			podcast.setEmbedUrl(getJsonValue(clipObj, "EmbedUrl"));
+			podcast.setDatePublished(getJsonValue(clipObj, "PublishedUtc"));
 
 			if (clipObj.has("Season")) {
 				podcast.setSeason(clipObj.get("Season").getAsInt());
@@ -110,6 +111,21 @@ public class EFEUtil {
 
 		}
 		return podcast;
+	}
+	
+	/**
+	 * Gets the json value.
+	 *
+	 * @param jsonObject the json object
+	 * @param key the key
+	 * @return the json value
+	 */
+	private static final String getJsonValue(JsonObject jsonObject, String key) {
+		String jsonValue = null;
+		if(StringUtils.isNotEmpty(key) && jsonObject.has(key)) {
+			jsonValue = jsonObject.get(key).getAsString();
+		}	
+		return jsonValue;
 	}
 
 	/**
