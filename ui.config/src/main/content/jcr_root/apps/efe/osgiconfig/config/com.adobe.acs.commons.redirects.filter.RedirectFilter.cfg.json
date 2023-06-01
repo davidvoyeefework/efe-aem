@@ -1,0 +1,10 @@
+{
+    "enabled":true,
+    "mapUrls":true,
+    "extensions":[],
+    "paths":["/content"],
+    "preserveQueryString":false,
+    "additionalHeaders":[],
+    "bucketName":"settings",
+    "configName":"redirects"
+}
