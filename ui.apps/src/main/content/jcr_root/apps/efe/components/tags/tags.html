@@ -1,6 +1,6 @@
 <sly data-sly-use.tagsImpl="com.efe.core.models.Tags"></sly>
 <sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"
-     data-sly-test.isNotEmpty="${properties.tags}">
+     data-sly-test.isNotEmpty="${!tagsImpl.empty}">
     <div class="cmp-tags" id="${tagsImpl.id}">
         <sly data-sly-list.tagsList="${tagsImpl.tagList}">
             <div class="button cmp-button--title-tag cmp-button-- cmp-button-- cmp-button--">

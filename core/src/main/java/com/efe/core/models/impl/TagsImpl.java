@@ -8,15 +8,12 @@ import com.efe.core.models.Tags;
 import com.efe.core.utils.EFEUtil;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
-import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.annotation.PostConstruct;
 import java.util.*;
@@ -35,15 +32,8 @@ public class TagsImpl implements Tags {
     /** The Constant RESOURCE_TYPE. */
     public static final String RESOURCE_TYPE = "efe/components/tags";
 
-    /** The Constant LOGGER. */
-    private static final Logger LOGGER = LoggerFactory.getLogger(TagsImpl.class);
-
     /** The links. */
-    List<LinkBean> links;
-
-    /** The resource resolver. */
-    @SlingObject
-    private ResourceResolver resourceResolver;
+    private List<LinkBean> links;
 
     /** The current resource. */
     @SlingObject
@@ -69,22 +59,21 @@ public class TagsImpl implements Tags {
         if (null == pageTags || pageTags.length < 1) {
             return;
         }
-        if (null != pageTags) {
-            List<String> hideTagsList = Arrays.asList(tags);
-            if (null != hideTagsList) {
-                links = new ArrayList<>();
-                for (Tag pageTag : pageTags) {
-                    if (hideTagsList.contains(pageTag.getTagID())) {
-                        continue;
-                    }
-                    LinkBean linkBean = new LinkBean();
-                    linkBean.setTagLabel(pageTag.getTitle());
-                    links.add(linkBean);
-                }
-            }
-        } else {
-            LOGGER.error("Tags are not available : {}", pageTags.length);
+        List<String> hideTagsList = new ArrayList<>();
+        if (null != tags) {
+            hideTagsList = Arrays.asList(tags);
         }
+
+        links = new ArrayList<>();
+        for (Tag pageTag : pageTags) {
+            if (!hideTagsList.isEmpty() && hideTagsList.contains(pageTag.getTagID())) {
+                continue;
+            }
+            LinkBean linkBean = new LinkBean();
+            linkBean.setTagLabel(pageTag.getTitle());
+            links.add(linkBean);
+        }
+
     }
 
     /**
@@ -113,6 +102,20 @@ public class TagsImpl implements Tags {
             id = EFEUtil.getId(resource);
         }
         return id;
+    }
+
+    /**
+     * Checks if is empty.
+     *
+     * @return the empty
+     */
+    @Override
+    public boolean isEmpty() {
+        boolean isEmpty = true;
+        if (currentPage.getTags().length > 0) {
+            isEmpty = false;
+        }
+        return isEmpty;
     }
 
 }

@@ -23,4 +23,11 @@ public interface Tags {
      */
     List<LinkBean> getTagList();
 
+    /**
+     * Checks if is empty.
+     *
+     * @return the empty
+     */
+    boolean isEmpty();
+
 }
