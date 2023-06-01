@@ -76,9 +76,10 @@
 
 .cmp-container--balancedheight {
     >.cmp-container >.aem-Grid:first-of-type {
-        display: flex;
+        display: flex !important;
     }
-    >.cmp-container >.aem-Grid:first-of-type * {
-        height: 100%;
-    }
+}
+
+.cmp-container--fillHeight * {
+    height: 100% !important;
 }
