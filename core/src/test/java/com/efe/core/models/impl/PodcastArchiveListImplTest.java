@@ -63,7 +63,7 @@ class PodcastArchiveListImplTest {
 		assertEquals(21, podcast.getEpisode());
 		assertEquals(2, podcast.getSeason());
 		assertEquals("1", archiveList.getId());
-		assertEquals("/content/efe/podcastlistpage/podcast.html", podcast.getPageLink());
+		assertEquals("/content/efe/podcast.html", podcast.getPageLink());
 		assertFalse(archiveList.isEmpty());
 		assertFalse(archiveList.isApiError());
 	}

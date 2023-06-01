@@ -41,4 +41,11 @@ public interface PodcastModel {
 	 */
 	String getFileReference();
 
+	/**
+	 * Gets the json ld.
+	 *
+	 * @return the jsonLd
+	 */
+	String getJsonLd();
+
 }
