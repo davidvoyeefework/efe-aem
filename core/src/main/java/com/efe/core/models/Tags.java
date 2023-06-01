@@ -17,13 +17,6 @@ public interface Tags {
     String getId();
 
     /**
-     * Gets the tags.
-     *
-     * @return the tags.
-     */
-    String[] getTags();
-
-    /**
      * Gets the TagList
      *
      * @return the linkBeanList

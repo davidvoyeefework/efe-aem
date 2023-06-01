@@ -5,7 +5,9 @@ import com.day.cq.tagging.Tag;
 import com.day.cq.wcm.api.Page;
 import com.efe.core.bean.LinkBean;
 import com.efe.core.models.Tags;
+import com.efe.core.utils.EFEUtil;
 import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
@@ -16,9 +18,8 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import javax.annotation.PostConstruct;
+import java.util.*;
 
 /**
  * The Class TagsImpl.
@@ -36,12 +37,19 @@ public class TagsImpl implements Tags {
 
     /** The Constant LOGGER. */
     private static final Logger LOGGER = LoggerFactory.getLogger(TagsImpl.class);
-    private final List<LinkBean> linkBeanList = new ArrayList<>();
+
+    /** The links. */
+    List<LinkBean> links;
 
     /** The resource resolver. */
     @SlingObject
     private ResourceResolver resourceResolver;
 
+    /** The current resource. */
+    @SlingObject
+    private Resource resource;
+
+    /** The currentPage Object. */
     @ScriptVariable
     private Page currentPage;
     /** the id *. */
@@ -53,34 +61,45 @@ public class TagsImpl implements Tags {
     private String[] tags;
 
     /**
-     * @return linkBeanList
+     * Inits the model.
      */
-    @Override
-    public List<LinkBean> getTagList() {
+    @PostConstruct
+    public void init() {
         Tag[] pageTags = currentPage.getTags();
-        List<String> hideTagsList = Arrays.asList(tags);
-        List<String> links = new ArrayList<>();
-
-        if (pageTags != null) {
-            for (Tag pageTag : pageTags) {
-                if (hideTagsList.contains(pageTag.getTagID())) {
-                    continue;
-                }
-                links.add(pageTag.getTitle());
-            }
-
-            for (String tag : links) {
-                LinkBean linkBean = new LinkBean();
-                if (tag != null) {
-                    linkBean.setTagLabel(tag);
-                    linkBeanList.add(linkBean);
+        if (null == pageTags || pageTags.length < 1) {
+            return;
+        }
+        if (null != pageTags) {
+            List<String> hideTagsList = Arrays.asList(tags);
+            if (null != hideTagsList) {
+                links = new ArrayList<>();
+                for (Tag pageTag : pageTags) {
+                    if (hideTagsList.contains(pageTag.getTagID())) {
+                        continue;
+                    }
+                    LinkBean linkBean = new LinkBean();
+                    linkBean.setTagLabel(pageTag.getTitle());
+                    links.add(linkBean);
                 }
             }
         } else {
             LOGGER.error("Tags are not available : {}", pageTags.length);
         }
+    }
 
-        return linkBeanList;
+    /**
+     * Gets the links.
+     *
+     * @return the links
+     */
+    @Override
+    public List<LinkBean> getTagList() {
+
+        if (Objects.nonNull(links)) {
+            return new ArrayList<>(links);
+        }
+        return Collections.emptyList();
+
     }
 
     /**
@@ -90,15 +109,10 @@ public class TagsImpl implements Tags {
      */
     @Override
     public String getId() {
+        if (id == null) {
+            id = EFEUtil.getId(resource);
+        }
         return id;
     }
 
-    /**
-     * Gets the tags
-     *
-     * @return tags
-     */
-    public String[] getTags() {
-        return tags;
-    }
 }

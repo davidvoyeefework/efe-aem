@@ -1,19 +1,26 @@
 package com.efe.core.bean;
 
+/**
+ * The Class LinkBean.
+ */
 public class LinkBean {
 
-    /* tagLabel */
+    /* The tagLabel. */
     private String tagLabel;
 
     /**
-     * @return tagLabel
+     * Gets the tagLabel.
+     *
+     * @return the tagLabel
      */
     public String getTagLabel() {
         return tagLabel;
     }
 
     /**
-     * @param tagLabel
+     * Sets the tagLabel.
+     *
+     * @param tagLabel the tagLabel to set
      */
     public void setTagLabel(String tagLabel) {
         this.tagLabel = tagLabel;
