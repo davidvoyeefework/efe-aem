@@ -67,6 +67,15 @@ public class SeoServiceImpl implements SeoService{
 	/** The youtube API url. */
 	private String youtubeAPIUrl;
 	
+	/** The podcast type. */
+	private String podcastType;
+	
+	/** The podcast awards. */
+	private String podcastAwards;
+	
+	/** The podcast genre. */
+	private String podcastGenre;
+	
 	/**
 	 * The Interface Config.
 	 */
@@ -208,6 +217,30 @@ public class SeoServiceImpl implements SeoService{
 			 */
 			@AttributeDefinition(name = "Video Type")
 			String videoType();
+			
+			/**
+			 * Podcast type.
+			 *
+			 * @return the string
+			 */
+			@AttributeDefinition(name = "Podcast Type")
+			String podcastType();
+			
+			/**
+			 * Podcast awards.
+			 *
+			 * @return the string
+			 */
+			@AttributeDefinition(name = "Podcast Awards")
+			String podcastAwards();
+			
+			/**
+			 * Podcast genre.
+			 *
+			 * @return the string
+			 */
+			@AttributeDefinition(name = "Podcast Genre")
+			String podcastGenre();
 	}
 	
 	/**
@@ -235,6 +268,9 @@ public class SeoServiceImpl implements SeoService{
 		breadcrumbItemType = config.breadCrumbItemType();
 		youtubeAPIUrl = config.youtubeAPIUrl();
 		videoType = config.videoType();
+		podcastType = config.podcastType();
+		podcastGenre = config.podcastGenre();
+		podcastAwards = config.podcastAwards();
 	}
 
 	/**
@@ -405,6 +441,36 @@ public class SeoServiceImpl implements SeoService{
 	@Override
 	public String getVideoType() {
 		return videoType;
+	}
+
+	/**
+	 * Gets the podcast type.
+	 *
+	 * @return the podcast type
+	 */
+	@Override
+	public String getPodcastType() {
+		return podcastType;
+	}
+
+	/**
+	 * Gets the podcast award value.
+	 *
+	 * @return the podcast award value
+	 */
+	@Override
+	public String getPodcastAwardValue() {
+		return podcastAwards;
+	}
+
+	/**
+	 * Gets the podcast genre value.
+	 *
+	 * @return the podcast genre value
+	 */
+	@Override
+	public String getPodcastGenreValue() {
+		return podcastGenre;
 	}
 
 }

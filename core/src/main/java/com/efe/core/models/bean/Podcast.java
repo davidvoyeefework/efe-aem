@@ -30,6 +30,9 @@ public class Podcast {
 	/** The embed url. */
 	private String embedUrl;
 	
+	/** The date published. */
+	private String datePublished;
+	
 	/**
 	 * Gets the title.
 	 *
@@ -174,5 +177,21 @@ public class Podcast {
 		this.shortDescriptionHtml = shortDescriptionHtml;
 	}
 
+	/**
+	 * Gets the date published.
+	 *
+	 * @return the datePublished
+	 */
+	public String getDatePublished() {
+		return datePublished;
+	}
 
+	/**
+	 * Sets the date published.
+	 *
+	 * @param datePublished the datePublished to set
+	 */
+	public void setDatePublished(String datePublished) {
+		this.datePublished = datePublished;
+	}
 }
