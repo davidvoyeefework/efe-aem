@@ -122,7 +122,7 @@ public class EFEUtil {
 	 */
 	private static final String getJsonValue(JsonObject jsonObject, String key) {
 		String jsonValue = null;
-		if(StringUtils.isNoneEmpty(key) && jsonObject.has(key)) {
+		if(StringUtils.isNotEmpty(key) && jsonObject.has(key)) {
 			jsonValue = jsonObject.get(key).getAsString();
 		}	
 		return jsonValue;
