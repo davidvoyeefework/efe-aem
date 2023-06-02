@@ -149,6 +149,7 @@
                                 sling:resourceType="efe/components/separator"/>
                         </container_580960927>
                         <container_1151896970
+                            cq:styleIds="[bottom-padding]"
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="efe/components/container"
                             layout="responsiveGrid">
@@ -157,7 +158,6 @@
                                 sling:resourceType="efe/components/tags"/>
                         </container_1151896970>
                         <container_1183161536
-                            cq:styleIds="[bottom-padding]"
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="efe/components/container"
                             layout="responsiveGrid">

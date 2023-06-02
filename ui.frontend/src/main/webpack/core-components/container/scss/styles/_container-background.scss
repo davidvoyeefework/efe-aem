@@ -18,11 +18,18 @@
     max-width: $xxxl !important;
     margin: 0 auto !important;
     float: unset !important;
+    padding: 0 24px !important;
+    @include media(">=tablet-lg") {
+        padding: 0 48px !important;
+    }
 }
 .cmp-container--width-1400 {
     max-width: $xxl !important;
     margin: 0 auto !important;
     float: unset !important;
+    @include media("<tablet-lg") {
+        padding: 0 24px !important;
+    }
 }
 .cmp-container--bg-efe-gray-light {
     @include bg-efe-gray-light;
