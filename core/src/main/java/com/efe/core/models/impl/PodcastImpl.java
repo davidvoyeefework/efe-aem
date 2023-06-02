@@ -20,7 +20,9 @@ import com.efe.core.models.bean.Podcast;
 import com.efe.core.services.DynamicMediaService;
 import com.efe.core.services.EfeService;
 import com.efe.core.services.RestService;
+import com.efe.core.services.SeoService;
 import com.efe.core.utils.EFEUtil;
+import com.efe.core.utils.SeoUtil;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
@@ -55,6 +57,10 @@ public class PodcastImpl implements PodcastModel {
 	/** The dynamic media service. */
 	@OSGiService
 	private DynamicMediaService dynamicMediaService;
+	
+	/** The SeoService service. */
+	@OSGiService
+	private SeoService seoService;
 
 	/** The current resource. */
 	@SlingObject
@@ -77,6 +83,9 @@ public class PodcastImpl implements PodcastModel {
 
 	/** The is api error. */
 	private boolean isApiError;
+	
+	/** The json ld. */
+	private String jsonLd;
 
 	/**
 	 * Inits the model.
@@ -125,6 +134,8 @@ public class PodcastImpl implements PodcastModel {
 
 			if (null != podcast && StringUtils.isBlank(podcast.getId())) {
 				isApiError = true;
+			}else {
+				jsonLd = SeoUtil.getPodcastSchema(podcast, seoService, fileReference);
 			}
 		}
 	}
@@ -184,6 +195,16 @@ public class PodcastImpl implements PodcastModel {
 	@Override
 	public String getFileReference() {
 		return fileReference;
+	}
+
+	/**
+	 * Gets the json ld.
+	 *
+	 * @return the jsonLd
+	 */
+	@Override
+	public String getJsonLd() {
+		return jsonLd;
 	}
 
 }

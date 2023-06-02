@@ -223,10 +223,6 @@
                     $gap: rem(40)
                     );
 
-                    hr {
-                        margin-bottom: rem(30);
-                    }
-
                     .grid-3-col {
                         @include grid(
                         $template-columns: 1fr 1fr 1fr,
@@ -247,10 +243,6 @@
                     $template-columns: 2fr 2fr,
                     $gap: rem(40)
                     );
-
-                    hr {
-                        margin-bottom: rem(30);
-                    }
 
                     .grid-3-col {
                         @include grid(

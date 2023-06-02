@@ -1,5 +1,6 @@
 package com.efe.core.utils;
 
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -35,6 +36,7 @@ import com.efe.core.bean.jsonld.MainEntity;
 import com.efe.core.bean.jsonld.WorksFor;
 import com.efe.core.constants.Constants;
 import com.efe.core.constants.PlannerLocationConstants;
+import com.efe.core.models.bean.Podcast;
 import com.efe.core.models.multifield.FAQ;
 import com.efe.core.models.multifield.SocialLink;
 import com.efe.core.services.EfeService;
@@ -249,15 +251,15 @@ public class SeoUtil {
 		jsonLd.setItemListElement(itemListElements);
 		return gson.toJson(jsonLd);
 	}
-	
+
 	/**
 	 * Gets the planner schema.
 	 *
-	 * @param seoService the seo service
-	 * @param efeService the efe service
-	 * @param externalizer the externalizer
+	 * @param seoService       the seo service
+	 * @param efeService       the efe service
+	 * @param externalizer     the externalizer
 	 * @param resourceResolver the resource resolver
-	 * @param planner the planner
+	 * @param planner          the planner
 	 * @return the planner schema
 	 */
 	public static String getPlannerSchema(SeoService seoService, EfeService efeService, Externalizer externalizer,
@@ -271,7 +273,7 @@ public class SeoUtil {
 	 * Gets the article schema.
 	 *
 	 * @param seoService       the seo service
-	 * @param efeService 
+	 * @param efeService
 	 * @param externalizer     the externalizer
 	 * @param resourceResolver the resource resolver
 	 * @param currentPage      the current page
@@ -293,72 +295,73 @@ public class SeoUtil {
 		if (StringUtils.isNotEmpty(article.getHeroImage())) {
 			jsonLd.setImage(externalizer.publishLink(resourceResolver, article.getHeroImage()));
 		}
-		
+
 		jsonLd.setUrl(externalizer.publishLink(resourceResolver, currentPage.getPath()));
 		jsonLd.setDatePublished(EFEUtil.formatDate(Constants.DATE_FORMAT_MONTH_DAY_YEAR,
 				Constants.DATE_FORMAT_YEAR_MONTH_DAY, article.getDatePublished()));
 		jsonLd.setDateModified(EFEUtil.formatDate(Constants.DATE_FORMAT_MONTH_DAY_YEAR,
 				Constants.DATE_FORMAT_YEAR_MONTH_DAY, article.getDateUpdated()));
-		
+
 		List<Author> authors = new ArrayList<>();
 		if (Objects.nonNull(article.getPlannerResponse()) && !article.getPlannerResponse().isEmpty()) {
-			for(PlannerResponse plannerResponse: article.getPlannerResponse()) {
-				authors.add(populatePlannerDetails(seoService, efeService, externalizer, resourceResolver, plannerResponse));			
-			}
-		} 
-		
-		if (Objects.nonNull(article.getArticleAuthors()) && !article.getArticleAuthors().isEmpty()) {
-			for(ArticleAuthor articleAuthor: article.getArticleAuthors()) {
-				authors.add(populateRegularAuthor(seoService, externalizer, resourceResolver, articleAuthor));			
+			for (PlannerResponse plannerResponse : article.getPlannerResponse()) {
+				authors.add(populatePlannerDetails(seoService, efeService, externalizer, resourceResolver,
+						plannerResponse));
 			}
 		}
-		
-		if(!authors.isEmpty()) {
+
+		if (Objects.nonNull(article.getArticleAuthors()) && !article.getArticleAuthors().isEmpty()) {
+			for (ArticleAuthor articleAuthor : article.getArticleAuthors()) {
+				authors.add(populateRegularAuthor(seoService, externalizer, resourceResolver, articleAuthor));
+			}
+		}
+
+		if (!authors.isEmpty()) {
 			jsonLd.setAuthor(authors);
 		}
-		
+
 		return gson.toJson(jsonLd);
 	}
 
 	/**
 	 * Populate regular author.
 	 *
-	 * @param seoService the seo service
-	 * @param externalizer the externalizer
+	 * @param seoService       the seo service
+	 * @param externalizer     the externalizer
 	 * @param resourceResolver the resource resolver
-	 * @param article the article
+	 * @param article          the article
 	 * @return the author
 	 */
-	private static Author populateRegularAuthor(SeoService seoService, Externalizer externalizer, ResourceResolver resourceResolver,
-			ArticleAuthor articleAuthor) {
-		
+	private static Author populateRegularAuthor(SeoService seoService, Externalizer externalizer,
+			ResourceResolver resourceResolver, ArticleAuthor articleAuthor) {
+
 		Author author = new Author();
 		author.setName(articleAuthor.getName());
-		author.setJobTitle(articleAuthor.getTitle());			
-		if(StringUtils.isNotEmpty(articleAuthor.getPhoto())) {
+		author.setJobTitle(articleAuthor.getTitle());
+		if (StringUtils.isNotEmpty(articleAuthor.getPhoto())) {
 			author.setImage(externalizer.publishLink(resourceResolver, articleAuthor.getPhoto()));
 		}
-		
+
 		WorksFor worksFor = new WorksFor();
 		worksFor.setName(seoService.getSiteName());
 		author.setWorksFor(worksFor);
-		
+
 		return author;
 	}
-	
+
 	/**
 	 * Populate planner details.
 	 *
-	 * @param seoService the seo service
-	 * @param efeService the efe service
-	 * @param externalizer the externalizer
+	 * @param seoService       the seo service
+	 * @param efeService       the efe service
+	 * @param externalizer     the externalizer
 	 * @param resourceResolver the resource resolver
-	 * @param article the article
+	 * @param article          the article
 	 * @return the author
 	 */
-	private static Author populatePlannerDetails(SeoService seoService, EfeService efeService, Externalizer externalizer,
-			ResourceResolver resourceResolver, PlannerResponse planner) {
-		
+	private static Author populatePlannerDetails(SeoService seoService, EfeService efeService,
+			Externalizer externalizer, ResourceResolver resourceResolver, PlannerResponse planner) {
+
 		Author author = new Author();
 		author.setName(StringUtils.isNotEmpty(planner.getLastName())
 				? planner.getFirstName().concat(" ").concat(planner.getLastName())
@@ -369,11 +372,11 @@ public class SeoUtil {
 		String url = LinkUtil.getFormattedLink(efeService.getPlannerBioPageUrl() + PlannerLocationConstants.DOT
 				+ planner.getFirstName() + PlannerLocationConstants.DOT + planner.getLastName()
 				+ PlannerLocationConstants.DOT + planner.getId(), resourceResolver);
-		
-		if(StringUtils.isNotEmpty(url)) {
-			author.setUrl(externalizer.publishLink(resourceResolver, url));	
+
+		if (StringUtils.isNotEmpty(url)) {
+			author.setUrl(externalizer.publishLink(resourceResolver, url));
 		}
-				
+
 		if (Objects.nonNull(planner.getPrimaryOffice())) {
 			PrimaryOffice office = planner.getPrimaryOffice();
 			Address address = new Address();
@@ -384,39 +387,39 @@ public class SeoUtil {
 			address.setAddressRegion(office.getState());
 			author.setAddress(address);
 		}
-			
-		if(Objects.nonNull(planner.getCertifications()) && !planner.getCertifications().isEmpty()) {
+
+		if (Objects.nonNull(planner.getCertifications()) && !planner.getCertifications().isEmpty()) {
 			KnowsAbout knowsAbout = new KnowsAbout();
 			List<String> certifications = new ArrayList<>();
-			for(Certifications certification: planner.getCertifications()) {
+			for (Certifications certification : planner.getCertifications()) {
 				certifications.add(certification.getName());
 			}
 			knowsAbout.setName(certifications);
 			author.setKnowsAbout(knowsAbout);
 		}
-		
-		if(Objects.nonNull(planner.getEducation()) && !planner.getEducation().isEmpty()) {
+
+		if (Objects.nonNull(planner.getEducation()) && !planner.getEducation().isEmpty()) {
 			StringBuilder educations = new StringBuilder();
-			
+
 			Iterator<Education> itr = planner.getEducation().iterator();
-			while(itr.hasNext()) {
+			while (itr.hasNext()) {
 				Education education = itr.next();
-				
+
 				String degree = education.getDegree();
 				String university = education.getUniversity();
-				
+
 				educations.append(degree).append(" - ").append(university);
-				if(itr.hasNext()) {
+				if (itr.hasNext()) {
 					educations.append(", ");
 				}
 			}
 			author.setHasCredential(educations.toString());
 		}
-		
-		if(StringUtils.isNotEmpty(planner.getDesktopImageUrl())) {
+
+		if (StringUtils.isNotEmpty(planner.getDesktopImageUrl())) {
 			author.setImage(externalizer.publishLink(resourceResolver, planner.getDesktopImageUrl()));
 		}
-		
+
 		WorksFor worksFor = new WorksFor();
 		worksFor.setName(seoService.getSiteName());
 		author.setWorksFor(worksFor);
@@ -489,6 +492,34 @@ public class SeoUtil {
 
 			object.addProperty(JSON_LD, gson.toJson(jsonLd));
 		}
+	}
+
+	/**
+	 * Gets the podcast schema.
+	 *
+	 * @param podcast    the podcast
+	 * @param seoService the seo service
+	 * @param image      the image
+	 * @return the podcast schema
+	 */
+	public static String getPodcastSchema(Podcast podcast, SeoService seoService, String image) {
+
+		Gson gson = getGsonInstance();
+		JsonLd jsonLd = new JsonLd();
+		jsonLd.setContext(seoService.getContextUrl());
+		jsonLd.setType(seoService.getPodcastType());
+		jsonLd.setId(seoService.getPodcastType());
+		jsonLd.setAbstractTitle(podcast.getShortDescriptionHtml());
+		jsonLd.setAwards(seoService.getPodcastAwardValue());
+		jsonLd.setCopyrightYear(String.valueOf(Year.now().getValue()));
+		jsonLd.setCopyrightNotice(seoService.getSiteName());
+		jsonLd.setDatePublished(podcast.getDatePublished());
+		jsonLd.setGenre(seoService.getPodcastGenreValue());
+
+		if (StringUtils.isNotEmpty(image)) {
+			jsonLd.setImage(image);
+		}
+		return gson.toJson(jsonLd);
 	}
 
 	/**

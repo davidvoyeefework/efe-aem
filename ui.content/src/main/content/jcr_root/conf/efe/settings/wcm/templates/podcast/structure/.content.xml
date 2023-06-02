@@ -3,7 +3,7 @@
     jcr:primaryType="cq:Page">
     <jcr:content
         cq:deviceGroups="[mobile/groups/responsive]"
-        cq:template="/conf/efe/settings/wcm/templates/leader-bio"
+        cq:template="/conf/efe/settings/wcm/templates/podcast"
         jcr:primaryType="cq:PageContent"
         sling:resourceType="efe/components/page">
         <root
@@ -14,16 +14,17 @@
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="efe/components/experiencefragment"
                 fragmentVariationPath="/content/experience-fragments/efe/us/en/site/header/master"/>
-            <container_924651397
-                cq:styleIds="[background-gray-light]"
+            <container_962703945
+                cq:styleIds="[white]"
                 jcr:primaryType="nt:unstructured"
-                sling:resourceType="efe/components/container">
-                <container_78249864
+                sling:resourceType="efe/components/container"
+                layout="responsiveGrid">
+                <container_820869288
                     cq:styleIds="[large]"
                     jcr:primaryType="nt:unstructured"
-                    sling:resourceType="efe/components/container">
+                    sling:resourceType="efe/components/container"
+                    layout="responsiveGrid">
                     <breadcrumb
-                        cq:styleIds="[remove-padding]"
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="efe/components/breadcrumb"
                         disableShadowing="false"
@@ -32,27 +33,22 @@
                         showHidden="false"
                         showSelectorAsLeaf="false"
                         startLevel="4"/>
-                </container_78249864>
-                <container
+                </container_820869288>
+                <container_1364497783
+                    cq:styleIds="[large]"
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="efe/components/container"
-                    editable="{Boolean}true"/>
-            </container_924651397>
-            <container
-                cq:styleIds="[white,default-padding]"
-                jcr:primaryType="nt:unstructured"
-                sling:resourceType="efe/components/container"
-                layout="responsiveGrid">
-                <container
-                    jcr:primaryType="nt:unstructured"
-                    sling:resourceType="efe/components/container"
-                    editable="{Boolean}true"/>
-            </container>
+                    layout="responsiveGrid">
+                    <container
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="efe/components/container"
+                        editable="{Boolean}true"/>
+                </container_1364497783>
+            </container_962703945>
             <experiencefragment
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="efe/components/experiencefragment"
-                fragmentVariationPath="/content/experience-fragments/efe/us/en/site/footer/master"
-                id="footer"/>
+                fragmentVariationPath="/content/experience-fragments/efe/us/en/site/footer/master"/>
         </root>
         <cq:responsive jcr:primaryType="nt:unstructured">
             <breakpoints jcr:primaryType="nt:unstructured">

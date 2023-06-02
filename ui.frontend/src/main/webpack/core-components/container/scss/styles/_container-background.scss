@@ -1,7 +1,7 @@
 // SOME STYLES ARE INTENTIONALLY `!important` AS THEY ARE MEANT TO OVERRIDE WHEN APPLIED
 @mixin maxWidth() {
     &.cmp-container--width-1920 {
-        max-width: $xxl !important;
+        max-width: $xxxl !important;
         margin: 0 auto !important;
         float: unset !important;
     }
@@ -12,6 +12,8 @@
         float: unset !important;
     }
 }
+
+
 .cmp-container--width-1920 {
     max-width: $xxxl !important;
     margin: 0 auto !important;
@@ -64,7 +66,7 @@
 }
 
 .cmp-container--padding {
-    padding: 56px 88px;
+    padding: 80px 48px;
     @include media("<=phone-m") {
         padding: 40px 24px;
     }
@@ -76,7 +78,7 @@
 
 .cmp-container--balancedheight {
     >.cmp-container >.aem-Grid:first-of-type {
-        @include media(">=tablet-lg") {
+        @include media(">=desktop") {
             display: flex !important;
         }
     }

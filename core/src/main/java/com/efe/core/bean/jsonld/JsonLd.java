@@ -20,6 +20,32 @@ public class JsonLd {
 	@SerializedName("@type")
 	@Expose
 	private String type;
+	
+	/** The id. */
+	@SerializedName("@id")
+	@Expose
+	private String id;
+	
+	/** The abstract title. */
+	@SerializedName("abstract")
+	@Expose
+	private String abstractTitle;
+	
+	/** The awards. */
+	@Expose
+	private String awards;
+	
+	/** The copyright year. */
+	@Expose
+	private String copyrightYear;
+	
+	/** The copyright notice. */
+	@Expose
+	private String copyrightNotice;
+	
+	/** The genre. */
+	@Expose
+	private String genre;
 
 	/** The name. */
 	@Expose
@@ -338,6 +364,60 @@ public class JsonLd {
 	 */
 	public void setHeadline(String headline) {
 		this.headline = headline;
+	}
+
+	/**
+	 * Sets the id.
+	 *
+	 * @param id the id to set
+	 */
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	/**
+	 * Sets the awards.
+	 *
+	 * @param awards the awards to set
+	 */
+	public void setAwards(String awards) {
+		this.awards = awards;
+	}
+
+	/**
+	 * Sets the copyright year.
+	 *
+	 * @param copyrightYear the copyrightYear to set
+	 */
+	public void setCopyrightYear(String copyrightYear) {
+		this.copyrightYear = copyrightYear;
+	}
+
+	/**
+	 * Sets the copyright notice.
+	 *
+	 * @param copyrightNotice the copyrightNotice to set
+	 */
+	public void setCopyrightNotice(String copyrightNotice) {
+		this.copyrightNotice = copyrightNotice;
+	}
+
+	/**
+	 * Sets the genre.
+	 *
+	 * @param genre the genre to set
+	 */
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
+
+	/**
+	 * Sets the abstractTitle.
+	 * 
+	 * @param abstractTitle the abstractTitle to set
+	 */
+	public void setAbstractTitle(String abstractTitle) {
+		this.abstractTitle = abstractTitle;
 	}
 
 }
