@@ -34,9 +34,9 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:orderBefore="id"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                fieldDescription="Check to Include location in Title"
+                                                fieldDescription="Check to Include location in Title. {0} will be replaced with State code, {1} will be replaced by city name"
                                                 name="./includeLocationInTitle"
-                                                text="Include Location Details?"
+                                                text="Include Location Details using expressions?"
                                                 uncheckedValue="false"
                                                 value="true"/>
                                         </items>
