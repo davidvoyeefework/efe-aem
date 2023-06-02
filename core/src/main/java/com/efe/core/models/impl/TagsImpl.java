@@ -3,17 +3,22 @@ package com.efe.core.models.impl;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.day.cq.tagging.Tag;
 import com.day.cq.wcm.api.Page;
+import com.day.cq.wcm.api.PageManager;
 import com.efe.core.bean.LinkBean;
 import com.efe.core.models.Tags;
 import com.efe.core.utils.EFEUtil;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
+import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.PostConstruct;
 import java.util.*;
@@ -31,7 +36,8 @@ public class TagsImpl implements Tags {
 
     /** The Constant RESOURCE_TYPE. */
     public static final String RESOURCE_TYPE = "efe/components/tags";
-
+    /** The Constant LOGGER. */
+    private static final Logger LOGGER = LoggerFactory.getLogger(TagsImpl.class);
     /** The links. */
     private List<LinkBean> links;
 
@@ -39,6 +45,8 @@ public class TagsImpl implements Tags {
     @SlingObject
     private Resource resource;
 
+    @SlingObject
+    private ResourceResolver resolver;
     /** The currentPage Object. */
     @ScriptVariable
     private Page currentPage;
@@ -50,11 +58,22 @@ public class TagsImpl implements Tags {
     @ValueMapValue
     private String[] tags;
 
+    /** the mappedPage *. */
+    @ValueMapValue
+    private String mappedPage;
+
+    @Self
+    private SlingHttpServletRequest request;
+
     /**
      * Inits the model.
      */
     @PostConstruct
     public void init() {
+
+        ResourceResolver resourceResolver = request.getResourceResolver();
+        PageManager pageManager = resourceResolver.adaptTo(PageManager.class);
+
         Tag[] pageTags = currentPage.getTags();
         if (null == pageTags || pageTags.length < 1) {
             return;
@@ -71,6 +90,8 @@ public class TagsImpl implements Tags {
             }
             LinkBean linkBean = new LinkBean();
             linkBean.setTagLabel(pageTag.getTitle());
+
+            linkBean.setTagLink(EFEUtil.getTagLink(pageTag, pageManager, mappedPage, resolver));
             links.add(linkBean);
         }
 

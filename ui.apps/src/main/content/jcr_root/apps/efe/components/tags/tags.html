@@ -4,7 +4,9 @@
     <div class="cmp-tags" id="${tagsImpl.id}">
         <sly data-sly-list.tagsList="${tagsImpl.tagList}">
             <div class="button cmp-button--title-tag cmp-button-- cmp-button-- cmp-button--">
-                <a href="" type="button" id="button-5487aab983" class="cmp-button" data-cmp-clickable="">
+                <a href="${tagsList.tagLink ? tagsList.tagLink :''}" type="button" id="button-5487aab983"
+                   class="cmp-button"
+                   data-cmp-clickable="">
                     <span class="cmp-button__text">${tagsList.tagLabel}</span>
                 </a>
             </div>
