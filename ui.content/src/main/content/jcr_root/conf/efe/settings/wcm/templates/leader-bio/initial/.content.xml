@@ -14,10 +14,14 @@
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="efe/components/container">
                 <container
-                        cq:styleIds="[large]"
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="efe/components/container"
                         layout="responsiveGrid">
+                    <container_56469322
+                            cq:styleIds="[large]"
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="efe/components/container"
+                            layout="responsiveGrid">
                     <container_1410179869
                         cq:styleIds="[bottom-padding]"
                         jcr:primaryType="nt:unstructured"
@@ -47,7 +51,7 @@
                             linkTarget="_self"/>
                     </container_1410179869>
                     <container
-                        cq:styleIds="[top-padding]"
+                        cq:styleIds="[top-padding,bottom-padding]"
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="efe/components/container">
                         <cq:responsive jcr:primaryType="nt:unstructured">
@@ -78,6 +82,7 @@
                             text="&lt;p>&lt;span class=&quot;cmp-text--body-02&quot;>Leader Title&lt;/span>&lt;/p>&#xd;&#xa;"
                             textIsRich="true"/>
                     </container>
+                    </container_56469322>
                 </container>
             </container_924651397>
             <container
@@ -86,9 +91,13 @@
                 sling:resourceType="efe/components/container"
                 layout="responsiveGrid">
                 <container
-                    cq:styleIds="[large]"
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="efe/components/container">
+                    <container
+                            cq:styleIds="[large,top-padding,bottom-padding]"
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="efe/components/container"
+                            layout="responsiveGrid">
                     <text
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="efe/components/text"
@@ -98,7 +107,7 @@
                             <default
                                 jcr:primaryType="nt:unstructured"
                                 offset="0"
-                                width="10"/>
+                                width="12"/>
                             <phone
                                  jcr:primaryType="nt:unstructured"
                                  offset="0"
@@ -106,10 +115,11 @@
                             <tablet
                                  jcr:primaryType="nt:unstructured"
                                  offset="0"
-                                 width="6"/>
+                                 width="12"/>
                         </cq:responsive>
                     </text>
                 </container>
+            </container>
             </container>
         </root>
     </jcr:content>

@@ -15,16 +15,15 @@
                 sling:resourceType="efe/components/experiencefragment"
                 fragmentVariationPath="/content/experience-fragments/efe/us/en/site/header/master"/>
             <container_2129927277
-                cq:styleIds="[background-gray-light,default-padding]"
+                cq:styleIds="[background-gray-light]"
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="efe/components/container"
                 layout="responsiveGrid">
                 <container_260148224
-                    cq:styleIds="[large]"
+                     cq:styleIds="[extra-large]"
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="efe/components/container">
                     <breadcrumb
-                        cq:styleIds="[remove-padding]"
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="efe/components/breadcrumb"
                         disableShadowing="false"
@@ -34,18 +33,17 @@
                         startLevel="4"/>
                 </container_260148224>
                 <container
-                    cq:styleIds="[large]"
+                    cq:styleIds="[white]"
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="efe/components/container"
                     editable="{Boolean}true"/>
             </container_2129927277>
             <container
-                cq:styleIds="[white,default-padding]"
+                cq:styleIds="[white]"
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="efe/components/container"
                 layout="responsiveGrid">
                 <container
-                    cq:styleIds="[large]"
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="efe/components/container"
                     editable="{Boolean}true"/>
