@@ -85,7 +85,7 @@
 
 .cmp-container--balancedheight {
     >.cmp-container >.aem-Grid:first-of-type {
-        @include media(">=desktop") {
+        @include media(">=tablet-lg") {
             display: flex !important;
         }
     }
