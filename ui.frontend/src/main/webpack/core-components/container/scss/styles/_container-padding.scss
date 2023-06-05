@@ -1,27 +1,27 @@
 .cmp-container--padding-right {
-    padding-right: rem(88);
+    padding-right: rem(88) !important;
     @include media("<=phone-m") {
-        padding-right: rem(24);
+        padding-right: rem(24) !important;
     }
 }
 
 .cmp-container--padding-left {
-    padding-left: rem(88);
+    padding-left: rem(88) !important;
     @include media("<=phone-m") {
-        padding-left: rem(24);
+        padding-left: rem(24) !important;
     }
 }
 
 .cmp-container--padding-top {
-    padding-top: rem(56);
+    padding-top: rem(56) !important;
     @include media("<=phone-m") {
-        padding-top: rem(40);
+        padding-top: rem(40) !important;
     }
 }
 
 .cmp-container--padding-bottom {
-    padding-bottom: rem(56);
+    padding-bottom: rem(56) !important;
     @include media("<=phone-m") {
-        padding-bottom: rem(40);
+        padding-bottom: rem(40) !important;
     }
 }
