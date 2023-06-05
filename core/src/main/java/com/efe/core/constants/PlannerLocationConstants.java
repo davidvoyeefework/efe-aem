@@ -677,6 +677,12 @@ public class PlannerLocationConstants {
 	 */
 	public static final String LOCATION_PATH = ROOT_FOLDER_PATH + FORWARD_SLASH + LOCATIONS;
 	
+
+	/**
+	 * PLANNER PATH
+	 */
+	public static final String PLANNER_PATH = ROOT_FOLDER_PATH + FORWARD_SLASH + PLANNERS;
+	
 	/**
 	 * Regex for Dot
 	 */
