@@ -21,7 +21,7 @@ public class Articles {
 
     /** The links. */
     private List<LinkBean> links;
-    
+
     /** The datePublished. */
     private String datePublished;
     /** The dateUpdated. */
@@ -41,6 +41,11 @@ public class Articles {
     /** The plannerResponse. */
     private List<PlannerResponse> plannerResponse;
 
+    /**
+     * Gets the links.
+     *
+     * @return the links
+     */
     public List<LinkBean> getLinks() {
 
         if (Objects.nonNull(links)) {
@@ -50,6 +55,11 @@ public class Articles {
 
     }
 
+    /**
+     * Sets the links.
+     *
+     * @return the links
+     */
     public void setLinks(List<LinkBean> links) {
         this.links = new ArrayList<>(links);
 

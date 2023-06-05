@@ -36,7 +36,7 @@ public class ArticleDetailUtil {
     public static Articles getArticleDetails(Resource articleDetailsCFResource, ResourceResolver resolver, String[] tags,
         String mappedPage, PageManager pageManager) {
         Articles articleDetails = new Articles();
-        List<LinkBean> links;
+        List<LinkBean> links = null;
 
         SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
         SimpleDateFormat outputFormat = new SimpleDateFormat("MMMM dd, yyyy");
@@ -87,25 +87,29 @@ public class ArticleDetailUtil {
             .map(ContentElement::getContent).orElse(StringUtils.EMPTY);
 
         String[] authorTags = tagsCF.split("\n");
+
         List<String> hideTagsList = new ArrayList<>();
         if (null != tags) {
             hideTagsList = Arrays.asList(tags);
         }
 
-        links = new ArrayList<>();
-        for (String pageTag : authorTags) {
-            TagManager tagManager = resolver.adaptTo(TagManager.class);
-            Tag efeTag = tagManager.resolve(pageTag);
-            if (!hideTagsList.isEmpty() && hideTagsList.contains(efeTag.getTagID())) {
-                continue;
+        if (null != authorTags) {
+            links = new ArrayList<>();
+            for (String pageTag : authorTags) {
+                TagManager tagManager = resolver.adaptTo(TagManager.class);
+                Tag efeTag = tagManager.resolve(pageTag);
+                if (!hideTagsList.isEmpty() && hideTagsList.contains(efeTag.getTagID())) {
+                    continue;
+                }
+                LinkBean linkBean = new LinkBean();
+                linkBean.setTagLabel(efeTag.getTitle());
+
+                linkBean.setTagLink(EFEUtil.getTagLink(efeTag, pageManager, mappedPage, resolver));
+                links.add(linkBean);
+
             }
-            LinkBean linkBean = new LinkBean();
-            linkBean.setTagLabel(efeTag.getTitle());
-
-            linkBean.setTagLink(EFEUtil.getTagLink(efeTag, pageManager, mappedPage, resolver));
-            links.add(linkBean);
-
         }
+
         articleDetails.setLinks(links);
         String plannerAuthorsCF = articleDetailsCF.map(cf -> cf.getElement(ArticleDetailsConstants.PLANNER))
             .map(ContentElement::getContent).orElse(StringUtils.EMPTY);

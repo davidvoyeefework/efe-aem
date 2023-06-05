@@ -19,12 +19,26 @@ public interface ArticleDetails {
      *
      * @return the id.
      */
+    public String getMappedPage();
+
+    /**
+     * Gets the id.
+     *
+     * @return the id.
+     */
+    public String[] getTags();
+
+    /**
+     * Gets the id.
+     *
+     * @return the id.
+     */
     public String getId();
 
-	/**
-	 * Gets the json ld.
-	 *
-	 * @return the jsonLd
-	 */
-	String getJsonLd();
+    /**
+     * Gets the json ld.
+     *
+     * @return the jsonLd
+     */
+    String getJsonLd();
 }

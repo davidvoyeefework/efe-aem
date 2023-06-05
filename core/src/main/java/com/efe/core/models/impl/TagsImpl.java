@@ -45,6 +45,7 @@ public class TagsImpl implements Tags {
     @SlingObject
     private Resource resource;
 
+    /** The resolver. */
     @SlingObject
     private ResourceResolver resolver;
     /** The currentPage Object. */
@@ -71,8 +72,7 @@ public class TagsImpl implements Tags {
     @PostConstruct
     public void init() {
 
-        ResourceResolver resourceResolver = request.getResourceResolver();
-        PageManager pageManager = resourceResolver.adaptTo(PageManager.class);
+        PageManager pageManager = resolver.adaptTo(PageManager.class);
 
         Tag[] pageTags = currentPage.getTags();
         if (null == pageTags || pageTags.length < 1) {

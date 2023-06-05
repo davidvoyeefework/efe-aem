@@ -80,20 +80,12 @@ public class ArticleDetailsImpl implements ArticleDetails {
     /** The json ld. */
     private String jsonLd;
 
-    public String[] getTags() {
-        return tags;
-    }
-
-    public String getMappedPage() {
-        return mappedPage;
-    }
-
     /**
      * Inits the Model.
      */
     @PostConstruct
     public void init() {
-        ResourceResolver resourceResolver = request.getResourceResolver();
+
         PageManager pageManager = resourceResolver.adaptTo(PageManager.class);
         articleDetails = new Articles();
         if (null != articleFragmentPath) {
@@ -140,6 +132,24 @@ public class ArticleDetailsImpl implements ArticleDetails {
     @Override
     public String getJsonLd() {
         return jsonLd;
+    }
+
+    /**
+     * Gets the tags.
+     *
+     * @return tags
+     */
+    public String[] getTags() {
+        return tags;
+    }
+
+    /**
+     * Gets the mappedPage.
+     *
+     * @return the mappedPage
+     */
+    public String getMappedPage() {
+        return mappedPage;
     }
 
 }
