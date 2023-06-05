@@ -6,6 +6,11 @@
         "jcr:primaryType": "nt:unstructured",
         "sling:resourceType": "efe/components/articledetails",
         "articleFragmentPath": "/content/dam/efe/test-article-cf/master",
+        "mappedPage": "/content/efe/us/en/corp",
+        "tags": [
+          "efe:content-type/tax",
+          "efe:content-type/home-and-mortgage"
+        ],
         "id": "1"
       }
     }

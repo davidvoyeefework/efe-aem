@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-
 /**
  * The Articles bean class.
  */
@@ -18,37 +17,53 @@ public class Articles {
     private String[] authorType;
 
     /** The body. */
-    private  String body;
+    private String body;
 
-    /** The tags. */
-    private List<String> tags;
+    /** The links. */
+    private List<LinkBean> links;
 
     /** The datePublished. */
     private String datePublished;
-
     /** The dateUpdated. */
     private String dateUpdated;
-
     /** The subtitle. */
     private String subtitle;
-
     /** The title. */
     private String title;
-
     /** The heroImage. */
     private String heroImage;
-
     /** The planner. */
     private String[] planner;
-
     /** The regularAuthor. */
     private String[] regularAuthor;
-
     /** The articleAuthors. */
     private List<ArticleAuthor> articleAuthors;
-
     /** The plannerResponse. */
     private List<PlannerResponse> plannerResponse;
+
+    /**
+     * Gets the links.
+     *
+     * @return the links
+     */
+    public List<LinkBean> getLinks() {
+
+        if (Objects.nonNull(links)) {
+            return new ArrayList<>(links);
+        }
+        return Collections.emptyList();
+
+    }
+
+    /**
+     * Sets the links.
+     *
+     * @return the links
+     */
+    public void setLinks(List<LinkBean> links) {
+        this.links = new ArrayList<>(links);
+
+    }
 
     /**
      * Gets the plannerResponse.
@@ -127,7 +142,7 @@ public class Articles {
      */
     public void setAuthorType(String[] authorType) {
 
-        this.authorType =  authorType.clone();
+        this.authorType = authorType.clone();
     }
 
     /**
@@ -146,28 +161,6 @@ public class Articles {
      */
     public void setBody(String body) {
         this.body = body;
-    }
-
-    /**
-     * Gets the tags.
-     *
-     * @return the tags
-     */
-    public List<String> getTags() {
-        if (Objects.nonNull(tags)) {
-            return new ArrayList<>(tags);
-        }
-        return Collections.emptyList();
-    }
-
-    /**
-     * Sets the tags.
-     *
-     * @return the tags
-     */
-    public void setTags(List<String> tags) {
-
-        this.tags = new ArrayList<>(tags);
     }
 
     /**
