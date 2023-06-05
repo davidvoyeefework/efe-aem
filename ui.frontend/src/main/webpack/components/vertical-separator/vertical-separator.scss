@@ -125,6 +125,7 @@
     @include media("<=tablet-lg") {
         flex-direction: column;
         gap: 0;
+        align-items: center;
         &__item {
             margin-bottom: 10px;
             width: 360px;
