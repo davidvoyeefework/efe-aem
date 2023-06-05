@@ -9,11 +9,11 @@
         display: none;
     }
     #efe-nav-main .cmp-container--26 {
-        padding: rem(20) rem(24);
+        padding: rem(20) rem(24) !important;
     }
     @media screen and (min-width: 1290px) {
         #efe-nav-main .cmp-container--26 {
-            padding: rem(40) rem(48);
+            padding: rem(40) rem(48) !important;
         }
     }
     &.minimal-header--with-two-logos {
