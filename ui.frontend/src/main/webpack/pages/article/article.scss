@@ -32,3 +32,27 @@
         }
     }
 }
+.relatedarticle {
+    .cmp-list--horizontal.cmp-list--tight .cmp-list {
+        gap: rem(40);
+        @include media('<tablet') {
+            gap: rem(15);
+        }
+    }
+    .cmp-teaser--thumbnail {
+        .cmp-teaser {
+            &__title {
+                margin: rem(24) 0 rem(12);
+                @include media('<tablet') {
+                    margin: 0 0 rem(8) 0;
+                }
+            }
+            &__action-container {
+                margin-top: rem(24px);
+                @include media('<tablet') {
+                    margin-top: rem(12px);
+                }
+            }
+        }
+    }
+}
