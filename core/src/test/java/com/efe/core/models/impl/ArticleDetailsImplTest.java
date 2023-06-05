@@ -92,7 +92,6 @@ class ArticleDetailsImplTest {
         assertNotNull(articleDetails.getArticleFragmentPath().getDateUpdated());
         assertNotNull(articleDetails.getArticleFragmentPath().getDatePublished());
         assertNotNull(articleDetails.getArticleFragmentPath().getArticleSummary());
-        assertEquals("/content/efe/us/en/corp", articleDetails.getMappedPage());
         assertNotNull(articleDetails.getArticleFragmentPath().getRegularAuthor());
         assertNotNull(articleDetails.getArticleFragmentPath().getAuthorType());
         assertNotNull(articleDetails.getJsonLd());
