@@ -134,22 +134,4 @@ public class ArticleDetailsImpl implements ArticleDetails {
         return jsonLd;
     }
 
-    /**
-     * Gets the tags.
-     *
-     * @return tags
-     */
-    public String[] getTags() {
-        return tags;
-    }
-
-    /**
-     * Gets the mappedPage.
-     *
-     * @return the mappedPage
-     */
-    public String getMappedPage() {
-        return mappedPage;
-    }
-
 }

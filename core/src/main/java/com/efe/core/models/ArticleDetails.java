@@ -19,20 +19,6 @@ public interface ArticleDetails {
      *
      * @return the id.
      */
-    public String getMappedPage();
-
-    /**
-     * Gets the id.
-     *
-     * @return the id.
-     */
-    public String[] getTags();
-
-    /**
-     * Gets the id.
-     *
-     * @return the id.
-     */
     public String getId();
 
     /**
