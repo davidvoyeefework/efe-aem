@@ -18,7 +18,7 @@
     max-width: $xxxl !important;
     margin: 0 auto !important;
     float: unset !important;
-    padding: 24px 0 !important;
+    padding: 24px !important;
     @include media(">=tablet-lg") {
         padding: 0 48px !important;
     }
