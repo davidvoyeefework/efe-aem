@@ -2,6 +2,7 @@
 <workspaceFilter version="1.0">
     <filter root="/conf/efe/settings/wcm/templates/content-template-full-header-and-footer" mode="replace"/>
     <filter root="/conf/efe/settings/wcm/templates/content-template-mini-header-and-footer" mode="replace"/>
+    <filter root="/conf/efe/settings/wcm/templates/category" mode="replace"/>
     <filter root="/conf/efe/settings/wcm/templates/podcast" mode="replace"/>
     <filter root="/conf/efe/settings/wcm/templates/brand-landing-page" mode="replace"/>
     <filter root="/conf/efe/settings/wcm/templates/article" mode="replace"/>
