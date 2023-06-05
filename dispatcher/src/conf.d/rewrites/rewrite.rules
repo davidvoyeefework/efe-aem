@@ -14,6 +14,9 @@ RewriteRule ^/?$ /content/${CONTENT_FOLDER_NAME}/us/en/home.html [PT,L]
 RewriteRule ^/content/efe/us/en/(.*).html$ $1 [R=301]
 RewriteRule ^(.+)/$ $1
 
+#Sitemap
+RewriteRule ^/sitemap.xml$ /content/${CONTENT_FOLDER_NAME}/us/en.sitemap.xml [PT,L]
+
 RewriteCond %{REQUEST_URI} !^/apps
 RewriteCond %{REQUEST_URI} !^/bin
 RewriteCond %{REQUEST_URI} !^/content
