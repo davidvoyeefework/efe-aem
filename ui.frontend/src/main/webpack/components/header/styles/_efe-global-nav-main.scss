@@ -297,7 +297,7 @@
 
         .cmp-container--26 {
             position: relative;
-            padding: rem(24) rem(48);
+            padding: rem(24) rem(48) !important;
             @include flexbox(
                 $align-items: end
             );
