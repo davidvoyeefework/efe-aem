@@ -1,8 +1,0 @@
-{
-    "scheduler.expression":"0 0/20 * 1/1 * ? *",
-    "includeGenerators":[
-      "com.efe.core.sitemap.EFESitemapGenerator"
-    ],
-    "scheduler.name":"EFE Sitemaps",
-    "searchPath":"/content/efe"
-  }
