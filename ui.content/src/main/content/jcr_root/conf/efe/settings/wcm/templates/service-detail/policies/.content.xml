@@ -221,7 +221,12 @@
                 <container_587323967
                     cq:policy="efe/components/container/policy"
                     jcr:primaryType="nt:unstructured"
-                    sling:resourceType="wcm/core/components/policies/mapping"/>
+                    sling:resourceType="wcm/core/components/policies/mapping">
+                <breadcrumb
+                        cq:policy="efe/components/breadcrumb/policy"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="wcm/core/components/policies/mapping"/>
+                </container_587323967>
             </container_145304525>
         </root>
     </jcr:content>
