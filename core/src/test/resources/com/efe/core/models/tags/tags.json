@@ -1,11 +1,33 @@
 {
   "tags": {
-    ":type": "efe/components/tags",
-    "id": "5657775354464",
-    "tags": [
-      "efe:content-type/insurance",
-      "efe:usage/workplace",
-      "efe:usage/sponsor"
-    ]
+    "jcr:primaryType": "cq:Page",
+    "jcr:content": {
+      "jcr:primaryType": "cq:PageContent",
+      "jcr:title": "tags",
+      "cq:tags": [
+        "efe:content-type/tax"
+      ],
+      "sling:resourceType": "efe/components/page",
+      "root": {
+        "jcr:primaryType": "nt:unstructured",
+        "layout": "responsiveGrid",
+        "sling:resourceType": "efe/components/container",
+        "tags": {
+          "jcr:primaryType": "nt:unstructured",
+          "sling:resourceType": "efe/components/tags",
+          "episodeId": "1"
+        },
+        "emptytags": {
+          "jcr:primaryType": "nt:unstructured",
+          "sling:resourceType": "efe/components/tags"
+        },
+        "wrongtags": {
+          "jcr:primaryType": "nt:unstructured",
+          "sling:resourceType": "efe/components/podcast",
+          "episodeId": "invalid"
+        }
+      }
+    }
   }
+
 }

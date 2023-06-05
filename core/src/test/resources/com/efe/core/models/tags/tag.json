@@ -1,0 +1,29 @@
+{
+  "efe": {
+    "jcr:primaryType": "cq:Tag",
+    "jcr:createdBy": "admin",
+    "jcr:title": "efe",
+    "sling:resourceType": "cq/tagging/components/tag",
+    "content-type": {
+      "jcr:primaryType": "cq:Tag",
+      "jcr:createdBy": "admin",
+      "jcr:title": "Asset Type",
+      "jcr:description": "",
+      "sling:resourceType": "cq/tagging/components/tag",
+      "tax": {
+        "jcr:primaryType": "cq:Tag",
+        "jcr:createdBy": "admin",
+        "jcr:title": "tax",
+        "jcr:description": "",
+        "sling:resourceType": "cq/tagging/components/tag"
+      },
+      "home-and-mortgage": {
+        "jcr:primaryType": "cq:Tag",
+        "jcr:createdBy": "admin",
+        "jcr:title": "home-and-mortgage",
+        "jcr:description": "",
+        "sling:resourceType": "cq/tagging/components/tag"
+      }
+    }
+  }
+}

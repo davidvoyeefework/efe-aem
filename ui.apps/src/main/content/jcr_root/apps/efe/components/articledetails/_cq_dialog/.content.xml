@@ -44,7 +44,7 @@
                                             fieldDescription="This field will map the tags"
                                             fieldLabel="Tag Parent Page"
                                             name="./mappedPage"
-                                            rootPath="/content/efe"/>
+                                            rootPath="/efe"/>
                                     <tags
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="cq/gui/components/coral/common/form/tagfield"
