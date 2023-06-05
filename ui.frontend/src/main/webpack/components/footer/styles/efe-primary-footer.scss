@@ -1,6 +1,6 @@
 #efe-footer {
     .cmp-container--1920 {
-        padding: 50px 24px;
+        padding: 50px 24px !important;
         position: relative;
 
         @include flexbox(
@@ -88,21 +88,12 @@
                 color: $efe-gray-new;
             }
         }
-
-
-    
-    }
-
-    @media screen and (min-width: $sm) {
-
-
     }
 
     @media screen and (min-width: $lg) {
 
         .cmp-container--1920 { 
-            @include flexbox(
-            );
+            @include flexbox();
 
             #list-links {
                 @include grid(
@@ -159,7 +150,7 @@
     @media screen and (min-width: $xl) {
 
         .cmp-container--1920 { 
-            padding: 50px 48px;
+            padding: 50px 48px !important;
 
             #disclosure-links {
                 @include flexbox (
