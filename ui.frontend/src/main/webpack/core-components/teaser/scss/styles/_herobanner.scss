@@ -98,3 +98,10 @@
         }
     }
 }
+.cmp-container--fillHeight {
+    .cmp-teaser {
+        .cmp-teaser__content {
+            height: auto !important;
+        }
+    }
+}

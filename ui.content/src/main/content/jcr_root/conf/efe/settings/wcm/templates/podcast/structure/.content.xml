@@ -7,10 +7,10 @@
         jcr:primaryType="cq:PageContent"
         sling:resourceType="efe/components/page">
         <root
-            cq:styleIds="[white]"
             jcr:primaryType="nt:unstructured"
             sling:resourceType="efe/components/container"
-            layout="responsiveGrid">
+            layout="responsiveGrid"
+            cq:styleIds="[white]">
             <experiencefragment-header
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="efe/components/experiencefragment"
@@ -18,7 +18,8 @@
             <container_962703945
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="efe/components/container"
-                layout="responsiveGrid">
+                layout="responsiveGrid"
+                cq:styleIds="[white]">
                 <container_820869288
                     cq:styleIds="[extra-large]"
                     jcr:primaryType="nt:unstructured"
