@@ -18,7 +18,7 @@
     max-width: $xxxl !important;
     margin: 0 auto !important;
     float: unset !important;
-    padding: 24px !important;
+    padding: 24px 0 !important;
     @include media(">=tablet-lg") {
         padding: 0 48px !important;
     }
@@ -28,7 +28,7 @@
     margin: 0 auto !important;
     float: unset !important;
     @include media("<tablet-lg") {
-        padding: 24px !important;
+        padding: 0 24px !important;
     }
 }
 .cmp-container--bg-efe-gray-light {
@@ -80,7 +80,9 @@
 }
 
 .cmp-container--min-height {
-    min-height: 620px !important;
+    @include media (">=tablet-lg") {
+        min-height: 620px !important;
+    }
 }
 
 .cmp-container--balancedheight {

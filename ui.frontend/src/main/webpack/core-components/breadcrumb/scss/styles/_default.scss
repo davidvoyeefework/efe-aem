@@ -21,15 +21,11 @@
     padding: 0;
 
   .cmp-breadcrumb__list {
-       padding: rem(16);
+       padding: rem(16) 0; // Note: Don't enable left/right padding as we will rely on cmp-container--width-1920 padding
        margin-bottom: 0;
        list-style: none;
        border-radius: 0;
        font-size: $font-size-small;
-
-     @include media(">=tablet-lg") {
-       padding: rem(16) 0; // Note: Don't enable left/right padding as we will rely on cmp-container--width-1920 padding
-     }
       
      @media (max-width: $screen-medium) {
          margin-top: 0;
