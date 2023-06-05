@@ -18,7 +18,7 @@
     max-width: $xxxl !important;
     margin: 0 auto !important;
     float: unset !important;
-    padding: 0 24px !important;
+    padding: 24px !important;
     @include media(">=tablet-lg") {
         padding: 0 48px !important;
     }
@@ -28,7 +28,7 @@
     margin: 0 auto !important;
     float: unset !important;
     @include media("<tablet-lg") {
-        padding: 0 24px !important;
+        padding: 24px !important;
     }
 }
 .cmp-container--bg-efe-gray-light {
@@ -73,9 +73,9 @@
 }
 
 .cmp-container--padding {
-    padding: 80px 48px;
+    padding: 80px 48px !important;
     @include media("<=phone-m") {
-        padding: 40px 24px;
+        padding: 40px 24px !important;
     }
 }
 
