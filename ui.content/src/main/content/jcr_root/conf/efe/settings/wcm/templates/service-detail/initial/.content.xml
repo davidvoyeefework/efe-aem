@@ -27,7 +27,7 @@
                     sling:resourceType="efe/components/container"
                     layout="responsiveGrid">
                     <container
-                        cq:styleIds="[extra-large,background-gray-light]"
+                        cq:styleIds="[extra-large]"
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="efe/components/container"
                         layout="responsiveGrid">
@@ -131,7 +131,7 @@
                             sling:resourceType="efe/components/verticalseparator"/>
                     </container_1211217056>
                     <container_271212332
-                         cq:styleIds="[extra-large,background-gray-light]"
+                         cq:styleIds="[extra-large]"
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="efe/components/container"
                         layout="responsiveGrid">
@@ -191,7 +191,7 @@
                         </container_337298980>
                     </container_271212332>
                     <container_1103144297
-                        cq:styleIds="[extra-large,background-gray-light]"
+                        cq:styleIds="[extra-large]"
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="efe/components/container"
                         layout="responsiveGrid">
