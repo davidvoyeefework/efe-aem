@@ -97,6 +97,10 @@
                                 cq:policy="efe/components/breadcrumb/policy"
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="wcm/core/components/policies/mapping"/>
+                            <relatedarticle
+                                    cq:policy="efe/components/relatedarticle/policy"
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="wcm/core/components/policies/mapping"/>
                         </components>
                     </efe>
                 </container>
@@ -189,6 +193,10 @@
                                 cq:policy="efe/components/breadcrumb/policy"
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="wcm/core/components/policies/mapping"/>
+                            <relatedarticle
+                                    cq:policy="efe/components/relatedarticle/policy"
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="wcm/core/components/policies/mapping"/>
                         </components>
                     </efe>
                 </container>

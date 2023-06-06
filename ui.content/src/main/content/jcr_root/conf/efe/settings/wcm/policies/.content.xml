@@ -1495,11 +1495,9 @@
                 </policy>
             </verticalseparator>
                <relatedarticle jcr:primaryType="nt:unstructured">
-                <policy_317776119391500
-                    jcr:lastModified="{Date}2023-06-06T12:36:35.123+05:30"
-                    jcr:lastModifiedBy="admin"
+                <policy
                     jcr:primaryType="nt:unstructured"
-                    jcr:title="relatedarticles"
+                    jcr:title="relatedarticle"
                     sling:resourceType="wcm/core/components/policy/policy"
                     disableChildren="false"
                     disableSearch="false"
@@ -1516,7 +1514,7 @@
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
                                     cq:styleClasses="cmp-teaser--service-button"
-                                    cq:styleId="1686034984562"
+                                    cq:styleId="service-button"
                                     cq:styleLabel="Service Button"
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
@@ -1527,27 +1525,27 @@
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
                                     cq:styleClasses="cmp-list--horizontal"
-                                    cq:styleId="1686035026698"
+                                    cq:styleId="horizontal"
                                     cq:styleLabel="Horizontal"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item1
                                     cq:styleClasses="cmp-list--horizontal cmp-list--left-align"
-                                    cq:styleId="1686035035272"
+                                    cq:styleId="horizontal-left-align"
                                     cq:styleLabel="Horizontal Left-align"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item2
                                     cq:styleClasses="cmp-list--horizontal cmp-list--right-align"
-                                    cq:styleId="1686035037566"
+                                    cq:styleId="horizontal-right-align"
                                     cq:styleLabel="Horizontal Right-align"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item3
                                     cq:styleClasses="cmp-list--horizontal cmp-list--center-align"
-                                    cq:styleId="1686035044922"
+                                    cq:styleId="horizontal-center-align"
                                     cq:styleLabel="Horizontal Center-align"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item4
                                     cq:styleClasses="cmp-list--column"
-                                    cq:styleId="1686035052601"
+                                    cq:styleId="vertical"
                                     cq:styleLabel="Vertical"
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
@@ -1558,23 +1556,23 @@
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
                                     cq:styleClasses="cmp-list--tight"
-                                    cq:styleId="1686035117487"
+                                    cq:styleId="tight"
                                     cq:styleLabel="Tight"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item1
                                     cq:styleClasses="cmp-list--moderate"
-                                    cq:styleId="1686035129504"
+                                    cq:styleId="moderate"
                                     cq:styleLabel="Moderate"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item2
                                     cq:styleClasses="cmp-list--loose"
-                                    cq:styleId="1686035131456"
+                                    cq:styleId="loose"
                                     cq:styleLabel="Loose"
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item2>
                     </cq:styleGroups>
-                </policy_317776119391500>
+                </policy>
             </relatedarticle>
         </components>
     </efe>
