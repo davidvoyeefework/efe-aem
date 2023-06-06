@@ -22,5 +22,5 @@ $include "./default_filters.any"
 /0105 { /type "allow" /method "GET" /extension "html" /path "/content/efe/*/financial-planners*" /selectors '([0-9-]+)'}
 
 # Allow robots txt file
-/0105 { /type "allow" /method "GET" /extension "txt" /path "/content/efe/seo/*" }
+/0106 { /type "allow" /method "GET" /extension "txt" /path "/content/efe/seo/*" }
 
