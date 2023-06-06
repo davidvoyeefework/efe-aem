@@ -580,6 +580,11 @@
                                         cq:styleId="bottom-padding"
                                         cq:styleLabel="Bottom Padding"
                                         jcr:primaryType="nt:unstructured"/>
+                                <item5
+                                        cq:styleClasses="cmp-container--no-padding-mobile"
+                                        cq:styleId="remove-mobile-padding"
+                                        cq:styleLabel="Remove Mobile Padding"
+                                        jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item2>
 						<item3
