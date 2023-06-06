@@ -13,12 +13,12 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
- * The Class InitiatorParticipantChooserImplTest.
+ * The Class WorkflowParticipantChooserImplTest.
  */
 @ExtendWith(MockitoExtension.class)
 class WorkflowParticipantChooserImplTest {
 
-	/** The InitiatorParticipantChooserImpl. */
+	/** The WorkflowParticipantChooserImpl. */
 	private WorkflowParticipantChooserImpl initiatorParticipantChooser = new WorkflowParticipantChooserImpl();
 
 	/** The Constant PROCESS_ARGS. */
