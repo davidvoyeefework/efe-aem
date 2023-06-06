@@ -124,7 +124,7 @@
     }
     @include media("<=tablet-lg") {
         flex-direction: column;
-        gap: 0;
+        gap: 32px;
         align-items: center;
         &__item {
             margin-bottom: 10px;
@@ -147,6 +147,12 @@
                 align-items: center;
             }
         }
+    }
+}
+
+.cmp-vertical-separator--two.cmp-horizontal-separator {
+    @include media("<=tablet-lg") {
+        gap: 0;
     }
 }
 
