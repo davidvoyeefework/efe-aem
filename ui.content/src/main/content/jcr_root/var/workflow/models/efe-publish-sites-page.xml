@@ -6,7 +6,7 @@
     description="Workflow to publish the page"
     title="EFE PUBLISH SITES PAGE">
     <metaData
-        cq:generatingPage="/conf/global/settings/workflow/models/EFE_PUBLISH_SITES_PAGE/jcr:content"
+        cq:generatingPage="/conf/global/settings/workflow/models/efe-publish-sites-page/jcr:content"
         jcr:primaryType="nt:unstructured"/>
     <nodes jcr:primaryType="nt:unstructured">
         <node0
