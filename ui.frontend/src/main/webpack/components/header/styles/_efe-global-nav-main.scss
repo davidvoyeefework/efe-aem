@@ -6,7 +6,7 @@
     }
 
     .cmp-container--26 {
-        padding: rem(24) rem(24) rem(20);
+        padding: rem(24) rem(24) rem(20) !important;
         @include flexbox(
             $gap: rem(40),
             $justify-content: space-between,
