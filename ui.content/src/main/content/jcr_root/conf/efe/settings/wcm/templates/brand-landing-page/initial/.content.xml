@@ -94,7 +94,7 @@
                             linkTarget="_self"
                             type="h2"/>
                         <container
-                            cq:styleIds="[bottom-padding,right-padding]"
+                            cq:styleIds="[bottom-padding,right-padding,left-padding]"
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="efe/components/container"
                             layout="responsiveGrid">
@@ -115,7 +115,7 @@
                                 textIsRich="true"/>
                         </container>
                         <container_1008480980
-                            cq:styleIds="[bottom-padding,right-padding]"
+                            cq:styleIds="[bottom-padding,right-padding,left-padding]"
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="efe/components/container"
                             layout="responsiveGrid">
@@ -135,7 +135,7 @@
                                 textIsRich="true"/>
                         </container_1008480980>
                         <container_825307442
-                            cq:styleIds="[bottom-padding,right-padding]"
+                            cq:styleIds="[bottom-padding,right-padding,left-padding]"
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="efe/components/container"
                             layout="responsiveGrid">
