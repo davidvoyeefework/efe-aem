@@ -5,10 +5,16 @@ Handlebars.registerPartial("CustomVideo", CustomVideo);
 
 export default {
     title: "Components/CustomVideo",
-    argTypes: {},
+    argTypes: {
+      "min-height": {
+        control: "boolean",
+      }
+    },
 };
 
 const TemplateCustomVideo = (args) => CustomVideo({ ...args });
-TemplateCustomVideo.bind({});
+TemplateCustomVideo.bind({
+  "min-height": true,
+});
 
 export { TemplateCustomVideo as VideoEmbed } ;
