@@ -3,6 +3,6 @@
     "includeGenerators":[
       "com.efe.core.sitemap.EFESitemapGenerator"
     ],
-    "scheduler.name":"EFE Sitemaps 2",
+    "scheduler.name":"EFE Sitemaps",
     "searchPath":"/content/efe"
   }
