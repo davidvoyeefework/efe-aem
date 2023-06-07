@@ -146,6 +146,7 @@ public class EFESitemapGenerator extends ResourceTreeSitemapGenerator {
 			for (Resource plannerFolder : plannerFolderResource.getChildren()) {
 				if (plannerFolder.isResourceType(JcrResourceConstants.NT_SLING_ORDERED_FOLDER)) {
 
+					try {
 					String plannerId = plannerFolder.getName();
 					String plannerNameId = plannerFolder.getValueMap().get(JcrConstants.JCR_TITLE,
 							String.class);
@@ -159,6 +160,10 @@ public class EFESitemapGenerator extends ResourceTreeSitemapGenerator {
 								
 					Resource plannerMaster = plannerResource.getChild(plannerFragmentPath + PlannerLocationConstants.MASTER_NODE);
 
+					if(plannerMaster == null) {
+						continue;
+					}
+					
 					String firstName = ResourceUtil.getProperty(resourceResolver, plannerMaster.getPath(),
 							"firstName");
 					String lastName = ResourceUtil.getProperty(resourceResolver, plannerMaster.getPath(),
@@ -175,7 +180,9 @@ public class EFESitemapGenerator extends ResourceTreeSitemapGenerator {
 					if (lastmod != null) {
 						url.setLastModified(lastmod.toInstant());
 					}
-
+					}catch (Exception e) {
+						LOG.error("Error:", e);
+					}
 				}
 			}
 		}

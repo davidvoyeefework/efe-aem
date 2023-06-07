@@ -1,4 +1,5 @@
 <div data-sly-use.teaser="com.adobe.cq.wcm.core.components.models.Teaser"
+     data-sly-use.article="com.efe.core.models.RelatedArticle"
      data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
      data-sly-use.imageTemplate="image.html"
      data-sly-use.pretitleTemplate="pretitle.html"
@@ -19,7 +20,7 @@
                 <sly data-sly-call="${descriptionTemplate.description @ teaser=teaser}"></sly>
             </p>
         </div>
-        <sly data-sly-call="${actionsTemplate.actions @ teaser=teaser}"></sly>
+        <sly data-sly-call="${actionsTemplate.actions @ teaser=teaser, article=article}"></sly>
     </div>
     <sly data-sly-call="${imageTemplate.image @ teaser=teaser}"></sly>
 </div>
