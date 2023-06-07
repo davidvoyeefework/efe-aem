@@ -13,7 +13,7 @@
     height: auto;
     overflow-y: auto;
   }
-  border-radius: 5px;
+  border-radius: 0;
   text-align: left;
   &__container {
     padding: 0;
@@ -21,8 +21,8 @@
   &__close {
     float: right;
     position: absolute;
-    top: 32px;
-    right: 32px;
+    top: 36px;
+    right: 26px;
   }
   &__body {
     display: flex;
