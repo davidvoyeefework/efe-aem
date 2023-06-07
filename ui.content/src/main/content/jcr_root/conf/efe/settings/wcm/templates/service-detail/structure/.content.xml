@@ -20,7 +20,8 @@
                 cq:styleIds="[white]"
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="efe/components/container"
-                layout="responsiveGrid">
+                layout="responsiveGrid"
+                id="main">
                 <container_587323967
                     cq:styleIds="[extra-large]"
                     jcr:primaryType="nt:unstructured"

@@ -17,7 +17,8 @@
             <container
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="efe/components/container"
-                layout="responsiveGrid">
+                layout="responsiveGrid"
+                id="main">
                 <container
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="efe/components/container"

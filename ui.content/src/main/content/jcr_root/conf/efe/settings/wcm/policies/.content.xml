@@ -1579,6 +1579,27 @@
                     </cq:styleGroups>
                 </policy>
             </relatedarticle>
+            <video jcr:primaryType="nt:unstructured">
+            <policy
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="YouTube Policy"
+                    sling:resourceType="wcm/core/components/policy/policy">
+                <jcr:content jcr:primaryType="nt:unstructured"/>
+                <cq:styleGroups jcr:primaryType="nt:unstructured">
+                    <item0
+                            cq:styleGroupLabel="Height"
+                            jcr:primaryType="nt:unstructured">
+                        <cq:styles jcr:primaryType="nt:unstructured">
+                            <item0
+                                    cq:styleClasses="cmp-custom-video--min-height"
+                                    cq:styleId="minimum-height"
+                                    cq:styleLabel="Minimum Height"
+                                    jcr:primaryType="nt:unstructured"/>
+                        </cq:styles>
+                    </item0>
+                </cq:styleGroups>
+            </policy>
+            </video>
         </components>
     </efe>
 </jcr:root>

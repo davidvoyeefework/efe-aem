@@ -19,7 +19,8 @@
                     cq:styleIds="[extra-large]"
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="efe/components/container"
-                    layout="responsiveGrid">
+                    layout="responsiveGrid"
+                    id="main">
                 <breadcrumb
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="efe/components/breadcrumb"
