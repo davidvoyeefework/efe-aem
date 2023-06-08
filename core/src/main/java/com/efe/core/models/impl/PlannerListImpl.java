@@ -118,6 +118,11 @@ public class PlannerListImpl implements PlannerList {
 			if (Objects.nonNull(planner)) {
 				Resource plannerMaster = resourceResolver
 						.getResource(planner.getPath() + PlannerLocationConstants.MASTER_NODE);
+				
+				if(plannerMaster == null) {
+					
+					continue;
+				}
 				String firstName = ResourceUtil.getProperty(resourceResolver, plannerMaster.getPath(), "firstName");
 				String lastName = ResourceUtil.getProperty(resourceResolver, plannerMaster.getPath(), "lastName");
 				String title = ResourceUtil.getProperty(resourceResolver, plannerMaster.getPath(), "title");
