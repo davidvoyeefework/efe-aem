@@ -80,6 +80,9 @@
         word-wrap: break-word;
       }
     }
+    a {
+      text-decoration: underline;
+    }
   }
   &__action-container {
     display: flex;
@@ -119,5 +122,12 @@
 @keyframes fade-in {
   from {
     opacity: 0;
+  }
+}
+.cmp-modal--leaving {
+  .cmp-modal {
+    height: auto;
+    padding-bottom: rem(44);
+    max-height: rem(495);
   }
 }
