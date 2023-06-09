@@ -13,12 +13,10 @@
             }
         }
         &__tab {
-            &:first-child {
-                margin-left: 48px;
-            }
             margin: 0 30px;
             padding: 12px 0;
             @include subhead-01;
+            letter-spacing: 0.04em;
             color: $efe-gray-new;
             min-width: fit-content;
             @include media("<=phone-m") {
@@ -36,7 +34,18 @@
             border: 0;
             padding-left: 0;
             padding-right: 0;
-            border-bottom: 3px solid $efe-red-primary;
+            position: relative;
+            &::after {
+                content: '';
+                border-bottom: 3px solid $efe-red-primary;
+                width: 100%;
+                display: block;
+                position: absolute;
+                bottom: -2px;
+                @include media("<=phone-m") {
+                    bottom: 7px;
+                }
+            }
         }
         &__tabpanel {
             margin-top: 10px;
