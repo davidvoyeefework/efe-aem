@@ -1,0 +1,8 @@
+{
+    "max.age":"43200",
+    "filter.pattern":[
+      "/content/efe/us/en/location(.*)",
+      "/content/efe/us/en/locations(.*)",
+      "/content/efe/us/en/financial-planners(.*)"
+    ]
+}
