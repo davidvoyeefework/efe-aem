@@ -28,6 +28,9 @@ public class AuthcheckerServlet extends SlingSafeMethodsServlet {
 
 		// retrieve the requested URL
 		String uri = request.getParameter("uri");
+		
+		LOG.info("authchecker called : URI : {}", uri);
+		
 		// obtain the session from the request
 		Session session = request.getResourceResolver().adaptTo(Session.class);
 		// perform the permissions check

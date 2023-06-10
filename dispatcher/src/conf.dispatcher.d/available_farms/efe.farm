@@ -139,6 +139,10 @@
 			/glob "/content/efe/us/en/kartik-test-pages/secure/*"
 			/type "allow"
 		}
+		/0003 {
+			/glob "/graphql/execute.json/efe/all-category-cards*"
+			/type "allow"
+		}
 	}
 	# any header line returned from the auth_checker's HEAD request matching the section below will be returned as well
 	/headers
