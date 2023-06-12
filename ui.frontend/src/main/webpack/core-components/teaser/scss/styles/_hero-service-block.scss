@@ -175,49 +175,44 @@
 .cmp-teaser--image-left-rte {
     .cmp-teaser {
         @include teaserImageLeft;
+        justify-content: start;
          &__link {
              @include teaserImageLeft;
          }
          &__pretitle {
-            @include buildFont (rem(16), 4%,$font-nimbus-Sans,400, uppercase,rem(16),$efe-gray-primary);    
+            @include buildFont (rem(16), 4%,$font-nimbus-Sans,400, uppercase,rem(16),$efe-gray-primary);
+            letter-spacing: 0.04em;    
          }
          &__content {
              @include media("<tablet") {
                  padding: rem(32) rem(24);
              }
              padding: rem(51) rem(48);
-             @include media('>tablet') {
-                 width: 55%;
-             }
-         }
-         &__action-container {
-             margin: rem(24) 0 rem(36) 0;
          }
          &__action-link {
              @include cta-secondary;
-             @include media('>tablet') {
-                padding: rem(17) rem(40) rem(11) rem(40);
-            }
          }
          &__image {
              .cmp-image {
                  position: relative;
              }
              .cmp-image__image {
-                 width: 100%;
-             }
-             @include media('>tablet') {
-                 width: 45%;
+                 width: 328px;
+                 height: 328px;
+                 object-fit: cover;
+                 @include media('<tablet') {
+                    width: 100%;
+                }
              }
              overflow: hidden;
          }
          &__title {
-            @include heading-04;
+            @include subhead-00;
              margin-top: 0;
              margin-bottom: rem(24);
          }
          &__title-link {
-            @include heading-04;
+            @include subhead-00;
          }
          &__description {
             max-width: rem(400px);
@@ -226,6 +221,9 @@
              p {
                  @include body-02;
                  line-height: 130%;
+             }
+             a {
+                @include body-02-link;
              }
          }
      }
