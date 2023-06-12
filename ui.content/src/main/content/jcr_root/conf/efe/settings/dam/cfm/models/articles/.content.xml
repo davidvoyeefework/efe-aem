@@ -63,7 +63,6 @@
                             metaType="text-multi"
                             name="articleSummary"
                             renderReadOnly="false"
-                            required="on"
                             showEmptyInReadOnly="true"
                             valueType="string/multiline"/>
                         <body
