@@ -49,6 +49,10 @@
                 display: inline-block;
                 width: rem(5);
                 margin-right: 16px;
+                font-size: inherit;
+                top: rem(-3px);
+                left: 0;
+                vertical-align: sub;
             }
             span {
                 @include body-02;
