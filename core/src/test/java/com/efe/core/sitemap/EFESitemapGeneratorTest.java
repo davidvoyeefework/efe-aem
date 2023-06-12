@@ -205,7 +205,6 @@ class EFESitemapGeneratorTest {
     void shouldFollowTest() {
         ValueMap props = mock(ValueMap.class);
         when(resource.getValueMap()).thenReturn(props);
-        //efeSitemapGenerator.shouldFollow(resource);
         lenient().when(resource.getChild(JcrConstants.JCR_CONTENT)).thenReturn(resource);
         lenient().when(props.get(SitemapService.PROPERTY_SITEMAP_ROOT, Boolean.class)).thenReturn(false);
         lenient().when(defaultGenerator.shouldFollow(resource)).thenReturn(true);
