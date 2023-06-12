@@ -33,7 +33,7 @@ import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 class SlingJobTest {
 
 	/** The aem context. */
-	private final AemContext aemContext = new AemContext(ResourceResolverType.JCR_MOCK);
+	private final AemContext aemContext = new AemContext();
 
 	/** The resourceResolver. */
 	@Mock
