@@ -79,3 +79,16 @@
         height: auto;
     }
 }
+
+[class^="cmp-text--heading-"], [class*="cmp-text--heading-"],
+[class^="cmp-text--subhead-"], [class*="cmp-text--subhead-"] {
+    padding-bottom: 10px;
+}
+[class^="cmp-text--body-"], [class*="cmp-text--body-"] {
+    margin-bottom: 20px;
+}
+span[class^="cmp-text--heading-"], span[class*="cmp-text--heading-"],
+span[class^="cmp-text--subhead-"], span[class*="cmp-text--subhead-"],
+span[class^="cmp-text--body-"], span[class*="cmp-text--body-"] {
+    display: inline-block;
+}
