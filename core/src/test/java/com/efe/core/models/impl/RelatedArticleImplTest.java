@@ -43,7 +43,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
     void setUp() {
         aemContext.addModelsForClasses(RelatedArticleImpl.class);
 
-        aemContext.load().json("/com/efe/core/models/relatedArticle/relatedArticle.json", "/content");
+        aemContext.load().json("/com/efe/core/models/RelatedArticle/relatedArticle.json", "/content");
         aemContext.currentResource("/content");
         resolver = aemContext.resourceResolver();
         request = aemContext.request();
