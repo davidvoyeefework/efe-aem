@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workspaceFilter version="1.0">
+    <filter root="/conf/global/settings/workflow/models" mode="update_properties"/>
     <filter root="/conf/global/settings/workflow/models/efe-publish-sites-page" mode="replace"/>
     <filter root="/var/workflow/models/efe-publish-sites-page.xml" mode="replace"/>
     <filter root="/conf/efe/settings/wcm/templates/content-template-full-header-and-footer" mode="replace"/>
@@ -20,7 +21,6 @@
     <filter root="/conf/global/settings/dam/adminui-extension/metadataschema" mode="merge"/>
     <filter root="/conf/global/settings/dam/adminui-extension/metadataprofile" mode="merge"/>
     <filter root="/conf/global/settings/dam/dm/presets/macros" mode="merge"/>
-    <filter root="/conf/global/settings/workflow/models" mode="update"/>
     <filter root="/content/cq:graphql/efe" mode="update_properties"/>
     <filter root="/etc/acs-commons/lists/efe" mode="merge"/>
     <filter root="/var/workflow/models" mode="update"/>
