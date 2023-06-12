@@ -73,7 +73,7 @@
             
     <frontend-maven-plugin.version>1.12.0</frontend-maven-plugin.version>
             
-    <core.wcm.components.version>2.19.0</core.wcm.components.version>
+    <core.wcm.components.version>2.22.12</core.wcm.components.version>
             
     <bnd.version>5.1.2</bnd.version>
             
@@ -81,7 +81,7 @@
             
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
             
-    <aem.sdk.api>2022.12.10488.20221222T085327Z-220900</aem.sdk.api>
+    <aem.sdk.api>2023.4.12142.20230526T152858Z-230400</aem.sdk.api>
             
     <aemanalyser.version>1.4.10</aemanalyser.version>
             
