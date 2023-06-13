@@ -14,4 +14,3 @@
 	/type "allow"
 	/glob "${AEM_IP}"
 }
-
