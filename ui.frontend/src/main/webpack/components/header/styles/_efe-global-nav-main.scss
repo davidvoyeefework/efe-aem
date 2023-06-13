@@ -1,5 +1,6 @@
 #efe-nav-main {
     position: relative;
+    z-index: 99;
 
     .cmp-navigation__aem-container {
         display: none;
@@ -22,6 +23,7 @@
         left: 0;
         right: 0;
         bottom: 0;
+        z-index: 98;
         padding: rem(52) rem(24) rem(52) rem(60);
         background: white;
         height: fit-content;

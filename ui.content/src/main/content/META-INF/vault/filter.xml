@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workspaceFilter version="1.0">
+    <filter root="/conf/efe/settings/dam/cfm/models/articles" mode="replace"/>
     <filter root="/conf/global/settings/workflow/models/efe-publish-sites-page" mode="replace"/>
     <filter root="/var/workflow/models/efe-publish-sites-page.xml" mode="replace"/>
     <filter root="/conf/efe/settings/wcm/templates/content-template-full-header-and-footer" mode="replace"/>

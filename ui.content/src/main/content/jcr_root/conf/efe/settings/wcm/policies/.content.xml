@@ -1514,13 +1514,13 @@
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                     <cq:styleGroups jcr:primaryType="nt:unstructured">
                         <item0
-                            cq:styleGroupLabel="Styles"
+                            cq:styleGroupLabel="Rounder Corner"
                             jcr:primaryType="nt:unstructured">
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
-                                    cq:styleClasses="cmp-teaser--service-button"
-                                    cq:styleId="service-button"
-                                    cq:styleLabel="Service Button"
+                                    cq:styleClasses="cmp-list--border-radius"
+                                    cq:styleId="top-left"
+                                    cq:styleLabel="Top Left"
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item0>

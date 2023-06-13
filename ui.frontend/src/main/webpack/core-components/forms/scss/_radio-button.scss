@@ -20,7 +20,9 @@
         input[type="radio"] {
             outline: 2px solid  $efe-gray-light;
             outline-offset: 2px;
+            cursor: pointer;
         }
+
     }
 
     &.radio-item--selected {
