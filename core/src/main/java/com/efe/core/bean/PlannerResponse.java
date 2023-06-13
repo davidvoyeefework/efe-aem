@@ -224,6 +224,11 @@ public class PlannerResponse {
 		this.bio = bio;
 	}
 
+	/* Sets firstNameAlias */
+	public void setFirstNameAlias(String firstNameAlias) {
+		this.firstNameAlias = firstNameAlias;
+	}
+
 	/* getter lastUpdated */
 	public String getLastUpdated() {
 		return lastUpdated;

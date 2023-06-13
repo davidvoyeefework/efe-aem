@@ -7,6 +7,7 @@ import java.util.Objects;
 
 import javax.annotation.PostConstruct;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -120,17 +121,20 @@ public class PlannerListImpl implements PlannerList {
 						.getResource(planner.getPath() + PlannerLocationConstants.MASTER_NODE);
 				
 				if(plannerMaster == null) {
-					
 					continue;
 				}
 				String firstName = ResourceUtil.getProperty(resourceResolver, plannerMaster.getPath(), "firstName");
+				String firstNameAlias = ResourceUtil.getProperty(resourceResolver, plannerMaster.getPath(), "firstNameAlias");
 				String lastName = ResourceUtil.getProperty(resourceResolver, plannerMaster.getPath(), "lastName");
 				String title = ResourceUtil.getProperty(resourceResolver, plannerMaster.getPath(), "title");
 				String imageUrl = ResourceUtil.getProperty(resourceResolver, plannerMaster.getPath(),
 						"desktopImageurl");
 				String plannerId = ResourceUtil.getProperty(resourceResolver, plannerMaster.getPath(), "id");
-
-				plannerObj.setFirstName(firstName);
+				if(StringUtils.isNotEmpty(firstNameAlias)) {
+					plannerObj.setFirstName(firstNameAlias);
+				} else {
+					plannerObj.setFirstName(firstName);
+				}
 				plannerObj.setLastName(lastName);
 				plannerObj.setTitle(title);
 				plannerObj.setDesktopUrl(imageUrl);
