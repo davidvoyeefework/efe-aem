@@ -129,17 +129,7 @@
 			/glob "*"
 			/type "deny"
 		}
-		/0001
-		{
-			/glob "/content/dam/efe/cf/employee-planning/*"
-			/type "allow"
-		}
-		/0002
-		{
-			/glob "/content/efe/us/en/kartik-test-pages/secure/*"
-			/type "allow"
-		}
-		/0003 {
+		/0001 {
 			/glob "/graphql/execute.json/*"
 			/type "allow"
 		}
