@@ -23,11 +23,3 @@ $include "./default_filters.any"
 
 # Allow robots txt file
 /0106 { /type "allow" /method "GET" /extension "txt" /path "/content/dam/efe/seo/*" }
-
-
-# GraphQL Persisted Queries
-/1110 { /type "allow" /url "/graphql/execute.json/*" }
-
-
-# GraphQL Persisted Queries
-/1111 { /type "allow" /extension "json"  /path "/content/efe*" }

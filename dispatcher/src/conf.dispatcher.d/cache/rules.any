@@ -7,8 +7,8 @@
 $include "./default_rules.any"
 
 
-/1010 {
-	/glob "*"
-	/type "allow"
+/0013 {
+	/glob "/content/efe/*.json"
+	/type "deny"
 }
 
