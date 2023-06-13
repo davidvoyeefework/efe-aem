@@ -15,7 +15,7 @@ import org.slf4j.LoggerFactory;
 
 @Component(service = { Servlet.class })
 @SlingServletPaths(value = "/bin/permissioncheck")
-@ServiceDescription("EFE Forms Servlet")
+@ServiceDescription("EFE Authchecker Servlet")
 public class AuthcheckerServlet extends SlingSafeMethodsServlet {
 
 	private static final long serialVersionUID = -5239715848179225012L;
@@ -35,7 +35,13 @@ public class AuthcheckerServlet extends SlingSafeMethodsServlet {
 		Session session = request.getResourceResolver().adaptTo(Session.class);
 		// perform the permissions check
 		try {
-			session.checkPermission(uri, Session.ACTION_READ);
+			
+			if(uri.contains("efe/all-category-cards")) {
+				session.checkPermission("/content/dam/efe/cf/wealth-planning/disclosures", Session.ACTION_READ);
+				session.checkPermission("/content/dam/efe/cf/employee-planning/disclosures", Session.ACTION_READ);
+			}else {
+				session.checkPermission(uri, Session.ACTION_READ);
+			}
 			LOG.info("authchecker says OK");
 			response.setStatus(HttpServletResponse.SC_OK);
 		} catch (Exception e) {
