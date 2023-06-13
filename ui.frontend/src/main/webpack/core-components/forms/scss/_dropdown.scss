@@ -17,6 +17,13 @@
         background: url("../resources/images/icons/arrows/red-arrows/down-arrow-red.svg") no-repeat right 20px center / auto;
         ;
 
+        &:focus{
+            background: url("../resources/images/icons/arrows/red-arrows/up-arrow-red.svg") no-repeat right 20px center / auto;
+        }
+
+        &:visited{
+            background: url("../resources/images/icons/arrows/red-arrows/down-arrow-red.svg") no-repeat right 20px center / auto;
+        }
 
     }
 }

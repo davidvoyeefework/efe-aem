@@ -15,6 +15,7 @@ button.cmp-form-button--chip {
     &:hover,  &.cmp-form-button--hover {
         border: 2px solid $efe-gray-blue;
         padding: rem(10) rem(19) rem(12);
+        cursor: pointer;
     }
 
     &:focus {
