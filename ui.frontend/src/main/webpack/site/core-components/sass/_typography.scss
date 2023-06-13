@@ -73,7 +73,8 @@
 
   @mixin stats-02-underline {
     @include stats-02;
-    text-decoration: solid underline $efe-red-primary 6px;
+    text-decoration: solid underline $efe-red-primary 4px;
+    text-underline-offset: 17px;
   }
 
   .cmp-text--stats-02-underline {
