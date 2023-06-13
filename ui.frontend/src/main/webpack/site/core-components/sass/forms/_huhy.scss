@@ -1,0 +1,81 @@
+#homepage_huhy_form {
+
+    max-width: 40.3125rem;
+    margin: auto;
+    padding-bottom: 10rem;
+    overflow: hidden;
+
+    progress#efe-progress-bar-default{
+        width: 100%;
+        -webkit-appearance: progress-bar;
+        -moz-appearance: progress-bar;
+        box-sizing: border-box;
+        display: inline-block;
+        border-radius: unset;
+        height: rem(1);
+        margin: rem(24) 0 rem(22.5);
+        background-color: $efe-red-primary;
+    }
+    
+    progress::-webkit-progress-value {
+        background-color: $efe-red-primary;
+        height: rem(4);
+        position: relative;
+        bottom: rem(1);
+    }
+    
+    progress::-webkit-progress-bar {
+        background-color: $efe-gray-blue;
+        height: rem(1);
+    }
+
+    .lead_form_page_count {
+        text-align: right;
+        text-transform: unset;
+        display: inline-block;
+        float: right;
+        align-self: right;
+        -ms-flex-item-align: right;        
+        -ms-grid-row-align: right;   
+        @include footer-02;
+    }
+
+    .section-body {
+        padding-top: rem(32);
+
+        .cmp-title--heading-04 {
+            margin-bottom: rem(10);
+        }
+
+        .cmp-text--body-02 {
+            margin-bottom: rem(36);
+        }
+
+        .cmp-separator--primary hr {
+            margin: rem(16) auto rem(26);
+        }
+
+        .cmp-text--body-01 {
+            margin-bottom: rem(36);
+        }
+    }
+
+    @media screen and (min-width: $sm) {
+        .section-body {
+            text-align: center;
+        }
+    }
+
+    //FIRST STEP
+    .personalize-investment_manage_page {
+
+        #investmentManage_container > div {
+            padding: 0 !important;
+        }
+
+    }
+
+    
+
+
+}

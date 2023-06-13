@@ -9,13 +9,9 @@ button.cmp-form-button--answer {
     @include body-03;
     line-height: 100%;
     min-width: rem(200);
-    width: rem(371);
+    max-width: rem(371);
     width: 100%;
-
-    @media screen and (min-width: $sm) {
-        max-width: rem(372);
-        width: 100%;
-    }
+    margin: 0 auto rem(12);
 
     &:hover, &.cmp-form-button--hover  {
         cursor: pointer;
