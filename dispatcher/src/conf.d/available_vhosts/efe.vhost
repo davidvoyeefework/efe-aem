@@ -8,7 +8,8 @@ Include conf.d/variables/custom.vars
 	ServerAlias	 "publish-p91602-e833625.adobeaemcloud.com"
 	ServerAlias	 "publish-p91602-e978852.adobeaemcloud.com"
 	ServerAlias	 "publish-p91602-e833624.adobeaemcloud.com"
-	ServerAlias	 "publish-p91602-e833656.adobeaemcloud.com"	
+	ServerAlias	 "publish-p91602-e833656.adobeaemcloud.com"
+	ServerAlias	 "publish-p91602-e1121645.adobeaemcloud.com"
 	ServerAlias	 "*.efe.com"
 	ServerAlias	 "*.edelmanfinancialengines.com"
 	# Use a document root that matches the one in conf.dispatcher.d/default.farm
