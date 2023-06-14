@@ -36,7 +36,7 @@
 		# document root of the webserver. when an activation request for some
 		# handle is received, only files within the same subtree are affected
 		# by the invalidation.
-		/statfileslevel "4"
+		/statfileslevel "5"
 		# caches also authorized data
 		/allowAuthorized "1"
 		# Flag indicating whether the dispatcher should serve stale content if
@@ -130,7 +130,11 @@
 			/type "deny"
 		}
 		/0001 {
-			/glob "/graphql/execute.json/*"
+			/glob "/graphql/execute.json/efe/all-category-cards*"
+			/type "allow"
+		}
+		0002 {
+			/glob "/graphql/execute.json/efe/all-header-details*"
 			/type "allow"
 		}
 	}

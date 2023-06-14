@@ -2,7 +2,9 @@ package com.efe.core.servlets;
 
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
+import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.api.resource.ResourceResolverFactory;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -24,13 +26,17 @@ class AuthcheckerServletTest {
     @Mock
     private SlingHttpServletResponse response;
 
+    @Mock
+    ResourceResolverFactory resolverFactory;
+    
     @Test
-    void doHeadTest() {
+    void doHeadTest() throws LoginException {
         when(request.getParameter("uri")).thenReturn("uri");
         ResourceResolver resourceResolver = mock(ResourceResolver.class);
-        when(request.getResourceResolver()).thenReturn(resourceResolver);
+        lenient().when(request.getResourceResolver()).thenReturn(resourceResolver);
+        lenient().when(resolverFactory.getServiceResourceResolver(any())).thenReturn(resourceResolver);
         Session session = mock(Session.class);
-        when(resourceResolver.adaptTo(Session.class)).thenReturn(session);
+        lenient().when(resourceResolver.adaptTo(Session.class)).thenReturn(session);
         authcheckerServlet.doHead(request, response);
         assertNotNull(session);
     }
