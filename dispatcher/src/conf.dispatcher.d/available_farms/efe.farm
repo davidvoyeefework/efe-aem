@@ -133,7 +133,7 @@
 			/glob "/graphql/execute.json/efe/all-category-cards*"
 			/type "allow"
 		}
-		0002 {
+		/0002 {
 			/glob "/graphql/execute.json/efe/all-header-details*"
 			/type "allow"
 		}
