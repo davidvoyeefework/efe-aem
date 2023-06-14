@@ -30,9 +30,17 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
-                                            <includelocation
+                                            <characterLimit
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:orderBefore="id"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                fieldDescription="Add Max Character count per line here"
+                                                fieldLabel="Max Character count per line"
+                                                min="{Long}5"
+                                                name="./characterLimit"/>
+                                            <includelocation
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:orderBefore="characterLimit"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                                                 fieldDescription="Check to Include location in Title. {0} will be replaced with State code, {1} will be replaced by city name"
                                                 name="./includeLocationInTitle"
