@@ -4,29 +4,34 @@
     data-sly-test.isNotEmpty="${!model.empty}"
     data-sly-set.podcast="${model.podcast}" 
     class="cmp-efe-embed">
-    <script data-sly-test="${model.jsonLd}" type="application/ld+json">
-        ${model.jsonLd @context ='unsafe'}
-    </script>
-    <h3 class="cmp-efe-embed__title">${podcast.title}</h3>
-    <p class="cmp-efe-embed__season-info" data-sly-test="${podcast.episode > 0 && podcast.season > 0}">
-        <span>Season ${podcast.season}</span>
-        <span>Episode ${podcast.episode}</span>
-    </p>
-    <iframe id="omny-embed"
-        src="${podcast.embedUrl}?style=artwork&image=0&share=0&download=1&description=0&follow=0&foreground=535658&background=ffffff&highlight=c32d37"
-        allow="autoplay; clipboard-write" width="100%" height="180" frameborder="0"
-        title="${podcast.title}"></iframe>
-    <div class="image cmp-image--top-left" data-sly-test="${model.fileReference}">
-        <div data-cmp-src="${model.fileReference}"
-            data-asset-id="0f54e1b5-535b-45f7-a46b-35abb19dd6bc" id="image-d54ae90061"
-            data-cmp-hook-image="imageV3" class="cmp-image" itemscope="" itemtype="http://schema.org/ImageObject">
-            <img class="cmp-image__image"
-                src="${model.fileReference}"
-                alt="${podcast.title}" title="${podcast.title}">
-            <meta itemprop="caption" content="${podcast.title}">
+    <sly data-sly-test.notError="${!model.apiError}">
+        <script data-sly-test="${model.jsonLd}" type="application/ld+json">
+            ${model.jsonLd @context ='unsafe'}
+        </script>
+        <h3 class="cmp-efe-embed__title">${podcast.title}</h3>
+        <p class="cmp-efe-embed__season-info" data-sly-test="${podcast.episode > 0 && podcast.season > 0}">
+            <span>Season ${podcast.season}</span>
+            <span>Episode ${podcast.episode}</span>
+        </p>
+        <iframe id="omny-embed"
+            src="${podcast.embedUrl}?style=artwork&image=0&share=0&download=1&description=0&follow=0&foreground=535658&background=ffffff&highlight=c32d37"
+            allow="autoplay; clipboard-write" width="100%" height="180" frameborder="0"
+            title="${podcast.title}"></iframe>
+        <div class="image cmp-image--top-left" data-sly-test="${model.fileReference}">
+            <div data-cmp-src="${model.fileReference}"
+                data-asset-id="0f54e1b5-535b-45f7-a46b-35abb19dd6bc" id="image-d54ae90061"
+                data-cmp-hook-image="imageV3" class="cmp-image" itemscope="" itemtype="http://schema.org/ImageObject">
+                <img class="cmp-image__image"
+                    src="${model.fileReference}"
+                    alt="${podcast.title}" title="${podcast.title}">
+                <meta itemprop="caption" content="${podcast.title}">
+            </div>
         </div>
-    </div>
-    <div class="cmp-efe-embed__description"> ${podcast.descriptionHtml @context = 'html'}</div>
+        <div class="cmp-efe-embed__description"> ${podcast.descriptionHtml @context = 'html'}</div>
+    </sly>
+    <sly data-sly-test="${!notError}">
+        <h4 class="cmp-podcast-archive__title">No Podcasts found</h4>
+    </sly>
 </section>
 
 <sly data-sly-call="${template.placeholder @ isEmpty=!isNotEmpty, classAppend='cmp-podcastlist'}"></sly>

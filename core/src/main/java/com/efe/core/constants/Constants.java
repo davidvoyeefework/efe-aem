@@ -53,5 +53,11 @@ public class Constants {
 	
 	/** The Constant DATE_FORMAT_YEAR_MONTH_DAY. e.g 2023-05-18 */
 	public static final String DATE_FORMAT_YEAR_MONTH_DAY = "yyyy-MM-dd";
+	
+    /** The Constant EPISODE. */
+    public static final String EPISODE = "Episode";
+
+	/** The Constant SEASON. */
+	public static final String SEASON = "Season";
 
 }

@@ -1,6 +1,7 @@
 package com.efe.core.servlets;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Objects;
 
@@ -53,7 +54,7 @@ public class AuthcheckerServlet extends SlingSafeMethodsServlet {
 	/**
 	 * Do head.
 	 *
-	 * @param request the request
+	 * @param request  the request
 	 * @param response the response
 	 */
 	@Override
@@ -68,9 +69,10 @@ public class AuthcheckerServlet extends SlingSafeMethodsServlet {
 			Resource genericList = resourceResolver
 					.getResource("/etc/acs-commons/lists/efe/momemtum-paths-list/jcr:content/list");
 
-			if (Objects.nonNull(genericList)) {
-				Iterable<Resource> children = genericList.getChildren();
-				for (Resource link : children) {
+			if (Objects.nonNull(genericList) && genericList.hasChildren()) {
+				Iterator<Resource> childrenItr = genericList.listChildren();
+				while (childrenItr.hasNext()) {
+					final Resource link = childrenItr.next();
 					final String paths = link.getValueMap().get("value", StringUtils.EMPTY);
 					final String type = link.getValueMap().get(JcrConstants.JCR_TITLE, StringUtils.EMPTY);
 					if (StringUtils.isNotEmpty(paths) && StringUtils.isNotEmpty(type)) {
@@ -79,15 +81,26 @@ public class AuthcheckerServlet extends SlingSafeMethodsServlet {
 
 				}
 			}
-		} catch (Exception e) {
-			LOG.error("Error while getting resource resolver for system user", e);
 		}
-
+		
 		if (pathMap.isEmpty()) {
 			response.setStatus(HttpServletResponse.SC_FORBIDDEN);
 			return;
 		}
 
+		checkAndHandlePermissions(request, response, uri, pathMap);
+	}
+
+	/**
+	 * Check and handle permissions.
+	 *
+	 * @param request  the request
+	 * @param response the response
+	 * @param uri      the uri
+	 * @param pathMap  the path map
+	 */
+	private void checkAndHandlePermissions(SlingHttpServletRequest request, SlingHttpServletResponse response,
+			String uri, Map<String, String> pathMap) {
 		LOG.info("authchecker called : URI : {}", uri);
 
 		// obtain the session from the request
@@ -107,7 +120,7 @@ public class AuthcheckerServlet extends SlingSafeMethodsServlet {
 				response.setStatus(HttpServletResponse.SC_FORBIDDEN);
 			}
 
-		} catch (Exception e) {
+		} catch (RepositoryException e) {
 			LOG.info("authchecker says READ access DENIED!");
 			response.setStatus(HttpServletResponse.SC_FORBIDDEN);
 		}
@@ -118,7 +131,7 @@ public class AuthcheckerServlet extends SlingSafeMethodsServlet {
 	 *
 	 * @param pathMap the path map
 	 * @param session the session
-	 * @param key the key
+	 * @param key     the key
 	 * @throws RepositoryException the repository exception
 	 */
 	private void checkAccess(Map<String, String> pathMap, Session session, String key) throws RepositoryException {

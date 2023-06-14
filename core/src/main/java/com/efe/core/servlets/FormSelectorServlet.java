@@ -32,7 +32,7 @@ public class FormSelectorServlet extends SlingAllMethodsServlet implements Seria
 
 	/** The rest service. */
 	@Reference
-	private RestService restService;
+	private transient RestService restService;
 
 	/** The efe service. */
 	@Reference

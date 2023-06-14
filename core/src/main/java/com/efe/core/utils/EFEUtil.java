@@ -1,18 +1,7 @@
 package com.efe.core.utils;
 
-import com.adobe.cq.wcm.core.components.util.ComponentUtils;
-import com.day.cq.tagging.Tag;
-import com.day.cq.wcm.api.Page;
-import com.day.cq.wcm.api.PageManager;
-import com.efe.core.models.bean.Podcast;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.sling.api.resource.Resource;
-import org.apache.sling.api.resource.ResourceResolver;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import static com.efe.core.constants.Constants.EPISODE;
+import static com.efe.core.constants.Constants.SEASON;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -21,12 +10,27 @@ import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.adobe.cq.wcm.core.components.util.ComponentUtils;
+import com.day.cq.tagging.Tag;
+import com.day.cq.wcm.api.Page;
+import com.day.cq.wcm.api.PageManager;
+import com.efe.core.models.bean.Podcast;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+
 /**
  * The Class EFEUtil.
  */
 public class EFEUtil {
 
-    /** The Constant ID_HASH_LENGTH. */
+	/** The Constant ID_HASH_LENGTH. */
     private static final int ID_HASH_LENGTH = 10;
 
     /** The Constant LOGGER. */
@@ -104,12 +108,12 @@ public class EFEUtil {
             podcast.setEmbedUrl(getJsonValue(clipObj, "EmbedUrl"));
             podcast.setDatePublished(getJsonValue(clipObj, "PublishedUtc"));
 
-            if (clipObj.has("Season")) {
-                podcast.setSeason(clipObj.get("Season").getAsInt());
+            if (clipObj.has(SEASON) && !clipObj.get(SEASON).isJsonNull()) {
+                podcast.setSeason(clipObj.get(SEASON).getAsInt());
             }
 
-            if (clipObj.has("Episode")) {
-                podcast.setEpisode(clipObj.get("Episode").getAsInt());
+            if (clipObj.has(EPISODE) && !clipObj.get(EPISODE).isJsonNull()) {
+                podcast.setEpisode(clipObj.get(EPISODE).getAsInt());
             }
 
         }
