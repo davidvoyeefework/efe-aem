@@ -13,6 +13,9 @@ export default {
         },
         horizontalSeparator: {
             control: "boolean",
+        },
+        custom: {
+            control: "boolean",
         }
     },
 };
@@ -21,6 +24,7 @@ const TemplateVerticalSeparatorStats = ({ label, ...args }) => VerticalSeparator
 export const stats = TemplateVerticalSeparatorStats.bind({});
 stats.args = {
     horizontalSeparator: "true",
+    custom: "true",
 }
 
 const TemplateVerticalSeparatorWithImages = ({ label, ...args }) =>VerticalSeparatorForImages({ ...args });
