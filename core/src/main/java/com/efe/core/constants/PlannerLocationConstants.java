@@ -3,6 +3,13 @@ package com.efe.core.constants;
 public class PlannerLocationConstants {
 
 	/**
+	 * Instantiates a new PlannerLocationConstants.
+	 */
+	private PlannerLocationConstants() {
+
+	}
+
+	/**
 	 * Location Folder Name
 	 */
 	public static final String LOCATIONS = "locations";

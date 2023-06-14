@@ -60,9 +60,33 @@ class EfeServiceImplTest {
 		Mockito.lenient().when(configuration.plannerBioPageUrl()).thenReturn(PLANNER_BIO_PAGE_URL);
 		Mockito.lenient().when(configuration.onetrustScript()).thenReturn(ONE_TRUST_SCRIPT);
 		Mockito.lenient().when(configuration.onetrustScriptId()).thenReturn(ONE_TRUST_SCRIPT_ID);
+		Mockito.lenient().when(configuration.googleMapPublicApi()).thenReturn("googleMapApi");
+		Mockito.lenient().when(configuration.googleDirectionPrefixUrl()).thenReturn("url");
+		Mockito.lenient().when(configuration.analyticsSiteRootLevel()).thenReturn(2);
+		Mockito.lenient().when(configuration.linkTrackingListPath()).thenReturn("listPath");
+		Mockito.lenient().when(configuration.formBaseUrl()).thenReturn("formBaseUrl");
+		Mockito.lenient().when(configuration.formJsUrl()).thenReturn("formJsUrl");
+		Mockito.lenient().when(configuration.formAuthHeader()).thenReturn("formAuthHeader");
+		Mockito.lenient().when(configuration.enableGA()).thenReturn(true);
+		Mockito.lenient().when(configuration.gaTagValue()).thenReturn("tagValue");
+		Mockito.lenient().when(configuration.omnyPlaylistApi()).thenReturn("omnyPlaylistApi");
+		Mockito.lenient().when(configuration.omnyEpisodeApi()).thenReturn("episode12");
+		Mockito.lenient().when(configuration.omnyOrgId()).thenReturn("orgId2314");
 
 		efeServiceImpl.activate(configuration);
-		
+
+		assertEquals("googleMapApi", efeServiceImpl.getGooglePublicKey());
+		assertEquals("url", efeServiceImpl.getGoogleDirectionPrefixUrl());
+		assertEquals(2, efeServiceImpl.getAnalyticsSiteRootLevel());
+		assertEquals("listPath", efeServiceImpl.getLinkTrackingListPath());
+		assertEquals("formBaseUrl", efeServiceImpl.getFormBaseUrl());
+		assertEquals("formJsUrl", efeServiceImpl.getFormJsUrl());
+		assertEquals("formAuthHeader", efeServiceImpl.getFormAuthHeader());
+		assertTrue(efeServiceImpl.isEnabledGA());
+		assertEquals("tagValue", efeServiceImpl.getGaTagValue());
+		assertEquals("omnyPlaylistApi", efeServiceImpl.getOmnyPlaylistApi());
+		assertEquals("episode12", efeServiceImpl.getOmnyEpisodeApi());
+		assertEquals("orgId2314", efeServiceImpl.getOmnyOrgId());
 		assertEquals(efeServiceImpl.getPlannersAPIEndpoint(), PLANNER_API_ENDPOINT);
 		assertEquals(efeServiceImpl.getLocationsAPIEndpoint(), LOCATION_API_ENDPOINT);
 		assertEquals(efeServiceImpl.getAuthHeader(), AUTH_HEAD);
@@ -70,8 +94,6 @@ class EfeServiceImplTest {
 		assertEquals(efeServiceImpl.getPlannerBioPageUrl(), PLANNER_BIO_PAGE_URL);
 		assertEquals(ONE_TRUST_SCRIPT, efeServiceImpl.getOneTrustScript());
 		assertEquals(ONE_TRUST_SCRIPT_ID, efeServiceImpl.getOneTrustScriptId());
-		
-
 	}
 
 }
