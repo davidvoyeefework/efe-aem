@@ -30,7 +30,7 @@ public class CharacterLimitStyleImpl implements CharacterLimitStyle {
     @PostConstruct
     protected void init() {
         if(characterLimit > 0) {
-              styleValue = "max-width:"+ characterLimit +"ch; margin: 0 auto;";
+              styleValue = "max-width:"+ characterLimit +"ch;";
         }
     }
 

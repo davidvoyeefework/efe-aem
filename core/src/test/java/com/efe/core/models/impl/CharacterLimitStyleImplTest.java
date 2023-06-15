@@ -1,6 +1,5 @@
 package com.efe.core.models.impl;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import java.lang.reflect.Field;
@@ -17,23 +16,31 @@ class CharacterLimitStyleImplTest {
     private CharacterLimitStyleImpl characterLimitStyle;
 
     /**
-     * Sets the up.
+     * Get StyleValue test.
      */
-    @BeforeEach
-    void setup() throws Exception{
+    @Test
+    void testGetStyleValue() throws Exception {
         characterLimitStyle = new CharacterLimitStyleImpl();
         Field field = CharacterLimitStyleImpl.class.getDeclaredField("characterLimit");
         field.setAccessible(true);
         field.set(characterLimitStyle, 10);
+        characterLimitStyle.init();
+        String expectedStyleValue = "max-width:10ch;";
+        String actualStyleValue = characterLimitStyle.getStyleValue();
+        assertEquals(expectedStyleValue, actualStyleValue);
     }
 
     /**
-     * Get StyleValue test.
+     * Get StyleValue test for null.
      */
     @Test
-    void testGetStyleValue() {
+    void testGetStyleValueNull() throws Exception{
+        characterLimitStyle = new CharacterLimitStyleImpl();
+        Field field = CharacterLimitStyleImpl.class.getDeclaredField("characterLimit");
+        field.setAccessible(true);
+        field.set(characterLimitStyle, 0);
         characterLimitStyle.init();
-        String expectedStyleValue = "max-width:10ch; margin: 0 auto;";
+        String expectedStyleValue = "";
         String actualStyleValue = characterLimitStyle.getStyleValue();
         assertEquals(expectedStyleValue, actualStyleValue);
     }

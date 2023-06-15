@@ -142,6 +142,17 @@
                                         jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item0>
+                        <item1
+                            cq:styleGroupLabel="Image Type"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-image--teaserLogo"
+                                    cq:styleLabel="Icon"
+                                    cq:styleId="icon"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item1>
                     </cq:styleGroups>
                 </policy_651483963895698>
             </image>
@@ -287,6 +298,17 @@
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item3>
+                        <item4
+                            cq:styleGroupLabel="Text Alignment Style (With Max-Width)"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-text--charLimit"
+                                    cq:styleId="center"
+                                    cq:styleLabel="Center"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item4>
                     </cq:styleGroups>
                 </policy_641562756958017>
             </text>
@@ -374,6 +396,17 @@
                                 jcr:primaryType="nt:unstructured"/>
                         </cq:styles>
                         </item1>
+                        <item2
+                            cq:styleGroupLabel="Text Alignment Style (With Max-Width)"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-text--charLimit"
+                                    cq:styleId="center"
+                                    cq:styleLabel="Center"
+                                    jcr:primaryType="nt:unstructured"/>
+                        </cq:styles>
+                        </item2>
                     </cq:styleGroups>
                 </policy>
             </title>
