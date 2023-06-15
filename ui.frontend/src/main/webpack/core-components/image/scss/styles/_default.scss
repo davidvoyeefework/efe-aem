@@ -64,3 +64,10 @@
         @include border-bottom-right-radius();
     }
 }
+
+.cmp-image--teaserLogo {
+    .cmp-image img {
+        width: 70px;
+        height: auto;
+    }
+}
