@@ -14,6 +14,9 @@ export default {
         cornerRadius: {
             control: "select",
             options: ["top-left", "top-right", "bottom-left", "bottom-right", "none"],
+        },
+        teaserLogo: {
+            control: "boolean",
         }
     },
 };
@@ -26,4 +29,5 @@ Image.args = {
     size: "small",
     source: "https://picsum.photos/id/237/200/300",
     cornerRadius: "none",
+    teaserLogo: false,
 };
