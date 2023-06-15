@@ -7,6 +7,8 @@
 
 Include conf.d/rewrites/default_rewrite.rules
 
+Include conf.d/rewrites/legacy_rewrite.rules
+
 # rewrite for root redirect
 RewriteRule ^/?$ /content/${CONTENT_FOLDER_NAME}/us/en/home.html [PT,L]
 
@@ -19,6 +21,9 @@ RewriteRule ^/sitemap.xml$ /content/${CONTENT_FOLDER_NAME}/us/en.sitemap.xml [PT
 
 # Robots txt
 RewriteRule ^/robots.txt$ /content/dam/${CONTENT_FOLDER_NAME}/seo/robots.txt [PT,L]
+
+# Location breadcrumb or location without selector
+RewriteRule ^/location$ /locations [R=301,L]
 
 RewriteCond %{REQUEST_URI} !^/apps
 RewriteCond %{REQUEST_URI} !^/bin
