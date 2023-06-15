@@ -11,6 +11,7 @@ Include conf.d/variables/custom.vars
 	ServerAlias	 "publish-p91602-e833656.adobeaemcloud.com"
 	ServerAlias	 "publish-p91602-e1121645.adobeaemcloud.com"
 	ServerAlias	 "*.efe.com"
+	ServerAlias	 "localhost"
 	ServerAlias	 "*.edelmanfinancialengines.com"
 	# Use a document root that matches the one in conf.dispatcher.d/default.farm
 	DocumentRoot "${DOCROOT}"
@@ -85,12 +86,53 @@ Include conf.d/variables/custom.vars
 		Header always set Cache-Control "private"
 	</LocationMatch>
 
- 	# HTML pages: Cache for 5min with background refresh 1h on browser and 12h on CDN to avoid MISS, also incl. requests with query parameter
-    # Cache-Control headers will always be added so it is important to ensure that matching html pages under /content/ are intended to be public
-	<LocationMatch "^/content/.*\.html$">
-        Header unset Cache-Control
-        Header always set Cache-Control "max-age=300,stale-while-revalidate=3600" "expr=%{REQUEST_STATUS} < 400"
-        Header always set Surrogate-Control "stale-while-revalidate=600,stale-if-error=600" "expr=%{REQUEST_STATUS} < 400"
+	# DEV, QA HTML pages: Cache for 1min with background refresh 1min on browser and 1min on CDN to avoid MISS, also incl. requests with query parameter
+	<IfDefine ENVIRONMENT_DEV>
+		<LocationMatch "^/content/.*\.html$">
+			Header unset Cache-Control
+			Header always set Cache-Control "max-age=60,stale-while-revalidate=60" "expr=%{REQUEST_STATUS} < 400"
+			Header always set Surrogate-Control "stale-while-revalidate=60,stale-if-error=60" "expr=%{REQUEST_STATUS} < 400"
+			Header set Age 0
+		</LocationMatch>
+	</IfDefine>
+
+	# Stage HTML pages: Cache for 1min with background refresh 1min on browser and 1min on CDN to avoid MISS, also incl. requests with query parameter
+	<IfDefine ENVIRONMENT_STAGE>
+		<LocationMatch "^/content/.*\.html$">
+			Header unset Cache-Control
+			Header always set Cache-Control "max-age=60,stale-while-revalidate=60" "expr=%{REQUEST_STATUS} < 400"
+			Header always set Surrogate-Control "stale-while-revalidate=60,stale-if-error=60" "expr=%{REQUEST_STATUS} < 400"
+			Header set Age 0
+		</LocationMatch>
+	</IfDefine>
+	
+	<IfDefine ENVIRONMENT_PROD>
+		# PROD HTML pages: Cache for 5min with background refresh 1h on browser and 12h on CDN to avoid MISS, also incl. requests with query parameter
+		# Cache-Control headers will always be added so it is important to ensure that matching html pages under /content/ are intended to be public
+		<LocationMatch "^/content/.*\.html$">
+			Header unset Cache-Control
+			Header always set Cache-Control "max-age=300,stale-while-revalidate=3600" "expr=%{REQUEST_STATUS} < 400"
+			Header always set Surrogate-Control "stale-while-revalidate=7200,stale-if-error=7200" "expr=%{REQUEST_STATUS} < 400"
+			Header set Age 0
+		</LocationMatch>
+	</IfDefine>
+
+	 # Images/Video from DAM: cache mutable resources for max 24h on CDN and background refresh after 12h to avoid MISS
+    <LocationMatch "^/content/dam/.*\.(?i:jpe?g|gif|js|mov|mp4|png|svg|txt|zip|ico|webp|pdf)$">
+        Header set Cache-Control "max-age=43200,stale-while-revalidate=43200,stale-if-error=43200" "expr=%{REQUEST_STATUS} < 400"
+        Header set Age 0
+    </LocationMatch>
+    # ContextHub
+    <LocationMatch "^/etc/cloudsettings.kernel.js.*">
+        Header always set Cache-Control "max-age=300,stale-while-revalidate=43200,stale-if-error=43200" "expr=%{REQUEST_STATUS} < 400"
+        Header set Age 0
+    </LocationMatch>
+    <LocationMatch "^/conf/.*/settings/wcm/segments.seg.js$">
+        Header set Cache-Control "max-age=300,stale-while-revalidate=43200,stale-if-error=43200" "expr=%{REQUEST_STATUS} < 400"
+        Header set Age 0
+    </LocationMatch>
+    <LocationMatch "^/content/.*/_jcr_content/contexthub.pagedata.json$">
+        Header set Cache-Control "max-age=300,stale-while-revalidate=43200,stale-if-error=43200" "expr=%{REQUEST_STATUS} < 400"
         Header set Age 0
     </LocationMatch>
 </VirtualHost>
