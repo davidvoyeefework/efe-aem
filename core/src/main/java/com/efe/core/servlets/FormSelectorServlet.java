@@ -6,6 +6,7 @@ import java.util.Objects;
 
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
@@ -18,6 +19,7 @@ import org.osgi.service.component.annotations.Reference;
 import com.efe.core.models.FormsSelector;
 import com.efe.core.services.EfeService;
 import com.efe.core.services.RestService;
+import com.google.gson.JsonObject;
 
 /**
  * The Class EfeFormServlet.
@@ -49,13 +51,23 @@ public class FormSelectorServlet extends SlingAllMethodsServlet implements Seria
 	@Override
 	protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response)
 			throws ServletException, IOException {
+
 		FormsSelector formsSelector = request.adaptTo(FormsSelector.class);
 		if (Objects.nonNull(formsSelector)) {
 			response.setContentType("application/json");
 			String formAuthHeader = efeService.getFormAuthHeader();
 			String formUrl = formsSelector.getFormUrl();
+			JsonObject responseObj = new JsonObject();
+			
 			if (Objects.nonNull(formAuthHeader) && Objects.nonNull(formUrl)) {
-				response.getWriter().write(restService.getData(formUrl, formAuthHeader));
+				String formResponse = restService.getData(formUrl, formAuthHeader);
+				responseObj.addProperty("status", HttpServletResponse.SC_ACCEPTED);
+				responseObj.addProperty("htmlResponse", formResponse);
+				responseObj.addProperty("scriptUrl", formsSelector.getFormJsUrl());
+				response.getWriter().write(responseObj.toString());
+			}else {
+				responseObj.addProperty("status", HttpServletResponse.SC_BAD_REQUEST);
+				response.getWriter().write(responseObj.toString());
 			}
 		}
 	}

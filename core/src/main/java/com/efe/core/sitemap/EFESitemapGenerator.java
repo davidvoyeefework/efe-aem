@@ -168,6 +168,10 @@ public class EFESitemapGenerator extends ResourceTreeSitemapGenerator {
 							"firstName");
 					String lastName = ResourceUtil.getProperty(resourceResolver, plannerMaster.getPath(),
 							"lastName");
+					
+					if(firstName == null) {
+						continue;
+					}
 
 					String plannerUrl = LinkUtil.getFormattedLink(efeService.getPlannerBioPageUrl()
 							+ PlannerLocationConstants.DOT + firstName + PlannerLocationConstants.DOT
