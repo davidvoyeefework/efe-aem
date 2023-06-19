@@ -1,7 +1,7 @@
 .cmp-list--footer {
-  margin: 41px 0;
+  margin-bottom: 41px;
   @include media('<=tablet-lg') {
-      margin: 20px 0;
+      margin-bottom: 20px;
   }
   .cmp-list {
     @include flexbox($gap: 10px 15px, $flex-wrap: wrap);
@@ -38,7 +38,7 @@
   }
 
   @media screen and (min-width: $lg) {
-    margin: 41px 0;
+    margin-bottom: 41px;
     .cmp-list {
       margin-bottom: 0;
     }
