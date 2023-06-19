@@ -51,6 +51,11 @@
                     margin-bottom: 20px;
                 }
             }
+            > div {
+                @include media('<tablet-lg') {
+                    margin-bottom: 24px;
+                }
+            }
         }
 
         #social-block, #social-block-mobile {
@@ -81,10 +86,11 @@
 
         #disclosure-copy {
             p {
-                margin-bottom: rem(16);
+                margin-bottom: rem(18);
             }
 
             * {
+                @include detail;
                 color: $efe-gray-new;
             }
         }
@@ -133,7 +139,7 @@
         #efe-logo {
             margin-bottom: 40px;
             @include media("<tablet-lg") {
-                margin-bottom: 20px;
+                margin-bottom: 32px;
             }
         }
 

@@ -1,6 +1,9 @@
 .minimal-header {
     #efe-global-nav-header .cmp-container--1920.efe-nav-header {
         justify-content: right;
+        @media screen and (max-width: 576px) { 
+            min-height: rem(34px);
+        }
     }
     #efe-global-nav-header {
         display: block;
