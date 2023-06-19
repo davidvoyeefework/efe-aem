@@ -1552,72 +1552,68 @@
                     disableSearch="false"
                     disableStatic="false"
                     disableTags="false"
+                    cq:styleDefaultClasses="list cmp-list--horizontal cmp-list--moderate cmp-list--center-align cmp-list--border-radius"
                     linkItems="false"
                     showDescription="false"
                     showModificationDate="false">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                     <cq:styleGroups jcr:primaryType="nt:unstructured">
                         <item0
-                            cq:styleGroupLabel="Rounder Corner"
-                            jcr:primaryType="nt:unstructured">
+                                cq:styleGroupLabel="Variation"
+                                jcr:primaryType="nt:unstructured">
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
-                                    cq:styleClasses="cmp-list--border-radius"
-                                    cq:styleId="top-left"
-                                    cq:styleLabel="Top Left"
-                                    jcr:primaryType="nt:unstructured"/>
+                                        cq:styleClasses="cmp-list--horizontal"
+                                        cq:styleId="horizontal"
+                                        cq:styleLabel="Horizontal"
+                                        jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                        cq:styleClasses="cmp-list--horizontal cmp-list--left-align"
+                                        cq:styleId="horizontal-left-align"
+                                        cq:styleLabel="Horizontal Left-align"
+                                        jcr:primaryType="nt:unstructured"/>
+                                <item2
+                                        cq:styleClasses="cmp-list--horizontal cmp-list--right-align"
+                                        cq:styleId="horizontal-right-align"
+                                        cq:styleLabel="Horizontal Right-align"
+                                        jcr:primaryType="nt:unstructured"/>
+                                <item3
+                                        cq:styleClasses="cmp-list--horizontal cmp-list--center-align"
+                                        cq:styleId="horizontal-center-align"
+                                        cq:styleLabel="Horizontal Center-align"
+                                        jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item0>
                         <item1
-                            cq:styleGroupLabel="Variation"
-                            jcr:primaryType="nt:unstructured">
+                                cq:styleGroupLabel="Gap"
+                                jcr:primaryType="nt:unstructured">
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
-                                    cq:styleClasses="cmp-list--horizontal"
-                                    cq:styleId="horizontal"
-                                    cq:styleLabel="Horizontal"
-                                    jcr:primaryType="nt:unstructured"/>
+                                        cq:styleClasses="cmp-list--tight"
+                                        cq:styleId="tight"
+                                        cq:styleLabel="Tight"
+                                        jcr:primaryType="nt:unstructured"/>
                                 <item1
-                                    cq:styleClasses="cmp-list--horizontal cmp-list--left-align"
-                                    cq:styleId="horizontal-left-align"
-                                    cq:styleLabel="Horizontal Left-align"
-                                    jcr:primaryType="nt:unstructured"/>
+                                        cq:styleClasses="cmp-list--moderate"
+                                        cq:styleId="moderate"
+                                        cq:styleLabel="Moderate"
+                                        jcr:primaryType="nt:unstructured"/>
                                 <item2
-                                    cq:styleClasses="cmp-list--horizontal cmp-list--right-align"
-                                    cq:styleId="horizontal-right-align"
-                                    cq:styleLabel="Horizontal Right-align"
-                                    jcr:primaryType="nt:unstructured"/>
-                                <item3
-                                    cq:styleClasses="cmp-list--horizontal cmp-list--center-align"
-                                    cq:styleId="horizontal-center-align"
-                                    cq:styleLabel="Horizontal Center-align"
-                                    jcr:primaryType="nt:unstructured"/>
-                                <item4
-                                    cq:styleClasses="cmp-list--column"
-                                    cq:styleId="vertical"
-                                    cq:styleLabel="Vertical"
-                                    jcr:primaryType="nt:unstructured"/>
+                                        cq:styleClasses="cmp-list--loose"
+                                        cq:styleId="loose"
+                                        cq:styleLabel="Loose"
+                                        jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item1>
                         <item2
-                            cq:styleGroupLabel="Gap"
-                            jcr:primaryType="nt:unstructured">
+                                cq:styleGroupLabel="Rounder Corner"
+                                jcr:primaryType="nt:unstructured">
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
-                                    cq:styleClasses="cmp-list--tight"
-                                    cq:styleId="tight"
-                                    cq:styleLabel="Tight"
-                                    jcr:primaryType="nt:unstructured"/>
-                                <item1
-                                    cq:styleClasses="cmp-list--moderate"
-                                    cq:styleId="moderate"
-                                    cq:styleLabel="Moderate"
-                                    jcr:primaryType="nt:unstructured"/>
-                                <item2
-                                    cq:styleClasses="cmp-list--loose"
-                                    cq:styleId="loose"
-                                    cq:styleLabel="Loose"
-                                    jcr:primaryType="nt:unstructured"/>
+                                        cq:styleClasses="cmp-list--border-radius"
+                                        cq:styleId="top-left"
+                                        cq:styleLabel="Top Left"
+                                        jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item2>
                     </cq:styleGroups>
