@@ -16,7 +16,7 @@
         #efe-logo {
             margin-bottom: 41px;
             @include media('<tablet-lg') {
-                margin-bottom: 20px;
+                margin-bottom: 32px;
             }
         }
 
@@ -36,7 +36,7 @@
             ul {
                 margin-bottom: 36px;
                 @include media('<tablet-lg') {
-                    margin-bottom: 20px;
+                    margin-bottom: 0;
                 }
                 li {
                     margin-bottom: 6px;
@@ -49,6 +49,9 @@
             .list-last {
                 ul {
                     margin-bottom: 20px;
+                    @include media('<tablet-lg') {
+                        margin-bottom: 0;
+                    }
                 }
             }
             > div {
