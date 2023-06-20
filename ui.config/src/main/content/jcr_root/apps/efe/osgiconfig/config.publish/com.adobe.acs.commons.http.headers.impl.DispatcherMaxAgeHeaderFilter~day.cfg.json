@@ -1,8 +1,9 @@
 {
-    "max.age":"43200",
+    "max.age":"$[env:day_header_ttl;default=43200]",
     "filter.pattern":[
-      "/content/efe/us/en/location(.*)",
-      "/content/efe/us/en/locations(.*)",
-      "/content/efe/us/en/financial-planners(.*)"
+      "$[env:location_detail_page;default=/content/efe/us/en/location(.*)]",
+      "$[env:locations_page;default=/content/efe/us/en/locations(.*)]",
+      "$[env:planner_detail_page;default=/content/efe/us/en/financial-planner(.*)]",
+      "$[env:podcast_archive_page;default=/content/efe/us/en/(.*)archive(.*)]"
     ]
 }

@@ -19,7 +19,7 @@ $include "./default_filters.any"
 /0104 { /type "allow" /method "GET" /extension "json" /path "/content/efe/*/formselector*"}
 
 # Allow number selector for planners
-/0105 { /type "allow" /method "GET" /extension "html" /path "/content/efe/*/financial-planners*" /selectors '([0-9-]+)'}
+/0105 { /type "allow" /method "GET" /extension "html" /path "/content/efe/*/financial-planner*" /selectors '([0-9-]+)'}
 
 # Allow robots txt file
 /0106 { /type "allow" /method "GET" /extension "txt" /path "/content/dam/efe/seo/*" }

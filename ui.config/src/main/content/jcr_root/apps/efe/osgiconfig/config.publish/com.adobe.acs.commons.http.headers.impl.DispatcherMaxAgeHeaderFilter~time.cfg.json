@@ -1,4 +1,4 @@
 {
-    "max.age":"900",
+    "max.age":"$[env:sitemap_header_ttl;default=3600]",
     "filter.pattern":["/content/efe/us/en.sitemap.xml"]
 }
