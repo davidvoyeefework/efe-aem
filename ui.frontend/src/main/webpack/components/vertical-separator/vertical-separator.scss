@@ -188,3 +188,26 @@
     }
 }
 
+.cmp-vertical-separator--two {
+    @include media(">tablet-lg") {
+        &__middle {
+            .cmp-vertical-separator--one__item {
+                display: flex;
+                align-items: center;
+            }
+        }
+        &__top {
+            .cmp-vertical-separator--one__item{
+                display: flex;
+                align-items: flex-start;
+            }
+        }
+        &__bottom {
+            .cmp-vertical-separator--one__item {
+                display: flex;
+                align-items: flex-end;
+            }
+        }
+    }
+}
+
