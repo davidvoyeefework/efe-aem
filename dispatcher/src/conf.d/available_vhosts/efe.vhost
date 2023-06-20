@@ -119,18 +119,21 @@ Include conf.d/variables/custom.vars
 
 	 # Images/Video from DAM: cache mutable resources for max 24h on CDN and background refresh after 12h to avoid MISS
     <LocationMatch "^/content/dam/.*\.(?i:jpe?g|gif|js|mov|mp4|png|svg|txt|zip|ico|webp|pdf)$">
-        Header set Cache-Control "max-age=43200,stale-while-revalidate=43200,stale-if-error=43200" "expr=%{REQUEST_STATUS} < 400"
+        Header set Cache-Control "max-age=43200,s-maxage=86400,stale-while-revalidate=43200,stale-if-error=43200" "expr=%{REQUEST_STATUS} < 400"
         Header set Age 0
     </LocationMatch>
+
     # ContextHub
     <LocationMatch "^/etc/cloudsettings.kernel.js.*">
         Header always set Cache-Control "max-age=300,stale-while-revalidate=43200,stale-if-error=43200" "expr=%{REQUEST_STATUS} < 400"
         Header set Age 0
     </LocationMatch>
+
     <LocationMatch "^/conf/.*/settings/wcm/segments.seg.js$">
         Header set Cache-Control "max-age=300,stale-while-revalidate=43200,stale-if-error=43200" "expr=%{REQUEST_STATUS} < 400"
         Header set Age 0
     </LocationMatch>
+
     <LocationMatch "^/content/.*/_jcr_content/contexthub.pagedata.json$">
         Header set Cache-Control "max-age=300,stale-while-revalidate=43200,stale-if-error=43200" "expr=%{REQUEST_STATUS} < 400"
         Header set Age 0
@@ -141,4 +144,17 @@ Include conf.d/variables/custom.vars
         Header set Cache-Control "max-age=2592000,stale-while-revalidate=43200,stale-if-error=43200,public,immutable" "expr=%{REQUEST_STATUS} < 400"
         Header set Age 0
     </LocationMatch>
+
+	# Theme Sources via Clientlib: long-term caching (30 days) for immutable URLs, background refresh to avoid MISS
+	<LocationMatch "^/etc\.clientlibs/.*\.(?i:js|css|ttf|woff2)$">
+ 		Header set Cache-Control "max-age=2592000,stale-while-revalidate=43200,stale-if-error=43200,public,immutable"
+		Header set Age 0
+	</LocationMatch>
+
+	# Theme Sources via Clientlib: cache mutable resources for max 24h on CDN and background refresh after 12h to avoid MISS
+    <LocationMatch "^/etc\.clientlibs/.*\.(?i:json|png|gif|webp|jpe?g|svg)$">
+        Header set Cache-Control "max-age=43200,s-maxage=86400,stale-while-revalidate=43200,stale-if-error=43200,public" "expr=%{REQUEST_STATUS} < 400"
+        Header set Age 0
+    </LocationMatch>
+	
 </VirtualHost>
