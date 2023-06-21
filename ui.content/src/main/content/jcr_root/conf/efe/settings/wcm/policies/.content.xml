@@ -153,6 +153,17 @@
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item1>
+                        <item2
+                            cq:styleGroupLabel="Image Position"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-image--object-fit-cover"
+                                    cq:styleLabel="Object Fit"
+                                    cq:styleId="object-fit"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item2>
                     </cq:styleGroups>
                 </policy_651483963895698>
             </image>

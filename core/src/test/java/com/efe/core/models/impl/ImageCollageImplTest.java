@@ -12,7 +12,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(AemContextExtension.class)
-public class ImageCollageImplTest {
+class ImageCollageImplTest {
 
     private static final String RESOURCE_CONTENT = "/com/efe/core/models/footer/imageCollage.json";
 
@@ -40,7 +40,7 @@ public class ImageCollageImplTest {
     }
 
     @Test
-    public void modelGetterTest() {
+    void modelGetterTest() {
         assertEquals("imageCollage-6bd918b4ef", imageCollageModel.getId());
         assertEquals("/content/dam/test1.png", imageCollageModel.getPrimaryImage());
         assertEquals("/content/dam/test2.png", imageCollageModel.getFirstSecondaryImage());
@@ -48,5 +48,8 @@ public class ImageCollageImplTest {
         assertEquals("alt text", imageCollageModel.getPrimaryImageAltText());
         assertEquals("alt text", imageCollageModel.getFirstSecondaryImageAltText());
         assertEquals("alt text", imageCollageModel.getSecondSecondaryImageAltText());
+        assertEquals("cmp-image--object-fit-cover", imageCollageModel.getPrimaryImagePosition());
+        assertEquals("cmp-image--position-left", imageCollageModel.getFirstSecondaryImagePosition());
+        assertEquals("cmp-image--position-left", imageCollageModel.getSecondSecondaryImagePosition());
     }
 }
