@@ -55,6 +55,15 @@ public class ImageCollageImpl implements ImageCollage {
     @ValueMapValue
     private String secondSecondaryImageAltText;
 
+    @ValueMapValue
+    private String primaryImagePosition;
+
+    @ValueMapValue
+    private String firstSecondaryImagePosition;
+
+    @ValueMapValue
+    private String secondSecondaryImagePosition;
+
     /**
      * Injecting dynamicMediaService
      *
@@ -130,5 +139,35 @@ public class ImageCollageImpl implements ImageCollage {
      */
     public String getSecondSecondaryImageAltText() {
         return secondSecondaryImageAltText;
+    }
+
+    /**
+     * Gets the primary image position
+     *
+     * @return the primary image position
+     */
+    @Override
+    public String getPrimaryImagePosition() {
+        return primaryImagePosition;
+    }
+
+    /**
+     * Gets the first secondary image position
+     *
+     * @return the first secondary image position
+     */
+    @Override
+    public String getFirstSecondaryImagePosition() {
+        return firstSecondaryImagePosition;
+    }
+
+    /**
+     * Gets the second secondary image position
+     *
+     * @return the second secondary image position
+     */
+    @Override
+    public String getSecondSecondaryImagePosition() {
+        return secondSecondaryImagePosition;
     }
 }

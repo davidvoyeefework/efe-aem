@@ -54,4 +54,25 @@ public interface ImageCollage {
      */
     String getSecondSecondaryImageAltText();
 
+    /**
+     * Gets the primary image position
+     *
+     * @return the primary image position
+     */
+    String getPrimaryImagePosition();
+
+    /**
+     * Gets the first secondary image position
+     *
+     * @return the first secondary image position
+     */
+    String getFirstSecondaryImagePosition();
+
+    /**
+     * Gets the second secondary image position
+     *
+     * @return the second secondary image position
+     */
+    String getSecondSecondaryImagePosition();
+
 }

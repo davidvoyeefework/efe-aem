@@ -23,7 +23,10 @@
 					"firstSecondaryImage": "/content/dam/test2.png",
 					"firstSecondaryImageAltText": "alt text",
 					"secondSecondaryImage": "/content/dam/test3.png",
-					"secondSecondaryImageAltText": "alt text"
+					"secondSecondaryImageAltText": "alt text",
+					"primaryImagePosition": "cmp-image--object-fit-cover",
+					"firstSecondaryImagePosition": "cmp-image--position-left",
+					"secondSecondaryImagePosition": "cmp-image--position-left"
 				}
 			}
 		}
