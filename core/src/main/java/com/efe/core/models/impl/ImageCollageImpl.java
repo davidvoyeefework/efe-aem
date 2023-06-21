@@ -55,12 +55,15 @@ public class ImageCollageImpl implements ImageCollage {
     @ValueMapValue
     private String secondSecondaryImageAltText;
 
+    /** The primary image position. */
     @ValueMapValue
     private String primaryImagePosition;
 
+    /** The first secondary image position. */
     @ValueMapValue
     private String firstSecondaryImagePosition;
 
+    /** The second secondary image position. */
     @ValueMapValue
     private String secondSecondaryImagePosition;
 
