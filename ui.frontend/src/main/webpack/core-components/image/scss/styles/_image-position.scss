@@ -1,0 +1,32 @@
+.image {
+    &.cmp-image--position-left {
+        img.cmp-image__image {
+            object-position: left;
+        }
+    }
+    &.cmp-image--position-right {
+        img.cmp-image__image {
+            object-position: right;
+        }
+    }
+    &.cmp-image--position-top {
+        img.cmp-image__image {
+            object-position: top;
+        }
+    }
+    &.cmp-image--position-bottom {
+        img.cmp-image__image {
+            object-position: bottom;
+        }
+    }
+    &.cmp-image--position-center {
+        img.cmp-image__image {
+            object-position: center;
+        }
+    }
+    &.cmp-image--object-fit-cover {
+        img.cmp-image__image {
+            object-fit: cover;
+        }
+    }
+}
