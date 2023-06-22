@@ -1,6 +1,6 @@
 #homepage_huhy_form {
 
-    max-width: 40.3125rem;
+    max-width: rem(665);
     margin: auto;
     padding-bottom: 10rem;
     overflow: hidden;
@@ -40,6 +40,32 @@
         @include footer-02;
     }
 
+    // GENERIC STYLING
+    section.container {
+        button.efe-cta-back {
+            align-self: start;
+            -ms-flex-item-align: start;
+            -ms-grid-row-align: start;
+            position: relative;
+            bottom: 7px;
+        }
+
+        .hidden-lead-options {
+            > .cmp-container--padding {
+                padding: 32px 0 0 !important;
+            }
+
+            .cmp-text--body--01 {
+                margin-bottom: rem(24);
+            }
+        }
+
+        .cmp-button--body-03-link {
+            margin-top: rem(16);
+        }
+
+    }
+
     .section-body {
         padding-top: rem(32);
 
@@ -58,6 +84,36 @@
         .cmp-text--body-01 {
             margin-bottom: rem(36);
         }
+
+        .button.cmp-button--button-primary {
+            margin-top: 24px;
+        }
+
+        .cmp-form-button--answer {
+            margin-bottom: rem(12);
+        }
+
+
+
+        //FOR ALL STEPS
+        #investmentManage_container, #retirementGoal_container {
+        
+            > div {
+                padding: 0 !important;
+            }
+
+            h1 {
+                @include body-03;
+                text-transform: initial !important;
+                margin-bottom: 24px
+            }
+
+        }
+
+        //FROM STEP 2
+        .form_page_header {
+            @include body-01;
+        }
     }
 
     @media screen and (min-width: $sm) {
@@ -66,11 +122,78 @@
         }
     }
 
+    @media screen and (min-width: $md) {
+        section.container {
+            button.efe-cta-back {
+                top: 13px;
+        }
+    }
+
     //FIRST STEP
     .personalize-investment_manage_page {
 
-        #investmentManage_container > div {
-            padding: 0 !important;
+        #investmentManage_container {
+        
+            > div {
+                padding: 0 !important;
+            }
+
+            .cmp-text > p {
+                @include body-01;
+                margin-bottom: rem(32);
+            }
+
+            .error-message {
+                @include detail;
+                color: $efe-red-primary;
+                margin-bottom: 10px;
+            }
+        }   
+
+
+    }
+
+    //SECOND STEP
+    .personalize-retirement_goal_page, .personalize-investable_assets_page,  .personalize-investment_interest_page {
+        .section-body {
+
+            .cmp-separator--efe-gray-mid {
+                display: none;
+            }
+        }
+    }
+
+    // FOURTH STEP
+    .personalize-investment_interest_page {
+
+        h1 {
+            margin-bottom: rem(10);
+        }
+
+        .cmp-text--caption {
+            text-align: justify;
+        }
+
+        .section-body {
+            .cmp-button--body-03-link {
+                clear: both;
+                padding-top: 36px;
+    
+                &:first-child{
+                    text-align: justify;
+                } 
+            }
+        }
+
+
+
+    }
+
+    // FIFTH STEP
+    .personalize-zip_code_page {
+
+        h1 {
+            margin-bottom: rem(10);
         }
 
     }

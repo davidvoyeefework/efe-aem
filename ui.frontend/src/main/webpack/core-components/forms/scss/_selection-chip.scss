@@ -1,6 +1,7 @@
 button.cmp-form-button--chip {
     padding: rem(10) rem(20) rem(12);
-    //25.8
+    margin: 0 rem(8) rem(8) 0;
+    float: left;
     min-height: rem(47);
     border-radius: 25px;
     border: 1px solid $efe-gray-mid;
