@@ -3,6 +3,7 @@ package com.efe.core.models.impl;
 import com.adobe.cq.dam.cfm.ContentFragment;
 import com.day.cq.commons.Externalizer;
 import com.efe.core.bean.Articles;
+import com.efe.core.bean.Disclosures;
 import com.efe.core.models.ArticleDetails;
 import com.efe.core.services.EfeService;
 import com.efe.core.services.SeoService;
@@ -63,6 +64,7 @@ class ArticleDetailsImplTest {
         aemContext.load().json("/com/efe/core/models/articleDetails/primaryaddress.json", "/content/dam/efe/primaryoffice");
         aemContext.load().json("/com/efe/core/models/articleDetails/certification.json", "/content/dam/efe/test-certification");
         aemContext.load().json("/com/efe/core/models/articleDetails/tags.json", "/content/cq:tags");
+        aemContext.load().json("/com/efe/core/models/articleDetails/disclosures.json", "/content/dam/efe/test-disc");
 
         aemContext.currentResource("/content/efe/jcr:content/articleDetails");
         resolver = aemContext.resourceResolver();
@@ -121,6 +123,12 @@ class ArticleDetailsImplTest {
         assertNotNull(articleDetails.getArticleFragmentPath().getPlannerResponse().get(0).getEducation().get(0).getDegree());
         assertNotNull(articleDetails.getArticleFragmentPath().getPlannerResponse().get(0).getEducation().get(0).getMajor());
         assertNotNull(articleDetails.getArticleFragmentPath().getPlannerResponse().get(0).getEducation().get(0).getUniversity());
+    }
+
+    @Test
+    void getArticleDisclosureDetails() {
+        //assertNotNull(articleDetails.getArticleFragmentPath().getDisclosures().get(0).getDisclosureText());
+        assertEquals("<p>Neither Edelman Financial Engines, a division of Financial Engines Advisors L.L.C., nor its affiliates offer tax or legal advice. Interested parties are strongly encouraged to seek advice from qualified tax and/or legal experts regarding the best options for your particular circumstances.</p>", articleDetails.getArticleFragmentPath().getDisclosures().get(0).getDisclosureText());
     }
 
     @Test

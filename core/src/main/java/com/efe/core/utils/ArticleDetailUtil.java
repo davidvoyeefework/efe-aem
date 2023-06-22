@@ -8,6 +8,7 @@ import com.day.cq.wcm.api.PageManager;
 import com.efe.core.bean.*;
 import com.efe.core.constants.ArticleDetailsConstants;
 import com.efe.core.constants.PlannerLocationConstants;
+import com.efe.core.services.EfeService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -34,7 +35,7 @@ public class ArticleDetailUtil {
      * @return list of articleDetails
      */
     public static Articles getArticleDetails(Resource articleDetailsCFResource, ResourceResolver resolver, String[] tags,
-        String mappedPage, PageManager pageManager) {
+        String mappedPage, PageManager pageManager, EfeService efeService) {
         Articles articleDetails = new Articles();
         List<LinkBean> links = null;
 
@@ -114,10 +115,15 @@ public class ArticleDetailUtil {
         String plannerAuthorsCF = articleDetailsCF.map(cf -> cf.getElement(ArticleDetailsConstants.PLANNER))
             .map(ContentElement::getContent).orElse(StringUtils.EMPTY);
         articleDetails.setPlanner(plannerAuthorsCF.split("\n"));
+        String disclosureCF = articleDetailsCF.map(cf -> cf.getElement(ArticleDetailsConstants.DISCLOSURE))
+                .map(ContentElement::getContent).orElse(StringUtils.EMPTY);
+        articleDetails.setDisclosure(disclosureCF.split("\n"));
 
         articleDetails.setArticleAuthors(setArticleAuthorDetails(articleDetails, resolver));
 
-        articleDetails.setPlannerResponse(setArticlePlannerDetails(articleDetails, resolver));
+        articleDetails.setPlannerResponse(setArticlePlannerDetails(articleDetails, resolver, efeService));
+
+        articleDetails.setDisclosures(setArticleDisclosureDetails(articleDetails, resolver));
 
         return articleDetails;
     }
@@ -163,7 +169,7 @@ public class ArticleDetailUtil {
      * @param resourceResolver
      * @return plannerResponseList
      */
-    public static List<PlannerResponse> setArticlePlannerDetails(Articles articleDetails, ResourceResolver resourceResolver) {
+    public static List<PlannerResponse> setArticlePlannerDetails(Articles articleDetails, ResourceResolver resourceResolver, EfeService efeService) {
         String[] planners = articleDetails.getPlanner();
 
         List<PlannerResponse> plannerResponseList = new ArrayList<>();
@@ -172,7 +178,7 @@ public class ArticleDetailUtil {
 
                 Resource articlePlannerResource = resourceResolver.getResource(plannersFragmentPath);
                 if (null != articlePlannerResource && null != articlePlannerResource.adaptTo(ContentFragment.class)) {
-                    PlannerResponse plannerResponse = getPlannerDetails(resourceResolver, articlePlannerResource);
+                    PlannerResponse plannerResponse = getPlannerDetails(resourceResolver, articlePlannerResource, efeService);
                     plannerResponseList.add(plannerResponse);
                 }
             }
@@ -188,7 +194,7 @@ public class ArticleDetailUtil {
      * @return the planner details
      */
     public static PlannerResponse getPlannerDetails(ResourceResolver resourceResolver,
-        Resource articlePlannerResource) {
+        Resource articlePlannerResource, EfeService efeService) {
 
         PlannerResponse plannerResponse = new PlannerResponse();
 
@@ -204,8 +210,10 @@ public class ArticleDetailUtil {
         plannerResponse.setTitle(plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.TITLE))
             .map(ContentElement::getContent).orElse(StringUtils.EMPTY));
 
-        plannerResponse.setFirstName(plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.FIRST_NAME))
-            .map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+        String firstName = plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.FIRST_NAME))
+                .map(ContentElement::getContent).orElse(StringUtils.EMPTY);
+
+        plannerResponse.setFirstName(firstName);
 
         plannerResponse.setFirstNameAlias(plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.FIRST_NAME_ALIAS))
                 .map(ContentElement::getContent).orElse(StringUtils.EMPTY));
@@ -213,8 +221,20 @@ public class ArticleDetailUtil {
         plannerResponse.setMiddleName(plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.MIDDLE_NAME))
             .map(ContentElement::getContent).orElse(StringUtils.EMPTY));
 
-        plannerResponse.setLastName(plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.LAST_NAME))
-            .map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+        String lastName = plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.LAST_NAME))
+                .map(ContentElement::getContent).orElse(StringUtils.EMPTY);
+
+        plannerResponse.setLastName(lastName);
+
+        String plannerId = plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.ID))
+                .map(ContentElement::getContent).orElse(StringUtils.EMPTY);
+
+        String url = LinkUtil.getFormattedLink(efeService.getPlannerBioPageUrl() + PlannerLocationConstants.DOT
+                + firstName + PlannerLocationConstants.DOT + lastName
+                + PlannerLocationConstants.DOT + plannerId, resourceResolver);
+
+        plannerResponse.setUrl(url);
+
 
         plannerResponse.setBio(plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.BIO))
             .map(ContentElement::getContent).orElse(StringUtils.EMPTY));
@@ -345,5 +365,30 @@ public class ArticleDetailUtil {
 
         }
         return educationList;
+    }
+
+    /**
+     *
+     * @param articleDetails
+     * @param resourceResolver
+     * @return
+     */
+    public static List<Disclosures> setArticleDisclosureDetails(Articles articleDetails, ResourceResolver resourceResolver) {
+        List<Disclosures> disclosuresList = new ArrayList<>();
+        String[] disclosure = articleDetails.getDisclosure();
+        if (null != disclosure) {
+            for (String disclosures : disclosure) {
+                Resource disclosureResource = resourceResolver.getResource(disclosures);
+                if (null != disclosureResource) {
+                    Disclosures disclosuresBean = new Disclosures();
+                    Optional<ContentFragment> disclosureCF = Optional.ofNullable(disclosureResource.adaptTo(ContentFragment.class));
+
+                    disclosuresBean.setDisclosureText(disclosureCF.map(cf -> cf.getElement(ArticleDetailsConstants.DISCLOSURE_TEXT))
+                            .map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+                    disclosuresList.add(disclosuresBean);
+                }
+            }
+        }
+        return disclosuresList;
     }
 }

@@ -36,10 +36,14 @@ public class Articles {
     private String[] planner;
     /** The regularAuthor. */
     private String[] regularAuthor;
+    /** The disclosure. */
+    private String[] disclosure;
     /** The articleAuthors. */
     private List<ArticleAuthor> articleAuthors;
     /** The plannerResponse. */
     private List<PlannerResponse> plannerResponse;
+    /** The disclosureResponse. */
+    private List<Disclosures> disclosureResponse;
 
     /**
      * Gets the links.
@@ -86,6 +90,27 @@ public class Articles {
     public void setPlannerResponse(List<PlannerResponse> plannerResponse) {
         this.plannerResponse = new ArrayList<>(plannerResponse);
     }
+    /**
+     * Gets the Disclosures.
+     *
+     * @return the Disclosures
+     */
+
+    public List<Disclosures> getDisclosures() {
+        if (Objects.nonNull(disclosureResponse)) {
+            return new ArrayList<>(disclosureResponse);
+        }
+        return Collections.emptyList();
+    }
+    /**
+     * Sets the Disclosures.
+     *
+     * @return the Disclosures
+     */
+    public void setDisclosures(List<Disclosures> disclosureResponse) {
+        this.disclosureResponse = new ArrayList<>(disclosureResponse);
+    }
+
 
     /**
      * Gets the articleAuthors.
@@ -136,6 +161,15 @@ public class Articles {
     }
 
     /**
+     * Gets the disclosure.
+     *
+     * @return the disclosure
+     */
+
+    public String[] getDisclosure() {
+        return disclosure.clone();
+    }
+    /**
      * Sets the authorType.
      *
      * @return the authorType
@@ -145,6 +179,15 @@ public class Articles {
         this.authorType = authorType.clone();
     }
 
+    /**
+     * Sets the disclosure.
+     *
+     * @return the disclosure
+     */
+    public void setDisclosure(String[] disclosure) {
+
+        this.disclosure = disclosure.clone();
+    }
     /**
      * Gets the body.
      *

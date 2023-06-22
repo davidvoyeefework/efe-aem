@@ -61,7 +61,8 @@
         ],
         "articleSummary": "<p>Aliquet adipiscing lectus eros tristique nunc elementum aliquam. Eget ac enim blandit pellentesque id pellentesque bibendum felis fermentum. Elit aliquam adipiscing fusce purus. Non dictumst amet cras tincidunt porttitor porttitor ullamcorper fringilla. Et “tempor pellentesque enim tellus aliquam” maecenas orci. Mattis tristique posuere in pharetra dolor nullam ligula. Feugiat neque pretium mattis tempus erat cras purus mauris dolor. Metus pulvinar vitae dui amet. Neque sed tempor scelerisque tempus ultricies. Quis nisl eget facilisis viverra amet.<u><b></b></u></p>\n",
         "title@ContentType": "text/html",
-        "articleSummary@ContentType": "text/html"
+        "articleSummary@ContentType": "text/html",
+        "disclosure" : "/content/dam/efe/test-disc"
       }
 
     },

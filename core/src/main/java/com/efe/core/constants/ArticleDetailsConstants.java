@@ -111,4 +111,14 @@ public class ArticleDetailsConstants {
      */
     public static final String MAJOR = "major";
 
+    /**
+     * DISCLOSURE_TEXT
+     */
+    public static final String DISCLOSURE_TEXT = "disclosureText";
+
+    /**
+     * DISCLOSURE
+     */
+    public static final String DISCLOSURE = "disclosure";
+
 }
