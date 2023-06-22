@@ -92,7 +92,7 @@ public class ArticleDetailsImpl implements ArticleDetails {
             Resource articlesFragmentResource = resourceResolver.getResource(articleFragmentPath);
             if (null != articlesFragmentResource) {
                 articleDetails = ArticleDetailUtil.getArticleDetails(articlesFragmentResource, resourceResolver, tags, mappedPage,
-                    pageManager);
+                    pageManager, efeService);
                 if (Objects.nonNull(articleDetails)) {
                     jsonLd = SeoUtil.getArticleSchema(seoService, efeService, externalizer, resourceResolver, currentPage,
                         articleDetails);

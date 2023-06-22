@@ -170,11 +170,26 @@ public class PlannerResponse {
 	/* lastUpdated */
 	private String lastUpdated;
 
-
+	/* url */
+	private String url;
 
 	/* Sets firstName */
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
+	}
+
+	/**
+	 *  Returns the url.
+	 *
+	 * @return url
+	 */
+	public String getUrl() {
+		return url;
+	}
+
+	/* Sets url */
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 	/* Sets middleName */

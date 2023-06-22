@@ -31,11 +31,11 @@
                 <span class="cmp-text"><span>By:</span>
                     <sly data-sly-test.hasContent="${model.articleFragmentPath.articleAuthors}"
                          data-sly-list.item="${model.articleFragmentPath.articleAuthors}">
-                         <a href="#"><span class="author-name">${item.name}, ${item.title}</span></a></br>
+                         <span class="author-name">${item.name} ${item.title}</span></br>
 					</sly>
                 	<sly data-sly-test.hasContent="${model.articleFragmentPath.plannerResponse}"
                          data-sly-list.item="${model.articleFragmentPath.plannerResponse}">
-						<a href="#"><span class="author-name">${item.firstName} ${item.middleName} ${item.lastName}, ${item.title}</span></a></br>
+                        <a x-cq-linkchecker="skip" href="${item.url}" ><span class="author-name">${item.firstName} ${item.middleName} ${item.lastName}</span></a><span> ${item.title}</span></br>
 					</sly>
                 </span>
             </div>
@@ -55,14 +55,15 @@
 
         <div data-sly-resource="${@path=model.articleFragmentPath.body, selectors='content', wcmmode='disabled'}"
              class="cmp-article-details__body cmp-article-details__padding-108"></div>
+        <div class=" cmp-article-details__disclaimar"
+             data-sly-repeat.item="${model.articleFragmentPath.disclosures}">${item.disclosureText @context ='html'}
+        </div>
         <div class="cmp-container cmp-container--white cmp-container--width-1400 
-            cmp-article-details__seperator cmp-article-details__padding-108">
+            cmp-article-details__seperator cmp-article-details__padding-108"
+             data-sly-test.hasContent="${model.articleFragmentPath.articleAuthors || model.articleFragmentPath.plannerResponse}">
             <div class="separator cmp-separator--primary cmp-separator">
                 <hr class="cmp-separator__horizontal-rule">
             </div>
-        </div>
-        <div class=" cmp-article-details__disclaimar">
-            <p>Neither Edelman Financial Engines nor its affiliates offer tax or legal advice. Interested parties are strongly encouraged to include your qualified tax and/or legal professionals in these discussions and decisions to help determine the best options for your particular circumstances.</p>
         </div>
         <div class="cmp-author-details cmp-article-details__padding-108"
              data-sly-repeat.item="${model.articleFragmentPath.articleAuthors}">
