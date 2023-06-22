@@ -9,6 +9,11 @@ import com.google.gson.annotations.SerializedName;
  */
 public class Author {
 
+	/** The context. */
+	@SerializedName("@context")
+	@Expose
+	private String context;
+
 	/** The type. */
 	@SerializedName("@type")
 	@Expose
@@ -127,5 +132,13 @@ public class Author {
 		this.worksFor = worksFor;
 	}
 
+	/**
+	 * Sets the context.
+	 *
+	 * @param context the new context
+	 */
+	public void setContext(String context) {
+		this.context = context;
+	}
 
 }

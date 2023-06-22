@@ -363,6 +363,7 @@ public class SeoUtil {
 			Externalizer externalizer, ResourceResolver resourceResolver, PlannerResponse planner) {
 
 		Author author = new Author();
+		author.setContext(seoService.getContextUrl());
 		author.setName(StringUtils.isNotEmpty(planner.getLastName())
 				? planner.getFirstName().concat(" ").concat(planner.getLastName())
 				: planner.getFirstName());
