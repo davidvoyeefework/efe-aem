@@ -31,6 +31,20 @@
             height: auto;
         }
     }
+    &__disclaimar {
+        @include media('>tablet-lg') {
+            padding: rem(48) rem(196);
+            padding-bottom: 0;
+        }
+        @include media('<tablet-lg') {
+            padding: rem(24) rem(26);
+            padding-bottom: 0;
+        }
+        * {
+            @include detail;
+        }
+
+    }
 }
 .relatedarticle {
     .cmp-list--horizontal.cmp-list--tight .cmp-list {
