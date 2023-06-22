@@ -83,14 +83,14 @@
 }
 
 .cmp-container--min-height {
-    @include media (">=820px") {
+    @include media (">=768px") {
         min-height: 620px !important;
     }
 }
 
 .cmp-container--balancedheight {
     >.cmp-container >.aem-Grid:first-of-type {
-        @include media(">=820px") {
+        @include media(">=768px") {
             display: flex !important;
         }
     }
