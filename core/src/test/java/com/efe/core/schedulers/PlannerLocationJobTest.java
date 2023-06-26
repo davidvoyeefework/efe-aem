@@ -84,7 +84,7 @@ class PlannerLocationJobTest {
 	void testSuccess() {
 
 		lenient().when(config.schedulerExpression()).thenReturn("0 0/2 * 1/1 * ? *");
-		lenient().when(config.serviceEnabled()).thenReturn("true");
+		lenient().when(config.enableSchedular()).thenReturn(true);
 
 		List<ScheduledJobInfo> scheduledJobs = new ArrayList<>();
 		scheduledJobs.add(jobInfo);
@@ -126,7 +126,7 @@ class PlannerLocationJobTest {
 	void testSchedulerFailed() {
 
 		lenient().when(config.schedulerExpression()).thenReturn("0 0/2 * 1/1 * ? *");
-		lenient().when(config.serviceEnabled()).thenReturn("true");
+		lenient().when(config.enableSchedular()).thenReturn(true);
 
 		List<ScheduledJobInfo> scheduledJobs = new ArrayList<>();
 		scheduledJobs.add(jobInfo);

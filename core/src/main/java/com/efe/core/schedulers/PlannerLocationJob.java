@@ -1,8 +1,7 @@
 package com.efe.core.schedulers;
 
 import java.util.Collection;
-import org.apache.commons.lang3.BooleanUtils;
-import org.apache.commons.lang3.StringUtils;
+
 import org.apache.sling.event.jobs.JobBuilder;
 import org.apache.sling.event.jobs.JobManager;
 import org.apache.sling.event.jobs.ScheduledJobInfo;
@@ -11,7 +10,6 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Modified;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.metatype.annotations.AttributeDefinition;
-import org.osgi.service.metatype.annotations.AttributeType;
 import org.osgi.service.metatype.annotations.Designate;
 import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 import org.slf4j.Logger;
@@ -21,7 +19,7 @@ import org.slf4j.LoggerFactory;
  * The Class PlannerScheduler.
  *
  */
-@Component(name = "Planner and Location Scheduler", immediate = true)
+@Component
 @Designate(ocd = PlannerLocationJob.PlannerConfiguration.class)
 public class PlannerLocationJob {
 
@@ -35,6 +33,30 @@ public class PlannerLocationJob {
 	 */
 	@Reference
 	private JobManager jobManager;
+	
+	/**
+	 * PlannerConfiguration Interface.
+	 *
+	 */
+	@ObjectClassDefinition(name = "EFE Planner and Location Scheduler Configuration", description = "Planner and Location Scheduler Configuration")
+	public static @interface PlannerConfiguration {
+
+		/**
+		 * schedulerExpression
+		 * 
+		 * @return schedulerExpression
+		 */
+		@AttributeDefinition(name = "Corn Expression", description = "Corn Expression default: once a day")
+		String schedulerExpression();
+
+		/**
+		 * enableSchedular
+		 * 
+		 * @return serviceEnabled
+		 */
+		@AttributeDefinition(name = "Enable Scheduler?", description = "Enable Scheduler")
+		boolean enableSchedular();
+	}
 
 	/**
 	 * The Constant LOGGER
@@ -44,13 +66,14 @@ public class PlannerLocationJob {
 	@Activate
 	@Modified
 	protected void activate(final PlannerLocationJob.PlannerConfiguration config) {
-		if (StringUtils.equalsIgnoreCase(config.serviceEnabled(), BooleanUtils.TRUE)) {
+		LOGGER.debug("PlannerLocationJob.activate method called {} {}", config.schedulerExpression(), config.enableSchedular());
+		if (config.enableSchedular()) {
 			removeScheduler();
 			startScheduledJob(config);
-			LOGGER.debug("PrintTemplateEventSyncJob Scheduler Activated ");
+			LOGGER.info("PlannerLocationJob Scheduler Activated ");
 		} else {
 			removeScheduler();
-			LOGGER.debug("PrintTemplateEventSyncJob is not enabled.");
+			LOGGER.info("PlannerLocationJob is not enabled.");
 		}
 	}
 
@@ -78,31 +101,8 @@ public class PlannerLocationJob {
 		if (scheduledJobInfo == null) {
 			LOGGER.info("Error adding scheduledJobInfo");
 		} else {
-			LOGGER.info("Scheduler Job added to the Queue with cron");
+			LOGGER.info("Scheduler Job added to the Queue with cron : {}", config.schedulerExpression());
 		}
 	}
 
-	/**
-	 * PlannerConfiguration Interface.
-	 *
-	 */
-	@ObjectClassDefinition(name = "Planner and Location Scheduler Configuration")
-	public @interface PlannerConfiguration {
-
-		/**
-		 * schedulerExpression
-		 * 
-		 * @return schedulerExpression
-		 */
-		@AttributeDefinition(name = "Corn Expression", description = "Corn Expression default: once a day", type = AttributeType.STRING)
-		public String schedulerExpression();
-
-		/**
-		 * serviceEnabled
-		 * 
-		 * @return serviceEnabled
-		 */
-		@AttributeDefinition(name = "Enabled", description = "Enable Scheduler", type = AttributeType.BOOLEAN)
-		public String serviceEnabled();
-	}
 }
