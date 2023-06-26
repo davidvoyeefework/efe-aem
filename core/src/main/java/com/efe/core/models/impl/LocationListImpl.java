@@ -8,6 +8,8 @@ import java.util.TreeMap;
 
 import javax.annotation.PostConstruct;
 
+import com.day.cq.dam.api.DamConstants;
+import com.efe.core.utils.ResourceUtil;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.jcr.resource.api.JcrResourceConstants;
@@ -112,14 +114,7 @@ public class LocationListImpl implements LocationList {
 				if (stateResource.isResourceType(JcrResourceConstants.NT_SLING_ORDERED_FOLDER)) {
 					Map<String, String> unsortedCityMap = new HashMap<String, String>();
 					for (Resource cityResource : stateResource.getChildren()) {
-						String cityUrl = LinkUtil.getFormattedLink(
-								efeService.getPlannerPageUrl()
-										+ PlannerLocationConstants.DOT + stateResource.getName().toUpperCase()
-										+ PlannerLocationConstants.DOT + LocationPlannerUtil.toCamelCase(cityResource.getName()).replaceAll(
-												PlannerLocationConstants.SPACE, PlannerLocationConstants.HYPHEN),
-								resourceResolver);
-						LOGGER.info("City Url {}", cityUrl);
-						unsortedCityMap.put(LocationPlannerUtil.toCamelCase(cityResource.getName()), cityUrl);
+						createCityUrl(stateResource, cityResource, unsortedCityMap);
 					}
 					StatesEnum stateEnum = StatesEnum.valueOf(stateResource.getName().toUpperCase());
 					unsortedStates.put(stateEnum.getStateName(),sortCity(unsortedCityMap));
@@ -131,6 +126,35 @@ public class LocationListImpl implements LocationList {
 		}
 	}
 
+	/**
+	 * Method to create Office Json Object.
+	 *
+	 * @param stateResource state resource
+	 * @param cityResource  city resource
+	 * @param unsortedCityMap city map in which city and cityUrls will be added
+	 */
+	private void createCityUrl(Resource stateResource, Resource cityResource, Map<String, String> unsortedCityMap) {
+		for (Resource childCityResource : cityResource.getChildren()) {
+			if (childCityResource.isResourceType(DamConstants.NT_DAM_ASSET)) {
+				String masterResourcePath = childCityResource.getPath() + "/jcr:content/data/master";
+				String cityName = ResourceUtil.getProperty(resourceResolver, masterResourcePath, "externalName");
+				String cityUrl = LinkUtil.getFormattedLink(
+						efeService.getPlannerPageUrl()
+								+ PlannerLocationConstants.DOT + stateResource.getName().toUpperCase()
+								+ PlannerLocationConstants.DOT + LocationPlannerUtil.toCamelCase(cityResource.getName()).replaceAll(
+								PlannerLocationConstants.SPACE, PlannerLocationConstants.HYPHEN),
+						resourceResolver);
+				LOGGER.info("City Url {}", cityUrl);
+				if(Objects.nonNull(cityName)) {
+					if(!cityName.equalsIgnoreCase("National Advisor Center")) {
+						unsortedCityMap.put(cityName, cityUrl);
+					}
+				} else {
+					unsortedCityMap.put(LocationPlannerUtil.toCamelCase(cityResource.getName()), cityUrl);
+				}
+			}
+		}
+	}
 
 
 	/**

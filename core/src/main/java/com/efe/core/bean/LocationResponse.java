@@ -325,6 +325,13 @@ public class LocationResponse {
 	}
 
 	/**
+	 * @param officeName the officeName to set
+	 */
+	public void setOfficeName(String officeName) {
+		this.officeName = officeName;
+	}
+
+	/**
 	 * @param address1 the address1 to set
 	 */
 	public void setAddress1(String address1) {

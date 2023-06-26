@@ -61,6 +61,8 @@ public class LocationPlannerUtil {
 
 		locationResponse.setCity(locationCF.map(cf -> cf.getElement(PlannerLocationConstants.CITY))
 				.map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+		locationResponse.setOfficeName(locationCF.map(cf -> cf.getElement("officeName"))
+				.map(ContentElement::getContent).orElse(StringUtils.EMPTY));
 
 		locationResponse.setState(locationCF.map(cf -> cf.getElement(PlannerLocationConstants.STATE))
 				.map(ContentElement::getContent).orElse(StringUtils.EMPTY));
