@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
     <filter root="/conf/efe/settings/wcm/templates/experience-fragment-target-variation" mode="replace"/>
     <filter root="/conf/efe/settings/wcm/templates/xf-web-variation" mode="replace"/>
     <filter root="/conf/efe/settings/dam/cfm/models/articles" mode="replace"/>
@@ -17,7 +19,6 @@
 	<filter root="/conf/global/settings/dam/search" mode="update"/>
     <filter root="/content/efe" mode="merge"/>
     <filter root="/content/dam/efe" mode="update_properties"/>
-    <filter root="/content/experience-fragments/efe" mode="merge"/> 
     <filter root="/conf/global/settings/dam/adminui-extension/metadataschema" mode="merge"/>
     <filter root="/conf/global/settings/dam/adminui-extension/metadataprofile" mode="merge"/>
     <filter root="/conf/global/settings/dam/dm/presets/macros" mode="merge"/>
@@ -25,3 +26,4 @@
     <filter root="/content/cq:graphql/efe" mode="update_properties"/>
     <filter root="/etc/acs-commons/lists/efe" mode="merge_properties"/>
     <filter root="/var/workflow/models" mode="update"/>
+</workspaceFilter>
