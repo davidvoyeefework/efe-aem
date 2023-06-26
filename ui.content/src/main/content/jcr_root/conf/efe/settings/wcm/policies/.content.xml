@@ -75,6 +75,7 @@
                     jcr:title="Content Image"
                     sling:resourceType="wcm/core/components/policy/policy"
                     allowedRenditionWidths="[]"
+                    sizes="[]"
                     disableLazyLoading="false"
                     enableDmFeatures="true"
                     enableAssetDelivery="true"
