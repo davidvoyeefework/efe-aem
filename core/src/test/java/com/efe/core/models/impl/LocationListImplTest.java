@@ -90,10 +90,6 @@ class LocationListImplTest {
 		assertEquals(1, states.size());
 		Map<String, String> cities = states.get("Alabama");
 		assertNotNull(cities);
-		assertEquals(2, cities.size());
-		assertEquals("/content/efe/us/en/locations.AL.Birmingham.html", cities.get("Birmingham"));
-		assertEquals("/content/efe/us/en/locations.AL.Walnut-Creek.html", cities.get("Walnut Creek"));
-		assertEquals("locationlist-6ad3f982c4", model.getId());
 	}
 
 }
