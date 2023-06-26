@@ -24,6 +24,11 @@
                     width: 100%;
                 }
             }
+            img {
+                width: 260px;
+                height: 240px;
+                object-fit: cover;
+            }
         }
         &__title {
             @include subhead-01;
@@ -45,7 +50,7 @@
         }
         &__action-container {
             width: 100%;
-            margin-top: rem(20);
+            margin-top: rem(12);
             margin-bottom: 0;
         }
         &__action-link {

@@ -62,10 +62,7 @@
                 }
             }
             &__action-container {
-                margin-top: rem(24px);
-                @include media('<tablet') {
-                    margin-top: rem(12px);
-                }
+                margin-top: rem(12);
             }
         }
     }
