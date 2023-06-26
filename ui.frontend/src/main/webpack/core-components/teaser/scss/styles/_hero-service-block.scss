@@ -8,6 +8,12 @@
 .cmp-teaser--image-left {
     .cmp-teaser {
        @include teaserImageLeft;
+       @include media(">tablet") {
+        align-items: center;
+       }
+       @include media ("<=768px") {
+        flex-direction: column-reverse;
+       }
         &__link {
             @include teaserImageLeft;
         }
@@ -15,7 +21,7 @@
             @include media("<tablet") {
                 padding: rem(32) rem(24);
             }
-            padding: rem(36) 0;
+            padding: rem(20) 0 0 0;
             b {
                 @include subhead-02;
             }
@@ -32,7 +38,7 @@
             padding: rem(16) rem(40) rem(12) rem(40);
                     color: $efe-gray-primary;
                     border: rem(1) solid $efe-gray-blue;
-                    background-color: buttonface;
+                    background-color: transparent;
         }
         &__image {
             .cmp-image {
@@ -71,15 +77,17 @@
             }
         }
         &:hover {
-            .cmp-teaser__action-container {
-                .cmp-teaser__action-link {
-                    @include cta-primary;
-                    padding: 16px 40px 12px 40px;
+            @include media('>tablet') {
+                .cmp-teaser__action-container {
+                    .cmp-teaser__action-link {
+                        @include cta-primary;
+                        padding: 16px 40px 12px 40px;
+                    }
                 }
-            }
-            .cmp-teaser__image {
-                .cmp-image__image {
-                    mix-blend-mode: unset;
+                .cmp-teaser__image {
+                    .cmp-image__image {
+                        mix-blend-mode: unset;
+                    }
                 }
             }
         }
