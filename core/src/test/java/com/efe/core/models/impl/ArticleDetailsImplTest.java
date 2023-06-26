@@ -1,14 +1,10 @@
 package com.efe.core.models.impl;
 
-import com.adobe.cq.dam.cfm.ContentFragment;
-import com.day.cq.commons.Externalizer;
-import com.efe.core.bean.Articles;
-import com.efe.core.bean.Disclosures;
-import com.efe.core.models.ArticleDetails;
-import com.efe.core.services.EfeService;
-import com.efe.core.services.SeoService;
-import io.wcm.testing.mock.aem.junit5.AemContext;
-import io.wcm.testing.mock.aem.junit5.AemContextExtension;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
+
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,8 +13,16 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import com.adobe.cq.dam.cfm.ContentFragment;
+import com.day.cq.commons.Externalizer;
+import com.efe.core.bean.Articles;
+import com.efe.core.models.ArticleDetails;
+import com.efe.core.services.DynamicMediaService;
+import com.efe.core.services.EfeService;
+import com.efe.core.services.SeoService;
+
+import io.wcm.testing.mock.aem.junit5.AemContext;
+import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 
 @ExtendWith({ MockitoExtension.class, AemContextExtension.class })
 class ArticleDetailsImplTest {
@@ -40,6 +44,9 @@ class ArticleDetailsImplTest {
     SeoService seoService;
     
     @Mock
+    DynamicMediaService dynamicMediaService;
+    
+    @Mock
     EfeService efeService;
     
     ArticleDetails articleDetails;
@@ -55,6 +62,9 @@ class ArticleDetailsImplTest {
     	aemContext.registerService(Externalizer.class, externalizer);
 		aemContext.registerService(EfeService.class, efeService);
 		aemContext.registerService(SeoService.class, seoService);
+		aemContext.registerService(DynamicMediaService.class, dynamicMediaService);
+		
+		when(dynamicMediaService.getDmImagePath(any(), any())).thenReturn("/content/dam/efe/rebalance-in-a-down-market.jpg");
 		
     	aemContext.load().json("/com/efe/core/models/articleDetails/articleDetails.json", "/content");
         aemContext.load().json("/com/efe/core/models/articleDetails/articleFragment.json", "/content/dam/efe/test-article-cf/master");

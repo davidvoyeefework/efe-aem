@@ -8,6 +8,7 @@ import com.day.cq.wcm.api.PageManager;
 import com.efe.core.bean.*;
 import com.efe.core.constants.ArticleDetailsConstants;
 import com.efe.core.constants.PlannerLocationConstants;
+import com.efe.core.services.DynamicMediaService;
 import com.efe.core.services.EfeService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
@@ -32,10 +33,11 @@ public class ArticleDetailUtil {
      * @param tags
      * @param mappedPage
      * @param pageManager
+     * @param dynamicMediaService 
      * @return list of articleDetails
      */
     public static Articles getArticleDetails(Resource articleDetailsCFResource, ResourceResolver resolver, String[] tags,
-        String mappedPage, PageManager pageManager, EfeService efeService) {
+        String mappedPage, PageManager pageManager, EfeService efeService, DynamicMediaService dynamicMediaService) {
         Articles articleDetails = new Articles();
         List<LinkBean> links = null;
 
@@ -69,8 +71,12 @@ public class ArticleDetailUtil {
                 }
             }).orElse(StringUtils.EMPTY));
 
-        articleDetails.setHeroImage(articleDetailsCF.map(cf -> cf.getElement(ArticleDetailsConstants.HERO_IMAGE))
-            .map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+        String heroImage = articleDetailsCF.map(cf -> cf.getElement(ArticleDetailsConstants.HERO_IMAGE))
+        .map(ContentElement::getContent).orElse(StringUtils.EMPTY);
+        
+        if(StringUtils.isNotEmpty(heroImage)) {
+        	articleDetails.setHeroImage(dynamicMediaService.getDmImagePath(resolver, heroImage));
+        }
 
         articleDetails.setAuthorType(new String[] { articleDetailsCF.map(cf -> cf.getElement(ArticleDetailsConstants.AUTHOR_TYPE))
             .map(ContentElement::getContent).orElse(StringUtils.EMPTY) });

@@ -6,6 +6,7 @@ import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageManager;
 import com.efe.core.bean.Articles;
 import com.efe.core.models.ArticleDetails;
+import com.efe.core.services.DynamicMediaService;
 import com.efe.core.services.EfeService;
 import com.efe.core.services.SeoService;
 import com.efe.core.utils.ArticleDetailUtil;
@@ -58,7 +59,10 @@ public class ArticleDetailsImpl implements ArticleDetails {
 
     @OSGiService
     private Externalizer externalizer;
-
+    
+    @OSGiService
+	private DynamicMediaService dynamicMediaService;
+   
     @ScriptVariable
     private Page currentPage;
 
@@ -92,7 +96,7 @@ public class ArticleDetailsImpl implements ArticleDetails {
             Resource articlesFragmentResource = resourceResolver.getResource(articleFragmentPath);
             if (null != articlesFragmentResource) {
                 articleDetails = ArticleDetailUtil.getArticleDetails(articlesFragmentResource, resourceResolver, tags, mappedPage,
-                    pageManager, efeService);
+                    pageManager, efeService, dynamicMediaService);
                 if (Objects.nonNull(articleDetails)) {
                     jsonLd = SeoUtil.getArticleSchema(seoService, efeService, externalizer, resourceResolver, currentPage,
                         articleDetails);
