@@ -77,7 +77,7 @@
             border: rem(2) solid $efe-gray-mid;
             border-radius: rem(3);
             min-height: rem(133);
-            padding: rem(18) rem(42);
+            padding: 16px;
             overflow: hidden;
             width: 234px;
             @include media("<tablet") {

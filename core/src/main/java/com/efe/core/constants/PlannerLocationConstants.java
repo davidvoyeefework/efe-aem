@@ -693,6 +693,6 @@ public class PlannerLocationConstants {
 	/**
 	 * Regex for Dot
 	 */
-	public static final String REGEX_FOR_DOT = "[.]";
+	public static final String REGEX_FOR_DOT = "[.//-]";
 	
 }

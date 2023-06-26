@@ -1,8 +1,5 @@
 
 .cmp-accordion {
-    &__item {
-        margin: 0 rem(24) rem(20px) rem(20);
-    }
     .cmp-accordion__button {
         width: 100%;
         background: $white-primary;
@@ -18,17 +15,17 @@
         }
     }
     .cmp-accordion__icon {
-        //margin-top: rem(10px);
         float: right;
-        font-family: '#{$icomoon-icon-font-family}' !important;
         position: absolute;
-        right: rem(6);
-        top: 37%;
+        right: rem(24);
+        top: 30%;
         &:before { 
-            content: $icon-Chevron-Property-1Default1; 
+            content: " "; 
             display: block;
             width: rem(18);
             height: rem(18);
+            background: url("../resources/images/accordion/arrow.svg") no-repeat center
+                    center / contain;
         }
     }
 
