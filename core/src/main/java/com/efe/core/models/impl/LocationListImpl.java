@@ -127,7 +127,7 @@ public class LocationListImpl implements LocationList {
 	}
 
 	/**
-	 * Method to create Office Json Object.
+	 * Method to create City Url.
 	 *
 	 * @param stateResource state resource
 	 * @param cityResource  city resource
