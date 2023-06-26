@@ -15,8 +15,9 @@
                 min-height: auto;
             }
             .cmp-teaser__image img {
-                width: 100%;
-                height: auto;
+                width: 260px;
+                height: 240px;
+                object-fit: cover;
             }
         }
     }
