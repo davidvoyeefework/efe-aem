@@ -49,13 +49,13 @@
    .cmp-carousel__indicator {
      position:relative;
      flex:0 1 auto;
-     width:rem(12);
-     height:rem(12);
-     margin:0 rem(8);
+     width:rem(10);
+     height:rem(10);
+     margin:0 rem(8) 0 0;
      border-radius:50%;
      font-size:0;
      text-indent:-rem(3000);
-     background-color: unset;
+     background-color: $white-primary;
      border: 1.5px solid $gray-new;
 
      &--active {
@@ -83,7 +83,7 @@
         border-radius: 50%;
         filter: invert(1) grayscale(100);
         position: absolute;
-        bottom: rem(-15);
+        bottom: rem(-15.5);
         top: unset;
         &:hover {
             opacity: .9;
@@ -99,7 +99,10 @@
     }
 
     .cmp-carousel__action--previous {
-        left: 0;
+        left: rem(100);
+        @include media("<tablet") {
+            left: rem(24);
+        }
         .cmp-carousel__action-icon {
             &:before {
             content: " ";
@@ -114,7 +117,10 @@
     }
 
     .cmp-carousel__action--next {
-        right: 0;
+        right: rem(100);
+        @include media("<tablet") {
+            right: rem(24);
+        }
         .cmp-carousel__action-icon {
             &:before {
             content: " ";
