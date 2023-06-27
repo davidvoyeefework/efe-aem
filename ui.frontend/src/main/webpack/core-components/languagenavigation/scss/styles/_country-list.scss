@@ -15,13 +15,16 @@
 
         &__item {
             &-title {
-                text-transform: uppercase;
+                margin-bottom: 8px;
+                display: inline-block;
             }
 
             &--level-0 {
                 @include subhead-02;
                 break-inside: avoid;
                 margin-bottom: 30px;
+                font-weight: 400;
+                min-width: 205px;
             }
 
             &--level-1 a {
