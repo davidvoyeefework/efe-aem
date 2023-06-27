@@ -1,0 +1,31 @@
+.formselector {
+
+    label {
+        max-width: rem(372);
+        margin: auto;
+        text-align: left;
+    }
+
+    input {
+        margin: 0 auto 12px;
+    }
+
+    .drop-down--default {
+        width: rem(372);
+        margin: auto;
+        margin-bottom: rem(22);
+    }
+
+    @media screen and (max-width: $sm) {
+        label, input {
+            max-width: none !important;
+        }
+    }
+
+}
+
+#contact_us_form {
+    .cmp-button--button-primary {
+        margin-bottom: rem(56);
+    }
+}

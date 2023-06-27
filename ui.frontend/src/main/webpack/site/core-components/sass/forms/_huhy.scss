@@ -1,4 +1,4 @@
-#homepage_huhy_form {
+#homepage_huhy_form { 
 
     max-width: rem(665);
     margin: auto;
@@ -63,7 +63,6 @@
         .cmp-button--body-03-link {
             margin-top: rem(16);
         }
-
     }
 
     .section-body {
@@ -82,7 +81,7 @@
         }
 
         .cmp-text--body-01 {
-            margin-bottom: rem(36);
+            margin-bottom: rem(24);
         }
 
         .button.cmp-button--button-primary {
@@ -93,27 +92,35 @@
             margin-bottom: rem(12);
         }
 
-
-
-        //FOR ALL STEPS
-        #investmentManage_container, #retirementGoal_container {
-        
-            > div {
-                padding: 0 !important;
-            }
-
-            h1 {
-                @include body-03;
-                text-transform: initial !important;
-                margin-bottom: 24px
-            }
-
+        input {
+            margin: auto;
         }
 
-        //FROM STEP 2
-        .form_page_header {
-            @include body-01;
+        label, .error-message {
+            max-width: rem(372);
+            margin: auto;
+            text-align: left;
         }
+
+        .error-message {
+            color: $efe-red-primary;
+            margin-bottom: rem(2);
+        }
+    }
+
+    //FOR ALL STEPS
+    #investmentManage_container, #retirementGoal_container {
+    
+        > div {
+            padding: 0 !important;
+        }
+
+        h1 {
+            @include body-03;
+            text-transform: initial !important;
+            margin-bottom: 24px
+        }
+
     }
 
     @media screen and (min-width: $sm) {
@@ -126,6 +133,7 @@
         section.container {
             button.efe-cta-back {
                 top: 13px;
+            }
         }
     }
 
@@ -153,10 +161,9 @@
 
     }
 
-    //SECOND STEP
+    //ALL STEPS
     .personalize-retirement_goal_page, .personalize-investable_assets_page,  .personalize-investment_interest_page {
         .section-body {
-
             .cmp-separator--efe-gray-mid {
                 display: none;
             }
@@ -170,8 +177,13 @@
             margin-bottom: rem(10);
         }
 
-        .cmp-text--caption {
-            text-align: justify;
+        .cmp-text--caption, .title {
+            text-align: left;
+            margin-bottom: rem(20);
+        }
+
+        .cmp-text--body-02 {
+            text-align: left;
         }
 
         .section-body {
@@ -184,9 +196,6 @@
                 } 
             }
         }
-
-
-
     }
 
     // FIFTH STEP
@@ -196,9 +205,27 @@
             margin-bottom: rem(10);
         }
 
+        #zip_code {
+            margin: auto;
+        }
+
+        .cmp-text--body-02 {
+            max-width: 40ch;
+            margin: auto;
+        }
+
+        label {
+            max-width: rem(372);
+            margin: auto;
+            text-align: left;
+        }
     }
 
-    
+    .personalize-final_page {
+        .efe-disclaimer {
+            margin-top: rem(100);
+        }
+    }
 
 
 }
