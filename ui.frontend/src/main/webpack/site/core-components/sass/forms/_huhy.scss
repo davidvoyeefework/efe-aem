@@ -5,7 +5,7 @@
     padding-bottom: 10rem;
     overflow: hidden;
 
-    progress#efe-progress-bar-default{
+    progress#efe-progress-bar-default {
         width: 100%;
         -webkit-appearance: progress-bar;
         -moz-appearance: progress-bar;
@@ -34,10 +34,14 @@
         text-transform: unset;
         display: inline-block;
         float: right;
-        align-self: right;
-        -ms-flex-item-align: right;        
-        -ms-grid-row-align: right;   
+        align-self: end;
+        -ms-flex-item-align: end;        
+        -ms-grid-row-align: end;  
         @include footer-02;
+    }
+
+    .button.cmp-button--button-primary {
+        margin-top: 24px;
     }
 
     // GENERIC STYLING
@@ -84,16 +88,12 @@
             margin-bottom: rem(24);
         }
 
-        .button.cmp-button--button-primary {
-            margin-top: 24px;
-        }
-
         .cmp-form-button--answer {
             margin-bottom: rem(12);
         }
 
         input {
-            margin: auto;
+            margin: 0 auto rem(12) !important;
         }
 
         label, .error-message {
@@ -137,7 +137,7 @@
         }
     }
 
-    //FIRST STEP
+    // FIRST STEP
     .personalize-investment_manage_page {
 
         #investmentManage_container {
@@ -157,12 +157,43 @@
                 margin-bottom: 10px;
             }
         }   
-
-
     }
 
-    //ALL STEPS
-    .personalize-retirement_goal_page, .personalize-investable_assets_page,  .personalize-investment_interest_page {
+    // SECOND STEP
+    .personalize-retirement_goal_page {
+        .cmp-text--caption {
+            font-size: rem(26);
+            margin-bottom: rem(24);
+        }
+    }
+
+    // THIRD STEP 
+    .personalize-investable_assets_page {
+        @media screen and (max-width: $md) {
+            .cmp-button--efe-gray-primary {
+                text-align: center;
+            }
+        }
+    }
+
+
+    // ALL STEPS BUT FIRST
+    .personalize-retirement_goal_page, .personalize-investable_assets_page, .personalize-investment_interest_page, .personalize-zip_code_page, .personalize-final_page {
+        h1 {
+            @include body-01;
+            text-transform: initial;
+            font-size: rem(26);
+            margin-bottom: rem(24) !important;
+        }
+
+        p {
+            @include body-01;
+            text-transform: initial;
+        }
+    }
+
+    // ALL STEPS BUT FIRST
+    .personalize-retirement_goal_page, .personalize-investable_assets_page,  .personalize-investment_interest_page, .personalize-zip_code_page, .personalize-final_page {
         .section-body {
             .cmp-separator--efe-gray-mid {
                 display: none;
@@ -173,10 +204,6 @@
     // FOURTH STEP
     .personalize-investment_interest_page {
 
-        h1 {
-            margin-bottom: rem(10);
-        }
-
         .cmp-text--caption, .title {
             text-align: left;
             margin-bottom: rem(20);
@@ -184,6 +211,16 @@
 
         .cmp-text--body-02 {
             text-align: left;
+
+            p {
+                font-size: rem(20);
+            }
+        }
+
+        .cmp-text--caption {
+            p {
+                font-size: rem(14);
+            }
         }
 
         .section-body {
@@ -194,6 +231,12 @@
                 &:first-child{
                     text-align: justify;
                 } 
+            }
+        }
+
+        @media screen and (max-width: $sm) {
+            .cmp-button--efe-gray-primary {
+                text-align: center;
             }
         }
     }
@@ -211,7 +254,11 @@
 
         .cmp-text--body-02 {
             max-width: 40ch;
-            margin: auto;
+            margin: 0 auto rem(36) !important;
+
+            p {
+                font-size: rem(20);
+            }
         }
 
         label {
@@ -221,9 +268,12 @@
         }
     }
 
+    
+    // LAST STEP PII
     .personalize-final_page {
         .efe-disclaimer {
             margin-top: rem(100);
+            font-size: rem(12);
         }
     }
 
