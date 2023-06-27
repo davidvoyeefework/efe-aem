@@ -7,9 +7,16 @@
 @import '../../scss/include-media';
 @import './colors';
 @import './typography';
-;
+
 @import './layout/flexbox';
+
+//FORMS
 @import './forms/efe-forms-primary';
+@import './forms/huhy';
+@import './forms/std-lead-form';
+@import './forms/long-form';
+
+
 @import '../../../resources/fonts/icon-font/style.scss';
 
 //BASE
