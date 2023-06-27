@@ -17,6 +17,9 @@
                 width: 100%;
                 object-fit: cover;
                 height: auto;
+                @include media(">tablet") {
+                    max-height: 567px;
+                }
                 @include media("<desktop") {
                     height: 740px;
                 }
@@ -34,6 +37,11 @@
             top: 15%;
             position: absolute;
             margin-left: rem(120);
+            @include media(">=tablet") {
+                top: 50%;
+                left: 0;
+                transform: translate(0%, -50%);
+            }
             @include media("<desktop") {
                 margin-left: rem(70);
             }
