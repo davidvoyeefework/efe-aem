@@ -1,6 +1,6 @@
 {
-  "plannersAPIEndpoint": "https://upls-test.edelmanfinancialengines.com/api/v2/planners",
-  "locationsAPIEndpoint": "https://upls-test.edelmanfinancialengines.com/api/v2/locations",
+  "plannersAPIEndpoint": "$[env:planners_api_endpoint;default=https://upls-test.edelmanfinancialengines.com/api/v2/planners]",
+  "locationsAPIEndpoint": "$[env:locations_api_endpoint;default=https://upls-test.edelmanfinancialengines.com/api/v2/locations]",
   "authHeader": "$[secret:authHeaderkey]",
   "plannerPageUrl": "$[env:location_detail_page;default=/content/efe/us/en/location]",
   "plannerBioPageUrl": "$[env:planner_detail_page;default=/content/efe/us/en/financial-planner]",

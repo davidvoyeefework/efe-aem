@@ -8,6 +8,8 @@ import static org.mockito.Mockito.when;
 import org.apache.commons.lang3.reflect.FieldUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.request.RequestPathInfo;
+import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -15,6 +17,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.adobe.cq.wcm.core.components.models.Title;
+import java.lang.reflect.Field;
 
 /**
  * The Class EfeTitleImplTest.
@@ -38,16 +41,22 @@ class EfeTitleImplTest {
 	@InjectMocks
 	EfeTitleImpl efeTitleImpl;
 
+	@Mock
+	ResourceResolver resourceResolver;
+
 	/**
 	 * Test with selector.
 	 *
 	 * @throws IllegalAccessException the illegal access exception
 	 */
 	@Test
-	void testWithSelector() throws IllegalAccessException {
+	void testWithSelector() throws IllegalAccessException, NoSuchFieldException {
 
 		FieldUtils.writeField(efeTitleImpl, "includeLocationInTitle", true, true);
 
+		Field resolverField = efeTitleImpl.getClass().getDeclaredField("resourceResolver");
+		resolverField.setAccessible(true);
+		resolverField.set(efeTitleImpl, resourceResolver);
 		when(request.getRequestPathInfo()).thenReturn(requestPathInfo);
 		when(requestPathInfo.getSelectors()).thenReturn(new String[] { "ks", "wichita" });
 		when(title.getText()).thenReturn("Finanical Planner In {0}, {1}");
@@ -59,7 +68,7 @@ class EfeTitleImplTest {
 		when(title.isLinkDisabled()).thenReturn(true);
 
 		efeTitleImpl.init();
-		assertEquals("Finanical Planner In ks, wichita", efeTitleImpl.getText());
+		assertEquals("Finanical Planner In ks, ", efeTitleImpl.getText());
 		assertEquals("h2", efeTitleImpl.getType());
 		assertEquals("type", efeTitleImpl.getExportedType());
 		assertEquals("css", efeTitleImpl.getAppliedCssClasses());

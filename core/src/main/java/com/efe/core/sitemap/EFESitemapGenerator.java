@@ -4,6 +4,7 @@ import java.util.Calendar;
 import java.util.Objects;
 import java.util.Optional;
 
+import com.day.cq.dam.commons.util.DamUtil;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ResourceResolverFactory;
@@ -106,12 +107,11 @@ public class EFESitemapGenerator extends ResourceTreeSitemapGenerator {
 				if (stateResource.isResourceType(JcrResourceConstants.NT_SLING_ORDERED_FOLDER)) {
 
 					for (Resource cityResource : stateResource.getChildren()) {
+						String city = LocationPlannerUtil.getLocationProperty(resourceResolver, cityResource, "externalName");
 						String cityUrl = LinkUtil.getFormattedLink(efeService.getPlannerPageUrl()
 								+ PlannerLocationConstants.DOT + stateResource.getName().toUpperCase()
 								+ PlannerLocationConstants.DOT
-								+ LocationPlannerUtil.toCamelCase(cityResource.getName()).replaceAll(
-										PlannerLocationConstants.SPACE, PlannerLocationConstants.HYPHEN),
-								resourceResolver);
+								+ DamUtil.getSanitizedFolderName(city, false), resourceResolver);
 
 						cityUrl = externalizer.publishLink(resourceResolver, cityUrl);
 						Url url = sitemap.addUrl(cityUrl);

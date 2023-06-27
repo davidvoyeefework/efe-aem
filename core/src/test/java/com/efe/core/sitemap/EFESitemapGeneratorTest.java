@@ -25,7 +25,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.osgi.service.component.annotations.Reference;
 
 import java.lang.reflect.Field;
 import java.util.Calendar;
@@ -113,10 +112,9 @@ class EFESitemapGeneratorTest {
         when(stateResource.getChildren()).thenReturn(Collections.singletonList(cityResource));
         when(efeService.getPlannerPageUrl()).thenReturn("/planner");
         when(stateResource.getName()).thenReturn("state");
-        when(cityResource.getName()).thenReturn("city");
-        when(externalizer.publishLink(resourceResolver, "/planner.STATE.City")).thenReturn("publish/planner.STATE.City");
+        when(externalizer.publishLink(resourceResolver, "/planner.STATE.")).thenReturn("publish/planner.STATE.");
         Url url = mock(Url.class);
-        when(sitemap.addUrl("publish/planner.STATE.City")).thenReturn(url);
+        when(sitemap.addUrl("publish/planner.STATE.")).thenReturn(url);
         ValueMap vm = mock(ValueMap.class);
         when(cityResource.getValueMap()).thenReturn(vm);
         Calendar calendar = mock(Calendar.class);

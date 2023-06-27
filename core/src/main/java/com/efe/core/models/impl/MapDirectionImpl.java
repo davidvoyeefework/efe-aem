@@ -21,7 +21,6 @@ import com.adobe.cq.export.json.ExporterConstants;
 import com.day.cq.commons.Externalizer;
 import com.day.cq.dam.api.DamConstants;
 import com.efe.core.bean.LocationResponse;
-import com.efe.core.constants.PlannerLocationConstants;
 import com.efe.core.models.MapDirection;
 import com.efe.core.services.EfeService;
 import com.efe.core.services.SeoService;
@@ -118,8 +117,7 @@ public class MapDirectionImpl implements MapDirection {
 		String[] selectors = request.getRequestPathInfo().getSelectors();
 		if (selectors.length == 2) {
 			final String state = selectors[0].toLowerCase();
-			final String city = selectors[1].toLowerCase().replaceAll(PlannerLocationConstants.HYPHEN,
-					PlannerLocationConstants.SPACE);
+			final String city = selectors[1].toLowerCase();
 			final Resource resourceLocation = LocationPlannerUtil.getLocationResource(resourceResolver, state, city);
 			if (Objects.nonNull(resourceLocation)) {
 
