@@ -3,6 +3,18 @@
 RewriteMap lc int:tolower
 RewriteMap uc int:toupper
 
+RewriteRule ^/location$ /locations [R=301,L]
+
+# Location with special names
+RewriteRule ^/locations/ca/roseville-2d-east/ /location/CA.roseville-east [R=301,L]
+RewriteRule ^/locations/ca/roseville-2d-west/ /location/CA.roseville-west [R=301,L]
+RewriteRule ^/locations/fl/miami-2d-coral-gables/ /location.FL.miami-coral-gables [R=301,L]
+RewriteRule ^/locations/fl/miami-2d-plantation/ /location.FL.miami-plantation [R=301,L]
+RewriteRule ^/locations/fl/tampa-2d-east/ /location.FL.tampa-east [R=301,L]
+RewriteRule ^/locations/fl/tampa-2d-westshore/ /location.FL.tampa-westshore [R=301,L]
+RewriteRule ^/locations/tx/houston-2d-clear-lake-2f-league-city/ /location.TX.houston-clear-lake-league-city [R=301,L]
+RewriteRule ^/locations/tx/houston-2d-galleria/ /location.TX.houston-galleria [R=301,L]
+
 # Rewrite legacy location urls - with hypen
 RewriteRule ^/locations/(.*)/([a-z])(.*)-([a-z])(.*)/?$ /location.${uc:$1}.${uc:$2}$3-${uc:$4}$5 [R=301,L]
 
@@ -10,7 +22,23 @@ RewriteRule ^/locations/(.*)/([a-z])(.*)-([a-z])(.*)/?$ /location.${uc:$1}.${uc:
 RewriteRule ^/locations/(.*)/([a-z])(.*)/?$ /location.${uc:$1}.${uc:$2}$3 [R=301,L]
 
 # Finanial planners
-RewriteRule ^/financial-planners/(.*)-(.*)-(.*)/  /financial-planners.$1.$2.$3 [R=301,L]
+RewriteRule ^/financial-planners/(.*)-(.*)-(.*)/$  /financial-planner.$1.$2.$3 [R=301,L]
 
 # Press category
-RewriteRule ^/press_category/(.*) /press/$1 [R=301,L]
+RewriteRule ^/press_category/(.*)/$ /press/$1 [R=301,L]
+
+# tax
+RewriteRule ^/education/tax-finance/$ /education/tax [R=301,L]
+RewriteRule ^/education/retirement/hedge-against-inflation$  /education/investment-management/hedge-against-inflation [R=301,L]
+
+# Education generic
+RewriteRule ^/education/retirement/(.*) /education/estate/$1 [R=301,L]
+
+# Education specific
+RewriteRule ^/education/home-mortgage/reverse-mortgage/$ /education/retirement/reverse-mortgage.html [R=301,L]
+RewriteRule ^/education/home-mortgage/should-i-pay-off-my-mortgage-before-i-retire/$ /education/retirement/should-i-pay-off-my-mortgage-before-i-retire.html [R=301,L]
+
+RewriteRule ^/education/(home-mortgage|planning-investing|tax-finance)/(.*) /education/financial-planning/$2 [R=301,L]
+
+# Tax finance
+RewriteRule ^/education/tax-finance/(.*) /education/tax/$1 [R=301,L]
