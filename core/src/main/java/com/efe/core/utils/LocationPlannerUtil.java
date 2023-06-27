@@ -1,7 +1,9 @@
 package com.efe.core.utils;
 
+import java.util.Objects;
 import java.util.Optional;
 
+import com.day.cq.dam.api.DamConstants;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -100,5 +102,25 @@ public class LocationPlannerUtil {
 			formattedStringSb.append(PlannerLocationConstants.SPACE + StringUtils.capitalize(stringArr[i]));
 		}
 		return formattedStringSb.toString();
+	}
+
+	/**
+	 * Method to return the name of the city.
+	 *
+	 * @param resourceResolver the resourceResolver.
+	 * @param cityResource the cityResource.
+	 * @return the city name.
+	 */
+	public static String getLocationProperty(ResourceResolver resourceResolver, Resource cityResource, String property) {
+		String propertyValue = StringUtils.EMPTY;
+		if(Objects.nonNull(cityResource)) {
+			for (Resource childCityResource : cityResource.getChildren()) {
+				if (childCityResource.isResourceType(DamConstants.NT_DAM_ASSET)) {
+					String masterResourcePath = childCityResource.getPath() + "/jcr:content/data/master";
+					propertyValue = ResourceUtil.getProperty(resourceResolver, masterResourcePath, property);
+				}
+			}
+		}
+		return propertyValue;
 	}
 }

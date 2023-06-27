@@ -9,6 +9,7 @@ import java.util.TreeMap;
 import javax.annotation.PostConstruct;
 
 import com.day.cq.dam.api.DamConstants;
+import com.day.cq.dam.commons.util.DamUtil;
 import com.efe.core.utils.ResourceUtil;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -30,7 +31,6 @@ import com.efe.core.models.LocationList;
 import com.efe.core.services.EfeService;
 import com.efe.core.utils.EFEUtil;
 import com.efe.core.utils.LinkUtil;
-import com.efe.core.utils.LocationPlannerUtil;
 
 /**
  * The Class LocationListImpl.
@@ -138,19 +138,16 @@ public class LocationListImpl implements LocationList {
 			if (childCityResource.isResourceType(DamConstants.NT_DAM_ASSET)) {
 				String masterResourcePath = childCityResource.getPath() + "/jcr:content/data/master";
 				String cityName = ResourceUtil.getProperty(resourceResolver, masterResourcePath, "externalName");
-				String cityUrl = LinkUtil.getFormattedLink(
-						efeService.getPlannerPageUrl()
-								+ PlannerLocationConstants.DOT + stateResource.getName().toUpperCase()
-								+ PlannerLocationConstants.DOT + LocationPlannerUtil.toCamelCase(cityResource.getName()).replaceAll(
-								PlannerLocationConstants.SPACE, PlannerLocationConstants.HYPHEN),
-						resourceResolver);
-				LOGGER.info("City Url {}", cityUrl);
 				if(Objects.nonNull(cityName)) {
+					String cityUrl = LinkUtil.getFormattedLink(
+							efeService.getPlannerPageUrl()
+									+ PlannerLocationConstants.DOT + stateResource.getName().toUpperCase()
+									+ PlannerLocationConstants.DOT + DamUtil.getSanitizedFolderName(cityName, false),
+							resourceResolver);
+					LOGGER.info("City Url {}", cityUrl);
 					if(!cityName.equalsIgnoreCase("National Advisor Center")) {
 						unsortedCityMap.put(cityName, cityUrl);
 					}
-				} else {
-					unsortedCityMap.put(LocationPlannerUtil.toCamelCase(cityResource.getName()), cityUrl);
 				}
 			}
 		}

@@ -6,7 +6,6 @@ import java.util.Objects;
 import javax.jcr.Node;
 import javax.jcr.RepositoryException;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.PersistenceException;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -29,6 +28,7 @@ import com.efe.core.utils.FolderUtil;
 import com.efe.core.utils.NodePropertyManagerUtil;
 import com.efe.core.utils.ResourceUtil;
 import com.google.gson.Gson;
+import com.day.cq.dam.commons.util.DamUtil;
 
 /**
  * The Class LocationModelServicesImpl
@@ -101,7 +101,7 @@ public class LocationModelServicesImpl implements LocationModelServices {
 		for (LocationResponse jsonObj : jsonElement) {
 			String officeId = jsonObj.getOfficeId();
 			String stateFolderName = jsonObj.getState().toLowerCase();
-			String cityFolderName = jsonObj.getExternalName().toLowerCase();
+			String cityFolderName = jsonObj.getExternalName();
 			String officeName = jsonObj.getOfficeName().toLowerCase();
 			String stateFolderPath = rootPath + PlannerLocationConstants.FORWARD_SLASH + stateFolderName;
 
@@ -114,7 +114,7 @@ public class LocationModelServicesImpl implements LocationModelServices {
 				stateFolderPath = FolderUtil.createFolder(rootPath, stateFolderName, stateFolderName, resourceResolver);
 			}
 
-			String childPathLocation = FolderUtil.createFolder(stateFolderPath, cityFolderName.replaceAll(PlannerLocationConstants.REGEX_FOR_DOT,StringUtils.EMPTY), cityFolderName,
+			String childPathLocation = FolderUtil.createFolder(stateFolderPath, DamUtil.getSanitizedFolderName(cityFolderName), cityFolderName,
 					resourceResolver);
 
 			// create business hrs folder first then create fragments as a dependency on

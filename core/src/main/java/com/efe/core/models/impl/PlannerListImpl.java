@@ -94,9 +94,8 @@ public class PlannerListImpl implements PlannerList {
 		if (selectors.length == 2) {
 			List<String> cfList = new ArrayList<>();
 			state = selectors[0].toLowerCase();
-			city = selectors[1].toLowerCase().replaceAll(PlannerLocationConstants.HYPHEN,PlannerLocationConstants.SPACE);
-			
-			Resource resourceLocation = LocationPlannerUtil.getLocationResource(resourceResolver, state, city);
+			String citySelector = selectors[1].toLowerCase();
+			Resource resourceLocation = LocationPlannerUtil.getLocationResource(resourceResolver, state, citySelector);
 			if (Objects.nonNull(resourceLocation)) {
 				for (Resource item : resourceLocation.getChildren()) {
 					setCfList(cfList, item);
@@ -154,13 +153,14 @@ public class PlannerListImpl implements PlannerList {
 	 */
 	private void setCfList(List<String> cfList, Resource item) {
 		if (item.isResourceType(DamConstants.NT_DAM_ASSET)) {
-			Resource masterResource = resourceResolver
-					.getResource(item.getPath() + PlannerLocationConstants.MASTER_NODE);
-			String[] plannerList = ResourceUtil.getProperties(resourceResolver, masterResource.getPath(), "planners");
-			for (String list : plannerList) {
-				cfList.add(list);
+			Resource masterResource = resourceResolver.getResource(item.getPath() + PlannerLocationConstants.MASTER_NODE);
+			if(Objects.nonNull(masterResource)) {
+				city = ResourceUtil.getProperty(resourceResolver, masterResource.getPath(), "city");
+				String[] plannerList = ResourceUtil.getProperties(resourceResolver, masterResource.getPath(), "planners");
+				for (String list : plannerList) {
+					cfList.add(list);
+				}
 			}
-
 		}
 	}
 

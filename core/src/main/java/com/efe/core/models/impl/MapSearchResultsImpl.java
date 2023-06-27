@@ -4,6 +4,7 @@ import java.util.Objects;
 
 import javax.annotation.PostConstruct;
 
+import com.day.cq.dam.commons.util.DamUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
@@ -164,12 +165,11 @@ public class MapSearchResultsImpl implements MapSearchResults {
 					StatesEnum stateEnum = StatesEnum.valueOf(stateResource.getName().toUpperCase());
 					officeObject.addProperty(PlannerLocationConstants.STATE, stateEnum.getStateName());
 					officeObject.addProperty("stateCode", locationBean.getState());
-
+					String cityExternalName = LocationPlannerUtil.getLocationProperty(resourceResolver, cityResource, "externalName");
 					final String cityUrl = LinkUtil.getFormattedLink(
 							efeService.getPlannerPageUrl() + PlannerLocationConstants.DOT
 									+ stateResource.getName().toUpperCase() + PlannerLocationConstants.DOT
-									+ LocationPlannerUtil.toCamelCase(cityResource.getName()).replaceAll(
-											PlannerLocationConstants.SPACE, PlannerLocationConstants.HYPHEN),
+									+ DamUtil.getSanitizedFolderName(cityExternalName, false),
 							resourceResolver);
 
 					officeObject.addProperty("link", cityUrl);

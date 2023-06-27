@@ -4,12 +4,16 @@ import java.util.Objects;
 
 import javax.annotation.PostConstruct;
 
+import com.efe.core.utils.LocationPlannerUtil;
 import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Via;
 import org.apache.sling.models.annotations.injectorspecific.Self;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.apache.sling.models.annotations.via.ResourceSuperType;
 
@@ -17,7 +21,6 @@ import com.adobe.cq.export.json.ExporterConstants;
 import com.adobe.cq.wcm.core.components.commons.link.Link;
 import com.adobe.cq.wcm.core.components.models.Title;
 import com.adobe.cq.wcm.core.components.models.datalayer.ComponentData;
-import com.efe.core.constants.PlannerLocationConstants;
 
 /**
  * The Class EfeTitleImpl.
@@ -49,6 +52,10 @@ public class EfeTitleImpl implements Title {
 	@ValueMapValue
 	private boolean includeLocationInTitle;
 
+	/** The resource resolver. */
+	@SlingObject
+	private ResourceResolver resourceResolver;
+
 	/** The text. */
 	private String text;
 
@@ -65,8 +72,11 @@ public class EfeTitleImpl implements Title {
 			final String[] selectors = request.getRequestPathInfo().getSelectors();
 			if (selectors.length == 2) {
 				text = text.replace(SELECTOR_PLACEHOLDER_0, selectors[0]);
-				text = text.replace(SELECTOR_PLACEHOLDER_1, selectors[1]).replace(PlannerLocationConstants.HYPHEN,
-						PlannerLocationConstants.SPACE);
+				String stateSelector = selectors[0].toLowerCase();
+				String citySelector = selectors[1].toLowerCase();
+				Resource resourceLocation = LocationPlannerUtil.getLocationResource(resourceResolver, stateSelector, citySelector);
+				String city = LocationPlannerUtil.getLocationProperty(resourceResolver, resourceLocation, "city");
+				text = text.replace(SELECTOR_PLACEHOLDER_1, city);
 			}
 		}
 	}
