@@ -18,5 +18,13 @@ public interface PageModel {
 	 * @return the thumbnail
 	 */
 	String getThumbnail();
+	
+	
+	/**
+	 * Gets the jquery url.
+	 *
+	 * @return the jquery url
+	 */
+	String getJqueryUrl();
 
 }

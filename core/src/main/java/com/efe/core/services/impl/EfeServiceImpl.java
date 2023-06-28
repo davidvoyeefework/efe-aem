@@ -78,6 +78,9 @@ public class EfeServiceImpl implements EfeService {
 	
 	/** The omny org id. */
 	private String omnyOrgId;
+	
+	/** The jquery url. */
+	private String jqueryUrl;
 
 	/**
 	 * The Interface Config.
@@ -236,6 +239,15 @@ public class EfeServiceImpl implements EfeService {
 		 */
 		@AttributeDefinition(name = "Omny Podcast Org ID", description = "Omny Podcast Org ID")
 		String omnyOrgId();
+		
+		
+		/**
+		 * Jquery hosted url.
+		 *
+		 * @return the string
+		 */
+		@AttributeDefinition(name = "Jquery Hosted URL", description = "Jquery Hosted URL")
+		String jqueryHostedUrl();
 
 	}
 
@@ -267,6 +279,7 @@ public class EfeServiceImpl implements EfeService {
 		this.omnyEpisodeApi = config.omnyEpisodeApi();
 		this.omnyPlaylistApi = config.omnyPlaylistApi();
 		this.omnyOrgId = config.omnyOrgId();
+		this.jqueryUrl = config.jqueryHostedUrl();
 
 	}
 
@@ -458,5 +471,15 @@ public class EfeServiceImpl implements EfeService {
 	@Override
 	public String getOmnyOrgId() {
 		return omnyOrgId;
+	}
+
+	/**
+	 * Gets the jquery url.
+	 *
+	 * @return the jquery url
+	 */
+	@Override
+	public String getJqueryUrl() {
+		return jqueryUrl;
 	}
 }

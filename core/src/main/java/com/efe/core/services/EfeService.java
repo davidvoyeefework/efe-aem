@@ -140,5 +140,13 @@ public interface EfeService {
 	 * @return the omny org id
 	 */
 	String getOmnyOrgId();
+	
+	
+	/**
+	 * Gets the jquery url.
+	 *
+	 * @return the jquery url
+	 */
+	String getJqueryUrl();
 
 }

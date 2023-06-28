@@ -17,5 +17,6 @@
   "gaTagValue":"$[env:ga_tag_value;default=GTM-MCQB6LQ]",
   "omnyPlaylistApi":"$[env:omny_playlist_api;default=https://api.omny.fm/orgs/{orgid}/playlists/{playlistid}/clips/v2]",
   "omnyEpisodeApi":"$[env:omny_episode_api;default=https://api.omny.fm/orgs/{orgid}/clips/{episodeid}]",
-  "omnyOrgId":"$[env:omny_org_id;default=28f40a00-40de-4bda-94f0-ade200730f75]"
+  "omnyOrgId":"$[env:omny_org_id;default=28f40a00-40de-4bda-94f0-ade200730f75]",
+  "jqueryHostedUrl":"$[env:jquery_url;default=https://dev-pmapi.edelmanfinancialengines.com/node_modules/jquery/dist/jquery.min.js]"
 }

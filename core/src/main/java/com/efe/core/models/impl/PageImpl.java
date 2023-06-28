@@ -16,6 +16,7 @@ import com.adobe.aem.wcm.seo.SeoTags;
 import com.day.cq.commons.Externalizer;
 import com.efe.core.constants.Constants;
 import com.efe.core.models.PageModel;
+import com.efe.core.services.EfeService;
 import com.day.cq.wcm.api.Page;
 import com.efe.core.utils.LinkUtil;
 import org.apache.sling.api.resource.Resource;
@@ -39,6 +40,10 @@ public class PageImpl implements PageModel {
 	/** Externalizer service. */
 	@OSGiService
 	private Externalizer externalizer;
+	
+	/** The efe service. */
+	@OSGiService
+	private EfeService efeService;
 
 	/** Current Page. */
 	@Inject
@@ -50,7 +55,7 @@ public class PageImpl implements PageModel {
 
 	/** Thumbnail Image Path. */
 	private String thumbnail;
-
+	
 	/**
 	 * Gets the canonical link.
 	 *
@@ -64,6 +69,7 @@ public class PageImpl implements PageModel {
 			canonicalUrl = canonicalUrl != null ? externalizer.publishLink(resourceResolver, canonicalUrl)
 					: LinkUtil.getAbsoluteUrl(currentPage, resourceResolver, externalizer);
 		}
+		
 		return canonicalUrl;
 	}
 
@@ -106,6 +112,20 @@ public class PageImpl implements PageModel {
 			thumbnail = externalizer.publishLink(resourceResolver, thumbnail);
 		}
 		return thumbnail;
+	}
+
+	/**
+	 * Gets the jquery url.
+	 *
+	 * @return the jquery url
+	 */
+	@Override
+	public String getJqueryUrl() {
+		String jQueryUrl = null;
+		if(Objects.nonNull(efeService)) {
+			jQueryUrl = efeService.getJqueryUrl();
+		}
+		return jQueryUrl;
 	}
 
 }

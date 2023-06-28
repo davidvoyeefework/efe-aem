@@ -86,22 +86,13 @@ Include conf.d/variables/custom.vars
 		Header always set Cache-Control "private"
 	</LocationMatch>
 
-	<LocationMatch "\.html$">
-			Header unset Cache-Control
-			Header always set Cache-Control "max-age=60,stale-while-revalidate=60" "expr=%{REQUEST_STATUS} < 400"
-			Header always set Surrogate-Control "stale-while-revalidate=60,stale-if-error=60" "expr=%{REQUEST_STATUS} < 400"
-			Header set Age 0
-			Header add X-Vhost-Test "Default publish"
-	</LocationMatch>
-
 	# DEV, QA HTML pages: Cache for 1min with background refresh 1min on browser and 1min on CDN to avoid MISS, also incl. requests with query parameter
 	<IfDefine ENVIRONMENT_DEV>
 		<LocationMatch "\.html$">
 			Header unset Cache-Control
-			Header always set Cache-Control "max-age=60,stale-while-revalidate=60" "expr=%{REQUEST_STATUS} < 400"
-			Header always set Surrogate-Control "stale-while-revalidate=60,stale-if-error=60" "expr=%{REQUEST_STATUS} < 400"
+			Header always set Cache-Control "max-age=60,stale-while-revalidate=120" "expr=%{REQUEST_STATUS} < 400"
+			Header always set Surrogate-Control "stale-while-revalidate=180,stale-if-error=180" "expr=%{REQUEST_STATUS} < 400"
 			Header set Age 0
-			Header add X-Vhost-Test "DEV publish"
 		</LocationMatch>
 	</IfDefine>
 
