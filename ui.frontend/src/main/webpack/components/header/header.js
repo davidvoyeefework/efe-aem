@@ -9,10 +9,10 @@ export default class Header {
         this.subHeaderDesktop = el.querySelectorAll('.efe-nav-header')[0];
         this.subHeaderMobile = el.querySelectorAll('.efe-nav-header')[1];
         if(!minimalHeader) {
-            this.handleSearchIconClick = el.querySelector('#nav-search-icon').addEventListener('click', this.handleSearchIconClick.bind(this))
-            this.handleSearchCloseClick = el.querySelector('#search-close').addEventListener('click', this.handleSearchCloseClick.bind(this))
-            this.handleSearchIconMobileClick = el.querySelector('#nav-search-iconT').addEventListener('click', this.handleSearchIconMobileClick.bind(this))
-            this.handleSearchCloseMobileClick = el.querySelector('#search-closeT').addEventListener('click', this.handleSearchCloseMobileClick.bind(this))
+            this.handleSearchIconClick = el.querySelector('#nav-search-icon')?.addEventListener('click', this.handleSearchIconClick.bind(this))
+            this.handleSearchCloseClick = el.querySelector('#search-close')?.addEventListener('click', this.handleSearchCloseClick.bind(this))
+            this.handleSearchIconMobileClick = el.querySelector('#nav-search-iconT')?.addEventListener('click', this.handleSearchIconMobileClick.bind(this))
+            this.handleSearchCloseMobileClick = el.querySelector('#search-closeT')?.addEventListener('click', this.handleSearchCloseMobileClick.bind(this))
         }
         clickFunction("#nav-hamburger", "nav-list-cta-group");
         clickNav(".cmp-navigation__item--level-0");
