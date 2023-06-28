@@ -18,13 +18,13 @@
                 object-fit: cover;
                 height: auto;
                 @include media(">tablet") {
-                    max-height: 567px;
+                    min-height: 567px;
                 }
                 @include media("<desktop") {
-                    height: 740px;
+                    min-height: 824px;
                 }
                 @include media("<tablet") {
-                    height: 352px;
+                    min-height: 352px;
                 }
             }
         }
