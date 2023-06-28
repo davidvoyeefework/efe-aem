@@ -1,0 +1,56 @@
+<div data-sly-use.model="com.efe.core.models.ModalPromotion"
+     data-sly-use.template="core/wcm/components/commons/v1/templates.html"
+     data-sly-test.isNotEmpty="${model.title && wcmmode.disabled}" class="dialog-container modal-promotional" id="${model.id}" aria-hidden="true"
+     aria-labelledby="my-dialog-title" aria-describedby="my-dialog-description" data-component="modal-promotional" data-sly-attribute.startDate="${model.startDate}" data-sly-attribute.endDate="${model.endDate}">
+    <div class="dialog-overlay" data-a11y-dialog-hide></div>
+    <div class="cmp-modal" role="document">
+        <div class="cmp-modal__container responsivegrid">
+            <sly data-sly-test="${model.closeButtonColor}">
+                <button data-a11y-dialog-hide class="cmp-modal__close" aria-label="Close this dialog window">
+                    <img class="cmp-modal__close-image" src="/etc.clientlibs/efe/clientlibs/clientlib-site/resources/images/modal/${model.closeButtonColor}" alt="${model.closeButtonAltText}">
+                </button>
+            </sly>
+            <div class="cmp-modal__body">
+                <div class="cmp-modal__description">
+                    <sly data-sly-test="${model.pretitle}">
+                        <div class="title cmp-title--subhead-02">
+                            <div class="cmp-title">
+                                <h1 class="cmp-title__text">${model.pretitle}</h1>
+                            </div>
+                        </div>
+                    </sly>
+                    <sly data-sly-test="${model.title}">
+                        <div class="title cmp-title--heading-03">
+                            <div class="cmp-title">
+                                <h1 class="cmp-title__text">${model.title}</h1>
+                            </div>
+                        </div>
+                    </sly>
+                    <sly data-sly-test="${model.description}">
+                        <div class="text">
+                            <div class="cmp-text">
+                                ${model.description @ context = 'html'}
+                            </div>
+                        </div>
+                    </sly>
+                    <sly data-sly-test="${model.buttonText}">
+                        <div class="cmp-modal__action-container">
+                            <a class="cmp-modal__action-link" href="${model.buttonUrl}">${model.buttonText}</a>
+                        </div>
+                    </sly>
+                </div>
+                <div class="cmp-modal__image">
+                    <sly data-sly-test="${model.promotionImage}">
+                        <div class="image">
+                            <div class="cmp-image" itemscope="" itemtype="http://schema.org/ImageObject">
+                                <img src="${model.promotionImage}"  alt="${model.promotionImageAltText}">
+                            </div>
+                        </div>
+                    </sly>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<sly data-sly-call="${template.placeholder @ isEmpty=!isNotEmpty, classAppend='modal-promotional'}"></sly>
+

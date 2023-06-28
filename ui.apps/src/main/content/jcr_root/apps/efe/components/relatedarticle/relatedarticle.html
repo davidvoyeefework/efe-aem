@@ -1,0 +1,16 @@
+<div data-sly-use.article="com.efe.core.models.RelatedArticle">
+    <ul data-sly-use.list="com.adobe.cq.wcm.core.components.models.List"
+        data-sly-use.template="core/wcm/components/commons/v1/templates.html"
+        data-sly-use="item.html"
+        data-sly-use.teaserTemplate="teaser.html"
+        data-sly-list.item="${list.listItems}"
+        id="${list.id}"
+        data-cmp-data-layer="${list.data.json}"
+        class="cmp-list">
+
+        <div data-sly-test="${item.teaserResource}"
+             class="teaser cmp-teaser--thumbnail" data-sly-call="${teaserTemplate.teaser @ item = item}"
+             data-cmp-data-layer="${item.data.json}"></div>
+    </ul>
+</div>
+<sly data-sly-call="${template.placeholder @ isEmpty=list.listItems.size == 0, classAppend='cmp-list'}"></sly>

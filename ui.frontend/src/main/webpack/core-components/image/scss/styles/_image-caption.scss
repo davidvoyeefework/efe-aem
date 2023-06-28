@@ -1,0 +1,22 @@
+.cmp-image--image-caption {
+    max-width: rem(704);
+
+    img {
+        max-width: rem(704);
+        max-height: rem(439);
+        background-size: cover;
+    }
+
+    &.cmp-image--round {
+         img {
+             border-bottom-right-radius: 40px;
+         }
+    }
+ 
+    .cmp-image__title {
+        margin-top: 6px;
+        display: block;
+        width: 100%;
+        @include body-03;
+    }
+ }

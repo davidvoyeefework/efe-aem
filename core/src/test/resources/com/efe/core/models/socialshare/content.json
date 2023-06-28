@@ -1,0 +1,69 @@
+{
+	"jcr:primaryType": "cq:Page",
+	"jcr:content": {
+		"jcr:primaryType": "cq:PageContent",
+		"jcr:title": "Social Share",
+		"cq:template": "/conf/efe/settings/wcm/templates/content-template-full-header-and-footer",
+		"sling:resourceType": "efe/components/page",
+		"root": {
+			"jcr:primaryType": "nt:unstructured",
+			"layout": "responsiveGrid",
+			"sling:resourceType": "efe/components/container",
+			"container": {
+				"jcr:primaryType": "nt:unstructured",
+				"layout": "responsiveGrid",
+				"sling:resourceType": "efe/components/container",
+				"container": {
+					"jcr:primaryType": "nt:unstructured",
+					"layout": "responsiveGrid",
+					"sling:resourceType": "efe/components/container",
+					"socialshare": {
+						"jcr:primaryType": "nt:unstructured",
+						"linkTarget": "_blank",
+						"sling:resourceType": "efe/components/socialshare",
+						"cq:styleIds": [
+							"add-margin"
+						],
+						"text": {
+							"jcr:primaryType": "nt:unstructured",
+							"text": "Eyebrow Share Post",
+							"sling:resourceType": "hbff/components/text"
+						},
+						"socialMediaSharing": {
+							"jcr:primaryType": "nt:unstructured",
+							"item0": {
+								"jcr:primaryType": "nt:unstructured",
+								"link": "mail;mailto:?subject=A friend thought you might enjoy this article from Edelman Financial Engines&amp;body=I thought you might find this article from Edelman Financial Engines interesting: Title of the page is: $[[pageTitle]] and page url is: $[[pageUrl]]"
+							},
+							"item1": {
+								"jcr:primaryType": "nt:unstructured",
+								"link": "print;window.print()"
+							},
+							"item2": {
+								"jcr:primaryType": "nt:unstructured",
+								"link": "fb;https://www.facebook.com/sharer/sharer.php?u=$[[pageUrl]]"
+							},
+							"item3": {
+								"jcr:primaryType": "nt:unstructured",
+								"link": ""
+							},
+							"item4": {
+								"jcr:primaryType": "nt:unstructured",
+								"link": "linkedin;https://www.linkedin.com/sharing/share-offsite/?url=$[[pageUrl]]"
+							}
+						}
+					},
+					"socialshare2": {
+						"jcr:primaryType": "nt:unstructured",
+						"id": "1234",
+						"sling:resourceType": "efe/components/socialshare"
+					}
+				}
+			}
+		},
+		"image": {
+			"jcr:primaryType": "nt:unstructured",
+			"fileReference": "/content/dam/hbff/test/poirier-libraries-06.jpg"
+		}
+	}
+}

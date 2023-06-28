@@ -1,0 +1,37 @@
+{
+  "jcr:primaryType": "dam:Asset",
+  "jcr:mixinTypes": [
+    "mix:referenceable",
+    "mix:versionable"
+  ],
+  "jcr:createdBy": "admin",
+  "jcr:versionHistory": "6c9c4e74-3188-48d4-8ee0-4ef8f579f804",
+  "jcr:predecessors": ["a5124199-0dea-40a2-a78f-cb62592f5fd8"],
+  "jcr:baseVersion": "a5124199-0dea-40a2-a78f-cb62592f5fd8",
+  "jcr:isCheckedOut": true,
+  "jcr:uuid": "\t\n2d3370f8-4716-444c-9c11-d24bddab6a5a",
+  "jcr:content": {
+    "jcr:primaryType": "dam:AssetContent",
+    "jcr:title": "test-disc",
+    "contentFragment": true,
+    "cq:name": "test-disc",
+    "cq:parentPath": "/content/dam/efe",
+    "data" : {
+      "jcr:primaryType": "nt:unstructured",
+      "_strucVersion": 1,
+      "cq:model": "/conf/efe/settings/dam/cfm/models/disclosures",
+      "master": {
+        "jcr:primaryType": "nt:unstructured",
+        "jcr:mixinTypes": [
+          "dam:cfVariationNode",
+          "cq:Taggable"
+        ],
+        "disclosureText": "<p>Neither Edelman Financial Engines, a division of Financial Engines Advisors L.L.C., nor its affiliates offer tax or legal advice. Interested parties are strongly encouraged to seek advice from qualified tax and/or legal experts regarding the best options for your particular circumstances.</p>"
+      }
+    },
+    "metadata" : {
+      "jcr:primaryType": "nt:unstructured",
+      "jcr:mixinTypes": ["cq:Taggable"]
+    }
+  }
+}

@@ -1,0 +1,213 @@
+.cmp-vertical-separator--one {
+    @include flexbox(
+        $justify-content: center,
+        $gap: 140px,
+        $flex-wrap: wrap,
+    );
+    &__item {
+        position: relative;
+        @include media(">tablet-lg") {
+            max-width: 255px;
+        }
+        &::after {
+            content: "";
+            position: absolute;
+            right: -70px;
+            top: 0;
+            bottom: 0;
+            width: 0.5px;
+            background-color: $efe-gray-blue;
+        }
+        &:first-child::before {
+            width: 0;
+        }
+        &:last-child::after {
+            width: 0;
+        }
+        >div .cmp-container {
+            >div .cmp-text {
+                margin-bottom: 7px;
+            }
+            p {
+                .cmp-text--body-03 {
+                    font-weight: 400;
+                    sup {
+                         top: -5px;
+                         font-size: rem(10);
+                    }
+                }
+            }
+            >div:nth-child(1) {
+                padding-bottom: 2.25px;
+            }
+            >div:nth-child(2) {
+                @include media("<=tablet-lg") {
+                    padding-bottom: 8px;
+                }
+                padding-bottom: 9.81px;
+            }
+        }
+    }
+    @include media("<=tablet-lg") {
+        flex-direction: column;
+        gap: 0;
+        &__item {
+            margin-bottom: 10px;
+            // width: 100%;
+            &::before, &::after {
+                content: unset;
+            }
+        }
+    }
+    @include media("<=tablet-lg") {
+        &.cmp-horizontal-separator {
+            .cmp-vertical-separator--one__item:not(:last-child) {
+                padding-bottom: 20px;
+                margin-bottom: 20px;
+                border-bottom: 1px solid $efe-gray-blue;
+            }
+        }
+        align-items: center;
+    }
+}
+
+.cmp-vertical-separator--one {
+    &.cmp-vertical-separator--one__custom {
+        .cmp-vertical-separator--one__item {
+            >div .cmp-container {
+                >div .cmp-text {
+                    margin-bottom: 7px;
+                }
+                @include media("<=tablet-lg") {
+                    width: 342px;
+                    text-align: center;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    grid-template-areas:
+                    "stat info"
+                    "footnote footnote";
+                    column-gap: 10px;
+                    >div:nth-child(1) {
+                        text-align: right;
+                    }
+                    >div:nth-child(2) {
+                        width: 108px;
+                        text-align: left;
+                        margin: auto auto 0 0;
+                    }
+                    >div:nth-child(3) {
+                        grid-area: footnote;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.cmp-vertical-separator--two {
+    @include flexbox(
+        $justify-content: center,
+        $gap: 244px,
+        $flex-wrap: wrap,
+    );
+    &__item {
+        position: relative;
+        max-width: 360px;
+        >div .cmp-container {
+            >div:not(:last-child) {
+                margin-bottom: 20px;
+            }
+        }
+        &::after {
+            content: "";
+            position: absolute;
+            right: -122px;
+            top: 0;
+            bottom: 0;
+            width: 0.5px;
+            background-color: $efe-gray-blue;
+        }
+        &:first-child::before {
+            width: 0;
+        }
+        &:last-child::after {
+            width: 0;
+        } 
+    }
+    @include media("<=tablet-lg") {
+        flex-direction: column;
+        gap: 32px;
+        align-items: center;
+        &__item {
+            margin-bottom: 10px;
+            width: 360px;
+            &::before, &::after {
+                content: unset;
+            }
+        }
+    }
+    @include media("<=tablet-lg") {
+        &.cmp-horizontal-separator {
+            .cmp-vertical-separator--two__item:not(:last-child) {
+                padding-bottom: 20px;
+                margin-bottom: 20px;
+                border-bottom: 1px solid $efe-gray-blue;
+            }
+        }
+        &__middle, &__top, &__bottom {
+            >ul {
+                align-items: center;
+            }
+        }
+    }
+}
+
+.cmp-vertical-separator--two.cmp-horizontal-separator {
+    @include media("<=tablet-lg") {
+        gap: 0;
+    }
+}
+
+.cmp-vertical-separator--two {
+    @include media(">tablet-lg") {
+        &__middle {
+            .cmp-vertical-separator--two {
+                align-items: center;
+            }
+        }
+        &__top {
+            .cmp-vertical-separator--two {
+                align-items: flex-start;
+            }
+        }
+        &__bottom {
+            .cmp-vertical-separator--two {
+                align-items: flex-end;
+            }
+        }
+    }
+}
+
+.cmp-vertical-separator--two {
+    @include media(">tablet-lg") {
+        &__middle {
+            .cmp-vertical-separator--one__item {
+                display: flex;
+                align-items: center;
+            }
+        }
+        &__top {
+            .cmp-vertical-separator--one__item{
+                display: flex;
+                align-items: flex-start;
+            }
+        }
+        &__bottom {
+            .cmp-vertical-separator--one__item {
+                display: flex;
+                align-items: flex-end;
+            }
+        }
+    }
+}
+

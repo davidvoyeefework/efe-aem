@@ -1,0 +1,16 @@
+
+# Rewrite map
+RewriteMap lc int:tolower
+RewriteMap uc int:toupper
+
+# Rewrite legacy location urls - with hypen
+RewriteRule ^/locations/(.*)/([a-z])(.*)-([a-z])(.*)/?$ /location.${uc:$1}.${uc:$2}$3-${uc:$4}$5 [R=301,L]
+
+# Rewrite legacy location urls
+RewriteRule ^/locations/(.*)/([a-z])(.*)/?$ /location.${uc:$1}.${uc:$2}$3 [R=301,L]
+
+# Finanial planners
+RewriteRule ^/financial-planners/(.*)-(.*)-(.*)/  /financial-planners.$1.$2.$3 [R=301,L]
+
+# Press category
+RewriteRule ^/press_category/(.*) /press/$1 [R=301,L]

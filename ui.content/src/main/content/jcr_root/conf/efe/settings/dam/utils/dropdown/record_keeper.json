@@ -1,0 +1,72 @@
+{
+  "options": [
+		{
+			value: "Alight",
+			text: "Alight"
+		},
+		{
+			value: "Edelman Financial Engines",
+			text: "Edelman Financial Engines"
+		},
+		{
+			value: "Empower",
+			text: "Empower"
+		},
+		{
+			value: "Fidelity",
+			text: "Fidelity"
+		},
+		{
+			value: "Vanguard",
+			text: "Vanguard"
+		},	
+		{
+			value: "Voya",
+			text: "Voya"
+		},	
+		{
+			value: "ADP",
+			text: "ADP"
+		},	
+		{
+			value: "Alight Solutions",
+			text: "Alight Solutions"
+		},	
+		{
+			value: "Conduent",
+			text: "Conduent"
+		},	
+		{
+			value: "Northwest Plan Services ",
+			text: "Northwest Plan Services "
+		},
+		{
+			value: "Principal",
+			text: "Principal"
+		},	
+		{
+			value: "Schwab",
+			text: "Schwab"
+		},	
+		{
+			value: "Schwab-IRA",
+			text: "Schwab-IRA"
+		},	
+		{
+			value: "T. Rowe Price",
+			text: "T. Rowe Price"
+		},	
+		{
+			value: "Transamerica",
+			text: "Transamerica"
+		},	
+		{
+			value: "Wells Fargo",
+			text: "Wells Fargo"
+		},	
+		{
+			value: "TD Ameritrade",
+			text: "TD Ameritrade"
+		},	
+  ]
+}

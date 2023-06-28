@@ -1,0 +1,13 @@
+{
+  "jcr:primaryType": "nt:unstructured",
+  "tagsMatch": "any",
+  "orderBy": "title",
+  "jcr:lastModifiedBy": "admin",
+  "tagsSearchRoot": "/content/efe",
+  "id": "relatedarticles",
+  "displayItemAsTeaser": "true",
+  "tags": ["efe:asset-type"],
+  "linkText": "Read More",
+  "sling:resourceType": "efe/components/relatedarticle",
+  "listFrom": "tags"
+}

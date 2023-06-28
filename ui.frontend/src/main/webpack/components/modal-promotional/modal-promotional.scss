@@ -1,0 +1,99 @@
+.modal-promotional .cmp-modal {
+  margin: auto; /* 1 */
+  z-index: 2; /* 2 */
+  position: relative; /* 2 */
+  background-color: $efe-gray-modal-bg; /* 3 */
+
+  // animation: fade-in 400ms 200ms both, slide-up 400ms 200ms both;
+  width: 100%;
+  max-width: 767px;
+  height: 500px;
+  @include media("<tablet") {
+    width: 100%;
+    height: auto;
+    overflow-y: auto;
+  }
+  border-radius: 0;
+  text-align: left;
+  &__container {
+    padding: 0;
+  }
+  &__close {
+    float: right;
+    position: absolute;
+    top: 36px;
+    right: 26px;
+  }
+  &__body {
+    display: flex;
+    @include media("<tablet") {
+      padding: 100px 0px;
+    }
+  }
+  &__description {
+    @include media(">tablet") {
+      min-width: 470px;
+    }
+    .cmp-title--subhead-02 {
+      h1 {
+        line-height: 26px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+      margin-bottom: 20px;
+      @include media("<tablet") {
+        margin-bottom: 25px;
+      }
+    }
+    .cmp-title--heading-03 {
+      margin-bottom: 20px;
+      @include media("<tablet") {
+        margin-bottom: 16px;
+        .cmp-title__text {
+          font-size: 48px;
+        }
+      }
+      
+    }
+    padding: 45px 45px 45px 55px;
+    .text {
+      p {
+        @include subhead-02;
+      }
+      @include media(">tablet") {
+        margin-bottom: 20px;
+      }
+    }
+    @include media("<tablet") {
+      padding: 0 26px;
+    }
+  }
+  &__action-container {
+    padding: 0;
+  }
+  &__action-link {
+    @include cta-primary;
+    padding: 16px 28px 12px 28px;
+    margin-top: 20px;
+    @include media(">tablet") {
+      margin-top: 0;
+      padding: 20px 26px;
+    }
+  }
+  &__image {
+    min-width: 300px;
+    img {
+      width: 300px;
+      height: 500px;
+      object-fit: cover;
+    }
+    @include media("<tablet") {
+      display: none;
+    }
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}

@@ -1,5 +1,11 @@
 {
   "resource.resolver.mapping": [
-    "/content/efe/</", "/:/"
+    "^/content/efe/us/en/home\\.html$</",
+    "^/content/efe/us/en/home/(.+)\\.html</$1",
+    "^/content/efe/us/en/(.+)\\.html</$1",
+    "^/content/fe/us/en/home\\.html$</",
+    "^/content/fe/us/en/home/(.+)\\.html</$1",
+    "^/content/fe/us/en/(.+)\\.html</$1",
+    "/:/"
   ]
 }

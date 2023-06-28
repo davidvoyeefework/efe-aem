@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    jcr:primaryType="sling:OrderedFolder"
+	sling:resourceType="granite/operations/components/maintenance/window"
+    sling:configCollectionInherit="true"
+    sling:configPropertyInherit="true"
+    name="Daily Maintenance Window"
+    windowSchedule="daily"
+    windowStartTime="02:00"
+    windowEndTime="05:00">
+    <granite_TaskPurgeTask/>
+</jcr:root>

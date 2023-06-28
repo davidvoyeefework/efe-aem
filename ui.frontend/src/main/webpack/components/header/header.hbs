@@ -1,0 +1,168 @@
+<header class="header" data-component="header">
+
+    {{! --------------------- NAV HEADER  --------------------- }}
+    <div class="container responsivegrid" id="efe-global-nav-header">
+        <div id="container-99d779a4e6" class="cmp-container cmp-container--bg-efe-gray-light">
+            <div class="container responsivegrid" id="efe-nav-search">
+                <div id="container-99d779a4e6" class="cmp-container cmp-container--unset cmp-container--1920 cmp-container--width-1920 efe-nav-search">
+                    
+                    {{! --------------------- SEARCH FORM  --------------------- }}
+                    {{>Search
+                        variant= "primary"
+                        text="search"
+                        placeholder="Search ..."
+                        id="search-form"
+                    }}
+
+                    {{! --------------------- CLOSE SEARCH ICON  --------------------- }}
+                    {{>LinkedImage
+                        variant="close"
+                        source="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
+                        id="search-close"
+                        link="#"
+
+                    }}
+                </div>
+            </div>
+
+        {{! --------------------- 1920 CONTAINER  --------------------- }}
+            <div class="container responsivegrid">
+                <div id="container-99d779a4e6" class="cmp-container cmp-container--unset cmp-container--1920  cmp-container--width-1920 efe-nav-header">
+
+                    {{! --------------------- CLICK TO CALL  --------------------- }}
+                    {{>FooterButton
+                        variant="footer-02"
+                        text="(833) PLAN-EFE"
+                        color="efe-gray-new"
+                        link="tel:+18337526333"
+                    }}
+
+                    {{! --------------------- LOG IN  --------------------- }}
+                    {{>NavButton
+                        variant="primary-nav-link"
+                        text="Log in"
+                        color="efe-red-primary"
+                        link="https://login.financialengines.com/"
+                    }}
+
+                    {{! --------------------- SEARCH BUTTON  --------------------- }}
+                    {{>LinkedImage
+                        variant="search"
+                        source="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
+                        link="#"
+                        id="nav-search-icon"
+                    }}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{! --------------------- NAV MAIN  --------------------- }}
+    <div class="container responsivegrid" id="">
+        <div id="container-99d779a4e6" class="cmp-container cmp-container--white">
+            <div class="container responsivegrid" id="efe-nav-main">
+                <div id="container-99d779a4e6" class="cmp-container--white cmp-container--unset cmp-container--1920 cmp-container--width-1920 cmp-container--26">
+
+                {{! --------------------- LINKED EFE LOGO  --------------------- }}
+                {{>EfeLogo
+                    link="https://www.edelmanfinancialengines.com/"
+                    variant="efe-logo-primary"
+                    altText="Edelman Financial Engines Logo"
+                    size="small"
+                    titleText="Edelman Financial Engines"
+                }}
+
+                <button id="nav-hamburger" aria-expanded="false" aria-label="main menu" class="top-bar__hamburger-button" data-analytics-trigger="cta-hamburger"> 
+                    <svg id="top-hamburger-line" width="24px" height="3px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="top-bar__hamburger-button-line-wrapper top-bar__hamburger-button-line-wrapper--top"> 
+                        <line stroke="#7A7D82" stroke-width="3" x1="0" x2="24" y1="0" y2="0" class="top-bar__hamburger-button-line top-bar__hamburger-button-line--top"></line> 
+                    </svg>
+                    <svg id="middle-hamburger-line" width="24px" height="3px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="top-bar__hamburger-button-line-wrapper top-bar__hamburger-button-line-wrapper--middle"> 
+                        <line stroke="#7A7D82" stroke-width="3" x1="0" x2="24" y1="0" y2="0" class="top-bar__hamburger-button-line top-bar__hamburger-button-line--top"></line> 
+                    </svg>
+
+                    <svg id="bottom-hamburger-line" width="24px" height="3px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="top-bar__hamburger-button-line-wrapper top-bar__hamburger-button-line-wrapper--middle"> 
+                        <line stroke="#7A7D82" stroke-width="3" x1="0" x2="24" y1="0" y2="0" class="top-bar__hamburger-button-line top-bar__hamburger-button-line--bottom"></line> 
+                    </svg>
+                </button>
+
+                <div class="container responsivegrid" id="nav-list-cta-group" style="display: none">
+
+                    <div id="container-99d779a4e6" class="cmp-container cmp-container--white cmp-container--unset cmp-container--unset ul-cta-group">
+
+                    {{! --------------------- MAIN NAV  --------------------- }}
+                    {{>Nav
+                        variant="primary"
+                    }}
+
+                    {{! --------------------- CTA  --------------------- }}
+                    {{>CTA
+                        variant="button-primary"
+                        link="/connect-with-a-planner/"
+                        text="connect with a planner"
+                        position="center"
+                    }}
+                    </div>
+
+                    {{! --------------------- NAV HEADER  --------------------- }}
+                    <div class="container responsivegrid" id="efe-global-nav-header">
+                        <div id="container-99d779a4e6" class="cmp-container cmp-container--bg-efe-gray-light">
+                            <div class="container responsivegrid" id="efe-nav-searchT">
+                                <div id="container-99d779a4e6" class="cmp-container cmp-container--unset cmp-container--1920 efe-nav-search">
+                                    
+                                    {{! --------------------- SEARCH FORM  --------------------- }}
+                                    {{>Search
+                                        variant= "primary"
+                                        text="search"
+                                        placeholder="Search ..."
+                                        id="search-form"
+                                    }}
+
+                                    {{! --------------------- CLOSE SEARCH ICON  --------------------- }}
+                                    {{>LinkedImage
+                                        variant="close"
+                                        source="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
+                                        id="search-closeT"
+                                        link="#"
+                                    }}
+                                </div>
+                            </div>
+
+                        {{! --------------------- 1920 CONTAINER  --------------------- }}
+                            <div class="container responsivegrid">
+                                <div id="container-99d779a4e6" class="cmp-container cmp-container--unset cmp-container--1920 efe-nav-header">
+
+                                    {{! --------------------- CLICK TO CALL  --------------------- }}
+                                    {{>FooterButton
+                                        variant="footer-02"
+                                        text="(833) PLAN-EFE"
+                                        color="efe-gray-new"
+                                        link="tel:+18337526333"
+                                    }}
+
+                                    {{! --------------------- LOG IN  --------------------- }}
+                                    {{>NavButton
+                                        variant="primary-nav-link"
+                                        text="Log in"
+                                        color="efe-red-primary"
+                                        link="https://login.financialengines.com/"
+                                    }}
+
+                                    {{! --------------------- SEARCH BUTTON  --------------------- }}
+                                    {{>LinkedImage
+                                        variant="search"
+                                        source="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"
+                                        link="#"
+                                        id="nav-search-iconT"
+                                    }}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

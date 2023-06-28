@@ -1,0 +1,42 @@
+//== Base
+
+html,
+body {
+    margin: 0;
+    font-size:   $font-size;
+    font-family: $font-family-default;
+    line-height: $font-height;
+    color:       $color-foreground;
+    background:  $color-background;
+    transition: color 0.3s ease-in, background 0.3s ease-in;
+
+    // @media (prefers-color-scheme: dark) {
+    //     color:       $color-foreground-dark;
+    //     background:  $color-background-dark;
+    // }
+    
+}
+
+body {
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    // @media (prefers-color-scheme: dark) {
+    //     color: get-color("white");
+    // }
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+    font: inherit;
+}
+
+
+.hidden {
+    display: none;
+}

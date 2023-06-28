@@ -1,0 +1,66 @@
+{
+	"jcr:primaryType": "cq:Page",
+	"jcr:content": {
+		"jcr:primaryType": "cq:PageContent",
+		"jcr:title": "Header",
+		"cq:template": "/conf/efe/settings/wcm/templates/xf-web-variation",
+		"cq:xfMasterVariation": true,
+		"cq:xfVariantType": "web",
+		"cq:tags": [],
+		"sling:resourceType": "efe/components/xfpage",
+		"root": {
+			"jcr:primaryType": "nt:unstructured",
+			"layout": "responsiveGrid",
+			"sling:resourceType": "efe/components/container",
+			"container": {
+				"jcr:primaryType": "nt:unstructured",
+				"sling:resourceType": "hbff/components/container",
+				"header": {
+					"jcr:primaryType": "nt:unstructured",
+					"fileReference": "/content/dam/efe/logo-official.svg",
+					"logoTarget": "_self",
+					"alt": "Alt text",
+					"contactNumber" :"234929212",
+					"contactTitle": "(833) PLAN-EFE",
+					"ctaLink" :"/content/efe/us/en",
+					"ctaTitle": "Planner CTA",
+					"ctaTarget": "_self",
+					"id" : "2332",
+					"disableLogin": "true",
+					"disableSearch": "true",
+					"loginTitle": "Log In",
+					"loginLink": "/content/efe/us/en",
+					"loginTarget": "_blank",
+					"sling:resourceType": "efe/components/header",
+					"logoLink": "/content/efe/us/en",
+					"searchBtn" : "Search",
+					"searchLabel": "Search..",
+					"headerList": {
+						"jcr:primaryType": "nt:unstructured",
+						"item0": {
+							"jcr:primaryType": "nt:unstructured",
+							"label": "Home"
+						},
+						"item1": {
+							"jcr:primaryType": "nt:unstructured",
+							"label": "Customer"
+						},
+						"item2": {
+							"jcr:primaryType": "nt:unstructured",
+							"label": "Products"
+						}
+					}
+				},
+				"header1": {
+					"jcr:primaryType": "nt:unstructured",
+					"fileReference": "/content/dam/efe/logo-official.svg",
+					"logoTarget": "_self",
+					"alt": "Alt text",
+					"linkTarget": "_blank",
+					"sling:resourceType": "efe/components/header",
+					"logoLink": "/content/efe/us/en"
+					}
+			}
+		}
+	}
+}

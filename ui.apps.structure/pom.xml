@@ -36,7 +36,7 @@
                         <!-- /apps root -->
                         <filter><root>/apps</root></filter>
                         <filter><root>/apps/efe</root></filter>
-
+                        
                         <!-- Common overlay roots -->
                         <filter><root>/apps/sling</root></filter>
                         <filter><root>/apps/cq</root></filter>
@@ -46,6 +46,7 @@
 
                         <!-- Immutable context-aware configurations -->
                         <filter><root>/apps/settings</root></filter>
+                        <filter><root>/apps/settings/granite</root></filter>
 
                         <!-- DAM folder root, will be created via repoinit -->
                         <filter><root>/content/dam/efe</root></filter>

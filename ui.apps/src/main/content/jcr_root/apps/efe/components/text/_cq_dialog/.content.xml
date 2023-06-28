@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          xmlns:cq="http://www.day.com/jcr/cq/1.0"
+          jcr:primaryType="nt:unstructured" xmlns:sling="http://sling.apache.org/jcr/sling/1.0">
+    <content jcr:primaryType="nt:unstructured">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs jcr:primaryType="nt:unstructured">
+                <items jcr:primaryType="nt:unstructured">
+                    <properties jcr:primaryType="nt:unstructured">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns jcr:primaryType="nt:unstructured">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column jcr:primaryType="nt:unstructured">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <text jcr:primaryType="nt:unstructured">
+                                                <rtePlugins jcr:primaryType="nt:unstructured">
+                                                    <styles
+                                                        jcr:primaryType="nt:unstructured"
+                                                        features="*">
+                                                        <styles jcr:primaryType="cq:WidgetCollection">
+                                                            <stats01
+                                                                jcr:primaryType="cq:WidgetCollection"
+                                                                cssName="cmp-text--stats-01"
+                                                                text="Stats 01"/>
+                                                            <stats02
+                                                                jcr:primaryType="cq:WidgetCollection"
+                                                                cssName="cmp-text--stats-02"
+                                                                text="Stats 02"/>
+                                                            <stats02underline
+                                                                jcr:primaryType="cq:WidgetCollection"
+                                                                cssName="cmp-text--stats-02-underline"
+                                                                text="Stats 02 - Underline"/>
+                                                            <heading01
+                                                                jcr:primaryType="cq:WidgetCollection"
+                                                                cssName="cmp-text--heading-01"
+                                                                text="Heading 01"/>
+                                                            <heading02
+                                                                jcr:primaryType="cq:WidgetCollection"
+                                                                cssName="cmp-text--heading-02"
+                                                                text="Heading 02"/>
+                                                            <heading03
+                                                                jcr:primaryType="cq:WidgetCollection"
+                                                                cssName="cmp-text--heading-03"
+                                                                text="Heading 03"/>
+                                                            <heading04
+                                                                jcr:primaryType="cq:WidgetCollection"
+                                                                cssName="cmp-text--heading-04"
+                                                                text="Heading 04"/>
+                                                            <subheading00
+                                                                jcr:primaryType="cq:WidgetCollection"
+                                                                cssName="cmp-text--subhead-00"
+                                                                text="Subheading 00"/>
+                                                            <subheading01
+                                                                jcr:primaryType="cq:WidgetCollection"
+                                                                cssName="cmp-text--subhead-01"
+                                                                text="Subheading 01"/>
+                                                            <subheading02
+                                                                jcr:primaryType="cq:WidgetCollection"
+                                                                cssName="cmp-text--subhead-02"
+                                                                text="Subheading 02"/>
+                                                            <body01
+                                                                jcr:primaryType="cq:WidgetCollection"
+                                                                cssName="cmp-text--body-01"
+                                                                text="Body 01"/>
+                                                            <body02
+                                                                jcr:primaryType="cq:WidgetCollection"
+                                                                cssName="cmp-text--body-02"
+                                                                text="Body 02"/>
+                                                            <body03
+                                                                jcr:primaryType="cq:WidgetCollection"
+                                                                cssName="cmp-text--body-03"
+                                                                text="Body 03"/>
+                                                            <caption
+                                                                jcr:primaryType="cq:WidgetCollection"
+                                                                cssName="cmp-text--caption"
+                                                                text="Caption"/>
+                                                            <detail
+                                                                jcr:primaryType="cq:WidgetCollection"
+                                                                cssName="cmp-text--detail"
+                                                                text="Detail"/>
+                                                            <highlight
+                                                                jcr:primaryType="cq:WidgetCollection"
+                                                                cssName="cmp-text--highlight"
+                                                                text="Highlight"/>
+                                                        </styles>
+                                                    </styles>
+                                                </rtePlugins>
+                                            </text>
+                                            <characterLimit
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:orderBefore="id"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                fieldDescription="Add Max Character count per line here"
+                                                fieldLabel="Max Character count per line"
+                                                min="{Long}5"
+                                                name="./characterLimit"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </properties>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

@@ -1,0 +1,24 @@
+.cmp-button--icon-button {
+    transition: $std-transition;
+    .cmp-button {
+        background-color: transparent;
+        width: rem(20);
+        height: rem(19);
+        background: url("../resources/images/icons/efe-search.svg") no-repeat center center / contain;
+        span {
+            visibility: hidden;
+        }
+    }
+
+    &.cmp-button--center {
+        margin: auto;
+        text-align: center;
+    }
+
+    &.cmp-button--right{
+        @include flexbox(
+            $justify-content: end
+        )
+    }
+
+}

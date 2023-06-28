@@ -1,0 +1,46 @@
+.cmp-list--footer {
+  margin-bottom: 41px;
+  @include media('<=tablet-lg') {
+      margin-bottom: 20px;
+  }
+  .cmp-list {
+    @include flexbox($gap: 10px 15px, $flex-wrap: wrap);
+    width: 100%;
+    margin-bottom: 0;
+    @media screen and (min-width: $lg) {
+      @include flexbox($gap: 25px 51px);
+    }
+
+    .cmp-list__item {
+      margin-bottom: unset;
+      width: unset;
+    }
+
+    .cmp-list__item-link {
+      color: $efe-gray-new;
+      text-decoration: none;
+      @include footer-02;
+      padding: 0;
+      &:hover {
+        .cmp-list__item-title {
+          text-decoration: none;
+        }
+      }
+      &.ot-sdk-show-settings {
+          color: $efe-gray-new;
+          cursor: pointer;
+      }
+    }
+
+    .cmp-list__item-title {
+      color: $efe-gray-new;
+    }
+  }
+
+  @media screen and (min-width: $lg) {
+    margin-bottom: 41px;
+    .cmp-list {
+      margin-bottom: 0;
+    }
+  }
+}

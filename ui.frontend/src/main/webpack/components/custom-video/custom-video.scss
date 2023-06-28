@@ -1,0 +1,96 @@
+.cmp-custom-video {
+    float: none;
+    clear: both;
+    width: 100%;
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    &--curved {
+        .thumbnail {
+            border-top-left-radius: 40px;
+        }
+    }
+    iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    .start-video {
+        position: absolute;
+        transition: $std-transition;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        cursor: pointer;
+        height: 100px;
+        width: 100px;
+        background: white;
+        border-radius: 50%;
+        border: 2px solid $efe-gray-blue;
+        @include flexbox(
+            $align-items: center,
+            $justify-content: center,
+        );
+        >img {
+            width: 43.33px;
+            height: 48.33px;
+            position: relative;
+            left: 6px;
+            @include media ("<tablet-lg") {
+                left: 4px;
+            }
+        }
+        @include media("<tablet-lg") {
+            height: 75px;
+            width: 75px;
+            >img {
+                width: 32.5px;
+                height: 36.25px;
+            }
+        }
+    }
+
+    .start-video:hover {
+        border: 2px solid #B3B9BE;
+        background: #f2f2f2;
+    }
+
+    .thumbnail_container {
+        float: none;
+        clear: both;
+        width: 100%;
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+    }
+
+    .thumbnail {
+        filter: grayscale(1) opacity(0.5);
+        transition: $std-transition;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    &:hover {
+        .thumbnail {
+            filter: unset;
+        }
+    }
+}
+
+
+.cmp-custom-video--min-height {
+    @include media(">=tablet-lg") {
+        .cmp-custom-video {
+            min-height: 600px;
+            .thumbnail_container {
+                min-height: 600px;
+            }
+        }
+    }
+}

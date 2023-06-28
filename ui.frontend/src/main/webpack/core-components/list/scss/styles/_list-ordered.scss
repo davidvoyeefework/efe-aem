@@ -1,0 +1,54 @@
+.cmp-text--ol {
+    counter-reset: di-count;
+    display: list-item;
+    list-style-type: auto;
+    padding: 0;
+
+    &::marker {
+        font-size: 0;
+    }
+
+    li.cmp-list__item {
+        @include body-02;
+        counter-increment: di-count;
+        position: relative;
+        display: block;
+        padding-left: rem(28);
+        padding-bottom: rem(17);
+
+        &:before {
+            margin-right: 2px;
+            content: counters(di-count, ".") ".\00a0 ";
+            @include body-02;
+            font-weight: 400;
+            color: $efe-red-primary;
+            display: block;
+            position: absolute;
+            top: 2px;
+            bottom: 0;
+            left: 0;
+            bottom: 0;
+            width: fit-content;
+            height: auto;
+            @include flexbox(
+                $justify-content: top,
+                $flex-direction: column,
+                $align-items: center,
+            );
+
+        }
+    }
+
+    &.cmp-text--large {
+        li.cmp-list__item {
+            padding-left: rem(48);
+            padding-bottom: rem(32);
+
+            &:before {
+                @include heading-04;
+                color: $efe-red-primary;
+                top: -1px;
+            }
+        }
+    }
+}

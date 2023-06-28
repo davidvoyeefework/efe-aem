@@ -1,0 +1,24 @@
+{
+  "options": [
+		{
+			value: "EFE",
+			text: "EFE"
+		},
+		{
+			value: "Momentum",
+			text: "Momentum"
+		},
+		{
+			value: "Everyday Wealth",
+			text: "Everyday Wealth"
+		},
+		{
+			value: "Fidelity",
+			text: "Fidelity"
+		},
+		{
+			value: "N/A",
+			text: "N/A"
+		}	
+  ]
+}

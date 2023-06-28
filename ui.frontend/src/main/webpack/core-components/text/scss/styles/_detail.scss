@@ -1,0 +1,9 @@
+.cmp-text--detail {
+    * {
+        @include detail;
+    }
+
+    a {
+        @include detail-link;
+    }
+}

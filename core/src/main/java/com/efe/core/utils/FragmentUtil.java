@@ -1,0 +1,42 @@
+package com.efe.core.utils;
+
+import java.util.Objects;
+
+import org.apache.sling.api.resource.PersistenceException;
+import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.adobe.cq.dam.cfm.ContentFragmentException;
+import com.adobe.cq.dam.cfm.FragmentTemplate;
+
+public class FragmentUtil {
+
+	/**
+	 * The Constant LOGGER
+	 */
+	private static final Logger LOGGER = LoggerFactory.getLogger(FragmentUtil.class);
+
+	/**
+	 * This method is used to create Fragment for Planner
+	 */
+	public static void createFragment(String modelResource, String rootPath, String fragmentName,
+			String fragmentResource, ResourceResolver resourceResolver) {
+		Resource templateOrModelRsc = resourceResolver.getResource(modelResource);
+		FragmentTemplate tpl = templateOrModelRsc.adaptTo(FragmentTemplate.class);
+		if (Objects.nonNull(tpl)) {
+			try {
+				Resource parentRsc = resourceResolver.getResource(rootPath);
+				tpl.createFragment(parentRsc, fragmentName, fragmentResource);
+				if (resourceResolver.hasChanges()) {
+					resourceResolver.commit();
+				}
+			} catch (ContentFragmentException e) {
+				LOGGER.error("ContentFragmentException:", e);
+			} catch (PersistenceException e) {
+				LOGGER.error("PersistenceException:", e);
+			}
+		}
+	}
+}

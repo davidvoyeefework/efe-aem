@@ -1,0 +1,6 @@
+.cmp-title--subhead-01 {
+    *{
+        @include subhead-01;
+    }
+    @include title-margin-small;
+}

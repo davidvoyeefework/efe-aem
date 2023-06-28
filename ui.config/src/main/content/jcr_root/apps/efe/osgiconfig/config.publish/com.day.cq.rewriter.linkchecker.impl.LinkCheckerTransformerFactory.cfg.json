@@ -1,0 +1,18 @@
+{
+  "linkcheckertransformer.strictExtensionCheck":false,
+  "linkcheckertransformer.rewriteElements":[
+    "a:href",
+    "area:href",
+    "form:action",
+    "img:src",
+    "link:href",
+    "script:src"
+  ],
+  "linkcheckertransformer.stripExtensionPathBlacklist":[
+    ""
+  ],
+  "linkcheckertransformer.disableRewriting":false,
+  "linkcheckertransformer.disableChecking":true,
+  "linkcheckertransformer.stripHtmltExtension":false,
+  "linkcheckertransformer.mapCacheSize:Integer":5000
+}

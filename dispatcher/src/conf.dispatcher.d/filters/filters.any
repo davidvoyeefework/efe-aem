@@ -11,3 +11,15 @@ $include "./default_filters.any"
 
 # Allow manifest.webmanifest files located in the content
 /0102 { /type "allow" /extension "webmanifest" /path "/content/*/manifest" }
+
+# Allow workfront enhance connector integeraton
+/0103 { /type "allow" /method '(GET|POST|PUT)' /url "/bin/workfront-tools"}
+
+# Allow form selector
+/0104 { /type "allow" /method "GET" /extension "json" /path "/content/efe/*/formselector*"}
+
+# Allow number selector for planners
+/0105 { /type "allow" /method "GET" /extension "html" /path "/content/efe/*/financial-planner*" /selectors '([0-9-]+)'}
+
+# Allow robots txt file
+/0106 { /type "allow" /method "GET" /extension "txt" /path "/content/dam/efe/seo/*" }

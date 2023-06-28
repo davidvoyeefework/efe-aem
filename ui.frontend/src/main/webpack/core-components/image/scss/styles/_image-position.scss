@@ -1,0 +1,37 @@
+.image {
+    &.cmp-image--position-left {
+        img.cmp-image__image {
+            object-position: left;
+            object-fit: cover;
+        }
+    }
+    &.cmp-image--position-right {
+        img.cmp-image__image {
+            object-position: right;
+            object-fit: cover;
+        }
+    }
+    &.cmp-image--position-top {
+        img.cmp-image__image {
+            object-position: top;
+            object-fit: cover;
+        }
+    }
+    &.cmp-image--position-bottom {
+        img.cmp-image__image {
+            object-position: bottom;
+            object-fit: cover;
+        }
+    }
+    &.cmp-image--position-center {
+        img.cmp-image__image {
+            object-position: center;
+            object-fit: cover;
+        }
+    }
+    &.cmp-image--object-fit-cover {
+        img.cmp-image__image {
+            object-fit: cover;
+        }
+    }
+}

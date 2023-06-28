@@ -1,0 +1,21 @@
+.cmp-button--footer-02 {
+
+    a {
+        @include footer-02;
+    }
+
+    &.cmp-button--efe-gray-primary {
+        a {
+            @include efe-gray-primary;
+        }
+    }
+
+    &.cmp-button--efe-gray-new {
+        a {
+            @include efe-gray-new;
+            .cmp-button__text {
+                text-transform: uppercase; // need this for the header "PLAN-EFE" section.
+            }
+        }
+    }
+}

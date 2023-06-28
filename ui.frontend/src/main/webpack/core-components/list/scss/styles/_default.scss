@@ -1,0 +1,7 @@
+// custom list style for planner title
+.list .cmp-list--title {
+    @include heading-04;
+    text-align: center;
+    padding-bottom: rem(19);
+    text-transform: uppercase;
+}

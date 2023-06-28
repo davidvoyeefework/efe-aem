@@ -1,0 +1,34 @@
+<div data-sly-use.accordion="com.efe.core.models.FAQAccordion"
+  data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+  id="${accordion.id}"
+  class="cmp-accordion"
+  data-cmp-is="accordion"
+  data-cmp-single-expansion="${accordion.singleExpansion}">
+  <script data-sly-test="${accordion.jsonLd}" type="application/ld+json">
+        ${accordion.jsonLd@context='unsafe'}
+  </script>
+  <div data-sly-test="${accordion.faqList.size > 0}"
+    data-sly-repeat.item="${accordion.faqList}"
+    class="cmp-accordion__item"
+    data-cmp-hook-accordion="item"
+    data-cmp-expanded="${item.question in accordion.expandedItems}">
+   <h3 class="cmp-accordion__header">
+       <button id="${item.id}-button"
+               class="cmp-accordion__button${item.question in accordion.expandedItems ? ' cmp-accordion__button--expanded' : ''}"
+               aria-controls="${item.id}-panel"
+               data-cmp-hook-accordion="button">
+           <span class="cmp-accordion__title">${item.question @context='html'}</span>
+           <span class="cmp-accordion__icon"></span>
+       </button>
+   </h3>
+   <div data-cmp-hook-accordion="panel"
+        id="${item.id}-panel"
+        class="cmp-accordion__panel${item.name in accordion.expandedItems ? ' cmp-accordion__panel--expanded' : ' cmp-accordion__panel--hidden'}"
+        role="region"
+        aria-labelledby="${item.id}-button">
+        <div class="text"><div id="text-${item.id}" class="cmp-text">${item.answer @context='html'}</div></div>
+    </div>
+</div>
+</div>
+<sly data-sly-call="${templates.placeholder @ isEmpty = accordion.faqList.size < 1, classAppend='cmp-text'}"></sly>
+

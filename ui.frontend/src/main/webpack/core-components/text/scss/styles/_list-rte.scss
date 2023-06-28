@@ -1,0 +1,76 @@
+.cmp-text {
+    ol {
+        counter-reset: di-count;
+        display: list-item;
+        list-style-type: auto;
+        margin: 0;
+        padding: 0;
+    
+        &::marker {
+            font-size: 0;
+        }
+    
+        li {
+            @include body-02;
+            counter-increment: di-count;
+            position: relative;
+            display: block;
+            padding-left: rem(28);
+            padding-bottom: rem(8);
+    
+            &:before {
+                margin-right: 8px;
+                content: counters(di-count, ".") ".\00a0 ";
+                @include body-02;
+                font-weight: 400;
+                color: $efe-red-primary;
+                display: block;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                width: fit-content;
+                height: auto;
+                @include flexbox(
+                    $justify-content: top,
+                    $flex-direction: column,
+                    $align-items: center,
+                );
+    
+            }
+        }
+    }
+    ul {
+        li {
+            &:before {
+                content: "\2022"; 
+                color: $efe-red-primary;
+                font-weight: bold; 
+                display: inline-block;
+                width: rem(5);
+                margin-right: 16px;
+                font-size: inherit;
+                top: rem(-3px);
+                left: 0;
+                vertical-align: sub;
+            }
+            span {
+                @include body-02;
+            }
+            @include body-02;
+        }
+    }
+}
+.cmp-text--list-large {
+    ol {
+        li {
+            padding-left: rem(48);
+            padding-bottom: rem(32);
+
+            &:before {
+                @include heading-04;
+                color: $efe-red-primary;
+            }
+        }
+    }
+}

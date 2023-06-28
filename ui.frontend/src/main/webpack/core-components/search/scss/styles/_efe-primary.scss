@@ -1,0 +1,17 @@
+.cmp-search--primary {
+
+    input {
+        @include efe-input-field;
+    }
+
+    button.cmp-search__cta {
+        @include cta-primary;
+    }
+
+    .cmp-search__field {
+        @include flexbox(
+            $gap: rem(12)
+        );
+    }
+    
+}

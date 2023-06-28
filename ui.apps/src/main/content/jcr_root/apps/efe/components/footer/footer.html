@@ -1,0 +1,84 @@
+<sly data-sly-use.model="com.efe.core.models.Footer"
+     data-sly-use.template="core/wcm/components/commons/v1/templates.html"
+     data-sly-use.onetrusttemplate="onetrust.html"/>
+
+<script data-sly-test="${model.jsonLd}" type="application/ld+json">
+   ${model.jsonLd @context ='unsafe'}
+</script>
+
+<footer id="efe-footer" class="footer footer--mobile" data-component="footer">
+   <div id="${model.id}" class="container responsivegrid">
+      <div id="container-99d779a4e6" class="cmp-container cmp-container--bg-efe-gray-light">
+         <div class="container responsivegrid">
+            <div id="container-99d779a4e6" class="cmp-container cmp-container--bg-efe-gray-light cmp-container--1920 cmp-container--width-1920  cmp-container--unset">
+               <span id="logo-social-container" data-sly-test="${model.fileReference}">
+                  <div class="image cmp-image--efe-logo-primary cmp-image--small" id="efe-logo">
+                     <div class="cmp-image" itemscope="" itemtype="http://schema.org/ImageObject">
+                        <a class="cmp-image__link" href="${model.logoLink}">
+                        <img src="${model.fileReference}" loading="lazy" class="cmp-image__image" itemprop="contentUrl" alt="${model.alt}" title="${model.alt}"/>
+                        </a>
+                        <meta itemprop="caption" content="${model.alt}" />
+                     </div>
+                  </div>
+               </span>
+               <div id="list-links" data-sly-test="${model.verticalList}">
+                  <sly data-sly-list.verticalList ="${model.verticalList}">
+                     <div>
+                        <div class="text cmp-text--footer-01 cmp-text--deep-charcoal list-title">
+                           <div class="cmp-text">
+                              <p>${verticalList.heading}</p>
+                           </div>
+                        </div>
+                        <div class="list">
+                           <ul class="cmp-list">
+                              <sly data-sly-list.verticalLinks ="${verticalList.verticalLinks}">
+                                 <li class="cmp-list__item">
+                                    <span class="cmp-list__item-title">
+                                       <div class="button cmp-button--footer-02 cmp-button--efe-gray-primary">
+                                          <a target="${verticalLinks.target}"  href="${verticalLinks.link}">
+                                          <span class="cmp-button__text">${verticalLinks.label}</span>
+                                          </a>
+                                       </div>
+                                    </span>
+                                 </li>
+                              </sly>
+                           </ul>
+                        </div>
+                     </div>
+                  </sly>
+               </div>
+               <div id="#social-links" class="cmp-social-links " data-sly-test="${model.socialLinks}">
+                  <div class="cmp-social-links__images">
+                     <sly data-sly-list.socialLinks="${model.socialLinks}">
+                        <a href="${socialLinks.link}" target="${model.linkTarget}" class="cmp-image" itemscope="">
+                        <img src="/etc.clientlibs/efe/clientlibs/clientlib-site/resources/images/icons/${socialLinks.icon}" loading="lazy" class="cmp-social-links__image" itemprop="contentUrl" alt="${socialLinks.alt}"
+                           title="${socialLinks.alt}">
+                        </a>
+                     </sly>
+                  </div>
+               </div>
+               <div class="separator cmp-separator--primary cmp-separator--efe-gray-blue" id="efe-hr">
+                  <div id="separator-6e548b2b7e">
+                     <hr class="cmp-separator__horizontal-rule">
+                  </div>
+               </div>
+               <div class="list cmp-list--footer" data-sly-test="${model.horizontalList}">
+                  <ul class="cmp-list">
+                     <sly data-sly-list.horizontalList="${model.horizontalList}">
+                        <li class="cmp-list__item">
+                           <a class="cmp-list__item-link" target="${horizontalList.target}" href="${horizontalList.link}">
+                           <span class="cmp-list__item-title">${horizontalList.label}</span>
+                           </a>
+                        </li>
+                     </sly>
+                     <sly data-sly-test="${model.enableOneTrust}" data-sly-call="${onetrusttemplate.onetrust @ model=model}"></li>
+                  </ul>
+               </div>
+               <div id="disclosure-copy">
+                  <sly data-sly-resource="${resource @ resourceType='wcm/foundation/components/responsivegrid'}"></sly>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</footer>
