@@ -104,9 +104,10 @@ public class LocationModelServicesImpl implements LocationModelServices {
 			String cityFolderName = jsonObj.getExternalName();
 			String officeName = jsonObj.getOfficeName().toLowerCase();
 			String stateFolderPath = rootPath + PlannerLocationConstants.FORWARD_SLASH + stateFolderName;
+			Boolean testLocation = jsonObj.isTestLocation();
 
 			//validation of json data
-			if (stateFolderName.trim().isEmpty() || cityFolderName.trim().isEmpty()) {
+			if (stateFolderName.trim().isEmpty() || cityFolderName.trim().isEmpty() || testLocation) {
 				continue;
 			}
 			Resource childResource = resourceResolver.getResource(stateFolderPath);
