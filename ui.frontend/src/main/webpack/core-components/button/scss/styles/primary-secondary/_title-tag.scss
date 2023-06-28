@@ -1,9 +1,9 @@
 .cmp-button--title-tag {
-
     display: inline-block;
     margin-right: 8px;
 
     button, a {
+        cursor: pointer;
         min-height: rem(28);
         @include body-03;
         font-size: rem(14);
@@ -16,12 +16,8 @@
         );
         width: fit-content;
         transition: $std-transition;
+        &:hover {
+            background-color: #C3C3C4;
+        }
     }
-
-
-
-    &:hover {
-
-    }
-
 }

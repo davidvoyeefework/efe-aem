@@ -54,6 +54,12 @@ public class HonorAwardUtil {
 				Resource plannerHonorAwardResource = resourceResolver
 						.getResource(honorAwardRootPath + PlannerLocationConstants.FORWARD_SLASH
 								+ honorAwardFragmentName + PlannerLocationConstants.MASTER_NODE);
+				
+				if(null == plannerHonorAwardResource) {
+					LOGGER.info("plannerHonorAwardResource resource not found : {}", plannerHonorAwardResource);
+					continue;
+				}
+				
 				Node honorAwardNode = plannerHonorAwardResource.adaptTo(Node.class);
 
 				NodePropertyManagerUtil.setPropertyIfNonNull(honorAwardNode, PlannerLocationConstants.DATE_OF_AWARD,

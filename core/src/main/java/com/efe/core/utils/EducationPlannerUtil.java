@@ -53,6 +53,12 @@ public class EducationPlannerUtil {
 				Resource plannerEducationResource = resourceResolver
 						.getResource(educationRootPath + PlannerLocationConstants.FORWARD_SLASH + educationFragmentName
 								+ PlannerLocationConstants.MASTER_NODE);
+				
+				if(null == plannerEducationResource) {
+					LOGGER.info("Education resource not found : {}", educationFragmentName);
+					continue;
+				}
+				
 				Node plannerEducationNode = plannerEducationResource.adaptTo(Node.class);
 
 				NodePropertyManagerUtil.setPropertyIfNonNull(plannerEducationNode, PlannerLocationConstants.DEGREE,

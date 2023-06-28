@@ -1,13 +1,18 @@
 .formselector {
 
-    label {
+    label, .error-message {
         max-width: rem(372);
         margin: auto;
         text-align: left;
     }
 
+    .error-message {
+        color: $efe-red-primary;
+        margin-bottom: rem(4);
+    }
+
     input {
-        margin: 0 auto 12px;
+        margin: 0 auto rem(12) !important;
     }
 
     .drop-down--default {
@@ -16,16 +21,18 @@
         margin-bottom: rem(22);
     }
 
+    .cmp-button--button-primary {
+        margin-bottom: rem(56);
+    }
+
     @media screen and (max-width: $sm) {
-        label, input {
+        label, input, .error-message {
             max-width: none !important;
         }
     }
 
 }
 
-#contact_us_form {
-    .cmp-button--button-primary {
-        margin-bottom: rem(56);
-    }
-}
+
+
+

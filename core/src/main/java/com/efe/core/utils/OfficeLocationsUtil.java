@@ -53,6 +53,12 @@ public class OfficeLocationsUtil {
 				Resource plannerOfficesLocationsResource = resourceResolver
 						.getResource(officesLocationsRootPath + PlannerLocationConstants.FORWARD_SLASH
 								+ officesLocationsFragmentName + PlannerLocationConstants.MASTER_NODE);
+				
+				if(null == plannerOfficesLocationsResource) {
+					LOGGER.info("plannerOfficesLocationsResource resource not found : {}", officesLocationsFragmentName);
+					continue;
+				}
+				
 				Node plannerOfficesLocationsNode = plannerOfficesLocationsResource.adaptTo(Node.class);
 
 				NodePropertyManagerUtil.setPropertyIfNonNull(plannerOfficesLocationsNode, PlannerLocationConstants.ID,
