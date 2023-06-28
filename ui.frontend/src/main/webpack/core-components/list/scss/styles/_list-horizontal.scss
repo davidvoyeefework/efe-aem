@@ -1,6 +1,15 @@
 .cmp-list--horizontal {
     .cmp-list {
-        @include flexbox($flex-wrap: wrap);
+        display: grid;
+        @include media(">=576px") {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        @include media(">=768px") {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        @include media(">=992px") {
+            grid-template-columns: repeat(4, 1fr);
+        }
         .cmp-list__item {
             @include flexbox();
             margin-bottom: unset;
@@ -8,7 +17,7 @@
         }
         .cmp-teaser--thumbnail {
             display: inline-block;
-            width: rem(260);
+            // width: rem(260);
             min-height: rem(353);
             @include media('<tablet') {
                 width: 100%;
@@ -18,6 +27,10 @@
                 width: 260px;
                 height: 240px;
                 object-fit: cover;
+                @include media("<tablet") {
+                    width: 7.5rem;
+                    height: auto;
+                }
             }
         }
     }
