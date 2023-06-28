@@ -14,7 +14,6 @@ import org.slf4j.LoggerFactory;
 import com.efe.core.bean.IndustryExams;
 import com.efe.core.bean.PlannerResponse;
 import com.efe.core.constants.PlannerLocationConstants;
-import com.efe.core.services.impl.PlannerModelServicesImpl;
 
 /**
  * IndustryExamUtil
@@ -56,6 +55,13 @@ public class IndustryExamUtil {
 				Resource plannerIndustryExamResource = resourceResolver
 						.getResource(industryExamRootPath + PlannerLocationConstants.FORWARD_SLASH
 								+ industryExamFragmentName + PlannerLocationConstants.MASTER_NODE);
+				
+				
+				if(null == plannerIndustryExamResource) {
+					LOGGER.info("industryExamFragmentName resource not found : {}", industryExamFragmentName);
+					continue;
+				}
+				
 				Node plannerIndustryExamNode = plannerIndustryExamResource.adaptTo(Node.class);
 
 				NodePropertyManagerUtil.setPropertyIfNonNull(plannerIndustryExamNode,

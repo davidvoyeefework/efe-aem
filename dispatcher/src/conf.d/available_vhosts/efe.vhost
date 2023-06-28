@@ -87,19 +87,28 @@ Include conf.d/variables/custom.vars
 		Header always set Cache-Control "private"
 	</LocationMatch>
 
-	# DEV, QA HTML pages: Cache for 1min with background refresh 1min on browser and 1min on CDN to avoid MISS, also incl. requests with query parameter
-	<IfDefine ENVIRONMENT_DEV>
-		<LocationMatch "^/content/.*\.html$">
+	<LocationMatch "\.html$">
 			Header unset Cache-Control
 			Header always set Cache-Control "max-age=60,stale-while-revalidate=60" "expr=%{REQUEST_STATUS} < 400"
 			Header always set Surrogate-Control "stale-while-revalidate=60,stale-if-error=60" "expr=%{REQUEST_STATUS} < 400"
 			Header set Age 0
+			Header add X-Vhost-Test "Default publish"
+	</LocationMatch>
+
+	# DEV, QA HTML pages: Cache for 1min with background refresh 1min on browser and 1min on CDN to avoid MISS, also incl. requests with query parameter
+	<IfDefine ENVIRONMENT_DEV>
+		<LocationMatch "\.html$">
+			Header unset Cache-Control
+			Header always set Cache-Control "max-age=60,stale-while-revalidate=60" "expr=%{REQUEST_STATUS} < 400"
+			Header always set Surrogate-Control "stale-while-revalidate=60,stale-if-error=60" "expr=%{REQUEST_STATUS} < 400"
+			Header set Age 0
+			Header add X-Vhost-Test "DEV publish"
 		</LocationMatch>
 	</IfDefine>
 
 	# Stage HTML pages: Cache for 1min with background refresh 1min on browser and 1min on CDN to avoid MISS, also incl. requests with query parameter
 	<IfDefine ENVIRONMENT_STAGE>
-		<LocationMatch "^/content/.*\.html$">
+		<LocationMatch "\.html$">
 			Header unset Cache-Control
 			Header always set Cache-Control "max-age=60,stale-while-revalidate=60" "expr=%{REQUEST_STATUS} < 400"
 			Header always set Surrogate-Control "stale-while-revalidate=60,stale-if-error=60" "expr=%{REQUEST_STATUS} < 400"
@@ -110,7 +119,7 @@ Include conf.d/variables/custom.vars
 	<IfDefine ENVIRONMENT_PROD>
 		# PROD HTML pages: Cache for 5min with background refresh 1h on browser and 12h on CDN to avoid MISS, also incl. requests with query parameter
 		# Cache-Control headers will always be added so it is important to ensure that matching html pages under /content/ are intended to be public
-		<LocationMatch "^/content/.*\.html$">
+		<LocationMatch "\.html$">
 			Header unset Cache-Control
 			Header always set Cache-Control "max-age=300,stale-while-revalidate=3600" "expr=%{REQUEST_STATUS} < 400"
 			Header always set Surrogate-Control "stale-while-revalidate=7200,stale-if-error=7200" "expr=%{REQUEST_STATUS} < 400"

@@ -51,6 +51,12 @@ public class EmploymentHistoryUtil {
 				Resource plannerEmploymentHistoryResource = resourceResolver
 						.getResource(employmentHistoryRootPath + PlannerLocationConstants.FORWARD_SLASH
 								+ employmentHistoryFragmentName + PlannerLocationConstants.MASTER_NODE);
+				
+				if(null == plannerEmploymentHistoryResource) {
+					LOGGER.info("plannerEmploymentHistoryResource resource not found : {}", employmentHistoryFragmentName);
+					continue;
+				}
+				
 				Node plannerEmploymentHistoryExamNode = plannerEmploymentHistoryResource.adaptTo(Node.class);
 
 				NodePropertyManagerUtil.setPropertyIfNonNull(plannerEmploymentHistoryExamNode,

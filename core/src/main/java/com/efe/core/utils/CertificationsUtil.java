@@ -53,6 +53,12 @@ public class CertificationsUtil {
 				Resource plannerCertificationResource = resourceResolver
 						.getResource(certificationsRootPath + PlannerLocationConstants.FORWARD_SLASH
 								+ certificationFragmentName + PlannerLocationConstants.MASTER_NODE);
+				
+				if(null == plannerCertificationResource) {
+					LOGGER.info("plannerCertificationResource resource not found : {}", certificationFragmentName);
+					continue;
+				}
+				
 				Node plannerCertificationExamNode = plannerCertificationResource.adaptTo(Node.class);
 
 				NodePropertyManagerUtil.setPropertyIfNonNull(plannerCertificationExamNode,
