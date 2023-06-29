@@ -151,30 +151,31 @@ public class MapSearchResultsImpl implements MapSearchResults {
 		for (Resource cityResource : stateResource.getChildren()) {
 			for (Resource item : cityResource.getChildren()) {
 				if (item.isResourceType(DamConstants.NT_DAM_ASSET)) {
-
-					JsonObject officeObject = new JsonObject();
-					LocationResponse locationBean = LocationPlannerUtil.getLocationInfo(item);
-					officeObject.addProperty(PlannerLocationConstants.EXTERNAL_NAME, locationBean.getExternalName());
-					officeObject.addProperty(PlannerLocationConstants.ADDRESS_1, locationBean.getAddress1());
-					officeObject.addProperty(PlannerLocationConstants.ADDRESS_2, locationBean.getAddress2());
-					officeObject.addProperty(PlannerLocationConstants.CITY, locationBean.getCity());
-					officeObject.addProperty(PlannerLocationConstants.LATITUDE, locationBean.getLatitude());
-					officeObject.addProperty(PlannerLocationConstants.LONGITUTE, locationBean.getLongitude());
-					officeObject.addProperty(PlannerLocationConstants.ZIP, locationBean.getZip());
-
-					StatesEnum stateEnum = StatesEnum.valueOf(stateResource.getName().toUpperCase());
-					officeObject.addProperty(PlannerLocationConstants.STATE, stateEnum.getStateName());
-					officeObject.addProperty("stateCode", locationBean.getState());
 					String cityExternalName = LocationPlannerUtil.getLocationProperty(resourceResolver, cityResource, "externalName");
-					final String cityUrl = LinkUtil.getFormattedLink(
+					if(Objects.nonNull(cityExternalName)) {
+						JsonObject officeObject = new JsonObject();
+						LocationResponse locationBean = LocationPlannerUtil.getLocationInfo(item);
+						officeObject.addProperty(PlannerLocationConstants.EXTERNAL_NAME, locationBean.getExternalName());
+						officeObject.addProperty(PlannerLocationConstants.ADDRESS_1, locationBean.getAddress1());
+						officeObject.addProperty(PlannerLocationConstants.ADDRESS_2, locationBean.getAddress2());
+						officeObject.addProperty(PlannerLocationConstants.CITY, locationBean.getCity());
+						officeObject.addProperty(PlannerLocationConstants.LATITUDE, locationBean.getLatitude());
+						officeObject.addProperty(PlannerLocationConstants.LONGITUTE, locationBean.getLongitude());
+						officeObject.addProperty(PlannerLocationConstants.ZIP, locationBean.getZip());
+
+						StatesEnum stateEnum = StatesEnum.valueOf(stateResource.getName().toUpperCase());
+						officeObject.addProperty(PlannerLocationConstants.STATE, stateEnum.getStateName());
+						officeObject.addProperty("stateCode", locationBean.getState());
+					
+						final String cityUrl = LinkUtil.getFormattedLink(
 							efeService.getPlannerPageUrl() + PlannerLocationConstants.DOT
 									+ stateResource.getName().toUpperCase() + PlannerLocationConstants.DOT
 									+ DamUtil.getSanitizedFolderName(cityExternalName, false),
 							resourceResolver);
 
-					officeObject.addProperty("link", cityUrl);
-					officeLocationArr.add(officeObject);
-
+						officeObject.addProperty("link", cityUrl);
+						officeLocationArr.add(officeObject);	
+					}
 				}
 			}
 		}

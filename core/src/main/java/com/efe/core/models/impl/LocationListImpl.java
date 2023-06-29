@@ -51,8 +51,6 @@ public class LocationListImpl implements LocationList {
 	/** The resource resolver. */
 	@SlingObject
 	private ResourceResolver resourceResolver;
-	
-
 
 	/**
 	 * Injecting efeService
@@ -116,11 +114,12 @@ public class LocationListImpl implements LocationList {
 					for (Resource cityResource : stateResource.getChildren()) {
 						createCityUrl(stateResource, cityResource, unsortedCityMap);
 					}
-					StatesEnum stateEnum = StatesEnum.valueOf(stateResource.getName().toUpperCase());
-					unsortedStates.put(stateEnum.getStateName(),sortCity(unsortedCityMap));
+					if(unsortedCityMap.size() > 0) {
+						StatesEnum stateEnum = StatesEnum.valueOf(stateResource.getName().toUpperCase());
+						unsortedStates.put(stateEnum.getStateName(),sortCity(unsortedCityMap));
+					}
 				}
 			}
-				 
 	        // Copy all data from hashMap into TreeMap
 	        states.putAll(unsortedStates);
 		}
