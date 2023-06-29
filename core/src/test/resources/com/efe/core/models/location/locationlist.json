@@ -1,16 +1,67 @@
 {
-  "jcr:primaryType": "sling:OrderedFolder",
-  "jcr:createdBy": "efe-service-user",
-  "jcr:title": "AL",
-  "birmingham": {
-    "jcr:primaryType": "sling:OrderedFolder",
-    "jcr:createdBy": "efe-service-user",
-    "jcr:title": "Birmingham"
+  "efe": {
+    "jcr:content": {
+      "locationlist": {
+        "jcr:primaryType": "nt:unstructured",
+        "reviewLinkLabel": "Leave a review.",
+        "heading": "VISITING OUR OFFICE",
+        "sling:resourceType": "efe/components/mapdirection",
+        "reviewQuestion": "Already work with us?",
+        "zoomLevel": "9",
+        "directionButtonLabel": "DIRECTIONS"
+      }
+    }
   },
-  "walnut creek": {
-    "jcr:primaryType": "sling:OrderedFolder",
-    "jcr:createdBy": "efe-service-user",
-    "jcr:title": "walnut creek"
+  "dam": {
+    "efe": {
+      "cf": {
+        "plannerlocation": {
+          "locations": {
+            "ks": {
+              "jcr:primaryType": "sling:OrderedFolder",
+              "wichita": {
+                "jcr:primaryType": "sling:OrderedFolder",
+                "jcr:title": "wichita",
+                "fragment_wichita_74": {
+                  "jcr:primaryType": "dam:Asset",
+                  "jcr:content": {
+                    "jcr:primaryType": "dam:AssetContent",
+                    "jcr:title": "location fragment",
+                    "contentFragment": true,
+                    "metadata": {
+                      "jcr:primaryType": "nt:unstructured",
+                      "jcr:mixinTypes": [
+                        "cq:Taggable"
+                      ]
+                    },
+                    "data": {
+                      "jcr:primaryType": "nt:unstructured",
+                      "_strucVersion": 1,
+                      "cq:model": "/conf/efe/settings/dam/cfm/models/locations",
+                      "master": {
+                        "jcr:primaryType": "nt:unstructured",
+                        "googleReviewLink": "https://g.page/r/CZ9_QBnGKAw0EBM/review",
+                        "latitude": "37.721030",
+                        "externalName": "Wichita",
+                        "address1": "8621 E. 21st Street North",
+                        "address2": "Suite 225",
+                        "officeName": "Wichita",
+                        "officeId": "74",
+                        "rd": "JoAna Cavanagh",
+                        "zip": "67206",
+                        "city": "Wichita",
+                        "phone": "(866) 742-7222",
+                        "state": "KS",
+                        "longitude": "-97.23856"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
-
