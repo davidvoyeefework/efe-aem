@@ -1,0 +1,4 @@
+{
+  "schedulerExpression":"$[env:location_planner_cron;default=0 0 0/12 1/1 * ? *]",
+  "enableSchedular":"$[env:location_planner_job_enabled;default=true]"
+}

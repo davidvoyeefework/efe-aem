@@ -1,0 +1,38 @@
+.formselector {
+
+    label, .error-message {
+        max-width: rem(372);
+        margin: auto;
+        text-align: left;
+    }
+
+    .error-message {
+        color: $efe-red-primary;
+        margin-bottom: rem(4);
+    }
+
+    input {
+        margin: 0 auto rem(12) !important;
+    }
+
+    .drop-down--default {
+        width: rem(372);
+        margin: auto;
+        margin-bottom: rem(22);
+    }
+
+    .cmp-button--button-primary {
+        margin-bottom: rem(56);
+    }
+
+    @media screen and (max-width: $sm) {
+        label, input, .error-message {
+            max-width: none !important;
+        }
+    }
+
+}
+
+
+
+

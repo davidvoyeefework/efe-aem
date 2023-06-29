@@ -1,0 +1,57 @@
+.cmp-tabs--vertical {
+    .cmp-tabs {
+        display: flex;
+        gap: 20px;
+        padding: 60px 48px;
+        @include media("<=tablet-lg") {
+            flex-direction: column;
+            padding: 40px 24px;
+        }
+        &__tablist {
+            flex-direction: column;
+            min-width: 267px;
+            border: 0;
+            @include media ("<=tablet-lg") {
+                min-width: unset;
+            }
+        }
+        &__tab {
+            @include subhead-01;
+            padding: 0;
+            margin-bottom: 24px;
+            max-width: fit-content;
+            color: $efe-gray-new;
+            @include media("<=phone-m") {
+                font-size: rem(20);
+            }
+        }
+        &__tab--active {
+            background: none;
+            color: #535658;
+            border: 0;
+            padding-left: 0;
+            padding-right: 0;
+            padding-bottom: 7px;
+            border-bottom: 3px solid $efe-red-primary;
+        }
+    }
+}
+
+.cmp-tabs {
+    &--center {
+        .cmp-tabs__tablist {
+            align-items: center;
+        }
+    }
+    &--left {
+        .cmp-tabs__tablist {
+            align-items: left;
+        }
+    }
+    &--right {
+        .cmp-tabs__tablist {
+            align-items: end;
+        }
+    }
+}
+

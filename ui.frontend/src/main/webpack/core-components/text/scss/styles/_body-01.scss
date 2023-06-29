@@ -1,0 +1,9 @@
+.cmp-text--body-01 {
+    * {
+        @include body-01;
+    }
+
+    a {
+        @include body-01-link;
+    }
+}

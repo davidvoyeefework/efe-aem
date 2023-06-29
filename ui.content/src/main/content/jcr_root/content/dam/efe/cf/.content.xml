@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    jcr:primaryType="sling:OrderedFolder">
+    <jcr:content
+        jcr:primaryType="nt:unstructured"
+        jcr:title="Content Fragments"
+		 metadataSchema="/conf/global/settings/dam/adminui-extension/metadataschema/efe-contentfragmentschema"
+        sourcing="false">
+		  <policies jcr:primaryType="nt:unstructured">
+            <cfm
+                jcr:primaryType="nt:unstructured"
+                policy-cfm-allowedModelsByPaths="[/conf/efe/settings/dam/cfm/models/faqs,/conf/efe/settings/dam/cfm/models/authors,/conf/efe/settings/dam/cfm/models/momentum---header-details,/conf/efe/settings/dam/cfm/models/category-card,/conf/efe/settings/dam/cfm/models/planners,/conf/efe/settings/dam/cfm/models/articles,/conf/efe/settings/dam/cfm/models/disclosures]"/>
+        </policies>
+	</jcr:content>	
+    <corporate/>
+    <wealth-planning/>
+    <workplace/>
+    <employee-planning/>
+    <institutional/>
+</jcr:root>

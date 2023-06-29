@@ -1,0 +1,11 @@
+.cmp-image--efe-logo-primary {
+   
+    &.cmp-image--small {
+        width: rem(227);
+        height: rem(41);
+
+        img {
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,13 @@
+// -----------------------------------------------------------------------------
+// CSS GRID helpers
+// -----------------------------------------------------------------------------
+
+@mixin grid($template-columns: false, $template-rows: false, $gap: false, $flow: false){
+    display: -ms-grid;
+    display: grid;
+    @if $template-columns {grid-template-columns: $template-columns}
+    @if $template-rows {grid-template-rows: $template-rows}
+    @if $gap {gap: $gap}
+    @if $flow {grid-auto-flow: $flow;}
+}
+

@@ -1,0 +1,11 @@
+.cmp-text--footer-01 {
+    * {
+        @include footer-01;
+    }
+
+    &.cmp-text--deep-charcoal {
+        * {
+            color: $efe-gray-deep-charcoal;
+        }
+    }
+}

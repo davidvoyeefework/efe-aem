@@ -1,0 +1,51 @@
+#request_appointment_longform {
+    max-width: 660px;
+    margin: auto;
+
+    #form-builder {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+
+    #retirementGoal_container, #investmentManage_container {
+        text-align: center;
+        margin-top: rem(60);
+
+        .cmp-container--padding {
+            padding: 0 !important;
+        }
+    }
+
+    #investmentManage_container {
+        .cmp-text--body-02 {
+            max-width: 23ch;
+            margin: 0 auto rem(20);
+        }
+
+        > div.cmp-container {
+            margin: 0 0 60px;
+        }
+    }
+
+    button.cmp-form-button--answer {
+        margin: 0 auto rem(12) !important;
+    }
+
+    .cmp-button--button-primary {
+        margin: rem(32) 0 rem(100);
+    }
+
+    .hidden-lead-options {
+        margin-top: rem(60);
+        width: 100%;
+    }
+
+}

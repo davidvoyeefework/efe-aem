@@ -1,0 +1,238 @@
+@mixin teaserImageLeft {
+    display: flex;
+    flex-direction: row-reverse;
+    @include media("<tablet") {
+        flex-direction: column-reverse;
+    }
+}
+.cmp-teaser--image-left {
+    .cmp-teaser {
+       @include teaserImageLeft;
+       @include media(">tablet") {
+        align-items: center;
+       }
+       @include media ("<=768px") {
+        flex-direction: column-reverse;
+       }
+        &__link {
+            @include teaserImageLeft;
+        }
+        &__content {
+            @include media("<tablet") {
+                padding: rem(32) rem(24);
+            }
+            padding: rem(20) 0 0 0;
+            b {
+                @include subhead-02;
+            }
+            @include media('>tablet') {
+                width: 55%;
+                margin-left: rem(51);
+            }
+        }
+        &__action-container {
+            margin: rem(24) 0 rem(36) 0;
+        }
+        &__action-link {
+            @include cta-primary;
+            padding: rem(16) rem(40) rem(12) rem(40);
+                    color: $efe-gray-primary;
+                    border: rem(1) solid $efe-gray-blue;
+                    background-color: transparent;
+        }
+        &__image {
+            .cmp-image {
+                position: relative;
+                &::before {
+                    position: absolute;
+                    width: rem(63);
+                    height: rem(73);
+                    top: 45%;
+                    left: 50%;
+                    z-index: 1;
+                    transform: translate(-50%, -50%);
+                }
+            }
+            .cmp-image__image {
+                width: 100%;
+                mix-blend-mode: luminosity;
+            }
+            @include media('>tablet') {
+                width: 45%;
+            }
+            overflow: hidden;
+        }
+        &__title {
+            @include heading-04;
+            margin-top: 0;
+            margin-bottom: rem(24);
+        }
+        &__title-link {
+            @include heading-04;
+        }
+        &__description {
+            @include body-02;
+            p {
+                @include body-02;
+            }
+        }
+        &:hover {
+            @include media('>tablet') {
+                .cmp-teaser__action-container {
+                    .cmp-teaser__action-link {
+                        @include cta-primary;
+                        padding: 16px 40px 12px 40px;
+                    }
+                }
+                .cmp-teaser__image {
+                    .cmp-image__image {
+                        mix-blend-mode: unset;
+                    }
+                }
+            }
+        }
+    }
+
+    &.top-icon {
+        &--service-financial {
+            .cmp-image:before {
+                content: " ";
+                background: url("../resources/images/icons/service-icons/financial-icon.svg") no-repeat center center /
+                    contain;
+            }
+        }
+        &--service-giving {
+             .cmp-image:before {
+                content: " ";
+                background: url("../resources/images/icons/service-icons/charitable-giving-icon.svg") no-repeat center
+                    center / contain;
+            }
+        }
+        &--service-corporate {
+             .cmp-image:before {
+                content: " ";
+                background: url("../resources/images/icons/service-icons/corporate-solutions-icon.svg") no-repeat center
+                    center / contain;
+            }
+        }
+
+        &--service-tax {
+             .cmp-image:before {
+                content: " ";
+                background: url("../resources/images/icons/service-icons/tax-icon.svg") no-repeat center center / contain;
+            }
+        }
+
+        &--service-giving {
+             .cmp-image:before {
+                content: " ";
+                background: url("../resources/images/icons/service-icons/charitable-giving-icon.svg") no-repeat center
+                    center / contain;
+            }
+        }
+
+        &--service-corporate {
+             .cmp-image:before {
+                content: " ";
+                background: url("../resources/images/icons/service-icons/corporate-solutions-icon.svg") no-repeat center
+                    center / contain;
+            }
+        }
+
+        &--service-estate {
+             .cmp-image:before {
+                content: " ";
+                background: url("../resources/images/icons/service-icons/estate-icon.svg") no-repeat center center /
+                    contain;
+            }
+        }
+
+        &--service-insurance {
+             .cmp-image:before {
+                content: " ";
+                background: url("../resources/images/icons/service-icons/insurance-icon.svg") no-repeat center center /
+                    contain;
+            }
+        }
+
+        &--service-investment {
+             .cmp-image:before {
+                content: " ";
+                background: url("../resources/images/icons/service-icons/investment-icon.svg") no-repeat center center /
+                    contain;
+            }
+        }
+
+        &--service-small-business {
+             .cmp-image:before {
+                content: " ";
+                background: url("../resources/images/icons/service-icons/small-business-icon.svg") no-repeat center
+                    center / contain;
+            }
+        }
+
+        &--service-retirement {
+             .cmp-image:before {
+                content: " ";
+                background: url("../resources/images/icons/service-icons/retirement-icon.svg") no-repeat center center /
+                    contain;
+            }
+        }
+    }
+}
+.cmp-teaser--image-left-rte {
+    .cmp-teaser {
+        @include teaserImageLeft;
+        justify-content: start;
+         &__link {
+             @include teaserImageLeft;
+         }
+         &__pretitle {
+            @include buildFont (rem(16), 4%,$font-nimbus-Sans,400, uppercase,rem(16),$efe-gray-primary);
+            letter-spacing: 0.04em;    
+         }
+         &__content {
+             @include media("<tablet") {
+                 padding: rem(32) rem(24);
+             }
+             padding: rem(51) rem(48);
+         }
+         &__action-link {
+             @include cta-secondary;
+         }
+         &__image {
+             .cmp-image {
+                 position: relative;
+             }
+             .cmp-image__image {
+                 width: 328px;
+                 height: 328px;
+                 object-fit: cover;
+                 @include media('<tablet') {
+                    width: 100%;
+                }
+             }
+             overflow: hidden;
+         }
+         &__title {
+            @include subhead-00;
+             margin-top: 0;
+             margin-bottom: rem(24);
+         }
+         &__title-link {
+            @include subhead-00;
+         }
+         &__description {
+            max-width: rem(400px);
+             @include body-02;
+             line-height: 130%;
+             p {
+                 @include body-02;
+                 line-height: 130%;
+             }
+             a {
+                @include body-02-link;
+             }
+         }
+     }
+}

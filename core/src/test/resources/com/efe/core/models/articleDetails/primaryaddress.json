@@ -1,0 +1,28 @@
+{
+  "jcr:primaryType": "dam:Asset",
+  "jcr:uuid": "574cfd32-fc3a-4997-8d7c-e38372199cf5",
+  "jcr:content": {
+    "jcr:primaryType": "dam:AssetContent",
+    "jcr:title": "Primay office",
+    "contentFragment": true,
+    "cq:name": "primaryoffice",
+    "cq:parentPath": "/content/dam/efe",
+    "data" : {
+      "jcr:primaryType": "nt:unstructured",
+      "_strucVersion": 1,
+      "cq:model": "/conf/efe/settings/dam/cfm/models/address"
+    },
+    "master" : {
+      "jcr:primaryType": "nt:unstructured",
+      "state": "state",
+      "zip": "1221323",
+      "city": "city",
+      "name": "Street Address"
+    },
+    "metadata" : {
+      "jcr:primaryType": "nt:unstructured",
+      "jcr:mixinTypes": ["cq:Taggable"]
+    }
+  }
+}
+

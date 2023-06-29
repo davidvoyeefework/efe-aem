@@ -15,36 +15,31 @@
  */
 package com.efe.it.tests;
 
-import com.adobe.cq.testing.client.CQClient;
-import com.adobe.cq.testing.junit.assertion.CQAssert;
-import com.adobe.cq.testing.junit.rules.CQAuthorClassRule;
-import com.adobe.cq.testing.junit.rules.CQAuthorPublishClassRule;
-import com.adobe.cq.testing.junit.rules.CQRule;
-import com.adobe.cq.testing.junit.rules.Page;
-
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.sling.testing.clients.ClientException;
-import org.apache.sling.testing.clients.SlingHttpResponse;
-import org.eclipse.jetty.client.HttpResponse;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.ClassRule;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.Ignore;
-import org.slf4j.LoggerFactory;
-
-import static java.util.concurrent.TimeUnit.MINUTES;
+import static org.apache.commons.io.IOUtils.closeQuietly;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static org.apache.commons.io.IOUtils.closeQuietly;
 
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Arrays;
 import java.util.List;
+
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.sling.testing.clients.ClientException;
+import org.apache.sling.testing.clients.SlingHttpResponse;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.ClassRule;
+import org.junit.Ignore;
+import org.junit.Rule;
+import org.junit.Test;
+import org.slf4j.LoggerFactory;
+
+import com.adobe.cq.testing.client.CQClient;
+import com.adobe.cq.testing.junit.rules.CQAuthorPublishClassRule;
+import com.adobe.cq.testing.junit.rules.CQRule;
 
 /**
  * Validates pages on publish and makes sure that the page renders completely and also
@@ -79,11 +74,9 @@ public class PublishPageValidationIT {
     }
 
     @AfterClass
-    public static void afterClass() {
-        closeQuietly(adminPublish);
+    public static void afterClass() throws IOException {
+    	adminPublish.close();
     }
-
-
 
     @Test
     @Ignore

@@ -1,0 +1,46 @@
+.cmp-list--column {
+     .cmp-list {
+        display: block;
+        column-count: 4;
+        width: max-content;
+        @include media('>=phone-sm', '<phone-m') {
+            column-count: 1;
+            width: 100%;
+        }
+        @include media('>=phone-m', '<tablet') {
+            column-count: 2;
+        }
+        @include media('>=tablet', '<desktop') {
+            column-count: 2;
+        }
+        .teaser {
+            break-inside: avoid;
+        }
+        .cmp-teaser--thumbnail {
+            width: rem(260);
+            min-height: rem(353);
+            @include media('<tablet') {
+                width: auto;
+                min-height: auto;
+            }
+            .cmp-teaser__image img {
+                width: 100%;
+                height: auto;
+            }
+        }
+        .cmp-list__item {
+            break-inside: avoid;
+            margin-bottom: unset;
+            width: unset;
+            float: unset;
+        }
+    }
+}
+
+.cmp-teaser--service-button.cmp-list--column {
+    .cmp-teaser__link {
+        padding: 10px;
+        box-sizing: content-box; // hack for box to take up equal height
+    }
+}
+

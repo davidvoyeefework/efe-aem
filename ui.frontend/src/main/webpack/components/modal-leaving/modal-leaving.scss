@@ -1,0 +1,133 @@
+/**
+ * 1. Make the dialog container, and its child overlay spread across
+ *    the entire window.
+ */
+.dialog-container,
+.dialog-overlay {
+  position: fixed; /* 1 */
+  top: 0; /* 1 */
+  right: 0; /* 1 */
+  bottom: 0; /* 1 */
+  left: 0; /* 1 */
+}
+
+/**
+   * 1. Make sure the dialog container and all its descendants sits on
+   *    top of the rest of the page.
+   * 2. Make the dialog container a flex container to easily center the
+   *    dialog.
+   */
+.dialog-container {
+  z-index: 99; /* 1 */
+  display: flex; /* 2 */
+}
+
+/**
+   * 1. Make sure the dialog container and all its descendants are not
+   *    visible and not focusable when it is hidden.
+   */
+.dialog-container[aria-hidden="true"] {
+  display: none; /* 1 */
+}
+
+/**
+   * 1. Make the overlay look like an overlay.
+   */
+.dialog-overlay {
+  background-color: $efe-black-color-75; /* 1 */
+  //animation: fade-in 200ms both;
+}
+
+/**
+   * 1. Vertically and horizontally center the dialog in the page.
+   * 2. Make sure the dialog sits on top of the overlay.
+   * 3. Make sure the dialog has an opaque background.
+   */
+.cmp-modal {
+  margin: auto; /* 1 */
+  z-index: 2; /* 2 */
+  position: relative; /* 2 */
+  background-color: white; /* 3 */
+
+  // animation: fade-in 400ms 200ms both, slide-up 400ms 200ms both;
+  width: 544px;
+  height: 495px;
+  max-width: 576px;
+  @media screen and (max-width:544px) {
+    width: 100%;
+    height: 708px;
+    overflow-y: auto;
+    max-width: 544px;
+  }
+  border-radius: 4px;
+  text-align: center;
+  &__container {
+    padding: 44px;
+  }
+  &__title {
+    @include subhead-01;
+    font-weight: 700;
+    margin-bottom: 24px;
+    letter-spacing: .04em;
+  }
+  &__text {
+    @include body-03;
+    line-height: 150%;
+    p {
+      @include body-03;
+      line-height: 150%;
+      @include media("<tablet") {
+        word-wrap: break-word;
+      }
+    }
+    a {
+      text-decoration: underline;
+    }
+  }
+  &__action-container {
+    display: flex;
+    @media screen and (max-width:544px) {
+      flex-direction: column;
+    }
+  }
+  &__button-primary {
+    @include cta-primary;
+    margin-right: 20px;
+    @media screen and (max-width:544px) {
+      width: 100%;
+      margin-bottom: 20px;
+      margin-right: 0;
+    }
+  }
+  &__button-secondary {
+    @include cta-secondary;
+    @media screen and (max-width:544px) {
+      width: 100%;
+    }
+  }
+  &__close {
+    float: right;
+    cursor: pointer;
+    &:focus {
+      outline: none;
+    }
+  }
+  &__logo {
+    margin: 24px;
+  }
+  &__action-container {
+    padding: 0 44px;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+.cmp-modal--leaving {
+  .cmp-modal {
+    height: auto;
+    padding-bottom: rem(44);
+    max-height: rem(495);
+  }
+}

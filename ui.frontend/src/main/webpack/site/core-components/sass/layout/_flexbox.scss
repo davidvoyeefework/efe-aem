@@ -1,0 +1,121 @@
+// -----------------------------------------------------------------------------
+// Flexbox helpers
+// -----------------------------------------------------------------------------
+
+//Flexbox mixins
+@mixin flexbox($justify-content: false, $gap: false, $align-self: false, $flex-direction: false, $align-items: false, $flex-basis: false, $flex: false, $flex-wrap: false) {
+    display:-webkit-box; // old
+    display:-moz-box; // old
+    display:-ms-flexbox; // ie
+    display:-webkit-flex; // new
+    display:flex; // new
+
+    @if $justify-content {
+        justify-content: $justify-content;
+        -webkit-box-pack: $justify-content;
+        -ms-flex-pack: $justify-content;
+    }
+
+    @if $align-self {
+        -webkit-box-align: $align-self;
+        -ms-flex-align: $align-self;
+        align-items: $align-self;
+        -ms-flex-item-align: $align-self;
+        -ms-grid-row-align: $align-self;
+        align-self: $align-self;
+    }
+
+    @if $gap {
+        gap: $gap;
+    }
+
+    @if $flex-direction == row-reverse {
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: reverse;
+        -ms-flex-direction: row-reverse;
+        flex-direction: row-reverse;
+    }
+
+    @if $flex-direction == column-reverse {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+        flex-direction: column-reverse;
+    }
+
+    @if $flex-direction == column {
+        -webkit-flex-direction:vertical;
+        -moz-flex-direction:vertical;
+        -ms-flex-direction:column;
+        -webkit-flex-direction:column;
+        flex-direction:column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+    }
+
+    @if $flex-direction == row {
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+    }
+
+    @if $align-items {
+        -webkit-box-align: $align-items;
+        -ms-flex-align: $align-items;
+        align-items: $align-items;
+    }
+
+    @if $flex-basis {
+        flex-basis: $flex-basis;
+        -ms-flex-preferred-size: $flex-basis;
+    }
+
+    @if $flex {
+        -webkit-box-flex: $flex;      
+        -ms-flex: $flex;      
+        flex: $flex;
+    }
+
+    @if $flex-wrap {
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap
+    }
+}
+
+@mixin inline-flex {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+}
+
+@mixin flex($values) {
+    -webkit-box-flex: $values;
+    -moz-box-flex:  $values;
+    -ms-flex:  $values;
+    -webkit-flex:  $values;
+    flex:  $values;
+}
+
+@mixin flex-direction($direction) {
+    @if $direction == column {
+        -webkit-flex-direction:vertical;
+        -moz-flex-direction:vertical;
+        -ms-flex-direction:column;
+        -webkit-flex-direction:column;
+        flex-direction:column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+    }
+    @else {
+        -webkit-flex-direction:horizontal;
+        -moz-flex-direction:horizontal;
+        -ms-flex-direction:row;
+        -webkit-flex-direction:row;
+        flex-direction:row;
+    }
+}
+
+
+
+

@@ -1,0 +1,31 @@
+button.cmp-form-button--chip {
+    padding: rem(10) rem(20) rem(12);
+    margin: 0 rem(8) rem(8) 0;
+    float: left;
+    min-height: rem(47);
+    border-radius: 25px;
+    border: 1px solid $efe-gray-mid;
+    background-color: white;
+    min-width: rem(200);
+    @include body-03;
+    @include flexbox(
+        $align-items: center,
+        $justify-content: center
+    );
+
+    &:hover,  &.cmp-form-button--hover {
+        border: 2px solid $efe-gray-blue;
+        padding: rem(10) rem(19) rem(12);
+        cursor: pointer;
+    }
+
+    &:focus {
+        border: 1px solid $efe-gray-primary;
+        transition: $std-transition;
+    }
+
+    &.cmp-form-button--selected{
+        border: 2px solid $efe-red-primary;
+        padding: rem(10) rem(19) rem(12);
+    }
+}

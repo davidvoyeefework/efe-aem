@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Modal Leaving"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs">
+                <items jcr:primaryType="nt:unstructured">
+                    <edit
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Edit"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <logo
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="/libs/granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldDescription="Add Logo here"
+                                                fieldLabel="Logo/Icon"
+                                                name="./logo"
+                                                rootPath="/content/dam/efe"/>
+                                            <alt
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Add logo alt text here"
+                                                fieldLabel="Alt Text"
+                                                name="./logoAltText"/>
+                                            <modaltitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Add modal title here"
+                                                fieldLabel="Modal Title"
+                                                name="./modalTitle"/>
+                                            <modaldescriptiontext
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                    fieldDescription="Add modal description text here"
+                                                    fieldLabel="Modal Description Text"
+                                                    name="./modalDescriptionText"
+                                                    useFixedInlineToolbar="{Boolean}true">
+                                                <rtePlugins jcr:primaryType="nt:unstructured">
+                                                    <tracklinks
+                                                            jcr:primaryType="nt:unstructured"
+                                                            features="*"/>
+                                                    <table
+                                                            jcr:primaryType="nt:unstructured"
+                                                            features="-">
+                                                        <hiddenHeaderConfig
+                                                                jcr:primaryType="nt:unstructured"
+                                                                hiddenHeaderClassName="cq-wcm-foundation-aria-visuallyhidden"/>
+                                                    </table>
+                                                    <paraformat jcr:primaryType="nt:unstructured">
+                                                        <formats jcr:primaryType="nt:unstructured">
+                                                            <default_p
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    description="Paragraph"
+                                                                    tag="p"/>
+                                                            <default_h1
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    description="Heading 1"
+                                                                    tag="h1"/>
+                                                            <default_h2
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    description="Heading 2"
+                                                                    tag="h2"/>
+                                                            <default_h3
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    description="Heading 3"
+                                                                    tag="h3"/>
+                                                            <default_h4
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    description="Heading 4"
+                                                                    tag="h4"/>
+                                                            <default_h5
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    description="Heading 5"
+                                                                    tag="h5"/>
+                                                            <default_h6
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    description="Heading 6"
+                                                                    tag="h6"/>
+                                                            <default_blockquote
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    description="Quote"
+                                                                    tag="blockquote"/>
+                                                            <default_hr
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    description="Horizontal Rule (visual line break)"
+                                                                    tag="hr"/>
+                                                            <default_pre
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    description="Preformatted"
+                                                                    tag="pre"/>
+                                                        </formats>
+                                                    </paraformat>
+                                                    <misctools jcr:primaryType="nt:unstructured">
+                                                        <specialCharsConfig jcr:primaryType="nt:unstructured">
+                                                            <chars jcr:primaryType="nt:unstructured">
+                                                                <default_copyright
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        entity="&amp;copy;"
+                                                                        name="copyright"/>
+                                                                <default_euro
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        entity="&amp;euro;"
+                                                                        name="euro"/>
+                                                                <default_registered
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        entity="&amp;reg;"
+                                                                        name="registered"/>
+                                                                <default_trademark
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        entity="&amp;trade;"
+                                                                        name="trademark"/>
+                                                            </chars>
+                                                        </specialCharsConfig>
+                                                    </misctools>
+                                                    <links
+                                                            jcr:primaryType="nt:unstructured"
+                                                            features="modifylink,unlink"/>
+                                                    <justify
+                                                            jcr:primaryType="nt:unstructured"
+                                                            features="-"/>
+                                                    <format
+                                                            jcr:primaryType="nt:unstructured"
+                                                            features="bold,italic"/>
+                                                    <styles
+                                                            jcr:primaryType="nt:unstructured"
+                                                            features="*">
+                                                        <styles jcr:primaryType="cq:WidgetCollection">
+                                                            <stats01
+                                                                    jcr:primaryType="cq:WidgetCollection"
+                                                                    cssName="cmp-text--stats-01"
+                                                                    text="Stats 01"/>
+                                                            <stats02
+                                                                    jcr:primaryType="cq:WidgetCollection"
+                                                                    cssName="cmp-text--stats-02"
+                                                                    text="Stats 02"/>
+                                                            <stats03underline
+                                                                    jcr:primaryType="cq:WidgetCollection"
+                                                                    cssName="cmp-text--stats-02-underline"
+                                                                    text="Stats03-Underline"/>
+                                                            <heading01
+                                                                    jcr:primaryType="cq:WidgetCollection"
+                                                                    cssName="cmp-text--heading-01"
+                                                                    text="Heading 01"/>
+                                                            <heading02
+                                                                    jcr:primaryType="cq:WidgetCollection"
+                                                                    cssName="cmp-text--heading-02"
+                                                                    text="Heading 02"/>
+                                                            <heading03
+                                                                    jcr:primaryType="cq:WidgetCollection"
+                                                                    cssName="cmp-text--heading-03"
+                                                                    text="Heading 03"/>
+                                                            <heading04
+                                                                    jcr:primaryType="cq:WidgetCollection"
+                                                                    cssName="cmp-text--heading-04"
+                                                                    text="Heading 04"/>
+                                                            <subheading01
+                                                                    jcr:primaryType="cq:WidgetCollection"
+                                                                    cssName="cmp-text--subhead-01"
+                                                                    text="Subheading 01"/>
+                                                            <subheading02
+                                                                    jcr:primaryType="cq:WidgetCollection"
+                                                                    cssName="cmp-text--subhead-02"
+                                                                    text="Subheading 02"/>
+                                                            <body01
+                                                                    jcr:primaryType="cq:WidgetCollection"
+                                                                    cssName="cmp-text--body-01"
+                                                                    text="Body 01"/>
+                                                            <body02
+                                                                    jcr:primaryType="cq:WidgetCollection"
+                                                                    cssName="cmp-text--body-02"
+                                                                    text="Body 02"/>
+                                                            <body03
+                                                                    jcr:primaryType="cq:WidgetCollection"
+                                                                    cssName="cmp-text--body-03"
+                                                                    text="Body 03"/>
+                                                            <detail
+                                                                    jcr:primaryType="cq:WidgetCollection"
+                                                                    cssName="cmp-text--body-03"
+                                                                    text="Detail"/>
+                                                        </styles>
+                                                    </styles>
+                                                </rtePlugins>
+                                            </modaldescriptiontext>
+                                            <modalctaleave
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Add modal cta leave button text here"
+                                                fieldLabel="Modal CTA Leave"
+                                                name="./modalLeaveText"/>
+                                            <modalctacancel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Add modal cta cancel button text here"
+                                                fieldLabel="Modal CTA Cancel"
+                                                name="./modalCancelText"/>
+                                            <id
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="HTML ID attribute to apply to the component."
+                                                fieldLabel="ID"
+                                                name="./id"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </edit>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

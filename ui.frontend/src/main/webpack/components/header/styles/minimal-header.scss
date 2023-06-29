@@ -1,0 +1,38 @@
+.minimal-header {
+    #efe-global-nav-header .cmp-container--1920.efe-nav-header {
+        justify-content: right;
+        @media screen and (max-width: 576px) { 
+            min-height: rem(34px);
+        }
+    }
+    #efe-global-nav-header {
+        display: block;
+    }
+    .minimal-header__vertical-line {
+        display: none;
+    }
+    #efe-nav-main .cmp-container--26 {
+        padding: rem(20) rem(24) !important;
+    }
+    @media screen and (min-width: 1290px) {
+        #efe-nav-main .cmp-container--26 {
+            padding: rem(40) rem(48) !important;
+        }
+    }
+    &.minimal-header--with-two-logos {
+        #efe-nav-main .cmp-container--26 {
+            gap: rem(10);
+        }
+        .minimal-header__vertical-line {
+            border-left: 1px solid $efe-gray-blue;
+            height: 40px;
+            display: block;
+        }
+    }
+    #efe-nav-main #nav-list-cta-group #efe-global-nav-header {
+        display: none;
+    }
+    #efe-nav-main #nav-list-cta-group .cmp-button--button-primary {
+        display: block;
+    }
+}

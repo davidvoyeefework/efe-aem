@@ -1,0 +1,29 @@
+.drop-down--default {
+    background: linear-gradient(180deg, transparent 21.8%, white 21.8%);
+    label {
+        @include detail;
+        display: block;
+    }
+
+    select.form-control {
+        min-height: rem(50);
+        position: relative;
+        appearance: none;
+        border-radius: 4px;
+        padding: 0 20px;
+        width: 100%;
+        border: 1.5px solid $efe-gray-mid;
+        @include secondary-nav-link;
+        background: url("../resources/images/icons/arrows/red-arrows/down-arrow-red.svg") no-repeat right 20px center / auto;
+        ;
+
+        &:focus{
+            background: url("../resources/images/icons/arrows/red-arrows/up-arrow-red.svg") no-repeat right 20px center / auto;
+        }
+
+        &:visited{
+            background: url("../resources/images/icons/arrows/red-arrows/down-arrow-red.svg") no-repeat right 20px center / auto;
+        }
+
+    }
+}

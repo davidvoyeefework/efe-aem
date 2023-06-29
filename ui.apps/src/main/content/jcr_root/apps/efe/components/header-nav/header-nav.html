@@ -1,0 +1,29 @@
+<div data-sly-test ="${wcmmode.edit}" class="cq-placeholder cq-marker-start" data-emptytext="${component.title}"></div>
+<sly data-sly-use.model="com.efe.core.models.HeaderNav"/>
+<div class="cmp-navigation__aem-container cmp-navigation-dropdown" id="cmp-navigation-dropdown">
+    <ul class="cmp-navigation__group">
+        <div class="cmp-navigation-dropdown-grid__container">
+            <sly data-sly-list.navItem ="${model.primaryList}">
+                <div>
+                    <div class="button cmp-button--primary-nav-link cmp-button--efe-red-primary">
+                        <a id="button-a1f53d50c2" target="${navItem.headingTarget}" href="${navItem.headingLink}" class="${navItem.headingLink ? '': 'nolink'}">
+                            <span class="cmp-button__text">${navItem.heading}</span>
+                        </a>
+                    </div>
+                    <div class="separator cmp-separator--primary cmp-separator--efe-gray-mid">
+                        <div id="separator-6e548b2b7e">
+                            <hr class="cmp-separator__horizontal-rule">
+                        </div>
+                    </div>
+                    <ul class="cmp-navigation__list">
+                        <sly data-sly-list.secondaryLinks ="${navItem.secondaryLinks}">
+                            <li class="cmp-navigation__item cmp-navigation__item--level-1" >
+                                <a target="${secondaryLinks.target}" class="cmp-navigation__item-link" href="${secondaryLinks.link}">${secondaryLinks.label}</a>
+                            </li>
+                        </sly>
+                    </ul>
+                </div>
+            </sly>
+        </div>
+    </ul>
+</div>

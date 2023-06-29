@@ -1,0 +1,4 @@
+{
+ "connectionTimeout":6000,
+ "socketTimeout":6000
+}

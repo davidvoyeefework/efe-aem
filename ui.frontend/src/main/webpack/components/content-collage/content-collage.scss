@@ -1,0 +1,56 @@
+.cmp-content-collage {
+    .cmp-container {
+        display: grid;
+        grid-template-areas:
+            "image1 image2"
+            "image1 content";
+        grid-template-columns: auto;
+        grid-template-rows: auto;
+        @include media("<=tablet") {
+            grid-template-areas:
+                "image1 image2"
+                "content content";
+            min-height: 370px;
+        }
+        .image:nth-child(1) {
+            grid-area: image1;
+        }
+        .image {
+            height: 100%;
+            .cmp-image {
+                height: inherit;
+                img {
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+                    display: block;
+                }
+            }
+        }
+        > div:nth-child(3) {
+            padding: 67px 24px 94px 36px;
+
+            blockquote {
+                margin: 0 0 20px;
+            }
+            
+            @include media("<=tablet") {
+                padding: 49px 60px 49px 60px;
+                grid-area: 2 / 1 / 3 / 3;
+            }
+            @include media("<=phone-m") {
+                padding: 49px 50px 49px 48px;
+            }
+            @include flexbox($justify-content: center, $align-items: left, $flex-direction: column);
+        }
+    }
+    &.cmp-content-collage--border-top-left {
+        .cmp-container {
+            .image:nth-child(1) {
+                img {
+                    @include border-top-left-radius();
+                }
+            }
+        }
+    }
+}

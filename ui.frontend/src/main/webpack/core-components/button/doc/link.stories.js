@@ -1,0 +1,33 @@
+import Handlebars from "handlebars/runtime.js";
+import LinkedButton from "../button-linked.hbs";
+Handlebars.registerPartial("NavButton", LinkedButton);
+// More on default export: https://storybook.js.org/docs/html/writing-stories/introduction#default-export
+export default {
+  title: "Core Components/Buttons",
+  // More on argTypes: https://storybook.js.org/docs/html/api/argtypes
+  argTypes: {
+    text: {
+      control: { type: "text" },
+    },
+    color : {
+      options: [ "efe-gray-primary", "efe-red-primary" ],
+      control: { type: "radio" },
+    },
+    variant: {
+      options: [ "primary-nav-link", "secondary-nav-link", "utility-nav-link"],
+      control: { type: "radio" },
+    },
+    link: {
+      control: { type: "text" },
+    },
+  },
+};
+
+const TemplatePrimary = ({ label, ...args }) => LinkedButton({ ...args });
+export const NavLinks = TemplatePrimary.bind();
+NavLinks.args = {
+  variant: "primary-nav-link",
+  color: "efe-gray-primary",
+  link: "#",
+  text: "Edelman Financial Engines Typography styles"
+}

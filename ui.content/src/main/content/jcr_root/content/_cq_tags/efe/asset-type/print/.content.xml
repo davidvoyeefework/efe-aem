@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    jcr:description=""
+    jcr:primaryType="cq:Tag"
+    jcr:title="Print"
+    sling:resourceType="cq/tagging/components/tag">
+    <article/>
+    <brochure/>
+    <letter/>
+    <flyer/>
+    <postcard/>
+    <envelope/>
+    <data-sheet/>
+    <legal-booklet/>
+    <adv/>
+    <poster/>
+    <resource/>
+    <self-mailer/>
+    <reply-form/>
+    <insert/>
+    <fee-sheet/>
+    <retirement-evaluation/>
+    <letter-_x0026_-stoplight/>
+    <stoplight/>
+    <safelisting-instructions/>
+    <program-guide/>
+    <letter-_x0026_-statement/>
+    <buckslip/>
+    <pp-letter_x002c_-statement_x002c_-_x0026_-rf/>
+    <form-crs/>
+    <powerpoint-deck/>
+    <faq/>
+    <print---design-only-template/>
+    <checklist/>
+    <guide/>
+</jcr:root>

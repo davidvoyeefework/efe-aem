@@ -1,0 +1,9 @@
+.cmp-text--caption {
+    * {
+        @include caption;
+    }
+
+    a {
+        @include caption-link;
+    }
+}

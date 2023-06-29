@@ -1,0 +1,18 @@
+.cmp-button--footer-01 {
+    a {
+        @include footer-01;
+    }
+
+    &.cmp-button--efe-gray-primary {
+        a {
+            @include efe-gray-primary;
+        }
+    }
+
+    &.cmp-button--efe-gray-new {
+        a {
+            @include efe-gray-new;
+            text-transform: uppercase;
+        }
+    }
+}

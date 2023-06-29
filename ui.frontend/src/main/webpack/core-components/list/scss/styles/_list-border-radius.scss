@@ -1,0 +1,11 @@
+.cmp-list--border-radius {
+    .cmp-list {
+        @include media('>tablet') {
+            .teaser:first-child {
+                .cmp-image__image {
+                    border-top-left-radius: rem(40);
+                }
+            }
+        }
+    }
+}

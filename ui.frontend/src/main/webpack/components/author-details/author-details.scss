@@ -1,0 +1,22 @@
+.cmp-author-details {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    margin-bottom: rem(48px);
+    width: 100%;
+    &__image {
+    width: 158px;
+    height: 158px;
+    max-width:160px;
+    }
+    &__credits {
+        p {
+            @include body-02;
+        }
+        @include body-02;
+        margin-top: 20px;
+    }
+    &__description {
+        width: 100%;
+    }
+}

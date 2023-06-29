@@ -1,0 +1,20 @@
+{
+	"efe": {
+		"jcr:primaryType": "cq:Page",
+		"jcr:content": {
+			"jcr:title": "EFE"
+		},
+		"page1": {
+			"jcr:primaryType": "cq:Page",
+			"jcr:content": {
+				"jcr:title": "Page 1"
+			},
+			"page2": {
+				"jcr:primaryType": "cq:Page",
+				"jcr:content": {
+					"jcr:title": "Page 2"
+				}
+			}
+		}
+	}
+}

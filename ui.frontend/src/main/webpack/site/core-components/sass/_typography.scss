@@ -1,0 +1,386 @@
+//Global BEBAS/NIMBUS ADOBE TYPE
+@import url("https://use.typekit.net/ezq2lfa.css");
+@import './base/breakpoints';
+
+@mixin buildFont ($font-size, 
+                $letter-spacing, 
+                $font-family: false, 
+                $font-weight: false, 
+                $text-transform: false,
+                $line-height: false,
+                $color: false
+                ){
+    font-size: $font-size;
+    letter-spacing: $letter-spacing;
+    font-family: bebas-neue-pro, sans-serif;
+    @if $font-family {font-family: $font-family, sans-serif};
+    font-weight: 700;
+    @if $font-weight {font-weight: $font-weight};
+    text-transform: uppercase;
+    @if $text-transform {text-transform: $text-transform};
+    font-style: normal ;
+    line-height: 105%;
+    @if $line-height {line-height: $line-height};
+    color: $efe-gray-primary;
+    @if $color {color: $color};
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -o-font-smoothing: antialiased;
+}
+
+@mixin buildLink ($color: false, $hover-color: false) {
+    text-decoration: 1px solid underline $efe-gray-primary;
+    @if $color {text-decoration: 1px solid underline $color; color: $color};
+    text-underline-offset: 2px;
+    transition: $std-transition;
+
+    &:hover {
+        color: $efe-gray-deep-charcoal;
+        text-decoration: 1px solid underline $efe-gray-deep-charcoal;
+        @if $hover-color {text-decoration: 1px solid underline $hover-color; color: $hover-color};
+        transition: $std-transition;
+    }
+}
+
+// -----------------------------------------------------------------------------
+// HEADINGS
+// -----------------------------------------------------------------------------
+
+@mixin stats-01 {
+    @include buildFont(rem(160px), .02em, null, 400);
+    @media screen and (max-width: $lg) {
+        font-size: rem(69);
+    }
+  }
+
+  .cmp-text--stats-01 {
+    @include stats-01;
+  }
+
+  @mixin stats-02 {
+    @include buildFont(rem(69px), .02em, null, 400);
+  }
+
+  .cmp-text--stats-02 {
+    @include stats-02;
+  }
+
+  .cmp-text--efe-blue {
+      .cmp-text p, .cmp-text sup {
+          color: $efe-gray-blue;
+      }
+  }
+
+  @mixin stats-02-underline {
+    @include stats-02;
+    text-decoration: solid underline $efe-red-primary 4px;
+    text-underline-offset: 17px;
+  }
+
+  .cmp-text--stats-02-underline {
+    @include stats-02-underline;
+  }
+
+
+    @mixin heading-01 {
+        @include buildFont(rem(69px), .08em);
+            @media screen and (max-width: $lg) {
+                font-size: rem(58);
+            }
+  }
+
+  .cmp-text--heading-01 {
+    @include heading-01;
+  }
+
+    @mixin heading-02 {
+        @include buildFont(rem(58px), .08em);
+        @media screen and (max-width: $lg) {
+            font-size: rem(48);
+        }
+  }
+
+  .cmp-text--heading-02 {
+    @include heading-02;
+  }
+
+@mixin heading-03 {
+    @include buildFont(rem(48px), .08em);
+        @media screen and (max-width: $lg) {
+            font-size: rem(36);
+        }
+  }
+
+.cmp-text--heading-03 {
+    @include heading-03;
+}
+
+@mixin heading-04 {
+    @include buildFont(rem(36px), .06em);
+}
+
+.cmp-text--heading-04 {
+    @include heading-04;
+}
+
+// -----------------------------------------------------------------------------
+// SUBHEADS
+// -----------------------------------------------------------------------------
+
+
+@mixin subhead-00 {
+    @include buildFont(rem(32), .06em, null, 400);
+}
+
+.cmp-text--subhead-00 {
+    @include subhead-00;
+}
+
+@mixin subhead-01 {
+    @include buildFont(rem(24px), .02em, null, 400);
+}
+
+.cmp-text--subhead-01 {
+    @include subhead-01;
+}
+
+
+@mixin subhead-02 {
+    @include buildFont(rem(22px), 0, 'nimbus-sans', 400, unset, 120% );
+}
+
+.cmp-text--subhead-02 {
+    @include subhead-02;
+}
+
+// -----------------------------------------------------------------------------
+// BODY COPY
+// -----------------------------------------------------------------------------
+
+@mixin body-01 {
+    @include buildFont(rem(26px), null, 'nimbus-sans', 300, unset, 120% );
+}
+
+.cmp-text--body-01 {
+    @include body-01;
+}
+
+@mixin body-02 {
+    @include buildFont(rem(20px), null, 'nimbus-sans', 300, unset, 120% );
+}
+
+.cmp-text--body-02 {
+    @include body-02;
+}
+
+@mixin body-03 {
+    @include buildFont(rem(16px), null, 'nimbus-sans', 300, unset, 120% );
+}
+
+.cmp-text--body-03 {
+    @include body-03;
+}
+
+@mixin caption {
+    @include buildFont(rem(14), null, 'nimbus-sans', 400, unset, 100% );
+}
+
+.cmp-text--caption {
+    @include caption;
+}
+
+@mixin button-text {
+    @include buildFont(rem(18), .06em, 'nimbus-sans', 400, null, 100% );
+}
+
+// -----------------------------------------------------------------------------
+// COMPLIANCE COPY
+// -----------------------------------------------------------------------------
+
+@mixin detail {
+    @include buildFont(rem(12), 0, 'nimbus-sans', 400, unset, rem(14) );
+}
+
+.detail, .cmp-text--detail {
+    @include detail;
+
+    i,em {
+        font-style: italic;
+    }
+
+    a {
+        text-decoration: underline;
+    }
+}
+
+// -----------------------------------------------------------------------------
+// BUTTONS
+// -----------------------------------------------------------------------------
+
+@mixin button {
+    @include buildFont(rem(18), .06em, 'nimbus-sans', 400, null, 100% );
+}
+
+// -----------------------------------------------------------------------------
+// LINKS
+// -----------------------------------------------------------------------------
+
+@mixin primary-nav-link {
+    @include buildFont(rem(16), .04em, 'nimbus-sans', 400, null, 100% );
+}
+
+@mixin primary-nav-link-red {
+    @include buildFont(rem(16), .04em, 'nimbus-sans', 400, null, 100%, $efe-red-primary);
+}
+
+@mixin secondary-nav-link {
+    @include buildFont(rem(16), 0, 'nimbus-sans', 400, capitalize, 100% );
+}
+
+@mixin secondary-nav-link-red {
+    @include secondary-nav-link;
+    color: $efe-red-primary;
+    transition: $std-transition;
+    &:hover {
+        color: $efe-red-hover;
+        transition: $std-transition;
+    }
+}
+
+@mixin utility-nav-link {
+    @include buildFont(rem(14), .04em, 'nimbus-sans', 400, null, 100% );
+}
+
+@mixin utility-nav-link-red {
+    @include utility-nav-link;
+    color: $efe-red-primary;
+    transition: $std-transition;
+    &:hover {
+        color: $efe-red-hover;
+        transition: $std-transition;
+    }
+}
+
+@mixin detail-link {
+    @include detail;
+    @include buildLink;
+}
+
+@mixin footer-01{
+    @include buildFont(rem(16), 0, 'nimbus-sans', 400, capitalize, 100%);
+}
+
+@mixin footer-02{
+    @include buildFont(rem(14), 0, 'nimbus-sans', 400, capitalize, 100%);
+}
+
+.footer-02 {
+    @include footer-02;
+}
+
+@mixin body-01-link {
+    @include body-01;
+    @include buildLink;
+}
+
+@mixin body-01-link-red {
+    @include body-01;
+    @include buildLink($efe-red-primary, $efe-red-hover);
+}
+
+@mixin body-02-link {
+    @include body-02;
+    @include buildLink;
+}
+
+@mixin body-02-link-red {
+    @include body-02;
+    @include buildLink($efe-red-primary, $efe-red-hover);
+}
+
+@mixin body-03-link {
+    @include body-03;
+    @include buildLink;
+}
+
+@mixin body-03-link-red {
+    @include body-03;
+    @include buildLink($efe-red-primary, $efe-red-hover);
+}
+
+@mixin caption-link {
+    @include caption;
+    @include buildLink;
+}
+
+// -----------------------------------------------------------------------------
+// TITLE MARGIN BOTTOM SPECS
+// -----------------------------------------------------------------------------
+
+@mixin title-margin-large {
+    margin-bottom: 44px;
+}
+
+@mixin title-margin-medium {
+    margin-bottom: 32px;
+}
+
+@mixin title-margin-small {
+    margin-bottom: 24px;
+}
+
+// -----------------------------------------------------------------------------
+// QUOTES
+// -----------------------------------------------------------------------------
+
+@mixin blockquote1 {
+    margin: 40px;
+    @include body-01;
+    text-align: center;
+    max-width: rem(600);
+
+    &:before {
+        content: '';
+        display: inline-block;
+        background: url("../resources/images/icons/quote/quote-icon.svg") no-repeat center center / contain;
+        width: rem(14);
+        height: rem(15);
+        position: relative;
+        bottom: rem(5);
+        right: rem(7);
+    }
+
+    &:after {
+        content: '';
+        display: inline-block;
+        background: url("../resources/images/icons/quote/quote-icon.svg") no-repeat center center / contain;
+        width: rem(14);
+        height: rem(15);
+        position: relative;
+        bottom: rem(4);
+        left: rem(9);
+        transform: rotateY(180deg);
+    }
+}
+
+.blockquote1 {
+    @include blockquote1;
+}
+
+@mixin blockquote2 {
+    @include blockquote1;
+    position: relative;
+    max-width: rem(567);
+    @include buildFont(rem(24), .02em, null, 400, uppercase, 105% );
+    text-align: left;
+
+    &:before {
+        position: absolute;
+        top: 0;
+        left: -21px;
+    }
+}
+
+.blockquote2 {
+    @include blockquote2;
+}

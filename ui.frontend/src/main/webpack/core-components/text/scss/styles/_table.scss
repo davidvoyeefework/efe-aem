@@ -1,0 +1,82 @@
+.cmp-text--table {
+
+    overflow-x:auto;
+    table {
+        width: 100%;
+        height: auto;
+        color: white;
+        @include secondary-nav-link;
+    }
+
+    th {
+        white-space: nowrap;
+        background: $efe-gray-primary;
+        color: white;
+        padding: 17px 20px;
+        text-transform: uppercase;
+        text-align: left;
+        letter-spacing: .04em;
+
+        &:first-of-type {
+            @include button-text;
+            color: white;
+            font-weight: 700;
+        }
+    }
+
+    tr {
+        background: white;
+        td {
+            color: $efe-gray-new;
+            border-bottom: 2px solid $efe-gray-mid;
+            padding: 17px 20px;
+            &:first-of-type {
+                text-transform: uppercase;
+                letter-spacing: .04em;
+            }
+        }
+
+    }
+
+}
+
+.cmp-text--table-horizontal-scroll {
+  overflow-x:auto;
+    table {
+        width: 100%;
+        height: auto;
+        color: white;
+        @include secondary-nav-link;
+    }
+
+    th {
+        white-space: nowrap;
+        background: $efe-gray-primary;
+        color: white;
+        padding: 17px 20px;
+        text-transform: uppercase;
+        text-align: left;
+        letter-spacing: .04em;
+
+        &:first-of-type {
+            @include button-text;
+            color: white;
+            font-weight: 700;
+        }
+    }
+
+    tr {
+        background: white;
+        td {
+            color: $efe-gray-new;
+            border-bottom: 2px solid $efe-gray-mid;
+            padding: 17px 20px;
+            &:first-of-type {
+                text-transform: uppercase;
+                letter-spacing: .04em;
+            }
+        }
+
+    }
+
+}

@@ -1,0 +1,41 @@
+<div class="dialog-container modal-promotional" id="modal-promotional" aria-hidden="true"
+    aria-labelledby="my-dialog-title" aria-describedby="my-dialog-description" 
+    data-component="modal-promotional"
+    startDate="2023-05-01T12:56:00Z" endDate="2023-07-31T12:56:00Z"
+    modal-name="promotion_6">
+    <div class="dialog-overlay" data-a11y-dialog-hide></div>
+    <div class="cmp-modal" role="document">
+        <div class="cmp-modal__container responsivegrid">
+            <button data-a11y-dialog-hide class="cmp-modal__close" aria-label="Close this dialog window">
+               <img class="cmp-modal__close-image" src="./modal/modal-close-black.svg">
+            </button>
+            <div class="cmp-modal__body">
+                <div class="cmp-modal__description">
+                    {{>Title
+                    text="SPecial Offer"
+                    variant="subhead-02"
+                    }}
+                    {{>Title
+                    text="Don’t get mauled by The bears"
+                    variant="heading-03"
+                    }}
+                    {{>Text
+                    text="Make a plan that can help you survive whatever the markets throw at you.
+                    Your complimentary Retirement Review and financial plan. Don’t delay."
+                    variant="subhead-02"
+                    }}
+                    <div class="cmp-modal__action-container">
+                        <a class="cmp-modal__action-link" href="#">Get Started Now</a>
+                    </div>
+                </div>
+                <div class="cmp-modal__image">
+                    {{>ImageStandard
+                    source="https://edelmandev.wpenginepowered.com/wp-content/themes/EFE_Divi_Child_Theme/images/offer-popup/EW-popup-image-Desktop.jpg"
+                    size="small"
+                    cornerRadius="top-left"
+                    }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

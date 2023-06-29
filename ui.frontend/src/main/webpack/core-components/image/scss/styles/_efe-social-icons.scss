@@ -1,0 +1,68 @@
+
+@mixin socialSpec {
+    width: rem(30);
+    height: rem(30);
+    margin: 0;
+    padding: 0;
+}
+
+.cmp-image--facebook {
+    * {
+        @include socialSpec();
+    }
+    img.cmp-image__image{
+        background: url("../resources/images/icons/efe-facebook.svg") no-repeat center center / contain;
+        @include socialSpec();
+    }
+}
+
+.cmp-image--twitter {
+    * {
+        @include socialSpec();
+    }
+    img.cmp-image__image{
+        background: url("../resources/images/icons/efe-twitter.svg") no-repeat center center / contain;
+        @include socialSpec();
+    }
+}
+
+.cmp-image--linkedin {
+    * {
+        @include socialSpec();
+    }
+    img.cmp-image__image{
+        background: url("../resources/images/icons/efe-linkedin.svg") no-repeat center center / contain;
+        @include socialSpec();
+    }
+}
+
+.cmp-image--search {
+    width: rem(20);
+    height: rem(19);
+    img.cmp-image__image{
+        background: url("../resources/images/icons/efe-search.svg") no-repeat center center / contain;
+        width: rem(20);
+        height: rem(19);
+    }
+}
+
+.cmp-image--hamburger {
+    * {
+        width: rem(23);
+        height: rem(16);
+    }
+    img.cmp-image__image{
+        background: url("../resources/images/icons/efe-hamburger.svg") no-repeat center center / contain;
+
+    }
+}
+
+.cmp-image--close {
+    * {
+        width: rem(19);
+        height: rem(17);
+    }
+    img.cmp-image__image{
+        background: url("../resources/images/icons/efe-close.svg") no-repeat center center / contain;
+    }
+}

@@ -1,0 +1,7 @@
+.cmp-title--heading-02 {
+    
+    *{
+        @include heading-02;
+    }
+    @include title-margin-large;
+}

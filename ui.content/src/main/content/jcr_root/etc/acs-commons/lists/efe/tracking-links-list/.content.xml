@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:mix="http://www.jcp.org/jcr/mix/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:isDelivered="{Boolean}true"
+        jcr:isCheckedOut="{Boolean}true"
+        jcr:mixinTypes="[cq:ReplicationStatus,mix:versionable]"
+        jcr:primaryType="nt:unstructured"
+        jcr:title="Tracking Links List"
+        jcr:uuid="a10661f2-1b4d-42d2-b5d7-fdc237673edb"
+        sling:resourceType="acs-commons/components/utilities/genericlist">
+        <image
+            jcr:primaryType="nt:unstructured"
+            fileReference="/apps/acs-commons/components/utilities/genericlist/generic-list.png"/>
+        <list jcr:primaryType="nt:unstructured">
+            <item0
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Connect with a Planner"
+                value="Connect with a Planner"/>
+            <item1
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Our locations"
+                value="Our locations"/>
+            <item3
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Discovery tools"
+                value="Discovery tools"/>
+            <item4
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Request an appointment"
+                value="Request an appointment"/>
+        </list>
+    </jcr:content>
+</jcr:root>

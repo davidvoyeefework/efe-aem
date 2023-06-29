@@ -1,0 +1,82 @@
+
+.cmp-accordion {
+    .cmp-accordion__button {
+        width: 100%;
+        background: $white-primary;
+        border: 1px solid $efe-gray-mid;
+        border-radius: rem(3px);
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        padding: rem(20) rem(60) rem(12);
+        text-align: center;
+        position: relative;
+        &:focus {
+            outline: none;
+        }
+    }
+    .cmp-accordion__icon {
+        float: right;
+        position: absolute;
+        right: rem(24);
+        top: 30%;
+        &:before { 
+            content: " "; 
+            display: block;
+            width: rem(18);
+            height: rem(18);
+            background: url("../resources/images/accordion/arrow.svg") no-repeat center
+                    center / contain;
+        }
+    }
+
+    .cmp-accordion__button--expanded {
+        border: 2px solid $efe-gray-blue;
+        .cmp-accordion__icon {
+            transform: rotate(180deg);
+            top: 40%;
+        }
+    }
+    .cmp-accordion__panel {
+        font-size: $font-size-small;
+        @include media('>=tablet') {
+            padding: rem(36) rem(80) rem(24) rem(80);
+        }
+        @include media("<tablet") {
+            padding: rem(28) rem(24) rem(16) rem(24);
+        }
+        background: $white-primary;
+        @include animated();
+        @include fadeIn();
+    }
+
+    .cmp-accordion__panel--expanded {
+        display: block;
+        border: 2px solid $efe-gray-blue;
+        border-top: 0;
+        border-radius: rem(3px);
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+    .cmp-accordion__panel--hidden {
+        display: none;
+    }
+
+    .cmp-accordion__header {
+        margin:0;
+        line-height: 0;
+        .cmp-accordion__title {
+            @include body-02;
+        }
+    }
+    .cmp-text {
+        p {
+            @include body-02;
+        }
+        a {
+            text-decoration: underline;
+            color: $efe-gray-primary;
+        }
+    }
+}
+

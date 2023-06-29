@@ -1,0 +1,41 @@
+
+@mixin cta-primary {
+    @include button;
+    position: relative;
+    background-color: $efe-red-primary;
+    color: white;
+    min-height: rem(50);
+    border-radius: 3px;
+    border: none;
+    transition: $std-transition;
+    width: fit-content;
+    padding: rem(8) rem(28) rem(7);
+    text-align: center;
+    min-width: rem(200px);
+    text-decoration: none;
+    @include flexbox(
+        $align-items: center,
+        $justify-content: center
+    );
+
+    &:hover, &:active {
+        background-color: $efe-red-hover;
+        transition: $std-transition;
+        border: none;
+        text-decoration: none;
+        color: white;
+        cursor: pointer;
+    }
+    
+    &.selected {
+        border: 2px solid $efe-red-50-percent;
+        transition: $std-transition;
+        text-decoration: none;
+    }
+
+    &:focus, &:focus-within  {
+        box-shadow: 0 0 0 3px $efe-gray-mid;
+        text-decoration: none;
+    }
+
+}

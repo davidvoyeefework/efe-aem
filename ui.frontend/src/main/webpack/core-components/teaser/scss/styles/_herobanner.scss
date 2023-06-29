@@ -1,0 +1,112 @@
+@mixin teaserThumbnail {
+    display: flex;
+        flex-direction: column-reverse;
+        @include media('<tablet') {
+            flex-direction: row-reverse;
+        }
+}
+.cmp-teaser--thumbnail {
+    .cmp-teaser {
+        @include teaserThumbnail;
+        &__link {
+            @include teaserThumbnail;
+        }
+        &__content {
+            @include media('<tablet') {
+                padding: 0 rem(20);
+                width: 55%;
+            }
+        }
+        &__image {
+            @include media('<tablet') {
+                width: 45%;
+                .cmp-image__image {
+                    width: 100%;
+                }
+            }
+            img {
+                width: 260px;
+                height: 240px;
+                object-fit: cover;
+            }
+        }
+        &__title {
+            @include subhead-01;
+            margin: rem(20) rem(0) rem(10) 0;
+            @include media('<tablet') {
+                margin: 0 0 rem(10) 0;
+            }
+        }
+        &__title-link {
+            @include subhead-01;
+        }
+        &__description {
+            @include caption;
+            color: $gray-new;
+            p {
+                @include caption;
+                color: $gray-new
+            }
+        }
+        &__action-container {
+            width: 100%;
+            margin-top: rem(12);
+            margin-bottom: 0;
+        }
+        &__action-link {
+            background-color: unset;
+            padding:0;
+            @include body-02-link-red;
+        }
+    }
+}
+@mixin serviceButtonTeaser {
+    display: flex;
+    flex-direction: column-reverse;
+    flex: 1 0 auto;
+}
+.cmp-teaser--service-button {
+    .cmp-teaser {
+        @include serviceButtonTeaser;
+        &__link {
+            @include serviceButtonTeaser;
+            justify-content: center;
+            align-items: center;
+            min-width: rem(184);
+            max-width: rem(234);
+            border: rem(2) solid $efe-gray-mid;
+            border-radius: rem(3);
+            min-height: rem(133);
+            padding: 16px;
+            overflow: hidden;
+            width: 234px;
+            @include media("<tablet") {
+                width: 184px;
+            }
+            &:hover {
+                background-color: $efe-gray-light;
+            }
+        }
+        &__title ,&__title-link {
+            @include primary-nav-link;
+            text-align: center;
+        }
+        &__title {
+            margin-top: rem(20);
+            margin-bottom: 0;
+        }
+        &__image {
+            .cmp-image__image {
+                width: rem(41.03);
+                height: auto;
+            }
+        }
+    }
+}
+.cmp-container--fillHeight {
+    .cmp-teaser {
+        .cmp-teaser__content {
+            height: auto !important;
+        }
+    }
+}

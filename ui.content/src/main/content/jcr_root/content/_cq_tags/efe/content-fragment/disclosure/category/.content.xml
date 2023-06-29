@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    jcr:description="\0"
+    jcr:primaryType="cq:Tag"
+    jcr:title="Category"
+    sling:resourceType="cq/tagging/components/tag">
+    <general_x002c_-firm_x002c_-legal/>
+    <investing_x002c_-strategy_x002c_-regulatory/>
+    <offers/>
+    <third-party/>
+    <rankings-and-awards/>
+    <licensing-and-designations/>
+    <products-and-services/>
+    <promoters-and-endorsements/>
+    <seminars_x002c_-presentations_x002c_-media/>
+</jcr:root>
