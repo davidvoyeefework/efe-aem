@@ -184,7 +184,6 @@ public class PlannerBioImpl implements PlannerBio {
 				try {
 					for (final Hit hit : result.getHits()) {
 						if (leakingResourceResolver == null) {
-							// Get a reference to QB's leaking ResourceResolver
 							leakingResourceResolver = hit.getResource().getResourceResolver();
 						}
 						Resource hitResource = resourceResolver.getResource(hit.getPath());
@@ -196,7 +195,6 @@ public class PlannerBioImpl implements PlannerBio {
 					LOGGER.error("Error collecting search results", e);
 				} finally {
 					if (leakingResourceResolver != null) {
-						// Always Close the leaking QueryBuilder resourceResolver.
 						leakingResourceResolver.close();
 					}
 				}
