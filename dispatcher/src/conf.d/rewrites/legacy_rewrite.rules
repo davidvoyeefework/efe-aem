@@ -212,6 +212,7 @@ RewriteRule ^/education/planning-investing/understanding-robo-advisors/?$ /educa
 RewriteRule ^/education/planning-investing/web3/?$ /education/investment-management/web3 [R=301,NC,L]
 RewriteRule ^/education/planning-investing/when-to-sell-espp/?$ /education/investment-management/when-to-sell-espp [R=301,NC,L]
 RewriteRule ^/education/planning-investing/why-the-s-and-p-may-fail-as-portfolio-benchmark/?$ /education/investment-management/why-the-s-and-p-may-fail-as-portfolio-benchmark [R=301,NC,L]
+RewriteRule ^/education/home-mortgage/capital-gains-tax-on-real-estate/?$ /education/tax/capital-gains-tax-on-real-estate [R=301,NC,L]
 
 # Education generic
 RewriteRule ^/education/(home-mortgage|planning-investing|tax-finance)/(.*) /education/financial-planning/$2 [R=301,NC,L]
