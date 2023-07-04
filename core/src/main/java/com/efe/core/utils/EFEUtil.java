@@ -68,7 +68,7 @@ public class EFEUtil {
 
         String formattedDate = null;
 
-        if (null != inputFormat && null != outputFormat && null != inputDate) {
+        if (null != inputFormat && null != outputFormat && StringUtils.isNotEmpty(inputDate)) {
             try {
                 DateFormat inputDateFormat = new SimpleDateFormat(inputFormat);
                 DateFormat outputDateFormat = new SimpleDateFormat(outputFormat);
