@@ -85,7 +85,7 @@
 			/0001 { /glob "*" /type "deny" }
 		# 	/0002 { /glob "q" /type "allow" }
 		#	$include "../cache/marketing_query_parameters.any"
-			/0002 { /glob "cdn_cache_bust" /type "allow" }
+		#	/0002 { /glob "cdn_cache_bust" /type "allow" }
 		}
 
 		# Cache response headers next to a cached file. On the first request to
