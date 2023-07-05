@@ -5,6 +5,11 @@ Include conf.d/variables/custom.vars
 <VirtualHost *:80>
 	ServerName	"publish"
 	# Put names of which domains are used for your published site/content here
+	ServerAlias  "localhost"
+	ServerAlias  "*.local"
+	ServerAlias  "127.0.0.1"
+	ServerAlias  "publish*.adobeaemcloud.net"
+	ServerAlias  "publish*.adobeaemcloud.com"
 	ServerAlias	 "*.fe.com"
 	ServerAlias	 "*.financialengines.com"
 	ServerAlias	 "*.feitest.com"

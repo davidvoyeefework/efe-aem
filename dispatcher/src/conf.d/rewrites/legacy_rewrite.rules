@@ -6,14 +6,15 @@ RewriteMap uc int:toupper
 RewriteRule ^/location$ /locations [R=301,NC,L]
 
 # Location with special names
-RewriteRule ^/locations/ca/roseville-2d-east/ /location.CA.roseville-east [R=301,NC,L]
-RewriteRule ^/locations/ca/roseville-2d-west/ /location.CA.roseville-west [R=301,NC,L]
-RewriteRule ^/locations/fl/miami-2d-coral-gables/ /location.FL.miami-coral-gables [R=301,NC,L]
-RewriteRule ^/locations/fl/miami-2d-plantation/ /location.FL.miami-plantation [R=301,NC,L]
-RewriteRule ^/locations/fl/tampa-2d-east/ /location.FL.tampa-east [R=301,NC,L]
-RewriteRule ^/locations/fl/tampa-2d-westshore/ /location.FL.tampa-westshore [R=301,NC,L]
-RewriteRule ^/locations/tx/houston-2d-clear-lake-2f-league-city/ /location.TX.houston-clear-lake-league-city [R=301,NC,L]
-RewriteRule ^/locations/tx/houston-2d-galleria/ /location.TX.houston-galleria [R=301,NC,L]
+RewriteRule ^/locations/ca/roseville-2d-east/ /location.CA.Roseville-East [R=301,NC,L]
+RewriteRule ^/locations/ca/roseville-2d-west/ /location.CA.Roseville-West [R=301,NC,L]
+RewriteRule ^/locations/fl/miami-2d-coral-gables/ /location.FL.Miami-Coral-Gables [R=301,NC,L]
+RewriteRule ^/locations/fl/miami-2d-plantation/ /location.FL.Miami-Plantation [R=301,NC,L]
+RewriteRule ^/locations/fl/tampa-2d-east/ /location.FL.Tampa-East [R=301,NC,L]
+RewriteRule ^/locations/fl/tampa-2d-westshore/ /location.FL.Tampa-Westshore [R=301,NC,L]
+RewriteRule ^/locations/tx/houston-2d-clear-lake-2f-league-city/ /location.TX.Houston-Clear-Lake-League-City [R=301,NC,L]
+RewriteRule ^/locations/tx/houston-2d-galleria/ /location.TX.Houston-Galleria [R=301,NC,L]
+RewriteRule ^/locations/national-advisor-center/ /location.AZ.National-Advisor-Center [R=301,NC,L]
 
 # Planners with first alias name
 RewriteRule ^/financial-planners/Aaron-Cherry-179/ /financial-planner.Johnathan.Cherry.179 [R=301,NC,L]
@@ -25,7 +26,7 @@ RewriteRule ^/financial-planners/Jay-Mendela-192/ /financial-planner.Andrzej.Men
 RewriteRule ^/financial-planners/Andy-Hedrick-23/ /financial-planner.Andrew.Hedrick.23 [R=301,NC,L]
 RewriteRule ^/financial-planners/Andy-Smith-8/ /financial-planner.Andrew.Smith.8 [R=301,NC,L]
 RewriteRule ^/financial-planners/Bill-Hoffman-200/ /financial-planner.William.Hoffman.200 [R=301,NC,L]
-RewriteRule ^/financial-planners/Bill-O%27Donnell-37/ /financial-planner.William.O'Donnell.37 [R=301,NC,L]
+RewriteRule ^/financial-planners/Bill-O'Donnell-37/ /financial-planner.William.O'Donnell.37 [R=301,NC,L]
 RewriteRule ^/financial-planners/Bob-Andreola-201/ /financial-planner.Robert.Andreola.201 [R=301,NC,L]
 RewriteRule ^/financial-planners/Bob-Sargent-203/ /financial-planner.Robert.Sargent.203 [R=301,NC,L]
 RewriteRule ^/financial-planners/Brad-Hartzel-204/ /financial-planner.Bradley.Hartzel.204 [R=301,NC,L]
@@ -59,7 +60,7 @@ RewriteRule ^/financial-planners/Ed-Hungler-236/ /financial-planner.Edward.Hungl
 RewriteRule ^/financial-planners/Ed-Sturdivant-497/ /financial-planner.Edward.Sturdivant.497 [R=301,NC,L]
 RewriteRule ^/financial-planners/Eddie-Lee-383/ /financial-planner.Ho.Lee.383 [R=301,NC,L]
 RewriteRule ^/financial-planners/Fran-Petrangelo-544/ /financial-planner.Francis.Petrangelo.544 [R=301,NC,L]
-RewriteRule ^/financial-planners/Frances-Martin-Falanga-245/ /financial-planner.Mary%20Frances.Martin-Falanga.245 [R=301,NC,L]
+RewriteRule ^/financial-planners/Frances-Martin-Falanga-245/ /financial-planner.Mary\ Frances.Martin-Falanga.245 [R=301,NC,L]
 RewriteRule ^/financial-planners/Fred-Ferrara-72/ /financial-planner.Frederick.Ferrara.72 [R=301,NC,L]
 RewriteRule ^/financial-planners/Gabe-Talley-371/ /financial-planner.Gabriel.Talley.371 [R=301,NC,L]
 RewriteRule ^/financial-planners/Gabe-Goodhope-246/ /financial-planner.Gabriel.Goodhope.246 [R=301,NC,L]
@@ -211,6 +212,7 @@ RewriteRule ^/education/planning-investing/understanding-robo-advisors/?$ /educa
 RewriteRule ^/education/planning-investing/web3/?$ /education/investment-management/web3 [R=301,NC,L]
 RewriteRule ^/education/planning-investing/when-to-sell-espp/?$ /education/investment-management/when-to-sell-espp [R=301,NC,L]
 RewriteRule ^/education/planning-investing/why-the-s-and-p-may-fail-as-portfolio-benchmark/?$ /education/investment-management/why-the-s-and-p-may-fail-as-portfolio-benchmark [R=301,NC,L]
+RewriteRule ^/education/home-mortgage/capital-gains-tax-on-real-estate/?$ /education/tax/capital-gains-tax-on-real-estate [R=301,NC,L]
 
 # Education generic
 RewriteRule ^/education/(home-mortgage|planning-investing|tax-finance)/(.*) /education/financial-planning/$2 [R=301,NC,L]

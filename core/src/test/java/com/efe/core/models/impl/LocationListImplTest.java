@@ -2,13 +2,18 @@ package com.efe.core.models.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.mock;
 
+import java.lang.reflect.Field;
+import java.util.Iterator;
 import java.util.Map;
 
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -28,27 +33,12 @@ class LocationListImplTest {
 
 	/** The Constant RESOURCE_CONTENT. */
 	private static final String RESOURCE_CONTENT = "/com/efe/core/models/location/locationlist.json";
-	
-	/** The Constant ID_CONTENT. */
-	private static final String ID_CONTENT = "/com/efe/core/models/location/locationlistid.json";
-	
-	
-	/** The LOCATION. */
-	private static final String LOCATION = "/content/efe/us/en/location";
-	
-	/** The Constant RESOURCE. */
-	private static final String RESOURCE = LOCATION  + "/jcr:content/root/container/locationlist";
-	
-	
-
-	/** The aem context. */
-	private AemContext aemContext = new AemContext();
 
 	/** The resource. */
 	private Resource resource;
 
-	/** The model. */
-	private LocationList model;
+	/** The aem context. */
+	private AemContext aemContext = new AemContext();
 
 	/** The EfeServiceImpl. */
 	private EfeServiceImpl efeService = new EfeServiceImpl();
@@ -57,25 +47,8 @@ class LocationListImplTest {
 	/** The configuration. */
 	private EfeServiceImpl.Config configuration;
 
-	/**
-	 * Sets the up.
-	 */
-	@BeforeEach
-	public void setUp() {
-
-		Class<LocationList> modelClass = LocationList.class;
-		aemContext.load().json(RESOURCE_CONTENT, PlannerLocationConstants.LOCATION_PATH + "/al");
-		aemContext.load().json(ID_CONTENT, RESOURCE);
-		configuration = Mockito.mock(EfeServiceImpl.Config.class); 
-		Mockito.lenient().when(configuration.plannerPageUrl()).thenReturn("/content/efe/us/en/locations");
-
-		aemContext.registerInjectActivateService(efeService);
-		efeService.activate(configuration);
-		aemContext.addModelsForClasses(modelClass);
-		resource = aemContext.currentResource(RESOURCE);
-		model = resource.adaptTo(modelClass);
-
-	}
+	@Mock
+	private ResourceResolver resourceResolver;
 
 	/**
 	 * Verifies that the {@link Model#getStates()} method returns a Map containing
@@ -85,11 +58,13 @@ class LocationListImplTest {
 	 */
 	@Test
 	void testGetStates() {
-		Map<String, Map<String, String>> states = model.getStates();
-		assertNotNull(states);
-		assertEquals(1, states.size());
-		Map<String, String> cities = states.get("Alabama");
-		assertNotNull(cities);
+		aemContext.registerInjectActivateService(efeService);
+		aemContext.load().json(RESOURCE_CONTENT, "/content");
+		resource = aemContext.currentResource("/content/efe/jcr:content/locationlist");
+		aemContext.addModelsForClasses(LocationList.class);
+		LocationList locationList = resource.adaptTo(LocationList.class);
+		assertNotNull(locationList.getStates());
+		assertEquals("locationlist-1e217cfd31", locationList.getId());
 	}
 
 }

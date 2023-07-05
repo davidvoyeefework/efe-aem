@@ -1,5 +1,6 @@
 package com.efe.core.sitemap;
 
+import java.net.URLDecoder;
 import java.util.Calendar;
 import java.util.Objects;
 import java.util.Optional;
@@ -177,7 +178,7 @@ public class EFESitemapGenerator extends ResourceTreeSitemapGenerator {
 							+ PlannerLocationConstants.DOT + firstName + PlannerLocationConstants.DOT
 							+ lastName + PlannerLocationConstants.DOT + plannerId, resourceResolver);
 
-					Url url = sitemap.addUrl(externalizer.publishLink(resourceResolver, plannerUrl));
+					Url url = sitemap.addUrl(URLDecoder.decode(externalizer.publishLink(resourceResolver, plannerUrl), "utf-8"));
 
 					final Calendar lastmod = plannerResource.getValueMap().get(JcrConstants.JCR_CREATED,
 									Calendar.class);

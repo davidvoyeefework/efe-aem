@@ -1,13 +1,17 @@
 package com.efe.core.models.impl;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 import javax.annotation.PostConstruct;
+import javax.jcr.RepositoryException;
+import javax.jcr.Session;
 
+import com.day.cq.dam.api.DamConstants;
+import com.day.cq.search.PredicateGroup;
+import com.day.cq.search.Query;
+import com.day.cq.search.QueryBuilder;
+import com.day.cq.search.result.Hit;
+import com.day.cq.search.result.SearchResult;
 import com.efe.core.services.DynamicMediaService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
@@ -25,9 +29,6 @@ import org.slf4j.LoggerFactory;
 
 import com.adobe.cq.dam.cfm.ContentFragment;
 import com.adobe.cq.export.json.ExporterConstants;
-import com.adobe.granite.references.Reference;
-import com.adobe.granite.references.ReferenceAggregator;
-import com.adobe.granite.references.ReferenceList;
 import com.day.cq.commons.Externalizer;
 import com.efe.core.bean.LocationResponse;
 import com.efe.core.bean.PlannerResponse;
@@ -71,10 +72,6 @@ public class PlannerBioImpl implements PlannerBio {
 	/** The efe service. */
 	@OSGiService
 	private EfeService efeService;
-
-	/** The aggregator. */
-	@OSGiService
-	private ReferenceAggregator aggregator;
 
 	/** The dynamicMediaService. */
 	@OSGiService
@@ -128,6 +125,9 @@ public class PlannerBioImpl implements PlannerBio {
 	@ValueMapValue
 	private String fileReference;
 
+	@OSGiService
+	private QueryBuilder queryBuilder;
+
 	/** The json ld. */
 	private String jsonLd;
 
@@ -156,13 +156,51 @@ public class PlannerBioImpl implements PlannerBio {
 				if(StringUtils.isNotEmpty(firstNameAlias)) {
 					plannerResponse.setFirstName(firstNameAlias);
 				}
-				ReferenceList referenceList = aggregator.createReferenceList(plannerResource, filter);
-				if (null != referenceList) {
-					addPlannerOffices(referenceList);
-				}	
+				List<Resource> referenceResourceList = createReferenceResourceList(plannerResource);
+				if (!referenceResourceList.isEmpty()) {
+					addPlannerOffices(referenceResourceList);
+				}
 				jsonLd = SeoUtil.getPlannerSchema(seoService, efeService, externalizer, resourceResolver, plannerResponse);	
 			}
 		}
+	}
+
+	private List<Resource> createReferenceResourceList(Resource plannerResource) {
+		List<Resource> resources = new ArrayList<Resource>();
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("path", PlannerLocationConstants.LOCATION_PATH);
+		map.put("type", DamConstants.NT_DAM_ASSET);
+		map.put("1_property", "jcr:content/data/master/planners");
+		map.put("1_property.value", plannerResource.getPath());
+		map.put("2_property", "jcr:content/data/cq:model");
+		map.put("2_property.value", PlannerLocationConstants.LOCATIONS_CF_MODEL_PATH);
+		map.put("p.guessTotal", "true");
+		map.put("p.limit", "100");
+		Query query = queryBuilder.createQuery(PredicateGroup.create(map), resourceResolver.adaptTo(Session.class));
+		if(Objects.nonNull(query)) {
+			SearchResult result = query.getResult();
+			ResourceResolver leakingResourceResolver = null;
+			if(Objects.nonNull(result)) {
+				try {
+					for (final Hit hit : result.getHits()) {
+						if (leakingResourceResolver == null) {
+							leakingResourceResolver = hit.getResource().getResourceResolver();
+						}
+						Resource hitResource = resourceResolver.getResource(hit.getPath());
+						if(Objects.nonNull(hitResource)) {
+							resources.add(hitResource);
+						}
+					}
+				} catch (RepositoryException e) {
+					LOGGER.error("Error collecting search results", e);
+				} finally {
+					if (leakingResourceResolver != null) {
+						leakingResourceResolver.close();
+					}
+				}
+			}
+		}
+		return resources;
 	}
 
 	/**
@@ -170,13 +208,13 @@ public class PlannerBioImpl implements PlannerBio {
 	 *
 	 * @param referenceList the reference list
 	 */
-	private void addPlannerOffices(ReferenceList referenceList) {
-		final Iterator<Reference> referenceItr = referenceList.iterator();
+	private void addPlannerOffices(List<Resource> referenceResourceList) {
+		final Iterator<Resource> referenceItr = referenceResourceList.iterator();
 		List<String> locations = new ArrayList<>();
 		while (referenceItr.hasNext()) {
-			Reference reference = referenceItr.next();
-			if (reference.getTarget() != null) {
-				String refPath = reference.getTarget().getPath();
+			Resource locationResource = referenceItr.next();
+			if (Objects.nonNull(locationResource)) {
+				String refPath = locationResource.getPath();
 				if(locations.contains(refPath)) {
 					LOGGER.debug("Duplicate reference : {}", refPath);
 					continue;
