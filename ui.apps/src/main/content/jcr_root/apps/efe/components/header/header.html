@@ -1,5 +1,8 @@
 <sly data-sly-use.model="com.efe.core.models.Header"/>
-<header class="header" data-component="header" id="${model.id}">
+<header
+    data-sly-set.unbounceclass="${properties.isUnbounceHeader ? 'sponsor-header' : ''}"
+    data-sly-set.unbounceapi="${properties.isUnbounceHeader ? 'https://www.feitest.com/api/v1/pageframe/?namespace=landing-flow' : false}"
+    class="header ${unbounceclass}" data-component="header" id="${model.id}" data-page-frame-api="${unbounceapi}">
 
     <div class="container responsivegrid" id="efe-global-nav-header">
         <div id="container-99d779a4e6" class="cmp-container cmp-container--bg-efe-gray-light">
