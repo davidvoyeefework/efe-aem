@@ -15,7 +15,7 @@ export default class UnbouncePage {
         console.log('loading');
         //const apiHost = window.location.hostname+':3000';
         // https://www.feitest.com/api/v1/pageframe/?namespace=landing-flow
-        const apiHost = document.querySelector('.sponsor-header').getAttribute('data-page-frame-api');//'http://localhost:3000';//document.querySelector('.sponsor-header').getAttribute('data-page-frame-api');
+        const apiHost = document.querySelector('#unbounce-properties').getAttribute('data-frame-api');//'http://localhost:3000';//document.querySelector('.sponsor-header').getAttribute('data-page-frame-api');
         const response = await fetch(`${apiHost}`,{
             method: 'GET',
             mod: "no-cors",
@@ -24,14 +24,23 @@ export default class UnbouncePage {
                 'Accept': 'application/json, text/plain, */*',
                 'X-Spa-Name':'landing-flow',
             },
-        });
+        }).catch((err)=>console.log(err));
 
-        const sponsorData = await response.json();
+        const sponsorData = await response?.json();
         console.log('loading complated');
         this.changeHeaderValues(sponsorData?.header);
         console.log(sponsorData);
     }
     changeHeaderValues(data) {
+        document.querySelector('.sponsor-header').classList.add('sponsor--'+data?.sponsorName)
+        const headerDataVariables = document.querySelector('#unbounce-properties').getAttribute('data-variables');
+        JSON.parse(headerDataVariables).forEach((item)=>{
+            const elem = document.querySelector('.'+Object.keys(item))
+            if(elem) {
+                elem.classList.remove("sponsor-value-hide");
+                elem.innerHTML = data[Object.keys(item)];
+            }
+        })
         let supportPhoneText = document.querySelector('#efe-global-nav-header .cmp-button__text');
         let supportPhoneLink = document.querySelector('#efe-global-nav-header .button a');
         //let supportPhoneSuffix = document.querySelector('#efe-global-nav-header .cmp-button__text');

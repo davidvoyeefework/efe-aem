@@ -1,4 +1,15 @@
 .sponsor-header {
+    .sponsor-value-hide {
+        display: none;
+    }
+    .cmp-text {
+        p {
+            @include body-02;
+        }
+    }
+    .cmp-button--footer-01 {
+        display: none;
+    }
     .cmp-image--efe-logo-primary {
         &:nth-child(3) {
             a {
@@ -18,6 +29,15 @@
             &:nth-child(3) {
                 a {
                     background-image: url(https://www.financialengines.com/app/landing-utils/images/logos/sponsors/boeingxrx-2023.png);
+                }
+            }
+        }
+    }
+    &.sponsor--Ford {
+        .cmp-image--efe-logo-primary {
+            &:nth-child(3) {
+                a {
+                    background-image: url(https://images.financialengines.com/public-assets/images/logos/sponsors/ford-small.png);
                 }
             }
         }

@@ -1,4 +1,8 @@
 <div class="minimal-header">
+    <div id="unbounce-properties" 
+             data-frame-api="https://www.feitest.com/api/v1/pageframe/?namespace=landing-flow"
+             data-variables='[{"sponsorName":"header.sponsorName"}, {"supportHour":"header.supportHour"},{"supportPhone":"header.supportPhone"}]'>
+        </div>
     <header class="header {{#if with-two-logos}} minimal-header--with-two-logos{{/if}}" data-component="header">
         {{! --------------------- NAV HEADER --------------------- }}
         <div class="container responsivegrid" id="efe-global-nav-header">
@@ -15,6 +19,12 @@
                         color="efe-gray-new"
                         link="tel:+18337526333"
                         }}
+                        <div class="cmp-text">
+                            <p>
+                             <span class="sponsor-value-hide supportPhone">{supportPhone}</span>,
+                              <span class="sponsor-value-hide supportHour">{supportHour}</span>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
