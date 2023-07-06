@@ -125,6 +125,9 @@ public class HeaderImpl implements Header {
 	@ValueMapValue
 	private String contactNumber;
 
+	@ValueMapValue
+	private String sponsorDetails;
+
 	/** The header list. */
 	@ChildResource
 	private List<Link> headerList;
@@ -328,4 +331,13 @@ public class HeaderImpl implements Header {
 		return Collections.emptyList();
 	}
 
+	/**
+	 * Gets the Sponsor Details.
+	 *
+	 * @return the Sponsor Details
+	 */
+	@Override
+	public String getSponsorDetails() {
+		return sponsorDetails;
+	}
 }

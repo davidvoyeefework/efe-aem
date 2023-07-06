@@ -172,10 +172,18 @@
                             </div>
 
                             <div class="button cmp-button--button-primary cmp-button--center cmp-button-- cmp-button--">
-                                <a type="button" class="cmp-button" href="${model.ctaLink}" target="${model.ctaTarget}">
-                                    <span class="cmp-button__text">${model.ctaTitle}</span>
-                                </a>
-                            </div>                    </div>
+                                <sly data-sly-test="${model.ctaLink}">
+                                    <a type="button" class="cmp-button" href="${model.ctaLink}" target="${model.ctaTarget}">
+                                        <span class="cmp-button__text">${model.ctaTitle}</span>
+                                    </a>
+                                </sly>
+                                <sly data-sly-test="${model.sponsorDetails}">
+                                    <div class="cmp-text">
+                                        ${model.sponsorDetails @ context = 'html'}
+                                    </div>
+                                </sly>
+                            </div>
+                        </div>
 
                         <div class="container responsivegrid" id="efe-global-nav-header">
                             <div id="container-99d779a4e6" class="cmp-container cmp-container--bg-efe-gray-light">
