@@ -3,7 +3,12 @@
     data-sly-set.unbounceclass="${properties.isUnbounceHeader ? 'sponsor-header' : ''}"
     data-sly-set.unbounceapi="${properties.isUnbounceHeader ? 'https://www.feitest.com/api/v1/pageframe/?namespace=landing-flow' : false}"
     class="header ${unbounceclass}" data-component="header" id="${model.id}" data-page-frame-api="${unbounceapi}">
-
+    <sly data-sly-test="${properties.isUnbounceHeader}">
+        <div id="unbounce-properties" 
+             data-frame-api="https://www.feitest.com/api/v1/pageframe/?namespace=landing-flow"
+             data-variables='[{"{sponsorName}":"header.sponsorName"}, {"{supportHour}":"header.supportHour"},"{supportPhone}":"header.supportPhone"]'>
+        </div>
+    </sly>
     <div class="container responsivegrid" id="efe-global-nav-header">
         <div id="container-99d779a4e6" class="cmp-container cmp-container--bg-efe-gray-light">
             <div class="container responsivegrid" id="efe-nav-search">
@@ -28,8 +33,6 @@
                             </script>
                         </section>
                     </div>
-
-
 
                     <div class="image cmp-image--close cmp-image--" id="search-close">
                         <div
