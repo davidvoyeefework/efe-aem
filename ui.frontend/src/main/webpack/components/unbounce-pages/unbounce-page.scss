@@ -1,0 +1,34 @@
+.sponsor-header {
+    .cmp-image--efe-logo-primary {
+        &:nth-child(3) {
+            a {
+                background-size: contain;
+                width: 14.1875rem;
+                height: 2.5625rem;
+                display: block;
+                background-repeat: no-repeat;
+                .cmp-image__image {
+                    opacity: 0;
+                }
+            }
+        }
+    }
+    &.sponsor--Boeing {
+        .cmp-image--efe-logo-primary {
+            &:nth-child(3) {
+                a {
+                    background-image: url(https://www.financialengines.com/app/landing-utils/images/logos/sponsors/boeingxrx-2023.png);
+                }
+            }
+        }
+    }
+    &.sponsor--ATT {
+        .cmp-image--efe-logo-primary {
+            &:nth-child(3) {
+                a {
+                    background-image: url(https://images.financialengines.com/public-assets/images/logos/sponsors/att-small.png);
+                }
+            }
+        }
+    }
+}

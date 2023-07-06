@@ -78,6 +78,14 @@
 												text="Open CTA in new tab"
 												uncheckedValue="_self"
 												value="_blank"/>
+                                            <unbounceheader
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                fieldDescription="Check to enable unbounce header"
+                                                name="./isUnbounceHeader"
+                                                text="Unbounce Header ?"
+                                                uncheckedValue="false"
+                                                value="true"/>
 											<disablesearch
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
