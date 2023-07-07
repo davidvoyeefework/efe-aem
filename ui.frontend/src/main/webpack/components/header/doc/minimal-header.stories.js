@@ -9,6 +9,7 @@ export default {
 const TemplateMinimalHeader = (args) => MinimalHeader({ ...args });
 TemplateMinimalHeader.bind({});
 TemplateMinimalHeader.args = {
-  'with-two-logos': false
+  'with-two-logos': false,
+  'sponsor-logo': true
 }
 export { TemplateMinimalHeader };

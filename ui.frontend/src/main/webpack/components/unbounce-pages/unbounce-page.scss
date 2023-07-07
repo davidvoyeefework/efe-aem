@@ -1,7 +1,4 @@
 .sponsor-header {
-    .sponsor-value-hide {
-        display: none;
-    }
     .cmp-text {
         p {
             @include body-02;
@@ -11,7 +8,7 @@
         display: none;
     }
     .cmp-image--efe-logo-primary {
-        &:nth-child(3) {
+        &.sponsor-logo {
             a {
                 background-size: contain;
                 width: 14.1875rem;
@@ -26,7 +23,7 @@
     }
     &.sponsor--Boeing {
         .cmp-image--efe-logo-primary {
-            &:nth-child(3) {
+            &.sponsor-logo {
                 a {
                     background-image: url(https://www.financialengines.com/app/landing-utils/images/logos/sponsors/boeingxrx-2023.png);
                 }
@@ -35,7 +32,7 @@
     }
     &.sponsor--Ford {
         .cmp-image--efe-logo-primary {
-            &:nth-child(3) {
+            &.sponsor-logo {
                 a {
                     background-image: url(https://images.financialengines.com/public-assets/images/logos/sponsors/ford-small.png);
                 }
@@ -44,11 +41,21 @@
     }
     &.sponsor--ATT {
         .cmp-image--efe-logo-primary {
-            &:nth-child(3) {
+            &.sponsor-logo {
                 a {
                     background-image: url(https://images.financialengines.com/public-assets/images/logos/sponsors/att-small.png);
                 }
             }
         }
+    }
+}
+.sponsor-value-hide {
+    display: none;
+}
+.unbounce-footer-modal {
+    .cmp-modal {
+        text-align: left;
+        padding: 20px;
+        * { font-family: $font-nimbus-pro; }
     }
 }
