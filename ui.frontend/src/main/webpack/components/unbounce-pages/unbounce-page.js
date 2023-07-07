@@ -28,17 +28,17 @@ export default class UnbouncePage {
 
         const sponsorData = await response?.json();
         console.log('loading complated');
-        this.changeHeaderValues(sponsorData?.header);
+        this.changeHeaderValues(sponsorData);
         console.log(sponsorData);
     }
     changeHeaderValues(data) {
         document.querySelector('.sponsor-header').classList.add('sponsor--'+data?.sponsorName)
         const headerDataVariables = document.querySelector('#unbounce-properties').getAttribute('data-variables');
         JSON.parse(headerDataVariables).forEach((item)=>{
-            const elem = document.querySelector('.'+Object.keys(item))
+            const elem = document.querySelector('.'+Object.keys(item));
             if(elem) {
                 elem.classList.remove("sponsor-value-hide");
-                elem.innerHTML = data[Object.keys(item)];
+                elem.innerHTML = eval('data.'+item[Object.keys(item)]);
             }
         })
         let supportPhoneText = document.querySelector('#efe-global-nav-header .cmp-button__text');
@@ -48,5 +48,11 @@ export default class UnbouncePage {
             supportPhoneLink.setAttribute("href", 'tel:'+data?.supportPhone);
             supportPhoneText.innerHTML = data?.supportHour+'<br>'+data?.supportPhonePrefix+' '+data?.supportPhone+'<br>'+data?.supportPhoneSuffix;
         }
+    }
+    changeFooterValues(data) {
+        document.querySelectorAll('.unbounce-footer-links .cmp-list__item-link').forEach((item)=>{
+            //item.innerHTML = "test"
+            //console.log(item)
+        })
     }
 }
