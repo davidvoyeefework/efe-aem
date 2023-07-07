@@ -1,7 +1,7 @@
 <sly data-sly-use.model="com.efe.core.models.Header"/>
 <header
     data-sly-set.unbounceclass="${properties.isUnbounceHeader ? 'sponsor-header minimal-header--with-two-logos' : ''}"
-    class="header ${unbounceclass} sponsor--Boeing" data-component="header" id="${model.id}">
+    class="header ${unbounceclass}" data-component="header" id="${model.id}">
     <sly data-sly-test="${properties.isUnbounceHeader}">
         <div id="unbounce-properties"
              data-frame-api="https://www.feitest.com/api/v1/pageframe/?namespace=landing-flow"
@@ -136,7 +136,7 @@
                     </div>
 
                     
-                    <div data-sly-test="${properties.isUnbounceHeader}" class="image cmp-image--efe-logo-primary cmp-image--small" id="header-logo">
+                    <div data-sly-test="${properties.isUnbounceHeader}" class="image cmp-image--efe-logo-primary sponsor-logo cmp-image--small" id="header-logo">
                         <div
                                 data-asset-id="45c6ee92-90e1-4af2-af69-b6dcbc7daeb7"
                                 id="image-72c95dc7ac"
