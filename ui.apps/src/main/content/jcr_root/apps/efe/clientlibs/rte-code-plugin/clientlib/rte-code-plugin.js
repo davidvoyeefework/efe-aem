@@ -37,7 +37,7 @@
     }
 
     function setWidgetValue(form, selector, value, enable){
-		debugger;
+	
         Coral.commons.ready(form.querySelector(selector), function (field) {
             if(field.tagName == "CORAL-CHECKBOX"){
                 if(value == "true"){
@@ -71,7 +71,7 @@
     }
 
     function sentTextAttributes(){
-		debugger;
+		
         var message = {
             sender: SENDER,
             action: "submit",
@@ -96,7 +96,7 @@
     }
 
     function getParent() {
-		debugger;
+	
         if (window.opener) {
             return window.opener;
         }
@@ -111,7 +111,7 @@
     addDialogTemplate();
 
     function addDialogTemplate(){
-		debugger;
+		
         var url = Granite.HTTP.externalize(FONT_SELECTOR_URL) + "?" + REQUESTER + "=" + SENDER;
 
         var html = "<iframe width='600px' height='450px' frameBorder='0' src='" + url + "'></iframe>";
@@ -157,7 +157,7 @@
     });
 
     function addPlugin(){
-		debugger;
+	
         var EAEMTouchUIFontPlugin = new Class({
 			
             toString: "EAEMTouchUIFontPlugin",
@@ -187,7 +187,7 @@
             },
 
             execute: function (pluginCommand, value, envOptions) {
-				debugger;
+				
                 var context = envOptions.editContext,
                     ek = this.editorKernel;
 
@@ -243,7 +243,7 @@
                 }
 
                 function receiveMessage(event) {
-					debugger;
+					
                     event = event.originalEvent || {};
 
                     if (_.isEmpty(event.data)) {
@@ -362,7 +362,10 @@
                 }
 
                 nodeList.surround(execDef.editContext, tagObj.tag, tagObj.attributes);
-                document.getElementsByClassName(tagObj.attributes.class)[0].innerHTML = "{"+tagObj.attributes.class+"}"
+               // document.getElementsByClassName(tagObj.attributes.class)[0].innerHTML = "{"+tagObj.attributes.class+"}";
+               console.log("hi");
+               $document.find("."+tagObj.attributes.class).html("{"+tagObj.attributes.class+"}");
+               $document.find("."+tagObj.attributes.class).addClass("sponsor-value-hide");
 
             },
 

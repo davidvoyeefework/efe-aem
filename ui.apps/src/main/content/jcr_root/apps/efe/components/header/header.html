@@ -1,12 +1,11 @@
 <sly data-sly-use.model="com.efe.core.models.Header"/>
 <header
-    data-sly-set.unbounceclass="${properties.isUnbounceHeader ? 'sponsor-header' : ''}"
-    data-sly-set.unbounceapi="${properties.isUnbounceHeader ? 'https://www.feitest.com/api/v1/pageframe/?namespace=landing-flow' : false}"
-    class="header ${unbounceclass}" data-component="header" id="${model.id}" data-page-frame-api="${unbounceapi}">
+    data-sly-set.unbounceclass="${properties.isUnbounceHeader ? 'sponsor-header minimal-header--with-two-logos' : ''}"
+    class="header ${unbounceclass} sponsor--Boeing" data-component="header" id="${model.id}">
     <sly data-sly-test="${properties.isUnbounceHeader}">
-        <div id="unbounce-properties" 
+        <div id="unbounce-properties"
              data-frame-api="https://www.feitest.com/api/v1/pageframe/?namespace=landing-flow"
-             data-variables='[{"{sponsorName}":"header.sponsorName"}, {"{supportHour}":"header.supportHour"},"{supportPhone}":"header.supportPhone"]'>
+             data-variables='[{"sponsorName":"header.sponsorName"}, {"supportHour":"header.supportHour"},{"supportPhone":"header.supportPhone"},{"supportPhoneText":"header.supportPhoneText"}]'>
         </div>
     </sly>
     <div class="container responsivegrid" id="efe-global-nav-header">
@@ -135,6 +134,35 @@
                             <meta itemprop="caption" content="Snowy mountain glacier" />
                         </div>
                     </div>
+
+                    
+                    <div data-sly-test="${properties.isUnbounceHeader}" class="image cmp-image--efe-logo-primary cmp-image--small" id="header-logo">
+                        <div
+                                data-asset-id="45c6ee92-90e1-4af2-af69-b6dcbc7daeb7"
+                                id="image-72c95dc7ac"
+                                class="cmp-image"
+                                itemscope=""
+                                itemtype="http://schema.org/ImageObject"
+                        >
+                            <a
+                                    class="cmp-image__link"
+                                    href="${model.logoLink}"
+                                    target="${model.logoTarget}"
+
+                            >
+                                <img
+                                        src=""
+                                        loading="lazy"
+                                        class="cmp-image__image"
+                                        itemprop="contentUrl"
+                                        alt=""
+                                        title="secondarylogo"
+                                />
+                            </a>
+                            <meta itemprop="caption" content="Snowy mountain glacier" />
+                        </div>
+                    </div>
+
                     <button id="nav-hamburger" aria-expanded="false" aria-label="main menu" class="top-bar__hamburger-button" data-analytics-trigger="cta-hamburger">
                         <svg id="top-hamburger-line" width="24px" height="3px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="top-bar__hamburger-button-line-wrapper top-bar__hamburger-button-line-wrapper--top">
                             <line stroke="#7A7D82" stroke-width="3" x1="0" x2="24" y1="0" y2="0" class="top-bar__hamburger-button-line top-bar__hamburger-button-line--top"></line>

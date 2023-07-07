@@ -25,5 +25,6 @@
     <filter root="/conf/global/settings/workflow/models" mode="update"/>
     <filter root="/content/cq:graphql/efe" mode="update_properties"/>
     <filter root="/etc/acs-commons/lists/efe" mode="merge_properties"/>
+    <filter root="/etc/acs-commons/lists/fe" mode="merge_properties"/>
     <filter root="/var/workflow/models" mode="update"/>
 </workspaceFilter>
