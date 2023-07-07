@@ -34,7 +34,7 @@ export default class UnbouncePage {
         console.log(sponsorData);
     }
     changeHeaderValues(data) {
-        document.querySelector('.sponsor-header').classList.add('sponsor--'+data?.sponsorName)
+        document.querySelector('.sponsor-header').classList.add('sponsor--'+data?.header?.sponsorName)
         const headerDataVariables = document.querySelector('#unbounce-properties').getAttribute('data-variables');
         JSON.parse(headerDataVariables).forEach((item)=>{
             const elems = document.querySelectorAll('.'+Object.keys(item));
