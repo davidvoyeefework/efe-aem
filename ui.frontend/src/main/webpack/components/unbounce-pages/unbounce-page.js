@@ -14,9 +14,7 @@ export default class UnbouncePage {
     }
     async fetchSponsorData() {
         console.log('loading');
-        //const apiHost = window.location.hostname+':3000';
-        // https://www.feitest.com/api/v1/pageframe/?namespace=landing-flow
-        const apiHost = document.querySelector('#unbounce-properties').getAttribute('data-frame-api');//'http://localhost:3000';//document.querySelector('.sponsor-header').getAttribute('data-page-frame-api');
+        const apiHost = document.querySelector('#unbounce-properties')?.getAttribute('data-frame-api');//'http://localhost:3000';//document.querySelector('.sponsor-header').getAttribute('data-page-frame-api');
         const response = await fetch(`${apiHost}`,{
             method: 'GET',
             mod: "no-cors",
@@ -34,8 +32,8 @@ export default class UnbouncePage {
         console.log(sponsorData);
     }
     changeHeaderValues(data) {
-        document.querySelector('.sponsor-header').classList.add('sponsor--'+data?.header?.sponsorName)
-        const headerDataVariables = document.querySelector('#unbounce-properties').getAttribute('data-variables');
+        document.querySelector('.sponsor-header')?.classList.add('sponsor--'+data?.header?.sponsorName)
+        const headerDataVariables = document.querySelector('#unbounce-properties')?.getAttribute('data-variables');
         JSON.parse(headerDataVariables).forEach((item)=>{
             const elems = document.querySelectorAll('.'+Object.keys(item));
             elems?.forEach((ele)=>{
@@ -46,6 +44,9 @@ export default class UnbouncePage {
     }
     changeFooterValues(data) {
         const litUlElement = document.querySelector('.unbounce-footer-links .cmp-list');
+        if(!litUlElement) {
+            return
+        }
         litUlElement.innerHTML = " ";
         data?.footer?.footerLinks.forEach((item)=>{
             let liElem = document.createElement('li');
