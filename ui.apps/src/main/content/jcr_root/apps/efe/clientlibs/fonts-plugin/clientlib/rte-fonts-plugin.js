@@ -218,7 +218,7 @@
                 tbGenerator.addElement(GROUP, plg.Plugin.SORT_FORMAT, this.pickerUI, 10);
 
                 var groupFeature = GROUP + "#" + FONT_FEATURE;
-                tbGenerator.registerIcon(groupFeature, "colorPalette");
+                tbGenerator.registerIcon(groupFeature, "brackets");
             },
 
             notifyPluginConfig: function (pluginConfig) {

@@ -3,7 +3,7 @@
     jcr:primaryType="cq:Page">
     <jcr:content
         cq:deviceGroups="[mobile/groups/responsive]"
-        cq:template="/conf/efe/settings/wcm/templates/content-template-mini-header-and-footer1"
+        cq:template="/conf/efe/settings/wcm/templates/unbounce-page"
         jcr:primaryType="cq:PageContent"
         sling:resourceType="efe/components/page">
         <root
