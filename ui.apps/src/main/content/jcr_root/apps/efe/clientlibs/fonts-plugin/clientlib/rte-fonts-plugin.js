@@ -6,7 +6,7 @@
         EAEM_APPLY_FONT_DIALOG = "eaemTouchUIApplyFontDialog",
         SENDER = "eaem-aem", REQUESTER = "requester", $eaemFontPicker,
         CANCEL_CSS = "[data-foundation-wizard-control-action='cancel']",
-        FONT_SELECTOR_URL = "/apps/efe/clientlibs/fonts-plugin/font-selector.html",
+        FONT_SELECTOR_URL = "/conf/efe/settings/font-selector.html",
         MOBILE_HIDE_CONTENT_CLASS = "eaem--content-mobile-hide",
         DESKTOP_HIDE_CONTENT_CLASS = "eaem--content-desktop-hide",
         TABLET_HIDE_CONTENT_CLASS = "eaem--content-tablet-hide",
