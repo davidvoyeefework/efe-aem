@@ -41,8 +41,8 @@ export default class UnbouncePage {
     }
     async fetchAggregateData() {
         const daVarsStr = this.getCookie('daVars');
-        const daVars = JSON.parse(decodeURIComponent(daVarsStr));
-        if(!daVars.sponsorId) {
+        const daVars = daVarsStr?JSON.parse(decodeURIComponent(daVarsStr)):null;
+        if(!daVars||!daVars.sponsorId) {
             return
         }
         let apiUrl = document.querySelector('#unbounce-properties')?.getAttribute('data-aggregate-api');
@@ -76,7 +76,7 @@ export default class UnbouncePage {
     changeHeaderValues(data) {
         document.querySelector('.sponsor-header')?.classList.add('sponsor--'+data?.header?.sponsorName)
         const headerDataVariables = document.querySelector('#unbounce-properties')?.getAttribute('data-variables');
-        JSON.parse(headerDataVariables).forEach((item)=>{
+        JSON.parse(headerDataVariables)?.forEach((item)=>{
             const elems = document.querySelectorAll('.'+Object.keys(item));
             elems?.forEach((ele)=>{
                 ele.classList.remove("sponsor-value-hide");
