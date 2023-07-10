@@ -40,8 +40,13 @@ export default class UnbouncePage {
         }
     }
     async fetchAggregateData() {
-        console.log('loading');
-        const apiHost = document.querySelector('#unbounce-properties')?.getAttribute('data-aggregate-api');//'http://localhost:3000';//document.querySelector('.sponsor-header').getAttribute('data-page-frame-api');
+        const daVarsStr = this.getCookie('daVars');
+        const daVars = JSON.parse(decodeURIComponent(daVarsStr));
+        if(!daVars.sponsorId) {
+            return
+        }
+        let apiUrl = document.querySelector('#unbounce-properties')?.getAttribute('data-aggregate-api');
+        let apiHost = apiUrl.replace('{Recordkeeper}', daVars.sponsorId);
         const response = await fetch(`${apiHost}`,{
             method: 'GET',
             mod: "no-cors",
@@ -59,6 +64,15 @@ export default class UnbouncePage {
             console.log(sponsorData.statusText,"something went wrong")
         }
     }
+    getCookie(name) {
+        if (typeof document !== 'undefined') {
+          var value = '; ' + document.cookie;
+          var parts = value.split('; ' + name + '=');
+          if (parts.length === 2) {
+            return parts.pop().split(';').shift();
+          }
+        }
+      };
     changeHeaderValues(data) {
         document.querySelector('.sponsor-header')?.classList.add('sponsor--'+data?.header?.sponsorName)
         const headerDataVariables = document.querySelector('#unbounce-properties')?.getAttribute('data-variables');
@@ -75,7 +89,6 @@ export default class UnbouncePage {
         if(!litUlElement) {
             return
         }
-        //litUlElement.innerHTML = " ";
         data?.footer?.footerLinks.forEach((item)=>{
             let liElem = document.createElement('li');
             liElem.classList.add('cmp-list__item')
