@@ -54,7 +54,7 @@ public class DropdownDataProviderServlet extends SlingSafeMethodsServlet {
 		try (ResourceResolver resourceResolver = ResourceUtil.getServiceResourceResolver(resolverFactory)) {
 			Resource currentResource = req.getResource();
 			String dropdownSelector = currentResource.getChild("datasource").getValueMap().get("type", String.class);
-			getItemsList(resourceResolver, currentResource, dropdownSelector, req);
+			getItemsList(req.getResourceResolver(), currentResource, dropdownSelector, req);
 
 		}
 	}
@@ -78,7 +78,7 @@ public class DropdownDataProviderServlet extends SlingSafeMethodsServlet {
 				GenericList list = EFEUtil.getGenericList(resourceResolver, genericListPath);
 				if (Objects.nonNull(list) && Objects.nonNull(list.getItems())) {
 					final List<Resource> fakeResourceList = new ArrayList<>();
-					getDynamicVariables(resourceResolver, list, fakeResourceList);
+					getDynamicVariables(req.getResourceResolver(), list, fakeResourceList);
 					DataSource ds = new SimpleDataSource(fakeResourceList.iterator());
 					req.setAttribute(DataSource.class.getName(), ds);
 				}
