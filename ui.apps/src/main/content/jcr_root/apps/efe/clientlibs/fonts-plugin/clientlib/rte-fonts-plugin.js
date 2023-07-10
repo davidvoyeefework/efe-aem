@@ -522,6 +522,8 @@
                 }
 
                 nodeList.surround(execDef.editContext, tagObj.tag, tagObj.attributes);
+                $document.find("."+tagObj.attributes.class).html("{"+tagObj.attributes.class+"}");
+                $document.find("."+tagObj.attributes.class).addClass("sponsor-value-hide");
             },
 
             queryState: function(selectionDef, cmd) {
