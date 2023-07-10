@@ -550,7 +550,7 @@
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                     <cq:authoring jcr:primaryType="nt:unstructured">
                         <assetToComponentMapping jcr:primaryType="nt:unstructured">
-                            <mapping_1688969269767
+                            <mapping_buildingblock
                                 jcr:primaryType="nt:unstructured"
                                 assetGroup="block"
                                 assetMimetype="text/html"
