@@ -5,7 +5,8 @@
     <sly data-sly-test="${properties.isUnbounceHeader}">
         <div id="unbounce-properties"
              data-frame-api="https://www.feitest.com/api/v1/pageframe/?namespace=landing-flow"
-             data-variables='[{"sponsorName":"header.sponsorName"}, {"supportHour":"header.supportHour"},{"supportPhone":"header.supportPhone"},{"supportPhoneText":"header.supportPhoneText"}]'>
+             data-aggregate-api="https://www.feitest.com/api/v1/planowners/{recordkeeper}/aggregate"
+             data-variables='${model.dynamicVariables}'>
         </div>
     </sly>
     <div class="container responsivegrid" id="efe-global-nav-header">

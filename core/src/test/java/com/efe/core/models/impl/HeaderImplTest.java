@@ -1,21 +1,25 @@
 package com.efe.core.models.impl;
 
 import com.efe.core.models.Header;
+import com.efe.core.services.EfeService;
 import com.efe.core.services.impl.DynamicMediaServiceImpl;
 import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolverFactory;
 import org.apache.sling.testing.mock.sling.servlet.MockSlingHttpServletRequest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * The Class HeaderModelImplTest.
  */
-@ExtendWith(AemContextExtension.class)
+@ExtendWith({AemContextExtension.class, MockitoExtension.class} )
 class HeaderImplTest {
 
 	/** The Constant RESOURCE_CONTENT. */
@@ -39,6 +43,9 @@ class HeaderImplTest {
 	/** The DynamicMediaServiceImpl. */
 	private DynamicMediaServiceImpl dynamicMediaService = new DynamicMediaServiceImpl();
 
+	@Mock
+	ResourceResolverFactory factory;
+	
 	/**
 	 * Sets the up.
 	 */
@@ -48,6 +55,10 @@ class HeaderImplTest {
 		MockSlingHttpServletRequest request = aemContext.request();
 		aemContext.load().json(RESOURCE_CONTENT, TEST_CONTENT_ROOT);
 		aemContext.registerInjectActivateService(dynamicMediaService);
+		
+		aemContext.registerService(ResourceResolverFactory.class, factory);
+		
+		
 		aemContext.addModelsForClasses(modelClass);
 		resource = aemContext.currentResource(RESOURCE);
 		model = aemContext.request().adaptTo(modelClass);

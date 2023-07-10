@@ -7,10 +7,10 @@ import java.util.Objects;
 
 import javax.annotation.PostConstruct;
 
-import com.efe.core.services.DynamicMediaService;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.api.resource.ResourceResolverFactory;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
@@ -19,11 +19,18 @@ import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
+import com.adobe.acs.commons.genericlists.GenericList;
+import com.adobe.acs.commons.genericlists.GenericList.Item;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.efe.core.models.Header;
 import com.efe.core.models.multifield.Link;
+import com.efe.core.services.DynamicMediaService;
 import com.efe.core.utils.EFEUtil;
 import com.efe.core.utils.LinkUtil;
+import com.efe.core.utils.ResourceUtil;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 /**
  * The Class HeaderImpl.
@@ -56,6 +63,10 @@ public class HeaderImpl implements Header {
 	 */
 	@OSGiService
 	private DynamicMediaService dynamicMediaService;
+
+	/** The resolver factory. */
+	@OSGiService
+	private ResourceResolverFactory resolverFactory;
 
 	/** The id. */
 	@ValueMapValue
@@ -128,6 +139,8 @@ public class HeaderImpl implements Header {
 	@ValueMapValue
 	private String sponsorDetails;
 
+	private String dynamicVariables;
+
 	/** The header list. */
 	@ChildResource
 	private List<Link> headerList;
@@ -140,6 +153,32 @@ public class HeaderImpl implements Header {
 		if (null != request) {
 			request.setAttribute("logo", fileReference);
 			request.setAttribute("contactNumber", contactNumber);
+
+			setUnbounceField();
+		}
+	}
+
+	/**
+	 * Sets the unbounce field.
+	 */
+	private void setUnbounceField() {
+		try (ResourceResolver serviceResolver = ResourceUtil.getServiceResourceResolver(resolverFactory)) {
+			GenericList list = EFEUtil.getGenericList(serviceResolver, "/etc/acs-commons/lists/fe/sponsor-details");
+			
+			if(null == list) {
+				return;
+			}
+			
+			JsonArray array = new JsonArray();
+			for (Item item : list.getItems()) {
+				JsonObject dynamicVariable = new JsonObject();
+				String[] values = item.getValue().split("\\|");
+				if (values.length == 2) {
+					dynamicVariable.addProperty(values[0], values[1]);
+				}
+				array.add(dynamicVariable);
+			}		
+			dynamicVariables = new Gson().toJson(array);
 		}
 	}
 
@@ -339,5 +378,15 @@ public class HeaderImpl implements Header {
 	@Override
 	public String getSponsorDetails() {
 		return sponsorDetails;
+	}
+
+	/**
+	 * Gets the dynamic variables.
+	 *
+	 * @return the dynamicVariables
+	 */
+	@Override
+	public String getDynamicVariables() {
+		return dynamicVariables;
 	}
 }

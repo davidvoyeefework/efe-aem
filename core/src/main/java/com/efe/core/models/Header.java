@@ -141,4 +141,11 @@ public interface Header {
 	 * @return the Sponsor Details
 	 */
 	String getSponsorDetails();
+
+	/**
+	 * Gets the dynamic variables.
+	 *
+	 * @return the dynamicVariables
+	 */
+	String getDynamicVariables();
 }
