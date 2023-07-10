@@ -9,6 +9,9 @@ export default class UnbouncePage {
         //     },
         //   }));
         window.addEventListener("load", (event) => {
+           if(!document.querySelector('.sponsor-header')) {
+            return 
+           }
             this.fetchSponsorData();
         })
     }
@@ -47,7 +50,7 @@ export default class UnbouncePage {
         if(!litUlElement) {
             return
         }
-        litUlElement.innerHTML = " ";
+        //litUlElement.innerHTML = " ";
         data?.footer?.footerLinks.forEach((item)=>{
             let liElem = document.createElement('li');
             liElem.classList.add('cmp-list__item')
