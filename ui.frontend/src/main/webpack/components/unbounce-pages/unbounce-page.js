@@ -13,6 +13,7 @@ export default class UnbouncePage {
             return 
            }
             this.fetchSponsorData();
+            this.fetchAggregateData();
         })
     }
     async fetchSponsorData() {
@@ -26,13 +27,37 @@ export default class UnbouncePage {
                 'Accept': 'application/json, text/plain, */*',
                 'X-Spa-Name':'landing-flow',
             },
-        }).catch((err)=>console.log(err));
-
-        const sponsorData = await response?.json();
-        console.log('loading complated');
-        this.changeHeaderValues(sponsorData);
-        this.changeFooterValues(sponsorData);
-        console.log(sponsorData);
+        });
+        const sponsorData =  response;
+        if(sponsorData.status === 200) {
+            const Data = await sponsorData?.json();
+            console.log('loading complated');
+            this.changeHeaderValues(Data);
+            this.changeFooterValues(Data);
+            console.log(Data);
+        } else {
+            console.log(sponsorData.statusText,"something went wrong")
+        }
+    }
+    async fetchAggregateData() {
+        console.log('loading');
+        const apiHost = document.querySelector('#unbounce-properties')?.getAttribute('data-aggregate-api');//'http://localhost:3000';//document.querySelector('.sponsor-header').getAttribute('data-page-frame-api');
+        const response = await fetch(`${apiHost}`,{
+            method: 'GET',
+            mod: "no-cors",
+            credentials: "include",
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+            },
+        });
+        const sponsorData =  response;
+        if(sponsorData.status === 200) {
+            const Data = await sponsorData?.json();
+            console.log('loading complated');
+            console.log(Data);
+        } else {
+            console.log(sponsorData.statusText,"something went wrong")
+        }
     }
     changeHeaderValues(data) {
         document.querySelector('.sponsor-header')?.classList.add('sponsor--'+data?.header?.sponsorName)
