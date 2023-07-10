@@ -14,7 +14,7 @@ RewriteRule ^/locations/fl/tampa-2d-east/ /location.FL.Tampa-East [R=301,NC,L]
 RewriteRule ^/locations/fl/tampa-2d-westshore/ /location.FL.Tampa-Westshore [R=301,NC,L]
 RewriteRule ^/locations/tx/houston-2d-clear-lake-2f-league-city/ /location.TX.Houston-Clear-Lake-League-City [R=301,NC,L]
 RewriteRule ^/locations/tx/houston-2d-galleria/ /location.TX.Houston-Galleria [R=301,NC,L]
-RewriteRule ^/locations/national-advisor-center/ /location.AZ.National-Advisor-Center [R=301,NC,L]
+RewriteRule ^/locations/national-advisor-center/ /locations/national-advisor-center [R=301,NC,L]
 
 # Planners with first alias name
 RewriteRule ^/financial-planners/Aaron-Cherry-179/ /financial-planner.Johnathan.Cherry.179 [R=301,NC,L]
