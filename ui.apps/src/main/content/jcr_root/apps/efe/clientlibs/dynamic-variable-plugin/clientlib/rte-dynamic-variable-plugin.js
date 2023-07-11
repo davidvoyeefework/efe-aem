@@ -1,10 +1,10 @@
 (function($, CUI, $document){
-    var GROUP = "eaem-aem-fonts",
-        FONT_FEATURE = "applyFont",
-        EAEM_APPLY_FONT_DIALOG = "eaemTouchUIApplyFontDialog",
-        SENDER = "eaem-aem", REQUESTER = "requester", $eaemFontPicker,
+    var GROUP = "efe-aem-dynamic-variable",
+        DYNAMIC_VARIABLE_FEATURE = "applyDynamicVariable",
+        EFE_APPLY_DYNAMIC_VARIABLE_DIALOG = "efeTouchUIApplyDynamicVariableDialog",
+        SENDER = "efe-aem", REQUESTER = "requester", $eaemFontPicker,
         CANCEL_CSS = "[data-foundation-wizard-control-action='cancel']",
-        FONT_SELECTOR_URL = "/apps/efe/clientlibs/fonts-plugin/assetpicker.html",
+        FONT_SELECTOR_URL = "/apps/efe/clientlibs/dynamic-variable-plugin/assetpicker.html",
         url = document.location.pathname;
 
     if( url.indexOf(FONT_SELECTOR_URL) == 0 ){
@@ -121,14 +121,14 @@
         }
 
         try{
-            CUI.rte.templates['dlg-' + EAEM_APPLY_FONT_DIALOG] = CUI.rte.Templates['dlg-' + EAEM_APPLY_FONT_DIALOG] = Handlebars.compile(html);
+            CUI.rte.templates['dlg-' + EFE_APPLY_DYNAMIC_VARIABLE_DIALOG] = CUI.rte.Templates['dlg-' + EFE_APPLY_DYNAMIC_VARIABLE_DIALOG] = Handlebars.compile(html);
         }catch(err){
             console.log("Ignoring font plugin error", err);
         }
     }
 
     function addPluginToDefaultUISettings(){
-        var groupFeature = GROUP + "#" + FONT_FEATURE,
+        var groupFeature = GROUP + "#" + DYNAMIC_VARIABLE_FEATURE,
             toolbar = CUI.rte.ui.cui.DEFAULT_UI_SETTINGS.dialogFullScreen.toolbar;
 
         if(toolbar.includes(groupFeature)){
@@ -138,30 +138,30 @@
         toolbar.splice(3, 0, groupFeature);
     }
 
-    var EAEMApplyFontDialog = new Class({
+    var EFEApplyDynamicVariableDialog = new Class({
         extend: CUI.rte.ui.cui.AbstractDialog,
 
-        toString: "EAEMApplyFontDialog",
+        toString: "EFEApplyDynamicVariableDialog",
 
         initialize: function(config) {
             this.exec = config.execute;
         },
 
         getDataType: function() {
-            return EAEM_APPLY_FONT_DIALOG;
+            return EFE_APPLY_DYNAMIC_VARIABLE_DIALOG;
         }
     });
 
     function addPlugin(){
-        var EAEMTouchUIFontPlugin = new Class({
-            toString: "EAEMTouchUIFontPlugin",
+        var EFETouchUIDynamicVariablePlugin = new Class({
+            toString: "EFETouchUIDynamicVariablePlugin",
 
             extend: CUI.rte.plugins.Plugin,
 
             pickerUI: null,
 
             getFeatures: function() {
-                return [ FONT_FEATURE ];
+                return [ DYNAMIC_VARIABLE_FEATURE ];
             },
 
             initializeUI: function(tbGenerator) {
@@ -169,14 +169,14 @@
 
                 addPluginToDefaultUISettings();
 
-                if (!this.isFeatureEnabled(FONT_FEATURE)) {
+                if (!this.isFeatureEnabled(DYNAMIC_VARIABLE_FEATURE)) {
                     return;
                 }
 
-                this.pickerUI = tbGenerator.createElement(FONT_FEATURE, this, false, { title: "Select Font..." });
+                this.pickerUI = tbGenerator.createElement(DYNAMIC_VARIABLE_FEATURE, this, false, { title: "Select Font..." });
                 tbGenerator.addElement(GROUP, plg.Plugin.SORT_FORMAT, this.pickerUI, 10);
 
-                var groupFeature = GROUP + "#" + FONT_FEATURE;
+                var groupFeature = GROUP + "#" + DYNAMIC_VARIABLE_FEATURE;
                 tbGenerator.registerIcon(groupFeature, "brackets");
             },
 
@@ -184,7 +184,7 @@
                 var context = envOptions.editContext,
                     ek = this.editorKernel;
 
-                if (pluginCommand != FONT_FEATURE) {
+                if (pluginCommand != DYNAMIC_VARIABLE_FEATURE) {
                     return;
                 }
 
@@ -204,16 +204,16 @@
                     $container = CUI.rte.UIUtils.getUIContainer($(context.root)),
                     propConfig = {
                         'parameters': {
-                            'command': this.pluginId + '#' + FONT_FEATURE
+                            'command': this.pluginId + '#' + DYNAMIC_VARIABLE_FEATURE
                         }
                     };
 
-                if(this.eaemApplyFontDialog){
-                    dialog = this.eaemApplyFontDialog;
+                if(this.EFEApplyDynamicVariableDialog){
+                    dialog = this.EFEApplyDynamicVariableDialog;
 
                     dialog.$dialog.find("iframe").attr("src", this.getPickerIFrameUrl(clazz));
                 }else{
-                    dialog = new EAEMApplyFontDialog();
+                    dialog = new EFEApplyDynamicVariableDialog();
 
                     dialog.attach(propConfig, $container, this.editorKernel);
 
@@ -223,7 +223,7 @@
                     dialog.$dialog.find("iframe").attr("src",
                         this.getPickerIFrameUrl(clazz));
 
-                    this.eaemApplyFontDialog = dialog;
+                    this.EFEApplyDynamicVariableDialog = dialog;
                 }
 
                 dm.show(dialog);
@@ -292,7 +292,7 @@
             },
 
             updateState: function(selDef) {
-                var hasUC = this.editorKernel.queryState(FONT_FEATURE, selDef);
+                var hasUC = this.editorKernel.queryState(DYNAMIC_VARIABLE_FEATURE, selDef);
 
                 if (this.pickerUI != null) {
                     this.pickerUI.setSelected(hasUC);
@@ -300,13 +300,13 @@
             }
         });
 
-        var EAEMTouchUIFontCmd = new Class({
-            toString: "EAEMTouchUIFontCmd",
+        var EFETouchUIDynamicVariableCmd = new Class({
+            toString: "EFETouchUIDynamicVariableCmd",
 
             extend: CUI.rte.commands.Command,
 
             isCommand: function (cmdStr) {
-                return (cmdStr.toLowerCase() == FONT_FEATURE);
+                return (cmdStr.toLowerCase() == DYNAMIC_VARIABLE_FEATURE);
             },
 
             getProcessingOptions: function () {
@@ -363,8 +363,8 @@
             }
         });
 
-        CUI.rte.commands.CommandRegistry.register(FONT_FEATURE, EAEMTouchUIFontCmd);
+        CUI.rte.commands.CommandRegistry.register(DYNAMIC_VARIABLE_FEATURE, EFETouchUIDynamicVariableCmd);
 
-        CUI.rte.plugins.PluginRegistry.register(GROUP,EAEMTouchUIFontPlugin);
+        CUI.rte.plugins.PluginRegistry.register(GROUP,EFETouchUIDynamicVariablePlugin);
     }
 }(jQuery, window.CUI,jQuery(document)));
