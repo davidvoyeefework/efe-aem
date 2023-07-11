@@ -12,6 +12,10 @@ export default class UnbouncePage {
            if(!document.querySelector('.sponsor-header')) {
             return 
            }
+            const loaderElem = document.createElement('div');
+            loaderElem.classList.add('loader');
+            document.querySelector('.sponsor-header').appendChild(loaderElem);
+            this.loader = document.querySelector('.loader');
             this.fetchSponsorData();
             this.fetchAggregateData();
         })
@@ -34,6 +38,7 @@ export default class UnbouncePage {
             console.log('loading complated');
             this.changeHeaderValues(Data);
             this.changeFooterValues(Data);
+            this.loader.style.display = 'none';
             console.log(Data);
         } else {
             console.log(sponsorData.statusText,"something went wrong")
@@ -74,9 +79,16 @@ export default class UnbouncePage {
         }
       };
     changeHeaderValues(data) {
-        document.querySelector('.sponsor-header')?.classList.add('sponsor--'+data?.header?.sponsorName)
+        if(data?.header?.sponsorName==='AT&T') {
+            document.querySelector('.sponsor-header')?.classList.add('sponsor--ATT'); 
+        }
+        document.querySelector('.sponsor-header')?.classList.add('sponsor--'+data?.header?.sponsorName);
         const headerDataVariables = document.querySelector('#unbounce-properties')?.getAttribute('data-variables');
         JSON.parse(headerDataVariables)?.forEach((item)=>{
+            console.log(Object.keys(item).length === 0);
+            if(Object.keys(item).length === 0) {
+                return
+            }
             const elems = document.querySelectorAll('.'+Object.keys(item));
             elems?.forEach((ele)=>{
                 ele.classList.remove("sponsor-value-hide");

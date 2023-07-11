@@ -12,6 +12,9 @@
         display: none;
     }
     #efe-nav-main .cmp-container--26 {
+        @include media("<tablet") {
+            gap: 10px;
+        }
         padding: rem(20) rem(24) !important;
     }
     @media screen and (min-width: 1290px) {
