@@ -1,15 +1,10 @@
 (function($, CUI, $document){
     var GROUP = "eaem-aem-fonts",
         FONT_FEATURE = "applyFont",
-        TEXT_COLOR_FEATURE = "textColor",
-        TEXT_BG_COLOR_FEATURE = "textBackgroundColor",
         EAEM_APPLY_FONT_DIALOG = "eaemTouchUIApplyFontDialog",
         SENDER = "eaem-aem", REQUESTER = "requester", $eaemFontPicker,
         CANCEL_CSS = "[data-foundation-wizard-control-action='cancel']",
         FONT_SELECTOR_URL = "/apps/efe/clientlibs/fonts-plugin/assetpicker.html",
-        MOBILE_HIDE_CONTENT_CLASS = "eaem--content-mobile-hide",
-        DESKTOP_HIDE_CONTENT_CLASS = "eaem--content-desktop-hide",
-        TABLET_HIDE_CONTENT_CLASS = "eaem--content-tablet-hide",
         url = document.location.pathname;
 
     if( url.indexOf(FONT_SELECTOR_URL) == 0 ){
@@ -71,16 +66,6 @@
 
         setWidgetValue($form[0], "[name='./style']", queryParams.class, true);
 
-        setWidgetValue($form[0], "[name='./hideOnMobile']", queryParams.hideOnMobile, true);
-
-        setWidgetValue($form[0], "[name='./hideOnTablet']", queryParams.hideOnTablet, true);
-
-        setWidgetValue($form[0], "[name='./hideOnDesktop']", queryParams.hideOnDesktop, true);
-
-        setWidgetValue($form[0], "[name='./color']", queryParams.color, features.includes(TEXT_COLOR_FEATURE));
-
-        setWidgetValue($form[0], "[name='./bgColor']", queryParams.bgColor, features.includes(TEXT_BG_COLOR_FEATURE));
-
         $form.css("background-color", "#fff");
     }
 
@@ -96,21 +81,7 @@
             message.data[$field.attr("name").substr(2)] = $field.val();
         });
 
-        addCheckboxValue(message, $form, "./hideOnDesktop");
-
-        addCheckboxValue(message, $form, "./hideOnTablet");
-
-        addCheckboxValue(message, $form, "./hideOnMobile");
-
         getParent().postMessage(JSON.stringify(message), "*");
-    }
-
-    function addCheckboxValue(message, $form, cbName){
-        var $checkbox = $form.find("coral-checkbox[name='" + cbName + "']");
-
-        if(!_.isEmpty($checkbox)){
-            message.data[$checkbox.attr("name").substr(2)] = $checkbox[0].checked;
-        }
     }
 
     function sendCancelMessage(){
@@ -154,18 +125,6 @@
         }catch(err){
             console.log("Ignoring font plugin error", err);
         }
-    }
-
-    function rgbToHex(color){
-        if(_.isEmpty(color)){
-            return color;
-        }
-
-        if(color.indexOf("rgb") == 0){
-            color = CUI.util.color.RGBAToHex(color);
-        }
-
-        return color;
     }
 
     function addPluginToDefaultUISettings(){
@@ -221,21 +180,6 @@
                 tbGenerator.registerIcon(groupFeature, "brackets");
             },
 
-            notifyPluginConfig: function (pluginConfig) {
-                pluginConfig = pluginConfig || {};
-
-                CUI.rte.Utils.applyDefaults(pluginConfig, {
-                    'tooltips': {
-                        applyFont: {
-                            'title': 'Apply Font',
-                            'text': 'Apply Font to selected text'
-                        }
-                    }
-                });
-
-                this.config = pluginConfig;
-            },
-
             execute: function (pluginCommand, value, envOptions) {
                 var context = envOptions.editContext,
                     ek = this.editorKernel;
@@ -256,8 +200,7 @@
                 }
 
                 var $tag = $(CUI.rte.Common.getTagInPath(context, startNode, "span")),
-                    clazz = $tag.attr("class"), hideOnMobile = false, hideOnDesktop = false, hideOnTablet = false,
-                    size = $tag.css("font-size"),dialog,dm = ek.getDialogManager(),
+                    clazz = $tag.attr("class"),size = $tag.css("font-size"),dialog,dm = ek.getDialogManager(),
                     $container = CUI.rte.UIUtils.getUIContainer($(context.root)),
                     propConfig = {
                         'parameters': {
@@ -265,28 +208,10 @@
                         }
                     };
 
-                if(clazz && clazz.includes(MOBILE_HIDE_CONTENT_CLASS)){
-                    hideOnMobile = true;
-                    clazz = clazz.replace(MOBILE_HIDE_CONTENT_CLASS, "").trim();
-                }
-
-                if(clazz && clazz.includes(TABLET_HIDE_CONTENT_CLASS)){
-                    hideOnTablet = true;
-                    clazz = clazz.replace(TABLET_HIDE_CONTENT_CLASS, "").trim();
-                }
-
-                if(clazz && clazz.includes(DESKTOP_HIDE_CONTENT_CLASS)){
-                    hideOnDesktop = true;
-                    clazz = clazz.replace(DESKTOP_HIDE_CONTENT_CLASS, "").trim();
-                }
-
-                var color = this.getColorAttributes($tag);
-
                 if(this.eaemApplyFontDialog){
                     dialog = this.eaemApplyFontDialog;
 
-                    dialog.$dialog.find("iframe").attr("src", this.getPickerIFrameUrl(this.config.features, size, clazz,
-                        hideOnMobile, hideOnTablet, hideOnDesktop, color.color, color.bgColor));
+                    dialog.$dialog.find("iframe").attr("src", this.getPickerIFrameUrl(clazz));
                 }else{
                     dialog = new EAEMApplyFontDialog();
 
@@ -296,7 +221,7 @@
                         .css("-moz-transform", "scale(0.9)").css("-moz-transform-origin", "0px 0px");
 
                     dialog.$dialog.find("iframe").attr("src",
-                        this.getPickerIFrameUrl(this.config.features, size, clazz, hideOnMobile, hideOnTablet, hideOnDesktop, color.color, color.bgColor));
+                        this.getPickerIFrameUrl(clazz));
 
                     this.eaemApplyFontDialog = dialog;
                 }
@@ -338,33 +263,6 @@
                     dialog.hide();
                 }
             },
-
-            getColorAttributes: function($tag){
-                var key, color = { color: "", bgColor : ""};
-
-                if(!$tag.attr("style")){
-                    return color;
-                }
-
-                //donot use .css("color"), it returns default font color, if color is not set
-                var parts = $tag.attr("style").split(";");
-
-                _.each(parts, function(value){
-                    value = value.split(":");
-
-                    key = value[0] ? value[0].trim() : "";
-                    value = value[1] ? value[1].trim() : "";
-
-                    if(key == "color"){
-                        color.color = rgbToHex(value);
-                    }else if(key == "background-color"){
-                        color.bgColor = rgbToHex(value);
-                    }
-                });
-
-                return color;
-            },
-
             showFontModal: function(url){
                 var self = this, $iframe = $('<iframe>'),
                     $modal = $('<div>').addClass('eaem-cfm-font-size coral-Modal');
@@ -384,41 +282,10 @@
                 $modal.nextAll(".coral-Modal-backdrop").addClass("cfm-coral2-backdrop");
             },
 
-            getPickerIFrameUrl: function(features, size, clazz, hideOnMobile, hideOnTablet, hideOnDesktop, color, bgColor){
+            getPickerIFrameUrl: function(clazz){
                 var url = Granite.HTTP.externalize(FONT_SELECTOR_URL) + "?" + REQUESTER + "=" + SENDER;
-
-                if(features === "*"){
-                    features = [TEXT_COLOR_FEATURE , TEXT_BG_COLOR_FEATURE];
-                }
-
-                url = url + "&features=" + features.join(",");
-
-                if(!_.isEmpty(color)){
-                    url = url + "&color=" + encodeURIComponent(color);
-                }
-
-                if(!_.isEmpty(bgColor)){
-                    url = url + "&bgColor=" + encodeURIComponent(bgColor);
-                }
-
-                if(!_.isEmpty(size)){
-                    url = url + "&size=" + size;
-                }
-
                 if(!_.isEmpty(clazz)){
                     url = url + "&class=" + clazz;
-                }
-
-                if(hideOnMobile){
-                    url = url + "&hideOnMobile=" + hideOnMobile;
-                }
-
-                if(hideOnTablet){
-                    url = url + "&hideOnTablet=" + hideOnTablet;
-                }
-
-                if(hideOnDesktop){
-                    url = url + "&hideOnDesktop=" + hideOnDesktop;
                 }
 
                 return url;
@@ -450,18 +317,6 @@
             getTagObject: function(textData) {
                 var style = "";
 
-                if(!_.isEmpty(textData.color)){
-                    style = "color: " + textData.color + ";";
-                }
-
-                if(!_.isEmpty(textData.size)){
-                    style = style + "font-size: " + textData.size + ";";
-                }
-
-                if(!_.isEmpty(textData.bgColor)){
-                    style = style + "background-color: " + textData.bgColor;
-                }
-
                 var spanTag = {
                     "tag": "span",
                     "attributes": {
@@ -474,21 +329,7 @@
                 if(!_.isEmpty(clazz)){
                     spanTag.attributes.class = clazz;
                 }
-
-                if(textData.hideOnMobile){
-                    addClazz(spanTag, MOBILE_HIDE_CONTENT_CLASS);
-                }
-
-                if(textData.hideOnTablet){
-                    addClazz(spanTag, TABLET_HIDE_CONTENT_CLASS);
-                }
-
-                if(textData.hideOnDesktop){
-                    addClazz(spanTag, DESKTOP_HIDE_CONTENT_CLASS);
-                }
-
                 return spanTag;
-
                 function addClazz(tag, tagClazz){
                     tag.attributes.class = tag.attributes.class ? (tag.attributes.class + " ") : "";
                     tag.attributes.class = tag.attributes.class + tagClazz;
@@ -507,18 +348,9 @@
                     context = execDef.editContext,
                     tagObj = this.getTagObject(textData);
 
-                if(_.isEmpty(textData.size) && _.isEmpty(textData.color)
-                            && _.isEmpty(textData.bgColor) && _.isEmpty(textData.style)
-                            && !textData.hideOnMobile && !textData.hideOnDesktop && !textData.hideOnTablet){
+                if(_.isEmpty(textData.style)){
                     nodeList.removeNodesByTag(execDef.editContext, tagObj.tag, undefined, true);
                     return;
-                }
-
-                var tags = common.getTagInPath(context, selection.startNode, tagObj.tag);
-
-                //remove existing color before adding new color
-                if (tags != null) {
-                    nodeList.removeNodesByTag(execDef.editContext, tagObj.tag, tags.attributes ? tags.attributes : undefined, true);
                 }
 
                 nodeList.surround(execDef.editContext, tagObj.tag, tagObj.attributes);
