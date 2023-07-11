@@ -1,4 +1,9 @@
 .sponsor-header {
+    #efe-nav-main .cmp-container--26 {
+        @include media("<tablet") {
+            gap: 10px;
+        }
+    }
     .cmp-text {
         p {
             @include body-02;
