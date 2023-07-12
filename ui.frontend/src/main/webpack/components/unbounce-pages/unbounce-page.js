@@ -23,26 +23,32 @@ export default class UnbouncePage {
     async fetchSponsorData() {
         console.log('loading');
         const apiHost = document.querySelector('#unbounce-properties')?.getAttribute('data-frame-api');//'http://localhost:3000';//document.querySelector('.sponsor-header').getAttribute('data-page-frame-api');
-        const response = await fetch(`${apiHost}`,{
-            method: 'GET',
-            mod: "no-cors",
-            credentials: "include",
-            headers: {
-                'Accept': 'application/json, text/plain, */*',
-                'X-Spa-Name':'landing-flow',
-            },
-        });
-        const sponsorData =  response;
-        if(sponsorData.status === 200) {
-            const Data = await sponsorData?.json();
-            console.log('loading complated');
-            this.changeHeaderValues(Data);
-            this.changeFooterValues(Data);
+        try{
+            const response = await fetch(`${apiHost}`,{
+                method: 'GET',
+                mod: "no-cors",
+                credentials: "include",
+                headers: {
+                    'Accept': 'application/json, text/plain, */*',
+                    'X-Spa-Name':'landing-flow',
+                },
+            });
+            const sponsorData =  response;
+            if(sponsorData.status === 200) {
+                const Data = await sponsorData?.json();
+                console.log('loading completed');
+                this.changeHeaderValues(Data);
+                this.changeFooterValues(Data);
+                this.loader.style.display = 'none';
+                console.log(Data);
+            } else {
+                console.log(sponsorData.statusText,"something went wrong")
+            }
+        }catch (error) {
+            // TypeError: Failed to fetch
             this.loader.style.display = 'none';
-            console.log(Data);
-        } else {
-            console.log(sponsorData.statusText,"something went wrong")
-        }
+            console.log('There was an error', error);
+          }
     }
     async fetchAggregateData() {
         const daVarsStr = this.getCookie('daVars');
