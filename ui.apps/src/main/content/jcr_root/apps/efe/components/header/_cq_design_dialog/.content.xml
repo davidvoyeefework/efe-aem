@@ -33,11 +33,11 @@
                                         jcr:primaryType="nt:unstructured"
                                         jcr:title="Enable Plugin (Show in Rich Text Editor)"
                                         sling:resourceType="cq/gui/components/authoring/dialog/inplaceediting/configuration/pluginfeature"
-                                        name="applyFont"/>
+                                        name="applyDynamicVariable"/>
                                 </items>
                                 <granite:data
                                     jcr:primaryType="nt:unstructured"
-                                    name="eaem-aem-fonts"
+                                    name="efe-aem-dynamic-variable"
                                     plugin-root-name="rtePlugins"/>
                             </code-plugin>
                         </items>

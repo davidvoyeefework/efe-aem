@@ -1,15 +1,10 @@
 (function($, CUI, $document){
-    var GROUP = "eaem-aem-fonts",
-        FONT_FEATURE = "applyFont",
-        TEXT_COLOR_FEATURE = "textColor",
-        TEXT_BG_COLOR_FEATURE = "textBackgroundColor",
-        EAEM_APPLY_FONT_DIALOG = "eaemTouchUIApplyFontDialog",
-        SENDER = "eaem-aem", REQUESTER = "requester", $eaemFontPicker,
+    var GROUP = "efe-aem-dynamic-variable",
+        DYNAMIC_VARIABLE_FEATURE = "applyDynamicVariable",
+        EFE_APPLY_DYNAMIC_VARIABLE_DIALOG = "efeTouchUIApplyDynamicVariableDialog",
+        SENDER = "efe-aem", REQUESTER = "requester", $eaemFontPicker,
         CANCEL_CSS = "[data-foundation-wizard-control-action='cancel']",
-        FONT_SELECTOR_URL = "/apps/efe/clientlibs/fonts-plugin/assetpicker.html",
-        MOBILE_HIDE_CONTENT_CLASS = "eaem--content-mobile-hide",
-        DESKTOP_HIDE_CONTENT_CLASS = "eaem--content-desktop-hide",
-        TABLET_HIDE_CONTENT_CLASS = "eaem--content-tablet-hide",
+        FONT_SELECTOR_URL = "/apps/efe/clientlibs/dynamic-variable-plugin/assetpicker.html",
         url = document.location.pathname;
 
     if( url.indexOf(FONT_SELECTOR_URL) == 0 ){
@@ -71,16 +66,6 @@
 
         setWidgetValue($form[0], "[name='./style']", queryParams.class, true);
 
-        setWidgetValue($form[0], "[name='./hideOnMobile']", queryParams.hideOnMobile, true);
-
-        setWidgetValue($form[0], "[name='./hideOnTablet']", queryParams.hideOnTablet, true);
-
-        setWidgetValue($form[0], "[name='./hideOnDesktop']", queryParams.hideOnDesktop, true);
-
-        setWidgetValue($form[0], "[name='./color']", queryParams.color, features.includes(TEXT_COLOR_FEATURE));
-
-        setWidgetValue($form[0], "[name='./bgColor']", queryParams.bgColor, features.includes(TEXT_BG_COLOR_FEATURE));
-
         $form.css("background-color", "#fff");
     }
 
@@ -96,21 +81,7 @@
             message.data[$field.attr("name").substr(2)] = $field.val();
         });
 
-        addCheckboxValue(message, $form, "./hideOnDesktop");
-
-        addCheckboxValue(message, $form, "./hideOnTablet");
-
-        addCheckboxValue(message, $form, "./hideOnMobile");
-
         getParent().postMessage(JSON.stringify(message), "*");
-    }
-
-    function addCheckboxValue(message, $form, cbName){
-        var $checkbox = $form.find("coral-checkbox[name='" + cbName + "']");
-
-        if(!_.isEmpty($checkbox)){
-            message.data[$checkbox.attr("name").substr(2)] = $checkbox[0].checked;
-        }
     }
 
     function sendCancelMessage(){
@@ -150,26 +121,14 @@
         }
 
         try{
-            CUI.rte.templates['dlg-' + EAEM_APPLY_FONT_DIALOG] = CUI.rte.Templates['dlg-' + EAEM_APPLY_FONT_DIALOG] = Handlebars.compile(html);
+            CUI.rte.templates['dlg-' + EFE_APPLY_DYNAMIC_VARIABLE_DIALOG] = CUI.rte.Templates['dlg-' + EFE_APPLY_DYNAMIC_VARIABLE_DIALOG] = Handlebars.compile(html);
         }catch(err){
             console.log("Ignoring font plugin error", err);
         }
     }
 
-    function rgbToHex(color){
-        if(_.isEmpty(color)){
-            return color;
-        }
-
-        if(color.indexOf("rgb") == 0){
-            color = CUI.util.color.RGBAToHex(color);
-        }
-
-        return color;
-    }
-
     function addPluginToDefaultUISettings(){
-        var groupFeature = GROUP + "#" + FONT_FEATURE,
+        var groupFeature = GROUP + "#" + DYNAMIC_VARIABLE_FEATURE,
             toolbar = CUI.rte.ui.cui.DEFAULT_UI_SETTINGS.dialogFullScreen.toolbar;
 
         if(toolbar.includes(groupFeature)){
@@ -179,30 +138,30 @@
         toolbar.splice(3, 0, groupFeature);
     }
 
-    var EAEMApplyFontDialog = new Class({
+    var EFEApplyDynamicVariableDialog = new Class({
         extend: CUI.rte.ui.cui.AbstractDialog,
 
-        toString: "EAEMApplyFontDialog",
+        toString: "EFEApplyDynamicVariableDialog",
 
         initialize: function(config) {
             this.exec = config.execute;
         },
 
         getDataType: function() {
-            return EAEM_APPLY_FONT_DIALOG;
+            return EFE_APPLY_DYNAMIC_VARIABLE_DIALOG;
         }
     });
 
     function addPlugin(){
-        var EAEMTouchUIFontPlugin = new Class({
-            toString: "EAEMTouchUIFontPlugin",
+        var EFETouchUIDynamicVariablePlugin = new Class({
+            toString: "EFETouchUIDynamicVariablePlugin",
 
             extend: CUI.rte.plugins.Plugin,
 
             pickerUI: null,
 
             getFeatures: function() {
-                return [ FONT_FEATURE ];
+                return [ DYNAMIC_VARIABLE_FEATURE ];
             },
 
             initializeUI: function(tbGenerator) {
@@ -210,37 +169,22 @@
 
                 addPluginToDefaultUISettings();
 
-                if (!this.isFeatureEnabled(FONT_FEATURE)) {
+                if (!this.isFeatureEnabled(DYNAMIC_VARIABLE_FEATURE)) {
                     return;
                 }
 
-                this.pickerUI = tbGenerator.createElement(FONT_FEATURE, this, false, { title: "Select Font..." });
+                this.pickerUI = tbGenerator.createElement(DYNAMIC_VARIABLE_FEATURE, this, false, { title: "Select Font..." });
                 tbGenerator.addElement(GROUP, plg.Plugin.SORT_FORMAT, this.pickerUI, 10);
 
-                var groupFeature = GROUP + "#" + FONT_FEATURE;
+                var groupFeature = GROUP + "#" + DYNAMIC_VARIABLE_FEATURE;
                 tbGenerator.registerIcon(groupFeature, "brackets");
-            },
-
-            notifyPluginConfig: function (pluginConfig) {
-                pluginConfig = pluginConfig || {};
-
-                CUI.rte.Utils.applyDefaults(pluginConfig, {
-                    'tooltips': {
-                        applyFont: {
-                            'title': 'Apply Font',
-                            'text': 'Apply Font to selected text'
-                        }
-                    }
-                });
-
-                this.config = pluginConfig;
             },
 
             execute: function (pluginCommand, value, envOptions) {
                 var context = envOptions.editContext,
                     ek = this.editorKernel;
 
-                if (pluginCommand != FONT_FEATURE) {
+                if (pluginCommand != DYNAMIC_VARIABLE_FEATURE) {
                     return;
                 }
 
@@ -256,39 +200,20 @@
                 }
 
                 var $tag = $(CUI.rte.Common.getTagInPath(context, startNode, "span")),
-                    clazz = $tag.attr("class"), hideOnMobile = false, hideOnDesktop = false, hideOnTablet = false,
-                    size = $tag.css("font-size"),dialog,dm = ek.getDialogManager(),
+                    clazz = $tag.attr("class"),size = $tag.css("font-size"),dialog,dm = ek.getDialogManager(),
                     $container = CUI.rte.UIUtils.getUIContainer($(context.root)),
                     propConfig = {
                         'parameters': {
-                            'command': this.pluginId + '#' + FONT_FEATURE
+                            'command': this.pluginId + '#' + DYNAMIC_VARIABLE_FEATURE
                         }
                     };
 
-                if(clazz && clazz.includes(MOBILE_HIDE_CONTENT_CLASS)){
-                    hideOnMobile = true;
-                    clazz = clazz.replace(MOBILE_HIDE_CONTENT_CLASS, "").trim();
-                }
+                if(this.EFEApplyDynamicVariableDialog){
+                    dialog = this.EFEApplyDynamicVariableDialog;
 
-                if(clazz && clazz.includes(TABLET_HIDE_CONTENT_CLASS)){
-                    hideOnTablet = true;
-                    clazz = clazz.replace(TABLET_HIDE_CONTENT_CLASS, "").trim();
-                }
-
-                if(clazz && clazz.includes(DESKTOP_HIDE_CONTENT_CLASS)){
-                    hideOnDesktop = true;
-                    clazz = clazz.replace(DESKTOP_HIDE_CONTENT_CLASS, "").trim();
-                }
-
-                var color = this.getColorAttributes($tag);
-
-                if(this.eaemApplyFontDialog){
-                    dialog = this.eaemApplyFontDialog;
-
-                    dialog.$dialog.find("iframe").attr("src", this.getPickerIFrameUrl(this.config.features, size, clazz,
-                        hideOnMobile, hideOnTablet, hideOnDesktop, color.color, color.bgColor));
+                    dialog.$dialog.find("iframe").attr("src", this.getPickerIFrameUrl(clazz));
                 }else{
-                    dialog = new EAEMApplyFontDialog();
+                    dialog = new EFEApplyDynamicVariableDialog();
 
                     dialog.attach(propConfig, $container, this.editorKernel);
 
@@ -296,9 +221,9 @@
                         .css("-moz-transform", "scale(0.9)").css("-moz-transform-origin", "0px 0px");
 
                     dialog.$dialog.find("iframe").attr("src",
-                        this.getPickerIFrameUrl(this.config.features, size, clazz, hideOnMobile, hideOnTablet, hideOnDesktop, color.color, color.bgColor));
+                        this.getPickerIFrameUrl(clazz));
 
-                    this.eaemApplyFontDialog = dialog;
+                    this.EFEApplyDynamicVariableDialog = dialog;
                 }
 
                 dm.show(dialog);
@@ -338,33 +263,6 @@
                     dialog.hide();
                 }
             },
-
-            getColorAttributes: function($tag){
-                var key, color = { color: "", bgColor : ""};
-
-                if(!$tag.attr("style")){
-                    return color;
-                }
-
-                //donot use .css("color"), it returns default font color, if color is not set
-                var parts = $tag.attr("style").split(";");
-
-                _.each(parts, function(value){
-                    value = value.split(":");
-
-                    key = value[0] ? value[0].trim() : "";
-                    value = value[1] ? value[1].trim() : "";
-
-                    if(key == "color"){
-                        color.color = rgbToHex(value);
-                    }else if(key == "background-color"){
-                        color.bgColor = rgbToHex(value);
-                    }
-                });
-
-                return color;
-            },
-
             showFontModal: function(url){
                 var self = this, $iframe = $('<iframe>'),
                     $modal = $('<div>').addClass('eaem-cfm-font-size coral-Modal');
@@ -384,48 +282,17 @@
                 $modal.nextAll(".coral-Modal-backdrop").addClass("cfm-coral2-backdrop");
             },
 
-            getPickerIFrameUrl: function(features, size, clazz, hideOnMobile, hideOnTablet, hideOnDesktop, color, bgColor){
+            getPickerIFrameUrl: function(clazz){
                 var url = Granite.HTTP.externalize(FONT_SELECTOR_URL) + "?" + REQUESTER + "=" + SENDER;
-
-                if(features === "*"){
-                    features = [TEXT_COLOR_FEATURE , TEXT_BG_COLOR_FEATURE];
-                }
-
-                url = url + "&features=" + features.join(",");
-
-                if(!_.isEmpty(color)){
-                    url = url + "&color=" + encodeURIComponent(color);
-                }
-
-                if(!_.isEmpty(bgColor)){
-                    url = url + "&bgColor=" + encodeURIComponent(bgColor);
-                }
-
-                if(!_.isEmpty(size)){
-                    url = url + "&size=" + size;
-                }
-
                 if(!_.isEmpty(clazz)){
                     url = url + "&class=" + clazz;
-                }
-
-                if(hideOnMobile){
-                    url = url + "&hideOnMobile=" + hideOnMobile;
-                }
-
-                if(hideOnTablet){
-                    url = url + "&hideOnTablet=" + hideOnTablet;
-                }
-
-                if(hideOnDesktop){
-                    url = url + "&hideOnDesktop=" + hideOnDesktop;
                 }
 
                 return url;
             },
 
             updateState: function(selDef) {
-                var hasUC = this.editorKernel.queryState(FONT_FEATURE, selDef);
+                var hasUC = this.editorKernel.queryState(DYNAMIC_VARIABLE_FEATURE, selDef);
 
                 if (this.pickerUI != null) {
                     this.pickerUI.setSelected(hasUC);
@@ -433,13 +300,13 @@
             }
         });
 
-        var EAEMTouchUIFontCmd = new Class({
-            toString: "EAEMTouchUIFontCmd",
+        var EFETouchUIDynamicVariableCmd = new Class({
+            toString: "EFETouchUIDynamicVariableCmd",
 
             extend: CUI.rte.commands.Command,
 
             isCommand: function (cmdStr) {
-                return (cmdStr.toLowerCase() == FONT_FEATURE);
+                return (cmdStr.toLowerCase() == DYNAMIC_VARIABLE_FEATURE);
             },
 
             getProcessingOptions: function () {
@@ -449,18 +316,6 @@
 
             getTagObject: function(textData) {
                 var style = "";
-
-                if(!_.isEmpty(textData.color)){
-                    style = "color: " + textData.color + ";";
-                }
-
-                if(!_.isEmpty(textData.size)){
-                    style = style + "font-size: " + textData.size + ";";
-                }
-
-                if(!_.isEmpty(textData.bgColor)){
-                    style = style + "background-color: " + textData.bgColor;
-                }
 
                 var spanTag = {
                     "tag": "span",
@@ -474,21 +329,7 @@
                 if(!_.isEmpty(clazz)){
                     spanTag.attributes.class = clazz;
                 }
-
-                if(textData.hideOnMobile){
-                    addClazz(spanTag, MOBILE_HIDE_CONTENT_CLASS);
-                }
-
-                if(textData.hideOnTablet){
-                    addClazz(spanTag, TABLET_HIDE_CONTENT_CLASS);
-                }
-
-                if(textData.hideOnDesktop){
-                    addClazz(spanTag, DESKTOP_HIDE_CONTENT_CLASS);
-                }
-
                 return spanTag;
-
                 function addClazz(tag, tagClazz){
                     tag.attributes.class = tag.attributes.class ? (tag.attributes.class + " ") : "";
                     tag.attributes.class = tag.attributes.class + tagClazz;
@@ -507,18 +348,9 @@
                     context = execDef.editContext,
                     tagObj = this.getTagObject(textData);
 
-                if(_.isEmpty(textData.size) && _.isEmpty(textData.color)
-                            && _.isEmpty(textData.bgColor) && _.isEmpty(textData.style)
-                            && !textData.hideOnMobile && !textData.hideOnDesktop && !textData.hideOnTablet){
+                if(_.isEmpty(textData.style)){
                     nodeList.removeNodesByTag(execDef.editContext, tagObj.tag, undefined, true);
                     return;
-                }
-
-                var tags = common.getTagInPath(context, selection.startNode, tagObj.tag);
-
-                //remove existing color before adding new color
-                if (tags != null) {
-                    nodeList.removeNodesByTag(execDef.editContext, tagObj.tag, tags.attributes ? tags.attributes : undefined, true);
                 }
 
                 nodeList.surround(execDef.editContext, tagObj.tag, tagObj.attributes);
@@ -531,8 +363,8 @@
             }
         });
 
-        CUI.rte.commands.CommandRegistry.register(FONT_FEATURE, EAEMTouchUIFontCmd);
+        CUI.rte.commands.CommandRegistry.register(DYNAMIC_VARIABLE_FEATURE, EFETouchUIDynamicVariableCmd);
 
-        CUI.rte.plugins.PluginRegistry.register(GROUP,EAEMTouchUIFontPlugin);
+        CUI.rte.plugins.PluginRegistry.register(GROUP,EFETouchUIDynamicVariablePlugin);
     }
 }(jQuery, window.CUI,jQuery(document)));
