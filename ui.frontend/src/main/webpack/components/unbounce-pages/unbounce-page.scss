@@ -109,5 +109,18 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
-  
+  .unbounce-footer--primary {
+    .cmp-list--footer.unbounce-footer-links {
+        a,.cmp-list__item-title {
+            color: #f26b45;
+        }
+    }
+  }
+  .unbounce-footer--secondary {
+    .cmp-list--footer.unbounce-footer-links {
+        a,.cmp-list__item-title {
+            color: #086b9a;
+        }
+    }
+  }
   
