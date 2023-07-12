@@ -66,9 +66,18 @@
         }
     }
 }
+
 .sponsor-value-hide {
     display: none;
 }
+
+.edit-view{
+    .sponsor-value-hide {
+        display: inline;
+    }
+}
+
+
 .unbounce-footer-modal {
     .cmp-modal {
         text-align: left;
