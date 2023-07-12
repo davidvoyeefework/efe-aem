@@ -255,6 +255,9 @@
                         <subsuperscript
                             jcr:primaryType="nt:unstructured"
                             features="*"/>
+                        <efe-aem-dynamic-variable
+                            jcr:primaryType="nt:unstructured"
+                            features="applyDynamicVariable"/>
                     </rtePlugins>
                     <cq:styleGroups jcr:primaryType="nt:unstructured">
                         <item0
@@ -1498,7 +1501,12 @@
                     jcr:primaryType="nt:unstructured"
                     jcr:title="Header Policy"
                     sling:resourceType="wcm/core/components/policy/policy">
-                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                     <rtePlugins jcr:primaryType="nt:unstructured">
+                        <efe-aem-dynamic-variable
+                            jcr:primaryType="nt:unstructured"
+                            features="applyDynamicVariable"/>
+                    </rtePlugins>
+                    <jcr:content jcr:primaryType="nt:unstructured"  jcr:mixinTypes="[]"/>
                     <cq:styleGroups jcr:primaryType="nt:unstructured">
                         <item0
                             cq:styleGroupLabel="Styles"
