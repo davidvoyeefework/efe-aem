@@ -3,10 +3,17 @@
     data-sly-set.unbounceclass="${properties.isUnbounceHeader ? 'sponsor-header minimal-header--with-two-logos' : ''}"
     class="header ${unbounceclass}" data-component="header" id="${model.id}">
     <sly data-sly-test="${properties.isUnbounceHeader}">
-        <div id="unbounce-properties"
-             data-frame-api="https://www.feitest.com/api/v1/pageframe/?namespace=landing-flow"
-             data-aggregate-api="https://www.feitest.com/api/v1/planowners/{Recordkeeper}/aggregate"
-             data-variables='${model.dynamicVariables}'>
+        <div data-sly-use.unbounceModel="com.efe.core.models.Unbounce" id="unbounce-properties"
+             data-frame-api="${unbounceModel.pageFrameApi}"
+             data-aggregate-api="${unbounceModel.aggregateApi}"
+             data-keys-api="${unbounceModel.forKeyApi}"
+             data-softauth-api="${unbounceModel.softAuthApi}"
+             data-signup-api="${unbounceModel.signupApi}"
+             data-schedule-api="${unbounceModel.scheduleApi}"
+             data-authenticate-api="${unbounceModel.authenticateApi}"
+             data-callback-api="${unbounceModel.callBackApi}"
+             data-variables='${model.dynamicVariables}'
+             data-sly-attribute="${unbounceModel.dynamicVariables}">
         </div>
     </sly>
     <div class="container responsivegrid" id="efe-global-nav-header">
