@@ -16,11 +16,12 @@
   <!DOCTYPE HTML>
   <html data-sly-use.page="com.adobe.cq.wcm.core.components.models.Page" lang="${page.language}"
         data-sly-use.pwa="com.adobe.cq.wcm.core.components.models.PWA"
+        data-sly-use.unbounceModel="com.efe.core.models.Unbounce"
         data-sly-use.head="head.html"
         data-sly-use.footer="footer.html"
         data-sly-use.redirect="redirect.html">
       <head data-sly-call="${head.head @ page = page, pwa = pwa}"></head>
-      <body class="${page.cssClassNames} ${!wcmmode.disabled ? 'edit-view': ''}"
+      <body class="${page.cssClassNames} ${!wcmmode.disabled ? 'edit-view': ''} ${unbounceModel.theme}"
             id="${page.id}"
             data-cmp-link-accessibility-enabled
             data-cmp-link-accessibility-text="${'opens in a new tab' @ i18n}"

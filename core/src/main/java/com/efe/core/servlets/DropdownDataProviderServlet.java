@@ -9,6 +9,7 @@ import java.util.Objects;
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 
+import com.efe.core.services.UnbounceService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
@@ -47,6 +48,9 @@ public class DropdownDataProviderServlet extends SlingSafeMethodsServlet {
 	@Reference
 	private transient ResourceResolverFactory resolverFactory;
 
+	@Reference
+	private UnbounceService unbounceService;
+
 	@Override
 	protected void doGet(final SlingHttpServletRequest req, final SlingHttpServletResponse resp)
 			throws ServletException, IOException {
@@ -54,8 +58,7 @@ public class DropdownDataProviderServlet extends SlingSafeMethodsServlet {
 		try (ResourceResolver resourceResolver = ResourceUtil.getServiceResourceResolver(resolverFactory)) {
 			Resource currentResource = req.getResource();
 			String dropdownSelector = currentResource.getChild("datasource").getValueMap().get("type", String.class);
-			getItemsList(req.getResourceResolver(), currentResource, dropdownSelector, req);
-
+			getItemsList(req.getResourceResolver(), dropdownSelector, req);
 		}
 	}
 
@@ -63,28 +66,29 @@ public class DropdownDataProviderServlet extends SlingSafeMethodsServlet {
 	 * Gets the items list.
 	 *
 	 * @param resourceResolver the resource resolver
-	 * @param currentResource  the current resource
 	 * @param selector         the selector
 	 * @return the items list
 	 */
-	private void getItemsList(ResourceResolver resourceResolver, Resource currentResource, String selector,
-			SlingHttpServletRequest req) {
+	private void getItemsList(ResourceResolver resourceResolver, String selector, SlingHttpServletRequest req) {
 		if ("dynamicvariables".equalsIgnoreCase(selector)) {
-			String genericListPath = currentResource.getChild("datasource").getValueMap().get("genericlistpath",
-					String.class);
-			if (StringUtils.isNotEmpty(genericListPath)) {
-				req.setAttribute(DataSource.class.getName(), EmptyDataSource.instance());
-
-				GenericList list = EFEUtil.getGenericList(resourceResolver, genericListPath);
-				if (Objects.nonNull(list) && Objects.nonNull(list.getItems())) {
-					final List<Resource> fakeResourceList = new ArrayList<>();
-					getDynamicVariables(req.getResourceResolver(), list, fakeResourceList);
-					DataSource ds = new SimpleDataSource(fakeResourceList.iterator());
-					req.setAttribute(DataSource.class.getName(), ds);
+			String[] genericLists = unbounceService.getDynamicVariableList();
+			final List<Resource> fakeResourceList = new ArrayList<>();
+			for (String genericList : genericLists) {
+				if (StringUtils.isNotEmpty(genericList)) {
+					String[] genericListArr = genericList.split(SPLIT_BY_PIPE);
+					if(genericListArr.length == 3 && StringUtils.equalsIgnoreCase(genericListArr[2],"true")) {
+						String genericListPath = genericListArr[0];
+						req.setAttribute(DataSource.class.getName(), EmptyDataSource.instance());
+						GenericList list = EFEUtil.getGenericList(resourceResolver, genericListPath);
+						if (Objects.nonNull(list) && Objects.nonNull(list.getItems())) {
+							getDynamicVariables(req.getResourceResolver(), list, fakeResourceList);
+							DataSource ds = new SimpleDataSource(fakeResourceList.iterator());
+							req.setAttribute(DataSource.class.getName(), ds);
+						}
+					}
 				}
 			}
 		}
-
 	}
 
 	/**

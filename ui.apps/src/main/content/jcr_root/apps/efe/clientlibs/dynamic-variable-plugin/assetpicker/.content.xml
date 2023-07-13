@@ -57,7 +57,6 @@
                                                             <datasource
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="efe/components/dropdown"
-                                                                genericlistpath="/etc/acs-commons/lists/fe/sponsor-details"
                                                                 type="dynamicvariables"/>
                                                         </contents>                      
                                                     </items>

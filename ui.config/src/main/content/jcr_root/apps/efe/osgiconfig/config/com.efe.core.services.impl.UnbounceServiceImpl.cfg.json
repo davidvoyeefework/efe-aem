@@ -1,0 +1,16 @@
+{
+  "pageFrameApi": "$[env:forKey_api;default=https://www.feitest.com/api/v1/pageframe/?namespace=landing-flow]",
+  "aggregateApi": "$[env:forKey_api;default=https://www.feitest.com/api/v1/planowners/{Recordkeeper}/aggregate]",
+  "forKeyApi": "$[env:forKey_api;default=forKeyApi]",
+  "softAuthApi": "$[env:softAuth_api;default=softAuthApi]",
+  "signupApi": "$[env:signup_api;default=signupApi]",
+  "scheduleApi": "$[env:schedule_api;default=scheduleApi]",
+  "authenticateApi": "$[env:authenticate_api;default=authenticateApi]",
+  "callBackApi": "$[env:callBack_api;default=callBackApi]",
+  "dynamicVariableList": [
+    "$[env:aggregate_variables;default=/etc/acs-commons/lists/fe/aggregate-variables|data-aggregate|true]",
+    "$[env:authenticationStatus_variables;default=/etc/acs-commons/lists/fe/authenticationstatus-variables|data-authenticationStatus|true]",
+    "$[env:keys_variables;default=/etc/acs-commons/lists/fe/keys-variables|data-keys|true]",
+    "$[env:pageFrame_variables;default=/etc/acs-commons/lists/fe/pageframe-variables|data-pageFrame|true]"
+  ]
+}
