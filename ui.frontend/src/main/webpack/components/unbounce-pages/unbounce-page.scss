@@ -71,8 +71,16 @@
     display: none;
 }
 
+.unbounce-form {
+    display: none;
+}
+  
 .edit-view{
     .sponsor-value-hide {
+        display: inline;
+    }
+
+    .unbounce-form {
         display: inline;
     }
 }
@@ -109,21 +117,25 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
-  .unbounce-footer--primary {
+  
+  .theme-primary {
+
     .cmp-list--footer.unbounce-footer-links {
         a,.cmp-list__item-title {
             color: #f26b45;
         }
     }
+    .cmp-form-button[type=submit]{
+        background-color: #f26b45;
+    }
   }
-  .unbounce-footer--secondary {
+  .theme-secondary {
     .cmp-list--footer.unbounce-footer-links {
         a,.cmp-list__item-title {
             color: #086b9a;
         }
     }
+    .cmp-form-button[type=submit]{
+        background-color: #086b9a;
+    }
   }
-  .unbounce-form {
-    display: none;
-  }
-  
