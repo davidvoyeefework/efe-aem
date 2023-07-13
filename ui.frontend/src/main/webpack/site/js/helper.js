@@ -92,6 +92,21 @@ export const trapFocus = (element) => {
     });
 }
 
+export const fetchData = async(url,headers) => {
+  try {
+    const response = await fetch(url , {headers, credentials:"include"});
+    if (!response.ok) {
+      throw new Error('Request failed');
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error:', error.message);
+    // You can handle the error here or rethrow it to be caught elsewhere
+    throw error;
+  }
+}
+
 
 export const handleLoader =(isShow) =>{
   const loaderclass = '.loader';

@@ -1,5 +1,5 @@
 import A11yDialog from 'a11y-dialog'
-import { getCookie, getFetch, handleLoader } from "../../site/js/helper";
+import { getCookie, getFetch, handleLoader, fetchData } from "../../site/js/helper";
 export default class UnbouncePage {
     constructor() {
         // const target = new EventTarget();
@@ -36,12 +36,16 @@ export default class UnbouncePage {
             'Accept': 'application/json, text/plain, */*',
             'X-Spa-Name': 'landing-flow',
         };
-        await getFetch(apiHost, headers).then(data => {
+        await fetchData(apiHost, headers).then(data => {
             handleLoader(false);
             if (data) {
                 this.changeHeaderValues(data);
                 this.changeFooterValues(data);
             }
+        }).catch(error => {
+            // Handle any errors that occurred during the fetch request
+            console.error('An error occurred:', error);
+            handleLoader(false);
         });
     }
     async fetchAggregateData() {
@@ -55,27 +59,36 @@ export default class UnbouncePage {
         const headers = {
             'Accept': 'application/json, text/plain, */*',
         }
-        await getFetch(apiHost, headers).then(data => {
+        await fetchData(apiHost, headers).then(data => {
             console.log(data);
             handleLoader(false);
             // this.loader.style.display = 'none';
             // if(data) {
             //     this.changeHeaderValues(data);
             // }
+        }).catch(error => {
+            // Handle any errors that occurred during the fetch request
+            console.error('An error occurred:', error);
+            handleLoader(false);
         });
     }
     async getAuthenticationStatus() {
         const headers = {
             'Accept': 'application/json, text/plain, */*',
         }
-        await getFetch('https://www.feitest.com/api/v1/userlogin/authenticationstatus', headers).then(data => {
+        await fetchData('https://www.feitest.com/api/v1/userlogin/authenticationstatus', headers).then(data => {
             console.log(data);
             handleLoader(false);
             //if (data.isSponsorIdentified) {
                 document.querySelector('.unbounce-form').style.display = 'block';
            // }
+        }).catch(error => {
+            // Handle any errors that occurred during the fetch request
+            console.error('An error occurred:', error);
+            handleLoader(false);
         });
     }
+    
     changeHeaderValues(data) {
         if (data?.header?.sponsorName === 'AT&T') {
             document.querySelector('.sponsor-header')?.classList.add('sponsor--ATT');
