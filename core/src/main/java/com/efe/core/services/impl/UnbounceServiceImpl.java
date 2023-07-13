@@ -1,6 +1,7 @@
 package com.efe.core.services.impl;
 
-import com.efe.core.services.UnbounceService;
+import java.util.Arrays;
+
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Modified;
@@ -9,6 +10,8 @@ import org.osgi.service.metatype.annotations.Designate;
 import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.efe.core.services.UnbounceService;
 
 /**
  * The Class UnbounceServiceImpl.
@@ -233,6 +236,10 @@ public class UnbounceServiceImpl implements UnbounceService {
      */
     @Override
     public String[] getDynamicVariableList() {
-        return dynamicVariableList;
+    	String []variables = {};
+    	if(null != dynamicVariableList) {
+    		variables = Arrays.copyOf(dynamicVariableList, dynamicVariableList.length);
+    	}
+    	return variables;   
     }
 }

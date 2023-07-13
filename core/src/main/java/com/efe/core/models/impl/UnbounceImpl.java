@@ -106,6 +106,11 @@ public class UnbounceImpl implements Unbounce {
         dynamicVariables = new HashMap<>();
         try (ResourceResolver serviceResolver = ResourceUtil.getServiceResourceResolver(resolverFactory)) {
             String[] genericLists = unbounceService.getDynamicVariableList();
+            
+            if(null == genericLists) {
+            	return;
+            }
+            
             for (String genericList : genericLists) {
                 if(StringUtils.isNotEmpty(genericList)) {
                     String[] genericListArr = genericList.split("\\|");
@@ -117,22 +122,32 @@ public class UnbounceImpl implements Unbounce {
                         if(null == list) {
                             return;
                         }
-                        JsonArray array = new JsonArray();
-                        for (GenericList.Item item : list.getItems()) {
-                            JsonObject dynamicVariable = new JsonObject();
-                            String[] values = item.getValue().split("\\|");
-                            if (values.length == 2) {
-                                dynamicVariable.addProperty(values[0], values[1]);
-                            }
-                            array.add(dynamicVariable);
-                        }
-                        String dataVariableValue = new Gson().toJson(array);
-                        dynamicVariables.put(dataVariableName, dataVariableValue);
+                        createDynamicVariableMap(dataVariableName, list);
                     }
                 }
             }
         }
     }
+
+	/**
+	 * Creates the dynamic variable map.
+	 *
+	 * @param dataVariableName the data variable name
+	 * @param list the list
+	 */
+	private void createDynamicVariableMap(String dataVariableName, GenericList list) {
+		JsonArray array = new JsonArray();
+		for (GenericList.Item item : list.getItems()) {
+		    JsonObject dynamicVariable = new JsonObject();
+		    String[] values = item.getValue().split("\\|");
+		    if (values.length == 2) {
+		        dynamicVariable.addProperty(values[0], values[1]);
+		    }
+		    array.add(dynamicVariable);
+		}
+		String dataVariableValue = new Gson().toJson(array);
+		dynamicVariables.put(dataVariableName, dataVariableValue);
+	}
 
     /**
      * Gets the PageFrameApi.
@@ -221,7 +236,7 @@ public class UnbounceImpl implements Unbounce {
      */
     @Override
     public Map<String, String> getDynamicVariables() {
-        return dynamicVariables;
+        return new HashMap<>(dynamicVariables);
     }
 
     /**
