@@ -65,6 +65,18 @@
             }
         }
     }
+
+    &.sponsor--Vanguard {
+        .cmp-image--efe-logo-primary {
+            &.sponsor-logo {
+                a {
+                    background-image: url(https://www.feitest.com/app/enrollment/assets/images/logos/rks/vg_rebrand.png);
+                }
+            }
+        }
+    }
+
+    
 }
 
 .sponsor-value-hide {
