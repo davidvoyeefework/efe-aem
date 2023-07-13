@@ -1,5 +1,5 @@
 import A11yDialog from 'a11y-dialog'
-import { getCookie, getFetch } from "../../site/js/helper";
+import { getCookie, getFetch, handleLoader } from "../../site/js/helper";
 export default class UnbouncePage {
     constructor() {
         // const target = new EventTarget();
@@ -13,10 +13,8 @@ export default class UnbouncePage {
             if (!document.querySelector('.sponsor-header')) {
                 return
             }
-            const loaderElem = document.createElement('div');
-            loaderElem.classList.add('loader');
-            document.querySelector('.sponsor-header').appendChild(loaderElem);
-            this.loader = document.querySelector('.loader');
+
+            handleLoader(true);
             this.fetchSponsorData();
             this.fetchAggregateData();
             this.getAuthenticationStatus();
@@ -39,7 +37,7 @@ export default class UnbouncePage {
             'X-Spa-Name': 'landing-flow',
         };
         await getFetch(apiHost, headers).then(data => {
-            this.loader.style.display = 'none';
+            handleLoader(false);
             if (data) {
                 this.changeHeaderValues(data);
                 this.changeFooterValues(data);
@@ -59,7 +57,7 @@ export default class UnbouncePage {
         }
         await getFetch(apiHost, headers).then(data => {
             console.log(data);
-            this.loader.style.display = 'none';
+            handleLoader(false);
             // this.loader.style.display = 'none';
             // if(data) {
             //     this.changeHeaderValues(data);
@@ -72,7 +70,7 @@ export default class UnbouncePage {
         }
         await getFetch('https://www.feitest.com/api/v1/userlogin/authenticationstatus', headers).then(data => {
             console.log(data);
-            this.loader.style.display = 'none';
+            handleLoader(false);
             if (data.isSponsorIdentified) {
                 document.querySelector('.unbounce-form').style.display = 'block';
             }

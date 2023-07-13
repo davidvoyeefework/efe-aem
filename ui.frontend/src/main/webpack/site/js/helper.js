@@ -91,3 +91,19 @@ export const trapFocus = (element) => {
         }
     });
 }
+
+
+export const handleLoader =(isShow) =>{
+  const loaderclass = '.loader';
+  if (!document.querySelector(loaderclass)) {
+    return
+  }
+
+  var loader = document.querySelector(loaderclass); 
+    if(isShow){
+          loader.style.display = 'block';
+      }else{
+          loader.style.display = 'none';
+      }   
+}
+
