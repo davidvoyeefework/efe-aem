@@ -82,7 +82,7 @@ export const trapFocus = (element) => {
   }
   
   export const getFetch = async (url, headers) => {
-    return fetch(url, {headers}).then(data=>{
+    return fetch(url, {headers,  credentials: "include"}).then(data=>{
         if(data.status === 200) {
             return data?.json();
         } else {
