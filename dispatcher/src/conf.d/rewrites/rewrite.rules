@@ -14,7 +14,7 @@ RewriteRule ^/?$ /content/${CONTENT_FOLDER_NAME}/us/en/home.html [PT,L]
 
 #Shorten the URL
 RewriteRule ^/content/efe/us/en/(.*).html$ $1 [R=301]
-RewriteRule ^(.+)/$ $1
+RewriteRule ^(.+)/$ $1/
 
 # Sitemap
 RewriteRule ^/sitemap.xml$ /content/${CONTENT_FOLDER_NAME}/us/en.sitemap.xml [PT,L]
