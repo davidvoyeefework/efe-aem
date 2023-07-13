@@ -71,9 +71,9 @@ export default class UnbouncePage {
         await getFetch('https://www.feitest.com/api/v1/userlogin/authenticationstatus', headers).then(data => {
             console.log(data);
             handleLoader(false);
-            if (data.isSponsorIdentified) {
+            //if (data.isSponsorIdentified) {
                 document.querySelector('.unbounce-form').style.display = 'block';
-            }
+           // }
         });
     }
     changeHeaderValues(data) {
