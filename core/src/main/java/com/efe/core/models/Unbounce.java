@@ -70,5 +70,10 @@ public interface Unbounce {
      */
     Map<String, String> getDynamicVariables();
 
+    /**
+     * Gets the theme.
+     *
+     * @return the theme
+     */
     String getTheme();
 }
