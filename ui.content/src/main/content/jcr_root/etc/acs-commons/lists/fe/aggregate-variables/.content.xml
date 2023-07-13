@@ -11,8 +11,8 @@
         <list jcr:primaryType="nt:unstructured">
             <item0
                 jcr:primaryType="nt:unstructured"
-                jcr:title="Sponsor Name"
-                value="sponsorName|header.sponsorName"/>
+                jcr:title="Record Keeper Name"
+                value="recordKeeperName|recordKeeperName"/>
         </list>
     </jcr:content>
 </jcr:root>

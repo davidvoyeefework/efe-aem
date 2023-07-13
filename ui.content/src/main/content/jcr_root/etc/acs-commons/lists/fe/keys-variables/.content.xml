@@ -11,8 +11,16 @@
         <list jcr:primaryType="nt:unstructured">
             <item0
                 jcr:primaryType="nt:unstructured"
-                jcr:title="Support Phone"
-                value="supportPhone|header.supportPhone"/>
+                jcr:title="Form Title"
+                value="formTitle|maoachoice.learnMore.pm.detailed.form.title"/>
+            <item1
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Enrollment Guarantee"
+                value="enrollmentGuarantee|publicEnrollment.confirmEnrollment.enrollForm.enrollmentGuarantee"/>
+            <item2
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Form Disclaimer"
+                value="formDisclaimer|publicEnrollment.confirmEnrollment.enrollForm.signUp.disclaimer"/>
         </list>
     </jcr:content>
 </jcr:root>

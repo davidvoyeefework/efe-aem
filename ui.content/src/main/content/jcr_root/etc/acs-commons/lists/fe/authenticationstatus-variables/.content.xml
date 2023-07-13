@@ -11,8 +11,8 @@
         <list jcr:primaryType="nt:unstructured">
             <item0
                 jcr:primaryType="nt:unstructured"
-                jcr:title="Title"
-                value="title|footer.aboutUsPageTitle"/>
+                jcr:title="Is Sponsor Identified"
+                value="isSponsorIdentified|isSponsorIdentified"/>
         </list>
     </jcr:content>
 </jcr:root>

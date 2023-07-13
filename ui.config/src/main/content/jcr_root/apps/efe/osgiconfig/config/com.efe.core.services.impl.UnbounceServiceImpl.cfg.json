@@ -1,12 +1,12 @@
 {
   "pageFrameApi": "$[env:forKey_api;default=https://www.feitest.com/api/v1/pageframe/?namespace=landing-flow]",
   "aggregateApi": "$[env:forKey_api;default=https://www.feitest.com/api/v1/planowners/{Recordkeeper}/aggregate]",
-  "forKeyApi": "$[env:forKey_api;default=https://upls-test.edelmanfinancialengines.com/api/v2/planners]",
-  "softAuthApi": "$[env:softAuth_api;default=https://upls-test.edelmanfinancialengines.com/api/v2/planners]",
-  "signupApi": "$[env:signup_api;default=https://upls-test.edelmanfinancialengines.com/api/v2/planners]",
-  "scheduleApi": "$[env:schedule_api;default=https://upls-test.edelmanfinancialengines.com/api/v2/planners]",
-  "authenticateApi": "$[env:authenticate_api;default=https://upls-test.edelmanfinancialengines.com/api/v2/planners]",
-  "callBackApi": "$[env:callBack_api;default=https://upls-test.edelmanfinancialengines.com/api/v2/planners]",
+  "forKeyApi": "$[env:forKey_api;default=forKeyApi]",
+  "softAuthApi": "$[env:softAuth_api;default=softAuthApi]",
+  "signupApi": "$[env:signup_api;default=signupApi]",
+  "scheduleApi": "$[env:schedule_api;default=scheduleApi]",
+  "authenticateApi": "$[env:authenticate_api;default=authenticateApi]",
+  "callBackApi": "$[env:callBack_api;default=callBackApi]",
   "dynamicVariableList": [
     "$[env:aggregate_variables;default=/etc/acs-commons/lists/fe/aggregate-variables|data-aggregate|true]",
     "$[env:authenticationStatus_variables;default=/etc/acs-commons/lists/fe/authenticationstatus-variables|data-authenticationStatus|true]",
