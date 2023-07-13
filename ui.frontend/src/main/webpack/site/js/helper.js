@@ -71,3 +71,23 @@ export const trapFocus = (element) => {
         }
     });
   }
+  export const getCookie = (name)=> {
+    if (typeof document !== 'undefined') {
+      var value = '; ' + document.cookie;
+      var parts = value.split('; ' + name + '=');
+      if (parts.length === 2) {
+        return parts.pop().split(';').shift();
+      }
+    }
+  }
+  
+  export const getFetch = async (url, headers) => {
+    return fetch(url, {headers}).then(data=>{
+        if(data.status === 200) {
+            return data?.json();
+        } else {
+            console.log(data.statusText,"something went wrong");
+            return false;
+        }
+    });
+}
