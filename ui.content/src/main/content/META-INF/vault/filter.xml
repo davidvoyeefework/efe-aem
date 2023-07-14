@@ -20,6 +20,7 @@
 	<filter root="/conf/global/settings/dam/search" mode="update"/>
     <filter root="/content/efe" mode="merge"/>
     <filter root="/content/dam/efe" mode="update_properties"/>
+    <filter root="/content/fe" mode="merge_properties"/>
     <filter root="/conf/global/settings/dam/adminui-extension/metadataschema" mode="merge"/>
     <filter root="/conf/global/settings/dam/adminui-extension/metadataprofile" mode="merge"/>
     <filter root="/conf/global/settings/dam/dm/presets/macros" mode="merge"/>
