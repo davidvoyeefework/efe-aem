@@ -14,6 +14,7 @@
     <filter root="/conf/efe/settings/wcm/templates/leader-bio" mode="replace"/>
     <filter root="/conf/efe/settings/wcm/templates/service-detail" mode="replace"/>
     <filter root="/conf/efe" mode="update"/>
+    <filter root="/conf/fe" mode="merge_properties"/>
 	<filter root="/content/cq:tags/efe" mode="update"/>
 	<filter root="/conf/efe/settings/dam/cfm/models" mode="replace"/>
 	<filter root="/conf/global/settings/dam/search" mode="update"/>
