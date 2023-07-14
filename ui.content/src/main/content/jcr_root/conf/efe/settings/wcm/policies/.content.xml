@@ -1566,7 +1566,7 @@
                     </cq:styleGroups>
                 </policy>
             </verticalseparator>
-               <relatedarticle jcr:primaryType="nt:unstructured">
+            <relatedarticle jcr:primaryType="nt:unstructured">
                 <policy
                     jcr:primaryType="nt:unstructured"
                     jcr:title="relatedarticle"
@@ -1663,6 +1663,18 @@
                 </cq:styleGroups>
             </policy>
             </video>
+            <listteaser jcr:primaryType="nt:unstructured">
+                <policy
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="List Teaser Policy"
+                    sling:resourceType="wcm/core/components/policy/policy"
+                    allowedHeadingElements="[h1,h2,h3,h4,h5,h6]"
+                    descriptionHidden="true"
+                    showTitleType="false"
+                    titleType="h2">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                </policy>
+            </listteaser>
         </components>
     </efe>
 </jcr:root>
