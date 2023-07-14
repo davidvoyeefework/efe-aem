@@ -82,6 +82,9 @@ public class EfeServiceImpl implements EfeService {
 	/** The jquery url. */
 	private String jqueryUrl;
 
+	/** The external libraries. */
+	private String externalLibraries;
+
 	/**
 	 * The Interface Config.
 	 */
@@ -248,6 +251,14 @@ public class EfeServiceImpl implements EfeService {
 		 */
 		@AttributeDefinition(name = "Jquery Hosted URL", description = "Jquery Hosted URL")
 		String jqueryHostedUrl();
+		
+		/**
+		 * External libraries.
+		 *
+		 * @return the string
+		 */
+		@AttributeDefinition(name = "External Hosted Libraries", description = "External Hosted Libraries")
+		String externalLibraries();
 
 	}
 
@@ -280,6 +291,7 @@ public class EfeServiceImpl implements EfeService {
 		this.omnyPlaylistApi = config.omnyPlaylistApi();
 		this.omnyOrgId = config.omnyOrgId();
 		this.jqueryUrl = config.jqueryHostedUrl();
+		this.externalLibraries = config.externalLibraries();
 
 	}
 
@@ -481,5 +493,15 @@ public class EfeServiceImpl implements EfeService {
 	@Override
 	public String getJqueryUrl() {
 		return jqueryUrl;
+	}
+
+	/**
+	 * Gets the external libraries.
+	 *
+	 * @return the externalLibraries
+	 */
+	@Override
+	public String getExternalLibraries() {
+		return externalLibraries;
 	}
 }
