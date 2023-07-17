@@ -124,6 +124,24 @@ export default class UnbouncePage {
             }
             litUlElement.appendChild(liElem);
         });
+
+        // copy right code
+        if(data && data.footer && data.footer.copyright){
+            const copyrightEle = document.querySelector('#disclosure-copy');
+            if(!copyrightEle){
+                return
+            }
+
+            var patentSection = '';
+            if(data.footer.patentLink && data.footer.patentText){
+                var patentLinkHtml = `<a href="`+data.footer.patentLink+`" target="_blank">`+data.footer.patentLink+`</a>`
+                patentSection = ' '+ data.footer.patentText.replace("%1%", patentLinkHtml);
+            }
+
+            var copyrightHTML = `<span class="cmp-text--caption">` + data.footer.copyright + patentSection + `</span>`
+            copyrightEle.innerHTML = copyrightHTML;
+        }
+
         const dialogEl = document.querySelector('.unbounce-footer-modal');
         const dialog = new A11yDialog(dialogEl);
         document.querySelector('.unbounce-legal-doc-modal-btn').addEventListener("click", (e) => {
