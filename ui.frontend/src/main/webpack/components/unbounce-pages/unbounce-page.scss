@@ -100,6 +100,7 @@
     font-weight: 600;
     max-width: 580px;
     margin-bottom: 0px !important;
+    padding: 20px 30px;
 }
   .theme-primary {
 
@@ -130,3 +131,13 @@
         background: #086b9a;
       }
   }
+
+form.unbounce-form{
+    border: 1px solid #ddd;
+    max-width: 580px;
+    padding: 20px 30px;
+}
+
+.unbounce-form .cmp-form-text {
+    margin-bottom: 10px;
+}
