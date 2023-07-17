@@ -7,42 +7,45 @@
             <h2 class="cmp-title__text">Enroll in Professional Management</h2>
         </div>
     </div>
-    <form>
+    <form id="unbounce-sign-up-form">
         <div class="cmp-form-text cmp-form-text--efe-default cmp-form-text--default">
             <label for="form-text-991299145">First Name</label>
-            <input class="cmp-form-text__text" data-cmp-hook-form-text="input" type="text" id="form-text-991299145"
-                placeholder="First Name" name="firstName" aria-describedby="form-text-991299145-helpMessage">
+            <input class="cmp-form-text__text" data-cmp-hook-form-text="input" type="text" id="firstName"
+                placeholder="First Name" name="firstName">
         </div>
         <div class="cmp-form-text cmp-form-text--efe-default cmp-form-text--default">
             <label for="form-text-991299145">Last Name</label>
-            <input class="cmp-form-text__text" data-cmp-hook-form-text="input" type="text" id="form-text-991299145"
-                placeholder="Last Name" name="lastName" aria-describedby="form-text-991299145-helpMessage">
+            <input class="cmp-form-text__text" data-cmp-hook-form-text="input" type="text" id="lastName"
+                placeholder="Last Name" name="lastName">
         </div>
         <div class="cmp-form-text cmp-form-text--efe-default cmp-form-text--default">
             <label for="form-text-991299145">Zip Code</label>
-            <input class="cmp-form-text__text" data-cmp-hook-form-text="input" type="text" id="form-text-991299145"
-                placeholder="Zip Code" name="zipcode" aria-describedby="form-text-991299145-helpMessage">
+            <input class="cmp-form-text__text" data-cmp-hook-form-text="input" type="text" id="zipCode"
+                placeholder="Zip Code" name="zipCode">
         </div>
         <div class="cmp-form-text cmp-form-text--efe-default cmp-form-text--default">
             <label for="form-text-991299145">Date of birth</label>
-            <input class="cmp-form-text__text" data-cmp-hook-form-text="input" type="text" id="form-text-991299145"
-                placeholder="Date of birth" name="dateofbirth" aria-describedby="form-text-991299145-helpMessage">
+            <input class="cmp-form-text__text" data-cmp-hook-form-text="input" type="text" id="dateOfBirth"
+                placeholder="Date of birth" name="dateOfBirth">
         </div>
         <div class="cmp-form-text cmp-form-text--efe-default cmp-form-text--default">
             <label for="form-text-991299145">Last 4 digits of SSN</label>
-            <input class="cmp-form-text__text" data-cmp-hook-form-text="input" type="text" id="form-text-991299145"
-                placeholder="Last 4 digits of SSN" name="ssn" aria-describedby="form-text-991299145-helpMessage">
+            <input class="cmp-form-text__text" data-cmp-hook-form-text="input" type="text" id="ssn"
+                placeholder="Last 4 digits of SSN" name="ssn">
         </div>
         <div class="cmp-form-text cmp-form-text--efe-default cmp-form-text--default">
             <label for="form-text-991299145">Email</label>
-            <input class="cmp-form-text__text" data-cmp-hook-form-text="input" type="text" id="form-text-991299145"
-                placeholder="Email" name="email" aria-describedby="form-text-991299145-helpMessage">
+            <input class="cmp-form-text__text" data-cmp-hook-form-text="input" type="text" id="email"
+                placeholder="Email" name="email">
         </div>
         <div class="cmp-form-text cmp-form-text--efe-default cmp-form-text--default">
             <label for="form-text-991299145">Phone Number</label>
-            <input class="cmp-form-text__text" data-cmp-hook-form-text="input" type="text" id="form-text-991299145"
-                placeholder="Phone Number" name="phonenumber" aria-describedby="form-text-991299145-helpMessage">
+            <input class="cmp-form-text__text" data-cmp-hook-form-text="input" type="text" id="phoneNumber"
+                placeholder="Phone Number" name="phoneNumber">
         </div>
+
+        <input type="hidden" id="planOwnerId" name="planOwnerId" value="Ford"/>
+
         <button type="SUBMIT" id="form-button-1348159233" class="cmp-form-button" name="submit-demo-form-1">Sign up
             now</button>
     </form>
@@ -56,3 +59,49 @@
         margin-bottom: 10px;
     }
 </style>
+
+<script type="text/javascript">
+
+document.getElementById("unbounce-sign-up-form").addEventListener("submit", function(event) {
+  event.preventDefault(); // Prevent default form submission
+
+  // Call custom function to handle form submission
+  handleFormSubmit();
+});
+
+function handleFormSubmit() {
+  // Retrieve form data
+  var firstName = document.getElementById("firstName").value;
+  var lastName = document.getElementById("lastName").value;
+  var zipCode = document.getElementById("zipCode").value;
+  var ssn = document.getElementById("ssn").value;
+  var planOwnerId = document.getElementById("planOwnerId").value;
+
+  // Construct JSON object
+  var data = {
+    firstName: firstName,
+    lastName: lastName,
+    zipCode: zipCode,
+    ssn: ssn,
+    planOwnerId: planOwnerId
+  };
+
+  // Send data as JSON using fetch()
+  fetch("https://www.feitest.com/api/v1/userlogin/confirmIdentity?loginContext=CONFIRM_IDENTITY", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  })
+    .then(response => response.json())
+    .then(result => {
+      // Handle response from the server
+      console.log(result);
+    })
+    .catch(error => {
+      // Handle error
+      console.error(error);
+    });
+}
+</script>
