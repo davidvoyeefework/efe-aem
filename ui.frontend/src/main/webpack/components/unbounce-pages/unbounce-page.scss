@@ -38,45 +38,7 @@
             }
         }
     }
-    &.sponsor--Boeing {
-        .cmp-image--efe-logo-primary {
-            &.sponsor-logo {
-                a {
-                    background-image: url(https://www.financialengines.com/app/landing-utils/images/logos/sponsors/boeingxrx-2023.png);
-                }
-            }
-        }
-    }
-    &.sponsor--Ford {
-        .cmp-image--efe-logo-primary {
-            &.sponsor-logo {
-                a {
-                    background-image: url(https://images.financialengines.com/public-assets/images/logos/sponsors/ford-small.png);
-                }
-            }
-        }
-    }
-    &.sponsor--ATT {
-        .cmp-image--efe-logo-primary {
-            &.sponsor-logo {
-                a {
-                    background-image: url(https://images.financialengines.com/public-assets/images/logos/sponsors/att-small.png);
-                }
-            }
-        }
-    }
-
-    &.sponsor--Vanguard {
-        .cmp-image--efe-logo-primary {
-            &.sponsor-logo {
-                a {
-                    background-image: url(https://www.feitest.com/app/enrollment/assets/images/logos/rks/vg_rebrand.png);
-                }
-            }
-        }
-    }
-
-    
+  
 }
 
 .sponsor-value-hide {
@@ -131,6 +93,14 @@
     100% { transform: rotate(360deg); }
   }
   
+  .form-title {
+    background-color: #b22932;
+    font-size: 18px;
+    line-height: 1.4;
+    font-weight: 600;
+    max-width: 580px;
+    margin-bottom: 0px !important;
+}
   .theme-primary {
 
     .cmp-list--footer.unbounce-footer-links {
@@ -140,6 +110,10 @@
     }
     .cmp-form-button[type=submit]{
         background-color: #f26b45;
+    }
+
+    .form-title {
+        background: #f26b45;
     }
   }
   .theme-secondary {
@@ -151,4 +125,8 @@
     .cmp-form-button[type=submit]{
         background-color: #086b9a;
     }
+
+    .form-title {
+        background: #086b9a;
+      }
   }

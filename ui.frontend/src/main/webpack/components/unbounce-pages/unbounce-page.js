@@ -106,6 +106,13 @@ export default class UnbouncePage {
                 ele.innerHTML = eval('data.' + item[Object.keys(item)]);
             })
         })
+
+        var sponsorLogo = document.querySelector(".sponsor-logo a");
+        if(sponsorLogo){
+            var logoFileName = data.context.sponsorId;
+            var logo = "https://images.financialengines.com/public-assets/images/logos/sponsors/"+logoFileName+"-small.png";
+            sponsorLogo.style.backgroundImage = `url('`+logo+`')`;
+        }
     }
     changeFooterValues(data) {
         const litUlElement = document.querySelector('.unbounce-footer-links .cmp-list');
