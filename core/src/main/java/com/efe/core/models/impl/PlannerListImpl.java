@@ -84,6 +84,7 @@ public class PlannerListImpl implements PlannerList {
 	@ValueMapValue
 	private String plannerTitle;
 
+	/** The national planner title. */
 	@ValueMapValue
 	private String nationalPlannerTitle;
 

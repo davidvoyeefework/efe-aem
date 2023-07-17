@@ -55,6 +55,7 @@ public class EfeTitleImpl implements Title {
 	@ValueMapValue
 	private boolean includeLocationInTitle;
 
+	/** The national planner title. */
 	@ValueMapValue
 	private String nationalPlannerTitle;
 
@@ -62,7 +63,8 @@ public class EfeTitleImpl implements Title {
 	@SlingObject
 	private ResourceResolver resourceResolver;
 
-	@OSGiService
+    /** The efeService. */
+    @OSGiService
 	private EfeService efeService;
 
 	/** The text. */

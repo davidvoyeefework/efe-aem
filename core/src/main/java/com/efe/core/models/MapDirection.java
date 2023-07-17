@@ -86,6 +86,11 @@ public interface MapDirection {
 	 */
 	String getJsonLd();
 
+	/**
+	 * Method to return the showMap
+	 *
+	 * @return showMap
+	 */
 	Boolean getShowMap();
 
    }

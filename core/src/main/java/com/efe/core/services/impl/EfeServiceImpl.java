@@ -85,6 +85,7 @@ public class EfeServiceImpl implements EfeService {
 	/** The external libraries. */
 	private String externalLibraries;
 
+	/** The national advisor center. */
 	private String nationalAdvisorCenter;
 
 	/**
@@ -262,6 +263,11 @@ public class EfeServiceImpl implements EfeService {
 		@AttributeDefinition(name = "External Hosted Libraries", description = "External Hosted Libraries")
 		String externalLibraries();
 
+		/**
+		 * National advisor center.
+		 *
+		 * @return the string
+		 */
 		@AttributeDefinition(name = "National Advisor Center", description = "National Advisor Center")
 		String nationalAdvisorCenter();
 	}
@@ -509,6 +515,11 @@ public class EfeServiceImpl implements EfeService {
 		return externalLibraries;
 	}
 
+	/**
+	 * Gets the nationalAdvisorCenter.
+	 *
+	 * @return the nationalAdvisorCenter
+	 */
 	@Override
 	public String getNationalAdvisorCenter() {
 		return nationalAdvisorCenter;

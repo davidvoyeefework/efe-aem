@@ -108,6 +108,7 @@ public class MapDirectionImpl implements MapDirection {
 	/** The json ld. */
 	private String jsonLd;
 
+	/** The showMap. */
 	private Boolean showMap;
 
 	/**
@@ -265,6 +266,11 @@ public class MapDirectionImpl implements MapDirection {
 		return jsonLd;
 	}
 
+	/**
+	 * Method to return the showMap
+	 *
+	 * @return showMap
+	 */
 	@Override
 	public Boolean getShowMap() {
 		return showMap;
