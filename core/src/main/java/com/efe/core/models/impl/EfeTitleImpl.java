@@ -4,7 +4,9 @@ import java.util.Objects;
 
 import javax.annotation.PostConstruct;
 
+import com.efe.core.services.EfeService;
 import com.efe.core.utils.LocationPlannerUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -12,6 +14,7 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Via;
+import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
@@ -52,9 +55,15 @@ public class EfeTitleImpl implements Title {
 	@ValueMapValue
 	private boolean includeLocationInTitle;
 
+	@ValueMapValue
+	private String nationalPlannerTitle;
+
 	/** The resource resolver. */
 	@SlingObject
 	private ResourceResolver resourceResolver;
+
+	@OSGiService
+	private EfeService efeService;
 
 	/** The text. */
 	private String text;
@@ -77,6 +86,9 @@ public class EfeTitleImpl implements Title {
 				Resource resourceLocation = LocationPlannerUtil.getLocationResource(resourceResolver, stateSelector, citySelector);
 				String city = LocationPlannerUtil.getLocationProperty(resourceResolver, resourceLocation, "city");
 				text = text.replace(SELECTOR_PLACEHOLDER_1, city);
+				if(StringUtils.equalsIgnoreCase(citySelector, efeService.getNationalAdvisorCenter())) {
+					text = nationalPlannerTitle;
+				}
 			}
 		}
 	}

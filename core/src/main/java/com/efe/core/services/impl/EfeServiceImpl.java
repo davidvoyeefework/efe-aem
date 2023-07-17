@@ -85,6 +85,8 @@ public class EfeServiceImpl implements EfeService {
 	/** The external libraries. */
 	private String externalLibraries;
 
+	private String nationalAdvisorCenter;
+
 	/**
 	 * The Interface Config.
 	 */
@@ -260,6 +262,8 @@ public class EfeServiceImpl implements EfeService {
 		@AttributeDefinition(name = "External Hosted Libraries", description = "External Hosted Libraries")
 		String externalLibraries();
 
+		@AttributeDefinition(name = "National Advisor Center", description = "National Advisor Center")
+		String nationalAdvisorCenter();
 	}
 
 	/**
@@ -292,7 +296,7 @@ public class EfeServiceImpl implements EfeService {
 		this.omnyOrgId = config.omnyOrgId();
 		this.jqueryUrl = config.jqueryHostedUrl();
 		this.externalLibraries = config.externalLibraries();
-
+		this.nationalAdvisorCenter = config.nationalAdvisorCenter();
 	}
 
 	/**
@@ -503,5 +507,10 @@ public class EfeServiceImpl implements EfeService {
 	@Override
 	public String getExternalLibraries() {
 		return externalLibraries;
+	}
+
+	@Override
+	public String getNationalAdvisorCenter() {
+		return nationalAdvisorCenter;
 	}
 }

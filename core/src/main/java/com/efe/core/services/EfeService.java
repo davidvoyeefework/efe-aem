@@ -156,4 +156,6 @@ public interface EfeService {
 	 */
 	String getExternalLibraries();
 
+	String getNationalAdvisorCenter();
+
 }

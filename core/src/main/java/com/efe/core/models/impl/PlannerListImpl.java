@@ -40,6 +40,12 @@ public class PlannerListImpl implements PlannerList {
 	/** The Constant RESOURCE_TYPE. */
 	public static final String RESOURCE_TYPE = "efe/components/plannerlist";
 
+	/** The Constant SELECTOR_PLACEHOLDER_1. */
+	private static final String SELECTOR_PLACEHOLDER_1 = "{1}";
+
+	/** The Constant SELECTOR_PLACEHOLDER_0. */
+	private static final String SELECTOR_PLACEHOLDER_0 = "{0}";
+
 	/** The SlingHttpServletRequest. */
 	@SlingObject
 	private SlingHttpServletRequest request;
@@ -78,6 +84,9 @@ public class PlannerListImpl implements PlannerList {
 	@ValueMapValue
 	private String plannerTitle;
 
+	@ValueMapValue
+	private String nationalPlannerTitle;
+
 	/** The State. */
 	private String state;
 
@@ -101,8 +110,16 @@ public class PlannerListImpl implements PlannerList {
 					setCfList(cfList, item);
 				}
 			}
-
 			setPlannerDetails(cfList);
+			setPlannerTitle(citySelector);
+		}
+	}
+
+	private void setPlannerTitle(String citySelector) {
+		plannerTitle = plannerTitle.replace(SELECTOR_PLACEHOLDER_0, city);
+		plannerTitle = plannerTitle.replace(SELECTOR_PLACEHOLDER_1, state);
+		if(StringUtils.equalsIgnoreCase(citySelector, efeService.getNationalAdvisorCenter())) {
+			plannerTitle = nationalPlannerTitle;
 		}
 	}
 
