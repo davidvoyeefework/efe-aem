@@ -1,5 +1,5 @@
 {
-    "alloworigin": [
+    "alloworiginregexp": [
         "$[env:DOC_CLOUD_ORIGIN;default=*]",
         "$[env:LICENSE;default=https://viewlicense.adobe.io]"
     ],
