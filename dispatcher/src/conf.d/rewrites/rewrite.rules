@@ -9,6 +9,19 @@ Include conf.d/rewrites/default_rewrite.rules
 
 Include conf.d/rewrites/legacy_rewrite.rules
 
+RewriteCond %{REQUEST_URI} !^/apps
+RewriteCond %{REQUEST_URI} !^/bin
+RewriteCond %{REQUEST_URI} !^/content
+RewriteCond %{REQUEST_URI} !^/etc
+RewriteCond %{REQUEST_URI} !^/libs
+RewriteCond %{REQUEST_URI} !^/saml_login
+RewriteCond %{REQUEST_URI} !^/system
+RewriteCond %{REQUEST_URI} !^/tmp
+RewriteCond %{REQUEST_URI} !^/var
+RewriteCond %{REQUEST_URI} !(.jpe?g|.png|.svg|.xml|.pdf)$
+RewriteCond %{REQUEST_URI} !/$
+RewriteRule ^(.*[^/])$ $1/ [L,R=301]
+
 # rewrite for root redirect
 RewriteRule ^/?$ /content/${CONTENT_FOLDER_NAME}/us/en/home.html [PT,L]
 
