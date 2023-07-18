@@ -76,4 +76,18 @@ public interface Unbounce {
      * @return the theme
      */
     String getTheme();
+
+	/**
+	 * Gets the record keeper.
+	 *
+	 * @return the recordKeeper
+	 */
+	String getRecordKeeper();
+
+	/**
+	 * Gets the sponsor id.
+	 *
+	 * @return the sponsorId
+	 */
+	String getSponsorId();
 }

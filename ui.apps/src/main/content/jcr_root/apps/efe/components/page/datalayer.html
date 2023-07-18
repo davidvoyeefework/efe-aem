@@ -1,4 +1,5 @@
-<sly data-sly-use.model="${'com.efe.core.models.EFEDatalayer' @type='page'}">
+<sly data-sly-use.model="${'com.efe.core.models.EFEDatalayer' @type='page'}"
+    data-sly-use.unbounceModel="com.efe.core.models.Unbounce">
 
     <script src="${model.oneTrustScript}" type="text/javascript" charset="UTF-8"
         data-domain-script="${model.oneTrustScriptId}"></script>
@@ -11,26 +12,49 @@
         function OptanonWrapper() {
         }
 
-            window.adobeDataLayer = window.adobeDataLayer || [];
-            adobeDataLayer.push(JSON.parse("${model.dataLayer @ context='scriptString'}"));
+        window.adobeDataLayer = window.adobeDataLayer || [];
+        adobeDataLayer.push(JSON.parse("${model.dataLayer @ context='scriptString'}"));
 
-            var formName = "${model.formName @ context='scriptString'}";
-            if (formName) {
-                window.adobeDataLayer.push({
-                    event: 'form_complete',
-                    _efe: {
-                        formInfo: {
-                            formName: formName,
-                            formComplete: {
-                                value: 1
-                            }
+        addUnbounceEvent();
+
+        var formName = "${model.formName @ context='scriptString'}";
+        if (formName) {
+            window.adobeDataLayer.push({
+                event: 'form_complete',
+                _efe: {
+                    formInfo: {
+                        formName: formName,
+                        formComplete: {
+                            value: 1
                         }
                     }
-                })
+                }
+            })
+        }
+        const event = new Event("analyticsloaded");
+        window.dispatchEvent(event);
+
+        function addUnbounceEvent() {
+            var sponsorId = "${unbounceModel.sponsorId @ context='scriptString'}";
+            var recordKeeper = "${unbounceModel.recordKeeper @ context='scriptString'}";
+
+            if (sponsorId && recordKeeper) {
+                var unbounceLoadObj = {
+                    "event":"personalization.request",
+                    "_financialengines": {
+                        "recordKeeperDetails": {
+                            "rdId": recordKeeper,
+                            "rkName": ""            
+                        },
+                        "sponsorDetails": {
+                            "sponsorId": sponsorId,
+                            "sponsorName": ""
+                        }
+                    }
+                }
+                adobeDataLayer.push(unbounceLoadObj);
             }
-            const event = new Event("analyticsloaded");
-            window.dispatchEvent(event);
-      
+        }
     </script>
     <!--/**End Adobe Tag Manager **/-->
 
