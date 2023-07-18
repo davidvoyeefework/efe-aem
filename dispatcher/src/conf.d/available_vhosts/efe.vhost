@@ -80,6 +80,12 @@ Include conf.d/variables/custom.vars
 		Header always set Cache-Control "private"
     </LocationMatch>
 
+	# PDF inline
+	<LocationMatch "\.(?i:pdf)$">
+        ForceType text/xml
+        Header set Content-Disposition inline
+    </LocationMatch>
+
 	# No cache on CDN for GraphQL queries serving securing content
 	<LocationMatch "^/graphql/execute.json/.*">
 		Header unset Cache-Control
