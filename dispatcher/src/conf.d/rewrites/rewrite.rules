@@ -20,7 +20,6 @@ RewriteCond %{REQUEST_URI} !^/system
 RewriteCond %{REQUEST_URI} !^/tmp
 RewriteCond %{REQUEST_URI} !^/var
 RewriteCond %{REQUEST_URI} !(.jpe?g|.png|.svg|.xml|.pdf)$
-RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_URI} !/$
 RewriteRule ^(.*[^/])$ %{REQUEST_URI}/ [L,R=301]
 
