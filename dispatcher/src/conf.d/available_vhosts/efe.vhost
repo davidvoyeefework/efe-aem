@@ -82,8 +82,8 @@ Include conf.d/variables/custom.vars
 
 	# PDF inline
 	<LocationMatch "\.(?i:pdf)$">
-        ForceType text/xml
-        Header set Content-Disposition inline
+        ForceType application/pdf
+  		Header set Content-Disposition inline
     </LocationMatch>
 
 	# No cache on CDN for GraphQL queries serving securing content
