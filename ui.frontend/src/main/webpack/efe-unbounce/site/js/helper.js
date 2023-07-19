@@ -107,7 +107,31 @@ export const fetchData = async(url,headers) => {
   }
 }
 
+export const postJSON = async (data) =>{
+  try {
+    const response = await fetch("https://gateway.feitest.com/advisor/api/v1/texts/forKeys", {
+      method: "POST", // or 'PUT'
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
 
+    const result = await response.json();
+    return result
+    console.log("Success:", result);
+  } catch (error) {
+    console.error("Error:", error);
+    throw error;
+  }
+}
+ export const pushToWindowObject = (data)=>{
+  for (const key in data) {
+    if (Object.prototype.hasOwnProperty.call(data, key)) {
+      window.fe[key] = data[key];
+    }
+  }
+}
 export const handleLoader =(isShow) =>{
   const loaderclass = '.loader';
   if (!document.querySelector(loaderclass)) {
