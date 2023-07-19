@@ -14,10 +14,10 @@ export default class UnbouncePage {
                 return
             }
 
-            handleLoader(true);
-            this.fetchSponsorData();
-            this.fetchAggregateData();
-            this.getAuthenticationStatus();
+            //handleLoader(true);
+            // this.fetchSponsorData();
+            // this.fetchAggregateData();
+            // this.getAuthenticationStatus();
         })
     }
     // async getFetch(url, headers) {
