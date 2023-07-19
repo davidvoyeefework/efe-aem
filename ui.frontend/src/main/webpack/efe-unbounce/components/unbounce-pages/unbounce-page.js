@@ -83,7 +83,7 @@ export default class UnbouncePage {
             })
         })
 
-        var sponsorLogo = document.querySelector(".sponsor-logo a");
+        var sponsorLogo = document.querySelector(".sponsor-logo img");
         if(sponsorLogo && data.context.isFeChannel && data.context.sponsorId){
             var logoFileName = data.context.sponsorId;
             var logo = "/content/dam/fe/logos/sponsors/"+logoFileName+"-small.png";

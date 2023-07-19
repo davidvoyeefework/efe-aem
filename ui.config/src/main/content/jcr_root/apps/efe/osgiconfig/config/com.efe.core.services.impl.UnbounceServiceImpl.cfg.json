@@ -1,7 +1,7 @@
 {
   "pageFrameApi": "$[env:forKey_api;default=https://www.feitest.com/api/v1/pageframe/?namespace=landing-flow]",
   "aggregateApi": "$[env:forKey_api;default=https://www.feitest.com/api/v1/planowners/{Recordkeeper}/aggregate]",
-  "forKeyApi": "$[env:forKey_api;default=https://gateway.feitest.com/advisor/api/v1/texts/forKeys]",
+  "forKeyApi": "$[env:forKey_api;default=https://www.feitest.com/advisor/api/v1/texts/forKeys]",
   "softAuthApi": "$[env:softAuth_api;default=https://www.feitest.com/api/v1/userlogin/confirmIdentity?loginContext=CONFIRM_IDENTITY]",
   "signupApi": "$[env:signup_api;default=https://www.feitest.com/api/v1/user/membership]",
   "scheduleApi": "$[env:schedule_api;default=https://www.feitest.com/api/v1/user/clientServices/contactRequest?type=adviser_callback&initiationPoint={FormId}]",
