@@ -19,6 +19,9 @@ module.exports = env => {
         plugins: [
             new HtmlWebpackPlugin({
                 template: path.resolve(__dirname, SOURCE_ROOT + '/static/index.html')
+            }),
+            new HtmlWebpackPlugin({
+                template: path.resolve(__dirname, SOURCE_ROOT + '/efe-unbounce/static/index.html')
             })
         ],
         devServer: {
