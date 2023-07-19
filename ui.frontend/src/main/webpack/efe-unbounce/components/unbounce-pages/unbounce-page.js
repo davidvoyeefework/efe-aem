@@ -12,13 +12,11 @@ export default class UnbouncePage {
                 return 
             }
             window.fe={};
+            handleLoader(true)
             this.fetchSponsorData();
             this.fetchAggregateData();
             this.getKeys();
         });
-        //handleLoader(true)
-        // this.fetchAggregateData();
-        // this.getAuthenticationStatus();
     }
     async fetchSponsorData() {
         const apiHost = document.querySelector('#unbounce-properties')?.getAttribute('data-frame-api');//'http://localhost:3000';//document.querySelector('.sponsor-header').getAttribute('data-page-frame-api');
@@ -29,17 +27,12 @@ export default class UnbouncePage {
         await fetchData(apiHost, headers).then(data => {
             handleLoader(false);
             if (data) {
-                // for (const key in data) {
-                //     if (Object.prototype.hasOwnProperty.call(data, key)) {
-                //       window.fe[key] = data[key];
-                //     }
-                //   }
                   pushToWindowObject(data);
                   this.changeHeaderValues();
                   this.changeFooterValues();
+                  handleLoader(false);
             }
         }).catch(error => {
-            // Handle any errors that occurred during the fetch request
             console.error('An error occurred:', error);
             handleLoader(false);
         });
@@ -58,16 +51,7 @@ export default class UnbouncePage {
         await fetchData(apiHost, headers).then(data => {
             console.log(data);
             pushToWindowObject(data);
-            // for (const key in data) {
-            //     if (Object.prototype.hasOwnProperty.call(data, key)) {
-            //       window.fe[key] = data[key];
-            //     }
-            //   }
             handleLoader(false);
-            // this.loader.style.display = 'none';
-            // if(data) {
-            //     this.changeHeaderValues(data);
-            // }
         }).catch(error => {
             // Handle any errors that occurred during the fetch request
             console.error('An error occurred:', error);
@@ -86,13 +70,9 @@ export default class UnbouncePage {
     }
     changeHeaderValues() {
         const data = window.fe;
-        if (data?.header?.sponsorName === 'AT&T') {
-            document.querySelector('.sponsor-header')?.classList.add('sponsor--ATT');
-        }
-        //document.querySelector('.sponsor-header')?.classList.add('sponsor--' + data?.header?.sponsorName);
         const headerDataVariables = document.querySelector('#unbounce-properties')?.getAttribute('data-variables');
         JSON.parse(headerDataVariables)?.forEach((item) => {
-            console.log(Object.keys(item).length === 0);
+         
             if (Object.keys(item).length === 0) {
                 return
             }
@@ -104,10 +84,10 @@ export default class UnbouncePage {
         })
 
         var sponsorLogo = document.querySelector(".sponsor-logo a");
-        if(sponsorLogo){
+        if(sponsorLogo && data.context.isFeChannel && data.context.sponsorId){
             var logoFileName = data.context.sponsorId;
-            var logo = "https://images.financialengines.com/public-assets/images/logos/sponsors/"+logoFileName+"-small.png";
-            sponsorLogo.style.backgroundImage = `url('`+logo+`')`;
+            var logo = "/content/dam/fe/logos/sponsors/"+logoFileName+"-small.png";
+            sponsorLogo.src = logo;
         }
     }
     changeFooterValues() {
