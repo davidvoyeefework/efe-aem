@@ -3,9 +3,9 @@
     jcr:primaryType="cq:Page">
     <jcr:content
         cq:redirectTarget="/content/fe/us/en/home"
-        cq:template="/conf/efe/settings/wcm/templates/page-content"
+        cq:template="/conf/efe/settings/wcm/templates/unbounce-page"
         jcr:primaryType="cq:PageContent"
         jcr:title="us"
-        sling:resourceType="efe/components/page"/>
+        sling:resourceType="efe/components/fepage"/>
     <en/>
 </jcr:root>

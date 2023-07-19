@@ -1,0 +1,170 @@
+package com.efe.core.models.impl;
+
+import com.adobe.acs.commons.genericlists.GenericList;
+import com.adobe.cq.export.json.ExporterConstants;
+import com.efe.core.models.UnbounceHeader;
+import com.efe.core.services.DynamicMediaService;
+import com.efe.core.utils.EFEUtil;
+import com.efe.core.utils.LinkUtil;
+import com.efe.core.utils.ResourceUtil;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.api.resource.ResourceResolverFactory;
+import org.apache.sling.models.annotations.DefaultInjectionStrategy;
+import org.apache.sling.models.annotations.Exporter;
+import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.OSGiService;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
+import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+
+import javax.annotation.PostConstruct;
+
+@Model(adaptables = { Resource.class, SlingHttpServletRequest.class }, adapters = UnbounceHeader.class, resourceType = {
+        UnbounceHeaderImpl.RESOURCE_TYPE }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
+
+public class UnbounceHeaderImpl implements UnbounceHeader {
+
+    /** The Constant RESOURCE_TYPE. */
+    public static final String RESOURCE_TYPE = "efe/components/unbounceheader";
+
+    /** The request. */
+    @SlingObject
+    private SlingHttpServletRequest request;
+
+    /** The resource resolver. */
+    @SlingObject
+    private ResourceResolver resourceResolver;
+
+    /**
+     * Injecting dynamicMediaService
+     *
+     */
+    @OSGiService
+    private DynamicMediaService dynamicMediaService;
+
+
+    /** The resolver factory. */
+    @OSGiService
+    private ResourceResolverFactory resolverFactory;
+
+    /** The primary logo. */
+    @ValueMapValue
+    private String primaryLogo;
+
+    /** The secondary logo. */
+    @ValueMapValue
+    private String secondaryLogo;
+
+    /** The primary logo link. */
+    @ValueMapValue
+    private String primaryLogoLink;
+
+    /** The secondary logo link. */
+    @ValueMapValue
+    private String secondaryLogoLink;
+
+    @ValueMapValue
+    private String sponsorDetails;
+
+    private String dynamicVariables;
+
+    /**
+     * Inits the model.
+     */
+    @PostConstruct
+    protected void init() {
+        if (null != request) {
+            setUnbounceField();
+        }
+    }
+
+    /**
+     * Sets the unbounce field.
+     */
+    private void setUnbounceField() {
+        try (ResourceResolver serviceResolver = ResourceUtil.getServiceResourceResolver(resolverFactory)) {
+            GenericList list = EFEUtil.getGenericList(serviceResolver, "/etc/acs-commons/lists/fe/sponsor-details");
+
+            if(null == list) {
+                return;
+            }
+
+            JsonArray array = new JsonArray();
+            for (GenericList.Item item : list.getItems()) {
+                JsonObject dynamicVariable = new JsonObject();
+                String[] values = item.getValue().split("\\|");
+                if (values.length == 2) {
+                    dynamicVariable.addProperty(values[0], values[1]);
+                }
+                array.add(dynamicVariable);
+            }
+            dynamicVariables = new Gson().toJson(array);
+        }
+    }
+
+    /**
+     * Gets the primary logo.
+     *
+     * @return the primary logo
+     */
+    @Override
+    public String getPrimaryLogo() {
+        return dynamicMediaService.getDmImagePath(resourceResolver, primaryLogo);
+    }
+
+    /**
+     * Gets the secondary logo.
+     *
+     * @return the secondary logo
+     */
+    @Override
+    public String getSecondaryLogo() {
+        return dynamicMediaService.getDmImagePath(resourceResolver, secondaryLogo);
+    }
+
+    /**
+     * Gets the logo link.
+     *
+     * @return the logo link
+     */
+    @Override
+    public String getPrimaryLogoLink() {
+        return LinkUtil.getFormattedLink(primaryLogoLink, resourceResolver);
+    }
+
+    /**
+     * Gets the logo link.
+     *
+     * @return the logo link
+     */
+    @Override
+    public String getSecondaryLogoLink() {
+        return LinkUtil.getFormattedLink(secondaryLogoLink, resourceResolver);
+    }
+
+    /**
+     * Gets the Sponsor Details.
+     *
+     * @return the Sponsor Details
+     */
+    @Override
+    public String getSponsorDetails() {
+        return sponsorDetails;
+    }
+
+    /**
+     * Gets the dynamic variables.
+     *
+     * @return the dynamicVariables
+     */
+    @Override
+    public String getDynamicVariables() {
+        return dynamicVariables;
+    }
+
+}

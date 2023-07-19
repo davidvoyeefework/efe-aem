@@ -1,0 +1,29 @@
+<template data-sly-template.item="${@ logo,href}">
+    <div class="image cmp-image--efe-logo-primary cmp-image--small" id="header-logo">
+        <div
+                data-asset-id="45c6ee92-90e1-4af2-af69-b6dcbc7daeb7"
+                id="image-72c95dc7ac"
+                class="cmp-image"
+                itemscope=""
+                itemtype="http://schema.org/ImageObject"
+        >
+            <a
+                    class="cmp-image__link"
+                    href=${href}
+                    target="#"
+
+            >
+                <img
+                        src=${logo}
+                        loading="lazy"
+                        class="cmp-image__image"
+                        itemprop="contentUrl"
+                        alt=" "
+                        title="Logo"
+                />
+            </a>
+            <meta itemprop="caption" content="Snowy mountain glacier" />
+        </div>
+    </div>
+
+</template>

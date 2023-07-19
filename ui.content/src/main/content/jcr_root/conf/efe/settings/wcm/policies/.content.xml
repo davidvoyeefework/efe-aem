@@ -1564,7 +1564,7 @@
                     </cq:styleGroups>
                 </policy>
             </verticalseparator>
-               <relatedarticle jcr:primaryType="nt:unstructured">
+            <relatedarticle jcr:primaryType="nt:unstructured">
                 <policy
                     jcr:primaryType="nt:unstructured"
                     jcr:title="relatedarticle"
@@ -1687,6 +1687,30 @@
                     </cq:styleGroups>
                 </policy>
             </footer>
+            <unbounceheader jcr:primaryType="nt:unstructured">
+                <policy
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Unbounce Header Policy"
+                    sling:resourceType="wcm/core/components/policy/policy">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                    <rtePlugins jcr:primaryType="nt:unstructured">
+                        <efe-aem-dynamic-variable
+                            jcr:primaryType="nt:unstructured"
+                            features="applyDynamicVariable"/>
+                    </rtePlugins>
+                </policy>
+            </unbounceheader>
+            <fepage jcr:primaryType="nt:unstructured">
+                <policy
+                    jcr:description="Includes the required client libraries."
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Unbounce Page Policy"
+                    sling:resourceType="wcm/core/components/policy/policy"
+                    clientlibs="[efe.site,efe.unbounce]"
+                    clientlibsJsHead="efe.unbounce">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                </policy>
+            </fepage>
         </components>
     </efe>
 </jcr:root>
