@@ -92,7 +92,7 @@ module.exports = {
     {
       ...libsBaseConfig,
       name: "clientlib-unbounce",
-      categories: ["efe.site"],
+      categories: ["efe.unbounce"],
       dependencies: ["efe.dependencies"],
       assets: {
         // Copy entrypoint scripts and stylesheets into the respective ClientLib
