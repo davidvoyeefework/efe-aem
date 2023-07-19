@@ -159,6 +159,8 @@ public class UnbounceImpl implements Unbounce {
 					}
 				}
 			}
+		}catch(Exception e) {
+			LOGGER.error("Error :",e);
 		}
 	}
 
