@@ -1,35 +1,24 @@
+//import {handleLoader} from '../../site/js/helper'
 import A11yDialog from 'a11y-dialog'
 import { getCookie, getFetch, handleLoader, fetchData } from "../../site/js/helper";
 export default class UnbouncePage {
     constructor() {
-        // const target = new EventTarget();
-        // target.addEventListener('sponsorTargetEvent', e=>this.fetchSponsorData(e.detail.name));
-        // target.dispatchEvent(new CustomEvent("sponsorTargetEvent", {
-        //     detail: {
-        //       name: "Boeing",
-        //     },
-        //   }));
-        window.addEventListener("load", (event) => {
-            if (!document.querySelector('.sponsor-header')) {
-                return
-            }
-
-            //handleLoader(true);
-            // this.fetchSponsorData();
-            // this.fetchAggregateData();
-            // this.getAuthenticationStatus();
-        })
+        this.init()
     }
-    // async getFetch(url, headers) {
-    //     return fetch(url, {headers}).then(data=>{
-    //         if(data.status === 200) {
-    //             return data?.json();
-    //         } else {
-    //             console.log(data.statusText,"something went wrong");
-    //             return false;
-    //         }
-    //     });
-    // }
+    init() {
+        window.addEventListener("load", (event) => {
+            const el = document.querySelector('.unbounce-promotions-page');
+            if(!el) {
+                return 
+            }
+            window.fe={};
+            this.fetchSponsorData();
+            this.fetchAggregateData();
+        });
+        //handleLoader(true)
+        // this.fetchAggregateData();
+        // this.getAuthenticationStatus();
+    }
     async fetchSponsorData() {
         const apiHost = document.querySelector('#unbounce-properties')?.getAttribute('data-frame-api');//'http://localhost:3000';//document.querySelector('.sponsor-header').getAttribute('data-page-frame-api');
         const headers = {
@@ -39,8 +28,13 @@ export default class UnbouncePage {
         await fetchData(apiHost, headers).then(data => {
             handleLoader(false);
             if (data) {
-                this.changeHeaderValues(data);
-                this.changeFooterValues(data);
+                for (const key in data) {
+                    if (Object.prototype.hasOwnProperty.call(data, key)) {
+                      window.fe[key] = data[key];
+                    }
+                  }
+                  this.changeHeaderValues();
+                  this.changeFooterValues();
             }
         }).catch(error => {
             // Handle any errors that occurred during the fetch request
@@ -61,6 +55,11 @@ export default class UnbouncePage {
         }
         await fetchData(apiHost, headers).then(data => {
             console.log(data);
+            for (const key in data) {
+                if (Object.prototype.hasOwnProperty.call(data, key)) {
+                  window.fe[key] = data[key];
+                }
+              }
             handleLoader(false);
             // this.loader.style.display = 'none';
             // if(data) {
@@ -72,28 +71,12 @@ export default class UnbouncePage {
             handleLoader(false);
         });
     }
-    async getAuthenticationStatus() {
-        const headers = {
-            'Accept': 'application/json, text/plain, */*',
-        }
-        await fetchData('https://www.feitest.com/api/v1/userlogin/authenticationstatus', headers).then(data => {
-            console.log(data);
-            handleLoader(false);
-            //if (data.isSponsorIdentified) {
-                document.querySelector('.unbounce-form').style.display = 'block';
-           // }
-        }).catch(error => {
-            // Handle any errors that occurred during the fetch request
-            console.error('An error occurred:', error);
-            handleLoader(false);
-        });
-    }
-    
-    changeHeaderValues(data) {
+    changeHeaderValues() {
+        const data = window.fe;
         if (data?.header?.sponsorName === 'AT&T') {
             document.querySelector('.sponsor-header')?.classList.add('sponsor--ATT');
         }
-        document.querySelector('.sponsor-header')?.classList.add('sponsor--' + data?.header?.sponsorName);
+        //document.querySelector('.sponsor-header')?.classList.add('sponsor--' + data?.header?.sponsorName);
         const headerDataVariables = document.querySelector('#unbounce-properties')?.getAttribute('data-variables');
         JSON.parse(headerDataVariables)?.forEach((item) => {
             console.log(Object.keys(item).length === 0);
@@ -114,8 +97,9 @@ export default class UnbouncePage {
             sponsorLogo.style.backgroundImage = `url('`+logo+`')`;
         }
     }
-    changeFooterValues(data) {
-        const litUlElement = document.querySelector('.unbounce-footer-links .cmp-list');
+    changeFooterValues() {
+        const data = window.fe;
+        const litUlElement = document.querySelector('.cmp-list--footer .cmp-list');
         if (!litUlElement) {
             return
         }
@@ -166,4 +150,4 @@ export default class UnbouncePage {
             })
         });
     }
-}
+ }
