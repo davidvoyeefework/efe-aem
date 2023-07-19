@@ -1,6 +1,6 @@
 //import {handleLoader} from '../../site/js/helper'
 import A11yDialog from 'a11y-dialog'
-import { getCookie, getFetch, handleLoader, fetchData } from "../../site/js/helper";
+import { getCookie, getFetch, handleLoader, fetchData, postJSON, pushToWindowObject } from "../../site/js/helper";
 export default class UnbouncePage {
     constructor() {
         this.init()
@@ -14,6 +14,7 @@ export default class UnbouncePage {
             window.fe={};
             this.fetchSponsorData();
             this.fetchAggregateData();
+            this.getKeys();
         });
         //handleLoader(true)
         // this.fetchAggregateData();
@@ -28,11 +29,12 @@ export default class UnbouncePage {
         await fetchData(apiHost, headers).then(data => {
             handleLoader(false);
             if (data) {
-                for (const key in data) {
-                    if (Object.prototype.hasOwnProperty.call(data, key)) {
-                      window.fe[key] = data[key];
-                    }
-                  }
+                // for (const key in data) {
+                //     if (Object.prototype.hasOwnProperty.call(data, key)) {
+                //       window.fe[key] = data[key];
+                //     }
+                //   }
+                  pushToWindowObject(data);
                   this.changeHeaderValues();
                   this.changeFooterValues();
             }
@@ -55,16 +57,27 @@ export default class UnbouncePage {
         }
         await fetchData(apiHost, headers).then(data => {
             console.log(data);
-            for (const key in data) {
-                if (Object.prototype.hasOwnProperty.call(data, key)) {
-                  window.fe[key] = data[key];
-                }
-              }
+            pushToWindowObject(data);
+            // for (const key in data) {
+            //     if (Object.prototype.hasOwnProperty.call(data, key)) {
+            //       window.fe[key] = data[key];
+            //     }
+            //   }
             handleLoader(false);
             // this.loader.style.display = 'none';
             // if(data) {
             //     this.changeHeaderValues(data);
             // }
+        }).catch(error => {
+            // Handle any errors that occurred during the fetch request
+            console.error('An error occurred:', error);
+            handleLoader(false);
+        });
+    }
+    async getKeys() {
+        const keys= ["publicEnrollment.hero.heading","publicEnrollment.hero.description"];
+        await postJSON(keys).then(data=>{
+            pushToWindowObject(data);
         }).catch(error => {
             // Handle any errors that occurred during the fetch request
             console.error('An error occurred:', error);
