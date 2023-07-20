@@ -109,17 +109,17 @@ export const fetchData = async(url,headers) => {
 
 export const postJSON = async (data) =>{
   try {
-    const response = await fetch("https://www.feitest.com/advisor/api/v1/texts/forKeys", {
+    const response = await fetch("https://gateway.feitest.com/advisor/api/v1/texts/forKeys", {
       method: "POST", // or 'PUT'
       headers: {
         "Content-Type": "application/json",
       },
+      credentials: "include",
       body: JSON.stringify(data),
     });
 
     const result = await response.json();
     return result
-    console.log("Success:", result);
   } catch (error) {
     console.error("Error:", error);
     throw error;
