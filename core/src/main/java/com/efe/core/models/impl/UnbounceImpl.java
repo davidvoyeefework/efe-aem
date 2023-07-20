@@ -2,9 +2,7 @@ package com.efe.core.models.impl;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.Cookie;
@@ -271,7 +269,10 @@ public class UnbounceImpl implements Unbounce {
 	 */
 	@Override
 	public Map<String, String> getDynamicVariables() {
-		return new HashMap<>(dynamicVariables);
+		if(Objects.nonNull(dynamicVariables)) {
+			return new HashMap<>(dynamicVariables);
+		}
+		return Collections.emptyMap();
 	}
 
 	/**
