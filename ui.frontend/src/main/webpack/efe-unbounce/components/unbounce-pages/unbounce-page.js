@@ -59,8 +59,9 @@ export default class UnbouncePage {
         });
     }
     async getKeys() {
+        let apiUrl = document.querySelector('#unbounce-properties')?.getAttribute('data-keys-api');
         const keys= ["publicEnrollment.hero.heading","publicEnrollment.hero.description"];
-        await postJSON(keys).then(data=>{
+        await postJSON(apiUrl, keys).then(data=>{
             pushToWindowObject(data);
         }).catch(error => {
             // Handle any errors that occurred during the fetch request
