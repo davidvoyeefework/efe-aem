@@ -189,13 +189,18 @@
          }
          &__pretitle {
             @include buildFont (rem(16), 4%,$font-nimbus-Sans,400, uppercase,rem(16),$efe-gray-primary);
-            letter-spacing: 0.04em;    
+            letter-spacing: 0.04em;
+            margin-bottom: 5px;   
          }
          &__content {
              @include media("<tablet") {
                  padding: rem(32) rem(24);
              }
              padding: rem(51) rem(48);
+         }
+         &__action-container {
+            margin-top: rem(24);
+            margin-bottom: 0;
          }
          &__action-link {
              @include cta-secondary;
