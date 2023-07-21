@@ -13,15 +13,12 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 */-->
-<link rel="stylesheet" type="text/css"
-  href="https://www.feitest.com/app/landing-utils/landing-page.92cf6829b542e7500238.css">
-
 <sly data-sly-use.clientlib="core/wcm/components/commons/v1/templates/clientlib.html">
   <sly data-sly-call="${clientlib.js @ categories='efe.base', async=true}" />
 </sly>
 
 
-<script>
+<script data-sly-test="${wcmmode.disabled}">
                  //show loading screen
                  var pageWrapper = document.querySelector("body > div");
                 var loadingScreen = document.createElement("div");
