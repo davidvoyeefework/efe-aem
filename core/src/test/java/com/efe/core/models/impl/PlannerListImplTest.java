@@ -68,7 +68,6 @@ class PlannerListImplTest {
 	@BeforeEach
 	public void setup() throws Exception {
 
-		MockSlingHttpServletRequest request = aemContext.request();
 		Class<PlannerList> modelClass = PlannerList.class;
 		aemContext.load().json(RESOURCE_CONTENT, TEST_CONTENT_ROOT);
 		aemContext.load().json(CF_CONTENT, CF_PATH);
@@ -78,11 +77,6 @@ class PlannerListImplTest {
 		aemContext.registerInjectActivateService(efeService);
 		efeService.activate(configuration);
 		aemContext.addModelsForClasses(modelClass);
-		resource = aemContext.currentResource(RESOURCE);
-		MockRequestPathInfo requestPathInfo = (MockRequestPathInfo) request.getRequestPathInfo();
-		requestPathInfo.setResourcePath(TEST_CONTENT_ROOT);
-		requestPathInfo.setSelectorString("AL.Birmingham");
-		model = aemContext.request().adaptTo(PlannerList.class);
 	}
 
 	/**
@@ -90,9 +84,15 @@ class PlannerListImplTest {
 	 */
 	@Test
 	public void simpleLoadAndGetterTest() {
+		resource = aemContext.currentResource(RESOURCE);
+		MockSlingHttpServletRequest request = aemContext.request();
+		MockRequestPathInfo requestPathInfo = (MockRequestPathInfo) request.getRequestPathInfo();
+		requestPathInfo.setResourcePath(TEST_CONTENT_ROOT);
+		requestPathInfo.setSelectorString("AL.Birmingham");
+		model = aemContext.request().adaptTo(PlannerList.class);
 		assertEquals("2332", model.getId());
 		assertEquals("_blank", model.getPlannerTarget());
-		assertEquals("THE {0}  , {1}, TEAM", model.getPlannerTitle());
+		assertEquals("THE Birmingham  , al, TEAM", model.getPlannerTitle());
 		assertEquals("Read Bio", model.getCtaLabel());
 		assertEquals("BIRMINGHAM", model.getCity());
 		assertEquals("AL", model.getState());
@@ -110,7 +110,8 @@ class PlannerListImplTest {
 	 */
 	@Test
     void testNullAttribute() {
-        aemContext.currentResource(TEST_CONTENT_ROOT + "/jcr:content/root/container/plannerlist2");
+        resource = aemContext.currentResource(TEST_CONTENT_ROOT + "/jcr:content/root/container/plannerlist2");
+		MockSlingHttpServletRequest request = aemContext.request();
         model = aemContext.request().adaptTo(PlannerList.class);
         assertEquals("plannerlist2-ed6a28fce7", model.getId());
     }

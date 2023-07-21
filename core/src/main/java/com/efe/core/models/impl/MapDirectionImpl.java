@@ -4,6 +4,7 @@ import java.util.Objects;
 
 import javax.annotation.PostConstruct;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -107,17 +108,25 @@ public class MapDirectionImpl implements MapDirection {
 	/** The json ld. */
 	private String jsonLd;
 
+	/** The showMap. */
+	private Boolean showMap;
+
 	/**
-	 * Inits the.
+	 * Inits the Model.
 	 */
 	@PostConstruct
 	public void init() {
 		isEmpty = true;
+		showMap = true;
 		locationResponse = new LocationResponse();
 		String[] selectors = request.getRequestPathInfo().getSelectors();
 		if (selectors.length == 2) {
 			final String state = selectors[0].toLowerCase();
 			final String city = selectors[1].toLowerCase();
+			if(StringUtils.equalsIgnoreCase(city,efeService.getNationalAdvisorCenter())) {
+				showMap = !StringUtils.equalsIgnoreCase(city,efeService.getNationalAdvisorCenter());
+				return;
+			}
 			final Resource resourceLocation = LocationPlannerUtil.getLocationResource(resourceResolver, state, city);
 			if (Objects.nonNull(resourceLocation)) {
 
@@ -143,8 +152,6 @@ public class MapDirectionImpl implements MapDirection {
 			}
 		}
 	}
-
-
 
 	/**
 	 * Gets the id.
@@ -259,4 +266,13 @@ public class MapDirectionImpl implements MapDirection {
 		return jsonLd;
 	}
 
+	/**
+	 * Method to return the showMap
+	 *
+	 * @return showMap
+	 */
+	@Override
+	public Boolean getShowMap() {
+		return showMap;
+	}
 }

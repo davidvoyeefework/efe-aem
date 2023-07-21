@@ -219,10 +219,15 @@ public class ArticleDetailUtil {
         String firstName = plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.FIRST_NAME))
                 .map(ContentElement::getContent).orElse(StringUtils.EMPTY);
 
+        String firstNameAlias = plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.FIRST_NAME_ALIAS))
+                .map(ContentElement::getContent).orElse(StringUtils.EMPTY);
+
+        if(StringUtils.isEmpty(firstNameAlias)) {
+            firstNameAlias = firstName;
+        }
         plannerResponse.setFirstName(firstName);
 
-        plannerResponse.setFirstNameAlias(plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.FIRST_NAME_ALIAS))
-                .map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+        plannerResponse.setFirstNameAlias(firstNameAlias);
 
         plannerResponse.setMiddleName(plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.MIDDLE_NAME))
             .map(ContentElement::getContent).orElse(StringUtils.EMPTY));

@@ -347,6 +347,7 @@
                     sling:resourceType="wcm/core/components/policy/policy"
                     allowedTypes="[h1,h2,h3,h4,h5,h6]"
                     linkDisabled="false"
+                    enableLocationTab="true"
                     type="h2">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                     <cq:styleGroups jcr:primaryType="nt:unstructured">
@@ -548,9 +549,19 @@
                     jcr:title="Container Policy"
                     sling:resourceType="wcm/core/components/policy/policy"
                     backgroundImageEnabled="true"
-                    components="[group:EFE - Content,/apps/efe/components/form/container]"
+                    components="[/libs/cq/experience-fragments/editor/components/buildingblock,group:EFE - Content,/apps/efe/components/form/container]"
                     layoutDisabled="false">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
+                    <cq:authoring jcr:primaryType="nt:unstructured">
+                        <assetToComponentMapping jcr:primaryType="nt:unstructured">
+                            <mapping_buildingblock
+                                jcr:primaryType="nt:unstructured"
+                                assetGroup="block"
+                                assetMimetype="text/html"
+                                droptarget="buildingblock"
+                                resourceType="cq/experience-fragments/editor/components/buildingblock"/>
+                        </assetToComponentMapping>
+                    </cq:authoring>
                     <cq:styleGroups jcr:primaryType="nt:unstructured">
                         <item0
                             cq:styleGroupLabel="Color"
@@ -1661,32 +1672,6 @@
                 </cq:styleGroups>
             </policy>
             </video>
-            <footer jcr:primaryType="nt:unstructured">
-                <policy
-                    jcr:primaryType="nt:unstructured"
-                    jcr:title="Footer Policy"
-                    sling:resourceType="wcm/core/components/policy/policy">
-                    <jcr:content jcr:primaryType="nt:unstructured"/>
-                    <cq:styleGroups jcr:primaryType="nt:unstructured">
-                        <item0
-                            cq:styleGroupLabel="Link Color"
-                            jcr:primaryType="nt:unstructured">
-                            <cq:styles jcr:primaryType="nt:unstructured">
-                                <item0
-                                    cq:styleClasses="unbounce-footer--primary"
-                                    cq:styleId="primary"
-                                    cq:styleLabel="Primary"
-                                    jcr:primaryType="nt:unstructured"/>
-                                <item1
-                                    cq:styleClasses="unbounce-footer--secondary"
-                                    cq:styleId="secondary"
-                                    cq:styleLabel="Secondary"
-                                    jcr:primaryType="nt:unstructured"/>
-                            </cq:styles>
-                        </item0>
-                    </cq:styleGroups>
-                </policy>
-            </footer>
             <unbounceheader jcr:primaryType="nt:unstructured">
                 <policy
                     jcr:primaryType="nt:unstructured"
@@ -1711,6 +1696,18 @@
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                 </policy>
             </fepage>
+            <listteaser jcr:primaryType="nt:unstructured">
+                <policy
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="List Teaser Policy"
+                    sling:resourceType="wcm/core/components/policy/policy"
+                    allowedHeadingElements="[h1,h2,h3,h4,h5,h6]"
+                    descriptionHidden="true"
+                    showTitleType="false"
+                    titleType="h2">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                </policy>
+            </listteaser>
         </components>
     </efe>
 </jcr:root>

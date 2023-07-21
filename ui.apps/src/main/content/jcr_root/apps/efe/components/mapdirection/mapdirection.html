@@ -1,4 +1,4 @@
-<sly data-sly-use.model="com.efe.core.models.MapDirection">
+<sly data-sly-use.model="com.efe.core.models.MapDirection" data-sly-test="${model.showMap}">
     <script data-sly-test="${model.jsonLd}" type="application/ld+json">
         ${model.jsonLd @context ='unsafe'}
     </script>

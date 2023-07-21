@@ -127,5 +127,22 @@ public class PageImpl implements PageModel {
 		}
 		return jQueryUrl;
 	}
+	
+	/**
+	 * Gets the external libraries.
+	 *
+	 * @return the external libraries
+	 */
+	@Override
+	public List<String> getExternalLibraries(){
+		List<String> externalLibraries = new ArrayList<>();	
+		if(Objects.nonNull(efeService) && StringUtils.isNotEmpty(efeService.getExternalLibraries())) {
+			String []libraries = efeService.getExternalLibraries().split(",");	
+			for(String library: libraries) {
+				externalLibraries.add(library.trim());
+			}
+		}
+		return Collections.unmodifiableList(externalLibraries);
+	}
 
 }

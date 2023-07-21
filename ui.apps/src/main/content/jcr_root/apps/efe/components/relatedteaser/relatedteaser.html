@@ -15,11 +15,6 @@
         <h2 class="cmp-teaser__title">
             <sly data-sly-call="${titleTemplate.title @ teaser=teaser}"></sly>
         </h2>
-        <div class="cmp-teaser__description">
-            <p>
-                <sly data-sly-call="${descriptionTemplate.description @ teaser=teaser}"></sly>
-            </p>
-        </div>
         <sly data-sly-call="${actionsTemplate.actions @ teaser=teaser, article=article}"></sly>
     </div>
     <sly data-sly-call="${imageTemplate.image @ teaser=teaser}"></sly>
