@@ -35,7 +35,7 @@
 					</sly>
                 	<sly data-sly-test.hasContent="${model.articleFragmentPath.plannerResponse}"
                          data-sly-list.item="${model.articleFragmentPath.plannerResponse}">
-                        <a x-cq-linkchecker="skip" href="${item.url}" ><span class="author-name">${item.firstName} ${item.middleName} ${item.lastName}</span></a><span> ${item.title}</span></br>
+                        <a x-cq-linkchecker="skip" href="${item.url}" ><span class="author-name">${item.firstNameAlias} ${item.lastName}</span></a><span> ${item.title}</span></br>
 					</sly>
                 </span>
             </div>
@@ -46,7 +46,7 @@
                 <p>${model.articleFragmentPath.articleSummary @context='html'}</p>
             </div>
         </div>
-        <div class="cmp-container cmp-container--white cmp-container--width-1400 
+        <div class="cmp-container cmp-container--white cmp-container--width-1400
              cmp-article-details__seperator cmp-article-details__padding-108">
             <div class="separator cmp-separator--primary cmp-separator">
                 <hr class="cmp-separator__horizontal-rule">
@@ -58,7 +58,7 @@
         <div class=" cmp-article-details__disclaimar"
              data-sly-repeat.item="${model.articleFragmentPath.disclosures}">${item.disclosureText @context ='html'}
         </div>
-        <div class="cmp-container cmp-container--white cmp-container--width-1400 
+        <div class="cmp-container cmp-container--white cmp-container--width-1400
             cmp-article-details__seperator cmp-article-details__padding-108"
              data-sly-test.hasContent="${model.articleFragmentPath.articleAuthors || model.articleFragmentPath.plannerResponse}">
             <div class="separator cmp-separator--primary cmp-separator">
@@ -101,11 +101,11 @@
                     </div>
                 </div>
             </div>
-            <div data-sly-test="${item.firstName}" class="cmp-author-details__description">
+            <div data-sly-test="${item.firstNameAlias}" class="cmp-author-details__description">
                 <div class="title cmp-title--subhead-00 ">
                     <div id="title-c6fe1860ab" class="cmp-title">
                         <h1 class="cmp-title__text">${item.title}</h1>
-                        <h1 class="cmp-title__text">${item.firstName} ${item.middleName} ${item.lastName}</h1>
+                        <h1 class="cmp-title__text">${item.firstNameAlias} ${item.lastName}</h1>
                     </div>
                 </div>
                 <div class="text cmp-text--body-02 cmp-text-- ">
@@ -125,7 +125,7 @@
                 </div>
             </div>
         </div>
-        <div class="cmp-container cmp-container--white cmp-container--width-1400 
+        <div class="cmp-container cmp-container--white cmp-container--width-1400
             cmp-article-details__seperator cmp-article-details__padding-108">
             <div class="separator cmp-separator--primary cmp-separator">
                 <hr class="cmp-separator__horizontal-rule">

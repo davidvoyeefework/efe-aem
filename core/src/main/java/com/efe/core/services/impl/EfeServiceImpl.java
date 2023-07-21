@@ -82,6 +82,12 @@ public class EfeServiceImpl implements EfeService {
 	/** The jquery url. */
 	private String jqueryUrl;
 
+	/** The external libraries. */
+	private String externalLibraries;
+
+	/** The national advisor center. */
+	private String nationalAdvisorCenter;
+
 	/**
 	 * The Interface Config.
 	 */
@@ -248,7 +254,22 @@ public class EfeServiceImpl implements EfeService {
 		 */
 		@AttributeDefinition(name = "Jquery Hosted URL", description = "Jquery Hosted URL")
 		String jqueryHostedUrl();
+		
+		/**
+		 * External libraries.
+		 *
+		 * @return the string
+		 */
+		@AttributeDefinition(name = "External Hosted Libraries", description = "External Hosted Libraries")
+		String externalLibraries();
 
+		/**
+		 * National advisor center.
+		 *
+		 * @return the string
+		 */
+		@AttributeDefinition(name = "National Advisor Center", description = "National Advisor Center")
+		String nationalAdvisorCenter();
 	}
 
 	/**
@@ -280,7 +301,8 @@ public class EfeServiceImpl implements EfeService {
 		this.omnyPlaylistApi = config.omnyPlaylistApi();
 		this.omnyOrgId = config.omnyOrgId();
 		this.jqueryUrl = config.jqueryHostedUrl();
-
+		this.externalLibraries = config.externalLibraries();
+		this.nationalAdvisorCenter = config.nationalAdvisorCenter();
 	}
 
 	/**
@@ -481,5 +503,25 @@ public class EfeServiceImpl implements EfeService {
 	@Override
 	public String getJqueryUrl() {
 		return jqueryUrl;
+	}
+
+	/**
+	 * Gets the external libraries.
+	 *
+	 * @return the externalLibraries
+	 */
+	@Override
+	public String getExternalLibraries() {
+		return externalLibraries;
+	}
+
+	/**
+	 * Gets the nationalAdvisorCenter.
+	 *
+	 * @return the nationalAdvisorCenter
+	 */
+	@Override
+	public String getNationalAdvisorCenter() {
+		return nationalAdvisorCenter;
 	}
 }

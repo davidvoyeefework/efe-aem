@@ -20,6 +20,9 @@
             .cmp-image {
                 height: inherit;
                 img {
+                    @include media("<=tablet") {
+                        height: 368px;
+                    }
                     height: 100%;
                     width: 100%;
                     object-fit: cover;

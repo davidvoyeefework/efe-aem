@@ -1,8 +1,11 @@
 package com.efe.core.models.multifield;
 
+import com.efe.core.utils.LinkUtil;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import javax.inject.Inject;
@@ -33,6 +36,10 @@ public class NavigationList {
 	@Inject
 	private List<Link> secondaryLinks;
 
+	/** The resource resolver. */
+	@SlingObject
+	private ResourceResolver resourceResolver;
+
 	/**
 	 * Gets the heading.
 	 *
@@ -48,7 +55,7 @@ public class NavigationList {
 	 * @return the primary heading links
 	 */
 	public String getHeadingLink() {
-		return headingLink;
+		return LinkUtil.getFormattedLink(headingLink, resourceResolver);
 	}
 
 	/**

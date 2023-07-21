@@ -2,6 +2,7 @@ package com.efe.core.models.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.lenient;
+import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.adobe.aem.wcm.seo.SeoTags;
 import com.day.cq.commons.Externalizer;
+import com.efe.core.services.EfeService;
 
 import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
@@ -37,12 +39,12 @@ public class PageImplTest {
 	/** The model. */
 	private PageImpl model;
 
-	/** The resource. */
-	private Resource resource;
-
 	/** The Mock Externalizer. */
 	@Mock
 	Externalizer externalizer;
+	
+	@Mock
+	EfeService efeService;
 
 	/** The aem context. */
 	private AemContext aemContext = new AemContext();
@@ -58,10 +60,15 @@ public class PageImplTest {
 		aemContext.addModelsForClasses(modelClass);
 		aemContext.request().setPathInfo(TEST_CONTENT_ROOT);
 		request.setResource(aemContext.resourceResolver().getResource(RESOURCE));
-		resource = aemContext.currentResource(TEST_CONTENT_ROOT+"/jcr:content");
+		aemContext.currentResource(TEST_CONTENT_ROOT+"/jcr:content");
 		lenient().when(externalizer.publishLink(Mockito.any(ResourceResolver.class), Mockito.any()))
 				.thenReturn("http://localhost:4502/content/efe/us/en/home.html");
+		
+		when(efeService.getJqueryUrl()).thenReturn("jqueryurl");
+		when(efeService.getExternalLibraries()).thenReturn("file1.js, file2.js ");
 		aemContext.registerService(Externalizer.class, externalizer);
+		aemContext.registerService(EfeService.class, efeService);
+
 		SeoTags seoTags = Mockito.mock(SeoTags.class);
 		aemContext.registerService(seoTags);
 		aemContext.registerAdapter(Resource.class, SeoTags.class, seoTags);
@@ -79,6 +86,8 @@ public class PageImplTest {
 	void simpleLoadAndGetterTest() {
 		assertEquals("http://localhost:4503/content/efe/us/en/home.html", model.getCanonicalLink());
 		assertEquals("http://localhost:4503/content/efe/us/en/home.thumb.800.480.png", model.getThumbnail());
+		assertEquals("jqueryurl", model.getJqueryUrl());
+		assertEquals(2, model.getExternalLibraries().size());
 	}
 
 }

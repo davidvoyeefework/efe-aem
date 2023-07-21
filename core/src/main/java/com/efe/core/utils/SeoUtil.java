@@ -296,7 +296,9 @@ public class SeoUtil {
 			jsonLd.setImage(externalizer.publishLink(resourceResolver, article.getHeroImage()));
 		}
 
-		jsonLd.setUrl(externalizer.publishLink(resourceResolver, currentPage.getPath()));
+		String url = LinkUtil.getFormattedLink(currentPage.getPath(), resourceResolver);				
+		jsonLd.setUrl(externalizer.publishLink(resourceResolver, url));
+		
 		jsonLd.setDatePublished(EFEUtil.formatDate(Constants.DATE_FORMAT_MONTH_DAY_YEAR,
 				Constants.DATE_FORMAT_YEAR_MONTH_DAY, article.getDatePublished()));
 		jsonLd.setDateModified(EFEUtil.formatDate(Constants.DATE_FORMAT_MONTH_DAY_YEAR,

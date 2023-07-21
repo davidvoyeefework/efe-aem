@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
-    jcr:primaryType="nt:unstructured"
-    jcr:title="Title"
-    sling:resourceType="cq/gui/components/authoring/dialog"
-    extraClientlibs="[core.wcm.components.title.v2.editor]"
-    helpPath="https://www.adobe.com/go/aem_cmp_title_v3"
-    trackingFeature="core-components:title:v3">
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+          xmlns:granite="http://www.adobe.com/jcr/granite/1.0"
+          jcr:primaryType="nt:unstructured"
+          jcr:title="Title"
+          sling:resourceType="cq/gui/components/authoring/dialog"
+          extraClientlibs="[core.wcm.components.title.v2.editor]"
+          helpPath="https://www.adobe.com/go/aem_cmp_title_v3"
+          trackingFeature="core-components:title:v3" >
     <content
         jcr:primaryType="nt:unstructured"
         sling:resourceType="granite/ui/components/coral/foundation/container">
@@ -38,21 +40,50 @@
                                                 fieldLabel="Max Character count per line"
                                                 min="{Long}5"
                                                 name="./characterLimit"/>
-                                            <includelocation
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:orderBefore="characterLimit"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                fieldDescription="Check to Include location in Title. {0} will be replaced with State code, {1} will be replaced by city name"
-                                                name="./includeLocationInTitle"
-                                                text="Include Location Details using expressions?"
-                                                uncheckedValue="false"
-                                                value="true"/>
                                         </items>
                                     </column>
                                 </items>
                             </columns>
                         </items>
                     </properties>
+                    <locationproperties
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Location Page Title"
+                        sling:orderBefore="styletab"
+                        granite:hide="${!cqDesign.enableLocationTab}"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <includelocation
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                fieldDescription="Check to Include location in Title. {0} will be replaced with State code, {1} will be replaced by city name"
+                                                name="./includeLocationInTitle"
+                                                text="Include Location Details using expressions?"
+                                                uncheckedValue="false"
+                                                value="true"/>
+                                            <nationalplannertitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on Title"
+                                                fieldLabel="Title For National Advisor Center Page"
+                                                name="./nationalPlannerTitle"
+                                                value="The National Advisor Center Team"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </locationproperties>
                 </items>
             </tabs>
         </items>
