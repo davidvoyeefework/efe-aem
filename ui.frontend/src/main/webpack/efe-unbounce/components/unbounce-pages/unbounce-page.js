@@ -84,11 +84,16 @@ export default class UnbouncePage {
             })
         })
 
-        var sponsorLogo = document.querySelector(".sponsor-logo img");
+        var sponsorLogo = document.querySelector(".sponsor-logo .cmp-image");
         if(sponsorLogo && data.context.isFeChannel && data.context.sponsorId){
             var logoFileName = data.context.sponsorId;
             var logo = "/content/dam/fe/logos/sponsors/"+logoFileName+"-small.png";
-            sponsorLogo.src = logo;
+            var sponsorLogoEl = `<a class="cmp-image__link" target="#">
+                                    <img src="`+logo+`" loading="lazy" class="cmp-image__image" itemprop="contentUrl" alt=" " title="Logo">
+                                </a>`;
+
+            
+            sponsorLogo.insertAdjacentHTML('beforeend',sponsorLogoEl);
         }
     }
     changeFooterValues() {

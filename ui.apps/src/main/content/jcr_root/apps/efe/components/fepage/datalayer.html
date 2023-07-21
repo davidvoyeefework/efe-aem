@@ -1,5 +1,4 @@
-<sly data-sly-use.model="${'com.efe.core.models.EFEDatalayer' @type='page'}"
-    data-sly-use.unbounceModel="com.efe.core.models.Unbounce">
+<sly data-sly-use.model="${'com.efe.core.models.EFEDatalayer' @type='page'}">
 
     <script src="${model.oneTrustScript}" type="text/javascript" charset="UTF-8"
         data-domain-script="${model.oneTrustScriptId}"></script>
@@ -12,8 +11,38 @@
         function OptanonWrapper() {
         }
 
+    function getCookie(name) {
+      if (typeof document !== 'undefined') {
+        var value = '; ' + document.cookie;
+        var parts = value.split('; ' + name + '=');
+        if (parts.length === 2) {
+          return parts.pop().split(';').shift();
+        }
+      }
+    };
+
+    var fe = {};
+    var env = {};
+    var daVars = {};
+    var daVarsStr = getCookie('daVars');
+    if (daVarsStr) {
+      try {
+        daVars = JSON.parse(decodeURIComponent(daVarsStr));
+      } catch (error) {
+        throw new Error("Invalid daVars");
+      }
+    }
+    daVars.appType = "static_page";
+    daVars.namespace = "unbounce";
+    env.da = daVars;
+    fe.env = env;
+    console.log(fe);
+
         window.adobeDataLayer = window.adobeDataLayer || [];
         adobeDataLayer.push(JSON.parse("${model.dataLayer @ context='scriptString'}"));
+
+        addUnbounceEvent();
+
         var formName = "${model.formName @ context='scriptString'}";
         if (formName) {
             window.adobeDataLayer.push({
@@ -30,6 +59,27 @@
         }
         const event = new Event("analyticsloaded");
         window.dispatchEvent(event);
+
+        function addUnbounceEvent() {
+            var sponsorId = "${unbounceModel.sponsorId @ context='scriptString'}";
+            var recordKeeper = "${unbounceModel.recordKeeper @ context='scriptString'}";
+            if (daVars && daVars.providerId && daVars.sponsorId) {
+                var unbounceLoadObj = {
+                    "event":"personalization.request",
+                    "_financialengines": {
+                        "recordKeeperDetails": {
+                            "rkId": daVars.providerId,
+                            "rkName": ""            
+                        },
+                        "sponsorDetails": {
+                            "sponsorId": daVars.sponsorId,
+                            "sponsorName": ""
+                        }
+                    }
+                }
+                adobeDataLayer.push(unbounceLoadObj);
+            }
+    }
 
 
     </script>

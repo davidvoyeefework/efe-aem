@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workspaceFilter version="1.0">
-    <filter root="/conf/efe/settings/wcm/templates/unbounce-page" mode="replace"/>
+    <filter root="/conf/efe/settings/wcm/templates/unbounce-page" mode="merge_properties"/>
     <filter root="/conf/efe/settings/wcm/templates/experience-fragment-target-variation" mode="replace"/>
     <filter root="/conf/efe/settings/wcm/templates/xf-web-variation" mode="replace"/>
     <filter root="/conf/efe/settings/dam/cfm/models/articles" mode="replace"/>
