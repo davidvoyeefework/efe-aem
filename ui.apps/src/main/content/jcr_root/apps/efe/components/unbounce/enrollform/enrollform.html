@@ -1,4 +1,4 @@
 <div data-sly-use.template="core/wcm/components/commons/v1/templates.html">
-    <div data-sly-test="${wcmmode.disabled}" id="signup-form"></div>
+    <div data-sly-test.isNotEmpty="${wcmmode.disabled}" id="signup-form"></div>
 </div>
 <sly data-sly-call="${template.placeholder @ isEmpty=!isNotEmpty, classAppend='enroll-form'}"></sly>
