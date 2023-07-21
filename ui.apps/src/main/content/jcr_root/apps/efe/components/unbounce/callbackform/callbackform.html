@@ -1,7 +1,7 @@
-<div>
-    <h2 class="cmp-title__text" data-sly-test="${wcmmode.edit}"> Call Back Form Place holder</h2>
-    <div id="fe-call-me-form"
-        data-options='{"initiationPoint": "EP_2023_Q1_Inflation_LP", "desc": "Schedule now – appointments are limited", "buttonText": "Have an advisor contact me", "appointmentTypeId": "EP_2023_Q1_Inflation_LP", "hasAppointmentScheduler": true}'>
+<div data-sly-use.template="core/wcm/components/commons/v1/templates.html">
+    <div data-sly-test.isNotEmpty="${wcmmode.disabled}" id="fe-call-me-form"
+        data-options='{"initiationPoint": "${properties.appointmentTypeId}", "desc": "${properties.desc}", "buttonText": "${properties.buttonText}", "appointmentTypeId": "${properties.appointmentTypeId}", "hasAppointmentScheduler": ${properties.hasAppointmentScheduler}}'>
     </div>
     <div class="fe-dashboard-button"></div>
 </div>
+<sly data-sly-call="${template.placeholder @ isEmpty=!isNotEmpty, classAppend='call-me-form'}"></sly>
