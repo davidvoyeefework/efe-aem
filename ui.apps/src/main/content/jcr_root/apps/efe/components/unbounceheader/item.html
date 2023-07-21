@@ -1,5 +1,5 @@
-<template data-sly-template.item="${@ logo,href}">
-    <div data-sly-test="${logo}" class="image cmp-image--efe-logo-primary cmp-image--small" id="header-logo">
+<template data-sly-template.item="${@ logo,href,cssclass}">
+    <div class="image ${cssclass} cmp-image--small" id="header-logo">
         <div
                 data-asset-id="45c6ee92-90e1-4af2-af69-b6dcbc7daeb7"
                 id="image-72c95dc7ac"
@@ -7,7 +7,7 @@
                 itemscope=""
                 itemtype="http://schema.org/ImageObject"
         >
-            <a
+            <a data-sly-test="${logo}"
                     class="cmp-image__link"
                     href=${href}
                     target="#"
