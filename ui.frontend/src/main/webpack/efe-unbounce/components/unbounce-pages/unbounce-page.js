@@ -15,7 +15,7 @@ export default class UnbouncePage {
             handleLoader(true)
             this.fetchSponsorData();
             this.fetchAggregateData();
-            this.getKeys();
+            // this.getKeys();
         });
     }
     async fetchSponsorData() {
