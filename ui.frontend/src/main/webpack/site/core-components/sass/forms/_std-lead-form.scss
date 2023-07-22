@@ -16,7 +16,7 @@
     }
 
     .drop-down--default {
-        width: rem(372);
+        max-width: rem(372);
         width: 100%;
         margin: auto;
         margin-bottom: rem(22);
@@ -27,7 +27,7 @@
     }
 
     @media screen and (max-width: $sm) {
-        label, input, .error-message {
+        label, input, .drop-down--default, .error-message {
             max-width: none !important;
         }
     }
