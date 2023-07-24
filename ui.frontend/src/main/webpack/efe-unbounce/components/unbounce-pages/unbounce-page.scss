@@ -146,3 +146,19 @@
         margin-bottom: 10px;
     }
 }
+
+.cmp-image--efe-logo-secondory {
+    &.cmp-image--small {
+        height: rem(44);
+        width: rem(130);
+        overflow: unset;
+    }
+} 
+.cmp-image--efe-logo-primary {
+    &.cmp-image--small {
+        height: rem(54);
+        width: rem(200);
+        overflow: unset;
+    }
+}
+
