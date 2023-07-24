@@ -140,10 +140,10 @@ export default class UnbouncePage {
                     this.renderAboutUsModal(ev);
                 }
             })
-        })
+        });
     }
     renderAboutUsModal(e) {
-        const data = window.fe;
+        const data = window.aemfe;
         const dialogEl = document.querySelector('.unbounce-footer-modal');
         const dialog = new A11yDialog(dialogEl);
         dialog.show();
@@ -160,7 +160,7 @@ export default class UnbouncePage {
         modalElemBody.appendChild(content);
     }
     renderLegalDocModal(e) {
-        const data = window.fe;
+        const data = window.aemfe;
         const dialogEl = document.querySelector('.unbounce-footer-modal');
         const dialog = new A11yDialog(dialogEl);
         dialog.show();

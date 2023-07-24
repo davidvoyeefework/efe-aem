@@ -15,11 +15,6 @@
             display: none;
         }
         .cmp-image--efe-logo-primary {
-            &.cmp-image--small {
-                height: rem(54);
-                width: rem(200);
-                overflow: unset;
-            }
             &.sponsor-logo {
                 &::before {
                     content: "";
@@ -46,13 +41,6 @@
                 }
             }
         }
-        .cmp-image--efe-logo-secondory {
-            &.cmp-image--small {
-                height: rem(44);
-                width: rem(130);
-                overflow: unset;
-            }
-        } 
     }
 
     .sponsor-value-hide {
@@ -150,15 +138,11 @@
 .cmp-image--efe-logo-secondory {
     &.cmp-image--small {
         height: rem(44);
-        width: rem(130);
-        overflow: unset;
     }
 } 
 .cmp-image--efe-logo-primary {
     &.cmp-image--small {
         height: rem(44);
-        width: rem(200);
-        overflow: unset;
     }
 }
 
