@@ -23,7 +23,7 @@
       <head data-sly-call="${head.head @ page = page, pwa = pwa}"></head>
       <link rel="stylesheet" type="text/css"
   href="https://www.feitest.com/app/landing-utils/landing-page.92cf6829b542e7500238.css">
-      <body class="${page.cssClassNames} ${wcmmode.edit ? 'edit-view': 'unbounce-promotions-page'} ${unbounceModel.theme}"
+      <body class="${page.cssClassNames} ${wcmmode.edit ? 'edit-view': 'unbounce-promotions-page fe-loading'} ${unbounceModel.theme}"
             id="${page.id}"
             data-cmp-link-accessibility-enabled
             data-cmp-link-accessibility-text="${'opens in a new tab' @ i18n}"
@@ -42,5 +42,9 @@
           <div data-sly-test="${wcmmode.disabled}" class="loader"></div>
       </body>
       <sly data-sly-include="unbounce_modal.html" />
+      <div data-sly-test="${wcmmode.disabled}" class="fe-loading-screen">
+        <div class="fe-loading-animation"></div>
+      </div>
+      
   </html>
   

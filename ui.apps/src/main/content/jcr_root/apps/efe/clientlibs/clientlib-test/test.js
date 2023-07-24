@@ -16086,7 +16086,7 @@
         },
         _renderDynamicDataAtPageLoad: function(e, t) {
             this.addPageClasses(this.pageFrameData, this.planownerData, Ye.userIdentified),
-            Xe.addContentToPage("body > div"),
+            Xe.addContentToPage("body > div.root"),
             0 !== Object.keys(this.programFeesData).length && It.getFeesModalContent(this.pageData, this.programFeesData),
             this.replacePlaceholderWithData(this.pageData),
             e && Rt.afterRender(),
