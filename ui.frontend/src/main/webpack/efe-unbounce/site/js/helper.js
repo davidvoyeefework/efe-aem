@@ -128,7 +128,7 @@ export const postJSON = async (url,data) =>{
  export const pushToWindowObject = (data)=>{
   for (const key in data) {
     if (Object.prototype.hasOwnProperty.call(data, key)) {
-      window.fe[key] = data[key];
+      window.aemfe[key] = data[key];
     }
   }
 }

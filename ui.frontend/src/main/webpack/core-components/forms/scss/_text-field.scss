@@ -21,8 +21,11 @@
         border: 1.5px solid $efe-gray-mid;
         @include flexbox($align-items: center, $justify-content: center);
         @include secondary-nav-link;
-        color: $efe-gray-blue;
         transition: $std-transition;
+
+        [type='email'] {
+            text-transform: initial;
+        }
 
         &::-webkit-input-placeholder {
             color: $efe-gray-blue;
@@ -42,6 +45,8 @@
             border-width: 1.5px;
             border-style: solid;
         }
+
+
     }
     &::-webkit-input-placeholder {
         color: $efe-gray-blue;
@@ -63,7 +68,6 @@
     }
 
     @media screen and (min-width: $sm) {
-        min-width: rem(372);
         width: 100%;
     }
 

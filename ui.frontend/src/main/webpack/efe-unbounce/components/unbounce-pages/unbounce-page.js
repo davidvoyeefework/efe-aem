@@ -11,10 +11,10 @@ export default class UnbouncePage {
             if(!el) {
                 return 
             }
-            window.fe={};
+            window.aemfe={};
             handleLoader(true)
             this.fetchSponsorData();
-            this.fetchAggregateData();
+            //this.fetchAggregateData();
             // this.getKeys();
         });
     }
@@ -70,7 +70,7 @@ export default class UnbouncePage {
         });
     }
     changeHeaderValues() {
-        const data = window.fe;
+        const data = window.aemfe;
         const headerDataVariables = document.querySelector('#unbounce-properties')?.getAttribute('data-variables');
         JSON.parse(headerDataVariables)?.forEach((item) => {
          
@@ -97,7 +97,7 @@ export default class UnbouncePage {
         }
     }
     changeFooterValues() {
-        const data = window.fe;
+        const data = window.aemfe;
         const litUlElement = document.querySelector('.cmp-list--footer .cmp-list');
         if (!litUlElement) {
             return

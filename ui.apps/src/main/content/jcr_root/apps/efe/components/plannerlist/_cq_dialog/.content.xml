@@ -34,6 +34,13 @@
                                                 fieldLabel="Planner List Title"
                                                 name="./plannerTitle"
                                                 value="THE {0}, {1}, TEAM"/>
+                                            <nationalplannertitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on Title"
+                                                fieldLabel="Planner List Title For National Advisor Center"
+                                                name="./nationalPlannerTitle"
+                                                value="The National Advisor Center Team"/>
                                             <ctalabel
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

@@ -13,25 +13,12 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 */-->
-<link rel="stylesheet" type="text/css"
-  href="https://www.feitest.com/app/landing-utils/landing-page.92cf6829b542e7500238.css">
-
 <sly data-sly-use.clientlib="core/wcm/components/commons/v1/templates/clientlib.html">
   <sly data-sly-call="${clientlib.js @ categories='efe.base', async=true}" />
 </sly>
 
 
-<script>
-                 //show loading screen
-                 var pageWrapper = document.querySelector("body > div");
-                var loadingScreen = document.createElement("div");
-                var loadingAnimation = document.createElement("div");
-                loadingAnimation.classList.add("fe-loading-animation");
-                loadingScreen.classList.add("fe-loading-screen");
-                loadingScreen.appendChild(loadingAnimation);
-                pageWrapper.appendChild(loadingScreen);
-                document.querySelector("body").classList.add("fe-loading");
-</script>
+
 
 <!--<script src="test.js"></script> -->
 <sly data-sly-use.clientlib="core/wcm/components/commons/v1/templates/clientlib.html">

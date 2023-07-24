@@ -1,5 +1,7 @@
 package com.efe.core.models;
 
+import java.util.List;
+
 /**
  * The Interface PageModel.
  */
@@ -26,5 +28,12 @@ public interface PageModel {
 	 * @return the jquery url
 	 */
 	String getJqueryUrl();
+
+	/**
+	 * Gets the external libraries.
+	 *
+	 * @return the external libraries
+	 */
+	List<String> getExternalLibraries();
 
 }

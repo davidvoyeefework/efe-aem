@@ -1,9 +1,6 @@
-<sly data-sly-use.model="com.efe.core.models.PlannerList"
-     data-sly-set.state="${model.state}"
-     data-sly-set.city="${model.city}">
-</sly>
-<div class="list cmp-list--horizontal cmp-list--loose cmp-list--left-align cmp-list--border-radius" id="${model.id}">
-  <h2 class="cmp-list--title" data-sly-test="${model.plannerList}">${model.plannerTitle @ format=[city,state]}</h2>
+<div data-sly-use.model="com.efe.core.models.PlannerList" data-sly-use.template="core/wcm/components/commons/v1/templates.html"
+     class="list cmp-list--horizontal cmp-list--loose cmp-list--left-align cmp-list--border-radius" id="${model.id}">
+  <h2 class="cmp-list--title" data-sly-test="${model.plannerList}">${model.plannerTitle}</h2>
   <ul class="cmp-list">
     <sly data-sly-list.plannerList="${model.plannerList}">
       <div class="teaser cmp-teaser--thumbnail">
@@ -31,3 +28,4 @@
     </sly>
   </ul>
 </div>
+<sly data-sly-call="${template.placeholder @ isEmpty=!isNotEmpty, classAppend='list'}"></sly>

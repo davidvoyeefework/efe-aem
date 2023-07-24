@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
+import com.efe.core.services.EfeService;
+import com.efe.core.services.impl.EfeServiceImpl;
 import org.apache.commons.lang3.reflect.FieldUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.request.RequestPathInfo;
@@ -44,6 +46,10 @@ class EfeTitleImplTest {
 	@Mock
 	ResourceResolver resourceResolver;
 
+	/** The EfeService. */
+	@Mock
+    EfeService efeService;
+
 	/**
 	 * Test with selector.
 	 *
@@ -57,6 +63,9 @@ class EfeTitleImplTest {
 		Field resolverField = efeTitleImpl.getClass().getDeclaredField("resourceResolver");
 		resolverField.setAccessible(true);
 		resolverField.set(efeTitleImpl, resourceResolver);
+		Field field = efeTitleImpl.getClass().getDeclaredField("efeService");
+		field.setAccessible(true);
+		field.set(efeTitleImpl, efeService);
 		when(request.getRequestPathInfo()).thenReturn(requestPathInfo);
 		when(requestPathInfo.getSelectors()).thenReturn(new String[] { "ks", "wichita" });
 		when(title.getText()).thenReturn("Finanical Planner In {0}, {1}");

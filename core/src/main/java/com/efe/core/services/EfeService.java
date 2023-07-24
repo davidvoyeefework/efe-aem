@@ -149,4 +149,18 @@ public interface EfeService {
 	 */
 	String getJqueryUrl();
 
+	/**
+	 * Gets the external libraries.
+	 *
+	 * @return the externalLibraries
+	 */
+	String getExternalLibraries();
+
+	/**
+	 * Gets the nationalAdvisorCenter.
+	 *
+	 * @return the nationalAdvisorCenter
+	 */
+	String getNationalAdvisorCenter();
+
 }

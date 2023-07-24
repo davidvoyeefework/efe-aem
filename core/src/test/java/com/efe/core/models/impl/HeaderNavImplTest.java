@@ -55,7 +55,7 @@ class HeaderNavImplTest {
 	public void simpleLoadAndGetterTest() {
 		NavigationList navigationList = model.getPrimaryList().get(0);
 		assertEquals("working", navigationList.getHeading());
-		assertEquals("/content/efe/us/en", navigationList.getHeadingLink());
+		assertEquals("/content/efe/us/en.html", navigationList.getHeadingLink());
 		assertEquals("_blank", navigationList.getHeadingTarget());
 		Link verticalLinks = navigationList.getSecondaryLinks().get(0);
 		assertEquals("Location", verticalLinks.getLabel());
