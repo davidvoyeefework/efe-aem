@@ -18,17 +18,7 @@
 </sly>
 
 
-<script data-sly-test="${wcmmode.disabled}">
-                 //show loading screen
-                 var pageWrapper = document.querySelector("body > div");
-                var loadingScreen = document.createElement("div");
-                var loadingAnimation = document.createElement("div");
-                loadingAnimation.classList.add("fe-loading-animation");
-                loadingScreen.classList.add("fe-loading-screen");
-                loadingScreen.appendChild(loadingAnimation);
-                pageWrapper.appendChild(loadingScreen);
-                document.querySelector("body").classList.add("fe-loading");
-</script>
+
 
 <!--<script src="test.js"></script> -->
 <sly data-sly-use.clientlib="core/wcm/components/commons/v1/templates/clientlib.html">
