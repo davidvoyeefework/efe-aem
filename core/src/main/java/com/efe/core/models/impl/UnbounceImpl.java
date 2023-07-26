@@ -124,7 +124,7 @@ public class UnbounceImpl implements Unbounce {
 	 */
 	private String getCookieValue(JsonObject cookieJsonObject, String cookieKey) {
 		String cookieValue = StringUtils.EMPTY;
-		if (Objects.nonNull(cookieJsonObject) && cookieJsonObject.has(cookieKey)) {
+		if (Objects.nonNull(cookieJsonObject) && cookieJsonObject.has(cookieKey) && !cookieJsonObject.get(cookieKey).isJsonNull()) {
 			cookieValue = cookieJsonObject.get(cookieKey).getAsString();
 		}
 		return cookieValue;
