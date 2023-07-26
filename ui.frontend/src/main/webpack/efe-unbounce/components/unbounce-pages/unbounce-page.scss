@@ -116,10 +116,15 @@
         background-color: var(--primary-button-bg-color) !important;
         border-radius: var(--primary-button-border-radius);
     }
-    .cmp-list--footer {
+
+    .cmp-button--button-primary button{
+        background-color: var(--primary-button-bg-color) !important;
+        border-radius: var(--primary-button-border-radius);
+    }
+    .cmp-list--footer, form {
         a,
         .cmp-list__item-title {
-            color: var(--footer-links-color);
+            color: var(--footer-links-color) !important;
         }
     }
     .form-title {

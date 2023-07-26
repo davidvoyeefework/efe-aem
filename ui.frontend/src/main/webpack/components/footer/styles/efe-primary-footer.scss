@@ -15,6 +15,7 @@
 
         #efe-logo {
             margin-bottom: 41px;
+            height: 4em;
             @include media('<tablet-lg') {
                 margin-bottom: 32px;
             }
