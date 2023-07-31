@@ -16,11 +16,14 @@
   <!DOCTYPE HTML>
   <html data-sly-use.page="com.adobe.cq.wcm.core.components.models.Page" lang="${page.language}"
         data-sly-use.pwa="com.adobe.cq.wcm.core.components.models.PWA"
+        data-sly-use.feProperties="com.efe.core.models.FeProperties"
         data-sly-use.head="head.html"
         data-sly-use.footer="footer.html"
         data-sly-use.redirect="redirect.html">
       <head data-sly-call="${head.head @ page = page, pwa = pwa}"></head>
-      <body class="${page.cssClassNames} personalization-container"
+      <link rel="stylesheet" type="text/css"
+  href="https://www.feitest.com/app/landing-utils/landing-page.92cf6829b542e7500238.css">
+      <body class="${page.cssClassNames} ${wcmmode.edit ? 'edit-view': 'fepage fe-loading'} ${feProperties.theme}"
             id="${page.id}"
             data-cmp-link-accessibility-enabled
             data-cmp-link-accessibility-text="${'opens in a new tab' @ i18n}"
@@ -36,7 +39,12 @@
               <sly data-sly-include="body.html"></sly>
               <sly data-sly-call="${footer.footer @ page = page, pwa = pwa}"></sly>
           </sly>
-          <sly data-sly-include="targetscript.html"></sly>
+          <div data-sly-test="${wcmmode.disabled}" class="loader"></div>
       </body>
+      <sly data-sly-include="unbounce_modal.html" />
+      <div data-sly-test="${wcmmode.disabled}" class="fe-loading-screen">
+        <div class="fe-loading-animation"></div>
+      </div>
+      
   </html>
   

@@ -1,11 +1,30 @@
 <sly data-sly-use.model="com.efe.core.models.Header"/>
-<header
-    data-sly-set.unbounceclass="${properties.isUnbounceHeader ? 'sponsor-header minimal-header--with-two-logos' : ''}"
-    class="header ${unbounceclass}" data-component="header" id="${model.id}">
+<header class="header" data-component="header" id="${model.id}">
+
     <div class="container responsivegrid" id="efe-global-nav-header">
         <div id="container-99d779a4e6" class="cmp-container cmp-container--bg-efe-gray-light">
             <div class="container responsivegrid" id="efe-nav-search">
                 <div id="container-99d779a4e6" class="cmp-container cmp-container--unset cmp-container--1920 cmp-container--width-1920 efe-nav-search">
+
+                    <div class="search cmp-search--primary"data-component="search" >
+                        <section id="search-8c1c42a604" class="cmp-search" role="search" data-cmp-min-length="1" data-cmp-results-size="30">
+                            <div class="cmp_search__info" aria-live="polite" role="status"></div>
+                            <form id="search-form" class="cmp-search__form" data-cmp-hook-search="form" method="get" action="" autocomplete="off">
+                                <div class="cmp-search__field">
+                                    <span class="cmp-search__loading-indicator" data-cmp-hook-search="loadingIndicator"></span>
+                                    <input class="cmp-search__input" data-cmp-hook-search="input" type="text" name="fulltext" placeholder="${model.searchLabel}" role="combobox" aria-autocomplete="list" aria-haspopup="true" aria-invalid="false" aria-expanded="false" aria-owns="cmp-search-results-1">
+                                    <button class="cmp-search__clear" data-cmp-hook-search="clear" aria-label="Clear">
+                                        <i class="cmp-search__clear-icon"></i>
+                                    </button>
+                                </div>
+                            </form>
+                            <div class="cmp-search__results" aria-label="Search results" data-cmp-hook-search="results" role="listbox" aria-multiselectable="false" id="cmp-search-results-1"></div>
+                            <script data-cmp-hook-search="itemTemplate" type="x-template"> <a class="cmp-search__item" data-cmp-hook-search="item" role="option" aria-selected="false">
+                                <span class="cmp-search__item-title" data-cmp-hook-search="itemTitle"></span>
+                            </a>
+                            </script>
+                        </section>
+                    </div>
 
 
 
@@ -110,35 +129,6 @@
                             <meta itemprop="caption" content="Snowy mountain glacier" />
                         </div>
                     </div>
-
-                    
-                    <div data-sly-test="${properties.isUnbounceHeader}" class="image cmp-image--efe-logo-primary sponsor-logo cmp-image--small" id="header-logo">
-                        <div
-                                data-asset-id="45c6ee92-90e1-4af2-af69-b6dcbc7daeb7"
-                                id="image-72c95dc7ac"
-                                class="cmp-image"
-                                itemscope=""
-                                itemtype="http://schema.org/ImageObject"
-                        >
-                            <a
-                                    class="cmp-image__link"
-                                    href="${model.logoLink}"
-                                    target="${model.logoTarget}"
-
-                            >
-                                <img
-                                        src=""
-                                        loading="lazy"
-                                        class="cmp-image__image"
-                                        itemprop="contentUrl"
-                                        alt=""
-                                        title="secondarylogo"
-                                />
-                            </a>
-                            <meta itemprop="caption" content="Snowy mountain glacier" />
-                        </div>
-                    </div>
-
                     <button id="nav-hamburger" aria-expanded="false" aria-label="main menu" class="top-bar__hamburger-button" data-analytics-trigger="cta-hamburger">
                         <svg id="top-hamburger-line" width="24px" height="3px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="top-bar__hamburger-button-line-wrapper top-bar__hamburger-button-line-wrapper--top">
                             <line stroke="#7A7D82" stroke-width="3" x1="0" x2="24" y1="0" y2="0" class="top-bar__hamburger-button-line top-bar__hamburger-button-line--top"></line>
@@ -176,24 +166,35 @@
                             </div>
 
                             <div class="button cmp-button--button-primary cmp-button--center cmp-button-- cmp-button--">
-                                <sly data-sly-test="${model.ctaLink}">
-                                    <a type="button" class="cmp-button" href="${model.ctaLink}" target="${model.ctaTarget}">
-                                        <span class="cmp-button__text">${model.ctaTitle}</span>
-                                    </a>
-                                </sly>
-                                <sly data-sly-test="${model.sponsorDetails}">
-                                    <div class="cmp-text">
-                                        ${model.sponsorDetails @ context = 'html'}
-                                    </div>
-                                </sly>
-                            </div>
-                        </div>
+                                <a type="button" class="cmp-button" href="${model.ctaLink}" target="${model.ctaTarget}">
+                                    <span class="cmp-button__text">${model.ctaTitle}</span>
+                                </a>
+                            </div>                    </div>
 
                         <div class="container responsivegrid" id="efe-global-nav-header">
                             <div id="container-99d779a4e6" class="cmp-container cmp-container--bg-efe-gray-light">
                                 <div class="container responsivegrid" id="efe-nav-searchT">
                                     <div id="container-99d779a4e6" class="cmp-container cmp-container--unset cmp-container--1920 efe-nav-search">
 
+                                        <div class="search cmp-search--primary"data-component="search" >
+                                            <section id="search-8c1c42a604" class="cmp-search" role="search" data-cmp-min-length="1" data-cmp-results-size="30">
+                                                <div class="cmp_search__info" aria-live="polite" role="status"></div>
+                                                <form id="search-form" class="cmp-search__form" data-cmp-hook-search="form" method="get" action="" autocomplete="off">
+                                                    <div class="cmp-search__field">
+                                                        <span class="cmp-search__loading-indicator" data-cmp-hook-search="loadingIndicator"></span>
+                                                        <input class="cmp-search__input" data-cmp-hook-search="input" type="text" name="fulltext" placeholder="${model.searchLabel}" role="combobox" aria-autocomplete="list" aria-haspopup="true" aria-invalid="false" aria-expanded="false" aria-owns="cmp-search-results-1">
+                                                        <button class="cmp-search__clear" data-cmp-hook-search="clear" aria-label="Clear">
+                                                            <i class="cmp-search__clear-icon"></i>
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                                <div class="cmp-search__results" aria-label="Search results" data-cmp-hook-search="results" role="listbox" aria-multiselectable="false" id="cmp-search-results-1"></div>
+                                                <script data-cmp-hook-search="itemTemplate" type="x-template"><a class="cmp-search__item" data-cmp-hook-search="item" role="option" aria-selected="false">
+                                                    <span class="cmp-search__item-title" data-cmp-hook-search="itemTitle"></span>
+                                                </a>
+                                                </script>
+                                            </section>
+                                        </div>
 
 
 

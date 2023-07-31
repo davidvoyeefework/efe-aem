@@ -135,17 +135,4 @@ public interface Header {
 	 */
 	List<Link> getHeaderList();
 
-	/**
-	 * Gets the Sponsor Details.
-	 *
-	 * @return the Sponsor Details
-	 */
-	String getSponsorDetails();
-
-	/**
-	 * Gets the dynamic variables.
-	 *
-	 * @return the dynamicVariables
-	 */
-	String getDynamicVariables();
 }

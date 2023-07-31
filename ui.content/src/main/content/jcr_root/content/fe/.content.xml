@@ -11,7 +11,7 @@
         sling:configRef="/conf/fe"
         sling:redirect="{Boolean}true"
         sling:redirectStatus="{Long}302"
-        sling:resourceType="efe/components/fepage">
+        sling:resourceType="efe/fe-components/structure/fe-page">
         <image jcr:primaryType="nt:unstructured">
             <file/>
         </image>

@@ -9,7 +9,7 @@ import java.util.Objects;
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 
-import com.efe.core.services.UnbounceService;
+import com.efe.core.services.FeService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
@@ -49,7 +49,7 @@ public class DropdownDataProviderServlet extends SlingSafeMethodsServlet {
 	private transient ResourceResolverFactory resolverFactory;
 
 	@Reference
-	private UnbounceService unbounceService;
+	private FeService feService;
 
 	@Override
 	protected void doGet(final SlingHttpServletRequest req, final SlingHttpServletResponse resp)
@@ -71,7 +71,7 @@ public class DropdownDataProviderServlet extends SlingSafeMethodsServlet {
 	 */
 	private void getItemsList(ResourceResolver resourceResolver, String selector, SlingHttpServletRequest req) {
 		if ("dynamicvariables".equalsIgnoreCase(selector)) {
-			String[] genericLists = unbounceService.getDynamicVariableList();
+			String[] genericLists = feService.getDynamicVariableList();
 			final List<Resource> fakeResourceList = new ArrayList<>();
 			for (String genericList : genericLists) {
 				if (StringUtils.isNotEmpty(genericList)) {
