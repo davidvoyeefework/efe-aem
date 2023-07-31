@@ -1,9 +1,4 @@
 <div class="minimal-header">
-    <div id="unbounce-properties" 
-             data-frame-api="https://www.feitest.com/api/v1/pageframe/?namespace=landing-flow"
-             data-aggregate-api="https://www.feitest.com/api/v1/planowners/{Recordkeeper}/aggregate"
-             data-variables='[{"sponsorName":"header.sponsorName"}, {"supportHour":"header.supportHour"},{"supportPhone":"header.supportPhone"},{"supportPhoneText":"header.supportPhoneText"}]'>
-        </div>
     <header class="header {{#if with-two-logos}} minimal-header--with-two-logos{{/if}}" data-component="header">
         {{! --------------------- NAV HEADER --------------------- }}
         <div class="container responsivegrid" id="efe-global-nav-header">
@@ -20,20 +15,6 @@
                         color="efe-gray-new"
                         link="tel:+18337526333"
                         }}
-                        <div class="cmp-text">
-                            <p>
-                             <span class="sponsor-value-hide supportPhoneText">{supportPhoneText}</span>
-                             <span class="sponsor-value-hide supportPhone">{supportPhone}</span>,
-                              <span class="sponsor-value-hide supportHour">{supportHour}</span>
-                            </p>
-                        </div>
-                          <div class="cmp-text">
-                            <p>
-                             <span class="sponsor-value-hide supportPhoneText">{supportPhoneText}</span>
-                             <span class="sponsor-value-hide supportPhone">{supportPhone}</span>,
-                              <span class="sponsor-value-hide supportHour">{supportHour}</span>
-                            </p>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -56,14 +37,13 @@
                         }}
                         <div class="minimal-header__vertical-line"></div>
                         {{#if with-two-logos}}
-                       <div class="image cmp-image--efe-logo-primary sponsor-logo cmp-image--small" id="">
-                              <div data-asset-id="45c6ee92-90e1-4af2-af69-b6dcbc7daeb7" id="image-72c95dc7ac" data-cmp-data-layer="{&quot;image-72c95dc7ac&quot;:{&quot;@type&quot;:&quot;core-components-examples/components/image&quot;,&quot;dc:title&quot;:&quot;Snowy mountain glacier&quot;,&quot;xdm:linkURL&quot;:&quot;https://www.aemcomponents.dev/content/core-components-examples/library/core-content/image.html&quot;,&quot;image&quot;:{&quot;repo:id&quot;:&quot;45c6ee92-90e1-4af2-af69-b6dcbc7daeb7&quot;,&quot;repo:modifyDate&quot;:&quot;1970-01-01T00:00:00Z&quot;,&quot;@type&quot;:&quot;image/jpeg&quot;,&quot;repo:path&quot;:&quot;https://www.aemcomponents.dev/content/dam/core-components-examples/library/sample-assets/snowy-mountain-glacier.jpg&quot;}}}" class="cmp-image" itemscope="" itemtype="http://schema.org/ImageObject">
-                                <a class="cmp-image__link" data-cmp-clickable="" href="https://www.edelmanfinancialengines.com/">
-                                  <img src="https://www.edelmanfinancialengines.com/wp-content/themes/EFE_Divi_Child_Theme/images/logo-official.svg" loading="lazy" class="cmp-image__image" itemprop="contentUrl" alt="Edelman Financial Engines Logo" title="Edelman Financial Engines">
-                                </a>
-                                <meta itemprop="caption" content="Snowy mountain glacier">
-                              </div>
-                            </div>
+                        {{>EfeLogo
+                        link="https://www.edelmanfinancialengines.com/"
+                        variant="efe-logo-primary"
+                        altText="Edelman Financial Engines Logo"
+                        size="small"
+                        titleText="Edelman Financial Engines"
+                        }}
                         {{/if}}
                         <button id="nav-hamburger" aria-expanded="false" aria-label="main menu"
                             class="top-bar__hamburger-button" data-analytics-trigger="cta-hamburger">

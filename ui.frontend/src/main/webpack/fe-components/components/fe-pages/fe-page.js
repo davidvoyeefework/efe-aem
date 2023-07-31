@@ -1,25 +1,32 @@
 //import {handleLoader} from '../../site/js/helper'
+import FeHeader from '../fe-header/fe-header';
 import A11yDialog from 'a11y-dialog'
 import { getCookie, getFetch, handleLoader, fetchData, postJSON, pushToWindowObject } from "../../site/js/helper";
-export default class UnbouncePage {
+export default class FePage {
     constructor() {
-        this.init()
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
+                window.aemfe = {};
+                this.init();
+            },
+            { once: true }
+        );
     }
     init() {
-        window.addEventListener("load", (event) => {
-            const el = document.querySelector('.unbounce-promotions-page');
-            if(!el) {
-                return 
-            }
-            window.aemfe={};
-            handleLoader(true)
-            this.fetchSponsorData();
-            //this.fetchAggregateData();
-            // this.getKeys();
-        });
+        const el = document.querySelector('.fepage');
+        if (!el) {
+            return
+        }
+        handleLoader(true)
+        this.fetchSponsorData();
+        this.fetchAggregateData();
+        this.getKeys();
+
     }
     async fetchSponsorData() {
-        const apiHost = document.querySelector('#unbounce-properties')?.getAttribute('data-frame-api');//'http://localhost:3000';//document.querySelector('.sponsor-header').getAttribute('data-page-frame-api');
+        handleLoader(true)
+        const apiHost = document.querySelector('#fe-properties')?.getAttribute('data-frame-api');//'http://localhost:3000';//document.querySelector('.sponsor-header').getAttribute('data-page-frame-api');
         const headers = {
             'Accept': 'application/json, text/plain, */*',
             'X-Spa-Name': 'landing-flow',
@@ -27,10 +34,10 @@ export default class UnbouncePage {
         await fetchData(apiHost, headers).then(data => {
             handleLoader(false);
             if (data) {
-                  pushToWindowObject(data);
-                  this.changeHeaderValues();
-                  this.changeFooterValues();
-                  handleLoader(false);
+                pushToWindowObject(data);
+                new FeHeader();
+                this.changeFooterValues();
+                handleLoader(false);
             }
         }).catch(error => {
             console.error('An error occurred:', error);
@@ -43,7 +50,7 @@ export default class UnbouncePage {
         if (!daVars || !daVars.sponsorId) {
             return
         }
-        let apiUrl = document.querySelector('#unbounce-properties')?.getAttribute('data-aggregate-api');
+        let apiUrl = document.querySelector('#fe-properties')?.getAttribute('data-aggregate-api');
         let apiHost = apiUrl.replace('{Recordkeeper}', daVars.sponsorId);
         const headers = {
             'Accept': 'application/json, text/plain, */*',
@@ -59,42 +66,15 @@ export default class UnbouncePage {
         });
     }
     async getKeys() {
-        let apiUrl = document.querySelector('#unbounce-properties')?.getAttribute('data-keys-api');
-        const keys= ["publicEnrollment.hero.heading","publicEnrollment.hero.description"];
-        await postJSON(apiUrl, keys).then(data=>{
+        let apiUrl = document.querySelector('#fe-properties')?.getAttribute('data-keys-api');
+        const keys = ["publicEnrollment.hero.heading", "publicEnrollment.hero.description"];
+        await postJSON(apiUrl, keys).then(data => {
             pushToWindowObject(data);
         }).catch(error => {
             // Handle any errors that occurred during the fetch request
             console.error('An error occurred:', error);
             handleLoader(false);
         });
-    }
-    changeHeaderValues() {
-        const data = window.aemfe;
-        const headerDataVariables = document.querySelector('#unbounce-properties')?.getAttribute('data-variables');
-        JSON.parse(headerDataVariables)?.forEach((item) => {
-         
-            if (Object.keys(item).length === 0) {
-                return
-            }
-            const elems = document.querySelectorAll('.' + Object.keys(item));
-            elems?.forEach((ele) => {
-                ele.classList.remove("sponsor-value-hide");
-                ele.innerHTML = eval('data.' + item[Object.keys(item)]);
-            })
-        })
-
-        var sponsorLogo = document.querySelector(".sponsor-logo .cmp-image");
-        if(sponsorLogo && data.context.isFeChannel && data.context.sponsorId){
-            var logoFileName = data.context.sponsorId;
-            var logo = "/content/dam/fe/logos/sponsors/"+logoFileName+"-small.png";
-            var sponsorLogoEl = `<a class="cmp-image__link" target="#">
-                                    <img src="`+logo+`" loading="lazy" class="cmp-image__image" itemprop="contentUrl" alt=" " title="Logo">
-                                </a>`;
-
-            
-            sponsorLogo.insertAdjacentHTML('beforeend',sponsorLogoEl);
-        }
     }
     changeFooterValues() {
         const data = window.aemfe;
@@ -116,27 +96,27 @@ export default class UnbouncePage {
         });
 
         // copy right code
-        if(data && data.footer && data.footer.copyright){
+        if (data && data.footer && data.footer.copyright) {
             const copyrightEle = document.querySelector('#disclosure-copy');
-            if(!copyrightEle){
+            if (!copyrightEle) {
                 return
             }
 
             var patentSection = '';
-            if(data.footer.patentLink && data.footer.patentText){
-                var patentLinkHtml = `<a href="`+data.footer.patentLink+`" target="_blank">`+data.footer.patentLink+`</a>`
-                patentSection = ' '+ data.footer.patentText.replace("%1%", patentLinkHtml);
+            if (data.footer.patentLink && data.footer.patentText) {
+                var patentLinkHtml = `<a href="` + data.footer.patentLink + `" target="_blank">` + data.footer.patentLink + `</a>`
+                patentSection = ' ' + data.footer.patentText.replace("%1%", patentLinkHtml);
             }
 
             var copyrightHTML = `<span class="cmp-text--caption">` + data.footer.copyright + patentSection + `</span>`
             copyrightEle.innerHTML = copyrightHTML;
         }
-        document.querySelectorAll('.unbounce-modal-btn').forEach(item=>{
-            item.addEventListener("click", (ev)=>{
-                if(item.classList.contains('legalDocLink')) {
+        document.querySelectorAll('.unbounce-modal-btn').forEach(item => {
+            item.addEventListener("click", (ev) => {
+                if (item.classList.contains('legalDocLink')) {
                     this.renderLegalDocModal(ev);
                 }
-                if(item.classList.contains('aboutProviderLink')) {
+                if (item.classList.contains('aboutProviderLink')) {
                     this.renderAboutUsModal(ev);
                 }
             })
@@ -176,4 +156,4 @@ export default class UnbouncePage {
             modalElemBody.appendChild(linkElem);
         })
     }
- }
+}
