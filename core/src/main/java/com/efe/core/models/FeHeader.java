@@ -1,6 +1,9 @@
 package com.efe.core.models;
 
-public interface UnbounceHeader {
+/**
+ * The Interface FeHeader.
+ */
+public interface FeHeader {
 
     /**
      * Gets the primary logo.

@@ -11,17 +11,17 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.efe.core.services.UnbounceService;
+import com.efe.core.services.FeService;
 
 /**
- * The Class UnbounceServiceImpl.
+ * The Class FeServiceImpl.
  */
-@Designate(ocd = UnbounceServiceImpl.Config.class)
-@Component(service = UnbounceService.class)
-public class UnbounceServiceImpl implements UnbounceService {
+@Designate(ocd = FeServiceImpl.Config.class)
+@Component(service = FeService.class)
+public class FeServiceImpl implements FeService {
 
     /** The Constant LOGGER. */
-    private static final Logger LOGGER = LoggerFactory.getLogger(UnbounceServiceImpl.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(FeServiceImpl.class);
 
     /** The pageFrameApi. */
     private String pageFrameApi;
@@ -53,7 +53,7 @@ public class UnbounceServiceImpl implements UnbounceService {
     /**
      * The Interface Config.
      */
-    @ObjectClassDefinition(name = "EFE Sponsor Details Api", description = "EFE Sponsor Details Api")
+    @ObjectClassDefinition(name = "FE Sponsor Details Api", description = "FE Sponsor Details Api")
     public static @interface Config {
 
         /**
@@ -136,7 +136,7 @@ public class UnbounceServiceImpl implements UnbounceService {
      */
     @Activate
     @Modified
-    public void activate(final UnbounceServiceImpl.Config config) {
+    public void activate(final FeServiceImpl.Config config) {
         LOGGER.debug("DynamicVariableServiceImpl.activate method called {}", "{}");
         this.pageFrameApi = config.pageFrameApi();
         this.aggregateApi = config.aggregateApi();

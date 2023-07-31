@@ -16,7 +16,7 @@
 <template data-sly-template.head="${ @ page, pwa }"
           data-sly-use.headlibRenderer="headlibs.html"
           data-sly-use.headResources="head.resources.html"
-          data-sly-use.unbounceHeader="com.efe.core.models.UnbounceHeader">
+          data-sly-use.unbounceHeader="com.efe.core.models.FeHeader">
     <meta charset="UTF-8">
     <title>${page.title}${page.brandSlug ? ' | ' : ''}${page.brandSlug}</title>
     <meta data-sly-test.keywords="${page.keywords}" name="keywords" content="${keywords}"/>
@@ -47,7 +47,7 @@
             data-sly-element="${item.element.name @ context='unsafe'}" data-sly-attribute="${item.attributes}"></script>
     </sly>
     <sly data-sly-test="${unbounceHeader.dynamicVariables}">
-        <div data-sly-use.unbounceModel="com.efe.core.models.Unbounce" id="fe-properties"
+        <div data-sly-use.unbounceModel="com.efe.core.models.FeProperties" id="fe-properties"
              data-frame-api="${unbounceModel.pageFrameApi}"
              data-aggregate-api="${unbounceModel.aggregateApi}"
              data-keys-api="${unbounceModel.forKeyApi}"

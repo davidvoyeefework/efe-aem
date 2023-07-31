@@ -1,11 +1,9 @@
-package com.efe.core.models;
-
-import java.util.Map;
+package com.efe.core.services;
 
 /**
- * The Interface UnbounceService.
+ * The Interface FeService.
  */
-public interface Unbounce {
+public interface FeService {
 
     /**
      * Gets the PageFrameApi.
@@ -64,30 +62,9 @@ public interface Unbounce {
     String getCallBackApi();
 
     /**
-     * Gets the dynamic variables.
+     * Gets the DynamicVariableList.
      *
-     * @return the dynamicVariables
+     * @return the DynamicVariableList
      */
-    Map<String, String> getDynamicVariables();
-
-    /**
-     * Gets the theme.
-     *
-     * @return the theme
-     */
-    String getTheme();
-
-	/**
-	 * Gets the record keeper.
-	 *
-	 * @return the recordKeeper
-	 */
-	String getRecordKeeper();
-
-	/**
-	 * Gets the sponsor id.
-	 *
-	 * @return the sponsorId
-	 */
-	String getSponsorId();
+    String[] getDynamicVariableList();
 }

@@ -2,7 +2,7 @@ package com.efe.core.models.impl;
 
 import com.adobe.acs.commons.genericlists.GenericList;
 import com.adobe.cq.export.json.ExporterConstants;
-import com.efe.core.models.UnbounceHeader;
+import com.efe.core.models.FeHeader;
 import com.efe.core.services.DynamicMediaService;
 import com.efe.core.utils.EFEUtil;
 import com.efe.core.utils.LinkUtil;
@@ -23,11 +23,14 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import javax.annotation.PostConstruct;
 
-@Model(adaptables = { Resource.class, SlingHttpServletRequest.class }, adapters = UnbounceHeader.class, resourceType = {
-        UnbounceHeaderImpl.RESOURCE_TYPE }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+/**
+ * The Interface FeHeaderImpl.
+ */
+@Model(adaptables = { Resource.class, SlingHttpServletRequest.class }, adapters = FeHeader.class, resourceType = {
+        FeHeaderImpl.RESOURCE_TYPE }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
 
-public class UnbounceHeaderImpl implements UnbounceHeader {
+public class FeHeaderImpl implements FeHeader {
 
     /** The Constant RESOURCE_TYPE. */
     public static final String RESOURCE_TYPE = "efe/components/unbounceheader";

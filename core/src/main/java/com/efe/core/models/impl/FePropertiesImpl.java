@@ -21,8 +21,8 @@ import org.slf4j.LoggerFactory;
 
 import com.adobe.acs.commons.genericlists.GenericList;
 import com.adobe.cq.export.json.ExporterConstants;
-import com.efe.core.models.Unbounce;
-import com.efe.core.services.UnbounceService;
+import com.efe.core.models.FeProperties;
+import com.efe.core.services.FeService;
 import com.efe.core.utils.EFEUtil;
 import com.efe.core.utils.ResourceUtil;
 import com.google.gson.Gson;
@@ -30,18 +30,18 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 /**
- * The Class UnbounceImpl.
+ * The Class FePropertiesImpl.
  */
-@Model(adaptables = SlingHttpServletRequest.class, adapters = Unbounce.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@Model(adaptables = SlingHttpServletRequest.class, adapters = FeProperties.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
-public class UnbounceImpl implements Unbounce {
+public class FePropertiesImpl implements FeProperties {
 
 	/** The constant LOGGER. */
-	private static final Logger LOGGER = LoggerFactory.getLogger(UnbounceImpl.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(FePropertiesImpl.class);
 
 	/** The unbounce service. */
 	@OSGiService
-	private UnbounceService unbounceService;
+	private FeService feService;
 
 	/** The resolver factory. */
 	@OSGiService
@@ -136,7 +136,7 @@ public class UnbounceImpl implements Unbounce {
 	private void setUnbounceField() {
 		dynamicVariables = new HashMap<>();
 		try (ResourceResolver serviceResolver = ResourceUtil.getServiceResourceResolver(resolverFactory)) {
-			String[] genericLists = unbounceService.getDynamicVariableList();
+			String[] genericLists = feService.getDynamicVariableList();
 
 			if (null == genericLists) {
 				return;
@@ -189,7 +189,7 @@ public class UnbounceImpl implements Unbounce {
 	 */
 	@Override
 	public String getPageFrameApi() {
-		return unbounceService.getPageFrameApi();
+		return feService.getPageFrameApi();
 	}
 
 	/**
@@ -199,7 +199,7 @@ public class UnbounceImpl implements Unbounce {
 	 */
 	@Override
 	public String getAggregateApi() {
-		return unbounceService.getAggregateApi();
+		return feService.getAggregateApi();
 	}
 
 	/**
@@ -209,7 +209,7 @@ public class UnbounceImpl implements Unbounce {
 	 */
 	@Override
 	public String getForKeyApi() {
-		return unbounceService.getForKeyApi();
+		return feService.getForKeyApi();
 	}
 
 	/**
@@ -219,7 +219,7 @@ public class UnbounceImpl implements Unbounce {
 	 */
 	@Override
 	public String getSoftAuthApi() {
-		return unbounceService.getSoftAuthApi();
+		return feService.getSoftAuthApi();
 	}
 
 	/**
@@ -229,7 +229,7 @@ public class UnbounceImpl implements Unbounce {
 	 */
 	@Override
 	public String getSignupApi() {
-		return unbounceService.getSignupApi();
+		return feService.getSignupApi();
 	}
 
 	/**
@@ -239,7 +239,7 @@ public class UnbounceImpl implements Unbounce {
 	 */
 	@Override
 	public String getScheduleApi() {
-		return unbounceService.getScheduleApi();
+		return feService.getScheduleApi();
 	}
 
 	/**
@@ -249,7 +249,7 @@ public class UnbounceImpl implements Unbounce {
 	 */
 	@Override
 	public String getAuthenticateApi() {
-		return unbounceService.getAuthenticateApi();
+		return feService.getAuthenticateApi();
 	}
 
 	/**
@@ -259,7 +259,7 @@ public class UnbounceImpl implements Unbounce {
 	 */
 	@Override
 	public String getCallBackApi() {
-		return unbounceService.getCallBackApi();
+		return feService.getCallBackApi();
 	}
 
 	/**

@@ -8,9 +8,9 @@
                     <label-links
                         jcr:primaryType="nt:unstructured"
                         sling:hideResource="{Boolean}true"/>
-                    <unbounceproperties
+                    <feheaderproperties
                         jcr:primaryType="nt:unstructured"
-                        jcr:title="Unbounce Properties"
+                        jcr:title="FE Header Properties"
                         sling:orderBefore="headerlist"
                         sling:resourceType="granite/ui/components/coral/foundation/container"
                         maximized="{Boolean}true">
@@ -61,7 +61,7 @@
                                 </items>
                             </columns>
                         </items>
-                    </unbounceproperties>
+                    </feheaderproperties>
                 </items>
             </tabs>
         </items>
