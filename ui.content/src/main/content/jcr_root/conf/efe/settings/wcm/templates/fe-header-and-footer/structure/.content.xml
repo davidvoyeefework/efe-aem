@@ -3,9 +3,9 @@
     jcr:primaryType="cq:Page">
     <jcr:content
         cq:deviceGroups="[mobile/groups/responsive]"
-        cq:template="/conf/efe/settings/wcm/templates/unbounce-page"
+        cq:template="/conf/efe/settings/wcm/templates/fe-header-and-footer"
         jcr:primaryType="cq:PageContent"
-        sling:resourceType="efe/components/fe-page">
+        sling:resourceType="efe/fe-components/structure/fe-page">
         <root
             jcr:primaryType="nt:unstructured"
             sling:resourceType="efe/components/container"
@@ -25,7 +25,7 @@
                     editable="{Boolean}true"
                     layout="responsiveGrid"/>
             </container>
-            <experiencefragment-footer
+            <experiencefragment_footer
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="efe/components/experiencefragment"
                 fragmentVariationPath="/content/experience-fragments/efe/us/en/site/footer/master"/>

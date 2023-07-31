@@ -78,14 +78,6 @@
 												text="Open CTA in new tab"
 												uncheckedValue="_self"
 												value="_blank"/>
-                                            <unbounceheader
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                fieldDescription="Check to enable unbounce header"
-                                                name="./isUnbounceHeader"
-                                                text="Unbounce Header ?"
-                                                uncheckedValue="false"
-                                                value="true"/>
                                             <disablesearch
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
@@ -200,91 +192,6 @@
                             </columns>
                         </items>
                     </headerlist>
-                    <sponsordetails
-                        jcr:primaryType="nt:unstructured"
-                        jcr:title="Sponsor Details"
-                        sling:orderBefore="cq:styles"
-                        sling:resourceType="granite/ui/components/coral/foundation/container"
-                        maximized="{Boolean}true">
-                        <items jcr:primaryType="nt:unstructured">
-                            <columns
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
-                                <items jcr:primaryType="nt:unstructured">
-                                    <column
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/container">
-                                        <items jcr:primaryType="nt:unstructured">
-                                            <sponsordetails
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
-                                                fieldDescription="Add Sponsor Details here"
-                                                fieldLabel="Sponsor Details"
-                                                name="./sponsorDetails"
-                                                useFixedInlineToolbar="{Boolean}true">
-                                                <rtePlugins
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceSuperType="efe/components/text/cq:dialog/content/items/tabs/items/properties/items/columns/items/column/items/text/rtePlugins">
-                                                    <paraformat
-                                                        jcr:primaryType="nt:unstructured"
-                                                        features="*">
-                                                        <formats jcr:primaryType="nt:unstructured">
-                                                            <item0
-                                                                jcr:primaryType="nt:unstructured"
-                                                                description="Paragraph"
-                                                                tag="p"/>
-                                                            <item1
-                                                                jcr:primaryType="nt:unstructured"
-                                                                description="Block Quote"
-                                                                tag="blockquote"/>
-                                                            <item2
-                                                                jcr:primaryType="nt:unstructured"
-                                                                description="Preformatted"
-                                                                tag="pre"/>
-                                                            <item3
-                                                                jcr:primaryType="nt:unstructured"
-                                                                description="Quote"
-                                                                tag="q"/>
-                                                        </formats>
-                                                    </paraformat>
-                                                    <misctools
-                                                        jcr:primaryType="nt:unstructured"
-                                                        features="specialchars,sourceedit"/>
-                                                    <edit
-                                                        jcr:primaryType="nt:unstructured"
-                                                        features="paste-plaintext,paste-wordhtml"/>
-                                                    <findreplace
-                                                        jcr:primaryType="nt:unstructured"
-                                                        features="*"/>
-                                                    <spellcheck
-                                                        jcr:primaryType="nt:unstructured"
-                                                        features="*"/>
-                                                    <table
-                                                        jcr:primaryType="nt:unstructured"
-                                                        features="*"/>
-                                                    <lists
-                                                        jcr:primaryType="nt:unstructured"
-                                                        features="*"/>
-                                                    <justify
-                                                        jcr:primaryType="nt:unstructured"
-                                                        features="*"/>
-                                                    <format
-                                                        jcr:primaryType="nt:unstructured"
-                                                        features="bold,italic,underline"/>
-                                                    <links
-                                                        jcr:primaryType="nt:unstructured"
-                                                        features="modifylink,unlink"/>
-                                                    <subsuperscript
-                                                        jcr:primaryType="nt:unstructured"
-                                                        features="*"/>
-                                                </rtePlugins>
-                                            </sponsordetails>
-                                        </items>
-                                    </column>
-                                </items>
-                            </columns>
-                        </items>
-                    </sponsordetails>
                     <styletab
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/include"

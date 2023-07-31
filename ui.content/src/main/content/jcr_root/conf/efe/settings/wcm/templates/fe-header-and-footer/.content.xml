@@ -2,9 +2,9 @@
 <jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0"
     jcr:primaryType="cq:Template">
     <jcr:content
-        cq:templateType="/conf/efe/settings/wcm/template-types/page"
-        jcr:description="Unbounce header and footer"
+        cq:templateType="/conf/efe/settings/wcm/template-types/fepage"
+        jcr:description="Fe Header and Footer"
         jcr:primaryType="cq:PageContent"
-        jcr:title="Unbounce Header and Footer"
+        jcr:title="Fe Header and Footer"
         status="enabled"/>
 </jcr:root>

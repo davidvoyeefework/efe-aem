@@ -24,7 +24,7 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import javax.annotation.PostConstruct;
 
 /**
- * The Interface FeHeaderImpl.
+ * The Class FeHeaderImpl.
  */
 @Model(adaptables = { Resource.class, SlingHttpServletRequest.class }, adapters = FeHeader.class, resourceType = {
         FeHeaderImpl.RESOURCE_TYPE }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
@@ -33,7 +33,7 @@ import javax.annotation.PostConstruct;
 public class FeHeaderImpl implements FeHeader {
 
     /** The Constant RESOURCE_TYPE. */
-    public static final String RESOURCE_TYPE = "efe/components/unbounceheader";
+    public static final String RESOURCE_TYPE = "efe/fe-components/structure/fe-header";
 
     /** The request. */
     @SlingObject
@@ -82,14 +82,14 @@ public class FeHeaderImpl implements FeHeader {
     @PostConstruct
     protected void init() {
         if (null != request) {
-            setUnbounceField();
+            setDynamicVariablesField();
         }
     }
 
     /**
      * Sets the unbounce field.
      */
-    private void setUnbounceField() {
+    private void setDynamicVariablesField() {
         try (ResourceResolver serviceResolver = ResourceUtil.getServiceResourceResolver(resolverFactory)) {
             GenericList list = EFEUtil.getGenericList(serviceResolver, "/etc/acs-commons/lists/fe/sponsor-details");
 
