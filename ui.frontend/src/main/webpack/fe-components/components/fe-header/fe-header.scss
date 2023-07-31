@@ -18,14 +18,14 @@
         display: none;
     }
     #efe-nav-main .cmp-container--26 {
-        gap: rem(10);
+        gap: rem(31);
         justify-content: normal;
         
     }
     .minimal-header__vertical-line {
         border-left: 1px solid #949494;
-        height: 40px;
         display: block;
+        height: 42px;
     }
     #efe-nav-main #nav-list-cta-group #efe-global-nav-header {
         display: none;
@@ -38,6 +38,7 @@
         margin-left: auto;
     }
     #efe-global-nav-header ,  #efe-nav-main #nav-list-cta-group {
+        align-self: baseline;
         .cmp-text {
             p, span {
                 @include footer-02;
@@ -53,4 +54,20 @@
             }
         }
     }
+    @media screen and (min-width: 1290px) {
+        #efe-nav-main .cmp-container--26 {
+            padding: 18px 24px !important;
+        }
+    }
+    .cmp-image--efe-logo-secondary, .cmp-image--efe-logo-primary {
+        &.cmp-image--small {
+            width: 176.416px;
+            height: 30.549px;
+            padding-bottom: 40px;
+            @media screen and (max-width: 576px) { 
+                padding-bottom: 0;
+                align-self: end;
+            }
+        }
+    } 
 }

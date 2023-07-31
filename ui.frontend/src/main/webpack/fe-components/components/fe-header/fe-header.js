@@ -1,5 +1,6 @@
 export default class FeHeader {
     constructor() {
+        this.attributeParameterElem = document.querySelector('#fe-properties');
         this.init();
     }
     init() {
@@ -9,7 +10,7 @@ export default class FeHeader {
     }
     changeHeaderValues() {
         const data = window.aemfe;
-        const headerDataVariables = document.querySelector('#fe-properties')?.getAttribute('data-variables');
+        const headerDataVariables =  this.attributeParameterElem?.getAttribute('data-variables');
         JSON.parse(headerDataVariables)?.forEach((item) => {
 
             if (Object.keys(item).length === 0) {
@@ -18,19 +19,20 @@ export default class FeHeader {
             const elems = document.querySelectorAll('.' + Object.keys(item));
             elems?.forEach((ele) => {
                 ele.classList.remove("sponsor-value-hide");
-                ele.innerHTML = eval('data.' + item[Object.keys(item)]);
+                //ele.innerHTML = eval('data.' + item[Object.keys(item)]);//we need this if data attribute coming data.a....
+                let ackey = item[Object.keys(item)].split('.')
+                ele.innerHTML = data[ackey[0]][ackey[1]];
             })
         })
 
         var sponsorLogo = document.querySelector(".sponsor-logo .cmp-image");
         if (sponsorLogo && data.context.isFeChannel && data.context.sponsorId) {
             var logoFileName = data.context.sponsorId;
-            var logo = "/content/dam/fe/logos/sponsors/" + logoFileName + "-small.png";
+            var logoPath = this.attributeParameterElem?.getAttribute('data-sponsor-logo-path')
+            var logo = logoPath.replace("{sponsorid}", logoFileName);
             var sponsorLogoEl = `<a class="cmp-image__link" target="#">
                                     <img src="`+ logo + `" loading="lazy" class="cmp-image__image" itemprop="contentUrl" alt=" " title="Logo">
                                 </a>`;
-
-
             sponsorLogo.insertAdjacentHTML('beforeend', sponsorLogoEl);
         }
     }

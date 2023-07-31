@@ -1,0 +1,24 @@
+.fepage {
+    &.subadvised {
+        .minimal-header {
+            .cmp-image--efe-logo-secondary.cmp-image--small {
+                &::before {
+                    content: "Powered by";
+                    color: #000;
+                    font-size: 12px;
+                    font-style: normal;
+                    font-weight: 300;
+                    line-height: 32px; /* 266.667% */
+                    top: rem(10);
+                    position: absolute;
+                }
+            }
+            .minimal-header__vertical-line {
+                height: 63px;
+                @media screen and (max-width: 576px) { 
+                    height: rem(54px);
+                }
+            }
+        }
+    }
+}

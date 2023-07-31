@@ -1,48 +1,4 @@
 .fepage {
-    .sponsor-header {
-        #efe-nav-main .cmp-container--26 {
-            @include media("<tablet") {
-                gap: 10px;
-            }
-        }
-        .cmp-text {
-            p {
-                @include body-02;
-                color: red;
-            }
-        }
-        .cmp-button--footer-01 {
-            display: none;
-        }
-        .cmp-image--efe-logo-primary {
-            // &.sponsor-logo {
-            //     &::before {
-            //         content: "";
-            //         width: 2px;
-            //         height: 38px;
-            //         position: absolute;
-            //         border-left: 1px solid rgb(221, 221, 222);
-            //         left: 211px;
-            //         @include media("<tablet") {
-            //             left: 30%;
-            //             height: 25px;
-            //         }
-            //     }
-            //     a {
-            //         background-size: contain;
-            //         width: 14.1875rem;
-            //         height: 2.5625rem;
-            //         display: block;
-            //         background-repeat: no-repeat;
-            //         .cmp-image__image {
-            //             width: 90px;
-            //             height: 40px;
-            //         }
-            //     }
-            // }
-        }
-    }
-
     .sponsor-value-hide {
         display: none;
     }
@@ -139,15 +95,3 @@
         margin-bottom: 10px;
     }
 }
-
-.cmp-image--efe-logo-secondory {
-    &.cmp-image--small {
-        height: rem(44);
-    }
-} 
-.cmp-image--efe-logo-primary {
-    &.cmp-image--small {
-        height: rem(44);
-    }
-}
-
