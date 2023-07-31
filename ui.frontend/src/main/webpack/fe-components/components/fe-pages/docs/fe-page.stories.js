@@ -1,9 +1,9 @@
 import Handlebars from "handlebars/runtime.js";
-import UnbouncePage from "../unbounce-page.hbs";
+import FePage from "../fe-page.hbs";
 
-Handlebars.registerPartial("UnbouncePage", UnbouncePage);
+Handlebars.registerPartial("FePage", FePage);
 export default {
-    title: "components/UnbouncePage",
+    title: "FE/FePage",
     argTypes: {
         sponsor: {
             options: ["Boeing", "ATT"],
@@ -12,4 +12,4 @@ export default {
     },
 };
 
-export { UnbouncePage as Default };
+export { FePage as Default };

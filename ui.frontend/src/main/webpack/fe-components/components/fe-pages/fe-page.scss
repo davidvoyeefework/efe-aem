@@ -1,4 +1,4 @@
-.unbounce-promotions-page {
+.fepage {
     .sponsor-header {
         #efe-nav-main .cmp-container--26 {
             @include media("<tablet") {
@@ -15,31 +15,31 @@
             display: none;
         }
         .cmp-image--efe-logo-primary {
-            &.sponsor-logo {
-                &::before {
-                    content: "";
-                    width: 2px;
-                    height: 38px;
-                    position: absolute;
-                    border-left: 1px solid rgb(221, 221, 222);
-                    left: 211px;
-                    @include media("<tablet") {
-                        left: 30%;
-                        height: 25px;
-                    }
-                }
-                a {
-                    background-size: contain;
-                    width: 14.1875rem;
-                    height: 2.5625rem;
-                    display: block;
-                    background-repeat: no-repeat;
-                    .cmp-image__image {
-                        width: 90px;
-                        height: 40px;
-                    }
-                }
-            }
+            // &.sponsor-logo {
+            //     &::before {
+            //         content: "";
+            //         width: 2px;
+            //         height: 38px;
+            //         position: absolute;
+            //         border-left: 1px solid rgb(221, 221, 222);
+            //         left: 211px;
+            //         @include media("<tablet") {
+            //             left: 30%;
+            //             height: 25px;
+            //         }
+            //     }
+            //     a {
+            //         background-size: contain;
+            //         width: 14.1875rem;
+            //         height: 2.5625rem;
+            //         display: block;
+            //         background-repeat: no-repeat;
+            //         .cmp-image__image {
+            //             width: 90px;
+            //             height: 40px;
+            //         }
+            //     }
+            // }
         }
     }
 

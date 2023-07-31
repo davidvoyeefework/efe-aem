@@ -1691,8 +1691,8 @@
                     jcr:primaryType="nt:unstructured"
                     jcr:title="Unbounce Page Policy"
                     sling:resourceType="wcm/core/components/policy/policy"
-                    clientlibs="[efe.site,efe.unbounce]"
-                    clientlibsJsHead="efe.unbounce">
+                    clientlibs="[fe.site]"
+                    clientlibsJsHead="fe.site">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                 </policy>
             </fepage>

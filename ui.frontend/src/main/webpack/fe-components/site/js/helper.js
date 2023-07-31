@@ -140,7 +140,7 @@ export const handleLoader =(isShow) =>{
 
   var loader = document.querySelector(loaderclass); 
     if(isShow){
-         // loader.style.display = 'block';
+         //loader.style.display = 'block';
       }else{
           loader.style.display = 'none';
            document.querySelector("body").classList.remove("fe-loading");

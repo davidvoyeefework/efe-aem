@@ -91,26 +91,26 @@ module.exports = {
     },
     {
       ...libsBaseConfig,
-      name: "clientlib-unbounce",
-      categories: ["efe.unbounce"],
-      dependencies: ["efe.dependencies"],
+      name: "clientlib-fe",
+      categories: ["fe.site"],
+      dependencies: ["efe.site"],
       assets: {
         // Copy entrypoint scripts and stylesheets into the respective ClientLib
         // directories
         js: {
-          cwd: "clientlib-unbounce",
+          cwd: "clientlib-fe",
           files: ["**/*.js"],
           flatten: false,
         },
         css: {
-          cwd: "clientlib-unbounce",
+          cwd: "clientlib-fe",
           files: ["**/*.css"],
           flatten: false,
         },
 
         // Copy all other files into the `resources` ClientLib directory
         resources: {
-          cwd: "clientlib-unbounce",
+          cwd: "clientlib-fe",
           files: ["**/*.*"],
           flatten: false,
           ignore: ["**/*.js", "**/*.css"],

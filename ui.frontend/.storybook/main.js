@@ -54,9 +54,8 @@ module.exports = {
           },
         },
       ],
-      include: path.resolve(__dirname, "../src/main/webpack/site/"),
+      include: path.resolve(__dirname, "../src/main/webpack/"),
     });
-
     config.module.rules.push({
       test: /\.htl$/,
       use: ["htl-template-loader"],
