@@ -1,8 +1,18 @@
-body {
-    --form-title-bg-color: white;
-    --form-title-color: #53565A;
+.fe-channel, body {
+    --primary-button-bg-color: #C32D37;
+    --footer-links-color: $efe-gray-new;
+    --primary-button-border-radius: 3px;
+    --font-family: 'nimbus-sans';
+}
+.sponsor-vanguard {
     --primary-button-bg-color: #000;
     --footer-links-color: #670026;
     --primary-button-border-radius: 40px;
-    --font-family: 'Nimbus Sans';
-} 
+    --font-family: 'Open Sans';
+}
+.sub-advised {
+    --primary-button-bg-color: #FFEA00;
+    --footer-links-color: $efe-gray-new;
+    --primary-button-border-radius: 100px;
+    --font-family: 'nimbus-sans';
+}

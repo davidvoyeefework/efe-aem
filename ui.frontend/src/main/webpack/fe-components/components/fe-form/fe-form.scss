@@ -102,8 +102,8 @@
             align-items: center;
            & button{
                 margin-top: rem(20px);
-                border-radius: 3px;
-                background: var(--primary-red, #C32D37);
+                border-radius: var(--primary-button-border-radius);
+                background: var(--primary-button-bg-color);
                 height: rem(45px);
                 padding: rem(17px) rem(26px) rem(14px) rem(26px);
                 display: flex;
