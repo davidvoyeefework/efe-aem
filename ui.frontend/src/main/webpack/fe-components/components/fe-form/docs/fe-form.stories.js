@@ -3,7 +3,7 @@ import Form from "../fe-form.hbs";
 
 Handlebars.registerPartial("Form", Form);
 export default {
-    title: "EFE Unbounce/form",
+    title: "FE Components/form",
     argTypes: {
         sponsor: {
             options: ["Boeing", "ATT"],

@@ -3,7 +3,7 @@ import FeHeader from "../fe-header.hbs";
 
 Handlebars.registerPartial("FeHeader", FeHeader);
 export default {
-    title: "FE/FeHeader",
+    title: "FE Components/FeHeader",
     argTypes: {
     },
 };

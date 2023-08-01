@@ -2,11 +2,6 @@
     .sponsor-value-hide {
         display: none;
     }
-
-    .unbounce-form {
-        display: none;
-    }
-
     .edit-view {
         .sponsor-value-hide {
             display: inline;
@@ -14,16 +9,6 @@
 
         .unbounce-form {
             display: inline;
-        }
-    }
-
-    .unbounce-footer-modal {
-        .cmp-modal {
-            text-align: left;
-            padding: 20px;
-            * {
-                font-family: $font-nimbus-pro;
-            }
         }
     }
     .loader {
@@ -58,40 +43,5 @@
         100% {
             transform: rotate(360deg);
         }
-    }
-
-    #fe-call-me-back .fe-call-me-back-header {
-        background-color: var(--form-title-bg-color) !important;
-        color: var( --form-title-color);
-    }
-    #fe-call-me-back .fe-form__button--outline {
-        background-color: var(--form-title-bg-color) !important;
-        color: var( --form-title-color);
-    }
-    #fe-call-me-back #btn-call-me-back, .cmp-form-button, .fe-form__button {
-        background-color: var(--primary-button-bg-color) !important;
-        border-radius: var(--primary-button-border-radius);
-    }
-
-    .cmp-button--button-primary button{
-        background-color: var(--primary-button-bg-color) !important;
-        border-radius: var(--primary-button-border-radius);
-    }
-    .cmp-list--footer, form {
-        a,
-        .cmp-list__item-title {
-            color: var(--footer-links-color) !important;
-        }
-    }
-    .form-title {
-        background: #086b9a;
-    }
-    form.unbounce-form {
-        border: 1px solid #ddd;
-        max-width: 580px;
-        padding: 20px 30px;
-    }
-    .unbounce-form .cmp-form-text {
-        margin-bottom: 10px;
     }
 }

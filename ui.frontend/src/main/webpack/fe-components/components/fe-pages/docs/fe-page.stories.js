@@ -3,7 +3,7 @@ import FePage from "../fe-page.hbs";
 
 Handlebars.registerPartial("FePage", FePage);
 export default {
-    title: "FE/FePage",
+    title: "pages/FePage",
     argTypes: {
         sponsor: {
             options: ["Boeing", "ATT"],
