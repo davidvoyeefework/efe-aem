@@ -64,6 +64,13 @@
             width: 218px;
             height: 45px;
             padding-bottom: 40px;
+            @media screen and (min-width: 1290px) {
+                .cmp-image__image {
+                    width: 218px;
+                    height: 45px;
+                    object-fit: contain;
+                }
+            }
             @media screen and (max-width: 576px) { 
                 padding-bottom: 0;
                 align-self: end;
