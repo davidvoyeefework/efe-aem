@@ -1,0 +1,127 @@
+<div>
+<div id="signup-form">
+   <div class="fe-form-promo">
+      <div class="fe-form-promo__content">
+         <h4 class="fe-form-promo__title">Take Action by Sep. 22, 2023</h4>
+         <div class="fe-form-promo__text">
+            See if the Vanguard Managed Account Program is right for you. Sign up, and if you're not satisfied just cancel by Nov. 22, 2023 and we'll waive the program fee.
+         </div>
+      </div>
+   </div>
+   <div class="fe-form fe-form--not-prepoulated">
+      <div class="fe-enroll-form-api-error"></div>
+      <form id="fe-enroll-form" name="fe-enroll-form" novalidate="" role="form" autocomplete="off">
+         <div class="fe-form__header">
+            Sign up for<br>Vanguard Managed Account Program
+         </div>
+         <div class="fe-form__group fe-form__group--first-name">
+            <div class="fe-form__label-wrapper">
+               <label id="firstNameLabel" for="firstName">First name</label>
+            </div>
+            <div class="fe-form__field">
+               <div class="fe-form__control-wrapper">
+                  <input class="fe-form__control" id="firstName" name="firstName" aria-describedby="enrollForm-firstName-error" data-required="true" placeholder="First name">
+                  <small class="fe-form__error" id="enrollForm-firstName-error">Please enter your first name.</small>
+               </div>
+            </div>
+         </div>
+         <div class="fe-form__group fe-form__group--last-name">
+            <div class="fe-form__label-wrapper">
+               <label id="lastNameLabel" for="lastName">Last name</label>
+            </div>
+            <div class="fe-form__field">
+               <div class="fe-form__control-wrapper">
+                  <input class="fe-form__control" id="lastName" name="lastName" aria-describedby="enrollForm-lastName-error" data-required="true" placeholder="Last name">
+                  <small class="fe-form__error" id="enrollForm-lastName-error">Please enter your last name.</small>
+               </div>
+            </div>
+         </div>
+         <div class="fe-form__group fe-form__group--zip-code">
+            <div class="fe-form__label-wrapper">
+               <label id="zipCodeLabel" for="zipCode">ZIP code</label>
+            </div>
+            <div class="fe-form__field">
+               <div class="fe-form__control-wrapper">
+                  <input class="fe-form__control" id="zipCode" name="zipCode" maxlength="5" aria-describedby="enrollForm-zipCode-error" data-required="true" data-pattern="^\d{5}$" placeholder="Zip code">
+                  <small class="fe-form__error" id="enrollForm-zipCode-error">Please enter a valid Zip code.</small><span class="sr-only">Use the 5 digit Zip code that we have on file.</span>
+               </div>
+            </div>
+            <div id="zipCodeHelp" class="fe-form__control-instruction">Use the Zip code that we have on file.</div>
+         </div>
+         <div class="fe-form__group fe-form__group--dob">
+            <div class="fe-form__label-wrapper">
+               <label id="dobLabel" for="dateOfBirth">Date of birth</label>
+            </div>
+            <div class="fe-form__field fe-form__field--has-description">
+               <div class="fe-form__description"></div>
+               <div class="fe-form__control-wrapper">
+                  <input class="fe-form__control" id="dateOfBirth" name="dateOfBirth" maxlength="10" placeholder="MM/DD/YYYY" aria-describedby="enrollForm-dateOfBirth-error" data-required="true" data-pattern="^\d\d?\/\d\d?\/\d{4}$">
+                  <small class="fe-form__error" id="enrollForm-dateOfBirth-error">Please enter a valid date of birth.</small>
+               </div>
+            </div>
+         </div>
+         <div class="fe-form__group fe-form__group--ssn">
+            <div class="fe-form__label-wrapper">
+               <label id="lastFourSSNLabel" for="lastFourSSN">Last 4 digits of SSN</label>
+               <div class="fe-form__description">
+                  <i class="fa fa-lock"></i>
+                  <span id="secureServerTextId">Secure Server</span>
+               </div>
+            </div>
+            <div class="fe-form__field fe-form__field--has-description">
+               <div class="fe-form__description">
+                  <i class="fa fa-lock"></i>
+                  <span id="secureServerTextId">Secure Server</span>
+               </div>
+               <div class="fe-form__control-wrapper">
+                  <input class="fe-form__control" type="password" id="lastFourSSN" name="lastFourSSN" maxlength="4" autocomplete="off" aria-describedby="enrollForm-lastFourSSN-error" data-required="true" data-pattern="^\d{4}$" placeholder="XXXX">
+                  <small class="fe-form__error" id="enrollForm-lastFourSSN-error">Please enter last 4 digits of SSN.</small>
+               </div>
+            </div>
+         </div>
+         <div class="fe-form__group fe-form__group--email">
+            <div class="fe-form__label-wrapper">
+               <label id="emailLabel" for="email">Email</label>
+               <div class="fe-form__description" aria-hidden="true">Optional</div>
+            </div>
+            <div class="fe-form__field fe-form__field--has-description">
+               <div class="fe-form__description" aria-hidden="true">Optional</div>
+               <div class="fe-form__control-wrapper">
+                  <input type="email" class="fe-form__control" id="email" name="email" placeholder="example@email.com" aria-describedby="enrollForm-email-error" data-pattern="^[A-Za-z0-9._'%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$">
+                  <small class="fe-form__error" id="enrollForm-email-error">Please enter a valid email address.</small>
+               </div>
+            </div>
+         </div>
+         <div class="fe-form__group fe-form__group--phone">
+            <div class="fe-form__label-wrapper">
+               <label id="phoneLabel" for="phoneNumber">Phone number</label>
+               <div class="fe-form__description" aria-hidden="true">Optional</div>
+            </div>
+            <div class="fe-form__field fe-form__field--has-description">
+               <div class="fe-form__description" aria-hidden="true">Optional</div>
+               <div class="fe-form__control-wrapper">
+                  <input class="fe-form__control" id="phoneNumber" name="phoneNumber" placeholder="000-000-0000" size="14" maxlength="14" aria-describedby="enrollForm-phoneNumber-error" data-pattern="^\(?(\d{3})\)?[ .-]?(\d{3})[ .-]?(\d{4})$">
+                  <small class="fe-form__error" id="enrollForm-phoneNumber-error">Please enter a valid phone number.</small>
+               </div>
+            </div>
+         </div>
+         <div class="fe-form__group fe-form__group--enrollment-disclosure">
+            <div class="fe-form__checkbox-control">
+               <input id="agreeToTerms" name="agreeToTerms" type="checkbox" class="fe-form__control" data-required="true">
+               <b>I Accept</b> the <a href="https://www.feitest.com/app/productchoices/#/enrollmentDisclosure" target="_blank">Vanguard Service Agreement and Privacy Policy</a>
+            </div>
+         </div>
+         <div class="fe-form__group fe-form__group--sign-up-button">
+            <button id="confirm-enrollment-button" type="submit" class="fe-form__button fe-form__button--block ">
+            <span>Sign up now</span></button>
+         </div>
+         <div class="fe-form__group fe-form__group--cancel-note">
+            Cancel at any time, without penalty
+         </div>
+         <div class="fe-form__signup-disclosures">
+            <small class="fe-form__signup-disclosure" id="signup-form-disclaimer-one">By clicking "Sign up now", you agree to the terms of the <a href="https://legaldocs.feitest.io/Vanguard/Vanguard_Managed_Accounts/Vanguard_MA_ServiceAgmt_Privacy.pdf" target="legal-window">Privacy Policy</a>, and acknowledge that you have received and read the <a href="https://legaldocs.feitest.io/Vanguard/Vanguard_Managed_Accounts/Vanguard_ADV2A_B.pdf" target="legal-window">Form ADV</a>. You confirm that you can view and print the <a href="javascript:void(0)" class="fe-modal-toggle-legalDocLink">Legal Information</a> and consent to electronic delivery thereof. You can also request a free paper copy at any time.</small>
+            <small class="fe-form__signup-disclosure" id="signup-form-disclaimer-two">After you are enrolled in the Program, the <a href="#" target="_blank" class="fe-modal-toggle-fe-program-fees">program fees</a> will be deducted from your account (as described in the <a href="https://legaldocs.feitest.io/Vanguard/Vanguard_Managed_Accounts/Vanguard_MA_ServiceAgmt_Privacy.pdf" target="legal-window">Privacy Policy</a>). Vanguard Advisers, Inc. will make necessary transactions to your Vanguard Group, Inc. account. You understand that you can cancel at any time. All advisory services are provided by Vanguard Advisers, Inc. (VAI), a federally registered investment advisor. Neither VAI nor Edelman Financial Engines guarantee future results.</small>
+         </div>
+      </form>
+   </div>
+</div>
