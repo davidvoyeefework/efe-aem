@@ -30,9 +30,7 @@ export default class FeHeader {
             var logoFileName = data.context.sponsorId;
             var logoPath = this.attributeParameterElem?.getAttribute('data-sponsor-logo-path')
             var logo = logoPath.replace("{sponsorid}", logoFileName);
-            var sponsorLogoEl = `<a class="cmp-image__link" target="#">
-                                    <img src="`+ logo + `" loading="lazy" class="cmp-image__image" itemprop="contentUrl" alt=" " title="Logo">
-                                </a>`;
+            var sponsorLogoEl = `<img src="`+ logo + `" loading="lazy" class="cmp-image__image" itemprop="contentUrl" alt=" " title="Logo">`;
             sponsorLogo.insertAdjacentHTML('beforeend', sponsorLogoEl);
         }
     }
