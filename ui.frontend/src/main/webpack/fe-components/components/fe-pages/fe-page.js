@@ -1,5 +1,3 @@
-//import {handleLoader} from '../../site/js/helper'
-import FeHeader from '../fe-header/fe-header';
 import A11yDialog from 'a11y-dialog'
 import { getCookie, getFetch, handleLoader, fetchData, postJSON, pushToWindowObject } from "../../site/js/helper";
 export default class FePage {
@@ -35,7 +33,12 @@ export default class FePage {
             handleLoader(false);
             if (data) {
                 pushToWindowObject(data);
-                new FeHeader();
+                const dataFromApi = new CustomEvent("messageFromfePage", {
+                    messageFromParent: {
+                    success: "true",
+                    },
+                });
+                document.dispatchEvent(dataFromApi);
                 this.changeFooterValues();
                 handleLoader(false);
             }
