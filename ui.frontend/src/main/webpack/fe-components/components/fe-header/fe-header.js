@@ -1,7 +1,9 @@
 export default class FeHeader {
     constructor() {
-        this.attributeParameterElem = document.querySelector('#fe-properties');
-        this.init();
+        document.addEventListener("messageFromfePage", (e) =>{
+            this.attributeParameterElem = document.querySelector('#fe-properties'); 
+            this.init();
+        });
     }
     init() {
         if(window.aemfe.header) {
