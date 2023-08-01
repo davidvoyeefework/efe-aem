@@ -1,0 +1,182 @@
+#signup-form, #fe-call-me-form{
+    border: 2px solid var(--light-gray, #F2F2F2);
+    background: var(--white, #FFF);
+    font-family: var(--font-family);
+}
+
+.fe-form{
+    
+    padding: 0 rem(40px) rem(25px) rem(40px);
+    &__control-wrapper{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    &-promo{
+        background: #F2F2F2;
+        padding: rem(20px) rem(40px);
+        text-align: center;
+        font-size: rem(15px);
+        font-style: normal;
+        font-weight: 300;
+        line-height: 110%;
+
+        &__title{
+            color: #C32D37;
+            font-size: rem(15px);
+            font-style: normal;
+            font-weight: 700;
+            line-height: 110%;
+        }
+        &__text{
+            color: var(--primary-charcoal, #535658);
+        }
+    }
+
+    &__header{
+        margin: rem(20px) 0;
+        color: var(--cool-gray-dark, #53565A);
+        text-align: center;
+        font-size: rem(28px);
+        font-style: normal;
+        font-weight: 700;
+        line-height: 105%; /* 29.4px */
+        letter-spacing: 1.68px;
+        text-transform: uppercase;
+    }
+
+    &__group{
+        & .fe-form__label-wrapper{
+            margin: rem(10px) 0;
+            color: var(--charcoal, #535658);
+            font-size: rem(12px);
+            font-style: normal;
+            font-weight: 400;
+            line-height: 100%; /* 12px */
+            font-variant: small-caps;
+
+            & label, & .fe-form__description{
+                display: inline-block;
+            }
+            & label{
+                margin-right: rem(10px);
+            }
+        }
+        &:nth-child(2){
+            & .fe-form__label-wrapper{
+                margin-top: 0;
+            }
+        }
+
+        & .fe-form__field--has-description{
+            & .fe-form__description{
+                display: none;
+            }
+        }
+        & .fe-form__control-instruction{
+            display: none;
+        }
+
+        &.fe-form__group--zip-code, &.fe-form__group--dob{
+            display: inline-block;
+            width: 40%;
+        }
+        &.fe-form__group--dob{
+            width: 58%;
+            float: right;
+        }
+
+        &--enrollment-disclosure{
+            // need to update as per response in figma
+            display: none;
+            font-size: rem(14px);
+            margin-top: rem(10px);
+            & input[type='checkbox']{
+                width: auto;
+            }
+        }
+
+        &--sign-up-button {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+           & button{
+                margin-top: rem(20px);
+                border-radius: 3px;
+                background: var(--primary-red, #C32D37);
+                height: rem(45px);
+                padding: rem(17px) rem(26px) rem(14px) rem(26px);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-shrink: 0;
+                color: var(--white, #FFF);
+                font-size: rem(18px);
+                font-weight: 400;
+                line-height: normal;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+            }
+        }
+
+        &--cancel-note{
+            margin-top: rem(20px);
+            text-align: center;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 100%; /* 12px */
+        }
+        
+    }
+
+    &__control{
+        width: 100%;
+        border-radius: 4px;
+        border: 1.5px solid var(--mid-gray, #DDDDDE);
+        background: var(--white, #FFF);
+        padding: 17px 21.95px 12px 31.11px;
+        color: var(--gray-blue, #B3B9BE);
+        font-size: rem(16px);
+        font-style: normal;
+        font-weight: 400;
+        line-height: 100%; /* 16px */
+        font-variant: small-caps;
+
+        &-wrapper .error{
+            & .fe-form__control{
+                border-color: #da3b43;
+            }
+            & .fe-form__error{
+                display: block;
+            }
+        }
+    }
+
+    &__signup-disclosures{
+        margin-top: rem(20px);
+        color: var(--a-6-a-8-ab, #A6A8AB);
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 100%; /* 12px */
+
+        & a{
+            color: var(--a-6-a-8-ab, #A6A8AB);
+            text-decoration: underline;
+        }
+    }
+
+    &__error{
+        display: none;
+        color: #B22932;
+        font-size: rem(14px);
+        font-style: normal;
+        font-weight: 400;
+        line-height: 100%; /* 14px */
+        font-variant: small-caps;
+        margin-bottom: rem(10px);
+    }
+}
+ 
+

@@ -1,0 +1,69 @@
+.fe-modal{
+    position: fixed;
+    overflow: auto;
+    overflow-y: scroll;
+    left: -1000%;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+    
+
+    &.fe-show-modal{
+        display: flex;
+        left: 0;
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1);
+        transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+    }
+
+    &-content {
+        background-color: white;
+        margin: auto;
+        max-width: rem(600px);
+        padding: rem(25px);
+    }
+
+    &-header{
+        position: relative;
+        &__text{
+            padding-bottom: rem(25px);
+            color: var(--primary-charcoal, #535658);
+            font-size: rem(30px);
+            font-style: normal;
+            font-weight: 400;
+            line-height: rem(30px); /* 100% */
+            letter-spacing: 4px;
+        }
+
+        &__close{
+            position: absolute;
+            right: 0;
+            top:0;
+            width: rem(14.121px);
+            height: rem(14.043px);
+            font-size: 1.8rem;
+            line-height: rem(14px);
+            cursor: pointer;
+        }
+    }
+
+    &-body{
+        margin-top: rem(25px);
+        color: var(--535658, #535658);
+        font-family: Nimbus Sans;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 24px; /* 150% */
+
+        & b, & strong, & .fe-fees__heading, & th{
+            font-weight: 700;
+        }
+    }
+}
