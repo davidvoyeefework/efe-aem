@@ -1,7 +1,4 @@
 .fepage {
-    .sponsor-value-hide {
-        display: none;
-    }
     .edit-view {
         .sponsor-value-hide {
             display: inline;
@@ -9,6 +6,11 @@
 
         .unbounce-form {
             display: inline;
+        }
+    }
+    .fe-load-data {
+        .sponsor-value-hide {
+            display: none;
         }
     }
     .loader {

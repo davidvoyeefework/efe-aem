@@ -11,7 +11,7 @@ export default class FePage {
         );
     }
     init() {
-        const el = document.querySelector('.fepage');
+        const el = document.querySelector('.fe-load-data');
         if (!el) {
             return
         }

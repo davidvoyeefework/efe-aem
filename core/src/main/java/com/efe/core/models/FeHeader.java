@@ -6,6 +6,13 @@ package com.efe.core.models;
 public interface FeHeader {
 
     /**
+     * Gets the type.
+     *
+     * @return the type
+     */
+    String getType();
+
+    /**
      * Gets the primary logo.
      *
      * @return the primary logo
@@ -20,18 +27,25 @@ public interface FeHeader {
     String getSecondaryLogo();
 
     /**
-     * Gets the primary logo link.
+     * Gets the primary logo alt text.
      *
-     * @return the primary logo link
+     * @return the primary logo alt text
      */
-    String getPrimaryLogoLink();
+    String getPrimaryLogoAltText();
 
     /**
-     * Gets the secondary logo link.
+     * Gets the secondary logo alt text.
      *
-     * @return the secondary logo link
+     * @return the secondary logo alt text
      */
-    String getSecondaryLogoLink();
+    String getSecondaryLogoAltText();
+
+    /**
+     * Gets the id.
+     *
+     * @return the id
+     */
+    String getId();
 
     /**
      * Gets the Sponsor Details.

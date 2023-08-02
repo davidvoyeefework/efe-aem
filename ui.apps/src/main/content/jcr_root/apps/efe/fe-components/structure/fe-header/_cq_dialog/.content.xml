@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
     jcr:primaryType="nt:unstructured"
-    jcr:title="Fe Header">
-    <content jcr:primaryType="nt:unstructured">
+    jcr:title="Fe Header"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
         <items jcr:primaryType="nt:unstructured">
-            <tabs jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
                 <items jcr:primaryType="nt:unstructured">
-                    <label-links
+                    <properties
                         jcr:primaryType="nt:unstructured"
-                        sling:hideResource="{Boolean}true"/>
-                    <feheaderproperties
-                        jcr:primaryType="nt:unstructured"
-                        jcr:title="FE Header Properties"
-                        sling:orderBefore="headerlist"
+                        jcr:title="Properties"
                         sling:resourceType="granite/ui/components/coral/foundation/container"
                         maximized="{Boolean}true">
                         <items jcr:primaryType="nt:unstructured">
@@ -25,6 +27,26 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
+                                            <listFrom
+                                                granite:class="cq-dialog-dropdown-showhide"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldLabel="Type"
+                                                name="./type">
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    cq-dialog-dropdown-showhide-target=".header-option-listfrom-showhide-target"/>
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <direct
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Direct"
+                                                        value="direct"/>
+                                                    <sub-advised
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Sub-Advised"
+                                                        value="subadvised"/>
+                                                </items>
+                                            </listFrom>
                                             <primarylogo
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
@@ -34,42 +56,52 @@
                                                 fileReferenceParameter="./primaryLogo"
                                                 name="./logo2"
                                                 rootPath="/content/dam/efe"/>
-                                            <primaryLogoLink
+                                            <primarylogoalt
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                fieldDescription="Add primary logo link url here"
-                                                fieldLabel="Primary Logo Link"
-                                                name="./primaryLogoLink"
-                                                rootPath="/content/efe"/>
-                                            <secondarylogo
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Add primary logo alt text here"
+                                                fieldLabel="Alt Text for Primary Logo"
+                                                name="./primaryLogoAltText"/>
+                                            <secondaryproperties
+                                                granite:class="hide header-option-listfrom-showhide-target foundation-layout-util-vmargin"
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
-                                                allowUpload="{Boolean}false"
-                                                fieldDescription="Add secondary header logo here"
-                                                fieldLabel="Secondary Logo"
-                                                fileReferenceParameter="./secondaryLogo"
-                                                name="./logo2"
-                                                rootPath="/content/dam/efe"/>
-                                            <secondaryLogoLink
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    showhidetargetvalue="subadvised"/>
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <secondarylogo
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                        allowUpload="{Boolean}false"
+                                                        fieldDescription="Add secondary header logo here"
+                                                        fieldLabel="Secondary Logo"
+                                                        fileReferenceParameter="./secondaryLogo"
+                                                        name="./logo2"
+                                                        rootPath="/content/dam/efe"/>
+                                                    <secondarylogoalt
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="Add secondary logo alt text here"
+                                                        fieldLabel="Alt Text for Secondary Logo"
+                                                        name="./secondaryLogoAltText"/>
+                                                </items>
+                                            </secondaryproperties>
+                                            <id
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                fieldDescription="Add secondary header logo link url here"
-                                                fieldLabel="Secondary Logo Link"
-                                                name="./secondaryLogoLink"
-                                                rootPath="/content/efe"/>
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="HTML ID attribute to apply to the component."
+                                                fieldLabel="ID"
+                                                name="./id"/>
                                         </items>
                                     </column>
                                 </items>
                             </columns>
                         </items>
-                    </feheaderproperties>
-                    <headerlist
-                        jcr:primaryType="nt:unstructured"
-                        sling:hideResource="{Boolean}true"/>
+                    </properties>
                     <sponsordetails
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Sponsor Details"
-                        sling:orderBefore="styletab"
                         sling:resourceType="granite/ui/components/coral/foundation/container"
                         maximized="{Boolean}true">
                         <items jcr:primaryType="nt:unstructured">

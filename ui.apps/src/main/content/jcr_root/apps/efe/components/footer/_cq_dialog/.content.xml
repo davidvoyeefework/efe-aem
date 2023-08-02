@@ -291,14 +291,6 @@
                                                 text="Add One Trust Link"
                                                 uncheckedValue="false"
                                                 value="true"/>
-										    <unbouncefooter
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                fieldDescription="Check to enable unbounce footer"
-                                                name="./isUnbounceFooter"
-                                                text="Unbounce Footer ?"
-                                                uncheckedValue="false"
-                                                value="true"/>
                                         </items>
                                     </column>
                                 </items>

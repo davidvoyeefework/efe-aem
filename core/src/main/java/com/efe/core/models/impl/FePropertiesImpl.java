@@ -74,22 +74,10 @@ public class FePropertiesImpl implements FeProperties {
 		}
 		setUnbounceField();
 		recordKeeper = getCookieValue(cookieJsonObject, "providerId");
-		sponsorId = getCookieValue(cookieJsonObject, "sponsorId");
-		setTheme(recordKeeper);
-	}
-
-	/**
-	 * Sets the theme.
-	 *
-	 * @param recordKeeper the new theme
-	 */
-	private void setTheme(String recordKeeper) {
-
-		if ("hewitt".equals(recordKeeper)) {
-			theme = "theme-primary";
-		} else if ("FMR".equals(recordKeeper)) {
-			theme = "theme-secondary";
+		if(StringUtils.isNotEmpty(recordKeeper)) {
+			recordKeeper = "theme-" + recordKeeper;
 		}
+		sponsorId = getCookieValue(cookieJsonObject, "sponsorId");
 	}
 
 	/**
@@ -273,16 +261,6 @@ public class FePropertiesImpl implements FeProperties {
 			return new HashMap<>(dynamicVariables);
 		}
 		return Collections.emptyMap();
-	}
-
-	/**
-	 * Gets the theme.
-	 *
-	 * @return the theme
-	 */
-	@Override
-	public String getTheme() {
-		return theme;
 	}
 
 	/**

@@ -1,0 +1,20 @@
+<template data-sly-template.item="${@ logo,alt,cssclass,id}">
+    <div class="image ${cssclass} cmp-image--small" id="header-logo">
+        <div
+            id="${id}"
+            class="cmp-image"
+            itemscope=""
+            itemtype="http://schema.org/ImageObject">
+                <sly data-sly-test="${logo}">
+                    <img
+                        src=${logo}
+                        loading="lazy"
+                        class="cmp-image__image"
+                        itemprop="contentUrl"
+                        alt="${alt}"
+                        title="${id}"
+                    />
+                </sly>
+        </div>
+    </div>
+</template>
