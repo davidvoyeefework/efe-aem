@@ -27,16 +27,16 @@ public interface FeHeader {
     String getSecondaryLogo();
 
     /**
-     * Gets the primary logo link.
+     * Gets the primary logo alt text.
      *
-     * @return the primary logo link
+     * @return the primary logo alt text
      */
     String getPrimaryLogoAltText();
 
     /**
-     * Gets the secondary logo link.
+     * Gets the secondary logo alt text.
      *
-     * @return the secondary logo link
+     * @return the secondary logo alt text
      */
     String getSecondaryLogoAltText();
 

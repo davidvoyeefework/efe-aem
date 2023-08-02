@@ -135,9 +135,4 @@ import static org.mockito.Mockito.when;
         feHeader.getDynamicVariables();
         assertNotNull(serviceResolver);
     }
-
-
-
-
-
 }

@@ -96,7 +96,4 @@ import static org.mockito.Mockito.when;
         assertNotNull(resourceResolver);
         dropdownDataProviderServlet.doGet(request, response);
     }
-
-
-
 }

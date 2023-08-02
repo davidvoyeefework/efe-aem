@@ -148,9 +148,9 @@ public class FeHeaderImpl implements FeHeader {
     }
 
     /**
-     * Gets the logo link.
+     * Gets the primary logo alt text.
      *
-     * @return the logo link
+     * @return the primary logo alt text
      */
     @Override
     public String getPrimaryLogoAltText() {
@@ -158,9 +158,9 @@ public class FeHeaderImpl implements FeHeader {
     }
 
     /**
-     * Gets the logo link.
+     * Gets the secondary logo alt text.
      *
-     * @return the logo link
+     * @return the secondary logo alt text
      */
     @Override
     public String getSecondaryLogoAltText() {
