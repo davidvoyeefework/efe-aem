@@ -1679,6 +1679,17 @@
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                 </policy>
             </listteaser>
+            <xftargetpage jcr:primaryType="nt:unstructured">
+                <policy
+                    jcr:description="Includes the required client libraries."
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="xftarget page policy"
+                    sling:resourceType="wcm/core/components/policy/policy"
+                    clientlibs="[fe.site]"
+                    clientlibsJsHead="fe.site">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                </policy>
+            </xftargetpage>
         </components>
         <fe-components jcr:primaryType="nt:unstructured">
             <structure jcr:primaryType="nt:unstructured">

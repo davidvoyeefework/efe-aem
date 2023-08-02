@@ -1,39 +1,42 @@
-<sly data-sly-use.unbounceHeader="com.efe.core.models.FeHeader"
-     data-sly-use.itemTemplate="item.html"/>
-<header class="header sponsor-header minimal-header--with-two-logos" data-component="header" id="${unbounceHeader.id}">
-    <div class="container responsivegrid" id="header-item">
-        <div id="container-99d779a4e6" class="cmp-container cmp-container--white">
-            <div class="container responsivegrid" id="efe-nav-main">
-                <div id="container-99d779a4e6" class="cmp-container--white cmp-container--unset cmp-container--1920 cmp-container--width-1920 cmp-container--26">
-                    <sly data-sly-test="${unbounceHeader.primaryLogo}" data-sly-call="${itemTemplate.item @ logo=unbounceHeader.primaryLogo,href=unbounceHeader.primaryLogoLink,cssclass='cmp-image--efe-logo-primary'}"></sly>
-                    <sly data-sly-call="${itemTemplate.item @ logo=unbounceHeader.secondaryLogo,href=unbounceHeader.secondaryLogoLink,cssclass='cmp-image--efe-logo-secondory sponsor-logo'}"></sly>
-                    
-                    <button id="nav-hamburger" aria-expanded="false" aria-label="main menu" class="top-bar__hamburger-button" data-analytics-trigger="cta-hamburger">
-                        <svg id="top-hamburger-line" width="24px" height="3px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="top-bar__hamburger-button-line-wrapper top-bar__hamburger-button-line-wrapper--top">
-                            <line stroke="#7A7D82" stroke-width="3" x1="0" x2="24" y1="0" y2="0" class="top-bar__hamburger-button-line top-bar__hamburger-button-line--top"></line>
-                        </svg>
-                        <svg id="middle-hamburger-line" width="24px" height="3px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="top-bar__hamburger-button-line-wrapper top-bar__hamburger-button-line-wrapper--middle">
-                            <line stroke="#7A7D82" stroke-width="3" x1="0" x2="24" y1="0" y2="0" class="top-bar__hamburger-button-line top-bar__hamburger-button-line--top"></line>
-                        </svg>
-
-                        <svg id="bottom-hamburger-line" width="24px" height="3px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="top-bar__hamburger-button-line-wrapper top-bar__hamburger-button-line-wrapper--middle">
-                            <line stroke="#7A7D82" stroke-width="3" x1="0" x2="24" y1="0" y2="0" class="top-bar__hamburger-button-line top-bar__hamburger-button-line--bottom"></line>
-                        </svg>
-                    </button>
-
-                    <div class="container responsivegrid" id="nav-list-cta-group" style="display: none">
-                        <div id="container-99d779a4e6" class="cmp-container cmp-container--white cmp-container--unset cmp-container--unset ul-cta-group">
-                            <div class="button cmp-button--button-primary cmp-button--center cmp-button-- cmp-button--">
-                                <sly data-sly-test="${unbounceHeader.sponsorDetails}">
-                                    <div class="cmp-text">
-                                        ${unbounceHeader.sponsorDetails @ context = 'html'}
-                                    </div>
-                                </sly>
+<div data-sly-use.FeHeader="com.efe.core.models.FeHeader"
+     data-sly-use.logoTemplate="logo-template.html"
+     data-sly-use.template="core/wcm/components/commons/v1/templates.html"
+     data-sly-test.isNotEmpty="${FeHeader.primaryLogo}"
+     class="${FeHeader.type} minimal-header">
+    <header class="header" data-component="header" id="${FeHeader.id}">
+        <div class="container responsivegrid" id="efe-global-nav-header">
+            <div id="container-99d779a4e6" class="cmp-container">
+                <div class="container responsivegrid">
+                    <div id="container-99d779a4e6"
+                         class="cmp-container cmp-container--unset cmp-container--1920  cmp-container--width-1920 efe-nav-header">
+                        <sly data-sly-test="${FeHeader.sponsorDetails}">
+                            <div class="cmp-text">
+                                ${FeHeader.sponsorDetails @ context = 'html'}
                             </div>
+                        </sly>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container responsivegrid" id="header-logo">
+            <div id="container-99d779a4e6" class="cmp-container cmp-container--white">
+                <div class="container responsivegrid" id="efe-nav-main">
+                    <div id="container-99d779a4e6"
+                         class="cmp-container--white cmp-container--unset cmp-container--1920 cmp-container--width-1920 cmp-container--26">
+                        <sly data-sly-test="${FeHeader.primaryLogo}" data-sly-call="${logoTemplate.item @ logo=FeHeader.primaryLogo,alt=FeHeader.primaryLogoAltText,cssclass='cmp-image--efe-logo-primary cmp-image--small',id='primary-logo'}"></sly>
+                        <div data-sly-test="${FeHeader.primaryLogo || FeHeader.secondaryLogo}" class="minimal-header__vertical-line"></div>
+                        <sly data-sly-call="${logoTemplate.item @ logo=FeHeader.secondaryLogo,alt=FeHeader.secondaryLogoAltText,cssclass='cmp-image--efe-logo-secondary sponsor-logo cmp-image--small',id='secondary-logo'}"></sly>
+                        <div class="container responsivegrid" id="nav-list-cta-group" style="display: none">
+                            <sly data-sly-test="${FeHeader.sponsorDetails}">
+                                <div class="cmp-text">
+                                    ${FeHeader.sponsorDetails @ context = 'html'}
+                                </div>
+                            </sly>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</header>
+    </header>
+</div>
+<sly data-sly-call="${template.placeholder @ isEmpty=!isNotEmpty, classAppend='enroll-form'}"></sly>

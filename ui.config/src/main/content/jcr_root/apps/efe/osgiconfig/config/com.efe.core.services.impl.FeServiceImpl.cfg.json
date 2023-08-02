@@ -8,9 +8,10 @@
   "authenticateApi": "$[env:authenticate_api;default=https://www.feitest.com/api/v1/userlogin/authenticationstatus]",
   "callBackApi": "$[env:callBack_api;default=callBackApi]",
   "dynamicVariableList": [
-    "$[env:aggregate_variables;default=/etc/acs-commons/lists/fe/aggregate-variables|data-aggregate|true]",
-    "$[env:authenticationStatus_variables;default=/etc/acs-commons/lists/fe/authenticationstatus-variables|data-authenticationStatus|true]",
-    "$[env:keys_variables;default=/etc/acs-commons/lists/fe/keys-variables|data-keys|true]",
-    "$[env:pageFrame_variables;default=/etc/acs-commons/lists/fe/pageframe-variables|data-pageFrame|true]"
+    "$[env:aggregate_variables;default=/etc/acs-commons/lists/fe/aggregate-variables|data-aggregate|false]",
+    "$[env:authenticationStatus_variables;default=/etc/acs-commons/lists/fe/authenticationstatus-variables|data-authenticationStatus|false]",
+    "$[env:keys_variables;default=/etc/acs-commons/lists/fe/keys-variables|data-keys|false]",
+    "$[env:pageFrame_variables;default=/etc/acs-commons/lists/fe/pageframe-variables|data-pageFrame|false]",
+    "$[env:sponsor_details;default=/etc/acs-commons/lists/fe/sponsor-details|data-sponsorDetails|true]"
   ]
 }

@@ -44,6 +44,12 @@ public class FeHeaderImpl implements FeHeader {
     private ResourceResolver resourceResolver;
 
     /**
+     * The current resource.
+     */
+    @SlingObject
+    private Resource resource;
+
+    /**
      * Injecting dynamicMediaService
      *
      */
@@ -65,29 +71,40 @@ public class FeHeaderImpl implements FeHeader {
 
     /** The primary logo link. */
     @ValueMapValue
-    private String primaryLogoLink;
+    private String primaryLogoAltText;
 
     /** The secondary logo link. */
     @ValueMapValue
-    private String secondaryLogoLink;
+    private String secondaryLogoAltText;
 
+    /** The id. */
+    @ValueMapValue
+    private String id;
+
+    /** The sponsor details. */
     @ValueMapValue
     private String sponsorDetails;
 
+    /** The type. */
+    @ValueMapValue
+    private String type;
+
+    /** The dynamic variables. */
     private String dynamicVariables;
 
     /**
      * Inits the model.
      */
     @PostConstruct
-    protected void init() {
+    public void init() {
         if (null != request) {
+            System.out.println(type);
             setDynamicVariablesField();
         }
     }
 
     /**
-     * Sets the unbounce field.
+     * Sets the Dynamic Variables field.
      */
     private void setDynamicVariablesField() {
         try (ResourceResolver serviceResolver = ResourceUtil.getServiceResourceResolver(resolverFactory)) {
@@ -136,8 +153,8 @@ public class FeHeaderImpl implements FeHeader {
      * @return the logo link
      */
     @Override
-    public String getPrimaryLogoLink() {
-        return LinkUtil.getFormattedLink(primaryLogoLink, resourceResolver);
+    public String getPrimaryLogoAltText() {
+        return primaryLogoAltText;
     }
 
     /**
@@ -146,8 +163,22 @@ public class FeHeaderImpl implements FeHeader {
      * @return the logo link
      */
     @Override
-    public String getSecondaryLogoLink() {
-        return LinkUtil.getFormattedLink(secondaryLogoLink, resourceResolver);
+    public String getSecondaryLogoAltText() {
+        return secondaryLogoAltText;
+    }
+
+    /**
+     * Gets the id.
+     *
+     * @return the id
+     */
+
+    @Override
+    public String getId() {
+        if (id == null) {
+            id = EFEUtil.getId(resource);
+        }
+        return id;
     }
 
     /**
@@ -170,4 +201,13 @@ public class FeHeaderImpl implements FeHeader {
         return dynamicVariables;
     }
 
+    /**
+     * Gets the type.
+     *
+     * @return the type
+     */
+    @Override
+    public String getType() {
+        return type;
+    }
 }

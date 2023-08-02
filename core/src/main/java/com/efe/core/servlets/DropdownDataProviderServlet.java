@@ -1,14 +1,11 @@
 package com.efe.core.servlets;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
 import javax.servlet.Servlet;
-import javax.servlet.ServletException;
-
 import com.efe.core.services.FeService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
@@ -34,32 +31,40 @@ import com.adobe.granite.ui.components.ds.SimpleDataSource;
 import com.adobe.granite.ui.components.ds.ValueMapResource;
 import com.day.cq.commons.jcr.JcrConstants;
 import com.efe.core.utils.EFEUtil;
-import com.efe.core.utils.ResourceUtil;
 
+/**
+ * The Class DropdownDataProviderServlet.
+ */
 @Component(service = { Servlet.class })
 @SlingServletResourceTypes(resourceTypes = "efe/components/dropdown", methods = HttpConstants.METHOD_GET)
 @ServiceDescription("EFE DropdownDataProviderServlet")
 public class DropdownDataProviderServlet extends SlingSafeMethodsServlet {
 
+	/** The Constant SPLIT_BY_PIPE. */
 	private static final String SPLIT_BY_PIPE = "\\|";
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
+	/** The resolver factory. */
 	@Reference
 	private transient ResourceResolverFactory resolverFactory;
 
+	/** The feService. */
 	@Reference
-	private FeService feService;
+	private transient FeService feService;
 
+	/**
+	 * Do get.
+	 *
+	 * @param req  the request
+	 * @param resp the response
+	 */
 	@Override
-	protected void doGet(final SlingHttpServletRequest req, final SlingHttpServletResponse resp)
-			throws ServletException, IOException {
-
-		try (ResourceResolver resourceResolver = ResourceUtil.getServiceResourceResolver(resolverFactory)) {
-			Resource currentResource = req.getResource();
-			String dropdownSelector = currentResource.getChild("datasource").getValueMap().get("type", String.class);
-			getItemsList(req.getResourceResolver(), dropdownSelector, req);
-		}
+	protected void doGet(final SlingHttpServletRequest req, final SlingHttpServletResponse resp) {
+		Resource currentResource = req.getResource();
+		String dropdownSelector = currentResource.getChild("datasource").getValueMap().get("type", String.class);
+		getItemsList(req.getResourceResolver(), dropdownSelector, req);
 	}
 
 	/**
