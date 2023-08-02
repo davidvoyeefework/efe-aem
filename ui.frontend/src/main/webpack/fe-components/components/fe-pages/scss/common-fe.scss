@@ -21,4 +21,23 @@
             }
         }
     }
+    * {
+        font-family: var(--font-family) !important;
+    }
+    .footer {
+        &.subadvised {
+            .cmp-image--efe-logo-secondary.cmp-image--small {
+                &::before {
+                    content: "Powered by";
+                    color: #000;
+                    font-size: 12px;
+                    font-style: normal;
+                    font-weight: 300;
+                    line-height: 32px; /* 266.667% */
+                    top: rem(5);
+                    position: absolute;
+                }
+            }
+        }
+    }
 }
