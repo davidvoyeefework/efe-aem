@@ -1,11 +1,25 @@
-#signup-form, #fe-call-me-form{
+#signup-form, #fe-call-me-form, #fe-call-me-back{
     border: 2px solid var(--light-gray, #F2F2F2);
     background: var(--white, #FFF);
     font-family: var(--font-family);
 }
 
+.fe-form__header, .fe-call-me-back-header{
+    margin: rem(20px) 0;
+    color: var(--cool-gray-dark, #53565A);
+    text-align: center;
+    font-size: rem(28px);
+    font-style: normal;
+    font-weight: 700;
+    line-height: 105%; /* 29.4px */
+    letter-spacing: 1.68px;
+    text-transform: uppercase;
+}
+.fe-call-me-back-header{
+    margin: rem(25px) rem(40px) rem(20px) rem(40px);
+}
+
 .fe-form{
-    
     padding: 0 rem(40px) rem(25px) rem(40px);
     &__control-wrapper{
         display: flex;
@@ -13,7 +27,7 @@
     }
     &-promo{
         background: #F2F2F2;
-        padding: rem(20px) rem(40px);
+        padding: rem(25px) rem(40px) rem(20px) rem(40px);
         text-align: center;
         font-size: rem(15px);
         font-style: normal;
@@ -21,33 +35,21 @@
         line-height: 110%;
 
         &__title{
-            color: #C32D37;
+            color: var(--fe-form-color);
             font-size: rem(15px);
             font-style: normal;
             font-weight: 700;
             line-height: 110%;
         }
         &__text{
-            color: var(--primary-charcoal, #535658);
+            color: var(--fe-form-promo-text);
         }
-    }
-
-    &__header{
-        margin: rem(20px) 0;
-        color: var(--cool-gray-dark, #53565A);
-        text-align: center;
-        font-size: rem(28px);
-        font-style: normal;
-        font-weight: 700;
-        line-height: 105%; /* 29.4px */
-        letter-spacing: 1.68px;
-        text-transform: uppercase;
     }
 
     &__group{
         & .fe-form__label-wrapper{
             margin: rem(10px) 0;
-            color: var(--charcoal, #535658);
+            color: #535658;
             font-size: rem(12px);
             font-style: normal;
             font-weight: 400;
@@ -56,6 +58,9 @@
 
             & label, & .fe-form__description{
                 display: inline-block;
+            }
+            & .fe-form__description{
+                font-style: italic;
             }
             & label{
                 margin-right: rem(10px);
@@ -85,17 +90,67 @@
             float: right;
         }
 
-        &--enrollment-disclosure{
-            // need to update as per response in figma
-            display: none;
-            font-size: rem(14px);
-            margin-top: rem(10px);
-            & input[type='checkbox']{
-                width: auto;
+        &.fe-form__group--disclaimer{
+            & .fe-form__signup-disclosures, & .fe-form__signup-disclosures small{
+                font-size: rem(14px);
+                text-align: center;
             }
         }
 
-        &--sign-up-button {
+        &.fe-form__group--appt-scheduler{
+            & > *{
+                text-align: center;
+            }
+            & span {
+                display: block;
+                font-size: rem(14px);
+                text-align: center;
+                margin-top: rem(20px);
+                color: #535658;
+                font-weight: 400;
+                line-height: 100%;
+            }
+
+            & .fe-form__button.fe-form__button--outline{
+                color: var(--primary-red, #C32D37);
+                margin-top: rem(20px);
+                text-align: center;
+                font-size: rem(18px);
+                font-weight: 400;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                border-radius: 3px;
+                border: 2px solid var(--primary-red, #C32D37);
+                background: var(--primary-white, #FFF);
+                display: inline-flex;
+                height: 45px;
+                padding: 17px 26px 14px 26px;
+                justify-content: center;
+                align-items: center;
+                flex-shrink: 0;
+            }
+        }
+
+        &--enrollment-disclosure{
+            // need to update as per response in figma
+            //display: none;
+            font-size: rem(14px);
+            margin-top: rem(10px);
+            color: #535658;
+            & a{
+                text-decoration: underline;
+                color: var(--fe-form-color);
+            }
+            & input[type='checkbox']{
+                width: rem(13px);
+                height: rem(13px);
+                border-radius: 3px;
+                border: 2px solid #7A7D82;
+                background: #FFF;
+            }
+        }
+
+        &--sign-up-button, &--call-me-button{
             text-align: center;
             display: flex;
             justify-content: center;
@@ -110,7 +165,7 @@
                 justify-content: center;
                 align-items: center;
                 flex-shrink: 0;
-                color: var(--white, #FFF);
+                color: var(--primary-button-font-color);
                 font-size: rem(18px);
                 font-weight: 400;
                 line-height: normal;
@@ -120,6 +175,7 @@
         }
 
         &--cancel-note{
+            color: #535658;
             margin-top: rem(20px);
             text-align: center;
             font-size: 12px;
@@ -133,10 +189,10 @@
     &__control{
         width: 100%;
         border-radius: 4px;
-        border: 1.5px solid var(--mid-gray, #DDDDDE);
-        background: var(--white, #FFF);
-        padding: 17px 21.95px 12px 31.11px;
-        color: var(--gray-blue, #B3B9BE);
+        border: 1.5px solid #DDDDDE;
+        background: #FFF;
+        padding: rem(20px);
+        color: #B3B9BE;
         font-size: rem(16px);
         font-style: normal;
         font-weight: 400;
@@ -153,19 +209,24 @@
         }
     }
 
-    &__signup-disclosures{
+    &__signup-disclosures, &__signup-disclosures small, .fe-form__group .fe-form__signup-disclosure{
         margin-top: rem(20px);
-        color: var(--a-6-a-8-ab, #A6A8AB);
+        color: #A6A8AB;
         font-size: 12px;
         font-style: normal;
         font-weight: 400;
         line-height: 100%; /* 12px */
 
         & a{
-            color: var(--a-6-a-8-ab, #A6A8AB);
+            color: var(--fe-form-discloser-anchor-color);
             text-decoration: underline;
         }
     }
+
+    .fe-form__group.fe-form__group--disclaimer .fe-form__signup-disclosure{
+        color: #535658;
+    }
+    
 
     &__error{
         display: none;
@@ -178,5 +239,21 @@
         margin-bottom: rem(10px);
     }
 }
- 
 
+#fe-call-me-form{
+   & .fe-form{
+    &__group{
+        &:nth-child(2){
+            & .fe-form__label-wrapper{
+                margin-top: rem(10px);
+            }
+        }
+
+        &:first-child{
+            & .fe-form__label-wrapper{
+                margin-top: 0;
+            }
+        }
+    }
+   }
+}
