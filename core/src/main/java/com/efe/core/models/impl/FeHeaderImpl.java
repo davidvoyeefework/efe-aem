@@ -98,7 +98,6 @@ public class FeHeaderImpl implements FeHeader {
     @PostConstruct
     public void init() {
         if (null != request) {
-            System.out.println(type);
             setDynamicVariablesField();
         }
     }
