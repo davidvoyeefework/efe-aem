@@ -1,7 +1,6 @@
-import Handlebars from "handlebars/runtime.js";
-import Form from "../fe-form.hbs";
+import Form from "../fe-sign-up-form.hbs";
+import CallBackForm from "../fe-call-back-form.hbs";
 
-Handlebars.registerPartial("Form", Form);
 export default {
     title: "FE Components/form",
     argTypes: {
@@ -12,4 +11,8 @@ export default {
     },
 };
 
-export { Form as Default };
+const TemplateSignup = ({ label, ...args }) => Form();
+export const SignUp = TemplateSignup.bind();
+
+const TemplateCallBack = ({ label, ...args }) => CallBackForm();
+export const CallBack = TemplateCallBack.bind();
