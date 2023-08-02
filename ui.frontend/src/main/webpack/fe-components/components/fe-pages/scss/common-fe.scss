@@ -1,6 +1,6 @@
 .fepage {
-    &.subadvised {
-        .minimal-header {
+    .minimal-header {
+        &.subadvised {
             .cmp-image--efe-logo-secondary.cmp-image--small {
                 &::before {
                     content: "Powered by";
