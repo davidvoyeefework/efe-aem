@@ -20,12 +20,17 @@ export default class FeFooter {
         }
         data?.footer?.footerLinks.forEach((item) => {
             let liElem = document.createElement('li');
-            liElem.classList.add('cmp-list__item')
-            if (item.target !== "modal") {
-                liElem.innerHTML = `<a href="${item.href}" target="${item.target}" class="cmp-list__item-link">
+            liElem.classList.add('cmp-list__item');
+            if(item.id === 'doc.dnspi')  {
+                liElem.innerHTML = `<button class="cmp-list__item-link ot-sdk-show-settings">
+                ${item.name}
+                </button>`
+            } 
+            else if(item.target === "modal") {
+                liElem.innerHTML = `<a href="javascript:void(0)" class="cmp-list__item-link fe-modal-btn ${item.href}">
                 <span class="cmp-list__item-title">${item.name}</span></a>`;
             } else {
-                liElem.innerHTML = `<a href="javascript:void(0)" class="cmp-list__item-link fe-modal-btn ${item.href}">
+                liElem.innerHTML = `<a href="${item.href}" target="${item.target}" class="cmp-list__item-link">
                 <span class="cmp-list__item-title">${item.name}</span></a>`;
             }
             litUlElement.appendChild(liElem);
@@ -70,10 +75,19 @@ export default class FeFooter {
         const title = `<h4 class="cmp-modal__fe-title">${data?.footer?.aboutProviderTitle}</h4>`;
         modalElemBody.innerHTML = title;
         let content = document.createElement('div');
+        content.classList.add('cmp-modal__about-us-text');
         content.innerHTML = `<p>${data?.footer?.aboutProviderP1}</p>
                             <p>${data?.footer?.aboutProviderP2}</p>
                             <p>${data?.footer?.aboutProviderP3}</p>`
         modalElemBody.appendChild(content);
+        const elCloseBtn = document.createElement('div');
+        elCloseBtn.classList.add('cmp-modal__close-btn-div');
+        elCloseBtn.innerHTML = "<button>Close</button>";
+        modalElemBody.appendChild(elCloseBtn);
+        elCloseBtn.addEventListener("click", (ev) => {
+            document.querySelector('body').classList.toggle("modal-open");
+            dialog.hide();
+          });
     }
     renderLegalDocModal(e) {
         const data = window.aemfe;
@@ -97,5 +111,9 @@ export default class FeFooter {
         elCloseBtn.classList.add('cmp-modal__close-btn-div');
         elCloseBtn.innerHTML = "<button>Close</button>";
         modalElemBody.appendChild(elCloseBtn);
+        elCloseBtn.addEventListener("click", (ev) => {
+            document.querySelector('body').classList.toggle("modal-open");
+            dialog.hide();
+          });
     }
 }

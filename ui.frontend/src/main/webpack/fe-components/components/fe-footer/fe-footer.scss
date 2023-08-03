@@ -29,6 +29,12 @@
                     }
                 }
             }
+            &__about-us-text {
+                padding: 25px 0;
+                p {
+                    @include body-03;
+                }
+            }
             &__fe-title {
                 color: var(--title-text-color);
                 font-size: 30px;
