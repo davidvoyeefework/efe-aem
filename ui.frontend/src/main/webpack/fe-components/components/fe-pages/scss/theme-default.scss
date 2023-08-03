@@ -1,7 +1,7 @@
 body { //Direct
     --primary-button-bg-color: #C32D37;
     --primary-button-font-color:#FFFFFF;
-    --footer-links-color: $efe-gray-new;
+    --title-text-color: #7A7D82;
     --primary-button-border-radius: 3px;
     --font-family: 'nimbus-sans';
     --fe-form-color : #C32D37;
@@ -14,8 +14,10 @@ body { //Direct
 .theme-vanguard {//Vanguard
     --primary-button-bg-color: #000;
     --primary-button-font-color:#FFFFFF;
-    --footer-links-color: #670026;
-    --primary-button-border-radius: 40px;
+    --title-text-color: #670026;
+    --primary-button-border-radius: 80px;
+    --primary-button-bg-color-hover: #FFFFFF;
+    --primary-button-font-hover:#000000;
     --font-family: 'Open Sans';
     --fe-form-color : #670026;
     --fe-form-promo-text : #670026;
@@ -27,8 +29,10 @@ body { //Direct
 .theme-aon { //AFA
     --primary-button-bg-color: #FCF251;
     --primary-button-font-color:#000000;
-    --footer-links-color: #1B365D;
-    --primary-button-border-radius: 40px;
+    --title-text-color: #1B365D;
+    --primary-button-border-radius: 80px;
+    --primary-button-bg-color-hover: linear-gradient(90deg, #FCF251 0%, #FFFDCC 100%);
+    --primary-button-font-hover:#000000;
     --font-family: 'Open Sans';
     --fe-form-color : #1B365D;
     --fe-form-promo-text : #1B365D;
@@ -40,8 +44,10 @@ body { //Direct
 .theme-ssga { //Voya
     --primary-button-bg-color: #145A7B;;
     --primary-button-font-color:#FFFFFF;
-    --footer-links-color: #145A7B;
-    --primary-button-border-radius: 40px;
+    --title-text-color: #145A7B;
+    --primary-button-border-radius: 80px;
+    --primary-button-bg-color-hover: #173857;
+    --primary-button-font-hover:#FFFFFF;
     --font-family: 'Open Sans';
     --fe-form-color : #145A7B;
     --fe-form-promo-text : #145A7B;

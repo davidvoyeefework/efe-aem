@@ -67,7 +67,7 @@ export default class FeFooter {
         modalElem.innerHTML = " ";
         const modalElemBody = document.createElement('div');
         modalElem.appendChild(modalElemBody);
-        const title = `<h4 class="legal-doc-title">${data?.footer?.aboutProviderTitle}</h4>`;
+        const title = `<h4 class="cmp-modal__fe-title">${data?.footer?.aboutProviderTitle}</h4>`;
         modalElemBody.innerHTML = title;
         let content = document.createElement('div');
         content.innerHTML = `<p>${data?.footer?.aboutProviderP1}</p>
@@ -84,12 +84,18 @@ export default class FeFooter {
         modalElem.innerHTML = " ";
         const modalElemBody = document.createElement('div');
         modalElem.appendChild(modalElemBody);
-        const title = `<h4 class="legal-doc-title">${e.target.innerText}</h4>`;
+        const title = `<h4 class="cmp-modal__fe-title">${e.target.innerText}</h4>`;
         modalElemBody.innerHTML = title;
+        const elUl = document.createElement('ul')
         data?.footer?.legalDocsLinks.forEach((link) => {
-            let linkElem = document.createElement('p');
+            let linkElem = document.createElement('li');
             linkElem.innerHTML = `<a href="${link.href}" target="${link.target}">${link.name}</a>`;
-            modalElemBody.appendChild(linkElem);
-        })
+            elUl.appendChild(linkElem);
+        });
+        modalElemBody.appendChild(elUl);
+        const elCloseBtn = document.createElement('div');
+        elCloseBtn.classList.add('cmp-modal__close-btn-div');
+        elCloseBtn.innerHTML = "<button>Close</button>";
+        modalElemBody.appendChild(elCloseBtn);
     }
 }
