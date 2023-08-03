@@ -13,7 +13,7 @@
             <experiencefragment-header
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="efe/components/experiencefragment"
-                fragmentVariationPath="/content/experience-fragments/efe/us/en/site/unbounce-header/master"/>
+                fragmentVariationPath="/content/experience-fragments/fe/us/en/site/direct-sponsor-landing-pages-header/master"/>
             <container
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="efe/components/container"
