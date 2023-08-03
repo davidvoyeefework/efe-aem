@@ -5,8 +5,8 @@ Handlebars.registerPartial("FePage", FePage);
 export default {
     title: "pages/FePage",
     argTypes: {
-        sponsor: {
-            options: ["Boeing", "ATT"],
+        rkId: {
+            options: ["theme-aon", "theme-vanguard","theme-ssga"],
             control: { type: "radio" },
         },
     },
