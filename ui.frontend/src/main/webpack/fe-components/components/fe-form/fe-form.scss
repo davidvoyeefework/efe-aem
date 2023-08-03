@@ -1,12 +1,12 @@
 #signup-form, #fe-call-me-form, #fe-call-me-back{
-    border: 2px solid var(--light-gray, #F2F2F2);
-    background: var(--white, #FFF);
+    border: 2px solid #F2F2F2;
+    background:#FFFFFF;
     font-family: var(--font-family);
 }
 
 .fe-form__header, .fe-call-me-back-header{
     margin: rem(20px) 0;
-    color: var(--cool-gray-dark, #53565A);
+    color: #53565A;
     text-align: center;
     font-size: rem(28px);
     font-style: normal;
@@ -40,6 +40,7 @@
             font-style: normal;
             font-weight: 700;
             line-height: 110%;
+            font-family: var(--font-family);
         }
         &__text{
             color: var(--fe-form-promo-text);
@@ -112,7 +113,7 @@
             }
 
             & .fe-form__button.fe-form__button--outline{
-                color: var(--primary-red, #C32D37);
+                color: var(--primary-button-bg-color);
                 margin-top: rem(20px);
                 text-align: center;
                 font-size: rem(18px);
@@ -120,8 +121,8 @@
                 letter-spacing: 1px;
                 text-transform: uppercase;
                 border-radius: 3px;
-                border: 2px solid var(--primary-red, #C32D37);
-                background: var(--primary-white, #FFF);
+                border: 2px solid var(--primary-button-bg-color);
+                background: #FFF;
                 display: inline-flex;
                 height: 45px;
                 padding: 17px 26px 14px 26px;
@@ -132,8 +133,6 @@
         }
 
         &--enrollment-disclosure{
-            // need to update as per response in figma
-            //display: none;
             font-size: rem(14px);
             margin-top: rem(10px);
             color: #535658;
@@ -171,6 +170,12 @@
                 line-height: normal;
                 letter-spacing: 1px;
                 text-transform: uppercase;
+
+                &:hover{
+                    color: var(--fe-form-button-hover-color);
+                    background: var(--fe-form-button-hover-background);
+                    border: var(--fe-form-buttom-hover-border);
+                }
             }
         }
 
