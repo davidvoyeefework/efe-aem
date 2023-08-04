@@ -4,6 +4,19 @@
     font-family: var(--font-family);
 }
 
+#fe-call-me-back{
+    & .fe-form__field{
+        display: flex;
+        flex-direction: column-reverse;
+
+        &.error{
+            & .fe-form__error{
+                display: block;
+            }
+        }
+    }
+}
+
 .fe-form__header, .fe-call-me-back-header{
     margin: rem(20px) 0;
     color: #53565A;
@@ -261,6 +274,15 @@
         line-height: 100%; /* 14px */
         font-variant: small-caps;
         margin-bottom: rem(10px);
+    }
+
+    &-confirmation{
+        margin: rem(70px) rem(40px) rem(25px) rem(40px);
+        text-align: center;
+        font-size: rem(22px);
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
     }
 }
 
