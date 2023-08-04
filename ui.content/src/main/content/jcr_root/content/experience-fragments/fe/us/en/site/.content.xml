@@ -4,4 +4,5 @@
     jcr:title="site">
     <jcr:content jcr:primaryType="nt:unstructured"/>
     <direct-sponsor-landing-pages-header/>
+    <dynamic-footer/>
 </jcr:root>

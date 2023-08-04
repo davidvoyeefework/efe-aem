@@ -7,19 +7,16 @@
         cq:xfMasterVariation="{Boolean}true"
         cq:xfVariantType="web"
         jcr:primaryType="cq:PageContent"
-        jcr:title="Direct Sponsor Landing Pages Header"
+        jcr:title="Dynamic Footer"
         sling:resourceType="efe/components/xftargetpage">
         <root
             jcr:primaryType="nt:unstructured"
             sling:resourceType="efe/components/container"
             layout="responsiveGrid">
-            <fe_header
+            <fe_footer
                 jcr:primaryType="nt:unstructured"
-                sling:resourceType="efe/fe-components/structure/fe-header"
-                primaryLogo="/content/dam/efe/icons/logo efe .svg"
-                sponsorDetails="&lt;p>&lt;span class=&quot;supportHour sponsor-value-hide&quot;>{supportHour}&lt;/span>&lt;/p>&#xd;&#xa;&lt;p>&lt;span class=&quot;supportPhone sponsor-value-hide&quot;>{supportPhone}&lt;/span>&lt;/p>&#xd;&#xa;"
-                textIsRich="true"
-                type="direct"/>
+                sling:resourceType="efe/fe-components/structure/fe-footer"
+                fileReference="/content/dam/efe/icons/logo efe .svg"/>
         </root>
     </jcr:content>
 </jcr:root>

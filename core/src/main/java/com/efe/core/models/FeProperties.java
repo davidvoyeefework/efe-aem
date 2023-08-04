@@ -83,4 +83,11 @@ public interface FeProperties {
 	 * @return the sponsorId
 	 */
 	String getSponsorId();
+
+    /**
+     * Gets the sponsor logo path.
+     *
+     * @return the sponsorLogoPath
+     */
+    String getSponsorLogoPath();
 }
