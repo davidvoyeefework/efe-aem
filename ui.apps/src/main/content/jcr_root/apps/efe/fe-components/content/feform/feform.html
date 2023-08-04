@@ -1,0 +1,14 @@
+<div data-sly-use.template="core/wcm/components/commons/v1/templates.html"
+    data-sly-set.type="${properties.type? properties.type : 'Select Form Type'}"
+    data-sly-use.enrollmenttemplate="enrollmentform.html" data-sly-use.callbacktemplate="callbackform.html"
+    data-sly-test.isDisabledMode="${wcmmode.disabled}">
+
+    <sly data-sly-test.isEnrollment='${"Enrollment Form" == properties.type}'>
+        <sly data-sly-call="${enrollmenttemplate.enrollmentform}"></sly>
+    </sly>
+    <sly data-sly-test='${!isEnrollment}'>
+        <sly data-sly-call="${callbacktemplate.callbackform @ properties=properties}"></sly>
+    </sly>
+
+</div>
+<sly data-sly-call="${template.placeholder @ isEmpty=!isDisabledMode, emptyTextAppend=type}"></sly>

@@ -2,5 +2,5 @@
 <jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0"
     jcr:description="Planner Bio Component"
     jcr:primaryType="cq:Component"
-    jcr:title="Call Back Form"
+    jcr:title="FE Form"
     componentGroup="EFE - Content"/>
