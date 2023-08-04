@@ -28,7 +28,7 @@
             <experiencefragment_footer
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="efe/components/experiencefragment"
-                fragmentVariationPath="/content/experience-fragments/efe/us/en/site/fe-footer/master"/>
+                fragmentVariationPath="/content/experience-fragments/fe/us/en/site/dynamic-footer/master"/>
         </root>
         <cq:responsive jcr:primaryType="nt:unstructured">
             <breakpoints jcr:primaryType="nt:unstructured">
