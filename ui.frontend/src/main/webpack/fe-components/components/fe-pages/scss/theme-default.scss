@@ -10,6 +10,7 @@ body { //Direct
     --fe-form-button-hover-background:#B22932;
     --fe-form-button-hover-color:#FFFFFF;
     --fe-form-buttom-hover-border:none;
+    --fe-modal-header-font-family:'Bebas Neue';
 }
 .theme-vanguard {//Vanguard
     --primary-button-bg-color: #000;
@@ -25,6 +26,7 @@ body { //Direct
     --fe-form-button-hover-background:#FFFFFF;
     --fe-form-button-hover-color:#000000;
     --fe-form-buttom-hover-border:2px solid #000;
+    --fe-modal-header-font-family:'Open Sans';
 }
 .theme-aon { //AFA
     --primary-button-bg-color: #FCF251;
@@ -40,6 +42,7 @@ body { //Direct
     --fe-form-button-hover-background:linear-gradient(90deg, #FCF251 0%, #FFFDCB 100%);
     --fe-form-button-hover-color:#000000;
     --fe-form-buttom-hover-border:none;
+    --fe-modal-header-font-family:'Open Sans';
 }
 .theme-ssga { //Voya
     --primary-button-bg-color: #145A7B;;
@@ -55,4 +58,5 @@ body { //Direct
     --fe-form-button-hover-background:#173857;
     --fe-form-button-hover-color:#FFFFFF;
     --fe-form-buttom-hover-border:none;
+    --fe-modal-header-font-family:'Open Sans';
 }
