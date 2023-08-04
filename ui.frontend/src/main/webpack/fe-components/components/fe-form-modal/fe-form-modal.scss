@@ -1,4 +1,5 @@
 .fe-modal{
+    padding: 0 rem(12px);
     position: fixed;
     overflow: auto;
     overflow-y: scroll;
@@ -11,6 +12,7 @@
     visibility: hidden;
     transform: scale(1.1);
     transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+    font-family: var(--font-family);
     
 
     &.fe-show-modal{
@@ -25,20 +27,28 @@
     &-content {
         background-color: white;
         margin: auto;
-        max-width: rem(600px);
+        max-width: rem(650px);
+
+        & .fe-modal-form-error-content-wrapper, & .fe-modal-form-error-content-wrapper p{
+            font-size: rem(16px);
+            font-style: normal;
+            font-weight: 300;
+            line-height: rem(24px);
+            font-family: var(--font-family);
+        }
     }
 
     &-header{
         position: relative;
         padding: rem(25px);
-        &__text{
+        &__text, &__text span{
             color: var(--fe-form-promo-text);
             font-family: var(--fe-modal-header-font-family)!important;
             font-size: rem(30px);
             font-style: normal;
             font-weight: 400;
             line-height: rem(30px); /* 100% */
-            letter-spacing: 4px;
+            letter-spacing: var(--fe-modal-letter-spacing);
         }
 
         &__close{
@@ -109,14 +119,8 @@
 
     &-footer{
         &__close{
-            border-radius: var(--primary-button-border-radius);
-            border: 1px solid var(--fe-form-color);
-            color: var(--fe-form-color);
+            @include fe-secondary-btn;
             display: inline-flex;
-            height: rem(35px);
-            padding: rem(20px) rem(26px);
-            justify-content: center;
-            align-items: center;
             margin: rem(25px);
             margin-top: 0;
         }
@@ -130,14 +134,8 @@
     & .fe-modal{
         &-footer{
             &__close{
-                background: var(--primary-button-bg-color);
-                color: var(--primary-button-font-color);
-                border: var(--fe-form-buttom-hover-border);
-                &:hover{
-                    color: var(--fe-form-button-hover-color);
-                    background: var(--fe-form-button-hover-background);
-                    border: var(--fe-form-buttom-hover-border);
-                }
+                 @include fe-primary-btn;
+                 display: inline-flex;
             }
         }
     }

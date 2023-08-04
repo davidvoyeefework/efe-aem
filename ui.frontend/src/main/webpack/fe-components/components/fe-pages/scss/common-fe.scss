@@ -8,11 +8,23 @@
     border: 1px solid var(--primary-button-bg-color);
     color: var(--primary-button-font-color);
     border-radius: var( --primary-button-border-radius);
+    cursor: pointer;
     &:hover, &:active { 
         background: var(--primary-button-bg-color-hover);
         color: var( --primary-button-font-hover);
     }
 }
+
+@mixin fe-secondary-btn {
+    @include fe-primary-btn;
+    background-color: #ffffff;
+    color: var(--primary-button-bg-color);
+    &:hover, &:active { 
+        background: #ffffff;
+        color: var(--primary-button-bg-color);
+    }
+}
+
 .fepage {
     .minimal-header {
         &.subadvised {

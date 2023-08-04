@@ -149,6 +149,7 @@
                 justify-content: center;
                 align-items: center;
                 flex-shrink: 0;
+                cursor: pointer;
             }
         }
 
@@ -190,6 +191,7 @@
                 line-height: normal;
                 letter-spacing: 1px;
                 text-transform: uppercase;
+                cursor: pointer;
 
                 &:hover{
                     color: var(--fe-form-button-hover-color);
