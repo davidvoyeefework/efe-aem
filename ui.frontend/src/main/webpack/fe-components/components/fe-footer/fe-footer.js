@@ -1,5 +1,4 @@
 import A11yDialog from 'a11y-dialog'
-import { getCookie, getFetch, handleLoader, fetchData, postJSON, pushToWindowObject } from "../../site/js/helper";
 export default class FeFooter {
     constructor() {
         document.addEventListener("messageFromfePage", (e) =>{
@@ -27,8 +26,8 @@ export default class FeFooter {
                 </button>`
             } 
             else if(item.target === "modal") {
-                liElem.innerHTML = `<a href="javascript:void(0)" class="cmp-list__item-link fe-modal-btn ${item.href}">
-                <span class="cmp-list__item-title">${item.name}</span></a>`;
+                liElem.innerHTML = `<a href="javascript:void(0)" class="cmp-list__item-link">
+                <span class="cmp-list__item-title fe-modal-btn ${item.href}">${item.name}</span></a>`;
             } else {
                 liElem.innerHTML = `<a href="${item.href}" target="${item.target}" class="cmp-list__item-link">
                 <span class="cmp-list__item-title">${item.name}</span></a>`;
@@ -52,15 +51,13 @@ export default class FeFooter {
             var copyrightHTML = `<span class="cmp-text--caption">` + data.footer.copyright + patentSection + `</span>`
             copyrightEle.innerHTML = copyrightHTML;
         }
-        document.querySelectorAll('.fe-modal-btn').forEach(item => {
-            item.addEventListener("click", (ev) => {
-                if (item.classList.contains('legalDocLink')) {
-                    this.renderLegalDocModal(ev);
+        window.addEventListener('click', e=>{
+            if (e.target.classList.contains('legalDocLink')) {
+                            this.renderLegalDocModal(e);
                 }
-                if (item.classList.contains('aboutProviderLink')) {
-                    this.renderAboutUsModal(ev);
-                }
-            })
+                if (e.target.classList.contains('aboutProviderLink')) {
+                                this.renderAboutUsModal(e);
+                    }
         });
     }
     renderAboutUsModal(e) {
