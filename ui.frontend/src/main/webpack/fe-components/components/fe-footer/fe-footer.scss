@@ -65,6 +65,10 @@
     &.theme-vanguard, &.theme-aon, &.theme-ssga {
         .footer {
                 .cmp-image--efe-logo-secondary.cmp-image--small {
+                    margin-bottom: 0 !important;
+                    .cmp-image {
+                        margin-top:38px
+                    }
                     &::before {
                         content: "Powered by";
                         color: #000;
@@ -72,7 +76,7 @@
                         font-style: normal;
                         font-weight: 300;
                         line-height: 32px; /* 266.667% */
-                        top: 20px;
+                        top: 38px;
                         position: absolute;
                     }
             }
