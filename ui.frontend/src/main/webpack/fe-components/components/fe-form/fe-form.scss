@@ -62,9 +62,14 @@
             }
             & .fe-form__description{
                 font-style: italic;
+                &::before{
+                    content: "\2010";
+                    font-size: 1rem;
+                    margin-right: rem(4px);
+                }
             }
             & label{
-                margin-right: rem(10px);
+                margin-right: rem(4px);
             }
         }
         &:nth-child(2){
@@ -91,6 +96,21 @@
             float: right;
         }
 
+        &.fe-form__group--ssn{
+            & .fe-form__description{
+                &::before{
+                    content: '';
+                    display: inline-block;
+                    background: url("../resources/images/icons/secure-lock.svg") no-repeat center center / contain;
+                    width: rem(12);
+                    height: rem(12);
+                    position: relative;
+                    bottom: rem(0);
+                    right: rem(0);  
+                }
+            }
+        }
+
         &.fe-form__group--disclaimer{
             & .fe-form__signup-disclosures, & .fe-form__signup-disclosures small{
                 font-size: rem(14px);
@@ -113,7 +133,7 @@
             }
 
             & .fe-form__button.fe-form__button--outline{
-                color: var(--primary-button-bg-color);
+                color: var(--primary-button-bg-color) !important;
                 margin-top: rem(20px);
                 text-align: center;
                 font-size: rem(18px);
@@ -204,10 +224,7 @@
         line-height: 100%; /* 16px */
         font-variant: small-caps;
 
-        &-wrapper .error{
-            & .fe-form__control{
-                border-color: #da3b43;
-            }
+        &-wrapper.error{
             & .fe-form__error{
                 display: block;
             }

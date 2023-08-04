@@ -47,3 +47,30 @@
         }
     }
 }
+
+.fe-loading{
+    & .fe-loading-screen{
+        display: block;
+        background: #fff;
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 9999;
+
+        & .fe-loading-animation{
+            background: url("../resources/images/loader.gif") no-repeat top center;
+            padding-top: 75px;
+            font-size: 18px;
+            width: 200px;
+            margin: auto;
+            text-align: center;
+            position: relative;
+            top: 150px;
+            &::after{
+                content: "Loading";
+            }
+        }
+    }
+}
