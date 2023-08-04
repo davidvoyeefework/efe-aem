@@ -7,7 +7,7 @@ body {
     font-family: $font-family-default;
     line-height: $font-height;
     color:       $color-foreground;
-    background:  $color-background;
+    background:  $white-primary;
     transition: color 0.3s ease-in, background 0.3s ease-in;
 
     // @media (prefers-color-scheme: dark) {

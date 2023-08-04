@@ -74,7 +74,7 @@ const showElement = (e) => {
 };
 
 const clickFunction = (listenItem, elmToShow) => {
-  document.querySelector(listenItem).addEventListener("click", function() {
+  document.querySelector(listenItem)?.addEventListener("click", function() {
     showElement(elmToShow);
   });
 };
