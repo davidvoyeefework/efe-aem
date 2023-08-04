@@ -16370,10 +16370,10 @@
                     qe.info("Placeholder undefined in userData: " + t.id)
             }
             .bind(this)),
-            document.querySelector("body div:first-child").innerHTML = this.bodyContent
+            document.querySelector("body > div.root").innerHTML = this.bodyContent
         },
         getDataFieldIds: function() {
-            this.bodyContent = document.querySelector("body div:first-child").innerHTML;
+            this.bodyContent = document.querySelector("body > div.root").innerHTML;
             var e = this.bodyContent.match(/(?:%7B%7B|\{\{)(.*?)(?:}}|%7D%7D)+/g);
             null != e && e.length > 0 && (e.forEach(function(e) {
                 var t = e.replace("{{", "").replace("%7B%7B", "").replace("}}", "").replace("%7D%7D", "");
