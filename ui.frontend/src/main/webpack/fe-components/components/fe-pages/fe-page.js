@@ -18,8 +18,6 @@ export default class FePage {
         handleLoader(true)
         this.fetchSponsorData();
         this.fetchAggregateData();
-        this.getKeys();
-
     }
     async fetchSponsorData() {
         handleLoader(true)
@@ -38,7 +36,6 @@ export default class FePage {
                     },
                 });
                 document.dispatchEvent(dataFromApi);
-                this.changeFooterValues();
                 handleLoader(false);
             }
         }).catch(error => {
@@ -61,17 +58,6 @@ export default class FePage {
             console.log(data);
             pushToWindowObject(data);
             handleLoader(false);
-        }).catch(error => {
-            // Handle any errors that occurred during the fetch request
-            console.error('An error occurred:', error);
-            handleLoader(false);
-        });
-    }
-    async getKeys() {
-        let apiUrl = document.querySelector('#fe-properties')?.getAttribute('data-keys-api');
-        const keys = ["publicEnrollment.hero.heading", "publicEnrollment.hero.description"];
-        await postJSON(apiUrl, keys).then(data => {
-            pushToWindowObject(data);
         }).catch(error => {
             // Handle any errors that occurred during the fetch request
             console.error('An error occurred:', error);
