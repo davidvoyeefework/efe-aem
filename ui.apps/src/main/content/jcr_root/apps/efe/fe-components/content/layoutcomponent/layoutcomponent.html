@@ -1,0 +1,67 @@
+<style>
+
+    .custom-container {
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+    }
+
+    .block {
+        padding: 10px;
+        border: 1px solid #ccc;
+    }
+
+    .A {
+        grid-row: 1;
+        grid-column: 1;
+    }
+
+    .B {
+        grid-row: 2;
+        grid-column: 1;
+    }
+
+    .C {
+        grid-row: 1 / span 2;
+        grid-column: 2;
+    }
+
+   @media (max-width: 768px) {
+        .custom-container {
+            grid-template-columns: 1fr;
+       }
+
+        .B {
+            grid-row: 3;
+            grid-column: 1;
+        }
+
+        .C {
+            grid-row: 2;
+            grid-column: 1;
+        }
+    }
+
+    .var2 .custom-container{
+        direction: rtl;
+    }
+
+    .var2 .B{
+        display: none;
+    }
+    
+    .var1 .custom-container{
+        direction: ltr;
+    }
+</style>
+
+<div class="custom-container">
+    <div class="block A">
+        <div data-sly-resource="${'teaser' @ resourceType='efe/components/teaser'}"></div>
+    </div>
+    <div class="block B">
+        <div data-sly-resource="${'text' @ resourceType='efe/components/text'}"></div>
+    </div>
+    <div class="block C">
+        <div data-sly-resource="${'callback' @ resourceType='efe/components/unbounce/callbackform'}"></div>
+    </div>
+</div>

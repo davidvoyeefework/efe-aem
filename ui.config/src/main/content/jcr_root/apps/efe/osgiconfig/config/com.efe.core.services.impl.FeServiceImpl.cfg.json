@@ -1,0 +1,17 @@
+{
+  "pageFrameApi": "$[env:forKey_api;default=https://www.feitest.com/api/v1/pageframe/?namespace=landing-flow]",
+  "aggregateApi": "$[env:forKey_api;default=https://www.feitest.com/api/v1/planowners/{Recordkeeper}/aggregate]",
+  "forKeyApi": "$[env:forKey_api;default=https://www.feitest.com/advisor/api/v1/texts/forKeys]",
+  "softAuthApi": "$[env:softAuth_api;default=https://www.feitest.com/api/v1/userlogin/confirmIdentity?loginContext=CONFIRM_IDENTITY]",
+  "signupApi": "$[env:signup_api;default=https://www.feitest.com/api/v1/user/membership]",
+  "scheduleApi": "$[env:schedule_api;default=https://www.feitest.com/api/v1/user/clientServices/contactRequest?type=adviser_callback&initiationPoint={FormId}]",
+  "authenticateApi": "$[env:authenticate_api;default=https://www.feitest.com/api/v1/userlogin/authenticationstatus]",
+  "callBackApi": "$[env:callBack_api;default=callBackApi]",
+  "dynamicVariableList": [
+    "$[env:aggregate_variables;default=/etc/acs-commons/lists/fe/aggregate-variables|data-aggregate|false]",
+    "$[env:authenticationStatus_variables;default=/etc/acs-commons/lists/fe/authenticationstatus-variables|data-authenticationStatus|false]",
+    "$[env:keys_variables;default=/etc/acs-commons/lists/fe/keys-variables|data-keys|false]",
+    "$[env:pageFrame_variables;default=/etc/acs-commons/lists/fe/pageframe-variables|data-pageFrame|false]",
+    "$[env:sponsor_details;default=/etc/acs-commons/lists/fe/sponsor-details|data-sponsorDetails|true]"
+  ]
+}

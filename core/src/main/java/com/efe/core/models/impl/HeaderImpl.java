@@ -7,7 +7,6 @@ import java.util.Objects;
 
 import javax.annotation.PostConstruct;
 
-import com.efe.core.services.DynamicMediaService;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -22,6 +21,7 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.efe.core.models.Header;
 import com.efe.core.models.multifield.Link;
+import com.efe.core.services.DynamicMediaService;
 import com.efe.core.utils.EFEUtil;
 import com.efe.core.utils.LinkUtil;
 
@@ -327,5 +327,4 @@ public class HeaderImpl implements Header {
 		}
 		return Collections.emptyList();
 	}
-
 }

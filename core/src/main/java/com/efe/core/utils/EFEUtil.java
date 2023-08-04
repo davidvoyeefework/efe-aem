@@ -7,6 +7,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -17,6 +18,7 @@ import org.apache.sling.api.resource.ResourceResolver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.adobe.acs.commons.genericlists.GenericList;
 import com.adobe.cq.wcm.core.components.util.ComponentUtils;
 import com.day.cq.tagging.Tag;
 import com.day.cq.wcm.api.Page;
@@ -179,5 +181,23 @@ public class EFEUtil {
         }
         return framedPage;
     }
+    
+    /**
+     * Gets the generic list.
+     *
+     * @param resourceResolver the resource resolver
+     * @param listPath the list path
+     * @return the generic list
+     */
+    public static GenericList getGenericList(ResourceResolver resourceResolver, String listPath) {
+    	GenericList list = null;
+    	PageManager pageManager = resourceResolver.adaptTo(PageManager.class);
+    	Page listPage = pageManager.getPage(listPath);
+    	if (Objects.nonNull(listPage)) {
+    		 list = listPage.adaptTo(GenericList.class);
+    	}	
+    	return list;
+    }
 
 }
+

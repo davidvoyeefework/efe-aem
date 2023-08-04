@@ -255,6 +255,9 @@
                         <subsuperscript
                             jcr:primaryType="nt:unstructured"
                             features="*"/>
+                        <efe-aem-dynamic-variable
+                            jcr:primaryType="nt:unstructured"
+                            features="applyDynamicVariable"/>
                     </rtePlugins>
                     <cq:styleGroups jcr:primaryType="nt:unstructured">
                         <item0
@@ -1509,7 +1512,6 @@
                     jcr:primaryType="nt:unstructured"
                     jcr:title="Header Policy"
                     sling:resourceType="wcm/core/components/policy/policy">
-                    <jcr:content jcr:primaryType="nt:unstructured"/>
                     <cq:styleGroups jcr:primaryType="nt:unstructured">
                         <item0
                             cq:styleGroupLabel="Styles"
@@ -1664,6 +1666,7 @@
                 </cq:styleGroups>
             </policy>
             </video>
+
             <listteaser jcr:primaryType="nt:unstructured">
                 <policy
                     jcr:primaryType="nt:unstructured"
@@ -1676,6 +1679,45 @@
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                 </policy>
             </listteaser>
+            <xftargetpage jcr:primaryType="nt:unstructured">
+                <policy
+                    jcr:description="Includes the required client libraries."
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="xftarget page policy"
+                    sling:resourceType="wcm/core/components/policy/policy"
+                    clientlibs="[fe.site]"
+                    clientlibsJsHead="fe.site">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                </policy>
+            </xftargetpage>
         </components>
+        <fe-components jcr:primaryType="nt:unstructured">
+            <structure jcr:primaryType="nt:unstructured">
+                <fe-header jcr:primaryType="nt:unstructured">
+                    <policy
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Fe Header Policy"
+                        sling:resourceType="wcm/core/components/policy/policy">
+                        <jcr:content jcr:primaryType="nt:unstructured"/>
+                        <rtePlugins jcr:primaryType="nt:unstructured">
+                            <efe-aem-dynamic-variable
+                                jcr:primaryType="nt:unstructured"
+                                features="applyDynamicVariable"/>
+                        </rtePlugins>
+                    </policy>
+                </fe-header>
+                <fe-page jcr:primaryType="nt:unstructured">
+                    <policy
+                        jcr:description="Includes the required client libraries."
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Fe Page Policy"
+                        sling:resourceType="wcm/core/components/policy/policy"
+                        clientlibs="[fe.site]"
+                        clientlibsJsHead="fe.site">
+                        <jcr:content jcr:primaryType="nt:unstructured"/>
+                    </policy>
+                </fe-page>
+            </structure>
+        </fe-components>
     </efe>
 </jcr:root>

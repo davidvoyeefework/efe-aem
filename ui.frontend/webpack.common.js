@@ -23,11 +23,13 @@ module.exports = {
   resolve: resolve,
   entry: {
     site: SOURCE_ROOT + "/site/main.ts",
+    fe: SOURCE_ROOT + "/fe-components/site/main.ts",
   },
   output: {
     filename: (chunkData) => {
       return chunkData.chunk.name === "dependencies"
-        ? "clientlib-dependencies/[name].js"
+        ? "clientlib-dependencies/[name].js":chunkData.chunk.name === "fe"?
+        "clientlib-fe/[name].js"
         : "clientlib-site/[name].js";
     },
     path: path.resolve(__dirname, "dist"),
@@ -104,6 +106,10 @@ module.exports = {
         {
           from: path.resolve(__dirname, SOURCE_ROOT + "/resources"),
           to: "./clientlib-site/",
+        },
+        {
+          from: path.resolve(__dirname, SOURCE_ROOT + "/fe-components/resources"),
+          to: "./clientlib-fe/",
         },
       ],
     }),

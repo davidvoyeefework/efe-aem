@@ -1,0 +1,62 @@
+body { //Direct
+    --primary-button-bg-color: #C32D37;
+    --primary-button-font-color:#FFFFFF;
+    --title-text-color: #7A7D82;
+    --primary-button-border-radius: 3px;
+    --font-family: 'nimbus-sans';
+    --fe-form-color : #C32D37;
+    --fe-form-promo-text : #535658;
+    --fe-form-discloser-anchor-color:#A6A8AB;
+    --fe-form-button-hover-background:#B22932;
+    --fe-form-button-hover-color:#FFFFFF;
+    --fe-form-buttom-hover-border:none;
+    --fe-modal-header-font-family:'Bebas Neue';
+}
+.theme-vanguard {//Vanguard
+    --primary-button-bg-color: #000;
+    --primary-button-font-color:#FFFFFF;
+    --title-text-color: #670026;
+    --primary-button-border-radius: 80px;
+    --primary-button-bg-color-hover: #FFFFFF;
+    --primary-button-font-hover:#000000;
+    --font-family: 'Open Sans';
+    --fe-form-color : #670026;
+    --fe-form-promo-text : #670026;
+    --fe-form-discloser-anchor-color:#670026;
+    --fe-form-button-hover-background:#FFFFFF;
+    --fe-form-button-hover-color:#000000;
+    --fe-form-buttom-hover-border:2px solid #000;
+    --fe-modal-header-font-family:'Open Sans';
+}
+.theme-aon { //AFA
+    --primary-button-bg-color: #FCF251;
+    --primary-button-font-color:#000000;
+    --title-text-color: #1B365D;
+    --primary-button-border-radius: 80px;
+    --primary-button-bg-color-hover: linear-gradient(90deg, #FCF251 0%, #FFFDCC 100%);
+    --primary-button-font-hover:#000000;
+    --font-family: 'Open Sans';
+    --fe-form-color : #1B365D;
+    --fe-form-promo-text : #1B365D;
+    --fe-form-discloser-anchor-color:#1B365D;
+    --fe-form-button-hover-background:linear-gradient(90deg, #FCF251 0%, #FFFDCB 100%);
+    --fe-form-button-hover-color:#000000;
+    --fe-form-buttom-hover-border:none;
+    --fe-modal-header-font-family:'Open Sans';
+}
+.theme-ssga { //Voya
+    --primary-button-bg-color: #145A7B;;
+    --primary-button-font-color:#FFFFFF;
+    --title-text-color: #145A7B;
+    --primary-button-border-radius: 80px;
+    --primary-button-bg-color-hover: #173857;
+    --primary-button-font-hover:#FFFFFF;
+    --font-family: 'Open Sans';
+    --fe-form-color : #145A7B;
+    --fe-form-promo-text : #145A7B;
+    --fe-form-discloser-anchor-color:#145A7B;
+    --fe-form-button-hover-background:#173857;
+    --fe-form-button-hover-color:#FFFFFF;
+    --fe-form-buttom-hover-border:none;
+    --fe-modal-header-font-family:'Open Sans';
+}

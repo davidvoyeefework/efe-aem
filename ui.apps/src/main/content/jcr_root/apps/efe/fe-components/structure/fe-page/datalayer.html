@@ -1,0 +1,100 @@
+<sly data-sly-use.model="${'com.efe.core.models.EFEDatalayer' @type='page'}">
+
+    <script src="${model.oneTrustScript}" type="text/javascript" charset="UTF-8"
+        data-domain-script="${model.oneTrustScriptId}"></script>
+
+    <input data-sly-test="${model.trackingLinksJson}" name="tracking-links" type="hidden"
+        data-tracking-list="${model.trackingLinksJson}" />
+
+    <!--/** Adobe Tag Manager **/-->
+    <script data-sly-test="${model.dataLayer}">
+        function OptanonWrapper() {
+        }
+
+    function getCookie(name) {
+      if (typeof document !== 'undefined') {
+        var value = '; ' + document.cookie;
+        var parts = value.split('; ' + name + '=');
+        if (parts.length === 2) {
+          return parts.pop().split(';').shift();
+        }
+      }
+    };
+
+    var fe = {};
+    var env = {};
+    var daVars = {};
+    var daVarsStr = getCookie('daVars');
+    if (daVarsStr) {
+      try {
+        daVars = JSON.parse(decodeURIComponent(daVarsStr));
+      } catch (error) {
+        throw new Error("Invalid daVars");
+      }
+    }
+    daVars.appType = "static_page";
+    daVars.namespace = "unbounce";
+    env.da = daVars;
+    fe.env = env;
+    console.log(fe);
+
+        window.adobeDataLayer = window.adobeDataLayer || [];
+        adobeDataLayer.push(JSON.parse("${model.dataLayer @ context='scriptString'}"));
+
+        addUnbounceEvent();
+
+        var formName = "${model.formName @ context='scriptString'}";
+        if (formName) {
+            window.adobeDataLayer.push({
+                event: 'form_complete',
+                _efe: {
+                    formInfo: {
+                        formName: formName,
+                        formComplete: {
+                            value: 1
+                        }
+                    }
+                }
+            })
+        }
+        const event = new Event("analyticsloaded");
+        window.dispatchEvent(event);
+
+        function addUnbounceEvent() {
+            var sponsorId = "${unbounceModel.sponsorId @ context='scriptString'}";
+            var recordKeeper = "${unbounceModel.recordKeeper @ context='scriptString'}";
+            if (daVars && daVars.providerId && daVars.sponsorId) {
+                var unbounceLoadObj = {
+                    "event":"personalization.request",
+                    "_financialengines": {
+                        "recordKeeperDetails": {
+                            "rkId": daVars.providerId,
+                            "rkName": ""            
+                        },
+                        "sponsorDetails": {
+                            "sponsorId": daVars.sponsorId,
+                            "sponsorName": ""
+                        }
+                    }
+                }
+                adobeDataLayer.push(unbounceLoadObj);
+            }
+    }
+
+
+    </script>
+    <!--/**End Adobe Tag Manager **/-->
+
+    <!--/** Google Tag Manager **/-->
+    <sly data-sly-test="${model.enableGA}">
+        <script>
+            window.dataLayer = window.dataLayer || [];
+        </script>
+        <script>(function (w, d, s, l, i) {
+                w[l] = w[l] || []; w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' }); var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', '${model.gaTagValue@ context="unsafe" }');
+        </script>
+    </sly>
+    <!--/** End Google Tag Manager **/-->
+</sly>

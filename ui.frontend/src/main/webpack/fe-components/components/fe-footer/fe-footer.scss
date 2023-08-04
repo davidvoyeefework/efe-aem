@@ -1,0 +1,81 @@
+.fepage {
+    .cmp-list--footer, form {
+        a,
+        .cmp-list__item-title {
+            color: var(--title-text-color) !important;
+            font-family: var(--font-family);
+        }
+    }
+    .fe-footer-modal {
+        .cmp-modal {
+            height: auto;
+            min-height: 220px;
+            width: 597px;
+            &__content {
+                text-align: left;
+                padding: 25px;
+                ul {
+                    list-style: unset;
+                    padding: 25px;
+                    @include media('>=phone-m') {
+                        columns: 2;
+                        column-gap: 25px;
+                    }
+                    li {
+                        a {
+                            color: $efe-gray-new;
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+            &__about-us-text {
+                padding: 25px 0;
+                p {
+                    @include body-03;
+                }
+            }
+            &__fe-title {
+                color: var(--title-text-color);
+                font-size: 30px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 30px; /* 100% */
+                letter-spacing: 4px;
+                padding-bottom: 25px;
+            }
+            &__close {
+                padding: 25px;
+                svg {
+                    line {
+                        stroke: var(--title-text-color);
+                    }
+                }
+            }
+            &__close-btn-div {
+                display: flex;
+                justify-content: end;
+                padding-top: 0;
+                button {
+                    @include fe-primary-btn;
+                }
+            }
+        }
+    }
+    &.theme-vanguard, &.theme-aon, &.theme-ssga {
+        .footer {
+                .cmp-image--efe-logo-secondary.cmp-image--small {
+                    &::before {
+                        content: "Powered by";
+                        color: #000;
+                        font-size: 12px;
+                        font-style: normal;
+                        font-weight: 300;
+                        line-height: 32px; /* 266.667% */
+                        top: 20px;
+                        position: absolute;
+                    }
+            }
+        }
+    }
+}

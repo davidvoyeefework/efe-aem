@@ -1,0 +1,69 @@
+<div class="minimal-header">
+    <div id="fe-properties" 
+             data-frame-api="https://www.feitest.com/api/v1/pageframe/?namespace=landing-flow"
+             data-aggregate-api="https://www.feitest.com/api/v1/planowners/{Recordkeeper}/aggregate"
+             data-sponsor-logo-path = "/content/dam/fe/logos/sponsors/{sponsorid}-small.png"
+             data-variables='[{"sponsorName":"header.sponsorName"}, {"supportHour":"header.supportHour"},{"supportPhone":"header.supportPhone"},{"supportPhoneText":"header.supportPhoneText"}]'>
+        </div>
+    <header class="header" data-component="header">
+        {{! --------------------- NAV HEADER --------------------- }}
+        <div class="container responsivegrid" id="efe-global-nav-header">
+            <div id="container-99d779a4e6" class="cmp-container">
+                {{! --------------------- 1920 CONTAINER --------------------- }}
+                <div class="container responsivegrid">
+                    <div id="container-99d779a4e6"
+                        class="cmp-container cmp-container--unset cmp-container--1920  cmp-container--width-1920 efe-nav-header">
+
+                        {{! --------------------- CLICK TO CALL --------------------- }}
+                          <div class="cmp-text">
+                            <p>
+                             <span class="sponsor-value-hide supportPhoneText">{supportPhoneText}</span>
+                             <span class="sponsor-value-hide supportPhone">{supportPhone}</span>,
+                              <span class="sponsor-value-hide supportHour">{supportHour}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{! --------------------- NAV MAIN --------------------- }}
+        <div class="container responsivegrid" id="">
+            <div id="container-99d779a4e6" class="cmp-container cmp-container--white">
+                <div class="container responsivegrid" id="efe-nav-main">
+                    <div id="container-99d779a4e6"
+                        class="cmp-container--white cmp-container--unset cmp-container--1920 cmp-container--width-1920 cmp-container--26">
+
+                        {{! --------------------- LINKED EFE LOGO --------------------- }}
+                        {{>EfeLogo
+                        link="https://www.edelmanfinancialengines.com/"
+                        variant="efe-logo-primary"
+                        altText="Edelman Financial Engines Logo"
+                        size="small"
+                        titleText="Edelman Financial Engines"
+                        }}
+                        <div class="minimal-header__vertical-line"></div>
+                       <div class="image cmp-image--efe-logo-secondary sponsor-logo cmp-image--small" id="">
+                              <div data-asset-id="45c6ee92-90e1-4af2-af69-b6dcbc7daeb7" id="image-72c95dc7ac" data-cmp-data-layer="{&quot;image-72c95dc7ac&quot;:{&quot;@type&quot;:&quot;core-components-examples/components/image&quot;,&quot;dc:title&quot;:&quot;Snowy mountain glacier&quot;,&quot;xdm:linkURL&quot;:&quot;https://www.aemcomponents.dev/content/core-components-examples/library/core-content/image.html&quot;,&quot;image&quot;:{&quot;repo:id&quot;:&quot;45c6ee92-90e1-4af2-af69-b6dcbc7daeb7&quot;,&quot;repo:modifyDate&quot;:&quot;1970-01-01T00:00:00Z&quot;,&quot;@type&quot;:&quot;image/jpeg&quot;,&quot;repo:path&quot;:&quot;https://www.aemcomponents.dev/content/dam/core-components-examples/library/sample-assets/snowy-mountain-glacier.jpg&quot;}}}" class="cmp-image" itemscope="" itemtype="http://schema.org/ImageObject">
+                                <a class="cmp-image__link" data-cmp-clickable="" href="https://www.edelmanfinancialengines.com/">
+                                  <img src="https://www.edelmanfinancialengines.com/content/dam/efe/icons/logo%20efe%20.svg" loading="lazy" class="cmp-image__image" itemprop="contentUrl" alt="Edelman Financial Engines Logo" title="Edelman Financial Engines">
+                                </a>
+                                <meta itemprop="caption" content="Snowy mountain glacier">
+                              </div>
+                            </div>
+                        <div class="container responsivegrid" id="nav-list-cta-group" style="display: none">
+                        <div class="cmp-text">
+                            <p>
+                             <span class="sponsor-value-hide supportPhoneText">{supportPhoneText}</span>
+                             <span class="sponsor-value-hide supportPhone">{supportPhone}</span>,<br>
+                              <span class="sponsor-value-hide supportHour">{supportHour}</span>
+                            </p>
+                        </div>
+                            {{! --------------------- NAV HEADER --------------------- }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+</div>

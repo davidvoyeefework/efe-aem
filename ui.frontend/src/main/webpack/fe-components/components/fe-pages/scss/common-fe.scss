@@ -1,0 +1,46 @@
+@mixin fe-primary-btn {
+    background-color: var(--primary-button-bg-color);
+    display: flex;
+    height: 35px;
+    padding: 20px 26px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--primary-button-bg-color);
+    color: var(--primary-button-font-color);
+    border-radius: var( --primary-button-border-radius);
+    &:hover, &:active { 
+        background: var(--primary-button-bg-color-hover);
+        color: var( --primary-button-font-hover);
+    }
+}
+.fepage {
+    .minimal-header {
+        &.subadvised {
+            .cmp-image--efe-logo-secondary.cmp-image--small {
+                &::before {
+                    content: "Powered by";
+                    color: #000;
+                    font-size: 12px;
+                    font-style: normal;
+                    font-weight: 300;
+                    line-height: 32px; /* 266.667% */
+                    top: rem(5);
+                    position: absolute;
+                }
+            }
+            .minimal-header__vertical-line {
+                height: 63px;
+                @media screen and (max-width: 576px) { 
+                    height: rem(54px);
+                }
+            }
+        }
+    }
+    * {
+        font-family: var(--font-family) !important;
+    }
+    //primary button
+    .cmp-button--button-primary .cmp-button {
+        @include fe-primary-btn;
+    }
+}

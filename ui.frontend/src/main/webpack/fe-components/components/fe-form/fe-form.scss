@@ -1,0 +1,281 @@
+#signup-form, #fe-call-me-form, #fe-call-me-back{
+    border: 2px solid #F2F2F2;
+    background:#FFFFFF;
+    font-family: var(--font-family);
+}
+
+.fe-form__header, .fe-call-me-back-header{
+    margin: rem(20px) 0;
+    color: #53565A;
+    text-align: center;
+    font-size: rem(28px);
+    font-style: normal;
+    font-weight: 700;
+    line-height: 105%; /* 29.4px */
+    letter-spacing: 1.68px;
+    text-transform: uppercase;
+}
+.fe-call-me-back-header{
+    margin: rem(25px) rem(40px) rem(20px) rem(40px);
+}
+
+.fe-form{
+    padding: 0 rem(40px) rem(25px) rem(40px);
+    &__control-wrapper{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    &-promo{
+        background: #F2F2F2;
+        padding: rem(25px) rem(40px) rem(20px) rem(40px);
+        text-align: center;
+        font-size: rem(15px);
+        font-style: normal;
+        font-weight: 300;
+        line-height: 110%;
+
+        &__title{
+            color: var(--fe-form-color);
+            font-size: rem(15px);
+            font-style: normal;
+            font-weight: 700;
+            line-height: 110%;
+            font-family: var(--font-family);
+        }
+        &__text{
+            color: var(--fe-form-promo-text);
+        }
+    }
+
+    &__group{
+        & .fe-form__label-wrapper{
+            margin: rem(10px) 0;
+            color: #535658;
+            font-size: rem(12px);
+            font-style: normal;
+            font-weight: 400;
+            line-height: 100%; /* 12px */
+            font-variant: small-caps;
+
+            & label, & .fe-form__description{
+                display: inline-block;
+            }
+            & .fe-form__description{
+                font-style: italic;
+                &::before{
+                    content: "\2010";
+                    font-size: 1rem;
+                    margin-right: rem(4px);
+                }
+            }
+            & label{
+                margin-right: rem(4px);
+            }
+        }
+        &:nth-child(2){
+            & .fe-form__label-wrapper{
+                margin-top: 0;
+            }
+        }
+
+        & .fe-form__field--has-description{
+            & .fe-form__description{
+                display: none;
+            }
+        }
+        & .fe-form__control-instruction{
+            display: none;
+        }
+
+        &.fe-form__group--zip-code, &.fe-form__group--dob{
+            display: inline-block;
+            width: 40%;
+        }
+        &.fe-form__group--dob{
+            width: 58%;
+            float: right;
+        }
+
+        &.fe-form__group--ssn{
+            & .fe-form__description{
+                &::before{
+                    content: '';
+                    display: inline-block;
+                    background: url("../resources/images/icons/secure-lock.svg") no-repeat center center / contain;
+                    width: rem(12);
+                    height: rem(12);
+                    position: relative;
+                    bottom: rem(0);
+                    right: rem(0);  
+                }
+            }
+        }
+
+        &.fe-form__group--disclaimer{
+            & .fe-form__signup-disclosures, & .fe-form__signup-disclosures small{
+                font-size: rem(14px);
+                text-align: center;
+            }
+        }
+
+        &.fe-form__group--appt-scheduler{
+            & > *{
+                text-align: center;
+            }
+            & span {
+                display: block;
+                font-size: rem(14px);
+                text-align: center;
+                margin-top: rem(20px);
+                color: #535658;
+                font-weight: 400;
+                line-height: 100%;
+            }
+
+            & .fe-form__button.fe-form__button--outline{
+                color: var(--primary-button-bg-color) !important;
+                margin-top: rem(20px);
+                text-align: center;
+                font-size: rem(18px);
+                font-weight: 400;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                border-radius: 3px;
+                border: 2px solid var(--primary-button-bg-color);
+                background: #FFF;
+                display: inline-flex;
+                height: 45px;
+                padding: 17px 26px 14px 26px;
+                justify-content: center;
+                align-items: center;
+                flex-shrink: 0;
+            }
+        }
+
+        &--enrollment-disclosure{
+            font-size: rem(14px);
+            margin-top: rem(10px);
+            color: #535658;
+            & a{
+                text-decoration: underline;
+                color: var(--fe-form-color);
+            }
+            & input[type='checkbox']{
+                width: rem(13px);
+                height: rem(13px);
+                border-radius: 3px;
+                border: 2px solid #7A7D82;
+                background: #FFF;
+            }
+        }
+
+        &--sign-up-button, &--call-me-button{
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+           & button{
+                margin-top: rem(20px);
+                border-radius: var(--primary-button-border-radius);
+                background: var(--primary-button-bg-color);
+                height: rem(45px);
+                padding: rem(17px) rem(26px) rem(14px) rem(26px);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-shrink: 0;
+                color: var(--primary-button-font-color);
+                font-size: rem(18px);
+                font-weight: 400;
+                line-height: normal;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+
+                &:hover{
+                    color: var(--fe-form-button-hover-color);
+                    background: var(--fe-form-button-hover-background);
+                    border: var(--fe-form-buttom-hover-border);
+                }
+            }
+        }
+
+        &--cancel-note{
+            color: #535658;
+            margin-top: rem(20px);
+            text-align: center;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 100%; /* 12px */
+        }
+        
+    }
+
+    &__control{
+        width: 100%;
+        border-radius: 4px;
+        border: 1.5px solid #DDDDDE;
+        background: #FFF;
+        padding: rem(20px);
+        color: #B3B9BE;
+        font-size: rem(16px);
+        font-style: normal;
+        font-weight: 400;
+        line-height: 100%; /* 16px */
+        font-variant: small-caps;
+
+        &-wrapper.error{
+            & .fe-form__error{
+                display: block;
+            }
+        }
+    }
+
+    &__signup-disclosures, &__signup-disclosures small, .fe-form__group .fe-form__signup-disclosure{
+        margin-top: rem(20px);
+        color: #A6A8AB;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 100%; /* 12px */
+
+        & a{
+            color: var(--fe-form-discloser-anchor-color);
+            text-decoration: underline;
+        }
+    }
+
+    .fe-form__group.fe-form__group--disclaimer .fe-form__signup-disclosure{
+        color: #535658;
+    }
+    
+
+    &__error{
+        display: none;
+        color: #B22932;
+        font-size: rem(14px);
+        font-style: normal;
+        font-weight: 400;
+        line-height: 100%; /* 14px */
+        font-variant: small-caps;
+        margin-bottom: rem(10px);
+    }
+}
+
+#fe-call-me-form{
+   & .fe-form{
+    &__group{
+        &:nth-child(2){
+            & .fe-form__label-wrapper{
+                margin-top: rem(10px);
+            }
+        }
+
+        &:first-child{
+            & .fe-form__label-wrapper{
+                margin-top: 0;
+            }
+        }
+    }
+   }
+}

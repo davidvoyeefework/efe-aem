@@ -13,6 +13,7 @@ const FooterList = ({ ...args }) => List({ ...args });
 export const footer = FooterList.bind({});
 footer.args = {
     variation: "footer",
+    unbounceFooter:false
 };
 
 const TemplateList = (args) => ListWithTeaser({ ...args });

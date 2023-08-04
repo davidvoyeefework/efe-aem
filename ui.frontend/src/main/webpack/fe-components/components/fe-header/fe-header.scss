@@ -1,0 +1,80 @@
+.fepage .minimal-header {
+    #efe-global-nav-header .cmp-container--1920.efe-nav-header {
+        justify-content: right;
+        @media screen and (max-width: 576px) { 
+            min-height: rem(34px);
+        }
+    }
+    #efe-global-nav-header {
+        display: block;
+        * {
+            text-align: right;
+        }
+        @media screen and (min-width: 1290px) {
+            display: none;
+        }
+    }
+    .minimal-header__vertical-line {
+        display: none;
+    }
+    #efe-nav-main .cmp-container--26 {
+        gap: rem(31);
+        justify-content: normal;
+        
+    }
+    .minimal-header__vertical-line {
+        border-left: 1px solid #949494;
+        display: block;
+        height: 42px;
+    }
+    #efe-nav-main #nav-list-cta-group #efe-global-nav-header {
+        display: none;
+    }
+    #efe-nav-main #nav-list-cta-group .cmp-button--button-primary {
+        display: block;
+    }
+    #efe-nav-main #nav-list-cta-group {
+        width: auto;
+        margin-left: auto;
+    }
+    #efe-global-nav-header ,  #efe-nav-main #nav-list-cta-group {
+        align-self: baseline;
+        .cmp-text {
+            p, span {
+                @include footer-02;
+                color: var(--535658, #535658);
+                text-align: right;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 300;
+                line-height: normal;
+                &.supportPhoneText {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+    @media screen and (min-width: 1290px) {
+        #efe-nav-main .cmp-container--26 {
+            padding: 18px 24px !important;
+        }
+    }
+    .cmp-image--efe-logo-secondary, .cmp-image--efe-logo-primary {
+        &.cmp-image--small {
+            width: 218px;
+            height: 45px;
+            padding-bottom: 40px;
+            @media screen and (min-width: 1290px) {
+                .cmp-image__image {
+                    width: 218px;
+                    height: 45px;
+                    object-fit: contain;
+                }
+            }
+            @media screen and (max-width: 576px) { 
+                padding-bottom: 0;
+                align-self: end;
+            }
+        }
+    } 
+}

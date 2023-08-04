@@ -4,6 +4,8 @@ import "./main.scss"
 import { Initializer } from "../framework/initializer";
 import Analytics from "../components/common/main";
 
+
 new Initializer();
 new Analytics();
 new A11y();
+

@@ -1,0 +1,1 @@
+rte-dynamic-variable-plugin.js
