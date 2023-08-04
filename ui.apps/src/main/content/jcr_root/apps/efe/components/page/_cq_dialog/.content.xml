@@ -63,22 +63,7 @@
                                                 uncheckedValue="false"
                                                 value="true"/>
                                         </items>
-                                    </jsonSeo>
-                                    <launchScript
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
-                                        jcr:title="Launch Script">
-                                        <items jcr:primaryType="nt:unstructured">
-                                            <launchScriptText
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="Launch Script."
-                                                fieldLabel="Launch Script"
-                                                name="./launchScript"
-                                                value=""/>
-                                        </items>
-                                    </launchScript>
-                                   
+                                    </jsonSeo>                                  
                                 </items>
                             </column>
                         </items>

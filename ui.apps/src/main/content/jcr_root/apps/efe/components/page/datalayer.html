@@ -1,5 +1,4 @@
-<sly data-sly-use.model="${'com.efe.core.models.EFEDatalayer' @type='page'}"
-    data-sly-use.unbounceModel="com.efe.core.models.FeProperties">
+<sly data-sly-use.model="${'com.efe.core.models.EFEDatalayer' @type='page'}">
 
     <script src="${model.oneTrustScript}" type="text/javascript" charset="UTF-8"
             data-domain-script="${model.oneTrustScriptId}"></script>
@@ -12,26 +11,26 @@
         function OptanonWrapper() {
         }
 
-        window.adobeDataLayer = window.adobeDataLayer || [];
-        adobeDataLayer.push(JSON.parse("${model.dataLayer @ context='scriptString'}"));
-        var formName = "${model.formName @ context='scriptString'}";
-        if (formName) {
-            window.adobeDataLayer.push({
-                event: 'form_complete',
-                _efe: {
-                    formInfo: {
-                        formName: formName,
-                        formComplete: {
-                            value: 1
+            window.adobeDataLayer = window.adobeDataLayer || [];
+            adobeDataLayer.push(JSON.parse("${model.dataLayer @ context='scriptString'}"));
+
+            var formName = "${model.formName @ context='scriptString'}";
+            if (formName) {
+                window.adobeDataLayer.push({
+                    event: 'form_complete',
+                    _efe: {
+                        formInfo: {
+                            formName: formName,
+                            formComplete: {
+                                value: 1
+                            }
                         }
                     }
-                }
-            })
-        }
-        const event = new Event("analyticsloaded");
-        window.dispatchEvent(event);
-
-
+                })
+            }
+            const event = new Event("analyticsloaded");
+            window.dispatchEvent(event);
+      
     </script>
     <!--/**End Adobe Tag Manager **/-->
 

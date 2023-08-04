@@ -1,8 +1,6 @@
 {
   "org.apache.sling.commons.log.names": [
-    "com.efe",
-    "com.adobe.cq.xf",
-    "com.day.cq.analytics.testandtarget"
+    "com.efe"
   ],
   "org.apache.sling.commons.log.level": "DEBUG",
   "org.apache.sling.commons.log.file": "logs/error.log",
