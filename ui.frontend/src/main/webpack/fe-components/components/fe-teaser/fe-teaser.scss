@@ -1,0 +1,20 @@
+.fepage {
+    .cmp-teaser--hero {
+        .cmp-teaser {
+            &__content {
+                @include media('<tablet') {
+                    position: absolute;
+                    margin: 0;
+                    width: 100%;
+                    padding: 3rem 1.5rem;
+                    top: 0;
+                }
+            }
+            &__image {
+                .cmp-image__image{
+                    min-height: 534px;
+                }
+            }
+        }
+    }
+}
