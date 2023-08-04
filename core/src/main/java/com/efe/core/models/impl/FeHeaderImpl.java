@@ -5,7 +5,6 @@ import com.adobe.cq.export.json.ExporterConstants;
 import com.efe.core.models.FeHeader;
 import com.efe.core.services.DynamicMediaService;
 import com.efe.core.utils.EFEUtil;
-import com.efe.core.utils.LinkUtil;
 import com.efe.core.utils.ResourceUtil;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -69,11 +68,11 @@ public class FeHeaderImpl implements FeHeader {
     @ValueMapValue
     private String secondaryLogo;
 
-    /** The primary logo link. */
+    /** The primary logo alt text. */
     @ValueMapValue
     private String primaryLogoAltText;
 
-    /** The secondary logo link. */
+    /** The secondary logo alt text. */
     @ValueMapValue
     private String secondaryLogoAltText;
 

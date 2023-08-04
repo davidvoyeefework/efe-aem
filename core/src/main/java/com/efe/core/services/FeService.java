@@ -67,4 +67,11 @@ public interface FeService {
      * @return the DynamicVariableList
      */
     String[] getDynamicVariableList();
+
+    /**
+     * Gets the SponsorLogoPath.
+     *
+     * @return the SponsorLogoPath
+     */
+    String getSponsorLogoPath();
 }

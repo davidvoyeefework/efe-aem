@@ -283,4 +283,13 @@ public class FePropertiesImpl implements FeProperties {
 		return recordKeeper;
 	}
 
+	/**
+	 * Gets the sponsor logo path.
+	 *
+	 * @return the sponsorLogoPath
+	 */
+	@Override
+	public String getSponsorLogoPath() {
+		return feService.getSponsorLogoPath();
+	}
 }

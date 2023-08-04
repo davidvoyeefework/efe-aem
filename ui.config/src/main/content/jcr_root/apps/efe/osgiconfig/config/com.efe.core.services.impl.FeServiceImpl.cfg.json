@@ -13,5 +13,6 @@
     "$[env:keys_variables;default=/etc/acs-commons/lists/fe/keys-variables|data-keys|false]",
     "$[env:pageFrame_variables;default=/etc/acs-commons/lists/fe/pageframe-variables|data-pageFrame|false]",
     "$[env:sponsor_details;default=/etc/acs-commons/lists/fe/sponsor-details|data-sponsorDetails|true]"
-  ]
+  ],
+  "sponsorLogoPath": "$[env:sponsor_logo_path;default=/content/dam/fe/logos/sponsors/{sponsorid}-small.png]"
 }

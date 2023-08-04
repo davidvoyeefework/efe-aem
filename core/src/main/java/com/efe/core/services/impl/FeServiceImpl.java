@@ -50,6 +50,9 @@ public class FeServiceImpl implements FeService {
     /** The dynamicVariableList. */
     private String[] dynamicVariableList;
 
+    /** The sponsorLogoPath. */
+    private String sponsorLogoPath;
+
     /**
      * The Interface Config.
      */
@@ -127,6 +130,14 @@ public class FeServiceImpl implements FeService {
          */
         @AttributeDefinition(name = "Unbounce Dynamic Variables", description = "Unbounce Dynamic Variables")
         String[] dynamicVariableList();
+
+        /**
+         * Sponsor Logo Path.
+         *
+         * @return sponsorLogoPath
+         */
+        @AttributeDefinition(name = "Sponsor Logo Path", description = "Sponsor Logo Path")
+        String sponsorLogoPath();
     }
 
     /**
@@ -147,6 +158,7 @@ public class FeServiceImpl implements FeService {
         this.signupApi = config.signupApi();
         this.softAuthApi = config.softAuthApi();
         this.dynamicVariableList = config.dynamicVariableList();
+        this.sponsorLogoPath = config.sponsorLogoPath();
     }
 
     /**
@@ -241,5 +253,15 @@ public class FeServiceImpl implements FeService {
     		variables = Arrays.copyOf(dynamicVariableList, dynamicVariableList.length);
     	}
     	return variables;   
+    }
+
+    /**
+     * Gets the SponsorLogoPath.
+     *
+     * @return the SponsorLogoPath
+     */
+    @Override
+    public String getSponsorLogoPath() {
+        return sponsorLogoPath;
     }
 }
