@@ -21,9 +21,15 @@ export default class FeHeader {
             const elems = document.querySelectorAll('.' + Object.keys(item));
             elems?.forEach((ele) => {
                 ele.classList.remove("sponsor-value-hide");
-                //ele.innerHTML = eval('data.' + item[Object.keys(item)]);//we need this if data attribute coming data.a....
-                let ackey = item[Object.keys(item)].split('.')
-                ele.innerHTML = data[ackey[0]][ackey[1]];
+                if(data[item[Object.keys(item)]]) {
+                    ele.innerHTML = data[item[Object.keys(item)]];
+                } else {
+                    try {
+                        ele.innerHTML = eval('data.' + item[Object?.keys(item)]);
+                    } catch (e) {
+                        console.log('invalid key', Object.keys(item));
+                    }
+                }
             })
         })
 
