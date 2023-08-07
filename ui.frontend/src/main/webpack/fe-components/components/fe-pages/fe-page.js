@@ -1,4 +1,5 @@
-import { getCookie, getFetch, handleLoader, fetchData, postJSON, pushToWindowObject } from "../../site/js/helper";
+import { getCookie, getFetch, handleLoader, fetchData, postJSONforKeys, pushToWindowObject } from "../../site/js/helper";
+import {forKeysPayload} from './forkeys-payload';
 export default class FePage {
     constructor() {
         document.addEventListener(
@@ -18,6 +19,7 @@ export default class FePage {
         handleLoader(true)
         this.fetchSponsorData();
         this.fetchAggregateData();
+        this.getKeys();
     }
     async fetchSponsorData() {
         handleLoader(true)
@@ -58,6 +60,17 @@ export default class FePage {
             console.log(data);
             pushToWindowObject(data);
             handleLoader(false);
+        }).catch(error => {
+            // Handle any errors that occurred during the fetch request
+            console.error('An error occurred:', error);
+            handleLoader(false);
+        });
+    }
+    async getKeys() {
+        let apiUrl = document.querySelector('#fe-properties')?.getAttribute('data-keys-api');
+        const keys = forKeysPayload;
+        await postJSONforKeys('https://www.feitest.com/api/v1/texts/forKeys', keys).then(data => {
+            pushToWindowObject(data);
         }).catch(error => {
             // Handle any errors that occurred during the fetch request
             console.error('An error occurred:', error);
