@@ -48,11 +48,13 @@
             }
         }
     }
-    * {
-        font-family: var(--font-family) !important;
-    }
     //primary button
     .cmp-button--button-primary .cmp-button, .cmp-teaser__action-link {
         @include fe-primary-btn;
+    }
+    &.theme-vanguard, &.theme-aon, &.theme-ssga { 
+        * {
+            font-family: var(--font-family);
+        }
     }
 }
