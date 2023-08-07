@@ -10,7 +10,7 @@
         a,
         .cmp-list__item-title {
             color: var(--title-text-color) !important;
-            font-family: var(--font-family);
+            font-family: var(--fe-footer-header-font-family);
         }
     }
     .fe-footer-modal {
@@ -100,7 +100,7 @@
                     }
             }
             * {
-                font-family: var(--font-family) !important;
+                font-family: var( --font-family)!important;
             }
         }
     }
