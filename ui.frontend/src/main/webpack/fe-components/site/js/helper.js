@@ -107,12 +107,14 @@ export const fetchData = async(url,headers) => {
   }
 }
 
-export const postJSON = async (url,data) =>{
+export const postJSONforKeys = async (url,data) =>{
   try {
     const response = await fetch(url, {
       method: "POST", // or 'PUT'
       headers: {
         "Content-Type": "application/json",
+        "x-spa-name": 'landing-flow',
+        "x-fe-env": " "
       },
       credentials: "include",
       body: JSON.stringify(data),
