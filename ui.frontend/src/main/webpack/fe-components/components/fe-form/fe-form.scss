@@ -212,6 +212,21 @@
                     border: var(--fe-form-buttom-hover-border);
                 }
             }
+
+            & .fe-form__processing{
+                display: none;
+            }
+
+            &.fe-processing{
+                & button{
+                    display: none;
+                }
+
+                & .fe-form__processing{
+                    display: block;
+                    font-size: rem(22px);
+                }
+            }
         }
 
         &--cancel-note{
@@ -277,12 +292,17 @@
     }
 
     &-confirmation{
-        margin: rem(70px) rem(40px) rem(25px) rem(40px);
+        color: #535658;
         text-align: center;
-        font-size: rem(22px);
+        font-feature-settings: 'clig' off, 'liga' off;
+        margin: rem(70px) rem(40px);
+        font-family: Bebas Neue Pro;
+        font-size: rem(28px);
         font-style: normal;
-        font-weight: 400;
-        line-height: normal;
+        font-weight: 700;
+        line-height: 105%; /* 29.4px */
+        letter-spacing: 1.68px;
+        text-transform: uppercase;
     }
 }
 
