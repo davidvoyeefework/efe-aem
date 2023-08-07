@@ -68,7 +68,7 @@
                 justify-content: end;
                 padding-top: 0;
                 button {
-                    @include fe-primary-btn;
+                    @include fe-secondary-btn;
                 }
             }
         }
@@ -82,6 +82,13 @@
         }
     }
     &.theme-vanguard, &.theme-aon, &.theme-ssga {
+        & .cmp-modal{
+            &__close-btn-div {
+                button {
+                    @include fe-primary-btn;
+                }
+            }
+        }
         .footer {
                 .cmp-image--efe-logo-secondary.cmp-image--small {
                     margin-bottom: 0 !important;
