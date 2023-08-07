@@ -1,4 +1,11 @@
 .fepage {
+    &.theme-vanguard {
+        .cmp-list--footer {
+            a,button {
+                text-decoration: underline;
+            }
+        }
+    }
     .cmp-list--footer, form {
         a,
         .cmp-list__item-title {
@@ -70,6 +77,9 @@
         .cmp-image--efe-logo-secondary.cmp-image--small {
             margin-bottom: 0 !important;
         }
+        * {
+            font-family: var(--fe-footer-font-family);
+        }
     }
     &.theme-vanguard, &.theme-aon, &.theme-ssga {
         .footer {
@@ -88,6 +98,9 @@
                         top: 38px;
                         position: absolute;
                     }
+            }
+            * {
+                font-family: var(--font-family) !important;
             }
         }
     }
