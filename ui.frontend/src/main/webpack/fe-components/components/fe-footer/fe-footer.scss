@@ -54,6 +54,7 @@
                 line-height: 30px; /* 100% */
                 letter-spacing: 4px;
                 padding-bottom: 25px;
+                font-family: var(--fe-modal-header-font-family) !important;
             }
             &__close {
                 padding: 25px;

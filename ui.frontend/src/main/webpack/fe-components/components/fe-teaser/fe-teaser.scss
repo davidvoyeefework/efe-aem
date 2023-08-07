@@ -11,10 +11,15 @@
                 }
             }
             &__image {
-                .cmp-image__image{
+                .cmp-image__image {
                     min-height: 534px;
                 }
             }
+        }
+    }
+    &.theme-vanguard, &.theme-aon, &.theme-ssga {
+        .cmp-teaser--hero .cmp-teaser__image .cmp-image__image {
+            border-radius: 0;
         }
     }
 }
