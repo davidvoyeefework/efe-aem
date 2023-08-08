@@ -22,7 +22,10 @@ export default {
     },
     center: {
         control: "boolean",
-    }
+    },
+    withoutImageBorderRadius: {
+      control: "boolean",
+  }
   },
 };
 const TemplateEfeTeaser = ({ label, ...args }) => HeroTeaser({ ...args });
