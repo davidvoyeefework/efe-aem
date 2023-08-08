@@ -1,5 +1,6 @@
-<sly data-sly-template.callbackform="${@ properties}">
+<sly data-sly-template.callbackform
+     data-sly-use.embedForm="com.efe.core.models.EmbedForm">
     <div id="fe-call-me-form"
-        data-options='{"initiationPoint": "${properties.appointmentTypeId}", "desc": "${properties.desc}", "buttonText": "${properties.buttonText}", "appointmentTypeId": "${properties.appointmentTypeId}", "hasAppointmentScheduler": ${properties.hasAppointmentScheduler}}'>
+        data-options='{"initiationPoint": "${embedForm.initiationPointCode}", "desc": "${embedForm.description}", "buttonText": "${embedForm.buttonText}", "appointmentTypeId": "${embedForm.appointmentTypeId}", "hasAppointmentScheduler": ${embedForm.scheduleAppointment}}'>
     </div>
 </sly>
