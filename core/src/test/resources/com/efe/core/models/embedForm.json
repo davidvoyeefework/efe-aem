@@ -24,6 +24,10 @@
 					"description": "description",
 					"buttonText": "Button Text",
 					"scheduleAppointment": true
+				},
+				"feForm2": {
+					"jcr:primaryType": "nt:unstructured",
+					"sling:resourceType": "efe/fe-components/structure/fe-footer"
 				}
 			}
 		}

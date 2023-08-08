@@ -4,6 +4,7 @@ import com.day.cq.commons.JS;
 import com.efe.core.models.EmbedForm;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -11,6 +12,7 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import javax.annotation.PostConstruct;
+import java.util.Objects;
 
 /**
  * The Class EmbedFormImpl.
@@ -50,13 +52,15 @@ public class EmbedFormImpl implements EmbedForm {
      */
     @PostConstruct
     protected void init() {
-        JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("initiationPoint", appointmentTypeId);
-        jsonObject.addProperty("desc", description);
-        jsonObject.addProperty("buttonText", buttonText);
-        jsonObject.addProperty("appointmentTypeId", appointmentTypeId);
-        jsonObject.addProperty("hasAppointmentScheduler", scheduleAppointment);
-        dataOption = jsonObject.toString();
+        if(Objects.nonNull(appointmentTypeId)) {
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("initiationPoint", appointmentTypeId);
+            jsonObject.addProperty("desc", description);
+            jsonObject.addProperty("buttonText", buttonText);
+            jsonObject.addProperty("appointmentTypeId", appointmentTypeId);
+            jsonObject.addProperty("hasAppointmentScheduler", scheduleAppointment);
+            dataOption = jsonObject.toString();
+        }
     }
 
     /**
@@ -76,7 +80,11 @@ public class EmbedFormImpl implements EmbedForm {
      */
     @Override
     public String getDataOptions() {
-        return dataOption;
+        if(Objects.nonNull(dataOption)) {
+            return dataOption;
+        } else {
+            return StringUtils.EMPTY;
+        }
     }
 
 }

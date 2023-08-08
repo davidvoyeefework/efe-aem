@@ -67,8 +67,8 @@
                                                     <aboutsectionheading
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                        fieldDescription="Add a description"
-                                                        fieldLabel="Add a description"
+                                                        fieldDescription="Heading"
+                                                        fieldLabel="Heading"
                                                         name="./description"/>
                                                     <buttontext
                                                         jcr:primaryType="nt:unstructured"
