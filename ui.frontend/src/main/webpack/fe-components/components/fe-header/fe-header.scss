@@ -4,6 +4,7 @@
             justify-content: right;
             @media screen and (max-width: 576px) { 
                 min-height: rem(34px);
+                padding: 35px 30px;
             }
         }
         #efe-global-nav-header {
@@ -21,7 +22,10 @@
         #efe-nav-main .cmp-container--26 {
             gap: rem(31);
             justify-content: normal;
-            
+            @media screen and (max-width: 576px) {
+                padding-top: 0 !important;
+                padding-bottom: 30px !important;
+            }
         }
         .minimal-header__vertical-line {
             border-left: 1px solid #949494;
@@ -75,9 +79,12 @@
                 @media screen and (max-width: 576px) { 
                     padding-bottom: 0;
                     align-self: end;
+                    .cmp-image__image {
+                        min-height: 42px;
+                    }
                 }
             }
-        } 
+        }
         * {
             font-family: var( --fe-footer-header-font-family) !important;
         }
