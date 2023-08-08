@@ -1,0 +1,50 @@
+.fe-layout-container {
+    display: grid;
+    grid-template-columns: 8fr 4fr;
+    grid-template-areas:
+        "hero form"
+        "text form"
+        "text container";
+
+    & .hero-section{
+        grid-area: hero;
+    }
+
+    & .text-section{
+        grid-area: text;
+    }
+
+    & .form-section{
+        grid-area: form;
+    }
+
+    & .container-section{
+        grid-area: container;
+    }
+
+    @include media('<=tablet') {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+        "hero"
+        "form"
+        "text" 
+        "container";
+    }
+
+    &.variation-2{
+        grid-template-columns: 4fr 8fr;
+        grid-template-areas:
+        "form text"
+        "form hero"
+         "container hero";
+
+        @include media('<=tablet') {
+            grid-template-columns: 1fr;
+            grid-template-areas:
+                "text"
+                "hero"
+                "form"
+                "container";
+    }
+    }
+}
