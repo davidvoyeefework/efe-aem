@@ -1,0 +1,30 @@
+{
+	"jcr:primaryType": "cq:Page",
+	"jcr:content": {
+		"jcr:primaryType": "cq:PageContent",
+		"jcr:title": "Fe Footer",
+		"root": {
+			"jcr:primaryType": "nt:unstructured",
+			"layout": "responsiveGrid",
+			"sling:resourceType": "efe/components/container",
+			"container": {
+				"jcr:primaryType": "nt:unstructured",
+				"sling:resourceType": "hbff/components/container",
+				"promotionformlayout_var1": {
+					"jcr:primaryType": "nt:unstructured",
+					"sling:resourceType": "efe/fe-components/content/layoutcomponent",
+					"variation": "variation-1"
+				},
+				"promotionformlayout_var2": {
+					"jcr:primaryType": "nt:unstructured",
+					"sling:resourceType": "efe/fe-components/content/layoutcomponent",
+					"variation": "variation-2"
+				},
+				"promotionformlayout_empty": {
+					"jcr:primaryType": "nt:unstructured",
+					"sling:resourceType": "efe/fe-components/content/layoutcomponent"
+				}
+			}
+		}
+	}
+}

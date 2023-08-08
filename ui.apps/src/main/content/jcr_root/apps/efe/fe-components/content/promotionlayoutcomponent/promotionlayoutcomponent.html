@@ -1,0 +1,20 @@
+<section data-sly-use.model="com.efe.core.models.PromotionFormLayoutContainer"
+    data-sly-use.template="core/wcm/components/commons/v1/templates.html"
+    data-sly-test.isConfigured='${model.configured}' data-sly-set.variation='${model.variation}'
+    data-sly-set.resourcetype='${model.heroSectionResourceType}'>
+    <div class="fe-layout-container ${variation}">
+        <div class="hero-section">
+            <div data-sly-resource="${ model.heroSectionNodeName @ resourceType=resourcetype}"></div>
+        </div>
+        <div class="text-section">
+            <div data-sly-resource="${'text' @ resourceType='efe/components/text'}"></div>
+        </div>
+        <div class="form-section">
+            <div data-sly-resource="${'form' @ resourceType='efe/fe-components/content/feform'}"></div>
+        </div>
+        <div class="container-section">
+            <div data-sly-resource="${'container' @ resourceType='efe/components/container'}"></div>
+        </div>
+    </div>
+</section>
+<sly data-sly-call="${template.placeholder @ isEmpty=!isConfigured}"></sly>
