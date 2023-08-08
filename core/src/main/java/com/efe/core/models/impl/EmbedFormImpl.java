@@ -52,15 +52,16 @@ public class EmbedFormImpl implements EmbedForm {
      */
     @PostConstruct
     protected void init() {
-        if(Objects.nonNull(appointmentTypeId)) {
-            JsonObject jsonObject = new JsonObject();
-            jsonObject.addProperty("initiationPoint", appointmentTypeId);
-            jsonObject.addProperty("desc", description);
-            jsonObject.addProperty("buttonText", buttonText);
-            jsonObject.addProperty("appointmentTypeId", appointmentTypeId);
-            jsonObject.addProperty("hasAppointmentScheduler", scheduleAppointment);
-            dataOption = jsonObject.toString();
+        if(Objects.isNull(appointmentTypeId)) {
+            return ;
         }
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("initiationPoint", appointmentTypeId);
+        jsonObject.addProperty("desc", description);
+        jsonObject.addProperty("buttonText", buttonText);
+        jsonObject.addProperty("appointmentTypeId", appointmentTypeId);
+        jsonObject.addProperty("hasAppointmentScheduler", scheduleAppointment);
+        dataOption = jsonObject.toString();
     }
 
     /**
@@ -80,11 +81,11 @@ public class EmbedFormImpl implements EmbedForm {
      */
     @Override
     public String getDataOptions() {
+        String dataOptionJson = StringUtils.EMPTY;
         if(Objects.nonNull(dataOption)) {
-            return dataOption;
-        } else {
-            return StringUtils.EMPTY;
+            dataOptionJson = dataOption;
         }
+        return dataOptionJson;
     }
 
 }
