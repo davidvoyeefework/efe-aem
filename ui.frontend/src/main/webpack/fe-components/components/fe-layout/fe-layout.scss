@@ -12,6 +12,10 @@
 
     & .text-section{
         grid-area: text;
+        padding: rem(80px) rem(109px);
+        @include media('<=tablet') {
+            padding: rem(50px) rem(30px);
+        }
     }
 
     & .form-section{
@@ -20,6 +24,10 @@
 
     & .container-section{
         grid-area: container;
+        padding-top: rem(69px);
+        @include media('<=tablet') {
+            padding: rem(30px) rem(30px) rem(80px) rem(30px);
+        }
     }
 
     @include media('<=tablet') {
@@ -36,7 +44,14 @@
         grid-template-areas:
         "form text"
         "form hero"
-         "container hero";
+        "container hero";
+
+        & .text-section{
+            padding: rem(40px) rem(84px);
+            @include media('<=tablet') {
+                padding: rem(80px) rem(30px) rem(50px) rem(30px);
+            }
+        }
 
         @include media('<=tablet') {
             grid-template-columns: 1fr;
