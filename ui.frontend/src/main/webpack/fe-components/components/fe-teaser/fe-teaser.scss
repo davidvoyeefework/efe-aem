@@ -6,8 +6,14 @@
                     position: absolute;
                     margin: 0;
                     width: 100%;
-                    padding: 3rem 1.5rem;
+                    padding: 80px 30px;
                     top: 0;
+                }
+            }
+            &__title{
+                @include media('<tablet') {
+                margin-top: 0;
+                margin-bottom: 35px;
                 }
             }
             &__image {

@@ -99,6 +99,15 @@
             }
         }
     }
+    &.cmp-teaser--hero--without-image-border-radius {
+        .cmp-teaser {
+            &__image {
+                .cmp-image__image {
+                    border-radius: 0;
+                }
+            }
+        }
+    }
 }
 
 .cmp-teaser--center {
