@@ -38,12 +38,15 @@
                     line-height: 32px; /* 266.667% */
                     top: rem(5);
                     position: absolute;
+                    @media screen and (max-width: 576px) { 
+                        top: -20px;
+                    }
                 }
             }
             .minimal-header__vertical-line {
                 height: 63px;
                 @media screen and (max-width: 576px) { 
-                    height: rem(54px);
+                    height: rem(42px);
                 }
             }
         }
