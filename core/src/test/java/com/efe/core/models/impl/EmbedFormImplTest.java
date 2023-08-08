@@ -52,11 +52,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
     @Test
     void modelGetterTest() {
         assertEquals("Enroll Form", embedForm.getType());
-        assertEquals("Initiation Point Code", embedForm.getInitiationPointCode());
-        assertEquals("Appointment Type Id", embedForm.getAppointmentTypeId());
-        assertEquals("description", embedForm.getDescription());
-        assertEquals("Button Text", embedForm.getButtonText());
-        assertEquals(true, embedForm.getScheduleAppointment());
+        assertEquals("{\"initiationPoint\":\"Appointment Type Id\",\"desc\":\"description\",\"buttonText\":\"Button Text\",\"appointmentTypeId\":\"Appointment Type Id\",\"hasAppointmentScheduler\":true}", embedForm.getDataOptions());
     }
 
 }

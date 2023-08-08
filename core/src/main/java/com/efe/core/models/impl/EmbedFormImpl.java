@@ -1,11 +1,16 @@
 package com.efe.core.models.impl;
 
+import com.day.cq.commons.JS;
 import com.efe.core.models.EmbedForm;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+
+import javax.annotation.PostConstruct;
 
 /**
  * The Class EmbedFormImpl.
@@ -20,10 +25,6 @@ public class EmbedFormImpl implements EmbedForm {
     /** The type. */
     @ValueMapValue
     String type;
-
-    /** The initiationPointCode. */
-    @ValueMapValue
-    String initiationPointCode;
 
     /** The appointmentTypeId. */
     @ValueMapValue
@@ -41,6 +42,23 @@ public class EmbedFormImpl implements EmbedForm {
     @ValueMapValue
     Boolean scheduleAppointment;
 
+    /** The dataOption. */
+    private String dataOption;
+
+    /**
+     * Inits the model.
+     */
+    @PostConstruct
+    protected void init() {
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("initiationPoint", appointmentTypeId);
+        jsonObject.addProperty("desc", description);
+        jsonObject.addProperty("buttonText", buttonText);
+        jsonObject.addProperty("appointmentTypeId", appointmentTypeId);
+        jsonObject.addProperty("hasAppointmentScheduler", scheduleAppointment);
+        dataOption = jsonObject.toString();
+    }
+
     /**
      * Gets the type.
      *
@@ -52,52 +70,13 @@ public class EmbedFormImpl implements EmbedForm {
     }
 
     /**
-     * Gets the initiation point code.
+     * Gets the dataOption.
      *
-     * @return the initiation point code
+     * @return the dataOption
      */
     @Override
-    public String getInitiationPointCode() {
-        return initiationPointCode;
+    public String getDataOptions() {
+        return dataOption;
     }
 
-    /**
-     * Gets the appointment type id.
-     *
-     * @return the appointment type id
-     */
-    @Override
-    public String getAppointmentTypeId() {
-        return appointmentTypeId;
-    }
-
-    /**
-     * Gets the description.
-     *
-     * @return the description
-     */
-    @Override
-    public String getDescription() {
-        return description;
-    }
-
-    /**
-     * Gets the button text.
-     *
-     * @return the button text
-     */
-    @Override
-    public String getButtonText() {
-        return buttonText;
-    }
-
-    /**
-     * Gets the schedule appointment.
-     *
-     * @return the schedule appointment
-     */
-    @Override
-    public Boolean getScheduleAppointment() {
-        return scheduleAppointment;
-    }
 }
