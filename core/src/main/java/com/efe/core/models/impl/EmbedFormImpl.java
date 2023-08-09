@@ -28,6 +28,10 @@ public class EmbedFormImpl implements EmbedForm {
     @ValueMapValue
     String type;
 
+    /** The initiationPointCode. */
+    @ValueMapValue
+    String initiationPointCode;
+
     /** The appointmentTypeId. */
     @ValueMapValue
     String appointmentTypeId;
@@ -56,7 +60,7 @@ public class EmbedFormImpl implements EmbedForm {
             return ;
         }
         JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("initiationPoint", appointmentTypeId);
+        jsonObject.addProperty("initiationPoint", initiationPointCode);
         jsonObject.addProperty("desc", description);
         jsonObject.addProperty("buttonText", buttonText);
         jsonObject.addProperty("appointmentTypeId", appointmentTypeId);

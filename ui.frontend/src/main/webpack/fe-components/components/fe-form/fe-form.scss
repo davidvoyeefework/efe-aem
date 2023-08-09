@@ -35,6 +35,9 @@
 
 .fe-form{
     padding: 0 rem(40px) rem(25px) rem(40px);
+    @include media('<=tablet') {
+        padding-bottom: rem(50px);
+    }
     &__control-wrapper{
         display: flex;
         flex-direction: column-reverse;

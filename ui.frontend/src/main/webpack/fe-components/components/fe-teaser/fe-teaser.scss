@@ -22,6 +22,16 @@
                 }
             }
         }
+        &.cmp-teaser--hero--boeing-checkup {
+            @include media('<tablet') {
+                .cmp-teaser {
+                    flex-direction: column;
+                    &__content {
+                        position: static;
+                    }
+                }
+            }
+        }
     }
     &.theme-vanguard, &.theme-aon, &.theme-ssga {
         .cmp-teaser--hero .cmp-teaser__image .cmp-image__image {
