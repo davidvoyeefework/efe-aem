@@ -24,9 +24,11 @@
 
     & .container-section{
         grid-area: container;
-        padding-top: rem(69px);
-        @include media('<=tablet') {
-            padding: rem(30px) rem(30px) rem(80px) rem(30px);
+        & > *{
+            padding-top: rem(69px);
+            @include media('<=tablet') {
+                padding: rem(30px) rem(30px) rem(80px) rem(30px);
+            }
         }
     }
 
