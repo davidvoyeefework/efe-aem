@@ -16,7 +16,8 @@ export default class FePage {
         if (!el) {
             return
         }
-        handleLoader(true)
+        handleLoader(true);
+        this.getAuthenticationStatus();
         this.fetchSponsorData();
         this.fetchAggregateData();
         this.getKeys();
@@ -71,6 +72,21 @@ export default class FePage {
         const keys = forKeysPayload;
         await postJSONforKeys('https://www.feitest.com/api/v1/texts/forKeys', keys).then(data => {
             pushToWindowObject(data);
+        }).catch(error => {
+            // Handle any errors that occurred during the fetch request
+            console.error('An error occurred:', error);
+            handleLoader(false);
+        });
+    }
+    async getAuthenticationStatus() {
+        const headers = {
+            'Accept': 'application/json, text/plain, */*',
+        }
+        await fetchData('https://www.feitest.com/api/v1/userlogin/authenticationstatus', headers).then(data => {
+            console.log(data);
+            pushToWindowObject(data);
+            handleLoader(false);
+            
         }).catch(error => {
             // Handle any errors that occurred during the fetch request
             console.error('An error occurred:', error);
