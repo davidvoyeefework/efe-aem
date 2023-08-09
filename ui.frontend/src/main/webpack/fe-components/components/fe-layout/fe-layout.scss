@@ -43,11 +43,28 @@
         grid-template-columns: 4fr 8fr;
         grid-template-areas:
         "form text"
-        "form hero"
-        "container hero";
+        "form hero";
+
+        & .hero-section{
+            & .image{
+                height: 100%;
+                width: 100%;
+                overflow: hidden;
+
+                & .cmp-image{
+                    height: 100%;
+                    width: 100%;
+
+                    & img{
+                        height: 100%;
+                    }
+                }
+            }
+        }
+        
 
         & .text-section{
-            padding: rem(40px) rem(84px);
+            padding: rem(100px) rem(200px) 0 rem(200px);
             @include media('<=tablet') {
                 padding: rem(80px) rem(30px) rem(50px) rem(30px);
             }
