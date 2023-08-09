@@ -19,7 +19,7 @@
 					"jcr:primaryType": "nt:unstructured",
 					"sling:resourceType": "efe/fe-components/structure/fe-footer",
 					"type": "Enroll Form",
-					"initiationPointCode": "Initiation Point Code",
+					"initiationPointCode": "Appointment Type Id",
 					"appointmentTypeId": "Appointment Type Id",
 					"description": "description",
 					"buttonText": "Button Text",
