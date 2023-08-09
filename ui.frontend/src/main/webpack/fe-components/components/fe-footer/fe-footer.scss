@@ -11,9 +11,16 @@
         .cmp-list__item-title {
             color: var(--title-text-color) !important;
             font-family: var(--fe-footer-header-font-family);
+            text-transform: capitalize;
+            font-size: 13px;
+            line-height: 13px;
+        }
+        .cmp-list .cmp-list__item-link.ot-sdk-show-settings {
+            color: var(--title-text-color) !important;
         }
     }
     .fe-footer-modal {
+        font-family: var(--fe-footer-header-font-family);
         .cmp-modal {
             height: auto;
             min-height: 220px;
@@ -30,8 +37,9 @@
                     }
                     li {
                         a {
-                            color: $efe-gray-new;
+                            color: #535658;
                             text-decoration: underline;
+                            font-weight: 300;
                         }
                     }
                 }
@@ -55,10 +63,13 @@
                 letter-spacing: 4px;
                 padding-bottom: 25px;
                 font-family: var(--fe-modal-header-font-family) !important;
+                font-weight: var(--fe-modal-header-font-weight);
             }
             &__close {
                 padding: 25px;
                 svg {
+                    height: 14px;
+                    width: 14px;
                     line {
                         stroke: var(--title-text-color);
                     }
@@ -70,6 +81,7 @@
                 padding-top: 0;
                 button {
                     @include fe-secondary-btn;
+                    font-size: 14px;
                 }
             }
         }
@@ -81,6 +93,10 @@
         }
         * {
             font-family: var(--fe-footer-font-family);
+        }
+        &#efe-footer .cmp-container--1920 #disclosure-copy * {
+            font-size: 14px;
+            line-height: 17.5px;
         }
     }
     &.theme-vanguard, &.theme-aon, &.theme-ssga {
@@ -106,6 +122,7 @@
                         line-height: 32px; /* 266.667% */
                         top: 38px;
                         position: absolute;
+                        font-family: 'nimbus-sans';
                     }
             }
             * {
