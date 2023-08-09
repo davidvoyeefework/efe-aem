@@ -1,7 +1,7 @@
 body { //Direct
     --primary-button-bg-color: #C32D37;
     --primary-button-font-color:#FFFFFF;
-    --title-text-color: #7A7D82;
+    --title-text-color: #535658;
     --primary-button-border-radius: 3px;
     --font-family: 'bebas-neue-pro';
     --fe-footer-header-font-family: 'nimbus-sans';
@@ -12,6 +12,7 @@ body { //Direct
     --fe-form-button-hover-color:#FFFFFF;
     --fe-form-buttom-hover-border:none;
     --fe-modal-header-font-family:'Bebas Neue';
+    --fe-modal-header-font-weight: 400;
     --fe-modal-letter-spacing:4px;
     --fe-form-font-family: 'nimbus-sans';
     --primary-button-font-hover:#FFFFFF;
@@ -32,6 +33,7 @@ body { //Direct
     --fe-form-button-hover-color:#000000;
     --fe-form-buttom-hover-border:2px solid #000;
     --fe-modal-header-font-family:'Open Sans';
+    --fe-modal-header-font-weight: 700;
     --fe-modal-letter-spacing:1px;
     --fe-form-font-family:'Open Sans';
 }
@@ -50,6 +52,7 @@ body { //Direct
     --fe-form-button-hover-color:#000000;
     --fe-form-buttom-hover-border:none;
     --fe-modal-header-font-family:'Open Sans';
+    --fe-modal-header-font-weight: 700;
     --fe-modal-letter-spacing:1px;
     --fe-form-font-family:'Open Sans';
 }
@@ -68,6 +71,7 @@ body { //Direct
     --fe-form-button-hover-color:#FFFFFF;
     --fe-form-buttom-hover-border:none;
     --fe-modal-header-font-family:'Open Sans';
+    --fe-modal-header-font-weight: 700;
     --fe-modal-letter-spacing:1px;
     --fe-form-font-family:'Open Sans';
 }

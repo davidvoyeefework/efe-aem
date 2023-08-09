@@ -79,7 +79,7 @@ export default class FeFooter {
         modalElemBody.appendChild(content);
         const elCloseBtn = document.createElement('div');
         elCloseBtn.classList.add('cmp-modal__close-btn-div');
-        elCloseBtn.innerHTML = "<button>Close</button>";
+        elCloseBtn.innerHTML = "<button>CLOSE</button>";
         modalElemBody.appendChild(elCloseBtn);
         elCloseBtn.addEventListener("click", (ev) => {
             document.querySelector('body').classList.toggle("modal-open");
@@ -106,7 +106,7 @@ export default class FeFooter {
         modalElemBody.appendChild(elUl);
         const elCloseBtn = document.createElement('div');
         elCloseBtn.classList.add('cmp-modal__close-btn-div');
-        elCloseBtn.innerHTML = "<button>Close</button>";
+        elCloseBtn.innerHTML = "<button>CLOSE</button>";
         modalElemBody.appendChild(elCloseBtn);
         elCloseBtn.addEventListener("click", (ev) => {
             document.querySelector('body').classList.toggle("modal-open");
