@@ -57,6 +57,13 @@
                                                     jcr:primaryType="nt:unstructured"
                                                     showhidetargetvalue="Callback Form"/>
                                                 <items jcr:primaryType="nt:unstructured">
+                                                    <initiationpointcode
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="Initiation point code"
+                                                        fieldLabel="Initiation point code"
+                                                        required="true"
+                                                        name="./initiationPointCode"/>
                                                     <appointmentTypeId
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
