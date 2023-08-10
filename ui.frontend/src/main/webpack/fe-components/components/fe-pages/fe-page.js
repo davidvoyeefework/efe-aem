@@ -18,7 +18,6 @@ export default class FePage {
         }
         handleLoader(true);
         this.getAuthenticationStatus();
-        this.fetchSponsorData();
         this.fetchAggregateData();
         this.getKeys();
     }
@@ -86,7 +85,7 @@ export default class FePage {
             console.log(data);
             pushToWindowObject(data);
             handleLoader(false);
-            
+            this.fetchSponsorData();
         }).catch(error => {
             // Handle any errors that occurred during the fetch request
             console.error('An error occurred:', error);
