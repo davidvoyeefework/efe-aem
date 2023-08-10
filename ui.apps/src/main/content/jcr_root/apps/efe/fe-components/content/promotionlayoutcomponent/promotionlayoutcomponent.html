@@ -3,7 +3,7 @@
     data-sly-test.isConfigured='${model.configured}' data-sly-set.variation='${model.variation}'
     data-sly-set.resourcetype='${model.heroSectionResourceType}'>
     <div class="fe-layout-container ${variation}">
-        <div class="hero-section cmp-teaser--hero">
+        <div class="hero-section cmp-teaser--hero ${model.teaserVariation}">
             <div data-sly-resource="${ model.heroSectionNodeName @ resourceType=resourcetype, cssClassName='edit-teaser-height', decoration=true}"></div>
         </div>
         <div class="text-section">
@@ -12,7 +12,7 @@
         <div class="form-section">
             <div data-sly-resource="${'form' @ resourceType='efe/fe-components/content/feform'}"></div>
         </div>
-        <div data-sly-test="${properties.addContainer}" class="container-section">
+        <div data-sly-test="${model.addContainer}" class="container-section">
             <div data-sly-resource="${'container' @ resourceType='efe/components/container'}"></div>
         </div>
     </div>

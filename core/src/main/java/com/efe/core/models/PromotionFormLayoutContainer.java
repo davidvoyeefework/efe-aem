@@ -33,4 +33,18 @@ public interface PromotionFormLayoutContainer {
 	 */
 	String getHeroSectionNodeName();
 
+	/**
+	 * Gets the add container.
+	 *
+	 * @return the addContainer
+	 */
+	boolean isAddContainer();
+
+	/**
+	 * Gets the teaser variation.
+	 *
+	 * @return the teaserVariation
+	 */
+	String getTeaserVariation();
+
 }
