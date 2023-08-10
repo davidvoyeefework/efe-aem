@@ -80,7 +80,7 @@
                 justify-content: end;
                 padding-top: 0;
                 button {
-                    @include fe-secondary-btn;
+                    @include fe-primary-btn;
                     font-size: 14px;
                 }
             }

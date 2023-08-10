@@ -104,4 +104,9 @@
             }
         }
     }
+    &.theme-ssga {
+        .minimal-header .minimal-header__vertical-line {
+            visibility: hidden;
+        }
+    }
 } 

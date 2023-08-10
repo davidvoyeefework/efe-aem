@@ -29,7 +29,7 @@ export default class FeFooter {
                 liElem.innerHTML = `<a href="javascript:void(0)" class="cmp-list__item-link">
                 <span class="cmp-list__item-title fe-modal-btn ${item.href}">${item.name}</span></a>`;
             } else {
-                liElem.innerHTML = `<a href="${item.href}" target="${item.target}" class="cmp-list__item-link">
+                liElem.innerHTML = `<a href="${item.href}" target="_blank" class="cmp-list__item-link">
                 <span class="cmp-list__item-title">${item.name}</span></a>`;
             }
             litUlElement.appendChild(liElem);
