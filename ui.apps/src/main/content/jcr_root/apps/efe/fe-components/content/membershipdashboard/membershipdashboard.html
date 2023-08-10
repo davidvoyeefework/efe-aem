@@ -1,15 +1,5 @@
 <div data-sly-use.template="core/wcm/components/commons/v1/templates.html"
-    data-sly-use.embedForm="com.efe.core.models.EmbedForm"
-    data-sly-set.type="${embedForm.type? embedForm.type : 'Select Form Type'}"
-    data-sly-use.enrollmenttemplate="enrollmentform.html" data-sly-use.callbacktemplate="callbackform.html"
     data-sly-test.isDisabledMode="${wcmmode.disabled}">
-
-    <sly data-sly-test.isEnrollment='${"Enrollment Form" == embedForm.type}'>
-        <sly data-sly-call="${enrollmenttemplate.enrollmentform}"></sly>
-    </sly>
-    <sly data-sly-test='${!isEnrollment}'>
-        <sly data-sly-call="${callbacktemplate.callbackform}"></sly>
-    </sly>
-
+    <div class="fe-membership-dashboard-button"></div>
 </div>
-<sly data-sly-call="${template.placeholder @ isEmpty=!isDisabledMode, emptyTextAppend=type}"></sly>
+<sly data-sly-call="${template.placeholder @ isEmpty=!isDisabledMode}"></sly>
