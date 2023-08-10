@@ -44,6 +44,8 @@ class PromotionFormLayoutContainerImplTest {
         resource = aemContext.currentResource(TEST_CONTENT_ROOT + "/jcr:content/root/container/promotionformlayout_var1");
         promotionFormLayoutContainer = resource.adaptTo(PromotionFormLayoutContainer.class);
         assertEquals("variation-1", promotionFormLayoutContainer.getVariation());
+        assertEquals("standard", promotionFormLayoutContainer.getTeaserVariation());
+        assertTrue(promotionFormLayoutContainer.isAddContainer());
         assertEquals(PromotionFormLayoutContainerImpl.TEASER_RESOURCE_TYPE , promotionFormLayoutContainer.getHeroSectionResourceType());
         assertEquals("teaser", promotionFormLayoutContainer.getHeroSectionNodeName());
         assertTrue(promotionFormLayoutContainer.isConfigured());

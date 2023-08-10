@@ -1713,7 +1713,7 @@
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Fe Page Policy"
                         sling:resourceType="wcm/core/components/policy/policy"
-                        clientlibs="[fe.site]"
+                        clientlibs="[fe.site, efe.test]"
                         clientlibsJsHead="fe.site">
                         <jcr:content jcr:primaryType="nt:unstructured"/>
                     </policy>

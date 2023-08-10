@@ -4,6 +4,7 @@ import java.util.Objects;
 
 import javax.annotation.PostConstruct;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
@@ -30,10 +31,21 @@ public class PromotionFormLayoutContainerImpl implements PromotionFormLayoutCont
 	
 	/** The Constant IMAGE_RESOURCE_TYPE. */
 	protected static final String IMAGE_RESOURCE_TYPE = "efe/components/image";
+
+	/** The Constant VARIATION_ONE. */
+	private static final String VARIATION_ONE = "variation-1";
 	
 	/** The variation. */
 	@ValueMapValue
 	private String variation;
+
+	/** The addContainer. */
+	@ValueMapValue
+	private boolean addContainer;
+
+	/** The teaserVariation. */
+	@ValueMapValue
+	private String teaserVariation;
 
 	/** The hero section resource type. */
 	private String heroSectionResourceType;
@@ -54,12 +66,13 @@ public class PromotionFormLayoutContainerImpl implements PromotionFormLayoutCont
 		}
 		isConfigured = true;
 
-		if ("variation-1".equalsIgnoreCase(variation)) {
+		if (VARIATION_ONE.equalsIgnoreCase(variation)) {
 			heroSectionResourceType = TEASER_RESOURCE_TYPE;
 			heroSectionNodeName = "teaser";
 		} else {
 			heroSectionResourceType = IMAGE_RESOURCE_TYPE;
 			heroSectionNodeName = "image";
+			teaserVariation = StringUtils.EMPTY;
 		}
 	}
 
@@ -103,4 +116,23 @@ public class PromotionFormLayoutContainerImpl implements PromotionFormLayoutCont
 		return heroSectionNodeName;
 	}
 
+	/**
+	 * Gets the add container.
+	 *
+	 * @return the addContainer
+	 */
+	@Override
+	public boolean isAddContainer() {
+		return addContainer && VARIATION_ONE.equalsIgnoreCase(variation);
+	}
+
+	/**
+	 * Gets the teaser variation.
+	 *
+	 * @return the teaserVariation
+	 */
+	@Override
+	public String getTeaserVariation() {
+		return teaserVariation;
+	}
 }
