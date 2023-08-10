@@ -17,6 +17,9 @@ body { //Direct
     --fe-form-font-family: 'nimbus-sans';
     --primary-button-font-hover:#FFFFFF;
     --primary-button-bg-color-hover:#B22932;
+    --fe-text-font-size: 36px;
+    --fe-text-transform: uppercase;
+    --fe-text-list-icon: url("../resources/images/icons/red-check.svg") no-repeat left top;
 }
 .theme-vanguard {//Vanguard
     --primary-button-bg-color: #000;
@@ -36,6 +39,9 @@ body { //Direct
     --fe-modal-header-font-weight: 700;
     --fe-modal-letter-spacing:1px;
     --fe-form-font-family:'Open Sans';
+    --fe-text-font-size: 32px;
+    --fe-text-transform: none;
+    --fe-text-list-icon: url("../resources/images/icons/van-check.svg") no-repeat left top;
 }
 .theme-aon { //AFA
     --primary-button-bg-color: #FCF251;
@@ -55,6 +61,9 @@ body { //Direct
     --fe-modal-header-font-weight: 700;
     --fe-modal-letter-spacing:1px;
     --fe-form-font-family:'Open Sans';
+    --fe-text-font-size: 32px;
+    --fe-text-transform: none;
+    --fe-text-list-icon: url("../resources/images/icons/afa-check.svg") no-repeat left top;
 }
 .theme-ssga { //Voya
     --primary-button-bg-color: #145A7B;;
@@ -74,4 +83,7 @@ body { //Direct
     --fe-modal-header-font-weight: 700;
     --fe-modal-letter-spacing:1px;
     --fe-form-font-family:'Open Sans';
+    --fe-text-font-size: 32px;
+    --fe-text-transform: none;
+    --fe-text-list-icon: url("../resources/images/icons/voya-check.svg") no-repeat left top;
 }
