@@ -1,0 +1,11 @@
+.fepage {
+    .fe-membership-dashboard-button {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        a {
+            @include fe-primary-btn;
+            margin-top: 35px;
+        }
+    }
+}
