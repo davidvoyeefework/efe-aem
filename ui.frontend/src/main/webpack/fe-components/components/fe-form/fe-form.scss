@@ -304,6 +304,9 @@
         line-height: 105%; /* 29.4px */
         letter-spacing: 1.68px;
         text-transform: uppercase;
+        @include media('<=tablet') {
+            margin: rem(70px) rem(30px);
+        }
     }
 }
 
