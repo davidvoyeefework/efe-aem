@@ -1,0 +1,49 @@
+.fe-layout-container{
+    & .text-section{
+        & .cmp-text, & .cmp-text p{
+            color: #535658;
+            font-feature-settings: 'clig' off, 'liga' off;
+            font-family:var(--font-family);
+            font-size: var(--fe-text-font-size);
+            font-style: normal;
+            font-weight: 700;
+            line-height: 105%; /* 37.8px */
+            letter-spacing: 2.16px;
+            text-transform: var(--fe-text-transform);
+            align-self: stretch;
+        }
+
+        & .fe-layout-unordered-list{
+            & .cmp-text ul{
+                padding: 0;
+                margin-left: rem(20px);
+                padding-top: rem(35px);
+                display: table;
+                border-collapse: separate;
+                border-spacing: 0 rem(20px);
+            }
+            & .cmp-text ul li{
+                color: #535658;
+                font-family: var(--fe-form-font-family);
+                font-size: rem(20px);
+                font-style: normal;
+                font-weight: 300;
+                line-height: 120%;
+                text-transform: none;
+                list-style-type: none;
+                display: table-row;
+                margin-bottom: 0;
+                
+                &::before{
+                    content: '';
+                    height: 25px;
+                    width: 25px;
+                    background: var(--fe-text-list-icon);
+                    top: 0;
+                    left: rem(-20px);
+                    display: table-cell;
+                }
+            }
+        }
+    }
+}
