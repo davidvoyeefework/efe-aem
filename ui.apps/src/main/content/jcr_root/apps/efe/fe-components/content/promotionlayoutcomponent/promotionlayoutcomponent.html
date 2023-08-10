@@ -4,7 +4,7 @@
     data-sly-set.resourcetype='${model.heroSectionResourceType}'>
     <div class="fe-layout-container ${variation}">
         <div class="hero-section cmp-teaser--hero">
-            <div data-sly-resource="${ model.heroSectionNodeName @ resourceType=resourcetype}"></div>
+            <div data-sly-resource="${ model.heroSectionNodeName @ resourceType=resourcetype, cssClassName='edit-teaser-height', decoration=true}"></div>
         </div>
         <div class="text-section">
             <div data-sly-resource="${'text' @ resourceType='efe/components/text'}"></div>
@@ -12,9 +12,15 @@
         <div class="form-section">
             <div data-sly-resource="${'form' @ resourceType='efe/fe-components/content/feform'}"></div>
         </div>
-        <div class="container-section">
+        <div data-sly-test="${properties.addContainer}" class="container-section">
             <div data-sly-resource="${'container' @ resourceType='efe/components/container'}"></div>
         </div>
     </div>
 </section>
 <sly data-sly-call="${template.placeholder @ isEmpty=!isConfigured}"></sly>
+
+<style>
+    .edit-teaser-height{
+        min-height: 50px;
+    }
+</style>
