@@ -34,7 +34,7 @@
             font-style: normal;
             font-weight: 300;
             line-height: rem(24px);
-            font-family: var(--font-family);
+            font-family: var(--fe-form-font-family);
         }
     }
 
@@ -49,6 +49,7 @@
             font-weight: 400;
             line-height: rem(30px); /* 100% */
             letter-spacing: var(--fe-modal-letter-spacing);
+            text-transform: uppercase;
         }
 
         &__close{
@@ -85,6 +86,7 @@
                 margin-top: rem(15px);
                 margin-bottom: rem(20px);
                 border-collapse: collapse;
+                line-height: rem(20px);
 
                 & tr {
                     & th,& td {
@@ -123,6 +125,12 @@
             display: inline-flex;
             margin: rem(25px);
             margin-top: 0;
+            font-size: rem(14px);
+            font-weight: 400;
+            text-transform: uppercase;
+            font-family: var(--fe-form-font-family);
+            line-height: normal;
+            letter-spacing: 1px;
         }
         & .fe-text-right{
             text-align: right;
@@ -132,10 +140,20 @@
 
 .theme-vanguard, .theme-aon, .theme-ssga{
     & .fe-modal{
+        &-header{
+            &__text, &__text span{
+                font-weight: 700;
+                text-transform: none;
+            }
+        }
+        &-body{
+            line-height: 24px;
+        }
         &-footer{
             &__close{
                  @include fe-primary-btn;
                  display: inline-flex;
+                 font-weight: 600;
             }
         }
     }

@@ -2,6 +2,28 @@
     border: 2px solid #F2F2F2;
     background:#FFFFFF;
     font-family: var(--fe-form-font-family);
+
+    & form{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: end;
+
+        & .fe-form__group, & .fe-form__header{
+            flex: 1; 
+            width: 100%; 
+            box-sizing: border-box; 
+            flex-basis: 100%;
+
+            &.fe-form__group--dob{
+                flex-basis: 55%;
+            }
+
+            &.fe-form__group--zip-code{
+                flex-basis: 37%;
+                margin-right: rem(10px);
+            }
+        }
+    }
 }
 
 #fe-call-me-back{
@@ -15,22 +37,39 @@
             }
         }
     }
+
+    & .fe-form__signup-disclosure.fe-form__signup-disclosure--privacy-policy{
+        font-weight: 300;
+        letter-spacing: -0.1px;
+        line-height: normal;
+
+        & b, & a{
+            font-weight: 700;
+        }
+    }
 }
 
 .fe-form__header, .fe-call-me-back-header{
     margin: rem(20px) 0;
     color: #53565A;
     text-align: center;
-    font-size: rem(28px);
+    font-size: var(--fe-signup-form-header-font-size);
     font-style: normal;
     font-weight: 700;
-    line-height: 105%; /* 29.4px */
-    letter-spacing: 1.68px;
+    line-height: var(--fe-signup-form-header-line-height);
+    letter-spacing: var(--fe-signup-form-header-letter-spacing);
     text-transform: uppercase;
     font-family: var(--font-family);
 }
+.fe-form__header{
+    margin-bottom: rem(10px);
+}
 .fe-call-me-back-header{
-    margin: rem(25px) rem(40px) rem(20px) rem(40px);
+    margin: rem(25px) rem(40px) rem(10px) rem(40px);
+    font-size: var(--fe-callback-form-header-font-size);
+    line-height: var(--fe-callback-form-header-line-height);
+    letter-spacing: var(--fe-callback-form-header-letter-spacing);
+    align-self: stretch;
 }
 
 .fe-form{
@@ -88,11 +127,6 @@
                 margin-right: rem(4px);
             }
         }
-        &:nth-child(2){
-            & .fe-form__label-wrapper{
-                margin-top: 0;
-            }
-        }
 
         & .fe-form__field--has-description{
             & .fe-form__description{
@@ -101,15 +135,6 @@
         }
         & .fe-form__control-instruction{
             display: none;
-        }
-
-        &.fe-form__group--zip-code, &.fe-form__group--dob{
-            display: inline-block;
-            width: 40%;
-        }
-        &.fe-form__group--dob{
-            width: 58%;
-            float: right;
         }
 
         &.fe-form__group--ssn{
@@ -131,6 +156,7 @@
             & .fe-form__signup-disclosures, & .fe-form__signup-disclosures small{
                 font-size: rem(14px);
                 text-align: center;
+                line-height: normal;
             }
         }
 
@@ -145,7 +171,7 @@
                 margin-top: rem(20px);
                 color: #535658;
                 font-weight: 400;
-                line-height: 100%;
+                line-height: normal;
             }
 
             & .fe-form__button.fe-form__button--outline{
@@ -160,7 +186,8 @@
                 border: 2px solid var(--primary-button-bg-color);
                 background: #FFF;
                 display: inline-flex;
-                height: 45px;
+                min-height: 45px;
+                line-height: normal;
                 padding: 17px 26px 14px 26px;
                 justify-content: center;
                 align-items: center;
@@ -266,10 +293,14 @@
     &__signup-disclosures, &__signup-disclosures small, .fe-form__group .fe-form__signup-disclosure{
         margin-top: rem(20px);
         color: #A6A8AB;
-        font-size: 12px;
+        font-size: var(--fe-disclosures-font-size);
         font-style: normal;
         font-weight: 400;
-        line-height: 100%; /* 12px */
+        line-height: var(--fe-disclosures-line-height); /* 12px */
+
+        & b, & a{
+            font-weight: 400;
+        }
 
         & a{
             color: var(--fe-form-discloser-anchor-color);
@@ -308,22 +339,4 @@
             margin: rem(70px) rem(30px);
         }
     }
-}
-
-#fe-call-me-form{
-   & .fe-form{
-    &__group{
-        &:nth-child(2){
-            & .fe-form__label-wrapper{
-                margin-top: rem(10px);
-            }
-        }
-
-        &:first-child{
-            & .fe-form__label-wrapper{
-                margin-top: 0;
-            }
-        }
-    }
-   }
 }
