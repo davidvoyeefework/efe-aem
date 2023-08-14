@@ -837,6 +837,42 @@
                         </item4>
                     </cq:styleGroups>
                 </policy>
+                <fe-policy
+                        jcr:description="Fe Teaser policy"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Fe Teaser policy"
+                        sling:resourceType="wcm/core/components/policy/policy">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                    <cq:styleGroups jcr:primaryType="nt:unstructured">
+                        <item0
+                                cq:styleGroupLabel="Styles"
+                                jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                        cq:styleClasses="cmp-teaser--hero"
+                                        cq:styleId="banner-hero"
+                                        cq:styleLabel="Banner Hero"
+                                        jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item0>
+                        <item1
+                                cq:styleGroupLabel="Select Teaser Hero variation type"
+                                jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                        cq:styleClasses="cmp-teaser--hero--without-image-border-radius"
+                                        cq:styleId="standard"
+                                        cq:styleLabel="Standard"
+                                        jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                        cq:styleClasses="cmp-teaser--hero--boeing-checkup"
+                                        cq:styleId="rounded-corner-variation-2"
+                                        cq:styleLabel="Rounded Corner - Variation-2"
+                                        jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item1>
+                    </cq:styleGroups>
+                </fe-policy>
             </teaser>
             <download jcr:primaryType="nt:unstructured">
                 <policy_1575032193319
