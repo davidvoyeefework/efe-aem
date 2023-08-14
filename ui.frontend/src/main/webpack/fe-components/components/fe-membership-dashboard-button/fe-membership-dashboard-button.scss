@@ -6,6 +6,25 @@
         a {
             @include fe-primary-btn;
             margin-top: 35px;
+            padding: 17px 26px 14px;
+        }
+        .fe-dashboard-button__heading {
+            color: var(--primary-charcoal, #535658);
+            text-align: center;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+        * {
+            font-family: "nimbus-sans";
+        }
+    }
+    &.theme-vanguard, &.theme-aon, &.theme-ssga { 
+        .fe-membership-dashboard-button {
+            * {
+                font-family: var(--font-family);
+            }
         }
     }
 }
