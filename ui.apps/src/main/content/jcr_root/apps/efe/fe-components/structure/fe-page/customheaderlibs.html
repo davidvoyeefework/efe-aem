@@ -1,0 +1,33 @@
+<!--/*
+    Copyright 2017 Adobe Systems Incorporated
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+*/-->
+<!--/* Favicons */-->
+<sly data-sly-include="favicons.html"></sly>
+<sly data-sly-test="${!wcmmode.edit}" data-sly-include="datalayer.html"></sly>
+<a  data-sly-test="${!wcmmode.edit}" class="skip-main" data-component="skip-to-main-menu" href="#main" style="display: none;">Skip to main content</a>
+<sly data-sly-use.efemodel="com.efe.core.models.PageModel"/>
+<script data-sly-test="${efemodel.jqueryUrl}" src="${efemodel.jqueryUrl @context='uri'}"></script>
+
+<script data-sly-test="${inheritedPageProperties.launchScript}" src="${inheritedPageProperties.launchScript @context='uri'}" type="text/javascript" async></script>
+
+<sly data-sly-test="${efemodel.externalLibraries.size > 0}" data-sly-list="${efemodel.externalLibraries}">
+    <script src="${item @context='uri'}"></script>
+</sly>  
+
+
+<sly data-sly-use.clientlib="core/wcm/components/commons/v1/templates/clientlib.html">
+    <sly data-sly-call="${clientlib.css @ categories='efe.base'}"/>
+</sly>
+
