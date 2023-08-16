@@ -8,6 +8,9 @@
 
     & .hero-section{
         grid-area: hero;
+        & > *{
+            height: 100%;
+        }
     }
 
     & .text-section{
@@ -24,7 +27,7 @@
 
     & .container-section{
         grid-area: container;
-        & > *{
+        & .cmp-container .aem-grid > *{
             padding-top: rem(69px);
             @include media('<=tablet') {
                 padding: rem(30px) rem(30px) rem(80px) rem(30px);
