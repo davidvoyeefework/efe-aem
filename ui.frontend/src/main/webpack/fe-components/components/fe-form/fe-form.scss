@@ -219,28 +219,15 @@
             justify-content: center;
             align-items: center;
            & button{
+                @include fe-primary-btn;
+                padding: 17px 26px 14px 26px;
                 margin-top: rem(20px);
-                border-radius: var(--primary-button-border-radius);
-                background: var(--primary-button-bg-color);
-                height: rem(45px);
-                padding: rem(17px) rem(26px) rem(14px) rem(26px);
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-shrink: 0;
-                color: var(--primary-button-font-color);
+                min-height: rem(45px);
+                height: auto;
                 font-size: rem(18px);
-                font-weight: 400;
                 line-height: normal;
                 letter-spacing: 1px;
                 text-transform: uppercase;
-                cursor: pointer;
-
-                &:hover{
-                    color: var(--fe-form-button-hover-color);
-                    background: var(--fe-form-button-hover-background);
-                    border: var(--fe-form-buttom-hover-border);
-                }
             }
 
             & .fe-form__processing{

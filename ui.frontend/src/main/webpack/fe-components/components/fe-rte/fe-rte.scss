@@ -1,5 +1,4 @@
-.fe-layout-container{
-    & .text-section{
+.fe-layout-unordered-list, .fe-check-unordered-list{
         & .cmp-text, & .cmp-text p{
             color: #535658;
             font-feature-settings: 'clig' off, 'liga' off;
@@ -11,11 +10,10 @@
             letter-spacing: 2.16px;
             text-transform: var(--fe-text-transform);
             align-self: stretch;
+            @include media('<=tablet') {
+                font-weight: 400;
+            }
         }
-    }
-}
-
-.fe-layout-unordered-list{
     & .cmp-text ul{
         padding: 0;
         margin-left: rem(20px);
@@ -23,6 +21,9 @@
         display: table;
         border-collapse: separate;
         border-spacing: 0 rem(20px);
+        @include media('<=tablet') {
+            padding-top: rem(30px);
+        }
     }
     & .cmp-text ul li{
         color: #535658;
@@ -44,6 +45,14 @@
             top: 0;
             left: rem(-20px);
             display: table-cell;
+        }
+    }
+}
+.fe-check-unordered-list{
+    & .cmp-text ul li{
+        &::before{
+            background: var(--fe-check-list-icon);
+            left: rem(-10px);
         }
     }
 }

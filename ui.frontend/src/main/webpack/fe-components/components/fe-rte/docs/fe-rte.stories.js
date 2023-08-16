@@ -5,7 +5,16 @@ Handlebars.registerPartial("Ferte", Ferte);
 export default {
     title: "FE Components/FeRte",
     argTypes: {
+        variation: {
+            options: ["fe-layout-unordered-list", "fe-check-unordered-list" ],
+            control: { type: "radio" },
+        },
     },
+    args:{
+        variation:"fe-layout-unordered-list",
+    }
 };
+const Templaterte = ({ label, ...args }) => Ferte({...args});
+export const Rte = Templaterte.bind();
 
-export { Ferte as Default };
+// export { Ferte as Default };
