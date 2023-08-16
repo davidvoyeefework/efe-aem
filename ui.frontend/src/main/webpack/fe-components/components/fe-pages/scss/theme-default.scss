@@ -28,6 +28,7 @@ body { //Direct
     --fe-text-font-size: 36px;
     --fe-text-transform: uppercase;
     --fe-text-list-icon: url("../resources/images/icons/red-check.svg") no-repeat left top;
+    --fe-check-list-icon: url("../resources/images/icons/direct-rte-check.svg") no-repeat left top;
 }
 .theme-vanguard {//Vanguard
     --primary-button-bg-color: #000;
@@ -58,6 +59,7 @@ body { //Direct
     --fe-text-font-size: 32px;
     --fe-text-transform: none;
     --fe-text-list-icon: url("../resources/images/icons/van-check.svg") no-repeat left top;
+    --fe-check-list-icon: url("../resources/images/icons/van-rte-check.svg") no-repeat left top;
 }
 .theme-aon { //AFA
     --primary-button-bg-color: #FCF251;
@@ -88,6 +90,7 @@ body { //Direct
     --fe-text-font-size: 32px;
     --fe-text-transform: none;
     --fe-text-list-icon: url("../resources/images/icons/afa-check.svg") no-repeat left top;
+    --fe-check-list-icon: url("../resources/images/icons/afa-rte-check.svg") no-repeat left top;
 }
 .theme-ssga { //Voya
     --primary-button-bg-color: #145A7B;;
@@ -118,4 +121,5 @@ body { //Direct
     --fe-text-font-size: 32px;
     --fe-text-transform: none;
     --fe-text-list-icon: url("../resources/images/icons/voya-check.svg") no-repeat left top;
+    --fe-check-list-icon: url("../resources/images/icons/voya-rte-check.svg") no-repeat left top;
 }
