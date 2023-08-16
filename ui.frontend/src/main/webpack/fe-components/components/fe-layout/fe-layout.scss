@@ -43,6 +43,7 @@
 
     &.variation-2{
         grid-template-columns: 4fr 8fr;
+        grid-template-rows: min-content 1fr;
         grid-template-areas:
         "form text"
         "form hero";
@@ -69,6 +70,13 @@
             padding: rem(100px) rem(200px) 0 rem(200px);
             @include media('<=tablet') {
                 padding: rem(80px) rem(30px) rem(50px) rem(30px);
+            }
+            & .cmp-text p, & .cmp-text{
+                font-size: rem(42px);
+                text-align: center;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 110%;
             }
         }
 
