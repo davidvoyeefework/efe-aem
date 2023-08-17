@@ -3,7 +3,6 @@
         display: flex;
         align-items: center;
         flex-direction: column;
-        padding-top: rem(65px);
         a {
             @include fe-primary-btn;
             margin-top: 35px;
@@ -12,6 +11,7 @@
         }
         .fe-dashboard-button__heading {
             color: var(--primary-charcoal, #535658);
+            padding-top: rem(65px);
             text-align: center;
             font-size: 14px;
             font-style: normal;
