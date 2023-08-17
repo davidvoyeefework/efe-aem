@@ -3,8 +3,8 @@
     grid-template-columns: 8fr 4fr;
     grid-template-areas:
         "hero form"
-        "text form"
-        "text container";
+        "text form";
+        //"text container";
 
     & .hero-section{
         grid-area: hero;
@@ -26,8 +26,8 @@
     }
 
     & .container-section{
-        grid-area: container;
-        & .cmp-container .aem-grid > *{
+        //grid-area: container;
+        &  img{
             padding-top: rem(69px);
             @include media('<=tablet') {
                 padding: rem(30px) rem(30px) rem(80px) rem(30px);
@@ -40,8 +40,8 @@
         grid-template-areas:
         "hero"
         "form"
-        "text" 
-        "container";
+        "text"; 
+        //"container";
     }
 
     &.variation-2{
@@ -89,7 +89,7 @@
                 "text"
                 "hero"
                 "form"
-                "container";
+                //"container";
     }
     }
 }
