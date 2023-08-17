@@ -3,10 +3,12 @@
         display: flex;
         align-items: center;
         flex-direction: column;
+        padding-top: rem(65px);
         a {
             @include fe-primary-btn;
             margin-top: 35px;
             padding: 17px 26px 14px;
+            height: 45px;
         }
         .fe-dashboard-button__heading {
             color: var(--primary-charcoal, #535658);
