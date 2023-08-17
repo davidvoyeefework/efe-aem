@@ -3,6 +3,10 @@
         .cmp-list--footer {
             a,button {
                 text-decoration: underline;
+
+                @include media("<=tablet") {
+                    text-decoration: none;
+                }
             }
         }
     }
