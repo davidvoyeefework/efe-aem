@@ -11,9 +11,9 @@
         </div>
         <div class="form-section">
             <div data-sly-resource="${'form' @ resourceType='efe/fe-components/content/feform'}"></div>
-        </div>
-        <div data-sly-test="${model.addContainer}" class="container-section">
-            <div data-sly-resource="${'container' @ resourceType='efe/components/container'}"></div>
+            <div data-sly-test="${model.addContainer}" class="container-section">
+                <div data-sly-resource="${'container' @ resourceType='efe/components/container', decoration=true}"></div>
+            </div>
         </div>
     </div>
 </section>
