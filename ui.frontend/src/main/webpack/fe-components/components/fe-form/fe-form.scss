@@ -197,12 +197,20 @@
         }
 
         &--enrollment-disclosure{
-            font-size: rem(14px);
+            font-size: rem(12px);
+            font-style: normal;
             margin-top: rem(10px);
             color: #535658;
+            line-height: 100%;
+            font-weight: 400;
+            & b{
+                font-weight: 700;
+                font-family:'nimbus-sans';
+            }
             & a{
                 text-decoration: underline;
                 color: var(--fe-form-color);
+                font-family:'nimbus-sans';
             }
             & input[type='checkbox']{
                 width: rem(13px);
