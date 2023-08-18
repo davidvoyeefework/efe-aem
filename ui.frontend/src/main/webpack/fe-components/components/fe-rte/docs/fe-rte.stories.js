@@ -6,7 +6,7 @@ export default {
     title: "FE Components/FeRte",
     argTypes: {
         variation: {
-            options: ["fe-layout-unordered-list", "fe-check-unordered-list" ],
+            options: ["fe-layout-unordered-list", "fe-check-unordered-list", "fe-dot-unordered-list" ],
             control: { type: "radio" },
         },
     },

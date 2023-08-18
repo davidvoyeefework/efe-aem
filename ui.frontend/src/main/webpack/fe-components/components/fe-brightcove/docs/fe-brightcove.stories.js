@@ -5,7 +5,7 @@ export default {
     title: "FE Components/Brightcove",
     argTypes: {
         variation: {
-            options: ["full-width", "large-height"],
+            options: ["large-height"],
             control: { type: "radio" },
         },
     },
