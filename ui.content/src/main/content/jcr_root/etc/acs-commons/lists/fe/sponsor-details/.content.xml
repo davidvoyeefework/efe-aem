@@ -11,20 +11,96 @@
         <list jcr:primaryType="nt:unstructured">
             <item0
                 jcr:primaryType="nt:unstructured"
-                jcr:title="Sponsor Name"
-                value="sponsorName|header.sponsorName"/>
+                jcr:title="SPONSOR_NAME"
+                value="SPONSOR_NAME|preferredName"/>
             <item1
                 jcr:primaryType="nt:unstructured"
-                jcr:title="Support Hour"
-                value="supportHour|header.supportHour"/>
+                jcr:title="IS_FE_CHANNEL"
+                value="IS_FE_CHANNEL|isFeChannel"/>
             <item2
                 jcr:primaryType="nt:unstructured"
-                jcr:title="Support Phone"
-                value="supportPhone|header.supportPhone"/>
+                jcr:title="RK_LOGIN_URL"
+                value="RK_LOGIN_URL|providerInfo.rkLoginUrl"/>
             <item3
                 jcr:primaryType="nt:unstructured"
-                jcr:title="Title"
-                value="title|footer.aboutUsPageTitle"/>
+                jcr:title="RECORDKEEPER_NAME"
+                value="RECORDKEEPER_NAME|recordKeeperName"/>
+            <item4
+                jcr:primaryType="nt:unstructured"
+                jcr:title="RECORDKEEPER_ID"
+                value="RECORDKEEPER_ID|recordKeeperId"/>
+            <item5
+                jcr:primaryType="nt:unstructured"
+                jcr:title="PROMOTION_ANNOUNCED_END_DATE"
+                value="PROMOTION_ANNOUNCED_END_DATE|promotion.announcedDeadlineDate"/>
+            <item6
+                jcr:primaryType="nt:unstructured"
+                jcr:title="PROMOTION_EXPIRATION_DATE"
+                value="PROMOTION_EXPIRATION_DATE|promotion.expirationDate"/>
+            <item7
+                jcr:primaryType="nt:unstructured"
+                jcr:title="PROMO_END_MONTH"
+                value="PROMO_END_MONTH|promotion.announcedDeadlineDate"/>
+            <item8
+                jcr:primaryType="nt:unstructured"
+                jcr:title="PROMO_END_DAY"
+                value="PROMO_END_DAY|promotion.announcedDeadlineDate"/>
+            <item9
+                jcr:primaryType="nt:unstructured"
+                jcr:title="IS_MEMBER"
+                value="IS_MEMBER|context.isMember"/>
+            <item10
+                jcr:primaryType="nt:unstructured"
+                jcr:title="USER_TIER"
+                value="USER_TIER|context.userTier"/>
+            <item11
+                jcr:primaryType="nt:unstructured"
+                jcr:title="LOGOUT_LINK"
+                value="LOGOUT_LINK|header.logoutLink"/>
+            <item12
+                jcr:primaryType="nt:unstructured"
+                jcr:title="LOGOUT_TEXT"
+                value="LOGOUT_TEXT|header.logoutText"/>
+            <item13
+                jcr:primaryType="nt:unstructured"
+                jcr:title="SUPPORT_HOURS"
+                value="SUPPORT_HOURS|header.supportHour"/>
+            <item14
+                jcr:primaryType="nt:unstructured"
+                jcr:title="SUPPORT_HOURS_ONLY"
+                value="SUPPORT_HOURS_ONLY|header.supportHoursOnly"/>
+            <item15
+                jcr:primaryType="nt:unstructured"
+                jcr:title="SUPPORT_PHONE"
+                value="SUPPORT_PHONE|header.supportPhone"/>
+            <item16
+                jcr:primaryType="nt:unstructured"
+                jcr:title="SUPPORT_PHONE_PREFIX"
+                value="SUPPORT_PHONE_PREFIX|header.supportPhonePrefix"/>
+            <item17
+                jcr:primaryType="nt:unstructured"
+                jcr:title="SUPPORT_PHONE_SUFFIX"
+                value="SUPPORT_PHONE_SUFFIX|header.supportPhoneSuffix"/>
+            <item18
+                jcr:primaryType="nt:unstructured"
+                jcr:title="SUPPORT_PHONE_TEXT"
+                value="SUPPORT_PHONE_TEXT|header.supportPhoneText"/>
+            <item19
+                jcr:primaryType="nt:unstructured"
+                jcr:title="SUPPORT_SR_TEXT"
+                value="SUPPORT_SR_TEXT|header.supportSrText"/>
+            <item20
+                jcr:primaryType="nt:unstructured"
+                jcr:title="MA_PROGRAM_NAME"
+                value="MA_PROGRAM_NAME|ma.program.name"/>
+            <item21
+                jcr:primaryType="nt:unstructured"
+                jcr:title="OA_PROGRAM_NAME"
+                value="OA_PROGRAM_NAME|oa.program.name"/>
+            <item22
+                jcr:primaryType="nt:unstructured"
+                jcr:title="availableThroughText"
+                value="availableThroughText|publicEnrollment.products.option.pm.availableThrough"/>
         </list>
     </jcr:content>
 </jcr:root>

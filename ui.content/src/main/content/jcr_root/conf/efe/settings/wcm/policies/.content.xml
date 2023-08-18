@@ -302,10 +302,15 @@
                                     cq:styleLabel="Large Ordered List"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item1
-                                        cq:styleClasses="fe-layout-unordered-list"
-                                        cq:styleId="check-mark"
-                                        cq:styleLabel="Check mark"
-                                        jcr:primaryType="nt:unstructured"/>
+                                    cq:styleClasses="fe-layout-unordered-list"
+                                    cq:styleId="check-mark"
+                                    cq:styleLabel="Check mark"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item2
+                                    cq:styleClasses="fe-check-unordered-list"
+                                    cq:styleId="check-mark-variation"
+                                    cq:styleLabel="Check mark - Variation 2"
+                                    jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item2>
                         <item3
