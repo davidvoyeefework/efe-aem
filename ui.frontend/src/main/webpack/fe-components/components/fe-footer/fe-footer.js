@@ -52,14 +52,11 @@ export default class FeFooter {
             copyrightEle.innerHTML = copyrightHTML;
         }
         window.addEventListener('click', e=>{
-            if (e.target.classList.contains('legalDocLink')) {
+            if (e.target.classList.contains('legalDocLink') || e.target.classList.contains('fe-modal-toggle-legalDocLink')) {
                             this.renderLegalDocModal(e);
                 }
             if (e.target.classList.contains('aboutProviderLink')) {
                                 this.renderAboutUsModal(e);
-            }
-            if (e.target.classList.contains('fe-modal-toggle-legalDocLink')) {
-                this.renderAboutUsModal(e);
             }
         });
     }
