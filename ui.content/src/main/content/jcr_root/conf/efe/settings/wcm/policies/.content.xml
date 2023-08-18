@@ -1774,14 +1774,9 @@
                                 jcr:primaryType="nt:unstructured">
                                 <cq:styles jcr:primaryType="nt:unstructured">
                                     <item0
-                                        cq:styleClasses="full-width"
-                                        cq:styleId="containerwidth"
-                                        cq:styleLabel="Container Width"
-                                        jcr:primaryType="nt:unstructured"/>
-                                    <item1
                                         cq:styleClasses="large-height"
                                         cq:styleId="containerwidthextraheight"
-                                        cq:styleLabel="Container Width Extra Height"
+                                        cq:styleLabel="Extra Height"
                                         jcr:primaryType="nt:unstructured"/>
                                 </cq:styles>
                             </item0>
