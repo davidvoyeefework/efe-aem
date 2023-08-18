@@ -55,9 +55,12 @@ export default class FeFooter {
             if (e.target.classList.contains('legalDocLink')) {
                             this.renderLegalDocModal(e);
                 }
-                if (e.target.classList.contains('aboutProviderLink')) {
+            if (e.target.classList.contains('aboutProviderLink')) {
                                 this.renderAboutUsModal(e);
-                    }
+            }
+            if (e.target.classList.contains('fe-modal-toggle-legalDocLink')) {
+                this.renderAboutUsModal(e);
+            }
         });
     }
     renderAboutUsModal(e) {
