@@ -56,3 +56,11 @@
         }
     }
 }
+
+.fe-dot-unordered-list{
+    & .cmp-text ul li{
+        &::before{
+            color: #535658;
+        }
+    }
+}

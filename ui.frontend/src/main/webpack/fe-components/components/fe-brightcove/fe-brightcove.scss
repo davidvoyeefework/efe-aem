@@ -2,16 +2,22 @@
     width: rem(514px);
     height: rem(293px);
 }
-    
-.full-width{
-    & .brightcove{
-        height: 100%;
-        width: 100%;
-    }
-} 
 
 .large-height{
     & .brightcove{
         height: rem(336px);
     }
 } 
+
+.large-height .brightcove, .brightcove{
+    @include media('<=tablet') {
+        width: calc( 100% + 192px);
+        margin-left: -88px;
+        margin-bottom: rem(40px);
+    }
+
+    @include media("<=phone-m") {
+        width: calc( 100% + 60px);
+        margin-left: -30px;
+    }
+}
