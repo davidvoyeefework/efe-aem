@@ -1,0 +1,17 @@
+.brightcove{
+    width: rem(514px);
+    height: rem(293px);
+}
+    
+.full-width{
+    & .brightcove{
+        height: 100%;
+        width: 100%;
+    }
+} 
+
+.large-height{
+    & .brightcove{
+        height: rem(336px);
+    }
+} 
