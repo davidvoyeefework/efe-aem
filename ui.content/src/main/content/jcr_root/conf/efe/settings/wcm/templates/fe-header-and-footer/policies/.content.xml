@@ -121,6 +121,12 @@
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="wcm/core/components/policies/mapping"/>
                             </structure>
+                            <content jcr:primaryType="nt:unstructured">
+                                <brightcove
+                                    cq:policy="efe/fe-components/content/brightcove/policy"
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="wcm/core/components/policies/mapping"/>
+                            </content>
                         </fe-components>
                     </efe>
                 </container>

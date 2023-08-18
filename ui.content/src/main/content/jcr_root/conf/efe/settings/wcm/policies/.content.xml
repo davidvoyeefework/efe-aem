@@ -1760,6 +1760,35 @@
                     </policy>
                 </fe-page>
             </structure>
+            <content jcr:primaryType="nt:unstructured">
+                 <brightcove jcr:primaryType="nt:unstructured">
+                    <policy
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Brightcove Player Policy"
+                        sling:resourceType="wcm/core/components/policy/policy">
+                        <jcr:content jcr:primaryType="nt:unstructured"/>
+                        <cq:styleGroups jcr:primaryType="nt:unstructured">
+                            <item0
+                                cq:styleGroupLabel="Variation"
+                                cq:styleGroupMultiple="true"
+                                jcr:primaryType="nt:unstructured">
+                                <cq:styles jcr:primaryType="nt:unstructured">
+                                    <item0
+                                        cq:styleClasses="full-width"
+                                        cq:styleId="containerwidth"
+                                        cq:styleLabel="Container Width"
+                                        jcr:primaryType="nt:unstructured"/>
+                                    <item1
+                                        cq:styleClasses="large-height"
+                                        cq:styleId="containerwidthextraheight"
+                                        cq:styleLabel="Container Width Extra Height"
+                                        jcr:primaryType="nt:unstructured"/>
+                                </cq:styles>
+                            </item0>
+                        </cq:styleGroups>
+                    </policy>
+                </brightcove>
+            </content>
         </fe-components>
     </efe>
 </jcr:root>
