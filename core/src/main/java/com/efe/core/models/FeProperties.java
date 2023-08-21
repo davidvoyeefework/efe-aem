@@ -29,27 +29,6 @@ public interface FeProperties {
     String getForKeyApi();
 
     /**
-     * Gets the SoftAuthApi.
-     *
-     * @return the SoftAuthApi
-     */
-    String getSoftAuthApi();
-
-    /**
-     * Gets the SignupApi.
-     *
-     * @return the SignupApi
-     */
-    String getSignupApi();
-
-    /**
-     * Gets the ScheduleApi.
-     *
-     * @return the ScheduleApi
-     */
-    String getScheduleApi();
-
-    /**
      * Gets the AuthenticateApi.
      *
      * @return the AuthenticateApi
@@ -57,18 +36,11 @@ public interface FeProperties {
     String getAuthenticateApi();
 
     /**
-     * Gets the CallBackApi.
-     *
-     * @return the CallBackApi
-     */
-    String getCallBackApi();
-
-    /**
      * Gets the dynamic variables.
      *
      * @return the dynamicVariables
      */
-    Map<String, String> getDynamicVariables();
+    String getDynamicVariables();
 
 	/**
 	 * Gets the record keeper.

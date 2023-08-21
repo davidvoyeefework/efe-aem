@@ -55,10 +55,6 @@ import static org.mockito.Mockito.when;
     /** The DynamicMediaServiceImpl. */
     private DynamicMediaServiceImpl dynamicMediaService;
 
-    /** The request. */
-    @Mock
-    SlingHttpServletRequest request;
-
     /** The resolverFactory. */
     @Mock
     ResourceResolverFactory resolverFactory;
@@ -80,7 +76,6 @@ import static org.mockito.Mockito.when;
         resource = aemContext.currentResource(RESOURCE);
         feHeaderModel = resource.adaptTo(modelClass);
         resolverFactory = mock(ResourceResolverFactory.class);
-        request = mock(SlingHttpServletRequest.class);
     }
 
     /**
@@ -95,44 +90,5 @@ import static org.mockito.Mockito.when;
         assertEquals("test quote", feHeaderModel.getSponsorDetails());
         assertEquals("feHeader-71334e5ba6", feHeaderModel.getId());
         assertEquals("subadvised", feHeaderModel.getType());
-    }
-
-    /**
-     * Thne setDynamicVariablesFieldTest
-     * @throws LoginException
-     * @throws NoSuchFieldException
-     * @throws IllegalAccessException
-     */
-    @Test
-    void setDynamicVariablesFieldTest() throws LoginException, NoSuchFieldException, IllegalAccessException {
-        feHeader = new FeHeaderImpl();
-        Field requestField = feHeader.getClass().getDeclaredField("request");
-        requestField.setAccessible(true);
-        requestField.set(feHeader, request);
-
-        Field resolverFactoryField = feHeader.getClass().getDeclaredField("resolverFactory");
-        resolverFactoryField.setAccessible(true);
-        resolverFactoryField.set(feHeader, resolverFactory);
-
-        ResourceResolver serviceResolver = mock(ResourceResolver.class);
-        when(resolverFactory.getServiceResourceResolver(any())).thenReturn(serviceResolver);
-        PageManager pageManager = mock(PageManager.class);
-        when(serviceResolver.adaptTo(PageManager.class)).thenReturn(pageManager);
-        Page page = mock(Page.class);
-        when(pageManager.getPage("/etc/acs-commons/lists/fe/sponsor-details")).thenReturn(page);
-        GenericList list = mock(GenericList.class);
-        when(page.adaptTo(GenericList.class)).thenReturn(list);
-        List<GenericList.Item> itemList = new ArrayList<>();
-        GenericList.Item item1 = mock(GenericList.Item.class);
-        GenericList.Item item2 = mock(GenericList.Item.class);
-        itemList.add(item1);
-        itemList.add(item2);
-        when(list.getItems()).thenReturn(itemList);
-        when(item1.getValue()).thenReturn("sponsorName|header.sponsorName");
-        when(item2.getValue()).thenReturn("supportHour|header.supportHour");
-
-        feHeader.init();
-        feHeader.getDynamicVariables();
-        assertNotNull(serviceResolver);
     }
 }

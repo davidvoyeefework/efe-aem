@@ -81,7 +81,7 @@ public class DropdownDataProviderServlet extends SlingSafeMethodsServlet {
 			for (String genericList : genericLists) {
 				if (StringUtils.isNotEmpty(genericList)) {
 					String[] genericListArr = genericList.split(SPLIT_BY_PIPE);
-					if(genericListArr.length == 3 && StringUtils.equalsIgnoreCase(genericListArr[2],"true")) {
+					if(genericListArr.length == 2 && StringUtils.equalsIgnoreCase(genericListArr[1],"true")) {
 						String genericListPath = genericListArr[0];
 						req.setAttribute(DataSource.class.getName(), EmptyDataSource.instance());
 						GenericList list = EFEUtil.getGenericList(resourceResolver, genericListPath);
@@ -106,13 +106,8 @@ public class DropdownDataProviderServlet extends SlingSafeMethodsServlet {
 	 */
 	private void getDynamicVariables(ResourceResolver resourceResolver, GenericList list,
 			final List<Resource> fakeResourceList) {
-		ValueMap vm = new ValueMapDecorator(new HashMap<>());
-		vm.put("value", "Select");
-		vm.put("text", "Select");
-		fakeResourceList.add(new ValueMapResource(resourceResolver, new ResourceMetadata(),
-				JcrConstants.NT_UNSTRUCTURED, vm));
 		for (Item item : list.getItems()) {
-			vm = new ValueMapDecorator(new HashMap<>());
+			ValueMap vm = new ValueMapDecorator(new HashMap<>());
 
 			if(StringUtils.isEmpty(item.getValue())){
 				return;

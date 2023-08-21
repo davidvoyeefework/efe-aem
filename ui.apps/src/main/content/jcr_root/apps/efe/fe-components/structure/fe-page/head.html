@@ -16,7 +16,7 @@
 <template data-sly-template.head="${ @ page, pwa }"
           data-sly-use.headlibRenderer="headlibs.html"
           data-sly-use.headResources="head.resources.html"
-          data-sly-use.feHeader="com.efe.core.models.FeHeader">
+          data-sly-use.feProperties="com.efe.core.models.FeProperties">
     <meta charset="UTF-8">
     <title>${page.title}${page.brandSlug ? ' | ' : ''}${page.brandSlug}</title>
     <meta data-sly-test.keywords="${page.keywords}" name="keywords" content="${keywords}"/>
@@ -46,8 +46,8 @@
     <sly data-sly-list="${page.htmlPageItems}"><script data-sly-test="${item.location.name == 'header'}"
             data-sly-element="${item.element.name @ context='unsafe'}" data-sly-attribute="${item.attributes}"></script>
     </sly>
-    <sly data-sly-test="${feHeader.dynamicVariables}">
-        <div data-sly-use.feProperties="com.efe.core.models.FeProperties" id="fe-properties"
+    <sly data-sly-test="${feProperties.dynamicVariables}">
+        <div id="fe-properties"
              data-frame-api="${feProperties.pageFrameApi}"
              data-aggregate-api="${feProperties.aggregateApi}"
              data-keys-api="${feProperties.forKeyApi}"
@@ -56,10 +56,9 @@
              data-schedule-api="${feProperties.scheduleApi}"
              data-authenticate-api="${feProperties.authenticateApi}"
              data-callback-api="${feProperties.callBackApi}"
-             data-variables='${feHeader.dynamicVariables}'
+             data-variables='${feProperties.dynamicVariables}'
              data-sponsor-logo-path="${feProperties.sponsorLogoPath}"
              data-api-domain="https://www.feitest.com/">
-             <!--data-sly-attribute="${feProperties.dynamicVariables}"-->
         </div>
     </sly>
 </template>

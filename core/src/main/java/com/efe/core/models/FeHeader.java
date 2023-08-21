@@ -54,10 +54,4 @@ public interface FeHeader {
      */
     String getSponsorDetails();
 
-    /**
-     * Gets the dynamic variables.
-     *
-     * @return the dynamicVariables
-     */
-    String getDynamicVariables();
 }

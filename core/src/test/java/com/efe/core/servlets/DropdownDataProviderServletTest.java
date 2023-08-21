@@ -74,7 +74,7 @@ import static org.mockito.Mockito.when;
         when(valueMap.get("type", String.class)).thenReturn("dynamicvariables");
         ResourceResolver resourceResolver = mock(ResourceResolver.class);
         when(request.getResourceResolver()).thenReturn(resourceResolver);
-        String[] genericLists = new String[]{"/etc/acs-commons/lists/fe/sponsor-details|data-sponsorDetails|true"};
+        String[] genericLists = new String[]{"/etc/acs-commons/lists/fe/sponsor-details|true"};
         when(feService.getDynamicVariableList()).thenReturn(genericLists);
         PageManager pageManager = mock(PageManager.class);
         Page listPage = mock(Page.class);
