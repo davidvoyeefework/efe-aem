@@ -106,9 +106,14 @@ public class DropdownDataProviderServlet extends SlingSafeMethodsServlet {
 	 */
 	private void getDynamicVariables(ResourceResolver resourceResolver, GenericList list,
 			final List<Resource> fakeResourceList) {
+		ValueMap vm = new ValueMapDecorator(new HashMap<>());
+		vm.put("value", "Select");
+		vm.put("text", "Select");
+		fakeResourceList.add(new ValueMapResource(resourceResolver, new ResourceMetadata(),
+				JcrConstants.NT_UNSTRUCTURED, vm));
 		for (Item item : list.getItems()) {
-			ValueMap vm = new ValueMapDecorator(new HashMap<>());
-			
+			vm = new ValueMapDecorator(new HashMap<>());
+
 			if(StringUtils.isEmpty(item.getValue())){
 				return;
 			}		
