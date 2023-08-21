@@ -21,7 +21,7 @@
         data-sly-use.footer="footer.html"
         data-sly-use.redirect="redirect.html">
       <head data-sly-call="${head.head @ page = page, pwa = pwa}"></head>
-      <body class="${page.cssClassNames} fepage ${wcmmode.edit ? 'edit-view': 'fe-load-data fe-loading'} ${feProperties.recordKeeper}"
+      <body class="${page.cssClassNames} fepage ${wcmmode.edit ? 'edit-view': 'fe-load-data fe-loading-page'} ${feProperties.recordKeeper}"
             id="${page.id}"
             data-cmp-link-accessibility-enabled
             data-cmp-link-accessibility-text="${'opens in a new tab' @ i18n}"

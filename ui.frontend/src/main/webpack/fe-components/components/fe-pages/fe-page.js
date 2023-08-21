@@ -37,7 +37,6 @@ export default class FePage {
                 }
                 pushToWindowObject(data);
                 this.fetchAggregateData();
-                handleLoader(false);
             }
         }).catch(error => {
             console.error('An error occurred:', error);
