@@ -65,6 +65,10 @@
                         height: 100%;
                     }
                 }
+
+                @include media('<=tablet') {
+                    max-height: rem(297px);
+                }
             }
         }
         
