@@ -1,4 +1,4 @@
-.fe-layout-unordered-list, .fe-check-unordered-list{
+.fe-layout-unordered-list, .fe-check-unordered-list, .fe-dot-unordered-list{
         & .cmp-text, & .cmp-text p{
             color: #535658;
             font-feature-settings: 'clig' off, 'liga' off;
@@ -16,7 +16,7 @@
         }
     & .cmp-text ul{
         padding: 0;
-        margin-left: rem(20px);
+        margin-left: rem(10px);
         padding-top: rem(35px);
         display: table;
         border-collapse: separate;
@@ -36,18 +36,23 @@
         list-style-type: none;
         display: table-row;
         margin-bottom: 0;
-        
+    }
+}
+.fe-layout-unordered-list, .fe-check-unordered-list{
+    & .cmp-text ul li{
         &::before{
             content: '';
             height: 25px;
             width: 25px;
-            background: var(--fe-text-list-icon);
             top: 0;
             left: rem(-20px);
             display: table-cell;
+            background: var(--fe-text-list-icon);
+            left: rem(-10px);
         }
     }
 }
+
 .fe-check-unordered-list{
     & .cmp-text ul li{
         &::before{
@@ -61,6 +66,53 @@
     & .cmp-text ul li{
         &::before{
             color: #535658;
+        }
+    }
+}
+
+//typography changes
+.fepage{
+    .cmp-text{
+        &--subhead-00{
+            letter-spacing: rem(0.64px);
+        }
+    }
+}
+
+.fe-subadvised-sponsor{
+    .cmp-text{
+        & *{
+            text-transform: none;
+            font-family: 'Open Sans';
+        }
+
+        b{
+            font-weight: 700 !important;
+        }
+
+        &--heading-01{
+            font-size: rem(54px);
+            line-height: 110%;
+            
+        }
+
+        &--subhead-00{
+            font-weight: 700;
+            line-height: 118%;
+            letter-spacing: normal;
+        }
+        &--subhead-02{
+            font-size: rem(20px);
+            font-weight: 700;
+            font-style: normal;
+            line-height: 105%;
+        }
+
+        &--body-01{
+            font-size: rem(20px);
+            font-style: normal;
+            font-weight: 400;
+            line-height: 140%;
         }
     }
 }
