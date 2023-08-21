@@ -8,6 +8,7 @@ export default class FeHeader {
     init() {
         if(window.aemfe.header) {
             this.changeHeaderValues();
+            // this.getDataFieldIds();
         }
     }
     changeHeaderValues() {
