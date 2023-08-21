@@ -14,7 +14,7 @@ export default class FeReplaceDataWithPlaceholder {
   getDataFieldIds() {
     //const bodyContent = document.querySelector("body.sb-show-main").innerHTML; // get array of placeholders from body content
     var placeholders = this.bodyContent.match(/(?:%7B%7B|\{\{)(.*?)(?:}}|%7D%7D)+/g);
-    placeholders.forEach((placeholder) => {
+    placeholders?.forEach((placeholder) => {
       var fieldName = placeholder.replace("{{", "").replace("%7B%7B", "").replace("}}", "").replace("%7D%7D", "");
       this.dataPlacholders.push({
         id: fieldName
