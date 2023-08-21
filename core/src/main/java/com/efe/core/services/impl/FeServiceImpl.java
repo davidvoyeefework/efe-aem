@@ -32,20 +32,8 @@ public class FeServiceImpl implements FeService {
     /** The forKeyApi. */
     private String forKeyApi;
 
-    /** The softAuthApi. */
-    private String softAuthApi;
-
-    /** The signupApi. */
-    private String signupApi;
-
-    /** The scheduleApi. */
-    private String scheduleApi;
-
     /** The authenticateApi. */
     private String authenticateApi;
-
-    /** The callBackApi. */
-    private String callBackApi;
 
     /** The dynamicVariableList. */
     private String[] dynamicVariableList;
@@ -84,44 +72,12 @@ public class FeServiceImpl implements FeService {
         String forKeyApi();
 
         /**
-         * Soft Auth Api.
-         *
-         * @return softAuthApi
-         */
-        @AttributeDefinition(name="Soft Auth Api", description="Soft Auth Api")
-        String softAuthApi();
-
-        /**
-         * Signup Api.
-         *
-         * @return signupApi
-         */
-        @AttributeDefinition(name="Signup Api", description="Signup Api")
-        String signupApi();
-
-        /**
-         * Schedule Api.
-         *
-         * @return scheduleApi
-         */
-        @AttributeDefinition(name="Schedule Api", description="Schedule Api")
-        String scheduleApi();
-
-        /**
          * Authenticate Api.
          *
          * @return authenticateApi
          */
         @AttributeDefinition(name="Authenticate Api", description="Authenticate Api")
         String authenticateApi();
-
-        /**
-         * CallBack Api.
-         *
-         * @return callBackApi
-         */
-        @AttributeDefinition(name = "CallBack Api", description = "CallBack Api")
-        String callBackApi();
 
         /**
          * Unbounce Dynamic Variables.
@@ -152,11 +108,7 @@ public class FeServiceImpl implements FeService {
         this.pageFrameApi = config.pageFrameApi();
         this.aggregateApi = config.aggregateApi();
         this.forKeyApi = config.forKeyApi();
-        this.callBackApi = config.callBackApi();
         this.authenticateApi = config.authenticateApi();
-        this.scheduleApi = config.scheduleApi();
-        this.signupApi = config.signupApi();
-        this.softAuthApi = config.softAuthApi();
         this.dynamicVariableList = config.dynamicVariableList();
         this.sponsorLogoPath = config.sponsorLogoPath();
     }
@@ -192,36 +144,6 @@ public class FeServiceImpl implements FeService {
     }
 
     /**
-     * Gets the SoftAuthApi.
-     *
-     * @return the SoftAuthApi
-     */
-    @Override
-    public String getSoftAuthApi() {
-        return softAuthApi;
-    }
-
-    /**
-     * Gets the SignupApi.
-     *
-     * @return the SignupApi
-     */
-    @Override
-    public String getSignupApi() {
-        return signupApi;
-    }
-
-    /**
-     * Gets the ScheduleApi.
-     *
-     * @return the ScheduleApi
-     */
-    @Override
-    public String getScheduleApi() {
-        return scheduleApi;
-    }
-
-    /**
      * Gets the AuthenticateApi.
      *
      * @return the AuthenticateApi
@@ -229,16 +151,6 @@ public class FeServiceImpl implements FeService {
     @Override
     public String getAuthenticateApi() {
         return authenticateApi;
-    }
-
-    /**
-     * Gets the CallBackApi.
-     *
-     * @return the CallBackApi
-     */
-    @Override
-    public String getCallBackApi() {
-        return callBackApi;
     }
 
     /**

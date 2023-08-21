@@ -39,7 +39,7 @@ public class FePropertiesImpl implements FeProperties {
 	/** The constant LOGGER. */
 	private static final Logger LOGGER = LoggerFactory.getLogger(FePropertiesImpl.class);
 
-	/** The unbounce service. */
+	/** The fe service. */
 	@OSGiService
 	private FeService feService;
 
@@ -55,7 +55,10 @@ public class FePropertiesImpl implements FeProperties {
 	private String theme;
 
 	/** The dynamic variables. */
-	private Map<String, String> dynamicVariables;
+	private String dynamicVariables;
+
+	/** The array. */
+	private JsonArray array;
 
 	/** The sponsor id. */
 	private String sponsorId;
@@ -72,7 +75,7 @@ public class FePropertiesImpl implements FeProperties {
 		if (Objects.isNull(cookieJsonObject)) {
 			return;
 		}
-		setUnbounceField();
+		setDynamicVariablesField();
 		recordKeeper = getCookieValue(cookieJsonObject, "providerId");
 		if(StringUtils.isNotEmpty(recordKeeper)) {
 			recordKeeper = "theme-" + recordKeeper;
@@ -119,45 +122,41 @@ public class FePropertiesImpl implements FeProperties {
 	}
 
 	/**
-	 * Sets the unbounce field.
+	 * Sets the dynamic variables field.
 	 */
-	private void setUnbounceField() {
-		dynamicVariables = new HashMap<>();
+	private void setDynamicVariablesField() {
 		try (ResourceResolver serviceResolver = ResourceUtil.getServiceResourceResolver(resolverFactory)) {
 			String[] genericLists = feService.getDynamicVariableList();
 
 			if (null == genericLists) {
 				return;
 			}
-
+			array = new JsonArray();
 			for (String genericList : genericLists) {
 				if (StringUtils.isNotEmpty(genericList)) {
 					String[] genericListArr = genericList.split("\\|");
-					if (genericListArr.length == 3) {
-						String dataVariableName = genericListArr[1];
+					if (genericListArr.length == 2) {
 						String genericListPath = genericListArr[0];
 						GenericList list = EFEUtil.getGenericList(serviceResolver, genericListPath);
 
 						if (null == list) {
 							return;
 						}
-						createDynamicVariableMap(dataVariableName, list);
+						setDynamicVariable(list);
 					}
 				}
 			}
-		}catch(Exception e) {
+		} catch(Exception e) {
 			LOGGER.error("Error :",e);
 		}
 	}
 
 	/**
-	 * Creates the dynamic variable map.
+	 * Sets the dynamic variable.
 	 *
-	 * @param dataVariableName the data variable name
-	 * @param list             the list
+	 * @param list the list
 	 */
-	private void createDynamicVariableMap(String dataVariableName, GenericList list) {
-		JsonArray array = new JsonArray();
+	private void setDynamicVariable(GenericList list) {
 		for (GenericList.Item item : list.getItems()) {
 			JsonObject dynamicVariable = new JsonObject();
 			String[] values = item.getValue().split("\\|");
@@ -166,8 +165,7 @@ public class FePropertiesImpl implements FeProperties {
 			}
 			array.add(dynamicVariable);
 		}
-		String dataVariableValue = new Gson().toJson(array);
-		dynamicVariables.put(dataVariableName, dataVariableValue);
+		dynamicVariables = new Gson().toJson(array);
 	}
 
 	/**
@@ -201,36 +199,6 @@ public class FePropertiesImpl implements FeProperties {
 	}
 
 	/**
-	 * Gets the SoftAuthApi.
-	 *
-	 * @return the SoftAuthApi
-	 */
-	@Override
-	public String getSoftAuthApi() {
-		return feService.getSoftAuthApi();
-	}
-
-	/**
-	 * Gets the SignupApi.
-	 *
-	 * @return the SignupApi
-	 */
-	@Override
-	public String getSignupApi() {
-		return feService.getSignupApi();
-	}
-
-	/**
-	 * Gets the ScheduleApi.
-	 *
-	 * @return the ScheduleApi
-	 */
-	@Override
-	public String getScheduleApi() {
-		return feService.getScheduleApi();
-	}
-
-	/**
 	 * Gets the AuthenticateApi.
 	 *
 	 * @return the AuthenticateApi
@@ -241,26 +209,13 @@ public class FePropertiesImpl implements FeProperties {
 	}
 
 	/**
-	 * Gets the CallBackApi.
-	 *
-	 * @return the CallBackApi
-	 */
-	@Override
-	public String getCallBackApi() {
-		return feService.getCallBackApi();
-	}
-
-	/**
 	 * Gets the dynamic variables.
 	 *
 	 * @return the dynamicVariables
 	 */
 	@Override
-	public Map<String, String> getDynamicVariables() {
-		if(Objects.nonNull(dynamicVariables)) {
-			return new HashMap<>(dynamicVariables);
-		}
-		return Collections.emptyMap();
+	public String getDynamicVariables() {
+		return dynamicVariables;
 	}
 
 	/**

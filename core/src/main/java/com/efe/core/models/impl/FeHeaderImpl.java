@@ -1,14 +1,9 @@
 package com.efe.core.models.impl;
 
-import com.adobe.acs.commons.genericlists.GenericList;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.efe.core.models.FeHeader;
 import com.efe.core.services.DynamicMediaService;
 import com.efe.core.utils.EFEUtil;
-import com.efe.core.utils.ResourceUtil;
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -19,8 +14,6 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
-
-import javax.annotation.PostConstruct;
 
 /**
  * The Class FeHeaderImpl.
@@ -33,10 +26,6 @@ public class FeHeaderImpl implements FeHeader {
 
     /** The Constant RESOURCE_TYPE. */
     public static final String RESOURCE_TYPE = "efe/fe-components/structure/fe-header";
-
-    /** The request. */
-    @SlingObject
-    private SlingHttpServletRequest request;
 
     /** The resource resolver. */
     @SlingObject
@@ -87,43 +76,6 @@ public class FeHeaderImpl implements FeHeader {
     /** The type. */
     @ValueMapValue
     private String type;
-
-    /** The dynamic variables. */
-    private String dynamicVariables;
-
-    /**
-     * Inits the model.
-     */
-    @PostConstruct
-    public void init() {
-        if (null != request) {
-            setDynamicVariablesField();
-        }
-    }
-
-    /**
-     * Sets the Dynamic Variables field.
-     */
-    private void setDynamicVariablesField() {
-        try (ResourceResolver serviceResolver = ResourceUtil.getServiceResourceResolver(resolverFactory)) {
-            GenericList list = EFEUtil.getGenericList(serviceResolver, "/etc/acs-commons/lists/fe/sponsor-details");
-
-            if(null == list) {
-                return;
-            }
-
-            JsonArray array = new JsonArray();
-            for (GenericList.Item item : list.getItems()) {
-                JsonObject dynamicVariable = new JsonObject();
-                String[] values = item.getValue().split("\\|");
-                if (values.length == 2) {
-                    dynamicVariable.addProperty(values[0], values[1]);
-                }
-                array.add(dynamicVariable);
-            }
-            dynamicVariables = new Gson().toJson(array);
-        }
-    }
 
     /**
      * Gets the primary logo.
@@ -187,16 +139,6 @@ public class FeHeaderImpl implements FeHeader {
     @Override
     public String getSponsorDetails() {
         return sponsorDetails;
-    }
-
-    /**
-     * Gets the dynamic variables.
-     *
-     * @return the dynamicVariables
-     */
-    @Override
-    public String getDynamicVariables() {
-        return dynamicVariables;
     }
 
     /**
