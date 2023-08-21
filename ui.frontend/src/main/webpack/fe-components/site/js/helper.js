@@ -145,7 +145,7 @@ export const handleLoader =(isShow) =>{
          //loader.style.display = 'block';
       }else{
           loader.style.display = 'none';
-           document.querySelector("body").classList.remove("fe-loading");
+           document.querySelector("body").classList.remove("fe-loading-page");
            document.querySelector("body").classList.add("fe-loaded");
       }   
 }
