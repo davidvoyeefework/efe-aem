@@ -3,7 +3,7 @@
     jcr:primaryType="cq:Page">
     <jcr:content
         jcr:primaryType="nt:unstructured"
-        jcr:title="Sponsor Details"
+        jcr:title="FE Dynamic Variables"
         sling:resourceType="acs-commons/components/utilities/genericlist">
         <image
             jcr:primaryType="nt:unstructured"

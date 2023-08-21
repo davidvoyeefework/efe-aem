@@ -112,15 +112,15 @@ public class DropdownDataProviderServlet extends SlingSafeMethodsServlet {
 		fakeResourceList.add(new ValueMapResource(resourceResolver, new ResourceMetadata(),
 				JcrConstants.NT_UNSTRUCTURED, vm));
 		for (Item item : list.getItems()) {
-			ValueMap vm2 = new ValueMapDecorator(new HashMap<>());
+			vm = new ValueMapDecorator(new HashMap<>());
 
 			if(StringUtils.isEmpty(item.getValue())){
 				return;
 			}		
-			vm2.put("value", item.getValue().split(SPLIT_BY_PIPE)[0]);
-			vm2.put("text", item.getTitle());
+			vm.put("value", item.getValue().split(SPLIT_BY_PIPE)[0]);
+			vm.put("text", item.getTitle());
 			fakeResourceList.add(new ValueMapResource(resourceResolver, new ResourceMetadata(),
-					JcrConstants.NT_UNSTRUCTURED, vm2));
+					JcrConstants.NT_UNSTRUCTURED, vm));
 		}
 	}
 }
