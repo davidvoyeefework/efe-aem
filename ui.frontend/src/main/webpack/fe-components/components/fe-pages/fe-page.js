@@ -18,7 +18,6 @@ export default class FePage {
         }
         handleLoader(true);
         this.getAuthenticationStatus();
-        this.fetchAggregateData();
         this.getKeys();
     }
     async fetchSponsorData(userLoggedIn) {
@@ -30,7 +29,6 @@ export default class FePage {
             'X-Spa-Name': pageFrameApiFlow,
         };
         await fetchData(apiHost+pageFrameApiFlow, headers).then(data => {
-            handleLoader(false);
             if (data) {
                 if(data?.context?.isFeChannel) {
                     document.querySelector('body').classList.add('fe-direct-sponsor');
@@ -38,12 +36,7 @@ export default class FePage {
                     document.querySelector('body').classList.add('fe-subadvised-sponsor');
                 }
                 pushToWindowObject(data);
-                const dataFromApi = new CustomEvent("messageFromfePage", {
-                    messageFromParent: {
-                    success: "true",
-                    },
-                });
-                document.dispatchEvent(dataFromApi);
+                this.fetchAggregateData();
                 handleLoader(false);
             }
         }).catch(error => {
@@ -66,6 +59,12 @@ export default class FePage {
             console.log(data);
             pushToWindowObject(data);
             handleLoader(false);
+            const dataFromApi = new CustomEvent("messageFromfePage", {
+                messageFromParent: {
+                success: "true",
+                },
+            });
+            document.dispatchEvent(dataFromApi);
         }).catch(error => {
             // Handle any errors that occurred during the fetch request
             console.error('An error occurred:', error);
@@ -90,7 +89,6 @@ export default class FePage {
         await fetchData('https://www.feitest.com/api/v1/userlogin/authenticationstatus', headers).then(data => {
             console.log(data);
             pushToWindowObject(data);
-            handleLoader(false);
             const userLoggedIn = data.userLoggedIn;
             this.fetchSponsorData(userLoggedIn);
         }).catch(error => {

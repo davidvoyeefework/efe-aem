@@ -22,11 +22,12 @@ export default class FeHeader {
             const elems = document.querySelectorAll('.' + Object.keys(item));
             elems?.forEach((ele) => {
                 ele.classList.remove("sponsor-value-hide");
-                if(data[item[Object.keys(item)]]) {
+                if(data[item[Object.keys(item)]] !== undefined) {
                     ele.innerHTML = data[item[Object.keys(item)]];
                 } else {
+                    console.log(eval('data.' + item[Object?.keys(item)]));
                     try {
-                        ele.innerHTML = eval('data.' + item[Object?.keys(item)]);
+                        ele.innerHTML = eval('data.' + item[Object?.keys(item)])?eval('data.' + item[Object?.keys(item)]):"";
                     } catch (e) {
                         console.log('invalid key', Object.keys(item));
                     }
