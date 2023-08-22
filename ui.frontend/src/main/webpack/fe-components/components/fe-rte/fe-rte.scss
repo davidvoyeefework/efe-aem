@@ -1,4 +1,4 @@
-.fe-layout-unordered-list, .fe-check-unordered-list, .fe-dot-unordered-list{
+.fe-layout-unordered-list, .fe-check-unordered-list, .fe-dot-unordered-list, .fe-charcoal-check-unordered-list{
         & .cmp-text, & .cmp-text p{
             color: #535658;
             font-feature-settings: 'clig' off, 'liga' off;
@@ -38,7 +38,7 @@
         margin-bottom: 0;
     }
 }
-.fe-layout-unordered-list, .fe-check-unordered-list{
+.fe-layout-unordered-list, .fe-check-unordered-list, .fe-charcoal-check-unordered-list{
     & .cmp-text ul li{
         &::before{
             content: '';
@@ -61,6 +61,14 @@
         }
     }
 }
+.fe-charcoal-check-unordered-list{
+    & .cmp-text ul li{
+        &::before{
+            background: url("../resources/images/icons/charcoal-check.svg") no-repeat left top;;
+            left: rem(-10px);
+        }
+    }
+}
 
 .fe-dot-unordered-list{
     & .cmp-text ul li{
@@ -71,6 +79,12 @@
 }
 
 //typography changes
+.cmp-text{
+    & .font-color-red{
+        color: #c32d37 !important;
+    }
+}
+
 .fepage{
     .cmp-text{
         &--subhead-00{
