@@ -18,6 +18,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.mock;
@@ -64,7 +66,7 @@ import static org.mockito.Mockito.when;
      *
      */
     @Test
-    void doGetTest() {
+    void doGetTest() throws LoginException {
         Resource currentResource = mock(Resource.class);
         Resource childResource = mock(Resource.class);
         when(request.getResource()).thenReturn(currentResource);
@@ -72,17 +74,19 @@ import static org.mockito.Mockito.when;
         ValueMap valueMap = mock(ValueMap.class);
         when(childResource.getValueMap()).thenReturn(valueMap);
         when(valueMap.get("type", String.class)).thenReturn("dynamicvariables");
-        ResourceResolver resourceResolver = mock(ResourceResolver.class);
-        when(request.getResourceResolver()).thenReturn(resourceResolver);
         String[] genericLists = new String[]{"/etc/acs-commons/lists/fe/sponsor-details|true"};
         when(feService.getDynamicVariableList()).thenReturn(genericLists);
+        ResourceResolver resourceResolver = mock(ResourceResolver.class);
+        when(request.getResourceResolver()).thenReturn(resourceResolver);
+        final Map<String, Object> subServiceUser = new ConcurrentHashMap<>();
+        subServiceUser.put(ResourceResolverFactory.SUBSERVICE, "efe-service-user");
+        when(resolverFactory.getServiceResourceResolver(subServiceUser)).thenReturn(resourceResolver);
         PageManager pageManager = mock(PageManager.class);
         Page listPage = mock(Page.class);
         when(resourceResolver.adaptTo(PageManager.class)).thenReturn(pageManager);
         when(pageManager.getPage("/etc/acs-commons/lists/fe/sponsor-details")).thenReturn(listPage);
         GenericList list = mock(GenericList.class);
         when(listPage.adaptTo(GenericList.class)).thenReturn(list);
-
         List<GenericList.Item> itemList = new ArrayList<>();
         GenericList.Item item1 = mock(GenericList.Item.class);
         GenericList.Item item2 = mock(GenericList.Item.class);

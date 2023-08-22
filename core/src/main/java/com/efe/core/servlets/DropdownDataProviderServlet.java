@@ -64,27 +64,31 @@ public class DropdownDataProviderServlet extends SlingSafeMethodsServlet {
 	protected void doGet(final SlingHttpServletRequest req, final SlingHttpServletResponse resp) {
 		Resource currentResource = req.getResource();
 		String dropdownSelector = currentResource.getChild("datasource").getValueMap().get("type", String.class);
-		getItemsList(req.getResourceResolver(), dropdownSelector, req);
+		getItemsList(dropdownSelector, req);
 	}
 
 	/**
 	 * Gets the items list.
-	 *
-	 * @param resourceResolver the resource resolver
-	 * @param selector         the selector
+	 * @param selector the selector
+	 * @param req  the request
 	 * @return the items list
 	 */
-	private void getItemsList(ResourceResolver resourceResolver, String selector, SlingHttpServletRequest req) {
+	private void getItemsList(String selector, SlingHttpServletRequest req) {
 		if ("dynamicvariables".equalsIgnoreCase(selector)) {
 			String[] genericLists = feService.getDynamicVariableList();
 			final List<Resource> fakeResourceList = new ArrayList<>();
+			ValueMap vm = new ValueMapDecorator(new HashMap<>());
+			vm.put("value", "Select");
+			vm.put("text", "Select");
+			fakeResourceList.add(new ValueMapResource(req.getResourceResolver(), new ResourceMetadata(),
+					JcrConstants.NT_UNSTRUCTURED, vm));
 			for (String genericList : genericLists) {
 				if (StringUtils.isNotEmpty(genericList)) {
 					String[] genericListArr = genericList.split(SPLIT_BY_PIPE);
 					if(genericListArr.length == 2 && StringUtils.equalsIgnoreCase(genericListArr[1],"true")) {
 						String genericListPath = genericListArr[0];
 						req.setAttribute(DataSource.class.getName(), EmptyDataSource.instance());
-						GenericList list = EFEUtil.getGenericList(resourceResolver, genericListPath);
+						GenericList list = EFEUtil.getGenericList(resolverFactory, genericListPath);
 						if (Objects.nonNull(list) && Objects.nonNull(list.getItems())) {
 							getDynamicVariables(req.getResourceResolver(), list, fakeResourceList);
 							DataSource ds = new SimpleDataSource(fakeResourceList.iterator());
