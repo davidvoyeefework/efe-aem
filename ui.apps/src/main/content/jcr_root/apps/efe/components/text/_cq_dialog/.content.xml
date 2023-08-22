@@ -82,6 +82,10 @@
                                                                 jcr:primaryType="cq:WidgetCollection"
                                                                 cssName="cmp-text--highlight"
                                                                 text="Highlight"/>
+                                                            <font-red
+                                                                jcr:primaryType="cq:WidgetCollection"
+                                                                cssName="font-color-red"
+                                                                text="Red Font"/>
                                                         </styles>
                                                     </styles>
                                                     <efe-aem-dynamic-variable

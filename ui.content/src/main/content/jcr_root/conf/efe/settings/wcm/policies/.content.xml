@@ -316,6 +316,11 @@
                                     cq:styleId="bullet"
                                     cq:styleLabel="Bullet Style"
                                     jcr:primaryType="nt:unstructured"/>
+                                <item4
+                                    cq:styleClasses="fe-charcoal-check-unordered-list"
+                                    cq:styleId="check-mark-variation-charcoal"
+                                    cq:styleLabel="Check mark - Variation 2 - Charcoal"
+                                    jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item2>
                         <item3
