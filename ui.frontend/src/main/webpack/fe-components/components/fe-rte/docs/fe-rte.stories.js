@@ -8,7 +8,11 @@ export default {
     title: "FE Components/FeRte",
     argTypes: {
         variation: {
-            options: ["fe-layout-unordered-list", "fe-check-unordered-list", "fe-dot-unordered-list" ],
+            options: ["fe-layout-unordered-list", "fe-check-unordered-list", "fe-dot-unordered-list", "fe-charcoal-check-unordered-list"],
+            control: { type: "radio" },
+        },
+        addOnClass: {
+            options: ["font-color-red"],
             control: { type: "radio" },
         },
     },
