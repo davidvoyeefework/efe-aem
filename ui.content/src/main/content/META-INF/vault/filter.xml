@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workspaceFilter version="1.0">
     <filter root="/content/experience-fragments/fe" mode="merge_properties"/>
-    <filter root="/conf/efe/settings/wcm/templates/fe-header-and-footer" mode="replace"/>
+    <filter root="/conf/efe/settings/wcm/templates/fe-header-and-footer" mode="merge_properties"/>
     <filter root="/conf/efe/settings/wcm/templates/experience-fragment-target-variation" mode="replace"/>
     <filter root="/conf/efe/settings/wcm/templates/xf-web-variation" mode="replace"/>
     <filter root="/conf/efe/settings/dam/cfm/models/articles" mode="replace"/>
