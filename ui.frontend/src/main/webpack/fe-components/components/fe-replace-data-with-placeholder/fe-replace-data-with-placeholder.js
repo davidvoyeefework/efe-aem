@@ -28,7 +28,7 @@ export default class FeReplaceDataWithPlaceholder {
         }).indexOf(item["id"]) === pos;
       });
     }
-    this.replacePlaceholderWithData();
+    //this.replacePlaceholderWithData();
   }
   replacePlaceholderWithData() {
     if (this.dataPlacholders.length > 0) {

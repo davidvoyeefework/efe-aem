@@ -16086,7 +16086,7 @@
         },
         _renderDynamicDataAtPageLoad: function(e, t) {
             this.addPageClasses(this.pageFrameData, this.planownerData, Ye.userIdentified),
-            Xe.addContentToPage("body > div.root"),
+            Xe.addContentToPage("div.form-modal-fe"),
             0 !== Object.keys(this.programFeesData).length && It.getFeesModalContent(this.pageData, this.programFeesData),
             this.replacePlaceholderWithData(this.pageData),
             e && Rt.afterRender(),
@@ -16361,7 +16361,7 @@
             n
         },
         replacePlaceholderWithData: function(e) {
-            this.getDataFieldIds(),
+            this.getDataFieldIds("div.modal-content-wrapper"),
             this.dataPlacholders.length > 0 && this.dataPlacholders.forEach(function(t, n) {
                 if (void 0 !== e[t.id.trim()]) {
                     var r = new RegExp("(?:%7B%7B|{{)" + t.id + "(?:}}|%7D%7D)","g");
@@ -16370,10 +16370,21 @@
                     qe.info("Placeholder undefined in userData: " + t.id)
             }
             .bind(this)),
-            document.querySelector("body > div.root").innerHTML = this.bodyContent
+            document.querySelector("div.modal-content-wrapper").innerHTML = this.bodyContent
+
+            this.getDataFieldIds("div.fe-aem-form"),
+            this.dataPlacholders.length > 0 && this.dataPlacholders.forEach(function(t, n) {
+                if (void 0 !== e[t.id.trim()]) {
+                    var r = new RegExp("(?:%7B%7B|{{)" + t.id + "(?:}}|%7D%7D)","g");
+                    this.bodyContent = this.bodyContent.replace(r, e[t.id.trim()])
+                } else
+                    qe.info("Placeholder undefined in userData: " + t.id)
+            }
+            .bind(this)),
+            document.querySelector("div.fe-aem-form").innerHTML = this.bodyContent
         },
-        getDataFieldIds: function() {
-            this.bodyContent = document.querySelector("body > div.root").innerHTML;
+        getDataFieldIds: function(selector) {
+            this.bodyContent = document.querySelector(selector).innerHTML;
             var e = this.bodyContent.match(/(?:%7B%7B|\{\{)(.*?)(?:}}|%7D%7D)+/g);
             null != e && e.length > 0 && (e.forEach(function(e) {
                 var t = e.replace("{{", "").replace("%7B%7B", "").replace("}}", "").replace("%7D%7D", "");
