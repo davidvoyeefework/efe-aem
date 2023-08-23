@@ -12,7 +12,7 @@
     visibility: hidden;
     transform: scale(1.1);
     transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
-    font-family: var(--font-family);
+    font-family: var(--fe-form-font-family);
     
 
     &.fe-show-modal{
@@ -32,7 +32,7 @@
         & .fe-modal-form-error-content-wrapper, & .fe-modal-form-error-content-wrapper p{
             font-size: rem(16px);
             font-style: normal;
-            font-weight: 300;
+            font-weight: var(--fe-error-modal-body-font-weight);
             line-height: rem(24px);
             font-family: var(--fe-form-font-family);
         }
@@ -67,7 +67,7 @@
     &-body{
         padding: rem(25px);
         color: #535658;
-        font-family: var(--font-family);
+        font-family: var(--fe-form-font-family);
         font-size: 16px;
         font-style: normal;
         font-weight: 300;
