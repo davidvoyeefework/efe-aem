@@ -126,6 +126,10 @@
                                     cq:policy="efe/fe-components/content/brightcove/policy"
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="wcm/core/components/policies/mapping"/>
+                                <list-v2
+                                    cq:policy="efe/fe-components/content/list-v2/policy"
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="wcm/core/components/policies/mapping"/>
                             </content>
                         </fe-components>
                     </efe>
