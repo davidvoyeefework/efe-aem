@@ -26,4 +26,3 @@ export const Rte = Templaterte.bind();
 const TemplaterteTypoGraphy = ({ label, ...args }) => Typography({...args});
 export const TypographyExample = TemplaterteTypoGraphy.bind();
 
-// export { Ferte as Default };
