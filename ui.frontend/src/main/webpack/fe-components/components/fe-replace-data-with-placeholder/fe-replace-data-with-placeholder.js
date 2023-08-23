@@ -9,7 +9,7 @@ export default class FeReplaceDataWithPlaceholder {
     });
   }
   init() {
-    this.getDataFieldIds();
+   this.getDataFieldIds();
   }
   getDataFieldIds() {
     //const bodyContent = document.querySelector("body.sb-show-main").innerHTML; // get array of placeholders from body content
@@ -53,7 +53,7 @@ export default class FeReplaceDataWithPlaceholder {
     if(window.aemfe[obj[key]]) {
       return window.aemfe[obj[key]];
     } else {
-      return eval('window.aemfe.'+[obj[key]]);
+      return eval('window.aemfe.'+[obj[key]])?eval('window.aemfe.'+[obj[key]]):"";
     }
   }
 }
