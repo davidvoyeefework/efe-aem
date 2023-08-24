@@ -736,174 +736,127 @@
                     </cq:styleGroups>
                 </policy>
                 <policy_1692708849082
-                        jcr:primaryType="nt:unstructured"
-                        jcr:title="Fe Allowed Component Policy"
-                        sling:resourceType="wcm/core/components/policy/policy"
-                        backgroundImageEnabled="true"
-                        components="[/apps/efe/components/accordion,/apps/efe/components/articledetails,/apps/efe/components/button,/apps/efe/components/container,/apps/efe/components/contentcollage,/apps/efe/components/contentfragment,/apps/efe/components/contentfragmentlist,/apps/efe/components/embed,/apps/efe/components/experiencefragment,/apps/efe/components/faqaccordion,/apps/efe/fe-components/structure/fe-footer,/apps/efe/fe-components/structure/fe-header,/apps/efe/components/image,/apps/efe/components/imagecollage,/apps/efe/fe-components/content/membershipdashboard,/apps/efe/fe-components/content/promotionlayoutcomponent,/apps/efe/components/relatedarticle,/apps/efe/components/separator,/apps/efe/components/socialshare,/apps/efe/components/teaser,/apps/efe/components/text,/apps/efe/components/title,/apps/efe/components/verticalseparator,/apps/efe/fe-components/content/list-v2]"
-                        layout="responsiveGrid"
-                        layoutDisabled="false">
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Fe Allowed Component Policy"
+                    sling:resourceType="wcm/core/components/policy/policy"
+                    backgroundImageEnabled="true"
+                    components="[/apps/efe/components/accordion,/apps/efe/components/articledetails,/apps/efe/components/button,/apps/efe/fe-components/content/columncontrol,/apps/efe/components/container,/apps/efe/components/contentcollage,/apps/efe/components/contentfragment,/apps/efe/components/contentfragmentlist,/apps/efe/components/embed,/apps/efe/components/experiencefragment,/apps/efe/components/faqaccordion,/apps/efe/fe-components/structure/fe-footer,/apps/efe/fe-components/structure/fe-header,/apps/efe/components/image,/apps/efe/components/imagecollage,/apps/efe/fe-components/content/list-v2,/apps/efe/fe-components/content/membershipdashboard,/apps/efe/fe-components/content/promotionlayoutcomponent,/apps/efe/components/relatedarticle,/apps/efe/components/separator,/apps/efe/components/socialshare,/apps/efe/components/teaser,/apps/efe/components/text,/apps/efe/components/title,/apps/efe/components/verticalseparator]"
+                    layout="responsiveGrid"
+                    layoutDisabled="false">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                     <cq:authoring jcr:primaryType="nt:unstructured">
                         <assetToComponentMapping jcr:primaryType="nt:unstructured">
                             <mapping_buildingblock
-                                    jcr:primaryType="nt:unstructured"
-                                    assetGroup="block"
-                                    assetMimetype="text/html"
-                                    droptarget="buildingblock"
-                                    resourceType="cq/experience-fragments/editor/components/buildingblock"/>
+                                jcr:primaryType="nt:unstructured"
+                                assetGroup="block"
+                                assetMimetype="text/html"
+                                droptarget="buildingblock"
+                                resourceType="cq/experience-fragments/editor/components/buildingblock"/>
                         </assetToComponentMapping>
                     </cq:authoring>
                     <cq:styleGroups jcr:primaryType="nt:unstructured">
                         <item0
-                                cq:styleGroupLabel="Color"
-                                jcr:primaryType="nt:unstructured">
+                            cq:styleGroupLabel="Color"
+                            jcr:primaryType="nt:unstructured">
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
-                                        cq:styleClasses="cmp-container--unset"
-                                        cq:styleId="color-unset"
-                                        cq:styleLabel="Color Unset"
-                                        jcr:primaryType="nt:unstructured"/>
+                                    cq:styleClasses="cmp-container--unset"
+                                    cq:styleId="color-unset"
+                                    cq:styleLabel="Color Unset"
+                                    jcr:primaryType="nt:unstructured"/>
                                 <item1
-                                        cq:styleClasses="cmp-container--white"
-                                        cq:styleId="white"
-                                        cq:styleLabel="White"
-                                        jcr:primaryType="nt:unstructured"/>
+                                    cq:styleClasses="cmp-container--white"
+                                    cq:styleId="white"
+                                    cq:styleLabel="White"
+                                    jcr:primaryType="nt:unstructured"/>
                                 <item2
-                                        cq:styleClasses="cmp-container--bg-efe-gray-light"
-                                        cq:styleId="background-gray-light"
-                                        cq:styleLabel="Background Gray - Light"
-                                        jcr:primaryType="nt:unstructured"/>
+                                    cq:styleClasses="cmp-container--bg-efe-gray-light"
+                                    cq:styleId="background-gray-light"
+                                    cq:styleLabel="Background Gray - Light"
+                                    jcr:primaryType="nt:unstructured"/>
                                 <item3
-                                        cq:styleClasses="cmp-container--bg-efe-gray-mid"
-                                        cq:styleId="background-gray-mid"
-                                        cq:styleLabel="Background Gray - Mid"
-                                        jcr:primaryType="nt:unstructured"/>
+                                    cq:styleClasses="cmp-container--bg-efe-gray-mid"
+                                    cq:styleId="background-gray-mid"
+                                    cq:styleLabel="Background Gray - Mid"
+                                    jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item0>
                         <item1
-                                cq:styleGroupLabel="Width"
-                                jcr:primaryType="nt:unstructured">
+                            cq:styleGroupLabel="Padding"
+                            cq:styleGroupMultiple="true"
+                            jcr:primaryType="nt:unstructured">
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
-                                        cq:styleClasses="cmp-container--width-none"
-                                        cq:styleId="none"
-                                        cq:styleLabel="None"
-                                        jcr:primaryType="nt:unstructured"/>
+                                    cq:styleClasses="padding-default"
+                                    cq:styleId="default-padding"
+                                    cq:styleLabel="Default Padding"
+                                    jcr:primaryType="nt:unstructured"/>
                                 <item1
-                                        cq:styleClasses="cmp-container--width-1400"
-                                        cq:styleId="large"
-                                        cq:styleLabel="Large"
-                                        jcr:primaryType="nt:unstructured"/>
-                                <item2
-                                        cq:styleClasses="cmp-container--width-1920"
-                                        cq:styleId="extra-large"
-                                        cq:styleLabel="Extra Large"
-                                        jcr:primaryType="nt:unstructured"/>
+                                    cq:styleClasses="padding-default-top"
+                                    cq:styleId="padding-default-top"
+                                    cq:styleLabel="Top Padding"
+                                    jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item1>
                         <item2
-                                cq:styleGroupLabel="Padding"
-                                cq:styleGroupMultiple="true"
-                                jcr:primaryType="nt:unstructured">
+                            cq:styleGroupLabel="Border Radius"
+                            cq:styleGroupMultiple="true"
+                            jcr:primaryType="nt:unstructured">
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
-                                        cq:styleClasses="cmp-container--padding"
-                                        cq:styleId="default-padding"
-                                        cq:styleLabel="Default Padding"
-                                        jcr:primaryType="nt:unstructured"/>
+                                    cq:styleClasses="border-radius--top-left"
+                                    cq:styleId="top-left"
+                                    cq:styleLabel="Top Left"
+                                    jcr:primaryType="nt:unstructured"/>
                                 <item1
-                                        cq:styleClasses="cmp-container--padding-right"
-                                        cq:styleId="right-padding"
-                                        cq:styleLabel="Right Padding"
-                                        jcr:primaryType="nt:unstructured"/>
+                                    cq:styleClasses="border-radius--top-right"
+                                    cq:styleId="top-radius"
+                                    cq:styleLabel="Top Right"
+                                    jcr:primaryType="nt:unstructured"/>
                                 <item2
-                                        cq:styleClasses="cmp-container--padding-left"
-                                        cq:styleId="left-padding"
-                                        cq:styleLabel="Left Padding"
-                                        jcr:primaryType="nt:unstructured"/>
+                                    cq:styleClasses="border-radius--bottom-left"
+                                    cq:styleId="bottom-left"
+                                    cq:styleLabel="Bottom Left"
+                                    jcr:primaryType="nt:unstructured"/>
                                 <item3
-                                        cq:styleClasses="cmp-container--padding-top"
-                                        cq:styleId="top-padding"
-                                        cq:styleLabel="Top Padding"
-                                        jcr:primaryType="nt:unstructured"/>
-                                <item4
-                                        cq:styleClasses="cmp-container--padding-bottom"
-                                        cq:styleId="bottom-padding"
-                                        cq:styleLabel="Bottom Padding"
-                                        jcr:primaryType="nt:unstructured"/>
-                                <item5
-                                        cq:styleClasses="cmp-container--no-padding-mobile"
-                                        cq:styleId="remove-mobile-padding"
-                                        cq:styleLabel="Remove Mobile Padding"
-                                        jcr:primaryType="nt:unstructured"/>
+                                    cq:styleClasses="border-radius--bottom-right"
+                                    cq:styleId="bottom-right"
+                                    cq:styleLabel="Bottom Right"
+                                    jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item2>
                         <item3
-                                cq:styleGroupLabel="Border Radius"
-                                cq:styleGroupMultiple="true"
-                                jcr:primaryType="nt:unstructured">
+                            cq:styleGroupLabel="Container Border"
+                            jcr:primaryType="nt:unstructured">
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
-                                        cq:styleClasses="border-radius--top-left"
-                                        cq:styleId="top-left"
-                                        cq:styleLabel="Top Left"
-                                        jcr:primaryType="nt:unstructured"/>
-                                <item1
-                                        cq:styleClasses="border-radius--top-right"
-                                        cq:styleId="top-radius"
-                                        cq:styleLabel="Top Right"
-                                        jcr:primaryType="nt:unstructured"/>
-                                <item2
-                                        cq:styleClasses="border-radius--bottom-left"
-                                        cq:styleId="bottom-left"
-                                        cq:styleLabel="Bottom Left"
-                                        jcr:primaryType="nt:unstructured"/>
-                                <item3
-                                        cq:styleClasses="border-radius--bottom-right"
-                                        cq:styleId="bottom-right"
-                                        cq:styleLabel="Bottom Right"
-                                        jcr:primaryType="nt:unstructured"/>
+                                    cq:styleClasses="cmp-container--border"
+                                    cq:styleId="border"
+                                    cq:styleLabel="Border"
+                                    jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item3>
                         <item4
-                                cq:styleGroupLabel="Container Border"
-                                jcr:primaryType="nt:unstructured">
+                            cq:styleGroupLabel="Card Style"
+                            jcr:primaryType="nt:unstructured">
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
-                                        cq:styleClasses="cmp-container--border"
-                                        cq:styleId="border"
-                                        cq:styleLabel="Border"
-                                        jcr:primaryType="nt:unstructured"/>
+                                    cq:styleClasses="card-1"
+                                    cq:styleId="card-1"
+                                    cq:styleLabel="Card 1"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="card-2"
+                                    cq:styleId="card-2"
+                                    cq:styleLabel="Card 2"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item2
+                                    cq:styleClasses="card-3"
+                                    cq:styleId="card-3"
+                                    cq:styleLabel="Card 3"
+                                    jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item4>
-                        <item5
-                                cq:styleGroupLabel="Alignment"
-                                cq:styleGroupMultiple="true"
-                                jcr:primaryType="nt:unstructured">
-                            <cq:styles jcr:primaryType="nt:unstructured">
-                                <item0
-                                        cq:styleClasses="cmp-container--min-height"
-                                        cq:styleId="minimum-height"
-                                        cq:styleLabel="Minimum Height"
-                                        jcr:primaryType="nt:unstructured"/>
-                                <item1
-                                        cq:styleClasses="cmp-container--center"
-                                        cq:styleId="container-center"
-                                        cq:styleLabel="Center"
-                                        jcr:primaryType="nt:unstructured"/>
-                                <item2
-                                        cq:styleClasses="cmp-container--balancedheight"
-                                        cq:styleId="balanced-height"
-                                        cq:styleLabel="Balanced Height"
-                                        jcr:primaryType="nt:unstructured"/>
-                                <item3
-                                        cq:styleClasses="cmp-container--fillHeight"
-                                        cq:styleId="fill-height"
-                                        cq:styleLabel="Fill Height"
-                                        jcr:primaryType="nt:unstructured"/>
-                            </cq:styles>
-                        </item5>
                     </cq:styleGroups>
                 </policy_1692708849082>
             </container>
@@ -2004,6 +1957,45 @@
                         </cq:styleGroups>
                     </policy>
                 </list-v2>
+                <columncontrol jcr:primaryType="nt:unstructured">
+                    <policy
+                        cq:styleDefaultClasses="padding-default gap-default"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Column Control Policy"
+                        sling:resourceType="wcm/core/components/policy/policy">
+                        <jcr:content jcr:primaryType="nt:unstructured"/>
+                        <cq:styleGroups jcr:primaryType="nt:unstructured">
+                            <item0
+                                cq:styleGroupLabel="Padding"
+                                cq:styleGroupMultiple="true"
+                                jcr:primaryType="nt:unstructured">
+                                <cq:styles jcr:primaryType="nt:unstructured">
+                                    <item0
+                                        cq:styleClasses="padding-default"
+                                        cq:styleId="padding-default"
+                                        cq:styleLabel="Default Padding"
+                                        jcr:primaryType="nt:unstructured"/>
+                                    <item1
+                                        cq:styleClasses="padding-default-top"
+                                        cq:styleId="padding-default-top"
+                                        cq:styleLabel="Top padding"
+                                        jcr:primaryType="nt:unstructured"/>
+                                </cq:styles>
+                            </item0>
+                            <item1
+                                cq:styleGroupLabel="Gap"
+                                jcr:primaryType="nt:unstructured">
+                                <cq:styles jcr:primaryType="nt:unstructured">
+                                    <item0
+                                        cq:styleClasses="gap-default"
+                                        cq:styleId="gap-default"
+                                        cq:styleLabel="Default"
+                                        jcr:primaryType="nt:unstructured"/>
+                                </cq:styles>
+                            </item1>
+                        </cq:styleGroups>
+                    </policy>
+                </columncontrol>
             </content>
         </fe-components>
     </efe>

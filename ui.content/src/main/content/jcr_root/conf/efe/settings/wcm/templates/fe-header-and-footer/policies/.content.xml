@@ -18,13 +18,13 @@
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="wcm/core/components/policies/mapping"/>
             <container
-                    cq:policy="efe/components/container/policy"
+                cq:policy="efe/components/container/policy"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="wcm/core/components/policies/mapping">
+                <container
+                    cq:policy="efe/components/container/policy_1692708849082"
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="wcm/core/components/policies/mapping">
-                <container
-                        cq:policy="efe/components/container/policy_1692708849082"
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="wcm/core/components/policies/mapping">
                     <efe jcr:primaryType="nt:unstructured">
                         <components jcr:primaryType="nt:unstructured">
                             <form jcr:primaryType="nt:unstructured">
@@ -66,7 +66,7 @@
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="wcm/core/components/policies/mapping"/>
                             <container
-                                cq:policy="efe/components/container/policy"
+                                cq:policy="efe/components/container/policy_1692708849082"
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="wcm/core/components/policies/mapping"/>
                             <breadcrumb
@@ -128,6 +128,10 @@
                                     sling:resourceType="wcm/core/components/policies/mapping"/>
                                 <list-v2
                                     cq:policy="efe/fe-components/content/list-v2/policy"
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="wcm/core/components/policies/mapping"/>
+                                <columncontrol
+                                    cq:policy="efe/fe-components/content/columncontrol/policy"
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="wcm/core/components/policies/mapping"/>
                             </content>

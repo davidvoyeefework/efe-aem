@@ -27,11 +27,11 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
-                                        <noofcolumns
+                                            <noofcolumns
                                                 jcr:primaryType="nt:unstructured"
-                                                fieldDescription="Select Number Of Columns"      
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/select"
                                                 emptyText="Select"
+                                                fieldDescription="Select Number Of Columns"
                                                 fieldLabel="Select Number Of Columns"
                                                 name="./columns">
                                                 <items jcr:primaryType="nt:unstructured">
@@ -44,7 +44,7 @@
                                                         text="Three"
                                                         value="3"/>
                                                 </items>
-                                        </noofcolumns>
+                                            </noofcolumns>
                                             <id
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
