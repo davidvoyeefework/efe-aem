@@ -36,10 +36,23 @@
     }
 
     & .button.cmp-button--button-primary{
-        padding-top: rem(30px);
         & a.cmp-button{
             display: inline-flex;
             padding: rem(12px) rem(26px);
+        }
+    }
+
+    & .cmp-container{
+        & > div{
+            & > div{
+                padding-bottom: rem(30px);
+                &:first-child{
+                    padding-bottom: 0;
+                }
+                &:last-child{
+                    padding-bottom: 0;
+                }
+            }
         }
     }
 }
