@@ -43,7 +43,7 @@
                         a {
                             color: #535658;
                             text-decoration: underline;
-                            font-weight: 300;
+                            font-weight: var(--fe-error-modal-body-font-weight);
                         }
                     }
                 }
@@ -86,7 +86,7 @@
                 button {
                     @include fe-primary-btn;
                     font-size: 14px;
-                    font-weight: 600;
+                    font-weight: 400;
                 }
             }
         }
@@ -117,6 +117,7 @@
             &__close-btn-div {
                 button {
                     @include fe-primary-btn;
+                    font-weight: 600;
                 }
             }
         }
