@@ -91,6 +91,13 @@
         &--subhead-00{
             letter-spacing: rem(0.64px);
         }
+
+        &--callout, &--callout p{
+            font-size: rem(24px);
+            font-style: normal;
+            font-weight: 700;
+            line-height: 105%; 
+        }
     }
 }
 

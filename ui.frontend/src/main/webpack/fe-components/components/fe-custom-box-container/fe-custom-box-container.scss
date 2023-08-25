@@ -33,10 +33,19 @@
             font-weight: 400;
             font-family: 'Open Sans';
         }
+
+        .cmp-text{
+            &--callout, &--callout p{
+                font-size: rem(24px);
+                font-style: normal;
+                font-weight: 700;
+                line-height: 105%; 
+            }
+        }
     }
 
     & .button.cmp-button--button-primary{
-        & a.cmp-button{
+        & a.cmp-button, & button.cmp-button{
             display: inline-flex;
             padding: rem(12px) rem(26px);
         }
@@ -110,4 +119,26 @@
     }
 }
 
+.icon-list{
+    & .cmp-container{
+        & .image {
+            height: rem(60px);
+            width: rem(60px);
+            margin-bottom: rem(20px);
 
+            & img.cmp-image__image{
+                max-height: rem(60px);
+                max-width: rem(60px);
+            }
+        }
+        & .text{
+            & .cmp-text, & .cmp-text p{
+                font-family: 'Open Sans';
+                font-size: rem(20px);
+                font-style: normal;
+                font-weight: 400;
+                line-height: rem(28px);
+            }
+        }
+    }
+}

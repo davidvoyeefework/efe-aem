@@ -15,6 +15,23 @@
     }
 }
 
+@mixin column-gap($gap){
+    @include media('>tablet') {
+        & > div {
+            & > .container{
+                padding: 0 rem($gap);
+
+                &:first-child{
+                    padding-left: 0;
+                }
+                &:last-child{
+                    padding-right: 0;
+                }
+            }
+        }
+    }
+}
+
 @mixin fe-secondary-btn {
     @include fe-primary-btn;
     background-color: #ffffff;
@@ -65,20 +82,11 @@
 
 
 .gap-default{
-    @include media('>tablet') {
-        & > div {
-            & > .container{
-                padding: 0 rem(52px);
+    @include column-gap(52px);
+}
 
-                &:first-child{
-                    padding-left: 0;
-                }
-                &:last-child{
-                    padding-right: 0;
-                }
-            }
-        }
-    }
+.gap-sm{
+    @include column-gap(20px);
 }
 
 .padding-default{
@@ -92,4 +100,8 @@
     @include media('<=tablet') {
         padding-top:rem(30px);
     }
+}
+
+.padding-sm-bottom{
+    padding-bottom:rem(35px);
 }
