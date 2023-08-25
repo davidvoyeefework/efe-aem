@@ -40,11 +40,11 @@
             <item7
                 jcr:primaryType="nt:unstructured"
                 jcr:title="PROMO_END_MONTH"
-                value="PROMO_END_MONTH|promotion.announcedDeadlineDate"/>
+                value="PROMO_END_MONTH|custom"/>
             <item8
                 jcr:primaryType="nt:unstructured"
                 jcr:title="PROMO_END_DAY"
-                value="PROMO_END_DAY|promotion.announcedDeadlineDate"/>
+                value="PROMO_END_DAY|custom"/>
             <item9
                 jcr:primaryType="nt:unstructured"
                 jcr:title="IS_MEMBER"
@@ -100,7 +100,67 @@
             <item22
                 jcr:primaryType="nt:unstructured"
                 jcr:title="availableThroughText"
-                value="availableThroughText|publicEnrollment.products.option.pm.availableThrough"/>
+                value="availableThroughText|custom"/>
+            <item23
+                jcr:primaryType="nt:unstructured"
+                jcr:title="promoDurationMonthsNumeric"
+                value="promoDurationMonthsNumeric|custom"/>
+            <item24
+                jcr:primaryType="nt:unstructured"
+                jcr:title="promotionBannerFeeText"
+                value="promotionBannerFeeText|custom"/>
+            <item25
+                jcr:primaryType="nt:unstructured"
+                jcr:title="promotionBannerFeeTextLink"
+                value="promotionBannerFeeTextLink|custom"/>
+            <item26
+                jcr:primaryType="nt:unstructured"
+                jcr:title="termsAndConditions"
+                value="termsAndConditions|custom"/>
+            <item27
+                jcr:primaryType="nt:unstructured"
+                jcr:title="supplement"
+                value="supplement|custom"/>
+            <item28
+                jcr:primaryType="nt:unstructured"
+                jcr:title="privacyPolicy"
+                value="privacyPolicy|custom"/>
+            <item29
+                jcr:primaryType="nt:unstructured"
+                jcr:title="disclosure"
+                value="disclosure|custom"/>
+            <item30
+                jcr:primaryType="nt:unstructured"
+                jcr:title="programFees"
+                value="programFees|custom"/>
+            <item31
+                jcr:primaryType="nt:unstructured"
+                jcr:title="seeFeesAndDisclosure"
+                value="seeFeesAndDisclosure|custom"/>
+            <item32
+                jcr:primaryType="nt:unstructured"
+                jcr:title="learnMoreOALink"
+                value="learnMoreOALink|custom"/>
+            <item33
+                jcr:primaryType="nt:unstructured"
+                jcr:title="learnMorePALink"
+                value="learnMorePALink|custom"/>
+            <item34
+                jcr:primaryType="nt:unstructured"
+                jcr:title="product_choice_url"
+                value="product_choice_url|custom"/>
+            <item35
+                jcr:primaryType="nt:unstructured"
+                jcr:title="otherWaysPromoMsgPa"
+                value="otherWaysPromoMsgPa|custom"/>
+            <item36
+                jcr:primaryType="nt:unstructured"
+                jcr:title="dashboardLink"
+                value="dashboardLink|custom"/>
+            <item37
+                jcr:primaryType="nt:unstructured"
+                jcr:title="pmAboutFeeText"
+                value="pmAboutFeeText|custom"/>
         </list>
     </jcr:content>
 </jcr:root>
