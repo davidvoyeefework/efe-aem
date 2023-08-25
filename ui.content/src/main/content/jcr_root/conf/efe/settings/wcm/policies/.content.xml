@@ -855,6 +855,11 @@
                                     cq:styleId="card-3"
                                     cq:styleLabel="Card 3"
                                     jcr:primaryType="nt:unstructured"/>
+                                <item3
+                                    cq:styleClasses="card-4"
+                                    cq:styleId="card-4"
+                                    cq:styleLabel="Card 4"
+                                    jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item4>
                     </cq:styleGroups>
@@ -1990,6 +1995,11 @@
                                         cq:styleClasses="gap-default"
                                         cq:styleId="gap-default"
                                         cq:styleLabel="Default"
+                                        jcr:primaryType="nt:unstructured"/>
+                                    <item1
+                                        cq:styleClasses="gap-sm"
+                                        cq:styleId="gap-sm"
+                                        cq:styleLabel="Small"
                                         jcr:primaryType="nt:unstructured"/>
                                 </cq:styles>
                             </item1>
