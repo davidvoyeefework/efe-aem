@@ -1,0 +1,113 @@
+
+.columncontrol{
+    & > div{
+        display: flex;
+        @include media('<=tablet') {
+            display: block;
+        }
+    }
+}
+
+
+.card-1, .card-2{
+    border: 1px solid #D1D6DD;
+    height: 100%;
+    padding: rem(35px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    & .cmp-title .cmp-title__text{
+        font-size: rem(32px);
+        text-transform: none;
+        line-height: 130%;
+        font-family: 'Open Sans';
+    }
+
+    & .text {
+        & .cmp-text, & .cmp-text p{
+            font-size: rem(20px);
+            line-height: 155%;
+            font-weight: 400;
+            font-family: 'Open Sans';
+        }
+    }
+
+    & .button.cmp-button--button-primary{
+        & a.cmp-button{
+            display: inline-flex;
+            padding: rem(12px) rem(26px);
+        }
+    }
+
+    & .cmp-container{
+        & > div{
+            & > div{
+                padding-bottom: rem(30px);
+                &:first-child{
+                    padding-bottom: 0;
+                }
+                &:last-child{
+                    padding-bottom: 0;
+                }
+            }
+        }
+    }
+}
+
+.card-3{
+    & .cmp-container{
+        & > div{
+            display: flex;
+            align-items: center;
+        }
+        padding: rem(35px);
+        border: 1px solid #D1D6DD;
+        & .image {
+            display: inline-block;
+            width: auto !important;
+            & img.cmp-image__image{
+                height: rem(59px);
+                width: rem(59px);
+                margin-right: rem(30px);
+            }
+        }
+        & .text{
+            display: inline-block;
+            width: auto !important;
+            & .cmp-text, & .cmp-text p{
+                font-size: rem(24px);
+                font-style: normal;
+                font-weight: 700;
+                line-height: 118%;
+                font-family: 'Open Sans';
+            }
+        }
+    }
+}
+
+.card-1{
+    & .title{
+        margin-bottom: rem(10px);
+    }
+}
+
+.card-2{
+    & .title{
+        margin-bottom: rem(30px);
+    }
+
+    & .text {
+        & .cmp-text, & .cmp-text p{
+            line-height: 130%;
+        }
+    }
+
+    @include media('<=tablet') {
+       margin-top: rem(30px);
+    }
+}
+
+
