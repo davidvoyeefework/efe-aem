@@ -32,11 +32,11 @@
             <item5
                 jcr:primaryType="nt:unstructured"
                 jcr:title="PROMOTION_ANNOUNCED_END_DATE"
-                value="PROMOTION_ANNOUNCED_END_DATE|promotion.announcedDeadlineDate"/>
+                value="PROMOTION_ANNOUNCED_END_DATE|custom"/>
             <item6
                 jcr:primaryType="nt:unstructured"
                 jcr:title="PROMOTION_EXPIRATION_DATE"
-                value="PROMOTION_EXPIRATION_DATE|promotion.expirationDate"/>
+                value="PROMOTION_EXPIRATION_DATE|custom"/>
             <item7
                 jcr:primaryType="nt:unstructured"
                 jcr:title="PROMO_END_MONTH"
