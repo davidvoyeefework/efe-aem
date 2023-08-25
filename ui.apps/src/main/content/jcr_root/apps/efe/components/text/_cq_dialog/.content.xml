@@ -86,6 +86,10 @@
                                                                 jcr:primaryType="cq:WidgetCollection"
                                                                 cssName="font-color-red"
                                                                 text="Red Font"/>
+                                                            <callout
+                                                                jcr:primaryType="cq:WidgetCollection"
+                                                                cssName="cmp-text--callout"
+                                                                text="Callout"/>
                                                         </styles>
                                                     </styles>
                                                     <efe-aem-dynamic-variable
