@@ -735,7 +735,7 @@
                         </item5>
                     </cq:styleGroups>
                 </policy>
-                <policy_1692708849082
+                <fepolicy
                     jcr:primaryType="nt:unstructured"
                     jcr:title="Fe Allowed Component Policy"
                     sling:resourceType="wcm/core/components/policy/policy"
@@ -779,6 +779,17 @@
                                     cq:styleId="background-gray-mid"
                                     cq:styleLabel="Background Gray - Mid"
                                     jcr:primaryType="nt:unstructured"/>
+                                <item4
+                                    cq:styleClasses="cmp-container--bg-fe-dark"
+                                    cq:styleId="cmp-container--bg-fe-dark"
+                                    cq:styleLabel="Background Dark"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item5
+                                    cq:styleClasses="cmp-container--bg-fe-yellow"
+                                    cq:styleId="cmp-container--bg-fe-yellow"
+                                    cq:styleLabel="Background Yellow"
+                                    jcr:primaryType="nt:unstructured"/>
+                                
                             </cq:styles>
                         </item0>
                         <item1
@@ -863,7 +874,7 @@
                             </cq:styles>
                         </item4>
                     </cq:styleGroups>
-                </policy_1692708849082>
+                </fepolicy>
             </container>
             <teaser jcr:primaryType="nt:unstructured">
                 <policy
@@ -1744,6 +1755,51 @@
                         </item1>
                     </cq:styleGroups>
                 </policy>
+                <fepolicy
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Vertical Separator Policy"
+                    sling:resourceType="wcm/core/components/policy/policy">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                    <cq:styleGroups jcr:primaryType="nt:unstructured">
+                        <item0
+                            cq:styleGroupLabel="Column content vertical alignment"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-vertical-separator--two__top"
+                                    cq:styleId="top"
+                                    cq:styleLabel="Top"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-vertical-separator--two__middle"
+                                    cq:styleId="middle"
+                                    cq:styleLabel="Middle"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item2
+                                    cq:styleClasses="cmp-vertical-separator--two__bottom"
+                                    cq:styleId="bottom"
+                                    cq:styleLabel="Bottom"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item3
+                                    cq:styleClasses="cmp-fe-vertical-separator"
+                                    cq:styleId="cmp-fe-vertical-separator"
+                                    cq:styleLabel="FE Separator"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item0>
+                        <item1
+                            cq:styleGroupLabel="Mobile Styles"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-vertical-separator--one cmp-vertical-separator--one__custom"
+                                    cq:styleId="two-column"
+                                    cq:styleLabel="2 Column"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item1>
+                    </cq:styleGroups>
+                </fepolicy>
             </verticalseparator>
             <relatedarticle jcr:primaryType="nt:unstructured">
                 <policy
