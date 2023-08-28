@@ -1,0 +1,9 @@
+
+.cmp-title--superpercentage {
+    .cmp-title__text:after {
+        content: '%';
+        color: $red-primary;
+        vertical-align: super;
+        line-height: 0;
+    }
+}
