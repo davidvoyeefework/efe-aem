@@ -79,25 +79,3 @@
     }
 }
 
-
-
-.gap-default{
-    @include column-gap(52px);
-}
-
-.gap-sm{
-    @include column-gap(20px);
-}
-
-.padding-default{
-    padding: 0 rem(109px) rem(80px) rem(109px);
-    @include media('<=tablet') {
-        padding: 0 rem(30px) rem(30px) rem(30px);
-    }
-}
-.padding-default-top{
-    padding-top:rem(80px);
-    @include media('<=tablet') {
-        padding-top:rem(30px);
-    }
-}
