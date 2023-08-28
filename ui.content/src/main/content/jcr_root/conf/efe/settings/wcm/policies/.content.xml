@@ -1922,6 +1922,15 @@
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                 </policy>
             </xftargetpage>
+            <xfpage jcr:primaryType="nt:unstructured">
+                <fepolicy
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="XF FE Page"
+                    sling:resourceType="wcm/core/components/policy/policy"
+                    clientlibs="[fe.site]">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                </fepolicy>
+            </xfpage>
         </components>
         <fe-components jcr:primaryType="nt:unstructured">
             <structure jcr:primaryType="nt:unstructured">

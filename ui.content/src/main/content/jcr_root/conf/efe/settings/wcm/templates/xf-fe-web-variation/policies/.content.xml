@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
-        cq:policy="efe/fe-components/structure/fe-page/policy"
+        cq:policy="efe/components/xfpage/fepolicy"
         jcr:primaryType="nt:unstructured"
         sling:resourceType="wcm/core/components/policies/mappings">
         <root
@@ -55,61 +55,61 @@
                         cq:policy="efe/components/modalpromotion/policy"
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="wcm/core/components/policies/mapping"/>
-					<header
-						cq:policy="efe/components/header/policy"
-						jcr:primaryType="nt:unstructured"
-						sling:resourceType="wcm/core/components/policies/mapping"/>
-					<verticalseparator
-						cq:policy="efe/components/verticalseparator/policy"
-						jcr:primaryType="nt:unstructured"
-						sling:resourceType="wcm/core/components/policies/mapping"/>
-					<breadcrumb
-							cq:policy="efe/components/breadcrumb/policy"
-							jcr:primaryType="nt:unstructured"
-							sling:resourceType="wcm/core/components/policies/mapping"/>
-					<button
-							cq:policy="efe/components/button/policy"
-							jcr:primaryType="nt:unstructured"
-							sling:resourceType="wcm/core/components/policies/mapping"/>
-					<container
-							cq:policy="efe/components/container/fepolicy"
-							jcr:primaryType="nt:unstructured"
-							sling:resourceType="wcm/core/components/policies/mapping"/>
-					<form jcr:primaryType="nt:unstructured">
-						<container
-								cq:policy="efe/components/form/container/form-container"
-								jcr:primaryType="nt:unstructured"
-								sling:resourceType="wcm/core/components/policies/mapping"/>
-					</form>
-					<video
-							cq:policy="efe/components/video/policy"
-							jcr:primaryType="nt:unstructured"
-							sling:resourceType="wcm/core/components/policies/mapping"/>
-					<tabs
-							cq:policy="efe/components/tabs/policy"
-							jcr:primaryType="nt:unstructured"
-							sling:resourceType="wcm/core/components/policies/mapping"/>
-					<separator
-							cq:policy="efe/components/separator/policy"
-							jcr:primaryType="nt:unstructured"
-							sling:resourceType="wcm/core/components/policies/mapping"/>
-					<relatedarticle
-							cq:policy="efe/components/relatedarticle/policy"
-							jcr:primaryType="nt:unstructured"
-							sling:resourceType="wcm/core/components/policies/mapping"/>
-					<listteaser
-							cq:policy="efe/components/listteaser/policy"
-							jcr:primaryType="nt:unstructured"
-							sling:resourceType="wcm/core/components/policies/mapping"/>
+                    <header
+                        cq:policy="efe/components/header/policy"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="wcm/core/components/policies/mapping"/>
+                    <verticalseparator
+                        cq:policy="efe/components/verticalseparator/policy"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="wcm/core/components/policies/mapping"/>
+                    <breadcrumb
+                        cq:policy="efe/components/breadcrumb/policy"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="wcm/core/components/policies/mapping"/>
+                    <button
+                        cq:policy="efe/components/button/policy"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="wcm/core/components/policies/mapping"/>
+                    <container
+                        cq:policy="efe/components/container/fepolicy"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="wcm/core/components/policies/mapping"/>
+                    <form jcr:primaryType="nt:unstructured">
+                        <container
+                            cq:policy="efe/components/form/container/form-container"
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="wcm/core/components/policies/mapping"/>
+                    </form>
+                    <video
+                        cq:policy="efe/components/video/policy"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="wcm/core/components/policies/mapping"/>
+                    <tabs
+                        cq:policy="efe/components/tabs/policy"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="wcm/core/components/policies/mapping"/>
+                    <separator
+                        cq:policy="efe/components/separator/policy"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="wcm/core/components/policies/mapping"/>
+                    <relatedarticle
+                        cq:policy="efe/components/relatedarticle/policy"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="wcm/core/components/policies/mapping"/>
+                    <listteaser
+                        cq:policy="efe/components/listteaser/policy"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="wcm/core/components/policies/mapping"/>
                 </components>
-				<fe-components jcr:primaryType="nt:unstructured">
-					<structure jcr:primaryType="nt:unstructured">
-						<fe-header
-							cq:policy="efe/fe-components/structure/fe-header/policy"
-							jcr:primaryType="nt:unstructured"
-							sling:resourceType="wcm/core/components/policies/mapping"/>
-					</structure>
-				</fe-components>
+                <fe-components jcr:primaryType="nt:unstructured">
+                    <structure jcr:primaryType="nt:unstructured">
+                        <fe-header
+                            cq:policy="efe/fe-components/structure/fe-header/policy"
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="wcm/core/components/policies/mapping"/>
+                    </structure>
+                </fe-components>
             </efe>
         </root>
     </jcr:content>
