@@ -121,9 +121,11 @@
 
 .card-4{
     margin-bottom: rem(35px);
-    &:last-child{
-        margin-bottom: 0;
-    }
+    @include media('>tablet') {
+        &:last-child{
+            margin-bottom: 0;
+        }
+     }
     & .cmp-container{
         & .image {
             height: rem(60px);
@@ -142,6 +144,20 @@
                 font-style: normal;
                 font-weight: 400;
                 line-height: rem(28px);
+            }
+        }
+    }
+}
+
+.columncontrol{
+    & > div{
+        & > .container{
+            &:last-child{
+                & .card-4{
+                    &:last-child{
+                        margin-bottom: 0;
+                    }
+                }
             }
         }
     }
