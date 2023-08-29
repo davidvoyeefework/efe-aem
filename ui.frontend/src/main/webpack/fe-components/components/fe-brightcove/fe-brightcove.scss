@@ -1,18 +1,12 @@
 .brightcove{
     width: rem(514px);
-    height: rem(293px);
+    height: rem(386px);
 }
-
-.large-height{
-    & .brightcove{
-        height: rem(336px);
-    }
-} 
 
 .large-height .brightcove, .brightcove{
     @include media('<=tablet') {
         width: calc( 100% + 192px);
-        height: rem(321px);
+        height: rem(428px);
         margin-left: -88px;
         margin-bottom: rem(40px);
     }
