@@ -20,7 +20,7 @@
             display: none;
         }
         #efe-nav-main .cmp-container--26 {
-            gap: rem(31);
+            gap: 17.34px;
             justify-content: normal;
             @media screen and (max-width: 576px) {
                 padding-top: 0 !important;
@@ -91,6 +91,9 @@
     }
     &.theme-vanguard, &.theme-aon, &.theme-ssga {
         .minimal-header {
+            #efe-nav-main .cmp-container--26 {
+                gap: 31.32px;
+            }
             * {
                 font-family: var(--font-family) !important;
             }
