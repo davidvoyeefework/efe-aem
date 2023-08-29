@@ -28,6 +28,10 @@
                     flex-direction: column;
                     &__content {
                         position: static;
+                        background-color: #F7F7F7;
+                    }
+                    .cmp-teaser__image .cmp-image__image {
+                        min-height: 225px;
                     }
                 }
             }
