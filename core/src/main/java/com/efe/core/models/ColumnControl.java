@@ -1,6 +1,7 @@
 package com.efe.core.models;
 
 import java.util.List;
+import java.util.Map;
 
 import com.adobe.cq.wcm.core.components.models.Component;
 
@@ -9,19 +10,10 @@ import com.adobe.cq.wcm.core.components.models.Component;
  */
 public interface ColumnControl extends Component {
 
-
 	/**
-	 * Gets the grid class.
+	 * Gets the columns list.
 	 *
-	 * @return the grid class
+	 * @return the columns list
 	 */
-	String getGridClass();
-
-	/**
-	 * Gets the columns index.
-	 *
-	 * @return the columns index
-	 */
-	List<String> getColumnsIndex();
-
+	List<Map<String, String>> getColumnsList();
 }
