@@ -23,7 +23,7 @@ export default class FeMembershipDashboardButton {
             buttonHeading = "Already using Online Advice?";
       
             if (this.windowObject?.context?.isMember) {
-                oaButtonTitle = "Member Dashboard";
+                oaButtonTitle = "MEMBER DASHBOARD";
                 buttonHeading = "Already using Professional Management?";
             }
             this.homePageUrl =
