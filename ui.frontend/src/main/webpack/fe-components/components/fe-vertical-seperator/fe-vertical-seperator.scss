@@ -26,13 +26,12 @@
    
     & li{
         & .image{
-            width: rem(35px);
-            height: rem(30px);
+            height: rem(40px);
             margin-bottom: rem(30px);
 
             & .cmp-image img{
-                width: rem(35px);
-                height: rem(30px);
+                width: auto;
+                height: rem(40px);
             }
         }
 
