@@ -1,4 +1,8 @@
 @mixin mobile-style {
+    margin-bottom: rem(40px);
+    &:last-child{
+        margin-bottom: 0;
+    }
     @include media('<=tablet') {
         flex: 0 0 100%;
         & .cmp-teaser{
@@ -21,6 +25,10 @@
         flex-wrap: wrap;
         gap: rem(80px);
         margin-right: -80px;
+        @include media('<=tablet') {
+            gap: 0;
+            margin-right: 0;
+        }
 
         & .cmp-teaser--thumbnail{
             flex: 0 0 calc(33.33% - 80px);
