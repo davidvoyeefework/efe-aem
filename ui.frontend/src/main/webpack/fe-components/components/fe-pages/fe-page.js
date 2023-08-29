@@ -47,6 +47,7 @@ export default class FePage {
         const daVarsStr = getCookie('daVars');
         const daVars = daVarsStr ? JSON.parse(decodeURIComponent(daVarsStr)) : null;
         if (!daVars || !daVars.sponsorId) {
+            handleLoader(false);
             return
         }
         let apiUrl = document.querySelector('#fe-properties')?.getAttribute('data-aggregate-api');

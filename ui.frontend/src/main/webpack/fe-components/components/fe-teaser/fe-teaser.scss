@@ -28,12 +28,34 @@
                     flex-direction: column;
                     &__content {
                         position: static;
+                        background-color: #F7F7F7;
+                    }
+                    .cmp-teaser__image .cmp-image__image {
+                        min-height: 225px;
                     }
                 }
             }
         }
     }
     &.theme-vanguard, &.theme-aon, &.theme-ssga {
+        .cmp-teaser--hero {
+            .cmp-teaser__title {
+                font-size: 54px;
+                line-height: 59.4px;
+                color: #FFFFFF;
+            }
+            .cmp-teaser__description {
+                font-family:'Open Sans';
+                color: #FFFFFF;
+                p {
+                    font-size: 20px;
+                    font-weight: 400;
+                    line-height: 28px;
+                    font-family:'Open Sans';
+                    color: #FFFFFF;
+                }
+            }
+        }
         .cmp-teaser--hero .cmp-teaser__image .cmp-image__image {
             border-radius: 0;
         }

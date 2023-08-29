@@ -6,7 +6,7 @@
         jcr:primaryType="nt:unstructured"
         sling:resourceType="wcm/core/components/policies/mappings">
         <root
-            cq:policy="efe/components/container/policy_1574694950110"
+            cq:policy="efe/components/container/fepolicy"
             jcr:primaryType="nt:unstructured"
             sling:resourceType="wcm/core/components/policies/mapping">
             <experiencefragment-header
@@ -22,7 +22,7 @@
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="wcm/core/components/policies/mapping">
                 <container
-                    cq:policy="efe/components/container/policy_1692708849082"
+                    cq:policy="efe/components/container/fepolicy"
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="wcm/core/components/policies/mapping">
                     <efe jcr:primaryType="nt:unstructured">
@@ -66,7 +66,7 @@
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="wcm/core/components/policies/mapping"/>
                             <container
-                                cq:policy="efe/components/container/policy_1692708849082"
+                                cq:policy="efe/components/container/fepolicy"
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="wcm/core/components/policies/mapping"/>
                             <breadcrumb
@@ -102,7 +102,7 @@
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="wcm/core/components/policies/mapping"/>
                             <verticalseparator
-                                cq:policy="efe/components/verticalseparator/policy"
+                                cq:policy="efe/components/verticalseparator/fepolicy"
                                 jcr:primaryType="nt:unstructured"
                                 sling:resourceType="wcm/core/components/policies/mapping"/>
                             <relatedarticle
