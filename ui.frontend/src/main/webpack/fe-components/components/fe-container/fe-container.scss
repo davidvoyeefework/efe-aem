@@ -1,4 +1,22 @@
 
+.columncontrol{
+    & > div{
+        display: flex;
+        @include media('<=tablet') {
+            display: block;
+        }
+    }
+
+    &.mobile-row-reverse{
+        & > div{
+            @include media('<=tablet') {
+                display: flex;
+                flex-direction: column-reverse;
+            }
+        }
+    }
+}
+
 .cmp-container--bg-fe-dark{
  background-color: $feDarkBackgroundColor;
 
@@ -9,6 +27,19 @@
 
 .cmp-container--bg-fe-yellow{
     background-color: $feYellowBackgroundColor;
+
+    & .button{
+        & a, button{
+            background-color: #000;
+            color: $feYellowBackgroundColor;
+            text-align: center;
+            font-family: $openSans;
+            font-size: rem(24px);
+            font-style: normal;
+            font-weight: 600;
+            line-height: rem(29px);
+        }
+    }
 }
 
 .gap-default{
@@ -19,10 +50,28 @@
     @include column-gap(20px);
 }
 
+.gap-md{
+    @include column-gap(40px);
+}
+
 .padding-default{
     padding: 0 rem(109px) rem(80px) rem(109px);
     @include media('<=tablet') {
         padding: 0 rem(30px) rem(30px) rem(30px);
+        &.mobile-full-width{
+            padding: 0;
+            & .text{
+                padding: 0 rem(38px) 0 rem(38);
+
+                &:first-child{
+                    padding-top: rem(30px);
+                }
+
+                &:last-child{
+                    padding-bottom: rem(60px) ;
+                }
+            }
+        }
     }
 }
 .padding-default-top{
