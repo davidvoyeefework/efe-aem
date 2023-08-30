@@ -74,7 +74,7 @@ export default class FePage {
     async getKeys() {
         let apiUrl = document.querySelector('#fe-properties')?.getAttribute('data-keys-api');
         const keys = forKeysPayload;
-        await postJSONforKeys('https://www.feitest.com/api/v1/texts/forKeys', keys).then(data => {
+        await postJSONforKeys(apiUrl, keys).then(data => {
             pushToWindowObject(data);
         }).catch(error => {
             // Handle any errors that occurred during the fetch request
@@ -83,10 +83,11 @@ export default class FePage {
         });
     }
     async getAuthenticationStatus() {
+        let apiUrl = document.querySelector('#fe-properties')?.getAttribute('data-authenticate-api');
         const headers = {
             'Accept': 'application/json, text/plain, */*',
         }
-        await fetchData('https://www.feitest.com/api/v1/userlogin/authenticationstatus', headers).then(data => {
+        await fetchData(apiUrl, headers).then(data => {
             console.log(data);
             pushToWindowObject(data);
             const userLoggedIn = data.userLoggedIn;

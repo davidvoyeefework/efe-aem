@@ -2,6 +2,7 @@
     .cmp-teaser--hero {
         .cmp-teaser {
             &__content {
+                width: max-content;
                 @include media('<tablet') {
                     position: absolute;
                     margin: 0;
@@ -10,10 +11,14 @@
                     top: 0;
                 }
             }
-            &__title{
+            &__title {
+                @include media('>=tablet') {
+                    font-size: 64px;
+                    line-height: 67.2px;
+                }
                 @include media('<tablet') {
-                margin-top: 0;
-                margin-bottom: 35px;
+                    margin-top: 0;
+                    margin-bottom: 35px;
                 }
             }
             &__image {
@@ -40,8 +45,11 @@
     &.theme-vanguard, &.theme-aon, &.theme-ssga {
         .cmp-teaser--hero {
             .cmp-teaser__title {
-                font-size: 54px;
-                line-height: 59.4px;
+                font-family:'Open Sans';
+                @include media('>=tablet') {
+                    font-size: 54px;
+                    line-height: 59.4px;
+                }
                 color: #FFFFFF;
             }
             .cmp-teaser__description {
