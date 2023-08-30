@@ -33,7 +33,7 @@
     }
 
     & &__button{
-        padding: rem(21px) rem(121px) rem(17px) rem(122px);
+        padding: rem(20px) rem(60px) rem(12px) rem(60px);
         @include media('<=tablet') {
             padding: rem(21px) rem(56px) rem(18px) rem(56px);
         }
@@ -48,7 +48,7 @@
 
     & &__panel{
         border-radius: 3px;
-        padding: rem(23px) rem(25px) rem(42px) rem(27px);
+        padding: rem(36px) rem(80px) rem(24px) rem(80px);
         @include media('<=tablet') {
             padding: rem(12px) rem(23px) rem(24px) rem(24px);
         }
