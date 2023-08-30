@@ -84,15 +84,74 @@
     & .font-color-red{
         color: #c32d37 !important;
     }
+
+    b{
+        font-weight: 700 !important;
+    }
 }
 
 .fepage{
     .cmp-text{
+        &--heading-01{
+            font-size: rem(54px);
+            font-style: normal;
+            line-height: 110%;
+        }
+
         &--subhead-00{
-            letter-spacing: rem(0.64px);
+            line-height: 118%;
+            font-weight: 300;
+        }
+
+        &--subhead-01{
+            font-size: 32px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 118%;
+        }
+
+        &--subhead-02{
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 105%;
         }
 
         &--callout, &--callout p{
+            font-size: rem(24px);
+            font-style: normal;
+            font-weight: 700;
+            line-height: 105%; 
+        }
+    }
+
+    & .cmp-title{
+        &--heading-01 *{
+            font-size: rem(54px);
+            font-style: normal;
+            line-height: 110%;
+        }
+
+        &--subhead-00 *{
+            line-height: 118%;
+            font-weight: 300;
+        }
+
+        &--subhead-01 *{
+            font-size: 32px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 118%;
+        }
+
+        &--subhead-02 *{
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 105%;
+        }
+
+        &--callout *, &--callout p{
             font-size: rem(24px);
             font-style: normal;
             font-weight: 700;

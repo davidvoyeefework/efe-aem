@@ -27,9 +27,12 @@
 
 .cmp-container--bg-fe-yellow{
     background-color: $feYellowBackgroundColor;
+}
 
-    & .button{
-        & a, button{
+.fepage{
+    .cmp-container--bg-fe-yellow{
+        .cmp-button--button-primary .cmp-button, 
+        .fepage .cmp-teaser__action-link{
             background-color: #000;
             color: $feYellowBackgroundColor;
             text-align: center;
