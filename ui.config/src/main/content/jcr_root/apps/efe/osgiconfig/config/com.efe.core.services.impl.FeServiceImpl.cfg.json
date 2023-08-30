@@ -1,8 +1,8 @@
 {
-  "pageFrameApi": "$[env:forKey_api;default=https://www.feitest.com/api/v1/pageframe/?namespace=]",
-  "aggregateApi": "$[env:forKey_api;default=https://www.feitest.com/api/v1/planowners/{Recordkeeper}/aggregate]",
-  "forKeyApi": "$[env:forKey_api;default=https://www.feitest.com/advisor/api/v1/texts/forKeys]",
-  "authenticateApi": "$[env:authenticate_api;default=https://www.feitest.com/api/v1/userlogin/authenticationstatus]",
+  "pageFrameApi": "$[env:PAGEFRAME_API;default=https://www.feitest.com/api/v1/pageframe/?namespace=]",
+  "aggregateApi": "$[env:AGGREGATE_API;default=https://www.feitest.com/api/v1/planowners/{Recordkeeper}/aggregate]",
+  "forKeyApi": "$[env:FORKEYS_API;default=https://www.feitest.com/api/v1/texts/forKeys]",
+  "authenticateApi": "$[env:AUTHENTICATE_API;default=https://www.feitest.com/api/v1/userlogin/authenticationstatus]",
   "dynamicVariableList": [
     "$[env:fe_technical_dynamic_variables;default=/etc/acs-commons/lists/fe/fe-technical-dynamic-variables|false]",
     "$[env:sponsor_details;default=/etc/acs-commons/lists/fe/sponsor-details|true]"
