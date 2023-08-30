@@ -3,15 +3,12 @@ export default class FeHeader {
     constructor() {
         document.addEventListener("messageFromfePage", (e) =>{
             this.attributeParameterElem = document.querySelector('#fe-properties');
-            this.calculationVariableList = ["availableThroughText","promotionBannerFeeText",
-                                            "PROMOTION_ANNOUNCED_END_DATE"]; 
             this.init();
         });
     }
     init() {
         if(window.aemfe.header) {
             this.changeHeaderValues();
-            // this.getDataFieldIds();
         }
     }
     changeHeaderValues() {
@@ -24,18 +21,29 @@ export default class FeHeader {
             const elems = document.querySelectorAll('.' + Object.keys(item));
             elems?.forEach((ele) => {
                 ele.classList.remove("sponsor-value-hide");
-                if(!this.calculationVariableList.includes(Object.keys(item)[0])) {
-                    if(data[item[Object.keys(item)]] !== undefined) {
-                        ele.innerHTML = data[item[Object.keys(item)]];
+                // Two approaches to replace variables
+                const activeVariableKey  = Object?.keys(item)?.length ? Object.keys(item)[0] : ""; // "SUPPORT_PHONE"
+                const activeKeyValue = item ? item[activeVariableKey] : ""; // header.supportPhone or custom
+                const CUSTOM_VARIABLE_VALUE = "custom";
+                // for custom scenario - manipulation before replacing variable
+                if(activeKeyValue === CUSTOM_VARIABLE_VALUE) {
+                    ele.innerHTML = this.calculateCustomVariable(activeVariableKey, activeKeyValue);
+                } else {
+                    // Dynamic variables which have valid refrence in window obj data
+                    // get from window obj as per specified activeKeyValue
+                    let requiredReplaceableValue  = "";
+
+                    // direct replacement
+                    if(data[activeKeyValue] !== undefined) {
+                        requiredReplaceableValue = data[activeKeyValue];
                     } else {
                         try {
-                            ele.innerHTML = eval('data.' + item[Object?.keys(item)])?eval('data.' + item[Object?.keys(item)]):"";
+                            requiredReplaceableValue = eval(`data.${activeKeyValue}`)? eval(`data.${activeKeyValue}`) : "";
                         } catch (e) {
-                            console.log('invalid key', Object.keys(item));
+                            console.log('invalid key', activeVariableKey);
                         }
                     }
-                } else {
-                    ele.innerHTML = this.calculateVariable(Object.keys(item)[0], item[Object?.keys(item)]);
+                    ele.innerHTML = requiredReplaceableValue;
                 }
             })
         })
@@ -49,17 +57,40 @@ export default class FeHeader {
             sponsorLogo.insertAdjacentHTML('beforeend', sponsorLogoEl);
         }
     }
-    calculateVariable(key, value) {
-        if(key === 'availableThroughText') {
-            return utility.availableThroughText(key, window.aemfe[value]);
-        }
-        if(key === 'promotionBannerFeeText') {
-            return utility.promotionBannerFeeText(key, window.aemfe[value]);
-        }
-        if(key === 'PROMOTION_ANNOUNCED_END_DATE') {
-            const data = window.aemfe;
-            let keyvalue = eval('data.' +value);
-            return utility.PROMOTION_ANNOUNCED_END_DATE(key, keyvalue);
+    calculateCustomVariable(key) {
+        switch(key) {
+            case "availableThroughText":
+                return utility.availableThroughText(key);
+            case "promotionBannerFeeText":
+                return utility.promotionBannerFeeInfo()?.promotionBannerFeeText;
+            case "PROMOTION_ANNOUNCED_END_DATE":
+                return utility.PROMOTION_ANNOUNCED_END_DATE(key); 
+            case "promotionBannerFeeTextLink":
+                return utility.promotionBannerFeeInfo()?.promotionBannerFeeTextLink;
+            case "PROMOTION_EXPIRATION_DATE":
+                return utility.getPromotionExpirationDate();
+            case "promoDurationMonthsNumeric":
+                return utility.getPromoDurationMonthsNumeric();
+            case "programFees":
+                return utility.getProgramFeesModalLink("program fees");
+            case "seeFeesAndDisclosure":
+                return utility.getProgramFeesModalLink("See fees and disclosure");
+            case "learnMoreOALink":
+                return utility.prepareOALearnMoreLink();
+            case "learnMorePALink":
+                return utility.preparePALearnMoreLink();
+            case "product_choice_url":
+                return utility.getProductChoiceUrl();
+            case "otherWaysPromoMsgPa":
+                return utility.getOtherWaysPromoMsgPa();
+            case "dashboardLink":
+                return utility.getDashboardLink();
+            case "pmAboutFeeText":
+                utility.getPmAboutFeeText();
+            default:
+                return ""
+
         }
     }
+
 }

@@ -150,3 +150,9 @@ export const handleLoader =(isShow) =>{
       }   
 }
 
+export const captureScIdFromUrl  = () => {
+  var reg = new RegExp("[?&]" + "s_cid" + "=([^&#]*)", "i");
+  var currentUrl = window.location.href;
+  var string = reg.exec(currentUrl);
+  return string ? string[1] : null;
+}
