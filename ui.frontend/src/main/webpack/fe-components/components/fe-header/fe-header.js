@@ -47,10 +47,11 @@ export default class FeHeader {
                 }
             })
         })
-        document.querySelector('.fe-modal-toggle-fe-program-fees')?.addEventListener('click', (e)=>{
-            e.preventDefault();
-            document.querySelector('.fe-aem-form .fe-modal-toggle-fe-program-fees')?.click();
-        });
+       window.addEventListener('click', (e)=>{
+        if (e.target.classList.contains('fe-program-fees-modal-toggle')){
+            document.querySelector('.fe-modal')?.classList.toggle("fe-show-modal");
+        }
+       })
         var sponsorLogo = document.querySelector(".sponsor-logo .cmp-image");
         if (sponsorLogo && data.context.isFeChannel && data.context.sponsorId) {
             var logoFileName = data.context.sponsorId;
