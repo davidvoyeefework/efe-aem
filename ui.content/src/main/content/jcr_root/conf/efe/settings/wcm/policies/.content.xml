@@ -420,6 +420,11 @@
                                     cq:styleId="stats-01-superplus"
                                     cq:styleLabel="Stats 1 plus superscript"
                                     jcr:primaryType="nt:unstructured"/>
+                                <item9
+                                    cq:styleClasses="cmp-title--heading-01 cmp-title--superpercentage"
+                                    cq:styleId="percentage-superscript"
+                                    cq:styleLabel="Percentage superscript"
+                                    jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item0>
                         <item1
@@ -873,6 +878,33 @@
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item4>
+                        <item5
+                            cq:styleGroupLabel="Alignment"
+                            cq:styleGroupMultiple="true"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-container--min-height"
+                                    cq:styleId="minimum-height"
+                                    cq:styleLabel="Minimum Height"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-container--center"
+                                    cq:styleId="container-center"
+                                    cq:styleLabel="Center"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item2
+                                    cq:styleClasses="cmp-container--balancedheight"
+                                    cq:styleId="balanced-height"
+                                    cq:styleLabel="Balanced Height"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item3
+                                    cq:styleClasses="cmp-container--fillHeight"
+                                    cq:styleId="fill-height"
+                                    cq:styleLabel="Fill Height"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item5>
                     </cq:styleGroups>
                 </fepolicy>
             </container>
