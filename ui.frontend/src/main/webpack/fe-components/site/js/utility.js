@@ -257,7 +257,7 @@ export const prepareOALearnMoreLink = () => {
 
     //now remove https:// from the url since Unbounce already prefix the button link url with https://.
     //this value will be the dynamic replacement for button link url
-    return url.substring(8, url.length);
+    return `<a href=${url.substring(8, url.length)} target="_self" class="fe-learn-more-link">Learn More</a>`;
   } else {
     type = threeTierChoiceCallVersion;
     if (type && type === "SIDE_BY_SIDE_THREE_TIER_CHOICE_CALL") {
@@ -269,7 +269,7 @@ export const prepareOALearnMoreLink = () => {
         apiBaseUrl +
         "app/productchoices/#/oaDetailed?fromPoint=MA_PUBLIC_ENROLL";
     }
-    return url.substring(8, url.length);
+    return `<a href=${url.substring(8, url.length)} target="_self" class="fe-learn-more-link">Learn More</a>`;
   }
 }
 
@@ -406,6 +406,7 @@ export const getDashboardLink = () => {
 
 export const getPmAboutFeeText = () => {
   const windowDataObj = window?.aemfe;
+  const FeeAndPervalue = monthlyFeeAndPervalue(windowDataObj?.sponsoredFees);
   let pmAboutFeeText =
       "About {{ monthlyFee }} per month for each {{ perValue }} in your account";
     if (
@@ -416,16 +417,31 @@ export const getPmAboutFeeText = () => {
     }
     pmAboutFeeText = pmAboutFeeText.replace(
       "{{ monthlyFee }}",
-      formatMoney(windowDataObj?.sponsoredFees[0]?.feeScheduleTiers[0]?.sampleFeePerPeriod)
+      FeeAndPervalue?.feePeriod
     );
     pmAboutFeeText = pmAboutFeeText.replace(
       "{{ perValue }}",
-      formatMoneyNoCentsWithComma(windowDataObj?.sponsoredFees[0]?.feeScheduleTiers[0]?.sampleAum)
+      FeeAndPervalue?.sampleAum
     );
-  //   this.pageData.pmAboutFeeText = pmAboutFeeText;
   return pmAboutFeeText
 }
-
+export const monthlyFeeAndPervalue = (sponsoredFees)=> {
+    var FeeAndPervalue = {};
+    var pmFeesInfo = {};
+    sponsoredFees.forEach((prgFee)=> {
+        if (prgFee && prgFee.feature === "PROFESSIONAL_MANAGEMENT" && prgFee.accountTypes.includes("SPONSORED") > -1 && prgFee.feeScheduleTiers && prgFee.feeScheduleTiers.length > 0) {
+            pmFeesInfo = prgFee;
+            var feesInfo = pmFeesInfo.feeScheduleTiers.sort(function (a, b) {
+              return a.feeRate > b.feeRate ? 1 : -1;
+            }).reverse(); // var feesInfo = _.sortBy(pmFeesInfo.feeScheduleTiers, 'feeRate').reverse();
+            if (feesInfo[0]) {
+                FeeAndPervalue.feePeriod = formatMoney(feesInfo[0]?.sampleFeePerPeriod);
+                FeeAndPervalue.sampleAum = formatMoneyNoCentsWithComma(feesInfo[0]?.sampleAum);
+            }
+        }
+    });
+    return FeeAndPervalue;
+}
 export const formatMoney = (amount)=> {
     if (typeof amount === "number") {
         // All money is dollars with two fractional digits.
