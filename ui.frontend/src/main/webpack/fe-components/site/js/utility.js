@@ -229,7 +229,7 @@ export const getActiveDataFields = (str) => {
 
 // programFees
 export const getProgramFeesModalLink = (str) => {
-  return `<a href="#" target="_blank" class="fe-modal-toggle-fe-program-fees">${str}</a>`
+  return `<a href="javascript:void(0)" class="fe-program-fees-modal-toggle">${str}</a>`
 }
 
 
