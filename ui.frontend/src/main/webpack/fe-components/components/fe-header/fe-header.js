@@ -47,7 +47,10 @@ export default class FeHeader {
                 }
             })
         })
-
+        document.querySelector('.fe-modal-toggle-fe-program-fees')?.addEventListener('click', (e)=>{
+            e.preventDefault();
+            document.querySelector('.fe-aem-form .fe-modal-toggle-fe-program-fees')?.click();
+        });
         var sponsorLogo = document.querySelector(".sponsor-logo .cmp-image");
         if (sponsorLogo && data.context.isFeChannel && data.context.sponsorId) {
             var logoFileName = data.context.sponsorId;
@@ -86,7 +89,7 @@ export default class FeHeader {
             case "dashboardLink":
                 return utility.getDashboardLink();
             case "pmAboutFeeText":
-                utility.getPmAboutFeeText();
+                return utility.getPmAboutFeeText();
             default:
                 return ""
 
