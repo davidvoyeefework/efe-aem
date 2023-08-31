@@ -11,156 +11,132 @@
         <list jcr:primaryType="nt:unstructured">
             <item0
                 jcr:primaryType="nt:unstructured"
-                jcr:title="SPONSOR_NAME"
+                jcr:title="Sponsor Name"
                 value="SPONSOR_NAME|preferredName"/>
             <item1
                 jcr:primaryType="nt:unstructured"
-                jcr:title="IS_FE_CHANNEL"
-                value="IS_FE_CHANNEL|isFeChannel"/>
+                jcr:title="RK Login URL"
+                value="RK_LOGIN_URL|providerInfo.rkLoginUrl"/>
             <item2
                 jcr:primaryType="nt:unstructured"
-                jcr:title="RK_LOGIN_URL"
-                value="RK_LOGIN_URL|providerInfo.rkLoginUrl"/>
+                jcr:title="Recordkeeper Name"
+                value="RECORDKEEPER_NAME|recordKeeperName"/>
             <item3
                 jcr:primaryType="nt:unstructured"
-                jcr:title="RECORDKEEPER_NAME"
-                value="RECORDKEEPER_NAME|recordKeeperName"/>
+                jcr:title="Promotion Announced End Date"
+                value="PROMOTION_ANNOUNCED_END_DATE|custom"/>
             <item4
                 jcr:primaryType="nt:unstructured"
-                jcr:title="RECORDKEEPER_ID"
-                value="RECORDKEEPER_ID|recordKeeperId"/>
+                jcr:title="Promotion Expiration Date"
+                value="PROMOTION_EXPIRATION_DATE|custom"/>
             <item5
                 jcr:primaryType="nt:unstructured"
-                jcr:title="PROMOTION_ANNOUNCED_END_DATE"
-                value="PROMOTION_ANNOUNCED_END_DATE|custom"/>
+                jcr:title="Pm about fee text"
+                value="pmAboutFeeText|custom"/>
             <item6
                 jcr:primaryType="nt:unstructured"
-                jcr:title="PROMOTION_EXPIRATION_DATE"
-                value="PROMOTION_EXPIRATION_DATE|custom"/>
+                jcr:title="Support Hours"
+                value="SUPPORT_HOURS|header.supportHour"/>
             <item7
                 jcr:primaryType="nt:unstructured"
-                jcr:title="PROMO_END_MONTH"
-                value="PROMO_END_MONTH|custom"/>
+                jcr:title="Support Hours Only"
+                value="SUPPORT_HOURS_ONLY|header.supportHoursOnly"/>
             <item8
                 jcr:primaryType="nt:unstructured"
-                jcr:title="PROMO_END_DAY"
-                value="PROMO_END_DAY|custom"/>
+                jcr:title="Support Phone Text"
+                value="SUPPORT_PHONE_TEXT|header.supportPhoneText"/>
             <item9
                 jcr:primaryType="nt:unstructured"
-                jcr:title="IS_MEMBER"
-                value="IS_MEMBER|context.isMember"/>
+                jcr:title="Support Phone Prefix"
+                value="SUPPORT_PHONE_PREFIX|header.supportPhonePrefix"/>
             <item10
                 jcr:primaryType="nt:unstructured"
-                jcr:title="USER_TIER"
-                value="USER_TIER|context.userTier"/>
+                jcr:title="Support Phone"
+                value="SUPPORT_PHONE|header.supportPhone"/>
             <item11
                 jcr:primaryType="nt:unstructured"
-                jcr:title="LOGOUT_LINK"
-                value="LOGOUT_LINK|header.logoutLink"/>
+                jcr:title="Support Phone Suffix"
+                value="SUPPORT_PHONE_SUFFIX|header.supportPhoneSuffix"/>
             <item12
                 jcr:primaryType="nt:unstructured"
-                jcr:title="LOGOUT_TEXT"
-                value="LOGOUT_TEXT|header.logoutText"/>
+                jcr:title="Support Sr Text"
+                value="SUPPORT_SR_TEXT|header.supportSrText"/>
             <item13
                 jcr:primaryType="nt:unstructured"
-                jcr:title="SUPPORT_HOURS"
-                value="SUPPORT_HOURS|header.supportHour"/>
+                jcr:title="Logout Link"
+                value="LOGOUT_LINK|header.logoutLink"/>
             <item14
                 jcr:primaryType="nt:unstructured"
-                jcr:title="SUPPORT_HOURS_ONLY"
-                value="SUPPORT_HOURS_ONLY|header.supportHoursOnly"/>
+                jcr:title="Logout Text"
+                value="LOGOUT_TEXT|header.logoutText"/>
             <item15
                 jcr:primaryType="nt:unstructured"
-                jcr:title="SUPPORT_PHONE"
-                value="SUPPORT_PHONE|header.supportPhone"/>
+                jcr:title="MA Program Name"
+                value="MA_PROGRAM_NAME|ma.program.name"/>
             <item16
                 jcr:primaryType="nt:unstructured"
-                jcr:title="SUPPORT_PHONE_PREFIX"
-                value="SUPPORT_PHONE_PREFIX|header.supportPhonePrefix"/>
+                jcr:title="OA Program Name"
+                value="OA_PROGRAM_NAME|oa.program.name"/>
             <item17
                 jcr:primaryType="nt:unstructured"
-                jcr:title="SUPPORT_PHONE_SUFFIX"
-                value="SUPPORT_PHONE_SUFFIX|header.supportPhoneSuffix"/>
+                jcr:title="Terms and Conditions Link"
+                value="termsAndConditions|custom"/>
             <item18
                 jcr:primaryType="nt:unstructured"
-                jcr:title="SUPPORT_PHONE_TEXT"
-                value="SUPPORT_PHONE_TEXT|header.supportPhoneText"/>
+                jcr:title="Supplement Link"
+                value="supplement|custom"/>
             <item19
                 jcr:primaryType="nt:unstructured"
-                jcr:title="SUPPORT_SR_TEXT"
-                value="SUPPORT_SR_TEXT|header.supportSrText"/>
+                jcr:title="Privacy Policy Link"
+                value="privacyPolicy|custom"/>
             <item20
                 jcr:primaryType="nt:unstructured"
-                jcr:title="MA_PROGRAM_NAME"
-                value="MA_PROGRAM_NAME|ma.program.name"/>
+                jcr:title="Disclosure Link"
+                value="disclosure|custom"/>
             <item21
                 jcr:primaryType="nt:unstructured"
-                jcr:title="OA_PROGRAM_NAME"
-                value="OA_PROGRAM_NAME|oa.program.name"/>
+                jcr:title="Program Fees Modal Link"
+                value="programFees|custom"/>
             <item22
                 jcr:primaryType="nt:unstructured"
-                jcr:title="availableThroughText"
-                value="availableThroughText|custom"/>
+                jcr:title="see Program Fees and disclosure Modal Link"
+                value="seeFeesAndDisclosure|custom"/>
             <item23
                 jcr:primaryType="nt:unstructured"
-                jcr:title="promoDurationMonthsNumeric"
-                value="promoDurationMonthsNumeric|custom"/>
+                jcr:title="Promotion Banner Fee Text"
+                value="promotionBannerFeeText|custom"/>
             <item24
                 jcr:primaryType="nt:unstructured"
-                jcr:title="promotionBannerFeeText"
-                value="promotionBannerFeeText|custom"/>
+                jcr:title="Promotion Banner Fee Text Link"
+                value="promotionBannerFeeTextLink|custom"/>
             <item25
                 jcr:primaryType="nt:unstructured"
-                jcr:title="promotionBannerFeeTextLink"
-                value="promotionBannerFeeTextLink|custom"/>
+                jcr:title="Promotion duration months"
+                value="promoDurationMonthsNumeric|custom"/>
             <item26
                 jcr:primaryType="nt:unstructured"
-                jcr:title="termsAndConditions"
-                value="termsAndConditions|custom"/>
+                jcr:title="OA Learn more link"
+                value="learnMoreOALink|custom"/>
             <item27
                 jcr:primaryType="nt:unstructured"
-                jcr:title="supplement"
-                value="supplement|custom"/>
+                jcr:title="PA Learn more link"
+                value="learnMorePALink|custom"/>
             <item28
                 jcr:primaryType="nt:unstructured"
-                jcr:title="privacyPolicy"
-                value="privacyPolicy|custom"/>
+                jcr:title="Product Choice URL"
+                value="product_choice_url|custom"/>
             <item29
                 jcr:primaryType="nt:unstructured"
-                jcr:title="disclosure"
-                value="disclosure|custom"/>
+                jcr:title="Other ways PA Promo Msg"
+                value="otherWaysPromoMsgPa|custom"/>
             <item30
                 jcr:primaryType="nt:unstructured"
-                jcr:title="programFees"
-                value="programFees|custom"/>
+                jcr:title="Dashboard Link"
+                value="dashboardLink|custom"/>
             <item31
                 jcr:primaryType="nt:unstructured"
-                jcr:title="seeFeesAndDisclosure"
-                value="seeFeesAndDisclosure|custom"/>
-            <item32
-                jcr:primaryType="nt:unstructured"
-                jcr:title="learnMoreOALink"
-                value="learnMoreOALink|custom"/>
-            <item33
-                jcr:primaryType="nt:unstructured"
-                jcr:title="learnMorePALink"
-                value="learnMorePALink|custom"/>
-            <item34
-                jcr:primaryType="nt:unstructured"
-                jcr:title="product_choice_url"
-                value="product_choice_url|custom"/>
-            <item35
-                jcr:primaryType="nt:unstructured"
-                jcr:title="otherWaysPromoMsgPa"
-                value="otherWaysPromoMsgPa|custom"/>
-            <item36
-                jcr:primaryType="nt:unstructured"
-                jcr:title="dashboardLink"
-                value="dashboardLink|custom"/>
-            <item37
-                jcr:primaryType="nt:unstructured"
-                jcr:title="pmAboutFeeText"
-                value="pmAboutFeeText|custom"/>
+                jcr:title="Available Through Text"
+                value="availableThroughText|custom"/>
         </list>
     </jcr:content>
 </jcr:root>
