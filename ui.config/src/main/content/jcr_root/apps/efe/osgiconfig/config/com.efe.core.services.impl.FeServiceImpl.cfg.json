@@ -4,7 +4,6 @@
   "forKeyApi": "$[env:FORKEYS_API;default=https://www.feitest.com/api/v1/texts/forKeys]",
   "authenticateApi": "$[env:AUTHENTICATE_API;default=https://www.feitest.com/api/v1/userlogin/authenticationstatus]",
   "dynamicVariableList": [
-    "$[env:fe_technical_dynamic_variables;default=/etc/acs-commons/lists/fe/fe-technical-dynamic-variables|false]",
     "$[env:sponsor_details;default=/etc/acs-commons/lists/fe/sponsor-details|true]"
   ],
   "sponsorLogoPath": "$[env:sponsor_logo_path;default=/content/dam/efe/employer/logos/web/{sponsorid}_ub.png]"
