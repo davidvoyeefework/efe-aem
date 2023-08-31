@@ -2066,8 +2066,30 @@
                                         cq:styleId="gap-sm"
                                         cq:styleLabel="Small"
                                         jcr:primaryType="nt:unstructured"/>
+                                    <item2
+                                        cq:styleClasses="gap-md"
+                                        cq:styleId="gap-md"
+                                        cq:styleLabel="Medium"
+                                        jcr:primaryType="nt:unstructured"/>
                                 </cq:styles>
                             </item1>
+                            <item2
+                                cq:styleGroupLabel="Alignment"
+                                cq:styleGroupMultiple="true"
+                                jcr:primaryType="nt:unstructured">
+                                <cq:styles jcr:primaryType="nt:unstructured">
+                                    <item0
+                                        cq:styleClasses="mobile-row-reverse"
+                                        cq:styleId="mobile-row-reverse"
+                                        cq:styleLabel="Mobile Reverse Items"
+                                        jcr:primaryType="nt:unstructured"/>
+                                    <item1
+                                        cq:styleClasses="mobile-full-width"
+                                        cq:styleId="mobile-full-width"
+                                        cq:styleLabel="Mobile Full width"
+                                        jcr:primaryType="nt:unstructured"/>
+                                </cq:styles>
+                            </item2>
                         </cq:styleGroups>
                     </policy>
                 </columncontrol>
