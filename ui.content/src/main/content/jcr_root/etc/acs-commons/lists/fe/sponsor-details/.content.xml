@@ -79,61 +79,45 @@
                 value="OA_PROGRAM_NAME|oa.program.name"/>
             <item17
                 jcr:primaryType="nt:unstructured"
-                jcr:title="Terms and Conditions Link"
-                value="termsAndConditions|custom"/>
-            <item18
-                jcr:primaryType="nt:unstructured"
-                jcr:title="Supplement Link"
-                value="supplement|custom"/>
-            <item19
-                jcr:primaryType="nt:unstructured"
-                jcr:title="Privacy Policy Link"
-                value="privacyPolicy|custom"/>
-            <item20
-                jcr:primaryType="nt:unstructured"
-                jcr:title="Disclosure Link"
-                value="disclosure|custom"/>
-            <item21
-                jcr:primaryType="nt:unstructured"
                 jcr:title="Program Fees Modal Link"
                 value="programFees|custom"/>
-            <item22
+            <item18
                 jcr:primaryType="nt:unstructured"
                 jcr:title="see Program Fees and disclosure Modal Link"
                 value="seeFeesAndDisclosure|custom"/>
-            <item23
+            <item19
                 jcr:primaryType="nt:unstructured"
                 jcr:title="Promotion Banner Fee Text"
                 value="promotionBannerFeeText|custom"/>
-            <item24
+            <item20
                 jcr:primaryType="nt:unstructured"
                 jcr:title="Promotion Banner Fee Text Link"
                 value="promotionBannerFeeTextLink|custom"/>
-            <item25
+            <item21
                 jcr:primaryType="nt:unstructured"
                 jcr:title="Promotion duration months"
                 value="promoDurationMonthsNumeric|custom"/>
-            <item26
+            <item22
                 jcr:primaryType="nt:unstructured"
                 jcr:title="OA Learn more link"
                 value="learnMoreOALink|custom"/>
-            <item27
+            <item23
                 jcr:primaryType="nt:unstructured"
                 jcr:title="PA Learn more link"
                 value="learnMorePALink|custom"/>
-            <item28
+            <item24
                 jcr:primaryType="nt:unstructured"
                 jcr:title="Product Choice URL"
                 value="product_choice_url|custom"/>
-            <item29
+            <item25
                 jcr:primaryType="nt:unstructured"
                 jcr:title="Other ways PA Promo Msg"
                 value="otherWaysPromoMsgPa|custom"/>
-            <item30
+            <item26
                 jcr:primaryType="nt:unstructured"
                 jcr:title="Dashboard Link"
                 value="dashboardLink|custom"/>
-            <item31
+            <item27
                 jcr:primaryType="nt:unstructured"
                 jcr:title="Available Through Text"
                 value="availableThroughText|custom"/>
