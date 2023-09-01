@@ -63,7 +63,7 @@
         padding: 0 rem(30px) rem(30px) rem(30px);
         &.mobile-full-width{
             padding: 0;
-            & .text{
+            & .text, .title, .button{
                 padding: 0 rem(38px) 0 rem(38);
 
                 &:first-child{
@@ -77,6 +77,14 @@
         }
     }
 }
+
+.padding-sm{
+    padding: rem(40px) rem(109px) rem(40px) rem(109px);
+    @include media('<=tablet') {
+        padding: rem(40px) rem(38px) rem(40px) rem(38px);
+    }
+}
+
 .padding-default-top{
     padding-top:rem(80px);
     @include media('<=tablet') {

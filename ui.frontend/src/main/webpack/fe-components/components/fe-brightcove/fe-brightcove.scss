@@ -1,9 +1,7 @@
 .brightcove{
     width: rem(514px);
     height: rem(386px);
-}
-
-.large-height .brightcove, .brightcove{
+    
     @include media('<=tablet') {
         width: calc( 100% + 192px);
         height: rem(428px);
@@ -15,4 +13,8 @@
         width: calc( 100% + 60px);
         margin-left: -30px;
     }
+}
+
+.full-width .brightcove{
+    width: 100%;
 }
