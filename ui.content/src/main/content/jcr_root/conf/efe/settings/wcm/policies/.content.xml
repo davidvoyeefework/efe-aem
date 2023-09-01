@@ -449,6 +449,17 @@
                                     jcr:primaryType="nt:unstructured"/>
                         </cq:styles>
                         </item2>
+                        <item3
+                            cq:styleGroupLabel="Remove Margin"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="remove-margin"
+                                    cq:styleId="remove-margin"
+                                    cq:styleLabel="Remove Margin"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item3>
                     </cq:styleGroups>
                 </policy>
             </title>
@@ -811,6 +822,11 @@
                                     cq:styleClasses="padding-default-top"
                                     cq:styleId="padding-default-top"
                                     cq:styleLabel="Top Padding"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item2
+                                    cq:styleClasses="padding-sm"
+                                    cq:styleId="padding-small"
+                                    cq:styleLabel="Padding Small"
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item1>
@@ -1996,18 +2012,23 @@
                     <policy
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Brightcove Player Policy"
+                        cq:styleDefaultClasses="full-width"
                         sling:resourceType="wcm/core/components/policy/policy">
                         <jcr:content jcr:primaryType="nt:unstructured"/>
                         <cq:styleGroups jcr:primaryType="nt:unstructured">
                             <item0
                                 cq:styleGroupLabel="Variation"
-                                cq:styleGroupMultiple="true"
                                 jcr:primaryType="nt:unstructured">
                                 <cq:styles jcr:primaryType="nt:unstructured">
                                     <item0
                                         cq:styleClasses="large-height"
                                         cq:styleId="containerwidthextraheight"
-                                        cq:styleLabel="Extra Height"
+                                        cq:styleLabel="Fixed Width"
+                                        jcr:primaryType="nt:unstructured"/>
+                                    <item1
+                                        cq:styleClasses="full-width"
+                                        cq:styleId="full-width"
+                                        cq:styleLabel="Full Width"
                                         jcr:primaryType="nt:unstructured"/>
                                 </cq:styles>
                             </item0>

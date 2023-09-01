@@ -1,19 +1,5 @@
 .fe-layout-unordered-list, .fe-check-unordered-list, .fe-dot-unordered-list, .fe-charcoal-check-unordered-list{
-        & .cmp-text, & .cmp-text p{
-            color: #535658;
-            font-feature-settings: 'clig' off, 'liga' off;
-            font-family:var(--font-family);
-            font-size: var(--fe-text-font-size);
-            font-style: normal;
-            font-weight: 700;
-            line-height: 105%; /* 37.8px */
-            letter-spacing: 2.16px;
-            text-transform: var(--fe-text-transform);
-            align-self: stretch;
-            @include media('<=tablet') {
-                font-weight: 400;
-            }
-        }
+
     & .cmp-text ul{
         padding: 0;
         margin-left: rem(10px);
