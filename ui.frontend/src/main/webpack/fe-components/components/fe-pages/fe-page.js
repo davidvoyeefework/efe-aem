@@ -56,7 +56,6 @@ export default class FePage {
             'Accept': 'application/json, text/plain, */*',
         }
         await fetchData(apiHost, headers).then(data => {
-            console.log(data);
             pushToWindowObject(data);
             handleLoader(false);
             const dataFromApi = new CustomEvent("messageFromfePage", {
@@ -74,6 +73,7 @@ export default class FePage {
     async getKeys() {
         let apiUrl = document.querySelector('#fe-properties')?.getAttribute('data-keys-api');
         const keys = forKeysPayload;
+        //https://www.feitest.com/api/v1/texts/forKeys
         await postJSONforKeys(apiUrl, keys).then(data => {
             pushToWindowObject(data);
         }).catch(error => {
@@ -88,7 +88,6 @@ export default class FePage {
             'Accept': 'application/json, text/plain, */*',
         }
         await fetchData(apiUrl, headers).then(data => {
-            console.log(data);
             pushToWindowObject(data);
             const userLoggedIn = data.userLoggedIn;
             this.fetchSponsorData(userLoggedIn);
