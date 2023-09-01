@@ -1,0 +1,42 @@
+{
+	"jcr:primaryType": "cq:Page",
+	"jcr:content": {
+		"jcr:primaryType": "cq:PageContent",
+		"jcr:title": "Page",
+		"root": {
+			"jcr:primaryType": "nt:unstructured",
+			"layout": "responsiveGrid",
+			"sling:resourceType": "efe/components/container",
+			"container": {
+				"jcr:primaryType": "nt:unstructured",
+				"sling:resourceType": "efe/components/container",
+				"columncontrol_var1": {
+					"jcr:primaryType": "nt:unstructured",
+					"sling:resourceType": "efe/fe-components/content/columncontorl",
+					"columns":"2",
+					"splitOption":"split-1"
+				},
+				"columncontrol_var2": {
+					"jcr:primaryType": "nt:unstructured",
+					"sling:resourceType": "efe/fe-components/content/columncontorl",
+					"columns":"2",
+					"splitOption":"split-2"
+				},
+				"columncontrol_var3": {
+					"jcr:primaryType": "nt:unstructured",
+					"sling:resourceType": "efe/fe-components/content/columncontorl",
+					"columns":"2"
+				},
+				"columncontrol_var4": {
+					"jcr:primaryType": "nt:unstructured",
+					"sling:resourceType": "efe/fe-components/content/columncontorl",
+					"columns":"3"
+				},
+				"columncontrol_empty": {
+					"jcr:primaryType": "nt:unstructured",
+					"sling:resourceType": "efe/fe-components/content/columncontorl"
+				}
+			}
+		}
+	}
+}

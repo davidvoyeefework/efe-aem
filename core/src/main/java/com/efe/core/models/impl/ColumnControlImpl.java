@@ -36,8 +36,10 @@ public class ColumnControlImpl extends AbstractComponentImpl implements ColumnCo
 	private static final String GRID_CLASS_PREFIX = "aem-GridColumn--phone--12 aem-GridColumn--default--";
 
 	/** The Constant CLASSVALUE. */
-	private static final String CLASSVALUE = "classvalue";
-	
+	protected static final String CLASSVALUE = "classvalue";
+
+	protected static final String INDEX = "index";
+
 	/** The Constant FOUR_COLUMNS. */
 	private static final String FOUR_COLUMNS = "4";
 
@@ -72,12 +74,12 @@ public class ColumnControlImpl extends AbstractComponentImpl implements ColumnCo
 
 		for (int i = 0; i < columns; i++) {
 			Map<String, String> columnMap = new HashMap<>();
-			columnMap.put("index", "container" + i);
+			columnMap.put(INDEX, "container" + i);
 			columnsList.add(columnMap);
 		}
 
 		// 2 Columns class value logic
-		if (columns == 2 && columnsList.size() == 2) {
+		if (columns == 2) {
 			if ("split-1".equals(splitOption)) {
 				columnsList.get(0).put(CLASSVALUE, GRID_CLASS_PREFIX + EIGHT_COLUMNS);
 				columnsList.get(1).put(CLASSVALUE, GRID_CLASS_PREFIX + FOUR_COLUMNS);
@@ -90,7 +92,7 @@ public class ColumnControlImpl extends AbstractComponentImpl implements ColumnCo
 			}
 		}
 
-		if (columns == 3 && columnsList.size() == 3) {
+		if (columns == 3) {
 			columnsList.get(0).put(CLASSVALUE, GRID_CLASS_PREFIX + FOUR_COLUMNS);
 			columnsList.get(1).put(CLASSVALUE, GRID_CLASS_PREFIX + FOUR_COLUMNS);
 			columnsList.get(2).put(CLASSVALUE, GRID_CLASS_PREFIX + FOUR_COLUMNS);
