@@ -87,9 +87,9 @@ export const promotionBannerFeeInfo = () => {
 
 export const PROMOTION_ANNOUNCED_END_DATE = (key)=>{
     const windowDataObj = window?.aemfe;
-    let value = windowDataObj?.promotion?.announcedDeadlineDate || "";
+    let value = windowDataObj?.promotion?.announcedDeadlineDate;
     let announcedDeadlineDate = value;
-    let PROMOTION_ANNOUNCED_END_DATE;
+    let PROMOTION_ANNOUNCED_END_DATE = "";
     if (announcedDeadlineDate != null) {
         var announcedDeadlineDateArray = announcedDeadlineDate.split(
           "-"
@@ -125,7 +125,7 @@ export const PROMOTION_ANNOUNCED_END_DATE = (key)=>{
 // get PROMOTION_EXPIRATION_DATE 
 export const getPromotionExpirationDate = () => {
   const windowDataObj = window?.aemfe;
-  let expiryDateRefvalue = windowDataObj?.promotion?.expirationDate || "";
+  let expiryDateRefvalue = windowDataObj?.promotion?.expirationDate;
   let promotionExpirationDate = "";
 
     if (expiryDateRefvalue != null) {
