@@ -86,17 +86,7 @@
     }
 }
 
-.card-1{
-    & .title{
-        margin-bottom: rem(10px);
-    }
-}
-
 .card-2{
-    & .title{
-        margin-bottom: rem(30px);
-    }
-
     & .text {
         & .cmp-text, & .cmp-text p{
             line-height: 130%;
