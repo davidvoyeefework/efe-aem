@@ -9,7 +9,7 @@ export default class FeReplaceDataWithPlaceholder {
     });
   }
   init() {
-   this.getDataFieldIds();
+   //this.getDataFieldIds();
   }
   getDataFieldIds() {
     //const bodyContent = document.querySelector("body.sb-show-main").innerHTML; // get array of placeholders from body content

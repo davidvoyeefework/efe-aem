@@ -257,7 +257,7 @@ export const prepareOALearnMoreLink = () => {
 
     //now remove https:// from the url since Unbounce already prefix the button link url with https://.
     //this value will be the dynamic replacement for button link url
-    return `<a href=${url.substring(8, url.length)} target="_self" class="fe-learn-more-link">Learn More</a>`;
+    return `<a href=${url.substring(8, url.length)} target="_self" class="fe-learn-more-link">GET STARTED</a>`;
   } else {
     type = threeTierChoiceCallVersion;
     if (type && type === "SIDE_BY_SIDE_THREE_TIER_CHOICE_CALL") {
@@ -269,7 +269,7 @@ export const prepareOALearnMoreLink = () => {
         apiBaseUrl +
         "app/productchoices/#/oaDetailed?fromPoint=MA_PUBLIC_ENROLL";
     }
-    return `<a href=${url.substring(8, url.length)} target="_self" class="fe-learn-more-link">Learn More</a>`;
+    return `<a href=${url.substring(8, url.length)} target="_self" class="fe-learn-more-link">GET STARTED</a>`;
   }
 }
 
@@ -281,8 +281,7 @@ export const preparePALearnMoreLink = () => {
   var url =
    getApiBaseUrl() +
     "app/productchoices/#/paDetailedRouter?viaRouter=true";
-
-  return url.substring(8, url.length);
+  return `<a href=${url.substring(8, url.length)} target="_self" class="fe-learn-more-link">GET STARTED</a>`;
 }
 
 
@@ -354,7 +353,7 @@ export const getProductChoiceUrl = () => {
     }
     //now remove https:// from the url since Unbounce already prefix the button link url with https://.
     //this value will be the dynamic replacement for button link url
-    return url.substring(8, url.length);
+    return `<a href=${url.substring(8, url.length)} target="_self" class="fe-learn-more-link">LEARN MORE</a>`;;
 }
 
 export const getOtherWaysPromoMsgPa = () => {
@@ -401,9 +400,13 @@ export const getDashboardLink = () => {
       url = providerInfo?.rkLoginUrl;
        url.replace(/^https?:\/\//i, "");
     } 
-    return `<a href="${url}" target="_blank" >${url}</a>`;
+    return `<a href="${url}" target="_blank" >MEMBER DASHBOARD</a>`;
 }
-
+export const getLoginLink = ()=> {
+    const windowDataObj = window?.aemfe;
+    let url = windowDataObj?.providerInfo?.rkLoginUrl;
+    return `<a href="${url}" target="_blank">LOGIN</a>`;
+}
 export const getPmAboutFeeText = () => {
   const windowDataObj = window?.aemfe;
   const FeeAndPervalue = monthlyFeeAndPervalue(windowDataObj?.sponsoredFees);

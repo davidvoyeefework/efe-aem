@@ -91,6 +91,8 @@ export default class FeHeader {
                 return utility.getDashboardLink();
             case "pmAboutFeeText":
                 return utility.getPmAboutFeeText();
+                case "RK_LOGIN_URL":
+                    return utility.getLoginLink();
             default:
                 return ""
 
