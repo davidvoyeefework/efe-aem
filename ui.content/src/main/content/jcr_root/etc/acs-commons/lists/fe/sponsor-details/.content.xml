@@ -16,7 +16,7 @@
             <item1
                 jcr:primaryType="nt:unstructured"
                 jcr:title="RK Login URL"
-                value="RK_LOGIN_URL|providerInfo.rkLoginUrl"/>
+                value="RK_LOGIN_URL|custom"/>
             <item2
                 jcr:primaryType="nt:unstructured"
                 jcr:title="Recordkeeper Name"
