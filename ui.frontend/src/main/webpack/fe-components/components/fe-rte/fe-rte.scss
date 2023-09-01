@@ -3,13 +3,9 @@
     & .cmp-text ul{
         padding: 0;
         margin-left: rem(10px);
-        padding-top: rem(35px);
         display: table;
         border-collapse: separate;
         border-spacing: 0 rem(20px);
-        @include media('<=tablet') {
-            padding-top: rem(30px);
-        }
     }
     & .cmp-text ul li{
         color: #535658;
@@ -22,8 +18,10 @@
         list-style-type: none;
         display: table-row;
         margin-bottom: 0;
+        width: 100%;
     }
 }
+
 .fe-layout-unordered-list, .fe-check-unordered-list, .fe-charcoal-check-unordered-list{
     & .cmp-text ul li{
         &::before{
@@ -33,8 +31,15 @@
             top: 0;
             display: table-cell;
             background: var(--fe-text-list-icon);
-            left: rem(-10px);
+            left: rem(-20px);
         }
+    }
+}
+
+
+.fe-layout-unordered-list{
+    & .cmp-text ul{
+        margin-left: rem(20px);
     }
 }
 
