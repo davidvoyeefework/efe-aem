@@ -454,7 +454,7 @@ export const formatMoney = (amount)=> {
 export const formatMoneyNoCentsWithComma = (amount)=>{
     if (typeof amount === "number") {
         // All money is dollars with 0 fractional digits. Include commas
-        return Number(parseFloat(amount).toFixed(0)).toLocaleString("en");
+        return "$" + Number(parseFloat(amount).toFixed(0)).toLocaleString("en");
       }
 }
 
