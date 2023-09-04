@@ -2103,6 +2103,11 @@
                                         cq:styleId="padding-default-top"
                                         cq:styleLabel="Top padding"
                                         jcr:primaryType="nt:unstructured"/>
+                                    <item2
+                                        cq:styleClasses="padding-xs"
+                                        cq:styleId="extra-small-padding"
+                                        cq:styleLabel="Extra Small padding"
+                                        jcr:primaryType="nt:unstructured"/>
                                 </cq:styles>
                             </item0>
                             <item1
