@@ -60,7 +60,7 @@
 .padding-default{
     padding: 0 rem(109px) rem(80px) rem(109px);
     @include media('<=tablet') {
-        padding: 0 rem(30px) rem(30px) rem(30px);
+        padding: 0 rem(30px) rem(50px) rem(30px);
         &.mobile-full-width{
             padding: 0;
             & .text, .title, .button{
@@ -85,9 +85,16 @@
     }
 }
 
+.padding-xs{
+    padding: rem(35px) rem(109px) rem(35px) rem(109px);
+    @include media('<=tablet') {
+        padding: rem(35px) rem(30px) rem(35px) rem(30px);
+    }
+}
+
 .padding-default-top{
     padding-top:rem(80px);
     @include media('<=tablet') {
-        padding-top:rem(30px);
+        padding-top:rem(50px);
     }
 }
