@@ -421,7 +421,7 @@
                                     cq:styleLabel="Stats 1 plus superscript"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item9
-                                    cq:styleClasses="cmp-title--heading-01 cmp-title--superpercentage"
+                                    cq:styleClasses="cmp-title--stats-02 cmp-title--superpercentage"
                                     cq:styleId="percentage-superscript"
                                     cq:styleLabel="Percentage superscript"
                                     jcr:primaryType="nt:unstructured"/>
