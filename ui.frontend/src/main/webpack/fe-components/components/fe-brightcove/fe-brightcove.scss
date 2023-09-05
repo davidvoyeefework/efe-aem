@@ -17,4 +17,7 @@
 
 .full-width .brightcove{
     width: 100%;
+    @include media("<=phone-m") {
+        width: calc( 100% + 60px);
+    }
 }
