@@ -87,9 +87,9 @@ export const promotionBannerFeeInfo = () => {
 
 export const PROMOTION_ANNOUNCED_END_DATE = (key)=>{
     const windowDataObj = window?.aemfe;
-    let value = windowDataObj?.promotion?.announcedDeadlineDate || "";
+    let value = windowDataObj?.promotion?.announcedDeadlineDate;
     let announcedDeadlineDate = value;
-    let PROMOTION_ANNOUNCED_END_DATE;
+    let PROMOTION_ANNOUNCED_END_DATE = "";
     if (announcedDeadlineDate != null) {
         var announcedDeadlineDateArray = announcedDeadlineDate.split(
           "-"
@@ -125,7 +125,7 @@ export const PROMOTION_ANNOUNCED_END_DATE = (key)=>{
 // get PROMOTION_EXPIRATION_DATE 
 export const getPromotionExpirationDate = () => {
   const windowDataObj = window?.aemfe;
-  let expiryDateRefvalue = windowDataObj?.promotion?.expirationDate || "";
+  let expiryDateRefvalue = windowDataObj?.promotion?.expirationDate;
   let promotionExpirationDate = "";
 
     if (expiryDateRefvalue != null) {
@@ -257,7 +257,7 @@ export const prepareOALearnMoreLink = () => {
 
     //now remove https:// from the url since Unbounce already prefix the button link url with https://.
     //this value will be the dynamic replacement for button link url
-    return `<a href=${url.substring(8, url.length)} target="_self" class="fe-learn-more-link">GET STARTED</a>`;
+    return `<a href=${url} target="_self" class="fe-learn-more-link">GET STARTED</a>`;
   } else {
     type = threeTierChoiceCallVersion;
     if (type && type === "SIDE_BY_SIDE_THREE_TIER_CHOICE_CALL") {
@@ -269,7 +269,7 @@ export const prepareOALearnMoreLink = () => {
         apiBaseUrl +
         "app/productchoices/#/oaDetailed?fromPoint=MA_PUBLIC_ENROLL";
     }
-    return `<a href=${url.substring(8, url.length)} target="_self" class="fe-learn-more-link">GET STARTED</a>`;
+    return `<a href=${url} target="_self" class="fe-learn-more-link">GET STARTED</a>`;
   }
 }
 
@@ -281,7 +281,7 @@ export const preparePALearnMoreLink = () => {
   var url =
    getApiBaseUrl() +
     "app/productchoices/#/paDetailedRouter?viaRouter=true";
-  return `<a href=${url.substring(8, url.length)} target="_self" class="fe-learn-more-link">GET STARTED</a>`;
+  return `<a href=${url} target="_self" class="fe-learn-more-link">GET STARTED</a>`;
 }
 
 
@@ -353,7 +353,7 @@ export const getProductChoiceUrl = () => {
     }
     //now remove https:// from the url since Unbounce already prefix the button link url with https://.
     //this value will be the dynamic replacement for button link url
-    return `<a href=${url.substring(8, url.length)} target="_self" class="fe-learn-more-link">LEARN MORE</a>`;;
+    return `<a href=${url} target="_self" class="fe-learn-more-link">LEARN MORE</a>`;;
 }
 
 export const getOtherWaysPromoMsgPa = () => {
@@ -392,7 +392,7 @@ export const getDashboardLink = () => {
         "&s=" +
         encodeURIComponent(context.s) +
         "&removeAdviceLandingPage=true";
-       url.substring(8, url.length);
+       url;
     } else if (
       userLoggedIn === true &&
       isUserLightAuth === true
@@ -454,7 +454,7 @@ export const formatMoney = (amount)=> {
 export const formatMoneyNoCentsWithComma = (amount)=>{
     if (typeof amount === "number") {
         // All money is dollars with 0 fractional digits. Include commas
-        return Number(parseFloat(amount).toFixed(0)).toLocaleString("en");
+        return "$" + Number(parseFloat(amount).toFixed(0)).toLocaleString("en");
       }
 }
 

@@ -27,7 +27,7 @@
     & li{
         & .image{
             height: rem(40px);
-            margin-bottom: rem(30px);
+            margin-bottom: rem(20px);
 
             & .cmp-image img{
                 width: auto;
@@ -47,7 +47,7 @@
         text-underline-offset: 6px;
         text-decoration: underline;
         font-size: 18px !important;
-        letter-spacing: 1px !important;
+        letter-spacing: 1.08px !important;
     }
 }
 
