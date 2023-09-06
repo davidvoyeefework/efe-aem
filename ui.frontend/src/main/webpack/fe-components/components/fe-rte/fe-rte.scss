@@ -87,8 +87,17 @@
     }
 }
 
-.fepage{
+.fepage.fe-subadvised-sponsor, .fe-subadvised-sponsor{
     .cmp-text{
+        & *{
+            text-transform: none;
+            font-family: 'Open Sans';
+        }
+
+        b{
+            font-weight: 700 !important;
+        }
+
         &--heading-01{
             font-size: rem(54px);
             font-style: normal;
@@ -96,8 +105,9 @@
         }
 
         &--subhead-00{
+            font-weight: 700;
             line-height: 118%;
-            font-weight: 300;
+            letter-spacing: unset;
         }
 
         &--subhead-01{
@@ -108,9 +118,9 @@
         }
 
         &--subhead-02{
-            font-size: 20px;
-            font-style: normal;
+            font-size: rem(20px);
             font-weight: 700;
+            font-style: normal;
             line-height: 105%;
         }
 
@@ -120,6 +130,23 @@
             font-weight: 700;
             line-height: 105%; 
         }
+
+        &--body-01{
+            font-size: rem(20px);
+            font-style: normal;
+            font-weight: 400;
+            line-height: 140%;
+        }
+
+        &--detail,  &--detail a{
+            color: #535658;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 300;
+            line-height: 135%;
+            font-family: 'nimbus-sans';
+        }
+
     }
 
     & .cmp-title{
@@ -154,49 +181,15 @@
             font-weight: 700;
             line-height: 105%; 
         }
-    }
-}
-.remove-margin{
-    margin: 0 !important;
-}
 
-.fe-subadvised-sponsor{
-    .cmp-text{
-        & *{
-            text-transform: none;
-            font-family: 'Open Sans';
-        }
-
-        b{
-            font-weight: 700 !important;
-        }
-
-        &--heading-01{
-            font-size: rem(54px);
-            line-height: 110%;
-            
-        }
-
-        &--subhead-00{
-            font-weight: 700;
-            line-height: 118%;
-            letter-spacing: normal;
-        }
-        &--subhead-02{
-            font-size: rem(20px);
-            font-weight: 700;
-            font-style: normal;
-            line-height: 105%;
-        }
-
-        &--body-01{
+        &--body-01 *{
             font-size: rem(20px);
             font-style: normal;
             font-weight: 400;
             line-height: 140%;
         }
 
-        &--detail,  &--detail a{
+        &--detail *,  &--detail a{
             color: #535658;
             font-size: 16px;
             font-style: normal;
@@ -205,4 +198,7 @@
             font-family: 'nimbus-sans';
         }
     }
+}
+.remove-margin{
+    margin: 0 !important;
 }
