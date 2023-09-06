@@ -79,6 +79,12 @@
     b{
         font-weight: 700 !important;
     }
+
+    &--body-01{
+        sup {
+            font-size: rem(16px) !important;
+        }
+    }
 }
 
 .fepage{
