@@ -6,6 +6,7 @@ export default class FePage {
             "DOMContentLoaded",
             () => {
                 window.aemfe = {};
+                window.aemform = {};
                 this.init();
             },
             { once: true }
@@ -36,6 +37,7 @@ export default class FePage {
                     document.querySelector('body').classList.add('fe-subadvised-sponsor');
                 }
                 pushToWindowObject(data);
+                window.aemform.pageFrameData = data;
                 this.fetchAggregateData();
             }
         }).catch(error => {
@@ -57,6 +59,7 @@ export default class FePage {
         }
         await fetchData(apiHost, headers).then(data => {
             pushToWindowObject(data);
+            window.aemform.planownerData = data;
             handleLoader(false);
             const dataFromApi = new CustomEvent("messageFromfePage", {
                 messageFromParent: {
@@ -76,6 +79,7 @@ export default class FePage {
         //https://www.feitest.com/api/v1/texts/forKeys
         await postJSONforKeys(apiUrl, keys).then(data => {
             pushToWindowObject(data);
+            window.aemform.keyText = data;
         }).catch(error => {
             // Handle any errors that occurred during the fetch request
             console.error('An error occurred:', error);
@@ -89,6 +93,7 @@ export default class FePage {
         }
         await fetchData(apiUrl, headers).then(data => {
             pushToWindowObject(data);
+            window.aemform.userAuthStatus = data;
             const userLoggedIn = data.userLoggedIn;
             this.fetchSponsorData(userLoggedIn);
             if(data.userLoggedIn) {
@@ -108,6 +113,7 @@ export default class FePage {
         let apiUrl = 'https://www.feitest.com/api/v1/user/application/marketingWidget/contentPersonalization';
         await fetchData(apiUrl, headers).then(data => {
             pushToWindowObject(data);
+            window.aemform.userPersonalizeData = data;
             this.userMeAPI();
         })
     }
@@ -119,6 +125,7 @@ export default class FePage {
         let apiUrl = 'https://www.feitest.com/api/v1/users/ME';
         await fetchData(apiUrl, headers).then(data => {
             pushToWindowObject(data);
+            window.aemform.userData = data;
         })
     }
 }
