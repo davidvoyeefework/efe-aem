@@ -35,13 +35,6 @@ public interface FeProperties {
      */
     String getAuthenticateApi();
 
-    /**
-     * Gets the dynamic variables.
-     *
-     * @return the dynamicVariables
-     */
-    String getDynamicVariables();
-
 	/**
 	 * Gets the record keeper.
 	 *
