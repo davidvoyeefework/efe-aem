@@ -25,4 +25,4 @@ $include "./default_filters.any"
 /0106 { /type "allow" /method "GET" /extension "txt" /path "/content/dam/efe/seo/*" }
 
 # Allow dynamic data variable servlet
-/0107 { /type "allow" /method "GET" /extension "json" /path "/content/fe/*" /selectors '(dynamic)'}
+/0107 { /type "allow" /method "GET" /extension "json" /path "/content/fe/**/jcr:content.dynamic.json" }
