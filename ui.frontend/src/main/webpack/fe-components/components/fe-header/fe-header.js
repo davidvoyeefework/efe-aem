@@ -1,4 +1,5 @@
 import * as utility from  "../../site/js/utility";
+import { fetchData } from "../../site/js/helper";
 export default class FeHeader {
     constructor() {
         document.addEventListener("messageFromfePage", (e) =>{
@@ -8,13 +9,25 @@ export default class FeHeader {
     }
     init() {
         if(window.aemfe.header) {
-            this.changeHeaderValues();
+            //this.changeHeaderValues();
+            this.fetchHeaderDataVariables();
         }
     }
-    changeHeaderValues() {
+    fetchHeaderDataVariables () {
+        const apiVal = this.attributeParameterElem?.getAttribute('data-api-dynamic');
+        const headers = {
+            'Accept': 'application/json, text/plain, */*',
+        }
+        fetchData(apiVal, headers).then(dataVariables => {
+            if(dataVariables.length > 0) {
+                this.changeHeaderValues(dataVariables);
+            }
+        });
+    }
+    changeHeaderValues(headerDataVariables) {
         const data = window.aemfe;
-        const headerDataVariables =  this.attributeParameterElem?.getAttribute('data-variables');
-        JSON.parse(headerDataVariables)?.forEach((item) => {
+        //const headerDataVariables =  this.attributeParameterElem?.getAttribute('data-variables');
+            headerDataVariables?.forEach((item) => {
             if (Object.keys(item).length === 0) {
                 return
             }

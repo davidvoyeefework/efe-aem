@@ -9,8 +9,6 @@ import javax.servlet.http.Cookie;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
-import org.apache.sling.api.resource.ResourceResolver;
-import org.apache.sling.api.resource.ResourceResolverFactory;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
@@ -19,14 +17,10 @@ import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.adobe.acs.commons.genericlists.GenericList;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.efe.core.models.FeProperties;
 import com.efe.core.services.FeService;
-import com.efe.core.utils.EFEUtil;
-import com.efe.core.utils.ResourceUtil;
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 /**
@@ -48,12 +42,6 @@ public class FePropertiesImpl implements FeProperties {
     private FeService feService;
 
     /**
-     * The resolver factory.
-     */
-    @OSGiService
-    private ResourceResolverFactory resolverFactory;
-
-    /**
      * The request.
      */
     @Self
@@ -63,16 +51,6 @@ public class FePropertiesImpl implements FeProperties {
      * The theme.
      */
     private String theme;
-
-    /**
-     * The dynamic variables.
-     */
-    private String dynamicVariables;
-
-    /**
-     * The array.
-     */
-    private JsonArray array;
 
     /**
      * The sponsor id.
@@ -93,7 +71,6 @@ public class FePropertiesImpl implements FeProperties {
         if (Objects.isNull(cookieJsonObject)) {
             return;
         }
-        setDynamicVariablesField();
         recordKeeper = getCookieValue(cookieJsonObject, "providerId");
         if (StringUtils.isNotEmpty(recordKeeper)) {
             recordKeeper = "theme-" + recordKeeper;
@@ -140,49 +117,6 @@ public class FePropertiesImpl implements FeProperties {
     }
 
     /**
-     * Sets the dynamic variables field.
-     */
-    private void setDynamicVariablesField() {
-        String[] genericLists = feService.getDynamicVariableList();
-
-        if (null == genericLists) {
-            return;
-        }
-        array = new JsonArray();
-        for (String genericList : genericLists) {
-            if (StringUtils.isNotEmpty(genericList)) {
-                String[] genericListArr = genericList.split("\\|");
-                if (genericListArr.length == 2) {
-                    String genericListPath = genericListArr[0];
-                    GenericList list = EFEUtil.getGenericList(resolverFactory, genericListPath);
-
-                    if (null == list) {
-                        return;
-                    }
-                    setDynamicVariable(list);
-                }
-            }
-        }
-    }
-
-    /**
-     * Sets the dynamic variable.
-     *
-     * @param list the list
-     */
-    private void setDynamicVariable(GenericList list) {
-        for (GenericList.Item item : list.getItems()) {
-            JsonObject dynamicVariable = new JsonObject();
-            String[] values = item.getValue().split("\\|");
-            if (values.length == 2) {
-                dynamicVariable.addProperty(values[0], values[1]);
-            }
-            array.add(dynamicVariable);
-        }
-        dynamicVariables = new Gson().toJson(array);
-    }
-
-    /**
      * Gets the PageFrameApi.
      *
      * @return the PageFrameApi
@@ -220,16 +154,6 @@ public class FePropertiesImpl implements FeProperties {
     @Override
     public String getAuthenticateApi() {
         return feService.getAuthenticateApi();
-    }
-
-    /**
-     * Gets the dynamic variables.
-     *
-     * @return the dynamicVariables
-     */
-    @Override
-    public String getDynamicVariables() {
-        return dynamicVariables;
     }
 
     /**
