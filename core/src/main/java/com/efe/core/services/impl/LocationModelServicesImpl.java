@@ -98,6 +98,8 @@ public class LocationModelServicesImpl implements LocationModelServices {
 		LocationResponse[] jsonElement = gson.fromJson(jsonObjectLocation, LocationResponse[].class);
 		String rootPath = FolderUtil.createFolder(PlannerLocationConstants.ROOT_FOLDER_PATH,
 				PlannerLocationConstants.LOCATIONS, PlannerLocationConstants.LOCATIONS, resourceResolver);
+
+
 		for (LocationResponse jsonObj : jsonElement) {
 			String officeId = jsonObj.getOfficeId();
 			String stateFolderName = jsonObj.getState().toLowerCase();
@@ -126,17 +128,21 @@ public class LocationModelServicesImpl implements LocationModelServices {
 			String fragmentName = PlannerLocationConstants.FRAGMENT_NAME_PREFIX + officeName
 					+ PlannerLocationConstants.UNDERSCORE + officeId;
 
-			Resource existingFragement = resourceResolver
-					.getResource(childPathLocation + PlannerLocationConstants.FORWARD_SLASH + fragmentName);
-			if (Objects.isNull(existingFragement)) {
 
+			Resource existingFragment = resourceResolver
+					.getResource(childPathLocation + PlannerLocationConstants.FORWARD_SLASH + fragmentName);
+
+
+			// TODO: Change this logic to update the location if it already exists instead of only adding new locations.
+
+			if (Objects.isNull(existingFragment)) {
 				createFragment(PlannerLocationConstants.LOCATION_MODEL, childPathLocation, fragmentName,
 						PlannerLocationConstants.JCR_TITLE_LOCATION, resourceResolver);
-				Resource locationMasterResource = resourceResolver.getResource(childPathLocation
-						+ PlannerLocationConstants.FORWARD_SLASH + fragmentName + PlannerLocationConstants.MASTER_NODE);
-				Node locationMasterNode = locationMasterResource.adaptTo(Node.class);
-				updateLocationFragmentProperties(resourceResolver, locationMasterNode, jsonObj, childPathLocation);
 			}
+            Resource locationMasterResource = resourceResolver.getResource(childPathLocation
+                    + PlannerLocationConstants.FORWARD_SLASH + fragmentName + PlannerLocationConstants.MASTER_NODE);
+            Node locationMasterNode = locationMasterResource.adaptTo(Node.class);
+            updateLocationFragmentProperties(resourceResolver, locationMasterNode, jsonObj, childPathLocation);
 		}
 		sessionSave(resourceResolver);
 	}
