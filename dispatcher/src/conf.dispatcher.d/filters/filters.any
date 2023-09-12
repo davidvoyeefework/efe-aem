@@ -28,3 +28,5 @@ $include "./default_filters.any"
 /0107 { /type "allow" /method "GET" /extension "json" /path "/content/fe/*" /selectors "test"}
 
 /0111 { /type "allow" /extension "json" /selectors "test" /path "/content/*" }
+
+/0119 { /type "allow" /url "/content/fe/us/en/promotion/jcr:content.test.json" }
