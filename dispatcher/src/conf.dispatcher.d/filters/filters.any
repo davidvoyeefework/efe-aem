@@ -9,6 +9,8 @@ $include "./default_filters.any"
 # Allow components JSON model
 /0101 { /type "allow" /extension "json" /selectors "model" /path "/content/*" }
 
+/0108 { /type "allow" /extension "json" /selectors "search" /path "/content/*" }
+
 # Allow manifest.webmanifest files located in the content
 /0102 { /type "allow" /extension "webmanifest" /path "/content/*/manifest" }
 
@@ -29,4 +31,4 @@ $include "./default_filters.any"
 
 /0111 { /type "allow" /extension "json" /selectors "test" /path "/content/*" }
 
-/0119 { /type "allow" /url "/content/fe/us/en/promotion/jcr:content.test.json" }
+/0120 { /type "deny" /extension "html" /path "/content/fe/us/en/promotion/vanguard"}
