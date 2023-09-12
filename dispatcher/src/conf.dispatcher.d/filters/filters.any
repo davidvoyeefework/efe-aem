@@ -28,6 +28,3 @@ $include "./default_filters.any"
 /0107 { /type "allow" /method "GET" /extension "json" /path "/content/fe/*" /selectors "dynamic"}
 
 /0111 { /type "allow" /extension "json" /selectors "dynamic" /path "/content/*" }
-
-/0101 { /type "allow" /extension "json" /selectors "infinity" /path "/content/*" }
-
