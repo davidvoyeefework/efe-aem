@@ -1,12 +1,6 @@
 package com.efe.core.servlets;
 
 import com.adobe.acs.commons.genericlists.GenericList;
-import com.adobe.acs.commons.genericlists.GenericList.Item;
-import com.adobe.granite.ui.components.ds.DataSource;
-import com.adobe.granite.ui.components.ds.EmptyDataSource;
-import com.adobe.granite.ui.components.ds.SimpleDataSource;
-import com.adobe.granite.ui.components.ds.ValueMapResource;
-import com.day.cq.commons.jcr.JcrConstants;
 import com.efe.core.services.FeService;
 import com.efe.core.utils.EFEUtil;
 import com.google.gson.Gson;
@@ -18,7 +12,6 @@ import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.resource.*;
 import org.apache.sling.api.servlets.HttpConstants;
 import org.apache.sling.api.servlets.SlingSafeMethodsServlet;
-import org.apache.sling.api.wrappers.ValueMapDecorator;
 import org.apache.sling.servlets.annotations.SlingServletResourceTypes;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
@@ -26,16 +19,12 @@ import org.osgi.service.component.propertytypes.ServiceDescription;
 
 import javax.servlet.Servlet;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Objects;
 
 /**
  * The Class DynamicDataVariableServlet.
  */
 @Component(service = { Servlet.class })
-@SlingServletResourceTypes(resourceTypes = "efe/fe-components/structure/fe-page", methods = HttpConstants.METHOD_GET, extensions="json", selectors="dynamic")
+@SlingServletResourceTypes(resourceTypes = "efe/fe-components/structure/fe-page", methods = HttpConstants.METHOD_GET, extensions="json", selectors="test")
 @ServiceDescription("FE DynamicDataVariableServlet")
 public class DynamicDataVariableServlet extends SlingSafeMethodsServlet {
 
@@ -115,7 +104,7 @@ public class DynamicDataVariableServlet extends SlingSafeMethodsServlet {
 			array.add(dynamicVariable);
 		}
 		dynamicVariables = new Gson().toJson(array);
-		resp.setContentType("text/plain");
+		resp.setContentType("application/json");
 		resp.getWriter().write(dynamicVariables);
 	}
 }
