@@ -24,7 +24,7 @@ import java.io.IOException;
  * The Class DynamicDataVariableServlet.
  */
 @Component(service = { Servlet.class })
-@SlingServletResourceTypes(resourceTypes = "efe/fe-components/structure/fe-page", methods = HttpConstants.METHOD_GET, extensions="json", selectors="test")
+@SlingServletResourceTypes(resourceTypes = "efe/fe-components/structure/fe-page", methods = HttpConstants.METHOD_GET, extensions="json", selectors="dynamic")
 @ServiceDescription("FE DynamicDataVariableServlet")
 public class DynamicDataVariableServlet extends SlingSafeMethodsServlet {
 
