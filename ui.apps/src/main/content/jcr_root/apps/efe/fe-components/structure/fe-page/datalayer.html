@@ -37,9 +37,6 @@
     env.da = daVars;
     fe.env = env;
     
-    var themeclass = "theme-"+daVars.providerId;
-    document.body.classList.add(themeclass);
-
         window.adobeDataLayer = window.adobeDataLayer || [];
         adobeDataLayer.push(JSON.parse("${model.dataLayer @ context='scriptString'}"));
 

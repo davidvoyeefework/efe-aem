@@ -36,6 +36,9 @@ export default class FePage {
                 } else {
                     document.querySelector('body').classList.add('fe-subadvised-sponsor');
                 }
+
+                document.querySelector('body').classList.add('theme-'+daVars.providerId);
+
                 pushToWindowObject(data);
                 window.aemform.pageFrameData = data;
                 this.fetchAggregateData();
