@@ -16,7 +16,7 @@
     & .text-section{
         grid-area: text;
         padding: rem(80px) rem(109px);
-        @include media('<=tablet') {
+        @include media('<=tablet-lg') {
             padding: rem(50px) rem(30px);
         }
     }
@@ -29,13 +29,13 @@
         //grid-area: container;
         &  img{
             padding-top: rem(69px);
-            @include media('<=tablet') {
+            @include media('<=tablet-lg') {
                 padding: rem(30px) rem(30px) rem(80px) rem(30px);
             }
         }
     }
 
-    @include media('<=tablet') {
+    @include media('<=tablet-lg') {
         grid-template-columns: 1fr;
         grid-template-areas:
         "hero"
@@ -66,7 +66,7 @@
                     }
                 }
 
-                @include media('<=tablet') {
+                @include media('<=tablet-lg') {
                     max-height: rem(297px);
                 }
             }
@@ -75,7 +75,7 @@
 
         & .text-section{
             padding: rem(100px) rem(200px) 0 rem(200px);
-            @include media('<=tablet') {
+            @include media('<=tablet-lg') {
                 padding: rem(80px) rem(30px) rem(50px) rem(30px);
             }
             & .cmp-text p, & .cmp-text{
@@ -87,7 +87,7 @@
             }
         }
 
-        @include media('<=tablet') {
+        @include media('<=tablet-lg') {
             grid-template-columns: 1fr;
             grid-template-areas:
                 "text"

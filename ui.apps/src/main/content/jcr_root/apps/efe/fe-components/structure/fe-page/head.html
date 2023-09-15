@@ -46,15 +46,13 @@
     <sly data-sly-list="${page.htmlPageItems}"><script data-sly-test="${item.location.name == 'header'}"
             data-sly-element="${item.element.name @ context='unsafe'}" data-sly-attribute="${item.attributes}"></script>
     </sly>
-    <sly data-sly-test="${feProperties.dynamicVariables}">
-        <div id="fe-properties"
-             data-frame-api="${feProperties.pageFrameApi}"
-             data-aggregate-api="${feProperties.aggregateApi}"
-             data-keys-api="${feProperties.forKeyApi}"
-             data-authenticate-api="${feProperties.authenticateApi}"
-             data-variables='${feProperties.dynamicVariables}'
-             data-sponsor-logo-path="${feProperties.sponsorLogoPath}"
-             data-api-domain="https://www.feitest.com/">
-        </div>
-    </sly>
+    <div id="fe-properties"
+         data-frame-api="${feProperties.pageFrameApi}"
+         data-aggregate-api="${feProperties.aggregateApi}"
+         data-keys-api="${feProperties.forKeyApi}"
+         data-authenticate-api="${feProperties.authenticateApi}"
+         data-api-dynamic="${currentPage.path}/jcr:content.dynamic.json"
+         data-sponsor-logo-path="${feProperties.sponsorLogoPath}"
+         data-api-domain="https://www.feitest.com/">
+    </div>
 </template>

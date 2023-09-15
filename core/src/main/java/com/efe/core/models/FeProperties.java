@@ -1,7 +1,5 @@
 package com.efe.core.models;
 
-import java.util.Map;
-
 /**
  * The Interface FeProperties.
  */
@@ -34,27 +32,6 @@ public interface FeProperties {
      * @return the AuthenticateApi
      */
     String getAuthenticateApi();
-
-    /**
-     * Gets the dynamic variables.
-     *
-     * @return the dynamicVariables
-     */
-    String getDynamicVariables();
-
-	/**
-	 * Gets the record keeper.
-	 *
-	 * @return the recordKeeper
-	 */
-	String getRecordKeeper();
-
-	/**
-	 * Gets the sponsor id.
-	 *
-	 * @return the sponsorId
-	 */
-	String getSponsorId();
 
     /**
      * Gets the sponsor logo path.

@@ -65,7 +65,7 @@ module.exports = {
       ...libsBaseConfig,
       name: "clientlib-site",
       categories: ["efe.site"],
-      dependencies: ["efe.dependencies"],
+      dependencies: [],
       assets: {
         // Copy entrypoint scripts and stylesheets into the respective ClientLib
         // directories
