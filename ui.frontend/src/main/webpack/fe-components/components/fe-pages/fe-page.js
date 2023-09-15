@@ -99,36 +99,10 @@ export default class FePage {
             window.aemform.userAuthStatus = data;
             const userLoggedIn = data.userLoggedIn;
             this.fetchSponsorData(userLoggedIn);
-            if(data.userLoggedIn) {
-                this.getUserPersonalizeApi();
-            }
         }).catch(error => {
             // Handle any errors that occurred during the fetch request
             console.error('An error occurred:', error);
             handleLoader(false);
         });
-    }
-    async getUserPersonalizeApi() {
-        const headers = {
-            'Accept': 'application/json, text/plain, */*',
-            'withCredentials': 'true'
-        }
-        let apiUrl = 'https://www.feitest.com/api/v1/user/application/marketingWidget/contentPersonalization';
-        await fetchData(apiUrl, headers).then(data => {
-            pushToWindowObject(data);
-            window.aemform.userPersonalizeData = data;
-            this.userMeAPI();
-        })
-    }
-    async userMeAPI() {
-        const headers = {
-            'Accept': 'application/json, text/plain, */*',
-            'withCredentials': 'true'
-        }
-        let apiUrl = 'https://www.feitest.com/api/v1/users/ME';
-        await fetchData(apiUrl, headers).then(data => {
-            pushToWindowObject(data);
-            window.aemform.userData = data;
-        })
     }
 }
