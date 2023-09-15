@@ -113,4 +113,13 @@
             visibility: hidden;
         }
     }
+    &.fe-direct-sponsor {
+        .minimal-header {
+            .cmp-image--efe-logo-secondary {
+                .cmp-image .cmp-image__image {
+                    width: max-content;
+                }
+            }
+        }
+    }
 } 
