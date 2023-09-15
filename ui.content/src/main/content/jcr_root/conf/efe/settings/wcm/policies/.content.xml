@@ -2001,7 +2001,7 @@
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Fe Page Policy"
                         sling:resourceType="wcm/core/components/policy/policy"
-                        clientlibs="[fe.site,efe.test]"
+                        clientlibs="[fe.site,fe.master]"
                         clientlibsJsHead="fe.site">
                         <jcr:content jcr:primaryType="nt:unstructured"/>
                     </policy>
