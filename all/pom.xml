@@ -79,7 +79,7 @@
                         </embedded>
                         <embedded>
                             <groupId>com.adobe.acs</groupId>
-                            <artifactId>acs-aem-commons-content</artifactId>
+                            <artifactId>acs-aem-commons-all</artifactId>
                             <type>zip</type>
                             <target>/apps/efe-vendor-packages/container/install</target>
                             <filter>true</filter>
@@ -215,7 +215,7 @@
         <!-- ACS AEM Commons dependency-->
         <dependency>
             <groupId>com.adobe.acs</groupId>
-            <artifactId>acs-aem-commons-content</artifactId>
+            <artifactId>acs-aem-commons-all</artifactId>
             <version>${acs.commons.version}</version>
             <type>zip</type>
         </dependency>
