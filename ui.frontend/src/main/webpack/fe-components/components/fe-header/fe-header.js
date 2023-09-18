@@ -99,7 +99,7 @@ export default class FeHeader {
             case "learnMorePALink":
                 return utility.preparePALearnMoreLink();
             case "learnMorePAButton":
-                return utility.prepareOALearnMoreLink("button");
+                return utility.preparePALearnMoreLink("button");
             case "product_choice_url":
                 return utility.getProductChoiceUrl();
             case "otherWaysPromoMsgPa":
