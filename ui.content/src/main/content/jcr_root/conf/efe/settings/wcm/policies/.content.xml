@@ -2146,6 +2146,11 @@
                                         cq:styleId="mobile-full-width"
                                         cq:styleLabel="Mobile Full width"
                                         jcr:primaryType="nt:unstructured"/>
+                                    <item2
+                                        cq:styleClasses="image-full-height"
+                                        cq:styleId="image-full-height"
+                                        cq:styleLabel="Image Full Height"
+                                        jcr:primaryType="nt:unstructured"/>
                                 </cq:styles>
                             </item2>
                         </cq:styleGroups>
