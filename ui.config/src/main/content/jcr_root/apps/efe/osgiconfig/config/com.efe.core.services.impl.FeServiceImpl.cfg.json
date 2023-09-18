@@ -7,5 +7,5 @@
     "$[env:sponsor_details;default=/etc/acs-commons/lists/fe/sponsor-details|true]"
   ],
   "sponsorLogoPath": "$[env:sponsor_logo_path;default=/content/dam/efe/employer/logos/web/{sponsorid}_ub.png]",
-  "apiDomain": "$[env:API_DOMAIN;default=https://www.feitest.com/]"
+  "apiDomain": "$[env:FE_API_DOMAIN;default=https://www.feitest.com/]"
 }
