@@ -39,8 +39,12 @@
 
     }
 
-    
-
-
-
+}
+.fe-learn-more-link {
+    @include primary-nav-link-red;
+    &:hover {
+                transition: $std-transition;
+                text-decoration: 1px solid $efe-red-primary underline;
+                text-underline-offset: 6px;
+            }
 }

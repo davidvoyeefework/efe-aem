@@ -237,7 +237,7 @@ export const getProgramFeesModalLink = (str) => {
  * 
  * @returns learnMoreOALink as string
  */
-export const prepareOALearnMoreLink = () => {
+export const prepareOALearnMoreLink = (str) => {
   const windowDataObj = window?.aemfe;
   let url = "";
   let type;
@@ -269,6 +269,13 @@ export const prepareOALearnMoreLink = () => {
         apiBaseUrl +
         "app/productchoices/#/oaDetailed?fromPoint=MA_PUBLIC_ENROLL";
     }
+    if(str) {
+        return `<div class="button cmp-button--button-primary" style="padding-top:30px">
+                <a class="cmp-button" href=${url}>
+                    <span class="cmp-button__text">Get Started</span>
+                </a>
+                </div>`
+    }
     return `<a href=${url} target="_self" class="fe-learn-more-link">GET STARTED</a>`;
   }
 }
@@ -277,10 +284,17 @@ export const prepareOALearnMoreLink = () => {
  * 
  * @returns learnMorePALink as string
  */
-export const preparePALearnMoreLink = () => {
+export const preparePALearnMoreLink = (str) => {
   var url =
    getApiBaseUrl() +
     "app/productchoices/#/paDetailedRouter?viaRouter=true";
+  if(str) {
+          return `<div class="button cmp-button--button-primary" style="padding-top:30px">
+                  <a class="cmp-button" href=${url}>
+                      <span class="cmp-button__text">Get Started</span>
+                  </a>
+                  </div>`
+      }
   return `<a href=${url} target="_self" class="fe-learn-more-link">GET STARTED</a>`;
 }
 
@@ -400,12 +414,12 @@ export const getDashboardLink = () => {
       url = providerInfo?.rkLoginUrl;
        url.replace(/^https?:\/\//i, "");
     } 
-    return `<a href="${url}" target="_blank" >MEMBER DASHBOARD</a>`;
+    return `<a href="${url}" target="_blank" class="fe-learn-more-link">MEMBER DASHBOARD</a>`;
 }
 export const getLoginLink = ()=> {
     const windowDataObj = window?.aemfe;
     let url = windowDataObj?.providerInfo?.rkLoginUrl;
-    return `<a href="${url}" target="_blank">LOGIN</a>`;
+    return `<a href="${url}" target="_blank" class="fe-learn-more-link">LOGIN</a>`;
 }
 export const getPmAboutFeeText = () => {
   const windowDataObj = window?.aemfe;
