@@ -77,4 +77,14 @@ public class FePropertiesImpl implements FeProperties {
     public String getSponsorLogoPath() {
         return feService.getSponsorLogoPath();
     }
+
+    /**
+     * Gets the ApiDomain.
+     *
+     * @return the ApiDomain
+     */
+    @Override
+    public String getApiDomain() {
+        return feService.getApiDomain();
+    }
 }

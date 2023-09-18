@@ -39,4 +39,11 @@ public interface FeProperties {
      * @return the sponsorLogoPath
      */
     String getSponsorLogoPath();
+
+    /**
+     * Gets the ApiDomain.
+     *
+     * @return the ApiDomain
+     */
+    String getApiDomain();
 }

@@ -46,4 +46,11 @@ public interface FeService {
      * @return the SponsorLogoPath
      */
     String getSponsorLogoPath();
+
+    /**
+     * Gets the ApiDomain.
+     *
+     * @return the ApiDomain
+     */
+    String getApiDomain();
 }

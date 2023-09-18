@@ -94,8 +94,12 @@ export default class FeHeader {
                 return utility.getProgramFeesModalLink("See fees and disclosure");
             case "learnMoreOALink":
                 return utility.prepareOALearnMoreLink();
+            case "learnMoreOAButton":
+                return utility.prepareOALearnMoreLink("button");
             case "learnMorePALink":
                 return utility.preparePALearnMoreLink();
+            case "learnMorePAButton":
+                return utility.preparePALearnMoreLink("button");
             case "product_choice_url":
                 return utility.getProductChoiceUrl();
             case "otherWaysPromoMsgPa":
@@ -104,11 +108,10 @@ export default class FeHeader {
                 return utility.getDashboardLink();
             case "pmAboutFeeText":
                 return utility.getPmAboutFeeText();
-                case "RK_LOGIN_URL":
-                    return utility.getLoginLink();
+            case "RK_LOGIN_URL":
+                return utility.getLoginLink();
             default:
                 return ""
-
         }
     }
 
