@@ -41,6 +41,10 @@ public class FeServiceImpl implements FeService {
     /** The sponsorLogoPath. */
     private String sponsorLogoPath;
 
+    /** The apiDomain. */
+    private String apiDomain;
+
+
     /**
      * The Interface Config.
      */
@@ -94,6 +98,14 @@ public class FeServiceImpl implements FeService {
          */
         @AttributeDefinition(name = "Sponsor Logo Path", description = "Sponsor Logo Path")
         String sponsorLogoPath();
+
+        /**
+         * Api Domain.
+         *
+         * @return apiDomain
+         */
+        @AttributeDefinition(name = "Api Domain", description = "Api Domain")
+        String apiDomain();
     }
 
     /**
@@ -111,6 +123,7 @@ public class FeServiceImpl implements FeService {
         this.authenticateApi = config.authenticateApi();
         this.dynamicVariableList = config.dynamicVariableList();
         this.sponsorLogoPath = config.sponsorLogoPath();
+        this.apiDomain = config.apiDomain();
     }
 
     /**
@@ -175,5 +188,15 @@ public class FeServiceImpl implements FeService {
     @Override
     public String getSponsorLogoPath() {
         return sponsorLogoPath;
+    }
+
+    /**
+     * Gets the ApiDomain.
+     *
+     * @return the ApiDomain
+     */
+    @Override
+    public String getApiDomain() {
+        return apiDomain;
     }
 }
