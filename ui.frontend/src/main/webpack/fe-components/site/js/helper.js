@@ -143,8 +143,11 @@ export const handleLoader =(isShow) =>{
   var loader = document.querySelector(loaderclass); 
     if(isShow){
          //loader.style.display = 'block';
-      }else{
-          loader.style.display = 'none';
+          loader.style.display = 'block';
+           document.querySelector("body").classList.add("fe-loading-page");
+           document.querySelector("body").classList.remove("fe-loaded");
+      } else {
+           loader.style.display = 'none';
            document.querySelector("body").classList.remove("fe-loading-page");
            document.querySelector("body").classList.add("fe-loaded");
       }   
