@@ -1,5 +1,5 @@
 import * as utility from  "../../site/js/utility";
-import { fetchData } from "../../site/js/helper";
+import { fetchData, handleLoader } from "../../site/js/helper";
 export default class FeHeader {
     constructor() {
         document.addEventListener("messageFromfePage", (e) =>{
@@ -9,11 +9,11 @@ export default class FeHeader {
     }
     init() {
         if(window.aemfe.header) {
-            //this.changeHeaderValues();
             this.fetchHeaderDataVariables();
         }
     }
     fetchHeaderDataVariables () {
+        handleLoader(true);
         const apiVal = this.attributeParameterElem?.getAttribute('data-api-dynamic');
         const headers = {
             'Accept': 'application/json, text/plain, */*',
@@ -21,6 +21,7 @@ export default class FeHeader {
         fetchData(apiVal, headers).then(dataVariables => {
             if(dataVariables.length > 0) {
                 this.changeHeaderValues(dataVariables);
+                handleLoader(false);
             }
         });
     }
@@ -94,8 +95,12 @@ export default class FeHeader {
                 return utility.getProgramFeesModalLink("See fees and disclosure");
             case "learnMoreOALink":
                 return utility.prepareOALearnMoreLink();
+            case "learnMoreOAButton":
+                return utility.prepareOALearnMoreLink("button");
             case "learnMorePALink":
                 return utility.preparePALearnMoreLink();
+            case "learnMorePAButton":
+                return utility.preparePALearnMoreLink("button");
             case "product_choice_url":
                 return utility.getProductChoiceUrl();
             case "otherWaysPromoMsgPa":
@@ -104,11 +109,10 @@ export default class FeHeader {
                 return utility.getDashboardLink();
             case "pmAboutFeeText":
                 return utility.getPmAboutFeeText();
-                case "RK_LOGIN_URL":
-                    return utility.getLoginLink();
+            case "RK_LOGIN_URL":
+                return utility.getLoginLink();
             default:
                 return ""
-
         }
     }
 

@@ -121,6 +121,14 @@
                 jcr:primaryType="nt:unstructured"
                 jcr:title="Available Through Text"
                 value="availableThroughText|custom"/>
+            <item28
+                jcr:primaryType="nt:unstructured"
+                jcr:title="OA Learn more button"
+                value="learnMoreOAButton|custom"/>
+            <item29
+                jcr:primaryType="nt:unstructured"
+                jcr:title="PA Learn more button"
+                value="learnMorePAButton|custom"/>
         </list>
     </jcr:content>
 </jcr:root>
