@@ -2,7 +2,8 @@
     .cmp-teaser--hero {
         .cmp-teaser {
             &__content {
-                width: max-content;
+                width: 100%;
+                max-width: 530px;
                 @include media('<tablet') {
                     position: absolute;
                     margin: 0;
