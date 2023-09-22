@@ -65,7 +65,7 @@ module.exports = {
       ...libsBaseConfig,
       name: "clientlib-site",
       categories: ["efe.site"],
-      dependencies: ["efe.dependencies"],
+      dependencies: [],
       assets: {
         // Copy entrypoint scripts and stylesheets into the respective ClientLib
         // directories
@@ -83,6 +83,34 @@ module.exports = {
         // Copy all other files into the `resources` ClientLib directory
         resources: {
           cwd: "clientlib-site",
+          files: ["**/*.*"],
+          flatten: false,
+          ignore: ["**/*.js", "**/*.css"],
+        },
+      },
+    },
+    {
+      ...libsBaseConfig,
+      name: "clientlib-fe",
+      categories: ["fe.site"],
+      dependencies: ["efe.site"],
+      assets: {
+        // Copy entrypoint scripts and stylesheets into the respective ClientLib
+        // directories
+        js: {
+          cwd: "clientlib-fe",
+          files: ["**/*.js"],
+          flatten: false,
+        },
+        css: {
+          cwd: "clientlib-fe",
+          files: ["**/*.css"],
+          flatten: false,
+        },
+
+        // Copy all other files into the `resources` ClientLib directory
+        resources: {
+          cwd: "clientlib-fe",
           files: ["**/*.*"],
           flatten: false,
           ignore: ["**/*.js", "**/*.css"],

@@ -1,0 +1,17 @@
+.loading-state {
+
+    width: 100%;
+    min-height: rem(607);
+
+    @include flexbox (
+        $align-items: center,
+        $flex-direction: column,
+        $justify-content: center
+    );
+
+    .loading-spinner {
+        width: rem(52);
+        height: rem(52);
+        background: url(/content/dam/efe/icons/loading-spinner.svg) no-repeat center center / contain;
+    }
+}

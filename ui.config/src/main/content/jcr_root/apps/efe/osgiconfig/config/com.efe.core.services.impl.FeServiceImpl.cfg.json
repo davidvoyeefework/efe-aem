@@ -1,0 +1,11 @@
+{
+  "pageFrameApi": "$[env:PAGEFRAME_API;default=https://www.feitest.com/api/v1/pageframe/?namespace=]",
+  "aggregateApi": "$[env:AGGREGATE_API;default=https://www.feitest.com/api/v1/planowners/{Recordkeeper}/aggregate]",
+  "forKeyApi": "$[env:FORKEYS_API;default=https://www.feitest.com/api/v1/texts/forKeys]",
+  "authenticateApi": "$[env:AUTHENTICATE_API;default=https://www.feitest.com/api/v1/userlogin/authenticationstatus]",
+  "dynamicVariableList": [
+    "$[env:sponsor_details;default=/etc/acs-commons/lists/fe/sponsor-details|true]"
+  ],
+  "sponsorLogoPath": "$[env:sponsor_logo_path;default=/content/dam/efe/employer/logos/web/{sponsorid}_ub.png]",
+  "apiDomain": "$[env:FE_API_DOMAIN;default=https://www.feitest.com/]"
+}

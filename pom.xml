@@ -87,7 +87,7 @@
             
     <componentGroupName>EFE</componentGroupName>
 
-    <acs.commons.version>5.7.0</acs.commons.version>
+    <acs.commons.version>6.2.0</acs.commons.version>
         
   </properties>
       

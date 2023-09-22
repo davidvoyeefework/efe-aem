@@ -1,0 +1,6 @@
+<div data-sly-use.template="core/wcm/components/commons/v1/templates.html"
+    data-sly-test.isDisabledMode="${wcmmode.disabled}"
+    data-sly-use.model="com.adobe.cq.wcm.core.components.models.Component">
+    <div class="fe-membership-dashboard-button" id="${model.id}"></div>
+</div>
+<sly data-sly-call="${template.placeholder @ isEmpty=!isDisabledMode}"></sly>

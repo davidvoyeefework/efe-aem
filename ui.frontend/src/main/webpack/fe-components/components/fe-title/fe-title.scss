@@ -1,0 +1,12 @@
+.cmp-title--superpercentage {
+    margin-bottom: rem(24px);
+    .cmp-title__text:after {
+        content: '%';
+        vertical-align: super;
+        font-size:rem(36px);
+        font-style: normal;
+        font-weight: 400;
+        letter-spacing: 0.72px;
+        line-height: 105%;
+    }
+}

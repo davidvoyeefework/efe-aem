@@ -83,6 +83,7 @@
 		# through different means. 
 		/ignoreUrlParams {
 			/0001 { /glob "*" /type "deny" }
+			/1001 { /glob "s_cid" /type "allow" }
 		# 	/0002 { /glob "q" /type "allow" }
 		#	$include "../cache/marketing_query_parameters.any"
 		#	/0002 { /glob "cdn_cache_bust" /type "allow" }

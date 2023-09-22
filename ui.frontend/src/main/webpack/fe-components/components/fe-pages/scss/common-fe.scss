@@ -1,0 +1,81 @@
+@mixin fe-primary-btn {
+    background-color: var(--primary-button-bg-color);
+    display: flex;
+    height: 35px;
+    padding: 20px 26px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--primary-button-bg-color);
+    color: var(--primary-button-font-color);
+    border-radius: var( --primary-button-border-radius);
+    cursor: pointer;
+    &:hover, &:active { 
+        background: var(--primary-button-bg-color-hover);
+        color: var( --primary-button-font-hover);
+    }
+}
+
+@mixin column-gap($gap){
+    @include media('>tablet') {
+        & > div {
+            & > .container{
+                padding: 0 rem($gap);
+
+                &:first-child{
+                    padding-left: 0;
+                }
+                &:last-child{
+                    padding-right: 0;
+                }
+            }
+        }
+    }
+}
+
+@mixin fe-secondary-btn {
+    @include fe-primary-btn;
+    background-color: #ffffff;
+    color: var(--primary-button-bg-color);
+    &:hover, &:active { 
+        background: #ffffff;
+        color: var(--primary-button-bg-color);
+    }
+}
+
+.fepage {
+    .minimal-header {
+        &.subadvised {
+            .cmp-image--efe-logo-secondary.cmp-image--small {
+                &::before {
+                    content: "Powered by";
+                    color: #000;
+                    font-size: 12px;
+                    font-style: normal;
+                    font-weight: 300;
+                    line-height: 32px; /* 266.667% */
+                    top: rem(5);
+                    position: absolute;
+                    @media screen and (max-width: 576px) { 
+                        top: -20px;
+                    }
+                }
+            }
+            .minimal-header__vertical-line {
+                height: 63px;
+                @media screen and (max-width: 576px) { 
+                    height: rem(42px);
+                }
+            }
+        }
+    }
+    //primary button
+    .cmp-button--button-primary .cmp-button, .cmp-teaser__action-link {
+        @include fe-primary-btn;
+    }
+    &.theme-vanguard, &.theme-aon, &.theme-ssga { 
+        * {
+            font-family: var(--font-family);
+        }
+    }
+}
+

@@ -82,8 +82,54 @@
                                                                 jcr:primaryType="cq:WidgetCollection"
                                                                 cssName="cmp-text--highlight"
                                                                 text="Highlight"/>
+                                                            <font-red
+                                                                jcr:primaryType="cq:WidgetCollection"
+                                                                cssName="font-color-red"
+                                                                text="Red Font"/>
+                                                            <callout
+                                                                jcr:primaryType="cq:WidgetCollection"
+                                                                cssName="cmp-text--callout"
+                                                                text="Callout"/>
                                                         </styles>
                                                     </styles>
+                                                    <efe-aem-dynamic-variable
+                                                        jcr:primaryType="nt:unstructured"
+                                                        features="applyDynamicVariable"/>
+                                                    <justify
+                                                        jcr:primaryType="nt:unstructured"
+                                                        features="*"/>
+                                                    <misctools
+                                                        jcr:primaryType="nt:unstructured"
+                                                        features="specialchars,sourceedit">
+                                                        <specialCharsConfig jcr:primaryType="nt:unstructured">
+                                                            <chars
+                                                                jcr:primaryType="nt:unstructured"
+                                                                override="true">
+                                                                <item0
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    entity="&amp;copy;"
+                                                                    name="copyright"/>
+                                                                <item1
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    entity="&amp;euro;"
+                                                                    name="euro"/>
+                                                                <item2
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    entity="&amp;reg;"
+                                                                    name="registered"/>
+                                                                <item3
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    entity="&amp;trade;"
+                                                                    name="trademark"/>
+                                                            </chars>
+                                                        </specialCharsConfig>
+                                                    </misctools>
+                                                    <subsuperscript
+                                                        jcr:primaryType="nt:unstructured"
+                                                        features="*"/>
+                                                    <table
+                                                        jcr:primaryType="nt:unstructured"
+                                                        features="*"/>
                                                 </rtePlugins>
                                             </text>
                                             <characterLimit

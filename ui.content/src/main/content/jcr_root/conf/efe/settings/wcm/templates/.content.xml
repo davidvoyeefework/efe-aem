@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:rep="internal" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:rep="internal" xmlns:cq="http://www.day.com/jcr/cq/1.0"
     jcr:mixinTypes="[rep:AccessControllable]"
     jcr:primaryType="cq:Page">
-    <page-content/>
+    <content-template-full-header-and-footer/>
+    <content-template-mini-header-and-footer/>
+    <category/>
+    <podcast/>
+    <brand-landing-page/>
+    <article/>
+    <leader-bio/>
+    <service-detail/>
+    <experience-fragment-target-variation/>
     <xf-web-variation/>
     <rep:policy/>
+    <fe-header-and-footer/>
 </jcr:root>

@@ -1,0 +1,344 @@
+#signup-form, #fe-call-me-form, #fe-call-me-back{
+    border: 2px solid #F2F2F2;
+    background:#FFFFFF;
+    font-family: var(--fe-form-font-family);
+
+    & form{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: end;
+
+        & .fe-form__group, & .fe-form__header{
+            flex: 1; 
+            width: 100%; 
+            box-sizing: border-box; 
+            flex-basis: 100%;
+
+            &.fe-form__group--dob{
+                flex-basis: 55%;
+            }
+
+            &.fe-form__group--zip-code{
+                flex-basis: 37%;
+                margin-right: rem(10px);
+            }
+        }
+    }
+}
+
+#fe-call-me-back{
+    & .fe-form__field{
+        display: flex;
+        flex-direction: column-reverse;
+
+        &.error{
+            & .fe-form__error{
+                display: block;
+            }
+        }
+    }
+
+    & .fe-form__signup-disclosure.fe-form__signup-disclosure--privacy-policy{
+        font-weight: 300;
+        letter-spacing: -0.1px;
+        line-height: normal;
+
+        & b, & a{
+            font-weight: 700;
+        }
+    }
+}
+
+.fe-form__header, .fe-call-me-back-header{
+    margin: rem(25px) 0;
+    color: #53565A;
+    text-align: center;
+    font-size: var(--fe-signup-form-header-non-promo-font-size);
+    font-style: normal;
+    font-weight: 700;
+    line-height: var(--fe-signup-form-header-line-height);
+    letter-spacing: var(--fe-signup-form-header-letter-spacing);
+    text-transform: uppercase;
+    font-family: var(--font-family);
+}
+.fe-form__header{
+    margin-bottom: rem(10px);
+}
+.fe-form-promo + .fe-form{
+    & form{
+        .fe-form__header{
+            font-size: var(--fe-signup-form-header-font-size);
+        }
+    }
+}
+.fe-call-me-back-header{
+    margin: rem(25px) rem(40px) rem(10px) rem(40px);
+    font-size: rem(36px);
+    line-height:105%;
+    letter-spacing: 2.16px;
+    align-self: stretch;
+}
+
+.fe-form{
+    padding: 0 rem(40px) rem(25px) rem(40px);
+    @include media('<=tablet') {
+        padding-bottom: rem(50px);
+    }
+    &__control-wrapper{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    &-promo{
+        background: #F2F2F2;
+        padding: rem(25px) rem(40px) rem(20px) rem(40px);
+        text-align: center;
+        font-size: rem(15px);
+        font-style: normal;
+        font-weight: 300;
+        line-height: 110%;
+
+        &__title{
+            color: var(--fe-form-color);
+            font-size: rem(15px);
+            font-style: normal;
+            font-weight: 700;
+            line-height: 110%;
+            font-family: var(--fe-form-font-family);
+        }
+        &__text{
+            color: var(--fe-form-promo-text);
+        }
+    }
+
+    &__group{
+        & .fe-form__label-wrapper{
+            margin: rem(10px) 0;
+            color: #535658;
+            font-size: rem(12px);
+            font-style: normal;
+            font-weight: 400;
+            line-height: 100%; /* 12px */
+
+            & label, & .fe-form__description{
+                display: inline-block;
+            }
+            & .fe-form__description{
+                font-style: italic;
+                &::before{
+                    content: "\2010";
+                    font-size: 1rem;
+                    margin-right: rem(4px);
+                }
+            }
+            & label{
+                margin-right: rem(4px);
+            }
+        }
+
+        & .fe-form__field--has-description{
+            & .fe-form__description{
+                display: none;
+            }
+        }
+        & .fe-form__control-instruction{
+            display: none;
+        }
+
+        &.fe-form__group--ssn{
+            & .fe-form__description{
+                &::before{
+                    content: '';
+                    display: inline-block;
+                    background: url("../resources/images/icons/secure-lock.svg") no-repeat center center / contain;
+                    width: rem(12);
+                    height: rem(12);
+                    position: relative;
+                    bottom: rem(0);
+                    right: rem(0);  
+                }
+            }
+        }
+
+        &.fe-form__group--disclaimer{
+            & .fe-form__signup-disclosures, & .fe-form__signup-disclosures small{
+                font-size: rem(14px);
+                text-align: center;
+                line-height: normal;
+            }
+        }
+
+        &.fe-form__group--appt-scheduler{
+            & > *{
+                text-align: center;
+            }
+            & span {
+                display: block;
+                font-size: rem(14px);
+                text-align: center;
+                margin-top: rem(20px);
+                color: #535658;
+                font-weight: 400;
+                line-height: normal;
+            }
+
+            & .fe-form__button.fe-form__button--outline{
+                color: var(--primary-button-bg-color) !important;
+                margin-top: rem(20px);
+                text-align: center;
+                font-size: rem(18px);
+                font-weight: 400;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                border-radius: 3px;
+                border: 2px solid var(--primary-button-bg-color);
+                background: #FFF;
+                display: inline-flex;
+                min-height: 45px;
+                line-height: normal;
+                padding: 17px 26px 14px 26px;
+                justify-content: center;
+                align-items: center;
+                flex-shrink: 0;
+                cursor: pointer;
+            }
+        }
+
+        &--enrollment-disclosure{
+            font-size: rem(12px);
+            font-style: normal;
+            margin-top: rem(10px);
+            color: #535658;
+            line-height: 100%;
+            font-weight: 400;
+            & b{
+                font-weight: 700;
+                font-family:'nimbus-sans';
+            }
+            & a{
+                text-decoration: underline;
+                color: var(--fe-form-color);
+                font-family:'nimbus-sans';
+            }
+            & input[type='checkbox']{
+                width: rem(13px);
+                height: rem(13px);
+                border-radius: 3px;
+                border: 2px solid #7A7D82;
+                background: #FFF;
+            }
+        }
+
+        &--sign-up-button, &--call-me-button{
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+           & button{
+                @include fe-primary-btn;
+                padding: 17px 26px 14px 26px;
+                margin-top: rem(20px);
+                min-height: rem(45px);
+                height: auto;
+                font-size: rem(18px);
+                line-height: normal;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+            }
+
+            & .fe-form__processing{
+                display: none;
+            }
+
+            &.fe-processing{
+                & button{
+                    display: none;
+                }
+
+                & .fe-form__processing{
+                    display: block;
+                    font-size: rem(22px);
+                }
+            }
+        }
+
+        &--cancel-note{
+            color: #535658;
+            margin-top: rem(20px);
+            text-align: center;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 100%; /* 12px */
+        }
+        
+    }
+
+    &__control{
+        width: 100%;
+        border-radius: 4px;
+        border: 1.5px solid #DDDDDE;
+        background: #FFF;
+        padding: rem(20px);
+        color: #B3B9BE;
+        font-size: rem(16px);
+        font-style: normal;
+        font-weight: 400;
+        line-height: 100%; /* 16px */
+
+        &-wrapper.error{
+            & .fe-form__error{
+                display: block;
+            }
+        }
+    }
+
+    &__signup-disclosures, &__signup-disclosures small, .fe-form__group .fe-form__signup-disclosure{
+        margin-top: rem(20px);
+        color: #A6A8AB;
+        font-size: var(--fe-disclosures-font-size);
+        font-style: normal;
+        font-weight: 400;
+        line-height: var(--fe-disclosures-line-height); /* 12px */
+
+        & b, & a{
+            font-weight: 400;
+        }
+
+        & a{
+            color: var(--fe-form-discloser-anchor-color);
+            text-decoration: underline;
+        }
+    }
+
+    .fe-form__group.fe-form__group--disclaimer .fe-form__signup-disclosure{
+        color: #535658;
+    }
+    
+
+    &__error{
+        display: none;
+        color: #B22932;
+        font-size: rem(14px);
+        font-style: normal;
+        font-weight: 400;
+        line-height: 100%; /* 14px */
+        margin-bottom: rem(10px);
+    }
+
+    &-confirmation{
+        color: #535658;
+        text-align: center;
+        font-feature-settings: 'clig' off, 'liga' off;
+        margin: rem(70px) rem(40px);
+        font-family: var(--font-family);
+        font-size: rem(28px);
+        font-style: normal;
+        font-weight: 700;
+        line-height: 105%; /* 29.4px */
+        letter-spacing: 1.68px;
+        text-transform: uppercase;
+        @include media('<=tablet') {
+            margin: rem(70px) rem(30px);
+        }
+    }
+}

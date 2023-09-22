@@ -1,0 +1,76 @@
+.fepage {
+    .edit-view {
+        .sponsor-value-hide {
+            display: inline;
+        }
+
+        .unbounce-form {
+            display: inline;
+        }
+    }
+    .fe-load-data {
+        .sponsor-value-hide {
+            display: none;
+        }
+    }
+    .loader {
+        display: none;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        z-index: 999;
+        width: 120px;
+        height: 120px;
+        margin: -76px 0 0 -76px;
+        border: 16px solid white;
+        border-radius: 50%;
+        border-top: 16px solid $red-primary;
+        -webkit-animation: spin 2s linear infinite;
+        animation: spin 2s linear infinite;
+    }
+
+    @-webkit-keyframes spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+}
+
+.fe-loading-page{
+    & .fe-loading-screen{
+        display: block;
+        background: #fff;
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 9999;
+
+        & .fe-loading-animation{
+            background: url("../resources/images/loader.gif") no-repeat top center;
+            padding-top: 75px;
+            font-size: 18px;
+            width: 200px;
+            margin: auto;
+            text-align: center;
+            position: relative;
+            top: 150px;
+            &::after{
+                content: "Loading";
+            }
+        }
+    }
+}

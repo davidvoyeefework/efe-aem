@@ -1,0 +1,23 @@
+{
+	"jcr:primaryType": "cq:Page",
+	"jcr:content": {
+		"jcr:primaryType": "cq:PageContent",
+		"root": {
+			"jcr:primaryType": "nt:unstructured",
+			"sling:resourceType": "efe/components/container",
+			"container": {
+				"jcr:primaryType": "nt:unstructured",
+				"sling:resourceType": "efe/components/container",
+				"brightcove": {
+					"jcr:primaryType": "nt:unstructured",
+					"sling:resourceType": "efe/fe-components/content/brightcove",
+					"videoUrl": "testUrl"
+				},
+				"brightcove_empty": {
+					"jcr:primaryType": "nt:unstructured",
+					"sling:resourceType": "efe/fe-components/content/brightcove"
+				}
+			}
+		}
+	}
+}

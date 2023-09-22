@@ -1,0 +1,87 @@
+@mixin mobile-style {
+    margin-bottom: rem(40px);
+    &:last-child{
+        margin-bottom: 0;
+    }
+    @include media('<=tablet') {
+        flex: 0 0 100%;
+        & .cmp-teaser{
+            flex-direction: column-reverse;
+
+            &__content{
+                width: 100%;
+            }
+
+            &__image{
+                width: 100%;
+            }
+        }
+    }
+}
+
+.list-layout-variation{
+    & .cmp-list{
+        display: flex;
+        flex-wrap: wrap;
+        gap: rem(80px);
+        margin-right: -80px;
+        @include media('<=tablet') {
+            gap: 0;
+            margin-right: 0;
+        }
+
+        & .cmp-teaser--thumbnail{
+            flex: 0 0 calc(33.33% - 80px);
+
+            & .cmp-image__image{
+                width: 100%;
+                height: auto;
+                height: rem(195px);
+            }
+
+            & .cmp-teaser{
+                &__title{
+                    color: #000;
+                    font-family: var(--font-family);
+                    font-size: rem(20px);
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: normal;
+                    text-transform: var(--fe-text-transform);
+                    margin: rem(25px) 0 0 0;
+                }
+
+                &__action-container{
+                    margin-top: rem(29px);
+                    & a{
+                        @include fe-primary-btn;
+                        margin: 0;
+                        text-decoration: none;
+                        padding: rem(12px) rem(24px);
+                        font-size: rem(16px);
+                        font-weight: 400;
+                        height: auto;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.list-layout-variation-1{
+    & .cmp-list{
+        & .cmp-teaser--thumbnail{
+            flex: 0 0 calc(25% - 80px);
+            @include mobile-style;
+        }
+    }
+}
+
+.list-layout-variation-2{
+    & .cmp-list{
+        & .cmp-teaser--thumbnail{
+            flex: 0 0 calc(33.33% - 80px);
+            @include mobile-style;
+        }
+    }
+}

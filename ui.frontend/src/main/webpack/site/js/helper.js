@@ -71,3 +71,54 @@ export const trapFocus = (element) => {
         }
     });
   }
+  export const getCookie = (name)=> {
+    if (typeof document !== 'undefined') {
+      var value = '; ' + document.cookie;
+      var parts = value.split('; ' + name + '=');
+      if (parts.length === 2) {
+        return parts.pop().split(';').shift();
+      }
+    }
+  }
+  
+  export const getFetch = async (url, headers) => {
+    return fetch(url, {headers,  credentials: "include"}).then(data=>{
+        if(data.status === 200) {
+            return data?.json();
+        } else {
+            console.log(data.statusText,"something went wrong");
+            return false;
+        }
+    });
+}
+
+export const fetchData = async(url,headers) => {
+  try {
+    const response = await fetch(url , {headers, credentials:"include"});
+    if (!response.ok) {
+      throw new Error('Request failed');
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error:', error.message);
+    // You can handle the error here or rethrow it to be caught elsewhere
+    throw error;
+  }
+}
+
+
+export const handleLoader =(isShow) =>{
+  const loaderclass = '.loader';
+  if (!document.querySelector(loaderclass)) {
+    return
+  }
+
+  var loader = document.querySelector(loaderclass); 
+    if(isShow){
+          loader.style.display = 'block';
+      }else{
+          loader.style.display = 'none';
+      }   
+}
+

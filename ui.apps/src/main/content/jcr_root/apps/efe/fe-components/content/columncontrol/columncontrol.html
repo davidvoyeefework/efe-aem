@@ -1,0 +1,10 @@
+<div data-sly-use.template="core/wcm/components/commons/v1/templates.html"
+   data-sly-use.model="com.efe.core.models.ColumnControl" data-sly-test.isConfigured="${model.columnsList.size > 0}"
+   id="${model.id}" class="aem-Grid aem-Grid--12">
+         <div data-sly-repeat="${model.columnsList}"
+            class="container responsivegrid aem-GridColumn--default--none aem-GridColumn ${item['classvalue']}">
+            <sly data-sly-resource="${item['index'] @ resourceType='efe/components/container',decoration=true}">
+            </sly>
+         </div>
+</div>
+<sly data-sly-call="${template.placeholder @ isEmpty=!isConfigured}"></sly>

@@ -7,6 +7,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -14,9 +15,11 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.api.resource.ResourceResolverFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.adobe.acs.commons.genericlists.GenericList;
 import com.adobe.cq.wcm.core.components.util.ComponentUtils;
 import com.day.cq.tagging.Tag;
 import com.day.cq.wcm.api.Page;
@@ -179,5 +182,26 @@ public class EFEUtil {
         }
         return framedPage;
     }
-
+    
+    /**
+     * Gets the generic list.
+     *
+     * @param resourceResolverFactory the resource resolver factory
+     * @param listPath the list path
+     * @return the generic list
+     */
+    public static GenericList getGenericList(ResourceResolverFactory resourceResolverFactory, String listPath) {
+        GenericList list = null;
+        try (ResourceResolver resourceResolver = ResourceUtil.getServiceResourceResolver(resourceResolverFactory)) {
+            PageManager pageManager = resourceResolver.adaptTo(PageManager.class);
+            Page listPage = pageManager.getPage(listPath);
+            if (Objects.nonNull(listPage)) {
+                list = listPage.adaptTo(GenericList.class);
+            }
+        } catch (Exception e) {
+            LOGGER.error("Error :", e);
+        }
+        return list;
+    }
 }
+

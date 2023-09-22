@@ -1,0 +1,160 @@
+.fe-modal{
+    padding: 0 rem(12px);
+    position: fixed;
+    overflow: auto;
+    overflow-y: scroll;
+    left: -1000%;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+    font-family: var(--fe-form-font-family);
+    
+
+    &.fe-show-modal{
+        display: flex;
+        left: 0;
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1);
+        transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+    }
+
+    &-content {
+        background-color: white;
+        margin: auto;
+        max-width: rem(650px);
+
+        & .fe-modal-form-error-content-wrapper, & .fe-modal-form-error-content-wrapper p{
+            font-size: rem(16px);
+            font-style: normal;
+            font-weight: var(--fe-error-modal-body-font-weight);
+            line-height: rem(24px);
+            font-family: var(--fe-form-font-family);
+        }
+    }
+
+    &-header{
+        position: relative;
+        padding: rem(25px);
+        &__text, &__text span{
+            color: var(--fe-form-promo-text);
+            font-family: var(--fe-modal-header-font-family)!important;
+            font-size: rem(30px);
+            font-style: normal;
+            font-weight: 400;
+            line-height: rem(30px); /* 100% */
+            letter-spacing: var(--fe-modal-letter-spacing);
+            text-transform: uppercase;
+        }
+
+        &__close{
+            position: absolute;
+            right: rem(25px);
+            top:rem(25px);
+            width: rem(14.121px);
+            height: rem(14.043px);
+            font-size: 1.8rem;
+            line-height: rem(14px);
+            cursor: pointer;
+        }
+    }
+
+    &-body{
+        padding: rem(25px);
+        color: #535658;
+        font-family: var(--fe-form-font-family);
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 105%;
+
+        & b, & strong, & .fe-fees__heading, & th{
+            font-weight: 700;
+        }
+
+        & .fe-fees{
+            &__heading{
+                margin-top: rem(20px);
+            }
+
+            &__table{
+                margin-top: rem(15px);
+                margin-bottom: rem(20px);
+                border-collapse: collapse;
+                line-height: rem(20px);
+
+                & tr {
+                    & th,& td {
+                        border-top: 1px solid #53565840;
+                        border-bottom: 1px solid #53565840;
+                        padding: rem(15px) 0;
+                        text-align: left;
+                    }
+                }
+
+                & tr:last-child{
+                    & td{
+                        padding-bottom: rem(20px);
+                    }
+                }
+            }
+
+            &__disclaimers{
+                color: #A6A8AB;
+                font-size: 8px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 10px; /* 125% */
+
+                & a{
+                    color: #A6A8AB;
+                    text-decoration-line: underline;
+                }
+            }
+        }
+    }
+
+    &-footer{
+        &__close{
+            @include fe-secondary-btn;
+            display: inline-flex;
+            margin: rem(25px);
+            margin-top: 0;
+            font-size: rem(14px);
+            font-weight: 400;
+            text-transform: uppercase;
+            font-family: var(--fe-form-font-family);
+            line-height: normal;
+            letter-spacing: 1px;
+        }
+        & .fe-text-right{
+            text-align: right;
+        }
+    }
+}
+
+.theme-vanguard, .theme-aon, .theme-ssga{
+    & .fe-modal{
+        &-header{
+            &__text, &__text span{
+                font-weight: 700;
+                text-transform: none;
+            }
+        }
+        &-body{
+            line-height: 24px;
+        }
+        &-footer{
+            &__close{
+                 @include fe-primary-btn;
+                 display: inline-flex;
+                 font-weight: 600;
+            }
+        }
+    }
+}

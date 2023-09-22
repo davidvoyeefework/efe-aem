@@ -1,0 +1,152 @@
+.fepage {
+    &.theme-vanguard {
+        .cmp-list--footer {
+            a,button {
+                text-decoration: underline;
+
+                @include media("<=tablet") {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+    .cmp-list--footer {
+        a,
+        .cmp-list__item-title {
+            color: var(--title-text-color) !important;
+            font-family: var(--fe-footer-header-font-family);
+            text-transform: capitalize;
+            font-size: 13px;
+            line-height: 13px;
+        }
+        .cmp-list .cmp-list__item-link.ot-sdk-show-settings {
+            color: var(--title-text-color) !important;
+        }
+    }
+    .fe-footer-modal {
+        font-family: var(--fe-footer-header-font-family);
+        .cmp-modal {
+            height: auto;
+            min-height: 220px;
+            width: 597px;
+            &__content {
+                text-align: left;
+                padding: 25px;
+                ul {
+                    list-style: unset;
+                    padding: 25px;
+                    @include media('>=phone-m') {
+                        columns: 2;
+                        column-gap: 25px;
+                    }
+                    li {
+                        a {
+                            color: #535658;
+                            text-decoration: underline;
+                            font-weight: var(--fe-error-modal-body-font-weight);
+                        }
+                    }
+                }
+            }
+            &__about-us-text {
+                padding: 25px 0;
+                p {
+                    color: #535658;
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 24px;
+                }
+            }
+            &__fe-title {
+                color: var(--title-text-color);
+                font-size: 30px;
+                font-style: normal;
+                line-height: 30px; /* 100% */
+                letter-spacing: 4px;
+                padding-bottom: 25px;
+                font-family: var(--fe-modal-header-font-family) !important;
+                font-weight: var(--fe-modal-header-font-weight);
+                text-transform: uppercase;
+            }
+            &__close {
+                padding: 25px;
+                svg {
+                    height: 14px;
+                    width: 14px;
+                    line {
+                        stroke: var(--title-text-color);
+                    }
+                }
+            }
+            &__close-btn-div {
+                display: flex;
+                justify-content: end;
+                padding-top: 0;
+                button {
+                    @include fe-secondary-btn;
+                    font-size: 14px;
+                    font-weight: 400;
+                }
+            }
+        }
+    }
+    .footer {
+        .cmp-image--efe-logo-secondary.cmp-image--small {
+            margin-bottom: 0 !important;
+            height: auto !important;
+            .cmp-image {
+                @include media("<=tablet") {
+                    width: 233px;
+                }
+                width: 227px;
+                height: 41px;
+            }
+        }
+        * {
+            font-family: var(--fe-footer-font-family);
+        }
+        &#efe-footer .cmp-container--1920 #disclosure-copy * {
+            font-size: 14px;
+            line-height: 17.5px;
+            a {
+                text-decoration: none;
+            }
+        }
+    }
+    &.theme-vanguard, &.theme-aon, &.theme-ssga {
+        & .cmp-modal {
+            &__close-btn-div {
+                button {
+                    @include fe-primary-btn;
+                    font-weight: 600;
+                }
+            }
+        }
+        .footer {
+                .cmp-image--efe-logo-secondary.cmp-image--small {
+                    margin-bottom: 0 !important;
+                    .cmp-image {
+                        margin-top:38px;
+                    }
+                    &::before {
+                        content: "Powered by";
+                        color: #000;
+                        font-size: 12px;
+                        font-style: normal;
+                        font-weight: 300;
+                        line-height: 32px; /* 266.667% */
+                        top: 38px;
+                        position: absolute;
+                        font-family: 'nimbus-sans';
+                    }
+            }
+            * {
+                font-family: var( --font-family)!important;
+            }
+            &#efe-footer .cmp-container--1920 #disclosure-copy * {
+                font-size: 12px;
+            }
+        }
+    }
+}

@@ -1,0 +1,31 @@
+{
+	"jcr:primaryType": "cq:Page",
+	"jcr:content": {
+		"jcr:primaryType": "cq:PageContent",
+		"jcr:title": "Fe Header",
+		"cq:template": "/conf/efe/settings/wcm/templates/xf-web-variation",
+		"cq:xfMasterVariation": true,
+		"cq:xfVariantType": "web",
+		"cq:tags": [],
+		"sling:resourceType": "efe/components/xfpage",
+		"root": {
+			"jcr:primaryType": "nt:unstructured",
+			"layout": "responsiveGrid",
+			"sling:resourceType": "efe/components/container",
+			"container": {
+				"jcr:primaryType": "nt:unstructured",
+				"sling:resourceType": "hbff/components/container",
+				"feHeader": {
+					"jcr:primaryType": "nt:unstructured",
+					"sling:resourceType": "efe/fe-components/structure/fe-header",
+					"primaryLogo": "/content/dam/test1.svg",
+					"primaryLogoAltText": "alt text1",
+					"secondaryLogo": "/content/dam/test2.svg",
+					"secondaryLogoAltText": "alt text2",
+					"sponsorDetails": "test quote",
+					"type": "subadvised"
+				}
+			}
+		}
+	}
+}

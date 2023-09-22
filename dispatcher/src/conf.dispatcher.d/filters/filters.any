@@ -9,6 +9,8 @@ $include "./default_filters.any"
 # Allow components JSON model
 /0101 { /type "allow" /extension "json" /selectors "model" /path "/content/*" }
 
+/0108 { /type "allow" /extension "json" /selectors "search" /path "/content/*" }
+
 # Allow manifest.webmanifest files located in the content
 /0102 { /type "allow" /extension "webmanifest" /path "/content/*/manifest" }
 
@@ -23,3 +25,6 @@ $include "./default_filters.any"
 
 # Allow robots txt file
 /0106 { /type "allow" /method "GET" /extension "txt" /path "/content/dam/efe/seo/*" }
+
+# Allow dynamic data variable servlet
+/0107 { /type "allow" /method "GET" /extension "json" /path "/content/fe/*" /selectors "dynamic"}

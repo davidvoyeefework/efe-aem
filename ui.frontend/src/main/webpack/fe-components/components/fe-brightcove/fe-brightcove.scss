@@ -1,0 +1,18 @@
+.brightcove{
+    width: rem(514px);
+    height: rem(386px);
+    
+    @include media('<=tablet') {
+        width: calc( 100% + 60px);
+        height: rem(428px);
+        margin-left: -30px;
+        margin-bottom: rem(40px);
+    }
+}
+
+.full-width .brightcove{
+    width: 100%;
+    @include media('<=tablet') {
+        width: calc( 100% + 60px);
+    }
+}

@@ -1,0 +1,27 @@
+{
+	"jcr:primaryType": "cq:Page",
+	"jcr:content": {
+		"jcr:primaryType": "cq:PageContent",
+		"jcr:title": "Fe Footer",
+		"cq:template": "/conf/efe/settings/wcm/templates/xf-web-variation",
+		"cq:xfMasterVariation": true,
+		"cq:xfVariantType": "web",
+		"cq:tags": [],
+		"sling:resourceType": "efe/components/xfpage",
+		"root": {
+			"jcr:primaryType": "nt:unstructured",
+			"layout": "responsiveGrid",
+			"sling:resourceType": "efe/components/container",
+			"container": {
+				"jcr:primaryType": "nt:unstructured",
+				"sling:resourceType": "hbff/components/container",
+				"feFooter": {
+					"jcr:primaryType": "nt:unstructured",
+					"sling:resourceType": "efe/fe-components/structure/fe-footer",
+					"fileReference": "/content/dam/test1.svg",
+					"altText": "alt text1"
+				}
+			}
+		}
+	}
+}

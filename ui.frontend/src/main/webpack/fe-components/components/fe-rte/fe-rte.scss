@@ -1,0 +1,210 @@
+.fe-layout-unordered-list, .fe-check-unordered-list, .fe-dot-unordered-list, .fe-charcoal-check-unordered-list{
+
+    & .cmp-text ul{
+        padding: 0;
+        margin-left: rem(10px);
+        display: table;
+        border-collapse: separate;
+        border-spacing: 0 rem(20px);
+    }
+    & .cmp-text ul li{
+        color: #535658;
+        font-family: var(--fe-form-font-family);
+        font-size: rem(20px);
+        font-style: normal;
+        font-weight: 300;
+        line-height: 120%;
+        text-transform: none;
+        list-style-type: none;
+        display: table-row;
+        margin-bottom: 0;
+        width: 100%;
+    }
+}
+
+.fe-layout-unordered-list, .fe-check-unordered-list, .fe-charcoal-check-unordered-list{
+    & .cmp-text ul li{
+        &::before{
+            content: '';
+            height: 25px;
+            width: 25px;
+            top: 0;
+            display: table-cell;
+            background: var(--fe-text-list-icon);
+            left: rem(-20px);
+        }
+    }
+}
+
+
+.fe-layout-unordered-list{
+    & .cmp-text ul{
+        margin-left: rem(20px);
+    }
+}
+
+.fe-check-unordered-list{
+    & .cmp-text ul li{
+        &::before{
+            background: var(--fe-check-list-icon);
+            left: rem(-10px);
+        }
+    }
+}
+.fe-charcoal-check-unordered-list{
+    & .cmp-text ul li{
+        &::before{
+            background: url("../resources/images/icons/charcoal-check.svg") no-repeat left top;;
+            left: rem(-10px);
+        }
+    }
+}
+
+.fe-dot-unordered-list{
+    & .cmp-text ul li{
+        &::before{
+            color: #535658;
+            display: table-cell;
+            padding-right: rem(10px);
+        }
+    }
+}
+
+//typography changes
+.cmp-text{
+    & .font-color-red{
+        color: #c32d37 !important;
+    }
+
+    b{
+        font-weight: 700 !important;
+    }
+
+    &--body-01{
+        sup {
+            font-size: rem(16px) !important;
+        }
+    }
+}
+
+sup {
+    font-size: 50% !important;
+}
+
+.fepage.fe-subadvised-sponsor, .fe-subadvised-sponsor{
+    .cmp-text{
+        & *{
+            text-transform: none;
+            font-family: 'Open Sans';
+        }
+
+        b{
+            font-weight: 700 !important;
+        }
+
+        &--heading-01{
+            font-size: rem(54px);
+            font-style: normal;
+            line-height: 110%;
+        }
+        &--heading-04{
+            letter-spacing: unset;
+        }
+        &--subhead-00{
+            font-weight: 700;
+            line-height: 118%;
+            letter-spacing: unset;
+        }
+
+        &--subhead-01{
+            font-size: 32px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 118%;
+        }
+
+        &--subhead-02{
+            font-size: rem(20px);
+            font-weight: 700;
+            font-style: normal;
+            line-height: 105%;
+        }
+
+        &--callout, &--callout p{
+            font-size: rem(24px);
+            font-style: normal;
+            font-weight: 700;
+            line-height: 105%; 
+        }
+
+        &--body-01{
+            font-size: rem(20px);
+            font-style: normal;
+            font-weight: 400;
+            line-height: 140%;
+        }
+
+        &--detail,  &--detail a{
+            color: #535658;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 300;
+            line-height: 135%;
+            font-family: 'nimbus-sans';
+        }
+
+    }
+
+    & .cmp-title{
+        &--heading-01 *{
+            font-size: rem(54px);
+            font-style: normal;
+            line-height: 110%;
+        }
+
+        &--subhead-00 *{
+            line-height: 118%;
+            font-weight: 300;
+        }
+
+        &--subhead-01 *{
+            font-size: 32px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 118%;
+        }
+
+        &--subhead-02 *{
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 105%;
+        }
+
+        &--callout *, &--callout p{
+            font-size: rem(24px);
+            font-style: normal;
+            font-weight: 700;
+            line-height: 105%; 
+        }
+
+        &--body-01 *{
+            font-size: rem(20px);
+            font-style: normal;
+            font-weight: 400;
+            line-height: 140%;
+        }
+
+        &--detail *,  &--detail a{
+            color: #535658;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 300;
+            line-height: 135%;
+            font-family: 'nimbus-sans';
+        }
+    }
+}
+.remove-margin{
+    margin: 0 !important;
+}
