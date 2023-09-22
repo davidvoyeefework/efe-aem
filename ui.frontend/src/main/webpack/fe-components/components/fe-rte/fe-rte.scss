@@ -156,6 +156,11 @@ sup {
     }
 
     & .cmp-title{
+
+        & *{
+            text-transform: unset;
+        }
+
         &--heading-01 *{
             font-size: rem(54px);
             font-style: normal;
