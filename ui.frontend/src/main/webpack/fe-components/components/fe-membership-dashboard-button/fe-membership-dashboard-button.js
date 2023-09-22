@@ -16,9 +16,10 @@ export default class FeMembershipDashboardButton {
         let buttonHeading = '';
         let oaButtonTitle;
         if (
-            this.windowObject?.isUserFullyAuth === true &&
+            (this.windowObject?.isUserFullyAuth === true &&
             this.windowObject?.context?.userTier &&
-            this.windowObject?.context?.userTier !== "PROSPECT"
+            this.windowObject?.context?.userTier !== "PROSPECT") || 
+            this.windowObject?.isUserLightAuth === true
           ) {
             buttonHeading = "Already using Online Advice?";
       
