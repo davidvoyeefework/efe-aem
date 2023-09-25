@@ -2001,7 +2001,7 @@
                         jcr:primaryType="nt:unstructured"
                         jcr:title="Fe Page Policy"
                         sling:resourceType="wcm/core/components/policy/policy"
-                        clientlibs="[fe.site,efe.test]"
+                        clientlibs="[fe.site,fe.master]"
                         clientlibsJsHead="fe.site">
                         <jcr:content jcr:primaryType="nt:unstructured"/>
                     </policy>
@@ -2145,6 +2145,11 @@
                                         cq:styleClasses="mobile-full-width"
                                         cq:styleId="mobile-full-width"
                                         cq:styleLabel="Mobile Full width"
+                                        jcr:primaryType="nt:unstructured"/>
+                                    <item2
+                                        cq:styleClasses="image-full-height"
+                                        cq:styleId="image-full-height"
+                                        cq:styleLabel="Image Full Height"
                                         jcr:primaryType="nt:unstructured"/>
                                 </cq:styles>
                             </item2>

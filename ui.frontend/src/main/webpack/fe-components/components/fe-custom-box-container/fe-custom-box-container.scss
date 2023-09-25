@@ -138,4 +138,12 @@
             }
         }
     }
+
+    &.image-full-height{
+        & .aem-GridColumn--default--4{
+            & div, & .cmp-image .cmp-image__image{
+                height: 100%;
+            }
+        }
+    }
 }

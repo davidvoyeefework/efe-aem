@@ -14753,7 +14753,14 @@
             value: function() {
                 var e = this.getEnvironmentType()
                   , t = this.base_urls;
-                return "https://www.feitest.com/"
+                var host = window.location.host;
+                var lowerDomains = ["localhost", "aemdev", "aemqa","aemstage"];
+                const islowerDomain = lowerDomains.some(domain => host.includes(domain));
+                if(islowerDomain){
+                    return "https://www.feitest.com/"
+                }else{
+                    return "https://www.financialengines.com/"
+                }
             }
         }, {
             key: "getUnbouncePageBaseUrl",

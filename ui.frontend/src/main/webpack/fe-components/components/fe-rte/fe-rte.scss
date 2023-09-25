@@ -87,6 +87,10 @@
     }
 }
 
+sup {
+    font-size: 50% !important;
+}
+
 .fepage.fe-subadvised-sponsor, .fe-subadvised-sponsor{
     .cmp-text{
         & *{
@@ -103,7 +107,9 @@
             font-style: normal;
             line-height: 110%;
         }
-
+        &--heading-04{
+            letter-spacing: unset;
+        }
         &--subhead-00{
             font-weight: 700;
             line-height: 118%;
