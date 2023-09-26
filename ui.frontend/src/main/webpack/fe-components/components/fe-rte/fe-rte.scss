@@ -107,9 +107,6 @@ sup {
             font-style: normal;
             line-height: 110%;
         }
-        &--heading-04{
-            letter-spacing: unset;
-        }
         &--subhead-00{
             font-weight: 700;
             line-height: 118%;
@@ -121,6 +118,7 @@ sup {
             font-style: normal;
             font-weight: 700;
             line-height: 118%;
+            letter-spacing: unset;
         }
 
         &--subhead-02{
@@ -156,6 +154,11 @@ sup {
     }
 
     & .cmp-title{
+
+        & *{
+            text-transform: none;
+        }
+
         &--heading-01 *{
             font-size: rem(54px);
             font-style: normal;
@@ -172,6 +175,7 @@ sup {
             font-style: normal;
             font-weight: 700;
             line-height: 118%;
+            letter-spacing: unset;
         }
 
         &--subhead-02 *{
