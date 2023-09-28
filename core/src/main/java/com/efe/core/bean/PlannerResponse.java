@@ -221,7 +221,7 @@ public class PlannerResponse {
 	}
 
 	public void setSupportStaff(List<SupportStaff> supportStaff) {
-	    this.supportStaff = supportStaff;
+	    this.supportStaff = new ArrayList<>(supportStaff);
 	}
 
 	/* Sets mobileImageUrl */
@@ -366,7 +366,10 @@ public class PlannerResponse {
 	}
 
 	public List<SupportStaff> getSupportStaff() {
-	    return this.supportStaff;
+            if (Objects.nonNull(supportStaff)) {
+			return new ArrayList<>(supportStaff);
+		}
+		return Collections.emptyList();
 	}
 
 	/**
