@@ -53,6 +53,9 @@ public class PlannerResponse {
 	/* advisorCRD */
 	private int advisorCRD;
 
+	/* supportStaff */
+	private List<SupportStaff> supportStaff;
+
 	/* desktopImageUrl */
 	private String desktopImageUrl;
 
@@ -217,6 +220,10 @@ public class PlannerResponse {
 		this.desktopImageUrl = desktopImageUrl;
 	}
 
+	public void setSupportStaff(List<SupportStaff> supportStaff) {
+	    this.supportStaff = supportStaff;
+	}
+
 	/* Sets mobileImageUrl */
 	public void setMobileImageUrl(String mobileImageUrl) {
 		this.mobileImageUrl = mobileImageUrl;
@@ -356,6 +363,10 @@ public class PlannerResponse {
 	 */
 	public int getAdvisorCRD() {
 		return advisorCRD;
+	}
+
+	public List<SupportStaff> getSupportStaff() {
+	    return this.supportStaff;
 	}
 
 	/**
