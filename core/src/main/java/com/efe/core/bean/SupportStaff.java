@@ -1,8 +1,10 @@
 package com.efe.core.bean;
 
 import java.util.List;
-
+import java.util.ArrayList;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import java.util.Collections;
+import java.util.Objects;
 
 /**
  * The Support Staff class.
@@ -56,7 +58,10 @@ public class SupportStaff {
     }
 
     public List<Integer> getPlanners() {
-        return this.planners;
+        if (Objects.nonNull(planners)) {
+			return new ArrayList<>(planners);
+		}
+		return Collections.emptyList();
     }
 
     public void setFirstName(String firstName) {
@@ -76,6 +81,7 @@ public class SupportStaff {
     }
 
     public void setPlanners(List<Integer> planners) {
-        this.planners = planners;
+        
+        this.planners = new ArrayList<>(planners);
     }
 }
