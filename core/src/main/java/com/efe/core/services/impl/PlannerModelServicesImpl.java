@@ -28,6 +28,7 @@ import com.efe.core.utils.IndustryExamUtil;
 import com.efe.core.utils.NodePropertyManagerUtil;
 import com.efe.core.utils.OfficeLocationsUtil;
 import com.efe.core.utils.ResourceUtil;
+import com.efe.core.utils.SupportStaffPlannerUtil;
 import com.google.gson.Gson;
 
 /**
@@ -91,7 +92,7 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 			CertificationsUtil.createCertificationsFragmentPlanner(childPathPlanner, jsonObj, resourceResolver);
 			EmploymentHistoryUtil.createEmploymentHistoryFragmentPlanner(childPathPlanner, jsonObj, resourceResolver);
 			OfficeLocationsUtil.createOfficesLocationsFragmentPlanner(childPathPlanner, jsonObj, resourceResolver);
-
+                        SupportStaffPlannerUtil.createSupportStaffFragmentPlanner(childPathPlanner, jsonObj, resourceResolver);
 			// create content fragment for primary office
 			createPrimaryOfficeFragmentPlanner(childPathPlanner, jsonObj, firstName, id, resourceResolver);
 
