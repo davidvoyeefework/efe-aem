@@ -278,6 +278,10 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 			plannerMasterNode.setProperty(PlannerLocationConstants.EDUCATION, ResourceUtil.getResourceChildNames(
 					childPathPlanner + PlannerLocationConstants.FORWARD_SLASH + PlannerLocationConstants.EDUCATION,
 					resourceResolver));
+                        
+                        plannerMasterNode.setProperty(PlannerLocationConstants.SUPPORT_STAFF, ResourceUtil.getResourceChildNames(
+					childPathPlanner + PlannerLocationConstants.FORWARD_SLASH + PlannerLocationConstants.SUPPORT_STAFF,
+					resourceResolver));
 
 			plannerMasterNode.setProperty(PlannerLocationConstants.INDUSTRY_EXAMS, ResourceUtil.getResourceChildNames(
 					childPathPlanner + PlannerLocationConstants.FORWARD_SLASH + PlannerLocationConstants.INDUSTRY_EXAMS,
