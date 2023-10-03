@@ -19,12 +19,13 @@ class ModalLeaving {
     let currentExtUrl;
     externalLinks.forEach((extlink) => {
       if (extlink.hasAttribute("href") && !extlink.classList.contains('cmp-social-share__link')) {
+        const domain = extlink.hostname;
         let linkhn = extlink.hostname.split('.').reverse();
         let linkHref = linkhn[1] + "." + linkhn[0];
         let domainhn = window.location.hostname.split('.').reverse();
         let domainHref = domainhn[1] + "." + domainhn[0];
         const getLinkHref = extlink.getAttribute("href");
-        const checkExlcusionLink = exlusionExtlinks.includes(getLinkHref);
+        const checkExlcusionLink = exlusionExtlinks.includes(domain);
         const checkClickAttribute = extlink.getAttribute("onClick") ? extlink.getAttribute("onClick") : false;
         if (linkHref !== domainHref && !checkExlcusionLink &&
           !getLinkHref.match(/^tel\:/) && !getLinkHref.match(/^mailto\:/) && getLinkHref !== 'javascript:void(0)'
