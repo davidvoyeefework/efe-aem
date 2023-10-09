@@ -1392,7 +1392,8 @@
                         if ((s = l[c++]) != s) return !0
                 } else
                     for (; u > c; c++)
-                        if ((e || c in l) && l[c] === n) return e || c || 0; return !e && -1
+                        if ((e || c in l) && l[c] === n) return e || c || 0;
+                return !e && -1
             }
         };
     e.exports = {
@@ -3195,8 +3196,7 @@
                     if (o[t].key > e.key) {
                         o.splice(t, 0, e);
                         break
-                    }
-                t === n && o.push(e)
+                    } t === n && o.push(e)
             }
             r.updateURL()
         },
@@ -5305,8 +5305,7 @@
                 } else {
                     if (p >= 9007199254740991) throw TypeError("Maximum allowed index exceeded");
                     u(f, p++, a)
-                }
-            return f.length = p, f
+                } return f.length = p, f
         }
     })
 }, function(e, t, n) {
@@ -6109,7 +6108,7 @@
     r({
         target: "Number",
         proto: !0,
-        forced: l && ("0.000" !== 8e-5.toFixed(3) || "1" !== .9. toFixed(0) || "1.25" !== 1.255.toFixed(2) || "1000000000000000128" !== (0xde0b6b3a7640080).toFixed(0)) || !s(function() {
+        forced: l && ("0.000" !== 8e-5.toFixed(3) || "1" !== .9.toFixed(0) || "1.25" !== 1.255.toFixed(2) || "1000000000000000128" !== (0xde0b6b3a7640080).toFixed(0)) || !s(function() {
             l.call({})
         })
     }, {
@@ -6130,8 +6129,7 @@
                         if ("" !== t || 0 === e || 0 !== p[e]) {
                             var n = String(p[e]);
                             t = "" === t ? n : t + i.call("0", 7 - n.length) + n
-                        }
-                    return t
+                        } return t
                 };
             if (f < 0 || f > 20) throw RangeError("Incorrect fraction digits");
             if (l != l) return "NaN";
@@ -9013,15 +9011,14 @@
                 for (a = n; a < s; a++)
                     if (u(e, a) === u(t, -1 === c ? 0 : a - c)) {
                         if (-1 === c && (c = a), a - c + 1 === l) return c * i
-                    } else -1 !== c && (a -= a - c), c = -1
+                    } else - 1 !== c && (a -= a - c), c = -1
             } else
                 for (n + l > s && (n = s - l), a = n; a >= 0; a--) {
                     for (var f = !0, p = 0; p < l; p++)
                         if (u(e, a + p) !== u(t, p)) {
                             f = !1;
                             break
-                        }
-                    if (f) return a
+                        } if (f) return a
                 }
             return -1
         }
@@ -9140,8 +9137,7 @@
                 if (e[o] !== t[o]) {
                     n = e[o], r = t[o];
                     break
-                }
-            return n < r ? -1 : r < n ? 1 : 0
+                } return n < r ? -1 : r < n ? 1 : 0
         }, l.isEncoding = function(e) {
             switch (String(e).toLowerCase()) {
                 case "hex":
@@ -9236,8 +9232,7 @@
                 if (u[f] !== c[f]) {
                     a = u[f], i = c[f];
                     break
-                }
-            return a < i ? -1 : i < a ? 1 : 0
+                } return a < i ? -1 : i < a ? 1 : 0
         }, l.prototype.includes = function(e, t, n) {
             return -1 !== this.indexOf(e, t, n)
         }, l.prototype.indexOf = function(e, t, n) {
@@ -10251,8 +10246,7 @@
                     var p = void 0;
                     for (var d in e) e.hasOwnProperty(d) && (void 0 !== p && c(p, a - 1), p = d, a++);
                     void 0 !== p && c(p, a - 1, !0)
-                }
-            return 0 === a && (s = r(this)), s
+                } return 0 === a && (s = r(this)), s
         })
     }, e.exports = t.default
 }, function(e, t, n) {
@@ -10953,7 +10947,7 @@
             return a.a.forEach(this, (n, r) => {
                 null != n && !1 !== n && (t[r] = e && a.a.isArray(n) ? n.join(", ") : n)
             }), t
-        }[Symbol.iterator]() {
+        } [Symbol.iterator]() {
             return Object.entries(this.toJSON())[Symbol.iterator]()
         }
         toString() {
@@ -11563,7 +11557,8 @@
         ge = n.n(me);
     var ve = !("undefined" == typeof window || !window.document || !window.document.createElement);
     try {
-        var ye = {get passive() {
+        var ye = {
+            get passive() {
                 return !0
             },
             get once() {
@@ -11859,8 +11854,7 @@
                             n[r] = e[t[r]].replace("{{ supplement }}", " (including the {{ supplement }})");
                             var o = n[r];
                             n[r] = o.replace(" | htmlToTrimmedPlainText", "")
-                        }
-                    return this.keyText = n, n
+                        } return this.keyText = n, n
                 }
             }, {
                 key: "getKeyTextMap",
@@ -13095,7 +13089,8 @@
                                     a = n.variantOnePromoBoxFreeTrialExpirationNoLinkPa;
                                 a && -1 === a.indexOf("publicEnrollment.start.variantOne.promoBox.freeTrial.expiration.pa") && (o = a), t.variantOneOfferValNoLink = o
                             }
-                        } else t.hasRiskFreeWithDuration ? (t.subtitle = n.promoCommonRiskFreeDuration, t.disclosure = n.promoCommonRiskFreeDurationDisclosure, t.variantOneOfferVal = n.variantOnePromoBoxRiskFreeDuration, t.variantOneOfferValNoLink = n.variantOnePromoBoxRiskFreeDuriationNolink) : t.hasRiskFreeWithExpiration && (t.subtitle = n.promoCommonRiskFreeExpiration, t.disclosure = n.promoCommonRiskFreeExpirationDisclosure, t.variantOneOfferVal = n.variantOnePromoBoxRiskFreeExpiration, t.variantOneOfferValNoLink = n.variantOnePromoBoxRiskFreeExpirationNolink);
+                        }
+                    else t.hasRiskFreeWithDuration ? (t.subtitle = n.promoCommonRiskFreeDuration, t.disclosure = n.promoCommonRiskFreeDurationDisclosure, t.variantOneOfferVal = n.variantOnePromoBoxRiskFreeDuration, t.variantOneOfferValNoLink = n.variantOnePromoBoxRiskFreeDuriationNolink) : t.hasRiskFreeWithExpiration && (t.subtitle = n.promoCommonRiskFreeExpiration, t.disclosure = n.promoCommonRiskFreeExpirationDisclosure, t.variantOneOfferVal = n.variantOnePromoBoxRiskFreeExpiration, t.variantOneOfferValNoLink = n.variantOnePromoBoxRiskFreeExpirationNolink);
                     if (t.variantOneOfferValNoLink && (t.variantOneOfferNoLink = t.variantOneOfferValNoLink), "6 mo Fee Waiver" !== t.offerDetails && (t.signUpFormPromoTitleVal = n.learnmorePmDetailedFormPromoTitle, e)) {
                         var i, s = "<i>Special Offer - 3 months free of program fees!</i>";
                         (i = n.promoTitlePa) && -1 === i.indexOf("publicEnrollment.products.learnMore.pm.detailed.form.promo.title.pa") && (s = i), t.signUpFormPromoTitleVal = s
