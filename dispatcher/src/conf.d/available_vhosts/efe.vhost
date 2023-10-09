@@ -10,6 +10,7 @@ Include conf.d/variables/custom.vars
 	ServerAlias  "127.0.0.1"
 	ServerAlias  "publish*.adobeaemcloud.net"
 	ServerAlias  "publish*.adobeaemcloud.com"
+	ServerAlias  "preview*.adobeaemcloud.com"
 	ServerAlias	 "publish-p91602-e1121645.adobeaemcloud.com"
 	ServerAlias	 "*.efe.com"
 	ServerAlias	 "*.edelmanfinancialengines.com"

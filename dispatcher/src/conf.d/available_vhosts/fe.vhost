@@ -13,6 +13,8 @@ Include conf.d/variables/custom.vars
 	ServerAlias	 "*.fe.com"
 	ServerAlias	 "*.financialengines.com"
 	ServerAlias	 "*.feitest.com"
+	ServerAlias  "preview*.adobeaemcloud.com"
+	
 	# Use a document root that matches the one in conf.dispatcher.d/default.farm
 	DocumentRoot "${DOCROOT}"
 	# URI dereferencing algorithm is applied at Sling's level, do not decode parameters here
