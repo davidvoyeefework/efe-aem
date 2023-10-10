@@ -618,7 +618,7 @@ public class PlannerLocationConstants {
         /**
          * Support Staff
          */
-        public static final String SUPPORT_STAFF = "supportStaff";
+        public static final String SUPPORT_STAFF = "supportstaff";
         public static final String SUPPORT_STAFF_FRAGMENT_PREFIX = "supportstafffragment_";
         public static final String SUPPORT_STAFF_MODEL = "/conf/efe/settings/dam/cfm/models/support-staff";
         public static final String JCR_TITLE_SUPPORT_STAFF = "support staff fragment";
