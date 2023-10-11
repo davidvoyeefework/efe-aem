@@ -4,7 +4,7 @@
           xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
           xmlns:cq="http://www.day.com/jcr/cq/1.0"
           jcr:primaryType="nt:unstructured"
-          jcr:title="Related Articles"
+          jcr:title="Related Articles Ed Center"
           sling:resourceType="cq/gui/components/authoring/dialog"
           extraClientlibs="[core.wcm.components.list.v2.editor]"
           helpPath="https://www.adobe.com/go/aem_cmp_list_v3"
@@ -273,12 +273,6 @@
                                                     fieldLabel="Max Items"
                                                     min="{Long}0"
                                                     name="./maxItems"/>
-                                            <linktext
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                    fieldDescription="Button Link Text"
-                                                    fieldLabel="Link Text"
-                                                    name="./linkText"/>
                                             <id
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

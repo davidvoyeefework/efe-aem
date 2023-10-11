@@ -5,4 +5,4 @@
           jcr:title="Related Article Ed Center"
           sling:resourceSuperType="core/wcm/components/list/v3/list"
           componentGroup="EFE - Content"
-          teaserDelegate="efe/components/relatedteaser"/>
+          teaserDelegate="efe/components/relatedteaser-ed-center"/>

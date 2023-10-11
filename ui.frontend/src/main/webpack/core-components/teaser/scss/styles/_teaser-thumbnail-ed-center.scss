@@ -1,0 +1,56 @@
+@mixin teaserThumbnail {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.relatedarticle-ed-center {
+    .cmp-teaser {
+        @include teaserThumbnail;
+        height: 100%;
+        justify-content: start;
+
+        &__image {
+            width: 100%;
+            height: auto;
+            padding-top: 52%;
+            position: relative;
+
+                .cmp-image__image {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+                }
+        }
+
+        &__content {
+            margin-top: 24px;
+
+            h2.cmp-title--subhead-01 {
+                margin-bottom: rem(12);
+                a {
+                    transition: $std-trasition;
+
+                    &:before {
+                        content:"";
+                        position: absolute;
+                        top: 0;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                        z-index: 8;
+                    }
+                }
+            }
+        }
+
+        &__description {
+            @include body-02;
+            color: $efe-gray-primary;
+        }
+    }
+}
