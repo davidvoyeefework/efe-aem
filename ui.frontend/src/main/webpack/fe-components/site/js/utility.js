@@ -395,9 +395,10 @@ export const getDashboardLink = () => {
   const apiBaseUrl = getApiBaseUrl();
   let url = "";
     if (
-      isUserFullyAuth &&
+      (isUserFullyAuth &&
       context?.userTier &&
-      context.userTier !== "PROSPECT"
+      context.userTier !== "PROSPECT") ||
+      isUserLightAuth === true
     ) {
       url =
         apiBaseUrl +
@@ -414,7 +415,7 @@ export const getDashboardLink = () => {
       url = providerInfo?.rkLoginUrl;
        url.replace(/^https?:\/\//i, "");
     } 
-    return `<a href="${url}" target="_blank" class="fe-learn-more-link">MEMBER DASHBOARD</a>`;
+    return url?`<a href="${url}" target="_blank" class="fe-learn-more-link">LOGIN TO ONLINE ADVICE</a>`:'';
 }
 export const getLoginLink = ()=> {
     const windowDataObj = window?.aemfe;
