@@ -1,7 +1,7 @@
 export default class FeMembershipDashboardButton {
     constructor() {
         document.addEventListener("messageFromfePage", (e) =>{
-            this.attributeParameterElem = document.querySelector('.fe-membership-dashboard-button');
+            this.attributeParameterElem = document.querySelectorAll('.fe-membership-dashboard-button');
             this.envUrl = document.querySelector('#fe-properties')?.getAttribute('data-api-domain');
             this.windowObject = window.aemfe;
             this.init();
@@ -43,9 +43,10 @@ export default class FeMembershipDashboardButton {
             var buttonHeadingEl = document.createElement("p");
             buttonHeadingEl.classList.add("fe-dashboard-button__heading");
             buttonHeadingEl.innerText = buttonHeading;
-      
-            containerEl.appendChild(buttonHeadingEl);
-            containerEl.appendChild(buttonEl);
+            containerEl.forEach(ele=>{
+              ele.appendChild(buttonHeadingEl);
+              ele.appendChild(buttonEl);
+            });
           }
     }
 }
