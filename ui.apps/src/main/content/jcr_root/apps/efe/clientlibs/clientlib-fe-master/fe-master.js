@@ -13284,7 +13284,7 @@
             }), n.legalInformation = '<a href="javascript:void(0)" class="fe-modal-toggle-legalDocLink">Legal Information</a>', n.doNotSellMyInfo = '<a href="https://www.edelmanfinancialengines.com/media/pdf/DNSMPI" target="_blank">\'Do Not Sell My Info\'</a> Notice', n
         },
         replacePlaceholderWithData: function(e) {
-            Mt ? this.getDataFieldIdsWithParams("div.fe-aem-form") : this.getDataFieldIds(), this.dataPlacholders.length > 0 && this.dataPlacholders.forEach(function(t, n) {
+            Mt ? (this.getDataFieldIdsWithParams("div.fe-aem-form"), this.getDataFieldIdsWithParams("form-modal-fe")) : this.getDataFieldIds(), this.dataPlacholders.length > 0 && this.dataPlacholders.forEach(function(t, n) {
                 if (void 0 !== e[t.id.trim()]) {
                     var r = new RegExp("(?:%7B%7B|{{)" + t.id + "(?:}}|%7D%7D)", "g");
                     this.bodyContent = this.bodyContent.replace(r, e[t.id.trim()])
