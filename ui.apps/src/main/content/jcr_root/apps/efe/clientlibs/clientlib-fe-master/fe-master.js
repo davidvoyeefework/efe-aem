@@ -30433,10 +30433,10 @@
       },
       replacePlaceholderWithData: function replacePlaceholderWithData(userData) {
         // pass data field IDs required for this page and user token as part of API call
-        if (isAdobePage && document.querySelector("div.form-modal-fe") != null) {
-          this.getDataFieldIdsWithParams("div.form-modal-fe");
+        if (isAdobePage) {
+          if (document.querySelector("div.form-modal-fe") != null) {
+            this.getDataFieldIdsWithParams("div.form-modal-fe");
     
-          if (isAdobePage && document.querySelector("div.form-modal-fe") != null) {
             if (this.dataPlacholders.length > 0) {
               // replace placeholders with real data
               this.dataPlacholders.forEach(function (dataPlaceholder, index) {
@@ -30449,9 +30449,9 @@
               }.bind(this));
               document.querySelector("div.form-modal-fe").innerHTML = this.bodyContent;
             }
-          }
     
-          this.getDataFieldIdsWithParams("div.fe-aem-form");
+            this.getDataFieldIdsWithParams("div.fe-aem-form");
+          }
         } else {
           this.getDataFieldIds();
         }
@@ -30469,8 +30469,10 @@
         } // replace body content with updated content
     
     
-        if (isAdobePage && document.querySelector("div.fe-aem-form") != null) {
-          document.querySelector("div.fe-aem-form").innerHTML = this.bodyContent;
+        if (isAdobePage) {
+          if (document.querySelector("div.fe-aem-form") != null) {
+            document.querySelector("div.fe-aem-form").innerHTML = this.bodyContent;
+          }
         } else {
           document.querySelector("body div:first-child").innerHTML = this.bodyContent;
         }
