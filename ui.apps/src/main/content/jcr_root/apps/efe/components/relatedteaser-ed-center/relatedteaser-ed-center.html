@@ -2,6 +2,7 @@
 <div data-sly-use.teaser="com.adobe.cq.wcm.core.components.models.Teaser"
      data-sly-use.article="com.efe.core.models.RelatedArticle"
      data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+     data-sly-use.videoButton="video-button.html"
      data-sly-use.imageTemplate="image.html"
      data-sly-use.titleTemplate="title.html"
      data-sly-use.descriptionTemplate="description.html"
@@ -21,6 +22,9 @@
         </h2>
         <p class="cmp-text--body-02">${teaser.description}</p>
         <p class="cmp-text--body-02">${properties.jcr:title}</p>
+        <sly data-sly-test="${properties.jcr:title == 'COPING'}">
+            <div data-sly-call="${videoButton.actions @ teaser=teaser, article=article}"></div>
+        </sly>
     </div>
     <sly data-sly-call="${imageTemplate.image @ teaser=teaser}"></sly>
 </div>
