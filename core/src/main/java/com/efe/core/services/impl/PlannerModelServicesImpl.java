@@ -271,6 +271,7 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 			String primaryOfficeFragmentName = PlannerLocationConstants.FRAGMENT_NAME_PREFIX + firstName
 					+ PlannerLocationConstants.UNDERSCORE + Integer.toString(id)
 					+ PlannerLocationConstants.PRIMARY_OFFICE_POSTFIX;
+                        
 
 			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode, PlannerLocationConstants.PRIMARY_OFFICE,
 					childPathPlanner + PlannerLocationConstants.FORWARD_SLASH + primaryOfficeFragmentName);
@@ -278,10 +279,10 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 			plannerMasterNode.setProperty(PlannerLocationConstants.EDUCATION, ResourceUtil.getResourceChildNames(
 					childPathPlanner + PlannerLocationConstants.FORWARD_SLASH + PlannerLocationConstants.EDUCATION,
 					resourceResolver));
-                        
-                        plannerMasterNode.setProperty(PlannerLocationConstants.SUPPORT_STAFF, ResourceUtil.getResourceChildNames(
-					childPathPlanner + PlannerLocationConstants.FORWARD_SLASH + PlannerLocationConstants.SUPPORT_STAFF,
-					resourceResolver));
+
+                        plannerMasterNode.setProperty(PlannerLocationConstants.SUPPORT_STAFF,
+					ResourceUtil.getResourceChildNames(childPathPlanner + PlannerLocationConstants.FORWARD_SLASH
+							+ PlannerLocationConstants.SUPPORT_STAFF, resourceResolver));
 
 			plannerMasterNode.setProperty(PlannerLocationConstants.INDUSTRY_EXAMS, ResourceUtil.getResourceChildNames(
 					childPathPlanner + PlannerLocationConstants.FORWARD_SLASH + PlannerLocationConstants.INDUSTRY_EXAMS,
