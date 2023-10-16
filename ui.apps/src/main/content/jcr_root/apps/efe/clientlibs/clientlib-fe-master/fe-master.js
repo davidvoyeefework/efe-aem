@@ -13159,7 +13159,7 @@
             })
         },
         _renderDynamicDataAtPageLoad: function(e, t) {
-            this.addPageClasses(this.pageFrameData, this.planownerData, Ye.userIdentified), Xe.addContentToPage("body > div"), 0 !== Object.keys(this.programFeesData).length && It.getFeesModalContent(this.pageData, this.programFeesData), this.replacePlaceholderWithData(this.pageData), e && Rt.afterRender(), t && Lt.afterRender(), $e.addAllToDOM(), Ft.setUpBackLinks(), Ft.cleanAuthLevelContent(), "function" == typeof pageOverride && pageOverride(), "undefined" != typeof pageTextJson && "undefined" != typeof currentPageName && void 0 !== pageTextJson[currentPageName] && document.getElementsByClassName("fe-footer-copyright") && document.getElementsByClassName("fe-footer-copyright").length > 0 && document.getElementsByClassName("fe-footer-copyright")[0].append(" " + pageTextJson[currentPageName]), this.hide();
+            this.addPageClasses(this.pageFrameData, this.planownerData, Ye.userIdentified), Mt ? Xe.addContentToPage("div.form-modal-fe") : Xe.addContentToPage("body > div"), 0 !== Object.keys(this.programFeesData).length && It.getFeesModalContent(this.pageData, this.programFeesData), this.replacePlaceholderWithData(this.pageData), e && Rt.afterRender(), t && Lt.afterRender(), $e.addAllToDOM(), Ft.setUpBackLinks(), Ft.cleanAuthLevelContent(), "function" == typeof pageOverride && pageOverride(), "undefined" != typeof pageTextJson && "undefined" != typeof currentPageName && void 0 !== pageTextJson[currentPageName] && document.getElementsByClassName("fe-footer-copyright") && document.getElementsByClassName("fe-footer-copyright").length > 0 && document.getElementsByClassName("fe-footer-copyright")[0].append(" " + pageTextJson[currentPageName]), this.hide();
             var n = Date.now(),
                 r = new Date((new Date).getTime()).toString();
             qe.info("Unbounce page loading end time: " + r), qe.info("Unbounce Page load time: " + (Date.now() - n) / 1e3)
@@ -13284,7 +13284,7 @@
             }), n.legalInformation = '<a href="javascript:void(0)" class="fe-modal-toggle-legalDocLink">Legal Information</a>', n.doNotSellMyInfo = '<a href="https://www.edelmanfinancialengines.com/media/pdf/DNSMPI" target="_blank">\'Do Not Sell My Info\'</a> Notice', n
         },
         replacePlaceholderWithData: function(e) {
-            Mt ? (this.getDataFieldIdsWithParams("div.fe-aem-form"), this.getDataFieldIdsWithParams("form-modal-fe")) : this.getDataFieldIds(), this.dataPlacholders.length > 0 && this.dataPlacholders.forEach(function(t, n) {
+            Mt ? (this.getDataFieldIdsWithParams("div.fe-aem-form"), this.getDataFieldIdsWithParams("div.form-modal-fe")) : this.getDataFieldIds(), this.dataPlacholders.length > 0 && this.dataPlacholders.forEach(function(t, n) {
                 if (void 0 !== e[t.id.trim()]) {
                     var r = new RegExp("(?:%7B%7B|{{)" + t.id + "(?:}}|%7D%7D)", "g");
                     this.bodyContent = this.bodyContent.replace(r, e[t.id.trim()])
