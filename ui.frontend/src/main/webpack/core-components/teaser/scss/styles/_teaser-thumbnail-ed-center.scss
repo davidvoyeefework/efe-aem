@@ -8,6 +8,7 @@
         @include teaserThumbnail;
         height: 100%;
         justify-content: start;
+        position: relative;
 
         &__image {
             width: 100%;
@@ -34,7 +35,6 @@
                 margin-bottom: rem(12);
                 a {
                     transition: $std-trasition;
-
                     &:before {
                         content:"";
                         position: absolute;
