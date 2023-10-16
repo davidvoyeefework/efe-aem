@@ -68,7 +68,7 @@
         </div>
     </div>
     <div class="cmp-efe--full-width secondary" data-sly-test="${!planner.supportStaff.empty}">
-        <div class="teaser cmp-teaser--thumbnail" data-sly-repeat="${planner.supportStaff}">
+        <div class="teaser cmp-teaser--thumbnail" data-sly-list="${planner.supportStaff}">
         <div  class="cmp-teaser">
           <div class="cmp-teaser__content">
             <h2 class="cmp-teaser__title"> ${item.firstName} ${item.lastName}</h2>
