@@ -28,6 +28,7 @@ import com.efe.core.utils.IndustryExamUtil;
 import com.efe.core.utils.NodePropertyManagerUtil;
 import com.efe.core.utils.OfficeLocationsUtil;
 import com.efe.core.utils.ResourceUtil;
+import com.efe.core.utils.SupportStaffPlannerUtil;
 import com.google.gson.Gson;
 
 /**
@@ -91,7 +92,7 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 			CertificationsUtil.createCertificationsFragmentPlanner(childPathPlanner, jsonObj, resourceResolver);
 			EmploymentHistoryUtil.createEmploymentHistoryFragmentPlanner(childPathPlanner, jsonObj, resourceResolver);
 			OfficeLocationsUtil.createOfficesLocationsFragmentPlanner(childPathPlanner, jsonObj, resourceResolver);
-
+                        SupportStaffPlannerUtil.createSupportStaffFragmentPlanner(childPathPlanner, jsonObj, resourceResolver);
 			// create content fragment for primary office
 			createPrimaryOfficeFragmentPlanner(childPathPlanner, jsonObj, firstName, id, resourceResolver);
 
@@ -270,6 +271,7 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 			String primaryOfficeFragmentName = PlannerLocationConstants.FRAGMENT_NAME_PREFIX + firstName
 					+ PlannerLocationConstants.UNDERSCORE + Integer.toString(id)
 					+ PlannerLocationConstants.PRIMARY_OFFICE_POSTFIX;
+                        
 
 			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode, PlannerLocationConstants.PRIMARY_OFFICE,
 					childPathPlanner + PlannerLocationConstants.FORWARD_SLASH + primaryOfficeFragmentName);
@@ -277,6 +279,10 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 			plannerMasterNode.setProperty(PlannerLocationConstants.EDUCATION, ResourceUtil.getResourceChildNames(
 					childPathPlanner + PlannerLocationConstants.FORWARD_SLASH + PlannerLocationConstants.EDUCATION,
 					resourceResolver));
+
+                        plannerMasterNode.setProperty(PlannerLocationConstants.SUPPORT_STAFF,
+					ResourceUtil.getResourceChildNames(childPathPlanner + PlannerLocationConstants.FORWARD_SLASH
+							+ PlannerLocationConstants.SUPPORT_STAFF, resourceResolver));
 
 			plannerMasterNode.setProperty(PlannerLocationConstants.INDUSTRY_EXAMS, ResourceUtil.getResourceChildNames(
 					childPathPlanner + PlannerLocationConstants.FORWARD_SLASH + PlannerLocationConstants.INDUSTRY_EXAMS,

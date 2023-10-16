@@ -417,5 +417,6 @@ public class PlannerBioImpl implements PlannerBio {
 	public String getFileReference() {
 		return dynamicMediaService.getDmImagePath(resourceResolver, fileReference);
 	}
+        
 
 }

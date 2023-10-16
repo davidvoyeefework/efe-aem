@@ -614,6 +614,17 @@ public class PlannerLocationConstants {
 	 */
 	public static final String ORGANISATION = "organization";
 
+        
+        /**
+         * Support Staff
+         */
+        public static final String SUPPORT_STAFF = "supportstaff";
+        public static final String SUPPORT_STAFF_FRAGMENT_PREFIX = "supportstafffragment_";
+        public static final String SUPPORT_STAFF_MODEL = "/conf/efe/settings/dam/cfm/models/support-staff";
+        public static final String JCR_TITLE_SUPPORT_STAFF = "support staff fragment";
+        public static final String PHOTO = "photo";
+        public static final String SUPPORT_STAFF_ID = "supportStaffId";
+        
 	/**
 	 * Education
 	 */

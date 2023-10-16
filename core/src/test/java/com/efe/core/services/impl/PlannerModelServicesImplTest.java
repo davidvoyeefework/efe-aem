@@ -58,13 +58,13 @@ class PlannerModelServicesImplTest {
 
 	/** Mock Resource. */
 	@Mock
-	private Resource templateOrModelRsc, templateOrModelRscPo, templateOrModelRscEd, templateOrModelIex,
+	private Resource templateOrModelRsc, templateOrModelRscPo, templateOrModelRscEd, templateOrModelRscSS, templateOrModelIex,
 			templateOrModelRscCer, templateOrModelRscEh, templateOrModelRscAdd, templateOrModelRscHr, parentResource,
 			honorAwardrootPathResource;
 
 	/** Mock FragmentTemplate. */
 	@Mock
-	private FragmentTemplate tpl, tplPo, tplEd, tplIex, tplCer, tplEh, tplAdd, tplHr;
+	private FragmentTemplate tpl, tplPo, tplEd,tplSS, tplIex, tplCer, tplEh, tplAdd, tplHr;
 
 	/** Mock Resource. */
 	@Mock
@@ -80,7 +80,7 @@ class PlannerModelServicesImplTest {
 
 	/** The Node. */
 	@Mock
-	private Node parentNode, plannerMasterNode, plannerPrimaryOfficeNode, plannerEducationNode;
+	private Node parentNode, plannerMasterNode, plannerPrimaryOfficeNode, plannerEducationNode, plannerSupportStaffNode;
 
 	/** The efeService. */
 	@Mock
@@ -126,12 +126,15 @@ class PlannerModelServicesImplTest {
 		aemContext.registerService(Node.class, plannerMasterNode);
 		aemContext.registerService(Node.class, plannerPrimaryOfficeNode);
 		aemContext.registerService(Node.class, plannerEducationNode);
+                aemContext.registerService(Node.class,plannerSupportStaffNode);
 		aemContext.registerService(Resource.class, templateOrModelRscPo);
 		aemContext.registerService(Resource.class, templateOrModelRscEd);
+                aemContext.registerService(Resource.class,templateOrModelRscSS);
 		aemContext.registerService(Resource.class, templateOrModelRscEh);
 
 		aemContext.registerService(FragmentTemplate.class, tplPo);
 		aemContext.registerService(FragmentTemplate.class, tplEd);
+                aemContext.registerService(FragmentTemplate.class, tplSS);
 		aemContext.registerService(Resource.class, templateOrModelIex);
 		aemContext.registerService(Resource.class, templateOrModelRscCer);
 		aemContext.registerService(Resource.class, templateOrModelRscAdd);
@@ -169,6 +172,16 @@ class PlannerModelServicesImplTest {
 				+ "        \"title\": \"Director, Financial Planning\",\r\n" + "        \"birthYear\": 1977,\r\n"
 				+ "        \"yearJoined\": 2016,\r\n" + "        \"directLinePhone\": \"(469) 250-5659\",\r\n"
 				+ "        \"advisorCRD\": 4350375,\r\n"
+                                + "          \"supportStaff\": [\n" 
+                                + "    {\n" +
+                                    "      \"firstName\": \"Bob\",\n" +
+                                    "      \"lastName\": \"Villa\",\n" +
+                                    "      \"photo\": \"https://planners.edelmanfinancialengines.com/media/1112/efe_hansen_dale_016_desktop_308x308.png\",\n" +
+                                    "      \"planners\": [0],\n" +
+                                    "      \"supportStaffId\": 0,\n" +
+                                    "      \"title\": \"Title\"\n" +
+                                    "    }\n" +
+                                    "  ],\r\n"
 				+ "        \"desktopImageUrl\": \"https://planners.edelmanfinancialengines.com/media/1051/efe_cherry_aaron_076_desktop_308x308.png\",\r\n"
 				+ "        \"mobileImageUrl\": \"https://planners.edelmanfinancialengines.com/media/1509/efe_cherry_aaron_076_mobile_150x150.png\",\r\n"
 				+ "        \"circleImageUrl\": \"https://planners.edelmanfinancialengines.com/media/1320/efe_cherry_aaron_076_circle_320x320.png\",\r\n"
@@ -227,10 +240,11 @@ class PlannerModelServicesImplTest {
 		String firstName = "Johnathan".toLowerCase();
 		int id = 179;
 		int educationCount = 1;
-
+                int supportStaffCount = 1;
 		String rootPath = "/content/dam/efe/cf/plannerlocation/planners";
 		String childPathPlanner = "/content/dam/efe/cf/plannerlocation/planners/" + firstName + Integer.toString(id);
 		String educationRootPath = "/content/dam/efe/cf/plannerlocation/planners/johnathan179/education";
+                String supportStaffRootPath = "/content/dam/efe/cf/plannerlocation/planners/johnathan179/supportstaff";
 		String industryExamRootPath = "/content/dam/efe/cf/plannerlocation/planners/johnathan179/industryexams";
 		String certificationsRootPath = "/content/dam/efe/cf/plannerlocation/planners/johnathan179/certifications";
 		String employmentHistoryRootPath = "/content/dam/efe/cf/plannerlocation/planners/johnathan179/employmenthistory";
@@ -242,6 +256,8 @@ class PlannerModelServicesImplTest {
 		String primaryOfficeFragmentName = fragmentName + PlannerLocationConstants.PRIMARY_OFFICE_POSTFIX;
 		String educationFragmentName = PlannerLocationConstants.EDUCATION_FRAGMENT_PREFIX
 				+ Integer.toString(educationCount);
+                String supportStaffFragmentName = PlannerLocationConstants.SUPPORT_STAFF_FRAGMENT_PREFIX
+				+ Integer.toString(supportStaffCount);
 		String industryExamFragmentName = PlannerLocationConstants.INDUSTRY_EXAMS_PREFIX + "1";
 		String certificationFragmentName = PlannerLocationConstants.CERTIFICATION_PREFIX + "1";
 		String employmentHistoryFragmentName = PlannerLocationConstants.EMPLOYMENT_HISTORY_PREFIX + "1";
@@ -262,6 +278,9 @@ class PlannerModelServicesImplTest {
 
 		lenient().when(FolderUtil.createFolder(childPathPlanner, PlannerLocationConstants.EDUCATION, PlannerLocationConstants.EDUCATION, resourceResolver))
 				.thenReturn(educationRootPath);
+                
+                lenient().when(FolderUtil.createFolder(childPathPlanner, PlannerLocationConstants.SUPPORT_STAFF, PlannerLocationConstants.EDUCATION, resourceResolver))
+				.thenReturn(supportStaffRootPath);
 
 		lenient().when(
 				FolderUtil.createFolder(childPathPlanner, PlannerLocationConstants.INDUSTRY_EXAMS, PlannerLocationConstants.INDUSTRY_EXAMS, resourceResolver))
@@ -306,10 +325,11 @@ class PlannerModelServicesImplTest {
 				.thenReturn(templateOrModelRscPo);
 		lenient().when(resourceResolver.getResource(PlannerLocationConstants.EDUCATION_MODEL))
 				.thenReturn(templateOrModelRscEd);
-
+                lenient().when(resourceResolver.getResource(PlannerLocationConstants.SUPPORT_STAFF_MODEL))
+				.thenReturn(templateOrModelRscSS);
 		lenient().when(templateOrModelRscPo.adaptTo(Node.class)).thenReturn(plannerPrimaryOfficeNode);
 		lenient().when(templateOrModelRscEd.adaptTo(Node.class)).thenReturn(plannerEducationNode);
-
+                lenient().when(templateOrModelRscSS.adaptTo(Node.class)).thenReturn(plannerSupportStaffNode);
 		lenient()
 				.when(resourceResolver.getResource(childPathPlanner + PlannerLocationConstants.FORWARD_SLASH
 						+ primaryOfficeFragmentName + PlannerLocationConstants.MASTER_NODE))
@@ -319,10 +339,13 @@ class PlannerModelServicesImplTest {
 				.when(resourceResolver.getResource(educationRootPath + PlannerLocationConstants.FORWARD_SLASH
 						+ educationFragmentName + PlannerLocationConstants.MASTER_NODE))
 				.thenReturn(plannerEducationResource);
-
+                lenient()
+				.when(resourceResolver.getResource(supportStaffRootPath + PlannerLocationConstants.FORWARD_SLASH
+						+ supportStaffFragmentName + PlannerLocationConstants.MASTER_NODE))
+				.thenReturn(plannerEducationResource);
 		lenient().when(templateOrModelRscPo.adaptTo(FragmentTemplate.class)).thenReturn(tplPo);
 		lenient().when(templateOrModelRscEd.adaptTo(FragmentTemplate.class)).thenReturn(tplEd);
-
+                lenient().when(templateOrModelRscSS.adaptTo(FragmentTemplate.class)).thenReturn(tplSS);
 		lenient()
 				.when(resourceResolver.getResource(
 						industryExamRootPath + PlannerLocationConstants.FORWARD_SLASH + industryExamFragmentName))
