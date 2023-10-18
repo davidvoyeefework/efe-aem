@@ -6,7 +6,9 @@
      data-sly-use.imageTemplate="image.html"
      data-sly-use.titleTemplate="title.html"
      data-sly-use.descriptionTemplate="description.html"
-     data-sly-use.actionsTemplate="actions.html"
+
+     data-sly-use.tagsImpl="com.efe.core.models.Tags"
+
      data-sly-test.hasContent="${teaser.imageResource || teaser.pretitle || teaser.title || teaser.description || teaser.actions.size > 0}"
      id="${teaser.id}"
      class="cmp-teaser${!wcmmode.disabled && teaser.imageResource ? ' cq-dd-image' : ''}"
@@ -21,10 +23,33 @@
             </a>
         </h2>
         <p class="cmp-text--body-02">${teaser.description}</p>
-        <p class="cmp-text--body-02">${properties.jcr:title}</p>
-        <sly data-sly-test="${properties.jcr:title == 'COPING'}">
-            <div data-sly-call="${videoButton.actions @ teaser=teaser, article=article}"></div>
+
+        <!-- /*
+        This is great, but pulling in the tags for the page not the specific tags from the article page properties.
+        Do I need context, data-sly-resource or somehow grab the json date being fed into the related article component? */-->
+        <sly data-sly-use.template="core/wcm/components/commons/v1/templates.html" data-sly-test.isNotEmpty="${!tagsImpl.empty}">
+            <sly data-sly-list.tagsList="${tagsImpl.tagList }">
+                <span class="cmp-button__text">${tagsList.tagLabel}</span>
+            </sly>
         </sly>
+
+        <!-- /* Need condition loop for 3 scenarios */ -->
+        <!-- /* One condition needs to be cq:tags => value efe:asset-type/video' */ -->
+        <sly data-sly-test="${properties.jcr:title == 'COPING'}">
+            <div data-sly-call="${videoButton.actions @ teaser=teaser, article=article, class='cmp-button--video'}"></div>
+        </sly>
+
+        <!-- /* One condition needs to be cq:tags => value efe:asset-type/podcast' */ -->
+        <sly data-sly-test="${properties.jcr:title == '4 strategies for empty nesters'}">
+            <div data-sly-call="${videoButton.actions @ teaser=teaser, article=article, class='cmp-button--podcast'}"></div>
+        </sly>
+
+        <!-- /* One condition needs to be cq:tags => value efe:asset-type/web/landing-page' */ -->
+        <sly data-sly-test="${properties.jcr:title == 'Is college worth it?'}">
+            <div data-sly-call="${videoButton.actions @ teaser=teaser, article=article, class='cmp-button--read'}"></div>
+        </sly>
+
+
     </div>
     <sly data-sly-call="${imageTemplate.image @ teaser=teaser}"></sly>
 </div>

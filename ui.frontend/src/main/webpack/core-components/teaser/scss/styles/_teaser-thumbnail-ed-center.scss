@@ -9,6 +9,8 @@
         height: 100%;
         justify-content: start;
         position: relative;
+        background-color: $efe-gray-light;
+        padding: 24px;
 
         &__image {
             width: 100%;
@@ -34,7 +36,7 @@
             h2.cmp-title--subhead-01 {
                 margin-bottom: rem(12);
                 a {
-                    transition: $std-trasition;
+                    transition: $std-transition;
                     &:before {
                         content:"";
                         position: absolute;
@@ -45,6 +47,14 @@
                         z-index: 8;
                     }
                 }
+            }
+
+            p.cmp-text--body-02 {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
             }
         }
 

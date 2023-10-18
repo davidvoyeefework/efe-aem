@@ -1,0 +1,20 @@
+.cmp-button {
+    &--video {
+        background: url("../resources/images/buttons/watch-cta.svg") no-repeat center center / contain;
+        width: rem(125);
+        height: rem(36);
+    }
+
+    &--podcast {
+        background: url("../resources/images/buttons/podcast-cta.svg") no-repeat center center / contain;
+        width: rem(125);
+        height: rem(36);
+    }
+
+
+    &--read {
+        background: url("../resources/images/buttons/read-cta.svg") no-repeat center center / contain;
+        width: rem(175);
+        height: rem(36);
+    }
+}
