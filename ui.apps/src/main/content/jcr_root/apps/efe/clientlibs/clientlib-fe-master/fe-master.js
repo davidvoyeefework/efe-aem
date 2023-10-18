@@ -28402,7 +28402,7 @@
         var hostname = window.location.hostname;
     
         if (hostname.indexOf("landingpages") > 0) {
-          this.isAdobePage = true;
+           isAdobePage = true;
     
           if (hostname.indexOf("financialengines") > 0) {
             hostname = "pages.financialengines.com";
