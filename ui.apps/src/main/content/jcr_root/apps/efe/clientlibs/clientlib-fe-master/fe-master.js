@@ -12673,7 +12673,20 @@
                   }), r.addEventListener("submit", function(e) {
                       e.preventDefault(), a = !0, o.forEach(function(e) {
                           var r = st.validateField(e, t);
-                          st.setFieldStatus(e, r), r || (a = !1, window._satellite && !0 === window._satellite.initialized && window._satellite.track("_spa_sign_up_error_")), "email2" === e.name && (e.name = "email"), "phoneNumber2" === e.name && (e.name = "phoneNumber"), n.fieldValues[e.name] = e.value
+                          (st.setFieldStatus(e, r), r) || (a = !1, window._satellite && !0 === window._satellite.initialized && window._satellite.track("_spa_sign_up_error_"), at.isAdobePage && window.adobeDataLayer && window.adobeDataLayer.push({
+                              event: "form_validation_error",
+                              _financialengines: {
+                                  formInfo: {
+                                      formStart: {
+                                          value: 0
+                                      },
+                                      formName: "Sign Up Form",
+                                      errorCode: "",
+                                      errorMessage: "Form Validation Failed"
+                                  }
+                              }
+                          }));
+                          "email2" === e.name && (e.name = "email"), "phoneNumber2" === e.name && (e.name = "phoneNumber"), n.fieldValues[e.name] = e.value
                       }), a && (st.startProcessingAnimation(".fe-form__group--sign-up-button"), n.submit(n.authStatus, n.planOwnerData))
                   })
               }
@@ -12730,7 +12743,17 @@
                       number: this.fieldValues.phoneNumber,
                       type: "HOME"
                   }]), at.startMembership(r).then(function(e) {
-                      200 === e[0].status && (n.triggerAnalyticsForPMEnroll(), at.updateUser(o, !0).then(ie.spread(function(e) {
+                      200 === e[0].status && (n.triggerAnalyticsForPMEnroll(), at.isAdobePage && window.adobeDataLayer.push({
+                          event: "form_complete",
+                          _financialengines: {
+                              formInfo: {
+                                  formName: "Sign Up Form",
+                                  formComplete: {
+                                      value: 1
+                                  }
+                              }
+                          }
+                      }), at.updateUser(o, !0).then(ie.spread(function(e) {
                           qe.info("Unbounce " + Ye.pageName + " User enrolled in Professional Management service and updated user info."), window.location.href = at.getApiBaseUrl() + "maenroll/postenrollment.act?t=" + n.currentTicket + "&s=" + n.currentSession + "&br=556&pt=simple"
                       })).catch(function(e) {
                           qe.info("Unbounce " + Ye.pageName + " User got enrolled in Professional Manangement, but unable to update user info."), window.location.href = at.getApiBaseUrl() + "maenroll/postenrollment.act?t=" + n.currentTicket + "&s=" + n.currentSession + "&br=556&pt=simple"
