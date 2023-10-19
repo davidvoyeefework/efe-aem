@@ -28410,23 +28410,6 @@
           hostname = "pages.feitest.com";
         }
       }
-  
-      document.getElementById("fe-enroll-form").oninput = function () {
-        if (!this.formStartValue && isAdobePage && window.adobeDataLayer) {
-          window.adobeDataLayer.push({
-            event: "form_start",
-            _financialengines: {
-              formInfo: {
-                formName: "Sign Up Form",
-                formStart: {
-                  value: 1
-                }
-              }
-            }
-          });
-          this.formStartValue = true;
-        }
-      };
     }
   
     createClass_default()(SignUpForm, [{
@@ -28472,6 +28455,23 @@
           this.setErrorMessages();
           this.validationRules = formValidation.setValidationRules("#fe-enroll-form");
           this.addEventListeners("#fe-enroll-form", this.validationRules);
+  
+          document.getElementById("fe-enroll-form").oninput = function () {
+            if (!this.formStartValue && isAdobePage && window.adobeDataLayer) {
+              window.adobeDataLayer.push({
+                event: "form_start",
+                _financialengines: {
+                  formInfo: {
+                    formName: "Sign Up Form",
+                    formStart: {
+                      value: 1
+                    }
+                  }
+                }
+              });
+              this.formStartValue = true;
+            }
+          };
         }
       }
     }, {
