@@ -28411,13 +28411,13 @@
         }
       }
   
-      document.getElementById("signup-form").oninput = function () {
+      document.getElementById("fe-enroll-form").oninput = function () {
         if (!this.formStartValue && isAdobePage && window.adobeDataLayer) {
           window.adobeDataLayer.push({
             event: "form_start",
             _financialengines: {
               formInfo: {
-                formName: "",
+                formName: "Sign Up Form",
                 formStart: {
                   value: 1
                 }
@@ -28496,7 +28496,7 @@
         formEl.addEventListener("submit", function (e) {
           e.preventDefault();
           formIsValid = true;
-          var errorMessages = "";
+          var formErrorMessages = [];
           fields.forEach(function (field) {
             var isValid = formValidation.validateField(field, validationRules); // validate the fields
   
@@ -28505,12 +28505,11 @@
             if (!isValid) {
               formIsValid = false;
               var itemsWithError = document.querySelectorAll(".fe-form__control-wrapper.error");
-              var _errorMessages = [];
               itemsWithError.forEach(function (item) {
                 var errorElement = item.querySelector(".fe-form__error");
   
                 if (errorElement) {
-                  _errorMessages.push(errorElement.innerText);
+                  formErrorMessages.push(errorElement.innerText);
                 }
               });
   
@@ -28547,7 +28546,7 @@
                     },
                     formName: "Sign Up Form",
                     errorCode: "",
-                    errorMessage: errorMessages.join(" | ")
+                    errorMessage: formErrorMessages.join(" | ")
                   }
                 }
               });
