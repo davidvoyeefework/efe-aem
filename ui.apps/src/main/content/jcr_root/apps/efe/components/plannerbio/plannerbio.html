@@ -38,7 +38,7 @@
                     </div>
                     <div data-sly-test="${!planner.education.empty}" class="cmp-efe-plannerbio--aboutus__education">
                         <h3 class="cmp-efe-plannerbio--aboutus__education--subtitle">${model.educationHeading}</h3>
-                        <p data-sly-repeat="${planner.education}">${item.degree} $(item.major), ${item.university}</p>                      
+                        <p data-sly-repeat="${planner.education}">${item.degree} ${item.major}, ${item.university}</p>                      
                     </div>
                 </div>
             </div>
@@ -84,7 +84,7 @@
           </div>
         </div>
       </div>
-    </div> 
+    </div>
     <script data-sly-test="${model.jsonLd}" type="application/ld+json">
         ${model.jsonLd @context ='unsafe'}
     </script>
