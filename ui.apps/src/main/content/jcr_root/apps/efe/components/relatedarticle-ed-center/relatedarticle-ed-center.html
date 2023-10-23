@@ -8,9 +8,9 @@
         data-cmp-data-layer="${list.data.json}"
         class="cmp-list">
 
-        <div data-sly-test="${item.teaserResource}"
+        <li data-sly-test="${item.teaserResource}"
              class="teaser cmp-teaser--thumbnail" data-sly-call="${teaserTemplate.teaser @ item = item}"
-             data-cmp-data-layer="${item.data.json}"></div>
+             data-cmp-data-layer="${item.data.json}"></li>
     </ul>
 </div>
 <sly data-sly-call="${template.placeholder @ isEmpty=list.listItems.size == 0, classAppend='cmp-list'}"></sly>
