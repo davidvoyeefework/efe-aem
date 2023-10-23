@@ -275,6 +275,14 @@ public class ArticleDetailUtil {
             String[] educationsList = educations.split("\n");
             plannerResponse.setEducation(setPlannerEducationDetails(educationsList, resourceResolver));
         }
+        
+        String supportstaffs = plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.SUPPORT_STAFF))
+            .map(ContentElement::getContent).orElse(StringUtils.EMPTY);
+
+        if (StringUtils.isNotEmpty(supportstaffs)) {
+            String[] staffList = supportstaffs.split("\n");
+            plannerResponse.setSupportStaff(setPlannerSupportStaffDetails(staffList, resourceResolver));
+        }
 
         String primaryOfficeCF = plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.PRIMARY_OFFICE))
             .map(ContentElement::getContent).orElse(StringUtils.EMPTY);
@@ -376,6 +384,31 @@ public class ArticleDetailUtil {
 
         }
         return educationList;
+    }
+    
+        public static List<SupportStaff> setPlannerSupportStaffDetails(String[] supportstaff, ResourceResolver resourceResolver) {
+        List<SupportStaff> suportStaffList = new ArrayList<>();
+        if (null != supportstaff) {
+            for (String supportstaffs : supportstaff) {
+                Resource supportStaffResource = resourceResolver.getResource(supportstaffs);
+                if (null != supportStaffResource) {
+                    SupportStaff supportStaffBean = new SupportStaff();
+                    Optional<ContentFragment> plannerDetailsCF = Optional
+                        .ofNullable(supportStaffResource.adaptTo(ContentFragment.class));
+                    
+                    supportStaffBean.setFirstName(plannerDetailsCF.map(cf -> cf.getElement(ArticleDetailsConstants.STAFF_FIRST_NAME))
+                        .map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+                    supportStaffBean.setLastName(plannerDetailsCF.map(cf -> cf.getElement(ArticleDetailsConstants.STAFF_LAST_NAME))
+                        .map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+                    supportStaffBean.setPhoto(plannerDetailsCF.map(cf -> cf.getElement(ArticleDetailsConstants.STAFF_PHOTO))
+                        .map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+
+                    suportStaffList.add(supportStaffBean);
+                }
+            }
+
+        }
+        return suportStaffList;
     }
 
     /**
