@@ -38,7 +38,7 @@
                     </div>
                     <div data-sly-test="${!planner.education.empty}" class="cmp-efe-plannerbio--aboutus__education">
                         <h3 class="cmp-efe-plannerbio--aboutus__education--subtitle">${model.educationHeading}</h3>
-                        <p data-sly-repeat="${planner.education}">${item.degree}, ${item.university}</p>                      
+                        <p data-sly-repeat="${planner.education}">${item.degree}<!-- ${item.major}-->, ${item.university}</p>                      
                     </div>
                 </div>
             </div>
@@ -67,24 +67,25 @@
             </div>
         </div>
     </div>
-    <div class="cmp-efe--full-width secondary" data-sly-test="${!planner.supportStaff.empty}">
-        <div class="teaser cmp-teaser--thumbnail" data-sly-repeat="${planner.supportStaff}">
-        <div  class="cmp-teaser">
-          <div class="cmp-teaser__content">
-            <h2 class="cmp-teaser__title"> ${item.firstName} ${item.lastName}</h2>
-          </div>
-          <div class="cmp-teaser__image">
-            <div data-cmp-hook-image="imageV3" class="cmp-image">
-              <img srcset="${item.photo}"
-                   src="${item.photo}"
-                   loading="lazy" class="cmp-image__image" itemprop="contentUrl"
-                   alt="Planner detail" title="Planner detail" />
-              <meta itemprop="caption" content="Planner Details">
+    <!--
+    <div class="cmp-efe--full-width secondary cmp-efe-plannerbio--locations" data-sly-test="${!planner.supportStaff.empty}">
+        <div class="cmp-efe-plannerbio--locations__container" data-sly-list="${planner.supportStaff}">
+            <div  class="teaser cmp-teaser--thumbnail cmp-teaser">
+              <div class="cmp-teaser__content">
+                <h2 class="cmp-teaser__title"> ${item.firstName} ${item.lastName}</h2>
+              </div>
+              <div class="cmp-teaser__image" data-sly-test="${!item.photo.empty}">
+                <div data-cmp-hook-image="imageV3" class="cmp-image">
+                  <img srcset="${item.photo}"
+                       src="${item.photo}"
+                       loading="lazy" class="cmp-image__image" itemprop="contentUrl"
+                       alt="Planner detail" title="Planner detail" />
+                  <meta itemprop="caption" content="Planner Details">
+                </div>
+              </div>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
+    </div> -->
     <script data-sly-test="${model.jsonLd}" type="application/ld+json">
         ${model.jsonLd @context ='unsafe'}
     </script>

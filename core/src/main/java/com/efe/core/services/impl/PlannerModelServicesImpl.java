@@ -60,9 +60,31 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 	 * fragment
 	 */
 	public void addDataToCFModelPlanner(ResourceResolver resourceResolver) {
+            
+            /** 
+             * Collect list of existing planner resources. And determine if 
+             * existing planner resource exists in received list.  Delete if 
+             * planner removed, update if changes exist.
+             */
+
 		createFragmentPlanner(resourceResolver);
 		LOGGER.info("Content Fragment created and Updated for Planner");
 	}
+        
+        public void plannerCrUD (ResourceResolver resourceResolver) {
+            
+            
+
+            // If planner resource exists, run comparitor to determine if there are updates
+            
+            // If updates exist, update, else next.
+            
+        }
+        
+        private String plannerRootPath(ResourceResolver resourceResolver) {
+            return FolderUtil.createFolder(PlannerLocationConstants.ROOT_FOLDER_PATH,
+				PlannerLocationConstants.PLANNER, PlannerLocationConstants.PLANNER, resourceResolver);
+        }
 
 	/**
 	 * This method is used to create Fragment for Planner
