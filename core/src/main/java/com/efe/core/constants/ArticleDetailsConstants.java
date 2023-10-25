@@ -120,5 +120,13 @@ public class ArticleDetailsConstants {
      * DISCLOSURE
      */
     public static final String DISCLOSURE = "disclosure";
+    
+    public static final String STAFF_FIRST_NAME = "firstName";
+    
+    public static final String STAFF_LAST_NAME = "lastName";
+    public static final String STAFF_PHOTO = "photo";
+    public static final String STAFF_ID = "supportStaffId";
+    public static final String STAFF_PLANNERS = "planners";
+
 
 }
