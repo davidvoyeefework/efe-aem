@@ -87,4 +87,24 @@ public class FePropertiesImpl implements FeProperties {
     public String getApiDomain() {
         return feService.getApiDomain();
     }
+    
+    /**
+     * Gets the fe gtm tag id.
+     *
+     * @return the fe gtm tag id
+     */
+    @Override
+    public String getFeGtmTagId() {
+    	return feService.getFeGtmTagId();
+    }
+    
+    /**
+     * Checks if is fe gtm enabled.
+     *
+     * @return true, if is fe gtm enabled
+     */
+    @Override
+    public boolean isFeGtmEnabled() {
+    	return feService.enableFeGtm();
+    }
 }
