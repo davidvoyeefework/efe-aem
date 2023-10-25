@@ -4,6 +4,22 @@
 }
 
 .relatedarticle-ed-center {
+
+    &.relatedarticle-ed-center--white {
+        .cmp-teaser {
+            background-color: white;
+
+            .cmp-button--video {
+                background: url("../resources/images/buttons/watch-cta-gray.svg") no-repeat center center / contain;
+            }
+            .cmp-button--podcast {
+                background: url("../resources/images/buttons/podcast-cta-gray.svg") no-repeat center center / contain;
+            }
+            .cmp-button--article {
+                background: url("../resources/images/buttons/read-cta-gray.svg") no-repeat center center / contain;
+            }
+        }
+    }
     .cmp-teaser {
         @include teaserThumbnail;
         height: 100%;
@@ -17,6 +33,12 @@
             height: auto;
             padding-top: 52%;
             position: relative;
+
+            &.thumbnail-placeholder {
+                .cmp-image__image {
+                    background: url("../resources/images/placeholder/thumbnail-placeholder.svg") no-repeat center center / cover ;
+                }
+            }
 
                 .cmp-image__image {
                     position: absolute;
@@ -32,6 +54,12 @@
 
         &__content {
             margin-top: 24px;
+            height: 100%;
+            width: 100%;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
 
             h2.cmp-title--subhead-01 {
                 margin-bottom: rem(12);
