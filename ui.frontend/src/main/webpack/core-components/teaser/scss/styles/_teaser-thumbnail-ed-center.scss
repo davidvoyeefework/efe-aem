@@ -18,8 +18,15 @@
             .cmp-button--article {
                 background: url("../resources/images/buttons/read-cta-gray.svg") no-repeat center center / contain;
             }
+
+            .thumbnail-placeholder {
+                .cmp-image__image {
+                    background: url("../resources/images/placeholder/thumbnail-placeholder.svg") no-repeat center center / cover ;
+                }
+            }
         }
     }
+
     .cmp-teaser {
         @include teaserThumbnail;
         height: 100%;
@@ -36,7 +43,7 @@
 
             &.thumbnail-placeholder {
                 .cmp-image__image {
-                    background: url("../resources/images/placeholder/thumbnail-placeholder.svg") no-repeat center center / cover ;
+                    background: url("../resources/images/placeholder/thumbnail-placeholder-white.svg") no-repeat center center / cover ;
                 }
             }
 
