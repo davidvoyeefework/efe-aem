@@ -13,7 +13,7 @@ export default class FeMembershipDashboardButton {
         }
     }
     buildFeMembershipDashboardButton(containerEl) {
-        let buttonHeading = '';
+        let buttonHeading = "Already using Online Advice?";
         let oaButtonTitle;
         if (
             (this.windowObject?.isUserFullyAuth === true &&
