@@ -50,6 +50,9 @@ public class EFETeaserImpl implements EFETeaser {
 	/** The article page tags. */
 	List<LinkBean> articlePageTags;
 
+	/** The article page subtitle. */
+	String articleSubtitle;
+
 	/**
 	 * Inits the Model.
 	 */
@@ -68,6 +71,20 @@ public class EFETeaserImpl implements EFETeaser {
 			}
 		}
 
+		if (null != page && page.getProperties().get("subtitle", String.class) != null ) {
+			articleSubtitle = page.getProperties().get("subtitle", String.class);
+		}
+	
+	}
+
+	/**
+	 * Gets the subtitle.
+	 *
+	 * @return the subtitle
+	 */
+	@Override
+	public String getSubtitle() {
+		return articleSubtitle;
 	}
 
 	/**

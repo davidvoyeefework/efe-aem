@@ -6,9 +6,7 @@
      data-sly-use.imageTemplate="image.html"
      data-sly-use.titleTemplate="title.html"
      data-sly-use.descriptionTemplate="description.html"
-
      data-sly-use.tagsImpl="com.efe.core.models.Tags"
-
      data-sly-test.hasContent="${teaser.imageResource || teaser.pretitle || teaser.title || teaser.description || teaser.actions.size > 0}"
      id="${teaser.id}"
      class="cmp-teaser${!wcmmode.disabled && teaser.imageResource ? ' cq-dd-image' : ''}"
@@ -24,7 +22,7 @@
         </h2>
 
         <sly data-sly-test="${teaser.description}">
-            <p class="cmp-text--body-02">${teaser.description}</p>
+            <p class="cmp-text--body-02">${teaser.subtitle}</p>
         </sly>
 
         <div data-sly-test="${teaser.tags.size > 0}" data-sly-list="${teaser.tags}">

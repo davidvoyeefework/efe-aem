@@ -11,11 +11,19 @@ import com.efe.core.bean.LinkBean;
 
 public interface EFETeaser extends Teaser {
 
+
 	/**
 	 * Gets the tags.
 	 *
 	 * @return the tags
 	 */
 	List<LinkBean> getTags();
+
+		/**
+	 * Gets the subtitle.
+	 *
+	 * @return the subtitle
+	 */
+	String getSubtitle();
 
 }
