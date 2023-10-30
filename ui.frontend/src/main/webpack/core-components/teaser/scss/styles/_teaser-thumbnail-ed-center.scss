@@ -5,6 +5,16 @@
 
 .relatedarticle-ed-center {
 
+    li {
+        transition: $std-transition;
+        &:hover {
+            a{
+                text-decoration: underline;
+                transition: std-transition;
+            }
+        }
+    }
+
     &.relatedarticle-ed-center--white {
         .cmp-teaser {
             background-color: white;
@@ -72,6 +82,15 @@
                 margin-bottom: rem(12);
                 a {
                     transition: $std-transition;
+
+                    &:focus {
+                        outline: unset;
+                        text-decoration: none;
+                        &:before {
+                            outline-offset: 0.25rem;
+                            outline: 0.125rem solid gray;                                                                                                                                                                                                                                                                                                                                      
+                        }
+                    }
                     &:before {
                         content:"";
                         position: absolute;
