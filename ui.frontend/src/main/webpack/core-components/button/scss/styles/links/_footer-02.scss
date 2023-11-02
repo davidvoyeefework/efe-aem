@@ -12,7 +12,7 @@
 
     &.cmp-button--efe-gray-new {
         a {
-            @include efe-gray-new;
+            @include efe-gray-primary;
             .cmp-button__text {
                 text-transform: uppercase; // need this for the header "PLAN-EFE" section.
             }

@@ -4,18 +4,18 @@
    <div class="cmp-social-share__images">
       <sly data-sly-list.socialLinks="${social.socialMediaSharing}">
 		  <sly data-sly-test="${socialLinks.icon !='print'}">
-			 <a href="${socialLinks.link}" target="${social.linkTarget}" class="cmp-social-share__link">
-				<img class="cmp-social-share__default-img" src="/etc.clientlibs/efe/clientlibs/clientlib-site/resources/images/social-share-icons/${socialLinks.icon}.svg">
+			 <a href="${socialLinks.link}"  target="${social.linkTarget}" class="cmp-social-share__link">
+				<img class="cmp-social-share__default-img" alt="${socialLinks.icon == 'fb' ? 'Share this page to facebook' : (socialLinks.icon == 'mail' ? 'Email this page': ( socialLinks.icon == 'twitter' ? 'Tweet this content': (socialLinks.icon == 'linkedin' ? 'Share this content on LinkedIn' : '')))}"  src="/etc.clientlibs/efe/clientlibs/clientlib-site/resources/images/social-share-icons/${socialLinks.icon}.svg">
 				<sly data-sly-test="${!wcmmode.edit}">
-				   <img class="cmp-social-share__hover-img" src="/etc.clientlibs/efe/clientlibs/clientlib-site/resources/images/social-share-icons/${socialLinks.icon}-hover.svg">
+				   <img class="cmp-social-share__hover-img" alt="${socialLinks.icon == 'fb' ? 'Share this page to facebook now' : (socialLinks.icon == 'mail' ? 'Email this page now': ( socialLinks.icon == 'twitter' ? 'Tweet this content now': (socialLinks.icon == 'linkedin' ? 'Share this content on LinkedIn now' : '')))}" src="/etc.clientlibs/efe/clientlibs/clientlib-site/resources/images/social-share-icons/${socialLinks.icon}-hover.svg">
 				</sly>
 			 </a>
 		  </sly>
 		  <sly data-sly-test="${socialLinks.icon=='print'}">
-			  <a onClick="${socialLinks.link @ context='attribute'}"  class="cmp-social-share__link">
-				 <img class="cmp-social-share__default-img" src="/etc.clientlibs/efe/clientlibs/clientlib-site/resources/images/social-share-icons/${socialLinks.icon}.svg">
+			  <a onClick="${socialLinks.link @ context='attribute'}" aria-label="Print this page"  class="cmp-social-share__link">
+				 <img class="cmp-social-share__default-img" alt="Print this page" src="/etc.clientlibs/efe/clientlibs/clientlib-site/resources/images/social-share-icons/${socialLinks.icon}.svg">
 				 <sly data-sly-test="${!wcmmode.edit}">
-					<img class="cmp-social-share__hover-img" src="/etc.clientlibs/efe/clientlibs/clientlib-site/resources/images/social-share-icons/${socialLinks.icon}-hover.svg">
+					<img class="cmp-social-share__hover-img" alt="Print this webpage" src="/etc.clientlibs/efe/clientlibs/clientlib-site/resources/images/social-share-icons/${socialLinks.icon}-hover.svg">
 				 </sly>
 			  </a>
 		  <sly>

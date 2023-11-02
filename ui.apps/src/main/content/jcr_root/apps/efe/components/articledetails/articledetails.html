@@ -2,29 +2,35 @@
      data-sly-use.template="core/wcm/components/commons/v1/templates.html"
      data-sly-test.isNotEmpty="${properties.articleFragmentPath}">
     <div data-sly-test="${properties.articleFragmentPath}"
-         class="cmp-container cmp-container--white cmp-container--width-1400 cmp-article-details" id="${model.id}">
-        <div class="title cmp-title--heading-03 cmp-article-details__padding-108">
+         class="cmp-container cmp-container--white cmp-article-details" id="${model.id}">
+         <sly data-sly-test="${currentPage.parent.title}">
+            <p class="primary-nav-link-red center mb-8">${currentPage.parent.title}</p>
+        </sly>
+        <div class="title cmp-title--heading-03 ">
             <div class="cmp-title">
                 <h1 class="cmp-title__text">${model.articleFragmentPath.title @context='html'}</h1>
             </div>
         </div>
-        <div class="text cmp-text--body-01 cmp-article-details__padding-108">
+        <div class="text cmp-text--body-01 ">
             <div class="cmp-text">
                 <p>${model.articleFragmentPath.subtitle @context='html'}</p>
             </div>
         </div>
-        <div class="text cmp-text--caption cmp-article-details__published-date">
+        <div class="text cmp-text--caption cmp-article-details__published-date" id="article-details__published-date">
             <div class="cmp-text">
-                <p>
+                <p class="article-publish-date">
                     <sly data-sly-test="${model.articleFragmentPath.dateUpdated}">Last
                         updated: ${model.articleFragmentPath.dateUpdated} |
                     </sly>
                     Article published: ${model.articleFragmentPath.datePublished}</p>
             </div>
         </div>
-        <div class="image cmp-image--top-left">
-            <div class="cmp-image"><img src="${model.articleFragmentPath.heroImage}" alt=""></div>
-        </div>
+        <sly data-sly-test="${model.articleFragmentPath.heroImage}">
+            <div class="image cmp-image--top-left">
+                <div class="cmp-image"><img src="${model.articleFragmentPath.heroImage}" alt=""></div>
+            </div>
+        </sly>
+        
         <div class="text cmp-text--body-03 cmp-article-details__authors-by">
             <div class="cmp-text"
                  data-sly-test.hasContent="${model.articleFragmentPath.articleAuthors || model.articleFragmentPath.plannerResponse}">
@@ -41,31 +47,31 @@
             </div>
         </div>
 
-        <div class="text cmp-text--body-01 cmp-text cmp-article-details__summary cmp-article-details__padding-108">
+        <div class="text cmp-text--body-01 cmp-text cmp-article-details__summary ">
             <div class="cmp-text">
                 <p>${model.articleFragmentPath.articleSummary @context='html'}</p>
             </div>
         </div>
         <div class="cmp-container cmp-container--white cmp-container--width-1400
-             cmp-article-details__seperator cmp-article-details__padding-108">
+             cmp-article-details__seperator ">
             <div class="separator cmp-separator--primary cmp-separator">
                 <hr class="cmp-separator__horizontal-rule">
             </div>
         </div>
 
         <div data-sly-resource="${@path=model.articleFragmentPath.body, selectors='content', wcmmode='disabled'}"
-             class="cmp-article-details__body cmp-article-details__padding-108"></div>
+             class="cmp-article-details__body "></div>
         <div class=" cmp-article-details__disclaimar"
              data-sly-repeat.item="${model.articleFragmentPath.disclosures}">${item.disclosureText @context ='html'}
         </div>
         <div class="cmp-container cmp-container--white cmp-container--width-1400
-            cmp-article-details__seperator cmp-article-details__padding-108"
+            cmp-article-details__seperator "
              data-sly-test.hasContent="${model.articleFragmentPath.articleAuthors || model.articleFragmentPath.plannerResponse}">
             <div class="separator cmp-separator--primary cmp-separator">
                 <hr class="cmp-separator__horizontal-rule">
             </div>
         </div>
-        <div class="cmp-author-details cmp-article-details__padding-108"
+        <div class="cmp-author-details "
              data-sly-repeat.item="${model.articleFragmentPath.articleAuthors}">
             <div data-sly-test=${item.photo} class="cmp-author-details__image">
                 <div class="image cmp-image--profile-thumb cmp-image--round">
@@ -90,7 +96,7 @@
                 </div>
             </div>
         </div>
-        <div class="cmp-author-details cmp-article-details__padding-108"
+        <div class="cmp-author-details "
              data-sly-repeat.item="${model.articleFragmentPath.plannerResponse}">
             <div data-sly-test="${item.desktopImageUrl}" class="cmp-author-details__image">
                 <div class="image cmp-image--profile-thumb cmp-image--round">
@@ -126,14 +132,14 @@
             </div>
         </div>
         <div class="cmp-container cmp-container--white cmp-container--width-1400
-            cmp-article-details__seperator cmp-article-details__padding-108">
+            cmp-article-details__seperator ">
             <div class="separator cmp-separator--primary cmp-separator">
                 <hr class="cmp-separator__horizontal-rule">
             </div>
         </div>
         <div data-sly-list.item="${model.articleFragmentPath.links}" class="cmp-container
             cmp-container--white cmp-container--width-1400
-             cmp-tags cmp-article-details__padding-108">
+             cmp-tags ">
             <div class="button cmp-button--title-tag">
                 <a href="${item.tagLink ? item.tagLink :''}" type="button" class="cmp-button" data-cmp-clickable="">
                     <span class="cmp-button__text">${item.tagLabel}</span>
@@ -155,10 +161,18 @@
                     jsonldScript.textContent = JSON.stringify(jsonLd);
                     articleContentDom.appendChild(jsonldScript);
             }
-
-
-
         </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const socialblock = document.querySelector('[id ^= "socialshare-"]').parentNode.parentNode.parentNode.parentNode;
+                socialblock.classList.remove("cmp-container--padding-top");
+                const publishdate = document.getElementById("article-details__published-date");
+                publishdate.appendChild(socialblock);
+                const cqPlaceholder = document.querySelector(".cq-marker-start");
+                cqPlaceholder.style.height = "21px";
+            });
+        </script>
+        
 
     </div>
 </sly>
