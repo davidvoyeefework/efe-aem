@@ -30,6 +30,12 @@
 
 @mixin buildLink ($color: false, $hover-color: false) {
     text-decoration: 1px solid underline $efe-gray-primary;
+    text-decoration-line: underline;
+    -webkit-text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+
+
+
     @if $color {text-decoration: 1px solid underline $color; color: $color};
     text-underline-offset: 2px;
     transition: $std-transition;
@@ -231,6 +237,10 @@
 
 @mixin primary-nav-link-red {
     @include buildFont(rem(16), .04em, 'nimbus-sans', 400, null, 100%, $efe-red-primary);
+}
+
+.primary-nav-link-red {
+    @include primary-nav-link-red();
 }
 
 @mixin secondary-nav-link {

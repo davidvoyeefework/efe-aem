@@ -1,0 +1,43 @@
+
+<div data-sly-use.teaser="com.efe.core.models.EFETeaser"
+     data-sly-use.article="com.efe.core.models.RelatedArticle"
+     data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+     data-sly-use.videoButton="video-button.html"
+     data-sly-use.imageTemplate="image.html"
+     data-sly-use.titleTemplate="title.html"
+     data-sly-use.descriptionTemplate="description.html"
+     data-sly-use.tagsImpl="com.efe.core.models.Tags"
+     data-sly-test.hasContent="${teaser.imageResource || teaser.pretitle || teaser.title || teaser.description || teaser.actions.size > 0}"
+     id="${teaser.id}"
+     class="cmp-teaser${!wcmmode.disabled && teaser.imageResource ? ' cq-dd-image' : ''}"
+     data-cmp-data-layer="${teaser.data.json}">
+    <div class="cmp-teaser__content">
+ 
+        <h2 class="title cmp-title--subhead-01 ">
+            <a  data-sly-attribute="${teaser.link.htmlAttributes}"
+                data-sly-unwrap="${!teaser.link.valid || !teaser.actions.empty}"
+                data-cmp-clickable="${teaser.data ? true : false}">
+                ${teaser.title}
+            </a>
+        </h2>
+
+        <sly data-sly-test="${teaser.subtitle}">
+            <p class="cmp-text--body-02">${teaser.subtitle}</p>
+        </sly>
+
+        <div data-sly-test="${teaser.tags.size > 0}" data-sly-list="${teaser.tags}">
+            <sly data-sly-test="${item.tagLabel == 'Podcast'}"><div data-sly-call="${videoButton.actions @ teaser=teaser, article=article, class='cmp-button--podcast'}"></div></sly>
+            <sly data-sly-test="${item.tagLabel == 'Video'}"><div data-sly-call="${videoButton.actions @ teaser=teaser, article=article, class='cmp-button--video'}"></div></sly>
+            <sly data-sly-test="${item.tagLabel == 'Article'}"><div data-sly-call="${videoButton.actions @ teaser=teaser, article=article, class='cmp-button--article'}"></div></sly>
+        </div>
+    </div>
+
+    <sly data-sly-call="${imageTemplate.image @ teaser=teaser}"></sly>
+    <sly data-sly-test="${!teaser.imageResource}">
+        <div class="cmp-teaser__image thumbnail-placeholder">
+            <div class="cmp-image__image"></div>
+        </div>
+    </sly>
+</div>
+<sly data-sly-call="${templates.placeholder @ isEmpty=!hasContent, classAppend='cmp-teaser'}"></sly>
+
