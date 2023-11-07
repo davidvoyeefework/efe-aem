@@ -47,10 +47,23 @@
     &__body {
         .title {
             margin-bottom: 16px !important;
+            padding-bottom: 0px !important;
             h2, h3, h4, h5, h6 {
                 @include subhead-00;
             }
         }
+
+        h2, h3, h4, h5, h6 {
+            @include subhead-00;
+            margin-bottom: 16px !important;
+            padding-bottom: 0px !important;
+            * {
+                @include subhead-00;
+                margin-bottom: 0px !important;
+                padding-bottom: 0px !important;
+            }
+        }
+
         .cmp-text {
             ul {
                 padding-left: 0;
