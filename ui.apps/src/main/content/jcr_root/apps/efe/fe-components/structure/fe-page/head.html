@@ -16,7 +16,8 @@
 <template data-sly-template.head="${ @ page, pwa }"
           data-sly-use.headlibRenderer="headlibs.html"
           data-sly-use.headResources="head.resources.html"
-          data-sly-use.feProperties="com.efe.core.models.FeProperties">
+          data-sly-use.feProperties="com.efe.core.models.FeProperties"
+          data-sly-use.gtmtemplate="gtmscripts.html">
     <meta charset="UTF-8">
     <title>${page.title}${page.brandSlug ? ' | ' : ''}${page.brandSlug}</title>
     <meta data-sly-test.keywords="${page.keywords}" name="keywords" content="${keywords}"/>
@@ -34,6 +35,9 @@
         <meta name="cq:sw_path" content="${pwa.serviceWorkerPath @ context ='text'}"/>
     </sly>
     <sly data-sly-include="head.links.html"></sly>
+
+     <!--/* Include GTM script inside head */-->
+    <sly data-sly-call="${gtmtemplate.gtmtemplate @ feProperties = feProperties, section='head'}"></sly>
     <sly data-sly-include="customheaderlibs.html"></sly>
     <sly data-sly-call="${headlibRenderer.headlibs @
                                 page                      = page,

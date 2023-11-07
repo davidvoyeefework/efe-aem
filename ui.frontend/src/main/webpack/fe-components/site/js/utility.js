@@ -394,10 +394,16 @@ export const getDashboardLink = () => {
   const {isUserFullyAuth, context, userLoggedIn, isUserLightAuth, providerInfo} = windowDataObj; 
   const apiBaseUrl = getApiBaseUrl();
   let url = "";
+  let linkLabel = "LOGIN TO ONLINE ADVICE";
+    if(context?.userTier) {
+      linkLabel = context?.userTier === "OA"?"LOGIN TO ONLINE ADVICE":
+                  context?.userTier === "MA"?"MEMBER DASHBOARD":linkLabel
+    }
     if (
-      isUserFullyAuth &&
+      (isUserFullyAuth &&
       context?.userTier &&
-      context.userTier !== "PROSPECT"
+      context.userTier !== "PROSPECT") ||
+      isUserLightAuth === true
     ) {
       url =
         apiBaseUrl +
@@ -414,7 +420,7 @@ export const getDashboardLink = () => {
       url = providerInfo?.rkLoginUrl;
        url.replace(/^https?:\/\//i, "");
     } 
-    return `<a href="${url}" target="_blank" class="fe-learn-more-link">MEMBER DASHBOARD</a>`;
+    return url?`<a href="${url}" target="_blank" class="fe-learn-more-link">${linkLabel}</a>`:'';
 }
 export const getLoginLink = ()=> {
     const windowDataObj = window?.aemfe;

@@ -60,9 +60,31 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 	 * fragment
 	 */
 	public void addDataToCFModelPlanner(ResourceResolver resourceResolver) {
+            
+            /** 
+             * Collect list of existing planner resources. And determine if 
+             * existing planner resource exists in received list.  Delete if 
+             * planner removed, update if changes exist.
+             */
+
 		createFragmentPlanner(resourceResolver);
 		LOGGER.info("Content Fragment created and Updated for Planner");
 	}
+        
+        public void plannerCrUD (ResourceResolver resourceResolver) {
+            
+            
+
+            // If planner resource exists, run comparitor to determine if there are updates
+            
+            // If updates exist, update, else next.
+            
+        }
+        
+        private String plannerRootPath(ResourceResolver resourceResolver) {
+            return FolderUtil.createFolder(PlannerLocationConstants.ROOT_FOLDER_PATH,
+				PlannerLocationConstants.PLANNER, PlannerLocationConstants.PLANNER, resourceResolver);
+        }
 
 	/**
 	 * This method is used to create Fragment for Planner
@@ -271,6 +293,7 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 			String primaryOfficeFragmentName = PlannerLocationConstants.FRAGMENT_NAME_PREFIX + firstName
 					+ PlannerLocationConstants.UNDERSCORE + Integer.toString(id)
 					+ PlannerLocationConstants.PRIMARY_OFFICE_POSTFIX;
+                        
 
 			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode, PlannerLocationConstants.PRIMARY_OFFICE,
 					childPathPlanner + PlannerLocationConstants.FORWARD_SLASH + primaryOfficeFragmentName);
@@ -278,10 +301,10 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 			plannerMasterNode.setProperty(PlannerLocationConstants.EDUCATION, ResourceUtil.getResourceChildNames(
 					childPathPlanner + PlannerLocationConstants.FORWARD_SLASH + PlannerLocationConstants.EDUCATION,
 					resourceResolver));
-                        
-                        plannerMasterNode.setProperty(PlannerLocationConstants.SUPPORT_STAFF, ResourceUtil.getResourceChildNames(
-					childPathPlanner + PlannerLocationConstants.FORWARD_SLASH + PlannerLocationConstants.SUPPORT_STAFF,
-					resourceResolver));
+
+                        plannerMasterNode.setProperty(PlannerLocationConstants.SUPPORT_STAFF,
+					ResourceUtil.getResourceChildNames(childPathPlanner + PlannerLocationConstants.FORWARD_SLASH
+							+ PlannerLocationConstants.SUPPORT_STAFF, resourceResolver));
 
 			plannerMasterNode.setProperty(PlannerLocationConstants.INDUSTRY_EXAMS, ResourceUtil.getResourceChildNames(
 					childPathPlanner + PlannerLocationConstants.FORWARD_SLASH + PlannerLocationConstants.INDUSTRY_EXAMS,

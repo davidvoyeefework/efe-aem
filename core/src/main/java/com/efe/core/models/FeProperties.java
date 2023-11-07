@@ -46,4 +46,18 @@ public interface FeProperties {
      * @return the ApiDomain
      */
     String getApiDomain();
+
+	/**
+	 * Gets the fe gtm tag id.
+	 *
+	 * @return the fe gtm tag id
+	 */
+	String getFeGtmTagId();
+
+	/**
+	 * Checks if is fe gtm enabled.
+	 *
+	 * @return true, if is fe gtm enabled
+	 */
+	boolean isFeGtmEnabled();
 }

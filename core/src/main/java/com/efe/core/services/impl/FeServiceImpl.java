@@ -43,12 +43,18 @@ public class FeServiceImpl implements FeService {
 
     /** The apiDomain. */
     private String apiDomain;
+    
+    /** The fe gtm tag id. */
+    private String feGtmTagId;
+    
+    /** The is fe gtm enabled. */
+    private boolean isFeGtmEnabled;
 
 
     /**
      * The Interface Config.
      */
-    @ObjectClassDefinition(name = "FE Sponsor Details Api", description = "FE Sponsor Details Api")
+    @ObjectClassDefinition(name = "FE Configurations", description = "Configurations for FE")
     public static @interface Config {
 
         /**
@@ -106,6 +112,22 @@ public class FeServiceImpl implements FeService {
          */
         @AttributeDefinition(name = "Api Domain", description = "Api Domain")
         String apiDomain();
+        
+        /**
+         * Fe gtm tag id.
+         *
+         * @return the string
+         */
+        @AttributeDefinition(name = "FE GTM Tag ID", description = "FE GTM Tag ID to be used in the script")
+        String feGtmTagId();
+        
+        /**
+         * Fe gtm enabled.
+         *
+         * @return true, if successful
+         */
+        @AttributeDefinition(name = "Enable FE GTM", description = "Config to enable / disable FE GTM")
+        boolean feGtmEnabled();
     }
 
     /**
@@ -124,6 +146,8 @@ public class FeServiceImpl implements FeService {
         this.dynamicVariableList = config.dynamicVariableList();
         this.sponsorLogoPath = config.sponsorLogoPath();
         this.apiDomain = config.apiDomain();
+        this.feGtmTagId = config.feGtmTagId();
+        this.isFeGtmEnabled = config.feGtmEnabled();
     }
 
     /**
@@ -199,4 +223,24 @@ public class FeServiceImpl implements FeService {
     public String getApiDomain() {
         return apiDomain;
     }
+
+	/**
+	 * Gets the fe gtm tag id.
+	 *
+	 * @return the fe gtm tag id
+	 */
+	@Override
+	public String getFeGtmTagId() {
+		return feGtmTagId;
+	}
+
+	/**
+	 * Enable fe gtm.
+	 *
+	 * @return true, if successful
+	 */
+	@Override
+	public boolean enableFeGtm() {
+		return isFeGtmEnabled;
+	}
 }

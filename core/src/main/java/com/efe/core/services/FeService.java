@@ -53,4 +53,18 @@ public interface FeService {
      * @return the ApiDomain
      */
     String getApiDomain();
+    
+    /**
+     * Gets the FE gtm tag id.
+     *
+     * @return the FE gtm tag id
+     */
+    String getFeGtmTagId();
+    
+    /**
+     * Enable fe gtm.
+     *
+     * @return true, if successful
+     */
+    boolean enableFeGtm();
 }

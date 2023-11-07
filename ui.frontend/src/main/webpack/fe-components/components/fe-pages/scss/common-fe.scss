@@ -76,6 +76,12 @@
         * {
             font-family: var(--font-family);
         }
+        .fe-learn-more-link {
+            color: var(--title-text-color);
+            &:hover {
+                text-decoration-color:var(--title-text-color);
+            }
+        }
     }
 }
 
