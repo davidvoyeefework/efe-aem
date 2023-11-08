@@ -257,6 +257,13 @@ export const prepareOALearnMoreLink = (str) => {
 
     //now remove https:// from the url since Unbounce already prefix the button link url with https://.
     //this value will be the dynamic replacement for button link url
+    if(str) {
+      return `<div class="button cmp-button--button-primary" style="padding-top:30px">
+              <a class="cmp-button" href=${url}>
+                  <span class="cmp-button__text">Get Started</span>
+              </a>
+              </div>`
+    }
     return `<a href=${url} target="_self" class="fe-learn-more-link">GET STARTED</a>`;
   } else {
     type = threeTierChoiceCallVersion;
