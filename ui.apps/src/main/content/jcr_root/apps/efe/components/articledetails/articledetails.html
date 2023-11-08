@@ -171,11 +171,11 @@
         <script>
             document.addEventListener("DOMContentLoaded", function () {
                 const socialblock = document.querySelector('[id ^= "socialshare-"]').parentNode.parentNode.parentNode.parentNode;
+                const socialblockcore = document.querySelector('[id ^= "socialshare-"]');
                 socialblock.classList.remove("cmp-container--padding-top");
+                socialblockcore.style.padding = "32px 0px 32px 0px";
                 const publishdate = document.getElementById("article-details__published-date");
                 publishdate.appendChild(socialblock);
-                const cqPlaceholder = document.querySelector(".cq-marker-start");
-                cqPlaceholder.style.height = "21px";
             });
         </script>
     
