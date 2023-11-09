@@ -15,11 +15,17 @@
         }
 
         @media screen and (min-width: $sm) {
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
         @media screen and (min-width: $lg) {
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+        
+        @media screen and (min-width: 1440px) {
+            .teaser {
+                min-width: rem(429);
+            }
         }
     }
 
