@@ -83,5 +83,11 @@
             }
         }
     }
+    &.theme-vanguard {
+        [class^="cmp-text--body-"], [class*="cmp-text--body-"] {
+            color: #000 !important;
+        }
+    }
+    
 }
 
