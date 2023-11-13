@@ -292,17 +292,17 @@ public class PlannerLocationConstants {
 	/**
 	 * Desktop Image Url
 	 */
-	public static final String DESKTOP_IMAGE_URL = "desktopImageurl";
+	public static final String DESKTOP_IMAGE_URL = "desktopImageUrl";
 
 	/**
 	 * Mobile Image Url
 	 */
-	public static final String MOBILE_IMAGE_URL = "mobileImageurl";
+	public static final String MOBILE_IMAGE_URL = "mobileImageUrl";
 
 	/**
 	 * Circle Image Url
 	 */
-	public static final String CIRCLE_IMAGE = "circleImageurl";
+	public static final String CIRCLE_IMAGE = "circleImageUrl";
 
 	/**
 	 * Education Indicator
