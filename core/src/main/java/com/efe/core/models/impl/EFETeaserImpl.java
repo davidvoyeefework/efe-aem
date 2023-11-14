@@ -8,11 +8,16 @@ import javax.annotation.PostConstruct;
 
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
+import com.efe.core.utils.ResourceUtil;
+
+
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.Self;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.factory.ModelFactory;
 
 import com.adobe.cq.export.json.ExporterConstants;
@@ -20,6 +25,7 @@ import com.adobe.cq.wcm.core.components.commons.link.Link;
 import com.adobe.cq.wcm.core.components.models.ListItem;
 import com.adobe.cq.wcm.core.components.models.Teaser;
 import com.adobe.cq.wcm.core.components.models.datalayer.ComponentData;
+import com.adobe.xfa.ut.Resolver;
 import com.day.cq.tagging.Tag;
 import com.day.cq.wcm.api.Page;
 import com.efe.core.bean.LinkBean;
@@ -53,6 +59,25 @@ public class EFETeaserImpl implements EFETeaser {
 	/** The article page subtitle. */
 	String articleSubtitle;
 
+	/** The article resource path. */
+	String resourcePath;
+
+	/** The article resource property. */
+	String resourceProperty;
+
+	/** The article CF subtitle */
+	String resourceCFPath;
+
+	/** The resourceCF Property subtitle */
+	String resourceCFProperty;
+
+	/** The resourceCF Property subtitle */
+	String articleCFSubtitle;
+
+	    /** The resource resolver. */
+    @SlingObject
+    private ResourceResolver resourceResolver;
+
 	/**
 	 * Inits the Model.
 	 */
@@ -71,10 +96,17 @@ public class EFETeaserImpl implements EFETeaser {
 			}
 		}
 
-		if (null != page && page.getProperties().get("subtitle", String.class) != null ) {
-			articleSubtitle = page.getProperties().get("subtitle", String.class);
-		}
-	
+			resourcePath =  page.getPath() + "/jcr:content/root/container_1735562516/container/articledetails";
+			resourceProperty = "articleFragmentPath";
+			articleSubtitle = ResourceUtil.getProperty( resourceResolver, resourcePath, resourceProperty );
+			if (articleSubtitle != null) {
+				resourceCFPath = articleSubtitle + "/jcr:content/data/master";
+				resourceCFProperty = "subtitle";
+				articleCFSubtitle = ResourceUtil.getProperty(resourceResolver, resourceCFPath, resourceCFProperty).replaceAll("<[^>]*>", "");
+			}
+			else {
+				articleCFSubtitle = "";
+			}
 	}
 
 	/**
@@ -84,7 +116,7 @@ public class EFETeaserImpl implements EFETeaser {
 	 */
 	@Override
 	public String getSubtitle() {
-		return articleSubtitle;
+		return articleCFSubtitle;
 	}
 
 	/**
