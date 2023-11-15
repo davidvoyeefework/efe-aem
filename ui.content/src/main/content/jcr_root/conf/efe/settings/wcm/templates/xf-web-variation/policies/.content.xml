@@ -101,6 +101,10 @@
 							cq:policy="efe/components/listteaser/policy"
 							jcr:primaryType="nt:unstructured"
 							sling:resourceType="wcm/core/components/policies/mapping"/>
+					<relatedarticle-ed-center
+							cq:policy="efe/components/relatedarticle-ed-center/policy_2323064750917666"
+							jcr:primaryType="nt:unstructured"
+							sling:resourceType="wcm/core/components/policies/mapping"/>    
                 </components>
 				<fe-components jcr:primaryType="nt:unstructured">
 					<structure jcr:primaryType="nt:unstructured">
