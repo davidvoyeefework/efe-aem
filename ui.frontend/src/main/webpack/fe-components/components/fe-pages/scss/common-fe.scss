@@ -88,8 +88,9 @@
         [class^="cmp-text--body-"] *, [class*="cmp-text--body-"] * ,
         [class^="cmp-text--"], [class*="cmp-text--"],
         [class^="cmp-text--body-"] *, [class*="cmp-text--body-"] * ,
-        .cmp-text li,
-        .fe-form__header, .fe-form__group .fe-form__label-wrapper
+        .cmp-text li, .cmp-text b, .cmp-text p, .cmp-text span,
+        .fe-form__header, .fe-form__group .fe-form__label-wrapper,
+        .fe-form__group--cancel-note
         {
             color: #000 !important;
         }
