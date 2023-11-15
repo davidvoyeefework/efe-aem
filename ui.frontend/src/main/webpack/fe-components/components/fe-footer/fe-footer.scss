@@ -114,6 +114,18 @@
             }
         }
     }
+    &.theme-vanguard {
+        .fe-footer-modal {
+            .cmp-modal__content ul li a {
+            color: #000;
+            }
+            .cmp-modal__about-us-text {
+                p {
+                    color: #000;
+                }
+            }
+        }
+    }
     &.theme-vanguard, &.theme-aon, &.theme-ssga {
         & .cmp-modal {
             &__close-btn-div {
