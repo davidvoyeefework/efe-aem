@@ -114,3 +114,5 @@ ui.tests/test-module/assets/form/themes/**/*current.png
 .vscode/settings.json
 ui.frontend/package-lock.json
 *.MF
+ui.apps/package-lock.json
+package-lock.json
