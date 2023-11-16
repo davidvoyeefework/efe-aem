@@ -83,5 +83,27 @@
             }
         }
     }
+    &.theme-vanguard {
+        [class^="cmp-text--body-"], [class*="cmp-text--body-"],
+        [class^="cmp-text--body-"] *, [class*="cmp-text--body-"] * ,
+        [class^="cmp-text--"], [class*="cmp-text--"],
+        [class^="cmp-text--body-"] *, [class*="cmp-text--body-"] * ,
+        .cmp-text li, .cmp-text b, [class*="cmp-title--"] *, [class^="cmp-title--"] *,
+        .fe-form__header, .fe-form__group .fe-form__label-wrapper,
+        .fe-form__group--cancel-note,
+        .fe-form__group--enrollment-disclosure,
+        .fe-modal-body, .cmp-text ul li span
+        {
+            color: #000 !important;
+        }
+        #efe-global-nav-header ,  #efe-nav-main #nav-list-cta-group {
+            .cmp-text {
+                p, span {
+                    color: #000 !important;
+                }
+            }
+        }
+    }
+    
 }
 

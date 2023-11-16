@@ -10,7 +10,7 @@ export default {
       control: { type: "text" },
     },
     variant: {
-      options: ["button-primary", "button-secondary", "link-primary", "link-secondary", "icon-button", "title-tag"],
+      options: ["button-primary", "button-secondary", "link-primary", "link-secondary", "icon-button", "title-tag", "video", "podcast", "web"],
       control: { type: "radio" },
     },
     link: {

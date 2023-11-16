@@ -1,0 +1,8 @@
+<sly data-sly-template.actions="${@ teaser,article}">
+
+    <div class="cmp-teaser__action-container">
+        <a class="cmp-teaser__action-link" data-sly-attribute="${teaser.link.htmlAttributes}"
+           data-sly-unwrap="${!teaser.link.valid || !teaser.actions.empty}"
+           data-cmp-clickable="${teaser.data ? true : false}">${article.requestText}</a>
+    </div>
+</sly>

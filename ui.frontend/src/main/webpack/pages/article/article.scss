@@ -1,17 +1,80 @@
 .cmp-article-details {
     padding: rem(48) 0;
+
+    .max-width {
+        max-width: rem(704);
+        margin: 0 auto;
+    }
+
+    .cmp-title--heading-03 {
+        margin-bottom: 22px;
+    }
+
     &__published-date, &__authors-by { 
-        margin: 32px 0;
-        text-align: center;
+        margin-top: 32px;
+        text-align: center; 
+            .article-publish-date {
+                letter-spacing: rem(1);
+            }
     }
+
     &__authors-by {
-        .cmp-text, .cmp-text *{
-            font-size: rem(14);
-        }
+        margin-bottom: 64px !important;
     }
+
     &__summary, &__seperator, &__body {
         width: 100%;
+        max-width: rem(704);
+        margin: 0 auto;
     }
+
+    &__seperator {
+        .cmp-separator {
+            margin: 40px 0;
+        }
+    }
+
+    &__summary {
+        h1,h2,h3 {
+            @include subhead-00;
+            margin-bottom: rem(20);
+        }
+        p {
+            @include body-03;
+        }
+    }
+
+    &__body {
+        .title {
+            margin-bottom: 16px !important;
+            padding-bottom: 0px !important;
+            h2, h3, h4, h5, h6 {
+                @include subhead-00;
+            }
+        }
+
+        h2, h3, h4, h5, h6 {
+            @include subhead-00;
+            margin-bottom: 16px !important;
+            padding-bottom: 0px !important;
+            * {
+                @include subhead-00;
+                margin-bottom: 0px !important;
+                padding-bottom: 0px !important;
+            }
+        }
+
+        .cmp-text {
+            ul {
+                padding-left: 0;
+                list-style-position: outside;
+                li {
+                    padding-left: 0;
+                }
+            }
+        }
+    }
+
     &__tags {
         justify-content: center;
         align-items: center;
@@ -26,22 +89,29 @@
         }
     }
     .cmp-image--top-left {
+        padding-top: 32.5%;
+        width: 100%;
+        height: 100%;
+        max-height: rem(440);
+        max-width: rem(1096);
+        margin: 0 auto 30px;
+        position: relative;
+        min-height: rem(202);
         img {
             width: 100%;
-            height: auto;
+            height: 100%;
+            position: absolute;
+            top:0;
+            bottom:0;
+            left: 0;
+            right: 0;
+            object-fit: cover;
         }
     }
     &__disclaimar {
-        @include media('>tablet-lg') {
-            padding: rem(48) rem(196);
-            padding-bottom: 0;
-        }
-        @include media('<tablet-lg') {
-            padding: rem(24) rem(26);
-            padding-bottom: 0;
-        }
+
         * {
-            @include detail;
+            @include body-03;
         }
 
     }

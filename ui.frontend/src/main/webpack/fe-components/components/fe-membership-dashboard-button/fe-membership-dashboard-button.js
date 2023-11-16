@@ -13,8 +13,8 @@ export default class FeMembershipDashboardButton {
         }
     }
     buildFeMembershipDashboardButton(containerEl) {
-        let buttonHeading = '';
-        let oaButtonTitle;
+        let buttonHeading = "Already using Online Advice?";
+        let oaButtonTitle = "LOGIN TO ONLINE ADVICE";
         if (
             (this.windowObject?.isUserFullyAuth === true &&
                 this.windowObject?.context?.userTier &&

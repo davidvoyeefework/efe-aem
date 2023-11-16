@@ -1,0 +1,33 @@
+.relatedarticle-ed-center {
+    max-width: rem(1320);
+    margin: auto;
+    .cmp-list {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        float: unset;
+        width: 100%;
+
+        &__item {
+            padding: rem(26);
+            background: white;
+            position: relative;
+        }
+
+        @media screen and (min-width: $sm) {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        @media screen and (min-width: $lg) {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+        
+        @media screen and (min-width: 1440px) {
+            .teaser {
+                min-width: rem(429);
+            }
+        }
+    }
+
+
+}

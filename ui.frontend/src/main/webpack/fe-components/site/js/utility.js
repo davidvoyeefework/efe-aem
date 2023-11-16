@@ -257,6 +257,13 @@ export const prepareOALearnMoreLink = (str) => {
 
     //now remove https:// from the url since Unbounce already prefix the button link url with https://.
     //this value will be the dynamic replacement for button link url
+    if(str) {
+      return `<div class="button cmp-button--button-primary" style="padding-top:30px">
+              <a class="cmp-button" href=${url}>
+                  <span class="cmp-button__text">Get Started</span>
+              </a>
+              </div>`
+    }
     return `<a href=${url} target="_self" class="fe-learn-more-link">GET STARTED</a>`;
   } else {
     type = threeTierChoiceCallVersion;
@@ -394,6 +401,11 @@ export const getDashboardLink = () => {
   const {isUserFullyAuth, context, userLoggedIn, isUserLightAuth, providerInfo} = windowDataObj; 
   const apiBaseUrl = getApiBaseUrl();
   let url = "";
+  let linkLabel = "LOGIN TO ONLINE ADVICE";
+    if(context?.userTier) {
+      linkLabel = context?.userTier === "OA"?"LOGIN TO ONLINE ADVICE":
+                  context?.userTier === "MA"?"MEMBER DASHBOARD":linkLabel
+    }
     if (
       (isUserFullyAuth &&
       context?.userTier &&
@@ -415,7 +427,7 @@ export const getDashboardLink = () => {
       url = providerInfo?.rkLoginUrl;
        url.replace(/^https?:\/\//i, "");
     } 
-    return url?`<a href="${url}" target="_blank" class="fe-learn-more-link">LOGIN TO ONLINE ADVICE</a>`:'';
+    return url?`<a href="${url}" target="_blank" class="fe-learn-more-link">${linkLabel}</a>`:'';
 }
 export const getLoginLink = ()=> {
     const windowDataObj = window?.aemfe;

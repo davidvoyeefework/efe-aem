@@ -1,0 +1,62 @@
+@mixin teaserThumbnail {
+    display: flex;
+        flex-direction: column-reverse;
+        @include media('<tablet') {
+            flex-direction: row-reverse;
+        }
+}
+.cmp-teaser--thumbnail {
+    .cmp-teaser {
+        @include teaserThumbnail;
+        &__link {
+            @include teaserThumbnail;
+        }
+        &__content {
+            @include media('<tablet') {
+                padding: 0 rem(20);
+                width: 55%;
+            }
+        }
+        &__image {
+            @include media('<tablet') {
+                width: 45%;
+                .cmp-image__image {
+                    width: 100%;
+                }
+            }
+            img {
+                width: 260px;
+                height: 240px;
+                object-fit: cover;
+            }
+        }
+        &__title {
+            @include subhead-01;
+            margin: rem(20) rem(0) rem(10) 0;
+            @include media('<tablet') {
+                margin: 0 0 rem(10) 0;
+            }
+        }
+        &__title-link {
+            @include subhead-01;
+        }
+        &__description {
+            @include caption;
+            color: $gray-new;
+            p {
+                @include caption;
+                color: $gray-new
+            }
+        }
+        &__action-container {
+            width: 100%;
+            margin-top: rem(12);
+            margin-bottom: 0;
+        }
+        &__action-link {
+            background-color: unset;
+            padding:0;
+            @include body-02-link-red;
+        }
+    }
+}

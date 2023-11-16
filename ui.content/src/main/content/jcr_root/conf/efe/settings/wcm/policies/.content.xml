@@ -1979,6 +1979,75 @@
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                 </fepolicy>
             </xfpage>
+            <relatedarticle-ed-center jcr:primaryType="nt:unstructured">
+                <policy_1699025520007
+                    jcr:lastModified="{Date}2023-11-03T08:32:31.426-07:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="testpolicy"
+                    sling:resourceType="wcm/core/components/policy/policy"
+                    disableChildren="false"
+                    disableSearch="false"
+                    disableStatic="false"
+                    disableTags="false"
+                    linkItems="false"
+                    showDescription="false"
+                    showModificationDate="false">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                    <cq:styleGroups jcr:primaryType="nt:unstructured">
+                        <item0
+                            cq:styleGroupLabel="test"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="testclass"
+                                    cq:styleId="1699025537235"
+                                    cq:styleLabel="test-name"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item0>
+                    </cq:styleGroups>
+                </policy_1699025520007>
+                <policy_2323064750917666
+                    jcr:lastModified="{Date}2023-11-03T14:15:28.478-07:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="relatedarticleedcenter"
+                    sling:resourceType="wcm/core/components/policy/policy"
+                    disableChildren="false"
+                    disableSearch="false"
+                    disableStatic="false"
+                    disableTags="false"
+                    linkItems="false"
+                    showDescription="false"
+                    showModificationDate="false">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                    <cq:styleGroups jcr:primaryType="nt:unstructured">
+                        <item0
+                            cq:styleGroupLabel="Rounded Corner"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-list--border-radius"
+                                    cq:styleId="1699046062426"
+                                    cq:styleLabel="Top left"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item0>
+                        <item1
+                            cq:styleGroupLabel="Background Color"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="relatedarticle-ed-center--white"
+                                    cq:styleId="1699046103963"
+                                    cq:styleLabel="White"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item1>
+                    </cq:styleGroups>
+                </policy_2323064750917666>
+            </relatedarticle-ed-center>            
         </components>
         <fe-components jcr:primaryType="nt:unstructured">
             <structure jcr:primaryType="nt:unstructured">
