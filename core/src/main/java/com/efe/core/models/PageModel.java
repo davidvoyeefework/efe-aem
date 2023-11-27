@@ -28,6 +28,8 @@ public interface PageModel {
 	 * @return the jquery url
 	 */
 	String getJqueryUrl();
+        
+        String getFPIDLibURL();
 
 	/**
 	 * Gets the external libraries.

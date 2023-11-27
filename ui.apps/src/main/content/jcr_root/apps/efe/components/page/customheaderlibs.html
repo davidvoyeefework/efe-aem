@@ -20,6 +20,7 @@
 <sly data-sly-use.efemodel="com.efe.core.models.PageModel"/>
 <script data-sly-test="${efemodel.jqueryUrl}" src="${efemodel.jqueryUrl @context='uri'}"></script>
 
+
 <sly data-sly-test="${efemodel.externalLibraries.size > 0}" data-sly-list="${efemodel.externalLibraries}">
     <script src="${item @context='uri'}"></script>
 </sly>  

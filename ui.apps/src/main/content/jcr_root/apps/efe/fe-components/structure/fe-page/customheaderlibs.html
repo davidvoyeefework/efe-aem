@@ -20,7 +20,7 @@
 <sly data-sly-use.efemodel="com.efe.core.models.PageModel"/>
 
 <script data-sly-test="${inheritedPageProperties.launchScript}" src="${inheritedPageProperties.launchScript @context='uri'}" type="text/javascript" async></script>
-
+<script data-sly-test="${efemodel.FPIDLibraryURL}" src="${efemodel.FPIDLibraryURL @contect='uri'"></script>
 <sly data-sly-use.clientlib="core/wcm/components/commons/v1/templates/clientlib.html">
     <sly data-sly-call="${clientlib.css @ categories='efe.base'}"/>
 </sly>
