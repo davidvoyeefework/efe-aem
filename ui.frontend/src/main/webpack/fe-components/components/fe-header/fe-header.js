@@ -1,17 +1,77 @@
 import * as utility from  "../../site/js/utility";
 import { fetchData, handleLoader } from "../../site/js/helper";
+
+
 export default class FeHeader {
     constructor() {
+        document.addEventListener("FPIDReadyForInit", this.executeFPID);
+        document.addEventListener("displayPropRetrieved", this.init);
+        document.addEventListener("displayHeaderReplaced", this.executePageView);
+        
+        window.__alloyMonitors = window.__alloyMonitors || [];
+        window.__alloyMonitors.push({
+            onBeforeNetworkRequest(data) {
+                if(data.payload.events[0].xdm.eventType == 'displayProp') {
+                    DisplayPropReqID = data.requestId;
+                }
+            },
+            onNetworkResponse(data) {
+                if(DisplayPropReqID != null && data.requestId == DisplayPropReqID) {
+                    DisplayPropReqID = null;
+                    document.dispatchEvent(new CustomEvent("displayPropRetrieved", { bubbles: true}));
+                }
+            }
+        });
+        
+        const LibCheckIntervalID = setInterval(CheckFPIDReadyState, 50);
+
+        function CheckFPIDReadyState() {
+            if(fpidLib != null && adobeDataLayer != null) {
+                clearInterval(LibCheckIntervalID);
+                document.dispatchEvent(new CustomEvent("FPIDReadyForInit", { bubbles: true}));
+            } else {
+                // Wait
+            }
+        }
+        
         document.addEventListener("messageFromfePage", (e) =>{
             this.attributeParameterElem = document.querySelector('#fe-properties');
             this.init();
         });
+        
     }
     init() {
         if(window.aemfe.header) {
             this.fetchHeaderDataVariables();
         }
     }
+    
+    executeFPID () {
+        document.addEventListener("fpidComplete", this.callPersonalizationRequest);
+        document.removeEventListener("FPIDReadyForInit", this.executeFPID);
+        fpidLib.initialize();
+    }
+    
+    callPersonalizationRequest() {
+        let daVarsStr = getCookie('daVars');
+        let daVars = daVarsStr ? JSON.parse(decodeURIComponent(daVarsStr)) : null;
+        if (daVars && daVars.sponsorId && daVars.providerId) {
+            var unbounceLoadObj = {
+                "event":"personalization.request",
+                "_financialengines": {
+                    "recordKeeperDetails": {
+                        "rkId": daVars.providerId    
+                    },
+                    "sponsorDetails": {
+                        "sponsorId": daVars.sponsorId
+                    }
+                }
+            };
+            adobeDataLayer.push(unbounceLoadObj);
+        }
+    }
+    
+    
     fetchHeaderDataVariables () {
         handleLoader(true);
         const apiVal = this.attributeParameterElem?.getAttribute('data-api-dynamic');
@@ -25,12 +85,26 @@ export default class FeHeader {
             }
         });
     }
+    
+    executePageView() {
+        alloy("sendEvent", {
+            "xdm": {
+                "web": {
+                    "webPageDetails": {
+                        "pageViews": {
+                            "value": 1
+                        }
+                    }
+                }
+            }
+        });
+    }
     changeHeaderValues(headerDataVariables) {
         const data = window.aemfe;
         //const headerDataVariables =  this.attributeParameterElem?.getAttribute('data-variables');
             headerDataVariables?.forEach((item) => {
             if (Object.keys(item).length === 0) {
-                return
+                return;
             }
             const elems = document.querySelectorAll('.' + Object.keys(item));
             elems?.forEach((ele) => {
@@ -74,6 +148,7 @@ export default class FeHeader {
             var sponsorLogoEl = `<img src="`+ logo + `" loading="lazy" class="cmp-image__image" itemprop="contentUrl" alt=" " title="Logo">`;
             sponsorLogo.insertAdjacentHTML('beforeend', sponsorLogoEl);
         }
+        document.dispatchEvent(new CustomEvent("displayHeaderReplaced", { bubbles: true}));
     }
     calculateCustomVariable(key) {
         switch(key) {
