@@ -2,10 +2,14 @@
     data-sly-use.embedForm="com.efe.core.models.EmbedForm"
     data-sly-set.type="${embedForm.type? embedForm.type : 'Select Form Type'}"
     data-sly-use.enrollmenttemplate="enrollmentform.html" data-sly-use.callbacktemplate="callbackform.html"
+    data-sly-use.enrollmentrequiredtemplate="enrollmentformrequired.html" data-sly-use.callbacktemplate="callbackform.html"
     data-sly-test.isDisabledMode="${wcmmode.disabled}">
 
     <sly data-sly-test.isEnrollment='${"Enrollment Form" == embedForm.type}'>
         <sly data-sly-call="${enrollmenttemplate.enrollmentform}"></sly>
+    </sly>
+    <sly data-sly-test.isEnrollment='${"Enrollment Form Required" == embedForm.type}'>
+        <sly data-sly-call="${enrollmentrequiredtemplate.enrollmentform}"></sly>
     </sly>
     <sly data-sly-test='${!isEnrollment}'>
         <sly data-sly-call="${callbacktemplate.callbackform}"></sly>
