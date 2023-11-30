@@ -2,6 +2,7 @@
     ol {
         counter-reset: di-count;
         display: list-item;
+        list-style: outside;
         list-style-type: auto;
         margin: 0;
         padding: 0;
@@ -41,18 +42,17 @@
         }
     }
     ul {
+        margin-left: 19px;
+        padding-top: 0;
         li {
-            &:before {
-                content: "\2022"; 
-                color: $efe-red-primary;
-                font-weight: bold; 
-                display: inline-block;
-                width: rem(5);
+            list-style-position: outside;
+            list-style-type: disc;
+
+            &::marker {
+                font-size: 19px;
+                color: #c32d37;
                 margin-right: 16px;
-                font-size: inherit;
-                top: rem(-3px);
-                left: 0;
-                vertical-align: sub;
+
             }
             span {
                 @include body-02;

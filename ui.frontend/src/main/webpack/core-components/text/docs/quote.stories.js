@@ -8,7 +8,7 @@ export default {
       control: { type: "text" },
     },
     variant: {
-      options: ["quote1", "quote2"],
+      options: ["quote1 Centered", "quote2 Justified"],
       control: { type: "radio" },
     }
   },
