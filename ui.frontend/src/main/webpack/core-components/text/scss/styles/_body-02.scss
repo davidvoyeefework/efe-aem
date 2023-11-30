@@ -1,7 +1,6 @@
 .cmp-text--body-02 {
-    * {
         @include body-02;
-    }
+
 
     a {
         @include body-02-link;

@@ -22,6 +22,12 @@
         margin-bottom: 64px !important;
     }
 
+    &__summary {
+        .cmp-text ul {
+            padding: 0;
+        }
+    }
+
     &__summary, &__seperator, &__body {
         width: 100%;
         max-width: rem(704);
@@ -46,7 +52,7 @@
 
     &__body {
         .title {
-            margin-bottom: 16px !important;
+            margin-bottom: 0px !important;
             padding-bottom: 0px !important;
             h2, h3, h4, h5, h6 {
                 @include subhead-00;
@@ -55,6 +61,7 @@
 
         h2, h3, h4, h5, h6 {
             @include subhead-00;
+            margin-top: 32px !important;
             margin-bottom: 16px !important;
             padding-bottom: 0px !important;
             * {

@@ -90,6 +90,10 @@
                                                                 jcr:primaryType="cq:WidgetCollection"
                                                                 cssName="cmp-text--callout"
                                                                 text="Callout"/>
+                                                            <quote-citation
+                                                                jcr:primaryType="cq:WidgetCollection"
+                                                                cssName="cmp-text--body-03-quote"
+                                                                text="Blockquote Citation"/>
                                                         </styles>
                                                     </styles>
                                                     <efe-aem-dynamic-variable
