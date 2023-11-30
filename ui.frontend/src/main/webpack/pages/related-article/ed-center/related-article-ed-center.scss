@@ -7,6 +7,7 @@
         gap: 20px;
         float: unset;
         width: 100%;
+        margin-bottom: 20px;
 
         &__item {
             padding: rem(26);
@@ -22,11 +23,6 @@
             grid-template-columns: repeat(3, minmax(0, 1fr));
         }
         
-        @media screen and (min-width: 1440px) {
-            .teaser {
-                min-width: rem(429);
-            }
-        }
     }
 
 

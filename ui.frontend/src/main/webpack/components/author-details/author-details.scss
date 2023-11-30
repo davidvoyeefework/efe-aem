@@ -1,9 +1,14 @@
 .cmp-author-details {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 24px;
     margin-bottom: rem(48px);
     width: 100%;
+
+ @media screen and (min-width: $sm) {       
+    flex-direction: row;
+ }
+
     &__image {
     width: 158px;
     height: 158px;
@@ -18,5 +23,12 @@
     }
     &__description {
         width: 100%;
+        position: relative;
+        bottom: 5px;
+
+        .title {
+            margin-bottom: 16px;
+        }
+
     }
 }

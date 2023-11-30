@@ -5,7 +5,9 @@
          class="cmp-container cmp-container--white cmp-article-details" id="${model.id}">
          <sly data-sly-test="${currentPage.parent.pageTitle}">
             <div class="max-width">
-                <p class="primary-nav-link-red center mb-8">${currentPage.parent.pageTitle}</p>
+                <a href="${currentPage.parent.getPath}.html">
+                    <p class="primary-nav-link-red center mb-8">${currentPage.parent.pageTitle}</p>
+                </a>
             </div>
         </sly>
         <div class="title cmp-title--heading-03">
