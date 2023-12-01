@@ -10,20 +10,28 @@ export default class FeHeader {
     window.__alloyMonitors = window.__alloyMonitors || [];
     window.__alloyMonitors.push({
       onBeforeNetworkRequest(data) {
-        if (data.payload.events[0].xdm.eventType == "displayProp") {
-          DisplayPropReqID = data.requestId;
+        if (
+          this.completeFPID &&
+          data.payload.events[0].xdm.eventType == "displayProp"
+        ) {
+          this.DisplayPropReqID = data.requestId;
         }
       },
       onNetworkResponse(data) {
-        if (DisplayPropReqID != null && data.requestId == DisplayPropReqID) {
-          DisplayPropReqID = null;
+        if (
+          this.completeFPID &&
+          DisplayPropReqID &&
+          data.requestId == this.DisplayPropReqID
+        ) {
+          this.DisplayPropReqID = null;
           document.dispatchEvent(
             new CustomEvent("displayPropRetrieved", { bubbles: true }),
           );
         }
       },
     });
-
+    var DisplayPropReqID;
+    var completeFPID = false;
     const LibCheckIntervalID = setInterval(CheckFPIDReadyState, 50);
 
     function CheckFPIDReadyState() {
@@ -55,6 +63,7 @@ export default class FeHeader {
   }
 
   callPersonalizationRequest() {
+    this.completeFPID = true;
     let daVarsStr = getCookie("daVars");
     let daVars = daVarsStr ? JSON.parse(decodeURIComponent(daVarsStr)) : null;
     if (daVars && daVars.sponsorId && daVars.providerId) {
