@@ -27,31 +27,31 @@ export default class FeHeader {
     const LibCheckIntervalID = setInterval(CheckFPIDReadyState, 50);
 
     function CheckFPIDReadyState() {
-      if (fpidLib != null && adobeDataLayer != null) {
-        clearInterval(LibCheckIntervalID);
-        document.dispatchEvent(
-          new CustomEvent("FPIDReadyForInit", { bubbles: true }),
+      if (!window.adobeDataLayer && !window.efeAdobeWebSdkWrapperModule) {
+        const EfeAdobeWebSdkWrapper =
+          window.efeAdobeWebSdkWrapperModule.EfeAdobeWebSdkWrapper;
+        const efeAdobeWebSdk =
+          EfeAdobeWebSdkWrapper && new EfeAdobeWebSdkWrapper();
+        document.addEventListener(
+          "fpidComplete",
+          this.callPersonalizationRequest,
         );
+        efeAdobeWebSdk.initialize();
+        clearInterval(LibCheckIntervalID);
       } else {
         // Wait
       }
     }
-
+    /*
     document.addEventListener("messageFromfePage", (e) => {
       this.attributeParameterElem = document.querySelector("#fe-properties");
       this.init();
-    });
+    });*/
   }
   init() {
     if (window.aemfe.header) {
       this.fetchHeaderDataVariables();
     }
-  }
-
-  executeFPID() {
-    document.addEventListener("fpidComplete", this.callPersonalizationRequest);
-    document.removeEventListener("FPIDReadyForInit", this.executeFPID);
-    fpidLib.initialize();
   }
 
   callPersonalizationRequest() {
