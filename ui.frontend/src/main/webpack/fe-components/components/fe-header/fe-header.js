@@ -15,6 +15,7 @@ export default class FeHeader {
           data.payload.events[0].xdm.eventType == "displayProp"
         ) {
           this.DisplayPropReqID = data.requestId;
+          console.log(data);
         }
       },
       onNetworkResponse(data) {
@@ -24,9 +25,11 @@ export default class FeHeader {
           data.requestId == this.DisplayPropReqID
         ) {
           this.DisplayPropReqID = null;
+          console.log(data);
           document.dispatchEvent(
             new CustomEvent("displayPropRetrieved", { bubbles: true }),
           );
+          console.log("Display Properties Retrieved");
         }
       },
     });
@@ -36,6 +39,7 @@ export default class FeHeader {
 
     function CheckFPIDReadyState() {
       if (!window.adobeDataLayer && !window.efeAdobeWebSdkWrapperModule) {
+        console.log("FPid Library Ready");
         const EfeAdobeWebSdkWrapper =
           window.efeAdobeWebSdkWrapperModule.EfeAdobeWebSdkWrapper;
         const efeAdobeWebSdk =
@@ -45,6 +49,7 @@ export default class FeHeader {
           this.callPersonalizationRequest,
         );
         efeAdobeWebSdk.initialize();
+        console.log("FPid Library Init Called");
         clearInterval(LibCheckIntervalID);
       } else {
         // Wait
@@ -58,11 +63,13 @@ export default class FeHeader {
   }
   init() {
     if (window.aemfe.header) {
+      console.log("Header init called");
       this.fetchHeaderDataVariables();
     }
   }
 
   callPersonalizationRequest() {
+    console.log("Calling personalization request");
     this.completeFPID = true;
     let daVarsStr = getCookie("daVars");
     let daVars = daVarsStr ? JSON.parse(decodeURIComponent(daVarsStr)) : null;
@@ -79,10 +86,12 @@ export default class FeHeader {
         },
       };
       adobeDataLayer.push(unbounceLoadObj);
+      console.log("Personalization event pushed.");
     }
   }
 
   fetchHeaderDataVariables() {
+    console.log("Fetching header variables");
     handleLoader(true);
     const apiVal =
       this.attributeParameterElem?.getAttribute("data-api-dynamic");
@@ -111,6 +120,7 @@ export default class FeHeader {
     });
   }
   changeHeaderValues(headerDataVariables) {
+    console.log("Changing header variables: " + headerDataVariables);
     const data = window.aemfe;
     //const headerDataVariables =  this.attributeParameterElem?.getAttribute('data-variables');
     headerDataVariables?.forEach((item) => {
