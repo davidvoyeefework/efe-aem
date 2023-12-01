@@ -43,6 +43,10 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         text="Enrollment Form"
                                                         value="Enrollment Form"/>
+                                                    <directrequired
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Enrollment Form Required"
+                                                        value="Enrollment Form Required"/>
                                                     <sub-advised
                                                         jcr:primaryType="nt:unstructured"
                                                         text="Call Back Form"

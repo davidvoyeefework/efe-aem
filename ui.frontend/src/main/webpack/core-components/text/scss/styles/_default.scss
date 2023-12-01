@@ -24,30 +24,12 @@
         margin-block-end: 1em;
         margin-inline-start: 0px;
         margin-inline-end: 0px;
-        padding: 20px 24px;
+        padding: 20px 0px;
         margin: 0;
         
         li {
-            padding-left: 12px;
+            padding-left: 0;
             margin-bottom: 8px;
-            &:before {
-                content: $wkndicon-play3;
-                font-family: '#{$icomoon-font-family}' !important;
-                speak: none;
-                font-style: normal;
-                font-weight: normal;
-                font-variant: normal;
-                text-transform: none;
-                line-height: 1;
-                font-size: 0.55em;
-                /* Better Font Rendering =========== */
-                -webkit-font-smoothing: antialiased;
-                -moz-osx-font-smoothing: grayscale;
-                position: relative;
-                top: -0.25em;
-                left: -0.75em;
-                
-              }
         }
     }
     

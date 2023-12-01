@@ -283,12 +283,12 @@
                                 <item0
                                     cq:styleClasses="cmp-text--quote1"
                                     cq:styleId="quote1"
-                                    cq:styleLabel="Quote1"
+                                    cq:styleLabel="Quote1 Centered"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item1
                                     cq:styleClasses="cmp-text--quote2"
                                     cq:styleId="quote2"
-                                    cq:styleLabel="Quote2"
+                                    cq:styleLabel="Quote2 Justified"
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item1>
@@ -1531,12 +1531,12 @@
                                 <item0
                                     cq:styleClasses="cmp-text--quote1"
                                     cq:styleId="quote1"
-                                    cq:styleLabel="Quote 1"
+                                    cq:styleLabel="Quote 1 Centered"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item1
                                     cq:styleClasses="cmp-text--quote2"
                                     cq:styleId="quote2"
-                                    cq:styleLabel="Quote 2"
+                                    cq:styleLabel="Quote 2 Justified"
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item1>
@@ -1692,12 +1692,12 @@
                                 <item0
                                     cq:styleClasses="cmp-text--quote1"
                                     cq:styleId="quote1"
-                                    cq:styleLabel="Quote 1"
+                                    cq:styleLabel="Quote 1 Centered"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item1
                                     cq:styleClasses="cmp-text--quote2"
                                     cq:styleId="quote2"
-                                    cq:styleLabel="Quote 2"
+                                    cq:styleLabel="Quote 2 Justified"
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item1>

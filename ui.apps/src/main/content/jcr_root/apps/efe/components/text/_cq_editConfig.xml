@@ -154,6 +154,10 @@
                             jcr:primaryType="cq:WidgetCollection"
                             cssName="cmp-text--highlight"
                             text="Highlight"/>
+                        <quote-citation
+                            jcr:primaryType="cq:WidgetCollection"
+                            cssName="cmp-text--body-03-quote"
+                            text="Blockquote Citation"/>
                     </styles>
                 </styles>
             </rtePlugins>
