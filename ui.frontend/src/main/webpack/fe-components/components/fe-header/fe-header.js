@@ -33,34 +33,36 @@ export default class FeHeader {
         }
       },
     });
-    var DisplayPropReqID;
-    var completeFPID = false;
-    const LibCheckIntervalID = setInterval(CheckFPIDReadyState, 50);
+  }
 
-    function CheckFPIDReadyState() {
-      if (!window.adobeDataLayer && !window.efeAdobeWebSdkWrapperModule) {
-        console.log("FPid Library Ready");
-        const EfeAdobeWebSdkWrapper =
-          window.efeAdobeWebSdkWrapperModule.EfeAdobeWebSdkWrapper;
-        const efeAdobeWebSdk =
-          EfeAdobeWebSdkWrapper && new EfeAdobeWebSdkWrapper();
-        document.addEventListener(
-          "fpidComplete",
-          this.callPersonalizationRequest,
-        );
-        efeAdobeWebSdk.initialize();
-        console.log("FPid Library Init Called");
-        clearInterval(LibCheckIntervalID);
-      } else {
-        // Wait
-      }
-    }
-    /*
+  /*
     document.addEventListener("messageFromfePage", (e) => {
       this.attributeParameterElem = document.querySelector("#fe-properties");
       this.init();
     });*/
+
+  LibCheckIntervalID = setInterval(this.CheckFPIDReadyState, 50);
+  DisplayPropReqID;
+  completeFPID = false;
+  CheckFPIDReadyState() {
+    if (!window.adobeDataLayer && !window.efeAdobeWebSdkWrapperModule) {
+      console.log("FPid Library Ready");
+      const EfeAdobeWebSdkWrapper =
+        window.efeAdobeWebSdkWrapperModule.EfeAdobeWebSdkWrapper;
+      const efeAdobeWebSdk =
+        EfeAdobeWebSdkWrapper && new EfeAdobeWebSdkWrapper();
+      document.addEventListener(
+        "fpidComplete",
+        this.callPersonalizationRequest,
+      );
+      efeAdobeWebSdk.initialize();
+      console.log("FPid Library Init Called");
+      clearInterval(LibCheckIntervalID);
+    } else {
+      // Wait
+    }
   }
+
   init() {
     if (window.aemfe.header) {
       console.log("Header init called");
@@ -95,9 +97,7 @@ export default class FeHeader {
     handleLoader(true);
     const apiVal =
       this.attributeParameterElem?.getAttribute("data-api-dynamic");
-    const headers = {
-      Accept: "application/json, text/plain, */*",
-    };
+    const headers = { Accept: "application/json, text/plain, */*" };
     fetchData(apiVal, headers).then((dataVariables) => {
       if (dataVariables.length > 0) {
         this.changeHeaderValues(dataVariables);
