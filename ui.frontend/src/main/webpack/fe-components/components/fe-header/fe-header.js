@@ -3,7 +3,6 @@ import { fetchData, handleLoader } from "../../site/js/helper";
 
 export default class FeHeader {
   constructor() {
-    document.addEventListener("FPIDReadyForInit", this.executeFPID);
     document.addEventListener("displayPropRetrieved", this.init);
     document.addEventListener("displayHeaderReplaced", this.executePageView);
 
