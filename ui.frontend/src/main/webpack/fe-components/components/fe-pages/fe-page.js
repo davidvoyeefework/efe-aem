@@ -13,7 +13,7 @@ export default class FePage {
   constructor() {
     // FPID Code
     console.log("Setting alloy variables.");
-    displayPropEvent = new CustomEvent("displayPropRetrieved");
+    const displayPropEvent = new CustomEvent("displayPropRetrieved");
     window.__alloyMonitors = window.__alloyMonitors || [];
     window.fpidCompleted = false;
     window.__alloyMonitors.push({
