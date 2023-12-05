@@ -68,7 +68,7 @@ export default class FePage {
     console.log(
       "Custom events created. Beginning check for FPID library and Adobe datalayer",
     );
-
+    this.checkFPIDReadyState();
     // End FPID
 
     document.addEventListener(
