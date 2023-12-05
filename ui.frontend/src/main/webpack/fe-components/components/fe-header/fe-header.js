@@ -44,7 +44,9 @@ export default class FeHeader {
   DisplayPropReqID;
   completeFPID = false;
   CheckFPIDReadyState() {
-    if (!window.adobeDataLayer && !window.efeAdobeWebSdkWrapperModule) {
+    if (!window.adobeDataLayer || !window.efeAdobeWebSdkWrapperModule) {
+      // Wait
+    } else {
       console.log("FPid Library Ready");
       const EfeAdobeWebSdkWrapper =
         window.efeAdobeWebSdkWrapperModule.EfeAdobeWebSdkWrapper;
@@ -57,8 +59,6 @@ export default class FeHeader {
       efeAdobeWebSdk.initialize();
       console.log("FPid Library Init Called");
       clearInterval(LibCheckIntervalID);
-    } else {
-      // Wait
     }
   }
 
