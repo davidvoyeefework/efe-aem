@@ -65,11 +65,6 @@ export default class FePage {
         console.log("Personalization event pushed.");
       }
     });
-
-    console.log("Listeners registered, creating custom events.");
-
-    headerReplacedEvent = new CustomEvent("displayHeaderReplaced");
-
     console.log(
       "Custom events created. Beginning check for FPID library and Adobe datalayer",
     );
