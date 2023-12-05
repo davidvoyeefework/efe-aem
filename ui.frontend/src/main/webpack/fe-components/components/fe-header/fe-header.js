@@ -3,91 +3,17 @@ import { fetchData, handleLoader } from "../../site/js/helper";
 
 export default class FeHeader {
   constructor() {
-    document.addEventListener("displayPropRetrieved", this.init);
     document.addEventListener("displayHeaderReplaced", this.executePageView);
-
-    window.__alloyMonitors = window.__alloyMonitors || [];
-    window.__alloyMonitors.push({
-      onBeforeNetworkRequest(data) {
-        if (
-          this.completeFPID &&
-          data.payload.events[0].xdm.eventType == "displayProp"
-        ) {
-          this.DisplayPropReqID = data.requestId;
-          console.log(data);
-        }
-      },
-      onNetworkResponse(data) {
-        if (
-          this.completeFPID &&
-          DisplayPropReqID &&
-          data.requestId == this.DisplayPropReqID
-        ) {
-          this.DisplayPropReqID = null;
-          console.log(data);
-          document.dispatchEvent(
-            new CustomEvent("displayPropRetrieved", { bubbles: true }),
-          );
-          console.log("Display Properties Retrieved");
-        }
-      },
-    });
-  }
-
-  /*
-    document.addEventListener("messageFromfePage", (e) => {
+    document.addEventListener("displayPropRetrieved", () => {
       this.attributeParameterElem = document.querySelector("#fe-properties");
       this.init();
-    });*/
-
-  LibCheckIntervalID = setInterval(this.CheckFPIDReadyState, 50);
-  DisplayPropReqID;
-  completeFPID = false;
-  CheckFPIDReadyState() {
-    if (!window.adobeDataLayer || !window.efeAdobeWebSdkWrapperModule) {
-      // Wait
-    } else {
-      console.log("FPid Library Ready");
-      const EfeAdobeWebSdkWrapper =
-        window.efeAdobeWebSdkWrapperModule.EfeAdobeWebSdkWrapper;
-      const efeAdobeWebSdk =
-        EfeAdobeWebSdkWrapper && new EfeAdobeWebSdkWrapper();
-      document.addEventListener(
-        "fpidComplete",
-        this.callPersonalizationRequest,
-      );
-      efeAdobeWebSdk.initialize();
-      console.log("FPid Library Init Called");
-      clearInterval(LibCheckIntervalID);
-    }
+    });
   }
 
   init() {
     if (window.aemfe.header) {
       console.log("Header init called");
       this.fetchHeaderDataVariables();
-    }
-  }
-
-  callPersonalizationRequest() {
-    console.log("Calling personalization request");
-    this.completeFPID = true;
-    let daVarsStr = getCookie("daVars");
-    let daVars = daVarsStr ? JSON.parse(decodeURIComponent(daVarsStr)) : null;
-    if (daVars && daVars.sponsorId && daVars.providerId) {
-      var unbounceLoadObj = {
-        event: "personalization.request",
-        _financialengines: {
-          recordKeeperDetails: {
-            rkId: daVars.providerId,
-          },
-          sponsorDetails: {
-            sponsorId: daVars.sponsorId,
-          },
-        },
-      };
-      adobeDataLayer.push(unbounceLoadObj);
-      console.log("Personalization event pushed.");
     }
   }
 
