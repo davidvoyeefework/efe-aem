@@ -279,11 +279,15 @@
         border: 1.5px solid #DDDDDE;
         background: #FFF;
         padding: rem(20px);
-        color: #B3B9BE;
+        color: $efe-gray-primary;
         font-size: rem(16px);
         font-style: normal;
         font-weight: 400;
         line-height: 100%; /* 16px */
+
+        &::placeholder {
+            color: $efe-gray-blue;
+        }
 
         &-wrapper.error{
             & .fe-form__error{
