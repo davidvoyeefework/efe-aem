@@ -1,6 +1,7 @@
 .cmp-text--body-03 {
     @include body-03;
-
+    display: block !important;
+    margin-bottom: 20px;
 
     a {
         @include body-03-link;

@@ -212,11 +212,13 @@ b {
 // -----------------------------------------------------------------------------
 
 @mixin detail {
-    @include buildFont(rem(12), 0, 'nimbus-sans', 400, unset, rem(14) );
+    @include buildFont(rem(12), 0, 'nimbus-sans', 400, unset, rem(14));
 }
 
 .detail, .cmp-text--detail {
     @include detail;
+    line-height: 105% !important;
+    display: block !important;
 }
 
 .cmp-text {
@@ -423,4 +425,12 @@ blockquote {
     bottom: rem(26);
 }
 
+// Base paragraph styling 
+body {
+    p {
+        @include body-02;
+    }
+}
+
+// 
 
