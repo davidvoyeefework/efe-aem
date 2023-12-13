@@ -8,6 +8,10 @@ export default class FeHeader {
       this.attributeParameterElem = document.querySelector("#fe-properties");
       this.init();
     });
+    document.addEventListener("messageFromfePage", () => {
+      this.attributeParameterElem = document.querySelector("#fe-properties");
+      this.init();
+    });
   }
 
   init() {
