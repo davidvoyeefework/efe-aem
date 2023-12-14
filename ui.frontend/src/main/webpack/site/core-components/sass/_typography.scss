@@ -215,16 +215,19 @@ b {
     @include buildFont(rem(12), 0, 'nimbus-sans', 400, unset, rem(14) );
 }
 
-.detail, .cmp-text--detail, .cmp-text {
+.detail, .cmp-text--detail {
     @include detail;
+}
 
+.cmp-text {
     i,em { 
+        font-style: italic;
         * {
             font-style: italic;
         }
     }
 
-    a {
+    a{
         text-decoration: underline;
     }
 }
