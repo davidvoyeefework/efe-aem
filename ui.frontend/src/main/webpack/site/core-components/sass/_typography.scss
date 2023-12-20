@@ -407,6 +407,7 @@ blockquote {
     @include buildFont(rem(24), .02em, null, 400, uppercase, 105% );
     text-align: left !important;
     margin-left: 20px;
+    padding-left: 0px !important;
 
     &:before {
         position: absolute;
