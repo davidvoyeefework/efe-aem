@@ -3,12 +3,16 @@
 html,
 body {
     margin: 0;
-    font-size:   $font-size;
-    font-family: $font-family-default;
-    line-height: $font-height;
-    color:       $color-foreground;
+    font-family: "nimbus-sans", sans-serif;
     background:  $white-primary;
     transition: color 0.3s ease-in, background 0.3s ease-in;
+    font-size: 16px;
+    font-family: "nimbus-sans", sans-serif;
+    font-weight: 300;
+    text-transform: unset;
+    font-style: normal;
+    line-height: 120%;
+    color: #535658;
 
     // @media (prefers-color-scheme: dark) {
     //     color:       $color-foreground-dark;
