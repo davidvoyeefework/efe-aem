@@ -63,7 +63,9 @@
                                                             granite:hide="${cqDesign.disableTags}"
                                                             jcr:primaryType="nt:unstructured"
                                                             text="Tags"
-                                                            value="tags"/>
+                                                            value="tags"
+                                                            selected="{Boolean}true"
+                                                            />
                                                 </items>
                                             </listFrom>
                                             <setChildren
@@ -90,7 +92,11 @@
                                                                     fieldDescription="Leave empty to use current page"
                                                                     fieldLabel="Parent Page"
                                                                     name="./parentPage"
-                                                                    rootPath="/content"/>
+                                                                    rootPath="/content/efe/us/en"
+                                                                    value="/content/efe/us/en"
+                                                       
+                                                                    />
+                        
                                                             <childDepth
                                                                     jcr:primaryType="nt:unstructured"
                                                                     sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
@@ -202,13 +208,16 @@
                                                                     fieldDescription="Leave empty to use current page"
                                                                     fieldLabel="Parent Page"
                                                                     name="./tagsSearchRoot"
-                                                                    rootPath="/content"/>
+                                                                    rootPath="/content"
+                                                                    value="/content/efe/us/en"/>
                                                             <tags
                                                                     jcr:primaryType="nt:unstructured"
                                                                     sling:resourceType="cq/gui/components/coral/common/form/tagfield"
                                                                     fieldLabel="Tags"
                                                                     multiple="{Boolean}true"
-                                                                    name="./tags"/>
+                                                                    name="./tags"
+                                                                    rootPath="/content/efe"
+                                                                    />
                                                             <match
                                                                     jcr:primaryType="nt:unstructured"
                                                                     sling:resourceType="granite/ui/components/coral/foundation/form/select"
@@ -218,7 +227,9 @@
                                                                     <any
                                                                             jcr:primaryType="nt:unstructured"
                                                                             text="Any tag"
-                                                                            value="any"/>
+                                                                            value="any"
+                                                                            selected="{Boolean}true"
+                                                                            />
                                                                     <all
                                                                             jcr:primaryType="nt:unstructured"
                                                                             text="All tags"
@@ -236,7 +247,8 @@
                                                     fieldDescription="Enter a property like 'jcr:created'"
                                                     fieldLabel="Order By"
                                                     name="./orderBy"
-                                                    type="editable">
+                                                    type="editable"
+                                                    >
                                                 <items jcr:primaryType="nt:unstructured">
                                                     <title
                                                             jcr:primaryType="nt:unstructured"
@@ -245,7 +257,9 @@
                                                     <modified
                                                             jcr:primaryType="nt:unstructured"
                                                             text="Last modified date"
-                                                            value="modified"/>
+                                                            value="modified"
+                                                            selected="{Boolean}true"
+                                                    />
                                                 </items>
                                             </orderBy>
                                             <sortOrder
@@ -263,7 +277,9 @@
                                                     <desc
                                                             jcr:primaryType="nt:unstructured"
                                                             text="Descending"
-                                                            value="desc"/>
+                                                            value="desc"
+                                                            selected="{Boolean}true"
+                                                            />
                                                 </items>
                                             </sortOrder>
                                             <maxItems
@@ -272,13 +288,10 @@
                                                     fieldDescription="Maximum number of items displayed in list. Empty for all items."
                                                     fieldLabel="Max Items"
                                                     min="{Long}0"
-                                                    name="./maxItems"/>
-                                            <linktext
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                    fieldDescription="Button Link Text"
-                                                    fieldLabel="Link Text"
-                                                    name="./linkText"/>
+                                                    name="./maxItems"
+                                                    selected="{Boolean}true"
+                                                    value="3"
+                                                    />
                                             <id
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
