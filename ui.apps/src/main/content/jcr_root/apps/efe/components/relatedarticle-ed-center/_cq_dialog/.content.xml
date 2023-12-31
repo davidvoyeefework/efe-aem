@@ -289,8 +289,6 @@
                                                     fieldLabel="Max Items"
                                                     min="{Long}0"
                                                     name="./maxItems"
-                                                    selected="{Boolean}true"
-                                                    value="3"
                                                     />
                                             <id
                                                     jcr:primaryType="nt:unstructured"
