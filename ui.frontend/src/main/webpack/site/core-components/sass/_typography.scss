@@ -218,7 +218,7 @@ b {
 .detail, .cmp-text--detail {
     @include detail;
     line-height: 105% !important;
-    display: block !important;
+    display: block;
 }
 
 .cmp-text {
