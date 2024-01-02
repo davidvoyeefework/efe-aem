@@ -10,7 +10,7 @@ export default {
       control: { type: "text" },
     },
     variant: {
-      options: ["highlight, hightlight-border-gray, highlight-border-teal"],
+      options: ["highlight", "highlight-border-gray", "highlight-border-teal"],
       control: { type: "radio" },
     }
   },
