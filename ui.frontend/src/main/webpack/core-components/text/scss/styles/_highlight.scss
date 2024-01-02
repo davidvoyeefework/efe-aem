@@ -7,3 +7,21 @@
     display: inline-block;
     @include body-01;
 }
+
+.cmp-text--highlight-border-gray {
+    padding: 40px;
+    width: fit-content;
+    border: 1px solid $gray-border;
+    border-top-left-radius: 40px;
+    display: inline-block;
+    @include body-01;
+}
+
+.cmp-text--highlight-border-teal {
+    padding: 40px;
+    width: fit-content;
+    border: 1px solid $efe-teal;
+    border-top-left-radius: 40px;
+    display: inline-block;
+    @include body-01;
+}
