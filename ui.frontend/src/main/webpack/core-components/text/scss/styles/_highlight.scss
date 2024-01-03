@@ -1,9 +1,35 @@
-.cmp-text--highlight {
+@mixin highlight-base-styling {
     padding: 40px;
     width: fit-content;
-    background: $efe-gray-light;
-    text-align: center;
     border-top-left-radius: 40px;
     display: inline-block;
     @include body-01;
+    margin-bottom: 20px;
+}
+
+.cmp-text--highlight {
+    @include highlight-base-styling();
+    background: $efe-gray-light;
+
+    a {
+        @include body-01-link;
+    }
+}
+
+.cmp-text--highlight-border-gray {
+    border: 1px solid $gray-border;
+    @include highlight-base-styling();
+
+    a {
+        @include body-01-link;
+    }
+}
+
+.cmp-text--highlight-border-teal {
+    border: 1px solid $efe-teal;
+    @include highlight-base-styling();
+
+    a {
+        @include body-01-link;
+    }
 }

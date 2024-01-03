@@ -158,6 +158,14 @@
                             jcr:primaryType="cq:WidgetCollection"
                             cssName="cmp-text--highlight"
                             text="Highlight"/>
+                        <highlight-border-gray
+                            jcr:primaryType="cq:WidgetCollection"
+                            cssName="cmp-text--highlight-border-gray"
+                            text="Highlight Border Gray"/>
+                        <highlight-border-teal
+                            jcr:primaryType="cq:WidgetCollection"
+                            cssName="cmp-text--highlight-border-teal"
+                            text="Highlight Border Teal"/>                            
                         <quote-citation
                             jcr:primaryType="cq:WidgetCollection"
                             cssName="cmp-text--body-03-quote"

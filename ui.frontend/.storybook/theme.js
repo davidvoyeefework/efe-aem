@@ -13,7 +13,7 @@ import { create } from "@storybook/theming";
 
 export default create({
   base: "light",
-  brandTitle: "Component Explorer",
-  brandUrl: "https://example.com",
-  brandImage: "assets/logo.png",
+  brandTitle: "Digital Pattern Library",
+  brandUrl: "https://edelmanfinancialengines.com/",
+  brandImage: "https://www.edelmanfinancialengines.com/content/dam/efe/corporate-brand/efe/logos/efe-logos/primary/_other/logo%20efe%20.svg",
 });
