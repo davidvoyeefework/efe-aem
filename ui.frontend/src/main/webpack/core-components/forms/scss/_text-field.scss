@@ -1,12 +1,12 @@
 .cmp-form-text--efe-default {
     label {
-        margin-bottom: 2px;
-        font-size: 12px;
+        margin-bottom: 4px;
+        font-size: rem(16);
         letter-spacing: 0;
-        font-weight: 400;
+        font-weight: 300;
         color: $efe-gray-primary;
         font-style: normal;
-        line-height: 14px;
+        line-height: 120%;
         font-family: "nimbus-sans";
     }
     .cmp-form-text {
@@ -79,7 +79,7 @@
             transition: $std-transition;
         }
         .cmp-form-text__error {
-            @include buildFont(rem(12), null, "nimbus-sans", 400, capitalize, rem(14), $efe-red-primary);
+            @include buildFont(rem(16), null, "nimbus-sans", 400, capitalize, rem(19), $efe-red-primary);
         }
     }
 
@@ -99,7 +99,7 @@
     }
     .cmp-form-error {
        &__item {
-        @include buildFont(rem(12), null, "nimbus-sans", 400, capitalize, rem(14), $efe-red-primary);
+        @include buildFont(rem(16), null, "nimbus-sans", 400, capitalize, rem(19), $efe-red-primary);
        }
     } 
 }
