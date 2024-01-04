@@ -2,7 +2,7 @@
      data-sly-use.template="core/wcm/components/commons/v1/templates.html"
      data-sly-test.isNotEmpty="${properties.articleFragmentPath}">
     <div data-sly-test="${properties.articleFragmentPath}"
-         class="cmp-container cmp-container--white cmp-article-details" id="${model.id}">
+         class="cmp-container cmp-container--white cmp-article-details" id="${model.id}" data-uuid="${currentPage.properties['jcr:uuid']}">
          <sly data-sly-test="${currentPage.parent.pageTitle}">
             <div class="max-width">
                 <a href="${currentPage.parent.getPath}.html">
