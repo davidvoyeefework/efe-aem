@@ -124,8 +124,8 @@ public class EFETeaserImpl implements EFETeaser {
 	 *
 	 * @return the tags
 	 */
-
-	public List<LinkBean> getPagetags() {
+	@Override
+	public List<LinkBean> getTags() {
 		return Collections.unmodifiableList(articlePageTags);
 	}
 
