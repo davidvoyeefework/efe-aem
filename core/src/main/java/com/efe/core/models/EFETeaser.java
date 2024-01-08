@@ -17,7 +17,7 @@ public interface EFETeaser extends Teaser {
 	 *
 	 * @return the tags
 	 */
-	List<LinkBean> getTags();
+	List<LinkBean> getPagetags();
 
 		/**
 	 * Gets the subtitle.
