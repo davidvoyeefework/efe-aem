@@ -194,6 +194,30 @@
                                     jcr:primaryType="nt:unstructured"
                                     description="Preformatted"
                                     tag="pre"/>
+                                <item3
+                                    jcr:primaryType="nt:unstructured"
+                                    description="h1"
+                                    tag="h1"/>
+                                 <item4
+                                    jcr:primaryType="nt:unstructured"
+                                    description="h2"
+                                    tag="h2"/>         
+                                 <item5
+                                    jcr:primaryType="nt:unstructured"
+                                    description="h3"
+                                    tag="h3"/>                                                                
+                                 <item6
+                                    jcr:primaryType="nt:unstructured"
+                                    description="h4"
+                                    tag="h4"/>  
+                                 <item7
+                                    jcr:primaryType="nt:unstructured"
+                                    description="h5"
+                                    tag="h5"/>     
+                                 <item8
+                                    jcr:primaryType="nt:unstructured"
+                                    description="h6"
+                                    tag="h6"/>                                                                      
                             </formats>
                         </paraformat>
                         <misctools

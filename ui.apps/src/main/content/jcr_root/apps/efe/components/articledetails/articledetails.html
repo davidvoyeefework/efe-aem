@@ -93,8 +93,8 @@
             <div data-sly-test="${item.name}" class="cmp-author-details__description">
                 <div class="title cmp-title--subhead-00 ">
                     <div class="cmp-title">
-                        <h1 class="cmp-title__text">${item.title}</h1>
-                        <h1 class="cmp-title__text">${item.name}</h1>
+                        <h2 class="cmp-title__text">${item.title}</h2>
+                        <h2 class="cmp-title__text">${item.name}</h2>
                     </div>
                 </div>
                 <div class="text cmp-text--body-02 cmp-text-- ">
@@ -118,8 +118,8 @@
             <div data-sly-test="${item.firstNameAlias}" class="cmp-author-details__description">
                 <div class="title cmp-title--subhead-00 ">
                     <div id="title-c6fe1860ab" class="cmp-title">
-                        <h1 class="cmp-title__text">${item.title}</h1>
-                        <h1 class="cmp-title__text">${item.firstNameAlias} ${item.lastName}</h1>
+                        <h2 class="cmp-title__text">${item.firstNameAlias} ${item.lastName}</h2>
+                        <h2 class="cmp-title__text">${item.title}</h2>
                     </div>
                 </div>
                 <div class="text cmp-text--body-02 cmp-text-- ">
@@ -127,7 +127,7 @@
                         <p>${item.bio @context='html'}</p>
                     </div>
                 </div>
-                <div class="cmp-author-details__credits" data-sly-test="${item.certifications}">
+                <!-- <div class="cmp-author-details__credits" data-sly-test="${item.certifications}">
                     <sly data-sly-list.certification="${item.certifications}">
                         <p>
                             ${certification.name} ${certification.abbreviation}
@@ -136,7 +136,7 @@
                     <sly data-sly-test="${item.education}" data-sly-list.education="${item.education}">
                         <p> ${education.degree} ${education.university}</p>
                     </sly>
-                </div>
+                </div> -->
             </div>
         </div>
         <div class="cmp-container max-width cmp-container--white cmp-container--width-1400
@@ -180,7 +180,23 @@
                 publishdate.appendChild(socialblock);
             });
         </script>
+        <script type="text/javascript">
+
+            const targetAdditionalPageParams = () => {
+                var details = {
+                    'entity.id': "${currentPage.properties['jcr:uuid']  @context='html'}",
+                    'entity.name': '${model.articleFragmentPath.title @context="styleString"}',
+                    'entity.categoryId': '${currentPage.parent.getPath  @context="html"}',
+                    'entity.pageUrl': '${currentPage.getPath  @context="html"}',
+                    'entity.thumbnailUrl': '${model.articleFragmentPath.heroImage @context="html"}',
+                };
+                return details;
+            };
+
+        </script>        
+
     
     </div>
 </sly>
 <sly data-sly-call="${template.placeholder @ isEmpty=!isNotEmpty, classAppend='cmp-articledetails'}"></sly>
+

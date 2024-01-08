@@ -1,7 +1,14 @@
 .drop-down--default {
     background: linear-gradient(180deg, transparent 21.8%, white 21.8%);
     label {
-        @include detail;
+        margin-bottom: 4px;
+        font-size: rem(16);
+        letter-spacing: 0;
+        font-weight: 300;
+        color: $efe-gray-primary;
+        font-style: normal;
+        line-height: 120%;
+        font-family: "nimbus-sans";
         display: block;
     }
 
