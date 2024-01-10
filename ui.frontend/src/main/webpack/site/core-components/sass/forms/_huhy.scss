@@ -166,6 +166,9 @@
             font-size: rem(26);
             margin-bottom: rem(24);
         }
+        #retirementGoalError {
+            @include body-03;
+        }
     }
 
     // THIRD STEP 
