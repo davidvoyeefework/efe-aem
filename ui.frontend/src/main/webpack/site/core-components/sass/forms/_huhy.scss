@@ -260,7 +260,7 @@
         }
     }
 
-    // FIFTH STEP
+    // SIXTH STEP
     .personalize-zip_code_page {
 
         h1 {
@@ -285,14 +285,24 @@
             margin: auto;
             text-align: left;
         }
+        .error-message {
+            @include body-03;
+            color: $efe-red-primary;
+        }
     }
 
     
     // LAST STEP PII
     .personalize-final_page {
+        
         .efe-disclaimer {
             margin-top: rem(100);
             font-size: rem(12);
+        }
+
+        .error-message {
+            @include body-03;
+            color: $efe-red-primary;
         }
     }
 
