@@ -71,4 +71,12 @@
             border-radius: 0;
         }
     }
+
+    &.theme-ssga {
+        .cmp-teaser--hero {
+            .cmp-teaser__title {
+                text-transform: unset;
+            }
+        }
+    }
 }
