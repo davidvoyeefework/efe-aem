@@ -157,18 +157,33 @@
                 color: $efe-red-primary;
                 margin-bottom: 10px;
             }
+
+            .hidden-lead-options {
+                .cmp-text--body-02 {
+                    margin: 48px auto 0;
+                }
+            }
         }   
     }
 
     // SECOND STEP
     .personalize-retirement_goal_page {
+
         .cmp-text--caption {
             font-size: rem(26);
             margin-bottom: rem(24);
         }
         #retirementGoalError {
             @include body-03;
+            color: $efe-red-primary;
         }
+
+        .hidden-lead-options {
+            .cmp-text--body-02 {
+                margin: 48px auto 32px;
+            }
+        }
+        
     }
 
     // THIRD STEP 
