@@ -96,7 +96,7 @@ public class ImageCollageImpl implements ImageCollage {
      * @return the primary image
      */
     public String getPrimaryImage() {
-        return dynamicMediaService.getDmImagePath(resourceResolver, primaryImage);
+        return dynamicMediaService.getDmImagePath(resourceResolver, primaryImage) + "?op_sharpen=1&qlt=95&fmt=webp";
     }
 
     /**
