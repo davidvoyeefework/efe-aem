@@ -42,7 +42,7 @@ class ImageCollageImplTest {
     @Test
     void modelGetterTest() {
         assertEquals("imageCollage-6bd918b4ef", imageCollageModel.getId());
-        assertEquals("/content/dam/test1.png", imageCollageModel.getPrimaryImage());
+        assertEquals("/content/dam/test1.png?op_sharpen=1&qlt=95&fmt=webp", imageCollageModel.getPrimaryImage());
         assertEquals("/content/dam/test2.png", imageCollageModel.getFirstSecondaryImage());
         assertEquals("/content/dam/test3.png", imageCollageModel.getSecondSecondaryImage());
         assertEquals("alt text", imageCollageModel.getPrimaryImageAltText());
