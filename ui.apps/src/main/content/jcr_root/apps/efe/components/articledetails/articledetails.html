@@ -179,21 +179,7 @@
                 const publishdate = document.getElementById("article-details__published-date");
                 publishdate.appendChild(socialblock);
             });
-        </script>
-        <script type="text/javascript">
-
-            const targetAdditionalPageParams = () => {
-                var details = {
-                    'entity.id': "${currentPage.properties['jcr:uuid']  @context='html'}",
-                    'entity.name': '${model.articleFragmentPath.title @context="styleString"}',
-                    'entity.categoryId': '${currentPage.parent.getPath  @context="html"}',
-                    'entity.pageUrl': '${currentPage.getPath  @context="html"}',
-                    'entity.thumbnailUrl': '${model.articleFragmentPath.heroImage @context="html"}',
-                };
-                return details;
-            };
-
-        </script>        
+        </script>      
 
     
     </div>
