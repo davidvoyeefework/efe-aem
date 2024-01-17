@@ -118,4 +118,8 @@ body { //Direct
     --fe-text-transform: none;
     --fe-text-list-icon: url("../resources/images/icons/voya-check.svg") no-repeat left top;
     --fe-check-list-icon: url("../resources/images/icons/voya-rte-check.svg") no-repeat left top;
+
+    *.cmp-text--heading-04, *.cmp-text--subhead-00 {
+        letter-spacing: 0;
+    }
 }
