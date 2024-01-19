@@ -37,7 +37,7 @@ export default class FeHeader {
 
   executePageView() {
     console.log("Firing pageview event");
-    /*    alloy("sendEvent", {
+    alloy("sendEvent", {
       xdm: {
         web: {
           webPageDetails: {
@@ -47,7 +47,7 @@ export default class FeHeader {
           },
         },
       },
-    });*/
+    });
   }
   changeHeaderValues(headerDataVariables) {
     console.log("Changing header variables: " + headerDataVariables);
