@@ -35,6 +35,15 @@
         }
     }
 
+    #investableAssets_container {
+        text-align: center;
+
+        .cmp-text--body-02 {
+            max-width: 34ch;
+            margin: 0 auto 20px;
+        }
+    }
+
     button.cmp-form-button--answer {
         margin: 0 auto rem(12) !important;
     }
