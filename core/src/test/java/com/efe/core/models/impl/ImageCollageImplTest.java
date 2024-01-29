@@ -42,9 +42,9 @@ class ImageCollageImplTest {
     @Test
     void modelGetterTest() {
         assertEquals("imageCollage-6bd918b4ef", imageCollageModel.getId());
-        assertEquals("/content/dam/test1.png", imageCollageModel.getPrimaryImage());
-        assertEquals("/content/dam/test2.png", imageCollageModel.getFirstSecondaryImage());
-        assertEquals("/content/dam/test3.png", imageCollageModel.getSecondSecondaryImage());
+        assertEquals("/content/dam/test1.png?op_sharpen=1&qlt=85&fmt=webp&hei=826&wid=480&fit=crop", imageCollageModel.getPrimaryImage());
+        assertEquals("/content/dam/test2.png?op_sharpen=1&qlt=85&fmt=webp&wid=480&hei=413&fit=crop", imageCollageModel.getFirstSecondaryImage());
+        assertEquals("/content/dam/test3.png?op_sharpen=1&qlt=85&fmt=webp&wid=480&hei=413&fit=crop", imageCollageModel.getSecondSecondaryImage());
         assertEquals("alt text", imageCollageModel.getPrimaryImageAltText());
         assertEquals("alt text", imageCollageModel.getFirstSecondaryImageAltText());
         assertEquals("alt text", imageCollageModel.getSecondSecondaryImageAltText());
