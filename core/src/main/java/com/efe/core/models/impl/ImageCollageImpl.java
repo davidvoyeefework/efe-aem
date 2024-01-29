@@ -96,7 +96,7 @@ public class ImageCollageImpl implements ImageCollage {
      * @return the primary image
      */
     public String getPrimaryImage() {
-        return dynamicMediaService.getDmImagePath(resourceResolver, primaryImage);
+        return dynamicMediaService.getDmImagePath(resourceResolver, primaryImage) + "?op_sharpen=1&qlt=85&fmt=webp&hei=826&wid=480&fit=crop";
     }
 
     /**
@@ -114,7 +114,7 @@ public class ImageCollageImpl implements ImageCollage {
      * @return the first secondary image
      */
     public String getFirstSecondaryImage() {
-        return dynamicMediaService.getDmImagePath(resourceResolver, firstSecondaryImage);
+        return dynamicMediaService.getDmImagePath(resourceResolver, firstSecondaryImage) + "?op_sharpen=1&qlt=85&fmt=webp&wid=480&hei=413&fit=crop";
     }
 
     /**
@@ -132,7 +132,7 @@ public class ImageCollageImpl implements ImageCollage {
      * @return the second secondary image
      */
     public String getSecondSecondaryImage() {
-        return dynamicMediaService.getDmImagePath(resourceResolver, secondSecondaryImage);
+        return dynamicMediaService.getDmImagePath(resourceResolver, secondSecondaryImage) + "?op_sharpen=1&qlt=85&fmt=webp&wid=480&hei=413&fit=crop";
     }
 
     /**
