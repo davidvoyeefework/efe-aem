@@ -15,15 +15,16 @@
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
 <sly data-sly-use.efe="com.efe.core.models.PageModel"/>
 <link data-sly-use.page="com.adobe.cq.wcm.core.components.models.Page"
-      data-sly-test="${efe.canonicalLink}"
-      rel="canonical" href="${efe.canonicalLink}">
+      data-sly-test="${efe.getCanonicalLink}"
+      rel="canonical" href="${efe.getCanonicalLink}">
 <link data-sly-test="${page.alternateLanguageLinks}"
       data-sly-repeat="${page.alternateLanguageLinks.entrySet}"
       rel="alternate" hreflang="${item.key.toLanguageTag}" href="${item.value}">
 <meta property="og:type" content="website"/>
 <meta data-sly-test.description="${currentPage.description}" property="og:description" content="${description}"/>
 <meta property="og:title" content="${currentPage.title}"/>
-<meta data-sly-test="${efe.canonicalLink}" property="og:url" content="${efe.canonicalLink}"/>
+
+<meta data-sly-test="${efe.getCanonicalLink}" property="og:url" content="${efe.getCanonicalLink}"/>
 <meta data-sly-test.image="${efe.thumbnail}" property="og:image" content="${image}"/>
 <meta name="twitter:card" content="summary_large_image" />
 <meta property="twitter:image" content="${image}"/>
