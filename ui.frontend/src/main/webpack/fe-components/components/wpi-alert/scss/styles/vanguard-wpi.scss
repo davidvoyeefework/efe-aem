@@ -1,0 +1,128 @@
+.vanguard-wpi-theme {
+    padding: 35px;
+    background-color: #E5E5E5;
+    position: relative;
+
+    @media screen and (min-width: $sm) {
+        padding: 35px 30px 60px 35px;     
+        .flex {
+            -webkit-box-orient: vertical;        
+            -webkit-box-direction: normal;        
+            -ms-flex-direction: column;        
+            flex-direction: column;
+        }
+    }
+
+    @media screen and (min-width: $md) {
+        .flex {
+            -webkit-box-orient: horizontal;        
+            -webkit-box-direction: normal;        
+            -ms-flex-direction: row;        
+            flex-direction: row;              
+        }
+     
+    }
+
+    .flex {
+        gap: 35px;
+        margin-bottom: 0;
+    }
+
+    .wpi-img {
+        width: rem(100);
+        height: rem(100);
+    }
+
+    .copy {
+        max-width: 64ch; 
+
+        @media screen and (min-width: $sm) {
+            position: relative;
+            bottom: 6px;
+        }
+
+        .wpi-headline {
+            font-size: rem(24);
+            line-height: 130%;
+            font-family: Arial, Helvetica, sans-serif;
+            color: black;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .wpi-subheadline {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: rem(16);
+            line-height: 140%;
+            color: black;
+        }         
+    }
+
+    .cmp-button--button-wpi {
+        transition: $std-transition;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        
+
+        @media screen and (min-width: $sm) {
+            .cmp-button {
+                position: relative;
+                top: 12.5px;
+            }
+        }
+
+        @media screen and (min-width: $lg) {
+            position: absolute;
+            right: 30px;    
+            top: 0;
+            bottom: 0;        
+            .cmp-button {
+                top: 0;
+            }
+        }
+
+        .cmp-button {
+            position: relative;
+            background-color: $vanguard-wpi-red;
+            border-radius: 30px;
+            color: white;
+            max-height: rem(46);
+            border: none;
+            transition: $std-transition;
+            width: fit-content;
+            padding: rem(16);
+            text-align: center;
+            min-width: rem(165);
+            text-decoration: none;
+            margin: 0;
+
+            @include flexbox(
+                $align-items: center,
+                $justify-content: center
+            );
+        
+            &:hover, &:active {
+                transition: $std-transition;
+                border: none;
+                text-decoration: none;
+                color: white;
+                cursor: pointer;
+            }
+        
+            .cmp-button__text {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: rem(16);
+                line-height: 100%;
+                font-weight: 700;
+            }          
+        }       
+    }
+
+    .provided {
+        display: none;
+    }
+}
