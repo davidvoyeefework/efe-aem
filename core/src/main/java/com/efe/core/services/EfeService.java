@@ -148,6 +148,8 @@ public interface EfeService {
 	 * @return the jquery url
 	 */
 	String getJqueryUrl();
+        
+        String getFPIDLibraryURL();
 
 	/**
 	 * Gets the external libraries.

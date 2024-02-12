@@ -141,6 +141,14 @@ public class PageImpl implements PageModel {
 		return jQueryUrl;
 	}
 	
+        @Override
+        public String getFPIDLibURL() {
+            String FPIDLib = null;
+            if(Objects.nonNull(efeService)) {
+                FPIDLib = efeService.getFPIDLibraryURL();
+            }
+            return FPIDLib;
+        }
 	/**
 	 * Gets the external libraries.
 	 *

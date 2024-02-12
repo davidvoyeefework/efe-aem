@@ -16,9 +16,12 @@
 <!--/* Favicons */-->
 <sly data-sly-include="favicons.html"></sly>
 <sly data-sly-test="${!wcmmode.edit}" data-sly-include="datalayer.html"></sly>
-<a  data-sly-test="${!wcmmode.edit}" class="skip-main" data-component="skip-to-main-menu" href="#main" style="display: none;">Skip to main content</a>
 <sly data-sly-use.efemodel="com.efe.core.models.PageModel"/>
+<script data-sly-test="${efemodel.FPIDLibraryURL}" src="${efemodel.FPIDLibraryURL @context='uri'}"></script>
 <script data-sly-test="${efemodel.jqueryUrl}" src="${efemodel.jqueryUrl @context='uri'}"></script>
+
+
+<a  data-sly-test="${!wcmmode.edit}" class="skip-main" data-component="skip-to-main-menu" href="#main" style="display: none;">Skip to main content</a>
 
 <sly data-sly-test="${efemodel.externalLibraries.size > 0}" data-sly-list="${efemodel.externalLibraries}">
     <script src="${item @context='uri'}"></script>
