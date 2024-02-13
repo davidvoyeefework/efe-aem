@@ -92,11 +92,19 @@ export default class FePage {
   }
 
   async checkFPIDReadyState() {
+    if (window.fpidRetry == null) {
+      window.fpidRetry = 0;
+    }
     if (!window.adobeDataLayer || !window.efeAdobeWebSdkWrapperModule) {
       console.log(
         "Missing required FPID objects, setting interval for re-check.",
       );
-      setTimeout(this.checkFPIDReadyState(), 500);
+      window.fpidRetry++;
+      if (window.fpidRetry <= 20) {
+        setTimeout(this.checkFPIDReadyState(), 50 * window.fpidRetry);
+      } else {
+        console.log("FPID objects not loaded after 20 retries, aborting.");
+      }
     } else {
       console.log("Required FPID objects found, initializing library.");
       const EfeAdobeWebSdkWrapper =
