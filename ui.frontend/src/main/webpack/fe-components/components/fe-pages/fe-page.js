@@ -96,7 +96,7 @@ export default class FePage {
       console.log(
         "Missing required FPID objects, setting interval for re-check.",
       );
-      setTimeout(this.checkFPIDReadyState(), 50);
+      setTimeout(this.checkFPIDReadyState(), 500);
     } else {
       console.log("Required FPID objects found, initializing library.");
       const EfeAdobeWebSdkWrapper =
