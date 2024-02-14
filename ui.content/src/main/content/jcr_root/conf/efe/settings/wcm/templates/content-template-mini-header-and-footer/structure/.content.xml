@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:mix="http://www.jcp.org/jcr/mix/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
         cq:deviceGroups="[mobile/groups/responsive]"
+        cq:isDelivered="{Boolean}true"
+        cq:lastReplicated="{Date}2024-01-29T19:19:13.886Z"
+        cq:lastReplicated_publish="{Date}2024-01-29T19:19:13.886Z"
+        cq:lastReplicatedBy="jwallace@edelmanfinancialengines.com"
+        cq:lastReplicatedBy_publish="jwallace@edelmanfinancialengines.com"
+        cq:lastReplicationAction="Activate"
+        cq:lastReplicationAction_publish="Activate"
         cq:template="/conf/efe/settings/wcm/templates/content-template-mini-header-and-footer"
+        jcr:isCheckedOut="{Boolean}true"
+        jcr:mixinTypes="[cq:ReplicationStatus2,mix:versionable]"
         jcr:primaryType="cq:PageContent"
+        jcr:uuid="bf01e3c5-bce8-420d-82c3-5586fdc0eba2"
         sling:resourceType="efe/components/page">
         <root
             jcr:primaryType="nt:unstructured"
@@ -17,8 +27,8 @@
             <container
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="efe/components/container"
-                layout="responsiveGrid"
-                id="main">
+                id="main"
+                layout="responsiveGrid">
                 <container
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="efe/components/container"
