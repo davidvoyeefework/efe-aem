@@ -100,8 +100,8 @@ public class WpiAlertImpl implements WpiAlert {
         resourceProperty = "Headline";
 		headlineContentFragment = ResourceUtil.getProperty( resourceResolver, resourcePath, resourceProperty );
         if (headlineContentFragment != null) {
-            resourceCFPath = headlineContentFragment + "/jcr:content";
-            resourceCFProperty = "jcr:title";
+            resourceCFPath = headlineContentFragment + "/jcr:content/data/master";
+            resourceCFProperty = "headline";
             headlineCFValue = ResourceUtil.getProperty(resourceResolver, resourceCFPath, resourceCFProperty);
         }
         else {
@@ -112,8 +112,8 @@ public class WpiAlertImpl implements WpiAlert {
         resourcePropertySubheadline = "Subheadline";
         subheadlineContentFragment = ResourceUtil.getProperty( resourceResolver, resourcePath, resourcePropertySubheadline);
         if (subheadlineContentFragment != null) {
-            resourceCFPathSubheadline = subheadlineContentFragment + "/jcr:content";
-            resourceCFPropertySubheadline = "jcr:title";
+            resourceCFPathSubheadline = subheadlineContentFragment + "/jcr:content/data/master";
+            resourceCFPropertySubheadline = "Subheadline";
             subheadlineCFValue = ResourceUtil.getProperty(resourceResolver, resourceCFPathSubheadline, resourceCFPropertySubheadline);
         }
 
