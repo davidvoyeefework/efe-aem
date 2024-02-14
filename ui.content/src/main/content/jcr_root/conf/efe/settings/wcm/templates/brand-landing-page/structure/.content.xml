@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:mix="http://www.jcp.org/jcr/mix/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
         cq:deviceGroups="[mobile/groups/responsive]"
+        cq:isDelivered="{Boolean}true"
+        cq:lastReplicated="{Date}2024-01-29T19:18:21.246Z"
+        cq:lastReplicated_publish="{Date}2024-01-29T19:18:21.246Z"
+        cq:lastReplicated_scene7="{Date}2024-01-29T19:18:21.246Z"
+        cq:lastReplicatedBy="jwallace@edelmanfinancialengines.com"
+        cq:lastReplicatedBy_publish="jwallace@edelmanfinancialengines.com"
+        cq:lastReplicatedBy_scene7="jwallace@edelmanfinancialengines.com"
+        cq:lastReplicationAction="Activate"
+        cq:lastReplicationAction_publish="Activate"
+        cq:lastReplicationAction_scene7="Activate"
         cq:template="/conf/efe/settings/wcm/templates/brand-landing-page"
+        jcr:isCheckedOut="{Boolean}true"
+        jcr:mixinTypes="[cq:ReplicationStatus2,mix:versionable]"
         jcr:primaryType="cq:PageContent"
+        jcr:uuid="f399e5ec-0ba4-44d9-82c2-98bdaa0cd215"
         sling:resourceType="efe/components/page">
         <root
             cq:styleIds="[white]"

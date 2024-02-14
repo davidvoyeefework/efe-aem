@@ -4,6 +4,7 @@
     <jcr:content
         cq:templateType="/conf/efe/settings/wcm/template-types/page"
         jcr:description="article"
+        jcr:mixinTypes="[]"
         jcr:primaryType="cq:PageContent"
         jcr:title="Article"
         status="enabled"/>

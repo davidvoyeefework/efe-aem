@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0"
+    jcr:primaryType="cq:Template">
+    <jcr:content
+        cq:isDelivered="{Boolean}true"
+        cq:lastModified="{Date}2023-11-15T15:07:46.980Z"
+        cq:lastModifiedBy="jwallace@edelmanfinancialengines.com"
+        cq:lastReplicated="{Date}2023-11-15T15:08:04.152Z"
+        cq:lastReplicated_publish="{Date}2023-11-15T15:08:04.152Z"
+        cq:lastReplicated_scene7="{Date}2023-11-15T15:08:04.152Z"
+        cq:lastReplicatedBy="jwallace@edelmanfinancialengines.com"
+        cq:lastReplicatedBy_publish="jwallace@edelmanfinancialengines.com"
+        cq:lastReplicatedBy_scene7="jwallace@edelmanfinancialengines.com"
+        cq:lastReplicationAction="Activate"
+        cq:lastReplicationAction_publish="Activate"
+        cq:lastReplicationAction_scene7="Activate"
+        cq:templateType="/conf/efe/settings/wcm/template-types/page"
+        jcr:description="Press release"
+        jcr:mixinTypes="[cq:ReplicationStatus2]"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="Press Release"
+        status="enabled"/>
+</jcr:root>
