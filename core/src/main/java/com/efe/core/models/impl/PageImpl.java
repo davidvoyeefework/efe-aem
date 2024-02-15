@@ -78,9 +78,9 @@ public class PageImpl implements PageModel {
 		String[] selectors = request.getRequestPathInfo().getSelectors();
                 if(selectors.length > 0 && canonicalUrl != null) {
                     if(canonicalUrl.endsWith("/location/") && selectors.length == 2) {
-                        return (canonicalUrl.substring(0,canonicalUrl.length() - 1)) + "." + selectors[0] + "." + selectors[1];
+                        return (canonicalUrl.substring(0,canonicalUrl.length() - 1)) + "." + selectors[0] + "." + selectors[1] + "/";
                     } else if (canonicalUrl.endsWith("/financial-planner/") && selectors.length == 3) {
-                        return (canonicalUrl.substring(0,canonicalUrl.length() - 1)) + "." + selectors[0] + "." + selectors[1] + "." + selectors[2];
+                        return (canonicalUrl.substring(0,canonicalUrl.length() - 1)) + "." + selectors[0] + "." + selectors[1] + "." + selectors[2] + "/";
                     }
                 } 
 		return canonicalUrl;
