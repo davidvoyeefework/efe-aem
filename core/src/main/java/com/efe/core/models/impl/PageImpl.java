@@ -9,6 +9,7 @@ import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.OSGiService;
+import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 
@@ -32,6 +33,9 @@ import org.apache.commons.lang3.StringUtils;
 @Model(adaptables = { Resource.class,
 		SlingHttpServletRequest.class }, adapters = PageModel.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class PageImpl implements PageModel {
+    	/** The SlingHttpServletRequest. */
+	@Self
+	private SlingHttpServletRequest request;
 
 	/** Resource. */
 	@ScriptVariable
@@ -68,8 +72,17 @@ public class PageImpl implements PageModel {
 			canonicalUrl = seoTags != null ? seoTags.getCanonicalUrl() : null;
 			canonicalUrl = canonicalUrl != null ? externalizer.publishLink(resourceResolver, canonicalUrl)
 					: LinkUtil.getAbsoluteUrl(currentPage, resourceResolver, externalizer);
-		}
-		
+		} else {
+                    return canonicalUrl;
+                }
+		String[] selectors = request.getRequestPathInfo().getSelectors();
+                if(selectors.length > 0 && canonicalUrl != null) {
+                    if(canonicalUrl.endsWith("/location/") && selectors.length == 2) {
+                        return (canonicalUrl.substring(0,canonicalUrl.length() - 1)) + "." + selectors[0] + "." + selectors[1];
+                    } else if (canonicalUrl.endsWith("/financial-planner/") && selectors.length == 3) {
+                        return (canonicalUrl.substring(0,canonicalUrl.length() - 1)) + "." + selectors[0] + "." + selectors[1] + "." + selectors[2];
+                    }
+                } 
 		return canonicalUrl;
 	}
 
@@ -128,6 +141,14 @@ public class PageImpl implements PageModel {
 		return jQueryUrl;
 	}
 	
+        @Override
+        public String getFPIDLibURL() {
+            String FPIDLib = null;
+            if(Objects.nonNull(efeService)) {
+                FPIDLib = efeService.getFPIDLibraryURL();
+            }
+            return FPIDLib;
+        }
 	/**
 	 * Gets the external libraries.
 	 *
