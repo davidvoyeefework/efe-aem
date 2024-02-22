@@ -94,7 +94,7 @@ public class WpiAlertImpl implements WpiAlert {
     @PostConstruct
     public void init() {
 
-        resourcePath = currentPage.getPath() + "/jcr:content/root/container/container/wpi_alert";
+        resourcePath = currentPage.getPath() + "/jcr:content/root/wpi_alert";
 
         // Fetch CF for Headline
         resourceProperty = "Headline";
