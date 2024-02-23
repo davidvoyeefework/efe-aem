@@ -19,4 +19,7 @@ public interface WpiAlert {
 
     //  Method to return Icon img path
     public String getIcon();     
+
+    //  Method to return Icon img path
+    public String getDestination();     
 }

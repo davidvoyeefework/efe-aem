@@ -105,7 +105,31 @@
                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                             fieldDescription="Call to Action text"
                                             fieldLabel="CTA text"
-                                            name="./ctatext"/>  
+                                            name="./ctatext"
+                                            required="{Boolean}true"                                            
+                                            />  
+                                            <destination
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldDescription="CTA Destination"
+                                                fieldLabel="CTA Destination"
+                                                name="./destination"
+                                                required="{Boolean}true">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <retirement_evaluation
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="retirement_evaluation"
+                                                        value="retirement_evaluation"/>
+                                                    <retirement_checkup
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="retirement_checkup"
+                                                        value="retirement_checkup"/>
+                                                    <product_choice
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="product_choice"
+                                                        value="product_choice"/>                                                        
+                                                </items>
+                                            </destination>                                              
                                         <icon
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="/libs/granite/ui/components/coral/foundation/form/pathfield"
