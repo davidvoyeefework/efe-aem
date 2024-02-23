@@ -81,6 +81,9 @@ public class WpiAlertImpl implements WpiAlert {
     // The Icon IMG path
 	String icon;
 
+    // Destination
+	String destination;   
+
     /** The resource resolver. */
     @SlingObject
     private ResourceResolver resourceResolver;
@@ -131,7 +134,10 @@ public class WpiAlertImpl implements WpiAlert {
         cta = ResourceUtil.getProperty( resourceResolver, resourcePath, "ctatext");     
         
         // Fetch Icon IMG path
-        icon = ResourceUtil.getProperty( resourceResolver, resourcePath, "icon");         
+        icon = ResourceUtil.getProperty( resourceResolver, resourcePath, "icon");       
+        
+        // Fetch CTA Destination token
+        destination = ResourceUtil.getProperty( resourceResolver, resourcePath, "destination");           
 
     }
 
@@ -164,4 +170,9 @@ public class WpiAlertImpl implements WpiAlert {
     public String getIcon() {
         return dynamicMediaService.getDmImagePath(resourceResolver, icon);
     }     
+
+    // Gets destination cta token
+    public String getDestination() {
+        return destination;
+    }      
 }
