@@ -1067,6 +1067,19 @@
                                         jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item4>
+                        <item5
+                                cq:styleGroupLabel="Text Color"
+                                jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">                           
+                                <item1
+                                        cq:styleClasses="cmp-text--white"
+                                        cq:styleId="White Text"
+                                        cq:styleLabel="White Text (Only for Banner Hero)"
+                                        jcr:primaryType="nt:unstructured"/>
+                                       
+                            </cq:styles>
+                        </item5>                        
+
                     </cq:styleGroups>
                 </policy>
                 <fe-policy
