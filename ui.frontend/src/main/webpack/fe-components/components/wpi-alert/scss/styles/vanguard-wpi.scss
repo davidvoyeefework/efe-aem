@@ -13,6 +13,12 @@
         }
     }
 
+    @media screen and (min-width: 674px) {
+        .copy {
+            margin-right: 30px;
+        }
+    }
+
     @media screen and (min-width: $md) {
         .flex {
             -webkit-box-orient: horizontal;        
@@ -68,25 +74,24 @@
         align-items: center;
         
 
-        @media screen and (min-width: $sm) {
-            .cmp-button {
-                position: relative;
-                top: 12.5px;
-            }
-        }
+        // @media screen and (min-width: $sm) {
+        //     .cmp-button {
+        //         position: relative;
+        //         top: 12.5px;
+        //     }
+        // }
 
-        @media screen and (min-width: $lg) {
-            position: absolute;
-            right: 30px;    
-            top: 0;
-            bottom: 0;        
-            .cmp-button {
-                top: 0;
-            }
-        }
+        // @media screen and (min-width: $lg) {
+        //     position: absolute;
+        //     right: 30px;    
+        //     top: 0;
+        //     bottom: 0;        
+        //     .cmp-button {
+        //         top: 0;
+        //     }
+        // }
 
         .cmp-button {
-            position: relative;
             background-color: $vanguard-wpi-red;
             border-radius: 30px;
             color: white;

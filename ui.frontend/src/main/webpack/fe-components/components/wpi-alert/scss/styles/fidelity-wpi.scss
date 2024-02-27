@@ -27,7 +27,6 @@
     .cmp-button--button-wpi {
         transition: $std-transition;
         .cmp-button {
-            position: relative;
             background-color: $fidelity-wpi-orange;
             color: white;
             max-height: rem(49);
