@@ -18,6 +18,7 @@
             margin-right: 30px;
         }
     }
+    
 
     @media screen and (min-width: $md) {
         .flex {
@@ -72,7 +73,6 @@
         -webkit-box-align: center;
         -ms-flex-align: center;
         align-items: center;
-        
 
         // @media screen and (min-width: $sm) {
         //     .cmp-button {
