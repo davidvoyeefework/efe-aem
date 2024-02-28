@@ -115,10 +115,16 @@ public class ImageCollageImpl implements ImageCollage {
     public String getPrimaryImage() {
         resourcePath = resource.getPath();
         resourceProperty = "primaryimgmodifier";
-        primaryImageModifier = ResourceUtil.getProperty(resourceResolver, resourcePath, resourceProperty);     
-        String basePath = dynamicMediaService.getDmImagePath(resourceResolver, primaryImage);
-        String scene7path = basePath + "?op_sharpen=1&qlt=85&fmt=webp&hei=826&wid=480&fit=crop,1" + primaryImageModifier;
-        return scene7path;
+        primaryImageModifier = ResourceUtil.getProperty(resourceResolver, resourcePath, resourceProperty); 
+        String basePath = dynamicMediaService.getDmImagePath(resourceResolver, primaryImage);        
+        if (primaryImageModifier == null) {
+            String scene7path = basePath + "?op_sharpen=1&qlt=85&fmt=webp&hei=826&wid=480&fit=crop,1";
+            return scene7path;            
+        }
+        else {
+            String scene7path = basePath + "?op_sharpen=1&qlt=85&fmt=webp&hei=826&wid=480&fit=crop,1" + primaryImageModifier;
+            return scene7path;            
+        }
     }
 
     /**
@@ -140,8 +146,14 @@ public class ImageCollageImpl implements ImageCollage {
         resourceProperty = "firstsecondaryimgmodifier";
         firstSecondaryImageModifier = ResourceUtil.getProperty(resourceResolver, resourcePath, resourceProperty);           
         String basePath = dynamicMediaService.getDmImagePath(resourceResolver, firstSecondaryImage);
-        String scene7path = basePath + "?op_sharpen=1&qlt=85&fmt=webp&wid=480&hei=413&fit=crop,1" + firstSecondaryImageModifier;
-        return scene7path;
+        if (firstSecondaryImageModifier == null) {
+            String scene7path = basePath + "?op_sharpen=1&qlt=85&fmt=webp&wid=480&hei=413&fit=crop,1";
+            return scene7path;            
+        }        
+        else {
+            String scene7path = basePath + "?op_sharpen=1&qlt=85&fmt=webp&wid=480&hei=413&fit=crop,1" + firstSecondaryImageModifier;
+            return scene7path;
+        }
     }
 
     /**
@@ -163,8 +175,15 @@ public class ImageCollageImpl implements ImageCollage {
         resourceProperty = "secondsecondaryimgmodifier";
         secondSecondaryImageModifier = ResourceUtil.getProperty(resourceResolver, resourcePath, resourceProperty);          
         String basePath = dynamicMediaService.getDmImagePath(resourceResolver, secondSecondaryImage);
-        String scene7path = basePath + "?op_sharpen=1&qlt=85&fmt=webp&wid=480&hei=413&fit=crop,1" + secondSecondaryImageModifier;
-        return scene7path;
+        if (secondSecondaryImageModifier == null) {   
+            String scene7path = basePath + "?op_sharpen=1&qlt=85&fmt=webp&wid=480&hei=413&fit=crop,1" + secondSecondaryImageModifier;  
+            return scene7path;                          
+        }
+        else {
+            String scene7path = basePath + "?op_sharpen=1&qlt=85&fmt=webp&wid=480&hei=413&fit=crop,1" + secondSecondaryImageModifier;
+            return scene7path;
+        } 
+
     }
 
     /**
