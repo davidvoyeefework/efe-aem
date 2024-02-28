@@ -31,6 +31,12 @@
                                                 fieldLabel="Primary Image"
                                                 name="./primaryImage"
                                                 rootPath="/content/dam/efe"/>
+                                            <modifier
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Add modifier here"
+                                                fieldLabel="Primary Image Modifier Params"
+                                                name="./primaryimgmodifier"/>                                                
                                             <alt
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -98,6 +104,12 @@
                                                 fieldLabel="First Secondary Image"
                                                 name="./firstSecondaryImage"
                                                 rootPath="/content/dam/efe"/>
+                                            <modifier1
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Add modifier here"
+                                                fieldLabel="First Secondary Image Modifier Params"
+                                                name="./firstsecondaryimgmodifier"/>                                                 
                                             <firstsecondaryimagealttext
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -140,6 +152,12 @@
                                                 fieldLabel="Second Secondary Image"
                                                 name="./secondSecondaryImage"
                                                 rootPath="/content/dam/efe"/>
+                                            <modifier2
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Add modifier here"
+                                                fieldLabel="Second Secondary Image Modifier Params"
+                                                name="./secondsecondaryimgmodifier"/>                                                  
                                             <secondsecondaryimagealttext
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
