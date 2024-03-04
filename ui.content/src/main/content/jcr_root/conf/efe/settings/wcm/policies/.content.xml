@@ -1099,12 +1099,12 @@
                                         cq:styleId="standard"
                                         cq:styleLabel="Standard"
                                         jcr:primaryType="nt:unstructured"/>                                      
-                                <item2
+                                <item1
                                         cq:styleClasses="cmp-teaser--hero--boeing-checkup"
                                         cq:styleId="rounded-corner-variation-2"
                                         cq:styleLabel="Rounded Corner - Variation-2"
                                         jcr:primaryType="nt:unstructured"/>                                     
-                                <item3
+                                <item2
                                         cq:styleClasses="cmp-teaser--hero cmp-text--white"
                                         cq:styleId="test"
                                         cq:styleLabel="White text"
