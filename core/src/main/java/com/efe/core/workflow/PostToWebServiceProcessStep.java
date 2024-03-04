@@ -14,6 +14,7 @@ import org.apache.http.util.EntityUtils;
 import org.osgi.service.component.annotations.Component;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ResourceResolverFactory;
@@ -49,6 +50,7 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
      * @param args
      */
     @Override
+    
     public void execute(WorkItem workItem, WorkflowSession session, MetaDataMap processArguments) throws WorkflowException {
        
         Map<String, String> processStepArguments = parseProcessStepArguments(processArguments);
@@ -56,17 +58,24 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
         if(processStepArguments.containsKey(ARG_API_URL) && processStepArguments.containsKey(ARG_TARGET)) {
             String payloadPath = workItem.getWorkflowData().getPayload().toString();
             String payloadDataType = workItem.getWorkflowData().getPayloadType();
-            JsonObject obj = new JsonObject();
-            if(payloadDataType == "JCR_PATH") {
+            ObjectMapper objMapper = new ObjectMapper();
+            String jsonOut = "";
+            try {
+                jsonOut = objMapper.writeValueAsString(workItem);
+            } catch (Exception e) {
+                
+            }
+            
+            /*if(payloadDataType == "JCR_PATH") {
                 try (ResourceResolver resourceResolver = ResourceUtil.getServiceResourceResolver(resourceResolverFactory)) {
                     Resource parseFragment = resourceResolver.getResource(payloadPath);
                 }
                 
-            }
-            obj.addProperty("payload", payloadPath);
-            obj.addProperty("dataType", payloadDataType);
-            obj.addProperty(ARG_TARGET, processStepArguments.get(ARG_TARGET));
-            obj.addProperty("initiatedBy", workItem.getWorkflow().getInitiator());
+            }*/
+           //obj.addProperty("payload", payloadPath);
+            //obj.addProperty("dataType", payloadDataType);
+            //obj.addProperty(ARG_TARGET, processStepArguments.get(ARG_TARGET));
+            //obj.addProperty("initiatedBy", workItem.getWorkflow().getInitiator());
 
             // Create an instance of CloseableHttpClient
             try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
@@ -78,7 +87,7 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
                 httpPost.setHeader("Content-Type", "application/json");
 
                 // Set the request body with the JSON data
-                StringEntity requestEntity = new StringEntity(obj.toString());
+                StringEntity requestEntity = new StringEntity(jsonOut);
                 httpPost.setEntity(requestEntity);
 
                 // Execute the request and get the response
