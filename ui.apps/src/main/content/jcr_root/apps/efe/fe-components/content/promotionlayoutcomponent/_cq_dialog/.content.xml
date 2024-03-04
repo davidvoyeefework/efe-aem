@@ -77,7 +77,7 @@
                                                                 text="Rounded Corner - Variation-2"
                                                                 value="cmp-teaser--hero--boeing-checkup"/>
                                                         </items>
-                                                    </teaservariation>
+                                                    </teaservariation>                                                   
                                                     <addcontainer
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"

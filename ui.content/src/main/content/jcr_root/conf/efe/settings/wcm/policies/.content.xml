@@ -1067,6 +1067,19 @@
                                         jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item4>
+                        <item5
+                                cq:styleGroupLabel="Text Color"
+                                jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">                           
+                                <item1
+                                        cq:styleClasses="cmp-text--white"
+                                        cq:styleId="White Text"
+                                        cq:styleLabel="White Text (Only for Banner Hero)"
+                                        jcr:primaryType="nt:unstructured"/>
+                                       
+                            </cq:styles>
+                        </item5>                        
+
                     </cq:styleGroups>
                 </policy>
                 <fe-policy
@@ -1085,12 +1098,17 @@
                                         cq:styleClasses="cmp-teaser--hero--without-image-border-radius"
                                         cq:styleId="standard"
                                         cq:styleLabel="Standard"
-                                        jcr:primaryType="nt:unstructured"/>
-                                <item1
+                                        jcr:primaryType="nt:unstructured"/>                                      
+                                <item2
                                         cq:styleClasses="cmp-teaser--hero--boeing-checkup"
                                         cq:styleId="rounded-corner-variation-2"
                                         cq:styleLabel="Rounded Corner - Variation-2"
-                                        jcr:primaryType="nt:unstructured"/>
+                                        jcr:primaryType="nt:unstructured"/>                                     
+                                <item3
+                                        cq:styleClasses="cmp-teaser--hero cmp-text--white"
+                                        cq:styleId="test"
+                                        cq:styleLabel="White text"
+                                        jcr:primaryType="nt:unstructured"/>                                          
                             </cq:styles>
                         </item0>
                     </cq:styleGroups>
