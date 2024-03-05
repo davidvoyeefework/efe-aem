@@ -61,7 +61,7 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
             jMap.put(ARG_TARGET, processStepArguments.get(ARG_TARGET));
             jMap.put("Path", payloadPath);
             jMap.put("initiatedBy",workItem.getWorkflow().getInitiator());
-            jMap.put("Content", workItem);
+            jMap.put("Content", workItem.getWorkflowData());
             ObjectMapper objMapper = new ObjectMapper();
             String jsonOut = "";
             try {
