@@ -15,6 +15,7 @@ import org.osgi.service.component.annotations.Component;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ResourceResolverFactory;
@@ -63,6 +64,7 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
             jMap.put("initiatedBy",workItem.getWorkflow().getInitiator());
             jMap.put("Content", workItem.getWorkflowData());
             ObjectMapper objMapper = new ObjectMapper();
+            objMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
             String jsonOut = "";
             try {
                 jsonOut = objMapper.writeValueAsString(jMap);
