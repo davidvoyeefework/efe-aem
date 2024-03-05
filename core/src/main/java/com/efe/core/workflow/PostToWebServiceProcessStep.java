@@ -57,25 +57,18 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
 
         if(processStepArguments.containsKey(ARG_API_URL) && processStepArguments.containsKey(ARG_TARGET)) {
             String payloadPath = workItem.getWorkflowData().getPayload().toString();
-            String payloadDataType = workItem.getWorkflowData().getPayloadType();
+            Map<String, Object> jMap = new HashMap();
+            jMap.put(ARG_TARGET, processStepArguments.get(ARG_TARGET));
+            jMap.put("Path", payloadPath);
+            jMap.put("initiatedBy",workItem.getWorkflow().getInitiator());
+            jMap.put("Content", workItem);
             ObjectMapper objMapper = new ObjectMapper();
             String jsonOut = "";
             try {
-                jsonOut = objMapper.writeValueAsString(workItem);
+                jsonOut = objMapper.writeValueAsString(jMap);
             } catch (Exception e) {
-                
+                jsonOut = e.getMessage();
             }
-            
-            /*if(payloadDataType == "JCR_PATH") {
-                try (ResourceResolver resourceResolver = ResourceUtil.getServiceResourceResolver(resourceResolverFactory)) {
-                    Resource parseFragment = resourceResolver.getResource(payloadPath);
-                }
-                
-            }*/
-           //obj.addProperty("payload", payloadPath);
-            //obj.addProperty("dataType", payloadDataType);
-            //obj.addProperty(ARG_TARGET, processStepArguments.get(ARG_TARGET));
-            //obj.addProperty("initiatedBy", workItem.getWorkflow().getInitiator());
 
             // Create an instance of CloseableHttpClient
             try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
