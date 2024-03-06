@@ -49,7 +49,7 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
 	 private static final String ARG_API_URL = "apiurl";
 	 
 	 private static final String ARG_TARGET = "target";
-         private ResourceResolver resourceResolver;
+         private static ResourceResolver resourceResolver;
 
 	 
     /** The Constant LOGGER. */
