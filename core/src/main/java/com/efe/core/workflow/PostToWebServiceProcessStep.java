@@ -2,7 +2,7 @@ package com.efe.core.workflow;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.io.IOException;
+//import java.io.IOException;
 
 
 import org.apache.commons.lang3.StringUtils;
@@ -16,27 +16,27 @@ import org.apache.http.util.EntityUtils;
 import org.osgi.service.component.annotations.Component;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JsonDeserializer;
-import com.fasterxml.jackson.core.JsonProcessingException;
+//import com.fasterxml.jackson.core.JsonParser;
+//import com.fasterxml.jackson.databind.DeserializationContext;
+//import com.fasterxml.jackson.databind.JsonDeserializer;
+//import com.fasterxml.jackson.core.JsonProcessingException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
-import org.apache.sling.api.resource.Resource;
-import org.apache.sling.api.resource.ResourceResolver;
-import org.apache.sling.api.resource.ResourceResolverFactory;
+//import org.apache.sling.api.resource.Resource;
+//import org.apache.sling.api.resource.ResourceResolver;
+//import org.apache.sling.api.resource.ResourceResolverFactory;
 
 import com.adobe.granite.workflow.WorkflowException;
 import com.adobe.granite.workflow.WorkflowSession;
 import com.adobe.granite.workflow.exec.WorkItem;
-import com.adobe.cq.dam.cfm.ContentFragment;
+//import com.adobe.cq.dam.cfm.ContentFragment;
 import com.adobe.granite.workflow.exec.WorkflowProcess;
 import com.adobe.granite.workflow.metadata.MetaDataMap;
-import com.efe.core.utils.ResourceUtil;
-import com.google.gson.JsonObject;
-import org.osgi.service.component.annotations.Reference;
+//import com.efe.core.utils.ResourceUtil;
+//import com.google.gson.JsonObject;
+//import org.osgi.service.component.annotations.Reference;
 
 /**
  * The Class InboxNotificationSenderImpl.
@@ -52,8 +52,8 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
 /**
     * ResourceResolverFactory injected
     */
-   @Reference
-   private transient ResourceResolverFactory resourceResolverFactory;
+   //@Reference
+   //private transient ResourceResolverFactory resourceResolverFactory;
 	 
     /** The Constant LOGGER. */
     private static final Logger log = LoggerFactory.getLogger(PostToWebServiceProcessStep.class);
@@ -71,12 +71,14 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
         Map<String, String> processStepArguments = parseProcessStepArguments(processArguments);
         String payloadPath = workItem.getWorkflowData().getPayload().toString();
         Map<String, Object> jMap = new HashMap();
+        /*
         try (ResourceResolver resourceResolver = ResourceUtil.getServiceResourceResolver(resourceResolverFactory)) {
             ContentFragment thisFragment = resourceResolver.resolve(payloadPath).adaptTo(ContentFragment.class);
             jMap.put("Content", thisFragment.getElements());
         } catch (Exception e) {
             jMap.put("Content","");
         }
+        */
         if(processStepArguments.containsKey(ARG_API_URL) && processStepArguments.containsKey(ARG_TARGET)) {
             
             
