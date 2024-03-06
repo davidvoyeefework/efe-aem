@@ -16,7 +16,6 @@ import org.apache.http.util.EntityUtils;
 import org.osgi.service.component.annotations.Component;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
@@ -74,17 +73,16 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
             jMap.put(ARG_TARGET, processStepArguments.get(ARG_TARGET));
             jMap.put("Path", payloadPath);
             jMap.put("initiatedBy",workItem.getWorkflow().getInitiator());
-            jMap.put("Content", thisFragment);
+            jMap.put("Content", thisFragment.getElements());
             ObjectMapper objMapper = new ObjectMapper();
             objMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
             String jsonOut = "";
             try {
-                
                 jsonOut = objMapper.writeValueAsString(jMap);
             } catch (Exception e) {
                 jsonOut = e.getMessage();
             }
-
+            
             // Create an instance of CloseableHttpClient
             try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
                 
