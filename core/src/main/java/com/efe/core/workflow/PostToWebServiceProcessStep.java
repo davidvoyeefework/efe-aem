@@ -2,6 +2,8 @@ package com.efe.core.workflow;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.io.IOException;
+
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpEntity;
@@ -14,8 +16,15 @@ import org.apache.http.util.EntityUtils;
 import org.osgi.service.component.annotations.Component;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonDeserializer;
+import com.fasterxml.jackson.core.JsonProcessingException;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ResourceResolverFactory;
@@ -23,6 +32,7 @@ import org.apache.sling.api.resource.ResourceResolverFactory;
 import com.adobe.granite.workflow.WorkflowException;
 import com.adobe.granite.workflow.WorkflowSession;
 import com.adobe.granite.workflow.exec.WorkItem;
+import com.adobe.cq.dam.cfm.ContentFragment;
 import com.adobe.granite.workflow.exec.WorkflowProcess;
 import com.adobe.granite.workflow.metadata.MetaDataMap;
 import com.efe.core.utils.ResourceUtil;
@@ -39,7 +49,8 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
 	 private static final String ARG_API_URL = "apiurl";
 	 
 	 private static final String ARG_TARGET = "target";
-	 
+         private ResourceResolver resourceResolver;
+
 	 
     /** The Constant LOGGER. */
     private static final Logger log = LoggerFactory.getLogger(PostToWebServiceProcessStep.class);
@@ -58,15 +69,17 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
 
         if(processStepArguments.containsKey(ARG_API_URL) && processStepArguments.containsKey(ARG_TARGET)) {
             String payloadPath = workItem.getWorkflowData().getPayload().toString();
+            ContentFragment thisFragment = resourceResolver.resolve(payloadPath).adaptTo(ContentFragment.class);
             Map<String, Object> jMap = new HashMap();
             jMap.put(ARG_TARGET, processStepArguments.get(ARG_TARGET));
             jMap.put("Path", payloadPath);
             jMap.put("initiatedBy",workItem.getWorkflow().getInitiator());
-            jMap.put("Content", workItem.getWorkflowData());
+            jMap.put("Content", thisFragment);
             ObjectMapper objMapper = new ObjectMapper();
             objMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
             String jsonOut = "";
             try {
+                
                 jsonOut = objMapper.writeValueAsString(jMap);
             } catch (Exception e) {
                 jsonOut = e.getMessage();
@@ -133,3 +146,5 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
     }
 
 }
+
+
