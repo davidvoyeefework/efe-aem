@@ -36,6 +36,7 @@ import com.adobe.granite.workflow.exec.WorkflowProcess;
 import com.adobe.granite.workflow.metadata.MetaDataMap;
 import com.efe.core.utils.ResourceUtil;
 import com.google.gson.JsonObject;
+import org.osgi.service.component.annotations.Reference;
 
 /**
  * The Class InboxNotificationSenderImpl.
@@ -48,8 +49,11 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
 	 private static final String ARG_API_URL = "apiurl";
 	 
 	 private static final String ARG_TARGET = "target";
-         private static ResourceResolver resourceResolver;
-
+/**
+    * ResourceResolverFactory injected
+    */
+   @Reference
+   private transient ResourceResolverFactory resourceResolverFactory;
 	 
     /** The Constant LOGGER. */
     private static final Logger log = LoggerFactory.getLogger(PostToWebServiceProcessStep.class);
@@ -65,15 +69,22 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
     public void execute(WorkItem workItem, WorkflowSession session, MetaDataMap processArguments) throws WorkflowException {
        
         Map<String, String> processStepArguments = parseProcessStepArguments(processArguments);
-
-        if(processStepArguments.containsKey(ARG_API_URL) && processStepArguments.containsKey(ARG_TARGET)) {
-            String payloadPath = workItem.getWorkflowData().getPayload().toString();
+        String payloadPath = workItem.getWorkflowData().getPayload().toString();
+        Map<String, Object> jMap = new HashMap();
+        try (ResourceResolver resourceResolver = ResourceUtil.getServiceResourceResolver(resourceResolverFactory)) {
             ContentFragment thisFragment = resourceResolver.resolve(payloadPath).adaptTo(ContentFragment.class);
-            Map<String, Object> jMap = new HashMap();
+            jMap.put("Content", thisFragment.getElements());
+        } catch (Exception e) {
+            jMap.put("Content","");
+        }
+        if(processStepArguments.containsKey(ARG_API_URL) && processStepArguments.containsKey(ARG_TARGET)) {
+            
+            
+            
             jMap.put(ARG_TARGET, processStepArguments.get(ARG_TARGET));
             jMap.put("Path", payloadPath);
             jMap.put("initiatedBy",workItem.getWorkflow().getInitiator());
-            jMap.put("Content", thisFragment.getElements());
+            
             ObjectMapper objMapper = new ObjectMapper();
             objMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
             String jsonOut = "";
