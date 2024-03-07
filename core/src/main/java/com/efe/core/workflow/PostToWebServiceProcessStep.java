@@ -76,7 +76,7 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
         
         try (ResourceResolver resourceResolver = ResourceUtil.getServiceResourceResolver(resourceResolverFactory)) {
             Map thisFragment = resourceResolver.resolve(payloadPath).getValueMap();
-            jMap.put("Content", thisFragment);
+            jMap.put("Content", thisFragment.entrySet());
         } catch (Exception e) {
             jMap.put("Content",e.getMessage());
         }
