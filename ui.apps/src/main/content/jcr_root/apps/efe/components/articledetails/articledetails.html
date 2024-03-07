@@ -192,8 +192,8 @@
                 };
 
                 // Name
-                const name = JSON.parse(JSON.stringify(details.name));         
-                const nameClean = name.slice(name.search('>') + 1, name.search('</') );
+                const name = JSON.parse(JSON.stringify(details.name));     
+                const nameClean = name.slice(name.search('>') + 1, name.search('</')).replace("<b>", "");
 
                 // Category Id
                 const categoryID = JSON.parse(JSON.stringify(details.categoryId)).split("/");
