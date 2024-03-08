@@ -86,10 +86,13 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
             
             
             Iterator<ContentElement> contentIterator = thisFrag.getElements();
-            Map<String,String> fragmentContent = new HashMap();
+            Map<String,Map> fragmentContent = new HashMap();
             while(contentIterator.hasNext()) {
                 ContentElement thisElement = contentIterator.next();
-                fragmentContent.put(thisElement.getName(), thisElement.getContent());
+                Map<String, String> elementProperties = new HashMap();
+                elementProperties.put("contentValue", thisElement.getContent());
+                elementProperties.put("contentDataType", thisElement.getContentType());
+                fragmentContent.put(thisElement.getName(), elementProperties);
             }
             jMap.put("content", fragmentContent);
            
