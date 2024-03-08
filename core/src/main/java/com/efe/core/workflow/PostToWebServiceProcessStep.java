@@ -73,23 +73,31 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
         Map<String, String> processStepArguments = parseProcessStepArguments(processArguments);
         String payloadPath = workItem.getWorkflowData().getPayload().toString();
         Map<String, Object> jMap = new HashMap();
-        
+        jMap.put(ARG_TARGET, processStepArguments.get(ARG_TARGET));
+        jMap.put("Path", payloadPath);
+        jMap.put("initiatedBy",workItem.getWorkflow().getInitiator());
+            
         try (ResourceResolver resourceResolver = ResourceUtil.getServiceResourceResolver(resourceResolverFactory)) {
             ContentFragment thisFrag = resourceResolver.resolve(payloadPath).adaptTo(ContentFragment.class);
-            Map thisFragment = thisFrag.getMetaData();
-            jMap.put("Content", thisFragment.entrySet());
+            jMap.put("name", thisFrag.getName());
+            jMap.put("description", thisFrag.getDescription());
+            jMap.put("tags", thisFrag.getTags());
+            jMap.put("title", thisFrag.getTitle());
+            
+            
+            Iterator<ContentElement> contentIterator = thisFrag.getElements();
+            Map<String,String> fragmentContent = new HashMap();
+            while(contentIterator.hasNext()) {
+                ContentElement thisElement = contentIterator.next();
+                fragmentContent.put(thisElement.getName(), thisElement.getContent());
+            }
+            jMap.put("content", fragmentContent);
+           
         } catch (Exception e) {
             jMap.put("Content",e.getMessage());
         }
         
         if(processStepArguments.containsKey(ARG_API_URL) && processStepArguments.containsKey(ARG_TARGET)) {
-            
-            
-            
-            jMap.put(ARG_TARGET, processStepArguments.get(ARG_TARGET));
-            jMap.put("Path", payloadPath);
-            jMap.put("initiatedBy",workItem.getWorkflow().getInitiator());
-            
             ObjectMapper objMapper = new ObjectMapper();
             objMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
             String jsonOut = "";
