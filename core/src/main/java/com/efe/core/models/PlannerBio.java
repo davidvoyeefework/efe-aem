@@ -108,4 +108,5 @@ public interface PlannerBio {
 	 */
 	String getFileReference();
 
+    String getDefaultRedirectPagePath();
 }
