@@ -13,6 +13,7 @@ import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+import com.efe.core.utils.ResourceUtil;
 
 /**
  * The Class ImageCollageImpl.
@@ -78,6 +79,22 @@ public class ImageCollageImpl implements ImageCollage {
     @SlingObject
     private ResourceResolver resourceResolver;
 
+    // Primary Image modifier
+    String primaryImageModifier;
+
+    // First Secondary Image modifier
+    String firstSecondaryImageModifier;    
+
+    // Second Secondary Image modifier
+    String secondSecondaryImageModifier;     
+
+    // Resource Path
+    @ValueMapValue    
+    String resourcePath;
+
+    // Resource Property
+    String resourceProperty;
+
     /**
      * Gets the id.
      *
@@ -88,7 +105,7 @@ public class ImageCollageImpl implements ImageCollage {
             id = EFEUtil.getId(resource);
         }
         return id;
-    }
+    }  
 
     /**
      * Gets the primary image.
@@ -96,7 +113,18 @@ public class ImageCollageImpl implements ImageCollage {
      * @return the primary image
      */
     public String getPrimaryImage() {
-        return dynamicMediaService.getDmImagePath(resourceResolver, primaryImage);
+        resourcePath = resource.getPath();
+        resourceProperty = "primaryimgmodifier";
+        primaryImageModifier = ResourceUtil.getProperty(resourceResolver, resourcePath, resourceProperty); 
+        String basePath = dynamicMediaService.getDmImagePath(resourceResolver, primaryImage);        
+        if (primaryImageModifier == null) {
+            String scene7path = basePath + "?op_sharpen=1&qlt=85&fmt=webp&hei=826&wid=480&fit=crop,1";
+            return scene7path;            
+        }
+        else {
+            String scene7path = basePath + "?op_sharpen=1&qlt=85&fmt=webp&hei=826&wid=480&fit=crop,1" + primaryImageModifier;
+            return scene7path;            
+        }
     }
 
     /**
@@ -114,7 +142,18 @@ public class ImageCollageImpl implements ImageCollage {
      * @return the first secondary image
      */
     public String getFirstSecondaryImage() {
-        return dynamicMediaService.getDmImagePath(resourceResolver, firstSecondaryImage);
+        resourcePath = resource.getPath();
+        resourceProperty = "firstsecondaryimgmodifier";
+        firstSecondaryImageModifier = ResourceUtil.getProperty(resourceResolver, resourcePath, resourceProperty);           
+        String basePath = dynamicMediaService.getDmImagePath(resourceResolver, firstSecondaryImage);
+        if (firstSecondaryImageModifier == null) {
+            String scene7path = basePath + "?op_sharpen=1&qlt=85&fmt=webp&wid=480&hei=413&fit=crop,1";
+            return scene7path;            
+        }        
+        else {
+            String scene7path = basePath + "?op_sharpen=1&qlt=85&fmt=webp&wid=480&hei=413&fit=crop,1" + firstSecondaryImageModifier;
+            return scene7path;
+        }
     }
 
     /**
@@ -132,7 +171,19 @@ public class ImageCollageImpl implements ImageCollage {
      * @return the second secondary image
      */
     public String getSecondSecondaryImage() {
-        return dynamicMediaService.getDmImagePath(resourceResolver, secondSecondaryImage);
+        resourcePath = resource.getPath();
+        resourceProperty = "secondsecondaryimgmodifier";
+        secondSecondaryImageModifier = ResourceUtil.getProperty(resourceResolver, resourcePath, resourceProperty);          
+        String basePath = dynamicMediaService.getDmImagePath(resourceResolver, secondSecondaryImage);
+        if (secondSecondaryImageModifier == null) {   
+            String scene7path = basePath + "?op_sharpen=1&qlt=85&fmt=webp&wid=480&hei=413&fit=crop,1" + secondSecondaryImageModifier;  
+            return scene7path;                          
+        }
+        else {
+            String scene7path = basePath + "?op_sharpen=1&qlt=85&fmt=webp&wid=480&hei=413&fit=crop,1" + secondSecondaryImageModifier;
+            return scene7path;
+        } 
+
     }
 
     /**
