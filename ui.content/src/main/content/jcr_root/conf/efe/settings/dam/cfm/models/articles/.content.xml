@@ -220,7 +220,7 @@
                         </dateUpdated>
                         <disclosure
                             jcr:primaryType="nt:unstructured"
-                            sling:resourceType="dam/cfm/models/editor/components/fragmentreference"
+                            sling:resourceType="dam/cfm/models/editor/components/fragmentreference/multifield"
                             allowNew="{Boolean}true"
                             fieldDescription="Reference to Disclosure CF for the page"
                             fieldLabel="Disclosure"
@@ -232,9 +232,16 @@
                             nameSuffix="contentReference"
                             renderReadOnly="false"
                             showEmptyInReadOnly="true"
-                            valueType="string/content-fragment">
-                            <field jcr:primaryType="nt:unstructured"/>
+                            valueType="string/content-fragment[]">
                             <granite:data jcr:primaryType="nt:unstructured"/>
+                            <field
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="dam/cfm/models/editor/components/fragmentreference"
+                                fragmentmodelreference="/conf/efe/settings/dam/cfm/models/disclosures"
+                                name="disclosure"
+                                renderReadOnly="false">
+                                <granite:data jcr:primaryType="nt:unstructured"/>
+                            </field>
                         </disclosure>
                         <tags
                             cq:showOnCreate="true"
