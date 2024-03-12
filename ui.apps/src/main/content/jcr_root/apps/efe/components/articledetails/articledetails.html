@@ -179,9 +179,39 @@
                 const publishdate = document.getElementById("article-details__published-date");
                 publishdate.appendChild(socialblock);
             });
-        </script>      
+        </script>    
+        
+        <script type="text/javascript">
 
-    
+                const details = {
+                    id: "${currentPage.properties['jcr:uuid']  @context='html'}",
+                    name: `${model.articleFragmentPath.title @context="styleComment"}`,
+                    categoryId: '${currentPage.parent.getPath  @context="html"}',
+                    pageUrl: '${currentPage.getPath  @context="html"}',
+                    thumbnail: '${model.articleFragmentPath.heroImage @context="html"}'
+                };
+
+                // Name
+                const name = JSON.parse(JSON.stringify(details.name));     
+                const nameClean = name.slice(name.search('>') + 1, name.search('</')).replace("<b>", "");
+
+                // Category Id
+                const categoryID = JSON.parse(JSON.stringify(details.categoryId)).split("/");
+                const categoryIdClean = (categoryID[categoryID.length - 1]);
+
+                // Page URL
+                const pageUrlClean = JSON.parse(JSON.stringify(details.pageUrl)).replace("/content/efe/us/en", "");
+                
+                const detailsClean = {
+                    id: "${currentPage.properties['jcr:uuid']  @context='html'}",
+                    name: nameClean,
+                    categoryId: categoryIdClean,
+                    pageUrl: pageUrlClean,
+                    thumbnail: '${model.articleFragmentPath.heroImage @context="html"}'
+                }
+
+        </script>  
+        
     </div>
 </sly>
 <sly data-sly-call="${template.placeholder @ isEmpty=!isNotEmpty, classAppend='cmp-articledetails'}"></sly>
