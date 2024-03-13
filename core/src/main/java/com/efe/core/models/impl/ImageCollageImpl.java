@@ -176,7 +176,7 @@ public class ImageCollageImpl implements ImageCollage {
         secondSecondaryImageModifier = ResourceUtil.getProperty(resourceResolver, resourcePath, resourceProperty);          
         String basePath = dynamicMediaService.getDmImagePath(resourceResolver, secondSecondaryImage);
         if (secondSecondaryImageModifier == null) {   
-            String scene7path = basePath + "?op_sharpen=1&qlt=85&fmt=webp&wid=480&hei=413&fit=crop,1" + secondSecondaryImageModifier;  
+            String scene7path = basePath + "?op_sharpen=1&qlt=85&fmt=webp&wid=480&hei=413&fit=crop,1";  
             return scene7path;                          
         }
         else {
