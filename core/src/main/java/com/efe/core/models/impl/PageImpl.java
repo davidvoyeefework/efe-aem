@@ -19,10 +19,12 @@ import com.efe.core.constants.Constants;
 import com.efe.core.models.PageModel;
 import com.efe.core.services.EfeService;
 import com.day.cq.wcm.api.Page;
+import com.efe.core.bean.PlannerResponse;
+import com.efe.core.utils.ArticleDetailUtil;
 import com.efe.core.utils.LinkUtil;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
-
+import com.efe.core.utils.LocationPlannerUtil;
 import java.util.Collections;
 import java.util.ArrayList;
 import org.apache.commons.lang3.StringUtils;
@@ -60,6 +62,66 @@ public class PageImpl implements PageModel {
 	/** Thumbnail Image Path. */
 	private String thumbnail;
 	
+        /** The planner response. */
+	private PlannerResponse plannerResponse;
+        
+        /**
+	 * Gets the description or a version of the description for locations/planners.
+	 *
+	 * @return the description
+	 */
+        public String getModifiedDescription() {
+            String canonicalUrl = null;
+            if (!getRobotsTags(resource).contains(Constants.NOINDEX)) {
+                SeoTags seoTags = resource.adaptTo(SeoTags.class);
+                canonicalUrl = seoTags != null ? seoTags.getCanonicalUrl() : null;
+                canonicalUrl = canonicalUrl != null ? externalizer.publishLink(resourceResolver, canonicalUrl)
+                                : LinkUtil.getAbsoluteUrl(currentPage, resourceResolver, externalizer);
+            } else {
+                return currentPage.getDescription();
+            }
+            String[] selectors = request.getRequestPathInfo().getSelectors();
+            if(selectors.length > 0 && canonicalUrl != null) {
+                if(canonicalUrl.endsWith("/location/") && selectors.length == 2) {
+                    String stateSelector = selectors[0].toLowerCase();
+                    String citySelector = selectors[1].toLowerCase();
+                    Resource resourceLocation = LocationPlannerUtil.getLocationResource(resourceResolver, stateSelector, citySelector);
+                    String city = LocationPlannerUtil.getLocationProperty(resourceResolver, resourceLocation, "city");
+                    return "If you’re looking for a financial planner in " + city + ", " + selectors[0].toUpperCase() + ", Edelman Financial Engines is here for you with an integrated approach centered on your goals.";
+                }
+            } 
+            return currentPage.getDescription();
+        }
+        
+         /**
+	 * Gets the title or a version of the title for locations/planners.
+	 *
+	 * @return the title
+	 */
+        public String getModifiedTitle() {
+            String canonicalUrl = null;
+            if (!getRobotsTags(resource).contains(Constants.NOINDEX)) {
+                SeoTags seoTags = resource.adaptTo(SeoTags.class);
+                canonicalUrl = seoTags != null ? seoTags.getCanonicalUrl() : null;
+                canonicalUrl = canonicalUrl != null ? externalizer.publishLink(resourceResolver, canonicalUrl)
+                                : LinkUtil.getAbsoluteUrl(currentPage, resourceResolver, externalizer);
+            } else {
+                return currentPage.getTitle();
+            }
+            String[] selectors = request.getRequestPathInfo().getSelectors();
+            if(selectors.length > 0 && canonicalUrl != null) {
+                if(canonicalUrl.endsWith("/location/") && selectors.length == 2) {
+                    String stateSelector = selectors[0].toLowerCase();
+                    String citySelector = selectors[1].toLowerCase();
+                    Resource resourceLocation = LocationPlannerUtil.getLocationResource(resourceResolver, stateSelector, citySelector);
+                    String city = LocationPlannerUtil.getLocationProperty(resourceResolver, resourceLocation, "city");
+                    return "Find a financial planner near " + city +", " + selectors[0].toUpperCase();
+                }
+            }
+            return currentPage.getTitle();
+        }
+        
+        
 	/**
 	 * Gets the canonical link.
 	 *
