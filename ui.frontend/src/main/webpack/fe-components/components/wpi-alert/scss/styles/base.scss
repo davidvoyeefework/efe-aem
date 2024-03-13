@@ -23,13 +23,6 @@ section.wpi-alert {
         flex-direction: column;
         gap: 15px;  
         margin-bottom: 32px;   
-        
-        @media screen and (min-width: $sm) {
-            -webkit-box-orient: horizontal;        
-            -webkit-box-direction: normal;        
-            -ms-flex-direction: row;        
-            flex-direction: row;
-        }
     }
 
     .wpi-img {
@@ -57,6 +50,17 @@ section.wpi-alert {
         @media screen and (min-width: $sm) {
             margin-left: 69px;
         }
+    }
+
+    @media screen and (min-width: $sm) {
+
+        .flex {
+            -webkit-box-orient: horizontal;        
+            -webkit-box-direction: normal;        
+            -ms-flex-direction: row;        
+            flex-direction: row;
+        }
+
     }
 
 }

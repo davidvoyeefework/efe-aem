@@ -34,6 +34,10 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         text="Fidelity"
                                                         value="fidelity-wpi-theme"/>
+                                                    <principle
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Principal"
+                                                        value="principal-wpi-theme"/>                                                          
                                                     <vanguard
                                                         jcr:primaryType="nt:unstructured"
                                                         text="Vanguard"
