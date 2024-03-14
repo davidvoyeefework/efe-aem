@@ -18,11 +18,11 @@
     <filter root="/conf/efe/settings/wcm/policies" mode="replace"/>
     <filter root="/conf/efe" mode="update"/>
     <filter root="/conf/fe" mode="merge_properties"/>
-	<filter root="/content/cq:tags/efe" mode="update"/>
-	<filter root="/conf/efe/settings/dam/cfm/models" mode="replace"/>
-	<filter root="/conf/global/settings/dam/search" mode="update"/>
+    <filter root="/content/cq:tags/efe" mode="update"/>
+    <filter root="/conf/efe/settings/dam/cfm/models" mode="replace"/>
+    <filter root="/conf/global/settings/dam/search" mode="update"/>
     <filter root="/content/efe" mode="merge"/>
-    <!--<filter root="/content/dam/efe" mode="update_properties"/>-->
+    <!-- <filter root="/content/dam/efe" mode="update_properties"/> -->
     <filter root="/content/fe" mode="merge_properties"/>
     <filter root="/conf/global/settings/dam/adminui-extension/metadataschema" mode="merge"/>
     <filter root="/conf/global/settings/dam/adminui-extension/metadataprofile" mode="merge"/>
