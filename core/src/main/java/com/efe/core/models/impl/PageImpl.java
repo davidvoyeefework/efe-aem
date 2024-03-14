@@ -78,7 +78,7 @@ public class PageImpl implements PageModel {
                 canonicalUrl = canonicalUrl != null ? externalizer.publishLink(resourceResolver, canonicalUrl)
                                 : LinkUtil.getAbsoluteUrl(currentPage, resourceResolver, externalizer);
             } else {
-                return currentPage.getDescription();
+                return "Page NoIndex: " + currentPage.getDescription();
             }
             String[] selectors = request.getRequestPathInfo().getSelectors();
             if(selectors.length > 0 && canonicalUrl != null) {
@@ -90,7 +90,7 @@ public class PageImpl implements PageModel {
                     return "If you’re looking for a financial planner in " + city + ", " + selectors[0].toUpperCase() + ", Edelman Financial Engines is here for you with an integrated approach centered on your goals.";
                 }
             } 
-            return currentPage.getDescription();
+            return "Page default: " + currentPage.getDescription();
         }
         
          /**
@@ -106,7 +106,7 @@ public class PageImpl implements PageModel {
                 canonicalUrl = canonicalUrl != null ? externalizer.publishLink(resourceResolver, canonicalUrl)
                                 : LinkUtil.getAbsoluteUrl(currentPage, resourceResolver, externalizer);
             } else {
-                return currentPage.getTitle();
+                return "Page NoIndex: " + currentPage.getTitle();
             }
             String[] selectors = request.getRequestPathInfo().getSelectors();
             if(selectors.length > 0 && canonicalUrl != null) {
@@ -118,7 +118,7 @@ public class PageImpl implements PageModel {
                     return "Find a financial planner near " + city +", " + selectors[0].toUpperCase();
                 }
             }
-            return currentPage.getTitle();
+            return "Page default title:" + currentPage.getTitle();
         }
         
         
