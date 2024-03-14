@@ -137,12 +137,9 @@
         }
     }
     &__disclaimar {
-
+        margin-bottom: 20px;
         * {
             @include body-03;
-        }
-        p {
-            margin-bottom: 20px;
         }
     }
 }
