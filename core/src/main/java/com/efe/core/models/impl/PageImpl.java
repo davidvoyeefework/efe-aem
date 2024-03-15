@@ -20,7 +20,6 @@ import com.efe.core.models.PageModel;
 import com.efe.core.services.EfeService;
 import com.day.cq.wcm.api.Page;
 import com.efe.core.bean.PlannerResponse;
-import com.efe.core.utils.ArticleDetailUtil;
 import com.efe.core.utils.LinkUtil;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -68,8 +67,9 @@ public class PageImpl implements PageModel {
         /**
 	 * Gets the description or a version of the description for locations/planners.
 	 *
-	 * @return the description
+	 * @return the modified description
 	 */
+        @Override
         public String getModifiedDescription() {
             String canonicalUrl = null;
             if (!getRobotsTags(resource).contains(Constants.NOINDEX)) {
@@ -96,8 +96,9 @@ public class PageImpl implements PageModel {
          /**
 	 * Gets the title or a version of the title for locations/planners.
 	 *
-	 * @return the title
+	 * @return the modified title
 	 */
+        @Override
         public String getModifiedTitle() {
             String canonicalUrl = null;
             if (!getRobotsTags(resource).contains(Constants.NOINDEX)) {

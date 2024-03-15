@@ -21,8 +21,8 @@
       data-sly-repeat="${page.alternateLanguageLinks.entrySet}"
       rel="alternate" hreflang="${item.key.toLanguageTag}" href="${item.value}">
 <meta property="og:type" content="website"/>
-<meta data-sly-test.description="${currentPage.getModifiedDescription()}" property="og:description" content="${currentPage.getModifiedDescription()}"/>
-<meta property="og:title" content="${currentPage.getModifiedTitle()}"/>
+<meta data-sly-test.description="${currentPage.modifiedDescription}" property="og:description" content="${currentPage.modifiedDescription}"/>
+<meta property="og:title" content="${currentPage.modifiedTitle}"/>
 <meta data-sly-test="${efe.canonicalLink}" property="og:url" content="${efe.canonicalLink}"/>
 <meta data-sly-test.image="${efe.thumbnail}" property="og:image" content="${image}"/>
 <meta name="twitter:card" content="summary_large_image" />
