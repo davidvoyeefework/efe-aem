@@ -2089,7 +2089,41 @@
                         </item1>
                     </cq:styleGroups>
                 </policy_2323064750917666>
-            </relatedarticle-ed-center>            
+            </relatedarticle-ed-center>   
+            <tabs-cornish jcr:primaryType="nt:unstructured">
+                <policy_1710889953497
+                    cq:styleDefaultClasses="cmp-tabs--horizontal"
+                    jcr:lastModified="{Date}2024-03-19T16:15:07.053-07:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Tabs: Cornish"
+                    sling:resourceType="wcm/core/components/policy/policy">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                    <cq:styleGroups jcr:primaryType="nt:unstructured">
+                        <item0
+                            cq:styleGroupLabel="Alignment"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-tabs--left"
+                                    cq:styleId="1710890020492"
+                                    cq:styleLabel="Left"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-tabs--center"
+                                    cq:styleId="1710890032281"
+                                    cq:styleLabel="Center"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item2
+                                    cq:styleClasses="cmp-tabs--right"
+                                    cq:styleId="1710890043200"
+                                    cq:styleLabel="Right"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item0>
+                    </cq:styleGroups>
+                </policy_1710889953497>
+            </tabs-cornish>                     
         </components>
         <fe-components jcr:primaryType="nt:unstructured">
             <structure jcr:primaryType="nt:unstructured">
