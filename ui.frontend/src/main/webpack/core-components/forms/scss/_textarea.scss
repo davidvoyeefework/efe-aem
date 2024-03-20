@@ -18,7 +18,7 @@
         max-height: rem(154);
         height: 100%;
         padding: 20px;
-        border: 1.5px solid $efe-gray-primary;
+        border: 1px solid $efe-gray-primary;
         border-radius: 4px;
         @include body-03;
         font-weight: 400;
@@ -38,7 +38,7 @@
             transition: $std-transition;
             color: $efe-gray-primary;
             outline: unset;
-            border-width: 1.5px;
+            border-width: 1px;
             border-style: solid;
         }
     }
