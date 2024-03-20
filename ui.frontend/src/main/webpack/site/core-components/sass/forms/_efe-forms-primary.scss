@@ -5,7 +5,7 @@
     padding: 0 rem(20) !important;
     min-width: rem(250);
     height: rem(50);
-    border: 1.5px solid $efe-gray-primary;
+    border: 1px solid $efe-gray-primary;
     
     &::-webkit-input-placeholder {
         color: $efe-gray-blue;
@@ -24,7 +24,7 @@
         transition: $std-transition;
         color: $efe-gray-primary;
         outline: unset;
-        border-width: 1.5px;
+        border-width: 1px;
         border-style: solid;
     }
 
