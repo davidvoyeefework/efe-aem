@@ -133,3 +133,25 @@ class Initializer {
 
 export { Initializer };
 /* eslint-enable */
+
+const tabsCornish = () => {
+  const cornishTabEl = document.querySelector(".tabs-cornish .cmp-tabs__tablist ");
+  const scrollIcon = document.querySelector(".tabs-cornish .cmp-tabs");
+
+  if (cornishTabEl != null) {
+    const scrollWidth = cornishTabEl.scrollWidth;
+    const viewportWidth = cornishTabEl.offsetWidth;
+      if (scrollWidth <= viewportWidth) {
+        scrollIcon.classList.add("no-icon");
+      }
+      if (scrollWidth > viewportWidth) {
+        scrollIcon.classList.remove("no-icon");
+      }
+
+  }
+
+  // console.log(viewPortWidth);
+ 
+ 
+ }
+ tabsCornish();
