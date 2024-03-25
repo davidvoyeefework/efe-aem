@@ -145,15 +145,18 @@ const tabsCornish = () => {
     triggerEl.setAttribute("id", "trigger");   
 
     // cornishTabEl is element to be wrapped
-
-    const wrapper = document.createElement('div');
-    cornishTabEl.parentNode.insertBefore(wrapper, cornishTabEl);
-    wrapper.appendChild(cornishTabEl);
-    const childNode = document.querySelector(".tabs-cornish .cmp-tabs > div");
-    childNode.setAttribute("id", "wrapper");
-
-
-
+    const createWrapper = () => {
+      var wrapperCreated = document.getElementById("wrapper");
+      if (wrapperCreated == null) {
+        const wrapper = document.createElement('div');
+        cornishTabEl.parentNode.insertBefore(wrapper, cornishTabEl);
+        wrapper.appendChild(cornishTabEl);
+        const childNode = document.querySelector(".tabs-cornish .cmp-tabs > div");
+        childNode.setAttribute("id", "wrapper"); 
+      }
+    }
+    createWrapper();
+ 
     const scrollWidth = cornishTabEl.scrollWidth;
     const viewportWidth = cornishTabEl.offsetWidth;
       if (scrollWidth <= viewportWidth) {
@@ -181,7 +184,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
           start: "top top",
           scrub: true,
           pinSpacing: false,
-          pin: "#cornish-tab-nav",
+          pin: "#wrapper",
+          toggleClass: {targets: "#wrapper", className: "drop-shadow"},
           end: () => `+=${$("#trigger").height()}`,
       }
   })
