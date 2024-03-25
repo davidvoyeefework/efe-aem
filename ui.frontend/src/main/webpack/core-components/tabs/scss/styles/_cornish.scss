@@ -2,6 +2,7 @@
     max-width: rem(924);
     margin: 0 auto;
     float: unset !important;
+    overflow: hidden;
 
     .cmp-tabs {
         position: relative;
@@ -9,7 +10,7 @@
 
         .cmp-tabs__tabpanel {
             border-top: 2px solid $efe-gray-mid;
-            margin-top: rem(38);
+            margin: rem(38) rem(24);
             padding-top: rem(38);
 
         }      
@@ -80,7 +81,7 @@
 
     @media screen and (min-width: 428px) {
         .cmp-tabs__tabpanel {
-            margin-top: rem(48);
+            margin: rem(48) rem(24);
             padding-top: rem(48);
         }
     }
@@ -108,11 +109,14 @@
                 }
             }
         }
+        .cmp-tabs__tabpanel {
+            margin: rem(48) 0;
+        }        
     }
 
     @media screen and (min-width: 1164px) {
         .cmp-tabs__tabpanel {
-            margin-top: rem(60);
+            margin: rem(60) 0;
             padding-top: rem(60);
         }
     }
@@ -139,10 +143,9 @@
             background-size: contain;
             display: block;
             position: absolute;
-            right: 0;
             z-index: 9;     
             top: rem(2);    
-            right: calc(1vw - 27px);               
+            right: 0;            
         }
 
         &.drop-shadow {
