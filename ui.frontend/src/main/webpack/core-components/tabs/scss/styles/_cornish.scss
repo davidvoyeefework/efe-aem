@@ -1,0 +1,170 @@
+.tabs-cornish {
+    max-width: rem(924);
+    margin: 0 auto;
+    float: unset !important;
+
+    .cmp-tabs {
+        position: relative;
+        padding: 0;
+
+        .cmp-tabs__tabpanel {
+            border-top: 2px solid $efe-gray-mid;
+            margin-top: rem(38);
+            padding-top: rem(38);
+
+        }      
+        
+    ol.cmp-tabs__tablist {
+        -webkit-box-orient: horizontal;
+        background-color: white;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        gap: 56px;
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+        overflow: scroll;
+        padding-left: 20px;
+        -ms-overflow-style: none; 
+        scrollbar-width: none;    
+        position: relative;  
+        max-width: rem(924);
+        padding-bottom: rem(20);
+        border-bottom: none;          
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
+        li.cmp-tabs__tab {
+            font-size: rem(28);
+            line-height: rem(29.4);
+            letter-spacing: .04em;
+            position: relative;
+            min-width: rem(90);
+            color: $efe-gray-blue;
+            transition: $std-transition;  
+            -ms-flex-negative: 0;    
+            flex-shrink: 0;   
+            top: 2px;     
+            margin: 0;              
+
+            &:before {
+                content: "•";
+                color: #d9d9d9;
+                font-size: rem(45);
+                position: absolute;
+                right:  - rem(36);
+            }
+
+            &:last-of-type {
+                &::before {
+                    display: none;
+                }
+            }
+
+            &:focus, &:hover {
+                color: $efe-gray-primary;
+                transition: $std-transition;
+            }
+
+            &.cmp-tabs__tab--active {
+                color: $efe-gray-primary;
+                &::after {
+                    border-bottom-width: 4px;
+                    bottom: -8px;
+                }
+            }
+        }
+    }
+
+    @media screen and (min-width: 428px) {
+        .cmp-tabs__tabpanel {
+            margin-top: rem(48);
+            padding-top: rem(48);
+        }
+    }
+
+    @media screen and (min-width: 735px) {
+        ol.cmp-tabs__tablist {
+            li.cmp-tabs__tab {
+                font-size: rem(36);
+                bottom: - rem(2);
+            }            
+        }
+    }
+
+    @media screen and (min-width: 935px) {
+        ol.cmp-tabs__tablist {
+            padding-left: 0;
+            margin: 0 auto;
+            -webkit-box-pack: justify;    
+            -ms-flex-pack: justify;    
+            justify-content: space-between;
+
+            li{
+                &:before {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    @media screen and (min-width: 1164px) {
+        .cmp-tabs__tabpanel {
+            margin-top: rem(60);
+            padding-top: rem(60);
+        }
+    }
+
+    }
+
+    &.no-icon {
+        #wrapper {
+            &:after {
+                background-image: none;
+                width: 1px;
+                height: 1px;
+            }              
+        }
+    }  
+    
+    #wrapper {
+        background-color: white;
+        &:after {
+            content: "";
+            background-image: url('data:image/svg+xml,<svg id="scrollMore" width="30" height="58" viewBox="0 0 30 58" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M30 0C13.4186 0.257978 0 13.1104 0 29C-2.68079e-06 44.8896 13.4186 57.742 30 58V0Z" fill="%23DDDDDE"/><path d="M30 1.9668C14.5086 2.22438 2.03394 14.229 2.03394 29.0002C2.03394 43.7713 14.5086 55.7759 30 56.0335V1.9668Z" fill="white"/><path d="M15 23L21 29L15 35" stroke="%23DDDDDE" stroke-width="2"/></svg>');
+            width: rem(30);
+            height: rem(58);
+            background-size: contain;
+            display: block;
+            position: absolute;
+            right: 0;
+            z-index: 9;     
+            top: rem(2);    
+            right: calc(1vw - 27px);               
+        }
+
+        &.drop-shadow {
+            &:before {
+                content: "";
+                display: block;
+                width: 300vw;
+                height: 2px;
+                box-shadow: 0px 2px 3px 0px #e5e5e5;
+                position: absolute;
+                bottom: 0;
+                left: -50%;
+            }
+        }
+
+        @media screen and (min-width: 540px ) {
+            &:after {
+                top: rem(2);
+                right: 0;
+            }
+
+        }
+    }
+
+}
