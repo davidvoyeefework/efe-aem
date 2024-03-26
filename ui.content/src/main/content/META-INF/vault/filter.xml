@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workspaceFilter version="1.0">
     <filter root="/content/experience-fragments/fe" mode="merge_properties"/>
-    <filter root="/conf/efe/settings/wcm/templates/fe-header-and-footer" mode="replace"/>
-    <filter root="/conf/efe/settings/wcm/templates/experience-fragment-target-variation" mode="replace"/>
-    <filter root="/conf/efe/settings/wcm/templates/xf-web-variation" mode="replace"/>
-    <filter root="/conf/efe/settings/dam/cfm/models/articles" mode="replace"/>
+    <filter root="/conf/efe/settings/wcm/templates/fe-header-and-footer" mode="merge"/>
+    <filter root="/conf/efe/settings/wcm/templates/experience-fragment-target-variation" mode="merge"/>
+    <filter root="/conf/efe/settings/wcm/templates/xf-web-variation" mode="merge"/>
+    <filter root="/conf/efe/settings/dam/cfm/models/articles" mode="merge"/>
     <filter root="/conf/global/settings/workflow/models/efe-publish-sites-page" mode="replace"/>
     <filter root="/var/workflow/models/efe-publish-sites-page.xml" mode="replace"/>
-    <filter root="/conf/efe/settings/wcm/templates/content-template-full-header-and-footer" mode="replace"/>
-    <filter root="/conf/efe/settings/wcm/templates/content-template-mini-header-and-footer" mode="replace"/>
-    <filter root="/conf/efe/settings/wcm/templates/category" mode="replace"/>
-    <filter root="/conf/efe/settings/wcm/templates/podcast" mode="replace"/>
-    <filter root="/conf/efe/settings/wcm/templates/brand-landing-page" mode="replace"/>
-    <filter root="/conf/efe/settings/wcm/templates/article" mode="replace"/>
-    <filter root="/conf/efe/settings/wcm/templates/leader-bio" mode="replace"/>
-    <filter root="/conf/efe/settings/wcm/templates/service-detail" mode="replace"/>
+    <filter root="/conf/efe/settings/wcm/templates/content-template-full-header-and-footer" mode="merge"/>
+    <filter root="/conf/efe/settings/wcm/templates/content-template-mini-header-and-footer" mode="merge"/>
+    <filter root="/conf/efe/settings/wcm/templates/category" mode="merge"/>
+    <filter root="/conf/efe/settings/wcm/templates/podcast" mode="merge"/>
+    <filter root="/conf/efe/settings/wcm/templates/brand-landing-page" mode="merge"/>
+    <filter root="/conf/efe/settings/wcm/templates/article" mode="merge"/>
+    <filter root="/conf/efe/settings/wcm/templates/leader-bio" mode="merge"/>
+    <filter root="/conf/efe/settings/wcm/templates/service-detail" mode="merge"/>
     <filter root="/conf/efe/settings/wcm/policies" mode="replace"/>
     <filter root="/conf/efe" mode="update"/>
     <filter root="/conf/fe" mode="merge_properties"/>
-    <filter root="/content/cq:tags/efe" mode="update"/>
-    <filter root="/conf/efe/settings/dam/cfm/models" mode="replace"/>
-    <filter root="/conf/global/settings/dam/search" mode="update"/>
+	<filter root="/content/cq:tags/efe" mode="update"/>
+	<filter root="/conf/efe/settings/dam/cfm/models" mode="merge"/>
+	<filter root="/conf/global/settings/dam/search" mode="update"/>
     <filter root="/content/efe" mode="merge"/>
     <filter root="/content/fe" mode="merge_properties"/>
     <filter root="/conf/global/settings/dam/adminui-extension/metadataschema" mode="merge"/>
