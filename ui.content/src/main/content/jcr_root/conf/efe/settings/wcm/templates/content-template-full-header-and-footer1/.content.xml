@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0"
+    jcr:primaryType="cq:Template">
+    <jcr:content
+        cq:isDelivered="{Boolean}true"
+        cq:lastModified="{Date}2023-09-14T21:15:12.668Z"
+        cq:lastModifiedBy="dvoye@edelmanfinancialengines.com"
+        cq:lastReplicated="{Date}2023-09-14T21:11:49.518Z"
+        cq:lastReplicated_publish="{Date}2023-09-14T21:11:49.518Z"
+        cq:lastReplicated_scene7="{Date}2023-09-14T21:11:49.518Z"
+        cq:lastReplicatedBy="dvoye@edelmanfinancialengines.com"
+        cq:lastReplicatedBy_publish="dvoye@edelmanfinancialengines.com"
+        cq:lastReplicatedBy_scene7="dvoye@edelmanfinancialengines.com"
+        cq:lastReplicationAction="Activate"
+        cq:lastReplicationAction_publish="Activate"
+        cq:lastReplicationAction_scene7="Activate"
+        cq:templateType="/conf/efe/settings/wcm/template-types/page"
+        jcr:description="Content template full header and footer"
+        jcr:mixinTypes="[cq:ReplicationStatus2]"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="TEST: Content template full header and footer"
+        status="enabled"/>
+</jcr:root>

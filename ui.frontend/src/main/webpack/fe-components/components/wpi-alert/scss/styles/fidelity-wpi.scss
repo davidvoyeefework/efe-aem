@@ -1,0 +1,66 @@
+
+.fidelity-wpi-theme {
+    padding: 24px 24px 12px 19px;
+    border: 1px solid #d8d8d8;
+    border-radius: 5px;  
+    
+    .copy {
+        max-width: 67ch;
+
+        .wpi-headline {
+            font-size: rem(17);
+            line-height: rem(24);
+            font-weight: 700;
+            color: $fidelity-wpi-navy;
+            font-family: Arial, Helvetica, sans-serif;
+            margin-bottom: 5px;
+        }
+    
+        .wpi-subheadline {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: rem(15);
+            line-height: rem(19);
+            color: $fidelity-wpi-navy;
+        }        
+    }
+    
+    .cmp-button--button-wpi {
+        transition: $std-transition;
+        .cmp-button {
+            background-color: $fidelity-wpi-orange;
+            color: white;
+            max-height: rem(49);
+            border: none;
+            transition: $std-transition;
+            width: fit-content;
+            padding: rem(16);
+            text-align: center;
+            min-width: rem(147);
+            text-decoration: none;
+            margin: 0;
+
+            @include flexbox(
+                $align-items: center,
+                $justify-content: center
+            );
+        
+            &:hover, &:active {
+                transition: $std-transition;
+                border: none;
+                text-decoration: none;
+                color: white;
+                cursor: pointer;
+            }
+        
+            .cmp-button__text {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: rem(15);
+                line-height: 100%;
+                font-weight: 700;
+            }          
+        }
+        @media screen and (min-width: $sm) {
+             margin-left: 38px;   
+        }        
+    }
+}

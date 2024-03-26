@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:mix="http://www.jcp.org/jcr/mix/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
+        cq:isDelivered="{Boolean}true"
+        cq:lastReplicated="{Date}2024-02-01T16:25:24.081Z"
+        cq:lastReplicated_publish="{Date}2024-02-01T16:25:24.081Z"
+        cq:lastReplicated_scene7="{Date}2024-02-01T16:25:24.081Z"
+        cq:lastReplicatedBy="jamendola2@edelmanfinancialengines.com"
+        cq:lastReplicatedBy_publish="jamendola2@edelmanfinancialengines.com"
+        cq:lastReplicatedBy_scene7="jamendola2@edelmanfinancialengines.com"
+        cq:lastReplicationAction="Activate"
+        cq:lastReplicationAction_publish="Activate"
+        cq:lastReplicationAction_scene7="Activate"
         cq:policy="efe/fe-components/structure/fe-page/policy"
+        jcr:isCheckedOut="{Boolean}true"
+        jcr:mixinTypes="[cq:ReplicationStatus,cq:ReplicationStatus2,mix:versionable]"
         jcr:primaryType="nt:unstructured"
+        jcr:uuid="30dc2b4d-d59a-4b8c-96a1-0063c62d5344"
         sling:resourceType="wcm/core/components/policies/mappings">
         <root
             cq:policy="efe/components/container/fepolicy"

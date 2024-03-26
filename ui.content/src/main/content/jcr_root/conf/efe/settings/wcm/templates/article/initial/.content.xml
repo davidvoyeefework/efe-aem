@@ -10,43 +10,43 @@
             sling:resourceType="efe/components/container"
             layout="responsiveGrid">
             <container_1735562516
-                 jcr:primaryType="nt:unstructured"
-                 sling:resourceType="efe/components/container"
-                 layout="responsiveGrid">
-            <container
-                cq:styleIds="[large]"
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="efe/components/container"
                 layout="responsiveGrid">
-                <articledetails
-                    jcr:primaryType="nt:unstructured"
-                    sling:resourceType="efe/components/articledetails"/>
                 <container
+                    cq:styleIds="[large]"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="efe/components/container"
+                    layout="responsiveGrid">
+                    <articledetails
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="efe/components/articledetails"/>
+                    <container
                         cq:styleIds="[top-padding]"
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="efe/components/container"
                         layout="responsiveGrid">
-                <socialshare
-                    jcr:primaryType="nt:unstructured"
-                    sling:resourceType="efe/components/socialshare"/>
+                        <socialshare
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="efe/components/socialshare"/>
+                    </container>
                 </container>
-            </container>
             </container_1735562516>
             <container_1974993242
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="efe/components/container"
+                layout="responsiveGrid">
+                <container
+                    cq:styleIds="[extra-large,bottom-padding]"
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="efe/components/container"
                     layout="responsiveGrid">
-                <container
-                        cq:styleIds="[extra-large,bottom-padding]"
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="efe/components/container"
-                        layout="responsiveGrid">
                     <separator
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="efe/components/separator"/>
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="efe/components/separator"/>
                     <relatedarticle
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="efe/components/relatedarticle"/>
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="efe/components/relatedarticle"/>
                 </container>
             </container_1974993242>
         </root>

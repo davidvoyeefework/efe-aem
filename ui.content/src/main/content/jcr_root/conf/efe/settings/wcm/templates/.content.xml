@@ -2,6 +2,14 @@
 <jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:rep="internal" xmlns:cq="http://www.day.com/jcr/cq/1.0"
     jcr:mixinTypes="[rep:AccessControllable]"
     jcr:primaryType="cq:Page">
+    <press-release-template/>
+    <article1/>
+    <page-content/>
+    <xf-web-variation1/>
+    <content-template-full-header-and-footer1/>
+    <xf-fe-web-variation/>
+    <fe-experience-fragment-target-variation/>
+    <podcast1/>
     <content-template-full-header-and-footer/>
     <content-template-mini-header-and-footer/>
     <category/>
