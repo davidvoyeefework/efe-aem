@@ -25,13 +25,12 @@
         -ms-flex-wrap: nowrap;
         flex-wrap: nowrap;
         overflow: scroll;
-        padding-left: 20px;
         -ms-overflow-style: none; 
         scrollbar-width: none;    
         position: relative;  
         max-width: rem(924);
-        padding-bottom: rem(20);
-        border-bottom: none;          
+        border-bottom: none;  
+        padding: 14px 20px 20px 20px;        
 
         ::-webkit-scrollbar {
             display: none;
@@ -56,6 +55,7 @@
                 font-size: rem(45);
                 position: absolute;
                 right:  - rem(36);
+                top: rem(10);
             }
 
             &:last-of-type {
@@ -99,15 +99,6 @@
         ol.cmp-tabs__tablist {
             padding-left: 0;
             margin: 0 auto;
-            -webkit-box-pack: justify;    
-            -ms-flex-pack: justify;    
-            justify-content: space-between;
-
-            li{
-                &:before {
-                    display: none;
-                }
-            }
         }
         .cmp-tabs__tabpanel {
             margin: rem(48) 0;
@@ -144,7 +135,7 @@
             display: block;
             position: absolute;
             z-index: 9;     
-            top: rem(2);    
+            top: rem(12);    
             right: 0;            
         }
 
@@ -160,14 +151,5 @@
                 left: -50%;
             }
         }
-
-        @media screen and (min-width: 540px ) {
-            &:after {
-                top: rem(2);
-                right: 0;
-            }
-
-        }
     }
-
 }
