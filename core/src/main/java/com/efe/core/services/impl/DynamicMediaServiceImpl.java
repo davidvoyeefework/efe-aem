@@ -26,6 +26,8 @@ public class DynamicMediaServiceImpl implements DynamicMediaService {
 	/** The Constant DM_IS_IMAGE. */
 	public static final String DM_IS_IMAGE = "is/image/";
 
+	public static final String DM_IS_CONTENT = "is/content/";
+
 	/** The Constant METADATA. */
 	public static final String METADATA = "metadata";
 
@@ -48,7 +50,10 @@ public class DynamicMediaServiceImpl implements DynamicMediaService {
 				String dmFileStatus = vMap.get(Scene7Constants.PN_S7_FILE_STATUS, StringUtils.EMPTY);
 				if (!StringUtils.isBlank(dmImagePath) && !StringUtils.isBlank(dmPublishUrl)
 						&& dmFileStatus.equals(Scene7Constants.PV_S7_PUBLISH_COMPLETE)) {
-					imagePath = dmPublishUrl + DM_IS_IMAGE + dmImagePath;
+					if (imagePath.endsWith(".gif"))
+						imagePath = dmPublishUrl + DM_IS_CONTENT + dmImagePath;
+					else
+						imagePath = dmPublishUrl + DM_IS_IMAGE + dmImagePath;
 				}
 			} else {
 				LOGGER.debug("Image Resource not found for Dynamic Media : {}", imagePath);
