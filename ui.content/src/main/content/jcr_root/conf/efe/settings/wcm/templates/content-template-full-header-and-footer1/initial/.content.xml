@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:lastModified="{Date}2023-09-14T21:10:13.185Z"
+        cq:lastModifiedBy="dvoye@edelmanfinancialengines.com"
+        cq:template="/conf/efe/settings/wcm/templates/content-template-full-header-and-footer1"
+        jcr:primaryType="cq:PageContent"
+        sling:resourceType="efe/components/page">
+        <root
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="efe/components/container"
+            layout="responsiveGrid">
+            <container
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="efe/components/container"
+                layout="responsiveGrid">
+                <container
+                    cq:styleIds="[white]"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="efe/components/container"
+                    layout="responsiveGrid">
+                    <modalleaving
+                        jcr:lastModified="{Date}2023-09-14T21:10:13.182Z"
+                        jcr:lastModifiedBy="dvoye@edelmanfinancialengines.com"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="efe/components/modalleaving"
+                        logo="/content/dam/efe/corporate-brand/efe/logos/EFE-Mark-MAIN-RGB.eps"
+                        modalCancelText="Cancel"
+                        modalDescriptionText="&lt;p>You are now leaving https://www.edelmanfinancialengines.com&amp;nbsp; for a website that is unaffiliated with Edelman Financial Engines. Edelman Financial Engines has not been involved in the preparation of the content supplied at the unaffiliated site and does not guarantee or assume any responsibility for its content, security or privacy-related practices. Please refer to their privacy and security policies for further information.&amp;nbsp;&lt;/p>&#xd;&#xa;"
+                        modalLeaveText="Leave"
+                        modalTitle="Thank you for visiting our website"
+                        textIsRich="true"/>
+                </container>
+            </container>
+        </root>
+    </jcr:content>
+</jcr:root>

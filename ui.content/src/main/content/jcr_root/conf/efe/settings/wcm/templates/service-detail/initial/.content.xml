@@ -132,7 +132,7 @@
                             sling:resourceType="efe/components/verticalseparator"/>
                     </container_1211217056>
                     <container_271212332
-                         cq:styleIds="[extra-large,remove-mobile-padding,balanced-height]"
+                        cq:styleIds="[extra-large,remove-mobile-padding,balanced-height]"
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="efe/components/container"
                         layout="responsiveGrid">
@@ -315,30 +315,30 @@
                         sling:resourceType="efe/components/container"
                         layout="responsiveGrid">
                         <container_547957636
-                                cq:styleIds="[large,top-padding,bottom-padding]"
+                            cq:styleIds="[large,top-padding,bottom-padding]"
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="efe/components/container"
+                            layout="responsiveGrid">
+                            <title
+                                cq:styleIds="[center,heading-4]"
                                 jcr:primaryType="nt:unstructured"
-                                sling:resourceType="efe/components/container"
-                                layout="responsiveGrid">
-                        <title
-                            cq:styleIds="[center,heading-4]"
-                            jcr:primaryType="nt:unstructured"
-                            jcr:title="FAQ Title"
-                            sling:resourceType="efe/components/title"
-                            linkTarget="_self"
-                            type="h2"/>
-                        <container
-                            cq:styleIds="[right-padding,left-padding,bottom-padding]"
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="efe/components/container">
-                            <text
+                                jcr:title="FAQ Title"
+                                sling:resourceType="efe/components/title"
+                                linkTarget="_self"
+                                type="h2"/>
+                            <container
+                                cq:styleIds="[right-padding,left-padding,bottom-padding]"
                                 jcr:primaryType="nt:unstructured"
-                                sling:resourceType="efe/components/text"
-                                text="&lt;p style=&quot;text-align: center;&quot;>&lt;span class=&quot;cmp-text--body-02&quot;>FAQ text&lt;/span>&lt;/p>&#xd;&#xa;"
-                                textIsRich="true"/>
-                        </container>
-                        <faqaccordion
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="efe/components/faqaccordion"/>
+                                sling:resourceType="efe/components/container">
+                                <text
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="efe/components/text"
+                                    text="&lt;p style=&quot;text-align: center;&quot;>&lt;span class=&quot;cmp-text--body-02&quot;>FAQ text&lt;/span>&lt;/p>&#xd;&#xa;"
+                                    textIsRich="true"/>
+                            </container>
+                            <faqaccordion
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="efe/components/faqaccordion"/>
                         </container_547957636>
                     </container_1038893730>
                     <container_203413243
