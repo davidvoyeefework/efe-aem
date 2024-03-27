@@ -141,7 +141,7 @@ export default class FePage {
             .querySelector("body")
             .classList.add("theme-" + daVars.providerId);
 
-          //pushToWindowObject(data);
+          pushToWindowObject(data);
           window.aemform.pageFrameData = data;
           this.fetchAggregateData();
         }
@@ -167,7 +167,7 @@ export default class FePage {
     };
     await fetchData(apiHost, headers)
       .then((data) => {
-        //pushToWindowObject(data);
+        pushToWindowObject(data);
         window.aemform.planownerData = data;
         handleLoader(false);
         const dataFromApi = new CustomEvent("messageFromfePage", {
@@ -191,7 +191,7 @@ export default class FePage {
     //https://www.feitest.com/api/v1/texts/forKeys
     await postJSONforKeys(apiUrl, keys)
       .then((data) => {
-        //pushToWindowObject(data);
+        pushToWindowObject(data);
         window.aemform.keyText = data;
       })
       .catch((error) => {
@@ -209,7 +209,7 @@ export default class FePage {
     };
     await fetchData(apiUrl, headers)
       .then((data) => {
-        //pushToWindowObject(data);
+        pushToWindowObject(data);
         window.aemform.userAuthStatus = data;
         const userLoggedIn = data.userLoggedIn;
         this.fetchSponsorData(userLoggedIn);
