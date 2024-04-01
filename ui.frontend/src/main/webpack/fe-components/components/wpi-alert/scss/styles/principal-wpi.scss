@@ -32,6 +32,13 @@
                 font-size: rem(18);
                 line-height: rem(20);
             }
+            p.wpi-disclosures {
+                font-family: Arial, Helvetica, sans-serif;
+                color: $principal-gray;
+                font-size: rem(15);
+                line-height: rem(20);   
+                margin-top: rem(20);             
+            }
         }  
         .cmp-button--button-wpi {
             margin-left: rem(111);
