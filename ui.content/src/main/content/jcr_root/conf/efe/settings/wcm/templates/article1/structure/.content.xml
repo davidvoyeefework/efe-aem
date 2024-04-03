@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:mix="http://www.jcp.org/jcr/mix/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:deviceGroups="[mobile/groups/responsive]"
+        cq:isDelivered="{Boolean}true"
+        cq:lastModified="{Date}2023-11-15T15:07:46.980Z"
+        cq:lastModifiedBy="jwallace@edelmanfinancialengines.com"
+        cq:lastReplicated="{Date}2023-11-15T15:08:04.152Z"
+        cq:lastReplicated_publish="{Date}2023-11-15T15:08:04.152Z"
+        cq:lastReplicated_scene7="{Date}2023-11-15T15:08:04.152Z"
+        cq:lastReplicatedBy="jwallace@edelmanfinancialengines.com"
+        cq:lastReplicatedBy_publish="jwallace@edelmanfinancialengines.com"
+        cq:lastReplicatedBy_scene7="jwallace@edelmanfinancialengines.com"
+        cq:lastReplicationAction="Activate"
+        cq:lastReplicationAction_publish="Activate"
+        cq:lastReplicationAction_scene7="Activate"
+        cq:template="/conf/efe/settings/wcm/templates/article1"
+        jcr:isCheckedOut="{Boolean}true"
+        jcr:mixinTypes="[cq:ReplicationStatus2,mix:versionable]"
+        jcr:primaryType="cq:PageContent"
+        jcr:uuid="048f4b8c-8c21-4e04-8e6b-672d16601aa4"
+        sling:resourceType="efe/components/page">
+        <root
+            cq:styleIds="[white]"
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="efe/components/container"
+            layout="responsiveGrid">
+            <experiencefragment-header
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="efe/components/experiencefragment"
+                fragmentVariationPath="/content/experience-fragments/efe/us/en/site/header/master"/>
+            <container_1294424715
+                cq:styleIds="[extra-large]"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="efe/components/container"
+                layout="responsiveGrid">
+                <breadcrumb
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="efe/components/breadcrumb"
+                    disableShadowing="false"
+                    hideCurrent="false"
+                    selectorIndex="0"
+                    showHidden="false"
+                    showSelectorAsLeaf="false"
+                    startLevel="4"/>
+            </container_1294424715>
+            <container_1735562516
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="efe/components/container"
+                id="main"
+                layout="responsiveGrid">
+                <container
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="efe/components/container"
+                    editable="{Boolean}true">
+                    <cq:responsive jcr:primaryType="nt:unstructured">
+                        <default
+                            jcr:primaryType="nt:unstructured"
+                            offset="0"
+                            width="12"/>
+                    </cq:responsive>
+                </container>
+                <cq:responsive jcr:primaryType="nt:unstructured">
+                    <default
+                        jcr:primaryType="nt:unstructured"
+                        offset="1"
+                        width="10"/>
+                </cq:responsive>
+            </container_1735562516>
+            <container_1974993242
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="efe/components/container"
+                layout="responsiveGrid">
+                <container
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="efe/components/container"
+                    editable="{Boolean}true">
+                    <cq:responsive jcr:primaryType="nt:unstructured">
+                        <default
+                            jcr:primaryType="nt:unstructured"
+                            offset="0"
+                            width="12"/>
+                    </cq:responsive>
+                </container>
+                <cq:responsive jcr:primaryType="nt:unstructured">
+                    <default
+                        jcr:primaryType="nt:unstructured"
+                        offset="1"
+                        width="10"/>
+                </cq:responsive>
+            </container_1974993242>
+            <experiencefragment-footer
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="efe/components/experiencefragment"
+                fragmentVariationPath="/content/experience-fragments/efe/us/en/site/footer/master"/>
+        </root>
+        <cq:responsive jcr:primaryType="nt:unstructured">
+            <breakpoints jcr:primaryType="nt:unstructured">
+                <phone
+                    jcr:primaryType="nt:unstructured"
+                    title="Smaller Screen"
+                    width="{Long}768"/>
+                <tablet
+                    jcr:primaryType="nt:unstructured"
+                    title="Tablet"
+                    width="{Long}1200"/>
+            </breakpoints>
+        </cq:responsive>
+    </jcr:content>
+</jcr:root>

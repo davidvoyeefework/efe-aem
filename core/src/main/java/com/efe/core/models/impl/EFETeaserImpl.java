@@ -3,9 +3,11 @@ package com.efe.core.models.impl;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 import javax.annotation.PostConstruct;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -102,7 +104,11 @@ public class EFETeaserImpl implements EFETeaser {
 			if (articleSubtitle != null) {
 				resourceCFPath = articleSubtitle + "/jcr:content/data/master";
 				resourceCFProperty = "subtitle";
-				articleCFSubtitle = ResourceUtil.getProperty(resourceResolver, resourceCFPath, resourceCFProperty).replaceAll("<[^>]*>", "");
+				String resourceCFPropertyValue = ResourceUtil.getProperty(resourceResolver, resourceCFPath, resourceCFProperty);
+				if (Objects.nonNull(resourceCFPropertyValue))
+					articleCFSubtitle = resourceCFPropertyValue.replaceAll("<[^>]*>", "");
+				else
+					articleCFSubtitle = StringUtils.EMPTY;
 			}
 			else {
 				articleCFSubtitle = "";

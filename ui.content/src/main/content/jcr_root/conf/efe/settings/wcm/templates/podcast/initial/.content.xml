@@ -27,28 +27,28 @@
                             sling:resourceType="efe/components/container"
                             layout="responsiveGrid">
                             <container
-                                    cq:styleIds="[bottom-padding]"
-                                    jcr:primaryType="nt:unstructured"
-                                    sling:resourceType="efe/components/container"
-                                    layout="responsiveGrid">
-                            <image
+                                cq:styleIds="[bottom-padding]"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="efe/components/container"
+                                layout="responsiveGrid">
+                                <image
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="efe/components/image">
-                                <cq:responsive jcr:primaryType="nt:unstructured">
-                                    <default
+                                    <cq:responsive jcr:primaryType="nt:unstructured">
+                                        <default
                                             jcr:primaryType="nt:unstructured"
                                             offset="5"
                                             width="2"/>
-                                    <phone
+                                        <phone
                                             jcr:primaryType="nt:unstructured"
                                             offset="3"
                                             width="6"/>
-                                    <tablet
+                                        <tablet
                                             jcr:primaryType="nt:unstructured"
                                             offset="3"
                                             width="6"/>
-                                </cq:responsive>
-                            </image>
+                                    </cq:responsive>
+                                </image>
                             </container>
                             <podcast
                                 jcr:primaryType="nt:unstructured"
@@ -170,7 +170,7 @@
                                 sling:resourceType="efe/components/tags"/>
                         </container_1151896970>
                         <container_1183161536
-                             cq:styleIds="[large]"
+                            cq:styleIds="[large]"
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="efe/components/container"
                             layout="responsiveGrid">
