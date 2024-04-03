@@ -1,5 +1,6 @@
 package com.efe.core.models.impl;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -7,8 +8,10 @@ import java.util.Objects;
 
 import javax.annotation.PostConstruct;
 
+import com.efe.core.constants.Constants;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -49,6 +52,12 @@ public class PlannerListImpl implements PlannerList {
 	/** The SlingHttpServletRequest. */
 	@SlingObject
 	private SlingHttpServletRequest request;
+
+	@SlingObject
+	private SlingHttpServletResponse response;
+
+	@ValueMapValue
+	private String defaultRedirectPagePath;
 
 	/** The PlannerDetails. */
 	private List<PlannerDetail> plannerDetails = new ArrayList<>();
@@ -109,6 +118,12 @@ public class PlannerListImpl implements PlannerList {
 			if (Objects.nonNull(resourceLocation)) {
 				for (Resource item : resourceLocation.getChildren()) {
 					setCfList(cfList, item);
+				}
+			} else {
+				try {
+					response.sendRedirect(getDefaultRedirectPagePath());
+				} catch (IOException e) {
+					throw new RuntimeException(e);
 				}
 			}
 			setPlannerDetails(cfList);
@@ -259,5 +274,12 @@ public class PlannerListImpl implements PlannerList {
 			return new ArrayList<>(plannerDetails);
 		}
 		return Collections.emptyList();
+	}
+
+	@Override
+	public String getDefaultRedirectPagePath() {
+		if (StringUtils.isBlank(defaultRedirectPagePath))
+			defaultRedirectPagePath = "/locations";
+		return defaultRedirectPagePath.concat(Constants.HTML_SUFFIX);
 	}
 }

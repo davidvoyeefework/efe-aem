@@ -116,3 +116,4 @@ ui.frontend/package-lock.json
 *.MF
 ui.apps/package-lock.json
 package-lock.json
+ui.content/src/main/content/jcr_root/content/dam/*

@@ -133,3 +133,67 @@ class Initializer {
 
 export { Initializer };
 /* eslint-enable */
+
+
+// Cornish Tabs 
+const tabsCornish = () => {
+  const cornishTabEl = document.querySelector(".tabs-cornish .cmp-tabs__tablist");
+  const triggerEl = document.querySelector(".tabs-cornish"); 
+
+  if (cornishTabEl != null) {
+    cornishTabEl.setAttribute("id", "cornish-tab-nav");
+    triggerEl.setAttribute("id", "trigger");   
+
+    // cornishTabEl is element to be wrapped
+    const createWrapper = () => {
+      var wrapperCreated = document.getElementById("wrapper");
+      if (wrapperCreated == null) {
+        const wrapper = document.createElement('div');
+        cornishTabEl.parentNode.insertBefore(wrapper, cornishTabEl);
+        wrapper.appendChild(cornishTabEl);
+        const childNode = document.querySelector(".tabs-cornish .cmp-tabs > div");
+        childNode.setAttribute("id", "wrapper"); 
+      }
+    }
+    createWrapper();
+ 
+    const scrollWidth = cornishTabEl.scrollWidth;
+    const viewportWidth = cornishTabEl.offsetWidth;
+      if (scrollWidth <= viewportWidth) {
+        triggerEl.classList.add("no-icon");
+      }
+      if (scrollWidth > viewportWidth) {
+        triggerEl.classList.remove("no-icon");
+      } 
+  }
+ 
+ }
+ tabsCornish();
+
+window.addEventListener("resize", tabsCornish);
+
+//GSAP Animation Platform for Cornish Tabs
+document.addEventListener("DOMContentLoaded", (event) => {
+  const cornishTabEl = document.querySelector(".tabs-cornish .cmp-tabs__tablist");
+  if (cornishTabEl != null) {
+    gsap.registerPlugin(ScrollTrigger,ScrollToPlugin);
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+          trigger: "#trigger",
+          start: "top top",
+          scrub: true,
+          pinSpacing: false,
+          pin: "#wrapper",
+          toggleClass: {targets: "#wrapper", className: "drop-shadow"},
+          end: () => `+=${$("#trigger").height()}`,
+      }
+  })
+  tabsCornish();    
+  }
+ });
+
+
+
+
+

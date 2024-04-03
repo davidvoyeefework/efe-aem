@@ -1,5 +1,6 @@
 package com.efe.core.models.impl;
 
+import java.io.IOException;
 import java.util.*;
 
 import javax.annotation.PostConstruct;
@@ -12,9 +13,11 @@ import com.day.cq.search.Query;
 import com.day.cq.search.QueryBuilder;
 import com.day.cq.search.result.Hit;
 import com.day.cq.search.result.SearchResult;
+import com.efe.core.constants.Constants;
 import com.efe.core.services.DynamicMediaService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -81,6 +84,9 @@ public class PlannerBioImpl implements PlannerBio {
 	@SlingObject
 	private Resource resource;
 
+	@SlingObject
+	private SlingHttpServletResponse response;
+
 	/** The resource resolver. */
 	@SlingObject
 	private ResourceResolver resourceResolver;
@@ -125,6 +131,11 @@ public class PlannerBioImpl implements PlannerBio {
 	@ValueMapValue
 	private String fileReference;
 
+
+	/** The file reference. */
+	@ValueMapValue
+	private String defaultRedirectPagePath;
+
 	@OSGiService
 	private QueryBuilder queryBuilder;
 
@@ -161,7 +172,14 @@ public class PlannerBioImpl implements PlannerBio {
 					addPlannerOffices(referenceResourceList);
 				}
 				jsonLd = SeoUtil.getPlannerSchema(seoService, efeService, externalizer, resourceResolver, plannerResponse);	
+			} else {
+				try {
+					response.sendRedirect(getDefaultRedirectPagePath());
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+				}
 			}
+
 		}
 	}
 
@@ -417,6 +435,12 @@ public class PlannerBioImpl implements PlannerBio {
 	public String getFileReference() {
 		return dynamicMediaService.getDmImagePath(resourceResolver, fileReference);
 	}
-        
 
+
+	@Override
+	public String getDefaultRedirectPagePath() {
+		if (StringUtils.isBlank(defaultRedirectPagePath))
+			defaultRedirectPagePath = "/locations";
+		return defaultRedirectPagePath.concat(Constants.HTML_SUFFIX);
+	}
 }

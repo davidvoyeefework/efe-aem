@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:mix="http://www.jcp.org/jcr/mix/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
         cq:deviceGroups="[mobile/groups/responsive]"
+        cq:isDelivered="{Boolean}true"
+        cq:lastReplicated="{Date}2024-02-08T20:30:15.975Z"
+        cq:lastReplicated_publish="{Date}2024-02-08T20:30:15.975Z"
+        cq:lastReplicated_scene7="{Date}2024-02-08T20:30:15.975Z"
+        cq:lastReplicatedBy="jeking@edelmanfinancialengines.com"
+        cq:lastReplicatedBy_publish="jeking@edelmanfinancialengines.com"
+        cq:lastReplicatedBy_scene7="jeking@edelmanfinancialengines.com"
+        cq:lastReplicationAction="Activate"
+        cq:lastReplicationAction_publish="Activate"
+        cq:lastReplicationAction_scene7="Activate"
         cq:template="/conf/efe/settings/wcm/templates/leader-bio"
+        jcr:isCheckedOut="{Boolean}true"
+        jcr:mixinTypes="[cq:ReplicationStatus2,mix:versionable]"
         jcr:primaryType="cq:PageContent"
+        jcr:uuid="afff3fa1-001d-4702-8b10-2ad964277a06"
         sling:resourceType="efe/components/page">
         <root
             jcr:primaryType="nt:unstructured"
