@@ -12,7 +12,6 @@
             border-top: 2px solid $efe-gray-mid;
             margin: rem(38) rem(24);
             padding-top: rem(38);
-
         }      
         
     ol.cmp-tabs__tablist {
@@ -30,7 +29,8 @@
         position: relative;  
         max-width: rem(924);
         border-bottom: none;  
-        padding: 14px 20px 20px 20px;        
+        padding: 14px 20px 20px 20px;   
+
 
         ::-webkit-scrollbar {
             display: none;
@@ -42,7 +42,7 @@
             letter-spacing: .04em;
             position: relative;
             min-width: rem(90);
-            color: $efe-gray-blue;
+            color: #879797;
             transition: $std-transition;  
             -ms-flex-negative: 0;    
             flex-shrink: 0;   
@@ -81,8 +81,8 @@
 
     @media screen and (min-width: 428px) {
         .cmp-tabs__tabpanel {
-            margin: rem(48) rem(24);
-            padding-top: rem(48);
+            margin: rem(30) rem(24);
+            padding-top: rem(50);
         }
     }
 
@@ -101,14 +101,14 @@
             margin: 0 auto;
         }
         .cmp-tabs__tabpanel {
-            margin: rem(48) 0;
+            margin: rem(30) 0;
         }        
     }
 
     @media screen and (min-width: 1164px) {
         .cmp-tabs__tabpanel {
-            margin: rem(60) 0;
-            padding-top: rem(60);
+            margin: rem(30) 0;
+            padding-top: rem(50);
         }
     }
 
@@ -127,8 +127,8 @@
     #wrapper {
         background-color: white;
         z-index: 9999;
-        &:after {
-            content: "";
+         .scrollIcon, .scrollIconBack {
+            // content: "";
             background-image: url('data:image/svg+xml,<svg id="scrollMore" width="30" height="58" viewBox="0 0 30 58" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M30 0C13.4186 0.257978 0 13.1104 0 29C-2.68079e-06 44.8896 13.4186 57.742 30 58V0Z" fill="%23DDDDDE"/><path d="M30 1.9668C14.5086 2.22438 2.03394 14.229 2.03394 29.0002C2.03394 43.7713 14.5086 55.7759 30 56.0335V1.9668Z" fill="white"/><path d="M15 23L21 29L15 35" stroke="%23DDDDDE" stroke-width="2"/></svg>');
             width: rem(30);
             height: rem(58);
@@ -137,7 +137,22 @@
             position: absolute;
             z-index: 9;     
             top: rem(12);    
-            right: 0;            
+            right: 0;  
+            &:hover {
+                cursor: pointer;
+            }                      
+        }
+
+        .scrollIconBack {
+            display: none;
+            left: 0;
+            transform: rotate(180deg);
+        }
+
+        &.reverse-icon {
+            .scrollIconBack {
+                display: block;
+            }
         }
 
         &.drop-shadow {
@@ -155,5 +170,23 @@
                 height: 100%;
             }
         }
+
+        &.no-icon {
+            .scrollIcon {
+                display: none;
+            }
+        } 
+
+        &.reverse-icon {
+
+        }
+        
+        @media screen and (min-width: 924px) {
+            .scrollIcon,  .scrollIconBack  {
+                background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 30.5 82" style="enable-background:new 0 0 30.5 82;" xml:space="preserve"><style type="text/css">.st0{fill:%23DDDDDE;}.st1{fill:%23FFFFFF;}.st2{fill:none;stroke:%23DDDDDE;stroke-width:2;}.st3{fill:none;stroke:%23DDDDDE;stroke-miterlimit:10;}</style><path class="st0" d="M30,12C13.4,12.3,0,25.2,0,41c0,15.9,13.4,28.7,30,29V12z"/><path class="st1" d="M30,14C14.5,14.3,2,26.3,2,41c0,14.8,12.5,26.8,28,27V14z"/><path class="st2" d="M15,35l6,6l-6,6"/><line class="st3" x1="30" y1="0" x2="30" y2="82"/></svg>');
+                height: rem(82);
+                top: rem(3);
+            }
+        }        
     }
 }
