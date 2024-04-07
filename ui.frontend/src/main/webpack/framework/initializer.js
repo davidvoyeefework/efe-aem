@@ -200,9 +200,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
       let widthTally = 0;
       for (let i = 0; i <= tabNumber; i++) {
         let tabElWidth = tabOlElement[i].clientWidth + 56;
-
         widthTally = widthTally + tabElWidth;
-
         if (widthTally >= viewPortWidth) {
           widthTally = widthTally - tabOlElement[i].clientWidth -56; 
           scrollEl.scrollLeft += widthTally;      
@@ -211,46 +209,43 @@ document.addEventListener("DOMContentLoaded", (event) => {
       }
     });
 
-    let calledTimes = 0;
+    let lastPosition = 0;    
     scrollIconBack.addEventListener("click", () => {
       let scrollWidth = scrollEl.scrollWidth;
       let viewPortWidth = scrollEl.offsetWidth;
-      let overFlowWidth = scrollWidth - viewPortWidth -.5;
       let tabOlElement = document.querySelectorAll("#cornish-tab-nav li");
       let tabNumber = tabOlElement.length;
-      calledTimes ++;
 
-      if (calledTimes >= 2) {
-        scrollEl.scrollLeft = 0;
-        return;
-      }  
+      if (lastPosition != 0) {
+        let nextLeftPosition = lastPosition - 1;
+
+        if (nextLeftPosition == 1 ) {
+          scrollEl.scrollLeft = 0;
+          return;
+        }
+
+        let widthTally = 0;
+        for (let i = 0; i <= tabNumber; i++) {
+          if (i == nextLeftPosition) {
+            scrollEl.scrollLeft = widthTally -30;
+            return;
+          }          
+          let tabElWidth = tabOlElement[i].clientWidth + 56;
+          widthTally = widthTally + tabElWidth; 
+        }     
+      };
       
       let widthTally = 0;
-
       for (let i = tabNumber -1; i >= 0; i--) {
         let tabElWidth = tabOlElement[i].clientWidth + 56;
-
         widthTally = widthTally + tabElWidth;
-
         if (widthTally >= viewPortWidth) {
-          let newTally = 0;
-          for (let x = 0; x <= tabNumber; x++) {
-            if (x == i) {
-              scrollEl.scrollLeft = newTally - 30;
-              return;
-            }
-            newTally += tabOlElement[x].clientWidth + 56;
-          }
-
-          widthTally = widthTally - tabOlElement[i].clientWidth  + 56;; 
-          let position = overFlowWidth - widthTally;
-          scrollEl.scrollLeft -= widthTally;      
+          let newSet = scrollWidth - widthTally;
+          lastPosition = i;
+          scrollEl.scrollLeft = newSet; 
           return;
         }
       }
-
-    
-
     });
 
     // SCROLL ICON BEHAVIOR
