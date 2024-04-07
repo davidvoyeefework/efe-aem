@@ -220,16 +220,15 @@ document.addEventListener("DOMContentLoaded", (event) => {
       let tabNumber = tabOlElement.length;
       calledTimes ++;
 
-      if (calledTimes == 2) {
+      if (calledTimes >= 2) {
         scrollEl.scrollLeft = 0;
         return;
-      }
+      }  
       
       let widthTally = 0;
 
       for (let i = tabNumber -1; i >= 0; i--) {
         let tabElWidth = tabOlElement[i].clientWidth + 56;
-        tabOlElement[i].clientWidth + 56;
 
         widthTally = widthTally + tabElWidth;
 
@@ -249,6 +248,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
           return;
         }
       }
+
+    
+
     });
 
     // SCROLL ICON BEHAVIOR
