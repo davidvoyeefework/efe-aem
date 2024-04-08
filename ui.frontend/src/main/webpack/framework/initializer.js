@@ -174,13 +174,10 @@ window.addEventListener("resize", tabsCornish);
 
 //GSAP Animation Platform for Cornish Tabs
 document.addEventListener("DOMContentLoaded", (event) => {
-
   const cornishTabEl = document.querySelector(".tabs-cornish .cmp-tabs__tablist");
-
   if (cornishTabEl != null) {
     gsap.registerPlugin(ScrollTrigger,ScrollToPlugin);
     const scrollEl = document.getElementById("cornish-tab-nav");    
-
     const imgTag = document.createElement("div");
     const imgTagBack = document.createElement("div");
     imgTag.classList.add("scrollIcon");
@@ -196,53 +193,29 @@ document.addEventListener("DOMContentLoaded", (event) => {
       let overFlowWidth = scrollWidth - viewPortWidth -.5;
       let tabOlElement = document.querySelectorAll("#cornish-tab-nav li");
       let tabNumber = tabOlElement.length;
-      
       let widthTally = 0;
       for (let i = 0; i <= tabNumber; i++) {
         let tabElWidth = tabOlElement[i].clientWidth + 56;
         widthTally = widthTally + tabElWidth;
         if (widthTally >= viewPortWidth) {
           widthTally = widthTally - tabOlElement[i].clientWidth -56; 
-          scrollEl.scrollLeft += widthTally;      
+          scrollEl.scrollLeft += widthTally -30;    
           return;
         }
       }
     });
-
-    let lastPosition = 0;    
+  
     scrollIconBack.addEventListener("click", () => {
-      let scrollWidth = scrollEl.scrollWidth;
       let viewPortWidth = scrollEl.offsetWidth;
       let tabOlElement = document.querySelectorAll("#cornish-tab-nav li");
       let tabNumber = tabOlElement.length;
-
-      if (lastPosition != 0) {
-        let nextLeftPosition = lastPosition - 1;
-
-        if (nextLeftPosition == 1 ) {
-          scrollEl.scrollLeft = 0;
-          return;
-        }
-
-        let widthTally = 0;
-        for (let i = 0; i <= tabNumber; i++) {
-          if (i == nextLeftPosition) {
-            scrollEl.scrollLeft = widthTally -30;
-            return;
-          }          
-          let tabElWidth = tabOlElement[i].clientWidth + 56;
-          widthTally = widthTally + tabElWidth; 
-        }     
-      };
-      
       let widthTally = 0;
       for (let i = tabNumber -1; i >= 0; i--) {
         let tabElWidth = tabOlElement[i].clientWidth + 56;
         widthTally = widthTally + tabElWidth;
         if (widthTally >= viewPortWidth) {
-          let newSet = scrollWidth - widthTally;
-          lastPosition = i;
-          scrollEl.scrollLeft = newSet; 
+          widthTally = widthTally - tabOlElement[i].clientWidth - 56;
+          scrollEl.scrollLeft -= widthTally - 30;
           return;
         }
       }
@@ -260,9 +233,14 @@ document.addEventListener("DOMContentLoaded", (event) => {
         wrapper.classList.add("no-icon");
         wrapper.classList.add("reverse-icon");
       }
-      if (scroll == 0) {
+      else if (scroll == 0) {
         wrapper.classList.remove("no-icon");
         wrapper.classList.remove("reverse-icon");
+      }
+
+      else if (scroll > 0 && scroll < scrollEnd) {
+        wrapper.classList.remove("no-icon");
+        wrapper.classList.add("reverse-icon");
       }
 
     });
