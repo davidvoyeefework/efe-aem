@@ -63,6 +63,7 @@
             grid-area: image1;
         }
     }
+
     &.cmp-image-collage--border-top-left {
         .cmp-container {
             .image:nth-child(2) {
@@ -72,6 +73,7 @@
             }
         }
     }
+
     &.cmp-image-collage--border-multiple {
         .cmp-container {
             .image:nth-child(2) {
@@ -86,6 +88,7 @@
             }
         }
     }
+
     &.primaryRight-left-col-multi-radius {
         .cmp-container {
             .image:nth-child(2) {
@@ -100,7 +103,7 @@
             }
         }
     }    
-    
+
     &.primaryTop-multi-corner-radius {
         .cmp-container {
             grid-template-areas: 
@@ -119,4 +122,24 @@
             }            
         };
     }
+
+    &.primaryBottom-multi-corner-radius {
+        .cmp-container {
+
+            grid-template-areas: 
+            "image2 image3"            
+            "image1 image1";
+
+            .image:nth-child(2) {
+                img {
+                    @include border-top-right-radius();
+                }
+            }
+            .image:nth-child(3) {
+                img {
+                    @include border-top-left-radius();
+                }
+            }            
+        };
+    }    
 }
