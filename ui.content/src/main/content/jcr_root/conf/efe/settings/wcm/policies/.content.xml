@@ -1485,20 +1485,35 @@
 									cq:styleLabel="Primary left - top corner radius"
 									jcr:primaryType="nt:unstructured"/>
                                 <item2
+									cq:styleClasses="cmp-image-collage cmp-image-collage--left-large primaryLeft-right-col-multi-radius"
+									cq:styleId="primaryLeft-right-col-multi-radius"
+									cq:styleLabel="Primary left - right column multi corner radius"
+									jcr:primaryType="nt:unstructured"/>                                    
+                                <item3
 									cq:styleClasses="cmp-image-collage cmp-image-collage--right-large"
 									cq:styleId="primaryRight"
 									cq:styleLabel="Primary right"
 									jcr:primaryType="nt:unstructured"/>
-                                <item3
+                                <item4
+									cq:styleClasses="cmp-image-collage cmp-image-collage--right-large primaryRight-left-col-multi-radius"
+									cq:styleId="primaryRight-left-col-multi-radius"
+									cq:styleLabel="Primary right - left column multi corner radius"
+									jcr:primaryType="nt:unstructured"/>                                    
+                                <item5
 									cq:styleClasses="cmp-image-collage cmp-image-collage--right-large cmp-image-collage--border-top-left"
 									cq:styleId="secondaryLeft-top-corner-radius"
 									cq:styleLabel="Secondary left - top corner radius"
 									jcr:primaryType="nt:unstructured"/>
-                                <item4
+                                <item6
 									cq:styleClasses="cmp-image-collage cmp-image-collage--right-large cmp-image-collage--border-multiple"
 									cq:styleId="secondaryLeft-multi-corner-radius"
 									cq:styleLabel="Secondary left - multi corner radius"
 									jcr:primaryType="nt:unstructured"/>
+                                <item7
+									cq:styleClasses="cmp-image-collage cmp-image-collage--right-large primaryTop-multi-corner-radius"
+									cq:styleId="primaryTop-multi-corner-radius"
+									cq:styleLabel="Primary top - bottom row multi corner radius"
+									jcr:primaryType="nt:unstructured"/>                                    
                             </cq:styles>
                         </item0>
                     </cq:styleGroups>
