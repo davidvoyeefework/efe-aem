@@ -95,6 +95,20 @@ export const PROMOTION_ANNOUNCED_END_DATE = (key) => {
   let value = windowDataObj?.promotion?.announcedDeadlineDate;
   let announcedDeadlineDate = value;
   let PROMOTION_ANNOUNCED_END_DATE = "";
+  var monthNames = [
+    "Jan.",
+    "Feb.",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "Aug.",
+    "Sept.",
+    "Oct.",
+    "Nov.",
+    "Dec.",
+  ];
   if (announcedDeadlineDate != null) {
     var announcedDeadlineDateArray = announcedDeadlineDate.split("-");
 
