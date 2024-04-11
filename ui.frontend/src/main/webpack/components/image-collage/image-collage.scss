@@ -37,6 +37,21 @@
             }
         }
     }
+
+    &.primaryLeft-right-col-multi-radius {
+        .cmp-container {
+            .image:nth-child(2) {
+                img {
+                    @include border-bottom-right-radius();
+                }
+            }
+            .image:nth-child(3) {
+                img {
+                    @include border-top-right-radius;
+                }
+            }
+        }
+    } 
 }
 
 .cmp-image-collage--right-large {
@@ -70,5 +85,38 @@
                 }
             }
         }
+    }
+    &.primaryRight-left-col-multi-radius {
+        .cmp-container {
+            .image:nth-child(2) {
+                img {
+                    @include border-bottom-left-radius();
+                }
+            }
+            .image:nth-child(3) {
+                img {
+                    @include border-top-left-radius;
+                }
+            }
+        }
+    }    
+    
+    &.primaryTop-multi-corner-radius {
+        .cmp-container {
+            grid-template-areas: 
+            "image1 image1"
+            "image2 image3";
+
+            .image:nth-child(2) {
+                img {
+                    @include border-bottom-right-radius();
+                }
+            }
+            .image:nth-child(3) {
+                img {
+                    @include border-bottom-left-radius();
+                }
+            }            
+        };
     }
 }
