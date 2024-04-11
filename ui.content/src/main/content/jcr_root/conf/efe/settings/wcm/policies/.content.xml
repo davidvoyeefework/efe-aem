@@ -1513,7 +1513,12 @@
 									cq:styleClasses="cmp-image-collage cmp-image-collage--right-large primaryTop-multi-corner-radius"
 									cq:styleId="primaryTop-multi-corner-radius"
 									cq:styleLabel="Primary top - bottom row multi corner radius"
-									jcr:primaryType="nt:unstructured"/>                                    
+									jcr:primaryType="nt:unstructured"/>             
+                                <item8
+									cq:styleClasses="cmp-image-collage cmp-image-collage--right-large primaryBottom-multi-corner-radius"
+									cq:styleId="primaryBottom-multi-corner-radius"
+									cq:styleLabel="Primary bottom - top row multi corner radius"
+									jcr:primaryType="nt:unstructured"/>                                                             
                             </cq:styles>
                         </item0>
                     </cq:styleGroups>
