@@ -18,16 +18,11 @@ import com.adobe.cq.export.json.ExporterConstants;
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
 public class ImageImpl implements Image {
 
-    /**
-     * The current resource.
-     */
+    // Current Resource
     @Self
     private Resource resource;    
 
-    /**
-     * Injecting dynamicMediaService
-     *
-     */
+    // Dynamic Media Services
     @OSGiService
     private DynamicMediaService dynamicMediaService;   
     
@@ -35,7 +30,7 @@ public class ImageImpl implements Image {
     @ValueMapValue    
     String resourcePath;   
 
-    /** The primary image. */
+    //Primary Image
     @ValueMapValue
     private String fileName;    
     
@@ -45,7 +40,7 @@ public class ImageImpl implements Image {
     // Primary Image modifier
     String ImageModifier;
 
-    /** The resource resolver. */
+    // The resource resolver. 
     @SlingObject
     private ResourceResolver resourceResolver;    
 
@@ -54,7 +49,7 @@ public class ImageImpl implements Image {
         resourcePath = resource.getPath();
         resourceProperty = "scene7imagemodifier";        
         ImageModifier = ResourceUtil.getProperty(resourceResolver, resourcePath, resourceProperty);  
-        // String basePath = dynamicMediaService.getDmImagePath(resourceResolver, fileName);                   
+        // String basePath = dynamicMediaService.getDmImagePath(resourceResolver, fileName);  
         return ImageModifier;
     }
     
