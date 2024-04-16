@@ -51,10 +51,10 @@ public class ImageImpl implements Image {
 
 
     public String getImageModifier () {
-        resourcePath = resource.getPath(); 
+        resourcePath = resource.getPath();
         resourceProperty = "scene7imagemodifier";        
         ImageModifier = ResourceUtil.getProperty(resourceResolver, resourcePath, resourceProperty);  
-        String basePath = dynamicMediaService.getDmImagePath(resourceResolver, fileName);                   
+        // String basePath = dynamicMediaService.getDmImagePath(resourceResolver, fileName);                   
         return ImageModifier;
     }
     
