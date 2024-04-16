@@ -1510,12 +1510,12 @@
 									cq:styleLabel="Secondary left - multi corner radius"
 									jcr:primaryType="nt:unstructured"/>
                                 <item7
-									cq:styleClasses="cmp-image-collage cmp-image-collage--right-large primaryTop-multi-corner-radius"
+									cq:styleClasses="cmp-image-collage cmp-image-collage--left-large primaryTop-multi-corner-radius"
 									cq:styleId="primaryTop-multi-corner-radius"
 									cq:styleLabel="Primary top - bottom row multi corner radius"
 									jcr:primaryType="nt:unstructured"/>             
                                 <item8
-									cq:styleClasses="cmp-image-collage cmp-image-collage--right-large primaryBottom-multi-corner-radius"
+									cq:styleClasses="cmp-image-collage cmp-image-collage--left-large primaryBottom-multi-corner-radius"
 									cq:styleId="primaryBottom-multi-corner-radius"
 									cq:styleLabel="Primary bottom - top row multi corner radius"
 									jcr:primaryType="nt:unstructured"/>                                                             
