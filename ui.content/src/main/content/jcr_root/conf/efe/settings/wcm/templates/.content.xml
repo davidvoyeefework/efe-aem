@@ -22,4 +22,5 @@
     <xf-web-variation/>
     <rep:policy/>
     <fe-header-and-footer/>
+    <wpi-alert-template/>
 </jcr:root>
