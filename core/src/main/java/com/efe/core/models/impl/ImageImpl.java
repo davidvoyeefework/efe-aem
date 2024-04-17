@@ -44,15 +44,21 @@ public class ImageImpl implements Image {
     @SlingObject
     private ResourceResolver resourceResolver;    
 
-
     public String getImageModifier () {
         resourcePath = resource.getPath();
         resourceProperty = "scene7imagemodifier";        
         ImageModifier = ResourceUtil.getProperty(resourceResolver, resourcePath, resourceProperty);  
-        // String basePath = dynamicMediaService.getDmImagePath(resourceResolver, fileName);  
-        return ImageModifier;
+        String basePath = dynamicMediaService.getDmImagePath(resourceResolver, fileName);  
+        if (ImageModifier == null) {
+            String scene7path = basePath + "&qlt=100&fmt=webp";
+            return scene7path;            
+        }
+        else {
+            String scene7path = basePath + "&qlt=100&fmt=webp" + ImageModifier;
+            return scene7path;            
+        }        
     }
-    
 }
+
 
 
