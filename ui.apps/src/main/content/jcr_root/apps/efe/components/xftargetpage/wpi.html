@@ -1,0 +1,8 @@
+<sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html">
+	<sly data-sly-call="${clientlib.css @ categories='fe.wpi'}" />
+</sly>
+
+<sly data-sly-use.templatedContainer="com.day.cq.wcm.foundation.TemplatedContainer"/>
+    <sly data-sly-test="${templatedContainer.hasStructureSupport}"
+         data-sly-repeat.child="${templatedContainer.structureResources}"
+         data-sly-resource="${child.path @ resourceType=child.resourceType, decorationTagName='span'}"/>
