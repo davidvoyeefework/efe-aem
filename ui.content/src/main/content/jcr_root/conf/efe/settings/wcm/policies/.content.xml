@@ -1502,19 +1502,14 @@
                                 <item5
 									cq:styleClasses="cmp-image-collage cmp-image-collage--right-large cmp-image-collage--border-top-left"
 									cq:styleId="secondaryLeft-top-corner-radius"
-									cq:styleLabel="Secondary left - top corner radius"
+									cq:styleLabel="Primary right - top left corner radius"
 									jcr:primaryType="nt:unstructured"/>
                                 <item6
-									cq:styleClasses="cmp-image-collage cmp-image-collage--right-large cmp-image-collage--border-multiple"
-									cq:styleId="secondaryLeft-multi-corner-radius"
-									cq:styleLabel="Secondary left - multi corner radius"
-									jcr:primaryType="nt:unstructured"/>
-                                <item7
 									cq:styleClasses="cmp-image-collage cmp-image-collage--left-large primaryTop-multi-corner-radius"
 									cq:styleId="primaryTop-multi-corner-radius"
 									cq:styleLabel="Primary top - bottom row multi corner radius"
 									jcr:primaryType="nt:unstructured"/>             
-                                <item8
+                                <item7
 									cq:styleClasses="cmp-image-collage cmp-image-collage--left-large primaryBottom-multi-corner-radius"
 									cq:styleId="primaryBottom-multi-corner-radius"
 									cq:styleLabel="Primary bottom - top row multi corner radius"
