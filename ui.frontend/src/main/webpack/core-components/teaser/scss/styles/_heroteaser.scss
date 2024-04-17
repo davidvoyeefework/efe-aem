@@ -8,6 +8,8 @@
     .cmp-teaser {
        position: relative;  
        @include teaserHero;
+
+
         &__link {
             @include teaserHero;
         }
@@ -105,6 +107,14 @@
                 .cmp-image__image {
                     border-radius: 0;
                 }
+            }
+        }
+    }
+
+    &.cmp-text--white {
+        .cmp-teaser__content {
+            .cmp-teaser__pretitle, .cmp-teaser__title, .cmp-teaser__description p {
+                color: white;
             }
         }
     }

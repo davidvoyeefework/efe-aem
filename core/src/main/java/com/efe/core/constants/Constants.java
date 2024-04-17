@@ -21,6 +21,8 @@ public class Constants {
 	/** The Constant THUMB. */
 	public static final String THUMB = ".thumb.";
 
+	public static final String HTML_SUFFIX = ".html";
+
 	/** The Constant IMAGE. */
 	public static final String IMAGE = "/image";
 

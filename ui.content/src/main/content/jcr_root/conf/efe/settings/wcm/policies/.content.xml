@@ -1067,6 +1067,19 @@
                                         jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item4>
+                        <item5
+                                cq:styleGroupLabel="Text Color"
+                                jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">                           
+                                <item1
+                                        cq:styleClasses="cmp-text--white"
+                                        cq:styleId="White Text"
+                                        cq:styleLabel="White Text (Only for Banner Hero)"
+                                        jcr:primaryType="nt:unstructured"/>
+                                       
+                            </cq:styles>
+                        </item5>                        
+
                     </cq:styleGroups>
                 </policy>
                 <fe-policy
@@ -1085,12 +1098,17 @@
                                         cq:styleClasses="cmp-teaser--hero--without-image-border-radius"
                                         cq:styleId="standard"
                                         cq:styleLabel="Standard"
-                                        jcr:primaryType="nt:unstructured"/>
+                                        jcr:primaryType="nt:unstructured"/>                                      
                                 <item1
                                         cq:styleClasses="cmp-teaser--hero--boeing-checkup"
                                         cq:styleId="rounded-corner-variation-2"
                                         cq:styleLabel="Rounded Corner - Variation-2"
-                                        jcr:primaryType="nt:unstructured"/>
+                                        jcr:primaryType="nt:unstructured"/>                                     
+                                <item2
+                                        cq:styleClasses="cmp-teaser--hero cmp-text--white"
+                                        cq:styleId="test"
+                                        cq:styleLabel="White text"
+                                        jcr:primaryType="nt:unstructured"/>                                          
                             </cq:styles>
                         </item0>
                     </cq:styleGroups>
@@ -2071,7 +2089,27 @@
                         </item1>
                     </cq:styleGroups>
                 </policy_2323064750917666>
-            </relatedarticle-ed-center>            
+            </relatedarticle-ed-center>   
+            <tabs-cornish jcr:primaryType="nt:unstructured">
+                <policy_1710889953497
+                    cq:styleDefaultClasses="cmp-tabs--horizontal"
+                    jcr:lastModified="{Date}2024-03-20T13:32:40.753-07:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Tabs: Cornish"
+                    sling:resourceType="wcm/core/components/policy/policy">
+                    <jcr:content
+                        cq:isDelivered="{Boolean}false"
+                        cq:lastReplicated="{Date}2024-03-20T13:32:53.519-07:00"
+                        cq:lastReplicated_scene7="{Date}2024-03-20T13:32:53.519-07:00"
+                        cq:lastReplicatedBy="admin"
+                        cq:lastReplicatedBy_scene7="admin"
+                        cq:lastReplicationAction="Activate"
+                        cq:lastReplicationAction_scene7="Activate"
+                        jcr:mixinTypes="[cq:ReplicationStatus]"
+                        jcr:primaryType="nt:unstructured"/>
+                </policy_1710889953497>
+            </tabs-cornish>                    
         </components>
         <fe-components jcr:primaryType="nt:unstructured">
             <structure jcr:primaryType="nt:unstructured">

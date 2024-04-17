@@ -28,6 +28,21 @@ public interface PageModel {
 	 * @return the jquery url
 	 */
 	String getJqueryUrl();
+        
+        /**
+	 * Gets the description or a version of the description for locations/planners.
+	 *
+	 * @return the modified description
+	 */
+        String getModifiedDescription();
+        
+        /**
+	 * Gets the title or a version of the title for locations/planners.
+	 *
+	 * @return the modified title
+	 */
+        String getModifiedTitle();
+        String getFPIDLibURL();
 
 	/**
 	 * Gets the external libraries.

@@ -62,6 +62,14 @@
                                                 fieldDescription="HTML ID attribute to apply to the component."
                                                 fieldLabel="ID"
                                                 name="./id"/>
+                                            <defaultredirectpagepath
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/coral/common/form/pagefield"
+                                                fieldDescription="Default Redirect Page Path"
+                                                fieldLabel="Default Redirect Page Path"
+                                                name="./defaultRedirectPagePath"
+                                                rootPath="/content/efe"
+                                                value="/content/efe/us/en/locations"/>
                                         </items>
                                     </column>
                                 </items>
