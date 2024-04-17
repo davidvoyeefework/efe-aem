@@ -49,9 +49,9 @@ public class ImageImpl implements Image {
         resourceProperty = "scene7imagemodifier";        
         ImageModifier = ResourceUtil.getProperty(resourceResolver, resourcePath, resourceProperty);  
         String basePath = dynamicMediaService.getDmImagePath(resourceResolver, fileName);  
-        if (basePath.contains("null")) {
-            basePath = "image.src";
-            return basePath;
+        if (basePath == null) {
+            String ImgSrc = "image.src";
+            return ImgSrc;
         }
         else if (ImageModifier == null) {
             String scene7path = basePath + "&qlt=100&fmt=webp";
