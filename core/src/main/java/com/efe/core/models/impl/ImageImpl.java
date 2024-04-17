@@ -50,7 +50,7 @@ public class ImageImpl implements Image {
         ImageModifier = ResourceUtil.getProperty(resourceResolver, resourcePath, resourceProperty);  
         String basePath = dynamicMediaService.getDmImagePath(resourceResolver, fileName);  
         if (basePath == null) {
-            String ImgSrc = "image.src";
+            String ImgSrc = "${image.src}";
             return ImgSrc;
         }
         else if (ImageModifier == null) {
