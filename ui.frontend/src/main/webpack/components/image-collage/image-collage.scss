@@ -24,6 +24,7 @@
                 position: relative;
                 height: 100%;
                 width: 100%;
+                padding-top: 86%;
                 img {
                     position: absolute;
                     top: 0;
@@ -71,6 +72,12 @@
             "image1 image1"
             "image2 image3";
 
+            .image:nth-child(1) {
+                .cmp-image {
+                    padding-top: unset;
+                }
+            }
+
             .image:nth-child(2) {
                 img {
                     @include border-bottom-right-radius();
@@ -89,6 +96,13 @@
             grid-template-areas: 
             "image2 image3"            
             "image1 image1";
+
+            .image:nth-child(1) {
+                .cmp-image {
+                    padding-top: unset;
+                }
+            }      
+                  
             .image:nth-child(2) {
                 img {
                     @include border-top-right-radius();
