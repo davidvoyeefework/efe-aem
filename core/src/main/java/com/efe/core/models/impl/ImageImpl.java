@@ -37,7 +37,7 @@ public class ImageImpl implements Image {
     String resourceProperty;    
 
     // Primary Image modifier
-    String ImageModifier;
+    String imageModifier;
 
     // The resource resolver. 
     @SlingObject
@@ -46,18 +46,15 @@ public class ImageImpl implements Image {
     public String getImageModifier () {
         resourcePath = resource.getPath();
         resourceProperty = "scene7imagemodifier";        
-        ImageModifier = ResourceUtil.getProperty(resourceResolver, resourcePath, resourceProperty); 
-        String FileReference =  ResourceUtil.getProperty(resourceResolver, resourcePath, "fileReference"); 
-        String basePath = dynamicMediaService.getDmImagePath(resourceResolver, fileName);  
-        if (basePath == null) {
-            return FileReference;
-        }
-        else if (ImageModifier == null) {
-            String scene7path = basePath + "&qlt=100&fmt=webp";
+        imageModifier = ResourceUtil.getProperty(resourceResolver, resourcePath, resourceProperty); 
+        String fileReference =  ResourceUtil.getProperty(resourceResolver, resourcePath, "fileReference"); 
+        String basePath = dynamicMediaService.getDmImagePath(resourceResolver, fileReference);  
+        if (imageModifier == null) {
+            String scene7path = basePath + "?qlt=100&fmt=webp";
             return scene7path;            
         }
         else {
-            String scene7path = basePath + "&qlt=100&fmt=webp" + ImageModifier;
+            String scene7path = basePath + "?qlt=100&fmt=webp" + imageModifier;
             return scene7path;            
         }        
     }
