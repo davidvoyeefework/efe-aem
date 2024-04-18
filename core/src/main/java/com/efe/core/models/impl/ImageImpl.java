@@ -9,7 +9,6 @@ import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
-
 import com.efe.core.services.DynamicMediaService;
 import com.efe.core.utils.ResourceUtil;
 import com.adobe.cq.export.json.ExporterConstants;
@@ -47,11 +46,11 @@ public class ImageImpl implements Image {
     public String getImageModifier () {
         resourcePath = resource.getPath();
         resourceProperty = "scene7imagemodifier";        
-        ImageModifier = ResourceUtil.getProperty(resourceResolver, resourcePath, resourceProperty);  
+        ImageModifier = ResourceUtil.getProperty(resourceResolver, resourcePath, resourceProperty); 
+        String FileReference =  ResourceUtil.getProperty(resourceResolver, resourcePath, "fileReference"); 
         String basePath = dynamicMediaService.getDmImagePath(resourceResolver, fileName);  
         if (basePath == null) {
-            String ImgSrc = "${image.src}";
-            return ImgSrc;
+            return FileReference;
         }
         else if (ImageModifier == null) {
             String scene7path = basePath + "&qlt=100&fmt=webp";
