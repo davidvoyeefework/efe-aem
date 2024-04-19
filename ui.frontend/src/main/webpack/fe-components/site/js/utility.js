@@ -95,6 +95,20 @@ export const PROMOTION_ANNOUNCED_END_DATE = (key) => {
   let value = windowDataObj?.promotion?.announcedDeadlineDate;
   let announcedDeadlineDate = value;
   let PROMOTION_ANNOUNCED_END_DATE = "";
+  var monthNames = [
+    "Jan.",
+    "Feb.",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "Aug.",
+    "Sept.",
+    "Oct.",
+    "Nov.",
+    "Dec.",
+  ];
   if (announcedDeadlineDate != null) {
     var announcedDeadlineDateArray = announcedDeadlineDate.split("-");
 
@@ -103,9 +117,9 @@ export const PROMOTION_ANNOUNCED_END_DATE = (key) => {
   if (PROMOTION_ANNOUNCED_END_DATE == "") {
     return PROMOTION_ANNOUNCED_END_DATE;
   } else {
-    return `${monthNames[PROMOTION_ANNOUNCED_END_DATE.getMonth()]} ${
-      PROMOTION_ANNOUNCED_END_DATE.getDate
-    }, ${PROMOTION_ANNOUNCED_END_DATE.getFullYear()}`;
+    return `${
+      monthNames[PROMOTION_ANNOUNCED_END_DATE.getMonth()]
+    } ${PROMOTION_ANNOUNCED_END_DATE.getDate()}, ${PROMOTION_ANNOUNCED_END_DATE.getFullYear()}`;
   }
 };
 
@@ -135,9 +149,9 @@ export const getPromotionExpirationDate = () => {
   if (promotionExpirationDate == "") {
     return promotionExpirationDate;
   } else {
-    return `${monthNames[promotionExpirationDate.getMonth()]} ${
-      promotionExpirationDate.getDate
-    }, ${promotionExpirationDate.getFullYear()}`;
+    return `${
+      monthNames[promotionExpirationDate.getMonth()]
+    } ${promotionExpirationDate.getDate()}, ${promotionExpirationDate.getFullYear()}`;
   }
 };
 
