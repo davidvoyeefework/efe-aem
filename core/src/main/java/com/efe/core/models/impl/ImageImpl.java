@@ -50,12 +50,25 @@ public class ImageImpl implements Image {
         String fileReference =  ResourceUtil.getProperty(resourceResolver, resourcePath, "fileReference"); 
         String basePath = dynamicMediaService.getDmImagePath(resourceResolver, fileReference);  
         if (imageModifier == null) {
-            String scene7path = basePath + "?qlt=100&fmt=webp";
-            return scene7path;            
+            if (basePath.contains("?ts=")) {
+                String scene7path = basePath + "&qlt=100&fmt=webp";
+                return scene7path; 
+            }
+            else {
+                String scene7path = basePath + "?qlt=100&fmt=webp";
+                return scene7path;    
+            }        
         }
         else {
-            String scene7path = basePath + "?qlt=100&fmt=webp" + imageModifier;
-            return scene7path;            
+            if (basePath.contains("?ts=")) {
+                String scene7path = basePath + "&qlt=100&fmt=webp" + imageModifier;
+                return scene7path;  
+            }
+            else {
+                String scene7path = basePath + "?qlt=100&fmt=webp" + imageModifier;
+                return scene7path;  
+            }
+          
         }        
     }
 }
