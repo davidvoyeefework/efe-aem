@@ -115,13 +115,24 @@ public class ImageCollageImpl implements ImageCollage {
     public String getPrimaryImage() {
         resourcePath = resource.getPath();
         resourceProperty = "primaryimgmodifier";
+        String resourcePropertyStyleId = "cq:styleIds";
         primaryImageModifier = ResourceUtil.getProperty(resourceResolver, resourcePath, resourceProperty); 
-        String basePath = dynamicMediaService.getDmImagePath(resourceResolver, primaryImage);        
+        String basePath = dynamicMediaService.getDmImagePath(resourceResolver, primaryImage);  
+        String [] styleRendition = ResourceUtil.getProperties(resourceResolver, resourcePath, resourcePropertyStyleId);     
         if (primaryImageModifier == null) {
+            if (styleRendition[0].equals("primaryBottom-multi-corner-radius") || styleRendition[0].equals("primaryTop-multi-corner-radius")){
+                String scene7path = basePath + "?wid=720&hei=310&op_sharpen=1&qlt=85&fmt=webp&fit=crop,1";
+                return scene7path; 
+            }
             String scene7path = basePath + "?op_sharpen=1&qlt=85&fmt=webp&hei=826&wid=480&fit=crop,1";
-            return scene7path;            
+            return scene7path;  
+            
         }
         else {
+            if (styleRendition[0].equals("primaryBottom-multi-corner-radius") || styleRendition[0].equals("primaryTop-multi-corner-radius")){
+                String scene7path = basePath + "?wid=720&hei=310&op_sharpen=1&qlt=85&fmt=webp&fit=crop,1" + primaryImageModifier;
+                return scene7path; 
+            }
             String scene7path = basePath + "?op_sharpen=1&qlt=85&fmt=webp&hei=826&wid=480&fit=crop,1" + primaryImageModifier;
             return scene7path;            
         }
