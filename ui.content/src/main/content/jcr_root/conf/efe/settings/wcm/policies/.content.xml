@@ -2045,6 +2045,15 @@
                     clientlibs="fe.wpi">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                 </policy_26124683091563>
+                <policy_59774280627920
+                    jcr:lastModified="{Date}2024-05-06T13:26:26.049-04:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="WPI Alert XF Template Page Policy"
+                    sling:resourceType="wcm/core/components/policy/policy"
+                    clientlibs="fe.wpi">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                </policy_59774280627920>
             </xftargetpage>
             <xfpage jcr:primaryType="nt:unstructured">
                 <fepolicy
