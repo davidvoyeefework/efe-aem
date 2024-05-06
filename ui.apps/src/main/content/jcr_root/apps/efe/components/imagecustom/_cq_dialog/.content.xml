@@ -102,7 +102,13 @@
                                                 name="./disableLazyLoading"
                                                 text="Disable lazy loading"
                                                 uncheckedValue="false"
-                                                value="{Boolean}true"/>                                                
+                                                value="{Boolean}true"/>
+                                            <imgmodifier
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="See modifier docs here -> https://experienceleague.adobe.com/en/docs/dynamic-media-developer-resources/image-serving-api/image-serving-api/http-protocol-reference/command-reference/c-command-reference"
+                                                fieldLabel="Scene 7 Image Modifer"
+                                                name="./scene7imagemodifier"/>                                                   
                                         </items>
                                     </column>
                                 </items>
