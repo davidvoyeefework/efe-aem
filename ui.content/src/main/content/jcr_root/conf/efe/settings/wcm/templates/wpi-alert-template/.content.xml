@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0"
+    jcr:primaryType="cq:Template">
+    <jcr:content
+        cq:lastModified="{Date}2024-04-16T15:36:55.794-04:00"
+        cq:lastModifiedBy="admin"
+        cq:templateType="/conf/efe/settings/wcm/template-types/xftarget"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="WPI Alert Template"
+        status="enabled"/>
+</jcr:root>

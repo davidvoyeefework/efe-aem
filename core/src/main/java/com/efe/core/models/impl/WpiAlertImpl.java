@@ -57,6 +57,30 @@ public class WpiAlertImpl implements WpiAlert {
     /** The resource CF path for subheadline */
 	String resourceCFPathSubheadline;
 
+
+
+
+
+
+    /** The resource CF path for disclosures */
+	String disclosureContentFragment;    
+
+    /** The resource CF path property for disclosure */
+	String resourcePropertyDisclosure;   
+    
+    /** The resource CF path property for disclosure */
+	String resourceCFPropertyDisclosure;    
+    
+    /** The resource value for disclosure */
+    String resourceCFPathDisclosure; 
+
+    /** The resource value for disclosure */
+    String disclosureCFValue;
+
+
+
+
+
     /** The resource CF path property for headline */
 	String resourceCFProperty;
 
@@ -104,7 +128,7 @@ public class WpiAlertImpl implements WpiAlert {
 		headlineContentFragment = ResourceUtil.getProperty( resourceResolver, resourcePath, resourceProperty );
         if (headlineContentFragment != null) {
             resourceCFPath = headlineContentFragment + "/jcr:content/data/master";
-            resourceCFProperty = "headline";
+            resourceCFProperty = "content";
             headlineCFValue = ResourceUtil.getProperty(resourceResolver, resourceCFPath, resourceCFProperty);
         }
         else {
@@ -116,13 +140,28 @@ public class WpiAlertImpl implements WpiAlert {
         subheadlineContentFragment = ResourceUtil.getProperty( resourceResolver, resourcePath, resourcePropertySubheadline);
         if (subheadlineContentFragment != null) {
             resourceCFPathSubheadline = subheadlineContentFragment + "/jcr:content/data/master";
-            resourceCFPropertySubheadline = "Subheadline";
+            resourceCFPropertySubheadline = "content";
             subheadlineCFValue = ResourceUtil.getProperty(resourceResolver, resourceCFPathSubheadline, resourceCFPropertySubheadline);
         }
 
         else {
             subheadlineCFValue = "";
         }
+
+        // Fetch CF for Disclosures
+        resourcePropertyDisclosure = "Disclosure";
+        disclosureContentFragment = ResourceUtil.getProperty( resourceResolver, resourcePath, resourcePropertyDisclosure);
+        if (disclosureContentFragment != null) {
+            resourceCFPathDisclosure = disclosureContentFragment + "/jcr:content/data/master";
+            resourceCFPropertyDisclosure = "content";
+            disclosureCFValue = ResourceUtil.getProperty(resourceResolver, resourceCFPathDisclosure, resourceCFPropertyDisclosure);
+        }
+
+        else {
+            disclosureCFValue = "";
+        }        
+
+
 
         // Fetch Record Keeper theme util class
         recordKeeper = ResourceUtil.getProperty( resourceResolver, resourcePath, "record");
@@ -150,6 +189,11 @@ public class WpiAlertImpl implements WpiAlert {
     public String getSubheadline() {
         return subheadlineCFValue;
     }
+
+    // Gets the Disclosure Content Fragment Path Value
+    public String getDisclosures() {
+        return disclosureCFValue;
+    }    
 
     // Gets Record keeper theme class
     public String getRecordKeeper() {
