@@ -18,10 +18,18 @@
     
         .wpi-subheadline {
             font-family: Arial, Helvetica, sans-serif;
-            font-size: rem(15);
+            font-size: rem(16);
             line-height: rem(19);
             color: $fidelity-wpi-navy;
-        }        
+        }   
+        
+        .wpi-disclosures {
+            margin-top: 8px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: rem(14);
+            line-height: 100%;
+            color: $fidelity-wpi-navy;
+        }
     }
     
     .cmp-button--button-wpi {
@@ -62,5 +70,15 @@
         @media screen and (min-width: $sm) {
              margin-left: 38px;   
         }        
+    }
+
+    @media screen and (min-width: $sm) {
+        .flex {
+            flex-direction: row;
+            -webkit-box-orient: horizontal;            
+            -webkit-box-direction: normal;            
+            -ms-flex-direction: row;            
+            flex-direction: row;            
+        }
     }
 }

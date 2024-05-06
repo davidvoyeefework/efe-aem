@@ -24,6 +24,7 @@ module.exports = {
   entry: {
     site: SOURCE_ROOT + "/site/main.ts",
     fe: SOURCE_ROOT + "/fe-components/site/main.ts",
+    wpi: SOURCE_ROOT + "/wpi/site/main.ts",
   },
   output: {
     filename: (chunkData) => {
