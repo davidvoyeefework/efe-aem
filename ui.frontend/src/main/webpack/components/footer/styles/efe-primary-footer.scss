@@ -40,9 +40,9 @@
                     margin-bottom: 0;
                 }
                 li {
-                    margin-bottom: 6px;
-                    @include media('<tablet-lg') {
-                        margin-bottom: 5px;
+                    a {
+                        display: inline-block;
+                        margin: 14px 0;
                     }
                 }
             }

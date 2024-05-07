@@ -292,11 +292,11 @@ b {
 }
 
 @mixin footer-01{
-    @include buildFont(rem(16), 0, 'nimbus-sans', 400, capitalize, 100%);
+    @include buildFont(rem(18), 0, 'nimbus-sans', 400, capitalize, 100%);
 }
 
 @mixin footer-02{
-    @include buildFont(rem(14), 0, 'nimbus-sans', 400, capitalize, 100%);
+    @include buildFont(rem(16), 0, 'nimbus-sans', 400, capitalize, 100%);
 }
 
 .footer-02 {
