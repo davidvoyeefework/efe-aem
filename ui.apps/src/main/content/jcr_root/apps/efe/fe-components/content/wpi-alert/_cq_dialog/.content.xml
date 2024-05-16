@@ -134,7 +134,8 @@
                                             fieldDescription="Add Icon"
                                             fieldLabel="Icon"
                                             name="./icon"
-                                            rootPath="/content/dam/efe/production/growth-mark/aq_wpi"/>                                                                                                                                  
+                                            rootPath="/content/dam/efe/production/growth-mark/aq_wpi"/>
+                                    </destination>                                                                                                                                  
                                     </items>
                                 </columns>                                        
                             </items>                                                                                    
