@@ -365,6 +365,71 @@ export const getProductChoiceUrl = () => {
   return `<a href=${url} target="_self" class="fe-learn-more-link">LEARN MORE</a>`;
 };
 
+export const getProductChoiceButton = () => {
+  const windowDataObj = window?.aemfe;
+  let url = "";
+  let type;
+  const userLoggedIn = Boolean(windowDataObj?.userLoggedIn);
+  const apiBaseUrl = getApiBaseUrl();
+  const choiceFlowVersionForPA =
+    windowDataObj[
+      `maoachoice.pilot.tokenlogin.alternatechoiceflow.test.versions`
+    ];
+  const choiceFlowVersionForNonPA =
+    windowDataObj[`publicEnrollment.alternatechoiceflow.limit.versions`];
+  const session = windowDataObj?.context?.s || "";
+  const ticket = windowDataObj?.context?.t || "";
+  const isMember = windowDataObj?.context.isMember;
+
+  if (userLoggedIn) {
+    if (isMember && checkIfPaSponsored()) {
+      url = apiBaseUrl + "app/productchoices/#/paDetailedRouter?fromPoint=";
+    } else {
+      url =
+        apiBaseUrl +
+        "maoachoice/start.act?t=" +
+        ticket +
+        "&s=" +
+        session +
+        "&br=558&targetPoint=PRODUCT_CHOICES&showMoreInfo=false&fromPoint=";
+    }
+  } else {
+    //user is anonymous but we know the sponsor
+    if (checkIfPaSponsored()) {
+      //PA Sponsor
+      type = choiceFlowVersionForPA;
+      if (type && type === "SIMPLE_SIDE_BY_SIDE") {
+        url =
+          apiBaseUrl +
+          "app/productchoices/#/simpleSideBySide?fromPoint=MA_PUBLIC_ENROLL";
+      } else {
+        url =
+          apiBaseUrl +
+          "app/productchoices/#/threeTierProductChoiceRouter?fromPoint=MA_PUBLIC_ENROLL";
+      }
+    } else {
+      type = choiceFlowVersionForNonPA;
+      if (type && type === "PM_ONLY") {
+        url =
+          apiBaseUrl +
+          "app/productchoices/#/pmDetailed?fromPoint=MA_PUBLIC_ENROLL";
+      } else {
+        url =
+          apiBaseUrl +
+          "app/productchoices/#/simpleSideBySide?fromPoint=MA_PUBLIC_ENROLL";
+      }
+    }
+  }
+  var scId = captureScIdFromUrl();
+  if (scId) {
+    url = url + "&s_cid=" + encodeURIComponent(scId);
+  }
+  //now remove https:// from the url since Unbounce already prefix the button link url with https://.
+  //this value will be the dynamic replacement for button link url
+  return '<div class="button cmp-button--button-primary" style="padding-top:30px"><a class="cmp-button" href=${url}><span class="cmp-button__text">Get Started</span></a></div>';
+  //return `<a href=${url} target="_self" class="fe-learn-more-link">LEARN MORE</a>`;
+};
+
 export const getOtherWaysPromoMsgPa = () => {
   const windowDataObj = window?.aemfe;
   let otherWaysPromoMsgPa = "";
@@ -423,6 +488,47 @@ export const getDashboardLink = () => {
   }
   return url
     ? `<a href="${url}" target="_blank" class="fe-learn-more-link">${linkLabel}</a>`
+    : "";
+};
+export const getDashboardButton = () => {
+  const windowDataObj = window?.aemfe;
+  const {
+    isUserFullyAuth,
+    context,
+    userLoggedIn,
+    isUserLightAuth,
+    providerInfo,
+  } = windowDataObj;
+  const apiBaseUrl = getApiBaseUrl();
+  let url = "";
+  let linkLabel = "LOGIN TO ONLINE ADVICE";
+  if (context?.userTier) {
+    linkLabel =
+      context?.userTier === "OA"
+        ? "LOGIN TO ONLINE ADVICE"
+        : context?.userTier === "MA"
+          ? "MEMBER DASHBOARD"
+          : linkLabel;
+  }
+  if (
+    (isUserFullyAuth && context?.userTier && context.userTier !== "PROSPECT") ||
+    isUserLightAuth === true
+  ) {
+    url =
+      apiBaseUrl +
+      "onlineadvice/start.act?t=" +
+      encodeURIComponent(context.t) +
+      "&s=" +
+      encodeURIComponent(context.s) +
+      "&removeAdviceLandingPage=true";
+    url;
+  } else if (userLoggedIn === true && isUserLightAuth === true) {
+    url = providerInfo?.rkLoginUrl;
+    url.replace(/^https?:\/\//i, "");
+  }
+  return url
+    ? `'<div class="button cmp-button--button-primary" style="padding-top:30px"><a class="cmp-button" href=${url}><span class="cmp-button__text">Get Started</span></a></div>'`
+//    ? `<a href="${url}" target="_blank" class="fe-learn-more-link">${linkLabel}</a>`
     : "";
 };
 export const getLoginLink = () => {
