@@ -426,7 +426,11 @@ export const getProductChoiceButton = () => {
   }
   //now remove https:// from the url since Unbounce already prefix the button link url with https://.
   //this value will be the dynamic replacement for button link url
-  return '<div class="button cmp-button--button-primary" style="padding-top:30px"><a class="cmp-button" href=${url}><span class="cmp-button__text">Get Started</span></a></div>';
+  return `<div class="button cmp-button--button-primary" style="padding-top:30px">
+                         <a class="cmp-button" href=${url}>
+                             <span class="cmp-button__text">Get Started</span>
+                         </a>
+                         </div>`;
   //return `<a href=${url} target="_self" class="fe-learn-more-link">LEARN MORE</a>`;
 };
 
@@ -490,6 +494,7 @@ export const getDashboardLink = () => {
     ? `<a href="${url}" target="_blank" class="fe-learn-more-link">${linkLabel}</a>`
     : "";
 };
+
 export const getDashboardButton = () => {
   const windowDataObj = window?.aemfe;
   const {
@@ -527,7 +532,11 @@ export const getDashboardButton = () => {
     url.replace(/^https?:\/\//i, "");
   }
   return url
-    ? `'<div class="button cmp-button--button-primary" style="padding-top:30px"><a class="cmp-button" href=${url}><span class="cmp-button__text">Get Started</span></a></div>'`
+    ? `<div class="button cmp-button--button-primary" style="padding-top:30px">
+                      <a class="cmp-button" href=${url}>
+                          <span class="cmp-button__text">Get Started</span>
+                      </a>
+                      </div>`
 //    ? `<a href="${url}" target="_blank" class="fe-learn-more-link">${linkLabel}</a>`
     : "";
 };
