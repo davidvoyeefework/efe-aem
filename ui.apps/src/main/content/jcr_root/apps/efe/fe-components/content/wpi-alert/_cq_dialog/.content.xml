@@ -149,7 +149,7 @@
                                             fieldDescription="Add Icon"
                                             fieldLabel="Icon"
                                             name="./icon"
-                                            rootPath="/content/dam/efe/sub-advised"/>                                                                                                                                  
+                                            rootPath="/content/dam/efe/production/growth-mark/aq_wpi"/>                                                                                                                                  
                                     </items>
                                 </columns>                                        
                             </items>                                                                                    
