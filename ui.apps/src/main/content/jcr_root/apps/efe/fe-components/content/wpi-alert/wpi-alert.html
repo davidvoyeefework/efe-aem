@@ -4,8 +4,9 @@
             <img class="wpi-img" src="${model.icon}" alt="" />
 
             <div class="copy">
-                <h2 class="wpi-headline">${model.headline @context='html'}</h2>
-                <p class="wpi-subheadline">${model.subheadline @context='html'}</p>  
+                ${model.headline @context='html'}
+                ${model.subheadline @context='html'}
+                ${model.disclosures @context='html'}
             </div>        
 
             <div class="button cmp-button--button-wpi">

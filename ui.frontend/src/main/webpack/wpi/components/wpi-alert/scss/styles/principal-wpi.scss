@@ -18,7 +18,7 @@
             margin-left: rem(111);
             margin-bottom: rem(11);
 
-            h2.wpi-headline {
+            h2 {
                 font-size: rem(24);
                 color: $principal-gray;
                 line-height: rem(29);
@@ -26,11 +26,18 @@
                 font-weight: 700;
                 margin-bottom: rem(15);
             }
-            p.wpi-subheadline {
+            h3 {
                 font-family: Arial, Helvetica, sans-serif;
                 color: $principal-gray;
                 font-size: rem(18);
                 line-height: rem(20);
+            }
+            p {
+                font-family: Arial, Helvetica, sans-serif;
+                color: $principal-gray;
+                font-size: rem(14);
+                line-height: rem(20);   
+                margin-top: rem(20);             
             }
         }  
         .cmp-button--button-wpi {

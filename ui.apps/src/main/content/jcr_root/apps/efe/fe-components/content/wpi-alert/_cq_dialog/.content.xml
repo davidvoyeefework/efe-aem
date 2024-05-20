@@ -78,7 +78,7 @@
                                                 name="./Headline"
                                                 pickerTitle="Select Content Fragment Headline"
                                                 rootPath="/content/dam/efe/cf/sub-advised"/>
-                                                <Subheadline
+                                            <Subheadline
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="dam/cfm/components/cfpicker"
                                                 emptyText="Enter or select Content Fragment"
@@ -87,6 +87,15 @@
                                                 name="./Subheadline"
                                                 pickerTitle="Select Content Fragment Subheadline"
                                                 rootPath="/content/dam/efe/cf/sub-advised"/>
+                                            <Disclosure
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="dam/cfm/components/cfpicker"
+                                                emptyText="Enter or select Content Fragment"
+                                                fieldDescription="Path to the Content Fragment to display Disclosures."
+                                                fieldLabel="Disclosure"
+                                                name="./Disclosure"
+                                                pickerTitle="Select Content Fragment Disclosure"
+                                                rootPath="/content/dam/efe/cf/sub-advised"/>                                                
                                         </items>
                                     </column>
                                 </items>

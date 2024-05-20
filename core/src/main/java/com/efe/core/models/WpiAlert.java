@@ -8,6 +8,9 @@ public interface WpiAlert {
     //  Method to return Subheadline content fragment value
     public String getSubheadline();
 
+    //  Method to return CF for disclosures
+    public String getDisclosures();
+
     //  Method to return record keeper theme class
     public String getRecordKeeper();
 
@@ -21,5 +24,6 @@ public interface WpiAlert {
     public String getIcon();     
 
     //  Method to return Icon img path
-    public String getDestination();     
+    public String getDestination();   
+      
 }
