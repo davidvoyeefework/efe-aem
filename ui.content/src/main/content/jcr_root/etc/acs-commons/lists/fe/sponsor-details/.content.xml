@@ -129,6 +129,14 @@
                 jcr:primaryType="nt:unstructured"
                 jcr:title="PA Learn more button"
                 value="learnMorePAButton|custom"/>
+            <item30
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Product Choice Button"
+                value="product_choice_button|custom"/>
+            <item31
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Dashboard Button"
+                value="dashboardButton|custom"/>
         </list>
     </jcr:content>
 </jcr:root>
