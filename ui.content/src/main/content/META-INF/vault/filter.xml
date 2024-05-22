@@ -15,6 +15,7 @@
     <filter root="/conf/efe/settings/wcm/templates/article" mode="merge"/>
     <filter root="/conf/efe/settings/wcm/templates/leader-bio" mode="merge"/>
     <filter root="/conf/efe/settings/wcm/templates/service-detail" mode="merge"/>
+    <filter root="/conf/efe/settings/wcm/templates/wpi-alert-xf-template" mode="merge"/>
     <filter root="/conf/efe/settings/wcm/policies" mode="replace"/>
     <filter root="/conf/efe" mode="update"/>
     <filter root="/conf/fe" mode="merge_properties"/>

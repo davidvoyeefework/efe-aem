@@ -1,0 +1,77 @@
+package com.efe.core.models.impl;
+import com.efe.core.models.Image;
+import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.models.annotations.DefaultInjectionStrategy;
+import org.apache.sling.models.annotations.Exporter;
+import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.OSGiService;
+import org.apache.sling.models.annotations.injectorspecific.Self;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
+import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+import com.efe.core.services.DynamicMediaService;
+import com.efe.core.utils.ResourceUtil;
+import com.adobe.cq.export.json.ExporterConstants;
+
+@Model(adaptables = Resource.class, adapters = Image.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
+public class ImageImpl implements Image {
+
+    // Current Resource
+    @Self
+    private Resource resource;    
+
+    // Dynamic Media Services
+    @OSGiService
+    private DynamicMediaService dynamicMediaService;   
+    
+    // Resource Path
+    @ValueMapValue    
+    String resourcePath;   
+
+    //Primary Image
+    @ValueMapValue
+    private String fileName;    
+    
+    // Resource Property
+    String resourceProperty;    
+
+    // Primary Image modifier
+    String imageModifier;
+
+    // The resource resolver. 
+    @SlingObject
+    private ResourceResolver resourceResolver;    
+
+    public String getImageModifier () {
+        resourcePath = resource.getPath();
+        resourceProperty = "scene7imagemodifier";        
+        imageModifier = ResourceUtil.getProperty(resourceResolver, resourcePath, resourceProperty); 
+        String fileReference =  ResourceUtil.getProperty(resourceResolver, resourcePath, "fileReference"); 
+        String basePath = dynamicMediaService.getDmImagePath(resourceResolver, fileReference);  
+        if (imageModifier == null) {
+            if (basePath.contains("?ts=")) {
+                String scene7path = basePath + "&qlt=100&fmt=webp";
+                return scene7path; 
+            }
+            else {
+                String scene7path = basePath + "?qlt=100&fmt=webp";
+                return scene7path;    
+            }        
+        }
+        else {
+            if (basePath.contains("?ts=")) {
+                String scene7path = basePath + "&qlt=100&fmt=webp" + imageModifier;
+                return scene7path;  
+            }
+            else {
+                String scene7path = basePath + "?qlt=100&fmt=webp" + imageModifier;
+                return scene7path;  
+            }
+          
+        }        
+    }
+}
+
+
+
