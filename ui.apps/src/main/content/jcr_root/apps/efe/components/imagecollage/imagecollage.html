@@ -4,10 +4,10 @@
         <sly data-sly-test="${imageCollageModel.primaryImage}">
             <div class="image ${imageCollageModel.primaryImagePosition}">
                 <div class="cmp-image" itemscope="" itemtype="http://schema.org/ImageObject">
-                    <sly data-sly-test="${imageCollageModel.primaryImageAltText}">
+                    <sly data-sly-test.hasAlt="${imageCollageModel.primaryImageAltText}">
                         <img class="cmp-image__image" src="${imageCollageModel.primaryImage}" alt="${imageCollageModel.primaryImageAltText}">
                     </sly>
-                    <sly data-sly-test="${!imageCollageModel.primaryImageAltText}">
+                    <sly data-sly-test="${!hasAlt}">
                         <img class="cmp-image__image" src="${imageCollageModel.primaryImage}" alt="">
                     </sly>
                 </div>
