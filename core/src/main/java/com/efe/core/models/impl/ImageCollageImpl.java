@@ -133,7 +133,12 @@ public class ImageCollageImpl implements ImageCollage {
      * @return the primary image alt text
      */
     public String getPrimaryImageAltText() {
-        return primaryImageAltText;
+        if (primaryImageAltText == null) {
+            return " ";
+        }
+        else {
+            return primaryImageAltText;
+        }        
     }
 
     /**
@@ -162,7 +167,12 @@ public class ImageCollageImpl implements ImageCollage {
      * @return the first secondary image alt text
      */
     public String getFirstSecondaryImageAltText() {
-        return firstSecondaryImageAltText;
+        if (firstSecondaryImageAltText == null) {
+            return " ";
+        }
+        else {
+            return firstSecondaryImageAltText;
+        }
     }
 
     /**
@@ -192,7 +202,12 @@ public class ImageCollageImpl implements ImageCollage {
      * @return the second secondary image alt text
      */
     public String getSecondSecondaryImageAltText() {
-        return secondSecondaryImageAltText;
+        if (secondSecondaryImageAltText == null) {
+            return " ";
+        }
+        else {
+            return secondSecondaryImageAltText;
+        }
     }
 
     /**
