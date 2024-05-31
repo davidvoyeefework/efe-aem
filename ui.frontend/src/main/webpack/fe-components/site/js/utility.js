@@ -380,7 +380,8 @@ export const getProductChoiceButton = () => {
   const session = windowDataObj?.context?.s || "";
   const ticket = windowDataObj?.context?.t || "";
   const isMember = windowDataObj?.context.isMember;
-  if (checkIfPureProspect()){
+//  if (checkIfPureProspect()){
+  if (true){
       if (userLoggedIn) {
         if (isMember && checkIfPaSponsored()) {
           url = apiBaseUrl + "app/productchoices/#/paDetailedRouter?fromPoint=";
