@@ -2,7 +2,6 @@
     @include flexbox(
         $justify-content: center,
         $gap: 140px,
-        $flex-wrap: wrap,
     );
     &__item {
         position: relative;
@@ -65,6 +64,7 @@
                 padding-bottom: 20px;
                 margin-bottom: 20px;
                 border-bottom: 1px solid $efe-gray-blue;
+                width: 100%;
             }
         }
         align-items: center;
