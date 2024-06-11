@@ -380,61 +380,60 @@ export const getProductChoiceButton = () => {
   const session = windowDataObj?.context?.s || "";
   const ticket = windowDataObj?.context?.t || "";
   const isMember = windowDataObj?.context.isMember;
-//  if (checkIfPureProspect()){
-  if (true){
-      if (userLoggedIn) {
-        if (isMember && checkIfPaSponsored()) {
-          url = apiBaseUrl + "app/productchoices/#/paDetailedRouter?fromPoint=";
+  //  if (checkIfPureProspect()){
+  if (true) {
+    if (userLoggedIn) {
+      if (isMember && checkIfPaSponsored()) {
+        url = apiBaseUrl + "app/productchoices/#/paDetailedRouter?fromPoint=";
+      } else {
+        url =
+          apiBaseUrl +
+          "maoachoice/start.act?t=" +
+          ticket +
+          "&s=" +
+          session +
+          "&br=558&targetPoint=PRODUCT_CHOICES&showMoreInfo=false&fromPoint=";
+      }
+    } else {
+      //user is anonymous but we know the sponsor
+      if (checkIfPaSponsored()) {
+        //PA Sponsor
+        type = choiceFlowVersionForPA;
+        if (type && type === "SIMPLE_SIDE_BY_SIDE") {
+          url =
+            apiBaseUrl +
+            "app/productchoices/#/simpleSideBySide?fromPoint=MA_PUBLIC_ENROLL";
         } else {
           url =
             apiBaseUrl +
-            "maoachoice/start.act?t=" +
-            ticket +
-            "&s=" +
-            session +
-            "&br=558&targetPoint=PRODUCT_CHOICES&showMoreInfo=false&fromPoint=";
+            "app/productchoices/#/threeTierProductChoiceRouter?fromPoint=MA_PUBLIC_ENROLL";
         }
       } else {
-        //user is anonymous but we know the sponsor
-        if (checkIfPaSponsored()) {
-          //PA Sponsor
-          type = choiceFlowVersionForPA;
-          if (type && type === "SIMPLE_SIDE_BY_SIDE") {
-            url =
-              apiBaseUrl +
-              "app/productchoices/#/simpleSideBySide?fromPoint=MA_PUBLIC_ENROLL";
-          } else {
-            url =
-              apiBaseUrl +
-              "app/productchoices/#/threeTierProductChoiceRouter?fromPoint=MA_PUBLIC_ENROLL";
-          }
+        type = choiceFlowVersionForNonPA;
+        if (type && type === "PM_ONLY") {
+          url =
+            apiBaseUrl +
+            "app/productchoices/#/pmDetailed?fromPoint=MA_PUBLIC_ENROLL";
         } else {
-          type = choiceFlowVersionForNonPA;
-          if (type && type === "PM_ONLY") {
-            url =
-              apiBaseUrl +
-              "app/productchoices/#/pmDetailed?fromPoint=MA_PUBLIC_ENROLL";
-          } else {
-            url =
-              apiBaseUrl +
-              "app/productchoices/#/simpleSideBySide?fromPoint=MA_PUBLIC_ENROLL";
-          }
+          url =
+            apiBaseUrl +
+            "app/productchoices/#/simpleSideBySide?fromPoint=MA_PUBLIC_ENROLL";
         }
       }
-      var scId = captureScIdFromUrl();
-      if (scId) {
-        url = url + "&s_cid=" + encodeURIComponent(scId);
-      }
-      //now remove https:// from the url since Unbounce already prefix the button link url with https://.
-      //this value will be the dynamic replacement for button link url
-      return `<div class="button cmp-button--button-primary" style="padding-top:30px">
+    }
+    var scId = captureScIdFromUrl();
+    if (scId) {
+      url = url + "&s_cid=" + encodeURIComponent(scId);
+    }
+    //now remove https:// from the url since Unbounce already prefix the button link url with https://.
+    //this value will be the dynamic replacement for button link url
+    return `<div class="button cmp-button--button-primary" style="padding-top:30px">
                              <a class="cmp-button" href=${url}>
                                  <span class="cmp-button__text">Get Started</span>
                              </a>
                              </div>`;
-      //return `<a href=${url} target="_self" class="fe-learn-more-link">LEARN MORE</a>`;
-  }
-  else return ``;
+    //return `<a href=${url} target="_self" class="fe-learn-more-link">LEARN MORE</a>`;
+  } else return ``;
 };
 
 export const getOtherWaysPromoMsgPa = () => {
@@ -499,20 +498,17 @@ export const getDashboardLink = () => {
 };
 
 export const checkIfPureProspect = () => {
-    const windowDataObj = window?.aemfe;
-    const {
-        isUserFullyAuth,
-        context,
-    } = windowDataObj;
-    const apiBaseUrl = getApiBaseUrl();
-    if (context?.userTier){
-        console.log("context.userTier "+context.userTier);
-        if(context.userTier === "PROSPECT"){
-            console.log("checkIfPureProspect: true")
-            return true;
-        }
+  const windowDataObj = window?.aemfe;
+  const { isUserFullyAuth, context } = windowDataObj;
+  const apiBaseUrl = getApiBaseUrl();
+  if (context?.userTier) {
+    console.log("context.userTier " + context.userTier);
+    if (context.userTier === "PROSPECT") {
+      console.log("checkIfPureProspect: true");
+      return true;
     }
-    return false;
+  }
+  return false;
 };
 
 export const getDashboardButton = () => {
@@ -557,8 +553,8 @@ export const getDashboardButton = () => {
                           <span class="cmp-button__text">Get Started</span>
                       </a>
                       </div>`
-//    ? `<a href="${url}" target="_blank" class="fe-learn-more-link">${linkLabel}</a>`
-    : "";
+    : //    ? `<a href="${url}" target="_blank" class="fe-learn-more-link">${linkLabel}</a>`
+      "";
 };
 export const getLoginLink = () => {
   const windowDataObj = window?.aemfe;
