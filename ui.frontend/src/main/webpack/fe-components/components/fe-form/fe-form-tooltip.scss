@@ -1,58 +1,69 @@
 #signup-form-2 {
-  .tooltip {
-    position: relative;
-    display: inline-block;
-    color: #c32d37;
 
-    .tooltiptext {
-      visibility: hidden;
-      width: 300px;
-      background-color: white;
-      border: 1px solid #ccc;
-      line-height: 1.5;
-      font-size: 12px;
-      font-weight: 300;
-      color: #535658 !important;
-      text-align: center;
-      border-radius: 6px;
-      padding: 5px 5px;
-      position: absolute;
-      z-index: 1;
-      top: 150%;
-      left: 30%;
-      margin-left: -60px;
-
-      &:after {
-        content: "";
-        position: absolute;
-        background-color: white;
-        bottom: 100%;
-        left: 50%;
-        margin-left: -5px;
-        border-width: 5px;
-        border-style: solid;
-        border-color: transparent transparent black transparent;
-      }
-    }
-
-    &:hover {
-      .tooltiptext {
-        visibility: visible;
-      }
-    }
-  }
-
-  #confirm-enrollment-button span:last-child {
-    color: white !important;
-  }
-
-  @media screen and (max-width: 600px) {
     .tooltip {
-      .tooltiptext {
-        &:after {
-          left: 30%;
+        position: relative;
+        display: inline-block;
+        color: #535658;
+        font-style: italic;
+        font-weight: 900;
+        
+        .tooltiptext {
+            visibility: hidden;
+            width: 300px;
+            background-color: white;
+            border: 1px solid #ccc;
+            line-height: 1.5;
+            font-size: 12px;
+            font-weight: 300;
+            color:#535658 !important;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 5px;
+            position: absolute;
+            z-index: 1;
+            top: 150%;
+            left: 30%;
+            margin-left: -60px;
+            font-style: initial;
+
+            &:after {
+                content: "";
+                position: absolute;
+                background-color: white;
+                bottom: 100%;
+                left: 50%;
+                margin-left: -5px;
+                border-width: 5px;
+                border-style: solid;
+                border-color: transparent transparent black transparent;                
+            }
         }
-      }
+
+        .tooltiptext-span {
+            font-style: initial;
+        }
+
+        &:hover {
+            .tooltiptext {
+                visibility: visible;
+            }
+        }        
     }
-  }
+
+    #confirm-enrollment-button span:last-child {
+        color: white !important;
+        font-style: normal;
+        font-weight: 300;
+    }
+
+    @media screen and (max-width: 600px) {
+        .tooltip {
+            .tooltiptext {
+                &:after {
+                    left: 30%;
+                }
+            }
+        }
+    }
+          
 }
