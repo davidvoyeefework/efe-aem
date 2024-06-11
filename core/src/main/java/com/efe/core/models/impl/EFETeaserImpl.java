@@ -76,6 +76,10 @@ public class EFETeaserImpl implements EFETeaser {
 	/** The resourceCF Property subtitle */
 	String articleCFSubtitle;
 
+	String pagePreviewText;
+
+	String authorTitle;
+
 	    /** The resource resolver. */
     @SlingObject
     private ResourceResolver resourceResolver;
@@ -97,6 +101,20 @@ public class EFETeaserImpl implements EFETeaser {
 				articlePageTags.add(tagObj);
 			}
 		}
+			resourcePath = page.getPath() + "/jcr:content";
+			String pagePreviewTextProperty = "pagePreviewText";
+			String pagePreviewTextPropertyValue = ResourceUtil.getProperty(resourceResolver, resourcePath, pagePreviewTextProperty);
+			if (Objects.nonNull(pagePreviewTextPropertyValue))
+				pagePreviewText = pagePreviewTextPropertyValue.replaceAll("<[^>]*>", "");
+			else
+				pagePreviewText = StringUtils.EMPTY;
+
+			String authorTitleProperty = "authorTitle";
+			String authorTitlePropertyValue = ResourceUtil.getProperty(resourceResolver, resourcePath, authorTitleProperty);
+			if (Objects.nonNull(authorTitlePropertyValue))
+				authorTitle = authorTitlePropertyValue.replaceAll("<[^>]*>", "");
+			else
+				authorTitle = StringUtils.EMPTY;
 
 			resourcePath =  page.getPath() + "/jcr:content/root/container_1735562516/container/articledetails";
 			resourceProperty = "articleFragmentPath";
@@ -124,6 +142,12 @@ public class EFETeaserImpl implements EFETeaser {
 	public String getSubtitle() {
 		return articleCFSubtitle;
 	}
+
+	@Override
+	public String getPagePreviewText() { return pagePreviewText; }
+
+	@Override
+	public String getAuthorTitle() { return authorTitle; }
 
 	/**
 	 * Gets the tags.

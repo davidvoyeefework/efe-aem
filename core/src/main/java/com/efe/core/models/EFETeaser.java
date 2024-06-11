@@ -26,4 +26,8 @@ public interface EFETeaser extends Teaser {
 	 */
 	String getSubtitle();
 
+	String getPagePreviewText();
+
+	String getAuthorTitle();
+
 }
