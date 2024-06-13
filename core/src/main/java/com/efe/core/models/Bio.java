@@ -9,7 +9,13 @@ public interface Bio {
     public String getTitle();    
 
     //  Method to return Bio certifications from Content Fragment
-    public String [] getCerts();       
+    public String [] getCerts();    
+    
+    //  Method to return Bio body copy from Content Fragment
+    public String getBodyCopy();       
+
+    //  Method to return Thumbnail from Content Fragment
+    public String getThumbnail();      
 
     
     

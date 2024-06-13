@@ -1,33 +1,54 @@
 <sly 
     data-sly-use.model="com.efe.core.models.Bio"
     aria-label="Author Biography" class=" ">
-    <section aria-label="Author Biography">   
+    <section id="author-bio-sme" aria-label="Author Biography">   
+
+        <!--     Author Thumbnail     -->
+        <sly data-sly-test.hasContent="${model.thumbnail}">  
+            <div id="thumbnail"> 
+                <img src="${model.thumbnail}" alt=" " />
+            </div>             
+        </sly>          
 
         <!--     Author Name     -->
-        <div class="title cmp-title--heading-03">
-            <div class="cmp-title">
-                <h1 class="cmp-title__text">${model.name @context='html'}</h1>
-            </div>
-        </div>     
+        <sly data-sly-test.hasContent="${model.name}">               
+            <div  id="name" class="title cmp-title--heading-03">
+                <div class="cmp-title">
+                    <h1 class="cmp-title__text">${model.name @context='html'}</h1>
+                </div>
+            </div>   
+        </sly>  
         
-        <!--     Author Title     -->        
-        <div class="text cmp-text--body-01">
-            <div class="cmp-text">
-                <h2>${model.title @context='html'}</h2>
-            </div>
-        </div>      
+        <!--     Author Title     -->     
+        <sly data-sly-test.hasContent="${model.title}">                
+            <div id="title" class="text cmp-text--body-01">
+                <div class="cmp-text">
+                    <h2>${model.title @context='html'}</h2>
+                </div>
+            </div>  
+        </sly>    
         
         <!--     Author Certifications     -->  
-
         <sly data-sly-test.hasContent="${model.certs}">
-            <div class="text cmp-text--body-02">
+            <div id="certs" class="text cmp-text--body-02">
                 <div class="cmp-text">
                     <ul data-sly-list.item="${model.certs}">
                         <li>${item}</li>
                     </ul>
                 </div>
             </div>    
-        </sly>               
+        </sly>      
+        
+        <!--     Author Body/Copy     -->     
+        <sly data-sly-test.hasContent="${model.bodyCopy}">   
+            <div id="body-copy" class="text cmp-text--body-02">
+                <div class="cmp-text">
+                    <p> 
+                        ${model.bodyCopy}
+                    </p>
+                </div>
+            </div>    
+        </sly>                          
 
     </section>
 

@@ -38,8 +38,10 @@ public class BioImpl implements Bio {
     @SlingObject
     private ResourceResolver resourceResolver;    
 
+    String thumbnail;
     String name;
     String title;
+    String bodyCopy;
     String [] certs;
 
     /**
@@ -66,7 +68,15 @@ public class BioImpl implements Bio {
             
             // Fetch Certs
             String resourceCertCFProperty = "certifications";
-            certs = ResourceUtil.getProperties(resourceResolver, resourceCFPath, resourceCertCFProperty);                       
+            certs = ResourceUtil.getProperties(resourceResolver, resourceCFPath, resourceCertCFProperty);      
+
+            // Fetch Body Copy
+            String resourceCopyCFProperty = "biography";
+            bodyCopy = ResourceUtil.getProperty(resourceResolver, resourceCFPath, resourceCopyCFProperty);       
+
+            // Fetch Thumbnail
+            String resourceImageCFProperty = "photo";
+            thumbnail = ResourceUtil.getProperty(resourceResolver, resourceCFPath, resourceImageCFProperty);              
         }
       
 
@@ -85,6 +95,16 @@ public class BioImpl implements Bio {
         // Gets the Title from Author Content Fragment Model
         public String [] getCerts() {
             return certs;
+        }       
+        
+        // Gets the Body Copy from Author Content Fragment Model
+        public String getBodyCopy() {
+            return bodyCopy;
+        }     
+        
+        // Gets the Body Copy from Author Content Fragment Model
+        public String getThumbnail() {
+            return thumbnail;
         }          
     
 }
