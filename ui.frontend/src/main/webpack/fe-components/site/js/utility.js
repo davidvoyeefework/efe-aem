@@ -380,19 +380,19 @@ export const getProductChoiceButton = () => {
   const session = windowDataObj?.context?.s || "";
   const ticket = windowDataObj?.context?.t || "";
   const isMember = windowDataObj?.context.isMember;
-  if (!userLoggedIn && isMember) {
+  if (!userLoggedIn || !isMember) {
     if (userLoggedIn) {
-      if (isMember && checkIfPaSponsored()) {
-        url = apiBaseUrl + "app/productchoices/#/paDetailedRouter?fromPoint=";
-      } else {
-        url =
-          apiBaseUrl +
-          "maoachoice/start.act?t=" +
-          ticket +
-          "&s=" +
-          session +
-          "&br=558&targetPoint=PRODUCT_CHOICES&showMoreInfo=false&fromPoint=";
-      }
+      //      if (isMember && checkIfPaSponsored()) {
+      //        url = apiBaseUrl + "app/productchoices/#/paDetailedRouter?fromPoint=";
+      //      } else {
+      url =
+        apiBaseUrl +
+        "maoachoice/start.act?t=" +
+        ticket +
+        "&s=" +
+        session +
+        "&br=558&targetPoint=PRODUCT_CHOICES&showMoreInfo=false&fromPoint=";
+      //      }
     } else {
       //user is anonymous but we know the sponsor
       if (checkIfPaSponsored()) {
