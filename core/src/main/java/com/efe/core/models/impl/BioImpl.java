@@ -42,6 +42,7 @@ public class BioImpl implements Bio {
     String name;
     String title;
     String bodyCopy;
+    String seoSchema;
     String [] certs;
 
     /**
@@ -76,7 +77,11 @@ public class BioImpl implements Bio {
 
             // Fetch Thumbnail
             String resourceImageCFProperty = "photo";
-            thumbnail = ResourceUtil.getProperty(resourceResolver, resourceCFPath, resourceImageCFProperty);              
+            thumbnail = ResourceUtil.getProperty(resourceResolver, resourceCFPath, resourceImageCFProperty);  
+            
+            // Fetch SEO Schema boolean
+            String resourceSeoCFProperty = "seoSchema";
+            seoSchema = ResourceUtil.getProperty(resourceResolver, resourcePath, resourceSeoCFProperty);             
         }
       
 
@@ -105,6 +110,11 @@ public class BioImpl implements Bio {
         // Gets the Body Copy from Author Content Fragment Model
         public String getThumbnail() {
             return thumbnail;
+        }          
+
+        // Gets boolean toogle if author wants to include SEO Schema metadata
+        public String getSeoSchema() {
+            return seoSchema;
         }          
     
 }

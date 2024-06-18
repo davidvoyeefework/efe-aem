@@ -17,6 +17,8 @@ public interface Bio {
     //  Method to return Thumbnail from Content Fragment
     public String getThumbnail();      
 
+    //  Method to return boolean string if author wants to include SEO Schema metadata
+    public String getSeoSchema();
     
     
 }
