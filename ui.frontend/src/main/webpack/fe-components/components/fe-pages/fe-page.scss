@@ -1,4 +1,9 @@
 .fepage {
+    .fe-aem-form {
+        .error {
+            color: $red-primary;
+        }
+    }
     .edit-view {
         .sponsor-value-hide {
             display: inline;
