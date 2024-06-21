@@ -44,12 +44,13 @@ public class BioImpl implements Bio {
     String bodyCopy;
     String seoSchema;
     String [] certs;
+    String [] education;
 
     /**
      * Inits the Model.
      */
     @PostConstruct
-    public void init() {
+                    public void init() {
 
         resourcePath = currentPage.getPath() + "/jcr:content/root/container/container/bio";
 
@@ -69,7 +70,11 @@ public class BioImpl implements Bio {
             
             // Fetch Certs
             String resourceCertCFProperty = "certifications";
-            certs = ResourceUtil.getProperties(resourceResolver, resourceCFPath, resourceCertCFProperty);      
+            certs = ResourceUtil.getProperties(resourceResolver, resourceCFPath, resourceCertCFProperty);  
+            
+            // // Fetch Education
+            // String resourceEducationCFProperty = "education";
+            // education = ResourceUtil.getProperties(resourceResolver, resourceCFPath, resourceEducationCFProperty); 
 
             // Fetch Body Copy
             String resourceCopyCFProperty = "biography";
@@ -100,7 +105,13 @@ public class BioImpl implements Bio {
         // Gets the Title from Author Content Fragment Model
         public String [] getCerts() {
             return certs;
-        }       
+        }     
+        
+        
+        // Gets the Education from Author Content Fragment Model
+        public String [] getEducation() {
+            return education;
+        }         
         
         // Gets the Body Copy from Author Content Fragment Model
         public String getBodyCopy() {

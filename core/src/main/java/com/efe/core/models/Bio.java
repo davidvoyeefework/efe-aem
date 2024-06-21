@@ -10,6 +10,9 @@ public interface Bio {
 
     //  Method to return Bio certifications from Content Fragment
     public String [] getCerts();    
+
+    //  Method to return Education details from Content Fragment
+    public String [] getEducation();     
     
     //  Method to return Bio body copy from Content Fragment
     public String getBodyCopy();       

@@ -41,7 +41,7 @@
                         </ul>
                     </div>
                 </div>    
-            </sly>      
+            </sly>                  
             
             <!--     Author Body/Copy     -->     
             <sly data-sly-test.hasContent="${model.bodyCopy}">   
@@ -58,13 +58,27 @@
 
                 // Create SEO Script
                 const jsonldScript = document.createElement('script');
-                jsonldScript.setAttribute('type', 'application/ld+json'); 
+                jsonldScript.setAttribute('type', 'application/ld+json');
+                
+                const name = "${model.name @context ='scriptString'}";
+                const url = '${currentPage.getPath @context="html"}';
+                const education = "${model.education @context ='html'}";
+                const blank = " ";
 
                 // Create SEO object
                 const seoObjDetails = {
                     '@context': "https://schema.org",
                     '@type': "Person",
-                    'name': '${model.name}',
+                    'name': name,
+                    'url': url,
+                    'address': {
+                        '@type': 'PostalAddress',
+                        'addressLocality': '',
+                        'addressRegion' : '',
+                        'postalCode' : '',
+                        'streetAddress': blank,
+                        },
+                    'hasCredential': education ,
                 };
 
                 jsonldScript.textContent = JSON.stringify(seoObjDetails); 
