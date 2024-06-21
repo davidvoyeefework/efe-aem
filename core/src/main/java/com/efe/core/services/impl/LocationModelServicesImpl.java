@@ -202,6 +202,8 @@ public class LocationModelServicesImpl implements LocationModelServices {
 					jsonObj.getMobileImage());
 			NodePropertyManagerUtil.setPropertyIfNonNull(locationMasterNode,
 					PlannerLocationConstants.BUILDING_COMPLEX_NAME, jsonObj.getBuildingComplexName());
+			NodePropertyManagerUtil.setPropertyIfNonNull(locationMasterNode, PlannerLocationConstants.WEBSITE_DESCRIPTION,
+					jsonObj.getWebsiteDescription());
 			NodePropertyManagerUtil.setPropertyIfNonNull(locationMasterNode, PlannerLocationConstants.ADDRESS_1,
 					jsonObj.getAddress1());
 			NodePropertyManagerUtil.setPropertyIfNonNull(locationMasterNode, PlannerLocationConstants.ADDRESS_2,
