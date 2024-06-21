@@ -80,6 +80,11 @@ public class PlannerLocationConstants {
 	public static final String EMERGENCY_CLOSURE = "emergencyClosure";
 
 	/**
+	 * Website Description
+	 */
+	public static final String WEBSITE_DESCRIPTION = "websiteDescription";
+
+	/**
 	 * Test Location
 	 */
 	public static final String TEST_LOCATION = "testLocation";
