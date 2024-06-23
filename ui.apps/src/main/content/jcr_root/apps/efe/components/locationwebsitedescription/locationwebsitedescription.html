@@ -1,0 +1,11 @@
+<sly data-sly-use.model="com.efe.core.models.MapDirection" data-sly-test="${model.showMap}">
+	<div data-sly-test="${model.locationResponse.websiteDescription}" class="text cmp-text--charLimit aem-GridColumn aem-GridColumn--default--12">
+        <div class="cmp-text" style="max-width:110ch;">
+            <p style="	text-align: center;">
+                <span class="cmp-text--body-02">
+                    ${model.locationResponse.websiteDescription}
+                </span>
+            </p>
+        </div>   
+    </div>
+</sly>
