@@ -61,16 +61,24 @@
                 jsonldScript.setAttribute('type', 'application/ld+json');
                 
                 const name = "${model.name @context ='scriptString'}";
-                const url = '${currentPage.getPath @context="html"}';
+                const domain = "https://www.edelmanfinancialengines.com";
+                const currentPath = '${currentPage.getPath @context="html"}';
+                const url = domain.concat(currentPath);
                 const education = "${model.education @context ='html'}";
                 const blank = " ";
+                const customBioLink = "${model.bioLink @context='html'}";
+                const finalLink = (customBioLink == "" ? url : customBioLink) ;
+                const image = domain.concat("${model.thumbnail @context ='html'}");
+                const title = "${model.title @context='html'}";
+                const certs = "${model.certs @context='html'}";
+                const arrayTest = certs.split(",");
 
                 // Create SEO object
                 const seoObjDetails = {
                     '@context': "https://schema.org",
                     '@type': "Person",
                     'name': name,
-                    'url': url,
+                    'url': finalLink,
                     'address': {
                         '@type': 'PostalAddress',
                         'addressLocality': '',
@@ -79,6 +87,19 @@
                         'streetAddress': blank,
                         },
                     'hasCredential': education ,
+                    'image': image, 
+                    'jobTitle' : title,
+                    'knowsAbout': {
+                        '@type': "DefinedTermSet",
+                        'name': 
+                            arrayTest
+                    ,
+                    },
+                    'worksFor' : {
+                        '@type': "Organization",
+                        'name': "Edelman Financial Engines",
+                    },
+              
                 };
 
                 jsonldScript.textContent = JSON.stringify(seoObjDetails); 

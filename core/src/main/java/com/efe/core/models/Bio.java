@@ -22,6 +22,9 @@ public interface Bio {
 
     //  Method to return boolean string if author wants to include SEO Schema metadata
     public String getSeoSchema();
+
+    //  Method to return URL String for author bio profile link
+    public String getBioLink();    
     
     
 }

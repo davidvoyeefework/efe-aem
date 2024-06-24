@@ -44,8 +44,14 @@
                                                 name="./seoSchema"
                                                 text="Include SEO Schema metadata"
                                                 uncheckedValue="false"
-                                                value="{Boolean}true"/>                                                
-                                        </items>
+                                                value="{Boolean}true"/>   
+                                            <bioLink
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Full URL of Author Bio link. Example: https://www.edelmanfinancialengines.com/financial-planner.Dale.Hansen.29"
+                                                fieldLabel="Author Bio Link"
+                                                name="./bioLink"/>                                                                                             
+                                            </items>
                                     </column>
                                 </items>
                             </columns>

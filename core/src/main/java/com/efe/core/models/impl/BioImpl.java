@@ -43,6 +43,7 @@ public class BioImpl implements Bio {
     String title;
     String bodyCopy;
     String seoSchema;
+    String bioLink;
     String [] certs;
     String [] education;
 
@@ -73,8 +74,8 @@ public class BioImpl implements Bio {
             certs = ResourceUtil.getProperties(resourceResolver, resourceCFPath, resourceCertCFProperty);  
             
             // // Fetch Education
-            // String resourceEducationCFProperty = "education";
-            // education = ResourceUtil.getProperties(resourceResolver, resourceCFPath, resourceEducationCFProperty); 
+            String resourceEducationCFProperty = "education";
+            education = ResourceUtil.getProperties(resourceResolver, resourceCFPath, resourceEducationCFProperty); 
 
             // Fetch Body Copy
             String resourceCopyCFProperty = "biography";
@@ -86,7 +87,11 @@ public class BioImpl implements Bio {
             
             // Fetch SEO Schema boolean
             String resourceSeoCFProperty = "seoSchema";
-            seoSchema = ResourceUtil.getProperty(resourceResolver, resourcePath, resourceSeoCFProperty);             
+            seoSchema = ResourceUtil.getProperty(resourceResolver, resourcePath, resourceSeoCFProperty);    
+            
+            // Fetch Author Bio link
+            String resourceBioLinkCFProperty = "bioLink";
+            bioLink = ResourceUtil.getProperty(resourceResolver, resourcePath, resourceBioLinkCFProperty);             
         }
       
 
@@ -127,5 +132,10 @@ public class BioImpl implements Bio {
         public String getSeoSchema() {
             return seoSchema;
         }          
+
+        // Gets author bio link
+        public String getBioLink() {
+            return bioLink;
+        }           
     
 }
