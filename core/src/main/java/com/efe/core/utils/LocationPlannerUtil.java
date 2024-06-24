@@ -68,6 +68,8 @@ public class LocationPlannerUtil {
 
 		locationResponse.setState(locationCF.map(cf -> cf.getElement(PlannerLocationConstants.STATE))
 				.map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+		locationResponse.setWebsiteDescription(locationCF.map(cf -> cf.getElement(PlannerLocationConstants.WEBSITE_DESCRIPTION))
+				.map(ContentElement::getContent).orElse(StringUtils.EMPTY));
 		locationResponse.setAddress1(locationCF.map(cf -> cf.getElement(PlannerLocationConstants.ADDRESS_1))
 				.map(ContentElement::getContent).orElse(StringUtils.EMPTY));
 		locationResponse.setAddress2(locationCF.map(cf -> cf.getElement(PlannerLocationConstants.ADDRESS_2))
