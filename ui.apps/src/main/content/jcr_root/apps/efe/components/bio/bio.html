@@ -1,0 +1,135 @@
+<sly 
+    data-sly-use.model="com.efe.core.models.Bio"
+    aria-label="Author Biography" class=" ">
+
+    <section id="author-bio-sme" aria-label="Author Biography">   
+
+        <div id="col-1">
+            <!--     Author Thumbnail     -->
+            <sly data-sly-test.hasContent="${model.thumbnail}">  
+                <div id="thumbnail"> 
+                    <img src="${model.thumbnail}" alt=" " />
+                </div>             
+            </sly>    
+        </div>  
+        
+        <div id="col-2">
+            <!--     Author Name     -->
+            <sly data-sly-test.hasContent="${model.name}">               
+                <div  id="name" class="title cmp-title--heading-02">
+                    <div class="cmp-title">
+                        <h1 class="cmp-title__text">${model.name @context='html'}</h1>
+                    </div>
+                </div>   
+            </sly>  
+            
+            <!--     Author Title     -->     
+            <sly data-sly-test.hasContent="${model.title}">                
+                <div id="title" class="text cmp-text--body-01">
+                    <div class="cmp-text">
+                        <h2>${model.title @context='html'}</h2>
+                    </div>
+                </div>  
+            </sly>    
+            
+            <!--     Author Certifications     -->  
+            <sly data-sly-test.hasContent="${model.certs}">
+                <div id="certs" class="text cmp-text--body-02">
+                    <div class="cmp-text">
+                        <ul data-sly-list.item="${model.certs}">
+                            <li>${item},</li>
+                        </ul>
+                    </div>
+                </div>    
+            </sly>                  
+            
+            <!--     Author Body/Copy     -->     
+            <sly data-sly-test.hasContent="${model.bodyCopy}">   
+                <div id="body-copy" class="text cmp-text--body-02">
+                    <div class="cmp-text">
+                        <p> 
+                            ${model.bodyCopy @context='html'}
+                        </p>
+                    </div>
+                </div>    
+            </sly> 
+            
+            <script data-sly-test="${model.seoSchema}">   
+
+                // Create SEO Script
+                const jsonldScript = document.createElement('script');
+                jsonldScript.setAttribute('type', 'application/ld+json');
+                
+                const name = "${model.name @context ='scriptString'}";
+                const domain = "https://www.edelmanfinancialengines.com";
+                const currentPath = '${currentPage.getPath @context="html"}';
+                const url = domain.concat(currentPath);
+                const education = "${model.education @context ='html'}";
+                const blank = " ";
+                const customBioLink = "${model.bioLink @context='html'}";
+                const finalLink = (customBioLink == "" ? url : customBioLink) ;
+                const image = domain.concat("${model.thumbnail @context ='html'}");
+                const title = "${model.title @context='html'}";
+                const certs = "${model.certs @context='html'}";
+                const arrayTest = certs.split(",");
+
+                // Create SEO object
+                const seoObjDetails = {
+                    '@context': "https://schema.org",
+                    '@type': "Person",
+                    'name': name,
+                    'url': finalLink,
+                    'address': {
+                        '@type': 'PostalAddress',
+                        'addressLocality': '',
+                        'addressRegion' : '',
+                        'postalCode' : '',
+                        'streetAddress': blank,
+                        },
+                    'hasCredential': education ,
+                    'image': image, 
+                    'jobTitle' : title,
+                    'knowsAbout': {
+                        '@type': "DefinedTermSet",
+                        'name': 
+                            arrayTest
+                    ,
+                    },
+                    'worksFor' : {
+                        '@type': "Organization",
+                        'name': "Edelman Financial Engines",
+                    },
+              
+                };
+
+                jsonldScript.textContent = JSON.stringify(seoObjDetails); 
+
+                const bioComponent = document.getElementById('author-bio-sme');
+
+                bioComponent.appendChild(jsonldScript); 
+            </script>
+  
+            
+        </div>        
+
+    </section>
+
+
+
+    <!-- <script data-sly-test="${model.jsonLd}">
+        var jsonLd = JSON.parse("${model.jsonLd @context ='scriptString'}");
+        if (document.getElementsByClassName("articledetails") && document.getElementsByClassName("articledetails").length) {
+                var articleContentDom = document.getElementsByClassName("articledetails")[0];
+                var articleContent = articleContentDom.innerText;
+                if (articleContent) {
+                        var wordCount = articleContent.trim().split(/\s+/).length;
+                        jsonLd.wordcount = wordCount;
+                }
+                const jsonldScript = document.createElement('script');
+                jsonldScript.setAttribute('type', 'application/ld+json');
+                jsonldScript.textContent = JSON.stringify(jsonLd);
+                articleContentDom.appendChild(jsonldScript);
+        }
+    </script>     -->
+</sly>
+<sly data-sly-call="${template.placeholder @ isEmpty=!isNotEmpty, classAppend='cmp-plannerbio'}"></sly>
