@@ -12,16 +12,26 @@
             width: 100px;
             height: 100px;
         }
+    }
+
+    .provided {
+        margin: 0;
+        position: absolute;
+        bottom: 24px;
+        right: 24px;
+
+        @media screen and (min-width: $sm) {
+            margin: 0;
+        }            
 
         .provided-by {
             position: relative;
             top: 5px;
             margin-right: 6px;
-        }
-    }
+        }            
+    }    
     
     .copy {
-        max-width: 67ch;
 
         h2 {
             font-size: rem(22);
@@ -51,17 +61,17 @@
     .cmp-button--button-wpi {
         transition: $std-transition;
         .cmp-button {
-            background-color: $fidelity-wpi-orange;
+            background-color: white;
             color: white;
             max-height: rem(36);
             height: 100%;
             border-radius: 8px;
-            border: 1px solid #D95900;
+            border: 1px solid #368727;
+            color: #368727;
             transition: $std-transition;
             width: fit-content;
             padding: 8px 16px;
             text-align: center;
-            min-width: rem(147);
             text-decoration: none;
             margin: 0;
 
