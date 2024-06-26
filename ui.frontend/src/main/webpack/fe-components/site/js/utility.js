@@ -521,8 +521,13 @@ export const getDashboardButton = () => {
   } = windowDataObj;
   const apiBaseUrl = getApiBaseUrl();
   let url = "";
+
   let linkLabel = "LOGIN TO ONLINE ADVICE";
   if (context?.userTier) {
+    if (context.userTier === "OA") {
+          console.log("context.userTier: OA");
+          return "";
+    }
     linkLabel =
       context?.userTier === "OA"
         ? "LOGIN TO ONLINE ADVICE"
