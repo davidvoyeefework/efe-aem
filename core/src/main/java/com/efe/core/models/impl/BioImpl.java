@@ -6,19 +6,13 @@ import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
-import org.apache.sling.models.annotations.injectorspecific.OSGiService;
-import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import com.adobe.cq.export.json.ExporterConstants;
-import com.day.cq.wcm.api.Page;
 import com.efe.core.models.Bio;
 import com.efe.core.utils.ResourceUtil;
-import com.efe.core.services.DynamicMediaService;
 
-/**
- * The Class BioImpl
- */
+// The class BioImpl
 @Model(adaptables = { Resource.class, SlingHttpServletRequest.class }, adapters = Bio.class, resourceType = {
     BioImpl.RESOURCE_TYPE }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
@@ -26,13 +20,15 @@ import com.efe.core.services.DynamicMediaService;
 public class BioImpl implements Bio {
 
     /** The Constant RESOURCE_TYPE. */
-    public static final String RESOURCE_TYPE = "efe/components/bio"; 
+    public static final String RESOURCE_TYPE = "efe/components/bio";         
 
-    @ScriptVariable
-    protected Page currentPage;    
+	// The current resource
+	@SlingObject
+	private Resource resource;    
 
-    /** The page resource path. */
-	String resourcePath;   
+    // Resource Path
+    @ValueMapValue    
+    String resourcePath;
     
     /** The resource resolver. */
     @SlingObject
@@ -51,9 +47,9 @@ public class BioImpl implements Bio {
      * Inits the Model.
      */
     @PostConstruct
-                    public void init() {
+        public void init() {
 
-        resourcePath = currentPage.getPath() + "/jcr:content/root/container/container/bio";
+        resourcePath = resource.getPath();
 
         // Fetch CF for Author Details
         String resourceProperty = "AuthorContentFragment";
@@ -93,10 +89,9 @@ public class BioImpl implements Bio {
             String resourceBioLinkCFProperty = "bioLink";
             bioLink = ResourceUtil.getProperty(resourceResolver, resourcePath, resourceBioLinkCFProperty);             
         }
-      
-
     }
-    
+        
+
         // Gets the Name from Author Content Fragment Model
         public String getName() {
             return name;
