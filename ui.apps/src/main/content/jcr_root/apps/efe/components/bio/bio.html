@@ -1,9 +1,9 @@
 <sly 
+    data-sly-test="${properties.AuthorContentFragment}"
     data-sly-use.model="com.efe.core.models.Bio"
     aria-label="Author Biography" class=" ">
-
-    <section id="author-bio-sme" aria-label="Author Biography">   
-
+    <section id="author-bio-sme" aria-label="Author Biography">  
+         
         <div id="col-1">
             <!--     Author Thumbnail     -->
             <sly data-sly-test.hasContent="${model.thumbnail}">  
@@ -59,6 +59,7 @@
                 // Create SEO Script
                 const jsonldScript = document.createElement('script');
                 jsonldScript.setAttribute('type', 'application/ld+json');
+                
                 const name = "${model.name @context ='scriptString'}";
                 const domain = "https://www.edelmanfinancialengines.com";
                 const currentPath = '${currentPage.getPath @context="html"}';
@@ -103,10 +104,10 @@
 
                 jsonldScript.textContent = JSON.stringify(seoObjDetails); 
                 const bioComponent = document.getElementById('author-bio-sme');
-                bioComponent.appendChild(jsonldScript); 
+                bioComponent.appendChild(jsonldScript);
+
             </script>
         </div>        
     </section>
-
 </sly>
 <sly data-sly-call="${template.placeholder @ isEmpty=!isNotEmpty, classAppend='cmp-plannerbio'}"></sly>
