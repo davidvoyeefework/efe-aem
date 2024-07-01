@@ -1,0 +1,68 @@
+#alert-offer-top {
+    position: relative;
+    background-color: #dfedf5;
+    color: #535658;
+    padding: 14px 24px;
+
+    @include flexbox(
+        $justify-content: center,
+        $gap: 11px,
+        $align-items: center,
+    );
+
+    #cta {
+        color: white;
+        font-size: 18px;
+        line-height: 100%;
+        font-family: nimbus-sans, sans-serif;
+        background-color: #3780a6;
+        padding: 8px 12px;
+        border-radius: 99px;
+        word-break: keep-all;
+        text-wrap: nowrap;
+
+        &:after {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 9;
+        }
+    }
+
+    #copy {
+        font-size: rem(18);
+        color: $efe-gray-primary;
+        font-weight: 500;
+        position: relative;
+
+        &:after {
+            content: "";
+            display: block;
+            height: rem(10);
+            width: rem(6);
+            background: url("../resources/images/icons/arrows/teal-arrows/efe-arrow-right-teal.svg") no-repeat center center / auto;
+            position: absolute;
+            right: -20px;
+            top: 5px;
+        }
+    }
+
+    @media screen and (max-width: $sm) {
+        @include flexbox(
+            $flex-direction: column,
+        );
+        text-align: center;
+
+        #copy {
+            &:after {
+                display: none;
+            }
+        }
+    }
+  }
