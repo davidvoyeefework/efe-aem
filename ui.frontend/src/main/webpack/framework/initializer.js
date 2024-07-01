@@ -261,6 +261,18 @@ document.addEventListener("DOMContentLoaded", (event) => {
   }
  });
 
+ // Close functionality for Offer Alert Banner
+document.addEventListener("DOMContentLoaded", (event) => {
+  const floatingOfferBanner = document.querySelector("#alert-offer-floating");
+  if (floatingOfferBanner != null) {
+      floatingOfferBanner.addEventListener("click",  () => {
+        floatingOfferBanner.style.display = "none";
+      })
+  }
+  });
+
+
+
 
 
 
