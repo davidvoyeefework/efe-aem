@@ -99,6 +99,85 @@
                                                 value="utf-8"/>
                                         </items>
                                     </title>
+                                    <moretitles
+                                        cq:showOnCreate="{Boolean}true"
+                                        jcr:primaryType="nt:unstructured"
+                                        jcr:title="More Titles and Description @@##"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <pagetitle
+                                                cq:showOnCreate="{Boolean}true"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Defines a page title that is displayable in the page content, instead of the 'Title'."
+                                                fieldLabel="Page Title"
+                                                name="./pageTitle"
+                                                renderReadOnly="{Boolean}true">
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    allowBulkEdit="{Boolean}true"
+                                                    cq-msm-lockable="pageTitle"/>
+                                            </pagetitle>
+                                            <navigationtitle
+                                                cq:showOnCreate="{Boolean}true"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                allowBulkEdit="{Boolean}true"
+                                                fieldDescription="Defines a navigation title that is displayed in site navigation menus, instead of the 'Page Title' or 'Title'."
+                                                fieldLabel="Navigation Title"
+                                                name="./navTitle"
+                                                renderReadOnly="{Boolean}true">
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    allowBulkEdit="{Boolean}true"
+                                                    cq-msm-lockable="navTitle"/>
+                                            </navigationtitle>
+                                            <subtitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Subtitle"
+                                                name="./subtitle"
+                                                renderReadOnly="{Boolean}true">
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    allowBulkEdit="{Boolean}true"
+                                                    cq-msm-lockable="subtitle"/>
+                                            </subtitle>
+                                            <description
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                                fieldLabel="Description"
+                                                name="./jcr:description"
+                                                renderReadOnly="{Boolean}true">
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    allowBulkEdit="{Boolean}true"
+                                                    cq-msm-lockable="jcr:description"/>
+                                            </description>
+                                            <pagepreviewtext
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                                fieldLabel="Page Preview Text"
+                                                name="./pagePreviewText"
+                                                renderReadOnly="{Boolean}true">
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    allowBulkEdit="{Boolean}true"
+                                                    cq-msm-lockable="jcr:description"/>
+                                            </pagepreviewtext>
+                                            <authorTitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Author Title"
+                                                name="./authorTitle"
+                                                renderReadOnly="{Boolean}true">
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    allowBulkEdit="{Boolean}true"
+                                                    cq-msm-lockable="jcr:description"/>
+                                            </authorTitle>
+                                        </items>
+                                    </moretitles>
                                 </items>
                             </column>
                         </items>
@@ -138,8 +217,8 @@
                                         path="/mnt/overlay/wcm/foundation/components/basicpage/v1/basicpage/tabs/advanced/items/column/items/seo"/>
                                     <jsonSeo
                                         jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
-                                        jcr:title="SEO Schema">
+                                        jcr:title="SEO Schema"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
                                         <items jcr:primaryType="nt:unstructured">
                                             <showSeo
                                                 jcr:primaryType="nt:unstructured"
@@ -152,8 +231,8 @@
                                     </jsonSeo>
                                     <launchScript
                                         jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
-                                        jcr:title="Launch Script">
+                                        jcr:title="Launch Script"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
                                         <items jcr:primaryType="nt:unstructured">
                                             <launchScriptText
                                                 jcr:primaryType="nt:unstructured"
@@ -161,7 +240,7 @@
                                                 fieldDescription="Launch Script."
                                                 fieldLabel="Launch Script"
                                                 name="./launchScript"
-                                                value=""/>
+                                                value="\0"/>
                                         </items>
                                     </launchScript>
                                 </items>

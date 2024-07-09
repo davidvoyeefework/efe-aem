@@ -290,8 +290,47 @@
                                                     min="{Long}0"
                                                     name="./maxItems"
                                                     selected="{Boolean}true"
-                                                    value="3"
-                                                    />
+                                                value="3"/>
+                                            <pagePreviewVariant
+                                                granite:class="cq-dialog-dropdown-showhide"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldLabel="Page Preview Variant"
+                                                name="./listFrom">
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    cq-dialog-dropdown-showhide-target=".list-option-pagePreviewVariant-showhide-target"/>
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <children
+                                                        granite:hide="${cqDesign.disableChildren}"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Yes"
+                                                        value="children"/>
+                                                    <static
+                                                        granite:hide="${cqDesign.disableStatic}"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Fixed list"
+                                                        value="static"/>
+                                                    <search
+                                                        granite:hide="${cqDesign.disableSearch}"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Search"
+                                                        value="search"/>
+                                                    <tags
+                                                        granite:hide="${cqDesign.disableTags}"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        selected="{Boolean}true"
+                                                        text="Tags"
+                                                        value="tags"/>
+                                                </items>
+                                            </pagePreviewVariant>
+                                            <linktext
+                                                granite:class="hide list-option-pagePreviewVariant-showhide-target foundation-layout-util-vmargin"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Button Link Text"
+                                                fieldLabel="Link Text"
+                                                name="./linkText"/>
                                             <id
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
