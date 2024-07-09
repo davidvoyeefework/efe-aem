@@ -21,7 +21,7 @@
             </a>
         </h2>
         <sly data-sly-test="${teaser.authorTitle && properties.pagePreviewVariantSelect == 'yes'}" >
-            <p class="cmp-text--body-02">${teaser.authorTitle}</p>
+            <p id="title" class="cmp-text--body-02">${teaser.authorTitle}</p>
         </sly>
         
         <sly data-sly-test="${teaser.subtitle}">
@@ -29,7 +29,7 @@
         </sly>
         
         <sly data-sly-test="${teaser.pagePreviewText && properties.pagePreviewVariantSelect == 'yes'}">
-            <p class="cmp-text--body-02">${teaser.pagePreviewText}</p>
+            <p id="body-copy" class="cmp-text--body-03">${teaser.pagePreviewText}</p>
         </sly>
         
 		<sly data-sly-test="${properties.pagePreviewVariantSelect != 'yes'}" >
