@@ -6,7 +6,9 @@
             <div class="copy">
                 ${model.headline @context='html'}
                 ${model.subheadline @context='html'}
-                ${model.disclosures @context='html'}
+                <sly data-sly-test.hasContent="${model.disclosures}">
+                    ${model.disclosures @context='html'}
+                </sly>                
             </div>        
 
             <div class="button cmp-button--button-wpi">
