@@ -28,27 +28,30 @@
             </div>
         </div>
 
-        <sly data-sly-test="${model.articleFragmentPath.heroImage}">
-            <div class="image cmp-image--top-left">
-                <div class="cmp-image"><img src="${model.articleFragmentPath.heroImage}" alt="" width="1096" height="440"></div>
-            </div>
-        </sly>
-
         <sly data-sly-test.hasContent="${model.articleFragmentPath.articleAuthors || model.articleFragmentPath.plannerResponse}">
             <div class="text cmp-article-details__authors-by max-width">
                 <div class="cmp-text--body-03"
-                    data-sly-test.hasContent="${model.articleFragmentPath.articleAuthors || model.articleFragmentPath.plannerResponse}">
+                     data-sly-test.hasContent="${model.articleFragmentPath.articleAuthors || model.articleFragmentPath.plannerResponse}">
                     <span class="cmp-text"><span>By:</span>
                         <sly data-sly-test.hasContent="${model.articleFragmentPath.articleAuthors}"
-                            data-sly-list.item="${model.articleFragmentPath.articleAuthors}">
-                            <span class="author-name">${item.name} ${item.title}</span></br>
+                             data-sly-list.item="${model.articleFragmentPath.articleAuthors}">
+                            <a x-cq-linkchecker="skip" href="${item.liveURL}" >
+                                <span class="author-name">${item.name} ${item.title}</span>
+                            </a>
+                                </br>
                         </sly>
                         <sly data-sly-test.hasContent="${model.articleFragmentPath.plannerResponse}"
-                            data-sly-list.item="${model.articleFragmentPath.plannerResponse}">
+                             data-sly-list.item="${model.articleFragmentPath.plannerResponse}">
                             <a x-cq-linkchecker="skip" href="${item.url}" ><span class="author-name">${item.firstNameAlias} ${item.lastName}</span></a><span> ${item.title}</span></br>
                         </sly>
                     </span>
                 </div>
+            </div>
+        </sly>
+
+        <sly data-sly-test="${model.articleFragmentPath.heroImage}">
+            <div class="image cmp-image--top-left">
+                <div class="cmp-image"><img src="${model.articleFragmentPath.heroImage}" alt="" width="1096" height="440"></div>
             </div>
         </sly>
 
@@ -93,7 +96,7 @@
             <div data-sly-test="${item.name}" class="cmp-author-details__description">
                 <div class="title cmp-title--subhead-00 ">
                     <div class="cmp-title">
-                        <h2 class="cmp-title__text">${item.name}</h2>
+                        <a x-cq-linkchecker="skip" href="${item.liveURL}" ><h2 class="cmp-title__text">${item.name}</h2></a>
                         <h2 class="cmp-title__text">${item.title}</h2>                        
                     </div>
                 </div>
