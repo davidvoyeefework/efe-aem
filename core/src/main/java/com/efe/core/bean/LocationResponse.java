@@ -41,6 +41,8 @@ public class LocationResponse {
 	/* buildingComplexName */
 	private String buildingComplexName;
 
+	private String websiteDescription;
+
 	/* address1 */
 	private String address1;
 
@@ -180,6 +182,14 @@ public class LocationResponse {
 	 */
 	public String getAddress1() {
 		return address1;
+	}
+
+	public String getWebsiteDescription() {
+		return websiteDescription;
+	}
+
+	public void setWebsiteDescription(String websiteDescription) {
+		this.websiteDescription = websiteDescription;
 	}
 
 	/**

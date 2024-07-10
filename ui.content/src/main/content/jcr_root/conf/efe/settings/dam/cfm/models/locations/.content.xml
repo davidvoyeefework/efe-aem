@@ -372,6 +372,19 @@
                             valueType="string">
                             <granite:data jcr:primaryType="nt:unstructured"/>
                         </lastUpdated>
+                        <_x0031_719168602833
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Website Description"
+                            listOrder="1"
+                            maxlength="255"
+                            metaType="text-single"
+                            name="websiteDescription"
+                            renderReadOnly="false"
+                            showEmptyInReadOnly="true"
+                            valueType="string">
+                            <granite:data jcr:primaryType="nt:unstructured"/>
+                        </_x0031_719168602833>
                     </items>
                 </content>
             </cq:dialog>
