@@ -1,6 +1,7 @@
 .relatedarticle-ed-center {
     max-width: rem(1320);
     margin: auto;
+    
     .cmp-list {
         display: grid;
         grid-template-columns: 1fr;
@@ -25,39 +26,18 @@
 
         &#page-preview-variant {
 
-            .cmp-teaser {
-                padding: 0;
-            }
-
             h2.cmp-title--subhead-01 {
                 margin-bottom: 4px;
             }
 
             #title {
-                color: $efe-gray-new;
-                font-size: rem(14);
-                font-weight: 400;
+                @include body-02;
                 margin-bottom: 10px;
             }
 
-            .cmp-teaser__image.thumbnail-placeholder {
-                padding-top: 92%;
-            }
-
-            @media screen and (min-width: $sm) {
-                gap: 48px;
-            }
-
-            @media screen and (min-width: $md) {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
-            }
-
-            @media screen and (min-width: $lg) {
-                grid-template-columns: repeat(4, minmax(0, 1fr));
-            }            
+            a.cmp-button--article {
+                text-indent: -9999px;
+            }           
         }        
-        
     }
-
-
 }
