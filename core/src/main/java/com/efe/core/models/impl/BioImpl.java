@@ -55,7 +55,11 @@ public class BioImpl implements Bio {
         String resourceProperty = "AuthorContentFragment";
 		String authorContentFragment = ResourceUtil.getProperty( resourceResolver, resourcePath, resourceProperty );
         if (authorContentFragment != null) {
-            String resourceCFPath = authorContentFragment + "/jcr:content/data/master";
+            String resourceCFPath = authorContentFragment + "/jcr:content/data/master";  
+            
+            // Fetch Live Url
+            String resourceCFPropertyUrl = "liveUrl";
+            liveUrl = ResourceUtil.getProperty(resourceResolver, resourceCFPath, resourceCFPropertyUrl);            
 
             // Fetch Name
             String resourceCFProperty = "name";
@@ -85,9 +89,7 @@ public class BioImpl implements Bio {
             String resourceSeoCFProperty = "seoSchema";
             seoSchema = ResourceUtil.getProperty(resourceResolver, resourcePath, resourceSeoCFProperty);    
             
-            // Fetch Author Bio link
-            String resourceliveUrlCFProperty = "liveUrl";
-            liveUrl = ResourceUtil.getProperty(resourceResolver, resourceCFPath, resourceliveUrlCFProperty);             
+         
         }
     }
         
@@ -129,7 +131,7 @@ public class BioImpl implements Bio {
         }          
 
         // Gets author bio link from Author Content Fragment Model
-        public String getliveUrl() {
+        public String getLiveurl() {
             return liveUrl;
         }           
     

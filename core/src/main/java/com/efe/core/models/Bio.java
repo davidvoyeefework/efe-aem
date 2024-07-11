@@ -24,7 +24,7 @@ public interface Bio {
     public String getSeoSchema();
 
     //  Method to return URL String for author bio profile link
-    public String getBioLink();    
+    public String getLiveurl();    
     
     
 }
