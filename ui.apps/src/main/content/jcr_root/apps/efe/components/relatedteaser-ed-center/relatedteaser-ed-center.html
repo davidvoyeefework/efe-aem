@@ -40,9 +40,7 @@
             </div>
             <div data-sly-call="${videoButton.actions @ teaser=teaser, article=article, class='cmp-button--podcast'}"></div>
         </sly>
-        <a data-sly-test="${properties.pagePreviewVariantSelect == 'yes'}" class="cmp-button--article" data-sly-attribute="${teaser.link.htmlAttributes}"
-           data-sly-unwrap="${!teaser.link.valid || !teaser.actions.empty}"
-           data-cmp-clickable="${teaser.data ? true : false}">${article.requestText}</a>
+        <div data-sly-test="${properties.pagePreviewVariantSelect == 'yes'}" class="cmp-button--article"></div>
     </div>
 
     <sly data-sly-call="${imageTemplate.image @ teaser=teaser}"></sly>
