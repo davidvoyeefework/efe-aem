@@ -54,7 +54,26 @@
                 </div>    
             </sly> 
             
-            <script data-sly-test="${model.seoSchema}">   
+            <script data-sly-test="${model.seoSchema}"> 
+            
+                let edObjects = [];
+
+                const buildEducationObject = (item) => {
+                    let splitDetails = item.split(";")
+                    let degree = splitDetails[0];
+                    let institution = splitDetails[1];
+                    var educationObject = {
+                        "@type": "EducationalOccupationalCredential",
+                        "credentialCategory": "degree",
+                        "name": degree,
+                        "educationalLevel": "University",
+                        "recognizedBy": {
+                            "@type": "EducationalOrganization",
+                            "name": institution
+                            },
+                        }
+                    edObjects.push(educationObject);
+                }            
 
                 // Create SEO Script
                 const jsonldScript = document.createElement('script');
@@ -67,9 +86,8 @@
                 var education = "${model.education @context ='html'}";
                 const educationArray = education.split(",");
                 const educationLength = educationArray.length -1;
-                console.log("Edcation length is:" + educationLength);
-                
-
+                let edArrayItem = educationArray.forEach(buildEducationObject);
+         
                 const blank = " ";
                 const customBioLink = "${model.liveurl @context='html'}";
                 const finalLink = (customBioLink == "" ? url : customBioLink) ;
@@ -92,15 +110,7 @@
                         'streetAddress': blank,
                         },
                     'hasCredential': [
-                        {"@type": "EducationalOccupationalCredential",
-                        "credentialCategory": "degree",
-                        "name": education,
-                        "educationalLevel": "University",
-                        "recognizedBy": {
-                            "@type": "EducationalOrganization",
-                            "name": education
-                            },
-                        }
+                        edObjects
                     ],
                     'image': image, 
                     'jobTitle' : title,
