@@ -37,7 +37,7 @@
                 <div id="certs" class="text cmp-text--body-02">
                     <div class="cmp-text">
                         <ul data-sly-list.item="${model.certs}">
-                            <li>${item},</li>
+                            <li>${item}<sly data-sly-test="${!itemList.last}">,</sly></li>
                         </ul>
                     </div>
                 </div>    
@@ -54,7 +54,26 @@
                 </div>    
             </sly> 
             
-            <script data-sly-test="${model.seoSchema}">   
+            <script data-sly-test="${model.seoSchema}"> 
+            
+                let edObjects = [];
+
+                const buildEducationObject = (item) => {
+                    let splitDetails = item.split(";")
+                    let degree = splitDetails[0];
+                    let institution = splitDetails[1];
+                    var educationObject = {
+                        "@type": "EducationalOccupationalCredential",
+                        "credentialCategory": "degree",
+                        "name": degree,
+                        "educationalLevel": "University",
+                        "recognizedBy": {
+                            "@type": "EducationalOrganization",
+                            "name": institution
+                            },
+                        }
+                    edObjects.push(educationObject);
+                }            
 
                 // Create SEO Script
                 const jsonldScript = document.createElement('script');
@@ -64,14 +83,18 @@
                 const domain = "https://www.edelmanfinancialengines.com";
                 const currentPath = '${currentPage.getPath @context="html"}';
                 const url = domain.concat(currentPath);
-                const education = "${model.education @context ='html'}";
+                var education = "${model.education @context ='html'}";
+                const educationArray = education.split(",");
+                const educationLength = educationArray.length -1;
+                let edArrayItem = educationArray.forEach(buildEducationObject);
+         
                 const blank = " ";
-                const customBioLink = "${model.bioLink @context='html'}";
+                const customBioLink = "${model.liveurl @context='html'}";
                 const finalLink = (customBioLink == "" ? url : customBioLink) ;
                 const image = domain.concat("${model.thumbnail @context ='html'}");
                 const title = "${model.title @context='html'}";
                 const certs = "${model.certs @context='html'}";
-                const arrayTest = certs.split(",");
+                var arrayTest = certs.split(",");
 
                 // Create SEO object
                 const seoObjDetails = {
@@ -86,7 +109,9 @@
                         'postalCode' : '',
                         'streetAddress': blank,
                         },
-                    'hasCredential': education ,
+                    'hasCredential': [
+                        edObjects
+                    ],
                     'image': image, 
                     'jobTitle' : title,
                     'knowsAbout': {
