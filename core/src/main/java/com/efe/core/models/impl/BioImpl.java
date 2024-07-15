@@ -58,7 +58,7 @@ public class BioImpl implements Bio {
             String resourceCFPath = authorContentFragment + "/jcr:content/data/master";  
             
             // Fetch Live Url
-            String resourceCFPropertyUrl = "liveUrl";
+            String resourceCFPropertyUrl = "liveURL";
             liveUrl = ResourceUtil.getProperty(resourceResolver, resourceCFPath, resourceCFPropertyUrl);            
 
             // Fetch Name
