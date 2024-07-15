@@ -81,10 +81,10 @@
         
             &:hover, &:active {
                 transition: $std-transition;
-                border: none;
                 text-decoration: none;
-                color: white;
                 cursor: pointer;
+                color: #368727 !important;
+                border: 1px solid #368727 !important;
             }
         
             .cmp-button__text {
