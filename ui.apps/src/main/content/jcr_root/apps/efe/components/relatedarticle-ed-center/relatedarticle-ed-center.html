@@ -6,7 +6,8 @@
         data-sly-list.item="${list.listItems}"
         id="${list.id}"
         data-cmp-data-layer="${list.data.json}"
-        class="cmp-list">
+        class="cmp-list"
+        data-sly-attribute.id="${properties.pagePreviewVariantSelect == 'yes' ? 'page-preview-variant' : ''}">
 
         <li data-sly-test="${item.teaserResource}"
              class="teaser cmp-teaser--thumbnail" data-sly-call="${teaserTemplate.teaser @ item = item}"

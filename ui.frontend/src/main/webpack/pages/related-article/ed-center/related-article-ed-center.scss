@@ -1,6 +1,7 @@
 .relatedarticle-ed-center {
     max-width: rem(1320);
     margin: auto;
+    
     .cmp-list {
         display: grid;
         grid-template-columns: 1fr;
@@ -22,8 +23,21 @@
         @media screen and (min-width: $lg) {
             grid-template-columns: repeat(3, minmax(0, 1fr));
         }
-        
+
+        &#page-preview-variant {
+
+            h2.cmp-title--subhead-01 {
+                margin-bottom: 4px;
+            }
+
+            #title {
+                @include body-02;
+                margin-bottom: 10px;
+            }
+
+            a.cmp-button--article {
+                text-indent: -9999px;
+            }           
+        }        
     }
-
-
 }
