@@ -78,6 +78,7 @@ public class ArticleDetailsConstants {
      */
     public static final String BIOGRAPHY = "biography";
 
+    public static final String LIVEURL = "liveURL";
 
 
     /**
