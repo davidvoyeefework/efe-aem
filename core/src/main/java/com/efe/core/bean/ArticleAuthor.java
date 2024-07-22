@@ -17,6 +17,8 @@ public class ArticleAuthor {
     /** The biography. */
     private String biography;
 
+    private String liveURL;
+
 
     /**
      * Gets the title.
@@ -90,5 +92,13 @@ public class ArticleAuthor {
      */
     public void setBiography(String biography) {
         this.biography = biography;
+    }
+
+    public String getLiveURL() {
+        return liveURL;
+    }
+
+    public void setLiveURL(String liveURL) {
+        this.liveURL = liveURL;
     }
 }

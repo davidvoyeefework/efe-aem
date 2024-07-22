@@ -163,6 +163,15 @@ public class ArticleDetailUtil {
                     articleAuthor.setBiography(authorDetailsCF.map(cf -> cf.getElement(ArticleDetailsConstants.BIOGRAPHY))
                         .map(ContentElement::getContent).orElse(StringUtils.EMPTY));
 
+                    String biography = articleAuthor.getBiography();
+                    if (biography.length() > 400) {
+                        biography = biography.substring(0, 400) + "...";
+                    }
+                    articleAuthor.setBiography(biography);
+
+                    articleAuthor.setLiveURL(authorDetailsCF.map(cf -> cf.getElement(ArticleDetailsConstants.LIVEURL))
+                            .map(ContentElement::getContent).orElse(StringUtils.EMPTY));
+
                     articleAuthors.add(articleAuthor);
                 }
             }
