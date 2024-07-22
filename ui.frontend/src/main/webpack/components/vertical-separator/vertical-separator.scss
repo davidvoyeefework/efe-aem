@@ -49,8 +49,11 @@
         }
     }
     @include media("<=tablet-lg") {
-        flex-direction: column;
+        @include flexbox(
+            $flex-direction: column
+        );
         gap: 0;
+        text-align: center;
         &__item {
             margin-bottom: 10px;
             // width: 100%;
