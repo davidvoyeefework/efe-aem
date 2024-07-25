@@ -80,11 +80,13 @@ section.alight-wpi-theme {
             display: none;
         }
 
-        .wpi-img {
-            width: 36px;
-            height: 36px;
+        .flex {
+            img.wpi-img {
+                width: 36px;
+                height: 36px;
+            }
         }
-
+        
         .flex {
             .copy {
                     margin: 8px 0 23px;
