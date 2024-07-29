@@ -1,5 +1,6 @@
 section.alight-wpi-theme {
     padding-left: 2px;
+    max-width: rem(641);
 
     .copy {
 
@@ -19,7 +20,7 @@ section.alight-wpi-theme {
             color: black;
             margin: 0 0 14px;
             
-            b {
+            b, strong {
                 font-weight: bold;
             }
         }     
