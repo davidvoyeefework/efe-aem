@@ -1,5 +1,6 @@
 section.transamerica-wpi-theme {
     padding-top: 15px;
+    max-width: rem(641);
 
     .copy {
 
@@ -19,7 +20,7 @@ section.transamerica-wpi-theme {
             color: black;
             margin: 0 0 14px;
             
-            b {
+            b, strong {
                 font-weight: bold;
             }
         }     
