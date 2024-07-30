@@ -6,7 +6,6 @@
     <filter root="/apps/efe/i18n"/>
     <filter root="/apps/efe/search"/>
     <filter root="/apps/cq/xssprotection"/>
-    <filter root="/apps/cq/gui"/>
     <filter root="/apps/settings/granite"/>
     <filter root="/oak:index">
             <include pattern="/oak:index/damAssetLucene-.*-custom-.*(/.*)?"/>
