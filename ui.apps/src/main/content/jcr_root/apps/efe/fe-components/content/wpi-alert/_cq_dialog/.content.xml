@@ -42,6 +42,14 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 text="Vanguard"
                                                 value="vanguard-wpi-theme"/>
+                                            <alight
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Alight Solutions"
+                                                value="alight-wpi-theme"/>     
+                                            <transamerica
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Transamerica"
+                                                value="transamerica-wpi-theme"/>                                                                                            
                                         </items>
                                     </record>
                                     <viewcode
