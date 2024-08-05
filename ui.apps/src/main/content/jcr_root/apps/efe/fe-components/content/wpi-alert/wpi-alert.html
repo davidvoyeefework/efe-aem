@@ -4,13 +4,13 @@
             <section class="${model.recordKeeper} wpi-alert" id="wpi-alert" data-viewcode="${model.viewcode}">
                 <div class="flex">
                     <img class="wpi-img" src="${model.icon}" alt="" />
-
                     <div class="copy">
                         ${model.headline @context='html'}
                         ${model.subheadline @context='html'}
-                        ${model.disclosures @context='html'}
-                    </div>        
-
+                        <sly data-sly-test.hasContent="${model.disclosures}">
+                            ${model.disclosures @context='html'}
+                        </sly>
+                    </div>
                     <div class="button cmp-button--button-wpi">
                         <a type="button" class="cmp-button" x-cq-linkchecker="valid" data-destination-token=${model.destination} target="_parent" id="wpi-anchor">
                             <span class="cmp-button__text">${model.cta @context='html'}</span>
