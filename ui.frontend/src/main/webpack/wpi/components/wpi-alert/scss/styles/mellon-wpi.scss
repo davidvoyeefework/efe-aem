@@ -1,0 +1,83 @@
+section.mellon-wpi-theme {
+    max-width: rem(280);
+    padding: 1px 0 17px 4px;
+
+    .copy {
+        h2 {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: rem(16);
+            line-height: 100%;
+            color: black;
+            padding: 8px 2.5px 2.5px;
+            background-color: #f5f5f5;
+            position: relative;
+            margin-bottom: 7px;
+    
+            &:after {
+                content: "";
+                display: block;
+                height: 1px;
+                background-color: #cdcdcd;
+                position: absolute;
+                bottom: -1px;
+                right: 0px;
+                left: 2px;
+            }
+        }
+
+        p {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: rem(11);
+            line-height: 100%;
+            color: black;
+            margin-bottom: 9px;
+
+            &:last-of-type {
+                margin-bottom: 0;
+
+            }
+
+            b, strong {
+                font-weight: bold;
+            }
+
+
+        }
+
+
+    }
+
+    .flex {
+        gap: 11px !important;
+        margin-bottom: 0;
+
+        img.wpi-img {
+            width: 55px;
+            height: 55px;
+            background-color: purple;
+            flex: 1 0 auto;
+        }
+
+        .copy {
+            margin-top: 7px;
+            max-width: 25ch;
+        }
+    }
+
+    .efe-lockup {
+        height: 11.67px;
+        width: 62px;
+        bottom: 6px;
+    }
+
+    .cmp-button--button-wpi {
+        height: 0;
+
+        a.cmp-button {
+            span.cmp-button__text {
+                text-indent: -9999;
+                display: block;
+            }
+        }
+    }
+}
