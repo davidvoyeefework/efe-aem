@@ -1,0 +1,99 @@
+section.afa-wpi-theme {
+    max-width: rem(738);
+    text-align: center;
+    margin: 0 auto;
+
+    .copy {
+        text-align: center;
+
+        h2 {
+            font-size: rem(17);
+            line-height: 140%;
+            font-family: Arial, Helvetica, sans-serif;
+            color: black;
+            font-weight: bold;
+
+        }
+
+        p {
+            font-size: rem(15);
+            line-height: 140%;
+            font-family: Arial, Helvetica, sans-serif;
+            color: black;
+            
+            b, strong {
+                font-weight: bold;
+            }
+        }     
+    
+    }
+
+
+
+    img.wpi-img {
+        width: 55px;
+        height: 55px;
+        background: #d9d9d9;
+        object-fit: contain;
+    }
+    
+    .cmp-button--button-wpi {
+        margin: 0 auto 12px;
+        width: rem(111);
+        height: rem(39);
+        background-color: #f4f4f4;
+        border: 1px solid #e4e5e6;
+        border-radius: 60px;       
+        z-index: 999;
+        @include flexbox(
+            $align-items:center,
+        );
+        text-align: center;
+        a.cmp-button {
+            flex-basis: 100%;
+        }
+        .cmp-button__text {
+            font-size: rem(15);
+            font-family: Arial, Helvetica, sans-serif;
+            color: black;
+            line-height: 100%;
+        }
+    }
+
+    .efe-lockup {
+        width: 85px;
+        height: 16px;
+        object-fit: contain;
+        margin: 0 0 24px 12px;
+
+    }
+
+    @media screen and (max-width: 300px) {
+
+        .cmp-button--button-wpi {
+            width: rem(128);
+            right: 18px;
+        }
+
+        .efe-lockup {
+            margin-left: 17px;
+        }
+
+        .flex {
+            img.wpi-img {
+                width: 75px;
+                height: 97px;
+            }
+        }
+        
+        .flex {
+            .copy {
+                    margin: 8px 0 23px;
+            }
+        }
+    }
+
+
+
+
+}
