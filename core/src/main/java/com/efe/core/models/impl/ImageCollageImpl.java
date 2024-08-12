@@ -4,6 +4,7 @@ import com.adobe.cq.export.json.ExporterConstants;
 import com.efe.core.models.ImageCollage;
 import com.efe.core.services.DynamicMediaService;
 import com.efe.core.utils.EFEUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -83,13 +84,13 @@ public class ImageCollageImpl implements ImageCollage {
     String primaryImageModifier;
 
     // First Secondary Image modifier
-    String firstSecondaryImageModifier;    
+    String firstSecondaryImageModifier;
 
     // Second Secondary Image modifier
-    String secondSecondaryImageModifier;     
+    String secondSecondaryImageModifier;
 
     // Resource Path
-    @ValueMapValue    
+    @ValueMapValue
     String resourcePath;
 
     // Resource Property
@@ -105,7 +106,7 @@ public class ImageCollageImpl implements ImageCollage {
             id = EFEUtil.getId(resource);
         }
         return id;
-    }  
+    }
 
     /**
      * Gets the primary image.
@@ -116,25 +117,25 @@ public class ImageCollageImpl implements ImageCollage {
         resourcePath = resource.getPath();
         resourceProperty = "primaryimgmodifier";
         String resourcePropertyStyleId = "cq:styleIds";
-        primaryImageModifier = ResourceUtil.getProperty(resourceResolver, resourcePath, resourceProperty); 
-        String basePath = dynamicMediaService.getDmImagePath(resourceResolver, primaryImage);  
-        String [] styleRendition = ResourceUtil.getProperties(resourceResolver, resourcePath, resourcePropertyStyleId);     
+        primaryImageModifier = ResourceUtil.getProperty(resourceResolver, resourcePath, resourceProperty);
+        String basePath = dynamicMediaService.getDmImagePath(resourceResolver, primaryImage);
+        String [] styleRendition = ResourceUtil.getProperties(resourceResolver, resourcePath, resourcePropertyStyleId);
         if (primaryImageModifier == null) {
             if (styleRendition[0].equals("primaryBottom-multi-corner-radius") || styleRendition[0].equals("primaryTop-multi-corner-radius")){
                 String scene7path = basePath + "?wid=720&hei=310&op_sharpen=1&qlt=85&fmt=webp&fit=crop,1";
-                return scene7path; 
+                return scene7path;
             }
             String scene7path = basePath + "?op_sharpen=1&qlt=85&fmt=webp&hei=826&wid=480&fit=crop,1";
-            return scene7path;  
-            
+            return scene7path;
+
         }
         else {
             if (styleRendition[0].equals("primaryBottom-multi-corner-radius") || styleRendition[0].equals("primaryTop-multi-corner-radius")){
                 String scene7path = basePath + "?wid=720&hei=310&op_sharpen=1&qlt=85&fmt=webp&fit=crop,1" + primaryImageModifier;
-                return scene7path; 
+                return scene7path;
             }
             String scene7path = basePath + "?op_sharpen=1&qlt=85&fmt=webp&hei=826&wid=480&fit=crop,1" + primaryImageModifier;
-            return scene7path;            
+            return scene7path;
         }
     }
 
@@ -145,11 +146,11 @@ public class ImageCollageImpl implements ImageCollage {
      */
     public String getPrimaryImageAltText() {
         if (primaryImageAltText == null) {
-            return " ";
+            return StringUtils.EMPTY;
         }
         else {
             return primaryImageAltText;
-        }        
+        }
     }
 
     /**
@@ -160,12 +161,12 @@ public class ImageCollageImpl implements ImageCollage {
     public String getFirstSecondaryImage() {
         resourcePath = resource.getPath();
         resourceProperty = "firstsecondaryimgmodifier";
-        firstSecondaryImageModifier = ResourceUtil.getProperty(resourceResolver, resourcePath, resourceProperty);           
+        firstSecondaryImageModifier = ResourceUtil.getProperty(resourceResolver, resourcePath, resourceProperty);
         String basePath = dynamicMediaService.getDmImagePath(resourceResolver, firstSecondaryImage);
         if (firstSecondaryImageModifier == null) {
             String scene7path = basePath + "?op_sharpen=1&qlt=85&fmt=webp&wid=480&hei=413&fit=crop,1";
-            return scene7path;            
-        }        
+            return scene7path;
+        }
         else {
             String scene7path = basePath + "?op_sharpen=1&qlt=85&fmt=webp&wid=480&hei=413&fit=crop,1" + firstSecondaryImageModifier;
             return scene7path;
@@ -179,7 +180,7 @@ public class ImageCollageImpl implements ImageCollage {
      */
     public String getFirstSecondaryImageAltText() {
         if (firstSecondaryImageAltText == null) {
-            return " ";
+            return StringUtils.EMPTY;
         }
         else {
             return firstSecondaryImageAltText;
@@ -194,16 +195,16 @@ public class ImageCollageImpl implements ImageCollage {
     public String getSecondSecondaryImage() {
         resourcePath = resource.getPath();
         resourceProperty = "secondsecondaryimgmodifier";
-        secondSecondaryImageModifier = ResourceUtil.getProperty(resourceResolver, resourcePath, resourceProperty);          
+        secondSecondaryImageModifier = ResourceUtil.getProperty(resourceResolver, resourcePath, resourceProperty);
         String basePath = dynamicMediaService.getDmImagePath(resourceResolver, secondSecondaryImage);
-        if (secondSecondaryImageModifier == null) {   
-            String scene7path = basePath + "?op_sharpen=1&qlt=85&fmt=webp&wid=480&hei=413&fit=crop,1";  
-            return scene7path;                          
+        if (secondSecondaryImageModifier == null) {
+            String scene7path = basePath + "?op_sharpen=1&qlt=85&fmt=webp&wid=480&hei=413&fit=crop,1";
+            return scene7path;
         }
         else {
             String scene7path = basePath + "?op_sharpen=1&qlt=85&fmt=webp&wid=480&hei=413&fit=crop,1" + secondSecondaryImageModifier;
             return scene7path;
-        } 
+        }
 
     }
 
@@ -214,7 +215,7 @@ public class ImageCollageImpl implements ImageCollage {
      */
     public String getSecondSecondaryImageAltText() {
         if (secondSecondaryImageAltText == null) {
-            return " ";
+            return StringUtils.EMPTY;
         }
         else {
             return secondSecondaryImageAltText;
