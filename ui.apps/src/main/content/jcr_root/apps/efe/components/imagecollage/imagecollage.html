@@ -4,21 +4,36 @@
         <sly data-sly-test="${imageCollageModel.primaryImage}">
             <div class="image ${imageCollageModel.primaryImagePosition}">
                 <div class="cmp-image" itemscope="" itemtype="http://schema.org/ImageObject">
-                    <img class="cmp-image__image" src="${imageCollageModel.primaryImage}" alt="${imageCollageModel.primaryImageAltText}">
+                    <sly data-sly-test="${imageCollageModel.primaryImageAltText == ''}">
+                        <img class="cmp-image__image" src="${imageCollageModel.primaryImage}" alt="">
+                    </sly>
+                    <sly data-sly-test="${imageCollageModel.primaryImageAltText != ''}">
+                        <img class="cmp-image__image" src="${imageCollageModel.primaryImage}" alt="${imageCollageModel.primaryImageAltText}">
+                    </sly>
                 </div>
             </div>
         </sly>
         <sly data-sly-test="${imageCollageModel.firstSecondaryImage}">
             <div class="image ${imageCollageModel.firstSecondaryImagePosition}">
                 <div class="cmp-image" itemscope="" itemtype="http://schema.org/ImageObject">
-                    <img class="cmp-image__image" src="${imageCollageModel.firstSecondaryImage}" alt="${imageCollageModel.firstSecondaryImageAltText}">
+                    <sly data-sly-test="${imageCollageModel.firstSecondaryImageAltText == ''}">
+                        <img class="cmp-image__image" src="${imageCollageModel.firstSecondaryImage}" alt="">
+                    </sly>
+                    <sly data-sly-test="${imageCollageModel.firstSecondaryImageAltText != ''}">
+                        <img class="cmp-image__image" src="${imageCollageModel.firstSecondaryImage}" alt="${imageCollageModel.firstSecondaryImageAltText}">
+                    </sly>
                 </div>
             </div>
         </sly>
         <sly data-sly-test="${imageCollageModel.secondSecondaryImage}">
             <div class="image ${imageCollageModel.secondSecondaryImagePosition}">
                 <div class="cmp-image" itemscope="" itemtype="http://schema.org/ImageObject">
-                    <img class="cmp-image__image" src="${imageCollageModel.secondSecondaryImage}" alt="${imageCollageModel.secondSecondaryImageAltText}">
+                    <sly data-sly-test="${imageCollageModel.firstSecondaryImageAltText == ''}">
+                        <img class="cmp-image__image" src="${imageCollageModel.secondSecondaryImage}" alt="">
+                    </sly>
+                    <sly data-sly-test="${imageCollageModel.firstSecondaryImageAltText != ''}">
+                        <img class="cmp-image__image" src="${imageCollageModel.secondSecondaryImage}" alt="${imageCollageModel.secondSecondaryImageAltText}">
+                    </sly>
                 </div>
             </div>
         </sly>
