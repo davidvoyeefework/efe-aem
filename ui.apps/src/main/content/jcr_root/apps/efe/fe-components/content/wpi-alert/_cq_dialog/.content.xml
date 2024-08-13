@@ -59,6 +59,11 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 text="AFA"
                                                 value="afa-wpi-theme"/>                                                                                                                                          
+                                                value="transamerica-wpi-theme"/>   
+                                            <voya
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Voya"
+                                                value="voya-wpi-theme"/>                                                                                                                                          
                                         </items>
                                     </record>
                                     <viewcode
