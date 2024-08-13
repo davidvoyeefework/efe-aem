@@ -49,11 +49,15 @@
                                             <transamerica
                                                 jcr:primaryType="nt:unstructured"
                                                 text="Transamerica"
-                                                value="transamerica-wpi-theme"/>   
+                                                value="transamerica-wpi-theme"/>    
+                                            <mellon
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Mellon"
+                                                value="mellon-wpi-theme"/
                                             <afa
                                                 jcr:primaryType="nt:unstructured"
                                                 text="AFA"
-                                                value="afa-wpi-theme"/>                                                                                                                                          
+                                                value="afa-wpi-theme"/
                                         </items>
                                     </record>
                                     <viewcode
