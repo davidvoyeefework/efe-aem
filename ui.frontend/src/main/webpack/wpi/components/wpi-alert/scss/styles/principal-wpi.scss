@@ -1,10 +1,6 @@
 .principal-wpi-theme {
-    padding: 19px 63px 21px 14px;
-    border: 1px solid #e6e6e6;
+    padding: 19px 19px 21px 14px;
     border-radius: 6px;
-    max-width: rem(795);
-    
-
 
     .flex {
         img.wpi-img {
@@ -19,9 +15,9 @@
             margin-bottom: rem(11);
 
             h2 {
-                font-size: rem(24);
+                font-size: rem(22);
                 color: $principal-gray;
-                line-height: rem(29);
+                line-height: 100%;
                 font-family: Arial, Helvetica, sans-serif;
                 font-weight: 700;
                 margin-bottom: rem(15);
@@ -29,14 +25,14 @@
             h3 {
                 font-family: Arial, Helvetica, sans-serif;
                 color: $principal-gray;
-                font-size: rem(18);
-                line-height: rem(20);
+                font-size: rem(16);
+                line-height: 100%;
             }
             p {
                 font-family: Arial, Helvetica, sans-serif;
                 color: $principal-gray;
                 font-size: rem(14);
-                line-height: rem(20);   
+                line-height: 100%; 
                 margin-top: rem(20);             
             }
         }  
@@ -124,6 +120,13 @@
         }
     }
 
-    
-   
+    @media screen and (max-width: 405px) {
+        img.wpi-img {
+            display: none !important;
+        }
+        .provided {
+            display: none;
+        }
+    }    
+
 }
