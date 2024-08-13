@@ -1,6 +1,8 @@
 package com.efe.core.models.impl;
 
 import javax.annotation.PostConstruct;
+
+import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -126,8 +128,16 @@ public class WpiAlertImpl implements WpiAlert {
         // Fetch CF for Headline
         resourceProperty = "Headline";
 		headlineContentFragment = ResourceUtil.getProperty( resourceResolver, resourcePath, resourceProperty );
+        String headlineVariationCFPrperty = "HeadlineVariations";
+        String headlineContentFragmentVariation = ResourceUtil.getProperty( resourceResolver, resourcePath, headlineVariationCFPrperty);
+
+
         if (headlineContentFragment != null) {
             resourceCFPath = headlineContentFragment + "/jcr:content/data/master";
+            if (StringUtils.isNotEmpty(headlineContentFragmentVariation)) {
+                resourceCFPath = headlineContentFragment + "/jcr:content/data/"+headlineContentFragmentVariation;
+            }
+
             resourceCFProperty = "content";
             headlineCFValue = ResourceUtil.getProperty(resourceResolver, resourceCFPath, resourceCFProperty);
         }
@@ -138,8 +148,15 @@ public class WpiAlertImpl implements WpiAlert {
         // Fetch CF for Subheadline
         resourcePropertySubheadline = "Subheadline";
         subheadlineContentFragment = ResourceUtil.getProperty( resourceResolver, resourcePath, resourcePropertySubheadline);
+        String subHeadlineVariationCFPrperty = "SubheadlineVariations";
+        String subHeadlineContentFragmentVariation = ResourceUtil.getProperty( resourceResolver, resourcePath, subHeadlineVariationCFPrperty);
+
         if (subheadlineContentFragment != null) {
             resourceCFPathSubheadline = subheadlineContentFragment + "/jcr:content/data/master";
+            if (StringUtils.isNotEmpty(subHeadlineContentFragmentVariation)) {
+                resourceCFPathSubheadline = subheadlineContentFragment + "/jcr:content/data/"+subHeadlineContentFragmentVariation;
+            }
+
             resourceCFPropertySubheadline = "content";
             subheadlineCFValue = ResourceUtil.getProperty(resourceResolver, resourceCFPathSubheadline, resourceCFPropertySubheadline);
         }
@@ -151,8 +168,14 @@ public class WpiAlertImpl implements WpiAlert {
         // Fetch CF for Disclosures
         resourcePropertyDisclosure = "Disclosure";
         disclosureContentFragment = ResourceUtil.getProperty( resourceResolver, resourcePath, resourcePropertyDisclosure);
+        String disclosureVariationCFPrperty = "DisclosureVariations";
+        String disclosureContentFragmentVariation = ResourceUtil.getProperty( resourceResolver, resourcePath, disclosureVariationCFPrperty);
+
         if (disclosureContentFragment != null) {
             resourceCFPathDisclosure = disclosureContentFragment + "/jcr:content/data/master";
+            if (StringUtils.isNotEmpty(disclosureContentFragmentVariation)) {
+                resourceCFPathDisclosure = disclosureContentFragment + "/jcr:content/data/"+disclosureContentFragmentVariation;
+            }
             resourceCFPropertyDisclosure = "content";
             disclosureCFValue = ResourceUtil.getProperty(resourceResolver, resourceCFPathDisclosure, resourceCFPropertyDisclosure);
         }

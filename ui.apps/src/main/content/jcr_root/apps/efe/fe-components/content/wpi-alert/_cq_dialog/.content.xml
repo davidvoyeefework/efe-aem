@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
     jcr:primaryType="nt:unstructured"
     jcr:title="WPI Alert"
-    sling:resourceType="cq/gui/components/authoring/dialog">
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    extraClientlibs="[wpi-alert.dropdown]">
     <content
         jcr:primaryType="nt:unstructured"
         sling:resourceType="granite/ui/components/coral/foundation/container">
@@ -45,11 +46,11 @@
                                             <alight
                                                 jcr:primaryType="nt:unstructured"
                                                 text="Alight Solutions"
-                                                value="alight-wpi-theme"/>     
+                                                value="alight-wpi-theme"/>
                                             <transamerica
                                                 jcr:primaryType="nt:unstructured"
                                                 text="Transamerica"
-                                                value="transamerica-wpi-theme"/>   
+                                                value="transamerica-wpi-theme"/>                                                                                                                                                                                                                                  
                                             <voya
                                                 jcr:primaryType="nt:unstructured"
                                                 text="Voya"
@@ -62,6 +63,7 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 text="AFA"
                                                 value="afa-wpi-theme"/
+                                            >
                                         </items>
                                     </record>
                                     <viewcode
@@ -98,6 +100,12 @@
                                                 name="./Headline"
                                                 pickerTitle="Select Content Fragment Headline"
                                                 rootPath="/content/dam/efe/cf/sub-advised"/>
+                                            <HeadlineVariations
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldDescription="Select Headline Variations"
+                                                fieldLabel="Select Headline Variations"
+                                                name="./HeadlineVariations"/>
                                             <Subheadline
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="dam/cfm/components/cfpicker"
@@ -107,6 +115,12 @@
                                                 name="./Subheadline"
                                                 pickerTitle="Select Content Fragment Subheadline"
                                                 rootPath="/content/dam/efe/cf/sub-advised"/>
+                                            <SubheadlineVariations
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldDescription="Select Subheadline Variations"
+                                                fieldLabel="Select Subheadline Variations"
+                                                name="./SubheadlineVariations"/>
                                             <Disclosure
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="dam/cfm/components/cfpicker"
@@ -115,14 +129,19 @@
                                                 fieldLabel="Disclosure"
                                                 name="./Disclosure"
                                                 pickerTitle="Select Content Fragment Disclosure"
-                                                rootPath="/content/dam/efe/cf/sub-advised"/>                                                
+                                                rootPath="/content/dam/efe/cf/sub-advised"/>
+                                            <DisclosureVariations
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldDescription="Select Disclosure Variations"
+                                                fieldLabel="Select Disclosure Variations"
+                                                name="./DisclosureVariations"/>
                                         </items>
                                     </column>
                                 </items>
                             </columns>
                         </items>
                     </content>
-
                     <content0
                         jcr:primaryType="nt:unstructured"
                         jcr:title="CTA and Icon"
@@ -130,42 +149,40 @@
                         margin="{Boolean}true">
                         <items jcr:primaryType="nt:unstructured">
                             <columns
-                                jcr:primaryType="nt:unstructured"
-                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container">
                                 <items jcr:primaryType="nt:unstructured">
                                     <cta
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                        fieldDescription="Call to Action text"
-                                        fieldLabel="CTA text"
-                                        name="./ctatext"
-                                            required="{Boolean}true"                                            
-                                            />  
-                                    <destination
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                        fieldDescription="CTA Destination"
-                                        fieldLabel="CTA Destination"
-                                        name="./destination"
-                                        required="{Boolean}true">
-                                        <datasource
                                             jcr:primaryType="nt:unstructured"
-                                            sling:resourceType="acs-commons/components/utilities/genericlist/datasource"
-                                            path="/etc/acs-commons/lists/efe/wpi-alert-destination-list"/>
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldDescription="Call to Action text"
+                                            fieldLabel="CTA text"
+                                            name="./ctatext"
+                                            required="{Boolean}true"
+                                    />
+                                    <destination
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                            fieldDescription="CTA Destination"
+                                            fieldLabel="CTA Destination"
+                                            name="./destination"
+                                            required="{Boolean}true">
+                                        <datasource
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="acs-commons/components/utilities/genericlist/datasource"
+                                                path="/etc/acs-commons/lists/efe/wpi-alert-destination-list"/>
                                     </destination>
                                     <icon
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="/libs/granite/ui/components/coral/foundation/form/pathfield"
-                                        fieldDescription="Add Icon"
-                                        fieldLabel="Icon"
-                                        name="./icon"
-                                        rootPath="/content/dam/efe/production/growth-mark/aq_wpi"/>
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="/libs/granite/ui/components/coral/foundation/form/pathfield"
+                                            fieldDescription="Add Icon"
+                                            fieldLabel="Icon"
+                                            name="./icon"
+                                            rootPath="/content/dam/efe/production/growth-mark/aq_wpi"/>
                                 </items>
                             </columns>
                         </items>
                     </content0>
-
-       
                 </items>
             </tabs>
         </items>

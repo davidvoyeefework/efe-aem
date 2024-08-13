@@ -34,8 +34,11 @@ import com.adobe.granite.workflow.WorkflowSession;
 import com.adobe.granite.workflow.exec.WorkItem;
 import com.adobe.cq.dam.cfm.ContentFragment;
 import com.adobe.cq.dam.cfm.ContentElement;
+import com.adobe.cq.dam.cfm.FragmentTemplate;
+import com.adobe.cq.dam.cfm.ElementTemplate;
 import com.adobe.granite.workflow.exec.WorkflowProcess;
 import com.adobe.granite.workflow.metadata.MetaDataMap;
+import com.adobe.cq.dam.cfm.FragmentData;
 import com.efe.core.utils.ResourceUtil;
 import com.google.gson.JsonObject;
 import org.osgi.service.component.annotations.Reference;
@@ -79,19 +82,26 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
             
         try (ResourceResolver resourceResolver = ResourceUtil.getServiceResourceResolver(resourceResolverFactory)) {
             ContentFragment thisFrag = resourceResolver.resolve(payloadPath).adaptTo(ContentFragment.class);
+            FragmentTemplate thisTemplate = thisFrag.getTemplate();
             jMap.put("name", thisFrag.getName());
             jMap.put("description", thisFrag.getDescription());
             jMap.put("tags", thisFrag.getTags());
             jMap.put("title", thisFrag.getTitle());
             
             
+            
             Iterator<ContentElement> contentIterator = thisFrag.getElements();
             Map<String,Map> fragmentContent = new HashMap();
             while(contentIterator.hasNext()) {
                 ContentElement thisElement = contentIterator.next();
+                FragmentData thisElemData = thisElement.getValue();
+                ElementTemplate thisElemTemplate = thisTemplate.getForElement(thisElement);
                 Map<String, String> elementProperties = new HashMap();
                 elementProperties.put("contentValue", thisElement.getContent());
                 elementProperties.put("contentDataType", thisElement.getContentType());
+                elementProperties.put( "contentTypeString", thisElemData.getDataType().getTypeString());
+                elementProperties.put("contentDefault", thisElemTemplate.getDefaultContent());
+                
                 fragmentContent.put(thisElement.getName(), elementProperties);
             }
             jMap.put("content", fragmentContent);
