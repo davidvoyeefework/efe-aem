@@ -58,12 +58,11 @@
                                             <mellon
                                                 jcr:primaryType="nt:unstructured"
                                                 text="Mellon"
-                                                value="mellon-wpi-theme"/
+                                                value="mellon-wpi-theme"/>
                                             <afa
                                                 jcr:primaryType="nt:unstructured"
                                                 text="AFA"
-                                                value="afa-wpi-theme"/
-                                            >
+                                                value="afa-wpi-theme"/>
                                         </items>
                                     </record>
                                     <viewcode
