@@ -1,0 +1,84 @@
+#alert-offer-floating {
+    background-color: #dfedf5;
+    color: #535658;
+    padding: 24px;
+    position: fixed;
+    bottom: 20px;
+    margin: 0 auto;
+    left: calc(50% - 175px);
+    border-radius: 12px;
+    border: 2px solid #f2f2f2;
+    max-width: rem(607);
+    z-index: 999;
+
+    @include flexbox(
+        $justify-content: center,
+        $gap: 11px,
+        $flex-direction: column,
+    );
+
+    #cta {
+        color: white;
+        font-size: 18px;
+        line-height: 100%;
+        font-family: nimbus-sans, sans-serif;
+        background-color: #3780a6;
+        padding: 8px 12px;
+        border-radius: 99px;
+        word-break: keep-all;
+        text-wrap: nowrap;
+        width: fit-content;
+
+        &:after {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 9;
+        }
+    }
+
+    #copy {
+        font-size: rem(18);
+        color: $efe-gray-primary;
+        font-weight: 500;
+        position: relative;
+        max-width: 30ch;
+    }
+
+    #close-btn {
+        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 16" fill="none"><path d="M7.50004 14.6668C11.1819 14.6668 14.1667 11.6821 14.1667 8.00016C14.1667 4.31826 11.1819 1.3335 7.50004 1.3335C3.81814 1.3335 0.833374 4.31826 0.833374 8.00016C0.833374 11.6821 3.81814 14.6668 7.50004 14.6668Z" stroke="%233780A6" stroke-miterlimit="10"/><path d="M5.53589 6.03564L9.46426 9.96402" stroke="%233780A6" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.46423 6.03564L5.53586 9.96402" stroke="%233780A6" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+        background-repeat: no-repeat;
+        height: 24px;
+        width: 24px;
+        margin: 20px;
+        background-size: contain;
+        text-indent: -9999px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 1000;
+    }
+
+    @media screen and (max-width: $sm) {
+        @include flexbox(
+            $flex-direction: column,
+        );
+        text-align: center;
+        margin: 0 24px;
+        width: calc(100% - 48px);
+        left: 0;
+        right: 0;
+
+        #copy {
+            &:after {
+                display: none;
+            }
+        }
+    }
+  }
