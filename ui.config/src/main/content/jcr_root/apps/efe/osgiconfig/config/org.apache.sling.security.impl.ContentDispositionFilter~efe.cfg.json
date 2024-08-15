@@ -1,6 +1,8 @@
 {
+  "sling.content.disposition.paths":[
+    "/content/dam/efe/akami/srto_sla_test_files/"
+  ],
   "sling.content.disposition.excluded.paths":[
-    "/content/dam/efe/akami/srto_sla_test_files/sureroute-test-object.html",
     "/libs/cq/ui/resources/0.html",
     "/etc/dam/viewers/s7viewers/html5/s7sdkclose.html",
     "/etc/dam/viewers/s7viewers/html5/CarouselViewer.html",
@@ -23,5 +25,5 @@
     "/etc/dam/viewers/s7sdk/3.1/flash/VideoPlayer.swf",
     "/etc/dam/viewers/s7sdk/3.2/flash/VideoPlayer.swf"
   ],
-  "sling.content.disposition.all.paths":true
+  "sling.content.disposition.all.paths":false
 }
