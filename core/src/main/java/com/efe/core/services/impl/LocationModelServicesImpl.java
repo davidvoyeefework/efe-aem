@@ -1,5 +1,6 @@
 package com.efe.core.services.impl;
 
+import java.util.Map;
 import java.util.List;
 import java.util.Objects;
 
@@ -92,14 +93,24 @@ public class LocationModelServicesImpl implements LocationModelServices {
 	 * This method is used to create Fragments for Locations
 	 */
 	private void createFragmentLocation(ResourceResolver resourceResolver) {
-		String jsonObjectLocation = restService.getData(efeService.getLocationsAPIEndpoint(),
+		String jsonObjectLocation = restService.getData(efeService.getLocationsAPIEndpoint (),
 				efeService.getAuthHeader());
 		Gson gson = new Gson();
 		LocationResponse[] jsonElement = gson.fromJson(jsonObjectLocation, LocationResponse[].class);
 		String rootPath = FolderUtil.createFolder(PlannerLocationConstants.ROOT_FOLDER_PATH,
 				PlannerLocationConstants.LOCATIONS, PlannerLocationConstants.LOCATIONS, resourceResolver);
-
-
+                Map currentFragnments;
+                
+                Iterable<Resource> StatesFolders = resourceResolver.getResource(rootPath).getChildren();
+                
+                Resource[] Offices = {};
+                
+                StatesFolders.forEach(
+                        (stateFolder) -> {
+                            Iterable<Resource> Offices = stateFolder.getChildren();
+                            
+                        }
+                );
 		for (LocationResponse jsonObj : jsonElement) {
 			String officeId = jsonObj.getOfficeId();
 			String stateFolderName = jsonObj.getState().toLowerCase();
