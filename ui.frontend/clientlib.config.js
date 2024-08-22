@@ -307,5 +307,59 @@ module.exports = {
         },
       },
     },
+    {
+      ...libsBaseConfig,
+      name: "clientlib-wpivanguard",
+      categories: ["fe.wpivanguard"],
+      assets: {
+        // Copy entrypoint scripts and stylesheets into the respective ClientLib
+        // directories
+        js: {
+          cwd: "clientlib-wpivanguard",
+          files: ["**/*.js"],
+          flatten: false,
+        },
+        css: {
+          cwd: "clientlib-wpivanguard",
+          files: ["**/*.css"],
+          flatten: false,
+        },
+
+        // Copy all other files into the `resources` ClientLib directory
+        resources: {
+          cwd: "clientlib-wpivanguard",
+          files: ["**/*.*"],
+          flatten: false,
+          ignore: ["**/*.js", "**/*.css"],
+        },
+      },
+    },
+    {
+      ...libsBaseConfig,
+      name: "clientlib-wpivoya",
+      categories: ["fe.wpivoya"],
+      assets: {
+        // Copy entrypoint scripts and stylesheets into the respective ClientLib
+        // directories
+        js: {
+          cwd: "clientlib-wpivoya",
+          files: ["**/*.js"],
+          flatten: false,
+        },
+        css: {
+          cwd: "clientlib-wpivoya",
+          files: ["**/*.css"],
+          flatten: false,
+        },
+
+        // Copy all other files into the `resources` ClientLib directory
+        resources: {
+          cwd: "clientlib-wpivoya",
+          files: ["**/*.*"],
+          flatten: false,
+          ignore: ["**/*.js", "**/*.css"],
+        },
+      },
+    },
   ],
 };

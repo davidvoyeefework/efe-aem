@@ -31,6 +31,8 @@ module.exports = {
     wpimellon: SOURCE_ROOT + "/wpi-mellon/site/main.ts",
     wpiprincipal: SOURCE_ROOT + "/wpi-principal/site/main.ts",
     wpitransamerica: SOURCE_ROOT + "/wpi-transamerica/site/main.ts",
+    wpivanguard: SOURCE_ROOT + "/wpi-transamerica/site/main.ts",
+    wpivoya: SOURCE_ROOT + "/wpi-transamerica/site/main.ts",
   },
   output: {
     filename: (chunkData) => {
