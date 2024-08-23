@@ -93,12 +93,13 @@ public class LocationModelServicesImpl implements LocationModelServices {
 	 * This method is used to create Fragments for Locations
 	 */
 	private void createFragmentLocation(ResourceResolver resourceResolver) {
-		String jsonObjectLocation = restService.getData(efeService.getLocationsAPIEndpoint (),
+		String jsonObjectLocation = restService.getData(efeService.getLocationsAPIEndpoint(),
 				efeService.getAuthHeader());
 		Gson gson = new Gson();
 		LocationResponse[] jsonElement = gson.fromJson(jsonObjectLocation, LocationResponse[].class);
 		String rootPath = FolderUtil.createFolder(PlannerLocationConstants.ROOT_FOLDER_PATH,
 				PlannerLocationConstants.LOCATIONS, PlannerLocationConstants.LOCATIONS, resourceResolver);
+               /*
                 Map currentFragnments;
                 
                 Iterable<Resource> StatesFolders = resourceResolver.getResource(rootPath).getChildren();
@@ -110,7 +111,7 @@ public class LocationModelServicesImpl implements LocationModelServices {
                             Iterable<Resource> Offices = stateFolder.getChildren();
                             
                         }
-                );
+                );*/
 		for (LocationResponse jsonObj : jsonElement) {
 			String officeId = jsonObj.getOfficeId();
 			String stateFolderName = jsonObj.getState().toLowerCase();
