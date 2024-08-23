@@ -76,7 +76,10 @@ public class ArticleDetailUtil {
         
         if(StringUtils.isNotEmpty(heroImage)) {
         	articleDetails.setHeroImage(dynamicMediaService.getDmImagePath(resolver, heroImage));
-        }
+        } 
+        
+        articleDetails.setAdMasterNumber(articleDetailsCF.map(cf -> cf.getElement(ArticleDetailsConstants.ADMASTERNUMBER))
+        .map(ContentElement::getContent).orElse(StringUtils.EMPTY));
 
         articleDetails.setAuthorType(new String[] { articleDetailsCF.map(cf -> cf.getElement(ArticleDetailsConstants.AUTHOR_TYPE))
             .map(ContentElement::getContent).orElse(StringUtils.EMPTY) });

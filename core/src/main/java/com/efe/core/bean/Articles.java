@@ -44,6 +44,9 @@ public class Articles {
     private List<PlannerResponse> plannerResponse;
     /** The disclosureResponse. */
     private List<Disclosures> disclosureResponse;
+    /** The Ad Master Number for Compliance */
+    private String adMasterNumber;
+
 
     /**
      * Gets the links.
@@ -224,6 +227,8 @@ public class Articles {
         this.datePublished = datePublished;
     }
 
+
+
     /**
      * Gets the dateUpdated.
      *
@@ -334,6 +339,16 @@ public class Articles {
     public void setRegularAuthor(String[] regularAuthor) {
 
         this.regularAuthor = regularAuthor.clone();
+    }
+
+    // Gets the AdMasterNumber
+    public String getAdMasterNumber() {
+        return adMasterNumber;
+    }
+
+    // Sets the adMasterNumber
+    public void setAdMasterNumber(String adMasterNumber) {
+        this.adMasterNumber = adMasterNumber;
     }
 
 }
