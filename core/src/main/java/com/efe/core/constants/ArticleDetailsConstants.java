@@ -128,6 +128,6 @@ public class ArticleDetailsConstants {
     public static final String STAFF_PHOTO = "photo";
     public static final String STAFF_ID = "supportStaffId";
     public static final String STAFF_PLANNERS = "planners";
-
+    public static final String ADMASTERNUMBER = "adMasterNumber";
 
 }
