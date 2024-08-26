@@ -25,6 +25,14 @@ module.exports = {
     site: SOURCE_ROOT + "/site/main.ts",
     fe: SOURCE_ROOT + "/fe-components/site/main.ts",
     wpi: SOURCE_ROOT + "/wpi/site/main.ts",
+    wpiafa: SOURCE_ROOT + "/wpi-afa/site/main.ts",
+    wpialight: SOURCE_ROOT + "/wpi-alight/site/main.ts",
+    wpifidelity: SOURCE_ROOT + "/wpi-fidelity/site/main.ts",
+    wpimellon: SOURCE_ROOT + "/wpi-mellon/site/main.ts",
+    wpiprincipal: SOURCE_ROOT + "/wpi-principal/site/main.ts",
+    wpitransamerica: SOURCE_ROOT + "/wpi-transamerica/site/main.ts",
+    wpivanguard: SOURCE_ROOT + "/wpi-transamerica/site/main.ts",
+    wpivoya: SOURCE_ROOT + "/wpi-transamerica/site/main.ts",
   },
   output: {
     filename: (chunkData) => {
