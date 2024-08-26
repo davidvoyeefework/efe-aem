@@ -35,8 +35,9 @@
                     <span class="cmp-text"><span>By:</span>
                         <sly data-sly-test.hasContent="${model.articleFragmentPath.articleAuthors}"
                              data-sly-list.item="${model.articleFragmentPath.articleAuthors}">
-                            <a x-cq-linkchecker="skip" href="${item.liveURL}" >
-                                <span class="author-name">${item.name} ${item.title}</span>
+                            <p class="cmp-text--body-03" style="display:inline-block">${item.name}</p>,
+                            <a x-cq-linkchecker="skip" href="${item.liveURL}">
+                                <span class="author-name">${item.title}</span>
                             </a>
                                 </br>
                         </sly>
@@ -107,6 +108,11 @@
                         <p>${item.biography @context='html'}</p>
                     </div>
                 </div>
+                <div class="cmp-button--body-02-link">
+                    <a x-cq-linkchecker="skip" href="${item.liveURL}">
+                        Read more about ${item.name @context='html'}
+                    </a>
+                </div>                
             </div>
         </div>
         <div class="cmp-author-details max-width"
@@ -132,6 +138,7 @@
                         <p>${item.bio @context='html'}</p>
                     </div>
                 </div>
+
                 <!-- <div class="cmp-author-details__credits" data-sly-test="${item.certifications}">
                     <sly data-sly-list.certification="${item.certifications}">
                         <p>

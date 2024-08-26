@@ -168,7 +168,8 @@ public class ArticleDetailUtil {
 
                     String biography = articleAuthor.getBiography();
                     if (biography.length() > 400) {
-                        biography = biography.substring(0, 400) + "...";
+                        biography = biography.substring(0, 400);
+                        biography = biography.substring(0, Math.min(biography.length(), biography.lastIndexOf(" "))) + " ...";
                     }
                     articleAuthor.setBiography(biography);
 
