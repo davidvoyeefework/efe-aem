@@ -24,7 +24,7 @@ module.exports = {
   entry: {
     site: SOURCE_ROOT + "/site/main.ts",
     fe: SOURCE_ROOT + "/fe-components/site/main.ts",
-    wpi: SOURCE_ROOT + "/wpi/site/main.ts",
+//    wpi: SOURCE_ROOT + "/wpi/site/main.ts",
     wpiafa: SOURCE_ROOT + "/wpi-afa/site/main.ts",
     wpialight: SOURCE_ROOT + "/wpi-alight/site/main.ts",
     wpifidelity: SOURCE_ROOT + "/wpi-fidelity/site/main.ts",
