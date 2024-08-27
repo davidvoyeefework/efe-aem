@@ -70,11 +70,13 @@
             </div>
         </sly>  
 
-
         <div data-sly-resource="${@path=model.articleFragmentPath.body, selectors='content', wcmmode='disabled'}"
              class="cmp-article-details__body "></div>
         <div class="max-width cmp-article-details__disclaimar"
              data-sly-repeat.item="${model.articleFragmentPath.disclosures}">${item.disclosureText @context ='html'}
+        </div>
+        <div class="max-width cmp-article-details__disclaimar">
+            <p>${model.articleFragmentPath.adMasterNumber @context='html'}</p>
         </div>
         <div class="cmp-container cmp-container--white cmp-container--width-1400
             cmp-article-details__seperator "
