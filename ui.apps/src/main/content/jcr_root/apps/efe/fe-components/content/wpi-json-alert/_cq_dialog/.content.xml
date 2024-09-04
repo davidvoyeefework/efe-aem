@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="WPI JSON Alert"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    extraClientlibs="[wpi-json-alert.dropdown]">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <content1
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Record Keeper"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <record
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        fieldDescription="Select Record Keeper"
+                                        fieldLabel="Select Record Keeper"
+                                        name="./record"
+                                        required="{Boolean}true">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <adp
+                                                jcr:primaryType="nt:unstructured"
+                                                text="ADP"
+                                                value="adp-wpi-theme"/>
+                                            <empower
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Empower"
+                                                value="empower-wpi-theme"/>
+                                        </items>
+                                    </record>
+                                    <viewcode
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Viewcode"
+                                        fieldLabel="Viewcode"
+                                        name="./viewcode"/>
+                                </items>
+                            </columns>
+                        </items>
+                    </content1>
+                    <content2
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Content"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <title
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="dam/cfm/components/cfpicker"
+                                                emptyText="Enter or select Content Fragment"
+                                                fieldDescription="Path to the Content Fragment to display Title."
+                                                fieldLabel="Title"
+                                                name="./title"
+                                                pickerTitle="Select Content Fragment For Title"
+                                                rootPath="/content/dam/efe/cf/workplace"/>
+                                            <titleCFVariations
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldDescription="Select Title CF Variations"
+                                                fieldLabel="Select Title CF Variations"
+                                                name="./titleCFVariations"/>
+                                            <subtitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="dam/cfm/components/cfpicker"
+                                                emptyText="Enter or select Content Fragment"
+                                                fieldDescription="Path to the Content Fragment to display Subtitle."
+                                                fieldLabel="Subtitle"
+                                                name="./subtitle"
+                                                pickerTitle="Select Content Fragment For Subtitle"
+                                                rootPath="/content/dam/efe/cf/workplace"/>
+                                            <subtitleCFVariations
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldDescription="Select Subtitle CF Variations"
+                                                fieldLabel="Select Subtitle CF Variations"
+                                                name="./subtitleCFVariations"/>
+                                            <header1
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="dam/cfm/components/cfpicker"
+                                                emptyText="Enter or select Content Fragment"
+                                                fieldDescription="Path to the Content Fragment to display Header 1"
+                                                fieldLabel="Header 1"
+                                                name="./header1"
+                                                pickerTitle="Select Content Fragment For Header 1"
+                                                rootPath="/content/dam/efe/cf/workplace"/>
+                                            <header1CFVariations
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldDescription="Select Header1 CF Variations"
+                                                fieldLabel="Select Header1 CF Variations"
+                                                name="./header1CFVariations"/>
+                                            <header2
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="dam/cfm/components/cfpicker"
+                                                emptyText="Enter or select Content Fragment"
+                                                fieldDescription="Path to the Content Fragment to display Header 2"
+                                                fieldLabel="Header 2"
+                                                name="./header2"
+                                                pickerTitle="Select Content Fragment For Header 2"
+                                                rootPath="/content/dam/efe/cf/workplace"/>
+                                            <header2CFVariations
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldDescription="Select Header2 CF Variations"
+                                                fieldLabel="Select Header2 CF Variations"
+                                                name="./header2CFVariations"/>
+                                            <body1
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="dam/cfm/components/cfpicker"
+                                                emptyText="Enter or select Content Fragment"
+                                                fieldDescription="Path to the Content Fragment to display Body 1"
+                                                fieldLabel="Body 1"
+                                                name="./body1"
+                                                pickerTitle="Select Content Fragment For Body 1"
+                                                rootPath="/content/dam/efe/cf/workplace"/>
+                                            <body1CFVariations
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldDescription="Select Body1 CF Variations"
+                                                fieldLabel="Select Body1 CF Variations"
+                                                name="./body1CFVariations"/>
+                                            <body2
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="dam/cfm/components/cfpicker"
+                                                emptyText="Enter or select Content Fragment"
+                                                fieldDescription="Path to the Content Fragment to display Body 2"
+                                                fieldLabel="Body 2"
+                                                name="./body2"
+                                                pickerTitle="Select Content Fragment For Body 2"
+                                                rootPath="/content/dam/efe/cf/workplace"/>
+                                            <body2CFVariations
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldDescription="Select Body2 CF Variations"
+                                                fieldLabel="Select Body2 CF Variations"
+                                                name="./body2CFVariations"/>
+                                            <footer
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="dam/cfm/components/cfpicker"
+                                                emptyText="Enter or select Content Fragment"
+                                                fieldDescription="Path to the Content Fragment to display Footer"
+                                                fieldLabel="Footer"
+                                                name="./footer"
+                                                pickerTitle="Select Content Fragment For Footer"
+                                                rootPath="/content/dam/efe/cf/workplace"/>
+                                            <footerCFVariations
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldDescription="Select Footer CF Variations"
+                                                fieldLabel="Select Footer CF Variations"
+                                                name="./footerCFVariations"/>
+                                            <imageUrl
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="/libs/granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldDescription="Add Image URL"
+                                                fieldLabel="Image URL"
+                                                name="./imageUrl"
+                                                rootPath="/content/dam/efe"/>
+                                            <altText
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Alt Text"
+                                                fieldLabel="Alt Text"
+                                                name="./altText"/>
+                                            <imagecode
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Image Code"
+                                                fieldLabel="Image Code"
+                                                name="./imageCode"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </content2>
+                    <content3
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="CTA and Icon"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <ctaLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="CTA Label"
+                                        fieldLabel="CTA Label"
+                                        name="./label"/>
+                                    <passThroughState
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="CTA Pass Through State"
+                                        fieldLabel="CTA Pass Through State"
+                                        name="./passThroughState"/>
+                                    <poweredByText
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Powered By Text"
+                                        fieldLabel="Powered By Text"
+                                        name="./poweredByText"/>
+                                    <poweredImage
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="/libs/granite/ui/components/coral/foundation/form/pathfield"
+                                        fieldDescription="Add Powered By Image"
+                                        fieldLabel="Powered By Image"
+                                        name="./poweredByImage"
+                                        rootPath="/content/dam/efe"/>
+                                    <poweredByAltText
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Powered By Alt Text"
+                                        fieldLabel="Powered By Alt Text"
+                                        name="./poweredByAltText"/>
+                                </items>
+                            </columns>
+                        </items>
+                    </content3>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>
