@@ -152,6 +152,8 @@ if (daVars.length > 0) {
   feValues.env = env;
   feid = feValues.env.da?.userId;
   poid = feValues.env.da?.sponsorId;
+} else {
+  console.log("No daVars Len > 0");
 }
 
 var elements = document.getElementsByClassName("cmp-button");
