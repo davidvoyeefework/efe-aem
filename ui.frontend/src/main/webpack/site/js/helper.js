@@ -194,7 +194,7 @@ function getUTMValues() {
   for (let i = 0; i < utmParamArray.length; i++) {
     if (urlParams.has(utmParamArray[i])) {
       utmArray.push(utmParamArray[i] + "=" + urlParams.get(utmParamArray[i]));
-    } else if (getCookie(utmParamArray[i]) !== "") {
+    } else if (getCookie(utmParamArray[i]) !== "undefined") {
       utmArray.push(utmParamArray[i] + "=" + getCookie(utmParamArray[i]));
     }
   }
