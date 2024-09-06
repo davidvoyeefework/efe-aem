@@ -1,3 +1,7 @@
+$teal: #3a948e;
+
+
+
 #everydaywealthinamerica2024 {
 
     section {
@@ -39,6 +43,7 @@
         }
     }
 
+
     section.stats-section {
         .section-header-bg-pattern {
             background-color: $efe-gray-primary;
@@ -72,6 +77,69 @@
                 z-index: 3;
             }
         }
+        .stats-block {
+            padding: 40px 24px 95px;
+            color: white;
+
+            h3.headline-source-serif {
+                font-family: "source-serif-pro", serif;
+                font-weight: 400;
+                font-style: italic;
+                font-size: rem(40);
+                line-height: 100%;
+                margin-bottom: 24px;
+            }
+
+            p.stat-text {
+                font-weight: 400;
+                font-size: rem(24);
+                line-height: 110%;
+                color: white;
+                @include flexbox(
+                    $flex-direction: row,
+                    $gap: 8px
+                );
+
+                .left-col-text {
+                    span.large-stat {
+                        font-size: rem(124);
+                        line-height: 100%;
+                        font-family: bebas-neue-pro, sans-serif;
+                        letter-spacing: 2.48px;
+                        font-weight: 700;
+    
+
+                    }
+                }
+
+                .right-col-text {
+                    position: relative;
+                    top: 16px;
+
+                    span {
+                        height: 100%;
+                    }
+
+                    @include flexbox(
+                        $flex-direction: column,
+                        $gap: 15px
+                    );
+                    sup {
+                        font-size: rem(54);
+                        font-weight: 700;
+                        top: 16px;
+                        font-family: bebas-neue-pro, sans-serif;
+                    }
+                }
+            }
+
+            &.stats-block--teal {
+                background-color: $teal;
+                position: relative;
+                background-image: url('../../../resources/images/EW24/bg-images/birdseye-people.png');
+
+            }
+        }
     }
     
     @media screen and (min-width: $md) {
@@ -91,7 +159,10 @@
         // Section Stats
         section.stats-section {
             .section-header-bg-pattern { 
-                padding: 18px 22px 22px 40px;
+
+                h2 {
+                    padding: 20px 22px 20px 40px;
+                }
 
                 &:before {
                     left: calc(100% - 324px);
