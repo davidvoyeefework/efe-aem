@@ -137,6 +137,14 @@
                 jcr:primaryType="nt:unstructured"
                 jcr:title="Dashboard Button"
                 value="dashboardButton|custom"/>
+            <item32
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Login Dashboard Button"
+                value="loginDashboardButton|custom"/>
+            <item33
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Product Choice Button Prospects Only"
+                value="product_choice_button_prospects_only|custom"/>
         </list>
     </jcr:content>
 </jcr:root>
