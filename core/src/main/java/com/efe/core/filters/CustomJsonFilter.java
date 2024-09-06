@@ -36,12 +36,15 @@ public class CustomJsonFilter implements Filter {
     public static final String POWERED_BY_TEXT = "poweredByText";
     public static final String POWERED_BY_ALT_TEXT = "poweredByAltText";
     public static final String PASS_THROUGH_STATE = "passThroughState";
+    public static final String DESTINATION = "destination";
     public static final String LABEL = "label";
     public static final String ALT_TEXT = "altText";
     public static final String ALERT_IMAGE = "alertImage";
     public static final String IMAGE_CODE = "imageCode";
     public static final String IMAGE_URL = "imageUrl";
     public static final String ROOT = "root";
+    public static final String TYPE = ":type";
+    public static final String RECORD = "record";
     public static final String ITEMS = ":items";
     public static final String WPI_JSON_ALERT = "wpi_json_alert";
     public static final String CALL_TO_ACTION = "callToAction";
@@ -176,9 +179,9 @@ public class CustomJsonFilter implements Filter {
             callToActionNode.set(LABEL, wpiAlertNode.get(LABEL));
             contentNode.remove(LABEL);
         }
-        if (wpiAlertNode.has(PASS_THROUGH_STATE)) {
-            callToActionNode.set(PASS_THROUGH_STATE, wpiAlertNode.get(PASS_THROUGH_STATE));
-            contentNode.remove(PASS_THROUGH_STATE);
+        if (wpiAlertNode.has(DESTINATION)) {
+            callToActionNode.set(PASS_THROUGH_STATE, wpiAlertNode.get(DESTINATION));
+            contentNode.remove(DESTINATION);
         }
         contentNode.set(CALL_TO_ACTION, callToActionNode);
 
@@ -191,12 +194,21 @@ public class CustomJsonFilter implements Filter {
             ObjectNode poweredByImage = objectMapper.createObjectNode();
             if (wpiAlertNode.has(POWERED_BY_IMAGE))
                 poweredByImage.set(IMAGE_URL, wpiAlertNode.get(POWERED_BY_IMAGE));
-            if (wpiAlertNode.has(ALT_TEXT))
+            if (wpiAlertNode.has(ALT_TEXT)) {
                 poweredByImage.set(ALT_TEXT, wpiAlertNode.get(POWERED_BY_ALT_TEXT));
+                contentNode.remove(POWERED_BY_ALT_TEXT);
+            }
             poweredByNode.set(POWERED_BY_IMAGE, poweredByImage);
             contentNode.remove(POWERED_BY_IMAGE);
         }
         contentNode.set(POWERED_BY, poweredByNode);
+
+        if (wpiAlertNode.has(RECORD)) {
+            contentNode.remove(RECORD);
+        }
+        if (wpiAlertNode.has(TYPE)) {
+            contentNode.remove(TYPE);
+        }
 
         ResourceResolver resolver = slingRequest.getResourceResolver();
         fetchCFValues(wpiAlertNode, "title", "titleCFVariations", resolver, contentNode);
@@ -220,10 +232,15 @@ public class CustomJsonFilter implements Filter {
             if (contentFragmentResource != null) {
                 ValueMap resourceMap = contentFragmentResource.getValueMap();
                 if (resourceMap.containsKey(CONTENT)) {
-                    contentNode.set(contentFragmentPath, TextNode.valueOf(resourceMap.get(CONTENT, String.class)));
+                    String cfValue = resourceMap.get(CONTENT, String.class);
+                    contentNode.set(contentFragmentPath, TextNode.valueOf(html2text(cfValue)));
                 }
             }
             contentNode.remove(contentFragmentVariationName);
         }
+    }
+
+    public static String html2text(String html) {
+        return html.replaceAll("\\<.*?>", "").replaceAll("\n", "").replaceAll("\t", "");
     }
 }
