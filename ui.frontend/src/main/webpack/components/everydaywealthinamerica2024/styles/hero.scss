@@ -1,10 +1,55 @@
 $teal: #3a948e;
+$light-gray-bg: #ebf2f6;
+
+.stat-text {
+    font-weight: 400;
+    font-size: rem(24);
+    line-height: 110%;
+    color: white;
+
+    b {
+        font-weight: 700;
+    }
+
+    @media screen and (min-width: xl) {
+        font-size: rem(32);
+
+        b {
+            font-size: rem(40);
+        }
+    }
+}
+
+.blue-bg {
+    background-color: $efe-blue;
+}
+
+.gray-bg {
+    background-color: $light-gray-bg;
+}
+
+.teal-bg {
+    background-color: $teal;
+}
+
+.efe-blue {
+    color: $efe-blue;
+}
+
+.efe-teal {
+    color: $teal;
+}
+
+.bebas {
+    font-family: 'bebas neue pro', sans-serif;
+}
+
 
 
 
 #everydaywealthinamerica2024 {
 
-    section {
+    section.standard {
         padding: 60px 24px 24px;
         margin-bottom: 40px;
     }
@@ -12,6 +57,8 @@ $teal: #3a948e;
     section#hero {
         background-color: $efe-gray-light;
         text-align: center;
+        border-top-left-radius: 28px;
+
         h1 {
             font-family: nimbus-sans, sans-serif;
             font-size: rem(46);
@@ -45,6 +92,7 @@ $teal: #3a948e;
 
 
     section.stats-section {
+        border-bottom-left-radius: 28px;
         .section-header-bg-pattern {
             background-color: $efe-gray-primary;
             position: relative;
@@ -77,8 +125,9 @@ $teal: #3a948e;
                 z-index: 3;
             }
         }
+
         .stats-block {
-            padding: 40px 24px 95px;
+            padding: 35px 24px 110px;
             color: white;
 
             h3.headline-source-serif {
@@ -87,7 +136,8 @@ $teal: #3a948e;
                 font-style: italic;
                 font-size: rem(40);
                 line-height: 100%;
-                margin-bottom: 24px;
+                margin-bottom: 20px;
+                text-align: center;
             }
 
             p.stat-text {
@@ -95,9 +145,14 @@ $teal: #3a948e;
                 font-size: rem(24);
                 line-height: 110%;
                 color: white;
+                position: relative;
+                left: 35px;
                 @include flexbox(
                     $flex-direction: row,
-                    $gap: 8px
+                    $gap: 8px,
+                    $align-self: center,
+                    $align-items: center,
+                    $justify-content: center
                 );
 
                 .left-col-text {
@@ -107,8 +162,9 @@ $teal: #3a948e;
                         font-family: bebas-neue-pro, sans-serif;
                         letter-spacing: 2.48px;
                         font-weight: 700;
-    
-
+                    }
+                    span.text {
+                        max-width: 17px;
                     }
                 }
 
@@ -118,6 +174,7 @@ $teal: #3a948e;
 
                     span {
                         height: 100%;
+                        max-width: 17ch;
                     }
 
                     @include flexbox(
@@ -136,21 +193,111 @@ $teal: #3a948e;
             &.stats-block--teal {
                 background-color: $teal;
                 position: relative;
-                background-image: url('../../../resources/images/EW24/bg-images/birdseye-people.png');
+                background-color: $teal;
 
+                &:before {
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                    width: 170px;
+                    height: 110px;
+                    background: url('./../resources/images/EW24/bg-images/birdseye-people1.jpg') no-repeat center center / contain;
+                }
+            }
+        }
+        .fifty-percent {
+            .blue-bg {
+                background-color: $efe-blue;
+                padding: 20px 24px;
+
+                .flex {
+                    @include flexbox(
+                        $flex-direction: row,
+                        $gap: 24px,
+                        $align-self: center,
+                        $align-items: center,
+                        $justify-content: center
+                    );
+                    svg {
+                        flex: 0 0 auto;
+                    }
+                    h3.stat-text {
+                        max-width: 19ch;
+                    }
+                }
+            }
+
+            .gray-bg {
+                background-color: $light-gray-bg;
+                padding: 25px 24px;
+                border-bottom-left-radius: 28px;
+                svg {
+                    flex: 0 0 auto;
+                }
+            }
+
+            .blue-bg, .gray-bg {
+                .flex {
+                    @include flexbox(
+                        $gap: 24px,
+                        $flex-direction: row,
+                        $align-self: center,
+                        $align-items: center,
+                        $justify-content: center
+                    );
+
+                    div.pie-chart-stats {
+                        font-size: rem(20);
+                        line-height: 120%;
+
+                        @include flexbox(
+                            $flex-direction: column,
+                            $gap: 22px
+                        );
+
+                        p.efe-blue, p.efe-teal {
+                            font-weight: 700 !important;
+                        }
+
+                        p.bebas {
+                            font-family: 'bebas neue pro', sans-serif;
+                            font-weight: 700;
+
+                            span {
+                                font-size: rem(54);
+                                color: $efe-gray-primary;
+                                text-transform: uppercase;
+                                margin-top: 7.8px;
+                                display: block;
+    
+                                sup {
+                                    font-family: 'bebas neue pro', sans-serif;
+                                    font-weight: 700;
+                                    position: relative;
+                                    top: -18px;
+                                }
+                            }
+                        }
+
+                    }
+                }
             }
         }
     }
-    
-    @media screen and (min-width: $md) {
-    
-        section {
+
+    @media screen and (min-width: $xl) {
+
+
+        section.standard {
             padding: 60px 40px 60px;
             margin-bottom: 60px;
         }
     
         //HERO
         section#hero {
+            border-top-left-radius: 40px;
             h1 {
                 @include heading-01;
             }
@@ -158,6 +305,10 @@ $teal: #3a948e;
 
         // Section Stats
         section.stats-section {
+
+            @include flexbox(
+                
+            );
             .section-header-bg-pattern { 
 
                 h2 {
@@ -165,11 +316,128 @@ $teal: #3a948e;
                 }
 
                 &:before {
-                    left: calc(100% - 324px);
+                    left: calc(100% - 226px);
                 }
+            }
+            .stats-block {
+                padding: 50px 40px;
+                h3.headline-source-serif {
+                    font-size: rem(64);
+                    text-align: left;
+                }
+                p.stat-text {
+                    gap: 20px;
+                    @include flexbox(
+                        $justify-content: start,
+                    );
+                    left: 0;
+                    .left-col-text {
+                        span.large-stat {
+                            font-size: rem(240);
+                            letter-spacing: 4.8px;
+                        }
+                    }
+                    .right-col-text {
+                        gap: 0px;
+                        sup {
+                            font-size: rem(105);
+                            top: rem(18);
+                        }
+                        span.text {
+                            font-size: rem(32);
+                            max-width: 17ch;
+                            line-height: 105%;
+                            margin-top: 27px;
+                        }
+                    }
+                }
+                &.stats-block--teal {
+                    &:before {
+                        width: 334px;
+                        height: 217px;
+                    }
+                }
+            }
+
+            .fifty-percent {
+                flex-basis: 100%;
+                .blue-bg {
+                    padding: 42px 49px 42px 65px;
+    
+                    .flex {
+                        @include flexbox(
+                            $flex-direction: row,
+                            $gap: 54px,
+                            $align-items: center,
+                            $justify-content: start
+                        );
+
+                        h3.stat-text {
+                            max-width: 15ch;
+                            font-size: rem(40);
+                        }
+                        svg {
+                            flex: 0 0 auto;
+                            width: 136px;
+                            height: 173px;
+                        }
+                    }
+
+                .gray-bg {
+                    background-color: $light-gray-bg;
+                    padding: 25px 24px;
+                    border-bottom-left-radius: 40px;
+                }
+                }
+                .teal-bg {
+                    border-bottom-left-radius: 40px;
+                }
+                .gray-bg {
+                    border-radius: 0;
+                    padding: 50px 50px 50px 65px;
+                    .flex {
+                        @include flexbox(
+                            $justify-content: start,
+                            $gap: 62px
+                        );
+
+                        svg {
+                            width: 227px;
+                            height: 227px;
+                        }
+                        div.pie-chart-stats {
+                            gap: 45px;
+
+                            p.bebas {
+                                span {
+                                    font-size: rem(100);
+                                    line-height: 100%;
+                                    margin-top: -11px;
+                                    sup {
+                                        font-size: rem(62);
+                                        top:  - rem(40);
+                                    }
+                                }
+                            }
+                            p.efe-blue, p.efe-teal {
+                                font-size: rem(32);
+                                margin-bottom: 0;
+                            }
+                        }
+                    }
+                }
+                
             }
         }
     
-    }
+        }         
+    
 }
+
+    
+
+
+
+
+
 
