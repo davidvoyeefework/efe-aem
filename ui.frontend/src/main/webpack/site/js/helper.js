@@ -193,17 +193,22 @@ function getUTMValues() {
   // "sem_account_id","sem_campaign_id","sem_ad_group_id","sem_matchtype","sem_ad_id","sem_network",
   // "sem_target_id","sem_feed_item_id","adgroup","keyword","sitelink","gclid","visitor_cid","pid","msclkid"];
   let utmArray = [];
-  for (let i = 0; i < utmParamArray.length; i++) {
-    if (urlParams.has(utmParamArray[i])) {
-      utmArray.push(utmParamArray[i] + "=" + urlParams.get(utmParamArray[i]));
-    } else if (getCookie(utmParamArray[i]) !== "undefined") {
-      utmArray.push(utmParamArray[i] + "=" + getCookie(utmParamArray[i]));
+  urlParams.forEach((key, value) => {
+    if (utmParamArray.includes(key)) {
+      utmArray.push(key + "=" + value);
     }
-  }
+  });
+  utmParamArray.forEach((value) => {
+    if (getCookie(value) !== "" && !urlParams.has(value)) {
+      utmArray.push(value + "=" + getCookie(value));
+    }
+  });
+
   var utmList = "";
-  for (let j = 0; j < utmArray.length; j++) {
-    utmList = utmList + utmArray[j] + "&";
-  }
+  utmArray.forEach((value) => {
+    utmList += value + "&";
+  });
+
   utmList = utmList.trim("&");
   return utmList;
 }
