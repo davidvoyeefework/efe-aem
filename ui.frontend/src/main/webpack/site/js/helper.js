@@ -209,8 +209,7 @@ function getUTMValues() {
   utmArray.forEach((value) => {
     utmList += value + "&";
   });
-
-  utmList = utmList.trim("&");
+  utmList = utmList.replace(/&+$/g, "");
   return utmList;
 }
 
