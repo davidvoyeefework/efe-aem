@@ -88,6 +88,7 @@ export const getCookie = (name) => {
       return parts.pop().split(";").shift();
     }
   }
+  return "";
 };
 
 export const getFetch = async (url, headers) => {
@@ -193,7 +194,7 @@ function getUTMValues() {
   // "sem_account_id","sem_campaign_id","sem_ad_group_id","sem_matchtype","sem_ad_id","sem_network",
   // "sem_target_id","sem_feed_item_id","adgroup","keyword","sitelink","gclid","visitor_cid","pid","msclkid"];
   let utmArray = [];
-  urlParams.forEach((key, value) => {
+  urlParams.forEach((value, key) => {
     if (utmParamArray.includes(key)) {
       utmArray.push(key + "=" + value);
     }
