@@ -34,10 +34,12 @@ section.voya-wpi-theme {
             h3, p {
                 font-size: rem(16);
                 line-height: rem(19.5);
-                font-weight: 400;
                 font-family: "Proxima Nova", sans-serif;
                 color: #333;
                 margin-bottom: 5px;
+                font-weight: 400;
+                margin-block-start: 0;
+                margin-block-end: 0;
             }
 
         }
