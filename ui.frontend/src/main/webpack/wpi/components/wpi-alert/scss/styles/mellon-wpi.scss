@@ -25,26 +25,17 @@ section.mellon-wpi-theme {
             }
         }
 
-        p {
+        h3, p {
             font-family: Arial, Helvetica, sans-serif;
             font-size: rem(11);
             line-height: 100%;
             color: black;
             margin-bottom: 9px;
 
-            &:last-of-type {
-                margin-bottom: 0;
-
-            }
-
             b, strong {
                 font-weight: bold;
             }
-
-
         }
-
-
     }
 
     .flex {
@@ -77,6 +68,14 @@ section.mellon-wpi-theme {
                 text-indent: -9999;
                 display: block;
             }
+        }
+    }
+
+    @media screen and (max-width: $sm) {
+        .flex {
+            @include flexbox (
+                $flex-direction: row,
+            )
         }
     }
 }
