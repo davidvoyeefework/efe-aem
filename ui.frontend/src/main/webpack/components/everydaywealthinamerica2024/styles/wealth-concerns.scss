@@ -1,0 +1,18 @@
+#everydaywealthinamerica2024 {
+
+    #wealth-concerns {
+
+        .section-header-bg-pattern {
+            &:before {
+                background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 192.8 62" style="enable-background:new 0 0 192.8 62;" xml:space="preserve"><g><polygon style="fill:%236E7476;" points="62.2,0 0,62 92.9,62 155.1,0 "/><polygon style="fill:%236E7476;" points="192.8,0 179.5,0 117.3,62 192.8,62 "/></g></svg>');
+                right: 0;
+                width: 186px;
+            }
+        }
+
+        .stats-block {
+            color: $efe-gray-primary;
+        }
+
+    }
+}

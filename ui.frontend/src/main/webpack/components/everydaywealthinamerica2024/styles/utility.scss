@@ -1,0 +1,59 @@
+$teal: #3a948e;
+$orange: #EF9C42;
+$light-gray-bg: #ebf2f6;
+
+.stat-text {
+    font-weight: 400;
+    font-size: rem(24);
+    line-height: 110%;
+    color: white;
+
+    b {
+        font-weight: 700;
+    }
+
+    @media screen and (min-width: xl) {
+        font-size: rem(32);
+
+        b {
+            font-size: rem(40);
+        }
+    }
+}
+
+.blue-bg {
+    background-color: $efe-blue;
+}
+
+.gray-bg {
+    background-color: $light-gray-bg;
+}
+
+.teal-bg {
+    background-color: $teal;
+}
+
+.orange-bg {
+    background-color: $orange;
+}
+
+.efe-blue {
+    color: $efe-blue;
+}
+
+.efe-teal {
+    color: $teal;
+}
+
+.bebas {
+    font-family: 'bebas neue pro', sans-serif;
+}
+
+.top-left-radius {
+    border-top-left-radius: 28px;
+
+    @media screen and (min-width: $xl) 
+        {
+            border-top-left-radius: 40px;
+        }
+}

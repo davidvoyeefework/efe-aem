@@ -7,10 +7,13 @@
 
     section.stats-section {
         border-bottom-left-radius: 28px;
+        margin-bottom: 40px;
+
         .section-header-bg-pattern {
             background-color: $efe-gray-primary;
             position: relative;
             overflow: hidden;
+            text-align: center;
 
             &:before {
                 content: "";
@@ -121,7 +124,9 @@
                 }
             }
         }
+
         .fifty-percent {
+
             .blue-bg {
                 background-color: $efe-blue;
                 padding: 20px 24px;
@@ -173,6 +178,7 @@
 
                         p.efe-blue, p.efe-teal {
                             font-weight: 700 !important;
+                            margin-bottom: 7.8px;
                         }
 
                         p.bebas {
@@ -183,8 +189,6 @@
                                 font-size: rem(54);
                                 color: $efe-gray-primary;
                                 text-transform: uppercase;
-                                margin-top: 7.8px;
-                                display: block;
     
                                 sup {
                                     font-family: 'bebas neue pro', sans-serif;
@@ -211,6 +215,8 @@
                         $align-items: start,
                     );
                     left: 0;
+
+
                 }
                 h3.headline-source-serif {
                     text-align: left;
@@ -225,6 +231,11 @@
                     }
                 }
             }
+            .section-header-bg-pattern {
+                h2 {
+                    text-align: left;
+                }
+            }
         }
     }
 
@@ -236,6 +247,7 @@
 
         // Section Stats
         section.stats-section {
+            margin-bottom: 60px;
 
             @include flexbox(
                 
@@ -244,6 +256,7 @@
 
                 h2 {
                     padding: 20px 22px 20px 40px;
+                    text-align: left;
                 }
 
                 &:before {
