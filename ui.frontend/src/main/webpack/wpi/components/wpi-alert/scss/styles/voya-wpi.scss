@@ -40,6 +40,9 @@ section.voya-wpi-theme {
                 font-weight: 400;
                 margin-block-start: 0;
                 margin-block-end: 0;
+                b, strong {
+                    font-weight: bold;
+                }
             }
 
         }
@@ -68,4 +71,8 @@ section.voya-wpi-theme {
             line-height: 100%;
         }
     }
+}
+
+body.xf-web-container {
+    margin: 0;
 }
