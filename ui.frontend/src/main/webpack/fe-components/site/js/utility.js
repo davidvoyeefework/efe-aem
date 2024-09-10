@@ -451,8 +451,9 @@ export const getProductChoiceButtonProspectsOnly = () => {
   const ticket = windowDataObj?.context?.t || "";
   // version of the product choice button that only shows for prospects (not OA users and not members).
 
-  const isMember = windowDataObj?.context.isMember;
-  if ((context?.userTier && context.userTier === "PROSPECT") && !isMember && (context?.userTier && context?.userTier !== "OA")) {
+  const context = windowDataObj?.context;
+  const isMember = context?.isMember;
+  if ((context?.userTier && context.userTier === "PROSPECT") && !isMember) {
     if (userLoggedIn) {
       url =
         apiBaseUrl +
