@@ -1,0 +1,29 @@
+
+
+<div id="title" data-title-variations="${properties.title ? properties.titleCFVariations : ''}"/>
+<div id="subtitle" data-subtitle-variations="${properties.subtitle ? properties.subtitleCFVariations : ''}"/>
+<div id="header1" data-header1-variations="${properties.header1 ? properties.header1CFVariations : ''}"/>
+<div id="header2" data-header2-variations="${properties.header2 ? properties.header2CFVariations : ''}"/>
+<div id="body1" data-body1-variations="${properties.body1 ? properties.body1CFVariations : ''}"/>
+<div id="body2" data-body2-variations="${properties.body2 ? properties.body2CFVariations : ''}"/>
+<div id="footer" data-footer-variations="${properties.footer ? properties.footerCFVariations : ''}"/>
+
+
+<sly data-sly-use.model="com.efe.core.models.WpiJsonAlert">
+
+title: ${model.titleCFContent} </br>
+
+subtitle: ${model.subtitleCFContent}</br>
+
+header1 : ${model.header1CFContent}</br>
+
+header2: ${model.header2CFContent}</br>
+
+body1: ${model.body1CFContent}</br>
+
+body2: ${model.body2CFContent}</br>
+
+footer: ${model.footerCFContent}</br>
+    
+
+</sly>
