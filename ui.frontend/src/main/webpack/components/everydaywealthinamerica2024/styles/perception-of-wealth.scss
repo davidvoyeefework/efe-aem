@@ -46,6 +46,7 @@
         .stats-block {
             padding: 35px 24px 110px;
             color: white;
+            position: relative;
 
             h3.headline-source-serif {
                 font-family: "source-serif-pro", serif;
@@ -292,6 +293,9 @@
                             max-width: 17ch;
                             line-height: 105%;
                             margin-top: 27px;
+                            .break {
+                                display: block !important;
+                            }
                         }
                     }
                 }
@@ -306,7 +310,7 @@
             .fifty-percent {
                 flex-basis: 100%;
                 .blue-bg {
-                    padding: 42px 49px 42px 65px;
+                    padding: 34px 49px 34px 65px;
     
                     .flex {
                         @include flexbox(
@@ -339,7 +343,7 @@
                 }
                 .gray-bg {
                     border-radius: 0;
-                    padding: 50px 50px 50px 65px;
+                    padding: 30px 50px 35px 65px;
                     .flex {
                         @include flexbox(
                             $justify-content: start,
@@ -351,7 +355,7 @@
                             height: 227px;
                         }
                         div.pie-chart-stats {
-                            gap: 45px;
+                            gap: 20px;
 
                             p.bebas {
                                 span {
@@ -367,6 +371,8 @@
                             p.efe-blue, p.efe-teal {
                                 font-size: rem(32);
                                 margin-bottom: 0;
+                                position: relative;
+                                top: 10px;
                             }
                         }
                     }

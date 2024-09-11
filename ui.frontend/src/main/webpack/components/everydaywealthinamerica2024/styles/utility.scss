@@ -1,5 +1,6 @@
 $teal: #3a948e;
 $orange: #EF9C42;
+$orange-light: #f2ad63;
 $light-gray-bg: #ebf2f6;
 
 .stat-text {
@@ -8,9 +9,14 @@ $light-gray-bg: #ebf2f6;
     line-height: 110%;
     color: white;
 
+    &.stat-text--gray {
+        color: $efe-gray-primary;
+    }
+
     b {
         font-weight: 700;
     }
+
 
     @media screen and (min-width: xl) {
         font-size: rem(32);
@@ -37,6 +43,10 @@ $light-gray-bg: #ebf2f6;
     background-color: $orange;
 }
 
+.orange-light-bg {
+    background-color: $orange-light;
+}
+
 .efe-blue {
     color: $efe-blue;
 }
@@ -49,6 +59,26 @@ $light-gray-bg: #ebf2f6;
     font-family: 'bebas neue pro', sans-serif;
 }
 
+p.bebas {
+    font-family: 'bebas neue pro', sans-serif;
+    font-weight: 700;
+
+    span.large {
+        font-size: rem(54);
+        color: $efe-gray-primary;
+        text-transform: uppercase;
+
+        sup {
+            font-family: 'bebas neue pro', sans-serif;
+            font-weight: 700;
+            position: relative;
+            top: -18px;
+        }
+    }
+
+
+}
+
 .top-left-radius {
     border-top-left-radius: 28px;
 
@@ -56,4 +86,8 @@ $light-gray-bg: #ebf2f6;
         {
             border-top-left-radius: 40px;
         }
+}
+
+.stat-building-block {
+    padding: 20px 24px;
 }

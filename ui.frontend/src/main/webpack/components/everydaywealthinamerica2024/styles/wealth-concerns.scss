@@ -12,6 +12,20 @@
 
         .stats-block {
             color: $efe-gray-primary;
+
+            &.stats-block--orange {
+
+                &:before {
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                    width: 197px;
+                    height: 165px;
+                    background: url('./../resources/images/EW24/bg-images/woman-pillow1.png') no-repeat center center / contain;
+                }
+            }
         }
 
     }
