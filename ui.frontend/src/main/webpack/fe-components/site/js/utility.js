@@ -435,6 +435,75 @@ export const getProductChoiceButton = () => {
   } else return ``;
 };
 
+export const getProductChoiceButtonProspectsOnly = () => {
+  const windowDataObj = window?.aemfe;
+  let url = "";
+  let type;
+  const userLoggedIn = Boolean(windowDataObj?.userLoggedIn);
+  const apiBaseUrl = getApiBaseUrl();
+  const choiceFlowVersionForPA =
+    windowDataObj[
+      `maoachoice.pilot.tokenlogin.alternatechoiceflow.test.versions`
+    ];
+  const choiceFlowVersionForNonPA =
+    windowDataObj[`publicEnrollment.alternatechoiceflow.limit.versions`];
+  const session = windowDataObj?.context?.s || "";
+  const ticket = windowDataObj?.context?.t || "";
+  // version of the product choice button that only shows for prospects (not OA users and not members).
+
+  const context = windowDataObj?.context;
+  const isMember = context?.isMember;
+  if ((context?.userTier && context.userTier === "PROSPECT") && !isMember) {
+    if (userLoggedIn) {
+      url =
+        apiBaseUrl +
+        "maoachoice/start.act?t=" +
+        ticket +
+        "&s=" +
+        session +
+        "&br=558&targetPoint=PRODUCT_CHOICES&showMoreInfo=false&fromPoint=";
+    } else {
+      //user is anonymous but we know the sponsor
+      if (checkIfPaSponsored()) {
+        //PA Sponsor
+        type = choiceFlowVersionForPA;
+        if (type && type === "SIMPLE_SIDE_BY_SIDE") {
+          url =
+            apiBaseUrl +
+            "app/productchoices/#/simpleSideBySide?fromPoint=MA_PUBLIC_ENROLL";
+        } else {
+          url =
+            apiBaseUrl +
+            "app/productchoices/#/threeTierProductChoiceRouter?fromPoint=MA_PUBLIC_ENROLL";
+        }
+      } else {
+        type = choiceFlowVersionForNonPA;
+        if (type && type === "PM_ONLY") {
+          url =
+            apiBaseUrl +
+            "app/productchoices/#/pmDetailed?fromPoint=MA_PUBLIC_ENROLL";
+        } else {
+          url =
+            apiBaseUrl +
+            "app/productchoices/#/simpleSideBySide?fromPoint=MA_PUBLIC_ENROLL";
+        }
+      }
+    }
+    var scId = captureScIdFromUrl();
+    if (scId) {
+      url = url + "&s_cid=" + encodeURIComponent(scId);
+    }
+    //now remove https:// from the url since Unbounce already prefix the button link url with https://.
+    //this value will be the dynamic replacement for button link url
+    return `<div class="button cmp-button--button-primary" style="padding-top:30px">
+                             <a class="cmp-button" href=${url}>
+                                 <span class="cmp-button__text">Get Started</span>
+                             </a>
+                             </div>`;
+    //return `<a href=${url} target="_self" class="fe-learn-more-link">LEARN MORE</a>`;
+  } else return ``;
+};
+
 export const getOtherWaysPromoMsgPa = () => {
   const windowDataObj = window?.aemfe;
   let otherWaysPromoMsgPa = "";
@@ -492,7 +561,7 @@ export const getDashboardLink = () => {
     url.replace(/^https?:\/\//i, "");
   }
   return url
-    ? `<a href="${url}" target="_blank" class="fe-learn-more-link">${linkLabel}</a>`
+    ? `<a href="https://www.financialengines.com/app/cx/#/overview" target="_blank" class="fe-learn-more-link">${linkLabel}</a>`
     : "";
 };
 
@@ -560,6 +629,29 @@ export const getDashboardButton = () => {
     : //    ? `<a href="${url}" target="_blank" class="fe-learn-more-link">${linkLabel}</a>`
       "";
 };
+
+export const getLoginDashboardButton = () => {
+  const windowDataObj = window?.aemfe;
+  const {
+    isUserFullyAuth,
+    context,
+    userLoggedIn,
+    isUserLightAuth,
+    providerInfo,
+  } = windowDataObj;
+  if (context?.userTier) {
+    if (context.userTier === "OA") {
+          console.log("getLoginDashboardButton context.userTier: OA");
+          return `<div class="button cmp-button--button-primary" style="padding-top:30px">
+                                       <a class="cmp-button" href="https://www.financialengines.com/app/cx/#/overview">
+                                           <span class="cmp-button__text">Log in</span>
+                                       </a>
+                                       </div>`;
+    }
+  }
+  return "";
+};
+
 export const getLoginLink = () => {
   const windowDataObj = window?.aemfe;
   let url = windowDataObj?.providerInfo?.rkLoginUrl;

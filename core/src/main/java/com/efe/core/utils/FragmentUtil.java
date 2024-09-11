@@ -2,6 +2,7 @@ package com.efe.core.utils;
 
 import java.util.Objects;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.PersistenceException;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -22,7 +23,7 @@ public class FragmentUtil {
 	 * This method is used to create Fragment for Planner
 	 */
 	public static void createFragment(String modelResource, String rootPath, String fragmentName,
-			String fragmentResource, ResourceResolver resourceResolver) {
+									  String fragmentResource, ResourceResolver resourceResolver) {
 		Resource templateOrModelRsc = resourceResolver.getResource(modelResource);
 		FragmentTemplate tpl = templateOrModelRsc.adaptTo(FragmentTemplate.class);
 		if (Objects.nonNull(tpl)) {
@@ -37,6 +38,20 @@ public class FragmentUtil {
 			} catch (PersistenceException e) {
 				LOGGER.error("PersistenceException:", e);
 			}
+		}
+	}
+
+	public static String populateCFContent(String resourcePath, ResourceResolver resourceResolver, String fragmentProperty, String fragmentVariationsProperty) {
+		String fragmentPropertyValue = ResourceUtil.getProperty(resourceResolver, resourcePath, fragmentProperty);
+		String fragmentVariationsPropertyValue = ResourceUtil.getProperty(resourceResolver, resourcePath, fragmentVariationsProperty);
+		if (fragmentPropertyValue != null) {
+			String updatedPropertyValue = fragmentPropertyValue + "/jcr:content/data/master";
+			if (StringUtils.isNotEmpty(fragmentVariationsPropertyValue)) {
+				updatedPropertyValue = fragmentPropertyValue + "/jcr:content/data/" + fragmentVariationsPropertyValue;
+			}
+			return ResourceUtil.getProperty(resourceResolver, updatedPropertyValue, "content");
+		} else {
+			return StringUtils.EMPTY;
 		}
 	}
 }
