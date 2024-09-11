@@ -10,6 +10,11 @@ section.vanguard-wpi-theme {
             $flex-direction: row,
             $gap: 11px
         );
+
+        .button-block{
+            display: none;
+        }
+
         .copy {
             max-width: 64ch; 
             margin-top: 5px;
@@ -49,8 +54,6 @@ section.vanguard-wpi-theme {
         height: rem(54);
         flex: 0 0 auto;
     }    
-
-  
 
     .cmp-button--button-wpi {
         transition: $std-transition;
@@ -98,6 +101,17 @@ section.vanguard-wpi-theme {
         }       
     }
 
+    .mobile-button {
+        display: none !important;
+    }
+
+
+    @media screen and (max-width: $sm) {
+        .mobile-button {
+            display: block !important;
+        }
+
+    }
     @media screen and (min-width: 310px) {
         .flex {
             .copy {
@@ -134,14 +148,19 @@ section.vanguard-wpi-theme {
         }        
     }
 
-
     @media screen and (min-width: $sm) {
-        padding: 35px 30px 60px 35px;     
+        padding: 35px 30px 60px 35px; 
+           
         .flex {
             -webkit-box-orient: vertical;        
             -webkit-box-direction: normal;        
             -ms-flex-direction: column;        
             flex-direction: column;
+
+            .button-block {
+                display: block;
+            }
+
         }
     
     }
@@ -158,7 +177,10 @@ section.vanguard-wpi-theme {
             -webkit-box-orient: horizontal;        
             -webkit-box-direction: normal;        
             -ms-flex-direction: row;        
-            flex-direction: row;     
+            flex-direction: row;  
+            @include flexbox(
+                $align-items: center
+            );   
             gap: 40px;    
             
             .copy {
@@ -192,9 +214,9 @@ section.vanguard-wpi-theme {
 
     @media screen and (min-width: 964px) {
         .cmp-button--button-wpi {
-            position: absolute;
-            right: 30px;
-            top: calc(50% - 23px);
+            // position: absolute;
+            // right: 30px;
+            // top: calc(50% - 23px);
         }
     }
 }
