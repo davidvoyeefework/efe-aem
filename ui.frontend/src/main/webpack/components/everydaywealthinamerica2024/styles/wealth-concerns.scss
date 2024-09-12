@@ -15,6 +15,13 @@
 
             &.stats-block--orange {
 
+                min-height: 315px;
+
+                h3.headline-source-serif {
+                    position: relative;
+                    z-index: 999;
+                }
+
                 &:before {
                     content: "";
                     display: block;
@@ -34,6 +41,13 @@
 
             svg {
                 flex: 0 0 auto;
+
+                &.stat-icon {
+                    &.stat-icon-globe {
+                        position: relative;
+                        top: 3px;
+                    }
+                }
             }
             @include flexbox(
                 $gap: 12px,

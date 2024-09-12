@@ -59,6 +59,10 @@ $light-gray-bg: #ebf2f6;
     background-color: #fae2c7;
 }
 
+.orange-lightest-bg {
+    background-color: #fdf3e9;
+}
+
 .efe-blue {
     color: $efe-blue;
 }
@@ -122,5 +126,6 @@ p.bebas {
     p.stat-text {
         position: relative;
         bottom: 2px;
+        word-break: break-word;
     }
 }
