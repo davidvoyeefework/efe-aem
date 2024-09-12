@@ -26,7 +26,20 @@
                     background: url('./../resources/images/EW24/bg-images/woman-pillow1.png') no-repeat center center / contain;
                 }
             }
+
+             
         }
+
+        .flex {
+
+            svg {
+                flex: 0 0 auto;
+            }
+            @include flexbox(
+                $gap: 12px,
+                $align-items: start,
+            );
+        };
 
     }
 }

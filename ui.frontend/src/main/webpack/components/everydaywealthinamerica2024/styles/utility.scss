@@ -17,6 +17,10 @@ $light-gray-bg: #ebf2f6;
         font-weight: 700;
     }
 
+    .lighter {
+        display: block;
+    }
+
 
     @media screen and (min-width: xl) {
         font-size: rem(32);
@@ -47,6 +51,14 @@ $light-gray-bg: #ebf2f6;
     background-color: $orange-light;
 }
 
+.orange-lighter-bg {
+    background-color: #f7d0a6;
+}
+
+.orange-even-lighter-bg {
+    background-color: #fae2c7;
+}
+
 .efe-blue {
     color: $efe-blue;
 }
@@ -72,7 +84,6 @@ p.bebas {
             font-family: 'bebas neue pro', sans-serif;
             font-weight: 700;
             position: relative;
-            top: -18px;
         }
     }
 
@@ -90,4 +101,26 @@ p.bebas {
 
 .stat-building-block {
     padding: 20px 24px;
+
+    .flex {
+        p.bebas {
+
+            span.large {
+                line-height: 100%;
+                display: block;
+                position: relative;
+                bottom: 7px;
+                sup {
+                    font-size: rem(26);
+                    top: -19px;
+                    left: 4px;
+                }
+            }
+        }
+    }
+
+    p.stat-text {
+        position: relative;
+        bottom: 2px;
+    }
 }
