@@ -117,28 +117,244 @@ module.exports = {
         },
       },
     },
+//    {
+//      ...libsBaseConfig,
+//      name: "clientlib-wpi",
+//      categories: ["fe.wpi"],
+//      dependencies: ["efe.site"],
+//      assets: {
+//        // Copy entrypoint scripts and stylesheets into the respective ClientLib
+//        // directories
+//        js: {
+//          cwd: "clientlib-wpi",
+//          files: ["**/*.js"],
+//          flatten: false,
+//        },
+//        css: {
+//          cwd: "clientlib-wpi",
+//          files: ["**/*.css"],
+//          flatten: false,
+//        },
+//
+//        // Copy all other files into the `resources` ClientLib directory
+//        resources: {
+//          cwd: "clientlib-wpi",
+//          files: ["**/*.*"],
+//          flatten: false,
+//          ignore: ["**/*.js", "**/*.css"],
+//        },
+//      },
+//    },
     {
       ...libsBaseConfig,
-      name: "clientlib-wpi",
-      categories: ["fe.wpi"],
-      dependencies: ["efe.site"],
+      name: "clientlib-wpialight",
+      categories: ["fe.wpialight"],
       assets: {
         // Copy entrypoint scripts and stylesheets into the respective ClientLib
         // directories
         js: {
-          cwd: "clientlib-wpi",
+          cwd: "clientlib-wpialight",
           files: ["**/*.js"],
           flatten: false,
         },
         css: {
-          cwd: "clientlib-wpi",
+          cwd: "clientlib-wpialight",
           files: ["**/*.css"],
           flatten: false,
         },
 
         // Copy all other files into the `resources` ClientLib directory
         resources: {
-          cwd: "clientlib-wpi",
+          cwd: "clientlib-wpialight",
+          files: ["**/*.*"],
+          flatten: false,
+          ignore: ["**/*.js", "**/*.css"],
+        },
+      },
+    },
+    {
+      ...libsBaseConfig,
+      name: "clientlib-wpiafa",
+      categories: ["fe.wpiafa"],
+      assets: {
+        // Copy entrypoint scripts and stylesheets into the respective ClientLib
+        // directories
+        js: {
+          cwd: "clientlib-wpiafa",
+          files: ["**/*.js"],
+          flatten: false,
+        },
+        css: {
+          cwd: "clientlib-wpiafa",
+          files: ["**/*.css"],
+          flatten: false,
+        },
+
+        // Copy all other files into the `resources` ClientLib directory
+        resources: {
+          cwd: "clientlib-wpiafa",
+          files: ["**/*.*"],
+          flatten: false,
+          ignore: ["**/*.js", "**/*.css"],
+        },
+      },
+    },
+    {
+      ...libsBaseConfig,
+      name: "clientlib-wpifidelity",
+      categories: ["fe.wpifidelity"],
+      assets: {
+        // Copy entrypoint scripts and stylesheets into the respective ClientLib
+        // directories
+        js: {
+          cwd: "clientlib-wpifidelity",
+          files: ["**/*.js"],
+          flatten: false,
+        },
+        css: {
+          cwd: "clientlib-wpifidelity",
+          files: ["**/*.css"],
+          flatten: false,
+        },
+
+        // Copy all other files into the `resources` ClientLib directory
+        resources: {
+          cwd: "clientlib-wpifidelity",
+          files: ["**/*.*"],
+          flatten: false,
+          ignore: ["**/*.js", "**/*.css"],
+        },
+      },
+    },
+    {
+      ...libsBaseConfig,
+      name: "clientlib-wpimellon",
+      categories: ["fe.wpimellon"],
+      assets: {
+        // Copy entrypoint scripts and stylesheets into the respective ClientLib
+        // directories
+        js: {
+          cwd: "clientlib-wpimellon",
+          files: ["**/*.js"],
+          flatten: false,
+        },
+        css: {
+          cwd: "clientlib-wpimellon",
+          files: ["**/*.css"],
+          flatten: false,
+        },
+
+        // Copy all other files into the `resources` ClientLib directory
+        resources: {
+          cwd: "clientlib-wpimellon",
+          files: ["**/*.*"],
+          flatten: false,
+          ignore: ["**/*.js", "**/*.css"],
+        },
+      },
+    },
+    {
+      ...libsBaseConfig,
+      name: "clientlib-wpiprincipal",
+      categories: ["fe.wpiprincipal"],
+      assets: {
+        // Copy entrypoint scripts and stylesheets into the respective ClientLib
+        // directories
+        js: {
+          cwd: "clientlib-wpiprincipal",
+          files: ["**/*.js"],
+          flatten: false,
+        },
+        css: {
+          cwd: "clientlib-wpiprincipal",
+          files: ["**/*.css"],
+          flatten: false,
+        },
+
+        // Copy all other files into the `resources` ClientLib directory
+        resources: {
+          cwd: "clientlib-wpiprincipal",
+          files: ["**/*.*"],
+          flatten: false,
+          ignore: ["**/*.js", "**/*.css"],
+        },
+      },
+    },
+    {
+      ...libsBaseConfig,
+      name: "clientlib-wpitransamerica",
+      categories: ["fe.wpitransamerica"],
+      assets: {
+        // Copy entrypoint scripts and stylesheets into the respective ClientLib
+        // directories
+        js: {
+          cwd: "clientlib-wpitransamerica",
+          files: ["**/*.js"],
+          flatten: false,
+        },
+        css: {
+          cwd: "clientlib-wpitransamerica",
+          files: ["**/*.css"],
+          flatten: false,
+        },
+
+        // Copy all other files into the `resources` ClientLib directory
+        resources: {
+          cwd: "clientlib-wpitransamerica",
+          files: ["**/*.*"],
+          flatten: false,
+          ignore: ["**/*.js", "**/*.css"],
+        },
+      },
+    },
+    {
+      ...libsBaseConfig,
+      name: "clientlib-wpivanguard",
+      categories: ["fe.wpivanguard"],
+      assets: {
+        // Copy entrypoint scripts and stylesheets into the respective ClientLib
+        // directories
+        js: {
+          cwd: "clientlib-wpivanguard",
+          files: ["**/*.js"],
+          flatten: false,
+        },
+        css: {
+          cwd: "clientlib-wpivanguard",
+          files: ["**/*.css"],
+          flatten: false,
+        },
+
+        // Copy all other files into the `resources` ClientLib directory
+        resources: {
+          cwd: "clientlib-wpivanguard",
+          files: ["**/*.*"],
+          flatten: false,
+          ignore: ["**/*.js", "**/*.css"],
+        },
+      },
+    },
+    {
+      ...libsBaseConfig,
+      name: "clientlib-wpivoya",
+      categories: ["fe.wpivoya"],
+      assets: {
+        // Copy entrypoint scripts and stylesheets into the respective ClientLib
+        // directories
+        js: {
+          cwd: "clientlib-wpivoya",
+          files: ["**/*.js"],
+          flatten: false,
+        },
+        css: {
+          cwd: "clientlib-wpivoya",
+          files: ["**/*.css"],
+          flatten: false,
+        },
+
+        // Copy all other files into the `resources` ClientLib directory
+        resources: {
+          cwd: "clientlib-wpivoya",
           files: ["**/*.*"],
           flatten: false,
           ignore: ["**/*.js", "**/*.css"],

@@ -2,6 +2,39 @@
 <div id="subheadline" data-subheadline-variations="${properties.SubheadlineVariations ? properties.SubheadlineVariations : ''}"/>
 <div id="disclosure" data-disclosure-variations="${properties.DisclosureVariations ? properties.DisclosureVariations : ''}"/>
 
+<sly data-sly-test="${properties.record == 'fidelity-wpi-theme'}">
+    <sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html"
+         data-sly-call="${clientlib.css @ categories='fe.wpifidelity'}"/>
+</sly>
+<sly data-sly-test="${properties.record == 'principal-wpi-theme'}">
+    <sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html"
+         data-sly-call="${clientlib.css @ categories='fe.wpiprincipal'}"/>
+</sly>
+<sly data-sly-test="${properties.record == 'vanguard-wpi-theme'}">
+    <sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html"
+         data-sly-call="${clientlib.css @ categories='fe.wpivanguard'}"/>
+</sly>
+<sly data-sly-test="${properties.record == 'alight-wpi-theme'}">
+    <sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html"
+         data-sly-call="${clientlib.css @ categories='fe.wpialight'}"/>
+</sly>
+<sly data-sly-test="${properties.record == 'transamerica-wpi-theme'}">
+    <sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html"
+         data-sly-call="${clientlib.css @ categories='fe.wpitransamerica'}"/>
+</sly>
+<sly data-sly-test="${properties.record == 'voya-wpi-theme'}">
+    <sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html"
+         data-sly-call="${clientlib.css @ categories='fe.wpivoya'}"/>
+</sly>
+<sly data-sly-test="${properties.record == 'mellon-wpi-theme'}">
+    <sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html"
+         data-sly-call="${clientlib.css @ categories='fe.wpimellon'}"/>
+</sly>
+<sly data-sly-test="${properties.record == 'afa-wpi-theme'}">
+    <sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html"
+         data-sly-call="${clientlib.css @ categories='fe.wpiafa'}"/>
+</sly>
+
 <sly data-sly-use.model="com.efe.core.models.WpiAlert">
 
     <!-- Fidelity -->
@@ -9,25 +42,25 @@
         <section class="${model.recordKeeper} wpi-alert" id="wpi-alert" data-viewcode="${model.viewcode}">
             <div class="flex">
                 <img class="wpi-img" src="${model.icon}" alt="" />
-    
-        <div class="copy">
-            ${model.headline @context='html'}
-            ${model.subheadline @context='html'}
-            <sly data-sly-test.hasContent="${model.disclosures}">
-                ${model.disclosures @context='html'}
-            </sly>
-        </div>
-    
-    
+
+                <div class="copy">
+                    ${model.headline @context='html'}
+                    ${model.subheadline @context='html'}
+                    <sly data-sly-test.hasContent="${model.disclosures}">
+                        ${model.disclosures @context='html'}
+                    </sly>
+                </div>
+
+
                 <div class="button cmp-button--button-wpi">
                     <a type="button" class="cmp-button" x-cq-linkchecker="valid" data-destination-token=${model.destination} target="_parent" id="wpi-anchor">
                         <span class="cmp-button__text">${model.cta @context='html'}</span>
                     </a>
-                </div>    
-            </div>        
-    
+                </div>
+            </div>
+
             <div class="provided">
-                <p class="provided-by">Provided by</p> 
+                <p class="provided-by">Provided by</p>
                 <svg class="efe-lockup" alt="Edelman Financial Engines" width="108.65" height="20" viewBox="0 0 201 37" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M24.5875 6.14068L30.7344 0H3.25195C2.39082 -2.45002e-06 1.56485 0.341202 0.955213 0.94877C0.345577 1.55634 0.0020552 2.38066 0 3.24091H0V3.59757V30.7344L6.14688 24.5937V6.14068H24.5875Z" fill="#C32D37"/>
                     <path d="M27.8782 12.3045V12.2812H12.2937V18.4219H21.7469L27.8782 12.3045Z" fill="#C32D37"/>
@@ -58,8 +91,8 @@
                     <path d="M198.884 21.0631C198.46 21.0585 198.045 21.1783 197.691 21.4071C197.336 21.636 197.059 21.9637 196.893 22.3486C196.728 22.7334 196.682 23.1581 196.762 23.5687C196.842 23.9792 197.043 24.3571 197.341 24.6543C197.639 24.9516 198.02 25.1547 198.435 25.238C198.85 25.3212 199.28 25.2809 199.672 25.122C200.064 24.9631 200.399 24.6928 200.635 24.3456C200.87 23.9984 200.996 23.5898 200.996 23.1717C201.013 22.8925 200.97 22.6128 200.87 22.351C200.771 22.0892 200.616 21.8511 200.417 21.6522C200.217 21.4532 199.978 21.298 199.714 21.1965C199.45 21.095 199.167 21.0496 198.884 21.0631ZM198.884 24.8152C198.666 24.8267 198.449 24.7913 198.246 24.7114C198.044 24.6315 197.862 24.5091 197.713 24.3527C197.563 24.1963 197.45 24.0097 197.381 23.8057C197.312 23.6018 197.289 23.3854 197.313 23.1717C197.331 22.8697 197.439 22.5796 197.622 22.3372C197.806 22.0947 198.057 21.9105 198.345 21.8073C198.633 21.7041 198.946 21.6864 199.244 21.7563C199.542 21.8262 199.813 21.9807 200.023 22.2008C200.234 22.4209 200.374 22.6969 200.428 22.9949C200.481 23.2928 200.445 23.5997 200.324 23.8776C200.203 24.1555 200.002 24.3924 199.746 24.559C199.49 24.7256 199.19 24.8147 198.884 24.8152Z" fill="#535658"/>
                     <path d="M199.088 22.0319H198.075V24.1793H198.554V23.5048H198.868L199.418 24.2103H199.936V24.1095L199.363 23.435C199.551 23.3991 199.718 23.2906 199.825 23.1336C199.933 22.9766 199.973 22.7839 199.936 22.5978C199.9 22.4117 199.79 22.2476 199.631 22.1414C199.472 22.0353 199.276 21.9959 199.088 22.0319ZM199.088 23.0707H198.562V22.4738H199.096C199.138 22.4748 199.179 22.4839 199.217 22.5006C199.255 22.5174 199.29 22.5413 199.318 22.5712C199.347 22.6011 199.37 22.6363 199.385 22.6747C199.4 22.7132 199.407 22.7543 199.406 22.7955C199.405 22.8367 199.396 22.8773 199.379 22.915C199.362 22.9527 199.338 22.9868 199.307 23.0152C199.277 23.0437 199.241 23.0659 199.202 23.0808C199.163 23.0956 199.122 23.1027 199.08 23.1017L199.088 23.0707Z" fill="#535658"/>
                 </svg>
-            </div>        
-        </section>        
+            </div>
+        </section>
     </sly>
 
     <!-- Principal  -->
@@ -67,25 +100,25 @@
         <section class="${model.recordKeeper} wpi-alert" id="wpi-alert" data-viewcode="${model.viewcode}">
             <div class="flex">
                 <img class="wpi-img" src="${model.icon}" alt="" />
-    
-        <div class="copy">
-            ${model.headline @context='html'}
-            ${model.subheadline @context='html'}
-            <sly data-sly-test.hasContent="${model.disclosures}">
-                ${model.disclosures @context='html'}
-            </sly>
-        </div>
-    
-    
+
+                <div class="copy">
+                    ${model.headline @context='html'}
+                    ${model.subheadline @context='html'}
+                    <sly data-sly-test.hasContent="${model.disclosures}">
+                        ${model.disclosures @context='html'}
+                    </sly>
+                </div>
+
+
                 <div class="button cmp-button--button-wpi">
                     <a type="button" class="cmp-button" x-cq-linkchecker="valid" data-destination-token=${model.destination} target="_parent" id="wpi-anchor">
                         <span class="cmp-button__text">${model.cta @context='html'}</span>
                     </a>
-                </div>    
-            </div>        
-    
+                </div>
+            </div>
+
             <div class="provided">
-                <p class="provided-by">Provided by</p> 
+                <p class="provided-by">Provided by</p>
                 <svg class="efe-lockup" alt="Edelman Financial Engines" width="108.65" height="20" viewBox="0 0 201 37" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M24.5875 6.14068L30.7344 0H3.25195C2.39082 -2.45002e-06 1.56485 0.341202 0.955213 0.94877C0.345577 1.55634 0.0020552 2.38066 0 3.24091H0V3.59757V30.7344L6.14688 24.5937V6.14068H24.5875Z" fill="#C32D37"/>
                     <path d="M27.8782 12.3045V12.2812H12.2937V18.4219H21.7469L27.8782 12.3045Z" fill="#C32D37"/>
@@ -116,8 +149,8 @@
                     <path d="M198.884 21.0631C198.46 21.0585 198.045 21.1783 197.691 21.4071C197.336 21.636 197.059 21.9637 196.893 22.3486C196.728 22.7334 196.682 23.1581 196.762 23.5687C196.842 23.9792 197.043 24.3571 197.341 24.6543C197.639 24.9516 198.02 25.1547 198.435 25.238C198.85 25.3212 199.28 25.2809 199.672 25.122C200.064 24.9631 200.399 24.6928 200.635 24.3456C200.87 23.9984 200.996 23.5898 200.996 23.1717C201.013 22.8925 200.97 22.6128 200.87 22.351C200.771 22.0892 200.616 21.8511 200.417 21.6522C200.217 21.4532 199.978 21.298 199.714 21.1965C199.45 21.095 199.167 21.0496 198.884 21.0631ZM198.884 24.8152C198.666 24.8267 198.449 24.7913 198.246 24.7114C198.044 24.6315 197.862 24.5091 197.713 24.3527C197.563 24.1963 197.45 24.0097 197.381 23.8057C197.312 23.6018 197.289 23.3854 197.313 23.1717C197.331 22.8697 197.439 22.5796 197.622 22.3372C197.806 22.0947 198.057 21.9105 198.345 21.8073C198.633 21.7041 198.946 21.6864 199.244 21.7563C199.542 21.8262 199.813 21.9807 200.023 22.2008C200.234 22.4209 200.374 22.6969 200.428 22.9949C200.481 23.2928 200.445 23.5997 200.324 23.8776C200.203 24.1555 200.002 24.3924 199.746 24.559C199.49 24.7256 199.19 24.8147 198.884 24.8152Z" fill="#535658"/>
                     <path d="M199.088 22.0319H198.075V24.1793H198.554V23.5048H198.868L199.418 24.2103H199.936V24.1095L199.363 23.435C199.551 23.3991 199.718 23.2906 199.825 23.1336C199.933 22.9766 199.973 22.7839 199.936 22.5978C199.9 22.4117 199.79 22.2476 199.631 22.1414C199.472 22.0353 199.276 21.9959 199.088 22.0319ZM199.088 23.0707H198.562V22.4738H199.096C199.138 22.4748 199.179 22.4839 199.217 22.5006C199.255 22.5174 199.29 22.5413 199.318 22.5712C199.347 22.6011 199.37 22.6363 199.385 22.6747C199.4 22.7132 199.407 22.7543 199.406 22.7955C199.405 22.8367 199.396 22.8773 199.379 22.915C199.362 22.9527 199.338 22.9868 199.307 23.0152C199.277 23.0437 199.241 23.0659 199.202 23.0808C199.163 23.0956 199.122 23.1027 199.08 23.1017L199.088 23.0707Z" fill="#535658"/>
                 </svg>
-            </div>        
-        </section>        
+            </div>
+        </section>
     </sly>
 
     <!-- Vanguard  -->
@@ -126,22 +159,27 @@
             <div class="flex">
                 <img class="wpi-img" src="${model.icon}" alt="" />
 
-        <div class="copy">
-            ${model.headline @context='html'}
-            ${model.subheadline @context='html'}
-            <sly data-sly-test.hasContent="${model.disclosures}">
-                ${model.disclosures @context='html'}
-            </sly>
-            <div class="button cmp-button--button-wpi">
-                <a type="button" class="cmp-button" x-cq-linkchecker="valid" data-destination-token=${model.destination} target="_parent" id="wpi-anchor">
-                    <span class="cmp-button__text">${model.cta @context='html'}</span>
-                </a>
-            </div>    
-        </div>
+                <div class="copy">
+                    ${model.headline @context='html'}
+                    ${model.subheadline @context='html'}
+                    <sly data-sly-test.hasContent="${model.disclosures}">
+                        ${model.disclosures @context='html'}
+                    </sly>
+                    <div class="button cmp-button--button-wpi mobile-button">
+                        <a type="button" class="cmp-button" x-cq-linkchecker="valid" data-destination-token=${model.destination} target="_parent" id="wpi-anchor">
+                            <span class="cmp-button__text">${model.cta @context='html'}</span>
+                        </a>
+                    </div>
+                </div>
 
 
+                <div class="button button-block cmp-button--button-wpi">
+                    <a type="button" class="cmp-button" x-cq-linkchecker="valid" data-destination-token=${model.destination} target="_parent" id="wpi-anchor">
+                        <span class="cmp-button__text">${model.cta @context='html'}</span>
+                    </a>
+                </div>          
 
-            </div>               
+            </div>
         </section>
     </sly>
 
@@ -164,9 +202,8 @@
 
             </div>
 
+            <div class="cta-lockup-container">
 
-
-            <div>
                 <svg class="efe-lockup" alt="Edelman Financial Engines" width="108.65" height="20" viewBox="0 0 201 37" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M24.5875 6.14068L30.7344 0H3.25195C2.39082 -2.45002e-06 1.56485 0.341202 0.955213 0.94877C0.345577 1.55634 0.0020552 2.38066 0 3.24091H0V3.59757V30.7344L6.14688 24.5937V6.14068H24.5875Z" fill="#C32D37"/>
                     <path d="M27.8782 12.3045V12.2812H12.2937V18.4219H21.7469L27.8782 12.3045Z" fill="#C32D37"/>
@@ -196,14 +233,15 @@
                     <path d="M193.763 24.0166C193.105 23.565 192.318 23.334 191.517 23.3576C190.622 23.3576 190.158 23.6755 190.158 24.1328C190.158 24.5902 190.622 24.9081 191.556 24.9081C193.394 24.9701 195.68 25.3499 195.68 27.9159C195.68 29.3734 194.549 31.0168 191.541 31.0168C189.914 31.0693 188.327 30.5159 187.095 29.4664L188.281 27.5826C189.218 28.3201 190.382 28.7194 191.58 28.7144C192.365 28.7144 193.017 28.4121 192.994 27.9392C192.97 27.4663 192.672 27.164 191.384 27.1097C189.624 27.0554 187.457 26.3345 187.457 24.1251C187.457 21.9157 189.467 21.1327 191.541 21.1327C192.858 21.0736 194.151 21.5053 195.161 22.3421L193.763 24.0166Z" fill="#535658"/>
                     <path d="M198.884 21.0631C198.46 21.0585 198.045 21.1783 197.691 21.4071C197.336 21.636 197.059 21.9637 196.893 22.3486C196.728 22.7334 196.682 23.1581 196.762 23.5687C196.842 23.9792 197.043 24.3571 197.341 24.6543C197.639 24.9516 198.02 25.1547 198.435 25.238C198.85 25.3212 199.28 25.2809 199.672 25.122C200.064 24.9631 200.399 24.6928 200.635 24.3456C200.87 23.9984 200.996 23.5898 200.996 23.1717C201.013 22.8925 200.97 22.6128 200.87 22.351C200.771 22.0892 200.616 21.8511 200.417 21.6522C200.217 21.4532 199.978 21.298 199.714 21.1965C199.45 21.095 199.167 21.0496 198.884 21.0631ZM198.884 24.8152C198.666 24.8267 198.449 24.7913 198.246 24.7114C198.044 24.6315 197.862 24.5091 197.713 24.3527C197.563 24.1963 197.45 24.0097 197.381 23.8057C197.312 23.6018 197.289 23.3854 197.313 23.1717C197.331 22.8697 197.439 22.5796 197.622 22.3372C197.806 22.0947 198.057 21.9105 198.345 21.8073C198.633 21.7041 198.946 21.6864 199.244 21.7563C199.542 21.8262 199.813 21.9807 200.023 22.2008C200.234 22.4209 200.374 22.6969 200.428 22.9949C200.481 23.2928 200.445 23.5997 200.324 23.8776C200.203 24.1555 200.002 24.3924 199.746 24.559C199.49 24.7256 199.19 24.8147 198.884 24.8152Z" fill="#535658"/>
                     <path d="M199.088 22.0319H198.075V24.1793H198.554V23.5048H198.868L199.418 24.2103H199.936V24.1095L199.363 23.435C199.551 23.3991 199.718 23.2906 199.825 23.1336C199.933 22.9766 199.973 22.7839 199.936 22.5978C199.9 22.4117 199.79 22.2476 199.631 22.1414C199.472 22.0353 199.276 21.9959 199.088 22.0319ZM199.088 23.0707H198.562V22.4738H199.096C199.138 22.4748 199.179 22.4839 199.217 22.5006C199.255 22.5174 199.29 22.5413 199.318 22.5712C199.347 22.6011 199.37 22.6363 199.385 22.6747C199.4 22.7132 199.407 22.7543 199.406 22.7955C199.405 22.8367 199.396 22.8773 199.379 22.915C199.362 22.9527 199.338 22.9868 199.307 23.0152C199.277 23.0437 199.241 23.0659 199.202 23.0808C199.163 23.0956 199.122 23.1027 199.08 23.1017L199.088 23.0707Z" fill="#535658"/>
-                </svg>
-            </div>
+                </svg>   
 
-            <div class="button cmp-button--button-wpi">
-                <a type="button" class="cmp-button" x-cq-linkchecker="valid" data-destination-token=${model.destination} target="_parent" id="wpi-anchor">
-                    <span class="cmp-button__text">${model.cta @context='html'}</span>
-                </a>
-            </div>
+                <div class="button cmp-button--button-wpi">
+                    <a type="button" class="cmp-button" x-cq-linkchecker="valid" data-destination-token=${model.destination} target="_parent" id="wpi-anchor">
+                        <span class="cmp-button__text">${model.cta @context='html'}</span>
+                    </a>
+                </div>   
+
+            </div>            
 
         </section>
     </sly>
@@ -227,9 +265,7 @@
 
             </div>
 
-
-
-            <div>
+            <div class="cta-lockup-container">
                 <svg class="efe-lockup" alt="Edelman Financial Engines" width="108.65" height="20" viewBox="0 0 201 37" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M24.5875 6.14068L30.7344 0H3.25195C2.39082 -2.45002e-06 1.56485 0.341202 0.955213 0.94877C0.345577 1.55634 0.0020552 2.38066 0 3.24091H0V3.59757V30.7344L6.14688 24.5937V6.14068H24.5875Z" fill="#000"></path>
                     <path d="M27.8782 12.3045V12.2812H12.2937V18.4219H21.7469L27.8782 12.3045Z" fill="#000"></path>
@@ -260,35 +296,35 @@
                     <path d="M198.884 21.0631C198.46 21.0585 198.045 21.1783 197.691 21.4071C197.336 21.636 197.059 21.9637 196.893 22.3486C196.728 22.7334 196.682 23.1581 196.762 23.5687C196.842 23.9792 197.043 24.3571 197.341 24.6543C197.639 24.9516 198.02 25.1547 198.435 25.238C198.85 25.3212 199.28 25.2809 199.672 25.122C200.064 24.9631 200.399 24.6928 200.635 24.3456C200.87 23.9984 200.996 23.5898 200.996 23.1717C201.013 22.8925 200.97 22.6128 200.87 22.351C200.771 22.0892 200.616 21.8511 200.417 21.6522C200.217 21.4532 199.978 21.298 199.714 21.1965C199.45 21.095 199.167 21.0496 198.884 21.0631ZM198.884 24.8152C198.666 24.8267 198.449 24.7913 198.246 24.7114C198.044 24.6315 197.862 24.5091 197.713 24.3527C197.563 24.1963 197.45 24.0097 197.381 23.8057C197.312 23.6018 197.289 23.3854 197.313 23.1717C197.331 22.8697 197.439 22.5796 197.622 22.3372C197.806 22.0947 198.057 21.9105 198.345 21.8073C198.633 21.7041 198.946 21.6864 199.244 21.7563C199.542 21.8262 199.813 21.9807 200.023 22.2008C200.234 22.4209 200.374 22.6969 200.428 22.9949C200.481 23.2928 200.445 23.5997 200.324 23.8776C200.203 24.1555 200.002 24.3924 199.746 24.559C199.49 24.7256 199.19 24.8147 198.884 24.8152Z" fill="#000"></path>
                     <path d="M199.088 22.0319H198.075V24.1793H198.554V23.5048H198.868L199.418 24.2103H199.936V24.1095L199.363 23.435C199.551 23.3991 199.718 23.2906 199.825 23.1336C199.933 22.9766 199.973 22.7839 199.936 22.5978C199.9 22.4117 199.79 22.2476 199.631 22.1414C199.472 22.0353 199.276 21.9959 199.088 22.0319ZM199.088 23.0707H198.562V22.4738H199.096C199.138 22.4748 199.179 22.4839 199.217 22.5006C199.255 22.5174 199.29 22.5413 199.318 22.5712C199.347 22.6011 199.37 22.6363 199.385 22.6747C199.4 22.7132 199.407 22.7543 199.406 22.7955C199.405 22.8367 199.396 22.8773 199.379 22.915C199.362 22.9527 199.338 22.9868 199.307 23.0152C199.277 23.0437 199.241 23.0659 199.202 23.0808C199.163 23.0956 199.122 23.1027 199.08 23.1017L199.088 23.0707Z" fill="#000"></path>
                 </svg>
-            </div>
 
-            <div class="button cmp-button--button-wpi">
-                <a type="button" class="cmp-button" x-cq-linkchecker="valid" data-destination-token=${model.destination} target="_parent" id="wpi-anchor">
-                    <span class="cmp-button__text">${model.cta @context='html'}</span>
-                </a>
+                <div class="button cmp-button--button-wpi">
+                    <a type="button" class="cmp-button" x-cq-linkchecker="valid" data-destination-token=${model.destination} target="_parent" id="wpi-anchor">
+                        <span class="cmp-button__text">${model.cta @context='html'}</span>
+                    </a>
+                </div>
             </div>
 
         </section>
     </sly>
 
-    <!-- Mellon --> 
+    <!-- Mellon -->
     <sly data-sly-test="${model.recordKeeper == 'mellon-wpi-theme'}">
         <section class="${model.recordKeeper} wpi-alert" id="wpi-alert" data-viewcode="${model.viewcode}">
             <div>
 
                 <div class="copy">
                     ${model.headline @context='html'}
-                </div>        
+                </div>
 
                 <div class="flex">
                     <img class="wpi-img" src="${model.icon}" alt="" />
                     <div class="copy">
                         ${model.subheadline @context='html'}
-                        ${model.disclosures @context='html'}                        
-                    </div>                        
-                </div>     
+                        ${model.disclosures @context='html'}
+                    </div>
+                </div>
 
-            </div>        
+            </div>
 
             <div>
                 <svg class="efe-lockup" alt="Edelman Financial Engines" width="108.65" height="20" viewBox="0 0 201 37" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -321,36 +357,36 @@
                     <path d="M198.884 21.0631C198.46 21.0585 198.045 21.1783 197.691 21.4071C197.336 21.636 197.059 21.9637 196.893 22.3486C196.728 22.7334 196.682 23.1581 196.762 23.5687C196.842 23.9792 197.043 24.3571 197.341 24.6543C197.639 24.9516 198.02 25.1547 198.435 25.238C198.85 25.3212 199.28 25.2809 199.672 25.122C200.064 24.9631 200.399 24.6928 200.635 24.3456C200.87 23.9984 200.996 23.5898 200.996 23.1717C201.013 22.8925 200.97 22.6128 200.87 22.351C200.771 22.0892 200.616 21.8511 200.417 21.6522C200.217 21.4532 199.978 21.298 199.714 21.1965C199.45 21.095 199.167 21.0496 198.884 21.0631ZM198.884 24.8152C198.666 24.8267 198.449 24.7913 198.246 24.7114C198.044 24.6315 197.862 24.5091 197.713 24.3527C197.563 24.1963 197.45 24.0097 197.381 23.8057C197.312 23.6018 197.289 23.3854 197.313 23.1717C197.331 22.8697 197.439 22.5796 197.622 22.3372C197.806 22.0947 198.057 21.9105 198.345 21.8073C198.633 21.7041 198.946 21.6864 199.244 21.7563C199.542 21.8262 199.813 21.9807 200.023 22.2008C200.234 22.4209 200.374 22.6969 200.428 22.9949C200.481 23.2928 200.445 23.5997 200.324 23.8776C200.203 24.1555 200.002 24.3924 199.746 24.559C199.49 24.7256 199.19 24.8147 198.884 24.8152Z" fill="#000"></path>
                     <path d="M199.088 22.0319H198.075V24.1793H198.554V23.5048H198.868L199.418 24.2103H199.936V24.1095L199.363 23.435C199.551 23.3991 199.718 23.2906 199.825 23.1336C199.933 22.9766 199.973 22.7839 199.936 22.5978C199.9 22.4117 199.79 22.2476 199.631 22.1414C199.472 22.0353 199.276 21.9959 199.088 22.0319ZM199.088 23.0707H198.562V22.4738H199.096C199.138 22.4748 199.179 22.4839 199.217 22.5006C199.255 22.5174 199.29 22.5413 199.318 22.5712C199.347 22.6011 199.37 22.6363 199.385 22.6747C199.4 22.7132 199.407 22.7543 199.406 22.7955C199.405 22.8367 199.396 22.8773 199.379 22.915C199.362 22.9527 199.338 22.9868 199.307 23.0152C199.277 23.0437 199.241 23.0659 199.202 23.0808C199.163 23.0956 199.122 23.1027 199.08 23.1017L199.088 23.0707Z" fill="#000"></path>
                 </svg>
-            </div>        
+            </div>
 
             <div class="button cmp-button--button-wpi">
                 <a type="button" class="cmp-button" x-cq-linkchecker="valid" data-destination-token=${model.destination} target="_parent" id="wpi-anchor">
                     <span class="cmp-button__text">${model.cta @context='html'}</span>
                 </a>
-            </div>  
+            </div>
         </section>
-    </sly>  
+    </sly>
 
-    <!-- AFA --> 
+    <!-- AFA -->
     <sly data-sly-test="${model.recordKeeper == 'afa-wpi-theme'}">
         <section class="${model.recordKeeper} wpi-alert" id="wpi-alert" data-viewcode="${model.viewcode}">
-            <img class="wpi-img" src="${model.icon}" alt="" />   
+            <img class="wpi-img" src="${model.icon}" alt="" />
 
             <div>
                 <div class="copy">
                     ${model.headline @context='html'}
                     ${model.subheadline @context='html'}
-                    ${model.disclosures @context='html'}                         
-                </div>       
+                    ${model.disclosures @context='html'}
+                </div>
                 <div class="button cmp-button--button-wpi">
                     <a type="button" class="cmp-button" x-cq-linkchecker="valid" data-destination-token=${model.destination} target="_parent" id="wpi-anchor">
                         <span class="cmp-button__text">${model.cta @context='html'}</span>
                     </a>
-                </div>                     
-            </div>        
+                </div>
+            </div>
 
         </section>
-    </sly>    
+    </sly>
 
     <!-- Voya  -->
     <sly data-sly-test="${model.recordKeeper == 'voya-wpi-theme'}">
@@ -358,20 +394,20 @@
             <div>
                 <div class="copy">
                     ${model.headline @context='html'}
-                </div>        
+                </div>
 
                 <div class="flex">
                     <img class="wpi-img" src="${model.icon}" alt="" />
                     <div class="copy">
-                        ${model.subheadline @context='html'}                  
-                    </div>                        
-                </div>     
-            </div>             
+                        ${model.subheadline @context='html'}
+                    </div>
+                </div>
+            </div>
             <div class="button cmp-button--button-wpi">
                 <a type="button" class="cmp-button" x-cq-linkchecker="valid" data-destination-token=${model.destination} target="_parent" id="wpi-anchor">
                     <span class="cmp-button__text">${model.cta @context='html'}</span>
                 </a>
-            </div>    
+            </div>
         </section>
     </sly>
 

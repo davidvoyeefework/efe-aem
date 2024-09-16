@@ -145,12 +145,16 @@ export default class FeHeader {
         return utility.getProductChoiceUrl();
       case "product_choice_button":
         return utility.getProductChoiceButton();
+      case "product_choice_button_prospects_only":
+        return utility.getProductChoiceButtonProspectsOnly();
       case "otherWaysPromoMsgPa":
         return utility.getOtherWaysPromoMsgPa();
       case "dashboardLink":
         return utility.getDashboardLink();
       case "dashboardButton":
         return utility.getDashboardButton();
+      case "loginDashboardButton":
+        return utility.getLoginDashboardButton();
       case "pmAboutFeeText":
         return utility.getPmAboutFeeText();
       case "RK_LOGIN_URL":

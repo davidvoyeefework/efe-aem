@@ -2042,7 +2042,7 @@
                     jcr:primaryType="nt:unstructured"
                     jcr:title="WPI Alert Page policy"
                     sling:resourceType="wcm/core/components/policy/policy"
-                    clientlibs="fe.wpi">
+                    clientlibs="">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                 </policy_26124683091563>
                 <policy_59774280627920
@@ -2051,7 +2051,7 @@
                     jcr:primaryType="nt:unstructured"
                     jcr:title="WPI Alert XF Template Page Policy"
                     sling:resourceType="wcm/core/components/policy/policy"
-                    clientlibs="fe.wpi">
+                    clientlibs="">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                 </policy_59774280627920>
             </xftargetpage>
