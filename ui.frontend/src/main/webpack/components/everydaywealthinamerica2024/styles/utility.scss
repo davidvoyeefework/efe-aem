@@ -3,6 +3,11 @@ $orange: #EF9C42;
 $orange-light: #f2ad63;
 $light-gray-bg: #ebf2f6;
 
+$red-light: #cc4d55;
+$red-lighter: #d56c73;
+$red-lightest: #e7abaf;
+
+
 .stat-text {
     font-weight: 400;
     font-size: rem(24);
@@ -63,6 +68,22 @@ $light-gray-bg: #ebf2f6;
     background-color: #fdf3e9;
 }
 
+.red-bg {
+    background-color: $efe-red-primary;
+}
+
+.red-light-bg {
+    background-color: #cc4d55;
+}
+
+.red-lighter-bg {
+    background-color: #d56c73;
+}
+
+.red-lightest-bg {
+    background-color: #e7abaf;
+}
+
 .efe-blue {
     color: $efe-blue;
 }
@@ -107,6 +128,11 @@ p.bebas {
     padding: 20px 24px;
 
     .flex {
+
+        @include flexbox(
+            $gap: 12px
+        );
+
         p.bebas {
 
             span.large {
@@ -128,4 +154,36 @@ p.bebas {
         bottom: 2px;
         word-break: break-word;
     }
+
+    @media screen and (min-width: $md) {
+
+    }
+
+    @media screen and (min-width: $xl) {
+
+        .flex {
+
+            @include flexbox (
+                $gap: 40px,
+                $align-items: left
+            );
+            margin: 0 !important;
+
+            p.bebas {
+                span.large {
+                    font-size: rem(137);
+
+                    sup {
+                        font-size: rem(60);
+                        top: -54px;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+.section-header-bg-pattern {
+    height: rem(64);
 }

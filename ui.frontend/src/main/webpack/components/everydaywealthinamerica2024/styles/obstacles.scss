@@ -1,0 +1,144 @@
+#everydaywealthinamerica2024 {
+
+    section#obstacles {
+
+        .fifty-percent {
+            &.right {
+                .section-header-bg-pattern {
+                    border-radius: 0;
+                    display: none;
+
+                    &:before {
+                        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 201.8 62" style="enable-background:new 0 0 201.8 62;" xml:space="preserve"><g><polygon style="fill:%236E7476;" points="-0.3,0 62.3,62.3 139.7,62.3 77.2,0 "/><polygon style="fill:%236E7476;" points="202.7,62.3 202.7,27.8 174.8,0 97.4,0 159.9,62.3 "/></g></svg>');
+                    }
+                }
+
+                .stat-building-block {
+
+                    .flex {
+                        p.bebas, span.large {
+                            color: white;
+                        }
+                    }
+                }
+            }
+
+            &.left {
+                .section-header-bg-pattern {
+                    &:before {
+                        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 201.8 62" style="enable-background:new 0 0 201.8 62;" xml:space="preserve"><g><polygon style="fill:%236E7476;" points="-0.3,0 62.3,62.3 139.7,62.3 77.2,0 "/><polygon style="fill:%236E7476;" points="202.7,62.3 202.7,27.8 174.8,0 97.4,0 159.9,62.3 "/></g></svg>');
+                        left: calc(100% - 209px);
+                    }
+                }
+                .stats-block {
+                    &.red-lightest-bg {
+
+                        &:before {
+                            background: url('./../resources/images/EW24/bg-images/credit-card.png') no-repeat center center / contain;
+                            bottom: 40px;
+                            content: "";
+                            display: block;
+                            position: absolute;
+                            right: 24px;
+                            left: 24px;
+                            width: calc(100% - 48px);
+                            margin: 0 auto;
+                            height: 216px;
+                        }
+                                                     
+                    
+                        h3 {
+                            color: $efe-gray-primary;
+                            margin: 0 auto 169px;
+                            max-width: 20ch;
+                        }
+                    }
+                }
+            }
+        }
+
+        @media screen and (min-width: $md) {
+            .fifty-percent {
+
+                .stat-building-block {
+
+                    .flex {
+                        max-width: rem(426);
+                        margin: auto;
+                    }
+                }
+            }
+        }
+
+        @media screen and (min-width: $xl) {
+            .fifty-percent {
+
+                &.right {
+                    .section-header-bg-pattern {
+                        display: block;
+                        &:before {
+                            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 289.5 64" style="enable-background:new 0 0 289.5 64;" xml:space="preserve"><g><polygon style="fill:%236E7476;" points="125.2,-0.1 189.6,63.9 289.7,63.9 225.4,-0.1 "/><polygon style="fill:%236E7476;" points="0.2,-0.1 64.5,63.9 164.6,63.9 100.3,-0.1 "/></g></svg>');
+                            left: calc(100% - 388px);
+                        }
+                    }
+                }
+
+                &.left {
+                    .section-header-bg-pattern {
+                        &:before {
+                            display: none;
+                        }
+                    }
+
+                    .stats-block {
+                        height: calc(100% - 64px);
+
+                        &.red-lightest-bg{
+                            &:before {
+                                height: 425px;
+                            }
+                        }
+                    }
+                   
+                }     
+                
+ 
+
+                .stat-building-block {
+                    padding: 63px 40px;
+
+                    flex {
+                        max-width: none;
+                    }
+
+                    &.red-bg {
+                        p.stat-text {
+                            max-width: 17ch;
+                            position: relative;
+                            bottom: -11px;
+                            right: 18px;                            
+                        }
+                    }
+
+                    &.red-light-bg {
+                        p.stat-text {
+                            max-width: 16ch;
+                            position: relative;
+                            bottom: -11px;
+                            right: 18px;                            
+                        }
+                    }    
+                    
+                    &.red-lighter-bg {
+                        p.stat-text {
+                            max-width: none;
+                            position: relative;
+                            bottom: -11px;
+                            right: 18px;                            
+                        }
+                    }                     
+                }
+            }
+        }
+    }
+}

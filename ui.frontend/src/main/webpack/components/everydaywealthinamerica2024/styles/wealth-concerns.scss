@@ -7,6 +7,8 @@
                 background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 192.8 62" style="enable-background:new 0 0 192.8 62;" xml:space="preserve"><g><polygon style="fill:%236E7476;" points="62.2,0 0,62 92.9,62 155.1,0 "/><polygon style="fill:%236E7476;" points="192.8,0 179.5,0 117.3,62 192.8,62 "/></g></svg>');
                 right: 0;
                 width: 186px;
+                left: calc(100% - 187px);
+                background-size: cover;                
             }
         }
 
@@ -54,6 +56,135 @@
                 $align-items: start,
             );
         };
+
+        @media screen and (min-width: $md) {
+            .stats-block {
+                &.stats-block--orange {
+
+                    &:before {
+                        width: 299px;
+                        height: 230px;
+                    }
+
+                    h3.headline-source-serif {
+                        max-width: 14ch;
+                        margin: 0 auto 20px;
+                        position: relative;
+                        top: 39px;                        
+                    }
+                }
+            }
+
+            .stat-building-block {
+
+                &.orange-light-bg {
+                    text-align: center;
+                }
+
+                .flex {
+                    max-width: 470px;
+                    margin: 0 auto;
+                    @include flexbox (
+                        
+                    );
+                }
+            }
+        }
+
+        @media screen and (min-width: $xl) {
+            .thirty-three-percent {
+                flex-basis: 33.333%;
+                .stats-block {
+                    &.stats-block--orange {
+                        height: calc(100% - 64px);
+
+                        &:before {
+                            width: 299px;
+                            height: 230px;
+                        }
+                        h3.headline-source-serif {
+                            top: 0;
+                        }
+                    }
+                }
+
+            }
+            .two-third {
+                flex-basis: 66.66667%;
+
+                .stat-building-block {
+                    padding: 19px 40px;
+                    text-align: left;
+
+                    &.orange-even-lighter-bg, &.orange-lightest-bg {
+
+                        .flex {
+                            p.stat-text {
+                                position: relative;
+                                bottom: 21px;
+                            }
+                        }
+
+                    }
+
+                    .flex {
+                        max-width: none;
+                        align-items: start;
+
+                        @include flexbox(
+                            $gap: 40px,
+                            $align-items: center
+                        );
+
+                        p.bebas {
+                            span.large {
+                                font-size: rem(137);
+                                line-height: 100%;
+
+                                sup {
+                                    font-size: rem(60);
+                                    top: - 54px;
+
+                                }
+                            }
+                        }
+
+                        p.stat-text {
+                            font-size: rem(32);
+                            line-height: 110%;
+                            bottom: 5;
+                            right: 15px;
+
+
+                            .lighter {
+                                font-size: rem(24);                            }
+                        }
+
+                        .stat-icon {
+                            width: rem(96);
+                            height: rem(96);
+                        }
+                    }
+
+                    &.stat-building-block-header {
+                        padding: 50px 40px;
+                    }
+                    text-align: left;
+                    h3.stat-text {
+                        font-size: rem(40);
+                    }
+                }
+            }
+
+            .section-header-bg-pattern {
+                &:before {
+                    background-size: cover;
+                    left: calc(100% - 186px);
+                }
+            }
+
+
+        }
 
     }
 }
