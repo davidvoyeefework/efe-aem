@@ -159,22 +159,18 @@
             <div class="flex">
                 <img class="wpi-img" src="${model.icon}" alt="" />
 
-                <div>
-                    <div class="copy">
-                        ${model.headline @context='html'}
-                        ${model.subheadline @context='html'}
-                        <sly data-sly-test.hasContent="${model.disclosures}">
-                            ${model.disclosures @context='html'}
-                        </sly>  
-                    </div>
-
+                <div class="copy">
+                    ${model.headline @context='html'}
+                    ${model.subheadline @context='html'}
+                    <sly data-sly-test.hasContent="${model.disclosures}">
+                        ${model.disclosures @context='html'}
+                    </sly>
                     <div class="button cmp-button--button-wpi mobile-button">
                         <a type="button" class="cmp-button" x-cq-linkchecker="valid" data-destination-token=${model.destination} target="_parent" id="wpi-anchor">
                             <span class="cmp-button__text">${model.cta @context='html'}</span>
                         </a>
-                    </div>    
-                </div>                             
-                
+                    </div>
+                </div>
 
 
                 <div class="button button-block cmp-button--button-wpi">
