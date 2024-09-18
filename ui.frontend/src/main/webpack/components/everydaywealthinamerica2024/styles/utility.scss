@@ -1,4 +1,6 @@
 $teal: #3a948e;
+$teal-light: #B0D4d2;
+$teal-lighter: #cce4e5;
 $orange: #EF9C42;
 $orange-light: #f2ad63;
 $light-gray-bg: #ebf2f6;
@@ -125,6 +127,18 @@ $purple-bike: #f3eff7;
 
 .efe-teal {
     color: $teal;
+}
+
+.teal-bg {
+    background-color: $teal;
+}
+
+.teal-light-bg {
+    background-color: $teal-light;
+}
+
+.teal-lighter-bg {
+    background-color: $teal-lighter;
 }
 
 .bebas {
