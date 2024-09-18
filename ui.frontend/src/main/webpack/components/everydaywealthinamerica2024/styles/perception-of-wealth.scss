@@ -14,6 +14,7 @@
             position: relative;
             overflow: hidden;
             text-align: center;
+            height: rem(60);
 
             &:before {
                 content: "";
@@ -37,7 +38,7 @@
                 font-size: rem(24);
                 line-height: 100%;
                 letter-spacing: .96px;
-                padding: 21px 22px 19px 22px;
+                padding: 19px 22px 17px 22px;
                 position: relative;
                 z-index: 3;
             }
@@ -339,7 +340,7 @@
                 }
                 .teal-bg {
                     border-bottom-left-radius: 40px;
-                    height: calc(100% - rem(64));
+                    height: calc(100% - rem(60));
                 }
                 .gray-bg {
                     border-radius: 0;

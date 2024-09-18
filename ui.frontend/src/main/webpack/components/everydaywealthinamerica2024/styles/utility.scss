@@ -7,6 +7,13 @@ $red-light: #cc4d55;
 $red-lighter: #d56c73;
 $red-lightest: #e7abaf;
 
+$purple: #8760ae;
+$purple-light: #BDA8d2;
+$purple-lighter: #d6c7e5;
+$purple-lightest: #e1d7eb;
+$purple-lightest2: #f3eff7;
+$purple-bike: #f3eff7;
+
 
 .stat-text {
     font-weight: 400;
@@ -16,6 +23,10 @@ $red-lightest: #e7abaf;
 
     &.stat-text--gray {
         color: $efe-gray-primary;
+    }
+
+    &.stat-text--white {
+        color: white;
     }
 
     b {
@@ -82,6 +93,30 @@ $red-lightest: #e7abaf;
 
 .red-lightest-bg {
     background-color: #e7abaf;
+}
+
+.purple-bg {
+    background-color: $purple;
+}
+
+.purple-light-bg {
+    background-color: $purple-light;
+}
+
+.purple-lighter-bg {
+    background-color: $purple-lighter;
+}
+
+.purple-lightest-bg {
+    background-color: $purple-lightest;
+}
+
+.purple-lightest2-bg {
+    background-color: $purple-lightest2;
+}
+
+.purple-bike-bg {
+    background-color: $purple-bike;
 }
 
 .efe-blue {
@@ -186,4 +221,10 @@ p.bebas {
 
 .section-header-bg-pattern {
     height: rem(64);
+}
+
+.flex-column {
+    @include flexbox(
+        $flex-direction: column
+    );
 }
