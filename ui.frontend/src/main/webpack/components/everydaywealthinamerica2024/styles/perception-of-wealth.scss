@@ -218,6 +218,7 @@
                     );
                     left: 0;
 
+   
 
                 }
                 h3.headline-source-serif {
@@ -237,6 +238,15 @@
                 h2 {
                     text-align: left;
                 }
+            }
+        }
+    }
+
+    @media screen and (min-width: $md) {
+        #perception-of-wealth {
+            span.right-col-text {
+                top: 43px;
+                position: relative;
             }
         }
     }
@@ -379,6 +389,13 @@
                     }
                 }
                 
+            }
+        }
+
+        #perception-of-wealth {
+            span.right-col-text {
+                top: 38px;
+                position: relative;
             }
         }
     }
