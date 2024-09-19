@@ -169,17 +169,6 @@ export const captureScIdFromUrl = () => {
   return string ? string[1] : null;
 };
 
-export const getCookie = (name) => {
-  if (typeof document !== "undefined") {
-    var value = "; " + document.cookie;
-    var parts = value.split("; " + name + "=");
-    if (parts.length === 2) {
-      return parts.pop().split(";").shift();
-    }
-  }
-  return "";
-};
-
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 
