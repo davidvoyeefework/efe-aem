@@ -104,6 +104,7 @@
                         }
                         h3.headline-source-serif {
                             top: 0;
+                            line-height: rem(68);
                         }
                     }
                 }
@@ -126,6 +127,21 @@
                         }
 
                     }
+
+                    &.orange-lighter-bg, &.orange-even-lighter-bg, .orange-lightest-bg  {
+                        .flex {
+                            .stat-icon {
+
+                            }
+                            p.bebas {
+                                position: relative;
+                                top: 4px;
+                            }
+                            p.stat-text {
+
+                            }
+                        }
+                    }                    
 
                     .flex {
                         max-width: none;
