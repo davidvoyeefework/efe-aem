@@ -1,0 +1,32 @@
+
+#everydaywealthinamerica2024 {
+    #last-year {
+        padding: 40px 24px;
+
+        h2 {
+            font-size: rem(40);
+            line-height: rem(42);
+            font-weight: 700;
+            letter-spacing: 0;
+            margin: 0 auto 40px;
+            text-align: center;
+        }
+
+        .button {
+            a {
+                margin: 0 auto 30px;
+            }
+        }
+
+        p.body-03 {
+            @include body-03;
+            margin-bottom: 20px;
+            max-width: 106ch;
+            margin: 0 auto 20px;
+        }
+
+        @media screen and (min-width: $xl) {
+            padding: 64px 40px;
+        }
+    }    
+}

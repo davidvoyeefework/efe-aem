@@ -1,0 +1,244 @@
+$teal: #3a948e;
+$teal-light: #B0D4d2;
+$teal-lighter: #cce4e5;
+$orange: #EF9C42;
+$orange-light: #f2ad63;
+$light-gray-bg: #ebf2f6;
+
+$red-light: #cc4d55;
+$red-lighter: #d56c73;
+$red-lightest: #e7abaf;
+
+$purple: #8760ae;
+$purple-light: #BDA8d2;
+$purple-lighter: #d6c7e5;
+$purple-lightest: #e1d7eb;
+$purple-lightest2: #f3eff7;
+$purple-bike: #f3eff7;
+
+
+.stat-text {
+    font-weight: 400;
+    font-size: rem(24);
+    line-height: 110%;
+    color: white;
+
+    &.stat-text--gray {
+        color: $efe-gray-primary;
+    }
+
+    &.stat-text--white {
+        color: white;
+    }
+
+    b {
+        font-weight: 700;
+    }
+
+    .lighter {
+        display: block;
+    }
+
+
+    @media screen and (min-width: xl) {
+        font-size: rem(32);
+
+        b {
+            font-size: rem(40);
+        }
+    }
+}
+
+.blue-bg {
+    background-color: $efe-blue;
+}
+
+.gray-bg {
+    background-color: $light-gray-bg;
+}
+
+.teal-bg {
+    background-color: $teal;
+}
+
+.orange-bg {
+    background-color: $orange;
+}
+
+.orange-light-bg {
+    background-color: $orange-light;
+}
+
+.orange-lighter-bg {
+    background-color: #f7d0a6;
+}
+
+.orange-even-lighter-bg {
+    background-color: #fae2c7;
+}
+
+.orange-lightest-bg {
+    background-color: #fdf3e9;
+}
+
+.red-bg {
+    background-color: $efe-red-primary;
+}
+
+.red-light-bg {
+    background-color: #cc4d55;
+}
+
+.red-lighter-bg {
+    background-color: #d56c73;
+}
+
+.red-lightest-bg {
+    background-color: #e7abaf;
+}
+
+.purple-bg {
+    background-color: $purple;
+}
+
+.purple-light-bg {
+    background-color: $purple-light;
+}
+
+.purple-lighter-bg {
+    background-color: $purple-lighter;
+}
+
+.purple-lightest-bg {
+    background-color: $purple-lightest;
+}
+
+.purple-lightest2-bg {
+    background-color: $purple-lightest2;
+}
+
+.purple-bike-bg {
+    background-color: $purple-bike;
+}
+
+.efe-blue {
+    color: $efe-blue;
+}
+
+.efe-teal {
+    color: $teal;
+}
+
+.teal-bg {
+    background-color: $teal;
+}
+
+.teal-light-bg {
+    background-color: $teal-light;
+}
+
+.teal-lighter-bg {
+    background-color: $teal-lighter;
+}
+
+.bebas {
+    font-family: 'bebas neue pro', sans-serif;
+}
+
+p.bebas {
+    font-family: 'bebas neue pro', sans-serif;
+    font-weight: 700;
+
+    span.large {
+        font-size: rem(54);
+        color: $efe-gray-primary;
+        text-transform: uppercase;
+
+        sup {
+            font-family: 'bebas neue pro', sans-serif;
+            font-weight: 700;
+            position: relative;
+        }
+    }
+
+
+}
+
+.top-left-radius {
+    border-top-left-radius: 28px;
+
+    @media screen and (min-width: $xl) 
+        {
+            border-top-left-radius: 40px;
+        }
+}
+
+.stat-building-block {
+    padding: 20px 24px;
+
+    .flex {
+
+        @include flexbox(
+            $gap: 12px
+        );
+
+        p.bebas {
+
+            span.large {
+                line-height: 100%;
+                display: block;
+                position: relative;
+                bottom: 7px;
+                sup {
+                    font-size: rem(26);
+                    top: -19px;
+                    left: 4px;
+                }
+            }
+        }
+    }
+
+    p.stat-text {
+        position: relative;
+        bottom: 2px;
+        word-break: break-word;
+    }
+
+    @media screen and (min-width: $md) {
+
+    }
+
+    @media screen and (min-width: $xl) {
+
+        .flex {
+
+            @include flexbox (
+                $gap: 40px,
+                $align-items: left
+            );
+            margin: 0 !important;
+
+            p.bebas {
+                span.large {
+                    font-size: rem(137);
+
+                    sup {
+                        font-size: rem(60);
+                        top: -54px;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+.section-header-bg-pattern {
+    height: rem(64);
+}
+
+.flex-column {
+    @include flexbox(
+        $flex-direction: column
+    );
+}

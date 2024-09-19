@@ -1,0 +1,130 @@
+#everydaywealthinamerica2024 {
+
+    #professional {
+
+        .section-header-bg-pattern {
+            z-index: 2;
+
+            &:before {
+                background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 168.1 63.9" style="enable-background:new 0 0 168.1 63.9;" xml:space="preserve"><g><rect x="-216.1" y="-0.1" style="fill:none;" width="464.2" height="0"/><rect x="248.1" y="-0.1" style="fill:%236E7476;" width="135.8" height="0"/><g><polygon style="fill:%236E7476;" points="216.3,63.9 383.9,63.9 383.9,32.1 248.1,32.1 "/><polygon style="fill:%236E7476;" points="215.9,32.1 248.1,32.1 248.5,31.6 383.9,31.6 383.9,-0.1 248.1,-0.1 "/></g><polygon style="fill:%236E7476;" points="248.1,32.1 383.9,32.1 383.9,31.6 248.5,31.6 "/></g><g><polygon style="fill:%236E7476;" points="0.3,63.9 167.9,63.9 167.9,28.4 32.1,28.4 "/><polygon style="fill:%236E7476;" points="-0.1,32.1 32.1,32.1 32.5,31.6 167.9,31.6 167.9,-0.1 32.1,-0.1 "/></g></svg>');
+                left: calc(100% - 116px);                
+            }
+        }
+
+        .stats-block {
+            &.teal-bg {
+                &:before {
+                    background: url('./../resources/images/EW24/bg-images/handshake-bg.jpg') no-repeat center center / contain;
+                    display: block;
+                    content: "";
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                    width: 195px;
+                    height: 224px;
+                }
+
+                h3 {
+                    position: relative;
+                    z-index: 1;
+                    max-width: 12ch;
+                }
+            }
+        }
+
+        p.stat-text {
+            color: $efe-gray-primary;
+        }
+
+        .stat-building-block {
+            padding: 24px;
+            p.bebas {
+                span.large {
+                    font-size: rem(60);
+                    sup {
+                        top: -25px;
+                    }
+                }
+            }
+            p.stat-text {
+                font-size: rem(16);
+                line-height: rem(18);
+            }
+
+            &.teal-lighter-bg {
+                border-bottom-left-radius: 28px;
+            }
+        }
+
+        @media screen and (min-width: $md) {
+            .stats-block {
+                &.teal-bg {
+                    h3 {
+                        margin: 0 auto 20px;
+                        position: relative;
+                        top: 40px;
+                    }
+                }
+            }
+
+            .stat-building-block {
+                .flex {
+                    max-width: 36ch;
+                    margin: 0 auto;
+                }
+            }
+
+        }
+
+        @media screen and (min-width: $xl) {
+
+            .stat-building-block {
+                padding: 29px 40px;
+                &.teal-lighter-bg {
+                    border-bottom-left-radius: 0;
+                }
+
+                p.bebas {
+                    span.large {
+                        font-size: rem(137);
+                        line-height: rem(143);
+
+                        sup {
+                            font-size: rem(60);
+                            top: -55px;
+                        }
+                    }
+                }
+
+                p.stat-text {
+                    bottom: -10px;
+                    right: 16px;
+                    span.lighter {
+                        font-size: rem(28);
+                        line-height: rem(31);
+                    }
+                }
+
+                .flex {
+                    max-width: unset;
+                }
+            }
+
+            .stats-block {
+                &.teal-bg {
+                    border-bottom-left-radius: 40px;
+                    &:before {
+                        width: 296px;
+                        height: 340px;
+                    }
+
+                    h3 {
+                        margin: unset;
+                        position: relative;
+                        top: 0;
+                    }
+                }
+            }
+        }
+    }
+}

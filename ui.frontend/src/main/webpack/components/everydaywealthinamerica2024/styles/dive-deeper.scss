@@ -1,0 +1,53 @@
+#everydaywealthinamerica2024 {
+    #dive-deeper {
+        padding: 45px 24px 55px;
+        background-color: $efe-gray-light;
+        text-align: center;
+
+        h2 {
+            font-size: rem(40);
+            line-height: rem(42);
+            font-weight: 700;
+            letter-spacing: 0;
+            max-width: 20ch;
+            margin: 0 auto 10px;
+        }
+
+        p {
+            font-size: rem(20);
+            line-height: rem(24);
+            max-width: 20ch;
+            margin: 0 auto 29px;
+
+            &.last {
+                margin: 0 auto;
+            }
+        }
+
+        .button{
+            a {
+                margin: 0 auto 32px;
+            }
+        }
+
+        a.body-02-link {
+            @include body-02-link;
+            word-break: break-all;
+
+            &.first {
+                margin-bottom: 35px;
+            }
+        }
+
+        p.body-02 {
+            @include body-02;
+        }
+
+        @media screen and (min-width: $xl) {
+            padding: 64px 40px;
+            p {
+                max-width: none;
+            }
+        }
+    }
+}
