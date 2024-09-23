@@ -1,5 +1,9 @@
 #everydaywealthinamerica2024 {
     section#different-vision {
+        #fire-icon {
+            min-width: 60px;
+        }
+
         .section-header-bg-pattern {
             &:before {
                 background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 168.1 56" style="enable-background:new 0 0 168.1 56;" xml:space="preserve"><g><polygon style="fill:none;" points="76.9,56.5 90.7,56.5 116.5,30.8 85.9,0.2 82.7,0.2 52.1,31.3 "/><polygon style="fill:none;" points="84.3,-1.4 82.7,0.2 85.9,0.2 "/><g><path style="fill:%236E7476;" d="M52.1,31.3L82.7,0.2H22.3L7.6,15.1C3.4,19.4,1,25.2,1,31.3c0,6.1,2.4,11.9,6.6,16.2l1.8,1.8 l7.1,7.2h60.5L52.1,31.3z"/><path style="fill:%236E7476;" d="M161,14.8L146.3,0.2H85.9l30.7,30.6L90.7,56.5h60.5l8.1-8.1l1.8-1.7c4.2-4.2,6.6-10,6.6-15.9 C167.6,24.8,165.2,19.1,161,14.8z"/></g></g></svg>');
@@ -115,19 +119,22 @@
                     font-size: rem(240);
                     color: white;
                     font-family: 'bebas neue pro', sans-serif;
-                    font-weight: 800;
+                    font-weight: 700;
                     line-height: 47%;
 
                     span.in {
                         font-size: rem(60);
                         position: relative;
                         bottom: rem(69);
+                        font-weight: 800;
                     }
                 }
 
                 .stat-text--white {
                     max-width: 20ch;
                     margin-bottom: 30px;
+                    font-size: rem(24) !important;
+                    line-height: rem(27) !important;
                 }
 
                 .avatar-grid {

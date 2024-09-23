@@ -20,6 +20,10 @@
                             color: white;
                         }
                     }
+
+                    &.red-lighter-bg {
+                        // border-bottom-left-radius: 28px;
+                    }
                 }
             }
 
@@ -51,8 +55,10 @@
                             color: $efe-gray-primary;
                             margin: 0 auto 169px;
                             max-width: 20ch;
+                            line-height: rem(68);
                         }
                     }
+
                 }
             }
         }
@@ -81,6 +87,15 @@
                             left: calc(100% - 388px);
                         }
                     }
+
+                    .stat-building-block {
+                        .red-lighter-bg {
+                            border-bottom-left-radius: 0px;
+                        }
+                    }
+
+ 
+
                 }
 
                 &.left {
@@ -94,6 +109,8 @@
                         height: calc(100% - 60px);
 
                         &.red-lightest-bg{
+                            border-bottom-left-radius: 40px;
+
                             &:before {
                                 height: 425px;
                             }
@@ -129,7 +146,7 @@
                         }
                     }    
                     
-                    &.red-lighter-bg {
+         
                         p.stat-text {
                             max-width: none;
                             position: relative;
@@ -140,5 +157,16 @@
                 }
             }
         }
+
+        @media screen and (max-width: $xl) {
+            .fifty-percent {
+                &.right {
+                    .stat-building-block {
+                        &.red-lighter-bg {
+                            border-bottom-left-radius: 28px;
+                        }
+                    } 
+                }
+            }
+        }
     }
-}

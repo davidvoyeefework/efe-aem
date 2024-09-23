@@ -37,6 +37,7 @@ $purple-bike: #f3eff7;
 
     .lighter {
         display: block;
+        font-size: rem(16);
     }
 
 
@@ -150,7 +151,7 @@ p.bebas {
     font-weight: 700;
 
     span.large {
-        font-size: rem(54);
+        font-size: rem(60);
         color: $efe-gray-primary;
         text-transform: uppercase;
 
@@ -188,10 +189,10 @@ p.bebas {
                 line-height: 100%;
                 display: block;
                 position: relative;
-                bottom: 7px;
+                bottom: 10px;
                 sup {
                     font-size: rem(26);
-                    top: -19px;
+                    top: -23px;
                     left: 4px;
                 }
             }
@@ -202,6 +203,7 @@ p.bebas {
         position: relative;
         bottom: 2px;
         word-break: break-word;
+        font-size: rem(20);
     }
 
     @media screen and (min-width: $md) {
