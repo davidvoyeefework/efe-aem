@@ -188,7 +188,7 @@ function buttonTokenParser() {
       console.log("No daVars found");
     }
   }
-  if (daVars.length > 0) {
+  if (Object.keys(daVars).length > 0) {
     env.da = daVars;
     feValues.env = env;
     feid = feValues.env.da?.userId;
