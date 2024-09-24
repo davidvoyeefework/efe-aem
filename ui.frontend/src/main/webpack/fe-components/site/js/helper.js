@@ -159,6 +159,7 @@ export const handleLoader = (isShow) => {
     loader.style.display = "none";
     document.querySelector("body").classList.remove("fe-loading-page");
     document.querySelector("body").classList.add("fe-loaded");
+    buttonTokenParser();
   }
 };
 
@@ -172,47 +173,55 @@ export const captureScIdFromUrl = () => {
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 
-var feValues = {};
-var env = {};
-var daVars = {};
-var feid = null;
-var poid = null;
+function buttonTokenParser() {
+  var feValues = {};
+  var env = {};
+  var daVars = {};
+  var feid = null;
+  var poid = null;
 
-var daVarsStr = getCookie("daVars");
-if (daVarsStr) {
-  try {
-    daVars = JSON.parse(decodeURIComponent(daVarsStr));
-  } catch (error) {
-    console.log("No daVars found");
+  var daVarsStr = getCookie("daVars");
+  if (daVarsStr) {
+    try {
+      daVars = JSON.parse(decodeURIComponent(daVarsStr));
+    } catch (error) {
+      console.log("No daVars found");
+    }
   }
-}
-if (daVars.length > 0) {
-  env.da = daVars;
-  feValues.env = env;
-  feid = feValues.env.da?.userId;
-  poid = feValues.env.da?.sponsorId;
-}
-
-var elements = document.getElementsByClassName("cmp-button");
-
-for (var i = 0; i < elements.length; i++) {
-  var thisElement = elements[i];
-  var thisRef = thisElement.getAttribute("href");
-
-  if (thisRef.indexOf("%7Butm_params%7D") >= 0) {
-    thisRef = thisRef.replace("%7Butm_params%7D", getUTMValues());
-  }
-  if (thisRef.indexOf("%7Bfeid%7D") >= 0 && feid !== null) {
-    thisRef = thisRef.replace("%7Bfeid%7D", "feid=" + encodeURIComponent(feid));
-  }
-  if (thisRef.indexOf("%7Bpoid%7D") >= 0 && poid !== null) {
-    thisRef = thisRef.replace("%7Bpoid%7D", "feid=" + encodeURIComponent(poid));
-  }
-  if (thisRef.indexOf("%7Bvoya%7D") >= 0) {
-    thisRef = thisRef.replace("%7Bvoya%7D", getVoyaValues());
+  if (daVars.length > 0) {
+    env.da = daVars;
+    feValues.env = env;
+    feid = feValues.env.da?.userId;
+    poid = feValues.env.da?.sponsorId;
   }
 
-  thisElement.href = thisRef;
+  var elements = document.getElementsByClassName("cmp-button");
+
+  for (var i = 0; i < elements.length; i++) {
+    var thisElement = elements[i];
+    var thisRef = thisElement.getAttribute("href");
+
+    if (thisRef.indexOf("%7Butm_params%7D") >= 0) {
+      thisRef = thisRef.replace("%7Butm_params%7D", getUTMValues());
+    }
+    if (thisRef.indexOf("%7Bfeid%7D") >= 0 && feid !== null) {
+      thisRef = thisRef.replace(
+        "%7Bfeid%7D",
+        "feid=" + encodeURIComponent(feid),
+      );
+    }
+    if (thisRef.indexOf("%7Bpoid%7D") >= 0 && poid !== null) {
+      thisRef = thisRef.replace(
+        "%7Bpoid%7D",
+        "feid=" + encodeURIComponent(poid),
+      );
+    }
+    if (thisRef.indexOf("%7Bvoya%7D") >= 0) {
+      thisRef = thisRef.replace("%7Bvoya%7D", getVoyaValues());
+    }
+
+    thisElement.href = thisRef;
+  }
 }
 
 function getUTMValues() {
