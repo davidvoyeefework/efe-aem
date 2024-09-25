@@ -219,10 +219,10 @@ function buttonTokenParser() {
     if (thisRef.indexOf("%7Bpoid%7D") >= 0 && poid !== null) {
       thisRef = thisRef.replace(
         "%7Bpoid%7D",
-        "feid=" + encodeURIComponent(poid),
+        "poid=" + encodeURIComponent(poid),
       );
     } else if (thisRef.indexOf("{poid}") >= 0 && poid !== null) {
-      thisRef = thisRef.replace("{poid}", "feid=" + encodeURIComponent(poid));
+      thisRef = thisRef.replace("{poid}", "poid=" + encodeURIComponent(poid));
     }
 
     if (thisRef.indexOf("%7Bvoya%7D") >= 0) {
