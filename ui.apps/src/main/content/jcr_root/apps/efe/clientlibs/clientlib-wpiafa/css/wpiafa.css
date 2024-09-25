@@ -1855,8 +1855,12 @@ section.afa-wpi-theme {
   text-align: center;
   margin: 0 auto;
 }
-section.afa-wpi-theme .copy {
-  text-align: center;
+section.afa-wpi-theme .copy.copy-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+  text-align: left;
 }
 section.afa-wpi-theme .copy h2 {
   font-size: 1.0625rem;
@@ -1864,6 +1868,8 @@ section.afa-wpi-theme .copy h2 {
   font-family: Arial, Helvetica, sans-serif;
   color: black;
   font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 4px;
 }
 section.afa-wpi-theme .copy h3, section.afa-wpi-theme .copy p {
   font-size: 0.9375rem;
@@ -1886,7 +1892,7 @@ section.afa-wpi-theme img.wpi-img {
      object-fit: contain;
 }
 section.afa-wpi-theme .cmp-button--button-wpi {
-  margin: 0 auto 12px;
+  margin: 4px 0 0;
   width: 6.9375rem;
   height: 2.4375rem;
   background-color: #f4f4f4;

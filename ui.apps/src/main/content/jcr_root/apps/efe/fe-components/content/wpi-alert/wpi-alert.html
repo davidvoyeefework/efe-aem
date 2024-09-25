@@ -370,19 +370,25 @@
     <!-- AFA -->
     <sly data-sly-test="${model.recordKeeper == 'afa-wpi-theme'}">
         <section class="${model.recordKeeper} wpi-alert" id="wpi-alert" data-viewcode="${model.viewcode}">
-            <img class="wpi-img" src="${model.icon}" alt="" />
 
             <div>
-                <div class="copy">
-                    ${model.headline @context='html'}
-                    ${model.subheadline @context='html'}
-                    ${model.disclosures @context='html'}
+                <div>
+
+                    <div class="copy copy-flex">
+                        <img class="wpi-img" src="${model.icon}" alt="" />
+                        <div class="copy-container">
+                            ${model.headline @context='html'}
+                            ${model.subheadline @context='html'}
+                            ${model.disclosures @context='html'}
+                            <div class="button cmp-button--button-wpi">
+                                <a type="button" class="cmp-button" x-cq-linkchecker="valid" data-destination-token=${model.destination} target="_parent" id="wpi-anchor">
+                                    <span class="cmp-button__text">${model.cta @context='html'}</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="button cmp-button--button-wpi">
-                    <a type="button" class="cmp-button" x-cq-linkchecker="valid" data-destination-token=${model.destination} target="_parent" id="wpi-anchor">
-                        <span class="cmp-button__text">${model.cta @context='html'}</span>
-                    </a>
-                </div>
+
             </div>
 
         </section>
