@@ -1,5 +1,4 @@
 section.alight-wpi-theme {
-    padding-left: 2px;
     max-width: rem(641);
 
     .copy {
@@ -11,7 +10,11 @@ section.alight-wpi-theme {
             font-family: Arial, Helvetica, sans-serif;
             color: black;
             margin-bottom: 7px;
+<<<<<<< HEAD
             margin-top: 12px;
+=======
+            margin-top: 0px;
+>>>>>>> DMK-WPI-Jessie-David-On-The-Fly
         }
 
         h3, p {
@@ -36,7 +39,8 @@ section.alight-wpi-theme {
             $gap: 4px,
             $flex-direction: row
         );
-
+        margin-bottom: 0;
+        
         img.wpi-img {
             width: 76px;
             height: 90px;
@@ -75,12 +79,16 @@ section.alight-wpi-theme {
             text-align: center;
             a.cmp-button {
                 flex-basis: 100%;
+                text-decoration: none;
+
             }
             .cmp-button__text {
                 font-size: rem(12);
                 font-family: Arial, Helvetica, sans-serif;
                 color: #3c4144;
                 line-height: 100%;
+                position: relative;
+                bottom: 1px;
             }
         }        
     }    
@@ -110,5 +118,9 @@ section.alight-wpi-theme {
 }
 
 body.xf-web-container {
+    margin: 0;
+}
+
+#feIframe body {
     margin: 0;
 }
