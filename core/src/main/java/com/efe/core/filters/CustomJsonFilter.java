@@ -35,7 +35,6 @@ public class CustomJsonFilter implements Filter {
     public static final String POWERED_BY_IMAGE = "poweredByImage";
     public static final String POWERED_BY_TEXT = "poweredByText";
     public static final String POWERED_BY_ALT_TEXT = "poweredByAltText";
-    public static final String PASS_THROUGH_STATE = "passThroughState";
     public static final String DESTINATION = "destination";
     public static final String LABEL = "label";
     public static final String ALT_TEXT = "altText";
@@ -180,7 +179,7 @@ public class CustomJsonFilter implements Filter {
             contentNode.remove(LABEL);
         }
         if (wpiAlertNode.has(DESTINATION)) {
-            callToActionNode.set(PASS_THROUGH_STATE, wpiAlertNode.get(DESTINATION));
+            callToActionNode.set(DESTINATION, wpiAlertNode.get(DESTINATION));
             contentNode.remove(DESTINATION);
         }
         contentNode.set(CALL_TO_ACTION, callToActionNode);
