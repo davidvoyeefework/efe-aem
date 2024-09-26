@@ -1950,6 +1950,9 @@ body.xf-web-container {
   margin: 0;
 }
 
+#fe-iframe {
+  overflow: hidden;
+}
 #fe-iframe body {
   margin: 0;
 }

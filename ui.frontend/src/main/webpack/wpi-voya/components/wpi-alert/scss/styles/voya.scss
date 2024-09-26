@@ -94,7 +94,7 @@ section.voya-wpi-theme {
                 line-height: rem(13);
             }
         }
-        
+
         }
 
     }
@@ -104,6 +104,9 @@ body.xf-web-container {
     margin: 0;
 }
 
-#fe-iframe body {
-    margin: 0;
+#fe-iframe {
+overflow: hidden;
+    body {
+        margin: 0;
+    }
 }

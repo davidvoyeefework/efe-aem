@@ -117,6 +117,9 @@ body.xf-web-container {
     margin: 0;
 }
 
-#feIframe body {
-    margin: 0;
+#feIframe {
+overflow: hidden;
+    body {
+        margin: 0;
+    }
 }
