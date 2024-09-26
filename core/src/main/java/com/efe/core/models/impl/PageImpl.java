@@ -20,6 +20,7 @@ import com.efe.core.models.PageModel;
 import com.efe.core.services.EfeService;
 import com.day.cq.wcm.api.Page;
 import com.efe.core.bean.PlannerResponse;
+import com.efe.core.utils.ArticleDetailUtil;
 import com.efe.core.utils.LinkUtil;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -88,6 +89,16 @@ public class PageImpl implements PageModel {
                     Resource resourceLocation = LocationPlannerUtil.getLocationResource(resourceResolver, stateSelector, citySelector);
                     String city = LocationPlannerUtil.getLocationProperty(resourceResolver, resourceLocation, "city");
                     return "If you’re looking for a financial planner in " + city + ", " + selectors[0].toUpperCase() + ", Edelman Financial Engines is here for you with an integrated approach centered on your goals.";
+                } else if (canonicalUrl.endsWith("/financial-planner/") && selectors.length == 3) {
+                    String nameSelector = selectors[0];
+                    String idSelector = selectors[2];
+                    Resource resourcePlanner = LocationPlannerUtil.getPlannerResource(resourceResolver, nameSelector, idSelector);
+                    plannerResponse = ArticleDetailUtil.getPlannerDetails(resourceResolver, resourcePlanner, efeService);
+                    String firstNameAlias = plannerResponse.getFirstNameAlias();
+                    if(StringUtils.isNotEmpty(firstNameAlias)) {
+                            plannerResponse.setFirstName(firstNameAlias);
+                    }
+                    return plannerResponse.getFirstName() + " " + plannerResponse.getLastName() + " is a financial planner at Edelman Financial Engines. Contact us today to speak with a financial planner.";
                 }
             } 
             return currentPage.getDescription();
@@ -117,6 +128,16 @@ public class PageImpl implements PageModel {
                     Resource resourceLocation = LocationPlannerUtil.getLocationResource(resourceResolver, stateSelector, citySelector);
                     String city = LocationPlannerUtil.getLocationProperty(resourceResolver, resourceLocation, "city");
                     return "Find a financial planner near " + city +", " + selectors[0].toUpperCase();
+                } else if (canonicalUrl.endsWith("/financial-planner/") && selectors.length == 3) {
+                    String nameSelector = selectors[0];
+                    String idSelector = selectors[2];
+                    Resource resourcePlanner = LocationPlannerUtil.getPlannerResource(resourceResolver, nameSelector, idSelector);
+                    plannerResponse = ArticleDetailUtil.getPlannerDetails(resourceResolver, resourcePlanner, efeService);
+                    String firstNameAlias = plannerResponse.getFirstNameAlias();
+                    if(StringUtils.isNotEmpty(firstNameAlias)) {
+                            plannerResponse.setFirstName(firstNameAlias);
+                    }
+                    return plannerResponse.getFirstName() + " " + plannerResponse.getLastName();
                 }
             }
             return currentPage.getTitle();
