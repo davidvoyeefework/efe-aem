@@ -42,6 +42,7 @@ section.afa-wpi-theme {
         width: 55px;
         height: 55px;
         object-fit: contain;
+        flex: 0 0 auto;
     }
     
     .cmp-button--button-wpi {
@@ -64,6 +65,19 @@ section.afa-wpi-theme {
             font-family: Arial, Helvetica, sans-serif;
             color: black;
             line-height: 100%;
+        }
+    }
+
+    @media screen and (max-width: $md) {
+        .copy {
+            h2 {
+                font-size: rem(16);
+                line-height: rem(18);
+            }
+            h3, p {
+                font-size: rem(14);
+                line-height: rem(16);
+            }
         }
     }
 }
