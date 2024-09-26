@@ -1851,7 +1851,7 @@ section.wpi-alert .provided .provided-by {
 }
 
 .principal-wpi-theme {
-  padding: 19px 19px 21px 14px;
+  padding: 14px;
   border-radius: 6px;
 }
 .principal-wpi-theme .flex img.wpi-img {
@@ -1863,26 +1863,28 @@ section.wpi-alert .provided .provided-by {
 }
 .principal-wpi-theme .flex .copy {
   margin-left: 6.9375rem;
-  margin-bottom: 0.6875rem;
+  margin-bottom: 0;
 }
 .principal-wpi-theme .flex .copy h2 {
-  font-size: 1.375rem;
+  font-size: 1.125rem;
+  line-height: 1.375rem;
   color: #464646;
   line-height: 100%;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 700;
-  margin-bottom: 0.9375rem;
+  margin: 0 0 5px;
 }
 .principal-wpi-theme .flex .copy h3 {
   font-family: Arial, Helvetica, sans-serif;
   color: #464646;
-  font-size: 1.125rem;
+  font-size: 1rem;
   line-height: 100%;
   font-weight: 400;
   -webkit-margin-before: 0;
           margin-block-start: 0;
   -webkit-margin-after: 0;
           margin-block-end: 0;
+  margin: 0 0 5px;
 }
 .principal-wpi-theme .flex .copy h3 b, .principal-wpi-theme .flex .copy h3 strong {
   font-weight: bold;
@@ -1892,7 +1894,7 @@ section.wpi-alert .provided .provided-by {
   color: #464646;
   font-size: 0.875rem;
   line-height: 100%;
-  margin-top: 1.25rem;
+  margin: 0 0 5px;
 }
 .principal-wpi-theme .flex .cmp-button--button-wpi {
   margin-left: 6.9375rem;
@@ -1950,6 +1952,9 @@ section.wpi-alert .provided .provided-by {
   }
   .principal-wpi-theme .flex img.wpi-img, .principal-wpi-theme.wpi-alert .provided {
     position: unset;
+  }
+  .principal-wpi-theme .flex img.wpi-img {
+    display: none;
   }
   .principal-wpi-theme.wpi-alert .provided {
     position: absolute;
