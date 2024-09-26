@@ -1552,7 +1552,6 @@ section.wpi-alert .provided .provided-by {
 }
 
 section.voya-wpi-theme {
-<<<<<<< HEAD
 	max-width: 49.625rem;
 	padding: 20px
 }
@@ -1566,22 +1565,19 @@ section.voya-wpi-theme .copy h2 {
 	line-height: 1.5rem;
 	margin-bottom: 20px
 }
-=======
-    max-width: rem(794);
 
-    .copy {
-        h2 {
-            font-size: rem(16);
-            line-height: rem(22);
-            font-weight: 700;
-            letter-spacing: .15px;
-            font-family: "Proxima Nova", sans-serif;
-            color: #333;
-            margin-bottom: 10px;
-            margin-top: 0;
-        }
-    }
->>>>>>> DMK-WPI-Jessie-David-On-The-Fly
+.copy {
+	h2 {
+		font-size: rem(16);
+		line-height: rem(22);
+		font-weight: 700;
+		letter-spacing: .15px;
+		font-family: "Proxima Nova", sans-serif;
+		color: #333;
+		margin-bottom: 10px;
+		margin-top: 0;
+	}
+}
 
 section.voya-wpi-theme .flex {
 	-webkit-box-orient: horizontal;
@@ -1595,7 +1591,6 @@ section.voya-wpi-theme .flex {
 	margin-bottom: 20px
 }
 
-<<<<<<< HEAD
 section.voya-wpi-theme .flex img.wpi-img {
 	-webkit-box-flex: 0;
 	-ms-flex: 0 0 auto;
@@ -1603,16 +1598,12 @@ section.voya-wpi-theme .flex img.wpi-img {
 	height: 40px;
 	width: 40px
 }
-=======
-        );
->>>>>>> DMK-WPI-Jessie-David-On-The-Fly
 
 section.voya-wpi-theme .flex .copy {
 	bottom: 3px;
 	position: relative
 }
 
-<<<<<<< HEAD
 section.voya-wpi-theme .flex .copy h3,
 section.voya-wpi-theme .flex .copy p {
 	-webkit-margin-before: 0;
@@ -1626,7 +1617,6 @@ section.voya-wpi-theme .flex .copy p {
 	margin-block-start: 0;
 	margin-bottom: 5px
 }
-=======
         .copy {
             position: relative;
             bottom: 3px;
@@ -1643,7 +1633,7 @@ section.voya-wpi-theme .flex .copy p {
                     font-weight: bold;
                 }
             }
->>>>>>> DMK-WPI-Jessie-David-On-The-Fly
+		}
 
 section.voya-wpi-theme .flex .copy h3 b,
 section.voya-wpi-theme .flex .copy h3 strong,
@@ -1652,7 +1642,6 @@ section.voya-wpi-theme .flex .copy p strong {
 	font-weight: 700
 }
 
-<<<<<<< HEAD
 section.voya-wpi-theme .cmp-button--button-wpi {
 	-webkit-box-align: center;
 	-ms-flex-align: center;
@@ -1756,7 +1745,6 @@ body.xf-web-container {
     margin-top: -17px;
     height: 1.5rem;
   }
-=======
     .cmp-button--button-wpi {
         width: rem(118);
         height: rem(40);
@@ -1796,5 +1784,4 @@ body.xf-web-container {
 
 #fe-iframe body {
     margin: 0;
->>>>>>> DMK-WPI-Jessie-David-On-The-Fly
 }
