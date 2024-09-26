@@ -1922,6 +1922,10 @@ body.xf-web-container {
   margin: 0;
 }
 
+iframe {
+  overflow: hidden;
+}
+
 /**
 *  Fluid typography mixin to create fluid font-size and line hieght for better visusal experience
 *  REference: https://css-tricks.com/snippets/css/fluid-typography/#in-sass

@@ -1970,6 +1970,9 @@ body.xf-web-container {
   margin: 0;
 }
 
+#feIframe {
+  overflow: hidden;
+}
 #feIframe body {
   margin: 0;
 }

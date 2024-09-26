@@ -212,15 +212,12 @@ section.vanguard-wpi-theme {
      
     }
 
-    @media screen and (min-width: 964px) {
-        .cmp-button--button-wpi {
-            // position: absolute;
-            // right: 30px;
-            // top: calc(50% - 23px);
-        }
-    }
 }
 
 body.xf-web-container {
     margin: 0;
+}
+
+iframe {
+    overflow: hidden;
 }

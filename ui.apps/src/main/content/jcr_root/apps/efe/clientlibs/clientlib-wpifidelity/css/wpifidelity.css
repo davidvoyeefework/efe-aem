@@ -1980,6 +1980,9 @@ body.xf-web-container {
   margin: 0;
 }
 
+#FEFrameN {
+  overflow: hidden;
+}
 #FEFrameN body {
   margin: 0;
 }
