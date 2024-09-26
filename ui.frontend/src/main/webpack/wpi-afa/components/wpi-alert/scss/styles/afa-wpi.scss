@@ -4,7 +4,13 @@ section.afa-wpi-theme {
     margin: 0 auto;
 
     .copy {
-        text-align: center;
+
+        &.copy-flex {
+            @include flexbox(
+                $gap: 10px,
+            );
+            text-align: left;
+        }
 
         h2 {
             font-size: rem(17);
@@ -12,6 +18,8 @@ section.afa-wpi-theme {
             font-family: Arial, Helvetica, sans-serif;
             color: black;
             font-weight: bold;
+            margin-top: 0;
+            margin-bottom: 4px;
         }
 
         h3, p {
@@ -34,10 +42,11 @@ section.afa-wpi-theme {
         width: 55px;
         height: 55px;
         object-fit: contain;
+        flex: 0 0 auto;
     }
     
     .cmp-button--button-wpi {
-        margin: 0 auto 12px;
+        margin: 4px 0 0;
         width: rem(111);
         height: rem(39);
         background-color: #f4f4f4;
@@ -58,8 +67,25 @@ section.afa-wpi-theme {
             line-height: 100%;
         }
     }
+
+    @media screen and (max-width: $md) {
+        .copy {
+            h2 {
+                font-size: rem(16);
+                line-height: rem(18);
+            }
+            h3, p {
+                font-size: rem(14);
+                line-height: rem(16);
+            }
+        }
+    }
 }
 
 body.xf-web-container {
     margin: 0;
+}
+
+iframe {
+    overflow: hidden;
 }

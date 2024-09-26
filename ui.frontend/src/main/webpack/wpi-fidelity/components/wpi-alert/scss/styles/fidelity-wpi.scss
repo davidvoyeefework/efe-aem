@@ -3,14 +3,15 @@
     padding: 24px;
     border: 1px solid #cccccc;
     border-radius: 8px;  
+    background-color: white;
     
     .flex {
         margin-bottom: 0px !important;
         gap: 24px !important;
 
         .wpi-img {
-            width: 100px;
-            height: 100px;
+            width: 50px;
+            height: 50px;
         }
     }
 
@@ -32,7 +33,6 @@
     }    
     
     .copy {
-
         h2 {
             font-size: rem(22);
             line-height: rem(24);
@@ -40,6 +40,7 @@
             color: black;
             font-family: "Fidelity Sans", Helvetica, sans-serif;
             margin-bottom: 16px;
+            margin-top: 0;
         }
     
         h3 {
@@ -75,7 +76,7 @@
             color: #368727;
             transition: $std-transition;
             width: fit-content;
-            padding: 8px 16px;
+            padding: 0px 16px;
             text-align: center;
             text-decoration: none;
             margin: 0;
@@ -111,30 +112,67 @@
         }
     }
 
-    // @media screen and (min-width: ) {
+    .flex {
+        flex-direction: row;
+        -webkit-box-orient: horizontal;            
+        -webkit-box-direction: normal;            
+        -ms-flex-direction: row;            
+        flex-direction: row;    
 
-    // }
+        .wpi-img {
+            position: absolute;
+        }
 
-    @media screen and (min-width: 866px) {
+        .copy, .button {
+            margin-left: 75px;
+        }
+    
+    }
+
+    @media screen and (max-width: $sm) {
+        padding: 10px;
         .flex {
-            flex-direction: row;
-            -webkit-box-orient: horizontal;            
-            -webkit-box-direction: normal;            
-            -ms-flex-direction: row;            
-            flex-direction: row;    
+            @include flexbox(
+                $gap: 0 !important,
+            );
 
-            .wpi-img {
-                position: absolute;
+            img.wpi-img {
+                display: none;
             }
-
             .copy, .button {
-                margin-left: 124px;
+                margin-left: 0;
             }
-        
+            .copy {
+                margin-bottom: 10px;
+                h2, h3, p {
+                    margin-bottom: 5px;
+                    margin-top: 0;;
+                }
+            }
+        }
+        .provided {
+            @include flexbox(
+                $flex-direction: column,
+                $gap: 0,
+                $align-items: start !important,
+            );
+            .provided-by {
+                margin: 0;
+                position: relative;
+                top: 4px;
+            }
         }
     }
+    
 }
 
 body.xf-web-container {
     margin: 0;
+}
+
+#FEFrameN {
+overflow: hidden;
+    body {
+        margin: 0;
+    }
 }
