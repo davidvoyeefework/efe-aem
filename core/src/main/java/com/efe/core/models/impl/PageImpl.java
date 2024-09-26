@@ -137,7 +137,7 @@ public class PageImpl implements PageModel {
                     if(StringUtils.isNotEmpty(firstNameAlias)) {
                             plannerResponse.setFirstName(firstNameAlias);
                     }
-                    return plannerResponse.getFirstName() + " " + plannerResponse.getLastName();
+                    return plannerResponse.getFirstName() + " " + plannerResponse.getLastName() + " | Financial Planner";
                 }
             }
             return currentPage.getTitle();
