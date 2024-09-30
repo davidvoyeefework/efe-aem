@@ -66,6 +66,15 @@
     
     .cmp-button--button-wpi {
         transition: $std-transition;
+        text-decoration: none;
+
+        &:hover, &:active {
+            transition: $std-transition;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+
         .cmp-button {
             background-color: white;
             color: white;
@@ -98,6 +107,7 @@
                 font-size: rem(16);
                 line-height: 100%;
                 font-weight: 700;
+                text-decoration: none;
             }          
         }      
     }

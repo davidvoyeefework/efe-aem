@@ -44,11 +44,20 @@
         }  
         .cmp-button--button-wpi {
             margin-left: rem(111);
+            text-decoration: none;
+
+            &:hover, &:active {
+                transition: $std-transition;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
             a {
                 width: rem(135);
                 height: rem(32);
                 border: 1px solid $principal-blue;
                 border-radius: 30px;
+                text-decoration: none;
 
                 @include flexbox(
                     $align-items: center,
@@ -60,6 +69,7 @@
                     font-size: rem(16);
                     line-height: rem(19);
                     font-family: Arial, Helvetica, sans-serif;
+                    text-decoration: none;
                 }
             }
         }   

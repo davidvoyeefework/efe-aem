@@ -63,6 +63,7 @@ section.alight-wpi-theme {
             object-fit: contain;
         }
         .cmp-button--button-wpi {
+            text-decoration: none;
             width: rem(85);
             height: rem(27);
             background-color:#e6e6e6;
@@ -73,14 +74,23 @@ section.alight-wpi-theme {
                 $align-items:center,
             );
             text-align: center;
+
+            &:hover, &:active {
+                transition: $std-transition;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
             a.cmp-button {
                 flex-basis: 100%;
+                text-decoration: none;
             }
             .cmp-button__text {
                 font-size: rem(12);
                 font-family: Arial, Helvetica, sans-serif;
                 color: #3c4144;
                 line-height: 100%;
+                text-decoration: none;
             }
         }        
     }    

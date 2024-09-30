@@ -65,11 +65,21 @@ section.mellon-wpi-theme {
 
     .cmp-button--button-wpi {
         height: 0;
+        text-decoration: none;
+
+        &:hover, &:active {
+            transition: $std-transition;
+            border: none;
+            text-decoration: none;
+            cursor: pointer;
+        }
 
         a.cmp-button {
+            text-decoration: none;
             span.cmp-button__text {
                 text-indent: -9999;
                 display: block;
+                text-decoration: none;
             }
         }
     }

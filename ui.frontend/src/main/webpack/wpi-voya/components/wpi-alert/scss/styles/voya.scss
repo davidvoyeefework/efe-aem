@@ -49,6 +49,7 @@ section.voya-wpi-theme {
     }
 
     .cmp-button--button-wpi {
+        text-decoration: none;
         width: rem(118);
         height: rem(40);
         color: #145a7b;
@@ -58,9 +59,17 @@ section.voya-wpi-theme {
         @include flexbox(
             $align-items:center,
         );
+
+        &:hover, &:active {
+            transition: $std-transition;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
         text-align: center;
         a.cmp-button {
             flex-basis: 100%;
+            text-decoration: none;
         }
         .cmp-button__text {
             font-size: rem(16);
@@ -69,6 +78,7 @@ section.voya-wpi-theme {
             font-weight: 500;
             color: #145a7b;
             line-height: 100%;
+            text-decoration: none;
         }
     }
 }
