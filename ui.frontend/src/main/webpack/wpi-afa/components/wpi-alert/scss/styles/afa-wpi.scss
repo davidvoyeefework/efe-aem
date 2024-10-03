@@ -92,10 +92,7 @@ section.afa-wpi-theme {
     }
 }
 
-body.xf-web-container {
+body.xf-web-container, body, #feIframe {
     margin: 0;
-}
-
-iframe {
     overflow: hidden;
 }

@@ -121,13 +121,7 @@ section.alight-wpi-theme {
 
 }
 
-body.xf-web-container {
+body.xf-web-container, body, #feIframe {
     margin: 0;
-}
-
-#feIframe {
-overflow: hidden;
-    body {
-        margin: 0;
-    }
+    overflow: hidden;
 }
