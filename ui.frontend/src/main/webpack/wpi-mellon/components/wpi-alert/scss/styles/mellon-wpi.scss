@@ -83,6 +83,7 @@ section.mellon-wpi-theme {
     }
 }
 
-body.xf-web-container {
+body.xf-web-container, body {
     margin: 0;
+    overflow: hidden;
 }
