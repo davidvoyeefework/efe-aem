@@ -165,10 +165,16 @@ for (var i = 0; i < elements.length; i++) {
     thisRef = thisRef.replace("%7Butm_params%7D", getUTMValues());
   }
   if (thisRef.indexOf("%7Bfeid%7D") >= 0 && feid !== null) {
-    thisRef = thisRef.replace("%7Bfeid%7D", "feid=" + encodeURIComponent(feid));
+    thisRef = thisRef.replace(
+      "%7Bfeid%7D",
+      "partnerref=" + encodeURIComponent(feid),
+    );
   }
   if (thisRef.indexOf("%7Bpoid%7D") >= 0 && poid !== null) {
-    thisRef = thisRef.replace("%7Bpoid%7D", "poid=" + encodeURIComponent(poid));
+    thisRef = thisRef.replace(
+      "%7Bpoid%7D",
+      "utm_medium=" + encodeURIComponent(poid),
+    );
   }
   if (thisRef.indexOf("%7Bvoya%7D") >= 0) {
     thisRef = thisRef.replace("%7Bvoya%7D", getVoyaValues());
