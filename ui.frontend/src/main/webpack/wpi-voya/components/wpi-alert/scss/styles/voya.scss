@@ -1,7 +1,7 @@
 section.voya-wpi-theme {
     max-width: rem(794);
     background-color: white;
-    padding-bottom: 50px;
+    height: calc(100% - 5px);
 
     .copy {
         h2 {
@@ -109,8 +109,8 @@ section.voya-wpi-theme {
     }
 
     @media screen and (min-height: 300px) {
-
-        padding: 20px 20px 106px;
+        height: calc(100% - 45px);
+        padding: 20px;
 
         .copy {
             h2 {
