@@ -4,6 +4,7 @@
     "author https://author-p91602-e833625.adobeaemcloud.com",
     "publish https://publish-p91602-e833625.adobeaemcloud.com",
     "preview https://preview-p91602-e833625.adobeaemcloud.com",
-    "live https://aemdev.edelmanfinancialengines.com"
+    "live https://aemdev.edelmanfinancialengines.com",
+    "landingpage https://aemdev.landingpages.feitest.com"
   ]
 }
