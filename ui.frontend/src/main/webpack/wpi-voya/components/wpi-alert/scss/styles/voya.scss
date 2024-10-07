@@ -1,5 +1,7 @@
 section.voya-wpi-theme {
     max-width: rem(794);
+    background-color: white;
+    padding-bottom: 50px;
 
     .copy {
         h2 {
@@ -26,10 +28,6 @@ section.voya-wpi-theme {
             flex: 0 0 auto;
             width: 40px;
             height: 40px;
-
-            @media screen and (max-width: 340px) {
-                display: none;
-            }
         }
 
         .copy {
@@ -53,13 +51,17 @@ section.voya-wpi-theme {
     }
 
     .cmp-button--button-wpi {
-        text-decoration: none;
+        background-color: white;
         width: rem(118);
         height: rem(40);
         color: #145a7b;
         border: 2px solid #145a7b;
         border-radius: 20px;    
         margin: 0 auto;  
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
         @include flexbox(
             $align-items:center,
         );
@@ -74,12 +76,13 @@ section.voya-wpi-theme {
         a.cmp-button {
             flex-basis: 100%;
             text-decoration: none;
+            background-color: white;
         }
         .cmp-button__text {
             font-size: rem(16);
             letter-spacing: .0125em;
             font-family: "Proxima Nova", sans-serif;
-            font-weight: 500;
+            font-weight: 600;
             color: #145a7b;
             line-height: 100%;
             text-decoration: none;
@@ -88,10 +91,6 @@ section.voya-wpi-theme {
 
     @media screen and (max-width: 340px) {
         .flex {
-            img.wpi-img {
-                display: none;
-            }
-
         .copy {
             h2 {
                 font-size: 14px;
@@ -105,6 +104,30 @@ section.voya-wpi-theme {
             }
         }
 
+        }
+
+    }
+
+    @media screen and (min-height: 300px) {
+
+        padding: 20px 20px 106px;
+
+        .copy {
+            h2 {
+                font-size: rem(18);
+                line-height: rem(24);
+                letter-spacing: .015em;
+                margin-bottom: 25px;
+            }
+        }
+
+        .flex {
+            .copy {
+                h3, p {
+                    font-size: rem(16);
+                    line-height: rem(19);
+                }
+            }
         }
 
     }
