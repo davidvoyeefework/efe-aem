@@ -200,38 +200,45 @@ function buttonTokenParser() {
   for (var i = 0; i < elements.length; i++) {
     var thisElement = elements[i];
     var thisRef = thisElement.getAttribute("href");
+    if (thisRef !== null) {
+      if (thisRef.indexOf("%7Butm_params%7D") >= 0) {
+        thisRef = thisRef.replace("%7Butm_params%7D", getUTMValues());
+      } else if (thisRef.indexOf("{utm_params}") >= 0) {
+        thisRef = thisRef.replace("{utm_params}", getUTMValues());
+      }
 
-    if (thisRef.indexOf("%7Butm_params%7D") >= 0) {
-      thisRef = thisRef.replace("%7Butm_params%7D", getUTMValues());
-    } else if (thisRef.indexOf("{utm_params}") >= 0) {
-      thisRef = thisRef.replace("{utm_params}", getUTMValues());
+      if (thisRef.indexOf("%7Bfeid%7D") >= 0 && feid !== null) {
+        thisRef = thisRef.replace(
+          "%7Bfeid%7D",
+          "partnerref=" + encodeURIComponent(feid),
+        );
+      } else if (thisRef.indexOf("{feid}") >= 0 && feid !== null) {
+        thisRef = thisRef.replace(
+          "{feid}",
+          "partnerref=" + encodeURIComponent(feid),
+        );
+      }
+
+      if (thisRef.indexOf("%7Bpoid%7D") >= 0 && poid !== null) {
+        thisRef = thisRef.replace(
+          "%7Bpoid%7D",
+          "utm_medium=" + encodeURIComponent(poid),
+        );
+      } else if (thisRef.indexOf("{poid}") >= 0 && poid !== null) {
+        thisRef = thisRef.replace(
+          "{poid}",
+          "utm_medium=" + encodeURIComponent(poid),
+        );
+      }
+
+      if (thisRef.indexOf("%7Bvoya%7D") >= 0) {
+        thisRef = thisRef.replace("%7Bvoya%7D", getVoyaValues());
+      } else if (thisRef.indexOf("{voya}") >= 0) {
+        thisRef = thisRef.replace("{voya}", getVoyaValues());
+      }
+
+      thisElement.href = thisRef;
     }
-
-    if (thisRef.indexOf("%7Bfeid%7D") >= 0 && feid !== null) {
-      thisRef = thisRef.replace(
-        "%7Bfeid%7D",
-        "feid=" + encodeURIComponent(feid),
-      );
-    } else if (thisRef.indexOf("{feid}") >= 0 && feid !== null) {
-      thisRef = thisRef.replace("{feid}", "feid=" + encodeURIComponent(feid));
-    }
-
-    if (thisRef.indexOf("%7Bpoid%7D") >= 0 && poid !== null) {
-      thisRef = thisRef.replace(
-        "%7Bpoid%7D",
-        "poid=" + encodeURIComponent(poid),
-      );
-    } else if (thisRef.indexOf("{poid}") >= 0 && poid !== null) {
-      thisRef = thisRef.replace("{poid}", "poid=" + encodeURIComponent(poid));
-    }
-
-    if (thisRef.indexOf("%7Bvoya%7D") >= 0) {
-      thisRef = thisRef.replace("%7Bvoya%7D", getVoyaValues());
-    } else if (thisRef.indexOf("{voya}") >= 0) {
-      thisRef = thisRef.replace("{voya}", getVoyaValues());
-    }
-
-    thisElement.href = thisRef;
   }
 }
 
