@@ -210,19 +210,25 @@ function buttonTokenParser() {
       if (thisRef.indexOf("%7Bfeid%7D") >= 0 && feid !== null) {
         thisRef = thisRef.replace(
           "%7Bfeid%7D",
-          "feid=" + encodeURIComponent(feid),
+          "partnerref=" + encodeURIComponent(feid),
         );
       } else if (thisRef.indexOf("{feid}") >= 0 && feid !== null) {
-        thisRef = thisRef.replace("{feid}", "feid=" + encodeURIComponent(feid));
+        thisRef = thisRef.replace(
+          "{feid}",
+          "partnerref=" + encodeURIComponent(feid),
+        );
       }
 
       if (thisRef.indexOf("%7Bpoid%7D") >= 0 && poid !== null) {
         thisRef = thisRef.replace(
           "%7Bpoid%7D",
-          "poid=" + encodeURIComponent(poid),
+          "utm_medium=" + encodeURIComponent(poid),
         );
       } else if (thisRef.indexOf("{poid}") >= 0 && poid !== null) {
-        thisRef = thisRef.replace("{poid}", "poid=" + encodeURIComponent(poid));
+        thisRef = thisRef.replace(
+          "{poid}",
+          "utm_medium=" + encodeURIComponent(poid),
+        );
       }
 
       if (thisRef.indexOf("%7Bvoya%7D") >= 0) {
