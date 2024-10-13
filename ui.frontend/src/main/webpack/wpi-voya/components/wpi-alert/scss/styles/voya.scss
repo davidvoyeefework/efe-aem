@@ -65,6 +65,10 @@ section.voya-wpi-theme {
         text-align: center;
         a.cmp-button {
             flex-basis: 100%;
+            border-radius: 20px;   
+            &:before {
+                display: none;
+            }
         }
         .cmp-button__text {
             font-size: rem(16);
@@ -100,13 +104,8 @@ section.voya-wpi-theme {
     }
 }
 
-body.xf-web-container {
+body.xf-web-container, #bodyFE_IFRAME_MINI body, body, #fe-iframe body {
     margin: 0;
+    overflow: hidden;
 }
 
-#fe-iframe {
-overflow: hidden;
-    body {
-        margin: 0;
-    }
-}
