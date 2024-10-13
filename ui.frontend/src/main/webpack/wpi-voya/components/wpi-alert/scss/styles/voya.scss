@@ -56,14 +56,13 @@ section.voya-wpi-theme {
 
     .cmp-button--button-wpi {
         background-color: white;
-        width: rem(110);
-        padding: 0 2px;
+        width: fit-content;
+        padding: 0 16px;
         height: rem(40);
         color: #145a7b;
         border: 2px solid #145a7b;
         border-radius: 20px;    
         margin: 0 auto;  
-        position: absolute;
         bottom: 0;
         left: 0;
         right: 0;
@@ -87,6 +86,19 @@ section.voya-wpi-theme {
             color: #145a7b;
             line-height: 100%;
         }
+    }
+
+    // For accordion placement 
+    @media screen and (max-width: 260px) {
+        padding: 10px;
+        min-height: 240px;
+
+        .copy {
+            h2 {
+                margin-bottom: 5px;
+            }
+        }
+        
     }
 
     @media screen and (max-width: 340px) {
@@ -133,8 +145,11 @@ section.voya-wpi-theme {
     }
 }
 
-body.xf-web-container, #bodyFE_IFRAME_MINI body, body, #fe-iframe body {
+body.xf-web-container, #bodyFE_IFRAME_MINI body, body, #fe-iframe body, iframe body {
     margin: 0;
     overflow: hidden;
 }
+
+
+
 
