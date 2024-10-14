@@ -46,7 +46,8 @@ section.afa-wpi-theme {
     }
     
     .cmp-button--button-wpi {
-        margin: 4px 0 0;
+        text-decoration: none;
+        margin: 0 auto 12px;
         width: rem(111);
         height: rem(39);
         background-color: #f4f4f4;
@@ -57,14 +58,23 @@ section.afa-wpi-theme {
             $align-items:center,
         );
         text-align: center;
+
+        &:hover, &:active {
+            transition: $std-transition;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
         a.cmp-button {
             flex-basis: 100%;
+            text-decoration: none;
         }
         .cmp-button__text {
             font-size: rem(15);
             font-family: Arial, Helvetica, sans-serif;
             color: black;
             line-height: 100%;
+            text-decoration: none;
         }
     }
 
@@ -82,10 +92,7 @@ section.afa-wpi-theme {
     }
 }
 
-body.xf-web-container {
+body.xf-web-container, body, #fe-iframe {
     margin: 0;
-}
-
-iframe {
     overflow: hidden;
 }

@@ -19,6 +19,17 @@
                         p.bebas, span.large {
                             color: white;
                         }
+
+                        p.stat-text {
+                            span.lighter {
+                                font-size: rem(24);
+                                line-height: rem(26.4);
+                            }
+                        }
+                    }
+
+                    &.red-lighter-bg {
+                        // border-bottom-left-radius: 28px;
                     }
                 }
             }
@@ -27,7 +38,7 @@
                 .section-header-bg-pattern {
                     &:before {
                         background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 201.8 62" style="enable-background:new 0 0 201.8 62;" xml:space="preserve"><g><polygon style="fill:%236E7476;" points="-0.3,0 62.3,62.3 139.7,62.3 77.2,0 "/><polygon style="fill:%236E7476;" points="202.7,62.3 202.7,27.8 174.8,0 97.4,0 159.9,62.3 "/></g></svg>');
-                        left: calc(100% - 209px);
+                        left: calc(100% - 196px);
                     }
                 }
                 .stats-block {
@@ -53,6 +64,7 @@
                             max-width: 20ch;
                         }
                     }
+
                 }
             }
         }
@@ -81,6 +93,24 @@
                             left: calc(100% - 388px);
                         }
                     }
+
+                    .stat-building-block {
+                        .red-lighter-bg {
+                            border-bottom-left-radius: 0px;
+                        }
+                        .flex {
+                            p.stat-text {
+                                span.lighter {
+                                    font-size: rem(32);
+                                    line-height: rem(35);
+                                }
+                            }
+                        }
+
+                    }
+
+ 
+
                 }
 
                 &.left {
@@ -94,6 +124,12 @@
                         height: calc(100% - 60px);
 
                         &.red-lightest-bg{
+                            border-bottom-left-radius: 40px;
+
+                            h3 {
+                                line-height: rem(68);
+                            }
+
                             &:before {
                                 height: 425px;
                             }
@@ -115,7 +151,7 @@
                         p.stat-text {
                             max-width: 17ch;
                             position: relative;
-                            bottom: -11px;
+                            bottom: -5px;
                             right: 18px;                            
                         }
                     }
@@ -124,12 +160,17 @@
                         p.stat-text {
                             max-width: 16ch;
                             position: relative;
-                            bottom: -11px;
+                            bottom: -5px;
                             right: 18px;                            
                         }
-                    }    
+                    }   
                     
                     &.red-lighter-bg {
+                        p.stat-text {
+                            bottom: -5px;
+                        }
+                    }
+         
                         p.stat-text {
                             max-width: none;
                             position: relative;
@@ -140,5 +181,16 @@
                 }
             }
         }
+
+        @media screen and (max-width: $xl) {
+            .fifty-percent {
+                &.right {
+                    .stat-building-block {
+                        &.red-lighter-bg {
+                            border-bottom-left-radius: 28px;
+                        }
+                    } 
+                }
+            }
+        }
     }
-}
