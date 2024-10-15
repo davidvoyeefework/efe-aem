@@ -3,10 +3,6 @@ section.voya-wpi-theme {
     background-color: white;
     height: calc(100% - 5px);
 
-    #wpi-anchor {
-        height: 100%;
-    }
-
     .copy {
         h2 {
             font-size: rem(16);
@@ -80,10 +76,13 @@ section.voya-wpi-theme {
         a.cmp-button {
             flex-basis: 100%;
             border-radius: 20px;   
-            &:before {
-                display: none;
-            }
             background-color: white;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: none;
+            }
+
         }
         .cmp-button__text {
             font-size: rem(16);
@@ -106,26 +105,28 @@ section.voya-wpi-theme {
                 margin-bottom: 5px;
             }
         }
+        .flex {
+            @include flexbox(
+                $gap: 10px,
+            )
+        }
         
     }
 
     @media screen and (max-width: 340px) {
         .flex {
-        .copy {
-            h2 {
-                font-size: 14px;
-                line-height: 16px;
+            .copy {
+                h2 {
+                    font-size: 14px;
+                    line-height: 16px;
+                }
 
-            }
-
-            h3, p {
-                font-size: rem(11);
-                line-height: rem(13);
+                h3, p {
+                    font-size: rem(11);
+                    line-height: rem(13);
+                }
             }
         }
-
-        }
-
     }
 
     @media screen and (min-height: 300px) {
