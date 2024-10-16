@@ -397,7 +397,6 @@
     <!-- Voya  -->
     <sly data-sly-test="${model.recordKeeper == 'voya-wpi-theme'}">
         <section class="${model.recordKeeper} wpi-alert" id="wpi-alert" data-viewcode="${model.viewcode}">
-            <div id="wpi-anchor" tabindex="0" role="link" target="_parent" data-destination-token=${model.destination}>
                 <div>
                     <div class="copy">
                         ${model.headline @context='html'}
@@ -411,11 +410,10 @@
                     </div>
                 </div>
                 <div class="button cmp-button--button-wpi">
-                    <a type="button" class="cmp-button" x-cq-linkchecker="valid">
+                    <a type="button" class="cmp-button" x-cq-linkchecker="valid" data-destination-token=${model.destination} target="_parent" id="wpi-anchor">
                         <span class="cmp-button__text">${model.cta @context='html'}</span>
                     </a>
                 </div>
-            </div>
         </section>
     </sly>
 
