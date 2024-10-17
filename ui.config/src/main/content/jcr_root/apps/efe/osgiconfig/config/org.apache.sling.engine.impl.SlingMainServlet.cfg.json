@@ -1,0 +1,19 @@
+{
+  "disable.spec.compliant.getuserprincipal": true,
+  "osgi.ds.satisfying.condition.target": "(osgi.condition.id=true)",
+  "service.description": "Apache Sling Main Servlet",
+  "service.pid": "org.apache.sling.engine.impl.SlingMainServlet",
+  "service.vendor": "The Apache Software Foundation",
+  "sling.additional.response.headers": [
+    "X-Content-Type-Options=nosniff",
+    "X-Frame-Options=SAMEORIGIN"
+  ],
+  "sling.includes.checkcontenttype": false,
+  "sling.includes.protectheaders": false,
+  "sling.max.calls": 2000,
+  "sling.max.inclusions": 50,
+  "sling.max.record.requests": 20,
+  "sling.serverinfo": "Apache Sling",
+  "sling.trace.allow": false,
+  "slingServletContext.target": "(name=org.apache.sling)"
+}
