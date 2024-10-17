@@ -1,122 +1,128 @@
 section.transamerica-wpi-theme {
-  max-width: rem(641);
-
-  .copy {
-    h2 {
-      font-size: rem(21);
-      line-height: 140%;
-      font-family: Arial, Helvetica, sans-serif;
-      color: black;
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-
-    p,
-    h3 {
-      font-size: rem(14);
-      line-height: rem(16);
-      font-family: Arial, Helvetica, sans-serif;
-      color: black;
-      margin: 0 0 14px;
-      font-weight: 400;
-      margin-block-start: 0;
-      margin-block-end: 0;
-
-      b,
-      strong {
-        font-weight: bold;
-      }
-    }
-  }
-
-  .flex {
-    @include flexbox($gap: 10px, $flex-direction: row);
-    margin-bottom: 5px;
-
-    img.wpi-img {
-      width: 95px;
-      height: 97px;
-      object-fit: contain;
-      flex: 0 0 auto;
-    }
+    max-width: rem(641);
 
     .copy {
-      margin: 8px 0 40px;
-    }
-  }
 
-  .cta-lockup-container {
-    @include flexbox(
-      $flex-direction: row,
-      $justify-content: space-between,
-      $align-items: center,
-      $align-self: center,
-      $gap: 20px
-    );
+        h2 {
+            font-size: rem(21);
+            line-height: 140%;
+            font-family: Arial, Helvetica, sans-serif;
+            color: black;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
 
-    .cmp-button--button-wpi {
-      text-decoration: none;
-      &:hover,
-      &:active {
-        transition: $std-transition;
-        border: none;
-        text-decoration: none;
-        cursor: pointer;
-      }
-
-      width: rem(150);
-      height: rem(36);
-      background-color: #3e7cab;
-      border-radius: 30px;
-      z-index: 999;
-      @include flexbox($align-items: center);
-      text-align: center;
-      a.cmp-button {
-        flex-basis: 100%;
-        text-decoration: none;
-      }
-      .cmp-button__text {
-        font-size: rem(14);
-        font-family: Arial, Helvetica, sans-serif;
-        color: white;
-        line-height: 100%;
-        text-decoration: none;
-      }
-    }
-
-    .efe-lockup {
-      width: 85px;
-      height: 16px;
-      object-fit: contain;
-      flex: 0 0 auto;
-    }
-  }
-
-  @media screen and (max-width: 300px) {
-    .cmp-button--button-wpi {
-      width: rem(128);
-      right: 18px;
+        p, h3 {
+            font-size: rem(14);
+            line-height: rem(16);
+            font-family: Arial, Helvetica, sans-serif;
+            color: black;
+            margin: 0 0 14px;
+            font-weight: 400;
+            margin-block-start: 0;
+            margin-block-end: 0;
+            
+            b, strong {
+                font-weight: bold;
+            }
+        }     
+    
     }
 
     .flex {
-      img.wpi-img {
-        width: 75px;
-        height: 75px;
-        display: none;
-      }
+        @include flexbox(
+            $gap: 10px,
+            $flex-direction: row
+        );
+        margin-bottom: 5px;
+
+        img.wpi-img {
+            width: 95px;
+            height: 97px;
+            object-fit: contain;
+            flex: 0 0 auto;
+        }
+
+        .copy {
+            margin: 8px 0 40px;
+        }
+    }  
+    
+
+
+    .cta-lockup-container {
+        @include flexbox(
+            $flex-direction: row,
+            $justify-content: space-between,
+            $align-items: center,
+            $align-self: center,
+            $gap: 20px
+        );
+
+        .cmp-button--button-wpi {
+            text-decoration: none;
+            &:hover, &:active {
+                transition: $std-transition;
+                border: none;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+            width: rem(150);
+            height: rem(36);
+            background-color: #3E7cab;
+            border-radius: 30px;       
+            z-index: 999;
+            @include flexbox(
+                $align-items:center,
+            );
+            text-align: center;
+            a.cmp-button {
+                flex-basis: 100%;
+                text-decoration: none;
+            }
+            .cmp-button__text {
+                font-size: rem(14);
+                font-family: Arial, Helvetica, sans-serif;
+                color: white;
+                line-height: 100%;
+                text-decoration: none;
+            }
+        }
+    
+        .efe-lockup {
+            width: 85px;
+            height: 16px;
+            object-fit: contain;
+            flex: 0 0 auto;
+    
+        }
     }
 
-    .flex {
-      .copy {
-        margin: 0 0 0;
-      }
+    @media screen and (max-width: 300px) {
+
+        .cmp-button--button-wpi {
+            width: rem(128);
+            right: 18px;
+        }
+
+        .flex {
+            img.wpi-img {
+                width: 75px;
+                height: 75px;
+                display: none;
+            }
+        }
+        
+        .flex {
+            .copy {
+                    margin: 0 0 0;
+            }
+        }
     }
-  }
 }
 
-body.xf-web-container,
-body,
-#fe-iframe {
-  margin: 0;
-  overflow: hidden;
+body.xf-web-container, body, #fe-iframe {
+    margin: 0;
+    overflow: hidden;
 }
