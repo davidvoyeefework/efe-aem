@@ -1,181 +1,182 @@
 .fidelity-wpi-theme {
-    padding: 24px;
-    border: 1px solid #cccccc;
-    border-radius: 8px;  
-    background-color: white;
-    
-    .flex {
-        margin-bottom: 0px !important;
-        gap: 24px !important;
+  padding: 24px;
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  background-color: white;
 
-        .wpi-img {
-            width: 50px;
-            height: 50px;
-        }
+  .flex {
+    margin-bottom: 0px !important;
+    gap: 24px !important;
+
+    .wpi-img {
+      width: 50px;
+      height: 50px;
     }
+  }
 
-    .provided {
-        margin: 0;
-        position: absolute;
-        bottom: 24px;
-        right: 24px;
-
-        @media screen and (min-width: $sm) {
-            margin: 0;
-        }            
-
-        .provided-by {
-            position: relative;
-            top: -2px;
-            margin-right: 6px;
-        }            
-    }    
-    
-    .copy {
-        h2 {
-            font-size: rem(22);
-            line-height: rem(24);
-            font-weight: 700;
-            color: black;
-            font-family: "Fidelity Sans", Helvetica, sans-serif;
-            margin-bottom: 16px;
-            margin-top: 0;
-        }
-    
-        h3 {
-            font-family: "Fidelity Sans", Helvetica, sans-serif;
-            font-size: rem(16);
-            line-height: rem(19);
-            color: black;
-            font-weight: 400;
-            margin-block-start: 0;
-            margin-block-end: 0;
-            b, strong {
-                font-weight: bold;
-            }
-        }   
-        
-        p {
-            margin-top: 8px;
-            font-family: "Fidelity Sans", Helvetica, sans-serif;
-            font-size: rem(14);
-            line-height: 100%;
-            color: black;
-        }
-    }
-    
-    .cmp-button--button-wpi {
-        transition: $std-transition;
-        text-decoration: none;
-
-        &:hover, &:active {
-            transition: $std-transition;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-
-        .cmp-button {
-            background-color: white;
-            color: white;
-            height: rem(36);
-            border-radius: 8px;
-            border: 1px solid #368727;
-            color: #368727;
-            transition: $std-transition;
-            width: fit-content;
-            padding: 0px 16px;
-            text-align: center;
-            text-decoration: none;
-            margin: 0;
-
-            @include flexbox(
-                $align-items: center,
-                $justify-content: center
-            );
-        
-            &:hover, &:active {
-                transition: $std-transition;
-                text-decoration: none;
-                cursor: pointer;
-                color: #368727 !important;
-                border: 1px solid #368727 !important;
-            }
-        
-            .cmp-button__text {
-                font-family: "Fidelity Sans", Helvetica, sans-serif;
-                font-size: rem(16);
-                line-height: 100%;
-                font-weight: 700;
-                text-decoration: none;
-            }          
-        }      
-    }
+  .provided {
+    margin: 0;
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
 
     @media screen and (min-width: $sm) {
-        .flex {
-            -webkit-box-orient: vertical !important;
-            -webkit-box-direction: normal !important;       
-            -ms-flex-direction: column !important;      
-            flex-direction: column !important;
-        }
+      margin: 0;
     }
 
+    .provided-by {
+      position: relative;
+      top: -2px;
+      margin-right: 6px;
+    }
+  }
+
+  .copy {
+    h2 {
+      font-size: rem(22);
+      line-height: rem(24);
+      font-weight: 700;
+      color: black;
+      font-family: "Fidelity Sans", Helvetica, sans-serif;
+      margin-bottom: 16px;
+      margin-top: 0;
+    }
+
+    h3 {
+      font-family: "Fidelity Sans", Helvetica, sans-serif;
+      font-size: rem(16);
+      line-height: rem(19);
+      color: black;
+      font-weight: 400;
+      margin-block-start: 0;
+      margin-block-end: 0;
+      b,
+      strong {
+        font-weight: bold;
+      }
+    }
+
+    p {
+      margin-top: 8px;
+      font-family: "Fidelity Sans", Helvetica, sans-serif;
+      font-size: rem(14);
+      line-height: 100%;
+      color: black;
+    }
+  }
+
+  .cmp-button--button-wpi {
+    transition: $std-transition;
+    text-decoration: none;
+
+    &:hover,
+    &:active {
+      transition: $std-transition;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .cmp-button {
+      background-color: white;
+      color: white;
+      height: rem(36);
+      border-radius: 8px;
+      border: 1px solid #368727;
+      color: #368727;
+      transition: $std-transition;
+      width: fit-content;
+      padding: 0px 16px;
+      text-align: center;
+      text-decoration: none;
+      margin: 0;
+
+      @include flexbox($align-items: center, $justify-content: center);
+
+      &:hover,
+      &:active {
+        transition: $std-transition;
+        text-decoration: none;
+        cursor: pointer;
+        color: #368727 !important;
+        border: 1px solid #368727 !important;
+      }
+
+      .cmp-button__text {
+        font-family: "Fidelity Sans", Helvetica, sans-serif;
+        font-size: rem(16);
+        line-height: 100%;
+        font-weight: 700;
+        text-decoration: none;
+      }
+    }
+  }
+
+  @media screen and (min-width: $sm) {
     .flex {
-        flex-direction: row;
-        -webkit-box-orient: horizontal;            
-        -webkit-box-direction: normal;            
-        -ms-flex-direction: row;            
-        flex-direction: row;    
+      -webkit-box-orient: vertical !important;
+      -webkit-box-direction: normal !important;
+      -ms-flex-direction: column !important;
+      flex-direction: column !important;
+    }
+  }
 
-        .wpi-img {
-            position: absolute;
-        }
+  .flex {
+    flex-direction: row;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
 
-        .copy, .button {
-            margin-left: 75px;
-        }
-    
+    .wpi-img {
+      position: absolute;
     }
 
-    @media screen and (max-width: $sm) {
-        padding: 10px;
-        .flex {
-            @include flexbox(
-                $gap: 0 !important,
-            );
-
-            img.wpi-img {
-                display: none;
-            }
-            .copy, .button {
-                margin-left: 0;
-            }
-            .copy {
-                margin-bottom: 10px;
-                h2, h3, p {
-                    margin-bottom: 5px;
-                    margin-top: 0;;
-                }
-            }
-        }
-        .provided {
-            @include flexbox(
-                $flex-direction: column,
-                $gap: 0,
-                $align-items: start !important,
-            );
-            .provided-by {
-                margin: 0;
-                position: relative;
-                top: 4px;
-            }
-        }
+    .copy,
+    .button {
+      margin-left: 75px;
     }
-    
+  }
+
+  @media screen and (max-width: $sm) {
+    padding: 10px;
+    .flex {
+      @include flexbox($gap: 0 !important);
+
+      img.wpi-img {
+        display: none;
+      }
+      .copy,
+      .button {
+        margin-left: 0;
+      }
+      .copy {
+        margin-bottom: 10px;
+        h2,
+        h3,
+        p {
+          margin-bottom: 5px;
+          margin-top: 0;
+        }
+      }
+    }
+    .provided {
+      @include flexbox(
+        $flex-direction: column,
+        $gap: 0,
+        $align-items: start !important
+      );
+      .provided-by {
+        margin: 0;
+        position: relative;
+        top: 4px;
+      }
+    }
+  }
 }
 
-body.xf-web-container, body, #FEFrameN {
-    margin: 0;
-    overflow: hidden;
+body.xf-web-container,
+body,
+#FEFrameN {
+  margin: 0;
+  overflow: hidden;
 }
