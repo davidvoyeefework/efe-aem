@@ -199,5 +199,10 @@ public class VideoImpl implements Video {
 		}
 		return isEmpty;
 	}
+	
+	// Set alt thumnail null value
+	public String getThumbnailAlt() {
+		return "test";
+	}
 
 }
