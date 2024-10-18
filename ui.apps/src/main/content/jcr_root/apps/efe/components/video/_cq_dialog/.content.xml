@@ -47,6 +47,12 @@
                                                 mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
                                                 name="./file"
                                                 required="true"/>
+                                            <alt
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Alt text for non decorative images"
+                                                fieldLabel="Thumbnail Alt Text"
+                                                name="./thumbAltText"/>                                                
                                             <btnIcon
                                                 granite:class="cmp-image__editor-file-upload"
                                                 jcr:primaryType="nt:unstructured"
