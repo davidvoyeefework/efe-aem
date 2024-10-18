@@ -7,7 +7,12 @@
          data-efe-layer="${model.dataLayer}">
     <div class="player"></div>
     <div class="thumbnail_container">
-        <img class="thumbnail" alt="${model.thumbnailAlt}" />
+        <sly data-sly-test="${model.thumbnailAlt == ''}">
+            <img class="thumbnail" alt=''/>
+        </sly>
+        <sly data-sly-test="${model.thumbnailAlt != ''}">
+            <img class="thumbnail" alt="${model.thumbnailAlt}" />
+        </sly>
     </div>
     <a class="start-video">
         <img src="${model.buttonIcon}" alt="play button" />

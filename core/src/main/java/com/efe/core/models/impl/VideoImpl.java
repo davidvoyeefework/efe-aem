@@ -4,6 +4,7 @@ import javax.annotation.PostConstruct;
 
 import com.efe.core.services.DynamicMediaService;
 import org.apache.commons.lang3.StringUtils;
+import com.efe.core.utils.EFEUtil;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -20,7 +21,6 @@ import com.efe.core.models.Video;
 import com.efe.core.services.RestService;
 import com.efe.core.services.SeoService;
 import com.efe.core.utils.DataLayerUtils;
-import com.efe.core.utils.EFEUtil;
 import com.efe.core.utils.SeoUtil;
 import com.google.gson.JsonObject;
 
@@ -77,6 +77,11 @@ public class VideoImpl implements Video {
 	/** The file reference. */
 	@ValueMapValue
 	private String fileReference;
+
+
+    // Thumnail alt text
+    @ValueMapValue
+    private String thumbAltText;
 
 	/** The video id. */
 	@ValueMapValue
@@ -199,10 +204,16 @@ public class VideoImpl implements Video {
 		}
 		return isEmpty;
 	}
-	
+
 	// Set alt thumnail null value
 	public String getThumbnailAlt() {
-		return "test";
+		if (thumbAltText == null) {
+            return StringUtils.EMPTY;
+        }
+        else {
+            return thumbAltText;
+        }        
+
 	}
 
 }
