@@ -98,7 +98,7 @@ public class PageImpl implements PageModel {
                     if(StringUtils.isNotEmpty(firstNameAlias)) {
                             plannerResponse.setFirstName(firstNameAlias);
                     }
-					return plannerResponse.getFirstName() + " " + plannerResponse.getLastName() + " is a financial planner in the " + plannerResponse.getPrimaryOffice().getCity() + ", " + plannerResponse.getPrimaryOffice().getState() + " area.  Request an appointment or call us to schedule one.";
+					return plannerResponse.getFirstName() + " " + plannerResponse.getLastName() + " is a financial planner in the " + plannerResponse.getPrimaryOffice().getCity() + ", " + plannerResponse.getPrimaryOffice().getState() + " area. Request an appointment or call us to schedule one.";
                 }
             } 
             return currentPage.getDescription();
@@ -137,7 +137,7 @@ public class PageImpl implements PageModel {
                     if(StringUtils.isNotEmpty(firstNameAlias)) {
                             plannerResponse.setFirstName(firstNameAlias);
                     }
-                    return "Financial Planner in " + plannerResponse.getPrimaryOffice().getCity() + ", " + plannerResponse.getPrimaryOffice().getState() + " | Edelman Financial Engines";
+					return "Financial Planner in " + plannerResponse.getPrimaryOffice().getCity() + ", " + plannerResponse.getPrimaryOffice().getState() + " | Edelman Financial Engines";
                 }
             }
             return currentPage.getTitle();
