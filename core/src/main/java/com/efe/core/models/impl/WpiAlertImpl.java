@@ -235,8 +235,11 @@ public class WpiAlertImpl implements WpiAlert {
 
     // Gets Icon IMG
     public String getIcon() {
-        return dynamicMediaService.getDmImagePath(resourceResolver, icon);
-    }     
+        if (icon.endsWith(".png"))
+            return dynamicMediaService.getDmImagePath(resourceResolver, icon)+"?fmt=png-alpha&bfc=on";
+        else
+            return dynamicMediaService.getDmImagePath(resourceResolver, icon);
+    }
 
     // Gets destination cta token
     public String getDestination() {
