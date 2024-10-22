@@ -1,4 +1,6 @@
 section.voya-wpi-theme {
+    background-color: white;
+    height: calc(100% - 5px);
 
     .copy {
         h2 {
@@ -25,10 +27,6 @@ section.voya-wpi-theme {
             flex: 0 0 auto;
             width: 40px;
             height: 40px;
-
-            @media screen and (max-width: 340px) {
-                display: none;
-            }
         }
 
         .copy {
@@ -54,58 +52,103 @@ section.voya-wpi-theme {
     .cmp-button--button-wpi {
         width: rem(118);
         height: rem(36);
-        color: #145a7b;
         border: 2px solid #145a7b;
         border-radius: 20px;    
-        margin:  5px auto 0;  
+        margin: 5px auto 0;  
+        background-color: white;
+        width: fit-content;
+        padding: 0 16px;
+        color: #145a7b;
         @include flexbox(
             $align-items:center,
         );
         text-align: center;
         a.cmp-button {
             flex-basis: 100%;
+            border-radius: 20px;   
+            background-color: white;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: none;
+            }
+
         }
         .cmp-button__text {
             font-size: rem(16);
             letter-spacing: .0125em;
             font-family: "Proxima Nova", sans-serif;
-            font-weight: 500;
+            font-weight: 600;
             color: #145a7b;
             line-height: 100%;
+            text-decoration: none;
         }
+    }
+
+    // For accordion placement 
+    @media screen and (max-width: 260px) {
+        padding: 10px;
+        min-height: 240px;
+
+        .copy {
+            h2 {
+                margin-bottom: 5px;
+            }
+        }
+        .flex {
+            @include flexbox(
+                $gap: 10px,
+            )
+        }
+        
     }
 
     @media screen and (max-width: 340px) {
         .flex {
-            img.wpi-img {
-                display: none;
+            .copy {
+                h2 {
+                    font-size: 14px;
+                    line-height: 16px;
+                }
+
+                h3, p {
+                    font-size: rem(11);
+                    line-height: rem(13);
+                }
             }
+        }
+    }
+
+    @media screen and (min-height: 300px) {
+        height: calc(100% - 45px);
+        padding: 20px;
 
         .copy {
             h2 {
-                font-size: 14px;
-                line-height: 16px;
-
-            }
-
-            h3, p {
-                font-size: rem(11);
-                line-height: rem(13);
+                font-size: rem(18);
+                line-height: rem(24);
+                letter-spacing: .015em;
+                margin-bottom: 25px;
             }
         }
 
+        .flex {
+            .copy {
+                h3, p {
+                    font-size: rem(16);
+                    line-height: rem(19);
+                }
+            }
         }
 
     }
 }
 
-body.xf-web-container {
+body.xf-web-container, #bodyFE_IFRAME_MINI body, body, #fe-iframe body, iframe body {
     margin: 0;
+    overflow: hidden;
 }
 
-#fe-iframe {
-overflow: hidden;
-    body {
-        margin: 0;
-    }
-}
+
+
+

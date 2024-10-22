@@ -1,0 +1,10 @@
+{
+  "externalizer.domains":[
+    "local https://publish-p91602-e833624.adobeaemcloud.com",
+    "author https://author-p91602-e833624.adobeaemcloud.com",
+    "publish https://publish-p91602-e833624.adobeaemcloud.com",
+    "preview https://preview-p91602-e833624.adobeaemcloud.com",
+    "live https://aemstage.edelmanfinancialengines.com",
+    "landingpage https://aemstage.landingpages.feitest.com"
+  ]
+}
