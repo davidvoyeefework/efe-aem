@@ -1,5 +1,4 @@
 section.voya-wpi-theme {
-    max-width: rem(794);
 
     .copy {
         h2 {
@@ -54,11 +53,11 @@ section.voya-wpi-theme {
 
     .cmp-button--button-wpi {
         width: rem(118);
-        height: rem(40);
+        height: rem(36);
         color: #145a7b;
         border: 2px solid #145a7b;
         border-radius: 20px;    
-        margin: 0 auto;  
+        margin:  5px auto 0;  
         @include flexbox(
             $align-items:center,
         );
