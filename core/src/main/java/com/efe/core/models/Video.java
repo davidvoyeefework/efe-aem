@@ -61,4 +61,7 @@ public interface Video {
 	 */
 	boolean isEmpty();
 
+	// Alt attribute for thumbnail
+	String getThumbnailAlt();
+
 }
