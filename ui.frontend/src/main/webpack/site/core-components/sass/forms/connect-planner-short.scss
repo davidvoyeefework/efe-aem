@@ -1,0 +1,130 @@
+#connect_planner_short {
+    max-width: rem(820);
+    margin: 0 auto;
+    border: 1px solid $efe-gray-mid;
+    border-radius: 18px;
+    padding: 30px;
+
+    progress#efe-progress-bar-default {
+        width: 100%;
+        -webkit-appearance: progress-bar;
+        -moz-appearance: progress-bar;
+        box-sizing: border-box;
+        display: inline-block;
+        border-radius: unset;
+        height: rem(4);
+        margin: 0 0 rem(30);
+        background-color: $efe-gray-light;
+        position: relative;
+
+        &:before {
+            display: block;
+            content: "";
+            width: rem(12);
+            height: rem(4);
+            background-color: white;
+            position: absolute;
+            left: calc(50% - 6px);
+        }
+
+        &:after {
+            display: block;
+            content: "";
+            width: rem(12);
+            height: rem(4);
+            background-color: white;
+            position: absolute;
+            left: calc(75% - 6px);
+            bottom: 0;
+        }
+
+    }
+    
+    progress::-webkit-progress-value {
+        background:  linear-gradient(to right, 
+        #c32d37 calc(100% - 12px), white 12px);
+        height: rem(4);
+    }
+    
+    progress::-webkit-progress-bar {
+        background-color: $efe-gray-light;
+        height: rem(4);
+    }
+
+    .lead_form_page_count {
+        @include flexbox(
+            $align-self: start
+        );
+        text-transform: inherit;
+        font-weight: 300 !important;
+        margin-bottom: 12px;
+    }
+
+    hr {
+        display: none;
+    }
+
+    // step 1 
+    //What is your name 
+    .cmp-text--body-02 {
+        margin-bottom: 18px;
+        .cmp-text {
+            p {
+                @include subhead-02;
+
+            }
+        }
+    }
+
+    label {
+        font-weight: 400;
+    }
+
+    .cmp-form-text--efe-default {
+        input.cmp-form-text__text  {
+            margin-bottom: 25px !important;
+        }
+    }
+
+    .aside {
+        margin: 55px auto 36px;
+        &.aside--light-gray {
+            aside{
+                position: relative;
+                &:before {
+                    content: "";
+                    display: block;
+                    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M8.99997 16.3846C13.0784 16.3846 16.3846 13.0784 16.3846 8.99997C16.3846 4.92156 13.0784 1.61536 8.99997 1.61536C4.92156 1.61536 1.61536 4.92156 1.61536 8.99997C1.61536 13.0784 4.92156 16.3846 8.99997 16.3846Z" stroke="%23535658" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.38464 8.38464C8.54785 8.38464 8.70438 8.44948 8.81979 8.56489C8.93519 8.68029 9.00003 8.83682 9.00003 9.00003V12.077C9.00003 12.2402 9.06486 12.3967 9.18027 12.5121C9.29568 12.6275 9.4522 12.6923 9.61541 12.6923" stroke="%23535658" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.69236 6.53841C9.20217 6.53841 9.61544 6.12514 9.61544 5.61534C9.61544 5.10554 9.20217 4.69226 8.69236 4.69226C8.18256 4.69226 7.76929 5.10554 7.76929 5.61534C7.76929 6.12514 8.18256 6.53841 8.69236 6.53841Z" fill="%23535658"/></svg>');
+                    height: rem(18);
+                    width: rem(18);
+                    background-size: contain;
+                    position: absolute;
+                    top: 18px;
+                    left: 18px;
+                }
+
+                background-color: $efe-gray-light;
+                border-radius: 12px;
+                padding: 18px 18px 18px 46px;
+                p {
+                    span.cmp-text--body-03 {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    .cmp-button--button-primary {
+        margin-bottom: 0;
+        .cmp-button {
+            width: 100%;
+        }
+    }
+
+
+
+    @media screen and (min-width: $md) {
+        padding: 60px;
+    }
+}
