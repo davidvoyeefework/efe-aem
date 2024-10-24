@@ -50,17 +50,15 @@ section.voya-wpi-theme {
     }
 
     .cmp-button--button-wpi {
+        width: rem(118);
+        height: rem(36);
+        border: 2px solid #145a7b;
+        border-radius: 20px;    
+        margin: 5px auto 0;  
         background-color: white;
         width: fit-content;
         padding: 0 16px;
-        height: rem(40);
         color: #145a7b;
-        border: 2px solid #145a7b;
-        border-radius: 20px;    
-        margin: 0 auto;  
-        bottom: 0;
-        left: 0;
-        right: 0;
         @include flexbox(
             $align-items:center,
         );

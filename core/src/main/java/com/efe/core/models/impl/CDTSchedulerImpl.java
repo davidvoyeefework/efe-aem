@@ -1,0 +1,54 @@
+package com.efe.core.models.impl;
+
+import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.resource.Resource;
+import org.apache.sling.models.annotations.DefaultInjectionStrategy;
+import org.apache.sling.models.annotations.Exporter;
+import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+
+import com.adobe.cq.export.json.ExporterConstants;
+import com.efe.core.models.CDTScheduler;
+import javax.annotation.PostConstruct;
+import org.apache.sling.models.annotations.injectorspecific.Self;
+
+/**
+ * The Class FormsSelectorImpl.
+ */
+@Model(adaptables = { Resource.class,
+		SlingHttpServletRequest.class }, adapters = CDTScheduler.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, resourceType = CDTSchedulerImpl.RESOURCE_TYPE)
+@Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
+public class CDTSchedulerImpl implements CDTScheduler {
+
+	/** The Constant RESOURCE_TYPE. */
+	protected static final String RESOURCE_TYPE = "efe/components/cdtscheduler";
+        
+        /** The SlingHttpServletRequest. */
+	@Self
+	private SlingHttpServletRequest request;
+
+	/** The form id. */
+	@ValueMapValue
+	private String SFLeadId;
+        
+        /**
+	 * Inits the model.
+	 */
+	@PostConstruct
+	public void init() {
+            String[] selectors = request.getRequestPathInfo().getSelectors();
+            if(selectors.length > 0) {
+                SFLeadId = selectors[0];
+            }
+        }
+
+	/**
+	 * Gets the form id.
+	 *
+	 * @return the form id
+	 */
+        @Override
+	public String getSFLeadId() {
+            return SFLeadId;
+	}
+}
