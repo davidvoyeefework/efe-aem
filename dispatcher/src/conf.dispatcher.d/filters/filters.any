@@ -20,6 +20,9 @@ $include "./default_filters.any"
 # Allow form selector
 /0104 { /type "allow" /method "GET" /extension "json" /path "/content/efe/*/formselector*"}
 
+# Allow cdt scheduler
+/0104 { /type "allow" /method "GET" /extension "json" /path "/content/efe/*/cdtscheduler*"}
+
 # Allow number selector for planners
 /0105 { /type "allow" /method "GET" /extension "html" /path "/content/efe/*/financial-planner*" /selectors '([0-9-]+)'}
 
