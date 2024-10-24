@@ -1,12 +1,13 @@
 <div data-sly-test ="${wcmmode.edit}" class="cq-placeholder cq-marker-start" data-emptytext="${component.title}"></div>
 <sly data-sly-use.scheduler="com.efe.core.models.CDTScheduler"/>
-<div data-sly-test ="${scheduler.SLeadId}" id="${scheduler.SFLeadId}" class="cdtscheduler"></div>
-<script data-sly-test ="${scheduler.SLeadId}" src="https://cdn.financialengines.com/bundles/efe-self-scheduler/latest/efe-self-scheduler.umd.js"></script>
-<script data-sly-test ="${scheduler.SLeadId}">
+<div id="${scheduler.SFLeadId}" class="cdtscheduler"></div>
+<input id="SFLeadIdField" type="hidden" value="${scheduler.SFLeadId}" />
+<script src="https://cdn.financialengines.com/bundles/efe-self-scheduler/latest/efe-self-scheduler.umd.js"></script>
+<script>
   if (window.efeSelfScheduler?.inject) {
     window.efeSelfScheduler.inject({
-      id: "${scheduler.SLeadId}", // <-- same value as id in Step 1
-      leadId: "${scheduler.SLeadId}"
+      id: document.getElement("SFLeadIdField").value, // <-- same value as id in Step 1
+      leadId: document.getElement("SFLeadIdField").value
     });
   }
 </script>
