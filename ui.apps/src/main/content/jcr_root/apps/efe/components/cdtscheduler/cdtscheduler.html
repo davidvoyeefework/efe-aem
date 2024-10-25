@@ -6,8 +6,8 @@
 <script>
   if (window.efeSelfScheduler?.inject) {
     window.efeSelfScheduler.inject({
-      id: document.getElement("SFLeadIdField").value, // <-- same value as id in Step 1
-      leadId: document.getElement("SFLeadIdField").value
+      id: document.getElementById("SFLeadIdField").value, // <-- same value as id in Step 1
+      leadId: document.getElementById("SFLeadIdField").value
     });
   }
 </script>
