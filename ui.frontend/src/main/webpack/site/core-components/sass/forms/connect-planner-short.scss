@@ -5,45 +5,63 @@
     border-radius: 18px;
     padding: 30px;
 
-    progress#efe-progress-bar-default {
+    #progress-bar-segmented {
         width: 100%;
-        -webkit-appearance: progress-bar;
-        -moz-appearance: progress-bar;
-        box-sizing: border-box;
-        display: inline-block;
-        border-radius: unset;
-        height: rem(4);
-        margin: 0 0 rem(30);
-        background-color: $efe-gray-light;
+        height: auto;
         position: relative;
 
         &:before {
-            display: block;
             content: "";
+            display: block;
             width: rem(12);
             height: rem(4);
             background-color: white;
             position: absolute;
-            left: calc(50% - 6px);
+            left: calc(25% - 12px);
+            z-index: 2;
         }
-
-        &:after {
-            display: block;
-            content: "";
-            width: rem(12);
+        progress#efe-progress-bar-default {
+            width: 100%;
+            -webkit-appearance: progress-bar;
+            -moz-appearance: progress-bar;
+            box-sizing: border-box;
+            display: inline-block;
+            border-radius: unset;
             height: rem(4);
-            background-color: white;
-            position: absolute;
-            left: calc(75% - 6px);
-            bottom: 0;
+            margin: 0 0 rem(30);
+            background-color: $efe-gray-light;
+            position: relative;
+    
+            &:before {
+                display: block;
+                content: "";
+                width: rem(12);
+                height: rem(4);
+                background-color: white;
+                position: absolute;
+                left: calc(50% - 6px);
+            }
+    
+            &:after {
+                display: block;
+                content: "";
+                width: rem(12);
+                height: rem(4);
+                background-color: white;
+                position: absolute;
+                left: calc(75% - 6px);
+                bottom: 0;
+            }
+    
         }
-
     }
+
     
     progress::-webkit-progress-value {
-        background:  linear-gradient(to right, 
-        #c32d37 calc(100% - 12px), white 12px);
+        // background:  linear-gradient(to right, 
+        // #c32d37 calc(100% - 12px), white 12px);
         height: rem(4);
+                background: #c32d37;
     }
     
     progress::-webkit-progress-bar {
@@ -117,8 +135,31 @@
 
     .cmp-button--button-primary {
         margin-bottom: 0;
+        width: 100%;
         .cmp-button {
             width: 100%;
+        }
+    }
+
+    input, label {
+        max-width: none;
+    }
+
+    input {
+
+        &.error-message {
+            border: 2px solid $efe-red-primary;
+            color: $efe-red-primary;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="18" viewBox="0 0 16 18" fill="none"><circle cx="8" cy="8.80396" r="8" fill="%23C32D37"/><path d="M9.16089 4.34937H6.83881L7.05116 10.9094H8.94854L9.16089 4.34937ZM8.00216 13.9378C8.63461 13.9378 9.19321 13.4023 9.20244 12.7375C9.19321 12.082 8.63461 11.5511 8.00216 11.5511C7.33738 11.5511 6.79264 12.082 6.80187 12.7375C6.79264 13.4023 7.33738 13.9378 8.00216 13.9378Z" fill="white"/></svg>');
+            background-repeat: no-repeat;
+            background-position: calc(100% - 10px) 14px;
+
+            &:hover{
+                border: 2px solid $efe-red-primary;
+            }
+            &:focus {
+                color: $efe-gray-primary;
+            }
         }
     }
 
@@ -126,5 +167,6 @@
 
     @media screen and (min-width: $md) {
         padding: 60px;
+        min-height: rem(792);
     }
 }
