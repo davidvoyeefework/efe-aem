@@ -5,6 +5,14 @@
     border-radius: 18px;
     padding: 30px;
 
+    .error-message {
+        max-width: none;
+    }
+
+    button.efe-cta-back {
+        @include cta-secondary;
+    }
+
     #progress-bar-segmented {
         width: 100%;
         height: auto;
@@ -54,8 +62,7 @@
             }
     
         }
-    }
-
+    } 
     
     progress::-webkit-progress-value {
         // background:  linear-gradient(to right, 
