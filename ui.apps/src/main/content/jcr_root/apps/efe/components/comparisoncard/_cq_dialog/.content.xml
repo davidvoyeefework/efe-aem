@@ -39,12 +39,11 @@
                                             <BodyContent
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="dam/cfm/components/cfpicker"
-                                                emptyText="Body Content"
-                                                fieldDescription="Path to the Content Fragment to Card Body Copy"
-                                                fieldLabel="Body Content"
+                                                emptyText="Optional"
+                                                fieldDescription="Path to the Content Fragment for Card Body Copy"
+                                                fieldLabel="Optional Card Content Fragment Path"
                                                 name="./bodycontent"
                                                 pickerTitle="Select Content Fragment for Card Body Copy"
-                                                required="{Boolean}true"
                                                 rootPath="/content/dam/efe/cf"/>
                                         </items>
                                     </column>

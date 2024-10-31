@@ -29,6 +29,10 @@ public class ComparisonCardImpl implements ComparisonCard {
     /** The Constant RESOURCE_TYPE. */
     public static final String RESOURCE_TYPE = "efe/fe-components/content/comparisoncard";
 
+    // Title for Card
+	String cardTitle; 
+
+
     // Body Copy Content Fragment
 	String bodyContentFragment;    
 
@@ -54,9 +58,13 @@ public class ComparisonCardImpl implements ComparisonCard {
 
         resourcePath = resource.getPath();
 
+        // Fetch Title for Card
+        String resourcePropertyTitle = "title";
+        cardTitle = ResourceUtil.getProperty(resourceResolver, resourcePath, resourcePropertyTitle );
+
         // Fetch CF for Body Content
         String resourceProperty = "bodycontent";
-		bodyContentFragment= ResourceUtil.getProperty( resourceResolver, resourcePath, resourceProperty );
+		bodyContentFragment = ResourceUtil.getProperty( resourceResolver, resourcePath, resourceProperty );
 
         if (bodyContentFragment!= null) {
             String resourceCFPath = bodyContentFragment+ "/jcr:content/data/master";
@@ -70,7 +78,7 @@ public class ComparisonCardImpl implements ComparisonCard {
 
     // Gets the Title
     public String getTitle() {
-        return "test";
+        return cardTitle;
     }
 
     // Gets the Body Content

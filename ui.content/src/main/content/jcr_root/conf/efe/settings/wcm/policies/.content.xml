@@ -2152,8 +2152,58 @@
                         jcr:mixinTypes="[cq:ReplicationStatus]"
                         jcr:primaryType="nt:unstructured"/>
                 </policy_1710889953497>
-            </tabs-cornish>                    
-        </components>
+            </tabs-cornish>       
+            <comparisoncard jcr:primaryType="nt:unstructured">
+                    <policy_1730393896088
+                        jcr:lastModified="{Date}2024-10-31T10:01:11.113-07:00"
+                        jcr:lastModifiedBy="admin"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Comparison Card Policy"
+                        sling:resourceType="wcm/core/components/policy/policy">
+                        <jcr:content
+                            cq:isDelivered="{Boolean}false"
+                            cq:lastReplicated="{Date}2024-10-31T10:01:17.747-07:00"
+                            cq:lastReplicated_scene7="{Date}2024-10-31T10:01:17.747-07:00"
+                            cq:lastReplicatedBy="admin"
+                            cq:lastReplicatedBy_scene7="admin"
+                            cq:lastReplicationAction="Activate"
+                            cq:lastReplicationAction_scene7="Activate"
+                            jcr:mixinTypes="[cq:ReplicationStatus]"
+                            jcr:primaryType="nt:unstructured"/>
+                        <cq:styleGroups jcr:primaryType="nt:unstructured">
+                            <item0
+                                cq:styleGroupLabel="Card Color"
+                                jcr:primaryType="nt:unstructured">
+                                <cq:styles jcr:primaryType="nt:unstructured">
+                                    <item0
+                                        cq:styleClasses="blue"
+                                        cq:styleId="1730393960895"
+                                        cq:styleLabel="blue"
+                                        jcr:primaryType="nt:unstructured"/>
+                                    <item1
+                                        cq:styleClasses="gray"
+                                        cq:styleId="1730393987521"
+                                        cq:styleLabel="gray"
+                                        jcr:primaryType="nt:unstructured"/>
+                                    <item2
+                                        cq:styleClasses="light-gray"
+                                        cq:styleId="1730394025545"
+                                        cq:styleLabel="light-gray"
+                                        jcr:primaryType="nt:unstructured"/>
+                                    <item3
+                                        cq:styleClasses="dark-gray"
+                                        cq:styleId="1730394033323"
+                                        cq:styleLabel="dark-gray"
+                                        jcr:primaryType="nt:unstructured"/>
+                                    <item4
+                                        cq:styleId="1730394068459"
+                                        jcr:primaryType="nt:unstructured"/>
+                                </cq:styles>
+                            </item0>
+                        </cq:styleGroups>
+                    </policy_1730393896088>
+                </comparisoncard>                         
+            </components>
         <fe-components jcr:primaryType="nt:unstructured">
             <structure jcr:primaryType="nt:unstructured">
                 <fe-header jcr:primaryType="nt:unstructured">

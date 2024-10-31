@@ -6,4 +6,7 @@
     <div>
         ${model.content @context='html'}
     </div>
+    <div class="${item}">
+        <div data-sly-resource="${item @ resourceType='efe/components/container'}"></div>
+    </div>
 </sly>
