@@ -109,7 +109,7 @@
                     </div>
                 </div>
                 <div class="cmp-button--body-02-link">
-                    <a x-cq-linkchecker="skip" href="${item.liveURL}">
+                    <a x-cq-linkchecker="valid" href="${item.liveURL}">
                         Read more about ${item.name @context='html'}
                     </a>
                 </div>                
@@ -127,17 +127,30 @@
                 </div>
             </div>
             <div data-sly-test="${item.firstNameAlias}" class="cmp-author-details__description">
+
                 <div class="title cmp-title--subhead-00 ">
                     <div id="title-c6fe1860ab" class="cmp-title">
-                        <h2 class="cmp-title__text">${item.firstNameAlias} ${item.lastName}</h2>
+                        <a x-cq-linkchecker="skip" href="${item.url}" ><h2 class="cmp-title__text">${item.firstNameAlias} ${item.lastName}</h2></a>                        
                         <h2 class="cmp-title__text">${item.title}</h2>
                     </div>
                 </div>
+
                 <div class="text cmp-text--body-02 cmp-text-- ">
                     <div id="text-e58d65c472" class="cmp-text">
                         <p>${item.bio @context='html'}</p>
                     </div>
                 </div>
+
+                <sly data-sly-test="${item.url}">
+                    <div class="cmp-button--body-02-link">
+                        <a x-cq-linkchecker="valid" href="${item.url}">
+                            Read more about ${item.firstName @context='html'}
+                            ${item.lastName @context='html'}                        
+                        </a>
+                    </div>        
+                </sly>                          
+
+               
 
                 <!-- <div class="cmp-author-details__credits" data-sly-test="${item.certifications}">
                     <sly data-sly-list.certification="${item.certifications}">
@@ -151,6 +164,9 @@
                 </div> -->
             </div>
         </div>
+
+
+
         <div class="cmp-container max-width cmp-container--white cmp-container--width-1400
             cmp-article-details__seperator ">
             <div class="separator cmp-separator--primary cmp-separator">
