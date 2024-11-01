@@ -35,15 +35,16 @@
                     <span class="cmp-text"><span>By:</span>
                         <sly data-sly-test.hasContent="${model.articleFragmentPath.articleAuthors}"
                              data-sly-list.item="${model.articleFragmentPath.articleAuthors}">
-                            <p class="cmp-text--body-03" style="display:inline-block">${item.name}</p>,
+                            <!-- <p class="cmp-text--body-03" style="display:inline-block">${item.name}</p>, -->
                             <a x-cq-linkchecker="skip" href="${item.liveURL}">
-                                <span class="author-name">${item.title}</span>
+                                <span class="author-name">${item.name} ${item.title}</span>
                             </a>
+                                </br>
                                 </br>
                         </sly>
                         <sly data-sly-test.hasContent="${model.articleFragmentPath.plannerResponse}"
                              data-sly-list.item="${model.articleFragmentPath.plannerResponse}">
-                            <a x-cq-linkchecker="skip" href="${item.url}" ><span class="author-name">${item.firstNameAlias} ${item.lastName}</span></a><span> ${item.title}</span></br>
+                            <a x-cq-linkchecker="skip" href="${item.url}" ><span class="author-name">${item.firstNameAlias} ${item.lastName} ${item.title}</span></a></br>
                         </sly>
                     </span>
                 </div>
