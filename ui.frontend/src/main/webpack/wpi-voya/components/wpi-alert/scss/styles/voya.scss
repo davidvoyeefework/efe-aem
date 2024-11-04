@@ -3,6 +3,14 @@ section.voya-wpi-theme {
     height: calc(100% - 5px);
 
     .copy {
+        overflow: hidden;
+        -o-text-overflow: ellipsis;
+           text-overflow: ellipsis;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        display: -webkit-box;
+        display: -moz-box;
+
         h2 {
             font-size: rem(16);
             line-height: rem(22);
@@ -26,7 +34,6 @@ section.voya-wpi-theme {
         img.wpi-img {
             flex: 0 0 auto;
             width: 40px;
-            height: 40px;
         }
 
         .copy {
@@ -54,7 +61,7 @@ section.voya-wpi-theme {
         height: rem(36);
         border: 2px solid #145a7b;
         border-radius: 20px;    
-        margin: 5px auto 0;  
+        margin: 20px auto 0;  
         background-color: white;
         width: fit-content;
         padding: 0 16px;
@@ -103,6 +110,7 @@ section.voya-wpi-theme {
         
     }
 
+    // For small mobile
     @media screen and (max-width: 340px) {
         .flex {
             .copy {
@@ -112,13 +120,14 @@ section.voya-wpi-theme {
                 }
 
                 h3, p {
-                    font-size: rem(11);
+                    font-size: rem(12);
                     line-height: rem(13);
                 }
             }
         }
     }
 
+    // For large placements
     @media screen and (min-height: 300px) {
         height: calc(100% - 45px);
         padding: 20px;
