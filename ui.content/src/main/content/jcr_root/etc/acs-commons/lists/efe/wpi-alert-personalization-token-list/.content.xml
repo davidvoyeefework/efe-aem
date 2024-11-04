@@ -47,6 +47,10 @@
                 jcr:primaryType="nt:unstructured"
                 jcr:title="Data as of date"
                 value="\{user.rk_data_as_of default=””}"/>
+            <item8
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Planner Location"
+                value="\{planner.location}"/>
         </list>
     </jcr:content>
 </jcr:root>

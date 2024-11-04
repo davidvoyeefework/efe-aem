@@ -123,12 +123,34 @@ class Initializer {
   }
 
   onDocumentReady() {
+  replaceLocationPlaceholder();
     const elements = document.querySelectorAll(this.selectors.component);
     for (let i = 0; i < elements.length; i++) {
       this.initComponent(elements[i]);
     }
     this.initMutation();
   }
+}
+
+function replaceLocationPlaceholder() {
+    const ldJsonScript = document.querySelector('script[type="application/ld+json"]');
+    if (ldJsonScript != null) {
+        const jsonData = JSON.parse(ldJsonScript.innerHTML);
+        const addressLocality = jsonData.address.addressLocality;
+        const addressRegion = jsonData.address.addressRegion;
+        const replacementText = `in ${addressLocality}, ${addressRegion}`;
+        replacePlaceholder(replacementText);
+    }
+}
+
+
+function replacePlaceholder(replacementText) {
+    const paragraphs = document.querySelectorAll('p');
+    paragraphs.forEach(paragraph => {
+        let htmlContent = paragraph.innerHTML;
+        htmlContent = htmlContent.replace(/{planner\.location}/g, replacementText);
+        paragraph.innerHTML = htmlContent;
+    });
 }
 
 export { Initializer };
