@@ -1,0 +1,91 @@
+.comparisoncard {
+    &.blue {
+        .header {
+            background-color: $efe-blue;
+        }
+        section#comparison-card {
+            .body {
+                border: 3px solid $efe-blue;
+            }
+        }
+    }
+
+    &.gray {
+        .header {
+            background-color: $efe-gray-primary;
+        }
+        section#comparison-card {
+            .body {
+                border: 3px solid $efe-gray-primary;
+            }
+        }
+    }
+
+    section#comparison-card {
+        width: rem(366);
+        height: rem(647);
+    
+        .header {
+            height: rem(80);
+            color: white;
+            text-align: center;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+
+            @include flexbox(
+                $align-items: center,
+                $justify-content: center
+            );
+
+            h2 {
+                font-family: nimbus-sans, sans-serif;
+                color: white;
+                font-size: rem(20);
+                line-height: rem(26);
+                font-weight: bold;
+    
+            }
+        }
+
+        .body {
+            padding: 20px 30px 30px 64px;
+
+            h3 {
+                @include body-03;
+                line-height: rem(24);
+                font-weight: bold;
+                margin-bottom: 15px;
+                position: relative;
+                right: 15px;                
+            }
+
+            ul {
+                li {
+                    list-style: none;
+                    position: relative;
+                    @include body-03;
+                    margin-bottom: 24px;
+                    &:before {
+                        content: "";
+                        display: block;
+                        width: rem(16);
+                        height: rem(15);
+                        background: url("../resources/images/icons/checkmarks/checkmark-raster.png") no-repeat center center / contain;
+                        position: absolute;
+                        top: 0;
+                        left: -30px;
+                }
+            }
+            }
+        }   
+
+        @media screen and (min-width: $md) {
+
+            .body {
+                padding: 48px 30px 40px 45px;
+            }            
+
+        }
+        
+    }
+}

@@ -1,12 +1,17 @@
 
 <sly data-sly-use.model="com.efe.core.models.ComparisonCard">
+    <section aria-role="content-info" aria-label="${model.title @context='html'}" id="comparison-card">
+        <div class="header">
+            <h2>${model.title @context='html'}<h2>
+        </div>
 
-
-    <h2>${model.title @context='html'}<h2>
-    <div>
-        ${model.content @context='html'}
-    </div>
-    <div class="${item}">
-        <div data-sly-resource="${item @ resourceType='efe/components/container'}"></div>
-    </div>
+        <div class="body">
+            <sly data-sly-test.hasContent=${model.content}>
+                ${model.content @context='html'}
+            </sly>
+            <div class="${item}">
+                <div data-sly-resource="${item @ resourceType='efe/components/container'}"></div>
+            </div>
+        </div>
+    </section>
 </sly>
