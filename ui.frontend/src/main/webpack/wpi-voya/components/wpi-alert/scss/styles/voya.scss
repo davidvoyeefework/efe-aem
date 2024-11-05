@@ -26,6 +26,7 @@ section.voya-wpi-theme {
         img.wpi-img {
             flex: 0 0 auto;
             width: 40px;
+            height: fit-content;
         }
 
         .copy {
@@ -61,7 +62,7 @@ section.voya-wpi-theme {
         height: rem(36);
         border: 2px solid #145a7b;
         border-radius: 20px;    
-        margin: 20px auto 0;  
+        margin: 15px auto 0;  
         background-color: white;
         width: fit-content;
         padding: 0 16px;
