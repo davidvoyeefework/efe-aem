@@ -10,12 +10,27 @@
     }
 
     button.efe-cta-back {
+        @include body-03-link-red;
+        text-decoration: none;
+        position: relative;
+        bottom: 24px;
+        width: 100%;
+        text-align: left;
+    }
 
+    // Error message below input field
+    div.col {
+        p.error-message {
+            font-size: rem(11);
+            font-weight: 500;
+            position: relative;
+            bottom: 21px;
+        }
     }
 
     #progress-bar-segmented {
         width: 100%;
-        height: auto;
+        height: 35px;
         position: relative;
 
         &:before {
@@ -28,6 +43,7 @@
             left: calc(25% - 12px);
             z-index: 2;
         }
+
         progress#efe-progress-bar-default {
             width: 100%;
             -webkit-appearance: progress-bar;
@@ -101,13 +117,38 @@
         }
     }
 
+    // step 4
+    .personalize-form_step_4 {
+        button {
+            &.cmp-form-button--answer {
+                max-width: none;
+            }
+        }
+
+        .cmp-button--button-primary {
+            margin-bottom: 30px;
+        }        
+
+    }
+
     label {
         font-weight: 400;
+
+        &[for="efe-progress-bar-default"] {
+            width: 100%;
+            font-weight: lighter;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        &.error-message {
+            color: $efe-red-primary;
+        }
     }
 
     .cmp-form-text--efe-default {
         input.cmp-form-text__text  {
-            margin-bottom: 25px !important;
+            margin-bottom:25px !important;
         }
     }
 
@@ -164,16 +205,24 @@
             &:hover{
                 border: 2px solid $efe-red-primary;
             }
+
             &:focus {
                 color: $efe-gray-primary;
             }
         }
     }
 
-
-
     @media screen and (min-width: $md) {
         padding: 60px;
         min-height: rem(792);
+
+        button.efe-cta-back {
+            @include body-03-link-red;
+            text-decoration: none;
+            position: relative;
+            bottom: 63px;
+            width: 100%;
+            text-align: left;
+        }        
     }
 }
