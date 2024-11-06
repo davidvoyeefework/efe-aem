@@ -117,11 +117,19 @@
         }
     }
 
+    // step 3
+    .personalize-form_step_3 {
+        .section-body {
+            width: 100%;
+        }
+    }
+
     // step 4
     .personalize-form_step_4 {
         button {
             &.cmp-form-button--answer {
                 max-width: none;
+                text-align: left;
             }
         }
 
