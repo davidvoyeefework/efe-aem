@@ -138,7 +138,7 @@ function replaceLocationPlaceholder() {
         const jsonData = JSON.parse(ldJsonScript.innerHTML);
         const addressLocality = jsonData.address.addressLocality;
         const addressRegion = jsonData.address.addressRegion;
-        const replacementText = `in ${addressLocality}, ${addressRegion}`;
+        const replacementText = `${addressLocality}, ${addressRegion}`;
         replacePlaceholder(replacementText);
     }
 }
@@ -150,6 +150,12 @@ function replacePlaceholder(replacementText) {
         let htmlContent = paragraph.innerHTML;
         htmlContent = htmlContent.replace(/{planner\.location}/g, replacementText);
         paragraph.innerHTML = htmlContent;
+    });
+    const spans = document.querySelectorAll('span');
+    spans.forEach(span => {
+        let htmlContent = span.innerHTML;
+        htmlContent = htmlContent.replace(/{planner\.location}/g, replacementText);
+        span.innerHTML = htmlContent;
     });
 }
 
