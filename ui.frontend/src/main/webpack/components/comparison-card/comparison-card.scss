@@ -1,36 +1,20 @@
 .comparisoncard {
-    &.blue {
-        .header {
-            background-color: $efe-blue;
-        }
-        section#comparison-card {
-            .body {
-                border: 3px solid $efe-blue;
-            }
-        }
-    }
-
-    &.gray {
-        .header {
-            background-color: $efe-gray-primary;
-        }
-        section#comparison-card {
-            .body {
-                border: 3px solid $efe-gray-primary;
-            }
-        }
-    }
 
     section#comparison-card {
-        width: rem(366);
-        height: rem(647);
+        max-width: rem(366);
+        max-height: rem(647);
+        width: 100%;
+        height: 100%;
+        margin-bottom: 24px;
     
         .header {
-            height: rem(80);
+            min-height: rem(100);
+            padding: 24px;
             color: white;
             text-align: center;
             border-top-left-radius: 5px;
             border-top-right-radius: 5px;
+            background-color: $efe-gray-primary;
 
             @include flexbox(
                 $align-items: center,
@@ -48,7 +32,11 @@
         }
 
         .body {
-            padding: 20px 30px 30px 64px;
+            padding: 20px 30px 20px 37px;
+            height: 100%;
+            border-bottom-right-radius: 5px;
+            border-bottom-left-radius: 5px;            
+            border: 3px solid $efe-gray-primary;
 
             h3 {
                 @include body-03;
@@ -60,6 +48,7 @@
             }
 
             ul {
+                padding-bottom: 0;
                 li {
                     list-style: none;
                     position: relative;
@@ -70,22 +59,72 @@
                         display: block;
                         width: rem(16);
                         height: rem(15);
-                        background: url("../resources/images/icons/checkmarks/checkmark-raster.png") no-repeat center center / contain;
+                        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none"><g clip-path="url(%23clip0_609_2398)"><path d="M16 5.57993V0L6.52858 9.4381L2.79796 5.72416L0 8.51863L6.51047 15L6.52858 14.982L6.54669 15L16 5.57993Z" fill="%23535658"/></g><defs><clipPath id="clip0_609_2398"><rect width="16" height="15" fill="white"/></clipPath></defs></svg>')no-repeat center center / contain;
                         position: absolute;
                         top: 0;
                         left: -30px;
                 }
             }
             }
+
+            .cmp-button--button-primary {
+                margin: 35px auto 20px;
+                a.cmp-button {
+                    margin: 0 auto;
+                    position: relative;
+                    right: 4px;
+                }
+            }
+
+            div.newpar {
+                display: none;
+            }
         }   
 
         @media screen and (min-width: $md) {
 
             .body {
-                padding: 48px 30px 40px 45px;
+                padding: 48px 30px 50px 45px;
+
+                .cmp-button--button-primary {
+                    margin-top: 35px;
+                    a.cmp-button {
+                        margin: 0 auto;
+                        position: relative;
+                        right: 7px;
+                    }
+                }                
             }            
 
         }
         
+    }
+
+    &.blue {
+        section#comparison-card {
+            .header {
+                background-color: $efe-blue;
+            }
+            .body {
+                border: 3px solid $efe-blue;
+            }            
+        }
+    }    
+}
+
+#comparisoncards {
+    > .aem-Grid {
+        @include flexbox(
+        $flex-direction: column
+        );
+
+        @media screen and (min-width: $md) {
+            @include flexbox(
+                $flex-direction: row,
+                $gap: 20px
+
+            );
+        
+        };
     }
 }
