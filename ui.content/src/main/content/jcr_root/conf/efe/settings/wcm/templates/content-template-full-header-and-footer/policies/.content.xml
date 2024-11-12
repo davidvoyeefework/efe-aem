@@ -134,7 +134,11 @@
                             <tabs-cornish
                                 cq:policy="efe/components/tabs-cornish/policy_1710889953497"
                                 jcr:primaryType="nt:unstructured"
-                                sling:resourceType="wcm/core/components/policies/mapping"/>                                                                
+                                sling:resourceType="wcm/core/components/policies/mapping"/>  
+                            <comparisoncard
+                                cq:policy="efe/components/tabs-cornish/policy_1730393896088"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="wcm/core/components/policies/mapping"/>                                                                            
                         </components>
                     </efe>
                 </container>

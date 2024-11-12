@@ -1,0 +1,153 @@
+.comparisoncard {
+    float: none;
+    width: fit-content !important;
+    @include flexbox(
+        $justify-content: center,
+        $align-items: stretch,
+    );
+    // justify-content: stretch;
+    // -webkit-box-pack: stretch;    
+    // -ms-flex-pack: stretch;    
+    // justify-content: stretch;
+    // flex: 0 1 auto;
+
+    section#comparison-card {
+        max-width: rem(366);
+        width: 100%;
+        height: fit-content;
+    
+        .header {
+            min-height: rem(100);
+            padding: 24px;
+            color: white;
+            text-align: center;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            background-color: $efe-gray-primary;
+
+            @include flexbox(
+                $align-items: center,
+                $justify-content: center
+            );
+
+            h2 {
+                font-family: nimbus-sans, sans-serif;
+                color: white;
+                font-size: rem(20);
+                line-height: rem(26);
+                font-weight: bold;
+    
+            }
+        }
+
+        .body {
+            padding: 20px 30px 20px 37px;
+            border-bottom-right-radius: 5px;
+            border-bottom-left-radius: 5px;            
+            border: 3px solid $efe-gray-primary;
+
+            h3 {
+                @include body-03;
+                line-height: rem(24);
+                font-weight: bold;
+                margin-bottom: 15px;
+                position: relative;
+                right: 15px;                
+            }
+
+            ul {
+                padding-bottom: 0;
+                li {
+                    list-style: none;
+                    position: relative;
+                    @include body-03;
+                    margin-bottom: 24px;
+                    &:before {
+                        content: "";
+                        display: block;
+                        width: rem(16);
+                        height: rem(15);
+                        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none"><g clip-path="url(%23clip0_609_2398)"><path d="M16 5.57993V0L6.52858 9.4381L2.79796 5.72416L0 8.51863L6.51047 15L6.52858 14.982L6.54669 15L16 5.57993Z" fill="%23535658"/></g><defs><clipPath id="clip0_609_2398"><rect width="16" height="15" fill="white"/></clipPath></defs></svg>')no-repeat center center / contain;
+                        position: absolute;
+                        top: 0;
+                        left: -30px;
+                }
+            }
+            }
+
+            .cmp-button--button-primary {
+                margin: 35px auto 20px;
+                a.cmp-button {
+                    margin: 0 auto;
+                    position: relative;
+                    right: 4px;
+                    min-width: unset;
+                }
+            }
+
+        }   
+
+        @media screen and (min-width: 848px) {
+            height: auto;
+            .body {
+                padding: 48px 30px 50px 45px;
+                height: calc(100% - 167px);
+
+                .cmp-button--button-primary {
+                    margin-top: 35px;
+                    a.cmp-button {
+                        margin: 0 auto;
+                        position: relative;
+                        right: 7px;
+                    }
+                }                
+            }            
+
+        }
+        
+    }
+
+    &.blue {
+        section#comparison-card {
+            .header {
+                background-color: $efe-blue;
+            }
+            .body {
+                border: 3px solid $efe-blue;
+            }            
+        }
+    }    
+
+    &.teal {
+        section#comparison-card {
+            .header {
+                background-color: $efe-teal;
+            }
+            .body {
+                border: 3px solid $efe-teal;
+            }            
+        }
+    }      
+
+}
+
+#comparisoncards {
+    > .aem-Grid {
+
+        @include flexbox(
+        $flex-direction: row,
+        $justify-content: center,
+        $align-items: stretch,
+        $gap: 20px
+        );
+        flex-wrap: wrap;
+
+        @media screen and (max-width: 848px) {
+            @include flexbox(
+                $flex-direction: column,
+                $align-items: center,
+            );
+        
+        };
+    }
+}
