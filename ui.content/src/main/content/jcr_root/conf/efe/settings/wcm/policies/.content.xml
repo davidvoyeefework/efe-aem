@@ -2186,22 +2186,15 @@
                                     cq:styleLabel="gray"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item2
-                                    cq:styleClasses="light-gray"
+                                    cq:styleClasses="teal"
                                     cq:styleId="1730394025545"
-                                    cq:styleLabel="light-gray"
+                                    cq:styleLabel="teal"
                                     jcr:primaryType="nt:unstructured"/>
-                                <item3
-                                    cq:styleClasses="dark-gray"
-                                    cq:styleId="1730394033323"
-                                    cq:styleLabel="dark-gray"
-                                    jcr:primaryType="nt:unstructured"/>
-
                             </cq:styles>
                         </item0>
                     </cq:styleGroups>
                 </policy_1730393896088>
-            </comparisoncard>    
-
+            </comparisoncard>              
             </components>
         <fe-components jcr:primaryType="nt:unstructured">
             <structure jcr:primaryType="nt:unstructured">

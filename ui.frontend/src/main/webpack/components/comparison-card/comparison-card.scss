@@ -1,11 +1,20 @@
 .comparisoncard {
+    float: none;
+    width: fit-content !important;
+    @include flexbox(
+        $justify-content: center,
+        $align-items: stretch,
+    );
+    // justify-content: stretch;
+    // -webkit-box-pack: stretch;    
+    // -ms-flex-pack: stretch;    
+    // justify-content: stretch;
+    // flex: 0 1 auto;
 
     section#comparison-card {
         max-width: rem(366);
-        max-height: rem(647);
         width: 100%;
-        height: 100%;
-        margin-bottom: 24px;
+        height: fit-content;
     
         .header {
             min-height: rem(100);
@@ -33,7 +42,6 @@
 
         .body {
             padding: 20px 30px 20px 37px;
-            height: 100%;
             border-bottom-right-radius: 5px;
             border-bottom-left-radius: 5px;            
             border: 3px solid $efe-gray-primary;
@@ -73,18 +81,17 @@
                     margin: 0 auto;
                     position: relative;
                     right: 4px;
+                    min-width: unset;
                 }
             }
 
-            div.newpar {
-                display: none;
-            }
         }   
 
-        @media screen and (min-width: $md) {
-
+        @media screen and (min-width: 848px) {
+            height: auto;
             .body {
                 padding: 48px 30px 50px 45px;
+                height: calc(100% - 167px);
 
                 .cmp-button--button-primary {
                     margin-top: 35px;
@@ -110,19 +117,35 @@
             }            
         }
     }    
+
+    &.teal {
+        section#comparison-card {
+            .header {
+                background-color: $efe-teal;
+            }
+            .body {
+                border: 3px solid $efe-teal;
+            }            
+        }
+    }      
+
 }
 
 #comparisoncards {
     > .aem-Grid {
+
         @include flexbox(
-        $flex-direction: column
+        $flex-direction: row,
+        $justify-content: center,
+        $align-items: stretch,
+        $gap: 20px
         );
+        flex-wrap: wrap;
 
-        @media screen and (min-width: $md) {
+        @media screen and (max-width: 848px) {
             @include flexbox(
-                $flex-direction: row,
-                $gap: 20px
-
+                $flex-direction: column,
+                $align-items: center,
             );
         
         };
