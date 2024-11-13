@@ -9,7 +9,6 @@ section.afa-wpi-theme {
             @include flexbox(
                 $gap: 10px,
             );
-            text-align: left;
         }
 
         h2 {
