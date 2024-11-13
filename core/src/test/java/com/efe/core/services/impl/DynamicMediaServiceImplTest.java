@@ -41,7 +41,7 @@ class DynamicMediaServiceImplTest {
 	 */
 	@Test
 	void getDmImagePath() {
-		String imagePath = "/content/dam/test1.png";
+		String imagePath = "/content/dam/test1.jpg";
 		Resource resource = mock(Resource.class);
 		Mockito.when(resourceResolver.getResource(imagePath + PlannerLocationConstants.FORWARD_SLASH + JcrConstants.JCR_CONTENT + PlannerLocationConstants.FORWARD_SLASH + METADATA)).thenReturn(resource);
 		Mockito.when(resource.getValueMap()).thenReturn(valueMap);
@@ -56,7 +56,7 @@ class DynamicMediaServiceImplTest {
 	 */
 	@Test
 	void getDmImagePathResourceNull() {
-		String imagePath = "/content/dam/test1.png";
+		String imagePath = "/content/dam/test1.jpg";
 		assertEquals(imagePath, dynamicMediaService.getDmImagePath(resourceResolver, imagePath));
 	}
 
