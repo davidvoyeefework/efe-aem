@@ -315,6 +315,7 @@ public class EfeServiceImpl implements EfeService {
 		this.formBaseUrl = config.formBaseUrl();
 		this.formJsUrl = config.formJsUrl();
 		this.formAuthHeader = config.formAuthHeader();
+                
                 this.printClientID = config.printClientID();
                 this.printClientSecret = config.printClientSecret();
                 this.partnerAPIAuthURL = config.partnerAPIAuthURL();
@@ -322,6 +323,7 @@ public class EfeServiceImpl implements EfeService {
                 this.partnerAPIAuthKID = config.partnerAPIAuthKID();
                 this.partnerAPIAuthAudience = config.partnerAPIAuthAudience();
                 this.partnerAPIAuthSub = config.partnerAPIAuthSub();
+                
 		this.gaEnabled = config.enableGA();
 		this.gaTagValue = config.gaTagValue();
 		this.omnyEpisodeApi = config.omnyEpisodeApi();
@@ -472,6 +474,37 @@ public class EfeServiceImpl implements EfeService {
 	public String getFormAuthHeader() {
 		return formAuthHeader;
 	}
+        
+        @Override
+	public String getPrintClientID() {
+		return printClientID;
+	}
+        @Override
+	public String getPrintClientSecret() {
+		return printClientSecret;
+	}
+        @Override
+	public String getPartnerAPIAuthURL() {
+		return partnerAPIAuthURL;
+	}
+        @Override
+	public String getPartnerAPIAuthIssuer() {
+		return partnerAPIAuthIssuer;
+	}
+        @Override
+	public String getPartnerAPIAuthAudience() {
+		return partnerAPIAuthAudience;
+	}
+        @Override
+	public String getPartnerAPIAuthSub() {
+		return partnerAPIAuthSub;
+	}
+        @Override
+	public String getPartnerAPIAuthKID() {
+		return partnerAPIAuthKID;
+	}
+
+
 
 	/**
 	 * Checks if is enabled GA.
