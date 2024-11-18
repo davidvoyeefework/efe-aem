@@ -4,8 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Iterator;
 import java.io.IOException;
-
-
+import com.nimbusds.jose.*;
+import com.nimbusds.jose.crypto.*;
+import com.nimbusds.jwt.*;
+import com.efe.core.services.EfeService;
+import java.util.Date;
+import java.util.Base64;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -29,6 +33,10 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ResourceResolverFactory;
 
+import java.security.KeyPair;
+import java.security.KeyFactory;
+import javax.xml.bind.DatatypeConverter;
+import com.adobe.granite.keystore.KeyStoreService;
 import com.adobe.granite.workflow.WorkflowException;
 import com.adobe.granite.workflow.WorkflowSession;
 import com.adobe.granite.workflow.exec.WorkItem;
@@ -41,6 +49,7 @@ import com.adobe.granite.workflow.metadata.MetaDataMap;
 import com.adobe.cq.dam.cfm.FragmentData;
 import com.efe.core.utils.ResourceUtil;
 import com.google.gson.JsonObject;
+import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.osgi.service.component.annotations.Reference;
 
 /**
@@ -49,11 +58,22 @@ import org.osgi.service.component.annotations.Reference;
 @Component(service = WorkflowProcess.class, immediate = true, property = {"process.label=" + "EFE Print Post Service"})
 public class PostToWebServiceProcessStep implements WorkflowProcess {
 
-	 private static final String PARAM_SEPARATOR = ",";
-	 
-	 private static final String ARG_API_URL = "apiurl";
-	 
-	 private static final String ARG_TARGET = "target";
+    private static final String PARAM_SEPARATOR = ",";
+
+    private static final String ARG_API_URL = "apiurl";
+
+    private static final String ARG_TARGET = "target";
+    
+    @Reference 
+    private KeyStoreService keyStoreService; 
+
+    private byte[] getPrivateKey(ResourceResolver resourceResolver){ 
+        KeyPair keyPair = keyStoreService.getKeyStoreKeyPair(resourceResolver,"efe-service-user", "print_cert"); 
+        return keyPair.getPrivate().getEncoded(); 
+    }
+
+    @OSGiService
+    private EfeService efeService;
 /**
     * ResourceResolverFactory injected
     */
@@ -79,7 +99,7 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
         jMap.put(ARG_TARGET, processStepArguments.get(ARG_TARGET));
         jMap.put("Path", payloadPath);
         jMap.put("initiatedBy",workItem.getWorkflow().getInitiator());
-            
+
         try (ResourceResolver resourceResolver = ResourceUtil.getServiceResourceResolver(resourceResolverFactory)) {
             ContentFragment thisFrag = resourceResolver.resolve(payloadPath).adaptTo(ContentFragment.class);
             FragmentTemplate thisTemplate = thisFrag.getTemplate();
@@ -110,6 +130,8 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
             jMap.put("Content",e.getMessage());
         }
         
+        String accessToken = "";
+        String tokenExpiry = "";
         if(processStepArguments.containsKey(ARG_API_URL) && processStepArguments.containsKey(ARG_TARGET)) {
             ObjectMapper objMapper = new ObjectMapper();
             objMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
@@ -120,36 +142,75 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
                 jsonOut = e.getMessage();
             }
             
-            // Create an instance of CloseableHttpClient
             try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
-                
-                // Create an instance of HttpPost with the API endpoint URL
-                HttpPost httpPost = new HttpPost(processStepArguments.get(ARG_API_URL));
-
-                // Set the request headers, if needed
+                HttpPost httpPost = new HttpPost(efeService.getPartnerAPIAuthURL());
+                httpPost.setHeader("Authorization", "Basic " + getAuthToken(efeService.getPrintClientID(), efeService.getPrintClientSecret()));
+                httpPost.setHeader("Accept", "application/json");
                 httpPost.setHeader("Content-Type", "application/json");
-
-                // Set the request body with the JSON data
-                StringEntity requestEntity = new StringEntity(jsonOut);
+                Map<String, String> paramMap = new HashMap();
+                paramMap.put("grant_type", "client_credentials");
+                paramMap.put("idToken", getJWTHeader());
+                String requestJson = objMapper.writeValueAsString(paramMap);
+                StringEntity requestEntity = new StringEntity(requestJson);
                 httpPost.setEntity(requestEntity);
-
                 // Execute the request and get the response
                 try (CloseableHttpResponse response = httpClient.execute(httpPost)) {
                     // Process the response
                     int statusCode = response.getStatusLine().getStatusCode();  
-
-                    log.info("Status Code: {}", statusCode);
-                    // Get the response body, if needed
-                    HttpEntity responseEntity = response.getEntity();
-                    if (responseEntity != null) {
-                        String responseBody = EntityUtils.toString(responseEntity);
-                        log.info("Response Body: {}", responseBody);
+                    if(statusCode == 200) {
+                        HttpEntity responseEntity = response.getEntity();
+                        if(responseEntity != null) {
+                            String responseString = EntityUtils.toString(responseEntity);
+                            Map<String, String> responseMap = objMapper.readValue(responseString, HashMap.class);
+                            accessToken = responseMap.get("access_token");
+                            tokenExpiry = responseMap.get("expires_in");
+                        }
                     }
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-            }	 
+            }
+            if(accessToken != "") {
+                            // Create an instance of CloseableHttpClient
+                try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
+
+                    // Create an instance of HttpPost with the API endpoint URL
+                    HttpPost httpPost = new HttpPost(processStepArguments.get(ARG_API_URL));
+
+                    // Set the request headers, if needed
+                    httpPost.setHeader("Authorization", accessToken);
+                    httpPost.setHeader("Content-Type", "application/json");
+
+                    // Set the request body with the JSON data
+                    StringEntity requestEntity = new StringEntity(jsonOut);
+                    httpPost.setEntity(requestEntity);
+
+                    // Execute the request and get the response
+                    try (CloseableHttpResponse response = httpClient.execute(httpPost)) {
+                        // Process the response
+                        int statusCode = response.getStatusLine().getStatusCode();  
+
+                        log.info("Status Code: {}", statusCode);
+                        // Get the response body, if needed
+                        HttpEntity responseEntity = response.getEntity();
+                        if (responseEntity != null) {
+                            String responseBody = EntityUtils.toString(responseEntity);
+                            log.info("Response Body: {}", responseBody);
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+	 
         }    
+    }
+    
+    private String getAuthToken(String ClientId, String Pass) {
+        String combined = ClientId + ":" + Pass;
+        byte[] b64 = Base64.getEncoder().encode(combined.getBytes());
+        combined = new String(b64);
+        return combined;
     }
     
     /**
@@ -178,6 +239,32 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
             }
         }
         return map;
+    }
+    
+    private String getJWTHeader() throws JOSEException {
+
+        // Create the JWT header
+        JWSHeader header = new JWSHeader.Builder(JWSAlgorithm.HS256).build();
+
+        // Create the JWT claims set (payload)
+        JWTClaimsSet claimsSet = new JWTClaimsSet.Builder()
+                .issuer(efeService.getPartnerAPIAuthIssuer())
+                .subject(efeService.getPartnerAPIAuthSub())
+                .audience(efeService.getPartnerAPIAuthAudience())
+                .expirationTime(new Date(System.currentTimeMillis() + 600000)) // Expires in 10 minutes
+                .build();
+
+        // Create the signed JWT
+        SignedJWT signedJWT = new SignedJWT(header, claimsSet);
+
+        // Sign the JWT using a secret key
+        JWSSigner signer = new MACSigner(getPrivateKey(ResourceUtil.getServiceResourceResolver(resourceResolverFactory))); // Replace with your actual secret key
+        signedJWT.sign(signer);
+
+        // Serialize the JWT to a string
+        String jwtToken = signedJWT.serialize();
+
+        return jwtToken;
     }
 
 }
