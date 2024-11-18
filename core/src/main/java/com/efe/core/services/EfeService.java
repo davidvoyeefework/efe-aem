@@ -26,6 +26,10 @@ public interface EfeService {
 	 */
 	String getAuthHeader();
 
+        String getPrintClientID();
+        String getPrintClientSecret();
+        String getPartnerAPIAuthURL();
+        String getPartnerAPIAuthIssuer();
 	/**
 	 * Gets the plannerPageUrl.
 	 *
