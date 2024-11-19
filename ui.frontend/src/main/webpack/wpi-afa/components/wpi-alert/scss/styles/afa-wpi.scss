@@ -8,6 +8,7 @@ section.afa-wpi-theme {
         &.copy-flex {
             @include flexbox(
                 $gap: 10px,
+                $justify-content: center
             );
         }
 
