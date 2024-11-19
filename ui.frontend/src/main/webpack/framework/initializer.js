@@ -136,10 +136,12 @@ function replaceLocationPlaceholder() {
     const ldJsonScript = document.querySelector('script[type="application/ld+json"]');
     if (ldJsonScript != null) {
         const jsonData = JSON.parse(ldJsonScript.innerHTML);
-        const addressLocality = jsonData.address.addressLocality;
-        const addressRegion = jsonData.address.addressRegion;
-        const replacementText = `${addressLocality}, ${addressRegion}`;
-        replacePlaceholder(replacementText);
+        if (jsonData.address != null) {
+            const addressLocality = jsonData.address.addressLocality;
+            const addressRegion = jsonData.address.addressRegion;
+            const replacementText = `${addressLocality}, ${addressRegion}`;
+            replacePlaceholder(replacementText);
+        }
     }
 }
 
