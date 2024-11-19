@@ -4,9 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Iterator;
 import java.io.IOException;
-import com.nimbusds.jose.*;
+/*import com.nimbusds.jose.*;
 import com.nimbusds.jose.crypto.*;
 import com.nimbusds.jwt.*;
+*/
 import com.efe.core.services.EfeService;
 import java.util.Date;
 import java.util.Base64;
@@ -149,7 +150,7 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
                 httpPost.setHeader("Content-Type", "application/json");
                 Map<String, String> paramMap = new HashMap();
                 paramMap.put("grant_type", "client_credentials");
-                paramMap.put("idToken", getJWTHeader());
+                //paramMap.put("idToken", getJWTHeader());
                 String requestJson = objMapper.writeValueAsString(paramMap);
                 StringEntity requestEntity = new StringEntity(requestJson);
                 httpPost.setEntity(requestEntity);
@@ -240,7 +241,7 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
         }
         return map;
     }
-    
+    /*
     private String getJWTHeader() throws JOSEException {
 
         // Create the JWT header
@@ -266,7 +267,7 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
 
         return jwtToken;
     }
-
+*/
 }
 
 

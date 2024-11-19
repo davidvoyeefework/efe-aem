@@ -163,10 +163,10 @@ Import-Package: javax.annotation;version=0.0.0,*
             <scope>test</scope>
         </dependency>
                 <!-- https://mvnrepository.com/artifact/com.nimbusds/nimbus-jose-jwt -->
-        <dependency>
+        <!--<dependency>
             <groupId>com.nimbusds</groupId>
             <artifactId>nimbus-jose-jwt</artifactId>
             <version>9.47</version>
-        </dependency>
+        </dependency> -->
     </dependencies>
 </project>
