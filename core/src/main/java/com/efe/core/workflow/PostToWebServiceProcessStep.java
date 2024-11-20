@@ -145,10 +145,15 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
             }
             
             try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
+                String httpsConnect = efeService.getPartnerAPIAuthURL() + 
+                        "?grant_type=" + URLEncoder.encode("urn:ietf:params:oauth:grant-type:jwt-bearer","UTF-8") +
+                        "&id_token=" + getJWTHeader() + "&client_id=" + efeService.getPrintClientID() + "&client_secret=" + efeService.getPrintClientSecret();
+                log.info("JWT Connection String: " + httpsConnect);
                 HttpPost httpPost = new HttpPost(efeService.getPartnerAPIAuthURL() + 
                         "?grant_type=" + URLEncoder.encode("urn:ietf:params:oauth:grant-type:jwt-bearer","UTF-8") +
                         "&id_token=" + getJWTHeader() + "&client_id=" + efeService.getPrintClientID() + "&client_secret=" + efeService.getPrintClientSecret());
                 //httpPost.setHeader("Authorization", "Basic " + getAuthToken(efeService.getPrintClientID(), efeService.getPrintClientSecret()));
+                
                 httpPost.setHeader("Accept", "application/json");
                 httpPost.setHeader("Content-Type", "application/json");
                 /*Map<String, String> paramMap = new HashMap();
@@ -173,7 +178,7 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
                     }
                 }
             } catch (Exception e) {
-                e.printStackTrace();
+                log.error("Error with JWT connection: " + e.getMessage());
             }
             if(accessToken != "") {
                             // Create an instance of CloseableHttpClient
@@ -204,7 +209,7 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
                         }
                     }
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    log.error("Error with print system connection: " + e.getMessage());;
                 }
             }
 	 
