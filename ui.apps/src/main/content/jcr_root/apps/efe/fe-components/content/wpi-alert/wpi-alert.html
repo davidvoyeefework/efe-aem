@@ -372,10 +372,10 @@
         <section class="${model.recordKeeper} wpi-alert" id="wpi-alert" data-viewcode="${model.viewcode}">
             <div>
                 <div>
+                    <sly data-sly-test.hasContent="${model.icon}">
+                        <img class="wpi-img" src="${model.icon}" alt="" />
+                    </sly>     
                     <div class="copy copy-flex">
-                        <sly data-sly-test.hasContent="${model.icon}">
-                            <img class="wpi-img" src="${model.icon}" alt="" />
-                        </sly>                        
                         <div class="copy-container">
                             ${model.headline @context='html'}
                             ${model.subheadline @context='html'}
