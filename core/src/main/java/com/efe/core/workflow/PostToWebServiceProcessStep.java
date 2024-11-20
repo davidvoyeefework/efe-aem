@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Iterator;
 import java.io.IOException;
+import java.net.URLEncoder;
 import com.nimbusds.jose.*;
 import com.nimbusds.jose.crypto.*;
 import com.nimbusds.jwt.*;
@@ -144,20 +145,23 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
             }
             
             try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
-                HttpPost httpPost = new HttpPost(efeService.getPartnerAPIAuthURL());
-                httpPost.setHeader("Authorization", "Basic " + getAuthToken(efeService.getPrintClientID(), efeService.getPrintClientSecret()));
+                HttpPost httpPost = new HttpPost(efeService.getPartnerAPIAuthURL() + 
+                        "?grant_type=" + URLEncoder.encode("urn:ietf:params:oauth:grant-type:jwt-bearer","UTF-8") +
+                        "&id_token=" + getJWTHeader() + "&client_id=" + efeService.getPrintClientID() + "&client_secret=" + efeService.getPrintClientSecret());
+                //httpPost.setHeader("Authorization", "Basic " + getAuthToken(efeService.getPrintClientID(), efeService.getPrintClientSecret()));
                 httpPost.setHeader("Accept", "application/json");
                 httpPost.setHeader("Content-Type", "application/json");
-                Map<String, String> paramMap = new HashMap();
-                paramMap.put("grant_type", "client_credentials");
+                /*Map<String, String> paramMap = new HashMap();
+                paramMap.put("grant_type", "urn:ietf:params:oauth:grant-type:jwt-bearer");
                 paramMap.put("idToken", getJWTHeader());
                 String requestJson = objMapper.writeValueAsString(paramMap);
                 StringEntity requestEntity = new StringEntity(requestJson);
-                httpPost.setEntity(requestEntity);
+                httpPost.setEntity(requestEntity);*/
                 // Execute the request and get the response
                 try (CloseableHttpResponse response = httpClient.execute(httpPost)) {
                     // Process the response
                     int statusCode = response.getStatusLine().getStatusCode();  
+                    log.info("Status Code: {}", statusCode);
                     if(statusCode == 200) {
                         HttpEntity responseEntity = response.getEntity();
                         if(responseEntity != null) {
