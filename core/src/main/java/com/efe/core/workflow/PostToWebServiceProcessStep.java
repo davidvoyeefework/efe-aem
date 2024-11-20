@@ -143,23 +143,12 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
             } catch (Exception e) {
                 jsonOut = e.getMessage();
             }
-            String jwtString = "";
-            
-            try {
-                jwtString = getJWTHeader();
-            } catch (JOSEException e) {
-                log.error("JOSE Throws error: " + e.getMessage());
-            }
-            String httpsConnect = efeService.getPartnerAPIAuthURL() + 
-                        "?grant_type=" + "urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer" +
-                        "&id_token=" +jwtString + "&client_id=" + efeService.getPrintClientID() + "&client_secret=" + efeService.getPrintClientSecret();
-                log.info("JWT Connection String: " + httpsConnect);
-
+            log.info("Partner API Auth URL: " + efeService.getPartnerAPIAuthURL());
             try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
-
-                HttpPost httpPost = new HttpPost(httpsConnect);
+                HttpPost httpPost = new HttpPost(efeService.getPartnerAPIAuthURL() + 
+                        "?grant_type=" + URLEncoder.encode("urn:ietf:params:oauth:grant-type:jwt-bearer","UTF-8") +
+                        "&id_token=" + getJWTHeader() + "&client_id=" + efeService.getPrintClientID() + "&client_secret=" + efeService.getPrintClientSecret());
                 //httpPost.setHeader("Authorization", "Basic " + getAuthToken(efeService.getPrintClientID(), efeService.getPrintClientSecret()));
-                
                 httpPost.setHeader("Accept", "application/json");
                 httpPost.setHeader("Content-Type", "application/json");
                 /*Map<String, String> paramMap = new HashMap();
@@ -273,7 +262,7 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
         // Create the signed JWT
         SignedJWT signedJWT = new SignedJWT(header, claimsSet);
 
-                // Sign the JWT using a secret key
+        // Sign the JWT using a secret key
         JWSSigner signer = new MACSigner(getPrivateKey(ResourceUtil.getServiceResourceResolver(resourceResolverFactory))); // Replace with your actual secret key
         signedJWT.sign(signer);
 
