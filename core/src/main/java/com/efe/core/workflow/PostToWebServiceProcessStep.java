@@ -265,6 +265,7 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
                 .issuer(efeService.getPartnerAPIAuthIssuer())
                 .subject(efeService.getPartnerAPIAuthSub())
                 .audience(efeService.getPartnerAPIAuthAudience())
+                .claim("kid", efeService.getPartnerAPIAuthKID())
                 .expirationTime(new Date(System.currentTimeMillis() + 600000)) // Expires in 10 minutes
                 .build();
 
