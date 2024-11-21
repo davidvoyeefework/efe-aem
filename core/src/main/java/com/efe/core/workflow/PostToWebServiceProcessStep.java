@@ -77,7 +77,10 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
         return keyPair.getPrivate().getEncoded(); 
     }
 
-    @OSGiService
+    /**
+     * EfeService injected
+     */
+    @Reference
     private EfeService efeService;
 /**
     * ResourceResolverFactory injected
@@ -97,7 +100,6 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
     @Override
     
     public void execute(WorkItem workItem, WorkflowSession session, MetaDataMap processArguments) throws WorkflowException {
-       
         Map<String, String> processStepArguments = parseProcessStepArguments(processArguments);
         String payloadPath = workItem.getWorkflowData().getPayload().toString();
         Map<String, Object> jMap = new HashMap();
@@ -146,8 +148,7 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
             } catch (Exception e) {
                 jsonOut = e.getMessage();
             }
-            String httpPostString = efeService.getPartnerAPIAuthURL() + "?grant_type=" +"urn:ietf:params:oauth:grant-type:jwt-bearer" +
-                    "&client_id=hwd7vn0rz7jCc1MF2NTwvJUVeLEOtC8W&client_secret=2222222";
+            String httpPostString = efeService.getPartnerAPIAuthURL();
            log.warn("Partner API Auth URL: " + httpPostString);
             try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
                 HttpPost httpPost = new HttpPost(efeService.getPartnerAPIAuthURL() + "?grant_type=" + URLEncoder.encode("urn:ietf:params:oauth:grant-type:jwt-bearer","UTF-8") +
