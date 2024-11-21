@@ -149,9 +149,7 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
                 jsonOut = e.getMessage();
             }
             String httpPostString = efeService.getPartnerAPIAuthURL().trim() + "?grant_type=" + "urn:ietf:params:oauth:grant-type:jwt-bearer";
-            List<NameValuePair> formParams = new ArrayList();
-                formParams.add(new BasicNameValuePair("client_id", efeService.getPrintClientID().trim()));
-                formParams.add(new BasicNameValuePair("client_secret",efeService.getPrintClientSecret().trim()));
+            
            log.warn("Partner API Auth URL: " + httpPostString);
             try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
                 HttpPost httpPost = new HttpPost(efeService.getPartnerAPIAuthURL().trim() + "?grant_type=" + URLEncoder.encode("urn:ietf:params:oauth:grant-type:jwt-bearer","UTF-8") +
@@ -159,6 +157,9 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
                 //httpPost.setHeader("Authorization", "Basic " + getAuthToken(efeService.getPrintClientID(), efeService.getPrintClientSecret()));
                 httpPost.setHeader("Accept", "application/json");
                 httpPost.setHeader("Content-Type", "application/x-www-form-urlencoded");
+                List<NameValuePair> formParams = new ArrayList();
+                formParams.add(new BasicNameValuePair("client_id", efeService.getPrintClientID().trim()));
+                formParams.add(new BasicNameValuePair("client_secret",efeService.getPrintClientSecret().trim()));
                 UrlEncodedFormEntity formValues = new UrlEncodedFormEntity(formParams);
                 httpPost.setEntity(formValues);
                 /*Map<String, String> paramMap = new HashMap();
