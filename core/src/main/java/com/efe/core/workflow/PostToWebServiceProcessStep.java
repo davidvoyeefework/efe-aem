@@ -1,5 +1,8 @@
 package com.efe.core.workflow;
-
+import java.util.ArrayList;
+import java.util.List;
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Iterator;
@@ -8,7 +11,7 @@ import java.net.URLEncoder;
 import com.nimbusds.jose.*;
 import com.nimbusds.jose.crypto.*;
 import com.nimbusds.jwt.*;
-
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import com.efe.core.services.EfeService;
 import java.util.Date;
 import java.util.Base64;
@@ -143,13 +146,20 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
             } catch (Exception e) {
                 jsonOut = e.getMessage();
             }
-            //log.info("Partner API Auth URL: " + efeService.getPartnerAPIAuthURL());
+            String httpPostString = efeService.getPartnerAPIAuthURL() + "?grant_type=" +"urn:ietf:params:oauth:grant-type:jwt-bearer" +
+                    "&client_id=hwd7vn0rz7jCc1MF2NTwvJUVeLEOtC8W&client_secret=2222222";
+           log.warn("Partner API Auth URL: " + httpPostString);
             try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
-                HttpPost httpPost = new HttpPost("https://gateway.feitest.com/oauth2/token?grant_type=" + URLEncoder.encode("urn:ietf:params:oauth:grant-type:jwt-bearer","UTF-8") +
-                        "&id_token=" + getJWTHeader() + "&client_id=hwd7vn0rz7jCc1MF2NTwvJUVeLEOtC8W&client_secret=2222222");
+                HttpPost httpPost = new HttpPost(efeService.getPartnerAPIAuthURL() + "?grant_type=" + URLEncoder.encode("urn:ietf:params:oauth:grant-type:jwt-bearer","UTF-8") +
+                        "&id_token=" + getJWTHeader());
                 //httpPost.setHeader("Authorization", "Basic " + getAuthToken(efeService.getPrintClientID(), efeService.getPrintClientSecret()));
                 httpPost.setHeader("Accept", "application/json");
-                httpPost.setHeader("Content-Type", "application/json");
+                httpPost.setHeader("Content-Type", "application/x-www-form-urlencoded");
+                List<NameValuePair> formParams = new ArrayList();
+                formParams.add(new BasicNameValuePair("client_id", efeService.getPrintClientID()));
+                formParams.add(new BasicNameValuePair("client_secret",efeService.getPrintClientSecret()));
+                UrlEncodedFormEntity formValues = new UrlEncodedFormEntity(formParams);
+                httpPost.setEntity(formValues);
                 /*Map<String, String> paramMap = new HashMap();
                 paramMap.put("grant_type", "urn:ietf:params:oauth:grant-type:jwt-bearer");
                 paramMap.put("idToken", getJWTHeader());
@@ -209,14 +219,14 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
 	 
         }    
     }
-    
+/*    
     private String getAuthToken(String ClientId, String Pass) {
         String combined = ClientId + ":" + Pass;
         byte[] b64 = Base64.getEncoder().encode(combined.getBytes());
         combined = new String(b64);
         return combined;
     }
-    
+  */  
     /**
      * split the arguments passed to the ProcessStep into a map
      * 
@@ -252,9 +262,9 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
 
         // Create the JWT claims set (payload)
         JWTClaimsSet claimsSet = new JWTClaimsSet.Builder()
-                .issuer("system-aem-test")
-                .subject("aem")
-                .audience("2ba6d7e1-4133-4a07-a9d4-715150577715")
+                .issuer(efeService.getPartnerAPIAuthIssuer())
+                .subject(efeService.getPartnerAPIAuthSub())
+                .audience(efeService.getPartnerAPIAuthAudience())
                 .expirationTime(new Date(System.currentTimeMillis() + 600000)) // Expires in 10 minutes
                 .build();
 
