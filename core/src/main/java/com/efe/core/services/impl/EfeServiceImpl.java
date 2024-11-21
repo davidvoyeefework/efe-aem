@@ -129,12 +129,60 @@ public class EfeServiceImpl implements EfeService {
 		@AttributeDefinition(name = "EFE UPLS authHeader", description = "EFE UPLS authHeader")
 		String authHeader();
 
+                /**
+		 * Print Client ID.
+		 *
+		 * @return printClientID
+		 */
+                @AttributeDefinition(name = "EFE Print Client ID", description = "EFE Print Client ID")
                 String printClientID();
+                
+                /**
+		 * Print Client Secret.
+		 *
+		 * @return printClientSecret
+		 */
+                @AttributeDefinition(name = "EFE Print Client Secret", description = "EFE Print Client Secret")
                 String printClientSecret();
+                
+                /**
+		 * Partner API Auth URL.
+		 *
+		 * @return partnerAPIAuthURL
+		 */
+                @AttributeDefinition(name = "EFE Partner API Auth URL", description = "EFE Partner API Auth URL")
                 String partnerAPIAuthURL();
+                
+                /**
+		 * Partner API Auth Issuer.
+		 *
+		 * @return partnerAPIAuthIssuer
+		 */
+                @AttributeDefinition(name = "EFE Partner API Auth Issuer", description = "EFE Partner API Auth Issuer")
                 String partnerAPIAuthIssuer();
+                
+                /**
+		 * Partner API Auth Audience.
+		 *
+		 * @return partnerAPIAuthAudience
+		 */
+                @AttributeDefinition(name = "EFE Partner API Auth Audience", description = "EFE Partner API Auth Audience")
                 String partnerAPIAuthAudience();
+                
+                /**
+		 * Partner API Auth Subscriber.
+		 *
+		 * @return partnerAPIAuthSub
+		 */
+                @AttributeDefinition(name = "EFE Partner API Auth Subscriber", description = "EFE Partner API Auth Subscriber")
                 String partnerAPIAuthSub();
+                
+                /**
+		 * Partner API Auth KID.
+		 *
+		 * @return partnerAPIAuthKID
+		 */
+                @AttributeDefinition(name = "EFE Partner API Auth KID", description = "EFE Partner API Auth KID")
                 String partnerAPIAuthKID();
 		/**
 		 * Planner page url.
