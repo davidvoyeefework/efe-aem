@@ -143,11 +143,10 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
             } catch (Exception e) {
                 jsonOut = e.getMessage();
             }
-            log.info("Partner API Auth URL: " + efeService.getPartnerAPIAuthURL());
+            //log.info("Partner API Auth URL: " + efeService.getPartnerAPIAuthURL());
             try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
-                HttpPost httpPost = new HttpPost(efeService.getPartnerAPIAuthURL() + 
-                        "?grant_type=" + URLEncoder.encode("urn:ietf:params:oauth:grant-type:jwt-bearer","UTF-8") +
-                        "&id_token=" + getJWTHeader() + "&client_id=" + efeService.getPrintClientID() + "&client_secret=" + efeService.getPrintClientSecret());
+                HttpPost httpPost = new HttpPost("https://gateway.feitest.com/oauth2/token?grant_type=" + URLEncoder.encode("urn:ietf:params:oauth:grant-type:jwt-bearer","UTF-8") +
+                        "&id_token=" + getJWTHeader() + "&client_id=hwd7vn0rz7jCc1MF2NTwvJUVeLEOtC8W&client_secret=2222222");
                 //httpPost.setHeader("Authorization", "Basic " + getAuthToken(efeService.getPrintClientID(), efeService.getPrintClientSecret()));
                 httpPost.setHeader("Accept", "application/json");
                 httpPost.setHeader("Content-Type", "application/json");
@@ -161,7 +160,7 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
                 try (CloseableHttpResponse response = httpClient.execute(httpPost)) {
                     // Process the response
                     int statusCode = response.getStatusLine().getStatusCode();  
-                    log.info("Status Code: {}", statusCode);
+                    log.warn("Partner Auth Status Code: {}", statusCode);
                     if(statusCode == 200) {
                         HttpEntity responseEntity = response.getEntity();
                         if(responseEntity != null) {
@@ -253,9 +252,9 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
 
         // Create the JWT claims set (payload)
         JWTClaimsSet claimsSet = new JWTClaimsSet.Builder()
-                .issuer(efeService.getPartnerAPIAuthIssuer())
-                .subject(efeService.getPartnerAPIAuthSub())
-                .audience(efeService.getPartnerAPIAuthAudience())
+                .issuer("system-aem-test")
+                .subject("aem")
+                .audience("2ba6d7e1-4133-4a07-a9d4-715150577715")
                 .expirationTime(new Date(System.currentTimeMillis() + 600000)) // Expires in 10 minutes
                 .build();
 
