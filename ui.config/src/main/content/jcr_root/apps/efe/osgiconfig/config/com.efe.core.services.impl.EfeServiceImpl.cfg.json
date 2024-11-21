@@ -13,7 +13,7 @@
   "formBaseUrl":"$[env:wm_form_base_url]",
   "formJsUrl":"$[env:wm_form_js_url]",
   "formAuthHeader":"$[secret:wm_form_auth_header]",
-  "printClientId":"$[env:print_client_id",
+  "printClientId":"$[env:print_client_id]",
   "printClientSecret":"$[secret:print_client_secret]",
   "partnerAPIAuthURL":"$[env:partner_api_auth_url;default=https://gateway.feitest.com/oauth2/token]",
   "partnerAPIAuthIssuer":"$[env:partner_api_auth_issuer;default=system-aem-test]",
