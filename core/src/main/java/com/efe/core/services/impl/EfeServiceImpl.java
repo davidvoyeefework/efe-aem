@@ -31,7 +31,7 @@ public class EfeServiceImpl implements EfeService {
 	/** AuthHeader. */
 	private String authHeader;
         
-        private String printClientID;
+        private String printClientId;
         private String printClientSecret;
         private String partnerAPIAuthURL;
         private String partnerAPIAuthIssuer;
@@ -132,10 +132,10 @@ public class EfeServiceImpl implements EfeService {
                 /**
 		 * Print Client ID.
 		 *
-		 * @return printClientID
+		 * @return printClientId
 		 */
                 @AttributeDefinition(name = "EFE Print Client ID", description = "EFE Print Client ID")
-                String printClientID();
+                String printClientId();
                 
                 /**
 		 * Print Client Secret.
@@ -364,7 +364,7 @@ public class EfeServiceImpl implements EfeService {
 		this.formJsUrl = config.formJsUrl();
 		this.formAuthHeader = config.formAuthHeader();
                 
-                this.printClientID = config.printClientID();
+                this.printClientId = config.printClientId();
                 this.printClientSecret = config.printClientSecret();
                 this.partnerAPIAuthURL = config.partnerAPIAuthURL();
                 this.partnerAPIAuthIssuer = config.partnerAPIAuthIssuer();
@@ -524,8 +524,8 @@ public class EfeServiceImpl implements EfeService {
 	}
         
         @Override
-	public String getPrintClientID() {
-		return printClientID;
+	public String getPrintClientId() {
+		return printClientId;
 	}
         @Override
 	public String getPrintClientSecret() {

@@ -149,18 +149,21 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
                 jsonOut = e.getMessage();
             }
             String testString = "";
+            /*
             try {
                 testString = efeService.getPartnerAPIAuthURL();
                 log.warn("PartnerAPIAuthURL " + efeService.getPartnerAPIAuthURL());
             } catch (Exception e) {
                 log.warn("PartnerAPIAuthURL Failed");
             }
+            */
             try {
-                testString = efeService.getPrintClientID();
-                log.warn("PrintClientID " + efeService.getPrintClientID());
+                testString = efeService.getPrintClientId();
+                log.warn("PrintClientID " + efeService.getPrintClientId());
             } catch (Exception e) {
                 log.warn("PrintClientID Failed");
             }
+            /*
             try {
                 testString = efeService.getPrintClientSecret();
                 log.warn("PrintClientSecret " + efeService.getPrintClientSecret());
@@ -196,15 +199,15 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
             } catch (Exception e) {
                 log.warn("PartnerAPI JWT Failed");
             }
-
+*/
             try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
                 HttpPost httpPost = new HttpPost(efeService.getPartnerAPIAuthURL().trim() + "?grant_type=" + "urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer" +
                         "&id_token=" + getJWTHeader());
                 //httpPost.setHeader("Authorization", "Basic " + getAuthToken(efeService.getPrintClientID(), efeService.getPrintClientSecret()));
                 httpPost.setHeader("Accept", "application/json");
                 httpPost.setHeader("Content-Type", "application/x-www-form-urlencoded");
-                /*List<NameValuePair> formParams = new ArrayList();
-                formParams.add(new BasicNameValuePair("client_id", efeService.getPrintClientID().trim()));
+                List<NameValuePair> formParams = new ArrayList();
+                formParams.add(new BasicNameValuePair("client_id", efeService.getPrintClientId().trim()));
                 formParams.add(new BasicNameValuePair("client_secret",efeService.getPrintClientSecret().trim()));
                 UrlEncodedFormEntity formValues = new UrlEncodedFormEntity(formParams);
                 httpPost.setEntity(formValues);

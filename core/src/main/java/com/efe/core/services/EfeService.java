@@ -26,7 +26,7 @@ public interface EfeService {
 	 */
 	String getAuthHeader();
 
-        String getPrintClientID();
+        String getPrintClientId();
         String getPrintClientSecret();
         String getPartnerAPIAuthURL();
         String getPartnerAPIAuthIssuer();
