@@ -7,12 +7,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Iterator;
 import java.io.IOException;
+import java.security.PrivateKey;
 import java.net.URLEncoder;
 import java.security.Security;
 import com.nimbusds.jose.crypto.bc.BouncyCastleProviderSingleton;
 import com.nimbusds.jose.*;
 import com.nimbusds.jose.crypto.*;
 import com.nimbusds.jwt.*;
+import com.nimbusds.jose.crypto.RSASSASigner;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import com.efe.core.services.EfeService;
 import java.util.Date;
@@ -74,9 +76,9 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
     @Reference 
     private KeyStoreService keyStoreService; 
 
-    private byte[] getPrivateKey(ResourceResolver resourceResolver){ 
+    private PrivateKey getPrivateKey(ResourceResolver resourceResolver){ 
         KeyPair keyPair = keyStoreService.getKeyStoreKeyPair(resourceResolver,"efe-service-user", "print_cert"); 
-        return keyPair.getPrivate().getEncoded(); 
+        return keyPair.getPrivate(); 
     }
 
     /**
@@ -324,7 +326,7 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
         SignedJWT signedJWT = new SignedJWT(header, claimsSet);
 
         // Sign the JWT using a secret key
-        JWSSigner signer = new MACSigner(getPrivateKey(ResourceUtil.getServiceResourceResolver(resourceResolverFactory))); // Replace with your actual secret key
+        JWSSigner signer = new RSASSASigner(getPrivateKey(ResourceUtil.getServiceResourceResolver(resourceResolverFactory))); // Replace with your actual secret key
         signedJWT.sign(signer);
 
         // Serialize the JWT to a string
