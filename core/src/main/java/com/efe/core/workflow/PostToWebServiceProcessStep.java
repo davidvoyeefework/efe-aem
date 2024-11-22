@@ -151,54 +151,59 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
             String testString = "";
             try {
                 testString = efeService.getPartnerAPIAuthURL();
-                log.warn("PartnerAPIAuthURL Success");
+                log.warn("PartnerAPIAuthURL " + efeService.getPartnerAPIAuthURL());
             } catch (Exception e) {
                 log.warn("PartnerAPIAuthURL Failed");
             }
             try {
                 testString = efeService.getPrintClientID();
-                log.warn("PrintClientID Success");
+                log.warn("PrintClientID " + efeService.getPrintClientID());
             } catch (Exception e) {
                 log.warn("PrintClientID Failed");
             }
             try {
                 testString = efeService.getPrintClientSecret();
-                log.warn("PrintClientSecret Success");
+                log.warn("PrintClientSecret " + efeService.getPrintClientSecret());
             } catch (Exception e) {
                 log.warn("PrintClientSecret Failed");
             }
             try {
                 testString = efeService.getPartnerAPIAuthIssuer();
-                log.warn("PartnerAPIAuthIssuer Success");
+                log.warn("PartnerAPIAuthIssuer " + efeService.getPartnerAPIAuthIssuer());
             } catch (Exception e) {
                 log.warn("PartnerAPIAuthIssuer Failed");
             }
             try {
                 testString = efeService.getPartnerAPIAuthSub();
-                log.warn("PartnerAPIAuthSub Success");
+                log.warn("PartnerAPIAuthSub " + efeService.getPartnerAPIAuthSub());
             } catch (Exception e) {
                 log.warn("PartnerAPIAuthSub Failed");
             }
             try {
                 testString = efeService.getPartnerAPIAuthAudience();
-                log.warn("PartnerAPIAuthAudience Success");
+                log.warn("PartnerAPIAuthAudience " + efeService.getPartnerAPIAuthAudience());
             } catch (Exception e) {
                 log.warn("PartnerAPIAuthAudience Failed");
             }
             try {
                 testString = efeService.getPartnerAPIAuthKID();
-                log.warn("PartnerAPIAuthKID Success");
+                log.warn("PartnerAPIAuthKID " + efeService.getPartnerAPIAuthKID());
             } catch (Exception e) {
                 log.warn("PartnerAPIAuthKID Failed");
             }
+            try {
+                log.warn("PartnerAPI JWT " + getJWTHeader());
+            } catch (Exception e) {
+                log.warn("PartnerAPI JWT Failed");
+            }
 
             try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
-                HttpPost httpPost = new HttpPost(efeService.getPartnerAPIAuthURL().trim() + "?grant_type=" + URLEncoder.encode("urn:ietf:params:oauth:grant-type:jwt-bearer","UTF-8") +
+                HttpPost httpPost = new HttpPost(efeService.getPartnerAPIAuthURL().trim() + "?grant_type=" + "urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer" +
                         "&id_token=" + getJWTHeader());
                 //httpPost.setHeader("Authorization", "Basic " + getAuthToken(efeService.getPrintClientID(), efeService.getPrintClientSecret()));
                 httpPost.setHeader("Accept", "application/json");
                 httpPost.setHeader("Content-Type", "application/x-www-form-urlencoded");
-                List<NameValuePair> formParams = new ArrayList();
+                /*List<NameValuePair> formParams = new ArrayList();
                 formParams.add(new BasicNameValuePair("client_id", efeService.getPrintClientID().trim()));
                 formParams.add(new BasicNameValuePair("client_secret",efeService.getPrintClientSecret().trim()));
                 UrlEncodedFormEntity formValues = new UrlEncodedFormEntity(formParams);
