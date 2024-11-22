@@ -228,9 +228,12 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
                         HttpEntity responseEntity = response.getEntity();
                         if(responseEntity != null) {
                             String responseString = EntityUtils.toString(responseEntity);
+                            log.warn("PartnerAPI Response Body: {}", responseString);
                             Map<String, String> responseMap = objMapper.readValue(responseString, HashMap.class);
                             accessToken = responseMap.get("access_token");
                             tokenExpiry = responseMap.get("expires_in");
+                            log.warn("PartnerAPI accessToken: {}", accessToken);
+                            log.warn("PartnerAPI tokenExpiry: {}", tokenExpiry);
                         }
                     }
                 }
@@ -257,7 +260,7 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
                         // Process the response
                         int statusCode = response.getStatusLine().getStatusCode();  
 
-                        log.info("Status Code: {}", statusCode);
+                        log.warn("PrintAPI Status Code: {}", statusCode);
                         // Get the response body, if needed
                         HttpEntity responseEntity = response.getEntity();
                         if (responseEntity != null) {
