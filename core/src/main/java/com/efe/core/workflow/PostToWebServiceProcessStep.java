@@ -206,7 +206,6 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
                 //httpPost.setHeader("Authorization", "Basic " + getAuthToken(efeService.getPrintClientID(), efeService.getPrintClientSecret()));
                 httpPost.setHeader("Accept", "application/json");
                 httpPost.setHeader("Content-Type", "application/x-www-form-urlencoded");
-                httpPost.setHeader("kid",efeService.getPartnerAPIAuthKID());
                 List<NameValuePair> formParams = new ArrayList();
                 formParams.add(new BasicNameValuePair("client_id", efeService.getPrintClientId().trim()));
                 formParams.add(new BasicNameValuePair("client_secret",efeService.getPrintClientSecret().trim()));
@@ -310,8 +309,7 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
     private String getJWTHeader() throws JOSEException {
 
         // Create the JWT header
-        JWSHeader header = new JWSHeader.Builder(JWSAlgorithm.HS256).build();
-
+        JWSHeader header = new JWSHeader.Builder(JWSAlgorithm.HS256).keyID(efeService.getPartnerAPIAuthKID()).build();
         // Create the JWT claims set (payload)
         JWTClaimsSet claimsSet = new JWTClaimsSet.Builder()
                 .issuer(efeService.getPartnerAPIAuthIssuer())
