@@ -206,6 +206,7 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
                 //httpPost.setHeader("Authorization", "Basic " + getAuthToken(efeService.getPrintClientID(), efeService.getPrintClientSecret()));
                 httpPost.setHeader("Accept", "application/json");
                 httpPost.setHeader("Content-Type", "application/x-www-form-urlencoded");
+                httpPost.setHeader("kid",efeService.getPartnerAPIAuthKID());
                 List<NameValuePair> formParams = new ArrayList();
                 formParams.add(new BasicNameValuePair("client_id", efeService.getPrintClientId().trim()));
                 formParams.add(new BasicNameValuePair("client_secret",efeService.getPrintClientSecret().trim()));
@@ -316,7 +317,6 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
                 .issuer(efeService.getPartnerAPIAuthIssuer())
                 .subject(efeService.getPartnerAPIAuthSub())
                 .audience(efeService.getPartnerAPIAuthAudience())
-                .claim("kid", efeService.getPartnerAPIAuthKID())
                 .expirationTime(new Date(System.currentTimeMillis() + 600000)) // Expires in 10 minutes
                 .build();
 
