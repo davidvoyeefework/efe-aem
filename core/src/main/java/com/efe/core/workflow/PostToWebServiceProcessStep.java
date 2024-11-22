@@ -148,9 +148,50 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
             } catch (Exception e) {
                 jsonOut = e.getMessage();
             }
-            String httpPostString = efeService.getPartnerAPIAuthURL().trim() + "?grant_type=" + "urn:ietf:params:oauth:grant-type:jwt-bearer";
-            
-           log.warn("Partner API Auth URL: " + httpPostString);
+            String testString = "";
+            try {
+                testString = efeService.getPartnerAPIAuthURL();
+                log.warn("PartnerAPIAuthURL Success");
+            } catch (Exception e) {
+                log.warn("PartnerAPIAuthURL Failed");
+            }
+            try {
+                testString = efeService.getPrintClientID();
+                log.warn("PrintClientID Success");
+            } catch (Exception e) {
+                log.warn("PrintClientID Failed");
+            }
+            try {
+                testString = efeService.getPrintClientSecret();
+                log.warn("PrintClientSecret Success");
+            } catch (Exception e) {
+                log.warn("PrintClientSecret Failed");
+            }
+            try {
+                testString = efeService.getPartnerAPIAuthIssuer();
+                log.warn("PartnerAPIAuthIssuer Success");
+            } catch (Exception e) {
+                log.warn("PartnerAPIAuthIssuer Failed");
+            }
+            try {
+                testString = efeService.getPartnerAPIAuthSub();
+                log.warn("PartnerAPIAuthSub Success");
+            } catch (Exception e) {
+                log.warn("PartnerAPIAuthSub Failed");
+            }
+            try {
+                testString = efeService.getPartnerAPIAuthAudience();
+                log.warn("PartnerAPIAuthAudience Success");
+            } catch (Exception e) {
+                log.warn("PartnerAPIAuthAudience Failed");
+            }
+            try {
+                testString = efeService.getPartnerAPIAuthKID();
+                log.warn("PartnerAPIAuthKID Success");
+            } catch (Exception e) {
+                log.warn("PartnerAPIAuthKID Failed");
+            }
+
             try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
                 HttpPost httpPost = new HttpPost(efeService.getPartnerAPIAuthURL().trim() + "?grant_type=" + URLEncoder.encode("urn:ietf:params:oauth:grant-type:jwt-bearer","UTF-8") +
                         "&id_token=" + getJWTHeader());
