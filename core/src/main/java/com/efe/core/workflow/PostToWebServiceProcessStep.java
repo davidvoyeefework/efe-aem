@@ -309,7 +309,7 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
     private String getJWTHeader() throws JOSEException {
 
         // Create the JWT header
-        JWSHeader header = new JWSHeader.Builder(JWSAlgorithm.HS256).keyID(efeService.getPartnerAPIAuthKID()).build();
+        JWSHeader header = new JWSHeader.Builder(JWSAlgorithm.RS256).keyID(efeService.getPartnerAPIAuthKID()).build();
         // Create the JWT claims set (payload)
         JWTClaimsSet claimsSet = new JWTClaimsSet.Builder()
                 .issuer(efeService.getPartnerAPIAuthIssuer())
