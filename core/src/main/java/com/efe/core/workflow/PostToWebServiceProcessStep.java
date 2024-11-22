@@ -9,8 +9,6 @@ import java.util.Iterator;
 import java.io.IOException;
 import java.security.PrivateKey;
 import java.net.URLEncoder;
-import java.security.Security;
-import com.nimbusds.jose.crypto.bc.BouncyCastleProviderSingleton;
 import com.nimbusds.jose.*;
 import com.nimbusds.jose.crypto.*;
 import com.nimbusds.jwt.*;
@@ -311,7 +309,6 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
     }
     
     private String getJWTHeader() throws JOSEException {
-        Security.addProvider(BouncyCastleProviderSingleton.getInstance());
         // Create the JWT header
         JWSHeader header = new JWSHeader.Builder(JWSAlgorithm.RS256).keyID(efeService.getPartnerAPIAuthKID()).build();
         // Create the JWT claims set (payload)
