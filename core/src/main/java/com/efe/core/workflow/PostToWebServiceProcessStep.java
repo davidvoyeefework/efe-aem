@@ -246,20 +246,19 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
 
                     // Create an instance of HttpPost with the API endpoint URL
                     HttpPost httpPost = new HttpPost(processStepArguments.get(ARG_API_URL));
-
+                    
                     // Set the request headers, if needed
-                    httpPost.setHeader("Authorization", accessToken);
+                    httpPost.setHeader("Authorization", "Bearer " + accessToken);
                     httpPost.setHeader("Content-Type", "application/json");
 
                     // Set the request body with the JSON data
                     StringEntity requestEntity = new StringEntity(jsonOut);
                     httpPost.setEntity(requestEntity);
-
                     // Execute the request and get the response
                     try (CloseableHttpResponse response = httpClient.execute(httpPost)) {
                         // Process the response
                         int statusCode = response.getStatusLine().getStatusCode();  
-
+                        log.warn("PrintAPI response received from: {}", ARG_API_URL );
                         log.warn("PrintAPI Status Code: {}", statusCode);
                         // Get the response body, if needed
                         HttpEntity responseEntity = response.getEntity();
