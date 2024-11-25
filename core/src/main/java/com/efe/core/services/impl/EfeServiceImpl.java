@@ -30,6 +30,15 @@ public class EfeServiceImpl implements EfeService {
 
 	/** AuthHeader. */
 	private String authHeader;
+        
+        private String printClientId;
+        private String printClientSecret;
+        private String partnerAPIAuthURL;
+        private String partnerAPIAuthIssuer;
+       
+        private String partnerAPIAuthAudience;
+        private String partnerAPIAuthSub;
+        private String partnerAPIAuthKID;
 
 	/** Planner Page Url. */
 	private String plannerPageUrl;
@@ -120,6 +129,61 @@ public class EfeServiceImpl implements EfeService {
 		@AttributeDefinition(name = "EFE UPLS authHeader", description = "EFE UPLS authHeader")
 		String authHeader();
 
+                /**
+		 * Print Client ID.
+		 *
+		 * @return printClientId
+		 */
+                @AttributeDefinition(name = "EFE Print Client ID", description = "EFE Print Client ID")
+                String printClientId();
+                
+                /**
+		 * Print Client Secret.
+		 *
+		 * @return printClientSecret
+		 */
+                @AttributeDefinition(name = "EFE Print Client Secret", description = "EFE Print Client Secret")
+                String printClientSecret();
+                
+                /**
+		 * Partner API Auth URL.
+		 *
+		 * @return partnerAPIAuthURL
+		 */
+                @AttributeDefinition(name = "EFE Partner API Auth URL", description = "EFE Partner API Auth URL")
+                String partnerAPIAuthURL();
+                
+                /**
+		 * Partner API Auth Issuer.
+		 *
+		 * @return partnerAPIAuthIssuer
+		 */
+                @AttributeDefinition(name = "EFE Partner API Auth Issuer", description = "EFE Partner API Auth Issuer")
+                String partnerAPIAuthIssuer();
+                
+                /**
+		 * Partner API Auth Audience.
+		 *
+		 * @return partnerAPIAuthAudience
+		 */
+                @AttributeDefinition(name = "EFE Partner API Auth Audience", description = "EFE Partner API Auth Audience")
+                String partnerAPIAuthAudience();
+                
+                /**
+		 * Partner API Auth Subscriber.
+		 *
+		 * @return partnerAPIAuthSub
+		 */
+                @AttributeDefinition(name = "EFE Partner API Auth Subscriber", description = "EFE Partner API Auth Subscriber")
+                String partnerAPIAuthSub();
+                
+                /**
+		 * Partner API Auth KID.
+		 *
+		 * @return partnerAPIAuthKID
+		 */
+                @AttributeDefinition(name = "EFE Partner API Auth KID", description = "EFE Partner API Auth KID")
+                String partnerAPIAuthKID();
 		/**
 		 * Planner page url.
 		 *
@@ -299,6 +363,15 @@ public class EfeServiceImpl implements EfeService {
 		this.formBaseUrl = config.formBaseUrl();
 		this.formJsUrl = config.formJsUrl();
 		this.formAuthHeader = config.formAuthHeader();
+                
+                this.printClientId = config.printClientId();
+                this.printClientSecret = config.printClientSecret();
+                this.partnerAPIAuthURL = config.partnerAPIAuthURL();
+                this.partnerAPIAuthIssuer = config.partnerAPIAuthIssuer();
+                this.partnerAPIAuthKID = config.partnerAPIAuthKID();
+                this.partnerAPIAuthAudience = config.partnerAPIAuthAudience();
+                this.partnerAPIAuthSub = config.partnerAPIAuthSub();
+                
 		this.gaEnabled = config.enableGA();
 		this.gaTagValue = config.gaTagValue();
 		this.omnyEpisodeApi = config.omnyEpisodeApi();
@@ -449,6 +522,37 @@ public class EfeServiceImpl implements EfeService {
 	public String getFormAuthHeader() {
 		return formAuthHeader;
 	}
+        
+        @Override
+	public String getPrintClientId() {
+		return printClientId;
+	}
+        @Override
+	public String getPrintClientSecret() {
+		return printClientSecret;
+	}
+        @Override
+	public String getPartnerAPIAuthURL() {
+		return partnerAPIAuthURL;
+	}
+        @Override
+	public String getPartnerAPIAuthIssuer() {
+		return partnerAPIAuthIssuer;
+	}
+        @Override
+	public String getPartnerAPIAuthAudience() {
+		return partnerAPIAuthAudience;
+	}
+        @Override
+	public String getPartnerAPIAuthSub() {
+		return partnerAPIAuthSub;
+	}
+        @Override
+	public String getPartnerAPIAuthKID() {
+		return partnerAPIAuthKID;
+	}
+
+
 
 	/**
 	 * Checks if is enabled GA.
