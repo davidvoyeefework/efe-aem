@@ -151,7 +151,7 @@ function replaceLocationPlaceholderWithDefaultText() {
     const pattern = /\{planner\.location default=”[^”]*”\}/g;
     const pageContent = document.body.innerHTML;
     const matches = pageContent.match(pattern);
-    if (ldJsonScript == null && matches && matches.length > 0) {
+    if ((ldJsonScript == null || JSON.parse(ldJsonScript.innerHTML).address == null) && matches && matches.length > 0) {
         const replacementText = fetchDefaultValue();
         replacePlaceholder(replacementText);
     }
