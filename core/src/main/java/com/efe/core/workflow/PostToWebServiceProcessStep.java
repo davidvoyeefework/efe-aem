@@ -6,17 +6,13 @@ import org.apache.http.message.BasicNameValuePair;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Iterator;
-import java.io.IOException;
 import java.security.PrivateKey;
-import java.net.URLEncoder;
 import com.nimbusds.jose.*;
-import com.nimbusds.jose.crypto.*;
 import com.nimbusds.jwt.*;
 import com.nimbusds.jose.crypto.RSASSASigner;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import com.efe.core.services.EfeService;
 import java.util.Date;
-import java.util.Base64;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -28,21 +24,13 @@ import org.apache.http.util.EntityUtils;
 import org.osgi.service.component.annotations.Component;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JsonDeserializer;
-import com.fasterxml.jackson.core.JsonProcessingException;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
-import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ResourceResolverFactory;
 
 import java.security.KeyPair;
-import java.security.KeyFactory;
-import javax.xml.bind.DatatypeConverter;
 import com.adobe.granite.keystore.KeyStoreService;
 import com.adobe.granite.workflow.WorkflowException;
 import com.adobe.granite.workflow.WorkflowSession;
@@ -55,8 +43,6 @@ import com.adobe.granite.workflow.exec.WorkflowProcess;
 import com.adobe.granite.workflow.metadata.MetaDataMap;
 import com.adobe.cq.dam.cfm.FragmentData;
 import com.efe.core.utils.ResourceUtil;
-import com.google.gson.JsonObject;
-import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.osgi.service.component.annotations.Reference;
 
 /**
@@ -95,9 +81,10 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
 
     /**
      * execute
-     * @param item
+     * @param workItem
      * @param session
-     * @param args
+     * @param processArguments
+     * @throws WorkflowException
      */
     @Override
     
@@ -108,39 +95,42 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
         jMap.put(ARG_TARGET, processStepArguments.get(ARG_TARGET));
         jMap.put("Path", payloadPath);
         jMap.put("initiatedBy",workItem.getWorkflow().getInitiator());
+        ResourceResolver resourceResolver = ResourceUtil.getServiceResourceResolver(resourceResolverFactory);
 
-        try (ResourceResolver resourceResolver = ResourceUtil.getServiceResourceResolver(resourceResolverFactory)) {
-            ContentFragment thisFrag = resourceResolver.resolve(payloadPath).adaptTo(ContentFragment.class);
-            FragmentTemplate thisTemplate = thisFrag.getTemplate();
+        FragmentTemplate thisTemplate;
+        ContentFragment thisFrag = resourceResolver.resolve(payloadPath).adaptTo(ContentFragment.class);
+        if(null != thisFrag) {
+            thisTemplate = thisFrag.getTemplate();
             jMap.put("name", thisFrag.getName());
             jMap.put("description", thisFrag.getDescription());
-            jMap.put("tags", thisFrag.getTags());
-            jMap.put("title", thisFrag.getTitle());
-            
-            
-            
-            Iterator<ContentElement> contentIterator = thisFrag.getElements();
-            Map<String,Map> fragmentContent = new HashMap();
-            while(contentIterator.hasNext()) {
-                ContentElement thisElement = contentIterator.next();
-                FragmentData thisElemData = thisElement.getValue();
-                ElementTemplate thisElemTemplate = thisTemplate.getForElement(thisElement);
-                Map<String, String> elementProperties = new HashMap();
-                elementProperties.put("contentValue", thisElement.getContent());
-                elementProperties.put("contentDataType", thisElement.getContentType());
-                elementProperties.put( "contentTypeString", thisElemData.getDataType().getTypeString());
-                elementProperties.put("contentDefault", thisElemTemplate.getDefaultContent());
-                
-                fragmentContent.put(thisElement.getName(), elementProperties);
+            try {
+                jMap.put("tags", thisFrag.getTags());
+            } catch (Exception e) {
+                jMap.put("tags", "");
             }
-            jMap.put("content", fragmentContent);
-           
-        } catch (Exception e) {
-            jMap.put("Content",e.getMessage());
+            
+            jMap.put("title", thisFrag.getTitle());
+        } else {
+            throw new WorkflowException("Content fragment reference is null.");
         }
+
+        Iterator<ContentElement> contentIterator = thisFrag.getElements();
+        Map<String,Map> fragmentContent = new HashMap();
+        while(contentIterator.hasNext()) {
+            ContentElement thisElement = contentIterator.next();
+            FragmentData thisElemData = thisElement.getValue();
+            ElementTemplate thisElemTemplate = thisTemplate.getForElement(thisElement);
+            Map<String, String> elementProperties = new HashMap();
+            elementProperties.put("contentValue", thisElement.getContent());
+            elementProperties.put("contentDataType", thisElement.getContentType());
+            elementProperties.put( "contentTypeString", thisElemData.getDataType().getTypeString());
+            elementProperties.put("contentDefault", thisElemTemplate.getDefaultContent());
+
+            fragmentContent.put(thisElement.getName(), elementProperties);
+        }
+        jMap.put("content", fragmentContent);
         
         String accessToken = "";
-        String tokenExpiry = "";
         if(processStepArguments.containsKey(ARG_API_URL) && processStepArguments.containsKey(ARG_TARGET)) {
             ObjectMapper objMapper = new ObjectMapper();
             objMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
@@ -148,64 +138,12 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
             try {
                 jsonOut = objMapper.writeValueAsString(jMap);
             } catch (Exception e) {
-                jsonOut = e.getMessage();
+                throw new WorkflowException("Failed to parse content fragment to JSON.\r\nException Message: " + e.getMessage());
             }
-            String testString = "";
-            /*
-            try {
-                testString = efeService.getPartnerAPIAuthURL();
-                log.warn("PartnerAPIAuthURL " + efeService.getPartnerAPIAuthURL());
-            } catch (Exception e) {
-                log.warn("PartnerAPIAuthURL Failed");
-            }
-            */
-            try {
-                testString = efeService.getPrintClientId();
-                log.warn("PrintClientID " + efeService.getPrintClientId());
-            } catch (Exception e) {
-                log.warn("PrintClientID Failed");
-            }
-            /*
-            try {
-                testString = efeService.getPrintClientSecret();
-                log.warn("PrintClientSecret " + efeService.getPrintClientSecret());
-            } catch (Exception e) {
-                log.warn("PrintClientSecret Failed");
-            }
-            try {
-                testString = efeService.getPartnerAPIAuthIssuer();
-                log.warn("PartnerAPIAuthIssuer " + efeService.getPartnerAPIAuthIssuer());
-            } catch (Exception e) {
-                log.warn("PartnerAPIAuthIssuer Failed");
-            }
-            try {
-                testString = efeService.getPartnerAPIAuthSub();
-                log.warn("PartnerAPIAuthSub " + efeService.getPartnerAPIAuthSub());
-            } catch (Exception e) {
-                log.warn("PartnerAPIAuthSub Failed");
-            }
-            try {
-                testString = efeService.getPartnerAPIAuthAudience();
-                log.warn("PartnerAPIAuthAudience " + efeService.getPartnerAPIAuthAudience());
-            } catch (Exception e) {
-                log.warn("PartnerAPIAuthAudience Failed");
-            }
-            try {
-                testString = efeService.getPartnerAPIAuthKID();
-                log.warn("PartnerAPIAuthKID " + efeService.getPartnerAPIAuthKID());
-            } catch (Exception e) {
-                log.warn("PartnerAPIAuthKID Failed");
-            }
-            try {
-                log.warn("PartnerAPI JWT " + getJWTHeader());
-            } catch (Exception e) {
-                log.warn("PartnerAPI JWT Failed");
-            }
-*/
+
             try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
                 HttpPost httpPost = new HttpPost(efeService.getPartnerAPIAuthURL().trim() + "?grant_type=" + "urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer" +
                         "&id_token=" + getJWTHeader());
-                //httpPost.setHeader("Authorization", "Basic " + getAuthToken(efeService.getPrintClientID(), efeService.getPrintClientSecret()));
                 httpPost.setHeader("Accept", "application/json");
                 httpPost.setHeader("Content-Type", "application/x-www-form-urlencoded");
                 List<NameValuePair> formParams = new ArrayList();
@@ -213,34 +151,28 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
                 formParams.add(new BasicNameValuePair("client_secret",efeService.getPrintClientSecret().trim()));
                 UrlEncodedFormEntity formValues = new UrlEncodedFormEntity(formParams);
                 httpPost.setEntity(formValues);
-                /*Map<String, String> paramMap = new HashMap();
-                paramMap.put("grant_type", "urn:ietf:params:oauth:grant-type:jwt-bearer");
-                paramMap.put("idToken", getJWTHeader());
-                String requestJson = objMapper.writeValueAsString(paramMap);
-                StringEntity requestEntity = new StringEntity(requestJson);
-                httpPost.setEntity(requestEntity);*/
                 // Execute the request and get the response
                 try (CloseableHttpResponse response = httpClient.execute(httpPost)) {
                     // Process the response
-                    int statusCode = response.getStatusLine().getStatusCode();  
-                    log.warn("Partner Auth Status Code: {}", statusCode);
+                    int statusCode = response.getStatusLine().getStatusCode();
+                    if(statusCode >= 400) {
+                        throw new Exception("PartnerAPI auth connection failure, HTTP Status - " + statusCode);
+                    }
                     if(statusCode == 200) {
                         HttpEntity responseEntity = response.getEntity();
                         if(responseEntity != null) {
+                            // Response should contain access_token and expires_in.
                             String responseString = EntityUtils.toString(responseEntity);
-                            log.warn("PartnerAPI Response Body: {}", responseString);
                             Map<String, String> responseMap = objMapper.readValue(responseString, HashMap.class);
                             accessToken = responseMap.get("access_token");
-                            tokenExpiry = responseMap.get("expires_in");
-                            log.warn("PartnerAPI accessToken: {}", accessToken);
-                            log.warn("PartnerAPI tokenExpiry: {}", tokenExpiry);
                         }
                     }
                 }
             } catch (Exception e) {
-                log.error("Error with JWT connection: " + e.getMessage());
+                throw new WorkflowException("Error when attempting to contact auth service.\r\nException message: " + e.getMessage());
             }
-            if(accessToken != "") {
+            
+            if(!accessToken.isBlank()) {
                             // Create an instance of CloseableHttpClient
                 try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
 
@@ -256,32 +188,37 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
                     httpPost.setEntity(requestEntity);
                     // Execute the request and get the response
                     try (CloseableHttpResponse response = httpClient.execute(httpPost)) {
+                        
                         // Process the response
                         int statusCode = response.getStatusLine().getStatusCode();  
-                        log.warn("PrintAPI response received from: {}", ARG_API_URL );
-                        log.warn("PrintAPI Status Code: {}", statusCode);
+                        if(statusCode >= 400) {
+                            throw new Exception("PrintAPI connection failure, HTTP Status - " + statusCode);
+                        }
+                        
                         // Get the response body, if needed
                         HttpEntity responseEntity = response.getEntity();
                         if (responseEntity != null) {
                             String responseBody = EntityUtils.toString(responseEntity);
-                            log.info("Response Body: {}", responseBody);
+                            log.info("PrintAPI response body: {}", responseBody);
                         }
                     }
                 } catch (Exception e) {
-                    log.error("Error with print system connection: " + e.getMessage());;
+                    throw new WorkflowException("Error when attempting to contact print service.\r\nException message: " + e.getMessage());
                 }
+            } else {
+                throw new WorkflowException("No access token generated from PartnerAPI.");
             }
 	 
+        } else {
+            if(!processStepArguments.containsKey(ARG_API_URL)) {
+                throw new WorkflowException("API URL missing from process arguments");
+            } else {
+                throw new WorkflowException("Target missing from process arguments");
+            }
+            
         }    
     }
-/*    
-    private String getAuthToken(String ClientId, String Pass) {
-        String combined = ClientId + ":" + Pass;
-        byte[] b64 = Base64.getEncoder().encode(combined.getBytes());
-        combined = new String(b64);
-        return combined;
-    }
-  */  
+
     /**
      * split the arguments passed to the ProcessStep into a map
      * 
