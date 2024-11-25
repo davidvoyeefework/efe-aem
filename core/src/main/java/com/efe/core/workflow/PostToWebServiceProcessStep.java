@@ -172,7 +172,7 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
                 throw new WorkflowException("Error when attempting to contact auth service.\r\nException message: " + e.getMessage());
             }
             
-            if(!accessToken.isBlank()) {
+            if(accessToken != "") {
                             // Create an instance of CloseableHttpClient
                 try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
 
