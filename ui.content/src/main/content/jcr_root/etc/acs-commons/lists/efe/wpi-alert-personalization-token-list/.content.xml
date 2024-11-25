@@ -50,7 +50,7 @@
             <item9
                 jcr:primaryType="nt:unstructured"
                 jcr:title="Planner Location"
-                value="\{planner.location}"/>
+                value="\{planner.location default=””}"/>
         </list>
     </jcr:content>
 </jcr:root>

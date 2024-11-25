@@ -124,6 +124,7 @@ class Initializer {
 
   onDocumentReady() {
   replaceLocationPlaceholder();
+  replaceLocationPlaceholderWithDefaultText();
     const elements = document.querySelectorAll(this.selectors.component);
     for (let i = 0; i < elements.length; i++) {
       this.initComponent(elements[i]);
@@ -145,18 +146,37 @@ function replaceLocationPlaceholder() {
     }
 }
 
+function replaceLocationPlaceholderWithDefaultText() {
+    const ldJsonScript = document.querySelector('script[type="application/ld+json"]');
+    const pattern = /\{planner\.location default=”[^”]*”\}/g;
+    const pageContent = document.body.innerHTML;
+    const matches = pageContent.match(pattern);
+    if (ldJsonScript == null && matches && matches.length > 0) {
+        const replacementText = fetchDefaultValue();
+        replacePlaceholder(replacementText);
+    }
+}
+
+function fetchDefaultValue() {
+    const pattern = /\{planner\.location default=”([^”]*)”\}/g;
+    const pageContent = document.body.innerHTML;
+    let match;
+    while ((match = pattern.exec(pageContent)) !== null) {
+        return match[1];
+    }
+}
 
 function replacePlaceholder(replacementText) {
     const paragraphs = document.querySelectorAll('p');
     paragraphs.forEach(paragraph => {
         let htmlContent = paragraph.innerHTML;
-        htmlContent = htmlContent.replace(/{planner\.location}/g, replacementText);
+        htmlContent = htmlContent.replace(/{planner\.location default=”[^”]*”}/g, replacementText);
         paragraph.innerHTML = htmlContent;
     });
     const spans = document.querySelectorAll('span');
     spans.forEach(span => {
         let htmlContent = span.innerHTML;
-        htmlContent = htmlContent.replace(/{planner\.location}/g, replacementText);
+        htmlContent = htmlContent.replace(/{planner\.location default=”[^”]*”}/g, replacementText);
         span.innerHTML = htmlContent;
     });
 }
