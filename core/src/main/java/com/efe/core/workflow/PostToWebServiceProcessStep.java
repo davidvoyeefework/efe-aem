@@ -121,9 +121,9 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
             FragmentData thisElemData = thisElement.getValue();
             ElementTemplate thisElemTemplate = thisTemplate.getForElement(thisElement);
             Map<String, String> elementProperties = new HashMap();
-            elementProperties.put("contentValue", thisElement.getContent());
-            elementProperties.put("contentDataType", thisElement.getContentType());
-            elementProperties.put( "contentTypeString", thisElemData.getDataType().getTypeString());
+            elementProperties.put("contentValue", thisElement.getContent().replace("=","\\="));
+            elementProperties.put("contentDataType", thisElement.getContentType().replace("=","\\="));
+            elementProperties.put( "contentTypeString", thisElemData.getDataType().getTypeString().replace("=","\\=;"));
             elementProperties.put("contentDefault", thisElemTemplate.getDefaultContent());
 
             fragmentContent.put(thisElement.getName(), elementProperties);
