@@ -13,6 +13,7 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.OSGiService;
+import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.slf4j.Logger;
@@ -21,12 +22,14 @@ import org.slf4j.LoggerFactory;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.day.cq.commons.Externalizer;
 import com.day.cq.dam.api.DamConstants;
+import com.day.cq.wcm.api.Page;
 import com.efe.core.bean.LocationResponse;
 import com.efe.core.models.MapDirection;
 import com.efe.core.services.EfeService;
 import com.efe.core.services.SeoService;
 import com.efe.core.utils.EFEUtil;
 import com.efe.core.utils.LocationPlannerUtil;
+import com.efe.core.utils.ResourceUtil;
 import com.efe.core.utils.SeoUtil;
 
 
@@ -111,16 +114,31 @@ public class MapDirectionImpl implements MapDirection {
 	/** The showMap. */
 	private Boolean showMap;
 
+	// The Styling Placement
+	private String placement;
+
+    // Resource Path
+    @ValueMapValue    
+    String resourcePath;  
+
+	// Resource Property
+	String resourceProperty;
+
 	/**
 	 * Inits the Model.
 	 */
 	@PostConstruct
 	public void init() {
+		resourcePath = resource.getPath();
+		resourceProperty = "placement"; 
+		placement = ResourceUtil.getProperty(resourceResolver, resourcePath, resourceProperty); 
+
 		isEmpty = true;
 		showMap = true;
 		locationResponse = new LocationResponse();
 		String[] selectors = request.getRequestPathInfo().getSelectors();
 		if (selectors.length == 2) {
+
 			final String state = selectors[0].toLowerCase();
 			final String city = selectors[1].toLowerCase();
 			if(StringUtils.equalsIgnoreCase(city,efeService.getNationalAdvisorCenter())) {
@@ -275,4 +293,10 @@ public class MapDirectionImpl implements MapDirection {
 	public Boolean getShowMap() {
 		return showMap;
 	}
+
+	// Method for Styling placement
+	public String getPlacement() {
+		return placement;
+	}
+
 }
