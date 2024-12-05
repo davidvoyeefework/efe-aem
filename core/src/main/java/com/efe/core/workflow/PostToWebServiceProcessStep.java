@@ -103,12 +103,13 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
             thisTemplate = thisFrag.getTemplate();
             jMap.put("name", thisFrag.getName());
             jMap.put("description", thisFrag.getDescription());
+            /*
             try {
                 jMap.put("tags", thisFrag.getTags());
             } catch (Exception e) {
                 jMap.put("tags", "");
             }
-            
+            */
             jMap.put("title", thisFrag.getTitle());
         } else {
             throw new WorkflowException("Content fragment reference is null.");
