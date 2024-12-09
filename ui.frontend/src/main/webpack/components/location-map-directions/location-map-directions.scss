@@ -4,7 +4,15 @@
         grid-template-columns: 1fr;
         height: 100%;
         position: relative;
-        min-height: 600px;
+        min-height: rem(600);
+
+        @media screen and (min-width: $md) {
+            min-height: rem(630);
+        }
+
+        @media screen and (min-width: $xxl) {
+            min-height: rem(620);
+        }
 
         .map-canvas-container {
             position: absolute;
