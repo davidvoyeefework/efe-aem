@@ -1,4 +1,50 @@
 .cmp-location--map-directions {
+
+    &.hero-placement {
+        grid-template-columns: 1fr;
+        height: 100%;
+        position: relative;
+        min-height: 600px;
+
+        .map-canvas-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .cmp-location--map-directions__items {
+            min-height: rem(120);
+            background-color: $efe-gray-mid;
+            padding: 20px 50px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            .cmp-location--map-directions__items--item {
+
+                @include flexbox(
+                    $flex-direction: row,
+                    $justify-content: space-between,
+                    $gap: 14px,
+                    $align-items: center,
+                    $flex-wrap: wrap,
+                );
+                margin-bottom: 0;
+                p {
+                    font-size: rem(20);
+                    line-height: 120%;
+                }
+            }
+            p.cmp-location--map-directions__btn-below-text {
+                display: none;
+            }
+            .cmp-location--map-directions__action-link {
+                background-color: #efefef;
+                margin: 0;
+                text-align: center;
+
+            }
+        }
+    }
     @include media("<tablet-lg") {
         background: $efe-gray-light;
     }
