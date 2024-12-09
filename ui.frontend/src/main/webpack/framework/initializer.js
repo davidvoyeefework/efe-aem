@@ -148,23 +148,39 @@ function replaceLocationPlaceholder() {
 
 function replaceLocationPlaceholderWithDefaultText() {
     const ldJsonScript = document.querySelector('script[type="application/ld+json"]');
-    const pattern = /\{planner\.location default=”[^”]*”\}/g;
+    const pattern = /\{planner\.location default=”([^”]*)”\}/g;
     const pageContent = document.body.innerHTML;
-    const matches = pageContent.match(pattern);
-    if ((ldJsonScript == null || JSON.parse(ldJsonScript.innerHTML).address == null) && matches && matches.length > 0) {
-        const replacementText = fetchDefaultValue();
-        replacePlaceholder(replacementText);
+
+    if ((ldJsonScript == null || JSON.parse(ldJsonScript.innerHTML).address == null)) {
+        replacePlaceholdersWithCorrespondingValues(pageContent, pattern);
     }
 }
 
-function fetchDefaultValue() {
-    const pattern = /\{planner\.location default=”([^”]*)”\}/g;
-    const pageContent = document.body.innerHTML;
+function replacePlaceholdersWithCorrespondingValues(pageContent, pattern) {
     let match;
+    let placeholders = [];
+
     while ((match = pattern.exec(pageContent)) !== null) {
-        return match[1];
+        placeholders.push({
+            placeholder: match[0],
+            value: match[1]
+        });
     }
+
+    placeholders.forEach(item => {
+        replacePlaceholderByPlaceholder(item.placeholder, item.value);
+    });
 }
+
+function replacePlaceholderByPlaceholder(placeholder, replacementText) {
+    const elements = document.querySelectorAll('p, span');
+    elements.forEach(element => {
+        let htmlContent = element.innerHTML;
+        htmlContent = htmlContent.replace(placeholder, replacementText);
+        element.innerHTML = htmlContent;
+    });
+}
+
 
 function replacePlaceholder(replacementText) {
     const paragraphs = document.querySelectorAll('p');
