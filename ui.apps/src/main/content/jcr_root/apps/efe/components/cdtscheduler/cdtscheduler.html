@@ -7,7 +7,8 @@
   if (window.efeSelfScheduler?.inject) {
     window.efeSelfScheduler.inject({
       id: document.getElementById("SFLeadIdField").value, // <-- same value as id in Step 1
-      leadId: document.getElementById("SFLeadIdField").value
+      leadId: document.getElementById("SFLeadIdField").value,
+      disableHeader: true
     });
   }
 </script>
