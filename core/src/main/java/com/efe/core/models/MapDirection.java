@@ -93,4 +93,7 @@ public interface MapDirection {
 	 */
 	Boolean getShowMap();
 
+	// Method to determine Styling placement
+	String getPlacement();
+
    }
