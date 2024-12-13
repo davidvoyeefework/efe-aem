@@ -54,7 +54,30 @@
             <div class="image cmp-image--top-left">
                 <div class="cmp-image"><img src="${model.articleFragmentPath.heroImage}" alt="" width="1096" height="440"></div>
             </div>
-        </sly>
+        </sly>  
+
+        <sly data-sly-test="${properties.listFrom == 'cta'}">
+        <section id="inline-section-cta" aria-role="content-info" aria-label="${model.ctaHeading}">
+            <div class="heading" data-sly-test.hasContent="${model.ctaHeading}">
+               ${model.ctaHeading @context='html'}
+            </div>
+
+            <div class="bodycopy" data-sly-test.hasContent="${model.bodyCopy}">
+              ${model.bodyCopy @context='html'}
+            </div>    
+
+            <sly data-sly-test.hasContent="${model.ctaText}">
+                <div class="button cmp-button--button-primary cmp-button--center cmp-button-- cmp-button--">                
+                    <a type="button" class="cmp-button" x-cq-linkchecker="skip" href="${model.ctaLink}" target="_self">
+                        <span class="cmp-button__text">${model.ctaText @context='html'}</span>
+                    </a>
+                </div>
+            </sly>  
+            
+        </section>    
+        </sly>        
+
+
 
         <sly data-sly-test.hasContent="${model.articleFragmentPath.articleSummary}">
             <div class="text cmp-text cmp-article-details__summary ">
@@ -72,6 +95,7 @@
 
         <div data-sly-resource="${@path=model.articleFragmentPath.body, selectors='content', wcmmode='disabled'}"
              class="cmp-article-details__body "></div>
+
         <div class="max-width cmp-article-details__disclaimar"
              data-sly-repeat.item="${model.articleFragmentPath.disclosures}">${item.disclosureText @context ='html'}
         </div>
@@ -238,6 +262,24 @@
                 }
 
         </script>  
+
+        // Move inline CTA to Second Node of Body Content / 3rd of title
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const inlineCta = document.getElementById("inline-section-cta");
+                let secondBodyParagraph = document.querySelector(".cmp-article-details__body .aem-Grid--12 div:nth-child(2)")
+                if (inlineCta != null) {
+                    if(secondBodyParagraph.classList.contains("title")) {
+                        let secondBodyParagraph = document.querySelector(".cmp-article-details__body .aem-Grid--12 div:nth-child(3)");
+                        secondBodyParagraph.appendChild(inlineCta);
+                    }
+                    else {
+                        let secondBodyParagraph = document.querySelector(".cmp-article-details__body .aem-Grid--12 div:nth-child(2)")
+                        secondBodyParagraph.appendChild(inlineCta);                        
+                    }
+                }
+            })
+        </script>                    
         
     </div>
 </sly>
