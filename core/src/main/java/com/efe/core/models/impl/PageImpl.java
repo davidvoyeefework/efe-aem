@@ -88,7 +88,7 @@ public class PageImpl implements PageModel {
                     String citySelector = selectors[1].toLowerCase();
                     Resource resourceLocation = LocationPlannerUtil.getLocationResource(resourceResolver, stateSelector, citySelector);
                     String city = LocationPlannerUtil.getLocationProperty(resourceResolver, resourceLocation, "city");
-                    return "If you’re looking for a financial planner in " + city + ", " + selectors[0].toUpperCase() + ", Edelman Financial Engines is here for you with an integrated approach centered on your goals.";
+                    return "Connect with financial advisors in " + city + ", " + selectors[0].toUpperCase() + ", at Edelman Financial Engines, and discover our approach to financial planning.";
                 } else if (canonicalUrl.endsWith("/financial-planner/") && selectors.length == 3) {
                     String nameSelector = selectors[0];
                     String idSelector = selectors[2];
@@ -127,7 +127,7 @@ public class PageImpl implements PageModel {
                     String citySelector = selectors[1].toLowerCase();
                     Resource resourceLocation = LocationPlannerUtil.getLocationResource(resourceResolver, stateSelector, citySelector);
                     String city = LocationPlannerUtil.getLocationProperty(resourceResolver, resourceLocation, "city");
-                    return "Find a financial planner near " + city +", " + selectors[0].toUpperCase();
+                    return "Financial Advisors in " + city +", " + selectors[0].toUpperCase();
                 } else if (canonicalUrl.endsWith("/financial-planner/") && selectors.length == 3) {
                     String nameSelector = selectors[0];
                     String idSelector = selectors[2];
