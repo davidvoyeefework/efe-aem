@@ -134,24 +134,35 @@ class Initializer {
 }
 
 function replaceLocationPlaceholder() {
-    const ldJsonScript = document.querySelector('script[type="application/ld+json"]');
-    if (ldJsonScript != null) {
-        const jsonData = JSON.parse(ldJsonScript.innerHTML);
-        if (jsonData.address != null) {
-            const addressLocality = jsonData.address.addressLocality;
-            const addressRegion = jsonData.address.addressRegion;
-            const replacementText = `${addressLocality}, ${addressRegion}`;
-            replacePlaceholder(replacementText);
+    const ldJsonScripts = document.querySelectorAll('script[type="application/ld+json"]');
+    ldJsonScripts.forEach(ldJsonScript => {
+        try {
+            const jsonData = JSON.parse(ldJsonScript.innerHTML);
+            if (jsonData.address != null) {
+                const addressLocality = jsonData.address.addressLocality;
+                const addressRegion = jsonData.address.addressRegion;
+                const replacementText = `${addressLocality}, ${addressRegion}`;
+                replacePlaceholder(replacementText);
+            }
+        } catch (e) {
+            console.error('Error parsing JSON in <script type="application/ld+json">:', e);
         }
-    }
+    });
 }
 
 function replaceLocationPlaceholderWithDefaultText() {
-    const ldJsonScript = document.querySelector('script[type="application/ld+json"]');
+    const ldJsonScripts = document.querySelectorAll('script[type="application/ld+json"]');
     const pattern = /\{planner\.location default=”([^”]*)”\}/g;
     const pageContent = document.body.innerHTML;
-
-    if ((ldJsonScript == null || JSON.parse(ldJsonScript.innerHTML).address == null)) {
+    const hasAddress = Array.from(ldJsonScripts).some(ldJsonScript => {
+        try {
+            const jsonData = JSON.parse(ldJsonScript.innerHTML);
+            return jsonData.address != null;
+        } catch (e) {
+            return false;
+        }
+    });
+    if (!hasAddress) {
         replacePlaceholdersWithCorrespondingValues(pageContent, pattern);
     }
 }
