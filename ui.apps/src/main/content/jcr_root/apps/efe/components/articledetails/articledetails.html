@@ -236,7 +236,7 @@
 
                 const details = {
                     id: "${currentPage.properties['jcr:uuid']  @context='html'}",
-                    name: `${model.articleFragmentPath.title @context="styleComment"}`,
+                    name: '${model.articleFragmentPath.title @context="styleComment"}',
                     categoryId: '${currentPage.parent.getPath  @context="html"}',
                     pageUrl: '${currentPage.getPath  @context="html"}',
                     thumbnail: '${model.articleFragmentPath.heroImage @context="html"}'
@@ -259,12 +259,10 @@
                     categoryId: categoryIdClean,
                     pageUrl: pageUrlClean,
                     thumbnail: '${model.articleFragmentPath.heroImage @context="html"}'
-                }
+                };
 
-        </script>  
 
         // Move inline CTA to Second Node of Body Content / 3rd of title
-        <script>
             document.addEventListener("DOMContentLoaded", function () {
                 const inlineCta = document.getElementById("inline-section-cta");
                 let secondBodyParagraph = document.querySelector(".cmp-article-details__body .aem-Grid--12 div:nth-child(2)")
