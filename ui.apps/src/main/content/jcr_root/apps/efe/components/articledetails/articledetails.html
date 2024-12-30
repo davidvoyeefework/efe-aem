@@ -259,22 +259,20 @@
                     categoryId: categoryIdClean,
                     pageUrl: pageUrlClean,
                     thumbnail: '${model.articleFragmentPath.heroImage @context="html"}'
-                }
+                };
 
-        </script>  
 
         // Move inline CTA to Second Node of Body Content / 3rd of title
-        <script>
             document.addEventListener("DOMContentLoaded", function () {
                 const inlineCta = document.getElementById("inline-section-cta");
-                let secondBodyParagraph = document.querySelector(".cmp-article-details__body .aem-Grid--12 div:nth-child(2)")
+                let secondBodyParagraph = document.querySelector(".cmp-article-details__body .aem-Grid--12 div:nth-child(2)");
                 if (inlineCta != null) {
                     if(secondBodyParagraph.classList.contains("title")) {
                         let secondBodyParagraph = document.querySelector(".cmp-article-details__body .aem-Grid--12 div:nth-child(3)");
                         secondBodyParagraph.appendChild(inlineCta);
                     }
                     else {
-                        let secondBodyParagraph = document.querySelector(".cmp-article-details__body .aem-Grid--12 div:nth-child(2)")
+                        let secondBodyParagraph = document.querySelector(".cmp-article-details__body .aem-Grid--12 div:nth-child(2)");
                         secondBodyParagraph.appendChild(inlineCta);                        
                     }
                 }
