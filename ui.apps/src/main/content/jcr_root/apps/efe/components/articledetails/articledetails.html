@@ -278,6 +278,9 @@
                     }
                     else {
                         let secondBodyParagraph = document.querySelector(".cmp-article-details__body .aem-Grid--12 div:nth-child(2)")
+                        if (secondBodyParagraph == null) {
+                            secondBodyParagraph = document.querySelector(".cmp-article-details__body .aem-Grid--12 .cmp-text p:nth-child(2)");
+                        }
                         secondBodyParagraph.appendChild(inlineCta);                        
                     }
                 }
