@@ -280,6 +280,9 @@
                             secondBodyParagraph = document.querySelector(".cmp-article-details__body .aem-Grid--12 .cmp-text p:nth-child(2)");
                         }
                         inlineCta.classList.add("m-bottom");
+                        if (secondBodyParagraph.childNodes[0].classList.contains("cmp-text--subhead-00")) {
+                            secondBodyParagraph = document.querySelector(".cmp-article-details__body .aem-Grid--12 .cmp-text p:nth-child(3)");
+                        }
                         secondBodyParagraph.appendChild(inlineCta);                        
                     }
                 }
