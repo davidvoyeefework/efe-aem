@@ -8,6 +8,10 @@
     text-align: center;
     margin-top: 35px;
 
+    &.m-bottom {
+        margin-bottom: 35px;
+    }
+
     .heading {
         * {
             @include subhead-01;
