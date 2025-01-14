@@ -43,4 +43,10 @@ public interface ArticleDetails {
     // Get CTA Label
     String getCtaLink();
 
+    // Value for showing Article Sidebar
+    String getSidebar();
+
+    // Get RTE configs for Article Sidebar
+    // String getSidebarRte;
+
 }

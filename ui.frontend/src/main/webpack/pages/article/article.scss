@@ -1,6 +1,21 @@
 .cmp-article-details {
     padding: rem(48) 0;
 
+    &.sidebar {
+        .max-width a p, 
+        div.cmp-title--heading-03 h1.max-width p, 
+        div.text h2 p, 
+        #article-details__published-date p
+
+          {
+            text-align: left !important;
+        }
+
+        .max-width {
+            max-width: unset;
+        }
+    }
+
     .max-width {
         max-width: rem(704);
         margin: 0 auto;
@@ -146,6 +161,7 @@
         }
     }
 }
+
 .relatedarticle {
     .cmp-list--horizontal.cmp-list--tight .cmp-list {
         gap: rem(40);

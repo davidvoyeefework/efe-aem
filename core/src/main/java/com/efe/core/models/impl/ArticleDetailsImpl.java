@@ -106,6 +106,9 @@ public class ArticleDetailsImpl implements ArticleDetails {
     
     // CTA Heading
     String resourceProperty;
+
+    // Artice Sidebar Show or NoShow
+    String sidebar;
   
 
     /**
@@ -131,6 +134,10 @@ public class ArticleDetailsImpl implements ArticleDetails {
         // Fetch inline section CTA link
         String resourcePropertyCtaLink = "buttonLink";
         ctaLink = ResourceUtil.getProperty(resourceResolver, resourcePath, resourcePropertyCtaLink);        
+
+        // Fetch Article Sidebar Show or NoShow Value
+        String resourcePropertyShowSidebar = "sidebar";
+        sidebar = ResourceUtil.getProperty(resourceResolver, resourcePath, resourcePropertyShowSidebar);          
 
 
 
@@ -205,5 +212,13 @@ public class ArticleDetailsImpl implements ArticleDetails {
     // Gets CTA Link
     public String getCtaLink() {
         return ctaLink;
-    }     
+    }    
+    
+    // Return flag for Article Sidbar
+    public String getSidebar() {
+        return sidebar;
+    }
+
+    
+    
 }

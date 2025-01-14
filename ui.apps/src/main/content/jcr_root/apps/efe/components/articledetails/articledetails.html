@@ -2,7 +2,7 @@
      data-sly-use.template="core/wcm/components/commons/v1/templates.html"
      data-sly-test.isNotEmpty="${properties.articleFragmentPath}">
     <div data-sly-test="${properties.articleFragmentPath}"
-         class="cmp-container cmp-container--white cmp-article-details" id="${model.id}">
+        class="${properties.sidebar == 'yes' ? 'sidebar' : ''} cmp-container cmp-container--white cmp-article-details" id="${model.id}">
          <sly data-sly-test="${currentPage.parent.pageTitle}">
             <div class="max-width">
                 <a href="${currentPage.parent.getPath}.html">
@@ -223,12 +223,37 @@
         </script>
         <script>
             document.addEventListener("DOMContentLoaded", function () {
-                const socialblock = document.querySelector('[id ^= "socialshare-"]').parentNode.parentNode.parentNode.parentNode;
-                const socialblockcore = document.querySelector('[id ^= "socialshare-"]');
-                socialblock.classList.remove("cmp-container--padding-top");
-                socialblockcore.style.padding = "32px 0px 32px 0px";
-                const publishdate = document.getElementById("article-details__published-date");
-                publishdate.appendChild(socialblock);
+
+                const sidebarNode = document.querySelector(".articledetails > .sidebar");
+                const socialblockcore = document.querySelector('[id ^= "socialshare-"]');   
+                const socialblock = document.querySelector('[id ^= "socialshare-"]').parentNode.parentNode.parentNode.parentNode;      
+                const socialshareDOM = document.querySelector('.socialshare');   
+                const socialshareDomParent = socialshareDOM.parentNode;                    
+
+                // Move Social Block to top of article no sidebar is present
+                if (sidebarNode == null) {
+                    socialblock.classList.remove("cmp-container--padding-top");
+                    socialblockcore.style.padding = "32px 0px 32px 0px";
+                    const publishdate = document.getElementById("article-details__published-date");
+                    publishdate.appendChild(socialblock);
+                }
+
+                // Move Social block at end of Sidebar if present
+                if (sidebarNode != null) {
+                    const sidebar = document.getElementById("efe-article-sidebar");
+                    const sidebarMarker = document.getElementById("end-marker");
+                    const socialEmail = document.querySelector(".cmp-social-share__link img[alt='Email this page']");
+                    const socialPrint = document.querySelector(".cmp-social-share__link img[alt='Print this page']");                    
+                    socialEmail.parentNode.style.display = "none";
+                    socialPrint.parentNode.style.display = "none";
+                    socialblock.classList.remove("cmp-container--padding-top");
+                    const h3 = document.createElement("h3");
+                    h3.textContent = "Share this article";
+                    socialshareDomParent.insertBefore(h3, socialshareDOM);
+                    sidebarMarker.appendChild(socialblock);
+                }
+
+
             });
         </script>    
         
@@ -292,6 +317,17 @@
         </script>                    
         
     </div>
+
+
+    <sly data-sly-test="${properties.sidebar == 'yes'}">
+        <aside id="efe-article-sidebar" aria-role="content-info" aria-label="More details about this article and offers from Edelman Financial Engines">
+            <sly data-sly-test.hasContent="${properties.sidebarrte}">
+                ${properties.sidebarrte @context='html'}
+                <div id="end-marker"></div>
+            </sly>
+        </aside>
+    </sly>
+
 </sly>
 <sly data-sly-call="${template.placeholder @ isEmpty=!isNotEmpty, classAppend='cmp-articledetails'}"></sly>
 
