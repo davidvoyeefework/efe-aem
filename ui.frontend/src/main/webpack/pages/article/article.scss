@@ -7,14 +7,12 @@
         div.text h2 p, 
         #article-details__published-date p
 
-          {
-            text-align: left !important;
-        }
-
         .max-width {
             max-width: unset;
         }
     }
+
+
 
     .max-width {
         max-width: rem(704);
@@ -187,6 +185,98 @@
 // Sidebar Styling Framework
 #article-layout {
     &.sidebar {
+        max-width: rem(1192);
+        margin: 0 auto;
+
+        #article-sidebar-rte {
+            border-bottom: 1px solid $efe-gray-mid;
+            padding-bottom: 36px;
+
+            h1 {
+                @include heading-04;
+                margin-bottom: 10px;
+            }
+
+            h2 {
+                @include subhead-00;
+                margin-bottom: 10px;
+            }
+
+            h3 {
+                @include subhead-01;
+                font-weight: 700;
+                margin-bottom: 10px;
+            }
+
+            .cmp-button--center{
+                .cmp-button {
+                    text-align: left !important;
+                    margin: 0;
+                }
+        
+            }
+
+
+
+        }
+
+        #article-sidebar-authors {
+            padding: 36px 0px 18px;
+
+            h3 {
+                @include subhead-01;
+                font-weight: 700;
+                margin-bottom: 18px;
+            }
+            .cmp-article-details__authors-by {
+                margin: 0 !important;
+                text-align: left;
+            }
+            .cmp-text--body-03 {
+                a p.author-name {
+                    @include body-02;
+                    color: $efe-gray-deep-charcoal;
+                }
+
+                 > p.author-name {
+                    @include body-03;
+                    color: $efe-gray-new;
+                    margin-bottom: 18px;
+                }
+            }
+            border-bottom: 1px solid $efe-gray-mid;
+        }
+
+        #articel-side-bar-social {
+            padding-top: 36px;
+            h3 {
+                @include subhead-01;
+                font-weight: 700;
+            }
+            .cmp-social-share__images {
+                @include flexbox(
+                    $gap: 13px,
+                    $justify-content: start
+                )
+            }
+            .cq-placeholder.cq-marker-start {
+                display: none;
+            }
+            #end-marker {
+                .aem-Grid {
+                    @include flexbox(
+                        $justify-content: space-between,
+                    );
+                    h3 {
+                        flex: 1 0 auto;
+                    }
+                    .socialshare {
+                        flex: 1 0;
+                    }
+                }
+            }
+        }
+
         @media screen and (min-width: $lg) {
             @include flexbox(
                 $gap: 40px

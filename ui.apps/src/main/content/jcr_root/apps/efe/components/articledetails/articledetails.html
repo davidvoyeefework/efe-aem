@@ -326,15 +326,15 @@
                                             data-sly-list.item="${model.articleFragmentPath.articleAuthors}">
                                             <a x-cq-linkchecker="skip" href="${item.liveURL}">
                                                 <p class="author-name">${item.name}</p>
-                                                <p class="author-name">${item.title}</p>                                        
                                             </a>
+                                            <p class="author-name">${item.title}</p>                                        
                                         </sly>
                                         <sly data-sly-test.hasContent="${model.articleFragmentPath.plannerResponse}"
                                             data-sly-list.item="${model.articleFragmentPath.plannerResponse}">
                                             <a x-cq-linkchecker="skip" href="${item.url}" >
                                                 <p class="author-name">${item.firstNameAlias} ${item.lastName}</p>
-                                                <p class="author-name">${item.title}</p>                                        
                                             </a>
+                                            <p class="author-name">${item.title}</p>                                        
                                         </sly>
                                     </span>
                                 </div>
