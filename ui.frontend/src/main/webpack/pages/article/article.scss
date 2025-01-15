@@ -183,3 +183,20 @@
         }
     }
 }
+
+// Sidebar Styling Framework
+#article-layout {
+    &.sidebar {
+        @media screen and (min-width: $lg) {
+            @include flexbox(
+                $gap: 40px
+            );
+            .cmp-article-details {
+                flex-basis: 65%;
+            }
+            aside{
+                flex-basis: 35%;
+            }
+        }
+    }
+}
