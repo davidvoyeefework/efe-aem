@@ -1,6 +1,21 @@
 .cmp-article-details {
     padding: rem(48) 0;
 
+    &.sidebar {
+        .max-width a p, 
+        div.cmp-title--heading-03 h1.max-width p, 
+        div.text h2 p, 
+        #article-details__published-date p,
+        .cmp-article-details__published-date,
+        .max-width {
+            max-width: unset;
+            text-align: left !important;
+        }
+
+    }
+
+
+
     .max-width {
         max-width: rem(704);
         margin: 0 auto;
@@ -146,6 +161,7 @@
         }
     }
 }
+
 .relatedarticle {
     .cmp-list--horizontal.cmp-list--tight .cmp-list {
         gap: rem(40);
@@ -163,6 +179,143 @@
             }
             &__action-container {
                 margin-top: rem(12);
+            }
+        }
+    }
+}
+
+// Sidebar Styling Framework
+#article-layout {
+    &.sidebar {
+        max-width: rem(1192);
+        margin: 0 auto;
+
+        .cmp-article-details__published-date {
+            margin: 28px 0 80px;
+        }
+
+        .text {
+            .cmp-text--body-01, .cmp-text--body-02, .cmp-text--body-03 {
+                margin-bottom: 24px;
+            }
+        }
+
+        .primary-nav-link-red {
+            margin-bottom: 24px;
+        }
+
+        #article-sidebar-rte {
+            border-bottom: 1px solid $efe-gray-mid;
+            padding-bottom: 36px;
+
+            h1 {
+                @include heading-04;
+                margin-bottom: 13px;
+            }
+
+            h2 {
+                @include subhead-00;
+                margin-bottom: 13px;
+            }
+
+            h3 {
+                @include subhead-01;
+                font-weight: 700;
+                margin-bottom: 13px;
+            }
+
+            p {
+                margin-bottom: 18px;
+            }
+
+            .cmp-button--center{
+                .cmp-button {
+                    text-align: left !important;
+                    margin: 0;
+                }
+        
+            }
+
+
+
+        }
+
+        #article-sidebar-authors {
+            display: none;
+            padding: 36px 0px 18px;
+
+            h3 {
+                @include subhead-01;
+                font-weight: 700;
+                margin-bottom: 18px;
+            }
+            .cmp-article-details__authors-by {
+                margin: 0 !important;
+                text-align: left;
+            }
+            .cmp-text--body-03 {
+                a p.author-name {
+                    @include body-02;
+                    color: $efe-gray-deep-charcoal;
+                }
+
+                 > p.author-name {
+                    @include body-03;
+                    color: $efe-gray-new;
+                    margin-bottom: 18px;
+                }
+            }
+            border-bottom: 1px solid $efe-gray-mid;
+        }
+
+        #articel-side-bar-social {
+            padding-top: 36px;
+            h3 {
+                @include subhead-01;
+                font-weight: 700;
+            }
+            .cmp-social-share__images {
+                @include flexbox(
+                    $gap: 13px,
+                    $justify-content: start
+                )
+            }
+            .cq-placeholder.cq-marker-start {
+                display: none;
+            }
+            #end-marker {
+                .aem-Grid {
+                    @include flexbox(
+                        $justify-content: space-between,
+                    );
+                    h3 {
+                        flex: 1 0 auto;
+                    }
+                    .socialshare {
+                        flex: 1 0;
+                    }
+                }
+            }
+        }
+
+        @media screen and (min-width: $lg) {
+
+            aside#efe-article-sidebar {
+                padding-top: 351px;
+            }  
+
+            #article-sidebar-authors {
+                display: block;
+            }            
+
+            @include flexbox(
+                $gap: 40px
+            );
+            .cmp-article-details {
+                flex-basis: 65%;
+            }
+            aside{
+                flex-basis: 35%;
             }
         }
     }
