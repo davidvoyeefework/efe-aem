@@ -204,6 +204,12 @@
             margin-bottom: 24px;
         }
 
+        #article-sidebar-exp-frag {
+            width: 100%;
+            overflow: hidden;
+            margin-bottom: 36px;
+        }
+
         #article-sidebar-rte {
             border-bottom: 1px solid $efe-gray-mid;
             padding-bottom: 36px;
@@ -300,8 +306,13 @@
 
         @media screen and (min-width: $lg) {
 
+            #article-sidebar-exp-frag {
+                max-width: 400px;
+                overflow: hidden;
+            }
+
             aside#efe-article-sidebar {
-                padding-top: 351px;
+                padding-top: 356px;
             }  
 
             #article-sidebar-authors {
