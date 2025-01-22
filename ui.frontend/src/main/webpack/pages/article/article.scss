@@ -295,10 +295,11 @@
                         $justify-content: space-between,
                     );
                     h3 {
-                        flex: 1 0 auto;
+                        flex: 0 0 50%;
+                        margin-right: 10px;
                     }
                     .socialshare {
-                        flex: 1 0;
+                        flex: 0 0 50%;
                     }
                 }
             }
@@ -312,7 +313,9 @@
             }
 
             aside#efe-article-sidebar {
-                padding-top: 356px;
+                position: relative;
+                top: 356px;
+                height: fit-content;
             }  
 
             #article-sidebar-authors {

@@ -433,6 +433,7 @@
                                             <showSidebar
                                                 jcr:primaryType="nt:unstructured"
                                                 text="Yes"
+                                                selected="{Boolean}true"
                                                 value="yes"/> 
                                         </items>
                                     </list>                                                                                        
@@ -605,16 +606,27 @@
                                                     propertyFilter="cq:xfShowInEditor"
                                                     variant="web"
                                                     fieldDescription="Choose the experience fragment variation to display.">
-                                                    </fragmentVariationPath>                                                                                                 
-
+                                                    </fragmentVariationPath>  
+                                                        <listOrder
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/foundation/form/select"
+                                                            fieldLabel="SideBar Order"
+                                                            name="./order">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <order1
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="RTE then Exp Fragment"
+                                                                    value="rte-first"/>
+                                                                <order2
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    text="Exp Fragment then RTE"
+                                                                    value="rte-last"/> 
+                                                            </items>
+                                                        </listOrder>                                                                                                                                  
                                                 </items>
                                             </well>
                                         </items>
                                     </showSidegroup>
-                                 
-
-
-
 
                                 </items>
                             </column>
