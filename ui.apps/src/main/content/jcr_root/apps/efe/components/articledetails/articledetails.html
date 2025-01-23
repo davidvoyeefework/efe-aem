@@ -307,13 +307,11 @@
                         const sidebar = document.getElementById('efe-article-sidebar');
                         const wrapper = document.getElementById('wrapper');
                         const trigger = document.getElementById('trigger');
-                        const articleHeight = (document.getElementById("article-layout").clientHeight - sidebar.clientHeight) + 356;
+                        const articleHeight = (document.getElementById("article-layout").clientHeight - (sidebar.clientHeight + 356));
 
 
                         if (sidebar != null) {
                            gsap.registerPlugin(ScrollTrigger,ScrollToPlugin);
-
-
 
                            const tl = gsap.timeline({
                                 scrollTrigger: {
@@ -331,7 +329,6 @@
 
 
 
-                  
                     });
                  </script>               
                 
