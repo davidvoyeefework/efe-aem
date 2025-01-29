@@ -339,7 +339,7 @@ export default class LocationMapResults {
         furthestLocation = Math.max(furthestLocation, distance);
       }
     });
-    return (furthestLocation * 1609.34) / 1.8;
+    return furthestLocation * 1609.34;
   }
 
   filterArray(value) {
