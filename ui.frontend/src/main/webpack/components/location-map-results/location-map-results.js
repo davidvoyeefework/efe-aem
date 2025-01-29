@@ -328,9 +328,9 @@ export default class LocationMapResults {
   getDynamicRadiusForFurthestOffice(lat, lng, locations) {
     let furthestLocation = 0;
     locations.forEach((location) => {
-      const locationLat = parseFloat(location.latitude);
-      const locationLng = parseFloat(location.longitude);
-      const distance =
+      let locationLat = parseFloat(location.latitude);
+      let locationLng = parseFloat(location.longitude);
+      let distance =
         google.maps.geometry.spherical.computeDistanceBetween(
           new google.maps.LatLng(lat, lng),
           new google.maps.LatLng(locationLat, locationLng),
