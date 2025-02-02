@@ -349,73 +349,75 @@
                 <aside id="efe-article-sidebar" aria-role="content-info" aria-label="More details about this article and offers from Edelman Financial Engines">
                     <div id="wrapper">
                         <sly data-sly-test="${properties.order == 'rte-first'}">
-                            <div id="article-sidebar-rte">
-                                <sly data-sly-test.hasContent="${properties.sidebarrte}">
-                                    ${properties.sidebarrte @context='html'}
-                                </sly>
-                            </div> 
-                        
-                            <div id="article-sidebar-exp-frag">
-                                <div data-sly-use.fragment="com.adobe.cq.wcm.core.components.models.ExperienceFragment"
-                                    data-sly-use.template="core/wcm/components/commons/v1/templates.html"
-                                    data-sly-test=${fragment.configured}
-                                    data-sly-set.selector="content.${request.requestPathInfo.selectorString}"
-                                    data-sly-resource="${@path=fragment.localizedFragmentVariationPath, selectors=selector, wcmmode='disabled'}"
-                                    id="${fragment.id}"
-                                    class="cmp-experiencefragment cmp-experiencefragment--${fragment.name}">
+                            <div id="article-author-content">
+                                <div id="article-sidebar-rte">
+                                    <sly data-sly-test.hasContent="${properties.sidebarrte}">
+                                        ${properties.sidebarrte @context='html'}
+                                    </sly>
+                                </div> 
+                            
+                                <div id="article-sidebar-exp-frag">
+                                    <div data-sly-use.fragment="com.adobe.cq.wcm.core.components.models.ExperienceFragment"
+                                        data-sly-use.template="core/wcm/components/commons/v1/templates.html"
+                                        data-sly-test=${fragment.configured}
+                                        data-sly-set.selector="content.${request.requestPathInfo.selectorString}"
+                                        data-sly-resource="${@path=fragment.localizedFragmentVariationPath, selectors=selector, wcmmode='disabled'}"
+                                        id="${fragment.id}"
+                                        class="cmp-experiencefragment cmp-experiencefragment--${fragment.name}">
+                                    </div>
+                                    <sly data-sly-call="${template.placeholder @ isEmpty=!fragment.configured, classAppend='cmp-dd-experiencefragment'}"></sly>
                                 </div>
-                                <sly data-sly-call="${template.placeholder @ isEmpty=!fragment.configured, classAppend='cmp-dd-experiencefragment'}"></sly>
                             </div>
                         </sly>
 
                         <sly data-sly-test="${properties.order == 'rte-last'}">
-                            
-                            <div id="article-sidebar-exp-frag">
-                                <div data-sly-use.fragment="com.adobe.cq.wcm.core.components.models.ExperienceFragment"
-                                    data-sly-use.template="core/wcm/components/commons/v1/templates.html"
-                                    data-sly-test=${fragment.configured}
-                                    data-sly-set.selector="content.${request.requestPathInfo.selectorString}"
-                                    data-sly-resource="${@path=fragment.localizedFragmentVariationPath, selectors=selector, wcmmode='disabled'}"
-                                    id="${fragment.id}"
-                                    class="cmp-experiencefragment cmp-experiencefragment--${fragment.name}">
+                            <div id="article-author-content">
+                                <div id="article-sidebar-exp-frag">
+                                    <div data-sly-use.fragment="com.adobe.cq.wcm.core.components.models.ExperienceFragment"
+                                        data-sly-use.template="core/wcm/components/commons/v1/templates.html"
+                                        data-sly-test=${fragment.configured}
+                                        data-sly-set.selector="content.${request.requestPathInfo.selectorString}"
+                                        data-sly-resource="${@path=fragment.localizedFragmentVariationPath, selectors=selector, wcmmode='disabled'}"
+                                        id="${fragment.id}"
+                                        class="cmp-experiencefragment cmp-experiencefragment--${fragment.name}">
+                                    </div>
+                                    <sly data-sly-call="${template.placeholder @ isEmpty=!fragment.configured, classAppend='cmp-dd-experiencefragment'}"></sly>
                                 </div>
-                                <sly data-sly-call="${template.placeholder @ isEmpty=!fragment.configured, classAppend='cmp-dd-experiencefragment'}"></sly>
-                            </div>
 
-                            <div id="article-sidebar-rte">
-                                <sly data-sly-test.hasContent="${properties.sidebarrte}">
-                                    ${properties.sidebarrte @context='html'}
-                                </sly>
-                            </div> 
-    
+                                <div id="article-sidebar-rte">
+                                    <sly data-sly-test.hasContent="${properties.sidebarrte}">
+                                        ${properties.sidebarrte @context='html'}
+                                    </sly>
+                                </div> 
+                            </div>
                         </sly>           
        
-
-                    <div id="article-sidebar-authors">
                         <sly data-sly-test.hasContent="${model.articleFragmentPath.articleAuthors || model.articleFragmentPath.plannerResponse}">
-                            <h3>Authors</h3>
-                            <div class="text cmp-article-details__authors-by max-width">
-                                <div class="cmp-text--body-03"
-                                    data-sly-test.hasContent="${model.articleFragmentPath.articleAuthors || model.articleFragmentPath.plannerResponse}">
-                                        <sly data-sly-test.hasContent="${model.articleFragmentPath.articleAuthors}"
-                                            data-sly-list.item="${model.articleFragmentPath.articleAuthors}">
-                                            <a x-cq-linkchecker="skip" href="${item.liveURL}">
-                                                <p class="author-name">${item.name}</p>
-                                            </a>
-                                            <p class="author-name">${item.title}</p>                                        
-                                        </sly>
-                                        <sly data-sly-test.hasContent="${model.articleFragmentPath.plannerResponse}"
-                                            data-sly-list.item="${model.articleFragmentPath.plannerResponse}">
-                                            <a x-cq-linkchecker="skip" href="${item.url}" >
-                                                <p class="author-name">${item.firstNameAlias} ${item.lastName}</p>
-                                            </a>
-                                            <p class="author-name">${item.title}</p>                                        
-                                        </sly>
-                                    </span>
+                            <div id="article-sidebar-authors">
+                                <h3>Authors</h3>
+                                <div class="text cmp-article-details__authors-by max-width">
+                                    <div class="cmp-text--body-03"
+                                        data-sly-test.hasContent="${model.articleFragmentPath.articleAuthors || model.articleFragmentPath.plannerResponse}">
+                                            <sly data-sly-test.hasContent="${model.articleFragmentPath.articleAuthors}"
+                                                data-sly-list.item="${model.articleFragmentPath.articleAuthors}">
+                                                <a x-cq-linkchecker="skip" href="${item.liveURL}">
+                                                    <p class="author-name">${item.name}</p>
+                                                </a>
+                                                <p class="author-name">${item.title}</p>                                        
+                                            </sly>
+                                            <sly data-sly-test.hasContent="${model.articleFragmentPath.plannerResponse}"
+                                                data-sly-list.item="${model.articleFragmentPath.plannerResponse}">
+                                                <a x-cq-linkchecker="skip" href="${item.url}" >
+                                                    <p class="author-name">${item.firstNameAlias} ${item.lastName}</p>
+                                                </a>
+                                                <p class="author-name">${item.title}</p>                                        
+                                            </sly>
+                                        </span>
+                                    </div>
                                 </div>
-                            </div>
+                            </div>                             
                         </sly>
-                    </div> 
+
                     
                     <div id="articel-side-bar-social">        
                         <div id="end-marker"></div>
