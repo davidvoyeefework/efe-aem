@@ -293,6 +293,7 @@
                 .aem-Grid {
                     @include flexbox(
                         $justify-content: space-between,
+                        $align-items: center,
                     );
                     h3 {
                         flex: 0 0 calc(100% - 132px);
