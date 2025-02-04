@@ -297,6 +297,12 @@
                                 let secondBodyParagraph = document.querySelector(".cmp-article-details__body .aem-Grid--12 div:nth-child(2)")
                                 if (secondBodyParagraph == null) {
                                     secondBodyParagraph = document.querySelector(".cmp-article-details__body .aem-Grid--12 .cmp-text p:nth-child(2)");
+                                        if (secondBodyParagraph == null) {
+                                            secondBodyParagraph = document.querySelector(".cmp-article-details__body .xfpage .text .cmp-text p:nth-child(2)");
+                                            if (secondBodyParagraph == null) {
+                                                secondBodyParagraph = document.querySelector(".cmp-article-details__body .xfpage .text .cmp-text");
+                                            }
+                                        }                                    
                                 }
                                 inlineCta.classList.add("m-bottom");
                                 if (secondBodyParagraph.childNodes[0].classList.contains("cmp-text--subhead-00")) {
