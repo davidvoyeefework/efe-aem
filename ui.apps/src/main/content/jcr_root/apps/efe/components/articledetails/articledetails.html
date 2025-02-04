@@ -1,303 +1,455 @@
-<sly data-sly-use.model="com.efe.core.models.ArticleDetails"
-     data-sly-use.template="core/wcm/components/commons/v1/templates.html"
-     data-sly-test.isNotEmpty="${properties.articleFragmentPath}">
-    <div data-sly-test="${properties.articleFragmentPath}"
-         class="cmp-container cmp-container--white cmp-article-details" id="${model.id}">
-         <sly data-sly-test="${currentPage.parent.pageTitle}">
-            <div class="max-width">
-                <a href="${currentPage.parent.getPath}.html">
-                    <p class="primary-nav-link-red center mb-8">${currentPage.parent.pageTitle}</p>
-                </a>
-            </div>
-        </sly>
-        <div class="title cmp-title--heading-03">
-            <div class="cmp-title">
-                <h1 class="cmp-title__text max-width">${model.articleFragmentPath.title @context='html'}</h1>
-            </div>
-        </div>
-        <sly data-sly-test="${model.articleFragmentPath.subtitle}">
-            <div class="text max-width">
-                <div class="cmp-text--body-01">
-                    <h2>${model.articleFragmentPath.subtitle @context='html'}</h2>
-                </div>
-            </div>
-        </sly>
-        <div class="text cmp-text--caption cmp-article-details__published-date" id="article-details__published-date">
-            <div class="cmp-text">
-                <p>Article published: ${model.articleFragmentPath.datePublished}</p>
-            </div>
-        </div>
+<div data-sly-use.model="com.efe.core.models.ArticleDetails"
+    data-sly-use.template="core/wcm/components/commons/v1/templates.html">
 
-        <sly data-sly-test.hasContent="${model.articleFragmentPath.articleAuthors || model.articleFragmentPath.plannerResponse}">
-            <div class="text cmp-article-details__authors-by max-width">
-                <div class="cmp-text--body-03"
-                     data-sly-test.hasContent="${model.articleFragmentPath.articleAuthors || model.articleFragmentPath.plannerResponse}">
-                    <span class="cmp-text"><span>By:</span>
-                        <sly data-sly-test.hasContent="${model.articleFragmentPath.articleAuthors}"
-                             data-sly-list.item="${model.articleFragmentPath.articleAuthors}">
-                            <a x-cq-linkchecker="skip" href="${item.liveURL}">
-                                <span class="author-name">${item.name}, ${item.title}</span>
-                            </a>
-                                </br>
-                                </br>
-                        </sly>
-                        <sly data-sly-test.hasContent="${model.articleFragmentPath.plannerResponse}"
-                             data-sly-list.item="${model.articleFragmentPath.plannerResponse}">
-                            <a x-cq-linkchecker="skip" href="${item.url}" ><span class="author-name">${item.firstNameAlias} ${item.lastName}, ${item.title}</span></a></br>
-                        </sly>
-                    </span>
-                </div>
-            </div>
-        </sly>
-
-        <sly data-sly-test="${model.articleFragmentPath.heroImage}">
-            <div class="image cmp-image--top-left">
-                <div class="cmp-image"><img src="${model.articleFragmentPath.heroImage}" alt="" width="1096" height="440"></div>
-            </div>
-        </sly>  
-
-        <sly data-sly-test="${properties.listFrom == 'cta'}">
-        <section id="inline-section-cta" aria-role="content-info" aria-label="${model.ctaHeading}">
-            <div class="heading" data-sly-test.hasContent="${model.ctaHeading}">
-               ${model.ctaHeading @context='html'}
-            </div>
-
-            <div class="bodycopy" data-sly-test.hasContent="${model.bodyCopy}">
-              ${model.bodyCopy @context='html'}
-            </div>    
-
-            <sly data-sly-test.hasContent="${model.ctaText}">
-                <div class="button cmp-button--button-primary cmp-button--center cmp-button-- cmp-button--">                
-                    <a type="button" class="cmp-button" x-cq-linkchecker="skip" href="${model.ctaLink}" target="_self">
-                        <span class="cmp-button__text">${model.ctaText @context='html'}</span>
-                    </a>
-                </div>
-            </sly>  
-            
-        </section>    
-        </sly>        
-
-
-
-        <sly data-sly-test.hasContent="${model.articleFragmentPath.articleSummary}">
-            <div class="text cmp-text cmp-article-details__summary ">
-                <div class="cmp-text">
-                    <p>${model.articleFragmentPath.articleSummary @context='html'}</p>
-                </div>
-            </div>
-            <div class="cmp-container cmp-container--white cmp-container--width-1400
-                cmp-article-details__seperator ">
-                <div class="separator cmp-separator--primary cmp-separator">
-                    <hr class="cmp-separator__horizontal-rule max-width">
-                </div>
-            </div>
-        </sly>  
-
-        <div data-sly-resource="${@path=model.articleFragmentPath.body, selectors='content', wcmmode='disabled'}"
-             class="cmp-article-details__body "></div>
-
-        <div class="max-width cmp-article-details__disclaimar"
-             data-sly-repeat.item="${model.articleFragmentPath.disclosures}">${item.disclosureText @context ='html'}
-        </div>
-        <div class="max-width cmp-article-details__disclaimar">
-            <p>${model.articleFragmentPath.adMasterNumber @context='html'}</p>
-        </div>
-        <div class="cmp-container cmp-container--white cmp-container--width-1400
-            cmp-article-details__seperator "
-             data-sly-test.hasContent="${model.articleFragmentPath.articleAuthors || model.articleFragmentPath.plannerResponse}">
-            <div class="separator cmp-separator--primary cmp-separator">
-                <hr class="cmp-separator__horizontal-rule max-width">
-            </div>
-        </div>
-        <div class="cmp-author-details max-width"
-             data-sly-repeat.item="${model.articleFragmentPath.articleAuthors}">
-            <div data-sly-test=${item.photo} class="cmp-author-details__image">
-                <div class="image cmp-image--profile-thumb cmp-image--round">
-                    <div data-cmp-is="image" data-cmp-widths="600,800,1000,1200,1600" class="cmp-image">
-                        <img src="${item.photo}" loading="lazy" class="cmp-image__image" itemprop="contentUrl"
-                             width="850" height="509" alt="" title="">
-                        <meta itemprop="caption" content="">
-                    </div>
-                </div>
-            </div>
-            <div data-sly-test="${item.name}" class="cmp-author-details__description">
-                <div class="title cmp-title--subhead-00 ">
-                    <div class="cmp-title">
-                        <a x-cq-linkchecker="skip" href="${item.liveURL}" ><h2 class="cmp-title__text">${item.name}</h2></a>
-                        <h2 class="cmp-title__text">${item.title}</h2>                        
-                    </div>
-                </div>
-                <div class="text cmp-text--body-02 cmp-text-- ">
-                    <div class="cmp-text">
-                        <p>${item.biography @context='html'}</p>
-                    </div>
-                </div>
-                <div class="cmp-button--body-02-link">
-                    <a x-cq-linkchecker="valid" href="${item.liveURL}">
-                        Read more about ${item.name @context='html'}
-                    </a>
-                </div>                
-            </div>
-        </div>
-        <div class="cmp-author-details max-width"
-             data-sly-repeat.item="${model.articleFragmentPath.plannerResponse}">
-            <div data-sly-test="${item.desktopImageUrl}" class="cmp-author-details__image">
-                <div class="image cmp-image--profile-thumb cmp-image--round">
-                    <div data-cmp-is="image" data-cmp-widths="600,800,1000,1200,1600" class="cmp-image">
-                        <img src="${item.desktopImageUrl}" loading="lazy" class="cmp-image__image" itemprop="contentUrl"
-                             width="850" height="509" alt="" title="">
-                        <meta itemprop="caption" content="">
-                    </div>
-                </div>
-            </div>
-            <div data-sly-test="${item.firstNameAlias}" class="cmp-author-details__description">
-
-                <div class="title cmp-title--subhead-00 ">
-                    <div id="title-c6fe1860ab" class="cmp-title">
-                        <a x-cq-linkchecker="skip" href="${item.url}" ><h2 class="cmp-title__text">${item.firstNameAlias} ${item.lastName}</h2></a>                        
-                        <h2 class="cmp-title__text">${item.title}</h2>
-                    </div>
-                </div>
-
-                <div class="text cmp-text--body-02 cmp-text-- ">
-                    <div id="text-e58d65c472" class="cmp-text">
-                        <p>${item.bio @context='html'}</p>
-                    </div>
-                </div>
-
-                <sly data-sly-test="${item.url}">
-                    <div class="cmp-button--body-02-link">
-                        <a x-cq-linkchecker="valid" href="${item.url}">
-                            Read more about ${item.firstNameAlias @context='html'} ${item.lastName}                      
+    <div id="article-layout" class="${properties.sidebar == 'yes' ? 'sidebar' : ''}">
+        <!-- Article Body -->
+        <sly data-sly-use.model="com.efe.core.models.ArticleDetails"
+            data-sly-use.template="core/wcm/components/commons/v1/templates.html"
+            data-sly-test.isNotEmpty="${properties.articleFragmentPath}">
+            <div data-sly-test="${properties.articleFragmentPath}"
+                class="${properties.sidebar == 'yes' ? 'sidebar' : ''} cmp-container cmp-container--white cmp-article-details" id="${model.id}">
+                <sly data-sly-test="${currentPage.parent.pageTitle}">
+                    <div class="max-width">
+                        <a href="${currentPage.parent.getPath}.html">
+                            <p class="primary-nav-link-red center mb-8">${currentPage.parent.pageTitle}</p>
                         </a>
-                    </div>        
-                </sly>                          
+                    </div>
+                </sly>
+                <div class="title cmp-title--heading-03">
+                    <div class="cmp-title">
+                        <h1 class="cmp-title__text max-width">${model.articleFragmentPath.title @context='html'}</h1>
+                    </div>
+                </div>
+                <sly data-sly-test="${model.articleFragmentPath.subtitle}">
+                    <div class="text max-width">
+                        <div class="cmp-text--body-01">
+                            <h2>${model.articleFragmentPath.subtitle @context='html'}</h2>
+                        </div>
+                    </div>
+                </sly>
+                <div class="text cmp-text--caption cmp-article-details__published-date" id="article-details__published-date">
+                    <div class="cmp-text">
+                        <p>Article published: ${model.articleFragmentPath.datePublished}</p>
+                    </div>
+                </div>
 
-               
-
-                <!-- <div class="cmp-author-details__credits" data-sly-test="${item.certifications}">
-                    <sly data-sly-list.certification="${item.certifications}">
-                        <p>
-                            ${certification.name} ${certification.abbreviation}
-                        </p>
+                <sly data-sly-test="${properties.sidebar == 'no'}">
+                    <sly data-sly-test.hasContent="${model.articleFragmentPath.articleAuthors || model.articleFragmentPath.plannerResponse}">
+                        <div class="text cmp-article-details__authors-by max-width">
+                            <div class="cmp-text--body-03"
+                                data-sly-test.hasContent="${model.articleFragmentPath.articleAuthors || model.articleFragmentPath.plannerResponse}">
+                                <span class="cmp-text"><span>By:</span>
+                                    <sly data-sly-test.hasContent="${model.articleFragmentPath.articleAuthors}"
+                                        data-sly-list.item="${model.articleFragmentPath.articleAuthors}">
+                                        <a x-cq-linkchecker="skip" href="${item.liveURL}">
+                                            <span class="author-name">${item.name}, ${item.title}</span>
+                                        </a>
+                                            </br>
+                                            </br>
+                                    </sly>
+                                    <sly data-sly-test.hasContent="${model.articleFragmentPath.plannerResponse}"
+                                        data-sly-list.item="${model.articleFragmentPath.plannerResponse}">
+                                        <a x-cq-linkchecker="skip" href="${item.url}" ><span class="author-name">${item.firstNameAlias} ${item.lastName}, ${item.title}</span></a></br>
+                                    </sly>
+                                </span>
+                            </div>
+                        </div>
                     </sly>
-                    <sly data-sly-test="${item.education}" data-sly-list.education="${item.education}">
-                        <p> ${education.degree} ${education.university}</p>
-                    </sly>
-                </div> -->
-            </div>
-        </div>
+                </sly>
+
+                <sly data-sly-test="${model.articleFragmentPath.heroImage}">
+                    <div class="image cmp-image--top-left">
+                        <div class="cmp-image"><img src="${model.articleFragmentPath.heroImage}" alt="" width="1096" height="440"></div>
+                    </div>
+                </sly>  
+
+                <sly data-sly-test="${properties.listFrom == 'cta'}">
+                <section id="inline-section-cta" aria-role="content-info" aria-label="${model.ctaHeading}">
+                    <div class="heading" data-sly-test.hasContent="${model.ctaHeading}">
+                    ${model.ctaHeading @context='html'}
+                    </div>
+
+                    <div class="bodycopy" data-sly-test.hasContent="${model.bodyCopy}">
+                    ${model.bodyCopy @context='html'}
+                    </div>    
+
+                    <sly data-sly-test.hasContent="${model.ctaText}">
+                        <div class="button cmp-button--button-primary cmp-button--center cmp-button-- cmp-button--">                
+                            <a type="button" class="cmp-button" x-cq-linkchecker="skip" href="${model.ctaLink}" target="_self">
+                                <span class="cmp-button__text">${model.ctaText @context='html'}</span>
+                            </a>
+                        </div>
+                    </sly>  
+                    
+                </section>    
+                </sly>        
 
 
 
-        <div class="cmp-container max-width cmp-container--white cmp-container--width-1400
-            cmp-article-details__seperator ">
-            <div class="separator cmp-separator--primary cmp-separator">
-                <hr class="cmp-separator__horizontal-rule max-width">
-            </div>
-        </div>
-        <div data-sly-list.item="${model.articleFragmentPath.links}" class="cmp-container
-            cmp-container--white cmp-container--width-1400
-             cmp-tags max-width">
-            <div class="button cmp-button--title-tag">
-                <a href="${item.tagLink ? item.tagLink :''}" type="button" class="cmp-button" data-cmp-clickable="">
-                    <span class="cmp-button__text">${item.tagLabel}</span>
-                </a>
-            </div>
-        </div>
+                <sly data-sly-test.hasContent="${model.articleFragmentPath.articleSummary}">
+                    <div class="text cmp-text cmp-article-details__summary ">
+                        <div class="cmp-text">
+                            <p>${model.articleFragmentPath.articleSummary @context='html'}</p>
+                        </div>
+                    </div>
+                    <div class="cmp-container cmp-container--white cmp-container--width-1400
+                        cmp-article-details__seperator ">
+                        <div class="separator cmp-separator--primary cmp-separator">
+                            <hr class="cmp-separator__horizontal-rule max-width">
+                        </div>
+                    </div>
+                </sly>  
 
-        <script data-sly-test="${model.jsonLd}">
-            var jsonLd = JSON.parse("${model.jsonLd @context ='scriptString'}");
-            if (document.getElementsByClassName("articledetails") && document.getElementsByClassName("articledetails").length) {
-                    var articleContentDom = document.getElementsByClassName("articledetails")[0];
-                    var articleContent = articleContentDom.innerText;
-                    if (articleContent) {
-                            var wordCount = articleContent.trim().split(/\s+/).length;
-                            jsonLd.wordcount = wordCount;
-                    }
-                    const jsonldScript = document.createElement('script');
-                    jsonldScript.setAttribute('type', 'application/ld+json');
-                    jsonldScript.textContent = JSON.stringify(jsonLd);
-                    articleContentDom.appendChild(jsonldScript);
-            }
-        </script>
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                const socialblock = document.querySelector('[id ^= "socialshare-"]').parentNode.parentNode.parentNode.parentNode;
-                const socialblockcore = document.querySelector('[id ^= "socialshare-"]');
-                socialblock.classList.remove("cmp-container--padding-top");
-                socialblockcore.style.padding = "32px 0px 32px 0px";
-                const publishdate = document.getElementById("article-details__published-date");
-                publishdate.appendChild(socialblock);
-            });
-        </script>    
-        
-        <script type="text/javascript">
+                <div data-sly-resource="${@path=model.articleFragmentPath.body, selectors='content', wcmmode='disabled'}"
+                    class="cmp-article-details__body "></div>
 
-                const details = {
-                    id: "${currentPage.properties['jcr:uuid']  @context='html'}",
-                    name: `${model.articleFragmentPath.title @context="styleComment"}`,
-                    categoryId: '${currentPage.parent.getPath  @context="html"}',
-                    pageUrl: '${currentPage.getPath  @context="html"}',
-                    thumbnail: '${model.articleFragmentPath.heroImage @context="html"}'
-                };
+                <div class="max-width cmp-article-details__disclaimar"
+                    data-sly-repeat.item="${model.articleFragmentPath.disclosures}">${item.disclosureText @context ='html'}
+                </div>
+                <div class="max-width cmp-article-details__disclaimar">
+                    <p>${model.articleFragmentPath.adMasterNumber @context='html'}</p>
+                </div>
+                <div class="cmp-container cmp-container--white cmp-container--width-1400
+                    cmp-article-details__seperator "
+                    data-sly-test.hasContent="${model.articleFragmentPath.articleAuthors || model.articleFragmentPath.plannerResponse}">
+                    <div class="separator cmp-separator--primary cmp-separator">
+                        <hr class="cmp-separator__horizontal-rule max-width">
+                    </div>
+                </div>
+                <div class="cmp-author-details max-width"
+                    data-sly-repeat.item="${model.articleFragmentPath.articleAuthors}">
+                    <div data-sly-test=${item.photo} class="cmp-author-details__image">
+                        <div class="image cmp-image--profile-thumb cmp-image--round">
+                            <div data-cmp-is="image" data-cmp-widths="600,800,1000,1200,1600" class="cmp-image">
+                                <img src="${item.photo}" loading="lazy" class="cmp-image__image" itemprop="contentUrl"
+                                    width="850" height="509" alt="" title="">
+                                <meta itemprop="caption" content="">
+                            </div>
+                        </div>
+                    </div>
+                    <div data-sly-test="${item.name}" class="cmp-author-details__description">
+                        <div class="title cmp-title--subhead-00 ">
+                            <div class="cmp-title">
+                                <a x-cq-linkchecker="skip" href="${item.liveURL}" ><h2 class="cmp-title__text">${item.name}</h2></a>
+                                <h2 class="cmp-title__text">${item.title}</h2>                        
+                            </div>
+                        </div>
+                        <div class="text cmp-text--body-02 cmp-text-- ">
+                            <div class="cmp-text">
+                                <p>${item.biography @context='html'}</p>
+                            </div>
+                        </div>
+                        <div class="cmp-button--body-02-link">
+                            <a x-cq-linkchecker="valid" href="${item.liveURL}">
+                                Read more about ${item.name @context='html'}
+                            </a>
+                        </div>                
+                    </div>
+                </div>
+                <div class="cmp-author-details max-width"
+                    data-sly-repeat.item="${model.articleFragmentPath.plannerResponse}">
+                    <div data-sly-test="${item.desktopImageUrl}" class="cmp-author-details__image">
+                        <div class="image cmp-image--profile-thumb cmp-image--round">
+                            <div data-cmp-is="image" data-cmp-widths="600,800,1000,1200,1600" class="cmp-image">
+                                <img src="${item.desktopImageUrl}" loading="lazy" class="cmp-image__image" itemprop="contentUrl"
+                                    width="850" height="509" alt="" title="">
+                                <meta itemprop="caption" content="">
+                            </div>
+                        </div>
+                    </div>
+                    <div data-sly-test="${item.firstNameAlias}" class="cmp-author-details__description">
 
-                // Name
-                const name = JSON.parse(JSON.stringify(details.name));     
-                const nameClean = name.slice(name.search('>') + 1, name.search('</')).replace("<b>", "");
+                        <div class="title cmp-title--subhead-00 ">
+                            <div id="title-c6fe1860ab" class="cmp-title">
+                                <a x-cq-linkchecker="skip" href="${item.url}" ><h2 class="cmp-title__text">${item.firstNameAlias} ${item.lastName}</h2></a>                        
+                                <h2 class="cmp-title__text">${item.title}</h2>
+                            </div>
+                        </div>
 
-                // Category Id
-                const categoryID = JSON.parse(JSON.stringify(details.categoryId)).split("/");
-                const categoryIdClean = (categoryID[categoryID.length - 1]);
+                        <div class="text cmp-text--body-02 cmp-text-- ">
+                            <div id="text-e58d65c472" class="cmp-text">
+                                <p>${item.bio @context='html'}</p>
+                            </div>
+                        </div>
 
-                // Page URL
-                const pageUrlClean = JSON.parse(JSON.stringify(details.pageUrl)).replace("/content/efe/us/en", "");
+                        <sly data-sly-test="${item.url}">
+                            <div class="cmp-button--body-02-link">
+                                <a x-cq-linkchecker="valid" href="${item.url}">
+                                    Read more about ${item.firstNameAlias @context='html'} ${item.lastName}                      
+                                </a>
+                            </div>        
+                        </sly>                          
+                        <!-- <div class="cmp-author-details__credits" data-sly-test="${item.certifications}">
+                            <sly data-sly-list.certification="${item.certifications}">
+                                <p>
+                                    ${certification.name} ${certification.abbreviation}
+                                </p>
+                            </sly>
+                            <sly data-sly-test="${item.education}" data-sly-list.education="${item.education}">
+                                <p> ${education.degree} ${education.university}</p>
+                            </sly>
+                        </div> -->
+                    </div>
+                </div>
+
+                <div class="cmp-container max-width cmp-container--white cmp-container--width-1400
+                    cmp-article-details__seperator ">
+                    <div class="separator cmp-separator--primary cmp-separator">
+                        <hr class="cmp-separator__horizontal-rule max-width">
+                    </div>
+                </div>
+                <div data-sly-list.item="${model.articleFragmentPath.links}" class="cmp-container
+                    cmp-container--white cmp-container--width-1400
+                    cmp-tags max-width">
+                    <div class="button cmp-button--title-tag">
+                        <a href="${item.tagLink ? item.tagLink :''}" type="button" class="cmp-button" data-cmp-clickable="">
+                            <span class="cmp-button__text">${item.tagLabel}</span>
+                        </a>
+                    </div>
+                </div>
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+
+                        const sidebarNode = document.querySelector(".articledetails .sidebar");
+                        const socialblockcore = document.querySelector('[id ^= "socialshare-"]');   
+                        const socialblock = document.querySelector('[id ^= "socialshare-"]').parentNode.parentNode.parentNode.parentNode;      
+                        const socialshareDOM = document.querySelector('.socialshare');   
+                        const socialshareDomParent = socialshareDOM.parentNode;                    
+
+                        // Move Social Block to top of article no sidebar is present
+                        if (sidebarNode == null) {
+                            socialblock.classList.remove("cmp-container--padding-top");
+                            socialblockcore.style.padding = "32px 0px 32px 0px";
+                            const publishdate = document.getElementById("article-details__published-date");
+                            publishdate.appendChild(socialblock);
+                        }
+
+                        // Move Social block at end of Sidebar if present
+                        if (sidebarNode != null) {
+                            const sidebar = document.getElementById("efe-article-sidebar");
+                            const sidebarMarker = document.getElementById("end-marker");
+                            const socialEmail = document.querySelector(".cmp-social-share__link img[alt='Email this page']");
+                            const socialPrint = document.querySelector(".cmp-social-share__link img[alt='Print this page']");                    
+                            socialEmail.parentNode.style.display = "none";
+                            socialPrint.parentNode.style.display = "none";
+                            socialblock.classList.remove("cmp-container--padding-top");
+                            const h3 = document.createElement("h3");
+                            h3.textContent = "Share this article";
+                            socialshareDomParent.insertBefore(h3, socialshareDOM);
+                            sidebarMarker.appendChild(socialblock);
+                        }
+
+
+                    });
+                </script>    
                 
-                const detailsClean = {
-                    id: "${currentPage.properties['jcr:uuid']  @context='html'}",
-                    name: nameClean,
-                    categoryId: categoryIdClean,
-                    pageUrl: pageUrlClean,
-                    thumbnail: '${model.articleFragmentPath.heroImage @context="html"}'
-                }
+                <script type="text/javascript">
 
-        </script>  
+                        const details = {
+                            id: "${currentPage.properties['jcr:uuid']  @context='html'}",
+                            name: `${model.articleFragmentPath.title @context="styleComment"}`,
+                            categoryId: '${currentPage.parent.getPath  @context="html"}',
+                            pageUrl: '${currentPage.getPath  @context="html"}',
+                            thumbnail: '${model.articleFragmentPath.heroImage @context="html"}'
+                        };
 
+                        // Name
+                        const name = JSON.parse(JSON.stringify(details.name));     
+                        const nameClean = name.slice(name.search('>') + 1, name.search('</')).replace("<b>", "");
 
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                const inlineCta = document.getElementById("inline-section-cta");
-                let secondBodyParagraph = document.querySelector(".cmp-article-details__body .aem-Grid--12 div:nth-child(2)");
-                if (secondBodyParagraph == null) {
-                    secondBodyParagraph = document.querySelector(".cmp-article-details__body .aem-Grid--12 .cmp-text p:nth-child(2)");
-                    if (secondBodyParagraph == null) {
-                        secondBodyParagraph = document.querySelector(".cmp-article-details__body .xfpage .text .cmp-text p:nth-child(2)");
-                        if (secondBodyParagraph == null) {
-                        secondBodyParagraph = document.querySelector(".cmp-article-details__body .xfpage .text .cmp-text p");
-                    }
-                    }
-                }
-                if (inlineCta != null) {
-                    if(secondBodyParagraph.classList.contains("title")) {
-                        let secondBodyParagraph = document.querySelector(".cmp-article-details__body .aem-Grid--12 div:nth-child(3)");
-                        secondBodyParagraph.appendChild(inlineCta);
-                    }
-                    else {
-                        let secondBodyParagraph = document.querySelector(".cmp-article-details__body .aem-Grid--12 div:nth-child(2)")
+                        // Category Id
+                        const categoryID = JSON.parse(JSON.stringify(details.categoryId)).split("/");
+                        const categoryIdClean = (categoryID[categoryID.length - 1]);
+
+                        // Page URL
+                        const pageUrlClean = JSON.parse(JSON.stringify(details.pageUrl)).replace("/content/efe/us/en", "");
+                        
+                        const detailsClean = {
+                            id: "${currentPage.properties['jcr:uuid']  @context='html'}",
+                            name: nameClean,
+                            categoryId: categoryIdClean,
+                            pageUrl: pageUrlClean,
+                            thumbnail: '${model.articleFragmentPath.heroImage @context="html"}'
+                        }
+
+                </script>  
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                        const inlineCta = document.getElementById("inline-section-cta");
+                        let secondBodyParagraph = document.querySelector(".cmp-article-details__body .aem-Grid--12 div:nth-child(2)");
                         if (secondBodyParagraph == null) {
                             secondBodyParagraph = document.querySelector(".cmp-article-details__body .aem-Grid--12 .cmp-text p:nth-child(2)");
                         }
-                        inlineCta.classList.add("m-bottom");
-                        if (secondBodyParagraph.childNodes[0].classList.contains("cmp-text--subhead-00")) {
-                            secondBodyParagraph = document.querySelector(".cmp-article-details__body .aem-Grid--12 .cmp-text p:nth-child(3)");
+                        if (inlineCta != null) {
+                            if(secondBodyParagraph.classList.contains("title")) {
+                                let secondBodyParagraph = document.querySelector(".cmp-article-details__body .aem-Grid--12 div:nth-child(3)");
+                                secondBodyParagraph.appendChild(inlineCta);
+                            }
+                            else {
+                                let secondBodyParagraph = document.querySelector(".cmp-article-details__body .aem-Grid--12 div:nth-child(2)")
+                                if (secondBodyParagraph == null) {
+                                    secondBodyParagraph = document.querySelector(".cmp-article-details__body .aem-Grid--12 .cmp-text p:nth-child(2)");
+                                }
+                                inlineCta.classList.add("m-bottom");
+                                if (secondBodyParagraph.childNodes[0].classList.contains("cmp-text--subhead-00")) {
+                                    secondBodyParagraph = document.querySelector(".cmp-article-details__body .aem-Grid--12 .cmp-text p:nth-child(3)");
+                                }
+                                secondBodyParagraph.appendChild(inlineCta);                        
+                            }
                         }
-                        secondBodyParagraph.appendChild(inlineCta);                        
-                    }
-                }
-            })
-        </script>                    
-        
+                    })
+                </script>
+                
+                <script>
+                    document.addEventListener("DOMContentLoaded", (event) => {
+                        const sidebar = document.getElementById('efe-article-sidebar');
+                        const wrapper = document.getElementById('wrapper');
+                        const trigger = document.getElementById('trigger');
+                        const articleHeight = (document.getElementById("article-layout").clientHeight - (sidebar.clientHeight + 400));
+
+
+                        if (sidebar != null) {
+                           gsap.registerPlugin(ScrollTrigger,ScrollToPlugin);
+
+                           const tl = gsap.timeline({
+                                scrollTrigger: {
+                                    trigger: "#efe-article-sidebar",
+                                    start: "top top",
+                                    end: articleHeight,
+                                    scrub: true,
+                                    pinSpacing: false,
+                                    pin: "#wrapper",
+
+                                }
+                            })                           
+
+                        }
+
+
+
+                    });
+                 </script>               
+                
+    
+
+
+          
+            
+            </div>
+        </sly>
+
+        <!-- Sidebar -->
+        <sly data-sly-use.model="com.efe.core.models.ArticleDetails"
+            data-sly-use.template="core/wcm/components/commons/v1/templates.html"
+            data-sly-test.isNotEmpty="${properties.articleFragmentPath}">
+            <sly data-sly-test="${properties.sidebar == 'yes'}">
+                <div id="trigger"></div>
+                <aside id="efe-article-sidebar" aria-role="content-info" aria-label="More details about this article and offers from Edelman Financial Engines">
+                    <div id="wrapper">
+                        <sly data-sly-test="${properties.order == 'rte-first'}">
+                            <div id="article-author-content">
+                                <div id="article-sidebar-rte">
+                                    <sly data-sly-test.hasContent="${properties.sidebarrte}">
+                                        ${properties.sidebarrte @context='html'}
+                                    </sly>
+                                </div> 
+                            
+                                <div id="article-sidebar-exp-frag">
+                                    <div data-sly-use.fragment="com.adobe.cq.wcm.core.components.models.ExperienceFragment"
+                                        data-sly-use.template="core/wcm/components/commons/v1/templates.html"
+                                        data-sly-test=${fragment.configured}
+                                        data-sly-set.selector="content.${request.requestPathInfo.selectorString}"
+                                        data-sly-resource="${@path=fragment.localizedFragmentVariationPath, selectors=selector, wcmmode='disabled'}"
+                                        id="${fragment.id}"
+                                        class="cmp-experiencefragment cmp-experiencefragment--${fragment.name}">
+                                    </div>
+                                    <sly data-sly-call="${template.placeholder @ isEmpty=!fragment.configured, classAppend='cmp-dd-experiencefragment'}"></sly>
+                                </div>
+                            </div>
+                        </sly>
+
+                        <sly data-sly-test="${properties.order == 'rte-last'}">
+                            <div id="article-author-content">
+                                <div id="article-sidebar-exp-frag">
+                                    <div data-sly-use.fragment="com.adobe.cq.wcm.core.components.models.ExperienceFragment"
+                                        data-sly-use.template="core/wcm/components/commons/v1/templates.html"
+                                        data-sly-test=${fragment.configured}
+                                        data-sly-set.selector="content.${request.requestPathInfo.selectorString}"
+                                        data-sly-resource="${@path=fragment.localizedFragmentVariationPath, selectors=selector, wcmmode='disabled'}"
+                                        id="${fragment.id}"
+                                        class="cmp-experiencefragment cmp-experiencefragment--${fragment.name}">
+                                    </div>
+                                    <sly data-sly-call="${template.placeholder @ isEmpty=!fragment.configured, classAppend='cmp-dd-experiencefragment'}"></sly>
+                                </div>
+
+                                <div id="article-sidebar-rte">
+                                    <sly data-sly-test.hasContent="${properties.sidebarrte}">
+                                        ${properties.sidebarrte @context='html'}
+                                    </sly>
+                                </div> 
+                            </div>
+                        </sly>           
+       
+                        <sly data-sly-test.hasContent="${model.articleFragmentPath.articleAuthors || model.articleFragmentPath.plannerResponse}">
+                            <div id="article-sidebar-authors">
+                                <h3>Authors</h3>
+                                <div class="text cmp-article-details__authors-by max-width">
+                                    <div class="cmp-text--body-03"
+                                        data-sly-test.hasContent="${model.articleFragmentPath.articleAuthors || model.articleFragmentPath.plannerResponse}">
+                                            <sly data-sly-test.hasContent="${model.articleFragmentPath.articleAuthors}"
+                                                data-sly-list.item="${model.articleFragmentPath.articleAuthors}">
+                                                <a x-cq-linkchecker="skip" href="${item.liveURL}">
+                                                    <p class="author-name">${item.name}</p>
+                                                </a>
+                                                <p class="author-name">${item.title}</p>                                        
+                                            </sly>
+                                            <sly data-sly-test.hasContent="${model.articleFragmentPath.plannerResponse}"
+                                                data-sly-list.item="${model.articleFragmentPath.plannerResponse}">
+                                                <a x-cq-linkchecker="skip" href="${item.url}" >
+                                                    <p class="author-name">${item.firstNameAlias} ${item.lastName}</p>
+                                                </a>
+                                                <p class="author-name">${item.title}</p>                                        
+                                            </sly>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>                             
+                        </sly>
+
+                    
+                    <div id="articel-side-bar-social">        
+                        <div id="end-marker"></div>
+                    </div> 
+
+                    </div>
+                </aside>
+            </sly>
+        </sly>
     </div>
+</div>
+
+<!-- Scripts -->
+<sly data-sly-use.model="com.efe.core.models.ArticleDetails"
+     data-sly-use.template="core/wcm/components/commons/v1/templates.html"
+     data-sly-test.isNotEmpty="${properties.articleFragmentPath}">
+     <script data-sly-test="${model.jsonLd}">
+        var jsonLd = JSON.parse("${model.jsonLd @context ='scriptString'}");
+        if (document.getElementsByClassName("articledetails") && document.getElementsByClassName("articledetails").length) {
+                var articleContentDom = document.getElementsByClassName("articledetails")[0];
+                var articleContent = articleContentDom.innerText;
+                if (articleContent) {
+                        var wordCount = articleContent.trim().split(/\s+/).length;
+                        jsonLd.wordcount = wordCount;
+                }
+                const jsonldScript = document.createElement('script');
+                jsonldScript.setAttribute('type', 'application/ld+json');
+                jsonldScript.textContent = JSON.stringify(jsonLd);
+                articleContentDom.appendChild(jsonldScript);
+        }
+    </script>     
 </sly>
+
 <sly data-sly-call="${template.placeholder @ isEmpty=!isNotEmpty, classAppend='cmp-articledetails'}"></sly>
 
