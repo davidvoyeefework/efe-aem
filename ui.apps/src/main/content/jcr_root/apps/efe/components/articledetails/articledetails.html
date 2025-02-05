@@ -474,8 +474,8 @@ function moveSideBar () {
     if (width < 992) { 
         articleBodyContent.after(sidebarBlock);
     }
-    if (width > 992) {
-        sidebarContainer.after(sidebarBlock);
+    if (width >= 992) {
+        sidebarContainer.appendChild(sidebarBlock);
     }
 }
 

@@ -308,13 +308,14 @@
 
         @media screen and (min-width: $lg) {
             margin-bottom: 165px;
+            padding: 24px;
 
             #article-sidebar-exp-frag {
                 max-width: 400px;
                 overflow: hidden;
             }
 
-            aside#efe-article-sidebar {
+            #sidebar-container {
                 margin-bottom: 30px;
                 position: relative;
                 top: 356px;
@@ -335,9 +336,10 @@
             );
             .cmp-article-details {
                 flex-basis: 65%;
+                min-width: rem(565);
             }
-            aside{
-                flex-basis: 35%;
+            #sidebar-container {
+                flex: 1;
             }
         }
     }
