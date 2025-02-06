@@ -368,10 +368,12 @@
 
             .cmp-article-details {
                 flex-basis: 752px;
+                flex-shrink: 0;
             }
 
             #sidebar-container {
                 flex-basis:400px;
+                flex-shrink: 0;
             }
         }
 
