@@ -1,5 +1,5 @@
 .cmp-article-details {
-    padding: rem(48) 0;
+    padding: rem(48) rem(24);
 
     &.sidebar {
         .max-width a p, 
@@ -8,17 +8,20 @@
         #article-details__published-date p,
         .cmp-article-details__published-date,
         .max-width {
-            max-width: unset;
             text-align: left !important;
         }
 
     }
 
-
+    .image {
+        &.cmp-image--top-left {
+            margin-top: 80px;
+        }
+    }
 
     .max-width {
         max-width: rem(704);
-        margin: 0 auto;
+        margin: 0 auto !important;
     }
 
     .cmp-title--heading-03 {
@@ -123,6 +126,7 @@
         align-items: center;
         display: flex;
     }
+
     &__padding-108 {
         @include media('>tablet-lg') {
             padding: 0 rem(196);
@@ -131,12 +135,13 @@
             padding: 0 rem(26);
         }
     }
+
     .cmp-image--top-left {
         padding-top: 32.5%;
         width: 100%;
         height: 100%;
         max-height: rem(440);
-        max-width: rem(1096);
+        max-width: unset;
         margin: 0 auto 30px;
         position: relative;
         min-height: rem(202);
@@ -151,6 +156,7 @@
             object-fit: cover;
         }
     }
+
     &__disclaimar {
         margin-bottom: 20px;
         * {
@@ -188,7 +194,12 @@
 #article-layout {
     &.sidebar {
         max-width: rem(1192);
-        margin: 0 auto;
+        margin: 0 auto;       
+
+        aside#efe-article-sidebar {
+            margin-bottom: 55px !important;
+            width: 100% !important;
+        }
 
         .cmp-article-details__published-date {
             margin: 28px 0 80px;
@@ -208,6 +219,11 @@
             width: 100%;
             overflow: hidden;
             margin-bottom: 36px;
+        }
+
+        #wrapper, #sidebar-container, .pin-spacer  {
+            width: 100% !important;
+            overflow: hidden;
         }
 
         #article-author-content {
@@ -306,9 +322,25 @@
             }
         }
 
-        @media screen and (min-width: $lg) {
+        @media screen and (min-width: 1240px) {
             margin-bottom: 165px;
-            padding: 24px;
+            padding: 24px 24px 24px 80px;
+            max-width: unset;
+            width: 100%;
+            margin: 0;
+
+            .cmp-article-details__summary, .cmp-article-details__body {
+                max-width: unset;
+            }
+
+            .max-width a p, 
+            div.cmp-title--heading-03 h1.max-width p, 
+            div.text h2 p, 
+            #article-details__published-date p,
+            .cmp-article-details__published-date,
+            .max-width {
+                max-width: unset;
+            } 
 
             #article-sidebar-exp-frag {
                 max-width: 400px;
@@ -334,13 +366,15 @@
             @include flexbox(
                 $gap: 40px
             );
+
             .cmp-article-details {
-                flex-basis: 65%;
-                min-width: rem(565);
+                flex-basis: 752px;
             }
+
             #sidebar-container {
-                flex: 1;
+                flex-basis:400px;
             }
         }
+
     }
 }

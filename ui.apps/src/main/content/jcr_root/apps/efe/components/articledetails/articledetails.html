@@ -27,7 +27,7 @@
                         </div>
                     </div>
                 </sly>
-                <div class="text cmp-text--caption cmp-article-details__published-date" id="article-details__published-date">
+                <div class=" max-width text cmp-text--caption cmp-article-details__published-date" id="article-details__published-date">
                     <div class="cmp-text">
                         <p>Article published: ${model.articleFragmentPath.datePublished}</p>
                     </div>
@@ -327,17 +327,22 @@
 
                         if (sidebar != null) {
                            gsap.registerPlugin(ScrollTrigger,ScrollToPlugin);
+                            let mm = gsap.matchMedia();
+                            let aemContainer = sidebar.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
+                            aemContainer.classList.remove("cmp-container--width-1400");
+                            mm.add("(min-width: 1240px)", () => {
+                                const tl = gsap.timeline({
+                                    scrollTrigger: {
+                                        trigger: "#efe-article-sidebar",
+                                        start: "top top",
+                                        end: articleHeight,
+                                        scrub: true,
+                                        pinSpacing: false,
+                                        pin: "#wrapper",
+                                    }
+                                })                           
+                            });
 
-                           const tl = gsap.timeline({
-                                scrollTrigger: {
-                                    trigger: "#efe-article-sidebar",
-                                    start: "top top",
-                                    end: articleHeight,
-                                    scrub: true,
-                                    pinSpacing: false,
-                                    pin: "#wrapper",
-                                }
-                            })                           
                         }
 
                     });
@@ -351,9 +356,9 @@
             data-sly-use.template="core/wcm/components/commons/v1/templates.html"
             data-sly-test.isNotEmpty="${properties.articleFragmentPath}">
             <sly data-sly-test="${properties.sidebar == 'yes'}">
-                <div id="sidebar-container">
+                <div id="sidebar-container" >
                     <div id="trigger"></div>
-                    <aside id="efe-article-sidebar" aria-role="content-info" aria-label="More details about this article and offers from Edelman Financial Engines">
+                    <aside id="efe-article-sidebar" aria-role="content-info" aria-label="More details about this article and offers from Edelman Financial Engines" class="max-width">
                         <div id="wrapper">
                             <sly data-sly-test="${properties.order == 'rte-first'}">
                                 <div id="article-author-content">
@@ -471,10 +476,10 @@ const sidebarBlock = document.getElementById('efe-article-sidebar');
 const sidebarContainer = document.getElementById('sidebar-container');               
 
 function moveSideBar () {
-    if (width < 992) { 
+    if (width < 1240) { 
         articleBodyContent.after(sidebarBlock);
     }
-    if (width >= 992) {
+    if (width >= 1240) {
         sidebarContainer.appendChild(sidebarBlock);
     }
 }
