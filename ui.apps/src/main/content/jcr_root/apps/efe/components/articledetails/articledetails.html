@@ -330,7 +330,7 @@
                             let mm = gsap.matchMedia();
                             let aemContainer = sidebar.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
                             aemContainer.classList.remove("cmp-container--width-1400");
-                            const articleDetailsElm = document.querySelector("articledetails");
+                            const articleDetailsElm = document.querySelector(".articledetails");
                             articleDetailsElm.classList.remove("aem-GridColumn--offset--default--1");
                             mm.add("(min-width: 1240px)", () => {
                                 const tl = gsap.timeline({
