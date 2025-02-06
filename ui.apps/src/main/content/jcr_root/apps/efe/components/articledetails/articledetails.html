@@ -332,7 +332,7 @@
                             aemContainer.classList.remove("cmp-container--width-1400");
                             const articleDetailsElm = document.querySelector(".articledetails");
                             articleDetailsElm.classList.remove("aem-GridColumn--offset--default--1");
-                            mm.add("(min-width: 1240px)", () => {
+                            mm.add("(min-width: 1356px)", () => {
                                 const tl = gsap.timeline({
                                     scrollTrigger: {
                                         trigger: "#efe-article-sidebar",
@@ -478,10 +478,10 @@ const sidebarBlock = document.getElementById('efe-article-sidebar');
 const sidebarContainer = document.getElementById('sidebar-container');               
 
 function moveSideBar () {
-    if (width < 1240) { 
+    if (width < 1356) { 
         articleBodyContent.after(sidebarBlock);
     }
-    if (width >= 1240) {
+    if (width >= 1356) {
         sidebarContainer.appendChild(sidebarBlock);
     }
 }
