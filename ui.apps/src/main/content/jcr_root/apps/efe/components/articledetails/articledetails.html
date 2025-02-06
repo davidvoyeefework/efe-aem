@@ -327,17 +327,22 @@
 
                         if (sidebar != null) {
                            gsap.registerPlugin(ScrollTrigger,ScrollToPlugin);
+                            let mm = gsap.matchMedia();
+                            let aemContainer = sidebar.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
+                            aemContainer.classList.remove("cmp-container--width-1400");
+                            mm.add("(min-width: 1240px)", () => {
+                                const tl = gsap.timeline({
+                                    scrollTrigger: {
+                                        trigger: "#efe-article-sidebar",
+                                        start: "top top",
+                                        end: articleHeight,
+                                        scrub: true,
+                                        pinSpacing: false,
+                                        pin: "#wrapper",
+                                    }
+                                })                           
+                            });
 
-                           const tl = gsap.timeline({
-                                scrollTrigger: {
-                                    trigger: "#efe-article-sidebar",
-                                    start: "top top",
-                                    end: articleHeight,
-                                    scrub: true,
-                                    pinSpacing: false,
-                                    pin: "#wrapper",
-                                }
-                            })                           
                         }
 
                     });
@@ -471,10 +476,10 @@ const sidebarBlock = document.getElementById('efe-article-sidebar');
 const sidebarContainer = document.getElementById('sidebar-container');               
 
 function moveSideBar () {
-    if (width < 992) { 
+    if (width < 1240) { 
         articleBodyContent.after(sidebarBlock);
     }
-    if (width >= 992) {
+    if (width >= 1240) {
         sidebarContainer.appendChild(sidebarBlock);
     }
 }

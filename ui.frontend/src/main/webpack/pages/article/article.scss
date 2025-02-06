@@ -1,5 +1,5 @@
 .cmp-article-details {
-    padding: rem(48) 0;
+    padding: rem(48) rem(24);
 
     &.sidebar {
         .max-width a p, 
@@ -190,6 +190,11 @@
         max-width: rem(1192);
         margin: 0 auto;
 
+        aside#efe-article-sidebar {
+            margin-bottom: 55px;
+            width: 100% !important;
+        }
+
         .cmp-article-details__published-date {
             margin: 28px 0 80px;
         }
@@ -208,6 +213,11 @@
             width: 100%;
             overflow: hidden;
             margin-bottom: 36px;
+        }
+
+        #wrapper, #sidebar-container, .pin-spacer  {
+            width: 100% !important;
+            overflow: hidden;
         }
 
         #article-author-content {
@@ -306,9 +316,16 @@
             }
         }
 
-        @media screen and (min-width: $lg) {
+        @media screen and (min-width: 1240px) {
             margin-bottom: 165px;
-            padding: 24px;
+            padding: 24px 24px 24px 80px;
+            max-width: unset;
+            width: 100%;
+            margin: 0;
+
+            .cmp-article-details__summary, .cmp-article-details__body {
+                max-width: unset;
+            }
 
             #article-sidebar-exp-frag {
                 max-width: 400px;
@@ -334,13 +351,18 @@
             @include flexbox(
                 $gap: 40px
             );
+
             .cmp-article-details {
-                flex-basis: 65%;
-                min-width: rem(565);
+                flex-basis: 752px;
             }
+
             #sidebar-container {
-                flex: 1;
+                flex-basis:400px;
             }
         }
+
+        // @media screen and (min-width: 1290px) {
+        //     padding-left: 135px;
+        // }
     }
 }
