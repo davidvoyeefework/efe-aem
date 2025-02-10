@@ -39,7 +39,7 @@ let config = {
         printLogsToConsole: "always",
       });
     },
-    baseUrl: authorURL,
+    // baseUrl: authorURL,
     reporter: 'cypress-multi-reporters',
     reporterOptions: {
       configFile: 'reporter.config.js',
