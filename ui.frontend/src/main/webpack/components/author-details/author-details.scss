@@ -2,9 +2,10 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
-    margin-bottom: rem(48px) !important;
+    margin: 0 auto rem(48px) !important;
     width: 100%;
     position: relative;
+    max-width: rem(704);
 
     .cmp-title {
         a {
