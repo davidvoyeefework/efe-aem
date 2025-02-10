@@ -116,7 +116,7 @@
                         <hr class="cmp-separator__horizontal-rule max-width">
                     </div>
                 </div>
-                <div class="cmp-author-details max-width"
+                <div class="cmp-author-details"
                     data-sly-repeat.item="${model.articleFragmentPath.articleAuthors}">
                     <div data-sly-test=${item.photo} class="cmp-author-details__image">
                         <div class="image cmp-image--profile-thumb cmp-image--round">
@@ -146,7 +146,7 @@
                         </div>                
                     </div>
                 </div>
-                <div class="cmp-author-details max-width"
+                <div class="cmp-author-details"
                     data-sly-repeat.item="${model.articleFragmentPath.plannerResponse}">
                     <div data-sly-test="${item.desktopImageUrl}" class="cmp-author-details__image">
                         <div class="image cmp-image--profile-thumb cmp-image--round">
@@ -468,26 +468,31 @@
 </sly>
 
 <script>
-let width = window.innerWidth;
-function checkViewportSize() {
-    width = window.innerWidth;
-}
-checkViewportSize();
-window.addEventListener("resize", checkViewportSize);
-const articleBodyContent = document.querySelector('.cmp-article-details__body');
-const sidebarBlock = document.getElementById('efe-article-sidebar');     
-const sidebarContainer = document.getElementById('sidebar-container');               
+    document.addEventListener("DOMContentLoaded", (event) => {
+        const sidebarBlock = document.getElementById('efe-article-sidebar'); 
 
-function moveSideBar () {
-    if (width < 1356) { 
-        articleBodyContent.after(sidebarBlock);
-    }
-    if (width >= 1356) {
-        sidebarContainer.appendChild(sidebarBlock);
-    }
-}
+        if (sidebarBlock != null) { 
+            let width = window.innerWidth;
+            const checkViewportSize = () => {
+                width = window.innerWidth;
+            }
+            checkViewportSize();
+            window.addEventListener("resize", checkViewportSize);
+            const articleBodyContent = document.querySelector('.cmp-article-details__body');    
+            const sidebarContainer = document.getElementById('sidebar-container');
 
-window.addEventListener("resize", moveSideBar);
+            function moveSideBar () {
+                if (width < 1356) { 
+                    articleBodyContent.after(sidebarBlock);
+                }
+                if (width >= 1356) {
+                    sidebarContainer.appendChild(sidebarBlock);
+                }
+            }  
+             moveSideBar();
+            window.addEventListener("resize", moveSideBar);       
+        }
+            })
 </script>
 
 <sly data-sly-call="${template.placeholder @ isEmpty=!isNotEmpty, classAppend='cmp-articledetails'}"></sly>
