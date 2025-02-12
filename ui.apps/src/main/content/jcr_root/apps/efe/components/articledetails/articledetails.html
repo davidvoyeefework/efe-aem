@@ -231,9 +231,14 @@
                             const sidebar = document.getElementById("efe-article-sidebar");
                             const sidebarMarker = document.getElementById("end-marker");
                             const socialEmail = document.querySelector(".cmp-social-share__link img[alt='Email this page']");
-                            const socialPrint = document.querySelector(".cmp-social-share__link img[alt='Print this page']");                    
-                            socialEmail.parentNode.style.display = "none";
-                            socialPrint.parentNode.style.display = "none";
+                            const socialPrint = document.querySelector(".cmp-social-share__link img[alt='Print this page']");   
+                            if (socialEmail != null) {
+                                socialEmail.parentNode.style.display = "none";
+                            }     
+                            if (socialPrint != null) {
+                                socialPrint.parentNode.style.display = "none";
+                            }            
+
                             socialblock.classList.remove("cmp-container--padding-top");
                             const h3 = document.createElement("h3");
                             h3.textContent = "Share this article";
