@@ -370,7 +370,7 @@
                         <div id="wrapper">
 
                             <sly data-sly-test="${properties.order == 'rte-first'}">
-                                <div id="article-author-content">
+                                <div id="article-author-content" class="${properties.sidebarrte == null && properties.fragmentVariationPath == null ? 'no-content' : ''}">
                                     <div data-sly-test.hasContent="${properties.sidebarrte}" id="article-sidebar-rte">
                                             ${properties.sidebarrte @context='html'}
                                     </div> 
@@ -390,7 +390,7 @@
                             </sly>
 
                             <sly data-sly-test="${properties.order == 'rte-last'}">
-                                <div id="article-author-content">
+                                <div id="article-author-content" class="${properties.sidebarrte == null && properties.fragmentVariationPath == null ? 'no-content' : ''}">
                                     <div data-sly-test.hasContent="${properties.fragmentVariationPath}" id="article-sidebar-exp-frag">
                                         <div data-sly-use.fragment="com.adobe.cq.wcm.core.components.models.ExperienceFragment"
                                             data-sly-use.template="core/wcm/components/commons/v1/templates.html"
