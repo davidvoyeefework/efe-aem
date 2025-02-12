@@ -363,15 +363,14 @@
                     <div id="trigger"></div>
                     <aside id="efe-article-sidebar" aria-role="content-info" aria-label="More details about this article and offers from Edelman Financial Engines" class="max-width">
                         <div id="wrapper">
+
                             <sly data-sly-test="${properties.order == 'rte-first'}">
                                 <div id="article-author-content">
-                                    <div id="article-sidebar-rte">
-                                        <sly data-sly-test.hasContent="${properties.sidebarrte}">
+                                    <div data-sly-test.hasContent="${properties.sidebarrte}" id="article-sidebar-rte">
                                             ${properties.sidebarrte @context='html'}
-                                        </sly>
                                     </div> 
                                 
-                                    <div id="article-sidebar-exp-frag">
+                                    <div data-sly-test.hasContent="${properties.fragmentVariationPath}" id="article-sidebar-exp-frag">
                                         <div data-sly-use.fragment="com.adobe.cq.wcm.core.components.models.ExperienceFragment"
                                             data-sly-use.template="core/wcm/components/commons/v1/templates.html"
                                             data-sly-test=${fragment.configured}
@@ -387,7 +386,7 @@
 
                             <sly data-sly-test="${properties.order == 'rte-last'}">
                                 <div id="article-author-content">
-                                    <div id="article-sidebar-exp-frag">
+                                    <div data-sly-test.hasContent="${properties.fragmentVariationPath}" id="article-sidebar-exp-frag">
                                         <div data-sly-use.fragment="com.adobe.cq.wcm.core.components.models.ExperienceFragment"
                                             data-sly-use.template="core/wcm/components/commons/v1/templates.html"
                                             data-sly-test=${fragment.configured}
@@ -399,10 +398,8 @@
                                         <sly data-sly-call="${template.placeholder @ isEmpty=!fragment.configured, classAppend='cmp-dd-experiencefragment'}"></sly>
                                     </div>
 
-                                    <div id="article-sidebar-rte">
-                                        <sly data-sly-test.hasContent="${properties.sidebarrte}">
+                                    <div data-sly-test.hasContent="${properties.sidebarrte}" id="article-sidebar-rte">
                                             ${properties.sidebarrte @context='html'}
-                                        </sly>
                                     </div> 
                                 </div>
                             </sly>           
