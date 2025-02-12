@@ -230,6 +230,11 @@
             border-bottom: 1px solid $efe-gray-mid;
             padding-bottom: 36px;
 
+            &.no-content {
+                padding-bottom: 0;
+                border-bottom: unset;
+            }
+
             h1 {
                 @include heading-04;
                 margin-bottom: 13px;
