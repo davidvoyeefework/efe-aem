@@ -39,12 +39,12 @@ let config = {
                 printLogsToConsole: "always",
             });
 
-            // on("task", {
-            //     log(message) {
-            //         console.log(message);
-            //         return null;
-            //     },
-            // });
+            on("task", {
+                log(message) {
+                    console.log(message);
+                    return null;
+                },
+            });
         },
         // baseUrl: authorURL,
         reporter: "cypress-multi-reporters",
