@@ -221,13 +221,13 @@
         </dependency>
 
         <!-- workfront dependency -->
-        <dependency>
+        <!-- <dependency>
             <groupId>digital.hoodoo</groupId>
             <artifactId>workfront-tools.ui.apps</artifactId>
             <type>zip</type>
             <scope>system</scope>
             <systemPath>${project.basedir}/../ui.apps/src/main/resources/workfront-tools.ui.apps.zip</systemPath>
-        </dependency>
+        </dependency> -->
 
     </dependencies>
 </project>
