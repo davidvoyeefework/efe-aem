@@ -1,5 +1,6 @@
 describe("template spec", () => {
     it("passed", () => {
-        cy.visit("https://example.cypress.io/test-page-not-found/")
+        cy.task("log", Cypress.env());
+        cy.visit("https://example.cypress.io/")
     });
 });
