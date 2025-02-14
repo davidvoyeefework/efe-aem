@@ -3,7 +3,7 @@
     border: 1px solid #cccccc;
     border-radius: 8px;  
     background-color: white;
-    
+    height: calc(100vh - 50px);
     .flex {
         margin-bottom: 0px !important;
         gap: 24px !important;
@@ -135,7 +135,7 @@
         .copy, .button {
             margin-left: 75px;
         }
-    
+        height: 100%;
     }
 
     @media screen and (max-width: $sm) {
@@ -164,6 +164,7 @@
                 $flex-direction: column,
                 $gap: 0,
                 $align-items: start !important,
+                $justify-content: space-between
             );
             .provided-by {
                 margin: 0;
@@ -173,6 +174,12 @@
         }
     }
     
+}
+
+@media screen and (max-width: $sm) {
+    .fidelity-wpi-theme {
+        height: calc(100vh - 30px);
+    }
 }
 
 body.xf-web-container, body, #fe-iframe {
