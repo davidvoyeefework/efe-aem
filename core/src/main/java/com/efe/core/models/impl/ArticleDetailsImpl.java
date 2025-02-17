@@ -11,6 +11,8 @@ import com.efe.core.services.EfeService;
 import com.efe.core.services.SeoService;
 import com.efe.core.utils.ArticleDetailUtil;
 import com.efe.core.utils.SeoUtil;
+
+import org.apache.lucene.queryparser.flexible.standard.processors.BooleanSingleChildOptimizationQueryNodeProcessor;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -77,11 +79,14 @@ public class ArticleDetailsImpl implements ArticleDetails {
     /** the mappedPage *. */
     @ValueMapValue
     private String mappedPage;
+
     /** the id *. */
     @ValueMapValue
     private String id;
+
     /** ArticleDetail. */
     private Articles articleDetails;
+
     /** The json ld. */
     private String jsonLd;
 
@@ -109,15 +114,12 @@ public class ArticleDetailsImpl implements ArticleDetails {
 
     // Artice Sidebar Show or NoShow
     String sidebar;
-  
 
     /**
      * Inits the Model.
      */
     @PostConstruct
     public void init() {
-
-        resourcePath = resource.getPath();
 
         // Fetch inline section CTA heading
         resourceProperty = "heading";
@@ -137,7 +139,9 @@ public class ArticleDetailsImpl implements ArticleDetails {
 
         // Fetch Article Sidebar Show or NoShow Value
         String resourcePropertyShowSidebar = "sidebar";
-        sidebar = ResourceUtil.getProperty(resourceResolver, resourcePath, resourcePropertyShowSidebar);          
+        sidebar = ResourceUtil.getProperty(resourceResolver, resourcePath, resourcePropertyShowSidebar);     
+        
+        
 
 
 
@@ -218,7 +222,4 @@ public class ArticleDetailsImpl implements ArticleDetails {
     public String getSidebar() {
         return sidebar;
     }
-
-    
-    
 }
