@@ -14,11 +14,11 @@
  *  limitations under the License.
  */
 
-import './commands'
-require('cypress-terminal-report/src/installLogsCollector')({
-    xhr: {
-        printHeaderData: false,
-        printRequestData: false,
-    },
-    debug: true
-});
+const reportsPath = process.env.REPORTS_PATH || 'cypress/results'
+
+module.exports = {
+  reporterEnabled: 'spec, mocha-junit-reporter',
+  mochaJunitReporterReporterOptions: {
+    mochaFile: `${reportsPath}/output.[hash].xml`
+  },
+}
