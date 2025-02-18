@@ -19,7 +19,7 @@ const reportsPath = process.env.REPORTS_PATH || "cypress/results";
 const authorURL = process.env.AEM_AUTHOR_URL || "http://localhost:4502";
 const authorName = process.env.AEM_AUTHOR_USERNAME || "admin";
 const authorPass = process.env.AEM_AUTHOR_PASSWORD || "admin";
-const publishURL = process.env.AEM_PUBLISH_URL || "http://localhost:4503";
+const publishURL = process.env.AEM_PUBLISH_URL || "https://aemqa.edelmanfinancialengines.com/";
 const publishName = process.env.AEM_PUBLISH_USERNAME || "admin";
 const publishPass = process.env.AEM_PUBLISH_PASSWORD || "admin";
 
@@ -51,7 +51,8 @@ let config = {
             embeddedScreenshots: true,
             inline: true,
             timestamp: "mediumDate",
-            reportDir: reportsPath
+            reportDir: reportsPath,
+            saveJson: true
         },
     },
     videosFolder: reportsPath + "/videos",
