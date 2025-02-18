@@ -15,7 +15,7 @@
  */
 
 const { defineConfig } = require("cypress");
-const reportsPath = process.env.REPORTS_PATH || "cypress/results";
+const reportsPath = process.env.REPORTS_PATH || "cypress/reports";
 const authorURL = process.env.AEM_AUTHOR_URL || "http://localhost:4502";
 const authorName = process.env.AEM_AUTHOR_USERNAME || "admin";
 const authorPass = process.env.AEM_AUTHOR_PASSWORD || "admin";
@@ -35,9 +35,7 @@ let config = {
     },
     e2e: {
         setupNodeEvents(on, config) {
-            require("cypress-terminal-report/src/installLogsPrinter")(on, {
-                printLogsToConsole: "always",
-            });
+            require("cypress-mochawesome-reporter/plugin")(on);
 
             on("task", {
                 log(message) {
@@ -46,13 +44,17 @@ let config = {
                 },
             });
         },
-        // baseUrl: authorURL,
-        reporter: "cypress-multi-reporters",
+        baseUrl: publishURL,
+        reporter: "cypress-mochawesome-reporter",
         reporterOptions: {
-            configFile: "reporter.config.js",
+            reportFilename: `[status]`,
+            embeddedScreenshots: true,
+            inline: true,
+            timestamp: "mediumDate",
         },
     },
     videosFolder: reportsPath + "/videos",
+    video: false,
     screenshotsFolder: reportsPath + "/screenshots",
 };
 
