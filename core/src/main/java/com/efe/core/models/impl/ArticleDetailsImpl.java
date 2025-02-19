@@ -120,6 +120,7 @@ public class ArticleDetailsImpl implements ArticleDetails {
      */
     @PostConstruct
     public void init() {
+        resourcePath = resource.getPath();
 
         // Fetch inline section CTA heading
         resourceProperty = "heading";
