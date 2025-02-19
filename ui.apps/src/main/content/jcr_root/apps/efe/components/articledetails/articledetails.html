@@ -278,36 +278,31 @@
                 <script>
                     document.addEventListener("DOMContentLoaded", function () {
                         const inlineCta = document.getElementById("inline-section-cta");
-                        let secondBodyParagraph = document.querySelector(".cmp-article-details__body .aem-Grid--12 div:nth-child(2)");
+                        let secondBodyParagraph = document.querySelector(".cmp-article-details__body .aem-Grid--12 .cmp-text p:nth-child(2)");
                         if (secondBodyParagraph == null) {
-                            secondBodyParagraph = document.querySelector(".cmp-article-details__body .aem-Grid--12 .cmp-text p:nth-child(2)");
+                            secondBodyParagraph = document.querySelector(".cmp-article-details__body .aem-Grid--12 div:nth-child(2)");
                             if (secondBodyParagraph == null) {
-                                secondBodyParagraph = document.querySelector(".cmp-article-details__body .xfpage .text .cmp-text p:nth-child(2)");
-                                if (secondBodyParagraph == null) {
-                                    secondBodyParagraph = document.querySelector(".cmp-article-details__body .xfpage .text .cmp-text");
-                                }
+                                secondBodyParagraph = document.querySelector(".cmp-article-details__body");
                             }
                         }
+
+                        // Video use case
+                        if (secondBodyParagraph !=null) {
+                            if (secondBodyParagraph.classList.contains("thumbnail_container")) {
+                                secondBodyParagraph = document.querySelector(".cmp-article-details__body .aem-Grid .container:nth-child(2)");
+                            }
+                        }
+                        
                         if (inlineCta != null) {
                             if(secondBodyParagraph.classList.contains("title")) {
                                 let secondBodyParagraph = document.querySelector(".cmp-article-details__body .aem-Grid--12 div:nth-child(3)");
                                 secondBodyParagraph.appendChild(inlineCta);
                             }
                             else {
-                                let secondBodyParagraph = document.querySelector(".cmp-article-details__body .aem-Grid--12 div:nth-child(2)")
                                 if (secondBodyParagraph == null) {
-                                    secondBodyParagraph = document.querySelector(".cmp-article-details__body .aem-Grid--12 .cmp-text p:nth-child(2)");
-                                        if (secondBodyParagraph == null) {
-                                            secondBodyParagraph = document.querySelector(".cmp-article-details__body .xfpage .text .cmp-text p:nth-child(2)");
-                                            if (secondBodyParagraph == null) {
-                                                secondBodyParagraph = document.querySelector(".cmp-article-details__body .xfpage .text .cmp-text");
-                                            }
-                                        }                                    
+                                    secondBodyParagraph = document.querySelector(".cmp-article-details__body");
                                 }
                                 inlineCta.classList.add("m-bottom");
-                                if (secondBodyParagraph.childNodes[0].classList.contains("cmp-text--subhead-00")) {
-                                    secondBodyParagraph = document.querySelector(".cmp-article-details__body .aem-Grid--12 .cmp-text p:nth-child(3)");
-                                }
                                 secondBodyParagraph.appendChild(inlineCta);                        
                             }
                         }
@@ -319,13 +314,12 @@
                         const sidebar = document.getElementById('efe-article-sidebar');
                         const wrapper = document.getElementById('wrapper');
                         const trigger = document.getElementById('trigger');
-                        const articleHeight = (document.getElementById("article-layout").clientHeight - (sidebar.clientHeight + 400));
-
 
                         if (sidebar != null) {
-                           gsap.registerPlugin(ScrollTrigger,ScrollToPlugin);
+                            const articleHeight = (document.getElementById("article-layout").clientHeight - (sidebar.clientHeight + 400));
+                            gsap.registerPlugin(ScrollTrigger,ScrollToPlugin);
 
-                           const tl = gsap.timeline({
+                            const tl = gsap.timeline({
                                 scrollTrigger: {
                                     trigger: "#efe-article-sidebar",
                                     start: "top top",
@@ -343,11 +337,6 @@
 
                     });
                  </script>               
-                
-    
-
-
-          
             
             </div>
         </sly>
