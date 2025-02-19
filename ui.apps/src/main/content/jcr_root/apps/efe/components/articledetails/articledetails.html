@@ -286,36 +286,31 @@
                 <script>
                     document.addEventListener("DOMContentLoaded", function () {
                         const inlineCta = document.getElementById("inline-section-cta");
-                        let secondBodyParagraph = document.querySelector(".cmp-article-details__body .aem-Grid--12 div:nth-child(2)");
+                        let secondBodyParagraph = document.querySelector(".cmp-article-details__body .aem-Grid--12 .cmp-text p:nth-child(2)");
                         if (secondBodyParagraph == null) {
-                            secondBodyParagraph = document.querySelector(".cmp-article-details__body .aem-Grid--12 .cmp-text p:nth-child(2)");
+                            secondBodyParagraph = document.querySelector(".cmp-article-details__body .aem-Grid--12 div:nth-child(2)");
                             if (secondBodyParagraph == null) {
-                                secondBodyParagraph = document.querySelector(".cmp-article-details__body .xfpage .text .cmp-text p:nth-child(2)");
-                                if (secondBodyParagraph == null) {
-                                    secondBodyParagraph = document.querySelector(".cmp-article-details__body .xfpage .text .cmp-text");
-                                }
+                                secondBodyParagraph = document.querySelector(".cmp-article-details__body");
                             }
                         }
+
+                        // Video use case
+                        if (secondBodyParagraph !=null) {
+                            if (secondBodyParagraph.classList.contains("thumbnail_container")) {
+                                secondBodyParagraph = document.querySelector(".cmp-article-details__body .aem-Grid .container:nth-child(2)");
+                            }
+                        }
+                        
                         if (inlineCta != null) {
                             if(secondBodyParagraph.classList.contains("title")) {
                                 let secondBodyParagraph = document.querySelector(".cmp-article-details__body .aem-Grid--12 div:nth-child(3)");
                                 secondBodyParagraph.appendChild(inlineCta);
                             }
                             else {
-                                let secondBodyParagraph = document.querySelector(".cmp-article-details__body .aem-Grid--12 div:nth-child(2)")
                                 if (secondBodyParagraph == null) {
-                                    secondBodyParagraph = document.querySelector(".cmp-article-details__body .aem-Grid--12 .cmp-text p:nth-child(2)");
-                                        if (secondBodyParagraph == null) {
-                                            secondBodyParagraph = document.querySelector(".cmp-article-details__body .xfpage .text .cmp-text p:nth-child(2)");
-                                            if (secondBodyParagraph == null) {
-                                                secondBodyParagraph = document.querySelector(".cmp-article-details__body .xfpage .text .cmp-text");
-                                            }
-                                        }                                    
+                                    secondBodyParagraph = document.querySelector(".cmp-article-details__body");
                                 }
                                 inlineCta.classList.add("m-bottom");
-                                if (secondBodyParagraph.childNodes[0].classList.contains("cmp-text--subhead-00")) {
-                                    secondBodyParagraph = document.querySelector(".cmp-article-details__body .aem-Grid--12 .cmp-text p:nth-child(3)");
-                                }
                                 secondBodyParagraph.appendChild(inlineCta);                        
                             }
                         }
@@ -328,34 +323,28 @@
                         const sidebar = document.getElementById('efe-article-sidebar');
                         const wrapper = document.getElementById('wrapper');
                         const trigger = document.getElementById('trigger');
-                        let articleHeight = (document.getElementById("article-layout").clientHeight - (sidebar.clientHeight + 281));
-
 
                         if (sidebar != null) {
-                           gsap.registerPlugin(ScrollTrigger,ScrollToPlugin);
-                            let mm = gsap.matchMedia();
-                            let aemContainer = sidebar.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
-                            aemContainer.classList.remove("cmp-container--width-1400");
-                            const articleDetailsElm = document.querySelector(".articledetails");
-                            articleDetailsElm.classList.remove("aem-GridColumn--offset--default--1");
-                            mm.add("(min-width: 1356px)", () => {
-                                gsap.to("wrapper", {
-                                    scrollTrigger: {
-                                        trigger: '#trigger',
-                                        pin: sidebar,
-                                        start: 'top top',
-                                        end: articleHeight,
-                                        scrub: 1,
-                                    },
-                                    y: 50,
-                                    });                        
-                            });
+                            const articleHeight = (document.getElementById("article-layout").clientHeight - (sidebar.clientHeight + 400));
+                            gsap.registerPlugin(ScrollTrigger,ScrollToPlugin);
+
+                            const tl = gsap.timeline({
+                                scrollTrigger: {
+                                    trigger: "#efe-article-sidebar",
+                                    start: "top top",
+                                    end: articleHeight,
+                                    scrub: true,
+                                    pinSpacing: false,
+                                    pin: "#wrapper",
+
+                                }
+                            })                           
 
                         }
 
                     });
-                 </script>  
-
+                 </script>               
+            
             </div>
         </sly>
 
