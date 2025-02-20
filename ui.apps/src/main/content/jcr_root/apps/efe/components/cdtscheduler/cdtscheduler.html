@@ -2,7 +2,7 @@
 <sly data-sly-use.scheduler="com.efe.core.models.CDTScheduler"/>
 <div id="${scheduler.SFLeadId}" class="cdtscheduler"></div>
 <input id="SFLeadIdField" type="hidden" value="${scheduler.SFLeadId}" />
-<script src="https://cdn.financialengines.com/bundles/efe-self-scheduler/latest/efe-self-scheduler.umd.js"></script>
+<script src="${scheduler.CDTEmbedURL}"></script>
 <script>
   if (window.efeSelfScheduler?.inject) {
     window.efeSelfScheduler.inject({
