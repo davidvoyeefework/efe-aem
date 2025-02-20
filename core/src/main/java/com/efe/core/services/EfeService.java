@@ -156,6 +156,13 @@ public interface EfeService {
 	 */
 	String getJqueryUrl();
         
+        /**
+	 * Gets the CDT Scheduler Embed URL.
+	 *
+	 * @return the CDT Scheduler Embed URL
+	 */
+	String getCDTEmbedURL();
+        
         String getFPIDLibraryURL();
 
 	/**
