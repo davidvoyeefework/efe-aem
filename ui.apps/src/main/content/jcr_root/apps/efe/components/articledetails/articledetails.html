@@ -333,17 +333,11 @@
                                     scrub: true,
                                     pinSpacing: false,
                                     pin: "#wrapper",
-
                                 }
                             })                           
-
                         }
-
-
-
                     });
                  </script>               
-            
             </div>
         </sly>
 
@@ -352,6 +346,7 @@
             data-sly-use.template="core/wcm/components/commons/v1/templates.html"
             data-sly-test.isNotEmpty="${properties.articleFragmentPath}">
             <sly data-sly-test="${properties.sidebar == 'yes'}">
+                <div id="sidebar-container">
                 <div id="trigger"></div>
                 <aside id="efe-article-sidebar" aria-role="content-info" aria-label="More details about this article and offers from Edelman Financial Engines">
                     <div id="wrapper">
@@ -432,6 +427,7 @@
 
                     </div>
                 </aside>
+            </div>
             </sly>
         </sly>
     </div>
@@ -474,13 +470,17 @@
 
             function moveSideBar () {
                 if (width < 1356) { 
-                    articleBodyContent.after(sidebarBlock);
+                    if (articleBodyContent && sidebarBlock != null) {
+                        articleBodyContent.after(sidebarBlock);
+                    }
                 }
                 if (width >= 1356) {
-                    sidebarContainer.appendChild(sidebarBlock);
+                    if (sidebarContainer && sidebarBlock != null) {
+                        sidebarContainer.appendChild(sidebarBlock);
+                    }
                 }
             }  
-             moveSideBar();
+            moveSideBar();
             window.addEventListener("resize", moveSideBar);       
         }
             })
