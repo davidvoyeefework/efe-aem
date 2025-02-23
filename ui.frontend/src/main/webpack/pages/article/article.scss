@@ -197,8 +197,9 @@
         margin: 0 auto;       
 
         aside#efe-article-sidebar {
-            margin-bottom: 55px !important;
+            margin:0 auto 55px !important;
             width: 100% !important;
+            max-width: rem(704);
         }
 
         .cmp-article-details__published-date {
