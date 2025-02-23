@@ -116,7 +116,7 @@
                         <hr class="cmp-separator__horizontal-rule max-width">
                     </div>
                 </div>
-                <div class="cmp-author-details max-width"
+                <div class="cmp-author-details"
                     data-sly-repeat.item="${model.articleFragmentPath.articleAuthors}">
                     <div data-sly-test=${item.photo} class="cmp-author-details__image">
                         <div class="image cmp-image--profile-thumb cmp-image--round">
@@ -146,7 +146,7 @@
                         </div>                
                     </div>
                 </div>
-                <div class="cmp-author-details max-width"
+                <div class="cmp-author-details"
                     data-sly-repeat.item="${model.articleFragmentPath.plannerResponse}">
                     <div data-sly-test="${item.desktopImageUrl}" class="cmp-author-details__image">
                         <div class="image cmp-image--profile-thumb cmp-image--round">
@@ -314,7 +314,8 @@
                         }
                     })
                 </script>
-                
+
+                <!-- Sidebar sticky behavior and moving up nodes on mobile -->
                 <script>
                     document.addEventListener("DOMContentLoaded", (event) => {
                         const sidebar = document.getElementById('efe-article-sidebar');
@@ -322,22 +323,30 @@
                         const trigger = document.getElementById('trigger');
 
                         if (sidebar != null) {
-                            const articleHeight = (document.getElementById("article-layout").clientHeight - (sidebar.clientHeight + 400));
-                            gsap.registerPlugin(ScrollTrigger,ScrollToPlugin);
-
-                            const tl = gsap.timeline({
-                                scrollTrigger: {
-                                    trigger: "#efe-article-sidebar",
-                                    start: "top top",
-                                    end: articleHeight,
-                                    scrub: true,
-                                    pinSpacing: false,
-                                    pin: "#wrapper",
-                                }
-                            })                           
+                        let articleHeight = (document.getElementById("article-layout").clientHeight - (sidebar.clientHeight + 281));
+                        gsap.registerPlugin(ScrollTrigger,ScrollToPlugin);
+                            let mm = gsap.matchMedia();
+                            let aemContainer = sidebar.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
+                            aemContainer.classList.remove("cmp-container--width-1400");
+                            const articleDetailsElm = document.querySelector(".articledetails");
+                            articleDetailsElm.classList.remove("aem-GridColumn--offset--default--1");
+                            mm.add("(min-width: 1356px)", () => {
+                                gsap.to("wrapper", {
+                                    scrollTrigger: {
+                                        trigger: '#trigger',
+                                        pin: sidebar,
+                                        start: 'top top',
+                                        end: articleHeight,
+                                        scrub: 1,
+                                    },
+                                    y: 50,
+                                    });                        
+                            });
                         }
+
                     });
-                 </script>               
+                </script> 
+                             
             </div>
         </sly>
 
