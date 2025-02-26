@@ -38,7 +38,7 @@ public class UpdateJCRSideBarTest extends SlingAllMethodsServlet {
                 "SELECT * FROM [nt:base] AS node " +
                         "WHERE ISDESCENDANTNODE(node, '/content/efe/us/en/education/') " +
                         "AND NAME(node) = 'articledetails' " +
-                        "AND node.sidebar = 'no'";
+                        "AND node.sidebar IS NULL";
 
         try {
             QueryManager queryManager = session.getWorkspace().getQueryManager();
@@ -50,10 +50,9 @@ public class UpdateJCRSideBarTest extends SlingAllMethodsServlet {
 
             while (nodes.hasNext()) {
                 Node node = nodes.nextNode();
-                if (node.hasProperty("sidebar")) {
-                    node.setProperty("sidebar", "no");
-                    updatedCount++;
-                }
+                node.setProperty("sidebar", "no");
+                updatedCount++;
+
             }
 
             session.save();
