@@ -36,9 +36,9 @@ public class UpdateJCRSideBarTest extends SlingAllMethodsServlet {
         // Corrected SQL2 Query String
         String queryString =
                 "SELECT * FROM [nt:base] AS node " +
-                        "WHERE ISDESCENDANTNODE(node, '/content/efe/us/en/education/financial-planning') " +
+                        "WHERE ISDESCENDANTNODE(node, '/content/efe/us/en/education/') " +
                         "AND NAME(node) = 'articledetails' " +
-                        "AND node.sidebar = 'yes'";
+                        "AND node.sidebar = 'no'";
 
         try {
             QueryManager queryManager = session.getWorkspace().getQueryManager();
@@ -51,7 +51,7 @@ public class UpdateJCRSideBarTest extends SlingAllMethodsServlet {
             while (nodes.hasNext()) {
                 Node node = nodes.nextNode();
                 if (node.hasProperty("sidebar")) {
-                    node.setProperty("sidebar", "no");
+                    node.setProperty("sidebar", "yes");
                     updatedCount++;
                 }
             }
