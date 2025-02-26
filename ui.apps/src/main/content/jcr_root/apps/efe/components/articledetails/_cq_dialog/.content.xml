@@ -433,8 +433,7 @@
                                             <showSidebar
                                                 jcr:primaryType="nt:unstructured"
                                                 text="Yes"
-                                                value="yes"
-                                                selected="{Boolean}true"/> 
+                                                value="yes"/>
                                         </items>
                                     </list>                                                                                        
 
