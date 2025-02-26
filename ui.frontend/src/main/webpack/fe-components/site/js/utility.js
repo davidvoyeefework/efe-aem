@@ -2,6 +2,14 @@ import { captureScIdFromUrl } from "./helper";
 
 export const availableThroughText = (key) => {
   const windowDataObj = window.aemfe;
+  let topFee = 0.0;
+  if (windowDataObj !== null && window.DataObj.sponsoredFees.length > 0) {
+    windowDataObj.sponsoredFees.feeScheduleTiers.forEach((elem) => {
+      if (elem.feeRate > topFee) {
+        topFee = elem.feeRate;
+      }
+    });
+  }
   let availableThroughText =
     windowDataObj["publicEnrollment.products.option.pm.availableThrough"];
   if (availableThroughText) {
@@ -15,9 +23,7 @@ export const availableThroughText = (key) => {
     );
     availableThroughText = availableThroughText.replace(
       "{{ feePercent }}",
-      (
-        windowDataObj?.sponsoredFees[0]?.feeScheduleTiers[0].feeRate * 0.01
-      ).toPrecision(2) + "%",
+      (topFee * 0.01).toPrecision(2) + "%",
     );
   }
   if (availableThroughText.slice(-2) === "**") {
@@ -453,7 +459,7 @@ export const getProductChoiceButtonProspectsOnly = () => {
 
   const context = windowDataObj?.context;
   const isMember = context?.isMember;
-  if ((context?.userTier && context.userTier === "PROSPECT") && !isMember) {
+  if (context?.userTier && context.userTier === "PROSPECT" && !isMember) {
     if (userLoggedIn) {
       url =
         apiBaseUrl +
@@ -594,8 +600,8 @@ export const getDashboardButton = () => {
   let linkLabel = "LOGIN TO ONLINE ADVICE";
   if (context?.userTier) {
     if (context.userTier === "OA") {
-          console.log("context.userTier: OA");
-          return "";
+      console.log("context.userTier: OA");
+      return "";
     }
     linkLabel =
       context?.userTier === "OA"
@@ -641,8 +647,8 @@ export const getLoginDashboardButton = () => {
   } = windowDataObj;
   if (context?.userTier) {
     if (context.userTier === "OA") {
-          console.log("getLoginDashboardButton context.userTier: OA");
-          return `<div class="button cmp-button--button-primary" style="padding-top:30px">
+      console.log("getLoginDashboardButton context.userTier: OA");
+      return `<div class="button cmp-button--button-primary" style="padding-top:30px">
                                        <a class="cmp-button" href="https://www.financialengines.com/app/cx/#/overview">
                                            <span class="cmp-button__text">Log in</span>
                                        </a>
