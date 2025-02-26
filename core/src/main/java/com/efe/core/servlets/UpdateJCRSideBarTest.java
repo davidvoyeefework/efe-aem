@@ -51,7 +51,7 @@ public class UpdateJCRSideBarTest extends SlingAllMethodsServlet {
             while (nodes.hasNext()) {
                 Node node = nodes.nextNode();
                 if (node.hasProperty("sidebar")) {
-                    node.setProperty("sidebar", "yes");
+                    node.setProperty("sidebar", "no");
                     updatedCount++;
                 }
             }
