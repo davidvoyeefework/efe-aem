@@ -3,7 +3,7 @@ import { captureScIdFromUrl } from "./helper";
 export const availableThroughText = (key) => {
   const windowDataObj = window.aemfe;
   let topFee = 0.0;
-  if (windowDataObj !== null && windowDataObj.sponsoredFees.length > 0) {
+  if (windowDataObj?.sponsoredFees?.feeScheduleTiers) {
     windowDataObj.sponsoredFees.feeScheduleTiers.forEach((elem) => {
       if (elem.feeRate > topFee) {
         topFee = elem.feeRate;
