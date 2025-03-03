@@ -1,0 +1,31 @@
+<div data-sly-use.model="com.efe.core.models.PlannerList" data-sly-use.template="core/wcm/components/commons/v1/templates.html"
+     class="list cmp-list--horizontal cmp-list--loose cmp-list--left-align cmp-list--border-radius" id="${model.id}">
+  <h2 class="cmp-list--title">See all planners in ${model.stateList}</h2>
+  <ul class="cmp-list">
+    <sly data-sly-list.plannerList="${model.plannerList}">
+      <li class="teaser cmp-teaser--thumbnail">
+        <div  class="cmp-teaser">
+          <div class="cmp-teaser__content">
+            <h2 class="cmp-teaser__title"> ${plannerList.firstName} ${plannerList.lastName}</h2>
+            <div class="cmp-teaser__description">
+              <p>${plannerList.title}</p>
+            </div>
+            <div class="cmp-teaser__action-container">
+              <a class="cmp-teaser__action-link"  target="${model.plannerTarget}" data-cmp-clickable="" x-cq-linkchecker="valid" href="${plannerList.buttonUrl}" >${model.ctaLabel}</a>
+            </div>
+          </div>
+          <div class="cmp-teaser__image">
+            <div data-cmp-hook-image="imageV3" class="cmp-image">
+              <img srcset="${plannerList.desktopUrl}"
+                   src="${plannerList.desktopUrl}"
+                   loading="lazy" class="cmp-image__image" itemprop="contentUrl"
+                   alt="${plannerList.firstName} ${plannerList.lastName}" title="${plannerList.firstName} ${plannerList.lastName}" />
+              <meta itemprop="caption" content="Planner Details">
+            </div>
+          </div>
+        </div>
+      </li>
+    </sly>
+  </ul>
+</div>
+<sly data-sly-call="${template.placeholder @ isEmpty=!isNotEmpty, classAppend='list'}"></sly>

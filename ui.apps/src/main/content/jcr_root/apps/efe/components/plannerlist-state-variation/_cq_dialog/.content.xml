@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Planner List: State Variation"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <plannerlabel
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Planner List Labels "
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        maximized="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+
+                                            <state
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldDescription="State Selector"
+                                                fieldLabel="State Selector"
+                                                name="./state"
+                                                required="{Boolean}true">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <wa
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Washington"
+                                                        value="Washington"/>
+                                                    <or
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Oregon"
+                                                        value="Oregon"/>                                                                                                                                                                        
+                                                </items>
+                                            </state>
+                                        
+
+
+                                            <nationalplannertitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on Title"
+                                                fieldLabel="Planner List Title For National Advisor Center"
+                                                name="./nationalPlannerTitle"
+                                                value="The National Advisor Center Team"/>
+                                            <ctalabel
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The text to display on the Read Bio Link."
+                                                fieldLabel="Read Bio Label "
+                                                name="./ctaLabel"
+                                                value="Read Bio"/>
+                                            <plannertarget
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                fieldDescription="If checked the link will be opened in a new browser tab."
+                                                name="./plannerTarget"
+                                                text="Open Planner Bio in new tab"
+                                                uncheckedValue="_self"
+                                                value="_blank"/>
+                                            <id
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="HTML ID attribute to apply to the component."
+                                                fieldLabel="ID"
+                                                name="./id"/>
+                                            <defaultredirectpagepath
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/coral/common/form/pagefield"
+                                                fieldDescription="Default Redirect Page Path"
+                                                fieldLabel="Default Redirect Page Path"
+                                                name="./defaultRedirectPagePath"
+                                                rootPath="/content/efe"
+                                                value="/content/efe/us/en/locations"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </plannerlabel>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

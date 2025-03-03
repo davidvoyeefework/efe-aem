@@ -103,12 +103,21 @@ public class PlannerListImpl implements PlannerList {
 	/** The City. */
 	private String city;
 
+	// Planner State Selection
+	public String stateList;
+
 	/**
 	 * This method sets the planner values in bean class according to selectors
 	 * value.
 	 */
 	@PostConstruct
 	protected void init() {
+
+		// Fetch State Planner Selector
+		String resourceProperty = "state";
+		String resourcePath = resource.getPath();
+		stateList = ResourceUtil.getProperty( resourceResolver, resourcePath, resourceProperty );
+
 		String[] selectors = request.getRequestPathInfo().getSelectors();
 		if (selectors.length == 2) {
 			List<String> cfList = new ArrayList<>();
@@ -129,6 +138,26 @@ public class PlannerListImpl implements PlannerList {
 			setPlannerDetails(cfList);
 			setPlannerTitle(citySelector);
 		}
+		// if (selectors.length == 1) {
+		// 	List <String> cfList = new ArrayList<>();
+		// 	state = stateList.toLowerCase();
+		// 	String citySelector = "portland";
+		// 	Resource resourceLocation = LocationPlannerUtil.getLocationResource(resourceResolver, state, citySelector);
+		// 	if (Objects.nonNull(resourceLocation)) {
+		// 		for (Resource item : resourceLocation.getChildren()) {
+		// 			setCfList(cfList, item);
+		// 		}
+		// 	} else {
+		// 		try {
+		// 			response.sendRedirect(getDefaultRedirectPagePath());
+		// 		} catch (IOException e) {
+		// 			throw new RuntimeException(e);
+		// 		}
+		// 	}
+		// 	setPlannerDetails(cfList);
+		// 	setPlannerTitle(citySelector);
+
+		// }
 	}
 
 	private void setPlannerTitle(String citySelector) {
@@ -282,4 +311,8 @@ public class PlannerListImpl implements PlannerList {
 			defaultRedirectPagePath = "/locations";
 		return defaultRedirectPagePath.concat(Constants.HTML_SUFFIX);
 	}
+
+	public String getStateList() {
+		return stateList;
+	}	
 }

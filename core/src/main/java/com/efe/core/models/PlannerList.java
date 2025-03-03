@@ -61,4 +61,6 @@ public interface PlannerList {
     List<PlannerDetail> getPlannerList();
 
     String getDefaultRedirectPagePath();
+
+    String getStateList();
 }
