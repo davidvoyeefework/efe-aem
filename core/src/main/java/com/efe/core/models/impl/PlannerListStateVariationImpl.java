@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-import java.util.Iterator;
 
 import javax.annotation.PostConstruct;
 
@@ -27,6 +26,7 @@ import com.day.cq.dam.api.DamConstants;
 import com.efe.core.bean.PlannerDetail;
 import com.efe.core.constants.PlannerLocationConstants;
 import com.efe.core.models.PlannerList;
+import com.efe.core.models.PlannerListStateVariation;
 import com.efe.core.services.EfeService;
 import com.efe.core.utils.EFEUtil;
 import com.efe.core.utils.LinkUtil;
@@ -39,10 +39,10 @@ import com.efe.core.utils.ResourceUtil;
 @Model(adaptables = { Resource.class, SlingHttpServletRequest.class }, adapters = PlannerList.class, resourceType = {
 		PlannerListImpl.RESOURCE_TYPE }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
-public class PlannerListImpl implements PlannerList {
+public class PlannerListStateVariationImpl implements PlannerListStateVariation {
 
 	/** The Constant RESOURCE_TYPE. */
-	public static final String RESOURCE_TYPE = "efe/components/plannerlist";
+	public static final String RESOURCE_TYPE = "efe/components/plannerlist-state-variation";
 
 	/** The Constant SELECTOR_PLACEHOLDER_1. */
 	private static final String SELECTOR_PLACEHOLDER_1 = "{1}";
@@ -104,7 +104,8 @@ public class PlannerListImpl implements PlannerList {
 	/** The City. */
 	private String city;
 
-	public String test;
+	// Planner State Selection
+	public String stateList;
 
 	/**
 	 * This method sets the planner values in bean class according to selectors
@@ -113,28 +114,17 @@ public class PlannerListImpl implements PlannerList {
 	@PostConstruct
 	protected void init() {
 
+		// Fetch State Planner Selector
+		String resourceProperty = "state";
+		String resourcePath = resource.getPath();
+		stateList = ResourceUtil.getProperty( resourceResolver, resourcePath, resourceProperty );
+
 		String[] selectors = request.getRequestPathInfo().getSelectors();
 		if (selectors.length == 2) {
 			List<String> cfList = new ArrayList<>();
-			List<String> cityList = new ArrayList<>();
 			state = selectors[0].toLowerCase();
 			String citySelector = selectors[1].toLowerCase();
 			Resource resourceLocation = LocationPlannerUtil.getLocationResource(resourceResolver, state, citySelector);
-			// Resource resourceLocation = LocationPlannerUtil.getLocationResourceState(resourceResolver, state);
-
-
-			Resource resourceLocation1 = LocationPlannerUtil.getLocationResourceStateDirectory(resourceResolver, state);
-			Iterator<Resource> children = resourceLocation1.listChildren();
-			int i = 0;
-			while (children.hasNext()) {
-				final Resource child = children.next();
-				cityList.add(i, child.toString());
-				i++;
-			}
-			test = cityList.toString();
-	
-
-
 			if (Objects.nonNull(resourceLocation)) {
 				for (Resource item : resourceLocation.getChildren()) {
 					setCfList(cfList, item);
@@ -149,27 +139,26 @@ public class PlannerListImpl implements PlannerList {
 			setPlannerDetails(cfList);
 			setPlannerTitle(citySelector);
 		}
-		if (selectors.length == 3) {
-			List<String> cfList = new ArrayList<>();
-			state = selectors[0].toLowerCase();
-			Resource resourceLocation = LocationPlannerUtil.getLocationResourceStateDirectory(resourceResolver, state);
-			Iterator<Resource> children = resourceLocation.listChildren();
-			test = children.toString();
+		// if (selectors.length == 1) {
+		// 	List <String> cfList = new ArrayList<>();
+		// 	state = stateList.toLowerCase();
+		// 	String citySelector = "portland";
+		// 	Resource resourceLocation = LocationPlannerUtil.getLocationResource(resourceResolver, state, citySelector);
+		// 	if (Objects.nonNull(resourceLocation)) {
+		// 		for (Resource item : resourceLocation.getChildren()) {
+		// 			setCfList(cfList, item);
+		// 		}
+		// 	} else {
+		// 		try {
+		// 			response.sendRedirect(getDefaultRedirectPagePath());
+		// 		} catch (IOException e) {
+		// 			throw new RuntimeException(e);
+		// 		}
+		// 	}
+		// 	setPlannerDetails(cfList);
+		// 	setPlannerTitle(citySelector);
 
-			// if (Objects.nonNull(resourceLocation)) {
-			// 	for (Resource item : resourceLocation.getChildren()) {
-			// 		setCfList(cfList, item);
-			// 	}
-			// } else {
-			// 	try {
-			// 		response.sendRedirect(getDefaultRedirectPagePath());
-			// 	} catch (IOException e) {
-			// 		throw new RuntimeException(e);
-			// 	}
-			// }
-			// setPlannerDetails(cfList);
-			// setPlannerTitle(citySelector);
-		}
+		// }
 	}
 
 	private void setPlannerTitle(String citySelector) {
@@ -322,9 +311,9 @@ public class PlannerListImpl implements PlannerList {
 		if (StringUtils.isBlank(defaultRedirectPagePath))
 			defaultRedirectPagePath = "/locations";
 		return defaultRedirectPagePath.concat(Constants.HTML_SUFFIX);
-	}	
-
-	public String getDavidTest() {
-		return test;
 	}
+
+	public String getStateList() {
+		return stateList;
+	}	
 }

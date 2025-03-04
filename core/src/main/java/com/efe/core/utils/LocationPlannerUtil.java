@@ -32,6 +32,12 @@ public class LocationPlannerUtil {
 				+ PlannerLocationConstants.FORWARD_SLASH + city;
 		return resourceResolver.getResource(locationPath);
 	}
+
+	public static Resource getLocationResourceStateDirectory(ResourceResolver resourceResolver, String state) {
+		String locationPath = PlannerLocationConstants.ROOT_FOLDER_PATH + PlannerLocationConstants.FORWARD_SLASH
+				+ PlannerLocationConstants.LOCATIONS + PlannerLocationConstants.FORWARD_SLASH + state;
+		return resourceResolver.getResource(locationPath);
+	}
 	
 	/**
 	 * Gets the planner resource.

@@ -8,7 +8,7 @@ import java.util.List;
  * The Interface PlannerList Model.
  */
 
-public interface PlannerList {
+public interface PlannerListStateVariation {
 
 
     /**
@@ -62,6 +62,5 @@ public interface PlannerList {
 
     String getDefaultRedirectPagePath();
 
-    String getDavidTest();
-    
+    String getStateList();
 }
