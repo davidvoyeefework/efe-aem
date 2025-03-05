@@ -35,9 +35,7 @@ let config = {
     },
     e2e: {
         setupNodeEvents(on, config) {
-            require("cypress-terminal-report/src/installLogsPrinter")(on, {
-                printLogsToConsole: "always",
-            });
+            require("cypress-mochawesome-reporter/plugin")(on);
 
             on("task", {
                 log(message) {
@@ -47,13 +45,20 @@ let config = {
             });
         },
         baseUrl: publishURL,
-        reporter: "cypress-multi-reporters",
+        reporter: "cypress-mochawesome-reporter",
         reporterOptions: {
-            configFile: "reporter.config.js",
+            reportDir: reportsPath + "/reports",
+            reportFilename: `[status]`,
+            embeddedScreenshots: true,
+            inline: true,
+            timestamp: "mediumDate",
+            includeSummary: true,
         },
     },
     videosFolder: reportsPath + "/videos",
     screenshotsFolder: reportsPath + "/screenshots",
+    // screenshotOnRunFailure: false,
+    video: false,
 };
 
 module.exports = defineConfig(config);

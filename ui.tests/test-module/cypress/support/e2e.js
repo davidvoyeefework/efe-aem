@@ -15,10 +15,4 @@
  */
 
 import './commands'
-require('cypress-terminal-report/src/installLogsCollector')({
-    xhr: {
-        printHeaderData: false,
-        printRequestData: false,
-    },
-    debug: true
-});
+import 'cypress-mochawesome-reporter/register';

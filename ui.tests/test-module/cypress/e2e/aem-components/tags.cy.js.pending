@@ -1,0 +1,12 @@
+/// <reference types="cypress" />
+describe("component - AEM Component", () => {
+    before(() => {
+        cy.visit("/ui-tests/component/");
+        cy.preventPageViewRequest(); // Prevent page view request.
+    });
+
+    it("component", () => {
+        // Pending
+    })
+        
+});
