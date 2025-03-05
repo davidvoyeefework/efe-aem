@@ -18,7 +18,7 @@ describe("Content Collage - AEM Component", () => {
             .and(($img) => {
                 expect($img[0].naturalWidth).to.be.greaterThan(
                     0,
-                    "The image is not displayed."
+                    "Validate the image is displayed"
                 );
             });
 
@@ -30,7 +30,7 @@ describe("Content Collage - AEM Component", () => {
             .and(($img) => {
                 expect($img[0].naturalWidth).to.be.greaterThan(
                     0,
-                    "The image is not displayed."
+                    "Validate the image is displayed"
                 );
             });
 

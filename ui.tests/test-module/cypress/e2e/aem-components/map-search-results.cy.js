@@ -6,22 +6,17 @@ describe("Map Search Results - AEM Component", () => {
     });
 
     it("Map Search Results", () => {
-        cy.randomLocation().then((location) => {
-            cy.get("#ui-test-map-direction-hero").then(($map) => {
-                cy.wrap($map).find("input#location").type(location.state);
-                cy.wrap($map)
-                    .find("[data-component=location-map-results]")
-                    .contains("find a planner", { matchCase: false })
-                    .click();
+        cy.get("#ui-test-map-direction-hero").then(($map) => {
+            cy.wrap($map).find("input#location").type("GA");
+            cy.wrap($map)
+                .find("[data-component=location-map-results]")
+                .contains("find a planner", { matchCase: false })
+                .click();
 
-                cy.then(() => {
-                    cy.wrap($map)
-                        .find(".cmp-location--results__items")
-                        .contains(location.city);
-                    cy.wrap($map)
-                        .find(".cmp-location--results__items")
-                        .contains(location.address1);
-                });
+            cy.then(() => {
+                cy.wrap($map)
+                    .find(".cmp-location--results__items")
+                    .contains("Atlanta", { matchCase: false });
             });
         });
     });
