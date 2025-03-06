@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 
 import javax.annotation.PostConstruct;
 
@@ -23,6 +25,7 @@ import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import com.adobe.cq.export.json.ExporterConstants;
+import com.adobe.cq.gfx.Plan;
 import com.day.cq.dam.api.DamConstants;
 import com.efe.core.bean.PlannerDetail;
 import com.efe.core.constants.PlannerLocationConstants;
@@ -116,25 +119,9 @@ public class PlannerListImpl implements PlannerList {
 		String[] selectors = request.getRequestPathInfo().getSelectors();
 		if (selectors.length == 2) {
 			List<String> cfList = new ArrayList<>();
-			List<String> cityList = new ArrayList<>();
 			state = selectors[0].toLowerCase();
 			String citySelector = selectors[1].toLowerCase();
 			Resource resourceLocation = LocationPlannerUtil.getLocationResource(resourceResolver, state, citySelector);
-			// Resource resourceLocation = LocationPlannerUtil.getLocationResourceState(resourceResolver, state);
-
-
-			Resource resourceLocation1 = LocationPlannerUtil.getLocationResourceStateDirectory(resourceResolver, state);
-			Iterator<Resource> children = resourceLocation1.listChildren();
-			int i = 0;
-			while (children.hasNext()) {
-				final Resource child = children.next();
-				cityList.add(i, child.toString());
-				i++;
-			}
-			test = cityList.toString();
-	
-
-
 			if (Objects.nonNull(resourceLocation)) {
 				for (Resource item : resourceLocation.getChildren()) {
 					setCfList(cfList, item);
@@ -149,28 +136,75 @@ public class PlannerListImpl implements PlannerList {
 			setPlannerDetails(cfList);
 			setPlannerTitle(citySelector);
 		}
-		if (selectors.length == 3) {
-			List<String> cfList = new ArrayList<>();
-			state = selectors[0].toLowerCase();
-			Resource resourceLocation = LocationPlannerUtil.getLocationResourceStateDirectory(resourceResolver, state);
-			Iterator<Resource> children = resourceLocation.listChildren();
-			test = children.toString();
 
-			// if (Objects.nonNull(resourceLocation)) {
-			// 	for (Resource item : resourceLocation.getChildren()) {
-			// 		setCfList(cfList, item);
-			// 	}
-			// } else {
-			// 	try {
-			// 		response.sendRedirect(getDefaultRedirectPagePath());
-			// 	} catch (IOException e) {
-			// 		throw new RuntimeException(e);
-			// 	}
-			// }
-			// setPlannerDetails(cfList);
+		if (selectors.length == 0) {
+
+			String resourceProperty = "state";
+			String resourcePath = resource.getPath();
+			String stateSelectorAuthorConfig = ResourceUtil.getProperty( resourceResolver, resourcePath, resourceProperty );
+			state = stateSelectorAuthorConfig.toLowerCase();
+			List<String> cfList = new ArrayList<>();
+			List <String> finalPlannerCFList = new ArrayList<>();
+			List <String> PlannerCFTagsArray = new ArrayList<>();
+			Resource resourceLocation1 = LocationPlannerUtil.getLocationResourceStateDirectory(resourceResolver, state);
+			Iterator<Resource> children = resourceLocation1.listChildren();
+			int i = 0;
+			while (children.hasNext()) {
+				final Resource childState = children.next();
+				if (Objects.nonNull(childState)) {
+					for (Resource item : childState.getChildren()) {
+						if (item.getPath().contains("national-advisor-center") ) {
+							break;
+						}
+						else {
+							setCfList(cfList, item);
+						}
+					}
+				}
+				else {
+					try {
+						response.sendRedirect(getDefaultRedirectPagePath());
+					} catch (IOException e) {
+						throw new RuntimeException(e);
+					}
+				}
+				i++;
+			}
+			
+			// Removing duplicate planners that are associated with more than 1 city
+			List <String> listWithoutDuplicates = removeDuplicates(cfList);
+			cfList = listWithoutDuplicates;
+
+			// Sort cfList by first name
+			for (String plannerCF : cfList) {
+				Integer lastIndexSlash = plannerCF.lastIndexOf("/");
+				if (lastIndexSlash != -1) {
+					String plannerCFTag = plannerCF.substring(lastIndexSlash + 1);
+					PlannerCFTagsArray.add(plannerCFTag);
+				}
+			}
+			 Collections.sort(PlannerCFTagsArray);
+
+			// Build Sorted Cleaned Planner List Path for Specific State
+			 for (String plannerCFSlice: PlannerCFTagsArray) {
+				Integer lastUnderscore = plannerCFSlice.lastIndexOf("_");
+				if (lastUnderscore != -1) { 
+					String plannerId = plannerCFSlice.substring(lastUnderscore + 1);
+					String plannerPathBuilder = "/content/dam/efe/cf/plannerlocation/planners";
+					plannerPathBuilder = plannerPathBuilder + "/" + plannerId + "/" + plannerCFSlice;
+					finalPlannerCFList.add(plannerPathBuilder);
+				}
+			 }
+			setPlannerDetails(finalPlannerCFList);
 			// setPlannerTitle(citySelector);
 		}
+		
 	}
+
+	public static List<String> removeDuplicates(List<String> listWithDuplicates) {
+        Set<String> set = new LinkedHashSet<>(listWithDuplicates);
+        return new ArrayList<>(set);
+    }
 
 	private void setPlannerTitle(String citySelector) {
 		plannerTitle = plannerTitle.replace(SELECTOR_PLACEHOLDER_0, city);
