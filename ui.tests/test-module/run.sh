@@ -48,4 +48,4 @@ if [ -n "${PROXY_HOST:-}" ]; then
 fi
 
 # execute tests
-npm test
+npm run check-404
