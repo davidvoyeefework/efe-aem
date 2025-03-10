@@ -17,6 +17,7 @@ import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
@@ -27,6 +28,7 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.adobe.cq.gfx.Plan;
 import com.day.cq.dam.api.DamConstants;
+import com.efe.core.bean.OfficesLocations;
 import com.efe.core.bean.PlannerDetail;
 import com.efe.core.constants.PlannerLocationConstants;
 import com.efe.core.models.PlannerList;
@@ -34,6 +36,7 @@ import com.efe.core.services.EfeService;
 import com.efe.core.utils.EFEUtil;
 import com.efe.core.utils.LinkUtil;
 import com.efe.core.utils.LocationPlannerUtil;
+import com.efe.core.utils.OfficeLocationsUtil;
 import com.efe.core.utils.ResourceUtil;
 
 /**
@@ -107,7 +110,15 @@ public class PlannerListImpl implements PlannerList {
 	/** The City. */
 	private String city;
 
-	public String test;
+	public String[] officeLocationsEncoded;
+
+	public ArrayList<String> officeLocationsEncodedSubstring = new ArrayList<String>();
+
+	public ArrayList<String> test;
+
+	public String testString;
+
+
 
 	/**
 	 * This method sets the planner values in bean class according to selectors
@@ -221,6 +232,8 @@ public class PlannerListImpl implements PlannerList {
 	 */
 	private void setPlannerDetails(List<String> cfList) {
 		for (String item : cfList) {
+			ArrayList<String> officeLocationsDecoded = new ArrayList<String>();
+			officeLocationsEncodedSubstring.clear();
 			PlannerDetail plannerObj = new PlannerDetail();
 			Resource planner = resourceResolver.getResource(item);
 			if (Objects.nonNull(planner)) {
@@ -237,6 +250,34 @@ public class PlannerListImpl implements PlannerList {
 				String imageUrl = ResourceUtil.getProperty(resourceResolver, plannerMaster.getPath(),
 						"desktopImageurl");
 				String plannerId = ResourceUtil.getProperty(resourceResolver, plannerMaster.getPath(), "id");
+
+				// Get all office locations folder names associated with Planner and isolate just array of folder names not whole path
+				officeLocationsEncoded = ResourceUtil.getProperties(resourceResolver, plannerMaster.getPath(), "officeslocations");
+				for(String office: officeLocationsEncoded) {
+					Integer lastIndexSlash = office.lastIndexOf("/");
+					if (lastIndexSlash != -1) { 
+						String plannerOfficeFolderString = office.substring(lastIndexSlash + 1);
+						officeLocationsEncodedSubstring.add(plannerOfficeFolderString);
+					}
+				}
+
+				// Alter planner path folder directory to root and iterate over all locations associated and add the correlated city to String array
+				String badPlannerPath = planner.getPath();
+				Integer lastIndexofSlash1 = badPlannerPath.lastIndexOf("/");
+				if (lastIndexofSlash1 != -1) { 
+					String goodPlannerPath = badPlannerPath.substring(0, lastIndexofSlash1 + 1);
+					for (String officeFolderLocation : officeLocationsEncodedSubstring) {
+						String pathBuilder = goodPlannerPath + "officeslocations/" + officeFolderLocation + "/jcr:content/data/master";		
+						String cityProperty = ResourceUtil.getProperty(resourceResolver, pathBuilder, "city" );
+						officeLocationsDecoded.add(cityProperty);
+					}
+				}
+
+				// Clean the list, sort and remove duplicates and array brackets
+				Collections.sort(officeLocationsDecoded);
+				List<String> officeLocationsDecodedDuplicatesRemoved = removeDuplicates(officeLocationsDecoded);
+				plannerObj.setOfficeLocations(officeLocationsDecodedDuplicatesRemoved.toString().replace("[", "").replace("]", ""));
+
 				if(StringUtils.isNotEmpty(firstNameAlias)) {
 					plannerObj.setFirstName(firstNameAlias);
 				} else {
@@ -247,8 +288,9 @@ public class PlannerListImpl implements PlannerList {
 				plannerObj.setDesktopUrl(imageUrl);
 				plannerObj.setButtonUrl(LinkUtil.getFormattedLink(efeService.getPlannerBioPageUrl()+ PlannerLocationConstants.DOT + firstName
 								+ PlannerLocationConstants.DOT + lastName + PlannerLocationConstants.DOT + plannerId,
-						resourceResolver));
+						resourceResolver));					
 			}
+		
 			plannerDetails.add(plannerObj);
 		}
 	}
@@ -358,7 +400,11 @@ public class PlannerListImpl implements PlannerList {
 		return defaultRedirectPagePath.concat(Constants.HTML_SUFFIX);
 	}	
 
-	public String getDavidTest() {
+	public ArrayList<String> getDavidTest() {
 		return test;
+	}
+
+	public String getDavidTestString() {
+		return testString;
 	}
 }
