@@ -30,30 +30,30 @@ export const lowerThanIndustryPercentValue = () => {
 
 export const sponsoredFeeObj = () => {
   const windowDataObj = window.aemfe;
-  let sponsoredFeeIndex = 0;
-  if (
-    windowDataObj?.sponsoredFees?.feeScheduleTiers &&
-    windowDataObj.sponsoredFees.feeScheduleTiers.length > 1
-  ) {
+  let sponsoredFeeIndex = -1;
+  if (windowDataObj?.sponsoredFees?.feeScheduleTiers) {
+    sponsoredFeeIndex = 0;
     let arrLen = windowDataObj.sponsoredFees.feeScheduleTiers.length;
-    for (i = 1; i < arrLen; i++) {
-      if (windowDataObj.sponsoredFees.feeScheduleTiers[i].feeRate) {
+    for (i = 0; i < arrLen; i++) {
+      if (windowDataObj?.sponsoredFees?.feeScheduleTiers[i]?.feeRate) {
         if (
-          !windowDataObj.sponsoredFees.feeScheduleTiers[sponsoredFeeIndex]
-            .feeRate
-        ) {
-          sponsoredFeeIndex = i;
-        } else if (
+          windowDataObj?.sponsoredFees?.feeScheduleTiers[i]?.feeRate &&
+          windowDataObj?.sponsoredFees?.feeScheduleTiers[sponsoredFeeIndex]
+            ?.feeRate &&
           windowDataObj.sponsoredFees.feeScheduleTiers[i].feeRate >
-          windowDataObj.sponsoredFees.feeScheduleTiers[sponsoredFeeIndex]
-            .feeRate
+            windowDataObj.sponsoredFees.feeScheduleTiers[sponsoredFeeIndex]
+              .feeRate
         ) {
           sponsoredFeeIndex = i;
         }
       }
     }
   }
-  return windowDataObj?.sponsoredFees?.feeScheduleTiers[sponsoredFeeIndex];
+  if (sponsoredFeeIndex === -1) {
+    return null;
+  } else {
+    return windowDataObj?.sponsoredFees?.feeScheduleTiers[sponsoredFeeIndex];
+  }
 };
 /**
  * 
