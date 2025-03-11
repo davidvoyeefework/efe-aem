@@ -30,30 +30,36 @@ export const lowerThanIndustryPercentValue = () => {
 
 export const sponsoredFeeObj = () => {
   const windowDataObj = window.aemfe;
-  let sponsoredFeeIndex = -1;
-  if (windowDataObj?.sponsoredFees?.feeScheduleTiers) {
-    sponsoredFeeIndex = 0;
-    let arrLen = windowDataObj.sponsoredFees.feeScheduleTiers.length;
-    for (i = 0; i < arrLen; i++) {
-      if (windowDataObj?.sponsoredFees?.feeScheduleTiers[i]?.feeRate) {
-        if (
-          windowDataObj?.sponsoredFees?.feeScheduleTiers[i]?.feeRate &&
-          windowDataObj?.sponsoredFees?.feeScheduleTiers[sponsoredFeeIndex]
-            ?.feeRate &&
-          windowDataObj.sponsoredFees.feeScheduleTiers[i].feeRate >
-            windowDataObj.sponsoredFees.feeScheduleTiers[sponsoredFeeIndex]
-              .feeRate
-        ) {
-          sponsoredFeeIndex = i;
-        }
+  let sponsoredFeeIndex = 0;
+  let feeTierIndex = 0;
+  let gotGood = false;
+  if (windowDataObj?.sponsoredFees) {
+      sponsoredFeeIndex = 0;
+      for(let a = 0;a < windowDataObj.sponsoredFees.length; a++) {
+          if(windowDataObj.sponsoredFees[a].feeScheduleTiers) {
+              let arrLen = windowDataObj.sponsoredFees[a].feeScheduleTiers.length;
+              for (i = 0; i < arrLen; i++) {
+                if (windowDataObj?.sponsoredFees[a]?.feeScheduleTiers[i]?.feeRate) {
+                  if (windowDataObj?.sponsoredFees[sponsoredFeeIndex]?.feeScheduleTiers[feeTierIndex]?.feeRate &&
+                    windowDataObj.sponsoredFees[a].feeScheduleTiers[i].feeRate >
+                      windowDataObj.sponsoredFees[sponsoredFeeIndex].feeScheduleTiers[feeTierIndex]
+                        .feeRate
+                  ) {
+                    feeTierIndex = i;
+                    sponsoredFeeIndex = a;
+                    gotGood = true;
+                  }
+                }
+              }
+          }
       }
-    }
   }
-  if (sponsoredFeeIndex === -1) {
-    return null;
+  if(gotGood){
+      return windowDataObj?.sponsoredFees[sponsoredFeeIndex]?.feeScheduleTiers[feeTierIndex];
   } else {
-    return windowDataObj?.sponsoredFees?.feeScheduleTiers[sponsoredFeeIndex];
+      return null;
   }
+  
 };
 /**
  * 
