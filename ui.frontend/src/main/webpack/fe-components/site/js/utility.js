@@ -16,7 +16,7 @@ export const availableThroughText = (key) => {
     );
     availableThroughText = availableThroughText.replace(
       "{{ feePercent }}",
-      (windowDataObj?.sponsoredFees?.feeScheduleTiers[sponsoredFeeIndex]?.feeRate * 0.01).toPrecision(2) + "%",
+      (sponsoredFeeObj()?.feeRate * 0.01).toPrecision(2) + "%",
     );
   }
   if (availableThroughText.slice(-2) === "**") {
@@ -29,20 +29,29 @@ export const lowerThanIndustryPercentValue = () => {
 };
 
 export const sponsoredFeeObj = () => {
-    const windowDataObj = window.aemfe;
-      let sponsoredFeeIndex = 0;
-  if (windowDataObj?.sponsoredFees?.feeScheduleTiers && windowDataObj.sponsoredFees.feeScheduleTiers.length > 1) {
-      let arrLen = windowDataObj.sponsoredFees.feeScheduleTiers.length;
-      for(i = 1; i < arrLen; i++) {
-          if(windowDataObj.sponsoredFees.feeScheduleTiers[i].feeRate) {
-              if(!windowDataObj.sponsoredFees.feeScheduleTiers[sponsoredFeeIndex].feeRate) {
-                  sponsoredFeeIndex = i;
-              }
-              else if(windowDataObj.sponsoredFees.feeScheduleTiers[i].feeRate > windowDataObj.sponsoredFees.feeScheduleTiers[sponsoredFeeIndex].feeRate) {
-              sponsoredFeeIndex = i;
-            }
-          }  
+  const windowDataObj = window.aemfe;
+  let sponsoredFeeIndex = 0;
+  if (
+    windowDataObj?.sponsoredFees?.feeScheduleTiers &&
+    windowDataObj.sponsoredFees.feeScheduleTiers.length > 1
+  ) {
+    let arrLen = windowDataObj.sponsoredFees.feeScheduleTiers.length;
+    for (i = 1; i < arrLen; i++) {
+      if (windowDataObj.sponsoredFees.feeScheduleTiers[i].feeRate) {
+        if (
+          !windowDataObj.sponsoredFees.feeScheduleTiers[sponsoredFeeIndex]
+            .feeRate
+        ) {
+          sponsoredFeeIndex = i;
+        } else if (
+          windowDataObj.sponsoredFees.feeScheduleTiers[i].feeRate >
+          windowDataObj.sponsoredFees.feeScheduleTiers[sponsoredFeeIndex]
+            .feeRate
+        ) {
+          sponsoredFeeIndex = i;
+        }
       }
+    }
   }
   return windowDataObj?.sponsoredFees?.feeScheduleTiers[sponsoredFeeIndex];
 };
@@ -680,9 +689,7 @@ export const getPmAboutFeeText = () => {
   let FeeObj = sponsoredFeeObj();
   let pmAboutFeeText =
     "About {{ monthlyFee }} per month for each {{ perValue }} in your account";
-  if (
-    FeeObj?.samplePeriod && FeeObj?.samplePeriod === "Annually"
-  ) {
+  if (FeeObj?.samplePeriod && FeeObj?.samplePeriod === "Annually") {
     pmAboutFeeText = pmAboutFeeText.replace("per month", "per year");
   }
   pmAboutFeeText = pmAboutFeeText.replace(
