@@ -5,9 +5,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
-import java.util.Iterator;
-import java.util.LinkedHashSet;
 
 import javax.annotation.PostConstruct;
 
@@ -17,7 +14,6 @@ import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
-import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
@@ -26,17 +22,15 @@ import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import com.adobe.cq.export.json.ExporterConstants;
-import com.adobe.cq.gfx.Plan;
 import com.day.cq.dam.api.DamConstants;
-import com.efe.core.bean.OfficesLocations;
 import com.efe.core.bean.PlannerDetail;
 import com.efe.core.constants.PlannerLocationConstants;
 import com.efe.core.models.PlannerList;
+import com.efe.core.models.PlannerListStateVariation;
 import com.efe.core.services.EfeService;
 import com.efe.core.utils.EFEUtil;
 import com.efe.core.utils.LinkUtil;
 import com.efe.core.utils.LocationPlannerUtil;
-import com.efe.core.utils.OfficeLocationsUtil;
 import com.efe.core.utils.ResourceUtil;
 
 /**
@@ -45,10 +39,10 @@ import com.efe.core.utils.ResourceUtil;
 @Model(adaptables = { Resource.class, SlingHttpServletRequest.class }, adapters = PlannerList.class, resourceType = {
 		PlannerListImpl.RESOURCE_TYPE }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
-public class PlannerListImpl implements PlannerList {
+public class PlannerListStateVariationImpl implements PlannerListStateVariation {
 
 	/** The Constant RESOURCE_TYPE. */
-	public static final String RESOURCE_TYPE = "efe/components/plannerlist";
+	public static final String RESOURCE_TYPE = "efe/components/plannerlist-state-variation";
 
 	/** The Constant SELECTOR_PLACEHOLDER_1. */
 	private static final String SELECTOR_PLACEHOLDER_1 = "{1}";
@@ -110,15 +104,8 @@ public class PlannerListImpl implements PlannerList {
 	/** The City. */
 	private String city;
 
-	public String[] officeLocationsEncoded;
-
-	public ArrayList<String> officeLocationsEncodedSubstring = new ArrayList<String>();
-
-	public ArrayList<String> test;
-
-	public String testString;
-
-
+	// Planner State Selection
+	public String stateList;
 
 	/**
 	 * This method sets the planner values in bean class according to selectors
@@ -126,6 +113,11 @@ public class PlannerListImpl implements PlannerList {
 	 */
 	@PostConstruct
 	protected void init() {
+
+		// Fetch State Planner Selector
+		String resourceProperty = "state";
+		String resourcePath = resource.getPath();
+		stateList = ResourceUtil.getProperty( resourceResolver, resourcePath, resourceProperty );
 
 		String[] selectors = request.getRequestPathInfo().getSelectors();
 		if (selectors.length == 2) {
@@ -147,75 +139,27 @@ public class PlannerListImpl implements PlannerList {
 			setPlannerDetails(cfList);
 			setPlannerTitle(citySelector);
 		}
+		// if (selectors.length == 1) {
+		// 	List <String> cfList = new ArrayList<>();
+		// 	state = stateList.toLowerCase();
+		// 	String citySelector = "portland";
+		// 	Resource resourceLocation = LocationPlannerUtil.getLocationResource(resourceResolver, state, citySelector);
+		// 	if (Objects.nonNull(resourceLocation)) {
+		// 		for (Resource item : resourceLocation.getChildren()) {
+		// 			setCfList(cfList, item);
+		// 		}
+		// 	} else {
+		// 		try {
+		// 			response.sendRedirect(getDefaultRedirectPagePath());
+		// 		} catch (IOException e) {
+		// 			throw new RuntimeException(e);
+		// 		}
+		// 	}
+		// 	setPlannerDetails(cfList);
+		// 	setPlannerTitle(citySelector);
 
-		if (selectors.length == 0) {
-
-			String resourceProperty = "state";
-			String resourcePath = resource.getPath();
-			String stateSelectorAuthorConfig = ResourceUtil.getProperty( resourceResolver, resourcePath, resourceProperty );
-			state = stateSelectorAuthorConfig.toLowerCase();
-			List<String> cfList = new ArrayList<>();
-			List <String> finalPlannerCFList = new ArrayList<>();
-			List <String> PlannerCFTagsArray = new ArrayList<>();
-			Resource resourceLocation1 = LocationPlannerUtil.getLocationResourceStateDirectory(resourceResolver, state);
-			Iterator<Resource> children = resourceLocation1.listChildren();
-			int i = 0;
-			while (children.hasNext()) {
-				final Resource childState = children.next();
-				if (Objects.nonNull(childState)) {
-					for (Resource item : childState.getChildren()) {
-						if (item.getPath().contains("national-advisor-center") ) {
-							break;
-						}
-						else {
-							setCfList(cfList, item);
-						}
-					}
-				}
-				else {
-					try {
-						response.sendRedirect(getDefaultRedirectPagePath());
-					} catch (IOException e) {
-						throw new RuntimeException(e);
-					}
-				}
-				i++;
-			}
-			
-			// Removing duplicate planners that are associated with more than 1 city
-			List <String> listWithoutDuplicates = removeDuplicates(cfList);
-			cfList = listWithoutDuplicates;
-
-			// Sort cfList by first name
-			for (String plannerCF : cfList) {
-				Integer lastIndexSlash = plannerCF.lastIndexOf("/");
-				if (lastIndexSlash != -1) {
-					String plannerCFTag = plannerCF.substring(lastIndexSlash + 1);
-					PlannerCFTagsArray.add(plannerCFTag);
-				}
-			}
-			 Collections.sort(PlannerCFTagsArray);
-
-			// Build Sorted Cleaned Planner List Path for Specific State
-			 for (String plannerCFSlice: PlannerCFTagsArray) {
-				Integer lastUnderscore = plannerCFSlice.lastIndexOf("_");
-				if (lastUnderscore != -1) { 
-					String plannerId = plannerCFSlice.substring(lastUnderscore + 1);
-					String plannerPathBuilder = "/content/dam/efe/cf/plannerlocation/planners";
-					plannerPathBuilder = plannerPathBuilder + "/" + plannerId + "/" + plannerCFSlice;
-					finalPlannerCFList.add(plannerPathBuilder);
-				}
-			 }
-			setPlannerDetails(finalPlannerCFList);
-			// setPlannerTitle(citySelector);
-		}
-		
+		// }
 	}
-
-	public static List<String> removeDuplicates(List<String> listWithDuplicates) {
-        Set<String> set = new LinkedHashSet<>(listWithDuplicates);
-        return new ArrayList<>(set);
-    }
 
 	private void setPlannerTitle(String citySelector) {
 		plannerTitle = plannerTitle.replace(SELECTOR_PLACEHOLDER_0, city);
@@ -232,8 +176,6 @@ public class PlannerListImpl implements PlannerList {
 	 */
 	private void setPlannerDetails(List<String> cfList) {
 		for (String item : cfList) {
-			ArrayList<String> officeLocationsDecoded = new ArrayList<String>();
-			officeLocationsEncodedSubstring.clear();
 			PlannerDetail plannerObj = new PlannerDetail();
 			Resource planner = resourceResolver.getResource(item);
 			if (Objects.nonNull(planner)) {
@@ -250,34 +192,6 @@ public class PlannerListImpl implements PlannerList {
 				String imageUrl = ResourceUtil.getProperty(resourceResolver, plannerMaster.getPath(),
 						"desktopImageurl");
 				String plannerId = ResourceUtil.getProperty(resourceResolver, plannerMaster.getPath(), "id");
-
-				// Get all office locations folder names associated with Planner and isolate just array of folder names not whole path
-				officeLocationsEncoded = ResourceUtil.getProperties(resourceResolver, plannerMaster.getPath(), "officeslocations");
-				for(String office: officeLocationsEncoded) {
-					Integer lastIndexSlash = office.lastIndexOf("/");
-					if (lastIndexSlash != -1) { 
-						String plannerOfficeFolderString = office.substring(lastIndexSlash + 1);
-						officeLocationsEncodedSubstring.add(plannerOfficeFolderString);
-					}
-				}
-
-				// Alter planner path folder directory to root and iterate over all locations associated and add the correlated city to String array
-				String badPlannerPath = planner.getPath();
-				Integer lastIndexofSlash1 = badPlannerPath.lastIndexOf("/");
-				if (lastIndexofSlash1 != -1) { 
-					String goodPlannerPath = badPlannerPath.substring(0, lastIndexofSlash1 + 1);
-					for (String officeFolderLocation : officeLocationsEncodedSubstring) {
-						String pathBuilder = goodPlannerPath + "officeslocations/" + officeFolderLocation + "/jcr:content/data/master";		
-						String cityProperty = ResourceUtil.getProperty(resourceResolver, pathBuilder, "city" );
-						officeLocationsDecoded.add(cityProperty);
-					}
-				}
-
-				// Clean the list, sort and remove duplicates and array brackets
-				Collections.sort(officeLocationsDecoded);
-				List<String> officeLocationsDecodedDuplicatesRemoved = removeDuplicates(officeLocationsDecoded);
-				plannerObj.setOfficeLocations(officeLocationsDecodedDuplicatesRemoved.toString().replace("[", "").replace("]", ""));
-
 				if(StringUtils.isNotEmpty(firstNameAlias)) {
 					plannerObj.setFirstName(firstNameAlias);
 				} else {
@@ -288,9 +202,8 @@ public class PlannerListImpl implements PlannerList {
 				plannerObj.setDesktopUrl(imageUrl);
 				plannerObj.setButtonUrl(LinkUtil.getFormattedLink(efeService.getPlannerBioPageUrl()+ PlannerLocationConstants.DOT + firstName
 								+ PlannerLocationConstants.DOT + lastName + PlannerLocationConstants.DOT + plannerId,
-						resourceResolver));					
+						resourceResolver));
 			}
-		
 			plannerDetails.add(plannerObj);
 		}
 	}
@@ -398,13 +311,9 @@ public class PlannerListImpl implements PlannerList {
 		if (StringUtils.isBlank(defaultRedirectPagePath))
 			defaultRedirectPagePath = "/locations";
 		return defaultRedirectPagePath.concat(Constants.HTML_SUFFIX);
+	}
+
+	public String getStateList() {
+		return stateList;
 	}	
-
-	public ArrayList<String> getDavidTest() {
-		return test;
-	}
-
-	public String getDavidTestString() {
-		return testString;
-	}
 }

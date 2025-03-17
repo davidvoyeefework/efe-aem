@@ -21,6 +21,8 @@ public class PlannerDetail {
     /** The buttonUrl. */
     String buttonUrl;
 
+    String officeLocations;
+
     /**
      * Gets the firstName.
      *
@@ -99,6 +101,16 @@ public class PlannerDetail {
      */
     public void setButtonUrl(String buttonUrl) {
         this.buttonUrl = buttonUrl;
+    }
+
+    // Getter
+    public String getOfficeLocations () {
+        return officeLocations;
+    }    
+
+    // Setter
+    public void setOfficeLocations(String officeLocations) {
+        this.officeLocations = officeLocations;
     }
 
 }
