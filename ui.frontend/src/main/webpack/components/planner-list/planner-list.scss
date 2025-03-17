@@ -1,0 +1,174 @@
+.plannerlist {
+
+    #planner-list {
+
+                @include flexbox(
+                    $justify-content: start,
+                    $gap: 32px,
+                    $flex-direction: horizontal,
+                );
+    
+                flex-wrap: wrap;
+                -ms-flex-wrap: wrap;   
+                -ms-flex-wrap: wrap;   
+                -webkit-box-flex: 0;
+                -ms-flex: 0;
+                
+                #planner-card {
+                    padding: 20px;
+                    max-width: rem(280);
+                    background-color: white;
+                    border: 1px solid $efe-gray-mid;
+                    flex: 0 0 280px;
+                    position: relative;
+                    transition: $std-transition;
+  
+                        &:hover {
+                            box-shadow: 0px 6px 24px 0px rgba(0, 0, 0, 0.12);
+                            transition: $std-transition;
+                
+                            #planner-name {
+                                text-decoration: underline;
+                                transition: $std-transition;
+                            }
+                        }
+                
+                        .cmp-button--article {
+                            background: url("../resources/images/buttons/read-bio-cta-gray.svg") no-repeat center center/contain;
+                            #planner-link {
+                                &:before {
+                                    bottom: 0;
+                                    content: "";
+                                    left: 0;
+                                    position: absolute;
+                                    right: 0;
+                                    top: 0;
+                                    z-index: 8;
+                                }
+                            }
+                        }
+                
+                        #planner-thumbnail {
+                            width: 240px;
+                            height: 209px;
+                        }
+                
+                
+                    
+
+                    #planner-name {
+                        @include buildFont(rem(28),0px, nimbus-sans, 400, unset);
+                        margin: 25px 0 5px;
+                    }
+
+                    #planner-title {
+                        @include body-02;
+                        margin-bottom: 20px;
+                    }    
+                    #planner-locations {
+                        @include body-02;
+                        color: $gray-new;
+                        margin-bottom: 50px;
+                    }                                    
+                }
+    }
+
+    &.gray-planner-theme {
+        #planner-list {
+            #planner-card {
+                background-color: $gray-lightest;
+
+                .cmp-button--article {
+                    background: url("../resources/images/buttons/read-bio-cta.svg") no-repeat center center/contain;
+                }
+            }
+        }
+    }
+
+    // 1 row layout with scroll if overflow content x 
+    &.scroll {
+
+        #slider-controls {
+            display: block !important;
+            position: relative;
+            top: 15px;
+        }
+
+        #planner-list {
+            flex-wrap: nowrap;
+            -ms-flex-wrap: nowrap; 
+            overflow: scroll;
+            overflow-x:scroll;
+            width: 100%;
+
+            &::-webkit-scrollbar:horizontal {
+                height: 6px;
+              }
+
+              &::-webkit-scrollbar-thumb {
+                border-radius: 9px;
+                background-color: $efe-red-primary;
+                position: relative;
+              }
+
+              &::-webkit-scrollbar {
+                -webkit-appearance: none;
+              }      
+              
+              #planner-card {
+                margin-bottom: 45px;
+              }
+            
+        }
+    }
+
+    #slider-controls {
+
+        margin: auto;
+
+        width: rem(74);
+        height: rem(32);
+
+        @include flexbox(
+            $gap: 10px
+        );
+
+        button {
+            width: 32px;
+            height: 32px;
+        }
+
+        #scrollNext {
+            background: url("../resources/images/icons/arrows/planner-list/next-arrow.svg") no-repeat center center/contain;
+            transition: $std-transition;
+
+            &:hover {
+                background: url("../resources/images/icons/arrows/planner-list/next-arrow-hover.svg") no-repeat center center/contain;
+                transition: $std-transition;
+            }
+        }
+        #scrollPrevious {
+            background: url("../resources/images/icons/arrows/planner-list/previous-arrow.svg") no-repeat center center/contain;
+
+            &:hover {
+                background: url("../resources/images/icons/arrows/planner-list/previous-arrow-hover.svg") no-repeat center center/contain;
+                transition: $std-transition;
+            }            
+        }
+    }
+
+    @media screen and (max-width: $md) {
+
+        #planner-list {
+            #planner-card {
+                .cmp-teaser {
+                    -webkit-box-orient: vertical;
+                    -webkit-box-direction: reverse;
+                    -ms-flex-direction: column-reverse;
+                    flex-direction: column-reverse;
+                }
+
+            }
+        }
+    }
+}

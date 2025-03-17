@@ -1,25 +1,27 @@
 <div data-sly-use.model="com.efe.core.models.PlannerList" data-sly-use.template="core/wcm/components/commons/v1/templates.html"
-     class="list cmp-list--horizontal cmp-list--loose cmp-list--left-align cmp-list--border-radius" id="${model.id}">
-  <h2 class="cmp-list--title" data-sly-test="${model.plannerList}">${model.test}</h2>
-  <ul class="cmp-list">
+     class="list cmp-list--left-align" id="${model.id}">
+  <h2 class="cmp-list--title" data-sly-test="${model.plannerList}">${model.plannerTitle}</h2>
+
+  <ul id="planner-list" class="cmp-list">
+
     <sly data-sly-list.plannerList="${model.plannerList}">
-      <div class="teaser cmp-teaser--thumbnail">
-        <div  class="cmp-teaser">
-          <div class="cmp-teaser__content">
-            <h2 class="cmp-teaser__title"> ${plannerList.firstName} ${plannerList.lastName}</h2>
-            <div class="cmp-teaser__description">
-              <p>${plannerList.title}</p>
-            </div>
-            <div class="cmp-teaser__description">
-              <p>${plannerList.officeLocations}</p>
-            </div>            
-            <div class="cmp-teaser__action-container">
-              <a class="cmp-teaser__action-link"  target="${model.plannerTarget}" data-cmp-clickable="" x-cq-linkchecker="valid" href="${plannerList.buttonUrl}" >${model.ctaLabel}</a>
+      <li id="planner-card" class="teaser cmp-teaser--thumbnail">
+        <div class="cmp-teaser">
+          <div>
+            <h2 id="planner-name" class="cmp-teaser__title"> ${plannerList.firstName} ${plannerList.lastName}</h2>
+            <h3 id="planner-title" class="cmp-teaser__description">
+              ${plannerList.title}
+            </h3>
+            <h3 id="planner-locations" class="cmp-teaser__description">
+              ${plannerList.officeLocations}
+            </h3>            
+            <div class="cmp-button--article">
+              <a id="planner-link" class="cmp-teaser__action-link"  target="${model.plannerTarget}" data-cmp-clickable="" x-cq-linkchecker="valid" href="${plannerList.buttonUrl}"><span class="visually-hidden">${model.ctaLabel}</span></a>
             </div>
           </div>
           <div class="cmp-teaser__image">
             <div data-cmp-hook-image="imageV3" class="cmp-image">
-              <img srcset="${plannerList.desktopUrl}"
+              <img id="planner-thumbnail" srcset="${plannerList.desktopUrl}"
                    src="${plannerList.desktopUrl}"
                    loading="lazy" class="cmp-image__image" itemprop="contentUrl"
                    alt="${plannerList.firstName} ${plannerList.lastName}" title="${plannerList.firstName} ${plannerList.lastName}" />
@@ -27,8 +29,35 @@
             </div>
           </div>
         </div>
-      </div>
+      </li>
     </sly>
   </ul>
+  <div id="slider-controls" style="display: none">
+    <button id="scrollPrevious" class="scroll-button"><span class="visually-hidden">Previous Planners</span></button>
+    <button id="scrollNext" class="scroll-button"><span class="visually-hidden">More Planners</span></button>
+  </div>  
 </div>
 <sly data-sly-call="${template.placeholder @ isEmpty=!isNotEmpty, classAppend='list'}"></sly>
+
+
+<script>
+
+  document.addEventListener('DOMContentLoaded', function() {
+
+  const buttonNext = document.getElementById("scrollNext");
+  const buttonPrev = document.getElementById("scrollPrevious");
+  const scrollContainer = document.getElementById("planner-list")
+  const scrollToggle = document.querySelector(".plannerlist").classList.contains("scroll");
+
+    if (scrollToggle) {
+      buttonNext.onclick = () => {
+        scrollContainer.scrollLeft += 310;
+      };  
+
+      buttonPrev.onclick = () => {
+        scrollContainer.scrollLeft -= 310;
+      }; 
+    }
+  
+  })
+</script>
