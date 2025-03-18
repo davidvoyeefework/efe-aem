@@ -6,10 +6,17 @@ package com.efe.core.models;
 public interface CDTScheduler {
 
 	/**
-	 * Gets the form url.
+	 * Gets the SalesForce lead ID.
 	 *
-	 * @return the form url
+	 * @return the SalesForce lead ID.
 	 */
 	String getSFLeadId();
+        
+        /**
+         * Gets flag to determine whether to display the header
+         * 
+         * @return the disableHeader flag
+         */
+        boolean getDisableHeader();
 
 }

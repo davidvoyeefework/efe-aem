@@ -27,9 +27,12 @@ public class CDTSchedulerImpl implements CDTScheduler {
 	@Self
 	private SlingHttpServletRequest request;
 
-	/** The form id. */
+	/** The SalesForce lead ID. */
 	@ValueMapValue
 	private String SFLeadId;
+        
+        /** The showDisclosure flag. */
+	private boolean showDisclosure;
         
         /**
 	 * Inits the model.
@@ -43,12 +46,22 @@ public class CDTSchedulerImpl implements CDTScheduler {
         }
 
 	/**
-	 * Gets the form id.
+	 * Gets the SalesForce lead ID.
 	 *
-	 * @return the form id
+	 * @return the SalesForce lead ID
 	 */
         @Override
 	public String getSFLeadId() {
             return SFLeadId;
 	}
+        
+        /**
+         * Gets flag to determine whether to display the disclosure
+         * 
+         * @return the showDisclosure flag
+         */
+        @Override
+        public boolean getShowDisclosure() {
+            return showDisclosure;
+        }
 }

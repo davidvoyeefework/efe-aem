@@ -11,7 +11,14 @@
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="granite/ui/components/coral/foundation/container">
                 <items jcr:primaryType="nt:unstructured">
-					
+                    <showDisclosure jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                        value="true"
+                        uncheckedValue="false"
+                        fieldDescription="Display default disclosure"
+                        text="Display default disclosure"
+                        name="./showDisclosure">
+                    </showDisclosure>	
                 </items>
             </column>
         </items>
