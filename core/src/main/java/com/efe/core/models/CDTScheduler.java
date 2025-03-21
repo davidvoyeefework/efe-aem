@@ -17,6 +17,13 @@ public interface CDTScheduler {
          * 
          * @return the disableHeader flag
          */
-        boolean getDisableHeader();
+        //boolean getDisableHeader();
+        
+        /**
+         * Gets flag to determine whether to display the disclosure
+         * 
+         * @return the showDisclosure flag
+         */
+        boolean getShowDisclosure();
 
 }
