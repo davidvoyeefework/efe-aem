@@ -37,6 +37,9 @@ public class CDTSchedulerImpl implements CDTScheduler {
 	@ValueMapValue
 	private String SFLeadId;
         
+        /** The showDisclosure flag. */
+	private boolean showDisclosure;
+        
         /**
 	 * Inits the model.
 	 */
@@ -52,6 +55,7 @@ public class CDTSchedulerImpl implements CDTScheduler {
 	 * Gets the SalesForce lead ID.
 	 *
 	 * @return the SalesForce lead ID.
+
 	 */
         @Override
 	public String getSFLeadId() {
@@ -66,5 +70,15 @@ public class CDTSchedulerImpl implements CDTScheduler {
         @Override
         public String getCDTEmbedURL() {
             return efeService.getCDTEmbedURL();
+        }
+        
+        /**
+         * Gets flag to determine whether to display the disclosure
+         * 
+         * @return the showDisclosure flag
+         */
+        @Override
+        public boolean getShowDisclosure() {
+            return showDisclosure;
         }
 }

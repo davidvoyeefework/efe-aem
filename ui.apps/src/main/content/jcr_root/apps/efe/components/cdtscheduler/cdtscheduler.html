@@ -1,14 +1,16 @@
 <div data-sly-test ="${wcmmode.edit}" class="cq-placeholder cq-marker-start" data-emptytext="${component.title}"></div>
 <sly data-sly-use.scheduler="com.efe.core.models.CDTScheduler"/>
-<div id="${scheduler.SFLeadId}" class="cdtscheduler"></div>
-<input id="SFLeadIdField" type="hidden" value="${scheduler.SFLeadId}" />
+<div id="SFLeadID.${scheduler.SFLeadId}" class="cdtscheduler"></div>
+<input id="SFLeadIdField" type="hidden" value="SFLeadID.${scheduler.SFLeadId}" />
+<input id="showDisclosureField" type="hidden" value="${scheduler.showDisclosure}" />
 <script src="${scheduler.CDTEmbedURL}"></script>
 <script>
   if (window.efeSelfScheduler?.inject) {
     window.efeSelfScheduler.inject({
       id: document.getElementById("SFLeadIdField").value, // <-- same value as id in Step 1
       leadId: document.getElementById("SFLeadIdField").value,
-      disableHeader: true
+      disableHeader: true,
+      showDisclosure: document.getElementById("showDisclosureField").value
     });
   }
 </script>

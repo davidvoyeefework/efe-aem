@@ -18,5 +18,19 @@ public interface CDTScheduler {
 	 * @return the CDT scheduler embed URL.
 	 */
         String getCDTEmbedURL();
+        
+        /**
+         * Gets flag to determine whether to display the header
+         * 
+         * @return the disableHeader flag
+         */
+        //boolean getDisableHeader();
+        
+        /**
+         * Gets flag to determine whether to display the disclosure
+         * 
+         * @return the showDisclosure flag
+         */
+        boolean getShowDisclosure();
 
 }
