@@ -92,6 +92,10 @@
             display: block !important;
             position: relative;
             top: 15px;
+
+            &.d-none {
+                display: none !important;
+            }
         }
 
         #planner-list {
