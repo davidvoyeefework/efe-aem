@@ -48,6 +48,22 @@
   const buttonPrev = document.getElementById("scrollPrevious");
   const scrollContainer = document.getElementById("planner-list")
   const scrollToggle = document.querySelector(".plannerlist").classList.contains("scroll");
+  const sliderControls = document.getElementById("slider-controls");
+
+  const refresh = () => {
+    const hasHorizontalScroll = scrollContainer.scrollWidth > scrollContainer.clientWidth;
+    if (hasHorizontalScroll == false) {
+      sliderControls.classList.add("d-none");
+    }
+    else if (hasHorizontalScroll == true) {
+      sliderControls.classList.remove("d-none")
+    }
+  }
+
+
+  window.addEventListener('resize', refresh);
+
+
 
     if (scrollToggle) {
       buttonNext.onclick = () => {
