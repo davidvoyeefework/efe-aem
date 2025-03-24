@@ -6,9 +6,14 @@
 <script src="${scheduler.CDTEmbedURL}"></script>
 <script>
   if (window.efeSelfScheduler?.inject) {
+    let leadField =  document.getElementById("SFLeadIdField").value.split(".");
+    let leadVal = "";
+    if (leadField.length > 1) {
+        leadVal = leadField[1];
+    }
     window.efeSelfScheduler.inject({
       id: document.getElementById("SFLeadIdField").value, // <-- same value as id in Step 1
-      leadId: document.getElementById("SFLeadIdField").value,
+      leadId: leadVal,
       disableHeader: true,
       showDisclosure: document.getElementById("showDisclosureField").value
     });
