@@ -32,7 +32,10 @@ public class CDTSchedulerImpl implements CDTScheduler {
 	private String SFLeadId;
         
         /** The showDisclosure flag. */
-	private boolean showDisclosure;
+	private String showDisclosure;
+        
+        /** The disableHeader flag. */
+	private String disableHeader;
         
         /**
 	 * Inits the model.
@@ -62,6 +65,16 @@ public class CDTSchedulerImpl implements CDTScheduler {
          */
         @Override
         public boolean getShowDisclosure() {
-            return showDisclosure;
+            return showDisclosure.equals("true");
+        }
+        
+        /**
+         * Gets flag to determine whether to display the header
+         * 
+         * @return the showHeader flag
+         */
+        @Override
+        public boolean getDisableHeader() {
+            return !disableHeader.equals("true");
         }
 }
