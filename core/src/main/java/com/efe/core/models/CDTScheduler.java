@@ -24,14 +24,14 @@ public interface CDTScheduler {
          * 
          * @return the disableHeader flag
          */
-        boolean getDisableHeader();
+        String getDisableHeader();
         
         /**
          * Gets flag to determine whether to display the disclosure
          * 
          * @return the showDisclosure flag
          */
-        boolean getShowDisclosure();
+        String getShowDisclosure();
         
 
 }

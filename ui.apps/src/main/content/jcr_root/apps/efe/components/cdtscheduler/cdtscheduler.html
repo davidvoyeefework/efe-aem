@@ -8,9 +8,9 @@
   if (window.efeSelfScheduler?.inject) {
     window.efeSelfScheduler.inject({
       id: document.getElementById("SFLeadIdField").value, // <-- same value as id in Step 1
-      leadId: ${scheduler.SFLeadId},
-      disableHeader: ${scheduler.disableHeader},
-      showDisclosure: ${scheduler.showDisclosure}
+      leadId: ${scheduler.SFLeadId @context='scriptString'},
+      disableHeader: ${scheduler.disableHeader @context='text'},
+      showDisclosure: ${scheduler.showDisclosure @context='text'}
     });
   }
 </script>
