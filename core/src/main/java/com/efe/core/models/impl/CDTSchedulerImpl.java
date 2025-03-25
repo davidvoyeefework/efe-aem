@@ -11,6 +11,7 @@ import com.adobe.cq.export.json.ExporterConstants;
 import com.efe.core.models.CDTScheduler;
 import javax.annotation.PostConstruct;
 import org.apache.sling.models.annotations.injectorspecific.Self;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 
 /**
  * The Class FormsSelectorImpl.
@@ -26,16 +27,23 @@ public class CDTSchedulerImpl implements CDTScheduler {
         /** The SlingHttpServletRequest. */
 	@Self
 	private SlingHttpServletRequest request;
-
+        /**
+	 * The current resource.
+	 */
+	@SlingObject
+	private Resource resource;
+        
 	/** The SalesForce lead ID. */
 	@ValueMapValue
 	private String SFLeadId;
         
         /** The showDisclosure flag. */
+        @ValueMapValue
 	private String showDisclosure;
         
         /** The disableHeader flag. */
-	private String disableHeader;
+	@ValueMapValue
+        private String disableHeader;
         
         /**
 	 * Inits the model.
@@ -64,8 +72,12 @@ public class CDTSchedulerImpl implements CDTScheduler {
          * @return the showDisclosure flag
          */
         @Override
-        public boolean getShowDisclosure() {
-            return showDisclosure.equals("true");
+        public String getShowDisclosure() {
+            if(!showDisclosure.isEmpty()) {
+                return showDisclosure;
+            } else {
+                return "false";
+            }
         }
         
         /**
@@ -74,7 +86,11 @@ public class CDTSchedulerImpl implements CDTScheduler {
          * @return the showHeader flag
          */
         @Override
-        public boolean getDisableHeader() {
-            return !disableHeader.equals("true");
+        public String getDisableHeader() {
+            if(!disableHeader.isEmpty()) {
+                return disableHeader;
+            } else {
+                return "true";
+            }
         }
 }
