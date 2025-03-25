@@ -11,6 +11,7 @@ import com.adobe.cq.export.json.ExporterConstants;
 import com.efe.core.models.CDTScheduler;
 import javax.annotation.PostConstruct;
 import com.efe.core.services.EfeService;
+import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 
@@ -34,6 +35,11 @@ public class CDTSchedulerImpl implements CDTScheduler {
 	 */
 	@SlingObject
 	private Resource resource;
+        
+        /** The efe service. */
+	@OSGiService
+	private EfeService efeService;
+
 	/** The SalesForce lead ID. */
 	@ValueMapValue
 	private String SFLeadId;
@@ -61,22 +67,11 @@ public class CDTSchedulerImpl implements CDTScheduler {
 	 * Gets the SalesForce lead ID.
 	 *
 	 * @return the SalesForce lead ID.
-
 	 */
         @Override
 	public String getSFLeadId() {
             return SFLeadId;
 	}
-        
-        /**
-	 * Gets the CDT scheduler embed URL.
-	 *
-	 * @return the CDT scheduler embed URL.
-	 */
-        @Override
-        public String getCDTEmbedURL() {
-            return efeService.getCDTEmbedURL();
-        }
         
         /**
          * Gets flag to determine whether to display the disclosure
@@ -104,5 +99,15 @@ public class CDTSchedulerImpl implements CDTScheduler {
             } else {
                 return "true";
             }
+        }
+        
+        /**
+	 * Gets the CDT scheduler embed URL.
+	 *
+	 * @return the CDT scheduler embed URL.
+	 */
+        @Override
+        public String getCDTEmbedURL() {
+            return efeService.getCDTEmbedURL();
         }
 }
