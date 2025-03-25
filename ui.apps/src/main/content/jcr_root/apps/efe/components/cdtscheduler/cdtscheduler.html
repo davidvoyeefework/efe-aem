@@ -2,14 +2,15 @@
 <sly data-sly-use.scheduler="com.efe.core.models.CDTScheduler"/>
 <div id="SFLeadID.${scheduler.SFLeadId}" class="cdtscheduler"></div>
 <input id="SFLeadIdField" type="hidden" value="SFLeadID.${scheduler.SFLeadId}" />
+<input id="SFLeadVal" type="hidden" value="${scheduler.SFLeadId}" />
 <script src="${scheduler.CDTEmbedURL}"></script>
 <script>
   if (window.efeSelfScheduler?.inject) {
     window.efeSelfScheduler.inject({
       id: document.getElementById("SFLeadIdField").value, // <-- same value as id in Step 1
-      leadId: ${scheduler.SFLeadId @context='scriptString'},
-      disableHeader: ${scheduler.disableHeader @context='text'},
-      showDisclosure: ${scheduler.showDisclosure @context='text'}
+      leadId: document.getElementById("SFLeadIdField").value,
+      disableHeader: ${scheduler.disableHeader @ context='text'},
+      showDisclosure: ${scheduler.showDisclosure @ context='text'}
     });
   }
 </script>

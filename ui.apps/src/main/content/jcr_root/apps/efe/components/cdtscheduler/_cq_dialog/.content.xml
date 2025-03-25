@@ -15,16 +15,16 @@
                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                         value="true"
                         uncheckedValue="false"
+                        checked="false"
                         fieldDescription="Display default disclosure"
                         text="Display default disclosure"
                         name="./showDisclosure">
-                    </showDisclosure>	
-                </items>
-                <items jcr:primaryType="nt:unstructured">
+                    </showDisclosure>
                     <disableHeader jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
                         value="true"
                         uncheckedValue="false"
+                        checked="true"
                         fieldDescription="Disable default header"
                         text="Disable default header"
                         name="./disableHeader">
