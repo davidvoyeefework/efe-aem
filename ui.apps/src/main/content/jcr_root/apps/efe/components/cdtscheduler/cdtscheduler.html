@@ -2,7 +2,6 @@
 <sly data-sly-use.scheduler="com.efe.core.models.CDTScheduler"/>
 <div id="SFLeadID.${scheduler.SFLeadId}" class="cdtscheduler"></div>
 <input id="SFLeadIdField" type="hidden" value="SFLeadID.${scheduler.SFLeadId}" />
-<input id="showDisclosureField" type="hidden" value="${scheduler.showDisclosure}" />
 <script src="${scheduler.CDTEmbedURL}"></script>
 <script>
   if (window.efeSelfScheduler?.inject) {

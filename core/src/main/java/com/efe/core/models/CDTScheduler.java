@@ -26,5 +26,10 @@ public interface CDTScheduler {
          */
         String getShowDisclosure();
         
-
+        /**
+	 * Gets the CDT scheduler embed URL.
+	 *
+	 * @return the CDT scheduler embed URL.
+	 */
+        String getCDTEmbedURL();
 }
