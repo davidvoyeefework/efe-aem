@@ -110,6 +110,7 @@ section.vanguard-wpi-theme {
 
     //Updated Style
     &.vanguard-wpi-theme--update {
+        background-color: #F5F6F6;
         padding: 16px 24px;
         box-shadow: 0px 0px 4px 1px #0405050F;
         box-shadow: 0px 1px 1px 0px #0405052E;
@@ -129,7 +130,7 @@ section.vanguard-wpi-theme {
                     line-height: 32px;
                     color: #040505;
                     font-family: 'Mark Pro', sans-serif;
-                    font-weight: 900;
+                    font-weight: 700;
                     margin: 0 0 4px;
                 }
                 h3 {
@@ -148,7 +149,7 @@ section.vanguard-wpi-theme {
 
                 .cmp-button--button-wpi {
                     a.cmp-button {
-                        height: rem(30);
+                        height: rem(32);
                         @include flexbox(
                             $align-items: center,
                             $justify-content: center
