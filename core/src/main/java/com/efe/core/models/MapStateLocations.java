@@ -88,6 +88,13 @@ public interface MapStateLocations {
 	 * @return the ctalink
 	 */
 	String getNationalLink();
+        
+        /**
+	 * Method to return the state to display.
+	 *
+	 * @return the mapState
+	 */
+        String getMapState();
 
 	/**
 	 * Method to return National Advisor Details.

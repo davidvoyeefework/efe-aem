@@ -110,6 +110,10 @@ public class MapStateLocationsImpl implements MapStateLocations {
 	/** The national advisor link. */
 	@ValueMapValue
 	private String nationalLink;
+        
+        /** The state to display */
+        @ValueMapValue
+        private String mapState;
 
 	/** The map key. */
 	private String mapKey;
@@ -297,6 +301,16 @@ public class MapStateLocationsImpl implements MapStateLocations {
 		}
 		return nationalLinkVal;
 	}
+        
+        /**
+	 * Method to return the state to display.
+	 *
+	 * @return the mapState
+	 */
+        @Override
+        public String getMapState() {
+            return mapState;
+        }
 
 	/**
 	 * Gets the national details.
