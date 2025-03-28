@@ -57,6 +57,58 @@
                                                 fieldDescription="Explore Link Label."
                                                 fieldLabel="Explore Location Link Label"
                                                 name="./exploreLinkLabel"/>
+                                            <mapState jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldDescription="State to display."
+                                                fieldLabel="State to display."
+                                                emptyOption="false"
+                                                ordered="true"
+                                                required="true"
+                                                multiple="false"
+                                                name="./mapState">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <alaska
+                                                        jcr:primaryType="nt:unctructured"
+                                                        text="Alaska - AK"
+                                                        value="AK" />
+                                                    <alabama
+                                                        jcr:primaryType="nt:unctructured"
+                                                        text="Alabama - AL"
+                                                        value="AL" />
+                                                    <arkansas
+                                                        jcr:primaryType="nt:unctructured"
+                                                        text="Arkansas - AK"
+                                                        value="AK" />
+                                                    <arizona
+                                                        jcr:primaryType="nt:unctructured"
+                                                        text="Arizona - AZ"
+                                                        value="AZ" />
+                                                    <california
+                                                        jcr:primaryType="nt:unctructured"
+                                                        text="California - CA"
+                                                        value="CA" />
+                                                    <colorado
+                                                        jcr:primaryType="nt:unctructured"
+                                                        text="Colorado - CO"
+                                                        value="CO" />
+                                                    <connecticut
+                                                        jcr:primaryType="nt:unctructured"
+                                                        text="Connecticut - CT"
+                                                        value="CT" />
+                                                    <district_of_columbia
+                                                        jcr:primaryType="nt:unctructured"
+                                                        text="District of Columbia - DC"
+                                                        value="DC" />
+                                                    <delaware
+                                                        jcr:primaryType="nt:unctructured"
+                                                        text="Delaware - DE"
+                                                        value="DE" />
+                                                    <florida
+                                                        jcr:primaryType="nt:unctructured"
+                                                        text="Florida - FL"
+                                                        value="FL" />
+                                                </items>
+                                            </mapState>
                                              <id
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
