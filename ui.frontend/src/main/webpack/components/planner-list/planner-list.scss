@@ -1,22 +1,20 @@
 .plannerlist {
 
     #planner-list {
+        scroll-behavior: smooth;
 
-                @include flexbox(
-                    $justify-content: start,
-                    $gap: 32px,
-                    $flex-direction: horizontal,
-                );
-    
-                flex-wrap: wrap;
-                -ms-flex-wrap: wrap;   
-                -ms-flex-wrap: wrap;   
-                -webkit-box-flex: 0;
-                -ms-flex: 0;
+            display: -ms-grid;
+            display: grid;
+            grid-template-columns: 1fr;
+            -ms-grid-columns: 1fr;
+            grid-gap: 2pc;
+            width: fit-content;
+            margin: auto;
                 
-                #planner-card {
+                .planner-card {
                     padding: 20px;
                     max-width: rem(280);
+                    min-height: rem(490);
                     background-color: white;
                     border: 1px solid $efe-gray-mid;
                     flex: 0 0 280px;
@@ -27,15 +25,27 @@
                             box-shadow: 0px 6px 24px 0px rgba(0, 0, 0, 0.12);
                             transition: $std-transition;
                 
-                            #planner-name {
+                            .planner-name {
                                 text-decoration: underline;
                                 transition: $std-transition;
                             }
                         }
                 
                         .cmp-button--article {
-                            background: url("../resources/images/buttons/read-bio-cta-gray.svg") no-repeat center center/contain;
-                            #planner-link {
+                            background: none;
+
+                            &:after {
+                                content:"";
+                                display: block;
+                                width: rem(153);
+                                height: rem(37);
+                                background: url("../resources/images/buttons/read-bio-cta-gray.svg") no-repeat center center/contain;
+                                bottom: 20px;
+                                left: 20px;    
+                                position: absolute;  
+                            }
+                     
+                            .planner-link {
                                 &:before {
                                     bottom: 0;
                                     content: "";
@@ -56,30 +66,48 @@
                 
                     
 
-                    #planner-name {
+                    .planner-name {
                         @include buildFont(rem(28),0px, nimbus-sans, 400, unset);
                         margin: 25px 0 5px;
                     }
 
-                    #planner-title {
+                    .planner-title {
                         @include body-02;
                         margin-bottom: 20px;
                     }    
-                    #planner-locations {
+
+                    .planner-locations {
                         @include body-02;
-                        color: $gray-new;
                         margin-bottom: 50px;
+                        &:before {
+                            display: inline-block;
+                            content: "";
+                            width: 10.3px;
+                            height: 13px;
+                            background: url("../resources/images/icons/pins/map-pin-red.svg") no-repeat center center / contain;
+                        }
                     }                                    
                 }
     }
 
     &.gray-planner-theme {
         #planner-list {
-            #planner-card {
+            .planner-card {
                 background-color: $gray-lightest;
 
                 .cmp-button--article {
-                    background: url("../resources/images/buttons/read-bio-cta.svg") no-repeat center center/contain;
+
+                    &:after {
+                        background: url("../resources/images/buttons/read-bio-cta.svg") no-repeat center center/contain;
+                        content:"";
+                        display: block;
+                        width: rem(153);
+                        height: rem(37);
+                        bottom: 20px;
+                        left: 20px;    
+                        position: absolute;                          
+                    }
+
                 }
             }
         }
@@ -99,14 +127,30 @@
         }
 
         #planner-list {
+            @include flexbox(
+                $justify-content: start,
+                $gap: 32px,
+                $flex-direction: horizontal,
+            );
+ 
+            -webkit-box-flex: 0;
+            -ms-flex: 0;
             flex-wrap: nowrap;
             -ms-flex-wrap: nowrap; 
             overflow: scroll;
+            overflow-y: hidden;
             overflow-x:scroll;
             width: 100%;
 
             &::-webkit-scrollbar:horizontal {
                 height: 6px;
+              }
+
+              &::-webkit-scrollbar-track {
+                background-color: $efe-gray-mid;
+                border-radius: 9px;
+                border-left: 9px solid $efe-gray-mid;
+                border-right: 9px solid $efe-gray-mid;
               }
 
               &::-webkit-scrollbar-thumb {
@@ -119,7 +163,7 @@
                 -webkit-appearance: none;
               }      
               
-              #planner-card {
+              .planner-card {
                 margin-bottom: 45px;
               }
             
@@ -164,7 +208,7 @@
     @media screen and (max-width: $md) {
 
         #planner-list {
-            #planner-card {
+            .planner-card {
                 .cmp-teaser {
                     -webkit-box-orient: vertical;
                     -webkit-box-direction: reverse;
@@ -175,4 +219,31 @@
             }
         }
     }
+
+    @media screen and (min-width: $md) {
+        #planner-list {
+            grid-template-columns: 1fr 1fr;
+            -ms-grid-columns: 1fr 1fr;
+            display: -ms-grid;
+            display: grid;
+        }
+    }
+
+    @media screen and (min-width: $lg) {
+        #planner-list {
+            grid-template-columns: 1fr 1fr 1fr;
+            -ms-grid-columns: 1fr 1fr 1fr;
+            display: -ms-grid;
+            display: grid;
+        }
+    }
+
+    @media screen and (min-width: 1300px) {
+        #planner-list {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            -ms-grid-columns: 1fr 1fr 1fr 1fr;
+            display: -ms-grid;
+            display: grid;
+        }
+    }    
 }
