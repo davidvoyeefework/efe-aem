@@ -131,17 +131,14 @@ public class MapStateLocationsImpl implements MapStateLocations {
 
 		JsonArray officeLocationArr = new JsonArray();
 
-		Resource locationResource = resourceResolver.getResource(PlannerLocationConstants.LOCATION_PATH);
+                Resource stateResource = resourceResolver.getResource(PlannerLocationConstants.LOCATION_PATH + "/" + mapState);
+                
+                if (Objects.nonNull(stateResource) && stateResource.isResourceType(JcrResourceConstants.NT_SLING_ORDERED_FOLDER)) {
+                    createNAddOfficeObject(officeLocationArr, stateResource);
+                } else {
+                    LOGGER.debug("Locations CF Node not found.");
+                }
 
-		if (Objects.nonNull(locationResource)) {
-			for (Resource stateResource : locationResource.getChildren()) {
-				if (stateResource.isResourceType(JcrResourceConstants.NT_SLING_ORDERED_FOLDER)) {
-					createNAddOfficeObject(officeLocationArr, stateResource);
-				}
-			}
-		} else {
-			LOGGER.debug("Locations CF Node not found.");
-		}
 		officeLocationJson = officeLocationArr.toString();
 	}
 

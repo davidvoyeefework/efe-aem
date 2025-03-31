@@ -1,4 +1,4 @@
-<sly data-sly-use.model="com.efe.core.models.MapSearchResults">
+<sly data-sly-use.model="com.efe.core.models.MapStateLocations">
     <script src="https://maps.googleapis.com/maps/api/js?key=${model.mapKey @ context='scriptToken'}&v=weekly&libraries=geometry,places"></script>
     <section id="${model.id}" data-component="location-map-results" class="cmp-location--results cmp-location--results-default"
         data-explorelink-label="${model.exploreLinkLabel}"
@@ -17,6 +17,7 @@
                     name="location"
                     type="text"
                     placeholder="${model.plannerSearchPlaceHolder}"
+                    value="${model.mapState}, USA"
                 />
             </div>
             <a href="#" data-ignore-tracking = "true" class="efe-cta-primary search-location-btn" >${model.plannerButtonLabel}</a>
