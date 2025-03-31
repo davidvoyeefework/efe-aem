@@ -1,22 +1,22 @@
 <div data-sly-use.model="com.efe.core.models.PlannerList" data-sly-use.template="core/wcm/components/commons/v1/templates.html"
-     class="list cmp-list--left-align" id="${model.id}">
+     class="list" id="${model.id}">
   <h2 class="cmp-list--title" data-sly-test="${model.plannerList}">${model.plannerTitle}</h2>
 
   <ul id="planner-list" class="cmp-list">
 
     <sly data-sly-list.plannerList="${model.plannerList}">
-      <li id="planner-card" class="teaser cmp-teaser--thumbnail">
+      <li class="planner-card teaser cmp-teaser--thumbnail">
         <div class="cmp-teaser">
           <div>
-            <h2 id="planner-name" class="cmp-teaser__title"> ${plannerList.firstName} ${plannerList.lastName}</h2>
-            <h3 id="planner-title" class="cmp-teaser__description">
+            <h2 class="planner-name cmp-teaser__title"> ${plannerList.firstName} ${plannerList.lastName}</h2>
+            <h3 class="planner-title cmp-teaser__description">
               ${plannerList.title}
             </h3>
-            <h3 id="planner-locations" class="cmp-teaser__description">
+            <h3 class="planner-locations cmp-teaser__description">
               ${plannerList.officeLocations}
             </h3>            
             <div class="cmp-button--article">
-              <a id="planner-link" class="cmp-teaser__action-link"  target="${model.plannerTarget}" data-cmp-clickable="" x-cq-linkchecker="valid" href="${plannerList.buttonUrl}"><span class="visually-hidden">${model.ctaLabel}</span></a>
+              <a class="planner-link cmp-teaser__action-link"  target="${model.plannerTarget}" data-cmp-clickable="" x-cq-linkchecker="valid" href="${plannerList.buttonUrl}"><span class="visually-hidden">${model.ctaLabel}</span></a>
             </div>
           </div>
           <div class="cmp-teaser__image">
