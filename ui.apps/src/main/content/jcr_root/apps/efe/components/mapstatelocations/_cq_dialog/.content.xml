@@ -69,8 +69,8 @@
                                                 <items jcr:primaryType="nt:unstructured">
                                                     <alaska
                                                         jcr:primaryType="nt:unctructured"
-                                                        text="Alaska - AK"
-                                                        value="AK" />
+                                                        text="Alaska"
+                                                        value="Alaska" />
                                                     <alabama
                                                         jcr:primaryType="nt:unctructured"
                                                         text="Alabama - AL"
