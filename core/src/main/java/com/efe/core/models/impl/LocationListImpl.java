@@ -167,4 +167,10 @@ public class LocationListImpl implements LocationList {
 		cities.putAll(map);
 		return  cities;
 	}
+
+	public String getStateSelector() {
+		String resourcePath = resource.getPath();
+		String stateSelector = ResourceUtil.getProperty(resourceResolver, resourcePath, "state");
+		return stateSelector;
+	}
 }
