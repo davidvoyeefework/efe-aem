@@ -61,16 +61,14 @@
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/select"
                                                 fieldDescription="State to display."
                                                 fieldLabel="State to display."
-                                                emptyOption="false"
                                                 ordered="true"
                                                 required="true"
-                                                multiple="false"
                                                 name="./mapState">
                                                 <items jcr:primaryType="nt:unstructured">
                                                     <alaska
                                                         jcr:primaryType="nt:unctructured"
                                                         text="Alaska"
-                                                        value="Alaska" />
+                                                        value="AK" />
                                                     <alabama
                                                         jcr:primaryType="nt:unctructured"
                                                         text="Alabama - AL"
