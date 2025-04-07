@@ -130,7 +130,7 @@ public class MapStateLocationsImpl implements MapStateLocations {
 		mapKey = efeService.getGooglePublicKey();
 
 		JsonArray officeLocationArr = new JsonArray();
-                if(mapState.isEmpty()) {
+                if(Objects.isNull(mapState) || mapState.isEmpty()) {
                     mapState = "AK";
                 }
                 Resource stateResource = resourceResolver.getResource(PlannerLocationConstants.LOCATION_PATH + "/" + mapState);
