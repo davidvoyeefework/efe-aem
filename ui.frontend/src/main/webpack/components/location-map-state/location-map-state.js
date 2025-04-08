@@ -26,6 +26,7 @@ export default class LocationMapResults {
       firstLoad: true,
     });
     this.trackFindaPlanner = false;
+    handleLocationSearch(new Event("state_page_load"));
   }
 
   static init(el) {
@@ -200,7 +201,7 @@ export default class LocationMapResults {
   }
 
   showSearchResultsContainer(results, obj) {
-    this.el.classList.remove("cmp-location--results-default");
+    this.el.classList.remove("cmp-location--state-default");
     this.clearCurrentResults();
     if (obj && obj.showNationalAdvisor) {
       this.constructEmptyResults();
@@ -214,7 +215,7 @@ export default class LocationMapResults {
 
   clearCurrentResults() {
     const resultsContainer = this.el.querySelector(
-      ".cmp-location--results__items",
+      ".cmp-location--state__items",
     );
     if (resultsContainer.classList.contains("no-results")) {
       resultsContainer.classList.remove("no-results");
@@ -231,11 +232,11 @@ export default class LocationMapResults {
     const nationalLink = this.el.dataset?.nationalLink;
 
     const resultsContainer = this.el.querySelector(
-      ".cmp-location--results__items",
+      ".cmp-location--state__items",
     );
     resultsContainer.classList.add("no-results");
     const item = document.createElement("div");
-    item.classList.add("cmp-location--results__items--item");
+    item.classList.add("cmp-location--state__items--item");
 
     const h2 = document.createElement("h2");
     h2.textContent = nationalTitle;
@@ -261,10 +262,10 @@ export default class LocationMapResults {
 
   constructSearchResults(result) {
     const resultsContainer = this.el.querySelector(
-      ".cmp-location--results__items",
+      ".cmp-location--state__items",
     );
     const item = document.createElement("div");
-    item.classList.add("cmp-location--results__items--item");
+    item.classList.add("cmp-location--state__items--item");
 
     const title = document.createElement("h2");
     title.textContent = result.externalName;

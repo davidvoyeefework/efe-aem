@@ -59,156 +59,225 @@
                                                 name="./exploreLinkLabel"/>
                                             
                                             <mapState
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                fieldDescription="State Selector"
-                                                fieldLabel="State Selector"
-                                                name="./mapState">
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                    fieldDescription="State to display."
+                                                    fieldLabel="State to display."
+                                                    required="true"
+                                                    name="./mapState">
                                                 <items jcr:primaryType="nt:unstructured">
-                                                    <al
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Alabama"
-                                                        value="al"/>    
-                                                    <az
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Arizona"
-                                                        value="az"/> 
-                                                    <ca
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="California"
-                                                        value="ca"/>  
-                                                    <co
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Colorado"
-                                                        value="co"/>   
-                                                    <ct
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Connecticut"
-                                                        value="ct"/>  
-                                                    <fl
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Florida"
-                                                        value="fl"/>   
-                                                    <ga
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Georgia"
-                                                        value="ga"/>    
-                                                    <il
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Illinois"
-                                                        value="il"/>      
-                                                    <in
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Indiana"
-                                                        value="in"/>   
-                                                    <ia
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Iowa"
-                                                        value="ia"/>   
-                                                    <ks
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Kansas"
-                                                        value="ks"/> 
-                                                    <ky
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Kentuckyv"
-                                                        value="ky"/>
-                                                    <la
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Louisiana"
-                                                        value="la"/>     
-                                                    <md
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Maryland"
-                                                        value="md"/>   
-                                                    <ma
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Massachusetts"
-                                                        value="ma"/>       
-                                                    <mi
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Michigan"
-                                                        value="mi"/>           
-                                                    <mn
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Minnesota"
-                                                        value="mn"/>            
-                                                    <mo
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Missouri"
-                                                        value="mo"/>    
-                                                    <ne
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Nebraska"
-                                                        value="ne"/>      
-                                                    <nj
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="New Jersey"
-                                                        value="nj"/>   
-                                                    <nm
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="New Mexico"
-                                                        value="nm"/>    
-                                                    <nm
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="New Mexico"
-                                                        value="nm"/>       
-                                                    <ny
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="New York"
-                                                        value="ny"/>   
-                                                    <nc
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="North Carolina"
-                                                        value="nc"/>     
-                                                    <oh
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Ohio"
-                                                        value="oh"/>        
-                                                    <ok
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Oklahoma"
-                                                        value="ok"/>     
-                                                    <or
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Oregon"
-                                                        value="or"/>      
-                                                    <pa
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Pennsylvania"
-                                                        value="pa"/>      
-                                                    <ri
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Rhode Island"
-                                                        value="ri"/>    
-                                                    <sc
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="South Carolina"
-                                                        value="sc"/>     
-                                                    <tn
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Tennessee"
-                                                        value="tn"/>     
-                                                    <tx
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Texas"
-                                                        value="tx"/>      
-                                                    <ut
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Utah"
-                                                        value="ut"/>   
-                                                    <va
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Virgina"
-                                                        value="va"/>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
-                                                    <wa 
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Washington"
-                                                        value="Wa"/>
-                                                    <wi
-                                                        jcr:primaryType="nt:unstructured"
-                                                        text="Wisconsin"
-                                                        value="wi"/>                                                                                                                                                                        
+                                                    <AK
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="Alaska"
+                                                            value="AK" />
+                                                    <AL
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="Alabama - AL"
+                                                            value="AL" />
+                                                    <AK
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="Arkansas - AK"
+                                                            value="AK" />
+                                                    <AZ
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="Arizona - AZ"
+                                                            value="AZ" />
+                                                    <CA
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="California - CA"
+                                                            value="CA" />
+                                                    <CO
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="Colorado - CO"
+                                                            value="CO" />
+                                                    <CT
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="Connecticut - CT"
+                                                            value="CT" />
+                                                    <DC
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="District of Columbia - DC"
+                                                            value="DC" />
+                                                    <DE
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="Delaware - DE"
+                                                            value="DE" />
+                                                    <FL
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="Florida - FL"
+                                                            value="FL" />
+                                                    <GA
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="Georgia - GA"
+                                                            value="GA" />
+                                                    <HI
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="Hawaii - HI"
+                                                            value="HI" />
+                                                    <IA
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="Iowa - IA"
+                                                            value="IA" />
+                                                    <ID
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="Idaho - ID"
+                                                            value="ID" />
+                                                    <IL
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="Illinois - IL"
+                                                            value="IL" />
+                                                    <IN
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="Indiana - IN"
+                                                            value="IN" />
+                                                    <KS
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="Kansas - KS"
+                                                            value="KS" />
+                                                    <KY
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="Kentucky - KY"
+                                                            value="KY" />
+                                                    <LA
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="Louisiana - LA"
+                                                            value="LA" />
+                                                    <MA
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="Massachusetts - MA"
+                                                            value="MA" />
+                                                    <MD
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="Maryland - MD"
+                                                            value="MD" />
+                                                    <ME
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="Maine - ME"
+                                                            value="ME" />
+                                                    <MI
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="Michigan - MI"
+                                                            value="MI" />
+                                                    <MN
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="Minnesota - MN"
+                                                            value="MN" />
+                                                    <MO
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="Missouri - MO"
+                                                            value="MO" />
+                                                    <MS
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="Mississippi - MS"
+                                                            value="MS" />
+                                                    <MY
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="Montana - MT"
+                                                            value="MT" />
+                                                    <NC
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="North Carolina - NC"
+                                                            value="NC" />
+                                                    <ND
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="North Dakota - ND"
+                                                            value="ND" />
+                                                    <NE
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="Nebraska - NE"
+                                                            value="NE" />
+                                                    <NH
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="New Hampshire - NH"
+                                                            value="NH" />
+                                                    <NJ
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="New Jersey - NJ"
+                                                            value="NJ" />
+                                                    <NM
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="New Mexico - NM"
+                                                            value="NM" />
+                                                    <NV
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="Nevada - NV"
+                                                            value="NV" />
+                                                    <NY
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="New York - NY"
+                                                            value="NY" />
+                                                    <OH
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="Ohio - OH"
+                                                            value="OH" />
+                                                    <OK
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="Oklahoma - OK"
+                                                            value="OK" />
+                                                    <OR
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="Oregon - OR"
+                                                            value="OR" />
+                                                    <PA
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="Pennsylvania - PA"
+                                                            value="PA" />
+                                                    <PR
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="Puerto Rico - PR"
+                                                            value="PR" />
+                                                    <RI
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="Rhode Island - RI"
+                                                            value="RI" />
+                                                    <SC
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="South Carolina - SC"
+                                                            value="SC" />
+                                                    <SD
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="South Dakota - SD"
+                                                            value="SD" />
+                                                    <TN
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="Tennessee - TN"
+                                                            value="TN" />
+                                                    <TX
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="Texas - TX"
+                                                            value="TX" />
+                                                    <UT
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="Utah - UT"
+                                                            value="UT" />
+                                                    <VA
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="Virginia - VA"
+                                                            value="VA" />
+                                                    <VI
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="Virgin Islands - VI"
+                                                            value="VI" />
+                                                    <VT
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="Vermont - VT"
+                                                            value="VT" />
+                                                    <WA
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="Washington - WA"
+                                                            value="WA" />
+                                                    <WI
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="Wisconsin - WI"
+                                                            value="WI" />
+                                                    <WV
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="West Virginia - WV"
+                                                            value="WV" />
+                                                    <WY
+                                                            jcr:primaryType="nt:unctructured"
+                                                            text="Wyoming - WY"
+                                                            value="WY" />
                                                 </items>
                                             </mapState>
 
