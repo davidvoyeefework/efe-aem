@@ -1,8 +1,8 @@
-.cmp-location--results {
-    &.cmp-location--results-default {
+.cmp-location--state {
+    &.cmp-location--state-default {
         display: block;
         position: relative;
-        .cmp-location--results__search-form {
+        .cmp-location--state__search-form {
             @include media(">tablet-lg") {
                 position: absolute;
                 min-width: 366px;
@@ -11,7 +11,7 @@
                 top: 15px;
             }
         }
-        .cmp-location--results__items {
+        .cmp-location--state__items {
             display: none;
         }
     }
@@ -140,7 +140,7 @@
             @include media("<tablet-lg") {
                 padding: 30px 0 40px 0;
             }
-            .cmp-location--results__items--item {
+            .cmp-location--state__items--item {
                 a {
                     margin-bottom: 40px;
                 }
