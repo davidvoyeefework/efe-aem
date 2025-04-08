@@ -1,4 +1,4 @@
-export default class LocationMapResults {
+export default class LocationMapState {
   constructor(el) {
     this.el = el;
     if (!el) return;
@@ -63,7 +63,7 @@ export default class LocationMapResults {
   }
 
   static init(el) {
-    return new LocationMapResults(el);
+    return new LocationMapState(el);
   }
 
   handleLocationEnter(event) {

@@ -1,18 +1,17 @@
 import Handlebars from "handlebars/runtime.js";
-import LocationMapResults from "../location-map-results.hbs";
+import LocationMapState from "../location-map-state.hbs";
 
-Handlebars.registerPartial("LocationMapResults", LocationMapResults);
+Handlebars.registerPartial("LocationMapState", LocationMapState);
 
 export default {
-    title: "Components/LocationMapResults",
-    argTypes: {
-    },
+  title: "Components/LocationMapState",
+  argTypes: {},
 };
 
-const TemplateLocationMapResults = (args) => LocationMapResults({ ...args });
-TemplateLocationMapResults.bind({});
-TemplateLocationMapResults.args = {
-    'no-results': false
-}
+const TemplateLocationMapState = (args) => LocationMapState({ ...args });
+TemplateLocationMapState.bind({});
+TemplateLocationMapState.args = {
+  "no-results": false,
+};
 
-export { TemplateLocationMapResults as MapResults };
+export { TemplateLocationMapState as MapResults };
