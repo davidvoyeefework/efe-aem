@@ -131,7 +131,7 @@ public class MapStateLocationsImpl implements MapStateLocations {
 
 		JsonArray officeLocationArr = new JsonArray();
                 if(Objects.isNull(mapState) || mapState.isEmpty()) {
-                    mapState = "AK";
+                    mapState = "AZ";
                 }
                 Resource stateResource = resourceResolver.getResource(PlannerLocationConstants.LOCATION_PATH + "/" + mapState);
 
