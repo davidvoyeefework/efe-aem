@@ -14,19 +14,52 @@ export default class LocationMapResults {
       "keyup",
       this.handleLocationEnter.bind(this),
     );
-    this.offices = JSON.parse(el.dataset?.offices);
-    this.EXPLORE_LINK_LABEL = el.dataset?.explorelinkLabel;
-    this.PLANNER_BTN_LABEL = el.dataset?.plannerBtnLabel;
-    this.defaultLatitude = 39.828175;
-    this.defaultLongitude = -98.5795;
-    this.furthestOffice = 48280;
+    this.initializeValues(el);
     this.initMap(this.offices, {
       lat: this.defaultLatitude,
       lng: this.defaultLongitude,
       firstLoad: true,
     });
     this.trackFindaPlanner = false;
-    handleLocationSearch(new Event("state_page_load"));
+  }
+
+  initializeValues(el) {
+    this.offices = JSON.parse(el.dataset?.offices);
+    this.EXPLORE_LINK_LABEL = el.dataset?.explorelinkLabel;
+    this.PLANNER_BTN_LABEL = el.dataset?.plannerBtnLabel;
+    let coordinates = this.getCurrentSearchedLatAndLng();
+    this.defaultLatitude = coordinates.latitude;
+    this.defaultLongitude = coordinates.longitude;
+    let officeLocations = getLocationsWithinState();
+    this.furthestOffice = getDynamicRadiusForFurthestOffice(
+      this.defaultLatitude,
+      this.defaultLongitude,
+      officeLocations,
+    );
+  }
+
+  getLocationsWithinState() {
+    //This uses some silly assumptions, but is only called once so.. um... Whatever
+    let searchState = this.searchInput.value.substring(0, 2).toUpperCase();
+    let nearbyLocations = [];
+
+    this.offices.forEach((location) => {
+      if (location.stateCode.toString().toUpperCase() == searchState) {
+        let locationLat = parseFloat(location.latitude);
+        let locationLng = parseFloat(location.longitude);
+        let distance =
+          google.maps.geometry.spherical.computeDistanceBetween(
+            new google.maps.LatLng(searchLat, searchLng),
+            new google.maps.LatLng(locationLat, locationLng),
+          ) * 0.000621371; // Convert meters to miles
+        nearbyLocations.push({
+          ...location,
+          distance,
+        });
+      }
+    });
+
+    return nearbyLocations;
   }
 
   static init(el) {
