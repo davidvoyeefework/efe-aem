@@ -1,4 +1,6 @@
-<section data-component="location-map-results" data-offices='[{
+<section
+  data-component="location-map-state"
+  data-offices='[{
 	"externalName": "Birmingham",
 	"address1": "3595 Grandview Parkway",
 	"address2": "Suite 475",
@@ -1615,30 +1617,38 @@
 	"state": "Wisconsin",
 	"stateCode": "",
 	"link": "/content/efe/us/en/location.WI.Glendale.html"
-}]' data-explorelink-label="Explore location" data-planner-btn-label="Search Locations" data-zoomlevel="5" data-national-title="National Planner Center"
-        data-national-details="
+}]'
+  data-explorelink-label="Explore location"
+  data-planner-btn-label="Search Locations"
+  data-zoomlevel="5"
+  data-national-title="National Planner Center"
+  data-national-details="
                 Currently, we don’t have any planners in your immediate area, but we’re still here to help! Connect with a member of the experienced team at our National Planner Center to get started.
             "
-        data-national-callback="833-PLAN-EFE"
-        data-national-callbacklabel="tel:833-PLAN-EFE"
-        data-search-btn-label="Search Locations"
-        data-national-link="/?path=/story/components-locationmapdirections--map-directions" class="cmp-location--results cmp-location--results-default">
-    <div class="cmp-location--results__search-form">
-        <div class="input-container">
-            <label for="location">City, State or ZIP Code</label>
-            <input
-                id="location"
-                name="location"
-                type="text"
-                placeholder="Minneapolis, MN"
-            />
-        </div>
-        <a class="efe-cta-primary search-location-btn">Find a planner</a>
+  data-national-callback="833-PLAN-EFE"
+  data-national-callbacklabel="tel:833-PLAN-EFE"
+  data-search-btn-label="Search Locations"
+  data-national-link="/?path=/story/components-locationmapdirections--map-directions"
+  class="cmp-location--state cmp-location--state-default"
+>
+  <div class="cmp-location--state__search-form">
+    <div class="input-container">
+      <label for="location">City, State or ZIP Code</label>
+      <input
+        id="location"
+        name="location"
+        type="text"
+        placeholder="Minneapolis, MN"
+      />
     </div>
-    <div class="cmp-location--results__map">
-        <div id="map_canvas" style="position:absolute;height:100%;width:100%"></div>
-    </div>
-    <div class="cmp-location--results__items">
-    </div>
+    <a class="efe-cta-primary search-location-btn">Find a planner</a>
+  </div>
+  <div class="cmp-location--state__map">
+    <div id="map_canvas" style="position:absolute;height:100%;width:100%"></div>
+  </div>
+  <div class="cmp-location--state__items">
+  </div>
 </section>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASNIvr770pL6OphL5ZgBetnoPrcSvgbls&v=weekly&libraries=geometry,places"></script>
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASNIvr770pL6OphL5ZgBetnoPrcSvgbls&v=weekly&libraries=geometry,places"
+></script>
