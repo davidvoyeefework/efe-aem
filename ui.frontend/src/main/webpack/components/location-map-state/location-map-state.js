@@ -14,42 +14,69 @@ export default class LocationMapState {
       "keyup",
       this.handleLocationEnter.bind(this),
     );
-    this.initializeValues(el);
+    let stateAbbr = el.querySelector("#stateAbbreviation").value;
+    let coordinates;
+    if(stateAbbr == null || stateAbbr.length != 2) {
+        coordinates = { latitude: 39.828175, longitude: -98.5795 };
+        this.offices = JSON.parse(el.dataset?.offices);
+    } else {
+        coordinates = getStateLatAndLng(el);
+        this.offices = getLocationsWithinState(stateAbbr, JSON.parse(el.dataset?.offices), coordinates);
+    }
+     
+    
+    this.EXPLORE_LINK_LABEL = el.dataset?.explorelinkLabel;
+    this.PLANNER_BTN_LABEL = el.dataset?.plannerBtnLabel;
+    this.defaultLatitude = coordinates.latitude;
+    this.defaultLongitude = coordinates.longitude;
+    this.furthestOffice = getDynamicRadiusForFurthestOffice(
+      coordinates.latitude,
+      coordinates.longitude,
+      this.offices,
+    );
+    if(this.offices.length == 0) {
+        this.handleEmptyResults(coordinates);
+    } else {
+        this.showSearchResultsContainer(this.offices, {
+        showNationalAdvisor: false,
+        lat: coordinates.latitude,
+        lng: coordinates.longitude,
+        showBounds: true,
+      });
+    }
     this.initMap(this.offices, {
-      lat: this.defaultLatitude,
-      lng: this.defaultLongitude,
+      lat: coordinates.latitude,
+      lng: coordinates.longitude,
       firstLoad: true,
     });
     this.trackFindaPlanner = false;
   }
+  
+    static getStateLatAndLng(el) {
+        let searchInput = el.querySelector("#location")?.value;
+        geocodeAddress(searchInput)
+          .then((results) => {
+            return {
+              latitude: results.latitude,
+              longitude: results.longitude,
+            };
+          })
+          .catch((error) => {
+            console.error(`Geocode failed with error: ${error}`);
+          });
+    }
 
-  initializeValues(el) {
-    this.offices = JSON.parse(el.dataset?.offices);
-    this.EXPLORE_LINK_LABEL = el.dataset?.explorelinkLabel;
-    this.PLANNER_BTN_LABEL = el.dataset?.plannerBtnLabel;
-    let coordinates = this.getCurrentSearchedLatAndLng();
-    this.defaultLatitude = coordinates.latitude;
-    this.defaultLongitude = coordinates.longitude;
-    let officeLocations = getLocationsWithinState();
-    this.furthestOffice = getDynamicRadiusForFurthestOffice(
-      this.defaultLatitude,
-      this.defaultLongitude,
-      officeLocations,
-    );
-  }
-
-  getLocationsWithinState() {
+  static getLocationsWithinState(stateAbbr, officeList, coords) {
     //This uses some silly assumptions, but is only called once so.. um... Whatever
-    let searchState = this.searchInput.value.substring(0, 2).toUpperCase();
     let nearbyLocations = [];
 
-    this.offices.forEach((location) => {
-      if (location.stateCode.toString().toUpperCase() == searchState) {
+    officeList.forEach((location) => {
+      if (location.stateCode.toString().toUpperCase() == stateAbbr) {
         let locationLat = parseFloat(location.latitude);
         let locationLng = parseFloat(location.longitude);
         let distance =
           google.maps.geometry.spherical.computeDistanceBetween(
-            new google.maps.LatLng(searchLat, searchLng),
+            new google.maps.LatLng(coords.latitude, coords.longitude),
             new google.maps.LatLng(locationLat, locationLng),
           ) * 0.000621371; // Convert meters to miles
         nearbyLocations.push({
@@ -75,7 +102,7 @@ export default class LocationMapState {
 
   getCurrentSearchedLatAndLng() {
     let searchInput = this.el.querySelector("#location")?.value;
-    this.geocodeAddress(searchInput)
+    geocodeAddress(searchInput)
       .then((results) => {
         return {
           latitude: results.latitude,
@@ -157,7 +184,7 @@ export default class LocationMapState {
       searchInput = searchInput.trim().toLowerCase();
       const data = this.filterArray(searchInput);
       if (data.length === 0) {
-        this.geocodeAddress(searchInput)
+        geocodeAddress(searchInput)
           .then((results) => {
             const nearbyLocations = this.getLocationsWithinRadius(
               results.latitude,
@@ -185,7 +212,7 @@ export default class LocationMapState {
             console.error(`Geocode failed with error: ${error}`);
           });
       } else {
-        this.geocodeAddress(searchInput)
+        geocodeAddress(searchInput)
           .then((results) => {
             this.furthestOffice = this.getDynamicRadiusForFurthestOffice(
               results.latitude,
@@ -208,7 +235,7 @@ export default class LocationMapState {
     this.searchInput = searchInput;
   }
 
-  geocodeAddress(address) {
+  static geocodeAddress(address) {
     const geocoder = new google.maps.Geocoder();
     const componentRestrictions = { country: "US" };
 
@@ -434,7 +461,7 @@ export default class LocationMapState {
       });
     }
 
-    if (!obj.firstLoad && obj.showBounds) {
+    if (obj.showBounds) {
       const circleOptions = {
         center: myLatLng,
         fillOpacity: 0,
