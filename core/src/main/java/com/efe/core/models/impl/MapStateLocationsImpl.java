@@ -130,17 +130,18 @@ public class MapStateLocationsImpl implements MapStateLocations {
 		mapKey = efeService.getGooglePublicKey();
 
 		JsonArray officeLocationArr = new JsonArray();
-                if(Objects.isNull(mapState) || mapState.isEmpty()) {
-                    mapState = "AZ";
-                }
-                Resource stateResource = resourceResolver.getResource(PlannerLocationConstants.LOCATION_PATH + "/" + mapState);
 
-                if (Objects.nonNull(stateResource) && stateResource.isResourceType(JcrResourceConstants.NT_SLING_ORDERED_FOLDER)) {
-                    createNAddOfficeObject(officeLocationArr, stateResource);
-                } else {
-                    LOGGER.debug("Locations CF Node not found.");
-                }
+		Resource locationResource = resourceResolver.getResource(PlannerLocationConstants.LOCATION_PATH);
 
+		if (Objects.nonNull(locationResource)) {
+			for (Resource stateResource : locationResource.getChildren()) {
+				if (stateResource.isResourceType(JcrResourceConstants.NT_SLING_ORDERED_FOLDER)) {
+					createNAddOfficeObject(officeLocationArr, stateResource);
+				}
+			}
+		} else {
+			LOGGER.debug("Locations CF Node not found.");
+		}
 		officeLocationJson = officeLocationArr.toString();
 	}
 
