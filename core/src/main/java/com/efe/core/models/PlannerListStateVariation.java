@@ -1,7 +1,5 @@
 package com.efe.core.models;
 
-import com.adobe.xfa.ArrayNodeList;
-import java.util.ArrayList;
 import com.efe.core.bean.PlannerDetail;
 
 import java.util.List;
@@ -10,7 +8,7 @@ import java.util.List;
  * The Interface PlannerList Model.
  */
 
-public interface PlannerList {
+public interface PlannerListStateVariation {
 
 
     /**
@@ -64,8 +62,5 @@ public interface PlannerList {
 
     String getDefaultRedirectPagePath();
 
-     ArrayList<String> getDavidTest();
-
-     String getDavidTestString();
-
+    String getStateList();
 }
