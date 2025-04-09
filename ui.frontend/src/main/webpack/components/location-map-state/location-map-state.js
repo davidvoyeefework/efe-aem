@@ -4,16 +4,8 @@ export default class LocationMapState {
     if (!el) return;
     this.markerImg =
       "/etc.clientlibs/efe/clientlibs/clientlib-site/resources/images/icons/efe-marker.svg";
-    this.searchBtn = el.querySelector(".search-location-btn");
+    this.searchBtn = el.querySelector("#search-location-state-btn");
     this.searchInput = el.querySelector("#location");
-    this.handleLocationSearch = this.searchBtn.addEventListener(
-      "click",
-      this.handleLocationSearch.bind(this),
-    );
-    this.handleLocationEnter = this.searchInput.addEventListener(
-      "keyup",
-      this.handleLocationEnter.bind(this),
-    );
     let stateAbbr = el.querySelector("#stateAbbreviation").value;
     let coordinates;
     if(stateAbbr == null || stateAbbr.length != 2) {
@@ -23,8 +15,6 @@ export default class LocationMapState {
         coordinates = LocationMapState.getStateLatAndLng(el);
         this.offices = LocationMapState.getLocationsWithinState(stateAbbr, JSON.parse(el.dataset?.offices), coordinates);
     }
-     
-    
     this.EXPLORE_LINK_LABEL = el.dataset?.explorelinkLabel;
     this.PLANNER_BTN_LABEL = el.dataset?.plannerBtnLabel;
     this.defaultLatitude = coordinates.latitude;
@@ -48,8 +38,17 @@ export default class LocationMapState {
       lat: coordinates.latitude,
       lng: coordinates.longitude,
       firstLoad: true,
+      showBounds:false,
     });
     this.trackFindaPlanner = false;
+        this.handleLocationSearch = this.searchBtn.addEventListener(
+      "click",
+      this.handleLocationSearch.bind(this),
+    );
+    this.handleLocationEnter = this.searchInput.addEventListener(
+      "keyup",
+      this.handleLocationEnter.bind(this),
+    );
   }
   
     static getStateLatAndLng(el) {
@@ -404,7 +403,7 @@ export default class LocationMapState {
   }
 
   filterArray(value) {
-    return this.offices.filter(function (obj) {
+    return this.offices?.filter(function (obj) {
       return Object.entries(obj).some(function ([key, val]) {
         return (
           (key === "state" || key === "stateCode" || key === "zip") &&
