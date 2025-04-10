@@ -139,6 +139,10 @@ public class PlannerListImpl implements PlannerList {
 				}
 			}
 			setPlannerDetails(cfList);
+			if (plannerTitle != null) {
+				setPlannerTitle(citySelector);
+			}
+
 	
 		}
 
@@ -212,7 +216,7 @@ public class PlannerListImpl implements PlannerList {
     }
 
 	private void setPlannerTitle(String citySelector) {
-		plannerTitle = plannerTitle.replace(SELECTOR_PLACEHOLDER_0, city);
+		plannerTitle = plannerTitle.replace(SELECTOR_PLACEHOLDER_0, citySelector);
 		plannerTitle = plannerTitle.replace(SELECTOR_PLACEHOLDER_1, state);
 		if(StringUtils.equalsIgnoreCase(citySelector, efeService.getNationalAdvisorCenter())) {
 			plannerTitle = nationalPlannerTitle;
