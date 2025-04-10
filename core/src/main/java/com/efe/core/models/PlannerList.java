@@ -64,8 +64,4 @@ public interface PlannerList {
 
     String getDefaultRedirectPagePath();
 
-     ArrayList<String> getDavidTest();
-
-     String getDavidTestString();
-
 }

@@ -1,9 +1,10 @@
 <div data-sly-use.model="com.efe.core.models.PlannerList" data-sly-use.template="core/wcm/components/commons/v1/templates.html"
      class="list" id="${model.id}">
-  <h2 class="cmp-list--title" data-sly-test="${model.plannerList}">${model.plannerTitle}</h2>
+     <sly data-sly-test.hasContent="${model.plannerTitle}">
+      <h2 class="cmp-list--title">${model.plannerTitle}</h2>
+    </sly>
 
   <ul id="planner-list" class="cmp-list">
-
     <sly data-sly-list.plannerList="${model.plannerList}">
       <li class="planner-card teaser cmp-teaser--thumbnail">
         <div class="cmp-teaser">
