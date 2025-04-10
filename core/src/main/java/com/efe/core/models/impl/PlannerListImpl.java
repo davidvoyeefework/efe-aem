@@ -114,12 +114,6 @@ public class PlannerListImpl implements PlannerList {
 
 	public ArrayList<String> officeLocationsEncodedSubstring = new ArrayList<String>();
 
-	public ArrayList<String> test;
-
-	public String testString;
-
-
-
 	/**
 	 * This method sets the planner values in bean class according to selectors
 	 * value.
@@ -145,7 +139,7 @@ public class PlannerListImpl implements PlannerList {
 				}
 			}
 			setPlannerDetails(cfList);
-			setPlannerTitle(citySelector);
+	
 		}
 
 		if (selectors.length == 0) {
@@ -400,11 +394,4 @@ public class PlannerListImpl implements PlannerList {
 		return defaultRedirectPagePath.concat(Constants.HTML_SUFFIX);
 	}	
 
-	public ArrayList<String> getDavidTest() {
-		return test;
-	}
-
-	public String getDavidTestString() {
-		return testString;
-	}
 }
