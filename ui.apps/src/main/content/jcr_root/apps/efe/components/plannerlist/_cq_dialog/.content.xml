@@ -182,7 +182,7 @@
                                                     <wa 
                                                         jcr:primaryType="nt:unstructured"
                                                         text="Washington"
-                                                        value="Wa"/>
+                                                        value="wa"/>
                                                     <wi
                                                         jcr:primaryType="nt:unstructured"
                                                         text="Wisconsin"
