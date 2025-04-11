@@ -100,6 +100,9 @@ public class PlannerListImpl implements PlannerList {
 	@ValueMapValue
 	private String plannerTitle;
 
+	@ValueMapValue
+	private String stateValueMap;
+
 	/** The national planner title. */
 	@ValueMapValue
 	private String nationalPlannerTitle;
@@ -113,6 +116,7 @@ public class PlannerListImpl implements PlannerList {
 	public String[] officeLocationsEncoded;
 
 	public ArrayList<String> officeLocationsEncodedSubstring = new ArrayList<String>();
+
 
 	/**
 	 * This method sets the planner values in bean class according to selectors
@@ -147,17 +151,15 @@ public class PlannerListImpl implements PlannerList {
 		}
 
 		if (selectors.length == 0) {
-
-			String resourceProperty = "state";
-			String resourcePath = resource.getPath();
-			String stateSelectorAuthorConfig = ResourceUtil.getProperty( resourceResolver, resourcePath, resourceProperty );
-			state = stateSelectorAuthorConfig.toLowerCase();
+			state="az";
+			if(stateValueMap != null) {
+				state=stateValueMap;
+			}
 			List<String> cfList = new ArrayList<>();
 			List <String> finalPlannerCFList = new ArrayList<>();
 			List <String> PlannerCFTagsArray = new ArrayList<>();
 			Resource resourceLocation1 = LocationPlannerUtil.getLocationResourceStateDirectory(resourceResolver, state);
 			Iterator<Resource> children = resourceLocation1.listChildren();
-			int i = 0;
 			while (children.hasNext()) {
 				final Resource childState = children.next();
 				if (Objects.nonNull(childState)) {
@@ -177,7 +179,6 @@ public class PlannerListImpl implements PlannerList {
 						throw new RuntimeException(e);
 					}
 				}
-				i++;
 			}
 			
 			// Removing duplicate planners that are associated with more than 1 city
@@ -205,7 +206,7 @@ public class PlannerListImpl implements PlannerList {
 				}
 			 }
 			setPlannerDetails(finalPlannerCFList);
-			// setPlannerTitle(citySelector);
+
 		}
 		
 	}

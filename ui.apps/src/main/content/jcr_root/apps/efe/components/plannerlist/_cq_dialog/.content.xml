@@ -41,7 +41,7 @@
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/select"
                                                 fieldDescription="State Selector"
                                                 fieldLabel="State Selector"
-                                                name="./state">
+                                                name="./stateValueMap">
                                                 <items jcr:primaryType="nt:unstructured">
                                                     <al
                                                         jcr:primaryType="nt:unstructured"
