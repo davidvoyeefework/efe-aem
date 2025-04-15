@@ -274,7 +274,7 @@ export default class LocationMapState {
             const longitude = results[0].geometry.location.lng();
             console.log(latitude, longitude);
 
-            resolve({ latitude, longitude });
+            resolve({ latitude: latitude, longitude: longitude });
           } else {
             console.error(
               `Geocode was not successful for the following reason: ${status}`,
