@@ -9,6 +9,7 @@ export default class LocationMapState {
     let stateAbbr = el.querySelector("#stateAbbreviation").value;
     let coordinates;
     coordinates = LocationMapState.getStateLatAndLng(el);
+
     if (stateAbbr == null || stateAbbr.length != 2) {
       this.offices = JSON.parse(el.dataset?.offices);
     } else {
@@ -24,11 +25,12 @@ export default class LocationMapState {
     this.defaultLatitude = coordinates.latitude;
     this.defaultLongitude = coordinates.longitude;
 
-    this.furthestOffice = this.getDynamicRadiusForFurthestOffice(
+    this.furthestOffice = this.getFurthestOfficeMeters(
       coordinates.latitude,
       coordinates.longitude,
       this.offices,
     );
+
     this.trackFindaPlanner = false;
 
     this.handleLocationSearch = this.searchBtn.addEventListener(
@@ -51,6 +53,22 @@ export default class LocationMapState {
         showBounds: true,
       });
     }
+  }
+
+  getFurthestOfficeMeters(lat, lng, locations) {
+    let furthestLocation = 0;
+    locations.forEach((location) => {
+      let locationLat = parseFloat(location.latitude);
+      let locationLng = parseFloat(location.longitude);
+      let distance = google.maps.geometry.spherical.computeDistanceBetween(
+        new google.maps.LatLng(lat, lng),
+        new google.maps.LatLng(locationLat, locationLng),
+      ); // Convert meters to miles
+      if (!isNaN(distance)) {
+        furthestLocation = Math.max(furthestLocation, distance);
+      }
+    });
+    return furthestLocation;
   }
 
   static getStateLatAndLng(el) {
@@ -374,7 +392,6 @@ export default class LocationMapState {
     const searchLng = lng;
     const searchRadius = 75; // 30 mile radius
     let nearbyLocations = [];
-
     this.offices.forEach((location) => {
       const locationLat = parseFloat(location.latitude);
       const locationLng = parseFloat(location.longitude);
