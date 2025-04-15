@@ -151,7 +151,7 @@ public class PlannerListImpl implements PlannerList {
 		}
 
 		if (selectors.length == 0) {
-			state="az";
+			state="al";
 			if(stateValueMap != null) {
 				state=stateValueMap;
 			}
