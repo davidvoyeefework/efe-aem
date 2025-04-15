@@ -8,62 +8,71 @@ export default class LocationMapState {
     this.searchInput = el.querySelector("#location");
     let stateAbbr = el.querySelector("#stateAbbreviation").value;
     let coordinates;
-    if(stateAbbr == null || stateAbbr.length != 2) {
-        coordinates = { latitude: 39.828175, longitude: -98.5795 };
-        this.offices = JSON.parse(el.dataset?.offices);
+    coordinates = LocationMapState.getStateLatAndLng(el);
+    if (stateAbbr == null || stateAbbr.length != 2) {
+      this.offices = JSON.parse(el.dataset?.offices);
     } else {
-        coordinates = LocationMapState.getStateLatAndLng(el);
-        this.offices = LocationMapState.getLocationsWithinState(stateAbbr, JSON.parse(el.dataset?.offices), coordinates);
+      this.offices = LocationMapState.getLocationsWithinState(
+        stateAbbr,
+        JSON.parse(el.dataset?.offices),
+        coordinates,
+      );
     }
+
     this.EXPLORE_LINK_LABEL = el.dataset?.explorelinkLabel;
     this.PLANNER_BTN_LABEL = el.dataset?.plannerBtnLabel;
     this.defaultLatitude = coordinates.latitude;
     this.defaultLongitude = coordinates.longitude;
+
     this.furthestOffice = this.getDynamicRadiusForFurthestOffice(
       coordinates.latitude,
       coordinates.longitude,
       this.offices,
     );
-    if(this.offices.length == 0) {
-        this.handleEmptyResults(coordinates);
+    this.trackFindaPlanner = false;
+
+    this.handleLocationSearch = this.searchBtn.addEventListener(
+      "click",
+      this.handleLocationSearch.bind(this),
+    );
+
+    this.handleLocationEnter = this.searchInput.addEventListener(
+      "keyup",
+      this.handleLocationEnter.bind(this),
+    );
+
+    if (this.offices.length == 0) {
+      this.handleEmptyResults(coordinates);
     } else {
-        this.showSearchResultsContainer(this.offices, {
+      this.showSearchResultsContainer(this.offices, {
         showNationalAdvisor: false,
         lat: coordinates.latitude,
         lng: coordinates.longitude,
         showBounds: true,
       });
     }
-    this.initMap(this.offices, {
-      lat: coordinates.latitude,
-      lng: coordinates.longitude,
-      firstLoad: true,
-      showBounds:false,
-    });
-    this.trackFindaPlanner = false;
-        this.handleLocationSearch = this.searchBtn.addEventListener(
-      "click",
-      this.handleLocationSearch.bind(this),
-    );
-    this.handleLocationEnter = this.searchInput.addEventListener(
-      "keyup",
-      this.handleLocationEnter.bind(this),
-    );
   }
-  
-    static getStateLatAndLng(el) {
-        let searchInput = el.querySelector("#location")?.value;
-        LocationMapState.geocodeAddress(searchInput)
-          .then((results) => {
-            return {
-              latitude: results.latitude,
-              longitude: results.longitude,
-            };
-          })
-          .catch((error) => {
-            console.error(`Geocode failed with error: ${error}`);
-          });
+
+  static getStateLatAndLng(el) {
+    let searchInput = el.querySelector("#location")?.value;
+    if (searchInput == null || searchInput.length != 2) {
+      return {
+        latitude: 39.828175,
+        longitude: -98.5795,
+      };
+    } else {
+      LocationMapState.geocodeAddress(searchInput)
+        .then((results) => {
+          return {
+            latitude: results.latitude,
+            longitude: results.longitude,
+          };
+        })
+        .catch((error) => {
+          console.error(`Geocode failed with error: ${error}`);
+        });
     }
+  }
 
   static getLocationsWithinState(stateAbbr, officeList, coords) {
     //This uses some silly assumptions, but is only called once so.. um... Whatever
