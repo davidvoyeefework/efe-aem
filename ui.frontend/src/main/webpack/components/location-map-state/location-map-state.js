@@ -73,7 +73,7 @@ export default class LocationMapState {
 
   static getStateLatAndLng(el) {
     let searchInput = el.querySelector("#location")?.value;
-    if (searchInput == null || searchInput.length != 2) {
+    if (searchInput == null || searchInput == "") {
       return {
         latitude: 39.828175,
         longitude: -98.5795,
