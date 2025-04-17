@@ -7,36 +7,39 @@ export default class LocationMapState {
     this.searchBtn = el.querySelector("#search-location-state-btn");
     this.searchInput = el.querySelector("#location");
     let stateAbbr = el.querySelector("#stateAbbreviation").value;
-    let searchValue = el.querySelector("#location").value;
+    let address = el.querySelector("#location").value;
     let coordinates;
     coordinates = { latitude: 39.828175, longitude: -98.5795 };
     let stateBounds = false;
     this.offices = JSON.parse(el.dataset?.offices);
     let currOffices;
     if (stateAbbr != null && stateAbbr.length == 2) {
-      currOffices= this.getLocationsWithinState(
+      currOffices = this.getLocationsWithinState(
         stateAbbr,
         JSON.parse(el.dataset?.offices),
         coordinates,
       );
     }
-    
+
     try {
-        let geocoder = new google.maps.Geocoder();
-        let componentRestrictions = { country: "US" };
-        geocoder.geocode({searchValue, componentRestrictions}, function(results, status) {
-            if(status == "OK") {
-                this.neBound = results[0].geometry.bounds.northeast;
-                this.swBound = results[0].geometry.bounds.southwest;
-                coordinates.latitude = results[0].geometry.location.lat;
-                coordinates.longitude = results[0].geometry.location.lng;
-                stateBounds = true;
-            }
-        });
+      let geocoder = new google.maps.Geocoder();
+      let componentRestrictions = { country: "US" };
+      geocoder.geocode(
+        { address, componentRestrictions },
+        function (results, status) {
+          if (status == "OK") {
+            this.neBound = results[0].geometry.bounds.northeast;
+            this.swBound = results[0].geometry.bounds.southwest;
+            coordinates.latitude = results[0].geometry.location.lat;
+            coordinates.longitude = results[0].geometry.location.lng;
+            stateBounds = true;
+          }
+        },
+      );
     } catch (e) {
-        console.log(e.message);
+      console.log(e.message);
     }
-    
+
     this.EXPLORE_LINK_LABEL = el.dataset?.explorelinkLabel;
     this.PLANNER_BTN_LABEL = el.dataset?.plannerBtnLabel;
     this.defaultLatitude = coordinates.latitude;
@@ -482,9 +485,12 @@ export default class LocationMapState {
         });
       });
     }
-    if(obj.stateBounds) {
-        let theseBounds = new google.maps.LatLngBounds(this.neBound, this.swBound);
-        map.fitBounds(theseBounds);
+    if (obj.stateBounds) {
+      let theseBounds = new google.maps.LatLngBounds(
+        this.neBound,
+        this.swBound,
+      );
+      map.fitBounds(theseBounds);
     } else if (obj.showBounds) {
       const circleOptions = {
         center: myLatLng,
