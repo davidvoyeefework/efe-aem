@@ -8,8 +8,11 @@ export default class LocationMapState {
     this.searchInput = el.querySelector("#location");
     let stateAbbr = el.querySelector("#stateAbbreviation").value;
     let coordinates;
-
-    if (this.searchInput.value == null || this.searchInput.value == "") {
+    coordinates = {
+        latitude: 39.828175,
+        longitude: -98.5795,
+      };
+    /*if (this.searchInput.value == null || this.searchInput.value == "") {
       coordinates = {
         latitude: 39.828175,
         longitude: -98.5795,
@@ -26,7 +29,7 @@ export default class LocationMapState {
           console.error(`Geocode failed with error: ${error}`);
         });
     }
-
+ */
     if (stateAbbr == null || stateAbbr.length != 2) {
       this.offices = JSON.parse(el.dataset?.offices);
     } else {
