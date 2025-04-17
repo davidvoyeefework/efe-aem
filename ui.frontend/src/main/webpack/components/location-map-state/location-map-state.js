@@ -28,11 +28,11 @@ export default class LocationMapState {
         { address, componentRestrictions },
         function (results, status) {
           if (status == "OK") {
-            this.neBound = results[0].geometry.bounds.northeast;
-            this.swBound = results[0].geometry.bounds.southwest;
+            //this.neBound = results[0].geometry.bounds.northeast;
+            //this.swBound = results[0].geometry.bounds.southwest;
             coordinates.latitude = results[0].geometry.location.lat;
             coordinates.longitude = results[0].geometry.location.lng;
-            stateBounds = true;
+            //stateBounds = true;
           }
         },
       );
