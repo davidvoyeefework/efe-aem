@@ -7,39 +7,36 @@ export default class LocationMapState {
     this.searchBtn = el.querySelector("#search-location-state-btn");
     this.searchInput = el.querySelector("#location");
     let stateAbbr = el.querySelector("#stateAbbreviation").value;
+    let searchValue = el.querySelector("#location").value;
     let coordinates;
-    coordinates = {
-        latitude: 39.828175,
-        longitude: -98.5795,
-      };
-    /*if (this.searchInput.value == null || this.searchInput.value == "") {
-      coordinates = {
-        latitude: 39.828175,
-        longitude: -98.5795,
-      };
-    } else {
-      this.geocodeAddress(searchInput)
-        .then((results) => {
-          coordinates = {
-            latitude: results.latitude,
-            longitude: results.longitude,
-          };
-        })
-        .catch((error) => {
-          console.error(`Geocode failed with error: ${error}`);
-        });
-    }
- */
-    if (stateAbbr == null || stateAbbr.length != 2) {
-      this.offices = JSON.parse(el.dataset?.offices);
-    } else {
-      this.offices = this.getLocationsWithinState(
+    coordinates = { latitude: 39.828175, longitude: -98.5795 };
+    let stateBounds = false;
+    this.offices = JSON.parse(el.dataset?.offices);
+    let currOffices;
+    if (stateAbbr != null && stateAbbr.length == 2) {
+      currOffices= this.getLocationsWithinState(
         stateAbbr,
         JSON.parse(el.dataset?.offices),
         coordinates,
       );
     }
-
+    
+    try {
+        let geocoder = new google.maps.Geocoder();
+        let componentRestrictions = { country: "US" };
+        geocoder.geocode({searchValue, componentRestrictions}, function(results, status) {
+            if(status == "OK") {
+                this.neBound = results[0].geometry.bounds.northeast;
+                this.swBound = results[0].geometry.bounds.southwest;
+                coordinates.latitude = results[0].geometry.location.lat;
+                coordinates.longitude = results[0].geometry.location.lng;
+                stateBounds = true;
+            }
+        });
+    } catch (e) {
+        console.log(e.message);
+    }
+    
     this.EXPLORE_LINK_LABEL = el.dataset?.explorelinkLabel;
     this.PLANNER_BTN_LABEL = el.dataset?.plannerBtnLabel;
     this.defaultLatitude = coordinates.latitude;
@@ -48,7 +45,7 @@ export default class LocationMapState {
     this.furthestOffice = this.getFurthestOfficeMeters(
       coordinates.latitude,
       coordinates.longitude,
-      this.offices,
+      currOffices,
     );
 
     this.trackFindaPlanner = false;
@@ -63,14 +60,15 @@ export default class LocationMapState {
       this.handleLocationEnter.bind(this),
     );
 
-    if (this.offices.length == 0) {
+    if (currOffices.length == 0) {
       this.handleEmptyResults(coordinates);
     } else {
-      this.showSearchResultsContainer(this.offices, {
+      this.showSearchResultsContainer(currOffices, {
         showNationalAdvisor: false,
         lat: coordinates.latitude,
         lng: coordinates.longitude,
         showBounds: true,
+        stateBounds: stateBounds,
       });
     }
   }
@@ -484,8 +482,10 @@ export default class LocationMapState {
         });
       });
     }
-
-    if (obj.showBounds) {
+    if(obj.stateBounds) {
+        let theseBounds = new google.maps.LatLngBounds(this.neBound, this.swBound);
+        map.fitBounds(theseBounds);
+    } else if (obj.showBounds) {
       const circleOptions = {
         center: myLatLng,
         fillOpacity: 0,
