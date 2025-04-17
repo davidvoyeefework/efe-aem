@@ -8,7 +8,24 @@ export default class LocationMapState {
     this.searchInput = el.querySelector("#location");
     let stateAbbr = el.querySelector("#stateAbbreviation").value;
     let coordinates;
-    coordinates = LocationMapState.getStateLatAndLng(el);
+
+    if (this.searchInput.value == null || this.searchInput.value == "") {
+      coordinates = {
+        latitude: 39.828175,
+        longitude: -98.5795,
+      };
+    } else {
+      LocationMapState.geocodeAddress(searchInput)
+        .then((results) => {
+          coordinates = {
+            latitude: results.latitude,
+            longitude: results.longitude,
+          };
+        })
+        .catch((error) => {
+          console.error(`Geocode failed with error: ${error}`);
+        });
+    }
 
     if (stateAbbr == null || stateAbbr.length != 2) {
       this.offices = JSON.parse(el.dataset?.offices);
@@ -69,27 +86,6 @@ export default class LocationMapState {
       }
     });
     return furthestLocation;
-  }
-
-  static getStateLatAndLng(el) {
-    let searchInput = el.querySelector("#location")?.value;
-    if (searchInput == null || searchInput == "") {
-      return {
-        latitude: 39.828175,
-        longitude: -98.5795,
-      };
-    } else {
-      LocationMapState.geocodeAddress(searchInput)
-        .then((results) => {
-          return {
-            latitude: results.latitude,
-            longitude: results.longitude,
-          };
-        })
-        .catch((error) => {
-          console.error(`Geocode failed with error: ${error}`);
-        });
-    }
   }
 
   static getLocationsWithinState(stateAbbr, officeList, coords) {
@@ -274,7 +270,7 @@ export default class LocationMapState {
             const longitude = results[0].geometry.location.lng();
             console.log(latitude, longitude);
 
-            resolve({ latitude: latitude, longitude: longitude });
+            resolve({ latitude, longitude });
           } else {
             console.error(
               `Geocode was not successful for the following reason: ${status}`,
