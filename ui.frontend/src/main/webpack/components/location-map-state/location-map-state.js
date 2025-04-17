@@ -15,7 +15,7 @@ export default class LocationMapState {
         longitude: -98.5795,
       };
     } else {
-      LocationMapState.geocodeAddress(searchInput)
+      this.geocodeAddress(searchInput)
         .then((results) => {
           coordinates = {
             latitude: results.latitude,
@@ -30,7 +30,7 @@ export default class LocationMapState {
     if (stateAbbr == null || stateAbbr.length != 2) {
       this.offices = JSON.parse(el.dataset?.offices);
     } else {
-      this.offices = LocationMapState.getLocationsWithinState(
+      this.offices = this.getLocationsWithinState(
         stateAbbr,
         JSON.parse(el.dataset?.offices),
         coordinates,
@@ -88,7 +88,7 @@ export default class LocationMapState {
     return furthestLocation;
   }
 
-  static getLocationsWithinState(stateAbbr, officeList, coords) {
+  getLocationsWithinState(stateAbbr, officeList, coords) {
     //This uses some silly assumptions, but is only called once so.. um... Whatever
     let nearbyLocations = [];
 
@@ -124,7 +124,7 @@ export default class LocationMapState {
 
   getCurrentSearchedLatAndLng() {
     let searchInput = this.el.querySelector("#location")?.value;
-    LocationMapState.geocodeAddress(searchInput)
+    this.geocodeAddress(searchInput)
       .then((results) => {
         return {
           latitude: results.latitude,
@@ -206,7 +206,7 @@ export default class LocationMapState {
       searchInput = searchInput.trim().toLowerCase();
       const data = this.filterArray(searchInput);
       if (data.length === 0) {
-        LocationMapState.geocodeAddress(searchInput)
+        this.geocodeAddress(searchInput)
           .then((results) => {
             const nearbyLocations = this.getLocationsWithinRadius(
               results.latitude,
@@ -234,7 +234,7 @@ export default class LocationMapState {
             console.error(`Geocode failed with error: ${error}`);
           });
       } else {
-        LocationMapState.geocodeAddress(searchInput)
+        this.geocodeAddress(searchInput)
           .then((results) => {
             this.furthestOffice = this.getDynamicRadiusForFurthestOffice(
               results.latitude,
@@ -257,7 +257,7 @@ export default class LocationMapState {
     this.searchInput = searchInput;
   }
 
-  static geocodeAddress(address) {
+  geocodeAddress(address) {
     const geocoder = new google.maps.Geocoder();
     const componentRestrictions = { country: "US" };
 
