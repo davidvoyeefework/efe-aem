@@ -56,9 +56,11 @@ export default class LocationMapState {
             let thisLat = results[0].geometry.location.lat;
             let thisLon = results[0].geometry.location.lng;
             //stateBounds = true;
-            el.dispatchEvent("mapCoordinates", {
-              detail: { lat: thisLat, lon: thisLon },
-            });
+            el.dispatchEvent(
+              new CustomEvent("mapCoordinates", {
+                detail: { lat: thisLat, lon: thisLon },
+              }),
+            );
           }
         },
       );
