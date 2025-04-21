@@ -16,7 +16,7 @@ export default class LocationMapState {
     this.offices = JSON.parse(el.dataset?.offices);
 
     const mapEvent = new Event("mapCoordinates");
-    document.addEventListener("mapCoordinates", (e) => {
+    el.addEventListener("mapCoordinates", (e) => {
       let currOffices;
       if (stateAbbr != null && stateAbbr.length == 2) {
         currOffices = this.getLocationsWithinState(
@@ -56,7 +56,7 @@ export default class LocationMapState {
             let thisLat = results[0].geometry.location.lat;
             let thisLon = results[0].geometry.location.lng;
             //stateBounds = true;
-            document.dispactchEvent("mapCoordinates", {
+            el.dispatchEvent("mapCoordinates", {
               detail: { lat: thisLat, lon: thisLon },
             });
           }
