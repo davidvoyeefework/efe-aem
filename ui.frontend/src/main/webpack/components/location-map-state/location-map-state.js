@@ -11,6 +11,7 @@ export default class LocationMapState {
     let coordinates;
     this.defaultLatitude = 39.828175;
     this.defaultLongitude = -98.5795;
+    this.furthestOffice = 75000;
     let stateBounds = false;
     this.offices = JSON.parse(el.dataset?.offices);
 
