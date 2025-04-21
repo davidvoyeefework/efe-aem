@@ -22,7 +22,7 @@ export default class LocationMapState {
         currOffices = this.getLocationsWithinState(
           stateAbbr,
           JSON.parse(el.dataset?.offices),
-          coordinates,
+          { latitude: e.detail.lat, longitude: e.detail.lon },
         );
       }
 
