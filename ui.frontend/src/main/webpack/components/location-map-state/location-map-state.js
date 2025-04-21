@@ -83,7 +83,7 @@ export default class LocationMapState {
     );
   }
 
-  static getFurthestOfficeMeters(lat, lng, locations) {
+  getFurthestOfficeMeters(lat, lng, locations) {
     let furthestLocation = 0;
     locations.forEach((location) => {
       let locationLat = parseFloat(location.latitude);
