@@ -459,7 +459,6 @@ export default class LocationMapState {
       name: "Styled Map",
     });
     const options = {
-      zoom: 5,
       center: myLatLng,
       mapTypeId: google.maps.MapTypeId.TERRAIN,
       mapTypeControl: false,
