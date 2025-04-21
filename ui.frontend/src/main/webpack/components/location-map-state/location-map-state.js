@@ -30,14 +30,14 @@ export default class LocationMapState {
         this.handleEmptyResults(coordinates);
       } else {
         this.furthestOffice = this.getFurthestOfficeMeters(
-          this.defaultLatitude,
-          this.defaultLongitude,
+          e.detail.lat,
+          e.detail.lon,
           currOffices,
         );
         this.showSearchResultsContainer(currOffices, {
           showNationalAdvisor: false,
-          lat: this.defaultLatitude,
-          lng: this.defaultLongitude,
+          lat: e.detail.lat,
+          lng: e.detail.lon,
           showBounds: true,
           stateBounds: stateBounds,
         });
@@ -53,10 +53,12 @@ export default class LocationMapState {
           if (status == "OK") {
             //this.neBound = results[0].geometry.bounds.northeast;
             //this.swBound = results[0].geometry.bounds.southwest;
-            this.defaultLatitude = results[0].geometry.location.lat;
-            this.defaultLongitude = results[0].geometry.location.lng;
+            let thisLat = results[0].geometry.location.lat;
+            let thisLon = results[0].geometry.location.lng;
             //stateBounds = true;
-            el.dispactchEvent("mapCoordinates");
+            el.dispactchEvent("mapCoordinates", {
+              detail: { lat: thisLat, lon: thisLon },
+            });
           }
         },
       );
@@ -79,7 +81,7 @@ export default class LocationMapState {
     );
   }
 
-  getFurthestOfficeMeters(lat, lng, locations) {
+  static getFurthestOfficeMeters(lat, lng, locations) {
     let furthestLocation = 0;
     locations.forEach((location) => {
       let locationLat = parseFloat(location.latitude);
