@@ -12,14 +12,35 @@ export default class LocationMapState {
     coordinates = { latitude: 39.828175, longitude: -98.5795 };
     let stateBounds = false;
     this.offices = JSON.parse(el.dataset?.offices);
-    let currOffices;
-    if (stateAbbr != null && stateAbbr.length == 2) {
-      currOffices = this.getLocationsWithinState(
-        stateAbbr,
-        JSON.parse(el.dataset?.offices),
-        coordinates,
-      );
-    }
+
+    const mapEvent = new Event("mapCoordinates");
+    el.addEventListener("mapCoordinates", (e) => {
+      let currOffices;
+      if (stateAbbr != null && stateAbbr.length == 2) {
+        currOffices = this.getLocationsWithinState(
+          stateAbbr,
+          JSON.parse(el.dataset?.offices),
+          coordinates,
+        );
+      }
+
+      if (currOffices.length == 0) {
+        this.handleEmptyResults(coordinates);
+      } else {
+        this.furthestOffice = this.getFurthestOfficeMeters(
+          this.defaultLatitude,
+          this.defaultLongitude,
+          currOffices,
+        );
+        this.showSearchResultsContainer(currOffices, {
+          showNationalAdvisor: false,
+          lat: this.defaultLatitude,
+          lng: this.defaultLongitude,
+          showBounds: true,
+          stateBounds: stateBounds,
+        });
+      }
+    });
 
     try {
       let geocoder = new google.maps.Geocoder();
@@ -30,9 +51,10 @@ export default class LocationMapState {
           if (status == "OK") {
             //this.neBound = results[0].geometry.bounds.northeast;
             //this.swBound = results[0].geometry.bounds.southwest;
-            coordinates.latitude = results[0].geometry.location.lat;
-            coordinates.longitude = results[0].geometry.location.lng;
+            this.defaultLatitude = results[0].geometry.location.lat;
+            this.defaultLongitude = results[0].geometry.location.lng;
             //stateBounds = true;
+            el.dispactchEvent("mapCoordinates");
           }
         },
       );
@@ -42,15 +64,6 @@ export default class LocationMapState {
 
     this.EXPLORE_LINK_LABEL = el.dataset?.explorelinkLabel;
     this.PLANNER_BTN_LABEL = el.dataset?.plannerBtnLabel;
-    this.defaultLatitude = coordinates.latitude;
-    this.defaultLongitude = coordinates.longitude;
-
-    this.furthestOffice = this.getFurthestOfficeMeters(
-      coordinates.latitude,
-      coordinates.longitude,
-      currOffices,
-    );
-
     this.trackFindaPlanner = false;
 
     this.handleLocationSearch = this.searchBtn.addEventListener(
@@ -62,18 +75,6 @@ export default class LocationMapState {
       "keyup",
       this.handleLocationEnter.bind(this),
     );
-
-    if (currOffices.length == 0) {
-      this.handleEmptyResults(coordinates);
-    } else {
-      this.showSearchResultsContainer(currOffices, {
-        showNationalAdvisor: false,
-        lat: coordinates.latitude,
-        lng: coordinates.longitude,
-        showBounds: true,
-        stateBounds: stateBounds,
-      });
-    }
   }
 
   getFurthestOfficeMeters(lat, lng, locations) {
@@ -459,6 +460,7 @@ export default class LocationMapState {
       name: "Styled Map",
     });
     const options = {
+      zoom: 5,
       center: myLatLng,
       mapTypeId: google.maps.MapTypeId.TERRAIN,
       mapTypeControl: false,
