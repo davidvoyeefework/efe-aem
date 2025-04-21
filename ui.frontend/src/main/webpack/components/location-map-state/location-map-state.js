@@ -9,7 +9,8 @@ export default class LocationMapState {
     let stateAbbr = el.querySelector("#stateAbbreviation").value;
     let address = el.querySelector("#location").value;
     let coordinates;
-    coordinates = { latitude: 39.828175, longitude: -98.5795 };
+    this.defaultLatitude = 39.828175;
+    this.defaultLongitude = -98.5795;
     let stateBounds = false;
     this.offices = JSON.parse(el.dataset?.offices);
 
