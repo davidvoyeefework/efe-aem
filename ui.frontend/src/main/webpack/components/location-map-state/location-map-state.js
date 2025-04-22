@@ -456,7 +456,7 @@ export default class LocationMapState {
       return;
     }
 
-    const myLatLng = new google.maps.LatLng(obj.lat, obj.lng);
+    const myLatLng = { lat: obj.lat, lng: obj.lng };
     const styles = [
       {
         stylers: [{ saturation: SATURATION }],
@@ -492,13 +492,7 @@ export default class LocationMapState {
         });
       });
     }
-    if (obj.stateBounds) {
-      let theseBounds = new google.maps.LatLngBounds(
-        this.neBound,
-        this.swBound,
-      );
-      map.fitBounds(theseBounds);
-    } else if (obj.showBounds) {
+    if (obj.showBounds) {
       const circleOptions = {
         center: myLatLng,
         fillOpacity: 0,
