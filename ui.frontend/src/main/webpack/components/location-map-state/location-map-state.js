@@ -54,15 +54,8 @@ export default class LocationMapState {
             //this.neBound = results[0].geometry.bounds.northeast;
             //this.swBound = results[0].geometry.bounds.southwest;
             const location = results[0].geometry.location;
-            let thisLat = 0.0;
-            let thisLon = 0.0;
-            if (location.lat.length == 2) {
-              thisLat = location.lat[0];
-              thisLon = location.lng[1];
-            } else {
-              thisLat = location.lat;
-              thisLon = location.lng;
-            }
+            let thisLat = location.lat();
+            let thisLon = location.lng();
             el.dispatchEvent(
               new CustomEvent("mapCoordinates", {
                 detail: { lat: thisLat, lon: thisLon },
