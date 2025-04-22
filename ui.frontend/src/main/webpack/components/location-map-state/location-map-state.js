@@ -53,8 +53,8 @@ export default class LocationMapState {
           if (status == "OK") {
             //this.neBound = results[0].geometry.bounds.northeast;
             //this.swBound = results[0].geometry.bounds.southwest;
-            let thisLat = results[0].geometry.location.lat;
-            let thisLon = results[0].geometry.location.lng;
+            let thisLat = parseFloat(results[0].geometry.location.lat);
+            let thisLon = parseFloat(results[0].geometry.location.lng);
             //stateBounds = true;
             el.dispatchEvent(
               new CustomEvent("mapCoordinates", {
