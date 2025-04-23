@@ -31,22 +31,47 @@
                                             <calc
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                fieldDescription="State Selector"
+                                                fieldDescription="Calc Selector"
                                                 fieldLabel="Select Calculator Type"
-                                                name="./state">
+                                                name="./calcType">
                                                 <items jcr:primaryType="nt:unstructured">
                                                     <investmentGoal
                                                         jcr:primaryType="nt:unstructured"
                                                         text="Investment Goal Calculator"
-                                                        value="investment-goal"/>    
-                                                    <futureCalcB
+                                                        value="https://efe.dinkytown.net/InvestmentVariables.js"/>    
+                                                    <mortgage
                                                         jcr:primaryType="nt:unstructured"
-                                                        text="Future calc b"
-                                                        value="calc-b"/> 
-                                                    <futureCalcC
+                                                        text="Mortgage Calculator"
+                                                        value="https://efe.dinkytown.net/MortgageLoan7.js"/> 
+                                                    <seventyTwoT
                                                         jcr:primaryType="nt:unstructured"
-                                                        text="Future calc c"
-                                                        value="calc-c"/>                                                                                                                
+                                                        text="72(t) Calculator"
+                                                        value="https://efe.dinkytown.net/Retire72T.js"/> 
+                                                    <individual401K
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Individual 401(k) Contribution Comparison"
+                                                        value="https://efe.dinkytown.net/Individual401kContribution.js"/>
+                                                    <pensionVsLumpSum
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Pension vs. Lump Sum Payout Calculator"
+                                                        value="https://efe.dinkytown.net/PensionvsLumpSum.js"/>   
+                                                    <marginalRate
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Marginal Tax Rate for Federal Taxes"
+                                                        value="https://efe.dinkytown.net/TaxMargin.js"/>  
+                                                    <savings
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Don't Delay Your Savings!"
+                                                        value="https://efe.dinkytown.net/WaitCost.js"/>  
+                                                    <disibilityInsurance
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Disability Insurance"
+                                                        value="https://efe.dinkytown.net/Disability.js"/>   
+                                                    <longTerm
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Long-Term Care Required Savings"
+                                                        value="https://efe.dinkytown.net/LongTermCareSavings.js"/>                                                                                                                                                                                                                                                                                                            
+                                                           
                                                 </items>
                                             </calc>
                                         </items>
