@@ -3,5 +3,50 @@
 <div id="KJEAllContent" class="efe-calc"></div>
 <script SRC='https://efe.dinkytown.net/KJE.js'></script>
 <script type="text/javascript" src="https://efe.dinkytown.net/KJESiteSpecific.js"></script>
-<script type="text/javascript" src="https://efe.dinkytown.net/InvestmentVariables.js"></script>
-<script type="text/javascript" src="https://efe.dinkytown.net/InvestmentVariablesParams.js"></script>
+
+<sly data-sly-use.model="com.efe.core.models.Calculator">
+    <script type="text/javascript" src="${model.calc @context='html'}"></script>
+
+    <sly data-sly-test="${model.calc == 'https://efe.dinkytown.net/InvestmentVariables.js'}">
+        <script type="text/javascript" src="https://efe.dinkytown.net/InvestmentVariablesParams.js"></script>
+    </sly>  
+
+    <sly data-sly-test="${model.calc == 'https://efe.dinkytown.net/MortgageLoan7.js'}">
+        <script type="text/javascript" src="https://efe.dinkytown.net/MortgageLoan7Params.js"></script>
+    </sly> 
+
+    <sly data-sly-test="${model.calc == 'https://efe.dinkytown.net/MortgageRefinance.js'}">
+        <script type="text/javascript" src="https://efe.dinkytown.net/MortgageRefinanceParams.js"></script>
+    </sly> 
+
+    <sly data-sly-test="${model.calc == 'https://efe.dinkytown.net/Retire72T.js'}">
+        <script type="text/javascript" src="https://efe.dinkytown.net/Retire72TParams.js"></script>
+    </sly>     
+
+    <sly data-sly-test="${model.calc == 'https://efe.dinkytown.net/Individual401kContribution.js'}">
+        <script type="text/javascript" src="https://efe.dinkytown.net/Individual401kContributionParams.js"></script>
+    </sly>       
+
+    <sly data-sly-test="${model.calc == 'https://efe.dinkytown.net/PensionvsLumpSum.js'}">
+        <script type="text/javascript" src="https://efe.dinkytown.net/PensionvsLumpSumParams.js"></script>
+    </sly>    
+    
+    <sly data-sly-test="${model.calc == 'https://efe.dinkytown.net/TaxMargin.js'}">
+        <script type="text/javascript" src="https://efe.dinkytown.net/TaxMarginParams.js"></script>
+    </sly>   
+
+    <sly data-sly-test="${model.calc == 'https://efe.dinkytown.net/WeightCost.js'}">
+        <script type="text/javascript" src="https://efe.dinkytown.net/WaitCostParams.js"></script>
+    </sly> 
+
+    <sly data-sly-test="${model.calc == 'https://efe.dinkytown.net/Disability.js'}">
+        <script type="text/javascript" src="https://efe.dinkytown.net/DisabilityParams.js"></script>
+    </sly>   
+    
+    <sly data-sly-test="${model.calc == 'https://efe.dinkytown.net/LongTermCareSavings.js'}">
+        <script type="text/javascript" src="https://efe.dinkytown.net/LongTermCareSavingsParams.js"></script>
+    </sly>      
+    
+
+</sly>
+<h1></h1>
