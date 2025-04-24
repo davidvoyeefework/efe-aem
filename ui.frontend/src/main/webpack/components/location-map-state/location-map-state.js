@@ -501,7 +501,7 @@ export default class LocationMapState {
         fillOpacity: 0,
         strokeOpacity: 0,
         map: map,
-        radius: this.furthestOffice,
+        radius: this.furthestOffice / 1.8,
       };
 
       const myCircle = new google.maps.Circle(circleOptions);
