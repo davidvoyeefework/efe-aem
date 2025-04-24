@@ -215,7 +215,7 @@ export default class LocationMapState {
     } else {
       // trim the string of whitespaces and convert to lowercase
       searchInput = searchInput.trim().toLowerCase();
-      const data = this.filterArray(searchInput);
+      let data = this.filterArray(searchInput);
       if (data.length === 0) {
         this.geocodeAddress(searchInput)
           .then((results) => {
@@ -247,6 +247,10 @@ export default class LocationMapState {
       } else {
         this.geocodeAddress(searchInput)
           .then((results) => {
+            data = this.getLocationsWithinRadius(
+              results.latitude,
+              results.longitude,
+            );
             this.furthestOffice = this.getDynamicRadiusForFurthestOffice(
               results.latitude,
               results.longitude,
@@ -466,7 +470,6 @@ export default class LocationMapState {
       name: "Styled Map",
     });
     const options = {
-      zoom: 5,
       center: myLatLng,
       mapTypeId: google.maps.MapTypeId.TERRAIN,
       mapTypeControl: false,
