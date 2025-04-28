@@ -211,19 +211,19 @@ export default class LocationMapState {
         this.geocodeAddress(searchValue)
           .then((results) => {
             data = this.getLocationsWithinRadius(
-              results.latitude(),
-              results.longitude(),
+              results.latitude,
+              results.longitude,
             );
             this.furthestOffice = this.getDynamicRadiusForFurthestOffice(
-              results.latitude(),
-              results.longitude(),
+              results.latitude,
+              results.longitude,
               data,
             );
 
             this.showSearchResultsContainer(data, {
               showNationalAdvisor: false,
-              lat: results.latitude(),
-              lng: results.longitude(),
+              lat: results.latitude,
+              lng: results.longitude,
               showBounds: true,
             });
           })
