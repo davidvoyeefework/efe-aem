@@ -167,45 +167,8 @@ export default class LocationMapState {
 
   handleLocationSearch(event) {
     event.preventDefault();
-    let searchInput = this.el.querySelector("#location")?.value;
-    if (!this.trackFindaPlanner) {
-      window.adobeDataLayer?.push({
-        event: "find_planner_click",
-        web: {
-          webInteraction: {
-            name: "Find a Planner",
-            region: "Body",
-            type: "other",
-            locationValue: searchInput,
-            findPlanner: {
-              value: 1,
-            },
-          },
-        },
-      });
-      this.trackFindaPlanner = true;
-    } else {
-      window.adobeDataLayer?.push({
-        event: "find_planner_click",
-        web: {
-          webInteraction: {
-            name: "Search Location",
-            region: "Body",
-            type: "other",
-            locationValue: searchInput,
-            searchLocation: {
-              value: 1,
-            },
-            findPlanner: {
-              value: 0,
-            },
-          },
-        },
-      });
-    }
-    this.searchBtn.textContent =
-      this.el.dataset?.searchBtnLabel || "Search Destinations";
-    if (searchInput === "") {
+    let searchValue = this.searchInput?.value;
+    if (searchValue === "") {
       this.showSearchResultsContainer(null, {
         showNationalAdvisor: true,
         lat: this.defaultLatitude,
@@ -214,14 +177,14 @@ export default class LocationMapState {
       });
     } else {
       // trim the string of whitespaces and convert to lowercase
-      searchInput = searchInput.trim().toLowerCase();
-      let data = this.filterArray(searchInput);
+      searchValue = searchValue.trim().toLowerCase();
+      let data = this.filterArray(searchValue);
       if (data.length === 0) {
-        this.geocodeAddress(searchInput)
+        this.geocodeAddress(searchValue)
           .then((results) => {
             const nearbyLocations = this.getLocationsWithinRadius(
-              results.latitude,
-              results.longitude,
+              results.latitude(),
+              results.longitude(),
             );
             if (nearbyLocations.length === 0) {
               this.handleEmptyResults(results);
@@ -229,8 +192,8 @@ export default class LocationMapState {
               this.furthestOffice = 48280 / 1.8;
               this.showSearchResultsContainer(nearbyLocations, {
                 showNationalAdvisor: false,
-                lat: results.latitude,
-                lng: results.longitude,
+                lat: results.latitude(),
+                lng: results.longitude(),
                 showBounds: true,
               });
             }
@@ -245,22 +208,22 @@ export default class LocationMapState {
             console.error(`Geocode failed with error: ${error}`);
           });
       } else {
-        this.geocodeAddress(searchInput)
+        this.geocodeAddress(searchValue)
           .then((results) => {
             data = this.getLocationsWithinRadius(
-              results.latitude,
-              results.longitude,
+              results.latitude(),
+              results.longitude(),
             );
             this.furthestOffice = this.getDynamicRadiusForFurthestOffice(
-              results.latitude,
-              results.longitude,
+              results.latitude(),
+              results.longitude(),
               data,
             );
 
             this.showSearchResultsContainer(data, {
               showNationalAdvisor: false,
-              lat: results.latitude,
-              lng: results.longitude,
+              lat: results.latitude(),
+              lng: results.longitude(),
               showBounds: true,
             });
           })
@@ -269,7 +232,7 @@ export default class LocationMapState {
           });
       }
     }
-    this.searchInput = searchInput;
+    this.searchInput.value = searchValue;
   }
 
   geocodeAddress(address) {
