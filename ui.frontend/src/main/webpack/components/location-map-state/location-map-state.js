@@ -183,8 +183,8 @@ export default class LocationMapState {
         this.geocodeAddress(searchValue)
           .then((results) => {
             const nearbyLocations = this.getLocationsWithinRadius(
-              results.latitude(),
-              results.longitude(),
+              results.latitude,
+              results.longitude,
             );
             if (nearbyLocations.length === 0) {
               this.handleEmptyResults(results);
@@ -192,8 +192,8 @@ export default class LocationMapState {
               this.furthestOffice = 48280 / 1.8;
               this.showSearchResultsContainer(nearbyLocations, {
                 showNationalAdvisor: false,
-                lat: results.latitude(),
-                lng: results.longitude(),
+                lat: results.latitude,
+                lng: results.longitude,
                 showBounds: true,
               });
             }
