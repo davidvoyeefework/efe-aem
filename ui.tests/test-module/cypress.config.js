@@ -22,6 +22,7 @@ const authorPass = process.env.AEM_AUTHOR_PASSWORD || "admin";
 const publishURL = process.env.AEM_PUBLISH_URL || "https://aemqa.edelmanfinancialengines.com/";
 const publishName = process.env.AEM_PUBLISH_USERNAME || "admin";
 const publishPass = process.env.AEM_PUBLISH_PASSWORD || "admin";
+const specs = process.env.SPECS || "cypress/e2e/**/**.cy.js"
 
 let config = {
     env: {
@@ -44,6 +45,7 @@ let config = {
                 },
             });
         },
+        specPattern: specs,
         baseUrl: publishURL,
         reporter: "cypress-mochawesome-reporter",
         reporterOptions: {
