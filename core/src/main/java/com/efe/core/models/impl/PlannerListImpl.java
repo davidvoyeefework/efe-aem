@@ -151,7 +151,7 @@ public class PlannerListImpl implements PlannerList {
 		}
 
 		if (selectors.length == 0) {
-			state="az";
+			state="al";
 			if(stateValueMap != null) {
 				state=stateValueMap;
 			}
@@ -164,7 +164,7 @@ public class PlannerListImpl implements PlannerList {
 				final Resource childState = children.next();
 				if (Objects.nonNull(childState)) {
 					for (Resource item : childState.getChildren()) {
-						if (item.getPath().contains("national-advisor-center") ) {
+						if ((item.getPath().contains("national-advisor-center"))) {
 							break;
 						}
 						else {
@@ -205,6 +205,7 @@ public class PlannerListImpl implements PlannerList {
 					finalPlannerCFList.add(plannerPathBuilder);
 				}
 			 }
+
 			setPlannerDetails(finalPlannerCFList);
 
 		}
@@ -217,7 +218,7 @@ public class PlannerListImpl implements PlannerList {
     }
 
 	private void setPlannerTitle(String citySelector) {
-		plannerTitle = plannerTitle.replace(SELECTOR_PLACEHOLDER_0, citySelector);
+		plannerTitle = plannerTitle.replace(SELECTOR_PLACEHOLDER_0, city);
 		plannerTitle = plannerTitle.replace(SELECTOR_PLACEHOLDER_1, state);
 		if(StringUtils.equalsIgnoreCase(citySelector, efeService.getNationalAdvisorCenter())) {
 			plannerTitle = nationalPlannerTitle;
@@ -275,6 +276,8 @@ public class PlannerListImpl implements PlannerList {
 				// Clean the list, sort and remove duplicates and array brackets
 				Collections.sort(officeLocationsDecoded);
 				List<String> officeLocationsDecodedDuplicatesRemoved = removeDuplicates(officeLocationsDecoded);
+				String stringToRemove = "Phoenix";
+				officeLocationsDecodedDuplicatesRemoved.remove(stringToRemove);
 				plannerObj.setOfficeLocations(officeLocationsDecodedDuplicatesRemoved.toString().replace("[", "").replace("]", ""));
 
 				if(StringUtils.isNotEmpty(firstNameAlias)) {
