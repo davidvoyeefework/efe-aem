@@ -89,7 +89,7 @@
                                                         value="ks"/> 
                                                     <ky
                                                         jcr:primaryType="nt:unstructured"
-                                                        text="Kentuckyv"
+                                                        text="Kentucky"
                                                         value="ky"/>
                                                     <la
                                                         jcr:primaryType="nt:unstructured"
@@ -118,7 +118,11 @@
                                                     <ne
                                                         jcr:primaryType="nt:unstructured"
                                                         text="Nebraska"
-                                                        value="ne"/>      
+                                                        value="ne"/>   
+                                                    <nv
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Nevada"
+                                                        value="nv"/>                                                           
                                                     <nj
                                                         jcr:primaryType="nt:unstructured"
                                                         text="New Jersey"
