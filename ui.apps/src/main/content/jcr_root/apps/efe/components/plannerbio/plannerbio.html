@@ -8,7 +8,16 @@
     <div class="cmp-efe--full-width secondary">
         <div class="cmp-efe-plannerbio--container">
             <div class="cmp-efe-plannerbio--container__hero-text">
-                <h1 class="cmp-efe-plannerbio--container__hero-text--first">${planner.firstName} <sly data-sly-test="${planner.lastName}">${planner.lastName}</sly></h1>
+                <h1 class="cmp-efe-plannerbio--container__hero-text--first">${planner.firstName} <sly data-sly-test="${planner.lastName}">${planner.lastName}</sly>
+                    <span class="" data-sly-test="${model.officeLocations}">
+                        Financial planner serving 
+                        <span class="" data-sly-list="${model.officeLocations}">
+                            <span class="">
+                                <span data-sly-test="${item.city}">${item.city}, </span><span data-sly-test="${item.city}">${item.state}</span>
+                            </span>
+                        </span>
+                    </span>
+                </h1>
                 <p data-sly-test="${!planner.certificationsAbbrevations.empty}" class="cmp-efe-plannerbio--container__hero-text--desc">${planner.certificationsAbbrevations  @ join=', '}</p>
                 <div class="button cmp-efe-plannerbio--container__hero-text--cta cmp-button--button-primary cmp-button--unset cmp-button--default cmp-button--default">
                     <a type="button" id="button-5487aab983" class="cmp-button" href="${model.appointmentCta}">
@@ -48,6 +57,7 @@
             </div>
         </div>
     </div>
+
     <div class="cmp-efe--full-width secondary" data-sly-test="${model.officeLocations}">
         <div class="cmp-efe-plannerbio--locations">
             <h2 class="cmp-efe-plannerbio--locations__title">${model.locationSectionHeading}</h2>
