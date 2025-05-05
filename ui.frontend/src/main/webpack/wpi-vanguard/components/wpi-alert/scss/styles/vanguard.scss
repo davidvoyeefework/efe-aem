@@ -2,7 +2,6 @@ section.vanguard-wpi-theme {
     padding: 25px 5px 20px 0;
     background-color: #E5E5E5;
     position: relative;
-    max-width: rem(1120);
 
     .flex {
         margin: 0;
@@ -16,7 +15,6 @@ section.vanguard-wpi-theme {
         }
 
         .copy {
-            max-width: 64ch; 
             margin-top: 5px;
             h2 {
                 font-size: rem(12);
@@ -123,7 +121,6 @@ section.vanguard-wpi-theme {
             }
 
             .copy {
-                max-width: rem(768);
                 margin: 0;
                 h2 {
                     font-size: 23px;
