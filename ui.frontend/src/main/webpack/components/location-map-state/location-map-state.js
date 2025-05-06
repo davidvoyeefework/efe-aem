@@ -210,10 +210,6 @@ export default class LocationMapState {
       } else {
         this.geocodeAddress(searchValue)
           .then((results) => {
-            data = this.getLocationsWithinRadius(
-              results.latitude,
-              results.longitude,
-            );
             this.furthestOffice = this.getDynamicRadiusForFurthestOffice(
               results.latitude,
               results.longitude,
