@@ -17,6 +17,7 @@
         border-top-left-radius: 40px;
         padding: 80px 134px;
         align-items: center;
+
         @include media("<tablet") {
             flex-direction: column;
             min-height: unset;
@@ -40,6 +41,14 @@
             z-index: 2;
             &--first, &--last {
                 @include heading-03;
+                span.heading-location-details {
+                    @include body-01;
+                    display: block;
+                    text-transform: initial;
+                    letter-spacing: 0;
+                    max-width: 25ch;
+                    margin-top: 12px;
+                }
             }
             @include media("<tablet") {
                 padding: 40px 26px;
@@ -96,6 +105,25 @@
                 }
             }
         }
+
+        @media screen and (max-width: $md) {
+            &__hero-text--first {
+                font-size: rem(48);
+                line-height: 105%;
+                letter-spacing: .08em;
+                span.heading-location-details {
+                    font-size: rem(22);
+                    line-height: 120%;
+                    font-weight: 400;
+                }
+            }
+            &__hero-text--desc {
+                font-size: rem(22);
+                line-height: 120%;
+                font-weight: 400;
+            }
+
+        }        
     }
     &--aboutus {
         max-width: 1440px;
@@ -113,35 +141,74 @@
             font-weight: 400;
         }
         &__block {
-            flex: 1 0 50%;
+            flex-basis: 33%;
         }
         &__aboutme {
-            flex: 1 0 50%;
+            flex-basis: 66%;
             &--subtitle {
                 margin-bottom: 15px;
                 @include subhead-01;
+                font-weight: 700;
             }
             >p {
-                @include body-02;
+                @include body-01;
+                font-size: rem(24);
+                line-height: 120%;
             }
         }
         &__certification {
-            margin-bottom: 30px;
+            padding: 0 0 20px;
+            border-bottom: 1px solid $efe-gray-mid;
             &--subtitle {
                 @include subhead-01;
+                font-weight: 700;
                 margin-bottom: 15px;
             }
             >p {
-                @include body-01;
+                @include body-02;
+                text-transform: uppercase;
             }
         }
-        &__education {
+        &__education, &__services, &__locations {
+            padding: 20px 0;
+            border-bottom: 1px solid $efe-gray-mid;
             &--subtitle {
                 @include subhead-01;
+                font-weight: 700;
                 margin-bottom: 15px;
             }
             >p {
-                @include body-01;
+                @include body-02;
+
+                span.university {
+                    @include body-03;
+                    display: block;
+                    text-transform: none !important;
+                }
+            }
+
+
+            &.locations {
+                border-bottom: none;
+                padding-bottom: 0;
+
+                .location-item {
+                    display: block;
+                    margin-bottom: 10px;
+                    text-transform: uppercase;
+                    &:last-of-type {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+
+        &__education {
+            p {
+                text-transform: uppercase;
+            }
+            span.univeristy {
+                text-transform: none !important;
             }
         }
         &__cta {
@@ -149,6 +216,11 @@
             justify-content: center;
             margin-top: 40px;
         }
+
+        @media screen and (max-width: $lg) {
+            padding: 80px;
+        }
+
         @include media("<tablet") {
             padding: 40px 26px;
             width: 100%;
@@ -158,6 +230,11 @@
             &__container {
                 flex-direction: column;
                 gap: 30px;
+            }
+            &__aboutme {
+                >p {
+                    font-size: rem(20);
+                }
             }
             &__cta {
                 margin-top: 30px;
