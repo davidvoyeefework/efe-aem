@@ -1,0 +1,157 @@
+.cmp-location--state {
+    &.cmp-location--state-default {
+        display: block;
+        position: relative;
+        .cmp-location--state__search-form {
+            @include media(">tablet-lg") {
+                position: absolute;
+                min-width: 366px;
+                z-index: 1;
+                left: 15px;
+                top: 15px;
+            }
+        }
+        .cmp-location--state__items {
+            display: none;
+        }
+    }
+    display: grid;
+    grid-template-columns: 536px 1fr;
+    grid-template-areas:
+        "searchbox map"
+        "result map";
+    grid-template-rows: 145px;
+    @include media("<tablet-lg") {
+        @include flexbox($flex-direction: column);
+        background-color: $efe-gray-light;
+        padding: 30px 26px 40px;
+    }
+    &__map {
+        grid-area: map;
+        padding-bottom: clamp(376px, 100%, 600px);
+        width: 100%;
+        height: 100%;
+        position: relative;
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+    }
+    &__search-form {
+        padding: rem(25) rem(40);
+        background: $efe-gray-light;
+        border-bottom: 2px solid $efe-gray-mid;
+        @include flexbox($flex-direction: row, $align-items: flex-end, $justify-content: center, $gap: 20px);
+        @include media("<tablet-lg") {
+            padding: 30px 0;
+            @include flexbox($flex-direction: column, $align-items: center, $gap: 15px);
+        }
+        .input-container {
+            max-width: rem(172);
+            @include media("<tablet-lg") {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            label {
+                @include detail;
+                text-align: left;
+                margin-bottom: 3px;
+            }
+
+            input {
+                @include efe-input-field;
+                width: rem(172);
+                min-width: rem(172);
+                max-width: rem(172);
+                border-radius: 4px ;
+                @media screen and (min-width: $sm) {
+                    min-width: rem(172);
+                }
+                @include media("<tablet-lg") {
+                    max-width: 100%;
+                    width: 100%;
+                }
+            }
+        }
+    }
+    a.efe-cta-primary {
+        @include cta-primary;
+        margin: 0;
+        flex: 1;
+        font-size: rem(18);
+        &:hover {
+            cursor: pointer;
+        }
+        @include media("<tablet-lg") {
+            min-width: 244px;
+        }
+    }
+    &__items {
+        background: $efe-gray-light;
+        padding: 40px 40px 0 40px;
+        max-height: 455px;
+        @include media("<tablet-lg") {
+            padding: 30px 0 0 0;
+            max-height: unset;
+        }
+        overflow-y: auto;
+        &::-webkit-scrollbar {
+            width: 79px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: $efe-gray-blue;
+            border-left: 39px solid $efe-gray-light;
+            border-right: 39px solid $efe-gray-light;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: $efe-red-primary;
+            border-left: 38px solid $efe-gray-light;
+            border-right: 38px solid $efe-gray-light;
+        }
+        &--item {
+            @include media("<tablet-lg") {
+                margin-bottom: 30px;
+            }
+            margin-bottom: 40px;
+            h2 {
+                @include subhead-01;
+                margin-bottom: 10px;
+            }
+            p {
+                @include body-02;
+            }
+            a {
+                @include body-02-link-red;
+                margin-top: 15px;
+                display: inline-block;
+            }
+        }
+        &.no-results {
+            padding: 44px 30px 0px 40px;
+            @include media("<tablet-lg") {
+                padding: 30px 0 40px 0;
+            }
+            .cmp-location--state__items--item {
+                a {
+                    margin-bottom: 40px;
+                }
+                a.cmp-tel-link {
+                    color: inherit;
+                    text-decoration: none;
+                    display: inherit;
+                    margin-bottom: 0;
+                }
+
+            }
+        }
+    }
+}
