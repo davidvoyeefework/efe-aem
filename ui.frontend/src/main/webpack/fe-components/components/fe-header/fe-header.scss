@@ -3,7 +3,7 @@ $fe-header-direct-tablet-width: 424px;
 $fe-header-subadvised-tablet-width: 400px;
 $fe-header-direct-mobile-width: 400px;
 $fe-header-subadvised-mobile-width: 368px;
-$fe-header-logo-height: 32px;
+$fe-header-logo-height: 34px;
 $fe-header-subadvised-vert-line-height: 44px;
 
 .fepage {
@@ -28,8 +28,10 @@ $fe-header-subadvised-vert-line-height: 44px;
         text-align: right;
       }
     }
-    #efe-nav-main {
+    header div.container:last-child > div.cmp-container {
       padding: 16px;
+    }
+    #efe-nav-main {
       max-width: 420px;
       .cmp-container--26 {
         gap: 16px;
@@ -39,18 +41,16 @@ $fe-header-subadvised-vert-line-height: 44px;
         padding: 0 !important;
         align-items: end !important;
         position: relative;
+        .cmp-image--small {
+          max-width: 180px;
+        }
       }
       #nav-list-cta-group {
         width: auto;
         margin-left: auto;
       }
     }
-    .minimal-header__vertical-line {
-      border-left: 1px solid $efe-gray-mid;
-      display: block;
-      height: $fe-header-logo-height !important;
-      flex-shrink: 5;
-    }
+
     #efe-global-nav-header,
     #efe-nav-main #nav-list-cta-group {
       align-self: baseline;
@@ -72,33 +72,22 @@ $fe-header-subadvised-vert-line-height: 44px;
 
     .cmp-image--efe-logo-secondary,
     .cmp-image--efe-logo-primary {
+      display: flex;
       &.cmp-image--small {
         width: auto;
         height: 100%;
-        flex-shrink: 1;
         .cmp-image__image {
-          //width: 100%;
           height: $fe-header-logo-height !important;
           object-fit: contain;
         }
       }
     }
-    .cmp-image--efe-logo-secondary {
-      &.cmp-image--small {
-        &::before {
-          // hides the inherited Powered By from common-fe.scss
-          content: none !important;
-        }
-        .cmp-image {
-          &::before {
-            content: "Powered by";
-            color: $efe-gray-primary;
-            font-size: 10px;
-            font-style: normal;
-            font-weight: 300;
-            line-height: 16px;
-          }
-        }
+    .minimal-header__vertical-line {
+      border-left: 1px solid $efe-gray-mid;
+      display: block;
+      height: $fe-header-logo-height !important;
+      &.hidden {
+        visibility: hidden;
       }
     }
     * {
@@ -106,6 +95,9 @@ $fe-header-subadvised-vert-line-height: 44px;
     }
 
     @media screen and (max-width: $fe-header-direct-tablet-width) {
+      #efe-nav-main .cmp-container--26 {
+        gap: 8px;
+      }
       .cmp-image--efe-logo-secondary,
       .cmp-image--efe-logo-primary {
         &.cmp-image--small {
@@ -116,35 +108,68 @@ $fe-header-subadvised-vert-line-height: 44px;
     }
     @media screen and (max-width: $fe-header-direct-mobile-width) {
       #efe-global-nav-header .cmp-container--1920.efe-nav-header {
+        padding: 10px;
         .cmp-text {
+          gap: 4px;
+          p:nth-child(2) {
+            margin-left: 0.5rem;
+          }
           p:last-child {
             flex-basis: 100%; // Pushes the last item to a new line if necessary
           }
         }
       }
+      #efe-nav-main .cmp-container--26 > div:nth-child(odd) {
+        flex-basis: 100%;
+      }
     }
     &.subadvised {
+      header div.container:last-child > div.cmp-container {
+        padding: 10px 16px 16px 16px;
+      }
       .minimal-header__vertical-line {
         height: $fe-header-subadvised-vert-line-height !important;
       }
-      @media screen and (max-width: $fe-header-subadvised-tablet-width) {
-        #efe-nav-main {
-          .cmp-container--26 {
-            gap: 10px;
+      .cmp-image--efe-logo-secondary {
+        &.cmp-image--small {
+          &::before {
+            // hides the inherited Powered By from common-fe.scss
+            content: none !important;
           }
+          .cmp-image {
+            &::before {
+              content: "Powered by";
+              color: $efe-gray-primary;
+              font-size: 0.6rem;
+              font-style: normal;
+              font-weight: 300;
+              line-height: 16px;
+            }
+          }
+        }
+      }
+      @media screen and (max-width: $fe-header-subadvised-tablet-width) {
+        #efe-nav-main .cmp-container--26 {
+          gap: 10px;
+        }
+        #efe-nav-main .cmp-container--26 > div:nth-child(odd) {
+          flex-basis: auto;
         }
       }
       @media screen and (max-width: $fe-header-subadvised-mobile-width) {
         #efe-nav-main .cmp-container--26 {
-          padding: 1.25rem 0 !important;
+          padding: 0 !important;
+          .minimal-header__vertical-line {
+            display: none;
+          }
           .cmp-image--efe-logo-secondary.cmp-image--small {
             &::before {
               top: 3.375rem !important;
             }
           }
         }
-        .minimal-header__vertical-line {
-          display: none;
+        #efe-nav-main .cmp-container--26 > div:nth-child(odd) {
+          flex-basis: 100%;
         }
       }
     }
