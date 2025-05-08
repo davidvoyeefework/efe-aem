@@ -14,7 +14,7 @@
     >
       <img
         {{!-- srcset="https://www.aemcomponents.dev/content/core-components-examples/library/core-content/image/_jcr_content/root/responsivegrid/demo_1473529393/component/image.coreimg.82.600.jpeg 600w,https://www.aemcomponents.dev/content/core-components-examples/library/core-content/image/_jcr_content/root/responsivegrid/demo_1473529393/component/image.coreimg.82.800.jpeg 800w,https://www.aemcomponents.dev/content/core-components-examples/library/core-content/image/_jcr_content/root/responsivegrid/demo_1473529393/component/image.coreimg.82.1000.jpeg 1000w,https://www.aemcomponents.dev/content/core-components-examples/library/core-content/image/_jcr_content/root/responsivegrid/demo_1473529393/component/image.coreimg.82.1200.jpeg 1200w,https://www.aemcomponents.dev/content/core-components-examples/library/core-content/image/_jcr_content/root/responsivegrid/demo_1473529393/component/image.coreimg.82.1600.jpeg 1600w" --}}
-        src="https://www.edelmanfinancialengines.com/content/dam/efe/corporate-brand/Brand/Logos/EFE-Logos/Primary/_other/logo%20efe%20.svg"
+        src="{{#if logo }}{{logo}}{{else}}https://www.edelmanfinancialengines.com/content/dam/efe/corporate-brand/Brand/Logos/EFE-Logos/Primary/_other/logo%20efe%20.svg{{/if}}"
         loading="lazy"
         class="cmp-image__image"
         itemprop="contentUrl"

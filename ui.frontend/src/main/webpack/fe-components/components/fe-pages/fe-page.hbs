@@ -1,14 +1,16 @@
+<style>
+    body.sb-main-padded.sb-show-main {
+        padding: 0;
+    }
+</style>
+
 <section class="sponsor-header {{rkId}} fepage fe-load-data"
     data-page-frame-api="https://www.feitest.com/api/v1/pageframe/?namespace=">
-    {{#if subadvised}}
     {{>FeHeader
-     subadvised=true
+     headerType=headerType
+     primaryLogo=primaryLogo
+     secondaryLogo=secondaryLogo
     }}
-    {{else}}
-    {{>FeHeader
-     subadvised=false
-    }}
-    {{/if}}
     {{>HeroTeaser
      variant="hero"}}
      <span class="sponsor-value-hide supportPhoneText">{supportPhoneText}</span>
