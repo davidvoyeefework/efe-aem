@@ -5,6 +5,10 @@ Handlebars.registerPartial("FeHeader", FeHeader);
 export default {
     title: "FE Components/FeHeader",
     argTypes: {
+        subadvised: {
+            options: [true],
+            control: { type: "boolean" }
+        }
     },
 };
 

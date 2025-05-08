@@ -9,6 +9,10 @@ export default {
             options: ["theme-aon", "theme-vanguard","theme-ssga"],
             control: { type: "radio" },
         },
+        subadvised: {
+            options: [true],
+            control: { type: "boolean" }
+        }
     },
 };
 
