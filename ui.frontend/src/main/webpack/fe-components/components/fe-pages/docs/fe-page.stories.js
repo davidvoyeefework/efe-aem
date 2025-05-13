@@ -2,11 +2,13 @@ import Handlebars from "handlebars/runtime.js";
 import FePage from "../fe-page.hbs";
 
 Handlebars.registerPartial("FePage", FePage);
-const LOGOS = [
-    'https://www.edelmanfinancialengines.com/content/dam/efe/corporate-brand/Brand/Logos/EFE-Logos/Primary/_other/logo%20efe%20.svg',
-    'https://landingpages.financialengines.com/content/dam/efe/employer/logos/web/ford_ub.png',
-    'https://landingpages.financialengines.com/content/dam/efe/employer/logos/web/boeingxrx_ub.png',
-    'https://landingpages.financialengines.com/content/dam/efe/employer/logos/web/covington_ub.png'];
+const LOGOS = ['EFE','Ford','Boeing','Covington'];
+const LOGOMAP = {
+    'EFE': 'https://www.edelmanfinancialengines.com/content/dam/efe/corporate-brand/Brand/Logos/EFE-Logos/Primary/_other/logo%20efe%20.svg',
+    'Ford': 'https://landingpages.financialengines.com/content/dam/efe/employer/logos/web/ford_ub.png',
+    'Boeing': 'https://landingpages.financialengines.com/content/dam/efe/employer/logos/web/boeingxrx_ub.png',
+    'Covington': 'https://landingpages.financialengines.com/content/dam/efe/employer/logos/web/covington_ub.png'
+};
 export default {
     title: "pages/FePage",
     argTypes: {
@@ -20,10 +22,15 @@ export default {
         },
         primaryLogo: {
             options: LOGOS,
-            control: { type: "select" }
+            mapping: LOGOMAP,
+            control: {
+                type: "select",
+                labels: LOGOS
+            }
         },
         secondaryLogo: {
             options: LOGOS,
+            mapping: LOGOMAP,
             control: { type: "select" }
         }
     }
