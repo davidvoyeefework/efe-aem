@@ -1,6 +1,15 @@
+<style>
+    body.sb-main-padded.sb-show-main {
+        padding: 0;
+    }
+</style>
+
 <section class="sponsor-header {{rkId}} fepage fe-load-data"
     data-page-frame-api="https://www.feitest.com/api/v1/pageframe/?namespace=">
     {{>FeHeader
+     headerType=headerType
+     primaryLogo=primaryLogo
+     secondaryLogo=secondaryLogo
     }}
     {{>HeroTeaser
      variant="hero"}}
