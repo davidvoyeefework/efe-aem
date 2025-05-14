@@ -166,7 +166,6 @@ export default class FeHeader {
     }
   }
   checkWrap() {
-    console.log("checkWrap()");
     const container = document.querySelector('#efe-nav-main .cmp-container--1920.cmp-container--26');
     if (!container) {
       // exit early if container is null
@@ -174,14 +173,18 @@ export default class FeHeader {
     }
     const secondaryLogo = container.querySelector('.cmp-image--efe-logo-secondary');
     const verticleLine = container.querySelector('.minimal-header__vertical-line');
-    if (!verticleLine || !secondaryLogo) {
+    if (!verticleLine) {
+      // exit early if there's nothing to hide.
+      return;
+    }
+    if (!secondaryLogo) {
+      // no secondary logo, verticle line is not needed
+      verticleLine.remove();
       // exit early if there's nothing to hide.
       return;
     }
     const referenceTop = container.offsetTop;
 
-    console.log("checkWrap()", secondaryLogo);
-    console.log("checkWrap()",{offsetTop: secondaryLogo.offsetTop, referenceTop});
     if (secondaryLogo.offsetTop > referenceTop) {
       verticleLine.classList.add('hidden');
     } else {

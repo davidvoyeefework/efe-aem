@@ -43,15 +43,17 @@
                         logo=primaryLogo
                         }}
                         <div class="minimal-header__vertical-line"></div>
-                       <div class="image cmp-image--efe-logo-secondary sponsor-logo cmp-image--small" id="">
-                            <div data-asset-id="45c6ee92-90e1-4af2-af69-b6dcbc7daeb7" id="image-72c95dc7ac" data-cmp-data-layer="{&quot;image-72c95dc7ac&quot;:{&quot;@type&quot;:&quot;core-components-examples/components/image&quot;,&quot;dc:title&quot;:&quot;Snowy mountain glacier&quot;,&quot;xdm:linkURL&quot;:&quot;https://www.aemcomponents.dev/content/core-components-examples/library/core-content/image.html&quot;,&quot;image&quot;:{&quot;repo:id&quot;:&quot;45c6ee92-90e1-4af2-af69-b6dcbc7daeb7&quot;,&quot;repo:modifyDate&quot;:&quot;1970-01-01T00:00:00Z&quot;,&quot;@type&quot;:&quot;image/jpeg&quot;,&quot;repo:path&quot;:&quot;https://www.aemcomponents.dev/content/dam/core-components-examples/library/sample-assets/snowy-mountain-glacier.jpg&quot;}}}" class="cmp-image" itemscope="" itemtype="http://schema.org/ImageObject">
-                                <a class="cmp-image__link" data-cmp-clickable="" href="https://www.edelmanfinancialengines.com/">
-                                  <img src="{{#if secondaryLogo }}{{secondaryLogo}}{{else}}https://www.edelmanfinancialengines.com/content/dam/efe/corporate-brand/Brand/Logos/EFE-Logos/Primary/_other/logo%20efe%20.svg{{/if}}"
-                                  loading="lazy" class="cmp-image__image" itemprop="contentUrl" alt="Edelman Financial Engines Logo" title="Edelman Financial Engines">
-                                </a>
-                                <meta itemprop="caption" content="Snowy mountain glacier">
-                          </div>
-                       </div>
+                        {{#if secondaryLogo }}
+                            <div class="image cmp-image--efe-logo-secondary sponsor-logo cmp-image--small" id="">
+                                <div data-asset-id="45c6ee92-90e1-4af2-af69-b6dcbc7daeb7" id="image-72c95dc7ac" data-cmp-data-layer="{&quot;image-72c95dc7ac&quot;:{&quot;@type&quot;:&quot;core-components-examples/components/image&quot;,&quot;dc:title&quot;:&quot;Snowy mountain glacier&quot;,&quot;xdm:linkURL&quot;:&quot;https://www.aemcomponents.dev/content/core-components-examples/library/core-content/image.html&quot;,&quot;image&quot;:{&quot;repo:id&quot;:&quot;45c6ee92-90e1-4af2-af69-b6dcbc7daeb7&quot;,&quot;repo:modifyDate&quot;:&quot;1970-01-01T00:00:00Z&quot;,&quot;@type&quot;:&quot;image/jpeg&quot;,&quot;repo:path&quot;:&quot;https://www.aemcomponents.dev/content/dam/core-components-examples/library/sample-assets/snowy-mountain-glacier.jpg&quot;}}}" class="cmp-image" itemscope="" itemtype="http://schema.org/ImageObject">
+                                    <a class="cmp-image__link" data-cmp-clickable="" href="https://www.edelmanfinancialengines.com/">
+                                      <img src="{{secondaryLogo}}"
+                                      loading="lazy" class="cmp-image__image" itemprop="contentUrl" alt="Edelman Financial Engines Logo" title="Edelman Financial Engines">
+                                    </a>
+                                    <meta itemprop="caption" content="Snowy mountain glacier">
+                                </div>
+                            </div>
+                        {{/if}}
                     </div>
                 </div>
             </div>
