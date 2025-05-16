@@ -1,0 +1,172 @@
+
+<sly data-sly-use.quiz="com.efe.core.models.Quiz">
+    <div id="quizEFE">
+
+        <div id="question-pane">
+
+            <sly data-sly-test="${quiz.quizLength == 'ten'}">
+                <div class="button-container">
+                    <sly data-sly-test.hasContent="${quiz.question1}">
+                        <button onclick="staySelected(this), count(this)" class="cmp-form-button--answer">${quiz.question1}</button> 
+                    </sly>
+    
+                    <sly data-sly-test.hasContent="${quiz.question2}">
+                        <button onclick="staySelected(this), count(this)" class="cmp-form-button--answer">${quiz.question2}</button> 
+                    </sly>
+    
+                    <sly data-sly-test.hasContent="${quiz.question3}">
+                        <button onclick="staySelected(this), count(this)" class="cmp-form-button--answer">${quiz.question3}</button> 
+                    </sly>
+    
+                    <sly data-sly-test.hasContent="${quiz.question4}">
+                        <button onclick="staySelected(this), count(this)" class="cmp-form-button--answer">${quiz.question4}</button> 
+                    </sly>
+    
+                    <sly data-sly-test.hasContent="${quiz.question5}">
+                        <button onclick="staySelected(this), count(this)" class="cmp-form-button--answer">${quiz.question5}</button> 
+                    </sly>
+    
+                    <sly data-sly-test.hasContent="${quiz.question6}">
+                        <button onclick="staySelected(this), count(this)" class="cmp-form-button--answer">${quiz.question6}</button> 
+                    </sly>
+    
+                    <sly data-sly-test.hasContent="${quiz.question7}">
+                        <button onclick="staySelected(this), count(this)" class="cmp-form-button--answer">${quiz.question7}</button> 
+                    </sly>
+    
+                    <sly data-sly-test.hasContent="${quiz.question8}">
+                        <button onclick="staySelected(this), count(this)" class="cmp-form-button--answer">${quiz.question8}</button> 
+                    </sly>
+    
+                    <sly data-sly-test.hasContent="${quiz.question9}">
+                        <button onclick="staySelected(this), count(this)" class="cmp-form-button--answer">${quiz.question9}</button> 
+                    </sly>
+    
+                    <sly data-sly-test.hasContent="${quiz.question10}">
+                        <button onclick="staySelected(this), count(this)" class="cmp-form-button--answer">${quiz.question10}</button> 
+                    </sly>
+                </div>
+            </sly>
+    
+            <sly data-sly-test="${quiz.quizLength == 'nine'}">
+                <div class="button-container">
+                    <sly data-sly-test.hasContent="${model.question1}">
+                        <button href="#" class="cmp-form-button--answer">${model.question1}</button> 
+                    </sly>
+    
+                    <sly data-sly-test.hasContent="${model.question2}">
+                        <button href="#" class="cmp-form-button--answer">${model.question2}</button> 
+                    </sly>
+    
+                    <sly data-sly-test.hasContent="${model.question3}">
+                        <button href="#" class="cmp-form-button--answer">${model.question3}</button> 
+                    </sly>
+    
+                    <sly data-sly-test.hasContent="${model.question4}">
+                        <button href="#" class="cmp-form-button--answer">${model.question4}</button> 
+                    </sly>
+    
+                    <sly data-sly-test.hasContent="${model.question5}">
+                        <button href="#" class="cmp-form-button--answer">${model.question5}</button> 
+                    </sly>
+    
+                    <sly data-sly-test.hasContent="${model.question6}">
+                        <button href="#" class="cmp-form-button--answer">${model.question6}</button> 
+                    </sly>
+    
+                    <sly data-sly-test.hasContent="${model.question7}">
+                        <button href="#" class="cmp-form-button--answer">${model.question7}</button> 
+                    </sly>
+    
+                    <sly data-sly-test.hasContent="${model.question8}">
+                        <button href="#" class="cmp-form-button--answer">${model.question8}</button> 
+                    </sly>
+    
+                    <sly data-sly-test.hasContent="${model.question9}">
+                        <button href="#" class="cmp-form-button--answer">${model.question9}</button> 
+                    </sly>
+    
+                </div>
+            </sly>
+    
+            <sly data-sly-test="${quiz.quizLength == 'eight'}">
+                <div class="button-container">
+                    <sly data-sly-test.hasContent="${model.question1}">
+                        <button href="#" class="cmp-form-button--answer">${model.question1}</button> 
+                    </sly>
+    
+                    <sly data-sly-test.hasContent="${model.question2}">
+                        <button href="#" class="cmp-form-button--answer">${model.question2}</button> 
+                    </sly>
+    
+                    <sly data-sly-test.hasContent="${model.question3}">
+                        <button href="#" class="cmp-form-button--answer">${model.question3}</button> 
+                    </sly>
+    
+                    <sly data-sly-test.hasContent="${model.question4}">
+                        <button href="#" class="cmp-form-button--answer">${model.question4}</button> 
+                    </sly>
+    
+                    <sly data-sly-test.hasContent="${model.question5}">
+                        <button href="#" class="cmp-form-button--answer">${model.question5}</button> 
+                    </sly>
+    
+                    <sly data-sly-test.hasContent="${model.question6}">
+                        <button href="#" class="cmp-form-button--answer">${model.question6}</button> 
+                    </sly>
+    
+                    <sly data-sly-test.hasContent="${model.question7}">
+                        <button href="#" class="cmp-form-button--answer">${model.question7}</button> 
+                    </sly>
+    
+                    <sly data-sly-test.hasContent="${model.question8}">
+                        <button href="#" class="cmp-form-button--answer">${model.question8}</button> 
+                    </sly>
+    
+                </div>
+            </sly>     
+            
+            <div class="button cmp-button--button-primary cmp-button--center cmp-button-- cmp-button--">
+                <button class="cmp-button" onclick="getQuizResults()">
+                    <span class="cmp-button__text">${quiz.resultsCta}</span>
+                </button>
+            </div>              
+            
+        </div>
+
+        <div id="results-pane" style="display: none">
+            Does this work?
+        </div>
+      
+    </div>
+
+
+
+</sly>
+
+<script>
+    const staySelected = (el) => {
+        if(el.classList.contains("cmp-form-button--selected")) {
+            el.classList.remove("cmp-form-button--selected");
+        }
+        else {
+            el.classList.add("cmp-form-button--selected");
+        }
+    }
+
+    const count = (el) => {
+        let buttons = document.querySelectorAll("button.cmp-form-button--selected");
+        let count = buttons.length;
+    }
+
+    const getQuizResults = () => {
+        document.getElementById("question-pane").style.display = "none";
+        document.getElementById("results-pane").style.display = "block";
+    }
+</script>
+
+
+
+
+
+

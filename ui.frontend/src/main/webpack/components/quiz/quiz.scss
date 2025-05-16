@@ -1,0 +1,11 @@
+#quizEFE {
+    .button-container {
+        @include flexbox(
+        $flex-direction: column,
+        );
+
+        button.cmp-form-button--answer {
+            transition: $std-transition;
+        }
+    }
+}
