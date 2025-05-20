@@ -14,6 +14,7 @@
   "scripts": {
     "test": "cypress run --browser electron",
     "check-404" : "cypress run --browser electron --spec cypress/e2e/check-404/**.cy.js",
+    "aem-components" : "cypress run --browser electron --spec cypress/e2e/aem-components/**.cy.js",
     "test-chrome": "cypress run --browser chrome",
     "test-firefox": "cypress run --browser firefox"
   },
