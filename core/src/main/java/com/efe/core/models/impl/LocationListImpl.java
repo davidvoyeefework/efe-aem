@@ -115,7 +115,7 @@ public class LocationListImpl implements LocationList {
 						createCityUrl(stateResource, cityResource, unsortedCityMap);
 					}
 					if(unsortedCityMap.size() > 0) {
-                                                unsortedCityMap.put("stateURL", stateURL(stateResource.getName()));
+                                                unsortedCityMap.put("stateURL", stateURL(StatesEnum.valueOf(stateResource.getName().toUpperCase()).getStateName()));
 						StatesEnum stateEnum = StatesEnum.valueOf(stateResource.getName().toUpperCase());
 						unsortedStates.put(stateEnum.getStateName(),sortCity(unsortedCityMap));
 					}
