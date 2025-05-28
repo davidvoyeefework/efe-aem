@@ -27,9 +27,6 @@ export default {
     },
     id: {
       control: 'text'
-    },
-    logo: {
-      control: 'text'
     }
   },
 };
@@ -41,8 +38,7 @@ EFELogo.args = {
   variant: "efe-logo-primary",
   altText: "Edelman Financial Engines Logo",
   size: "small",
-  titleText: "Edelman Financial Engines Homepage",
-  logo: "https://www.edelmanfinancialengines.com/content/dam/efe/corporate-brand/Brand/Logos/EFE-Logos/Primary/_other/logo%20efe%20.svg"
+  titleText: "Edelman Financial Engines Homepage"
 }
 
 // const TemplateSvgGif = ({ label, ...args }) => SvgGifImage();
