@@ -20,6 +20,9 @@ public class PlannerDetail {
 
     /** The buttonUrl. */
     String buttonUrl;
+    
+    /** The bioVideo URL */
+    String bioVideo;
 
     String officeLocations;
 
@@ -69,6 +72,22 @@ public class PlannerDetail {
      */
     public void setDesktopUrl(String desktopUrl) {
         this.desktopUrl = desktopUrl;
+    }
+    
+        /**
+     * Gets the bio video.
+     *
+     * @return the bio video
+     */
+    public String getBioVideo() {
+        return bioVideo;
+    }
+
+    /**
+     * Sets the bio video.
+     */
+    public void setBioVideo(String bioVideo) {
+        this.bioVideo = bioVideo;
     }
 
     /**
