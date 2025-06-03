@@ -26,8 +26,6 @@ public class PlannerDetail {
 
     String officeLocations;
 
-    String bioVideo;
-
     /**
      * Gets the firstName.
      *
