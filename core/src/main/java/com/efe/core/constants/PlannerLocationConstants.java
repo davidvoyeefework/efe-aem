@@ -340,11 +340,6 @@ public class PlannerLocationConstants {
 	public static final String INVESTMENT_MANAGEMENT = "investmentManagement";
 
 	/**
-	 * BioVideo
-	 */
-	public static final String BIO_VIDEO = "bioVideo";	
-
-	/**
 	 * Bio
 	 */
 	public static final String BIO = "bio";
