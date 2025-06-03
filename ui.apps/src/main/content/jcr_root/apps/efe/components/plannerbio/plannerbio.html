@@ -37,6 +37,14 @@
             <!-- <h2 class="cmp-efe-plannerbio--aboutus__title">${model.aboutSectionHeading}</h2> -->
             <div class="cmp-efe-plannerbio--aboutus__container">
                 <div class="cmp-efe-plannerbio--aboutus__aboutme">
+
+                    <sly data-sly-test="${planner.bioVideo}">
+                        <video id="planner-video"width="320" height="240" controls>
+                            <source src="${planner.bioVideo}" type="video/mp4">
+                            Your browser does not support the video tag. Here is a  <a target="_blank" href="${planner.bioVideo}">link to the video</a> instead.
+                        </video>
+                    </sly>
+                    
                     <h3 class="cmp-efe-plannerbio--aboutus__aboutme--subtitle">${model.aboutMeHeading}</h3>
                     <p>${planner.bio}</p>
                 </div>

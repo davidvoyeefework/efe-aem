@@ -26,6 +26,8 @@ public class PlannerDetail {
 
     String officeLocations;
 
+    String bioVideo;
+
     /**
      * Gets the firstName.
      *
@@ -130,6 +132,16 @@ public class PlannerDetail {
     // Setter
     public void setOfficeLocations(String officeLocations) {
         this.officeLocations = officeLocations;
+    }
+
+    // Getter
+    public String getBioVideo () {
+        return bioVideo;
+    }
+
+    // Setter
+    public void setBioVideo(String bioVideo) {
+        this.bioVideo = bioVideo;
     }
 
 }
