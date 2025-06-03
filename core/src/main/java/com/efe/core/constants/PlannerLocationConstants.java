@@ -1,4 +1,4 @@
-package com.efe.core.constants;
+package com.efe.core.constants; 
 
 public class PlannerLocationConstants {
 
@@ -338,6 +338,11 @@ public class PlannerLocationConstants {
 	 * Investment Management
 	 */
 	public static final String INVESTMENT_MANAGEMENT = "investmentManagement";
+
+	/**
+	 * BioVideo
+	 */
+	public static final String BIO_VIDEO = "bioVideo";	
 
 	/**
 	 * Bio

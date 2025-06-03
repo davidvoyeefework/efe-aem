@@ -1,4 +1,4 @@
-package com.efe.core.bean;
+package com.efe.core.bean; 
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -103,6 +103,9 @@ public class PlannerResponse {
 
 	/* bio */
 	private String bio;
+
+	// Planner Video
+	private String bioVideo;
 
 	/* email */
 	private String email;
@@ -244,6 +247,10 @@ public class PlannerResponse {
 	/* Sets bio */
 	public void setBio(String bio) {
 		this.bio = bio;
+	}
+
+	public void setbioVideo(String bioVideo) {
+		this.bioVideo = bioVideo;
 	}
 
 	/* Sets firstNameAlias */
@@ -529,6 +536,10 @@ public class PlannerResponse {
 	 */
 	public String getBio() {
 		return bio;
+	}
+
+	public String getBioVideo() {
+		return bioVideo;
 	}
 
 	/**
