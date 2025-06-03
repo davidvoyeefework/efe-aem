@@ -134,14 +134,4 @@ public class PlannerDetail {
         this.officeLocations = officeLocations;
     }
 
-    // Getter
-    public String getBioVideo () {
-        return bioVideo;
-    }
-
-    // Setter
-    public void setBioVideo(String bioVideo) {
-        this.bioVideo = bioVideo;
-    }
-
 }
