@@ -128,8 +128,8 @@ public class PlannerResponse {
 	/* favoriteSport */
 	private String favoriteSport;
         
-        /* bioVideo */
-        private String bioVideo;
+	/* bioVideo */
+	private String bioVideo;
 
 	/* favoriteSportsTeam */
 	private String favoriteSportsTeam;
@@ -247,6 +247,11 @@ public class PlannerResponse {
 	/* Sets bio */
 	public void setBio(String bio) {
 		this.bio = bio;
+	}
+
+	// Sets Bio Video
+	public void setBioVideo(String bioVideo) {
+		this.bioVideo = bioVideo;
 	}
 
 	/* Sets firstNameAlias */
