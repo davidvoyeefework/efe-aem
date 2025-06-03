@@ -127,6 +127,9 @@ public class PlannerResponse {
 
 	/* favoriteSport */
 	private String favoriteSport;
+        
+        /* bioVideo */
+        private String bioVideo;
 
 	/* favoriteSportsTeam */
 	private String favoriteSportsTeam;
@@ -605,10 +608,18 @@ public class PlannerResponse {
 	 *
 	 * @return the Favorite Sport
 	 */
+	public String getBioVideo() {
+		return bioVideo;
+	}
+
+        /**
+	 * Returns the Planner Video.
+	 *
+	 * @return the Planner Video
+	 */
 	public String getFavoriteSport() {
 		return favoriteSport;
 	}
-
 	/**
 	 * Returns the Favorite Sports Team.
 	 *

@@ -1,0 +1,11 @@
+/// <reference types="cypress" />
+describe("Planner Bio - AEM Component", () => {
+    before(() => {
+        cy.visit("/ui-tests/planner-bio.Eric.Pailing.101/");
+        cy.preventPageViewRequest(); // Prevent page view request.
+    });
+
+    it("Planner Bio", () => {
+        // Page can not be found. Selectors not working.
+    });
+});
