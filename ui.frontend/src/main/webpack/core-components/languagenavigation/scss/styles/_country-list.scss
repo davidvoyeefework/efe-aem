@@ -35,6 +35,10 @@
                 display: inline-block;
                 a {
                     font-size: rem(20);
+                    &:hover {
+                        text-decoration: 1px solid $efe-red-primary underline;
+                        color: $efe-red-primary;
+                    }
                 }
             }
 
@@ -51,8 +55,8 @@
                 font-weight: 400;
 
                 &:hover {
-                    text-decoration: 1px solid $efe-red-hover underline;
-                    color: $efe-red-hover;
+                    text-decoration: 1px solid $efe-red-primary underline;
+                    color: $efe-red-primary;
                 }
             }
         }
