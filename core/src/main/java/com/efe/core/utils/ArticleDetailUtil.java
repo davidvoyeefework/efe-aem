@@ -226,6 +226,9 @@ public class ArticleDetailUtil {
             plannerResponse.setId(Integer.parseInt(id));
         }
 
+        String bioVideo = plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.BIO_VIDEO))
+        .map(ContentElement::getContent).orElse(StringUtils.EMPTY);
+
         plannerResponse.setTitle(plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.TITLE))
             .map(ContentElement::getContent).orElse(StringUtils.EMPTY));
 
@@ -238,6 +241,9 @@ public class ArticleDetailUtil {
         if(StringUtils.isEmpty(firstNameAlias)) {
             firstNameAlias = firstName;
         }
+
+        plannerResponse.setBioVideo(bioVideo);
+        
         plannerResponse.setFirstName(firstName);
 
         plannerResponse.setFirstNameAlias(firstNameAlias);

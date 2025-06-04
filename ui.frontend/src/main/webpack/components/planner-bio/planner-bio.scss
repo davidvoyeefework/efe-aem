@@ -17,6 +17,8 @@
         border-top-left-radius: 40px;
         padding: 80px 134px;
         align-items: center;
+        overflow: hidden;
+
         @include media("<tablet") {
             flex-direction: column;
             min-height: unset;
@@ -24,7 +26,9 @@
             text-align: left;
             padding: 0;
             max-height: unset;
+            overflow: hidden;
         }
+
         >div {
             flex: 1 0 auto;
             @include media(">=tablet", "<=tablet-lg") {
@@ -40,6 +44,14 @@
             z-index: 2;
             &--first, &--last {
                 @include heading-03;
+                span.heading-location-details {
+                    @include body-01;
+                    display: block;
+                    text-transform: initial;
+                    letter-spacing: 0;
+                    max-width: 25ch;
+                    margin-top: 12px;
+                }
             }
             @include media("<tablet") {
                 padding: 40px 26px;
@@ -61,8 +73,8 @@
             align-items: center;
             justify-content: flex-end;
             &--main {
-                width: 461px;
-                height: 461px;
+                width: 308px;
+                height: 308px;
                 object-fit: cover;
                 z-index: 2;
             }
@@ -96,6 +108,25 @@
                 }
             }
         }
+
+        @media screen and (max-width: $md) {
+            &__hero-text--first {
+                font-size: rem(48);
+                line-height: 105%;
+                letter-spacing: .08em;
+                span.heading-location-details {
+                    font-size: rem(22);
+                    line-height: 120%;
+                    font-weight: 400;
+                }
+            }
+            &__hero-text--desc {
+                font-size: rem(22);
+                line-height: 120%;
+                font-weight: 400;
+            }
+
+        }        
     }
     &--aboutus {
         max-width: 1440px;
@@ -113,35 +144,136 @@
             font-weight: 400;
         }
         &__block {
-            flex: 1 0 50%;
+            flex-basis: 33%;
         }
         &__aboutme {
-            flex: 1 0 50%;
+            flex-basis: 66%;
+
+            // Video
+            .video-container {
+                position: relative;
+                width: fit-content;
+
+                #planner-video {
+                    width: 100%;
+                    height: auto;
+                    margin-bottom: 24px;
+                }
+
+                .play-button {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    z-index: 1;
+                    background: transparent;
+                    border: none;
+                    padding: 0;
+                    cursor: pointer;
+                    width: 109px;
+                    height: 109px;
+                    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='109' height='109' viewBox='0 0 109 109' fill='none'%3E%3Ccircle cx='54.5' cy='54.5' r='54.5' fill='white'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M46.0115 40.8913L69.099 54.1437L50.1331 65.0302L50.1904 65.1282L36.333 73.0271V75.7004C36.333 79.3848 40.3784 81.6827 43.6046 79.8308L81.1594 58.2741C84.3687 56.432 84.3687 51.8554 81.1594 50.0133L43.6046 28.4565C40.3784 26.6047 36.333 28.9026 36.333 32.5869V64.7517L46.0115 59.2348V40.8913Z' fill='%23C32D37'/%3E%3C/svg%3E");
+                }
+
+
+                @media screen and (max-width: 1250px) {
+                    .play-button {
+                        width: 75px;
+                        height: 75px;
+                        background-size: contain;
+                        top: calc(50% - 22.5px);
+                    }
+                }
+
+                @media screen and (max-width: $md) {
+                    .play-button {
+                        width: 109px;
+                        height: 109px;
+                        top: 50%;
+                    }
+                }
+
+                @media screen and (max-width: $sm) {
+                    .play-button {
+                        width: 75px;
+                        height: 75px;
+                        background-size: contain;
+                        top: calc(50% - 22.5px);
+                    }
+                }
+
+            }
+
             &--subtitle {
                 margin-bottom: 15px;
                 @include subhead-01;
+                font-weight: 700;
             }
             >p {
-                @include body-02;
+                @include body-01;
+                font-size: rem(24);
+                line-height: 120%;
             }
         }
         &__certification {
-            margin-bottom: 30px;
+            padding: 0 0 20px;
+            border-bottom: 1px solid $efe-gray-mid;
             &--subtitle {
                 @include subhead-01;
+                font-weight: 700;
                 margin-bottom: 15px;
             }
             >p {
-                @include body-01;
+                @include body-02;
+                text-transform: uppercase;
             }
         }
-        &__education {
+        &__education, &__services, &__locations {
+            padding: 20px 0;
+            border-bottom: 1px solid $efe-gray-mid;
             &--subtitle {
                 @include subhead-01;
+                font-weight: 700;
                 margin-bottom: 15px;
             }
             >p {
-                @include body-01;
+                @include body-02;
+
+                span.university {
+                    @include body-03;
+                    display: block;
+                    text-transform: none !important;
+                }
+            }
+
+
+            &.locations {
+                border-bottom: none;
+                padding-bottom: 0;
+
+                .location-item {
+                    display: block;
+                    margin-bottom: 10px;
+                    text-transform: uppercase;
+                    &:last-of-type {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+
+        &__education {
+            p {
+                text-transform: uppercase;
+                padding-bottom: 20px;
+            }
+
+            p:last-child {
+                padding-bottom: 0;
+            }
+
+            span.univeristy {
+                text-transform: none !important;
             }
         }
         &__cta {
@@ -149,6 +281,11 @@
             justify-content: center;
             margin-top: 40px;
         }
+
+        @media screen and (max-width: $lg) {
+            padding: 80px;
+        }
+
         @include media("<tablet") {
             padding: 40px 26px;
             width: 100%;
@@ -158,6 +295,11 @@
             &__container {
                 flex-direction: column;
                 gap: 30px;
+            }
+            &__aboutme {
+                >p {
+                    font-size: rem(20);
+                }
             }
             &__cta {
                 margin-top: 30px;

@@ -8,7 +8,17 @@
     <div class="cmp-efe--full-width secondary">
         <div class="cmp-efe-plannerbio--container">
             <div class="cmp-efe-plannerbio--container__hero-text">
-                <h1 class="cmp-efe-plannerbio--container__hero-text--first">${planner.firstName} <sly data-sly-test="${planner.lastName}">${planner.lastName}</sly></h1>
+                <h1 class="cmp-efe-plannerbio--container__hero-text--first">${planner.firstName} <sly data-sly-test="${planner.lastName}">${planner.lastName}</sly>
+                    <span class="heading-location-details" data-sly-test="${model.officeLocations}">
+                        Financial planner serving 
+                        <span data-sly-list.item="${model.officeLocations}">
+                            <span>
+                                <span data-sly-test="${item.city}">${item.city},</span>
+                                <span data-sly-test="${item.state}">${item.state}<sly data-sly-test="${!itemList.last}">,</sly></span>
+                            </span>
+                        </span>
+                    </span>
+                </h1>
                 <p data-sly-test="${!planner.certificationsAbbrevations.empty}" class="cmp-efe-plannerbio--container__hero-text--desc">${planner.certificationsAbbrevations  @ join=', '}</p>
                 <div class="button cmp-efe-plannerbio--container__hero-text--cta cmp-button--button-primary cmp-button--unset cmp-button--default cmp-button--default">
                     <a type="button" id="button-5487aab983" class="cmp-button" href="${model.appointmentCta}">
@@ -24,9 +34,20 @@
     </div>
     <div class="cmp-efe--full-width primary" data-sly-test="${planner.bio}">
         <div class="cmp-efe-plannerbio--aboutus">
-            <h2 class="cmp-efe-plannerbio--aboutus__title">${model.aboutSectionHeading}</h2>
+            <!-- <h2 class="cmp-efe-plannerbio--aboutus__title">${model.aboutSectionHeading}</h2> -->
             <div class="cmp-efe-plannerbio--aboutus__container">
                 <div class="cmp-efe-plannerbio--aboutus__aboutme">
+
+                    <div class="video-container">
+                        <sly data-sly-test="${planner.bioVideo}">
+                            <video id="planner-video" controls width="320" height="240" controls>
+                                <source src="${planner.bioVideo}" type="video/mp4">
+                                Your browser does not support the video tag. Here is a  <a target="_blank" href="${planner.bioVideo}">link to the video</a> instead.
+                            </video>
+                            <button id="playButton" class="play-button"></button>
+                        </sly>
+                    </div>
+                    
                     <h3 class="cmp-efe-plannerbio--aboutus__aboutme--subtitle">${model.aboutMeHeading}</h3>
                     <p>${planner.bio}</p>
                 </div>
@@ -37,18 +58,37 @@
                     </div>
                     <div data-sly-test="${!planner.education.empty}" class="cmp-efe-plannerbio--aboutus__education">
                         <h3 class="cmp-efe-plannerbio--aboutus__education--subtitle">${model.educationHeading}</h3>
-                        <p data-sly-repeat="${planner.education}">${item.degree}<span data-sly-test="${!item.major.empty}">, </span>${item.major} - ${item.university}</p>                      
+                        <p data-sly-repeat="${planner.education}">${item.degree}<span data-sly-test="${!item.major.empty}">, </span>${item.major} - <span class="university">${item.university}</span></p>                      
                     </div>
+                    <div class="cmp-efe-plannerbio--aboutus__services">
+                        <h3 class="cmp-efe-plannerbio--aboutus__education--subtitle">Services</h3>
+                        <p>Financial planning, retirement planning, investment management, insurance guidance, tax planning, estate planning</p>
+                    </div>
+                    <div data-sly-test="${!planner.education.empty}" class="cmp-efe-plannerbio--aboutus__locations locations">
+                        <h3 class="cmp-efe-plannerbio--aboutus__education--subtitle">Locations</h3>
+                        <p>                    
+                            <span class="heading-location-details" data-sly-test="${model.officeLocations}">
+                                <span data-sly-list.item="${model.officeLocations}">
+                                    <span class="location-item">
+                                        <span data-sly-test="${item.city}">${item.city},</span>
+                                        <span data-sly-test="${item.state}">${item.state}<sly data-sly-test="${!itemList.last}">,</sly></span>
+                                    </span>
+                                </span>
+                            </span>
+                        </p>
+                    </div>
+
                 </div>
             </div>
-            <div class="button cmp-efe-plannerbio--container__hero-text--cta cmp-button--button-primary cmp-button--unset cmp-button--default cmp-button--default cmp-efe-plannerbio--aboutus__cta">
+            <!-- <div class="button cmp-efe-plannerbio--container__hero-text--cta cmp-button--button-primary cmp-button--unset cmp-button--default cmp-button--default cmp-efe-plannerbio--aboutus__cta">
                 <a type="button" id="button-5487aab983" class="cmp-button" href="${model.appointmentCta}">
                     <span class="cmp-button__text">${model.appointmentCtaLabel}</span>
                 </a>
-            </div>
+            </div> -->
         </div>
     </div>
-    <div class="cmp-efe--full-width secondary" data-sly-test="${model.officeLocations}">
+
+    <!-- <div class="cmp-efe--full-width secondary" data-sly-test="${model.officeLocations}">
         <div class="cmp-efe-plannerbio--locations">
             <h2 class="cmp-efe-plannerbio--locations__title">${model.locationSectionHeading}</h2>
             <div class="cmp-efe-plannerbio--locations__container" data-sly-list="${model.officeLocations}">
@@ -65,7 +105,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!--
     <div class="cmp-efe--full-width secondary cmp-efe-plannerbio--locations" data-sly-test="${!planner.supportStaff.empty}">
         <div class="cmp-efe-plannerbio--locations__container" data-sly-list="${planner.supportStaff}">
@@ -90,3 +130,23 @@
     </script>
 </section>
 <sly data-sly-call="${template.placeholder @ isEmpty=!isNotEmpty, classAppend='cmp-plannerbio'}"></sly>
+
+
+
+<script>
+    const video = document.getElementById("planner-video");
+    const playButton = document.getElementById("playButton");
+
+    if (video != null) {
+        playButton.addEventListener("click", function() {
+            if (video.paused) {
+                video.play();
+                playButton.style.display = "none";
+            } else {
+                video.pause();
+            }
+        });
+    }
+
+
+</script>

@@ -164,6 +164,9 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 
 			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode, PlannerLocationConstants.LAST_NAME,
 					jsonObj.getLastName());
+                        
+                        NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode, PlannerLocationConstants.BIO_VIDEO,
+					jsonObj.getBioVideo());
 
 			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode, PlannerLocationConstants.ID,
 					jsonObj.getId());
