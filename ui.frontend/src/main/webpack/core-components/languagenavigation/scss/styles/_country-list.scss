@@ -1,22 +1,45 @@
 .cmp-languagenavigation--country-list {
     .cmp-languagenavigation {
+        margin-top: 28px;
         > .cmp-languagenavigation__group {
             column-count: 4;
             column-gap: rem(60);
 
+            .cmp-languagenavigation__group {
+                li {
+                    margin-bottom: 8px;
+                    a{
+                        font-size: rem(18);
+                    }
+                }
+            }
+
+
             @include media("<=tablet-lg") {
                 column-count: 3;
             }
-            @include media("<=phone-m") {
+
+            @media screen and (max-width: $md) {
                 column-count: 2;
-                column-gap: rem(30);
+                gap: rem(30);
+            }
+            @include media("<=phone-m") {
+                column-count: 1;
             }
         }
 
         &__item {
+
             &-title {
                 margin-bottom: 8px;
                 display: inline-block;
+                a.primary-nav-link-red {
+                    font-size: rem(20);
+                    &:hover {
+                        text-decoration: 1px solid $efe-red-primary underline !important;
+                        color: $efe-red-primary;
+                    }
+                }
             }
 
             &--level-0 {
@@ -32,8 +55,8 @@
                 font-weight: 400;
 
                 &:hover {
-                    text-decoration: 1px solid $efe-red-hover underline;
-                    color: $efe-red-hover;
+                    text-decoration: 1px solid $efe-red-primary underline;
+                    color: $efe-red-primary;
                 }
             }
         }
