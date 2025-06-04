@@ -33,10 +33,10 @@
             &-title {
                 margin-bottom: 8px;
                 display: inline-block;
-                a {
+                a.primary-nav-link-red {
                     font-size: rem(20);
                     &:hover {
-                        text-decoration: 1px solid $efe-red-primary underline;
+                        text-decoration: 1px solid $efe-red-primary underline !important;
                         color: $efe-red-primary;
                     }
                 }
