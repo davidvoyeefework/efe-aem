@@ -115,6 +115,7 @@ public class LocationListImpl implements LocationList {
 						createCityUrl(stateResource, cityResource, unsortedCityMap);
 					}
 					if(unsortedCityMap.size() > 0) {
+                                                unsortedCityMap.put("stateURL", stateURL(StatesEnum.valueOf(stateResource.getName().toUpperCase()).getStateName()));
 						StatesEnum stateEnum = StatesEnum.valueOf(stateResource.getName().toUpperCase());
 						unsortedStates.put(stateEnum.getStateName(),sortCity(unsortedCityMap));
 					}
@@ -167,4 +168,10 @@ public class LocationListImpl implements LocationList {
 		cities.putAll(map);
 		return  cities;
 	}
+        
+        public static String stateURL(String stateName) {
+            String stateReturn = stateName.trim();
+            stateReturn = stateReturn.replace(' ', '-');
+            return "/locations/" + stateReturn;
+        }
 }
