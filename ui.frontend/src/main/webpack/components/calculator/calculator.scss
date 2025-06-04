@@ -1,0 +1,323 @@
+
+
+#KJEAllContent {
+
+    &.efe-calc {
+
+        // accordion arrow section 
+        div.KJEToggleOpen {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='Layer_1' width='20' height='18' version='1.1' viewBox='0 0 20 18'%3E%3C!-- Generator: Adobe Illustrator 29.3.1, SVG Export Plug-In . SVG Version: 2.1.0 Build 151) --%3E%3Cdefs%3E%3Cstyle%3E .st0 %7B fill: %23535658; fill-rule: evenodd; %7D %3C/style%3E%3C/defs%3E%3Cpath class='st0' d='M10,13.8l9.2-9.2-1.4-1.4-7.8,7.8L2.2,3.2l-1.4,1.4,9.2,9.2h0s0,0,0,0Z'/%3E%3C/svg%3E");
+            position: relative;
+            top: 4px;            
+        }
+
+        div.KJEToggleClose {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='Layer_1' width='20' height='18' version='1.1' viewBox='0 0 20 18'%3E%3C!-- Generator: Adobe Illustrator 29.3.1, SVG Export Plug-In . SVG Version: 2.1.0 Build 151) --%3E%3Cdefs%3E%3Cstyle%3E .st0 %7B fill: %23535658; fill-rule: evenodd; %7D %3C/style%3E%3C/defs%3E%3Cpath class='st0' d='M10,3.2L.8,12.4l1.4,1.4,7.8-7.8,7.8,7.8,1.4-1.4L10,3.2h0s0,0,0,0Z'/%3E%3C/svg%3E");
+            position: relative;
+            top: 4px;               
+        }
+    
+
+        // Content below calc navigation
+        #KJEInputs {
+            margin-top: 80px;
+        }
+
+        // popup bubble from question mark
+        .KJEGuiDefnPopup {
+            box-shadow: none;
+            .KJEDefinitionPopup {
+                h3.KJEDefinition {
+                    font-size: rem(18);
+                }
+                p.KJEDefinition {
+                    padding-left: 0;
+                }
+            }
+        }
+
+        // Required statement
+        #KJERequiredNote{
+            font-family: source-serif-pro, serif;
+        }
+
+        // menu positioning
+        button.KJEMenu {
+            margin-top: 30px;
+        }
+
+        // ? button next to nav
+        button.KJEDefinitionIcon {
+            &#KJE-PO-MSG_MENU {
+                right: 66px !important;
+                top: 11px !important;
+                height: 24px;
+                width: 24px;
+            }
+        }
+
+        // Savings to top right of table
+        .KJESubTitle {
+            font-family: source-serif-pro, serif;
+            font-size: rem(20);
+            color: $efe-gray-primary;
+        }
+
+        // Radio circle input 
+        input.KJEInputModern[type='radio'] {
+            height: rem(14);
+            width: rem(14);
+            box-shadow: 0 0 0 2px $efe-gray-new;
+            appearance: none;
+            -webkit-appearance: none;
+            border-radius: 50%;
+            padding: 0;
+            border: 2px solid transparent;
+            margin: 2px 10px;
+
+            &:before {
+                background: transparent;
+            }
+
+            &:checked {
+                box-shadow: 0 0 0 2px $efe-red-primary;
+                background: $efe-red-primary;
+                border: 2px solid white;
+            }
+
+
+            &:hover {
+                outline: 2px solid  $efe-gray-light;
+                outline-offset: 2px;
+                cursor: pointer;
+            }
+        
+                
+        }
+
+        //Type
+        h2.KJEToggleTitle {
+            @include subhead-02;
+            font-size: rem(28);
+            font-weight: 600;
+        }
+
+        //Outline around type
+        #KJE-D-INPUTS, #KJE-D-NEWLOAN {
+            background-color: white !important;
+            #KJE-P-INPUTS, #KJE-P-NEWLOAN  {
+                outline: none;
+                background: none;
+                &:hover {
+                    outline: none;
+                }
+            }
+        }
+
+        //Gray bg around tables
+        #KJE-E-INPUTS {
+            background-color: white !important;
+        }
+
+        // Table type
+        .KJEInputContainer {
+
+            @include body-01;
+            font-size: rem(18);
+            font-weight: 400;
+            height: rem(40);
+        }
+
+        // Required star
+        span.KJERequired {
+            color: $efe-red-primary;
+        }
+
+        // Question bubble 
+        button.KJEDefinitionIcon {
+            background-color: white;
+            color: $efe-gray-primary;
+            transition: all 250ms cubic-bezier(.165,.84,.44,1);
+            border: 1px solid $efe-gray-primary;
+            position: relative;
+            right: 6px;
+            top: 2px;
+            &:hover {
+                background-color: $efe-red-primary;
+                color: white;
+                transition: all 250ms cubic-bezier(.165,.84,.44,1);
+                border: 1px solid $efe-red-primary;
+            }
+        }
+
+        // Inputs 
+        div.KJEInputContainer {
+            Label.KJEHelp {
+                text-align: left;
+            }
+        }
+
+        .KJEInputContainer input.KJEInputModern:not([type='checkbox']):not([type='radio']) {
+            border-radius: 3px;
+            border: 1px solid $efe-gray-primary;
+            @include body-03;
+            color: $efe-gray-primary;
+            font-weight: 400;
+            padding: 0 10px;
+            height: 30px !important;
+        }
+
+        // Select
+        .KJEInputContainer select.KJEDropBoxModern {
+            @include body-03;
+            color: $efe-gray-primary;
+            font-weight: 400;
+            border-radius: 3px;
+        }
+
+        // Select icon container
+        div.KJEDropBoxDivModern {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9' fill='none'%3E%3Cline x1='0.707107' y1='1.29289' x2='7.70711' y2='8.29289' stroke='%23C32D37' stroke-width='2'/%3E%3Cline x1='6.29289' y1='8.29289' x2='13.2929' y2='1.2929' stroke='%23C32D37' stroke-width='2'/%3E%3C/svg%3E");   
+            background-size: 12px 7px;
+            background-position: calc(100% - 10px);
+            border: 1px solid $efe-gray-primary;
+            border-radius: 3px;
+
+            select {
+                padding: 0 10px;
+                border: none;
+            }
+
+        }
+
+        // Input Range Slider
+        div.KJESlider {
+            // Style the dot aka thumb
+            input[type=range]::-webkit-slider-thumb { 
+                background: $efe-gray-primary;
+                width: 12px;
+                height: 12px;
+                cursor: pointer;
+                border: none;
+                position: relative;
+                top: 1px;
+            }
+
+            /* All the same stuff for Firefox */
+            input[type=range]::-moz-range-thumb {
+                background: $efe-gray-primary;
+                width: 12px;
+                height: 12px;
+                cursor: pointer;
+                border: none;
+                position: relative;
+                top: 1px;
+            }
+  
+            /* All the same stuff for IE */
+            input[type=range]::-ms-thumb {
+                background: $efe-gray-primary;
+                width: 12px;
+                height: 12px;
+                cursor: pointer;
+                border: none;
+                position: relative;
+                top: 1px;
+            }
+
+
+        }
+        
+        #KJECalculatorTable {
+            border: 1px solid $efe-gray-blue;
+            padding: 12px;
+            margin: 12px;
+
+            #KJECalculatorTableCell {
+
+                #KJETitle {
+                    background-image: none;
+                    font-size: 0px;
+                    height: 0px;
+                    width: 0px;
+                    padding: 0 !important;
+
+                }
+            }
+
+        }
+
+        //CTA Buttons
+        #KJEFixed {
+            top: -10px !important;
+
+            &.KJEButtonIsFixed {
+                top: 0px !important;
+                box-shadow: none;
+                padding-top: 10px;
+
+            }
+
+            #KJECommandButtons {
+                input {
+                    &#KJECalculate {
+                        @include cta-primary;
+                        margin: 0 24px 0 0;
+                    }
+    
+                    &#KJEViewReport {
+                        @include cta-secondary;
+                        background: white;
+                        margin: 0;
+                    }
+    
+    
+                }
+    
+            }  
+        }
+
+        #KJEDefinitions {
+            display: none !important;
+        }
+
+            @media screen and (max-width: $sm) {
+
+
+                //CTA Buttons
+                #KJEFixed {
+                    top: -10px !important;
+                    #KJECommandButtons {
+                        @include flexbox (
+                            $justify-content: center, 
+                            $gap: 24px,
+                            $align-self: center,                            
+                           $flex-direction: column
+                        );
+
+                        input {
+                            &#KJECalculate {
+                                @include cta-primary;
+                                margin: 0;
+                            }
+            
+                            &#KJEViewReport {
+                                @include cta-secondary;
+                                background: white;
+                                margin: 0;
+                            }
+            
+            
+                        }
+            
+                    }  
+                }
+
+                #KJECalculatorTable {
+                    padding-top: 107px;
+                }
+
+            }
+    }
+
+}
