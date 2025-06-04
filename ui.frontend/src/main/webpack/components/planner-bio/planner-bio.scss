@@ -17,6 +17,7 @@
         border-top-left-radius: 40px;
         padding: 80px 134px;
         align-items: center;
+        overflow: hidden;
 
         @include media("<tablet") {
             flex-direction: column;
@@ -25,7 +26,9 @@
             text-align: left;
             padding: 0;
             max-height: unset;
+            overflow: hidden;
         }
+
         >div {
             flex: 1 0 auto;
             @include media(">=tablet", "<=tablet-lg") {
