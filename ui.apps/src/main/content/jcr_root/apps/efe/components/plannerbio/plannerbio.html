@@ -12,7 +12,7 @@
                     <span class="heading-location-details" data-sly-test="${model.officeLocations}">
                         Financial planner serving 
                         <span data-sly-list.item="${model.officeLocations}">
-                            <span>
+                            <span data-sly-test="${item.city != 'Phoenix'}">
                                 <span data-sly-test="${item.city}">${item.city},</span>
                                 <span data-sly-test="${item.state}">${item.state}<sly data-sly-test="${!itemList.last}">,</sly></span>
                             </span>
@@ -70,8 +70,10 @@
                             <span class="heading-location-details" data-sly-test="${model.officeLocations}">
                                 <span data-sly-list.item="${model.officeLocations}">
                                     <span class="location-item">
-                                        <span data-sly-test="${item.city}">${item.city},</span>
-                                        <span data-sly-test="${item.state}">${item.state}<sly data-sly-test="${!itemList.last}">,</sly></span>
+                                        <span data-sly-test="${item.city != 'Phoenix'}">
+                                            <span data-sly-test="${item.city}">${item.city},</span>
+                                            <span data-sly-test="${item.state}">${item.state}<sly data-sly-test="${!itemList.last}">,</sly></span>
+                                        <span>
                                     </span>
                                 </span>
                             </span>

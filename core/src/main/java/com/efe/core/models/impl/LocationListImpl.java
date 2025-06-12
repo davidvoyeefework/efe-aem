@@ -170,7 +170,7 @@ public class LocationListImpl implements LocationList {
 	}
         
         public static String stateURL(String stateName) {
-            String stateReturn = stateName.trim();
+            String stateReturn = stateName.trim().toLowerCase();
             stateReturn = stateReturn.replace(' ', '-');
             return "/locations/" + stateReturn;
         }
