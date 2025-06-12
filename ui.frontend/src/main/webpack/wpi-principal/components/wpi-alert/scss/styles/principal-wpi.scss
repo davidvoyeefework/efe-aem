@@ -80,12 +80,13 @@
     }
 
     &.wpi-alert {
+        position: absolute;
+		top: 50%;
+		transform:translate(0,-50%);
 
         .provided {
             margin: 0;
             position: absolute;
-			top: 50%;
-			transform:translate(0,-50%);
             bottom: 0;
             right: rem(19);
             bottom: rem(22); 
