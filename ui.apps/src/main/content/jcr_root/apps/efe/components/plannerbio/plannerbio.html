@@ -10,12 +10,16 @@
             <div class="cmp-efe-plannerbio--container__hero-text">
                 <h1 class="cmp-efe-plannerbio--container__hero-text--first">${planner.firstName} <sly data-sly-test="${planner.lastName}">${planner.lastName}</sly>
                     <span class="heading-location-details" data-sly-test="${model.officeLocations}">
-                        Financial planner serving 
+                        <span data-sly-test="${model.officeLocations.size >= 1 && model.officeLocations[0].name != 'Phoenix - Virtual Advisors'}">Financial planner serving</span>
+                        <span data-sly-test="${model.officeLocations.size == 1 && model.officeLocations[0].city == 'Phoenix'}">Financial planner</span>                        
                         <span data-sly-list.item="${model.officeLocations}">
                             <span data-sly-test="${item.city != 'Phoenix'}">
+                                <sly data-sly-test="${itemList.last}">and</sly>
                                 <span data-sly-test="${item.city}">${item.city},</span>
-                                <span data-sly-test="${item.state}">${item.state}<sly data-sly-test="${!itemList.last}">,</sly></span>
+                                <span data-sly-test="${item.state}">${item.state}</span><sly data-sly-test="${!itemList.last}">;</sly>
                             </span>
+      
+                            <sly data-sly-test="${itemList.first && itemList.last && item.city != 'Phoenix'}">.</sly>
                         </span>
                     </span>
                 </h1>
@@ -64,7 +68,7 @@
                         <h3 class="cmp-efe-plannerbio--aboutus__education--subtitle">Services</h3>
                         <p>Financial planning, retirement planning, investment management, insurance guidance, tax planning, estate planning</p>
                     </div>
-                    <div data-sly-test="${!planner.education.empty}" class="cmp-efe-plannerbio--aboutus__locations locations">
+                    <div data-sly-test="${model.officeLocations.size >= 1 && model.officeLocations[0].name != 'Phoenix - Virtual Advisors'}" class="cmp-efe-plannerbio--aboutus__locations locations">
                         <h3 class="cmp-efe-plannerbio--aboutus__education--subtitle">Locations</h3>
                         <p>                    
                             <span class="heading-location-details" data-sly-test="${model.officeLocations}">
@@ -72,7 +76,7 @@
                                     <span class="location-item">
                                         <span data-sly-test="${item.city != 'Phoenix'}">
                                             <span data-sly-test="${item.city}">${item.city},</span>
-                                            <span data-sly-test="${item.state}">${item.state}<sly data-sly-test="${!itemList.last}">,</sly></span>
+                                            <span data-sly-test="${item.state}">${item.state}</span>
                                         <span>
                                     </span>
                                 </span>
