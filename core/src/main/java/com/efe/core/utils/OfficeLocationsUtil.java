@@ -33,12 +33,10 @@ public class OfficeLocationsUtil {
 			ResourceResolver resourceResolver) {
 		try {
 			List<OfficesLocations> officesLocations = jsonObj.getOfficesLocations();
-			officesLocations.removeIf( obj -> obj.getExternalName() == "National Advisor Center");
 			String officesLocationsRootPath = FolderUtil.createFolder(childPathPlanner,
 					PlannerLocationConstants.OFFICE_LOCATIONS,PlannerLocationConstants.OFFICE_LOCATIONS, resourceResolver);
 			int officesLocationsCount = 1;
 			for (OfficesLocations officesLocationsObj : officesLocations) {
-
 
 				String officesLocationsFragmentName = PlannerLocationConstants.OFFICE_LOCATIONS_PREFIX
 						+ Integer.toString(officesLocationsCount);
