@@ -16,7 +16,7 @@
                             <span data-sly-test="${item.city != 'Phoenix'}">
                                 <sly data-sly-test="${itemList.last && model.officeLocations.size > 1}">and</sly>
                                 <span data-sly-test="${item.city}">${item.city},</span>
-                                <span data-sly-test="${item.state}">${item.state}</span><sly data-sly-test="${!itemList.last && !itemList.middle}">;</sly><sly data-sly-test="${itemList.first && itemList.last && item.city != 'Phoenix'}">.</sly>
+                                <span data-sly-test="${item.state}">${item.state}</span><sly data-sly-test="${!itemList.last && !(itemList.middle && itemList.odd)}">;</sly><sly data-sly-test="${itemList.first && itemList.last && item.city != 'Phoenix'}">.</sly>
                             </span>
 
                         </span>

@@ -33,15 +33,10 @@ public class OfficeLocationsUtil {
 			ResourceResolver resourceResolver) {
 		try {
 			List<OfficesLocations> officesLocations = jsonObj.getOfficesLocations();
-
-			officesLocations.removeIf( obj -> obj.getName() == "Phoenix - Virtual Advisors");
-
-
 			String officesLocationsRootPath = FolderUtil.createFolder(childPathPlanner,
 					PlannerLocationConstants.OFFICE_LOCATIONS,PlannerLocationConstants.OFFICE_LOCATIONS, resourceResolver);
 			int officesLocationsCount = 1;
 			for (OfficesLocations officesLocationsObj : officesLocations) {
-
 
 				String officesLocationsFragmentName = PlannerLocationConstants.OFFICE_LOCATIONS_PREFIX
 						+ Integer.toString(officesLocationsCount);
@@ -54,6 +49,7 @@ public class OfficeLocationsUtil {
 							resourceResolver);
 
 				}
+
 				Resource plannerOfficesLocationsResource = resourceResolver
 						.getResource(officesLocationsRootPath + PlannerLocationConstants.FORWARD_SLASH
 								+ officesLocationsFragmentName + PlannerLocationConstants.MASTER_NODE);
@@ -68,10 +64,8 @@ public class OfficeLocationsUtil {
 				NodePropertyManagerUtil.setPropertyIfNonNull(plannerOfficesLocationsNode, PlannerLocationConstants.ID,
 						officesLocationsObj.getId());
 
-				if (officesLocationsObj.getCity() != "Phoenix") {	
-					NodePropertyManagerUtil.setPropertyIfNonNull(plannerOfficesLocationsNode, PlannerLocationConstants.CITY,
-					officesLocationsObj.getCity());					
-				}					
+				NodePropertyManagerUtil.setPropertyIfNonNull(plannerOfficesLocationsNode, PlannerLocationConstants.CITY,
+						officesLocationsObj.getCity());					
 
 				NodePropertyManagerUtil.setPropertyIfNonNull(plannerOfficesLocationsNode,
 						PlannerLocationConstants.STATE, officesLocationsObj.getState());

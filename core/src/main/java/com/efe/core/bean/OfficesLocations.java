@@ -29,6 +29,10 @@ public class OfficesLocations {
 	/* zip */
 	private String zip;
 
+	// External name for office
+	private String externalName;
+
+
 	/**
 	 * Returns the Id.
 	 *
@@ -72,5 +76,9 @@ public class OfficesLocations {
 	 */
 	public String getZip() {
 		return zip;
+	}
+
+	public String getExternalName() {
+		return externalName;
 	}
 }
