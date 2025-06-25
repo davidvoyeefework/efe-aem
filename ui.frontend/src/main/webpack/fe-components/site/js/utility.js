@@ -27,7 +27,7 @@ export const availableThroughText = (key) => {
 export const lowerThanIndustryPercentValue = () => {
   return sponsoredFeeObj()?.lowerThanIndustryPercentValue;
 };
-
+ 
 export const sponsoredFeeObj = () => {
   const windowDataObj = window.aemfe;
   let sponsoredFeeIndex = 0;
