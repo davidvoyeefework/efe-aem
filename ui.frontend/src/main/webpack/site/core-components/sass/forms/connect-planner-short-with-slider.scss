@@ -86,7 +86,7 @@
         // background:  linear-gradient(to right, 
         // #c32d37 calc(100% - 12px), white 12px);
         height: rem(4);
-                background: #c32d37;
+        background: #c32d37;
     }
     
     progress::-webkit-progress-bar {
@@ -350,5 +350,6 @@
             width: 100%;
             text-align: left;
         }        
+    }
     }
 }
