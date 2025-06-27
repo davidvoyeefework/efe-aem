@@ -169,13 +169,6 @@
                         background-size: 50% 100%;
                         background-repeat: no-repeat;
 
-                        &:before {
-                            content: "";
-                            display: block;
-                            width: 100%;
-                            height: 100%;
-                        }
-
                         &::-webkit-slider-thumb {
                             -webkit-appearance: none;
                             height: 42px;
@@ -201,13 +194,13 @@
                             border: 4px solid white;
                         }
 
-                        &::-webkit-slider-runnable-track {
-                            height: 24px;
-                            border-radius: 4px;
-                            background-color: #F9EAEB;
-                            width: 100%;
-                            cursor: pointer;
-                        }
+                        // &::-webkit-slider-runnable-track {
+                        //     height: 24px;
+                        //     border-radius: 4px;
+                        //     // background-color: #F9EAEB;
+                        //     width: 100%;
+                        //     cursor: pointer;
+                        // }
 
                         &:focus{
                             &::-webkit-slider-runnable-track {
