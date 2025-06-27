@@ -51,6 +51,25 @@
                     letter-spacing: 0;
                     max-width: 25ch;
                     margin-top: 12px;
+
+                    span.cityStatePair {
+                        &:after {
+                            content: "";
+                            display: inline-block;
+                            background-color: $efe-red-primary;
+                            position: relative;
+                            bottom: 5px;
+                            border-radius: 50%;
+                            height: 5px;
+                            width: 5px;
+                            margin: 0 5px;
+                        }
+                        &:last-of-type {
+                            &:after {
+                                display: none;
+                            }
+                        }
+                    }
                 }
             }
             @include media("<tablet") {
