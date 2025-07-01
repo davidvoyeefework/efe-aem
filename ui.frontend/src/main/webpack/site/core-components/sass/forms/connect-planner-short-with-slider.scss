@@ -8,7 +8,7 @@
 
 
     @media screen and (min-width: $sm) {
-        padding: 60px;
+        padding: 80px 60px 60px 60px;
         min-height: rem(792);
 
         button.efe-cta-back {
@@ -26,12 +26,17 @@
     }
 
     button.efe-cta-back {
+        margin-bottom: 16px;
         @include body-03-link-red;
         text-decoration: none;
         position: relative;
         bottom: 24px;
         width: 100%;
         text-align: left;
+
+        @media screen and (min-width: $sm) {
+            margin-bottom: 32px;
+        }
     }
 
     // Error message below input field
