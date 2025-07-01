@@ -7,7 +7,7 @@
     padding: 30px;
 
 
-    @media screen and (min-width: $md) {
+    @media screen and (min-width: $sm) {
         padding: 60px;
         min-height: rem(792);
 
@@ -129,6 +129,11 @@
         .cmp-text {
             p {
                 @include subhead-02;
+                font-size: rem(20);
+
+                @media screen and (min-width: $sm) {
+                    font-size: rem(32);
+                }
 
             }
         }
@@ -152,7 +157,8 @@
         }
 
         .cmp-button--button-primary {
-            margin-bottom: 30px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid $efe-gray-mid;
         }    
     
         // SRA Range Slider
@@ -161,15 +167,37 @@
                 // Numberic Input Field 
                 input#SRACurrency {
                     width: 100%;
-                    height: rem(112);
+                    height: rem(88);
                     border: 1px solid $efe-gray-mid;
                     border-radius: 4px;
-                    font-size: rem(72);
+                    font-size: rem(48);
                     color: $efe-gray-primary;
                     text-align: center;
+                    margin-bottom: 39px !important;
+
+                    @media screen and (min-width: $md) {
+                        height: rem(112);
+                        font-size: rem(72);
+                        margin-bottom: 39px !important;
+                    }
                 }
 
                 div#range-container {
+
+                    p {
+                        &:first-of-type {
+                            position: relative;
+                            bottom: 10px;
+
+                        }
+
+                        &:last-of-type {
+                            position: relative;
+                            left: calc(100% - 86px);
+                            width: rem(86);
+                            bottom: 69px;
+                        }
+                    }
 
                     // Actually Slider
                     input#SRACurrency_range {
@@ -181,7 +209,7 @@
                         background-color: #F9EAEB;
                         border-radius: 4px;
                         background-image: linear-gradient(#C32D37, #C32D37);
-                        background-size: 50% 100%;
+                        background-size: 0% 100%;
                         background-repeat: no-repeat;
 
                         &::-webkit-slider-thumb {
@@ -230,7 +258,7 @@
                         }
 
                         &:focus {
-                            outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+                            outline: none;
                         }
 
                     }
@@ -281,7 +309,12 @@
     }
 
     .aside {
-        margin: 55px auto 36px;
+        margin: 148px auto 36px;
+
+        @media screen and (min-width: $sm) {
+            margin-top: 45px;
+        }
+
         &.aside--light-gray {
             aside{
                 position: relative;
@@ -314,6 +347,14 @@
         width: 100%;
         .cmp-button {
             width: 100%;
+        }
+    }
+
+    .cmp-text--detail {
+        padding-top: 32px;
+
+        @media screen and (min-width:$md) {
+            margin-bottom: 16px;
         }
     }
 
