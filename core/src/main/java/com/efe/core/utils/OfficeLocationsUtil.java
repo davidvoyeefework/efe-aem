@@ -33,7 +33,6 @@ public class OfficeLocationsUtil {
 			ResourceResolver resourceResolver) {
 		try {
 			List<OfficesLocations> officesLocations = jsonObj.getOfficesLocations();
-
 			String officesLocationsRootPath = FolderUtil.createFolder(childPathPlanner,
 					PlannerLocationConstants.OFFICE_LOCATIONS,PlannerLocationConstants.OFFICE_LOCATIONS, resourceResolver);
 			int officesLocationsCount = 1;
@@ -50,6 +49,7 @@ public class OfficeLocationsUtil {
 							resourceResolver);
 
 				}
+
 				Resource plannerOfficesLocationsResource = resourceResolver
 						.getResource(officesLocationsRootPath + PlannerLocationConstants.FORWARD_SLASH
 								+ officesLocationsFragmentName + PlannerLocationConstants.MASTER_NODE);
@@ -65,10 +65,7 @@ public class OfficeLocationsUtil {
 						officesLocationsObj.getId());
 
 				NodePropertyManagerUtil.setPropertyIfNonNull(plannerOfficesLocationsNode, PlannerLocationConstants.CITY,
-						officesLocationsObj.getCity());
-
-				NodePropertyManagerUtil.setPropertyIfNonNull(plannerOfficesLocationsNode, PlannerLocationConstants.NAME,
-						officesLocationsObj.getName());
+						officesLocationsObj.getCity());					
 
 				NodePropertyManagerUtil.setPropertyIfNonNull(plannerOfficesLocationsNode,
 						PlannerLocationConstants.STATE, officesLocationsObj.getState());
