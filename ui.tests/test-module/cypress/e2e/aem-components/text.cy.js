@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-describe("Text - AEM Component", () => {
+describe(`Text: AEM Component - ${Cypress.config("baseUrl")}/ui-tests/text/`, () => {
     before(() => {
         cy.visit("/ui-tests/text/");
         cy.preventPageViewRequest(); // Prevent page view request.

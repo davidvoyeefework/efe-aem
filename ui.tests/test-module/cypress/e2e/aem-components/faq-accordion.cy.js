@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-describe("FAQ accordion - AEM Component", () => {
+describe(`FAQ accordion: AEM Component - ${Cypress.config("baseUrl")}/ui-tests/faq-accordion/`, () => {
     before(() => {
         cy.visit("/ui-tests/faq-accordion/");
         cy.preventPageViewRequest(); // Prevent page view request.

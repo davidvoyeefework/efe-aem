@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-describe("Breadcrumb - AEM Component", () => {
+describe(`Breadcrumb: AEM Component - ${Cypress.config("baseUrl")}/ui-tests/breadcrumb/`, () => {
     before(() => {
         cy.visit("/ui-tests/breadcrumb/");
         cy.preventPageViewRequest(); // Prevent page view request.

@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
-describe("Comparison Card - AEM Component", () => {
+describe(`Comparison Card: AEM Component - ${Cypress.config("baseUrl")}/ui-tests/comparison-card/`, () => {
     before(() => {
-        cy.visit("/ui-tests/comparison-card");
+        cy.visit("/ui-tests/comparison-card/");
         cy.preventPageViewRequest(); // Prevent page view request.
     });
 

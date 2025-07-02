@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-describe("Content Collage - AEM Component", () => {
+describe(`Content Collage: AEM Component - ${Cypress.config("baseUrl")}/ui-tests/content-collage/`, () => {
     before(() => {
         cy.visit("/ui-tests/content-collage/");
         cy.preventPageViewRequest(); // Prevent page view request.
