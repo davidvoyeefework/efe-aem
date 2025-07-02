@@ -69,7 +69,7 @@
         progress#efe-progress-bar-default {
             width: 100%;
             -moz-appearance: progress-bar;
-            -webkit-appearance: none;
+            -webkit-appearance: progress-bar;
             box-sizing: border-box;
             display: inline-block;
             border-radius: unset;
@@ -99,14 +99,14 @@
                 bottom: 0;
             }
     
-              &::-moz-progress-bar {
-                background-color: $efe-gray-light;
-                border: unset;
-                &::-webkit-progress-value {
-                    background-color: $efe-red-primary;
-                }
-            }
-    
+        }
+
+        progress::-webkit-progress-value {
+            background-color: $efe-red-primary !important;
+        }
+
+        progress::-webkit-progress-bar {
+            background: $efe-gray-light !important;
         }
     } 
 
