@@ -68,8 +68,8 @@
 
         progress#efe-progress-bar-default {
             width: 100%;
-            -webkit-appearance: progress-bar;
             -moz-appearance: progress-bar;
+            -webkit-appearance: none;
             box-sizing: border-box;
             display: inline-block;
             border-radius: unset;
@@ -99,20 +99,16 @@
                 bottom: 0;
             }
     
+              &::-moz-progress-bar {
+                background-color: $efe-gray-light;
+                border: unset;
+                &::-webkit-progress-value {
+                    background-color: $efe-red-primary;
+                }
+            }
+    
         }
     } 
-    
-    progress::-webkit-progress-value {
-        // background:  linear-gradient(to right, 
-        // #c32d37 calc(100% - 12px), white 12px);
-        height: rem(4);
-        background: #c32d37;
-    }
-    
-    progress::-webkit-progress-bar {
-        background-color: $efe-gray-light;
-        height: rem(4);
-    }
 
     .lead_form_page_count {
         @include flexbox(
@@ -388,4 +384,7 @@
 
 
 }
+
+
+
 
