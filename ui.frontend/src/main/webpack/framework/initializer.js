@@ -348,6 +348,22 @@ document.addEventListener("DOMContentLoaded", (event) => {
   }
   });
 
+// SRA Slider Number Input Currency Format
+document.addEventListener("DOMContentLoaded", (event) => {
+  const inputNumber = document.getElementById("SRACurrency");
+    if (inputNumber != null) {
+      const inputNumVal = parseInt(inputNumber.value);
+      inputNumber.addEventListener('input', function() {
+        const formattedValue = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD'
+        }).format(inputNumVal);
+        inputNumber.value = formattedValue;
+      })
+    }
+});
+
+
 
 
 
