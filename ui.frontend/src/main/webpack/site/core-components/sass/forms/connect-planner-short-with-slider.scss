@@ -173,16 +173,22 @@
                 }
 
                 .slider-input-box-container {
+                    position: relative;
                     &:before {
                         content: "$";
                         display: inline-block;
                         font-size: rem(48);
                         color: $efe-gray-primary;
+                        position: absolute;
+                        top: 35px;
+                        left: 10px;
                     }
 
                     @media screen and (min-width: $sm) {
                         &:before {
-                            font-size: rem(48);
+                            font-size: 72px;
+                            left: 29px;
+                            top: 46px;
                         }
                     }
                 }
@@ -340,7 +346,7 @@
     }
 
     .aside {
-        margin: 148px auto 36px;
+        margin: 259px auto 36px;
 
         @media screen and (min-width: $sm) {
             margin-top: 45px;
