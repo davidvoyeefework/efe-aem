@@ -20,7 +20,10 @@ public interface PageModel {
 	 * @return the thumbnail
 	 */
 	String getThumbnail();
-	
+
+
+	String getSocialSharingImage();
+
 	
 	/**
 	 * Gets the jquery url.

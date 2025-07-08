@@ -13,7 +13,7 @@
 
 .cmp-accordion{
     &__item{
-        &:not(:nth-child(2)){
+        &:not(:first-child){
             & .cmp-accordion__header {
                 & .cmp-accordion__button{
                     margin-top: rem(20px);

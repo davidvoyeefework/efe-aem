@@ -13,10 +13,10 @@
                         <span data-sly-test="${!(model.officeLocations.size == 1 && model.officeLocations[0].city == 'Phoenix')}">Financial planner serving</span>
                         <span data-sly-test="${model.officeLocations.size == 1 && model.officeLocations[0].city == 'Phoenix'}">Financial planner</span>                        
                         <span data-sly-list.item="${model.officeLocations}">
-                            <span data-sly-test="${item.city != 'Phoenix'}">
-                                <sly data-sly-test="${itemList.last && model.officeLocations.size > 1}">and</sly>
+                            <span class="cityStatePair" data-sly-test="${item.city != 'Phoenix'}">
+                                <!-- <sly data-sly-test="${itemList.last && model.officeLocations.size > 1}">and</sly> -->
                                 <span data-sly-test="${item.city}">${item.city},</span>
-                                <span data-sly-test="${item.state}">${item.state}</span><span data-sly-test="${!itemList.last  && !(itemList.middle && itemList.odd) && !(model.officeLocations.size == 3 && model.officeLocations[0].city == 'Phoenix') && !(model.officeLocations.size == 2 && model.officeLocations[0].city == 'Phoenix') }">;</span><sly data-sly-test="${itemList.first && itemList.last && item.city != 'Phoenix'}">.</sly>
+                                <span data-sly-test="${item.state}">${item.state}</span>
                             </span>
 
                         </span>
@@ -47,11 +47,11 @@
                                 <source src="${planner.bioVideo}" type="video/mp4">
                                 Your browser does not support the video tag. Here is a  <a target="_blank" href="${planner.bioVideo}">link to the video</a> instead.
                             </video>
-                            <button id="playButton" class="play-button"></button>
+                            <button aria-label="Play Planner Biography Video" id="playButton" class="play-button"><span class="visually-hidden">Play</span></button>
                         </sly>
                     </div>
                     
-                    <h3 class="cmp-efe-plannerbio--aboutus__aboutme--subtitle">${model.aboutMeHeading}</h3>
+                    <h2 class="cmp-efe-plannerbio--aboutus__aboutme--subtitle">${model.aboutMeHeading}</h2>
                     <p>${planner.bio}</p>
                 </div>
                 <div class="cmp-efe-plannerbio--aboutus__block">

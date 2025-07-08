@@ -12,3 +12,7 @@ $include "./default_rules.any"
 	/type "deny"
 }
 
+/0213 {
+	/glob "/bin/statichtmlfile"
+	/type "allow"
+}

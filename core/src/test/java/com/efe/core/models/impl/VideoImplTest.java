@@ -53,8 +53,8 @@ class VideoImplTest {
 		video = aemContext.request().adaptTo(Video.class);
 		assertEquals("1", video.getId());
 		assertEquals("12345", video.getVideoId());
-		assertEquals("/thumbnail.png", video.getVideoThumbnail());
-		assertEquals("/btn-icon.png", video.getButtonIcon());
+		assertEquals("/thumbnail.png?fmt=png-alpha&bfc=on", video.getVideoThumbnail());
+		assertEquals("/btn-icon.png?fmt=png-alpha&bfc=on", video.getButtonIcon());
 		
 	}
 
