@@ -166,6 +166,29 @@
         .efe-sliderefe-sra-slider {
             .slide-inner {
                 // Numberic Input Field 
+                label {
+                    @include body-02;
+                    display: block;
+                    margin-bottom: 32px;
+                }
+
+                .slider-input-box-container {
+                    &:before {
+                        content: "$";
+                        display: inline-block;
+                        font-size: rem(48);
+                        color: $efe-gray-primary;
+                    }
+
+                    @media screen and (min-width: $sm) {
+                        &:before {
+                            font-size: rem(48);
+                        }
+                    }
+                }
+
+
+
                 input#SRACurrency {
                     width: 100%;
                     height: rem(88);
@@ -175,6 +198,13 @@
                     color: $efe-gray-primary;
                     text-align: center;
                     margin-bottom: 39px !important;
+                    transition: $std-transition;
+
+                    &.error-message {
+                        border-color: $efe-red-primary;
+                        border-width: 2px;
+                        transition: $std-transition;
+                    }
 
                     @media screen and (min-width: $sm) {
                         height: rem(112);
@@ -183,7 +213,7 @@
                     }
                 }
 
-                div#range-container {
+                div.range-container {
 
                     p {
                         &:first-of-type {
