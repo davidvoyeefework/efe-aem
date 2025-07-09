@@ -72,7 +72,7 @@ export default class FeHeader {
             activeVariableKey,
             activeKeyValue,
           );
-        } else {
+        } else if (activeVariableKey != "availableThroughText") {
           // Dynamic variables which have valid refrence in window obj data
           // get from window obj as per specified activeKeyValue
           let requiredReplaceableValue = "";
@@ -117,8 +117,6 @@ export default class FeHeader {
   }
   calculateCustomVariable(key) {
     switch (key) {
-      case "availableThroughText":
-        return utility.availableThroughText(key);
       case "promotionBannerFeeText":
         return utility.promotionBannerFeeInfo()?.promotionBannerFeeText;
       case "PROMOTION_ANNOUNCED_END_DATE":

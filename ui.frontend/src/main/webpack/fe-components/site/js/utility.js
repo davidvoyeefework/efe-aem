@@ -1,29 +1,5 @@
 import { captureScIdFromUrl } from "./helper";
 
-export const availableThroughText = (key) => {
-  const windowDataObj = window.aemfe;
-
-  let availableThroughText =
-    windowDataObj["publicEnrollment.products.option.pm.availableThrough"];
-  if (availableThroughText) {
-    availableThroughText = availableThroughText.replace(
-      "{{ sponsor }}",
-      windowDataObj?.preferredName,
-    );
-    availableThroughText = availableThroughText.replace(
-      "{{ industryPercent }}",
-      lowerThanIndustryPercentValue(),
-    );
-    availableThroughText = availableThroughText.replace(
-      "{{ feePercent }}",
-      (sponsoredFeeObj()?.feeRate * 0.01).toPrecision(2) + "%",
-    );
-  }
-  if (availableThroughText.slice(-2) === "**") {
-    availableThroughText = availableThroughText.slice(0, -2);
-  }
-  return availableThroughText;
-};
 export const lowerThanIndustryPercentValue = () => {
   return sponsoredFeeObj()?.lowerThanIndustryPercentValue;
 };
