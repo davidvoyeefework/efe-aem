@@ -181,7 +181,11 @@
     .personalize-final_page {
 
         .aside {
-            margin-top: 259px
+            margin-top: 259px;
+
+            @media screen and (min-width: $sm) {
+                margin-top: 40px;
+            }
         }
 
         button {
