@@ -64,6 +64,9 @@ export default class FeHeader {
         const activeVariableKey = Object?.keys(item)?.length
           ? Object.keys(item)[0]
           : ""; // "SUPPORT_PHONE"
+          if (activeVariableKey == "availableThroughText"){
+            return;
+          }
         const activeKeyValue = item ? item[activeVariableKey] : ""; // header.supportPhone or custom
         const CUSTOM_VARIABLE_VALUE = "custom";
         // for custom scenario - manipulation before replacing variable
@@ -72,7 +75,7 @@ export default class FeHeader {
             activeVariableKey,
             activeKeyValue,
           );
-        } else if (activeVariableKey != "availableThroughText") {
+        } else {
           // Dynamic variables which have valid refrence in window obj data
           // get from window obj as per specified activeKeyValue
           let requiredReplaceableValue = "";
