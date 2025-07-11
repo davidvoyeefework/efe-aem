@@ -1,9 +1,27 @@
 .cmp-article-details {
-    padding: rem(48) 0;
+    padding: rem(48) rem(24);
+
+    &.sidebar {
+        .max-width a p, 
+        div.cmp-title--heading-03 h1.max-width p, 
+        div.text h2 p, 
+        #article-details__published-date p,
+        .cmp-article-details__published-date,
+        .max-width {
+            text-align: left !important;
+        }
+
+    }
+
+    .image {
+        &.cmp-image--top-left {
+            margin-top: 80px;
+        }
+    }
 
     .max-width {
         max-width: rem(704);
-        margin: 0 auto;
+        margin: 0 auto !important;
     }
 
     .cmp-title--heading-03 {
@@ -108,6 +126,7 @@
         align-items: center;
         display: flex;
     }
+
     &__padding-108 {
         @include media('>tablet-lg') {
             padding: 0 rem(196);
@@ -116,12 +135,13 @@
             padding: 0 rem(26);
         }
     }
+
     .cmp-image--top-left {
         padding-top: 32.5%;
         width: 100%;
         height: 100%;
         max-height: rem(440);
-        max-width: rem(1096);
+        max-width: unset;
         margin: 0 auto 30px;
         position: relative;
         min-height: rem(202);
@@ -136,6 +156,7 @@
             object-fit: cover;
         }
     }
+
     &__disclaimar {
         margin-bottom: 20px;
         * {
@@ -146,6 +167,7 @@
         }
     }
 }
+
 .relatedarticle {
     .cmp-list--horizontal.cmp-list--tight .cmp-list {
         gap: rem(40);
@@ -165,5 +187,203 @@
                 margin-top: rem(12);
             }
         }
+    }
+}
+
+// Sidebar Styling Framework
+#article-layout {
+    &.sidebar {
+        max-width: rem(1192);
+        margin: 0 auto;       
+
+        aside#efe-article-sidebar {
+            margin:0 auto 55px !important;
+            width: 100% !important;
+            max-width: rem(704);
+        }
+
+        .cmp-article-details__published-date {
+            margin: 28px 0 80px;
+        }
+
+        .text {
+            .cmp-text--body-01, .cmp-text--body-02, .cmp-text--body-03 {
+                margin-bottom: 24px;
+            }
+        }
+
+        .primary-nav-link-red {
+            margin-bottom: 24px;
+        }
+
+        #article-sidebar-exp-frag {
+            width: 100%;
+            overflow: hidden;
+            margin-bottom: 36px;
+        }
+
+        #wrapper, #sidebar-container, .pin-spacer  {
+            width: 100% !important;
+            overflow: hidden;
+        }
+
+        #article-author-content {
+            border-bottom: 1px solid $efe-gray-mid;
+            padding-bottom: 36px;
+
+            &.no-content {
+                padding-bottom: 0;
+                border-bottom: unset;
+            }
+
+            h1 {
+                @include heading-04;
+                margin-bottom: 13px;
+            }
+
+            h2 {
+                @include subhead-00;
+                margin-bottom: 13px;
+            }
+
+            h3 {
+                @include subhead-01;
+                font-weight: 700;
+                margin-bottom: 13px;
+            }
+
+            p {
+                margin-bottom: 13px;
+                span {
+                    margin-bottom: 0;
+                }
+            }
+
+            .cmp-button--center{
+                .cmp-button {
+                    text-align: left !important;
+                    margin: 0;
+                }
+        
+            }
+        }
+
+        #article-sidebar-authors {
+            display: none;
+            padding: 36px 0px 18px;
+
+            h3 {
+                @include subhead-01;
+                font-weight: 700;
+                margin-bottom: 18px;
+            }
+            .cmp-article-details__authors-by {
+                margin: 0 !important;
+                text-align: left;
+            }
+            .cmp-text--body-03 {
+                a p.author-name {
+                    @include body-02;
+                    color: $efe-gray-deep-charcoal;
+                }
+
+                 > p.author-name {
+                    @include body-03;
+                    color: $efe-gray-new;
+                    margin-bottom: 18px;
+                }
+            }
+            border-bottom: 1px solid $efe-gray-mid;
+        }
+
+        #articel-side-bar-social {
+            padding-top: 36px;
+            h3 {
+                @include subhead-01;
+                font-weight: 700;
+            }
+            .cmp-social-share__images {
+                @include flexbox(
+                    $gap: 13px,
+                    $justify-content: start
+                )
+            }
+            .cq-placeholder.cq-marker-start {
+                display: none;
+            }
+            #end-marker {
+                .aem-Grid {
+                    @include flexbox(
+                        $justify-content: space-between,
+                        $align-items: center,
+                    );
+                    h3 {
+                        flex: 0 0 calc(100% - 132px);
+                        margin-right: 10px;
+                        white-space: nowrap;
+                    }
+                    
+                    .socialshare {
+                        flex: 0 0 122px;
+                    }
+                }
+            }
+        }
+
+        @media screen and (min-width: 1356px) {
+            margin-bottom: 165px;
+            padding: 24px 24px 24px 160px;
+            max-width: unset;
+            width: 100%;
+
+            .cmp-article-details__summary, .cmp-article-details__body {
+                max-width: unset;
+            }
+
+            .max-width a p, 
+            div.cmp-title--heading-03 h1.max-width p, 
+            div.text h2 p, 
+            #article-details__published-date p,
+            .cmp-article-details__published-date,
+            .max-width {
+                max-width: unset;
+            } 
+
+            #article-sidebar-exp-frag {
+                max-width: 400px;
+                overflow: hidden;
+            }
+
+            #sidebar-container {
+                margin-bottom: 30px;
+                position: relative;
+                top: 356px;
+                height: fit-content;
+
+                #wrapper {
+                    background: white;
+                    z-index: 9999;
+                }
+            }  
+
+            #article-sidebar-authors {
+                display: block;
+            }            
+
+            @include flexbox(
+                $gap: 40px
+            );
+
+            .cmp-article-details {
+                flex-basis: 752px;
+                flex-shrink: 0;
+            }
+
+            #sidebar-container {
+                flex-basis:400px;
+                flex-shrink: 0;
+            }
+        }
+
     }
 }

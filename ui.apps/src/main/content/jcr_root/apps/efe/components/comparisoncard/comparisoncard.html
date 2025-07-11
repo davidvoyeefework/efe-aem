@@ -1,0 +1,23 @@
+
+<sly data-sly-use.model="com.efe.core.models.ComparisonCard" class="default">
+    <section aria-role="content-info" aria-label="${model.title @context='html'}" id="comparison-card">
+        <div class="header">
+            <h2>${model.title @context='html'}<h2>
+        </div>
+
+        <div class="body">
+            <sly data-sly-test.hasContent=${model.content}>
+                ${model.content @context='html'}
+            </sly>
+            <div class="${item}">
+                <div data-sly-resource="${item @ resourceType='efe/components/container'}"></div>
+            </div>
+        </div>
+    </section>
+</sly>
+
+
+<script>
+    const cccomponent = document.getElementById('comparison-card');
+    cccomponent.parentNode.parentNode.parentNode.setAttribute('id', 'comparisoncards');
+</script>

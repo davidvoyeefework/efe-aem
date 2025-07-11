@@ -26,12 +26,21 @@ section.voya-wpi-theme {
         img.wpi-img {
             flex: 0 0 auto;
             width: 40px;
-            height: 40px;
+            height: fit-content;
         }
 
         .copy {
             position: relative;
             bottom: 3px;
+            overflow: hidden;
+            -o-text-overflow: ellipsis;
+            text-overflow: ellipsis;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            display: -webkit-box;
+            display: -moz-box;
+            max-height: rem(50);
+
             h3, p {
                 font-size: rem(14);
                 line-height: rem(16);
@@ -45,22 +54,19 @@ section.voya-wpi-theme {
                     font-weight: bold;
                 }
             }
-
         }
     }
 
     .cmp-button--button-wpi {
+        width: rem(118);
+        height: rem(36);
+        border: 2px solid #145a7b;
+        border-radius: 20px;    
+        margin: 15px auto 0;  
         background-color: white;
         width: fit-content;
         padding: 0 16px;
-        height: rem(40);
         color: #145a7b;
-        border: 2px solid #145a7b;
-        border-radius: 20px;    
-        margin: 0 auto;  
-        bottom: 0;
-        left: 0;
-        right: 0;
         @include flexbox(
             $align-items:center,
         );
@@ -105,22 +111,35 @@ section.voya-wpi-theme {
         
     }
 
+    // For small mobile
     @media screen and (max-width: 340px) {
+        .copy {
+            h2 {
+                font-size: 14px;
+                line-height: 16px;
+                margin-bottom: 10px;
+            }
+        }
+
+
         .flex {
             .copy {
+                max-height: rem(40);
+
                 h2 {
                     font-size: 14px;
                     line-height: 16px;
                 }
 
                 h3, p {
-                    font-size: rem(11);
+                    font-size: rem(12);
                     line-height: rem(13);
                 }
             }
         }
     }
 
+    // For large placements
     @media screen and (min-height: 300px) {
         height: calc(100% - 45px);
         padding: 20px;
@@ -136,6 +155,7 @@ section.voya-wpi-theme {
 
         .flex {
             .copy {
+                max-height: rem(60);
                 h3, p {
                     font-size: rem(16);
                     line-height: rem(19);

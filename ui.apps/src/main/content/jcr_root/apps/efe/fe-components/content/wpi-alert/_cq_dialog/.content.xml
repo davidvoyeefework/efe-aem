@@ -43,6 +43,10 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 text="Vanguard"
                                                 value="vanguard-wpi-theme"/>
+                                            <vanguard2
+                                                jcr:primaryType="nt:unstructured"
+                                                text="Vanguard New Theme"
+                                                value="vanguard-wpi-theme2"/>
                                             <alight
                                                 jcr:primaryType="nt:unstructured"
                                                 text="Alight Solutions"

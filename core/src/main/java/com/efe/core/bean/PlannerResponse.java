@@ -1,4 +1,4 @@
-package com.efe.core.bean;
+package com.efe.core.bean; 
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -127,6 +127,9 @@ public class PlannerResponse {
 
 	/* favoriteSport */
 	private String favoriteSport;
+        
+	/* bioVideo */
+	private String bioVideo;
 
 	/* favoriteSportsTeam */
 	private String favoriteSportsTeam;
@@ -244,6 +247,11 @@ public class PlannerResponse {
 	/* Sets bio */
 	public void setBio(String bio) {
 		this.bio = bio;
+	}
+
+	// Sets Bio Video
+	public void setBioVideo(String bioVideo) {
+		this.bioVideo = bioVideo;
 	}
 
 	/* Sets firstNameAlias */
@@ -605,10 +613,18 @@ public class PlannerResponse {
 	 *
 	 * @return the Favorite Sport
 	 */
+	public String getBioVideo() {
+		return bioVideo;
+	}
+
+        /**
+	 * Returns the Planner Video.
+	 *
+	 * @return the Planner Video
+	 */
 	public String getFavoriteSport() {
 		return favoriteSport;
 	}
-
 	/**
 	 * Returns the Favorite Sports Team.
 	 *

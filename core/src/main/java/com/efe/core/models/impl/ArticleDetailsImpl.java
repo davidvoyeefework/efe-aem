@@ -11,6 +11,8 @@ import com.efe.core.services.EfeService;
 import com.efe.core.services.SeoService;
 import com.efe.core.utils.ArticleDetailUtil;
 import com.efe.core.utils.SeoUtil;
+
+import org.apache.lucene.queryparser.flexible.standard.processors.BooleanSingleChildOptimizationQueryNodeProcessor;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -20,6 +22,7 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import com.efe.core.utils.ResourceUtil;
 
 import javax.annotation.PostConstruct;
 import java.util.Objects;
@@ -76,19 +79,72 @@ public class ArticleDetailsImpl implements ArticleDetails {
     /** the mappedPage *. */
     @ValueMapValue
     private String mappedPage;
+
     /** the id *. */
     @ValueMapValue
     private String id;
+
     /** ArticleDetail. */
     private Articles articleDetails;
+
     /** The json ld. */
     private String jsonLd;
+
+    // Show CTA Flag
+    private String showCta;
+
+    // CTA Heading
+    private String ctaHeading;
+
+    // CTA Body Copy
+    private String ctaBodyCopy;    
+
+    // CTA Body Copy
+    private String ctaText;     
+
+    // CTA Link
+    private String ctaLink;    
+    
+    // Resource Path
+    @ValueMapValue    
+    String resourcePath; 
+    
+    // CTA Heading
+    String resourceProperty;
+
+    // Artice Sidebar Show or NoShow
+    String sidebar;
 
     /**
      * Inits the Model.
      */
     @PostConstruct
     public void init() {
+        resourcePath = resource.getPath();
+
+        // Fetch inline section CTA heading
+        resourceProperty = "heading";
+        ctaHeading = ResourceUtil.getProperty(resourceResolver, resourcePath, resourceProperty);
+
+        // Fetch inline section CTA bodycopy
+        String resourcePropertyBodyCopy = "bodycopy";
+        ctaBodyCopy = ResourceUtil.getProperty(resourceResolver, resourcePath, resourcePropertyBodyCopy);
+
+        // Fetch inline section CTA text
+        String resourcePropertyCtaText = "buttontext";
+        ctaText = ResourceUtil.getProperty(resourceResolver, resourcePath, resourcePropertyCtaText);
+
+        // Fetch inline section CTA link
+        String resourcePropertyCtaLink = "buttonLink";
+        ctaLink = ResourceUtil.getProperty(resourceResolver, resourcePath, resourcePropertyCtaLink);        
+
+        // Fetch Article Sidebar Show or NoShow Value
+        String resourcePropertyShowSidebar = "sidebar";
+        sidebar = ResourceUtil.getProperty(resourceResolver, resourcePath, resourcePropertyShowSidebar);     
+        
+        
+
+
 
         PageManager pageManager = resourceResolver.adaptTo(PageManager.class);
         articleDetails = new Articles();
@@ -138,4 +194,33 @@ public class ArticleDetailsImpl implements ArticleDetails {
         return jsonLd;
     }
 
+    // Gets flag for inline CTA Section Block
+    public String getShowCta() {
+        return showCta;
+    }
+
+    // Gets CTA Heading
+    public String getCtaHeading() {
+        return ctaHeading;
+    }
+
+    // Gets CTA Body Copy
+    public String getBodyCopy() {
+        return ctaBodyCopy;
+    }    
+
+    // Gets CTA Text
+    public String getCtaText() {
+        return ctaText;
+    }  
+    
+    // Gets CTA Link
+    public String getCtaLink() {
+        return ctaLink;
+    }    
+    
+    // Return flag for Article Sidbar
+    public String getSidebar() {
+        return sidebar;
+    }
 }

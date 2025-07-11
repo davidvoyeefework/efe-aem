@@ -14,6 +14,10 @@
     <sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html"
          data-sly-call="${clientlib.css @ categories='fe.wpivanguard'}"/>
 </sly>
+<sly data-sly-test="${properties.record == 'vanguard-wpi-theme2'}">
+    <sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html"
+         data-sly-call="${clientlib.css @ categories='fe.wpivanguard'}"/>
+</sly>
 <sly data-sly-test="${properties.record == 'alight-wpi-theme'}">
     <sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html"
          data-sly-call="${clientlib.css @ categories='fe.wpialight'}"/>
@@ -182,6 +186,30 @@
             </div>
         </section>
     </sly>
+
+    <!-- Vanguard2  -->
+    <sly data-sly-test="${model.recordKeeper == 'vanguard-wpi-theme2'}">
+
+        <section class="vanguard-wpi-theme vanguard-wpi-theme--update wpi-alert" id="wpi-alert" data-viewcode="${model.viewcode}">
+            <div class="flex">
+                <img class="wpi-img" src="${model.icon}" alt="" />
+
+                <div class="copy">
+                    ${model.headline @context='html'}
+                    ${model.subheadline @context='html'}
+                    <sly data-sly-test.hasContent="${model.disclosures}">
+                        ${model.disclosures @context='html'}
+                    </sly>
+                    <div class="button cmp-button--button-wpi">
+                        <a type="button" class="cmp-button" x-cq-linkchecker="valid" data-destination-token=${model.destination} target="_parent" id="wpi-anchor">
+                            <span class="cmp-button__text">${model.cta @context='html'}</span>
+                        </a>
+                    </div>
+                </div>         
+
+            </div>
+        </section>
+    </sly>    
 
     <!-- Alight -->
     <sly data-sly-test="${model.recordKeeper == 'alight-wpi-theme'}">
@@ -370,12 +398,12 @@
     <!-- AFA -->
     <sly data-sly-test="${model.recordKeeper == 'afa-wpi-theme'}">
         <section class="${model.recordKeeper} wpi-alert" id="wpi-alert" data-viewcode="${model.viewcode}">
-
             <div>
                 <div>
-
-                    <div class="copy copy-flex">
+                    <sly data-sly-test.hasContent="${model.icon}">
                         <img class="wpi-img" src="${model.icon}" alt="" />
+                    </sly>     
+                    <div class="copy copy-flex">
                         <div class="copy-container">
                             ${model.headline @context='html'}
                             ${model.subheadline @context='html'}
@@ -388,9 +416,7 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-
         </section>
     </sly>
 

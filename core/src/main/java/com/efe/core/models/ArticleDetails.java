@@ -27,4 +27,23 @@ public interface ArticleDetails {
      * @return the jsonLd
      */
     String getJsonLd();
+
+    // Value for showing inline section CTA
+    String getShowCta();
+
+    // Get CTA Headline
+    String getCtaHeading();
+
+    // Get CTA BodyCopy
+    String getBodyCopy();
+
+    // Get CTA Text Label
+    String getCtaText();
+
+    // Get CTA Label
+    String getCtaLink();
+
+    // Value for showing Article Sidebar
+    String getSidebar();
+
 }

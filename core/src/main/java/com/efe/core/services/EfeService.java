@@ -26,6 +26,13 @@ public interface EfeService {
 	 */
 	String getAuthHeader();
 
+        String getPrintClientId();
+        String getPrintClientSecret();
+        String getPartnerAPIAuthURL();
+        String getPartnerAPIAuthIssuer();
+        String getPartnerAPIAuthAudience();
+        String getPartnerAPIAuthSub();
+        String getPartnerAPIAuthKID();
 	/**
 	 * Gets the plannerPageUrl.
 	 *
@@ -148,6 +155,13 @@ public interface EfeService {
 	 * @return the jquery url
 	 */
 	String getJqueryUrl();
+        
+        /**
+	 * Gets the CDT Scheduler Embed URL.
+	 *
+	 * @return the CDT Scheduler Embed URL
+	 */
+	String getCDTEmbedURL();
         
         String getFPIDLibraryURL();
 

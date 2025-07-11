@@ -1,4 +1,4 @@
-package com.efe.core.constants;
+package com.efe.core.constants; 
 
 public class PlannerLocationConstants {
 
@@ -33,6 +33,11 @@ public class PlannerLocationConstants {
 	 * RD in model
 	 */
 	public static final String RD_FROM_JSON = "RD";
+        
+        /**
+         * Planner bio video
+         */
+        public static final String BIO_VIDEO = "bioVideo";
 
 	/**
 	 * RD in model

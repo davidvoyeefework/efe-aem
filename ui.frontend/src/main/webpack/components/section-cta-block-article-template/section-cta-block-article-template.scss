@@ -1,0 +1,41 @@
+#inline-section-cta {
+    background-color: $efe-baby-blue;
+    max-width: rem(900);
+    width: 100%;
+    padding: 24px;
+    border-radius: 12px;
+    border: 1px solid $efe-gray-mid;
+    text-align: center;
+    margin-top: 35px;
+
+    &.m-bottom {
+        margin-bottom: 35px;
+    }
+
+    .heading {
+        * {
+            @include subhead-01;
+            font-weight: 700 !important;
+            font-family: bebas-neue-pro, sans-serif !important;
+            letter-spacing: .04em;
+            margin-bottom: 10px;
+        }
+    }
+
+    .bodycopy {
+        margin-bottom: 16px;
+        * {
+            @include body-02;
+        }
+    }
+
+    a.cmp-button {
+        min-width: unset;
+        width: fit-content;
+    }
+
+    @media screen and (min-width: $md) {
+        padding: 32px;
+    }
+
+}

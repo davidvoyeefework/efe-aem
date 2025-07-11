@@ -20,6 +20,11 @@ public class PlannerDetail {
 
     /** The buttonUrl. */
     String buttonUrl;
+    
+    /** The bioVideo URL */
+    String bioVideo;
+
+    String officeLocations;
 
     /**
      * Gets the firstName.
@@ -68,6 +73,22 @@ public class PlannerDetail {
     public void setDesktopUrl(String desktopUrl) {
         this.desktopUrl = desktopUrl;
     }
+    
+        /**
+     * Gets the bio video.
+     *
+     * @return the bio video
+     */
+    public String getBioVideo() {
+        return bioVideo;
+    }
+
+    /**
+     * Sets the bio video.
+     */
+    public void setBioVideo(String bioVideo) {
+        this.bioVideo = bioVideo;
+    }
 
     /**
      * Gets the title.
@@ -99,6 +120,16 @@ public class PlannerDetail {
      */
     public void setButtonUrl(String buttonUrl) {
         this.buttonUrl = buttonUrl;
+    }
+
+    // Getter
+    public String getOfficeLocations () {
+        return officeLocations;
+    }    
+
+    // Setter
+    public void setOfficeLocations(String officeLocations) {
+        this.officeLocations = officeLocations;
     }
 
 }

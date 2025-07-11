@@ -123,12 +123,89 @@ class Initializer {
   }
 
   onDocumentReady() {
+  replaceLocationPlaceholder();
+  replaceLocationPlaceholderWithDefaultText();
     const elements = document.querySelectorAll(this.selectors.component);
     for (let i = 0; i < elements.length; i++) {
       this.initComponent(elements[i]);
     }
     this.initMutation();
   }
+}
+
+function replaceLocationPlaceholder() {
+    const ldJsonScripts = document.querySelectorAll('script[type="application/ld+json"]');
+    ldJsonScripts.forEach(ldJsonScript => {
+        try {
+            const jsonData = JSON.parse(ldJsonScript.innerHTML);
+            if (jsonData.address != null) {
+                const addressLocality = jsonData.address.addressLocality;
+                const addressRegion = jsonData.address.addressRegion;
+                const replacementText = `${addressLocality}, ${addressRegion}`;
+                replacePlaceholder(replacementText);
+            }
+        } catch (e) {
+            console.error('Error parsing JSON in <script type="application/ld+json">:', e);
+        }
+    });
+}
+
+function replaceLocationPlaceholderWithDefaultText() {
+    const ldJsonScripts = document.querySelectorAll('script[type="application/ld+json"]');
+    const pattern = /\{planner\.location default=”([^”]*)”\}/g;
+    const pageContent = document.body.innerHTML;
+    const hasAddress = Array.from(ldJsonScripts).some(ldJsonScript => {
+        try {
+            const jsonData = JSON.parse(ldJsonScript.innerHTML);
+            return jsonData.address != null;
+        } catch (e) {
+            return false;
+        }
+    });
+    if (!hasAddress) {
+        replacePlaceholdersWithCorrespondingValues(pageContent, pattern);
+    }
+}
+
+function replacePlaceholdersWithCorrespondingValues(pageContent, pattern) {
+    let match;
+    let placeholders = [];
+
+    while ((match = pattern.exec(pageContent)) !== null) {
+        placeholders.push({
+            placeholder: match[0],
+            value: match[1]
+        });
+    }
+
+    placeholders.forEach(item => {
+        replacePlaceholderByPlaceholder(item.placeholder, item.value);
+    });
+}
+
+function replacePlaceholderByPlaceholder(placeholder, replacementText) {
+    const elements = document.querySelectorAll('p, span');
+    elements.forEach(element => {
+        let htmlContent = element.innerHTML;
+        htmlContent = htmlContent.replace(placeholder, replacementText);
+        element.innerHTML = htmlContent;
+    });
+}
+
+
+function replacePlaceholder(replacementText) {
+    const paragraphs = document.querySelectorAll('p');
+    paragraphs.forEach(paragraph => {
+        let htmlContent = paragraph.innerHTML;
+        htmlContent = htmlContent.replace(/{planner\.location default=”[^”]*”}/g, replacementText);
+        paragraph.innerHTML = htmlContent;
+    });
+    const spans = document.querySelectorAll('span');
+    spans.forEach(span => {
+        let htmlContent = span.innerHTML;
+        htmlContent = htmlContent.replace(/{planner\.location default=”[^”]*”}/g, replacementText);
+        span.innerHTML = htmlContent;
+    });
 }
 
 export { Initializer };

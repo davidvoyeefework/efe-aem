@@ -5,6 +5,7 @@
             flex-direction: row-reverse;
         }
 }
+
 .cmp-teaser--thumbnail {
     .cmp-teaser {
         @include teaserThumbnail;
@@ -60,3 +61,4 @@
         }
     }
 }
+

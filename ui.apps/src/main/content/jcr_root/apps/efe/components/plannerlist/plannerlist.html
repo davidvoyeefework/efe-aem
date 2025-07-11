@@ -1,31 +1,82 @@
 <div data-sly-use.model="com.efe.core.models.PlannerList" data-sly-use.template="core/wcm/components/commons/v1/templates.html"
-     class="list cmp-list--horizontal cmp-list--loose cmp-list--left-align cmp-list--border-radius" id="${model.id}">
-  <h2 class="cmp-list--title" data-sly-test="${model.plannerList}">${model.plannerTitle}</h2>
-  <ul class="cmp-list">
+     class="list" id="${model.id}">
+     <sly data-sly-test.hasContent="${model.plannerTitle}">
+      <h2 class="cmp-list--title">${model.plannerTitle}</h2>
+    </sly>
+  <ul id="planner-list" class="cmp-list">
     <sly data-sly-list.plannerList="${model.plannerList}">
-      <div class="teaser cmp-teaser--thumbnail">
-        <div  class="cmp-teaser">
-          <div class="cmp-teaser__content">
-            <h2 class="cmp-teaser__title"> ${plannerList.firstName} ${plannerList.lastName}</h2>
-            <div class="cmp-teaser__description">
-              <p>${plannerList.title}</p>
-            </div>
-            <div class="cmp-teaser__action-container">
-              <a class="cmp-teaser__action-link"  target="${model.plannerTarget}" data-cmp-clickable="" x-cq-linkchecker="valid" href="${plannerList.buttonUrl}" >${model.ctaLabel}</a>
+      <li class="planner-card teaser cmp-teaser--thumbnail">
+        <div class="cmp-teaser">
+          <div>
+            <h2 class="planner-name cmp-teaser__title"> ${plannerList.firstName} ${plannerList.lastName}</h2>
+            <h3 class="planner-title cmp-teaser__description">
+              ${plannerList.title}
+            </h3>
+            <sly data-sly-test.hasContent="${plannerList.officeLocations}">
+              <h3 class="planner-locations cmp-teaser__description">
+                ${plannerList.officeLocations}
+              </h3> 
+            </sly>                       
+            <div class="cmp-button--article">
+              <a class="planner-link cmp-teaser__action-link"  target="${model.plannerTarget}" data-cmp-clickable="" x-cq-linkchecker="valid" href="${plannerList.buttonUrl}"><span class="visually-hidden">${model.ctaLabel}</span></a>
             </div>
           </div>
           <div class="cmp-teaser__image">
             <div data-cmp-hook-image="imageV3" class="cmp-image">
-              <img srcset="${plannerList.desktopUrl}"
+              <img id="planner-thumbnail" srcset="${plannerList.desktopUrl}"
                    src="${plannerList.desktopUrl}"
                    loading="lazy" class="cmp-image__image" itemprop="contentUrl"
-                   alt="Planner detail" title="Planner detail" />
+                   alt="${plannerList.firstName} ${plannerList.lastName}" title="${plannerList.firstName} ${plannerList.lastName}" />
               <meta itemprop="caption" content="Planner Details">
             </div>
           </div>
         </div>
-      </div>
+      </li>
     </sly>
   </ul>
+  <div id="slider-controls" style="display: none">
+    <button id="scrollPrevious" class="scroll-button"><span class="visually-hidden">Previous Planners</span></button>
+    <button id="scrollNext" class="scroll-button"><span class="visually-hidden">More Planners</span></button>
+  </div>  
 </div>
 <sly data-sly-call="${template.placeholder @ isEmpty=!isNotEmpty, classAppend='list'}"></sly>
+
+
+<script>
+
+  document.addEventListener('DOMContentLoaded', function() {
+
+  const buttonNext = document.getElementById("scrollNext");
+  const buttonPrev = document.getElementById("scrollPrevious");
+  const scrollContainer = document.getElementById("planner-list")
+  const scrollToggle = document.querySelector(".plannerlist").classList.contains("scroll");
+  const sliderControls = document.getElementById("slider-controls");
+
+  const refresh = () => {
+    const hasHorizontalScroll = scrollContainer.scrollWidth > scrollContainer.clientWidth;
+    if (hasHorizontalScroll == false) {
+      sliderControls.classList.add("d-none");
+      scrollContainer.style.overflow = "hidden";
+    }
+    else if (hasHorizontalScroll == true) {
+      sliderControls.classList.remove("d-none")
+      scrollContainer.style.overflowY = "hidden";
+      scrollContainer.style.overflowX = "scroll";
+    }
+  }
+
+  window.addEventListener('resize', refresh);
+  refresh();
+
+    if (scrollToggle) {
+      buttonNext.onclick = () => {
+        scrollContainer.scrollLeft += 310;
+      };  
+
+      buttonPrev.onclick = () => {
+        scrollContainer.scrollLeft -= 310;
+      }; 
+    }
+  
+  })
+</script>

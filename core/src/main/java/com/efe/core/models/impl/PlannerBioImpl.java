@@ -155,7 +155,7 @@ public class PlannerBioImpl implements PlannerBio {
 	 * Inits the model.
 	 */
 	@PostConstruct
-	public void init() {
+	public void init() { 
 		String[] selectors = request.getRequestPathInfo().getSelectors();
 		if (selectors.length == 3) {
 			officeLocations = new ArrayList<>();

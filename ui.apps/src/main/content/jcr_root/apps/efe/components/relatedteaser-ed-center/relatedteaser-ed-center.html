@@ -8,7 +8,6 @@
      data-sly-use.descriptionTemplate="description.html"
      data-sly-use.tagsImpl="com.efe.core.models.Tags"
      data-sly-test.hasContent="${teaser.imageResource || teaser.pretitle || teaser.title || teaser.description || teaser.actions.size > 0}"
-     id="${teaser.id}"
      class="cmp-teaser${!wcmmode.disabled && teaser.imageResource ? ' cq-dd-image' : ''}"
      data-cmp-data-layer="${teaser.data.json}">
     <div class="cmp-teaser__content">

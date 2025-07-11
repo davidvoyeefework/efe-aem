@@ -46,6 +46,24 @@
                 fieldDescription="HTML ID attribute to apply to the component."
                 fieldLabel="ID"
                 name="./id"/>
+            <placement
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                fieldDescription="Select Placement"
+                fieldLabel="Select Map Placement"
+                name="./placement"
+                required="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <hero
+                        jcr:primaryType="nt:unstructured"
+                        text="Hero"
+                        value="hero"/>
+                    <section
+                        jcr:primaryType="nt:unstructured"
+                        text="Section Block"
+                        value="section-block"/>                                                                                                                                                                                                   
+                </items>
+            </placement>                
         </items>
     </content>
 </jcr:root>

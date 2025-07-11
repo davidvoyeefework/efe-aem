@@ -1,0 +1,17 @@
+.embed { 
+    .cmp-embed {
+        .cmp-embed__youtube {
+            padding: 0 !important;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            iframe.cmp-embed__youtube-iframe {
+                aspect-ratio: 16 / 9;
+                width: 100% !important;
+            }
+        }
+    }
+}

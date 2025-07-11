@@ -2,7 +2,6 @@ section.vanguard-wpi-theme {
     padding: 25px 5px 20px 0;
     background-color: #E5E5E5;
     position: relative;
-    max-width: rem(1120);
 
     .flex {
         margin: 0;
@@ -16,7 +15,6 @@ section.vanguard-wpi-theme {
         }
 
         .copy {
-            max-width: 64ch; 
             margin-top: 5px;
             h2 {
                 font-size: rem(12);
@@ -106,6 +104,94 @@ section.vanguard-wpi-theme {
 
     .mobile-button {
         display: none !important;
+    }
+
+    //Updated Style
+    &.vanguard-wpi-theme--update {
+        background-color: #F5F6F6;
+        padding: 16px 24px;
+        box-shadow: 0px 0px 4px 1px #0405050F;
+        box-shadow: 0px 1px 1px 0px #0405052E;
+
+        .flex {
+            img.wpi-img {
+                width: 100px;
+                height: 100px;
+                display: none;
+            }
+
+            .copy {
+                margin: 0;
+                h2 {
+                    font-size: 23px;
+                    line-height: 32px;
+                    color: #040505;
+                    font-family: 'Mark Pro', sans-serif;
+                    font-weight: 700;
+                    margin: 0 0 4px;
+                }
+                h3 {
+                    font-size: 17px;
+                    line-height: 24px;
+                    color: #040505;
+                    font-family: 'Mark Pro', sans-serif;
+                }
+                p {
+                    font-size: 14px;
+                    line-height: 100%;
+                    color: #040505;
+                    font-family: 'Mark Pro', sans-serif;
+                    margin: 8px 0 0;
+                }
+
+                .cmp-button--button-wpi {
+                    a.cmp-button {
+                        height: rem(32);
+                        @include flexbox(
+                            $align-items: center,
+                            $justify-content: center
+                        );
+                        width: 100%;
+                        background-color: transparent;
+                        border: 2px solid #040505;
+                        min-width: unset;
+                        padding: 0 20px;
+                        margin-top: 16px;
+                        span.cmp-button__text {
+                            font-size: rem(14);
+                            line-height: rem(20);
+                            color: #040505;
+                            font-family: 'Mark Pro', sans-serif;
+                            font-weight: 900;
+                        }
+                    }
+                }
+            }
+        }
+
+        @media screen and (min-width: 576px) {
+            .flex {
+                @include flexbox(
+                    $flex-direction: row,
+                    $gap: 24px,
+                    $align-items: start
+                );
+
+                img.wpi-img {
+                    display: block;
+                }
+
+                .copy {
+                    .cmp-button--button-wpi {
+                        a.cmp-button {
+                            width: fit-content;
+                        }
+                    }
+                }
+            }
+
+
+        }
     }
 
 
