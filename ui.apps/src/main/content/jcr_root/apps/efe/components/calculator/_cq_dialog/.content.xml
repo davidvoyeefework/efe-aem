@@ -43,6 +43,10 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         text="Mortgage Calculator"
                                                         value="https://efe.dinkytown.net/MortgageLoan7.js"/> 
+                                                    <mortgageRefinance
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Mortgage Refinance Calculator"
+                                                        value="https://efe.dinkytown.net/MortgageRefinance.js"/>                                                         
                                                     <seventyTwoT
                                                         jcr:primaryType="nt:unstructured"
                                                         text="72(t) Calculator"
