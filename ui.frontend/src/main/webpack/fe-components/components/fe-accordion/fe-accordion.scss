@@ -13,7 +13,7 @@
 
 .cmp-accordion{
     &__item{
-        &:not(:nth-child(2)){
+        &:not(:first-child){
             & .cmp-accordion__header {
                 & .cmp-accordion__button{
                     margin-top: rem(20px);
@@ -39,6 +39,7 @@
         }
         border: 2px solid #B3B9BE;
         border-radius: rem(3px);
+        margin-bottom:rem(25px);
         &--expanded{
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
