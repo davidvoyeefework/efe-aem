@@ -47,11 +47,11 @@
                                 <source src="${planner.bioVideo}" type="video/mp4">
                                 Your browser does not support the video tag. Here is a  <a target="_blank" href="${planner.bioVideo}">link to the video</a> instead.
                             </video>
-                            <button id="playButton" class="play-button"></button>
+                            <button aria-label="Play Planner Biography Video" id="playButton" class="play-button"><span class="visually-hidden">Play</span></button>
                         </sly>
                     </div>
                     
-                    <h3 class="cmp-efe-plannerbio--aboutus__aboutme--subtitle">${model.aboutMeHeading}</h3>
+                    <h2 class="cmp-efe-plannerbio--aboutus__aboutme--subtitle">${model.aboutMeHeading}</h2>
                     <p>${planner.bio}</p>
                 </div>
                 <div class="cmp-efe-plannerbio--aboutus__block">
