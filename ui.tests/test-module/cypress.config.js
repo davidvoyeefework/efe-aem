@@ -64,11 +64,12 @@ let config = {
             "*.linkedin.com",
             "*.doubleclick.net",
         ],
+        chromeWebSecurity: false,
+        video: false,
     },
     videosFolder: reportsPath + "/videos",
     screenshotsFolder: reportsPath + "/screenshots",
     // screenshotOnRunFailure: false,
-    video: false,
 };
 
 module.exports = defineConfig(config);
