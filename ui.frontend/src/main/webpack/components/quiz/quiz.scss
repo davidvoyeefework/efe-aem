@@ -34,6 +34,10 @@
 
         &.expanded {
             max-height: 700px;
+            &:before {
+                display: none;
+            }
+
         }
         &:before {
             display: block;
@@ -106,13 +110,18 @@
         }
         
         progress::-webkit-progress-bar {
-            background-color: #e0e0e0;
+            background-color: $efe-gray-light;
             height: rem(24);
             border-radius: 12px;
         }        
     }
 
     section.results {
+        img {
+            margin: 24px auto 0 !important;
+            display: block;
+        }
+
         span.answer-headline p{
             font-family: Source Serif Pro;
             font-weight: 400;
@@ -138,5 +147,9 @@
                 display: block;
             }
         }
+    }
+
+    @media screen and (min-width: $lg) {
+        min-width: rem(704);
     }
 }

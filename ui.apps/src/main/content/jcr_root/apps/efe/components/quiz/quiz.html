@@ -8,7 +8,6 @@
         </div>
 
         <div id="question-pane">
-
             <div>
 
                 <sly data-sly-test="${quiz.quizLength == 'ten'}">
@@ -53,85 +52,7 @@
                             <button onclick="staySelected(this)" class="cmp-form-button--answer">${quiz.question10}</button> 
                         </sly>
                     </div>
-                </sly>
-        
-                <sly data-sly-test="${quiz.quizLength == 'nine'}">
-                    <div class="button-container">
-                        <sly data-sly-test.hasContent="${model.question1}">
-                            <button href="#" class="cmp-form-button--answer">${model.question1}</button> 
-                        </sly>
-        
-                        <sly data-sly-test.hasContent="${model.question2}">
-                            <button href="#" class="cmp-form-button--answer">${model.question2}</button> 
-                        </sly>
-        
-                        <sly data-sly-test.hasContent="${model.question3}">
-                            <button href="#" class="cmp-form-button--answer">${model.question3}</button> 
-                        </sly>
-        
-                        <sly data-sly-test.hasContent="${model.question4}">
-                            <button href="#" class="cmp-form-button--answer">${model.question4}</button> 
-                        </sly>
-        
-                        <sly data-sly-test.hasContent="${model.question5}">
-                            <button href="#" class="cmp-form-button--answer">${model.question5}</button> 
-                        </sly>
-        
-                        <sly data-sly-test.hasContent="${model.question6}">
-                            <button href="#" class="cmp-form-button--answer">${model.question6}</button> 
-                        </sly>
-        
-                        <sly data-sly-test.hasContent="${model.question7}">
-                            <button href="#" class="cmp-form-button--answer">${model.question7}</button> 
-                        </sly>
-        
-                        <sly data-sly-test.hasContent="${model.question8}">
-                            <button href="#" class="cmp-form-button--answer">${model.question8}</button> 
-                        </sly>
-        
-                        <sly data-sly-test.hasContent="${model.question9}">
-                            <button href="#" class="cmp-form-button--answer">${model.question9}</button> 
-                        </sly>
-        
-                    </div>
-                </sly>
-        
-                <sly data-sly-test="${quiz.quizLength == 'eight'}">
-                    <div class="button-container">
-                        <sly data-sly-test.hasContent="${model.question1}">
-                            <button href="#" class="cmp-form-button--answer">${model.question1}</button> 
-                        </sly>
-        
-                        <sly data-sly-test.hasContent="${model.question2}">
-                            <button href="#" class="cmp-form-button--answer">${model.question2}</button> 
-                        </sly>
-        
-                        <sly data-sly-test.hasContent="${model.question3}">
-                            <button href="#" class="cmp-form-button--answer">${model.question3}</button> 
-                        </sly>
-        
-                        <sly data-sly-test.hasContent="${model.question4}">
-                            <button href="#" class="cmp-form-button--answer">${model.question4}</button> 
-                        </sly>
-        
-                        <sly data-sly-test.hasContent="${model.question5}">
-                            <button href="#" class="cmp-form-button--answer">${model.question5}</button> 
-                        </sly>
-        
-                        <sly data-sly-test.hasContent="${model.question6}">
-                            <button href="#" class="cmp-form-button--answer">${model.question6}</button> 
-                        </sly>
-        
-                        <sly data-sly-test.hasContent="${model.question7}">
-                            <button href="#" class="cmp-form-button--answer">${model.question7}</button> 
-                        </sly>
-        
-                        <sly data-sly-test.hasContent="${model.question8}">
-                            <button href="#" class="cmp-form-button--answer">${model.question8}</button> 
-                        </sly>
-        
-                    </div>
-                </sly>     
+                </sly>  
                 
                 <div class="button cmp-button--button-primary cmp-button--center cmp-button-- cmp-button--">
                     <button class="cmp-button" onclick="getQuizResults()">
@@ -140,7 +61,6 @@
                 </div>  
             
             </div>
-            
         </div>
 
         <button  class="cmp-button" id="introCta" onclick="revealQuiz()">
@@ -149,16 +69,14 @@
 
         <div id="results-pane" style="display: none;">
 
-
             <div id="progress">
                 <progress id="progressBar" value="0" max="10"></progress>
                 <span id="progress-label"></span>
             </div>
 
-
             <!-- 0 Selections -->
             <section class="results" aria-label="Quiz Results" id="0selections" style="display: none;">
-                <sly data-sly-test="${quiz.icon}">
+                <sly data-sly-test="${quiz.icon}" class="img-container">
                     <img src="${quiz.icon}" alt="" />
                 </sly>
 
@@ -171,7 +89,7 @@
                     </a>
                 </div>
 
-                <a class="body-03-link" href="" onclick="startOver()" id="startOver">Start Over</a>                   
+                <a class="body-03-link" href="" onclick="startOver(event)" id="startOver">Start Over</a>                   
             </section>                
 
             <!-- 1 - 2 Selections -->
@@ -189,7 +107,7 @@
                     </a>
                 </div>
 
-                <a class="body-03-link" href="" onclick="startOver()" id="startOver">Start Over</a>                 
+                <a class="body-03-link" href="" onclick="startOver(event)" id="startOver">Start Over</a>                 
             </section>             
             
             <!-- 3 - 4 Selections -->
@@ -208,7 +126,7 @@
                 </div>
 
 
-                <a class="body-03-link" href="" onclick="startOver()" id="startOver">Start Over</a>                  
+                <a class="body-03-link" href="" onclick="startOver(event)" id="startOver">Start Over</a>                  
             </section>              
 
             <!-- 5 - 6 Selections -->
@@ -227,7 +145,7 @@
                 </div>
 
 
-                <a class="body-03-link" href="" onclick="startOver()" id="startOver">Start Over</a>                
+                <a class="body-03-link" href="" onclick="startOver(event)" id="startOver">Start Over</a>                
             </section>  
             
             <!-- 7 - 8 Selections -->
@@ -244,7 +162,7 @@
                         <span class="cmp-button__text">${quiz.answerCtaText78}</span>
                     </a>
                 </div>
-                <a class="body-03-link" href="" onclick="startOver()" id="startOver">Start Over</a>               
+                <a class="body-03-link" href="" onclick="startOver(event)" id="startOver">Start Over</a>               
             </section>    
             
             <!-- 9 -10 Selections -->
@@ -262,15 +180,10 @@
                     </a>
                 </div>
 
-                <a class="body-03-link" href="" onclick="startOver()" id="startOver">Start Over</a>                  
+                <a class="body-03-link" href="" onclick="startOver(event)" id="startOver">Start Over</a>                  
             </section>            
-         
         </div>
-      
     </div>
-
-
-
 </sly>
 
 <script>
@@ -282,7 +195,6 @@
             el.classList.add("cmp-form-button--selected");
         }
     }
-
     const count = (el) => {
         let buttons = document.querySelectorAll("button.cmp-form-button--selected");
         let count = buttons.length;
@@ -325,7 +237,6 @@
             elem.scrollIntoView({behavior: 'smooth', block: 'start' });
         }        
     }
-
     const reset = () => {
         const elements = document.getElementsByClassName("results");
             for (let i = 0; i < elements.length; i++) {
@@ -340,13 +251,12 @@
         document.getElementById("headline").style.display = "none";
         document.getElementById("subheadline").style.display = "none";
     }
-
-    const startOver = () => {
+    const startOver = (event) => {
+        event.preventDefault();
         document.getElementById("question-pane").style.display = "block";
         document.getElementById("results-pane").style.display = "none";
         reset();
     }
-
     const revealQuiz = () => {
         const questions = document.getElementById("question-pane");
         questions.classList.add("expanded");
