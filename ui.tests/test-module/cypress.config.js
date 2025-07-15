@@ -56,11 +56,20 @@ let config = {
             timestamp: "mediumDate",
             includeSummary: true,
         },
+        blockHosts: [
+            "*.google-analytics.com",
+            "*.google.com",
+            "*.datas3ntinel.com",
+            "*.onetrust.com",
+            "*.linkedin.com",
+            "*.doubleclick.net",
+        ],
+        chromeWebSecurity: false,
+        video: false,
     },
     videosFolder: reportsPath + "/videos",
     screenshotsFolder: reportsPath + "/screenshots",
     // screenshotOnRunFailure: false,
-    video: false,
 };
 
 module.exports = defineConfig(config);
