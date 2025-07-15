@@ -22,6 +22,14 @@
         #KJEInputs {
             margin-top: 80px;
         }
+        #KJEReport {
+            margin-top: 128px;
+            @media screen and (min-width: $sm) {
+                margin-top: 80px;
+            }
+        }
+
+
 
         // popup bubble from question mark
         .KJEGuiDefnPopup {
@@ -125,7 +133,8 @@
             @include body-01;
             font-size: rem(18);
             font-weight: 400;
-            height: rem(40);
+            height: rem(40) !important;
+            background: transparent !important;
         }
 
         // Required star
