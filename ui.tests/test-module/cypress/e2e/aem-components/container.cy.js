@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-describe("Container - AEM Component", () => {
+describe(`Container: AEM Component - ${Cypress.config("baseUrl")}/ui-tests/container/`, () => {
     before(() => {
         cy.visit("/ui-tests/container/");
         cy.preventPageViewRequest(); // Prevent page view request.
@@ -65,7 +65,7 @@ describe("Container - AEM Component", () => {
                 .invoke("css", "background-image")
                 .then((bgImage) => {
                     expect(bgImage).to.include(
-                        "/content/dam/efe/corporate-brand/efe/photography/stock/GettyImages-1370499454_Web.jpg"
+                        "/ui-tests-assets/images/WEB_ED-great-resignation-hero-new.jpg"
                     );
                 });
             cy.wrap($el)

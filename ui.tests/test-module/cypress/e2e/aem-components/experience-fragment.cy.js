@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-describe("Experience Fragment - AEM Component", () => {
+describe(`Experience Fragment: AEM Component - ${Cypress.config("baseUrl")}/ui-tests/experience-fragment/`, () => {
     before(() => {
         cy.visit("/ui-tests/experience-fragment/");
         cy.preventPageViewRequest(); // Prevent page view request.

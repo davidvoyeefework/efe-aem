@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-describe("Social Share - AEM Component", () => {
+describe(`Social Share: AEM Component - ${Cypress.config("baseUrl")}/ui-tests/social-share/`, () => {
     beforeEach(() => {
         cy.visit("/ui-tests/social-share/");
         cy.preventPageViewRequest(); // Prevent page view request.

@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-describe("Button - AEM Component", () => {
+describe(`Button: AEM Component - ${Cypress.config("baseUrl")}/ui-tests/button/`, () => {
     before(() => {
         cy.visit("/ui-tests/button/");
         cy.preventPageViewRequest(); // Prevent page view request.

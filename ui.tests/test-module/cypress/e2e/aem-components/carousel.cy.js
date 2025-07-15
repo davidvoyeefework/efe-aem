@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-describe("Carousel - AEM Component", () => {
+describe(`Carousel: AEM Component - ${Cypress.config("baseUrl")}/ui-tests/carousel/`, () => {
     before(() => {
         cy.visit("/ui-tests/carousel/");
         cy.preventPageViewRequest(); // Prevent page view request.
