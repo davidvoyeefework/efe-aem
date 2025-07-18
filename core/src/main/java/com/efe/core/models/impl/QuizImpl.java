@@ -179,6 +179,9 @@ private String resultsCta;
     @ValueMapValue
     private String answerCtaLink910;     
 
+    @ValueMapValue
+    private String listFromTheme;    
+
 
 
 
@@ -400,6 +403,11 @@ public String getResultsCta() {
     public String getAnswerCtaText910() {
         return answerCtaText910;
     }    
+
+    // Theme
+    public String getTheme() {
+        return listFromTheme;
+    }
 
 }
 
