@@ -7,10 +7,10 @@
             <p id="subheadline">${quiz.introSubheadline}</p>
         </div>
 
-        <div id="question-pane">
+        <div id="question-pane" class="${quiz.listFromTheme}">
             <div>
 
-                <sly data-sly-test="${quiz.quizLength == 'ten'}">
+                <sly>
                     <div class="button-container">
                         <sly data-sly-test.hasContent="${quiz.question1}">
                             <button onclick="staySelected(this)" class="cmp-form-button--answer">${quiz.question1}</button> 

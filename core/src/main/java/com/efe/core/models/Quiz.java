@@ -101,7 +101,9 @@ public interface Quiz {
 
         public String getHeadline910();
 
-        public String getBodyCopy910();         
+        public String getBodyCopy910();    
+        
+        public String getTheme();
 
 
 
