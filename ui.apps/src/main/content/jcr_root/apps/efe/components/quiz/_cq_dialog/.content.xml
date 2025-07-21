@@ -2363,8 +2363,6 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
-
-
                                                 <listFrom
                                                 granite:class="cq-dialog-dropdown-showhide"
                                                 jcr:primaryType="nt:unstructured"
@@ -2375,7 +2373,11 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         cq-dialog-dropdown-showhide-target=".list-option-listfrom-showhide-target"/>
                                                     <items jcr:primaryType="nt:unstructured">
-
+                                                        <white
+                                                                granite:hide="${cqDesign.disableChildren}"
+                                                                jcr:primaryType="nt:unstructured"
+                                                                text="White – *Default"
+                                                                value="white"/>                                                    
                                                         <gray
                                                                 granite:hide="${cqDesign.disableChildren}"
                                                                 jcr:primaryType="nt:unstructured"
@@ -2385,22 +2387,7 @@
                                                                 granite:hide="${cqDesign.disableChildren}"
                                                                 jcr:primaryType="nt:unstructured"
                                                                 text="Gray - Light"
-                                                                value="gray-light"/>    
-                                                        <apricotLight
-                                                                granite:hide="${cqDesign.disableChildren}"
-                                                                jcr:primaryType="nt:unstructured"
-                                                                text="Apricot - Light"
-                                                                value="apricot-light"/>        
-                                                        <blueLight
-                                                                granite:hide="${cqDesign.disableChildren}"
-                                                                jcr:primaryType="nt:unstructured"
-                                                                text="Blue - Light"
-                                                                value="blue-light"/> 
-                                                        <blue
-                                                                granite:hide="${cqDesign.disableChildren}"
-                                                                jcr:primaryType="nt:unstructured"
-                                                                text="Blue"
-                                                                value="blue"/>                                                                   
+                                                                value="gray-light"/>                                                                             
                                                     </items>
                                             </listFrom> 
                      
