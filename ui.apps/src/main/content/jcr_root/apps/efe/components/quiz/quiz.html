@@ -205,36 +205,37 @@
         const countTally = countString + countFraction;
         progressLabel.innerHTML = countTally;
         progressBar.value = count;
+        const outerDiv = document.getElementById("quizEFE");
 
         if (count == 0) {
             const elem = document.getElementById("0selections");
             elem.style.display = "block";
-            elem.scrollIntoView({behavior: 'smooth', block: 'start' });
+            outerDiv.scrollIntoView({behavior: 'smooth', block: 'start' });
         }
         if (count == 1 || count == 2) {
             const elem = document.getElementById("12selections");
             elem.style.display = "block";
-            elem.scrollIntoView({behavior: 'smooth', block: 'start' });
+            outerDiv.scrollIntoView({behavior: 'smooth', block: 'start' });
         }
         if (count == 3 || count == 4) {
             const elem = document.getElementById("34selections");
             elem.style.display = "block";
-            elem.scrollIntoView({behavior: 'smooth', block: 'start' });
+            outerDiv.scrollIntoView({behavior: 'smooth', block: 'start' });
         }
         if (count == 5 || count == 6) {
             const elem = document.getElementById("56selections");
             elem.style.display = "block";
-            elem.scrollIntoView({behavior: 'smooth', block: 'start' });
+            outerDiv.scrollIntoView({behavior: 'smooth', block: 'start' });
         }
         if (count == 7 || count == 8) {
             const elem = document.getElementById("78selections");
             elem.style.display = "block";
-            elem.scrollIntoView({behavior: 'smooth', block: 'start' });
+            outerDiv.scrollIntoView({behavior: 'smooth', block: 'start' });
         }
         if (count == 9 || count == 10) {
             const elem = document.getElementById("910selections");
             elem.style.display = "block";
-            elem.scrollIntoView({behavior: 'smooth', block: 'start' });
+            outerDiv.scrollIntoView({behavior: 'smooth', block: 'start' });
         }        
     }
     const reset = () => {
@@ -250,12 +251,6 @@
         count();
         document.getElementById("headline").style.display = "none";
         document.getElementById("subheadline").style.display = "none";
-        const quizOuterDiv = document.getElementById("quizEFE");
-        quizOuterDiv.scrollIntoView({
-            behavior: 'smooth'
-        });
-
-
     }
     const startOver = (event) => {
         event.preventDefault();
