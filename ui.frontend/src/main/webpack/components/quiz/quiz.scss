@@ -51,6 +51,25 @@
             pointer-events: none;
             transition: opacity 0.5s ease;
         }
+        
+        // Gradient Themes for intro fade
+        &.white {
+            &:before {
+                background: linear-gradient(to bottom, transparent, white);
+            }
+        }
+
+        &.gray {
+            &:before {
+                background: linear-gradient(to bottom, transparent, $efe-gray-mid);
+            }
+        }
+
+        &.gray-light {
+            &:before {
+                background: linear-gradient(to bottom, transparent, $efe-gray-light);
+            }
+        }        
 
         
     }
