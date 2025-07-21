@@ -67,7 +67,7 @@
             <span class="cmp-button__text">${quiz.introCta}</span>
         </button>
 
-        <div id="results-pane" style="display: none;">
+        <div id="results-pane" style="display: none;" class="${quiz.getTheme}">
 
             <div id="progress">
                 <progress id="progressBar" value="0" max="10"></progress>
@@ -250,6 +250,12 @@
         count();
         document.getElementById("headline").style.display = "none";
         document.getElementById("subheadline").style.display = "none";
+        const quizOuterDiv = document.getElementById("quizEFE");
+        quizOuterDiv.scrollIntoView({
+            behavior: 'smooth'
+        });
+
+
     }
     const startOver = (event) => {
         event.preventDefault();
