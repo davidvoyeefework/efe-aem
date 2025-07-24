@@ -41,6 +41,7 @@
         border-radius: rem(3px);
         margin-bottom:rem(25px);
         &--expanded{
+            margin-bottom: 0;
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
         }
@@ -55,6 +56,7 @@
             padding: rem(12px) rem(23px) rem(24px) rem(24px);
         }
         &--expanded{
+            padding-top: 0;
             border-top-left-radius: 0;
             border-top-right-radius: 0;
         }
