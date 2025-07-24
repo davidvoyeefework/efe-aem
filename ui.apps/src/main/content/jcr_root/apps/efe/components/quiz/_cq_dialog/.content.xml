@@ -83,97 +83,81 @@
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/well">
                                                                 <items jcr:primaryType="nt:unstructured">
-                                                                <questionOne
-                                                                        jcr:primaryType="nt:unstructured"
-                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                        fieldLabel="Question 1"                                                                            
-                                                                        required="{Boolean}true"
-                                                                        name="./questionOne"/>      
-                                                                <questionTwo
-                                                                        jcr:primaryType="nt:unstructured"
-                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                        fieldLabel="Question 2"
-                                                                        required="{Boolean}true"                                                                            
-                                                                        name="./questionTwo"/>    
-                                                                <questionThree
-                                                                        jcr:primaryType="nt:unstructured"
-                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                        fieldLabel="Question 3"
-                                                                        required="{Boolean}true"                                                                            
-                                                                        name="./questionThree"/>      
-                                                                <questionFour
-                                                                        jcr:primaryType="nt:unstructured"
-                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                        fieldLabel="Question 4"
-                                                                        required="{Boolean}true"                                                                            
-                                                                        name="./questionFour"/>     
-                                                                <questionFive
-                                                                        jcr:primaryType="nt:unstructured"
-                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                        fieldLabel="Question 5"
-                                                                        required="{Boolean}true"                                                                            
-                                                                        name="./questionFive"/>             
-                                                                <questionSix
-                                                                        jcr:primaryType="nt:unstructured"
-                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                        fieldLabel="Question 6"
-                                                                        required="{Boolean}true"                                                                            
-                                                                        name="./questionSix"/>             
-                                                                <questionSeven
-                                                                        jcr:primaryType="nt:unstructured"
-                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                        fieldLabel="Question 7"
-                                                                        required="{Boolean}true"                                                                            
-                                                                        name="./questionSeven"/>      
-                                                                <questionEight
-                                                                        jcr:primaryType="nt:unstructured"
-                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                        fieldLabel="Question 8"
-                                                                        required="{Boolean}true"                                                                            
-                                                                        name="./questionEight"/>      
-                                                                <questionNine
-                                                                        jcr:primaryType="nt:unstructured"
-                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                        fieldLabel="Question 9"
-                                                                        required="{Boolean}true"                                                                            
-                                                                        name="./questionNine"/>    
-                                                                <questionTen
-                                                                        jcr:primaryType="nt:unstructured"
-                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                        fieldLabel="Question 10"
-                                                                        required="{Boolean}true"                                                                            
-                                                                        name="./questionTen"/>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+                                                                        <questionOne
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                fieldLabel="Question 1"                                                                            
+                                                                                required="{Boolean}true"
+                                                                                name="./questionOne"/>      
+                                                                        <questionTwo
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                fieldLabel="Question 2"
+                                                                                required="{Boolean}true"                                                                            
+                                                                                name="./questionTwo"/>    
+                                                                        <questionThree
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                fieldLabel="Question 3"
+                                                                                required="{Boolean}true"                                                                            
+                                                                                name="./questionThree"/>      
+                                                                        <questionFour
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                fieldLabel="Question 4"
+                                                                                required="{Boolean}true"                                                                            
+                                                                                name="./questionFour"/>     
+                                                                        <questionFive
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                fieldLabel="Question 5"
+                                                                                required="{Boolean}true"                                                                            
+                                                                                name="./questionFive"/>             
+                                                                        <questionSix
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                fieldLabel="Question 6"
+                                                                                required="{Boolean}true"                                                                            
+                                                                                name="./questionSix"/>             
+                                                                        <questionSeven
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                fieldLabel="Question 7"
+                                                                                required="{Boolean}true"                                                                            
+                                                                                name="./questionSeven"/>      
+                                                                        <questionEight
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                fieldLabel="Question 8"
+                                                                                required="{Boolean}true"                                                                            
+                                                                                name="./questionEight"/>      
+                                                                        <questionNine
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                fieldLabel="Question 9"
+                                                                                required="{Boolean}true"                                                                            
+                                                                                name="./questionNine"/>    
+                                                                        <questionTen
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                fieldLabel="Question 10"
+                                                                                required="{Boolean}true"                                                                            
+                                                                                name="./questionTen"/>    
+                                                                        <heading
+                                                                                granite:class="coral-Heading coral-Heading--4"
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                                                                level="{Long}4"
+                                                                                text="Results CTA text"/>     
+                                                                        <resultsTrigger
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                required="{Boolean}true"
+                                                                                fieldLabel="Results CTA text"                                                                              
+                                                                                name="./resultsCta"/>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
                                                                 </items>
                                                         </well>
                                         </items>
-                                        <setResultsCta
-                                        granite:class="foundation-layout-util-vmargin"
-                                        jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="granite/ui/components/coral/foundation/container">
-                                        <granite:data
-                                                jcr:primaryType="nt:unstructured"/>
-                                                <items jcr:primaryType="nt:unstructured">
-                                                <heading
-                                                        granite:class="coral-Heading coral-Heading--4"
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/heading"
-                                                        level="{Long}4"
-                                                        text="Results CTA text"/>
-                                                        <well
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/well">
-                                                                <items jcr:primaryType="nt:unstructured">   
-                                                                <resultsTrigger
-                                                                        jcr:primaryType="nt:unstructured"
-                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                        required="{Boolean}true"
-                                                                        fieldLabel="Results CTA text"                                                                              
-                                                                        name="./resultsCta"/>                                                                         
-                                                                </items>
-
-                                                        </well>
-                                                </items>                                                        
-                                        </setResultsCta>
                                     </column>
                                 </items>
                             </columns>
