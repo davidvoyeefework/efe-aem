@@ -278,21 +278,21 @@
                         "author": {
                             "@type": "Person",
                             "name": authorName,
-                            "url": authorLink
+                            "url": authorLink,
                         },
                         "publisher": {
                             "@type": "Organization",
                             "name": "Edelman Financial Engines",
                             "logo": {
                                 "@type": "ImageObject",
-                                "url": "https://www.edelmanfinancialengines.com/content/dam/efe/corporate-brand/Brand/Logos/EFE-Logos/Primary/_other/logo%20efe%20.svg"
-                            }
+                                "url": "https://www.edelmanfinancialengines.com/content/dam/efe/corporate-brand/Brand/Logos/EFE-Logos/Primary/_other/logo%20efe%20.svg",
+                            },
                         },
                         "datePublished": datePublished,
                         "mainEntityOfPage": {
                             "@type": "WebPage",
-                            "@id": currentUrl
-                        }
+                            "@id": currentUrl,
+                        },
                     };
 
                     jsonldScript.textContent = JSON.stringify(seoObjDetails); 
