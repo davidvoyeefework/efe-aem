@@ -249,11 +249,11 @@
                     });
                 </script>  
                 
-                <script id="article-seo-schema" type='application/ld+json'></script>
-                
                 <!-- SEO Schema Details -->
                 <script>
-                    // Create SEO Script
+
+                    const jsonldScript = document.createElement('script');
+                    jsonldScript.setAttribute('type', 'application/ld+json');
 
                     //Fetch SEO Values
                     const metaTitle = document.querySelector("meta[property='og:title']".getAttribute('content'));
@@ -310,9 +310,9 @@
                         }
                     }
 
-                    const seoJSONData = JSON.stringify(seoObjDetails); 
-                    const seoSchemaLDScript = document.getElementById('article-seo-schema');
-                    seoSchemaLDScript.innerHTML = seoJSONData;
+                    jsonldScript.textContent = JSON.stringify(seoObjDetails); 
+                    const articleDiv = document.getElementById('article-layout');
+                    articleDiv.appendChild(jsonldScript);
 
                 </script>  
 
