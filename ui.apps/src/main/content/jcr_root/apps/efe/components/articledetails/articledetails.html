@@ -310,9 +310,9 @@
                         }
                     }
 
-                    jsonldScript.textContent = JSON.stringify(seoObjDetails); 
-                    const seoSchemaLD = document.getElementById('article-seo-schema');
-                    seoSchemaLD.appendChild(jsonldScript);
+                    const seoJSONData = JSON.stringify(seoObjDetails); 
+                    const seoSchemaLDScript = document.getElementById('article-seo-schema');
+                    seoSchemaLDScript.innerHTML = seoJSONData;
 
                 </script>  
 
