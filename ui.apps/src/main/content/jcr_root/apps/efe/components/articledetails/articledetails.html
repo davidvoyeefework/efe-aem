@@ -252,8 +252,8 @@
                 <!-- SEO Schema Details -->
                 <script>
 
-                    const jsonldScript = document.createElement('script');
-                    jsonldScript.setAttribute('type', 'application/ld+json');
+                    const jsonArticleldScript = document.createElement('script');
+                    jsonArticleldScript.setAttribute('type', 'application/ld+json');
 
                     //Fetch SEO Values
                     const metaTitle = document.querySelector("meta[property='og:title']".getAttribute('content'));
@@ -295,9 +295,9 @@
                         },
                     };
 
-                    jsonldScript.textContent = JSON.stringify(seoObjDetails); 
+                    jsonArticleldScript.textContent = JSON.stringify(seoObjDetails); 
                     const articleDiv = document.getElementById('article-layout');
-                    articleDiv.appendChild(jsonldScript);
+                    articleDiv.appendChild(jsonArticleldScript);
 
                 </script>  
 
