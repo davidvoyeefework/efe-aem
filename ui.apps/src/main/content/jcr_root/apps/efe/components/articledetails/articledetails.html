@@ -251,33 +251,56 @@
                 
                 <!-- SEO Schema Details -->
                 <script type="text/javascript">
+                    // Create SEO Script
 
-                        const details = {
-                            id: "${currentPage.properties['jcr:uuid']  @context='html'}",
-                            name: `${model.articleFragmentPath.title @context="styleComment"}`,
-                            categoryId: '${currentPage.parent.getPath  @context="html"}',
-                            pageUrl: '${currentPage.getPath  @context="html"}',
-                            thumbnail: '${model.articleFragmentPath.heroImage @context="html"}'
-                        };
+                    const jsonldScript = document.createElement('script');
+                    jsonldScript.setAttribute('type', 'application/ld+json');
 
-                        // Name
-                        const name = JSON.parse(JSON.stringify(details.name));     
-                        const nameClean = name.slice(name.search('>') + 1, name.search('</')).replace("<b>", "");
+                    //Fetch SEO Values
+                    const metaTitle = document.querySelector("meta[property='og:title']".getAttribute('content'));
+                    const titleFallback = "${model.articleFragmentPath.title @context='html'}";
 
-                        // Category Id
-                        const categoryID = JSON.parse(JSON.stringify(details.categoryId)).split("/");
-                        const categoryIdClean = (categoryID[categoryID.length - 1]);
+                    if (metaTitle == null) {
+                        metaTitle = titleFallback;
+                    }
 
-                        // Page URL
-                        const pageUrlClean = JSON.parse(JSON.stringify(details.pageUrl)).replace("/content/efe/us/en", "");
-                        
-                        const detailsClean = {
-                            id: "${currentPage.properties['jcr:uuid']  @context='html'}",
-                            name: nameClean,
-                            categoryId: categoryIdClean,
-                            pageUrl: pageUrlClean,
-                            thumbnail: '${model.articleFragmentPath.heroImage @context="html"}'
+                    const metaDescription = document.querySelector("meta[property='og:description']".getAttribute('content'));
+                    const imgHero = "${model.articleFragmentPath.heroImage}";
+                    const authorName = document.querySelector(".cmp-article-details .cmp-text--body-03 .cmp-text span.author-name").innerHTML;
+                    const authorLink = document.querySelector(".cmp-article-details .cmp-text--body-03 .cmp-text a").href;
+                    const datePublished = "${model.articleFragmentPath.datePublished}";
+                    const currentUrl = window.location.href;
+                    
+                    // Create SEO object
+                    const seoObjDetails = {
+                        "@context": "https://schema.org",
+                        "@type": "Article",
+                        "headline": metaTitle,
+                        "description": metaDescription,
+                        "image": imgHero,
+                        "author": {
+                            "@type": "Person",
+                            "name": authorName,
+                            "url": authorLink
+                        },
+                        "publisher": {
+                            "@type": "Organization",
+                            "name": "Edelman Financial Engines",
+                            "logo": {
+                                "@type": "ImageObject",
+                                "url": "https://www.edelmanfinancialengines.com/content/dam/efe/corporate-brand/Brand/Logos/EFE-Logos/Primary/_other/logo%20efe%20.svg"
+                            }
+                        },
+                        "datePublished": datePublished,
+                        "mainEntityOfPage": {
+                            "@type": "WebPage",
+                            "@id": currentUrl
                         }
+                    }
+
+                    jsonldScript.textContent = JSON.stringify(seoObjDetails); 
+                    const articleLayout = document.getElementById('article-layout');
+                    articleLayout.appendChild(jsonldScript);
 
                 </script>  
 
