@@ -257,10 +257,6 @@
 
                     //Fetch SEO Values
                     const metaTitle = document.querySelector("meta[property='og:title']".getAttribute('content'));
-                    const titleFallback = "${model.articleFragmentPath.title @context='html'}";
-                    if (metaTitle == null) {
-                        metaTitle = titleFallback;
-                    }
                     const metaDescription = document.querySelector("meta[property='og:description']".getAttribute('content'));
                     const imgHero = "${model.articleFragmentPath.heroImage @context='html'}";
                     const authorName = document.querySelector(".cmp-article-details .cmp-text--body-03 .cmp-text span.author-name").innerHTML;}
