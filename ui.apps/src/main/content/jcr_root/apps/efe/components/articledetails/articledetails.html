@@ -256,8 +256,15 @@
                     jsonArticleldScript.setAttribute('type', 'application/ld+json');
 
                     //Fetch SEO Values
-                    const metaTitle = document.querySelector("meta[property='og:title']".getAttribute('content'));
-                    const metaDescription = document.querySelector("meta[property='og:description']".getAttribute('content'));
+                    const ogTitleMetaTag = document.querySelector("meta[property='og:title']");
+                    if (ogTitleMetaTag) {
+                        const ogTitleContent = ogTitleMetaTag.getAttribute("content");
+                    }
+                
+                    const ogDescriptionMetaTag = document.querySelector("meta[property='og:description']");
+                    if (ogDescriptionMetaTag) {
+                        const ogDescriptionContent = ogDescriptionMetaTag.getAttribute("content");
+                    }
                     const imgHero = "${model.articleFragmentPath.heroImage @context='html'}";
                     const authorName = document.querySelector(".cmp-article-details .cmp-text--body-03 .cmp-text span.author-name").innerHTML;
                     const authorLink = document.querySelector(".cmp-article-details .cmp-text--body-03 .cmp-text a").href;
@@ -270,8 +277,8 @@
                     const seoObjDetails = {
                         "@context": "https://schema.org",
                         "@type": "Article",
-                        "headline": metaTitle,
-                        "description": metaDescription,
+                        "headline": ogTitleContent,
+                        "description": ogDescriptionContent,
                         "image": imgHero,
                         "author": {
                             "@type": "Person",
