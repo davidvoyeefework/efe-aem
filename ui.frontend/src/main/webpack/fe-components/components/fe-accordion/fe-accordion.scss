@@ -13,7 +13,7 @@
 
 .cmp-accordion{
     &__item{
-        &:not(:nth-child(2)){
+        &:not(:first-child){
             & .cmp-accordion__header {
                 & .cmp-accordion__button{
                     margin-top: rem(20px);
@@ -39,7 +39,9 @@
         }
         border: 2px solid #B3B9BE;
         border-radius: rem(3px);
+        margin-bottom:rem(25px);
         &--expanded{
+            margin-bottom: 0;
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
         }
@@ -53,6 +55,7 @@
             padding: rem(12px) rem(23px) rem(24px) rem(24px);
         }
         &--expanded{
+            padding-top: rem(20px);
             border-top-left-radius: 0;
             border-top-right-radius: 0;
         }
