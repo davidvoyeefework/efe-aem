@@ -256,20 +256,16 @@
                     jsonArticleldScript.setAttribute('type', 'application/ld+json');
 
                     //Fetch SEO Values
-                    const ogTitleMetaTag = document.querySelector("meta[property='og:title']");
-                    if (ogTitleMetaTag) {
-                        const ogTitleContent = ogTitleMetaTag.getAttribute("content");
-                    }
-                
-                    const ogDescriptionMetaTag = document.querySelector("meta[property='og:description']");
-                    if (ogDescriptionMetaTag) {
-                        const ogDescriptionContent = ogDescriptionMetaTag.getAttribute("content");
-                    }
+                    const ogTitleContent = document.querySelector("meta[property='og:title']").content;
+                    const ogDescriptionContent = document.querySelector("meta[property='og:description']").content;
+                    const domain = "https://www.edelmanfinancialengines.com";
                     const imgHero = "${model.articleFragmentPath.heroImage @context='html'}";
+                    const imgHeroFullPath = domain.concat(imgHero);
+                    
                     const authorName = document.querySelector(".cmp-article-details .cmp-text--body-03 .cmp-text span.author-name").innerHTML;
                     const authorLink = document.querySelector(".cmp-article-details .cmp-text--body-03 .cmp-text a").href;
                     const datePublished = "${model.articleFragmentPath.datePublished @context='html'}";
-                    const domain = "https://www.edelmanfinancialengines.com";
+
                     const currentPath = '${currentPage.getPath @context="html"}';
                     const currentUrl = domain.concat(currentPath);
                     
@@ -279,7 +275,7 @@
                         "@type": "Article",
                         "headline": ogTitleContent,
                         "description": ogDescriptionContent,
-                        "image": imgHero,
+                        "image": imgHeroFullPath,
                         "author": {
                             "@type": "Person",
                             "name": authorName,
