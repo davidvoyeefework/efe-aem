@@ -103,16 +103,22 @@ export default class FeHeader {
     });
     var sponsorLogo = document.querySelector(".sponsor-logo .cmp-image");
     if (sponsorLogo && data.context.isFeChannel && data.context.sponsorId) {
-      var logoFileName = data.context.sponsorId;
-      var logoPath = this.attributeParameterElem?.getAttribute(
+      var sponsorId = data.context.sponsorId;
+      var firstLetter = sponsorId.Id.charAt(0).toLowerCase();
+      var logo = `/content/dam/efe/employer/logos/${firstLetter}/${sponsorId}.ai`;
+      console.log("Updated Employer Logo Path :",logo);
+      /* var logoFileName = data.context.sponsorId;
+     // var logoPath = this.attributeParameterElem?.getAttribute(
         "data-sponsor-logo-path",
       );
-      var logo = logoPath.replace("{sponsorid}", logoFileName);
+      var logo = logoPath.replace("{sponsorid}", logoFileName); */
+
       var sponsorLogoEl =
         `<img src="` +
         logo +
         `" loading="lazy" class="cmp-image__image" itemprop="contentUrl" alt=" " title="Logo">`;
-      sponsorLogo.insertAdjacentHTML("beforeend", sponsorLogoEl);
+      sponsorLogo.insertAdjacentHTML("beforeend", sponsorLogoEl); 
+      
     }
     document.dispatchEvent(
       new CustomEvent("displayHeaderReplaced", { bubbles: true }),
