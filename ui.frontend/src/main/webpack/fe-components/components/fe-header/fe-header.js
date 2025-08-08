@@ -105,7 +105,7 @@ export default class FeHeader {
     if (sponsorLogo && data.context.isFeChannel && data.context.sponsorId) {
       var sponsorId = data.context.sponsorId;
       var firstLetter = sponsorId.charAt(0);
-      var logo = `/content/dam/efe/employer/logos/${firstLetter}/${sponsorId}.ai`;
+      var logo = `https://s7d9.scene7.com/is/image/financialengines/${sponsorId}?wid=200&hei=75&fit=constrain&fmt=png-alpha`;
       console.log("Updated Employer Logo Path :",logo);
       /* var logoFileName = data.context.sponsorId;
      // var logoPath = this.attributeParameterElem?.getAttribute(
