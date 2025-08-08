@@ -101,7 +101,7 @@ export default class FeHeader {
     var sponsorLogo = document.querySelector(".sponsor-logo .cmp-image");
     if (sponsorLogo && data.context.isFeChannel && data.context.sponsorId) {
       var sponsorId = data.context.sponsorId;
-      var firstLetter = sponsorId.charAt(0).toLowerCase();
+      var firstLetter = sponsorId.charAt(0);
       var logo = `/content/dam/efe/employer/logos/${firstLetter}/${sponsorId}.ai`;
       console.log("Updated Employer Logo Path :",logo);
       /* var logoFileName = data.context.sponsorId;
