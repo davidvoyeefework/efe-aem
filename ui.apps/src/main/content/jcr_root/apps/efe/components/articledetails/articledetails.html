@@ -252,6 +252,62 @@
                 <!-- SEO Schema Details -->
                 <script>
 
+                    let authorObjects = [];
+
+                    const buildAuthorObject = (item, url) => {
+
+                        let authorName = item.innerHTML;
+                        let authorNameFormatted = authorName.trim();
+                        authorNameFormatted = authorNameFormatted.replace(/<[^>]*>/g, '');
+                        authorNameFormatted = authorNameFormatted.trim();
+
+                        var authorObject = 
+                            {
+                                "@type": "Person",
+                                "name": authorNameFormatted,
+                                "url": url,
+                            }
+
+                        authorObjects.push(authorObject);
+                    }  
+
+                    const authorNum = document.querySelectorAll(".cmp-article-details .cmp-text--body-03 .cmp-text a").length;
+
+                    if (authorNum == 2) {
+                        let authorNodeList = document.querySelectorAll(".cmp-article-details .cmp-text--body-03 .cmp-text a");
+
+                        // Author 1
+                            let authorOneLink = authorNodeList[0];
+                            let url = authorOneLink.href;
+                            url = url.slice(0, -1);
+                            url = url.concat(".html");
+
+                            buildAuthorObject(authorOneLink, url)
+
+                            // Author 2
+                            let authorTwoLink = authorNodeList[1];
+                            let url2 = authorTwoLink.href;
+                            url2 = url2.slice(0, -1);
+                            url2 = url2.concat(".html");
+
+                            buildAuthorObject(authorTwoLink, url2);
+                    }
+                    else if (authorNum == 1) {
+                        let authorNodeList = document.querySelectorAll(".cmp-article-details .cmp-text--body-03 .cmp-text a");
+
+                        // Author 1
+                            let authorOneLink = authorNodeList[0];
+                            let url = authorOneLink.href;
+                            url = url.slice(0, -1);
+                            url = url.concat(".html");
+
+                            buildAuthorObject(authorOneLink, url)                        
+
+                    }
+                    else {
+                        authorObjects = "";
+                    }
+
                     const jsonArticleldScript = document.createElement('script');
                     jsonArticleldScript.setAttribute('type', 'application/ld+json');
 
@@ -261,9 +317,6 @@
                     const domain = "https://www.edelmanfinancialengines.com";
                     const imgHero = "${model.articleFragmentPath.heroImage @context='html'}";
                     const imgHeroFullPath = domain.concat(imgHero);
-                    
-                    const authorName = document.querySelector(".cmp-article-details .cmp-text--body-03 .cmp-text span.author-name").innerHTML;
-                    const authorLink = document.querySelector(".cmp-article-details .cmp-text--body-03 .cmp-text a").href;
                     const datePublished = "${model.articleFragmentPath.datePublished @context='html'}";
 
                     const currentPath = '${currentPage.getPath @context="html"}';
@@ -276,11 +329,7 @@
                         "headline": ogTitleContent,
                         "description": ogDescriptionContent,
                         "image": imgHeroFullPath,
-                        "author": {
-                            "@type": "Person",
-                            "name": authorName,
-                            "url": authorLink,
-                        },
+                        "author": authorObjects,
                         "publisher": {
                             "@type": "Organization",
                             "name": "Edelman Financial Engines",
