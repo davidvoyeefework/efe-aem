@@ -313,23 +313,17 @@
 
                     //Fetch SEO Values
                     const ogTitle = document.querySelector("meta[property='og:title']");
-
+                    const ogDescription = document.querySelector("meta[property='og:description']");
+                    let ogTitleContent = "";
+                    let ogDescriptionContent = "";
+                    
                     if (ogTitle) {
                         let ogTitleContent = ogTitle.content;
                     }
-                    else if (!ogTitle) {
-                        let ogTitleContent = "";
-                    }
-
-                    const ogDescription = document.querySelector("meta[property='og:description']");
 
                     if (ogDescription) {
                         let ogDescriptionContent = ogDescription.content;
-                    }
-
-                    else if (!ogDescription) {
-                        let ogDescriptionContent = "";
-                    }                  
+                    }                 
 
                     const domain = "https://www.edelmanfinancialengines.com";
                     let imgHero = "${model.articleFragmentPath.heroImage @context='html'}";
