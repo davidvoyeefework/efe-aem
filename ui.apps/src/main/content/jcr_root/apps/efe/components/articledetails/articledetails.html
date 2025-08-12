@@ -312,16 +312,24 @@
                     jsonArticleldScript.setAttribute('type', 'application/ld+json');
 
                     //Fetch SEO Values
-                    let ogTitleContent = document.querySelector("meta[property='og:title']").content;
-                    let ogDescriptionContent = document.querySelector("meta[property='og:description']").content;                    
+                    const ogTitle = document.querySelector("meta[property='og:title']");
 
-                    if (ogTitleContent == null) {
-                        ogTitleContent = "";
+                    if (ogTitle) {
+                        let ogTitleContent = ogTitle.content;
+                    }
+                    else if (!ogTitle) {
+                        let ogTitleContent = "";
                     }
 
-                    if (ogDescriptionContent == null) {
-                        ogDescriptionContent = "";
-                    }                    
+                    const ogDescription = document.querySelector("meta[property='og:description']");
+
+                    if (ogDescription) {
+                        let ogDescriptionContent = ogDescription.content;
+                    }
+
+                    else if (!ogDescription) {
+                        let ogDescriptionContent = "";
+                    }                  
 
                     const domain = "https://www.edelmanfinancialengines.com";
                     let imgHero = "${model.articleFragmentPath.heroImage @context='html'}";
