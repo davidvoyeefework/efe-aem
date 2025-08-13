@@ -247,37 +247,121 @@
 
 
                     });
-                </script>    
+                </script>  
                 
                 <!-- SEO Schema Details -->
-                <script type="text/javascript">
+                <script>
 
-                        const details = {
-                            id: "${currentPage.properties['jcr:uuid']  @context='html'}",
-                            name: `${model.articleFragmentPath.title @context="styleComment"}`,
-                            categoryId: '${currentPage.parent.getPath  @context="html"}',
-                            pageUrl: '${currentPage.getPath  @context="html"}',
-                            thumbnail: '${model.articleFragmentPath.heroImage @context="html"}'
-                        };
+                    let authorObjects = [];
 
-                        // Name
-                        const name = JSON.parse(JSON.stringify(details.name));     
-                        const nameClean = name.slice(name.search('>') + 1, name.search('</')).replace("<b>", "");
+                    const buildAuthorObject = (item, url) => {
 
-                        // Category Id
-                        const categoryID = JSON.parse(JSON.stringify(details.categoryId)).split("/");
-                        const categoryIdClean = (categoryID[categoryID.length - 1]);
+                        let authorName = item.innerHTML;
+                        let authorNameFormatted = authorName.trim();
+                        authorNameFormatted = authorNameFormatted.replace(/<[^>]*>/g, '');
+                        authorNameFormatted = authorNameFormatted.trim();
 
-                        // Page URL
-                        const pageUrlClean = JSON.parse(JSON.stringify(details.pageUrl)).replace("/content/efe/us/en", "");
-                        
-                        const detailsClean = {
-                            id: "${currentPage.properties['jcr:uuid']  @context='html'}",
-                            name: nameClean,
-                            categoryId: categoryIdClean,
-                            pageUrl: pageUrlClean,
-                            thumbnail: '${model.articleFragmentPath.heroImage @context="html"}'
-                        }
+                        var authorObject = 
+                            {
+                                "@type": "Person",
+                                "name": authorNameFormatted,
+                                "url": url,
+                            }
+
+                        authorObjects.push(authorObject);
+                    }  
+
+                    const authorNum = document.querySelectorAll(".cmp-article-details .cmp-text--body-03 .cmp-text a").length;
+
+                    if (authorNum == 2) {
+                        let authorNodeList = document.querySelectorAll(".cmp-article-details .cmp-text--body-03 .cmp-text a");
+
+                        // Author 1
+                            let authorOneLink = authorNodeList[0];
+                            let url = authorOneLink.href;
+                            url = url.slice(0, -1);
+                            url = url.concat(".html");
+
+                            buildAuthorObject(authorOneLink, url)
+
+                            // Author 2
+                            let authorTwoLink = authorNodeList[1];
+                            let url2 = authorTwoLink.href;
+                            url2 = url2.slice(0, -1);
+                            url2 = url2.concat(".html");
+
+                            buildAuthorObject(authorTwoLink, url2);
+                    }
+                    else if (authorNum == 1) {
+                        let authorNodeList = document.querySelectorAll(".cmp-article-details .cmp-text--body-03 .cmp-text a");
+
+                        // Author 1
+                            let authorOneLink = authorNodeList[0];
+                            let url = authorOneLink.href;
+                            url = url.slice(0, -1);
+                            url = url.concat(".html");
+
+                            buildAuthorObject(authorOneLink, url)                        
+
+                    }
+                    else {
+                        authorObjects = "";
+                    }
+
+                    const jsonArticleldScript = document.createElement('script');
+                    jsonArticleldScript.setAttribute('type', 'application/ld+json');
+
+                    //Fetch SEO Values
+                    const ogTitle = document.querySelector("meta[property='og:title']");
+                    const ogDescription = document.querySelector("meta[property='og:description']");
+                    let ogTitleContent = "";
+                    let ogDescriptionContent = "";
+                    
+                    if (ogTitle) {
+                        ogTitleContent = ogTitle.content;
+                    }
+
+                    if (ogDescription) {
+                        ogDescriptionContent = ogDescription.content;
+                    }                 
+
+                    const domain = "https://www.edelmanfinancialengines.com";
+                    let imgHero = "${model.articleFragmentPath.heroImage @context='html'}";
+                    if (imgHero == null) {
+                        imgHero = "";
+                    }
+                    const imgHeroFullPath = domain.concat(imgHero);
+                    const datePublished = "${model.articleFragmentPath.datePublished @context='html'}";
+
+                    const currentPath = '${currentPage.getPath @context="html"}';
+                    const currentUrl = domain.concat(currentPath);
+                    
+                    // Create SEO object
+                    const seoObjDetails = {
+                        "@context": "https://schema.org",
+                        "@type": "Article",
+                        "headline": ogTitleContent,
+                        "description": ogDescriptionContent,
+                        "image": imgHeroFullPath,
+                        "author": authorObjects,
+                        "publisher": {
+                            "@type": "Organization",
+                            "name": "Edelman Financial Engines",
+                            "logo": {
+                                "@type": "ImageObject",
+                                "url": "https://www.edelmanfinancialengines.com/content/dam/efe/corporate-brand/Brand/Logos/EFE-Logos/Primary/_other/logo%20efe%20.svg",
+                            },
+                        },
+                        "datePublished": datePublished,
+                        "mainEntityOfPage": {
+                            "@type": "WebPage",
+                            "@id": currentUrl,
+                        },
+                    };
+
+                    jsonArticleldScript.textContent = JSON.stringify(seoObjDetails); 
+                    const articleDiv = document.getElementById('article-layout');
+                    articleDiv.appendChild(jsonArticleldScript);
 
                 </script>  
 
@@ -314,7 +398,6 @@
                         }
                     })
                 </script>
-
                 <!-- Sidebar sticky behavior and moving up nodes on mobile -->
                 <script>
                     document.addEventListener("DOMContentLoaded", (event) => {
