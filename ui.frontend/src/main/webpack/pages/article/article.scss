@@ -277,10 +277,12 @@
                 font-weight: 700;
                 margin-bottom: 18px;
             }
+
             .cmp-article-details__authors-by {
                 margin: 0 !important;
                 text-align: left;
             }
+
             .cmp-text--body-03 {
                 a p.author-name {
                     @include body-02;
@@ -289,7 +291,7 @@
 
                  > p.author-name {
                     @include body-03;
-                    color: $efe-gray-new;
+                    color: $efe-gray-deep-charcoal;
                     margin-bottom: 18px;
                 }
             }
