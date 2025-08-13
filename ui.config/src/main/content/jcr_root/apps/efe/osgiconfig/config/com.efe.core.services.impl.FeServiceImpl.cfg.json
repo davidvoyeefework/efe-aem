@@ -6,7 +6,7 @@
   "dynamicVariableList": [
     "$[env:sponsor_details;default=/etc/acs-commons/lists/fe/sponsor-details|true]"
   ],
-  "sponsorLogoPath": "$[env:sponsor_logo_path;default=/content/dam/efe/employer/logos/web/{sponsorid}_ub.png]",
+  "sponsorLogoPath": "$[env:sponsor_logo_path;default=https://s7d9.scene7.com/is/image/financialengines/${sponsorId}?wid=200&hei=75&fit=constrain&fmt=png-alpha]",
   "apiDomain": "$[env:FE_API_DOMAIN;default=https://www.feitest.com/]",
   "feGtmEnabled": "$[env:ENABLE_FE_GA;default=false]",
   "feGtmTagId" : "$[env:FE_GA_TAG_VALUE;default=GTM-P57D3K]"
