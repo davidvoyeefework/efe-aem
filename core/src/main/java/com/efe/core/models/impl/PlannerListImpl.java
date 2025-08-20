@@ -269,7 +269,7 @@ public class PlannerListImpl implements PlannerList {
 					String goodPlannerPath = badPlannerPath.substring(0, lastIndexofSlash1 + 1);
 					for (String officeFolderLocation : officeLocationsEncodedSubstring) {
 						String pathBuilder = goodPlannerPath + "officeslocations/" + officeFolderLocation + "/jcr:content/data/master";		
-						String cityProperty = ResourceUtil.getProperty(resourceResolver, pathBuilder, "city" );
+						String cityProperty = ResourceUtil.getProperty(resourceResolver, pathBuilder, "id" );
 						officeLocationsDecoded.add(cityProperty);
 					}
 				}
@@ -277,9 +277,10 @@ public class PlannerListImpl implements PlannerList {
 				// Clean the list, sort and remove duplicates and array brackets
 				Collections.sort(officeLocationsDecoded);
 				List<String> officeLocationsDecodedDuplicatesRemoved = removeDuplicates(officeLocationsDecoded);
-				String stringToRemove = "Phoenix";
+				String stringToRemove = "143"; // 143 is reference to national planner center in AZ.
 				officeLocationsDecodedDuplicatesRemoved.remove(stringToRemove);
-				plannerObj.setOfficeLocations(officeLocationsDecodedDuplicatesRemoved.toString().replace("[", "").replace("]", ""));
+				List<String> externalOfficeNames = officeIDtoExternalName(officeLocationsDecodedDuplicatesRemoved);
+				plannerObj.setOfficeLocations(externalOfficeNames.toString().replace("[", "").replace("]", ""));
 
 				if(StringUtils.isNotEmpty(firstNameAlias)) {
 					plannerObj.setFirstName(firstNameAlias);
@@ -299,6 +300,31 @@ public class PlannerListImpl implements PlannerList {
 		
 			plannerDetails.add(plannerObj);
 		}
+	}
+
+
+	private List<String> officeIDtoExternalName(List<String> officeIDlist) {
+
+		List<String> externalOfficeNames = new ArrayList<>();
+		for (String item: officeIDlist) {
+			switch(item) {
+				case "129":
+					externalOfficeNames.add("Atlanta");
+					break;
+				case "72":
+					externalOfficeNames.add("Duluth");
+					break;
+				case "84":
+					externalOfficeNames.add("Vinings");
+					break;		
+				case "94":
+					externalOfficeNames.add("Alpharetta");
+					break;													
+			}
+		}
+		Collections.sort(externalOfficeNames);
+		return externalOfficeNames;
+
 	}
 
 	/**
