@@ -1,0 +1,96 @@
+<section 
+    data-sly-use.model="com.efe.core.models.PlannerBio"
+    data-sly-use.template="core/wcm/components/commons/v1/templates.html"
+    data-sly-set.planner="${model.plannerResponse}"
+    data-sly-test.isNotEmpty="${planner.firstName}"
+    aria-label="planner-bio" class="cmp-efe-plannerbio">
+
+    <div id ="planner-bio-referral" class="">
+        <h2 class="">Get to know ${planner.firstName}</sly></h2>        
+        <div class="flex">
+
+            <div class="get-to-know-section">
+
+                <div class="img-container">
+                    <img src="${planner.desktopImageUrl}" alt="${planner.firstName} ${planner.lastName}" class="">
+                </div>
+
+                <div class="content-container">
+
+                    <h3 id="planner-name">${planner.firstName}
+                        <sly data-sly-test="${planner.lastName}">${planner.lastName}</sly>
+                    </h3>
+
+                    <p id="body-copy" data-sly-test="${planner.bio}">${planner.bio}</p>   
+
+                    <div data-sly-test="${!planner.education.empty}" class="block">
+                        <h4 class="">${model.educationHeading}</h3>
+                        <p data-sly-repeat="${planner.education}" class="education-item">${item.degree}<span data-sly-test="${!item.major.empty}">, </span>${item.major} - <span class="university">${item.university}</span></p>                      
+                    </div>                
+
+                    <div data-sly-test="${!planner.certifications.empty}" class="block">
+                        <h4 class="">${model.certificationHeading}</h3>
+                        <p data-sly-repeat="${planner.certifications}">${item.name}</p>
+                    </div>
+
+                    <div data-sly-test="${!(model.officeLocations.size == 1 && model.officeLocations[0].city == 'Phoenix')}" class="block">
+                        <h4 class="">Locations</h3>
+                        <p>                    
+                            <span class="heading-location-details" data-sly-test="${model.officeLocations}">
+                                <span data-sly-list.item="${model.officeLocations}">
+                                    <span class="location-item">
+                                        <span data-sly-test="${item.city != 'Phoenix'}">
+                                            <span data-sly-test="${item.city}">${item.externalName},</span>
+                                            <span data-sly-test="${item.state}">${item.state}</span>
+                                        <span>
+                                    </span>
+                                </span>
+                            </span>
+                        </p>
+                    </div>    
+
+                </div>
+            </div>
+
+            <div class="video-container">
+                <sly data-sly-test="${planner.bioVideo}">
+                    <video id="planner-video" controls width="320" height="240" controls>
+                        <source src="${planner.bioVideo}" type="video/mp4">
+                        Your browser does not support the video tag. Here is a  <a target="_blank" href="${planner.bioVideo}">link to the video</a> instead.
+                    </video>
+                    <button aria-label="Play Planner Biography Video" id="playButton" class="play-button"><span class="visually-hidden">Play</span></button>
+                </sly>
+            </div>            
+
+
+
+        </div>
+    </div>
+
+
+
+    <script data-sly-test="${model.jsonLd}" type="application/ld+json">
+        ${model.jsonLd @context ='unsafe'}
+    </script>
+</section>
+<sly data-sly-call="${template.placeholder @ isEmpty=!isNotEmpty, classAppend='cmp-plannerbio'}"></sly>
+
+
+
+<script>
+    const video = document.getElementById("planner-video");
+    const playButton = document.getElementById("playButton");
+
+    if (video != null) {
+        playButton.addEventListener("click", function() {
+            if (video.paused) {
+                video.play();
+                playButton.style.display = "none";
+            } else {
+                video.pause();
+            }
+        });
+    }
+
+
+</script>
