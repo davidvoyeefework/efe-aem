@@ -5,48 +5,51 @@
     data-sly-test.isNotEmpty="${planner.firstName}"
     aria-label="planner-bio" class="cmp-efe-plannerbio">
 
-    <div class="cmp-efe--full-width secondary">
-        <div class="cmp-efe-plannerbio--container">
+    <div id ="planner-bio-referral" class="">
+        <h2 class="">Get to know ${planner.firstName}</sly></h2>        
+        <div class="flex">
 
-            <div class="cmp-efe-plannerbio--container__get-to-know-section">
-                <h2 class="cmp-efe-plannerbio--container__hero-text--first">Get to know ${planner.firstName}</sly></h2>
-                <div class="cmp-efe-plannerbio--container__hero-img">
-                    <img src="${planner.desktopImageUrl}" alt="${planner.firstName} ${planner.lastName}" class="cmp-efe-plannerbio--container__hero-img--main">
-                </div>
-                <h3>${planner.firstName}
-                    <sly data-sly-test="${planner.lastName}">${planner.lastName}</sly>
-                </h3>
+            <div class="get-to-know-section">
 
-                <p data-sly-test="${planner.bio}">${planner.bio}</p>
-
-                <div data-sly-test="${!planner.education.empty}" class="cmp-efe-plannerbio--aboutus__education">
-                    <h3 class="cmp-efe-plannerbio--aboutus__education--subtitle">${model.educationHeading}</h3>
-                    <p data-sly-repeat="${planner.education}">${item.degree}<span data-sly-test="${!item.major.empty}">, </span>${item.major} - <span class="university">${item.university}</span></p>                      
-                </div>                
-
-                <div data-sly-test="${!planner.certifications.empty}" class="cmp-efe-plannerbio--aboutus__certification">
-                    <h3 class="cmp-efe-plannerbio--aboutus__certification--subtitle">${model.certificationHeading}</h3>
-                    <p data-sly-repeat="${planner.certifications}">${item.name}</p>
+                <div class="img-container">
+                    <img src="${planner.desktopImageUrl}" alt="${planner.firstName} ${planner.lastName}" class="">
                 </div>
 
-                <div data-sly-test="${!(model.officeLocations.size == 1 && model.officeLocations[0].city == 'Phoenix')}" class="cmp-efe-plannerbio--aboutus__locations locations">
-                    <h3 class="cmp-efe-plannerbio--aboutus__education--subtitle">Locations</h3>
-                    <p>                    
-                        <span class="heading-location-details" data-sly-test="${model.officeLocations}">
-                            <span data-sly-list.item="${model.officeLocations}">
-                                <span class="location-item">
-                                    <span data-sly-test="${item.city != 'Phoenix'}">
-                                        <span data-sly-test="${item.city}">${item.city},</span>
-                                        <span data-sly-test="${item.state}">${item.state}</span>
-                                    <span>
+                <div class="content-container">
+
+                    <h3 id="planner-name">${planner.firstName}
+                        <sly data-sly-test="${planner.lastName}">${planner.lastName}</sly>
+                    </h3>
+
+                    <p id="body-copy" data-sly-test="${planner.bio}">${planner.bio}</p>   
+
+                    <div data-sly-test="${!planner.education.empty}" class="block">
+                        <h4 class="">${model.educationHeading}</h3>
+                        <p data-sly-repeat="${planner.education}" class="education-item">${item.degree}<span data-sly-test="${!item.major.empty}">, </span>${item.major} - <span class="university">${item.university}</span></p>                      
+                    </div>                
+
+                    <div data-sly-test="${!planner.certifications.empty}" class="block">
+                        <h4 class="">${model.certificationHeading}</h3>
+                        <p data-sly-repeat="${planner.certifications}">${item.name}</p>
+                    </div>
+
+                    <div data-sly-test="${!(model.officeLocations.size == 1 && model.officeLocations[0].city == 'Phoenix')}" class="block">
+                        <h4 class="">Locations</h3>
+                        <p>                    
+                            <span class="heading-location-details" data-sly-test="${model.officeLocations}">
+                                <span data-sly-list.item="${model.officeLocations}">
+                                    <span class="location-item">
+                                        <span data-sly-test="${item.city != 'Phoenix'}">
+                                            <span data-sly-test="${item.city}">${item.externalName},</span>
+                                            <span data-sly-test="${item.state}">${item.state}</span>
+                                        <span>
+                                    </span>
                                 </span>
                             </span>
-                        </span>
-                    </p>
-                </div>                
+                        </p>
+                    </div>    
 
-
-
+                </div>
             </div>
 
             <div class="video-container">
@@ -57,7 +60,9 @@
                     </video>
                     <button aria-label="Play Planner Biography Video" id="playButton" class="play-button"><span class="visually-hidden">Play</span></button>
                 </sly>
-            </div>
+            </div>            
+
+
 
         </div>
     </div>
