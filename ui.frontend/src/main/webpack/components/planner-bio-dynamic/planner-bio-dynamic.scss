@@ -51,6 +51,16 @@
                 .education-item {
                     margin-bottom: 12px;
                 }
+
+                span.location-item {
+                    &:after {
+                        display: block;
+                        content: "";
+                        height: 16px;
+                        width: 2px;
+                        background-color: $efe-gray-primary;
+                    }
+                }
             }     
 
         };
@@ -59,6 +69,7 @@
         .video-container {
             position: relative;
             width: fit-content;
+            margin-top: 26px;
 
             #planner-video {
                 width: 100%;
@@ -83,6 +94,7 @@
 
 
             @media screen and (max-width: 1250px) {
+                margin-top: 36px;
                 .play-button {
                     width: 75px;
                     height: 75px;
