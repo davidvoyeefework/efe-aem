@@ -60,6 +60,11 @@
                         width: 2px;
                         background-color: $efe-gray-primary;
                     }
+                    &:last-of-type {
+                        &:after {
+                            display: none;
+                        }
+                    }
                 }
             }     
 
