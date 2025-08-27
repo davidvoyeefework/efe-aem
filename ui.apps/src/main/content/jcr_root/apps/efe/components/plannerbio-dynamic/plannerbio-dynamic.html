@@ -24,12 +24,12 @@
                     <p id="body-copy" data-sly-test="${planner.bio}">${planner.bio}</p>   
 
                     <div data-sly-test="${!planner.education.empty}" class="block">
-                        <h4 class="">${model.educationHeading}</h3>
+                        <h4 class="">Education</h3>
                         <p data-sly-repeat="${planner.education}" class="education-item">${item.degree}<span data-sly-test="${!item.major.empty}">, </span>${item.major} - <span class="university">${item.university}</span></p>                      
                     </div>                
 
                     <div data-sly-test="${!planner.certifications.empty}" class="block">
-                        <h4 class="">${model.certificationHeading}</h3>
+                        <h4 class="">Certifications</h3>
                         <p data-sly-repeat="${planner.certifications}">${item.name}</p>
                     </div>
 
@@ -64,6 +64,72 @@
         </div>
     </div>
 
+    <script>    
+
+    const plannerName = '${planner.firstName @context="scriptString"}';
+    const plannerId = '${planner.id @context="scriptString"}';
+
+    // Tokens to replace
+    const plannerNameToken = '{planner.firstName}';
+    const plannerIdToken = '{planner.id}';
+
+    // Token Id Names
+    const plannerNameClass = 'plannerName';
+    const plannerIdClass = 'plannerId';
+
+
+        const findElementsByTextContent = (token, className) => {
+            const allElements = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6');
+            const matchingElements = [];
+
+            allElements.forEach(element => {
+                if (element.textContent.includes(token)) {
+                    element.classList.add(className);
+                    matchingElements.push(element);
+                }
+            });
+
+            return matchingElements;
+        }
+
+        const replaceElementText = (className, newText, token) => {
+
+              const elements = document.querySelectorAll("."+className);
+              elements.forEach( element =>  {
+                let currentText = element.innerText;
+                let updatedText = currentText.replace(token, newText);
+                if (element) {
+                    element.textContent = updatedText;
+                } else {
+                    console.error(`Element with ID '${elementId}' not found.`);
+                }                
+              });
+ 
+
+
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            
+            const plannerNameTokens = findElementsByTextContent(plannerNameToken, plannerNameClass);
+
+            const plannerIdTokens = findElementsByTextContent(plannerIdToken, plannerIdClass);
+
+            plannerNameTokens.forEach( function(item){
+                replaceElementText( plannerNameClass, plannerName, plannerNameToken);
+            });
+
+
+            plannerIdTokens.forEach( function(item){
+                replaceElementText(plannerIdClass, plannerId, plannerIdToken);
+            });
+
+        });
+
+
+
+
+    </script>
 
 
     <script data-sly-test="${model.jsonLd}" type="application/ld+json">
@@ -91,3 +157,4 @@
 
 
 </script>
+
