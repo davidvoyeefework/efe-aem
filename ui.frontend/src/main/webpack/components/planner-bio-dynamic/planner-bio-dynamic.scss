@@ -54,13 +54,16 @@
 
                 span.location-item {
                     &:after {
-                        display: block;
+                        display: inline-block;
                         content: "";
                         height: 16px;
-                        width: 2px;
+                        width: 1px;
                         background-color: $efe-gray-primary;
+                        position: relative;
+                        top: 2px;
+                        margin: 0 5px;
                     }
-                    &:last-of-type {
+                    &:last-of-type, &:first-of-type {
                         &:after {
                             display: none;
                         }
