@@ -65,7 +65,6 @@
     </div>
 
     <script>    
-
     const plannerName = '${planner.firstName @context="scriptString"}';
     const plannerId = '${planner.id @context="scriptString"}';
 
@@ -77,15 +76,19 @@
     const plannerNameClass = 'plannerName';
     const plannerIdClass = 'plannerId';
 
-
         const findElementsByTextContent = (token, className) => {
-            const allElements = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6');
+            const allElements = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6, input[type="hidden"]');
             const matchingElements = [];
 
             allElements.forEach(element => {
-                if (element.textContent.includes(token)) {
+                if (element.textContent.toLowerCase().includes(token.toLowerCase())) {
                     element.classList.add(className);
                     matchingElements.push(element);
+                }
+                if (element.value == token) {
+                    element.classList.add(className);
+                    matchingElements.push(element);
+
                 }
             });
 
@@ -93,42 +96,37 @@
         }
 
         const replaceElementText = (className, newText, token) => {
-
               const elements = document.querySelectorAll("."+className);
               elements.forEach( element =>  {
-                let currentText = element.innerText;
-                let updatedText = currentText.replace(token, newText);
-                if (element) {
-                    element.textContent = updatedText;
-                }              
-              });
- 
-
-
+                if (element.tagName === 'INPUT') {
+                    let currentText = element.value;
+                    let updatedText = currentText.replace(token, newText);
+                    if (element) {
+                        element.value = updatedText;
+                    }
+                }
+                else {
+                    let currentText = element.innerText;
+                    let updatedText = currentText.replace(token, newText);
+                    if (element) {
+                        element.textContent = updatedText;
+                    }                     
+                }
+             });
         }
 
         document.addEventListener("DOMContentLoaded", function () {
-            
             const plannerNameTokens = findElementsByTextContent(plannerNameToken, plannerNameClass);
-
             const plannerIdTokens = findElementsByTextContent(plannerIdToken, plannerIdClass);
-
             plannerNameTokens.forEach( function(item){
                 replaceElementText( plannerNameClass, plannerName, plannerNameToken);
             });
-
-
             plannerIdTokens.forEach( function(item){
                 replaceElementText(plannerIdClass, plannerId, plannerIdToken);
             });
-
         });
 
-
-
-
     </script>
-
 
     <script data-sly-test="${model.jsonLd}" type="application/ld+json">
         ${model.jsonLd @context ='unsafe'}
