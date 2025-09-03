@@ -64,74 +64,67 @@
         </div>
     </div>  
 
-    <script>    
+    <script>
+
+    // Planner method values    
     const plannerName = '${planner.firstName @context="scriptString"}';
+    const plannerLastName = '${planner.lastName @context="scriptString"}';
+    const plannerfirstNameAlias = '${planner.firstNameAlias @context="scriptString"}';
     const plannerId = '${planner.id @context="scriptString"}';
+    const plannerBio = '${planner.bio @context="scriptString"}';
+    const title = '${planner.title @context="scriptString"}'; 
 
     // Tokens to replace
     const plannerNameToken = '{planner.firstName}';
+    const plannerLastNameToken = '{planner.lastName}';
+    const plannerfirstNameAliasToken = '{planner.firstNameAlias}'
     const plannerIdToken = '{planner.id}';
+    const plannerBioToken = '{planner.bio}';
+    const titleToken = '{planner.title}';
+    
 
-    // Token Id Names
-    const plannerNameClass = 'plannerName';
-    const plannerIdClass = 'plannerId';
-
-        const findElementsByTextContent = (token, className) => {
-            const allElements = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6, input[type="hidden"]');
-            const matchingElements = [];
-
-            allElements.forEach(element => {
-                if (element.textContent.toLowerCase().includes(token.toLowerCase())) {
-                    element.classList.add(className);
-                    matchingElements.push(element);
-                }
-                if (element.value == token) {
-                    element.classList.add(className);
-                    matchingElements.push(element);
-
-                }
+        const findPlannerTokens = () => {
+            const tokenExpression = /[{]\s*(?:planner.)([a-zA-Z]+)\s*[}]/gi;
+            const tokenFields = new Set();
+            var results = [...document.body.innerHTML.matchAll(tokenExpression)];
+            results.forEach(function(foundTag){
+                tokenFields.add(foundTag[1]);
             });
-
-            return matchingElements;
+            
+            return tokenFields;
         }
 
-        const replaceElementText = (className, newText, token) => {
-              const elements = document.querySelectorAll("."+className);
-              elements.forEach( element =>  {
-                if (element.tagName === 'INPUT') {
-                    let currentText = element.value;
-                    let updatedText = currentText.replace(token, newText);
-                    if (element) {
-                        element.value = updatedText;
-                    }
-                }
-                else {
-                    let currentText = element.innerText;
-                    let updatedText = currentText.replace(token, newText);
-                    if (element) {
-                        element.textContent = updatedText;
-                    }                     
-                }
-             });
+        const plannerTokenReplace = (replaceField, replaceValue) => {
+            const expression = new RegExp("[{]\\s*(?:planner.)(?:" + replaceField + ")\\s*[}]", "gi");
+            document.body.innerHTML = document.body.innerHTML.replace(expression,replaceValue);
         }
 
         document.addEventListener("DOMContentLoaded", function () {
-            const plannerNameTokens = findElementsByTextContent(plannerNameToken, plannerNameClass);
-            const plannerIdTokens = findElementsByTextContent(plannerIdToken, plannerIdClass);
-            plannerNameTokens.forEach( function(item){
-                replaceElementText( plannerNameClass, plannerName, plannerNameToken);
-            });
-            plannerIdTokens.forEach( function(item){
-                replaceElementText(plannerIdClass, plannerId, plannerIdToken);
-            });
-        });
+            const tokens = findPlannerTokens();
 
-        const updateTokens = () => {
-            const plannerIdTokens = findElementsByTextContent(plannerIdToken, plannerIdClass);
-            plannerIdTokens.forEach( function(item){
-                replaceElementText(plannerIdClass, plannerId, plannerIdToken);
-            });            
-        }
+            for (const replaceField of tokens) {
+                switch (replaceField) {
+                    case 'firstName':
+                        plannerTokenReplace(replaceField, plannerName);
+                        break;
+                    case 'id':
+                        plannerTokenReplace(replaceField, plannerId);
+                        break;
+                    case 'bio':
+                        plannerTokenReplace(replaceField, plannerBio);
+                        break;
+                    case 'title':
+                        plannerTokenReplace(replaceField, title);
+                        break;
+                    case 'lastName':
+                        plannerTokenReplace(replaceField, plannerLastName);
+                        break;
+                    case 'firstNameAlias':
+                        plannerTokenReplace(replaceField, plannerfirstNameAlias);
+                        break;
+                }                                           
+            }
+        });
 
     </script>
 
