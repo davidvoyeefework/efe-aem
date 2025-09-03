@@ -126,6 +126,32 @@
             }
         });
 
+        const updateTokens = () => {
+            const tokens = findPlannerTokens();
+                for (const replaceField of tokens) {
+                    switch (replaceField) {
+                        case 'firstName':
+                            plannerTokenReplace(replaceField, plannerName);
+                            break;
+                        case 'id':
+                            plannerTokenReplace(replaceField, plannerId);
+                            break;
+                        case 'bio':
+                            plannerTokenReplace(replaceField, plannerBio);
+                            break;
+                        case 'title':
+                            plannerTokenReplace(replaceField, title);
+                            break;
+                        case 'lastName':
+                            plannerTokenReplace(replaceField, plannerLastName);
+                            break;
+                        case 'firstNameAlias':
+                            plannerTokenReplace(replaceField, plannerfirstNameAlias);
+                            break;
+                    }                                           
+            }
+        }      
+        
     </script>
 
     <script data-sly-test="${model.jsonLd}" type="application/ld+json">
