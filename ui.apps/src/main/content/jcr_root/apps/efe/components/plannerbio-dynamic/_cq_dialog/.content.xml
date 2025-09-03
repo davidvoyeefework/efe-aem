@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
     jcr:primaryType="nt:unstructured"
-    jcr:title=" Dynamic"
+    jcr:title="Planner Bio Dynamic"
     sling:resourceType="cq/gui/components/authoring/dialog">
     <content
         jcr:primaryType="nt:unstructured"
@@ -27,21 +27,18 @@
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
-
-                                            <id
+                                                <heading
+                                                granite:class="coral-Heading coral-Heading--4"
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="HTML ID attribute to apply to the component."
-                                                fieldLabel="ID"
-                                                name="./id"/>
-                                            <defaultredirectpagepath
+                                                sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                                level="{Long}4"
+                                                text="Tokens available: {planner.firstName}, {planner.lastName}, {planner.firstNameAlias}, {planner.id},{planner.bio}, {planner.title} "/>
+                                                <heading1
+                                                granite:class="coral-Heading coral-Heading--4"
                                                 jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="cq/gui/components/coral/common/form/pagefield"
-                                                fieldDescription="Default Redirect Page Path"
-                                                fieldLabel="Default Redirect Page Path"
-                                                name="./defaultRedirectPagePath"
-                                                rootPath="/content/efe"
-                                                value="/content/efe/us/en/locations"/>
+                                                sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                                level="{Long}4"
+                                                text="Component only works if 3 selectors are present in URL. Example -> Johnathan.Cherry.179.html"/>                                                
                                         </items>
                                     </column>
                                 </items>
