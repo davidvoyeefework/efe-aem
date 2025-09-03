@@ -62,7 +62,7 @@
 
 
         </div>
-    </div>
+    </div>  
 
     <script>    
     const plannerName = '${planner.firstName @context="scriptString"}';
@@ -125,6 +125,13 @@
                 replaceElementText(plannerIdClass, plannerId, plannerIdToken);
             });
         });
+
+        const updateTokens = () => {
+            const plannerIdTokens = findElementsByTextContent(plannerIdToken, plannerIdClass);
+            plannerIdTokens.forEach( function(item){
+                replaceElementText(plannerIdClass, plannerId, plannerIdToken);
+            });            
+        }
 
     </script>
 
