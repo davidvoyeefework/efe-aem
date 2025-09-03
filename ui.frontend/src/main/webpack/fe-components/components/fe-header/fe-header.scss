@@ -31,6 +31,7 @@
             border-left: 1px solid #949494;
             display: block !important;
             height: 42px;
+            align-self: stretch;
         }
         #efe-nav-main #nav-list-cta-group #efe-global-nav-header {
             display: none;
@@ -69,7 +70,7 @@
             &.cmp-image--small {
                 width: 218px;
                 height: 45px;
-                padding-bottom: 40px;
+               // padding-bottom: 40px;
                 @media screen and (min-width: 1290px) {
                     .cmp-image__image {
                         width: 218px;
@@ -79,7 +80,7 @@
                 }
                 @media screen and (max-width: 576px) { 
                     padding-bottom: 0;
-                    align-self: end;
+                    //align-self: end;
                     .cmp-image__image {
                         height: 42px;
                     }
