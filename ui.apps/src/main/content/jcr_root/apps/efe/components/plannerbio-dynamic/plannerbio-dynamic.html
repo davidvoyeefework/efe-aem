@@ -76,62 +76,95 @@
     const plannerNameClass = 'plannerName';
     const plannerIdClass = 'plannerId';
 
-        const findElementsByTextContent = (token, className) => {
-            const allElements = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6, input[type="hidden"]');
-            const matchingElements = [];
+        const findPlannerTokens = () => {
+            // const allElements = document.querySelectorAll('a, p, h1, h2, h3, h4, h5, h6, input[type="hidden"]');
+            // const matchingElements = [];
 
-            allElements.forEach(element => {
-                if (element.textContent.toLowerCase().includes(token.toLowerCase())) {
-                    element.classList.add(className);
-                    matchingElements.push(element);
-                }
-                if (element.value == token) {
-                    element.classList.add(className);
-                    matchingElements.push(element);
-
-                }
+            const tokenExpression = /[{]\s*(?:planner.)([a-zA-Z]+)\s*[}]/gi;
+            const tokenFields = new Set();
+            var results = [...document.body.innerHTML.matchAll(tokenExpression)];
+            results.forEach(function(foundTag){
+                tokenFields.add(foundTag[1]);
             });
+            
+            return tokenFields;
 
-            return matchingElements;
+
+
+
+            // allElements.forEach(element => {
+            //     if (element.textContent.toLowerCase().includes(token.toLowerCase())) {
+            //         element.classList.add(className);
+            //         matchingElements.push(element);
+            //     }
+            //     if (element.value == token) {
+            //         element.classList.add(className);
+            //         matchingElements.push(element);
+
+            //     }
+            // });
+
+
+
+            // return matchingElements;
         }
 
-        const replaceElementText = (className, newText, token) => {
-              const elements = document.querySelectorAll("."+className);
-              elements.forEach( element =>  {
-                if (element.tagName === 'INPUT') {
-                    let currentText = element.value;
-                    let updatedText = currentText.replace(token, newText);
-                    if (element) {
-                        element.value = updatedText;
-                    }
-                }
-                else {
-                    let currentText = element.innerText;
-                    let updatedText = currentText.replace(token, newText);
-                    if (element) {
-                        element.textContent = updatedText;
-                    }                     
-                }
-             });
+        // const replaceElementText = (className, newText, token) => {
+        //       const elements = document.querySelectorAll("."+className);
+        //       elements.forEach( element =>  {
+        //         if (element.tagName === 'INPUT') {
+        //             let currentText = element.value;
+        //             let updatedText = currentText.replace(token, newText);
+        //             if (element) {
+        //                 element.value = updatedText;
+        //             }
+        //         }
+        //         else {
+        //             let currentText = element.innerText;
+        //             let updatedText = currentText.replace(token, newText);
+        //             if (element) {
+        //                 element.textContent = updatedText;
+        //             }                     
+        //         }
+        //      });
+        // }
+
+        function plannerTokenReplace(replaceField, replaceValue) {
+            const expression = new RegExp("[{]\\s*(?:planner.)(?:" + replaceField + ")\\s*[}]", "gi");
+            console.log(expression);
+            document.body.innerHTML.replace(expression,replaceValue);
         }
+
 
         document.addEventListener("DOMContentLoaded", function () {
-            const plannerNameTokens = findElementsByTextContent(plannerNameToken, plannerNameClass);
-            const plannerIdTokens = findElementsByTextContent(plannerIdToken, plannerIdClass);
-            plannerNameTokens.forEach( function(item){
-                replaceElementText( plannerNameClass, plannerName, plannerNameToken);
-            });
-            plannerIdTokens.forEach( function(item){
-                replaceElementText(plannerIdClass, plannerId, plannerIdToken);
-            });
+            const tokens = findPlannerTokens();
+
+            for (const replaceField of tokens) {
+                if (replaceField == 'firstName') {
+                    plannerTokenReplace(replaceField, "david test");
+                }
+                else if (replaceField == 'id') {
+                    plannerTokenReplace(replaceField, plannerId);
+                }
+            }
+
+
+            // const plannerNameTokens = findElementsByTextContent(plannerNameToken, plannerNameClass);
+            // const plannerIdTokens = findElementsByTextContent(plannerIdToken, plannerIdClass);
+            // plannerNameTokens.forEach( function(item){
+            //     replaceElementText( plannerNameClass, plannerName, plannerNameToken);
+            // });
+            // plannerIdTokens.forEach( function(item){
+            //     replaceElementText(plannerIdClass, plannerId, plannerIdToken);
+            // });
         });
 
-        const updateTokens = () => {
-            const plannerIdTokens = findElementsByTextContent(plannerIdToken, plannerIdClass);
-            plannerIdTokens.forEach( function(item){
-                replaceElementText(plannerIdClass, plannerId, plannerIdToken);
-            });            
-        }
+        // const updateTokens = () => {
+        //     const plannerIdTokens = findElementsByTextContent(plannerIdToken, plannerIdClass);
+        //     plannerIdTokens.forEach( function(item){
+        //         replaceElementText(plannerIdClass, plannerId, plannerIdToken);
+        //     });            
+        // }
 
     </script>
 
