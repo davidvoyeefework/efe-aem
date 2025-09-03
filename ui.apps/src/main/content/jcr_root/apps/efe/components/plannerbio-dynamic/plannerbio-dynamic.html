@@ -68,11 +68,20 @@
 
     // Planner method values    
     const plannerName = '${planner.firstName @context="scriptString"}';
+    const plannerLastName = '${planner.lastName @context="scriptString"}';
+    const plannerfirstNameAlias = '${planner.firstNameAlias @context="scriptString"}';
     const plannerId = '${planner.id @context="scriptString"}';
+    const plannerBio = '${planner.bio @context="scriptString"}';
+    const title = '${planner.title @context="scriptString"}'; 
 
     // Tokens to replace
     const plannerNameToken = '{planner.firstName}';
+    const plannerLastNameToken = '{planner.lastName}';
+    const plannerfirstNameAliasToken = '{planner.firstNameAlias}'
     const plannerIdToken = '{planner.id}';
+    const plannerBioToken = '{planner.bio}';
+    const titleToken = '{planner.title}';
+    
 
         const findPlannerTokens = () => {
             const tokenExpression = /[{]\s*(?:planner.)([a-zA-Z]+)\s*[}]/gi;
@@ -94,12 +103,26 @@
             const tokens = findPlannerTokens();
 
             for (const replaceField of tokens) {
-                if (replaceField == 'firstName') {
-                    plannerTokenReplace(replaceField, plannerName);
-                }
-                else if (replaceField == 'id') {
-                    plannerTokenReplace(replaceField, plannerId);
-                }
+                switch (replaceField) {
+                    case 'firstName':
+                        plannerTokenReplace(replaceField, plannerName);
+                        break;
+                    case 'id':
+                        plannerTokenReplace(replaceField, plannerId);
+                        break;
+                    case 'bio':
+                        plannerTokenReplace(replaceField, plannerBio);
+                        break;
+                    case 'title':
+                        plannerTokenReplace(replaceField, title);
+                        break;
+                    case 'lastName':
+                        plannerTokenReplace(replaceField, plannerLastName);
+                        break;
+                    case 'firstNameAlias':
+                        plannerTokenReplace(replaceField, plannerfirstNameAlias);
+                        break;
+                }                                           
             }
         });
 
