@@ -70,7 +70,7 @@
             &.cmp-image--small {
                 width: 218px;
                 height: 45px;
-               // padding-bottom: 40px;
+               padding-bottom: 40px;
                 @media screen and (min-width: 1290px) {
                     .cmp-image__image {
                         width: 218px;
@@ -80,7 +80,7 @@
                 }
                 @media screen and (max-width: 576px) { 
                     padding-bottom: 0;
-                    //align-self: end;
+                    align-self: end;
                     .cmp-image__image {
                         height: 42px;
                     }
@@ -126,7 +126,6 @@
                     max-width:200px;
                     max-height:75px;
                     width: auto;
-                    height: auto;
                     object-fit: contain;
                     display: block;
                 }
