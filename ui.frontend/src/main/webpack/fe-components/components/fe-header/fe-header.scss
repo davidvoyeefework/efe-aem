@@ -18,6 +18,9 @@
         }
         
         #efe-nav-main .cmp-container--26 {
+            display: flex;
+            align-items: center;
+            flex-wrap: nowrap;
             gap: 17.34px;
             justify-content: normal;
             @media screen and (max-width: 576px) {
@@ -26,10 +29,12 @@
             }
         }
         .minimal-header__vertical-line {
-            border-left: 1px solid #949494;
-            display: block !important;
+            vertical-align: middle;
+            display: inline-block !important;
             height: 42px;
-            align-self: stretch;
+            width: 1px;
+            background: #949494;
+            margin: 0 12px;
         }
         #efe-nav-main #nav-list-cta-group #efe-global-nav-header {
             display: none;
