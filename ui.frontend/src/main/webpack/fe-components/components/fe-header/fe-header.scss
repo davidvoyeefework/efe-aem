@@ -131,6 +131,14 @@
                     display: block;
                 }
             }
+           .cmp-image--efe-logo-secondary::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top:0; bottom:0;
+            width:0;
+            border-left: 1px solid #949494;
+           }
         }
     }
 } 
