@@ -74,7 +74,14 @@
     const plannerBio = '${planner.bio @context="scriptString"}';
     const title = '${planner.title @context="scriptString"}'; 
     */
-    const plannerValues = JSON.parse('${model.jsonLd @context="scriptString"}');
+    const plannerValues = {
+        firstName: '${planner.firstName @context="scriptString"}',
+        lastName: '${planner.lastName @context="scriptString"}',
+        firstNameAlias: '${planner.firstNameAlias @context="scriptString"}',
+        id: '${planner.id @context="scriptString"}',
+        bio: '${planner.bio @context="scriptString"}',
+        title: '${planner.title @context="scriptString"}'
+    };
  
     /* Preserving for testing
     // Tokens to replace
