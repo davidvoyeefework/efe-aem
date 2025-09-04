@@ -103,7 +103,7 @@
         };
 
         document.addEventListener("DOMContentLoaded", function () {
-            const modifiedBody = document.body.innerHTML;
+            var modifiedBody = document.body.innerHTML;
             const tokens = findPlannerTokens(modifiedBody);
 
             for (const replaceField of tokens) {
@@ -137,7 +137,7 @@
         
         document.addEventListener("pmapiFormLoaded", function (e) {
             const formElement = e.target;
-            const modifiedHTML = formElement.innerHTML;
+            var modifiedHTML = formElement.innerHTML;
             const tokens = findPlannerTokens(modifiedHTML);
             for (const replaceField of tokens) {
                 modifiedHTML = plannerTokenReplace(replaceField, plannerValues[replaceField], modifiedHTML);
