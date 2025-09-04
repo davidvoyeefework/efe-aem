@@ -65,7 +65,7 @@
     </div>  
 
     <script>
-
+    /* Preserving for testing
     // Planner method values    
     const plannerName = '${planner.firstName @context="scriptString"}';
     const plannerLastName = '${planner.lastName @context="scriptString"}';
@@ -73,7 +73,10 @@
     const plannerId = '${planner.id @context="scriptString"}';
     const plannerBio = '${planner.bio @context="scriptString"}';
     const title = '${planner.title @context="scriptString"}'; 
-
+    */
+    const plannerValues = JSON.parse('${model.jsonLd @context="scriptString"}');
+ 
+    /* Preserving for testing
     // Tokens to replace
     const plannerNameToken = '{planner.firstName}';
     const plannerLastNameToken = '{planner.lastName}';
@@ -81,29 +84,32 @@
     const plannerIdToken = '{planner.id}';
     const plannerBioToken = '{planner.bio}';
     const titleToken = '{planner.title}';
-    
+    */
 
-        const findPlannerTokens = () => {
+        const findPlannerTokens = (textToSearch) => {
             const tokenExpression = /[{]\s*(?:planner.)([a-zA-Z]+)\s*[}]/gi;
             const tokenFields = new Set();
-            var results = [...document.body.innerHTML.matchAll(tokenExpression)];
+            var results = [...textToSearch.matchAll(tokenExpression)];
             results.forEach(function(foundTag){
                 tokenFields.add(foundTag[1]);
             });
             
             return tokenFields;
-        }
+        };
 
-        const plannerTokenReplace = (replaceField, replaceValue) => {
+        const plannerTokenReplace = (replaceField, replaceValue, textToSearch) => {
             const expression = new RegExp("[{]\\s*(?:planner.)(?:" + replaceField + ")\\s*[}]", "gi");
-            document.body.innerHTML = document.body.innerHTML.replace(expression,replaceValue);
-        }
+            return textToSearch.replace(expression,replaceValue);
+        };
 
         document.addEventListener("DOMContentLoaded", function () {
-            const tokens = findPlannerTokens();
+            const modifiedBody = document.body.innerHTML;
+            const tokens = findPlannerTokens(modifiedBody);
 
             for (const replaceField of tokens) {
-                switch (replaceField) {
+                modifiedBody = plannerTokenReplace(replaceField, plannerValues[replaceField], modifiedBody);
+            /*    Preserving for testing
+            switch (replaceField) {
                     case 'firstName':
                         plannerTokenReplace(replaceField, plannerName);
                         break;
@@ -122,10 +128,31 @@
                     case 'firstNameAlias':
                         plannerTokenReplace(replaceField, plannerfirstNameAlias);
                         break;
-                }                                           
+                }  
+             * 
+             */                                         
+            }
+            document.body.innerHTML = modifiedBody;
+        });
+        
+        document.addEventListener("pmapiFormLoaded", function (e) {
+            const formElement = e.target;
+            const modifiedHTML = formElement.innerHTML;
+            const tokens = findPlannerTokens(modifiedHTML);
+            for (const replaceField of tokens) {
+                modifiedHTML = plannerTokenReplace(replaceField, plannerValues[replaceField], modifiedHTML);
+            }
+            if(tokens.size > 0) {
+                formElement.innerHTML = modifiedHTML;
             }
         });
+        
+        // Added function stub to reduce PMAPI update for testing.
+        const updateTokens = () => {
+            console.log("Function deprecated");
+        };
 
+/*  Preserving for testing
         const updateTokens = () => {
             const tokens = findPlannerTokens();
                 for (const replaceField of tokens) {
@@ -151,6 +178,8 @@
                     }                                           
             }
         }      
+     * 
+ */
         
     </script>
 

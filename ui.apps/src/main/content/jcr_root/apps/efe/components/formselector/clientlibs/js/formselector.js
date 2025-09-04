@@ -29,11 +29,13 @@
 						if (!isScriptLoaded) {
 							loadScript(jsonData.scriptUrl);
 						}
+                                                var formEvent = document.createEvent("pmapiFormLoaded");
+                                                element.dispatchEvent(formEvent);
 					}
 				}
 			}).catch(err => {
 				console.log(err);
-			})
+			});
 
 	}
 
