@@ -26,7 +26,6 @@
             }
         }
         .minimal-header__vertical-line {
-            vertical-align: middle;
             display: inline-block !important;
             height: 42px;
             width: 1px;
@@ -71,9 +70,6 @@
                 width: 218px;
                 height: 45px;
                padding-bottom: 40px;
-               display:inline-flex;
-               align-items: center;
-               line-height: 0;
                 @media screen and (min-width: 1290px) {
                     .cmp-image__image {
                         width: 218px;
@@ -120,27 +116,14 @@
     }
     &.fe-direct-sponsor {
         .minimal-header {
-            display: flex;
-            align-items: center; /*aligns logos vertically */
-            gap: 8px;
-
             .cmp-image--efe-logo-secondary {
                 .cmp-image .cmp-image__image {
                     max-width:200px;
                     max-height:75px;
                     width: auto;
                     object-fit: contain;
-                    display: block;
                 }
             }
-           .cmp-image--efe-logo-secondary::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top:0; bottom:0;
-            width:0;
-            border-left: 1px solid #949494;
-           }
         }
     }
 } 
