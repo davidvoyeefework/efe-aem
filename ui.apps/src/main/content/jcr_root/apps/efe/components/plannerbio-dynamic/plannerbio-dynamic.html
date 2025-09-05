@@ -65,15 +65,8 @@
     </div>  
 
     <script>
-    /* Preserving for testing
-    // Planner method values    
-    const plannerName = '${planner.firstName @context="scriptString"}';
-    const plannerLastName = '${planner.lastName @context="scriptString"}';
-    const plannerfirstNameAlias = '${planner.firstNameAlias @context="scriptString"}';
-    const plannerId = '${planner.id @context="scriptString"}';
-    const plannerBio = '${planner.bio @context="scriptString"}';
-    const title = '${planner.title @context="scriptString"}'; 
-    */
+     
+    // Array of planner values and token keys.
     const plannerValues = {
         firstName: '${planner.firstName @context="scriptString"}',
         lastName: '${planner.lastName @context="scriptString"}',
@@ -82,75 +75,62 @@
         bio: '${planner.bio @context="scriptString"}',
         title: '${planner.title @context="scriptString"}'
     };
- 
-    /* Preserving for testing
-    // Tokens to replace
-    const plannerNameToken = '{planner.firstName}';
-    const plannerLastNameToken = '{planner.lastName}';
-    const plannerfirstNameAliasToken = '{planner.firstNameAlias}'
-    const plannerIdToken = '{planner.id}';
-    const plannerBioToken = '{planner.bio}';
-    const titleToken = '{planner.title}';
-    */
 
-        const findPlannerTokens = (textToSearch) => {
-            const tokenExpression = /[{]\s*(?:planner.)([a-zA-Z]+)\s*[}]/gi;
+    const findPlannerTokensOnPage = () => {
+        const tokenExpression = /[{](?:planner.)(?:[a-zA-Z]+)[}]/gi;
             const tokenFields = new Set();
-            var results = [...textToSearch.matchAll(tokenExpression)];
+            var results = [...document.body.innerHTML.matchAll(tokenExpression)];
             results.forEach(function(foundTag){
-                tokenFields.add(foundTag[1]);
+                tokenFields.add(foundTag[0]);
             });
             
             return tokenFields;
-        };
+    };
 
-        const plannerTokenReplace = (replaceField, replaceValue, textToSearch) => {
-            const expression = new RegExp("[{]\\s*(?:planner.)(?:" + replaceField + ")\\s*[}]", "gi");
-            return textToSearch.replace(expression,replaceValue);
-        };
-
+    const plannerTokenReplaceInText = (replaceToken) => {
+        const keyVal = replaceToken.replaceAll('}','').split('.')[1];
+        const xpathQuery = '//*[contains(text(), "' + replaceToken + '")]';
+        const xpathResults = document.evaluate(xpathQuery,document,null,XPathResult.UNORDERED_NODE_ITERATOR_TYPE);
+        let node = null;
+        let nodeArray = [];
+        while ((node = xpathResults.iterateNext())) {
+            nodeArray.push(node);
+        }
+        
+        for(const thisNode of nodeArray) {
+            thisNode.innerText = thisNode.innerText.replaceAll(replaceToken, plannerValues[keyVal]);
+        }
+    };
+    
+    const plannerTokenReplaceInValue = (replaceToken) => {
+        const keyVal = replaceToken.replaceAll('}','').split('.')[1];
+        const xpathQuery = '//input[contains(@value, "' + replaceToken + '")]';
+        const xpathResults = document.evaluate(xpathQuery,document,null,XPathResult.UNORDERED_NODE_ITERATOR_TYPE);
+        let node = null;
+        let nodeArray = [];
+        while ((node = xpathResults.iterateNext())) {
+            nodeArray.push(node);
+        }
+        for(const thisNode of nodeArray) {
+            thisNode.value = thisNode.value.replaceAll(replaceToken, plannerValues[keyVal]);
+        }
+    };
+    
         document.addEventListener("DOMContentLoaded", function () {
-            var modifiedBody = document.body.innerHTML;
-            const tokens = findPlannerTokens(modifiedBody);
+            const tokens = findPlannerTokensOnPage();
 
-            for (const replaceField of tokens) {
-                modifiedBody = plannerTokenReplace(replaceField, plannerValues[replaceField], modifiedBody);
-            /*    Preserving for testing
-            switch (replaceField) {
-                    case 'firstName':
-                        plannerTokenReplace(replaceField, plannerName);
-                        break;
-                    case 'id':
-                        plannerTokenReplace(replaceField, plannerId);
-                        break;
-                    case 'bio':
-                        plannerTokenReplace(replaceField, plannerBio);
-                        break;
-                    case 'title':
-                        plannerTokenReplace(replaceField, title);
-                        break;
-                    case 'lastName':
-                        plannerTokenReplace(replaceField, plannerLastName);
-                        break;
-                    case 'firstNameAlias':
-                        plannerTokenReplace(replaceField, plannerfirstNameAlias);
-                        break;
-                }  
-             * 
-             */                                         
+            for (const token of tokens) {
+                plannerTokenReplaceInText(token);
+                plannerTokenReplaceInValue(token);                                     
             }
-            document.body.innerHTML = modifiedBody;
         });
         
         document.addEventListener("pmapiFormLoaded", function (e) {
-            const formElement = e.detail.containerElement;
-            var modifiedHTML = formElement.innerHTML;
-            const tokens = findPlannerTokens(modifiedHTML);
-            for (const replaceField of tokens) {
-                modifiedHTML = plannerTokenReplace(replaceField, plannerValues[replaceField], modifiedHTML);
-            }
-            if(tokens.size > 0) {
-                formElement.innerHTML = modifiedHTML;
+            const tokens = findPlannerTokensOnPage();
+
+            for (const token of tokens) {
+                plannerTokenReplaceInText(token);
+                plannerTokenReplaceInValue(token);                                    
             }
         });
         
