@@ -18,9 +18,6 @@
         }
         
         #efe-nav-main .cmp-container--26 {
-            display: flex;
-            align-items: center;
-            flex-wrap: nowrap;
             gap: 17.34px;
             justify-content: normal;
             @media screen and (max-width: 576px) {
@@ -74,6 +71,9 @@
                 width: 218px;
                 height: 45px;
                padding-bottom: 40px;
+               display:inline-flex;
+               align-items: center;
+               line-height: 0;
                 @media screen and (min-width: 1290px) {
                     .cmp-image__image {
                         width: 218px;
