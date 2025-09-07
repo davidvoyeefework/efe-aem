@@ -112,9 +112,11 @@
         }); 
     });
 
-        document.addEventListener('pmapiFormLoaded', function (e) {
- 
-        });
+    document.addEventListener('pmapiFormLoaded', function (e) {
+        replacePlannerTokens({
+            id: '${planner.id @context="scriptString"}'
+        });             
+    });
 
     </script>
 
