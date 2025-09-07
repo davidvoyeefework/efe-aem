@@ -65,16 +65,30 @@
     </div>  
 
     <script>    
-    const plannerName = '${planner.firstName @context="scriptString"}';
-    const plannerId = '${planner.id @context="scriptString"}';
 
-    // Tokens to replace
+    // Planner method values
+    const firstName = '${planner.firstName @context="scriptString"}';
+    const lastName = '${planner.lastName @context="scriptString"}';
+    const firstNameAlias = '${planner.firstNameAlias @context="scriptString"}';
+    const plannerId = '${planner.id @context="scriptString"}';
+    const bio = '${planner.bio @context="scriptString"}';
+    const title = '${planner.title @context="scriptString"}';
+
+    // String Tokens Text to replace
     const plannerNameToken = '{planner.firstName}';
     const plannerIdToken = '{planner.id}';
+    const plannerlastNameToken = '{planner.lastName}';
+    const plannerFirstNameAliasToken = '{planner.firstNameAlias}';
+    const plannerBioToken = '{planner.bio}';
+    const plannerTitleToken = '{planner.title}';
 
-    // Token Id Names
+    // Token Class Names
     const plannerNameClass = 'plannerName';
     const plannerIdClass = 'plannerId';
+    const plannerLastNameClass = 'plannerLastName';
+    const plannerFirstNameAliasClass = 'plannerFirstNameAlias';
+    const plannerBioClass = 'plannerBio';
+    const plannerTitleClass = 'plannerTitle';
 
         const findElementsByTextContent = (token, className) => {
             const allElements = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6, input[type="hidden"]');
@@ -118,12 +132,42 @@
         document.addEventListener("DOMContentLoaded", function () {
             const plannerNameTokens = findElementsByTextContent(plannerNameToken, plannerNameClass);
             const plannerIdTokens = findElementsByTextContent(plannerIdToken, plannerIdClass);
+            const plannerLastNameTokens = findElementsByTextContent(plannerlastNameToken, plannerLastNameClass);
+            const plannerFirstNameAliasTokens = findElementsByTextContent(plannerFirstNameAliasToken, plannerFirstNameAliasClass); 
+            const plannerBioTokens = findElementsByTextContent(plannerBioToken, plannerBioClass);
+            const plannerTitleTokens = findElementsByTextContent(plannerTitleToken, plannerTitleClass);
+
+
             plannerNameTokens.forEach( function(item){
-                replaceElementText( plannerNameClass, plannerName, plannerNameToken);
+                replaceElementText( plannerNameClass, firstName, plannerNameToken);
             });
+
             plannerIdTokens.forEach( function(item){
                 replaceElementText(plannerIdClass, plannerId, plannerIdToken);
             });
+
+            plannerLastNameTokens.forEach( function(item){
+                replaceElementText(plannerLastNameClass, lastName, plannerlastNameToken);
+            });
+
+            plannerFirstNameAliasTokens.forEach( function(item){
+                replaceElementText(plannerFirstNameAliasClass, firstNameAlias, plannerFirstNameAliasToken);
+            });   
+            
+            plannerBioTokens.forEach( function(item){
+                replaceElementText(plannerBioClass, bio, plannerBioToken);
+            });
+
+            plannerTitleTokens.forEach( function(item){
+                replaceElementText(plannerTitleClass, title, plannerTitleToken);
+            });            
+
+
+
+
+
+
+
         });
 
         const updateTokens = () => {
