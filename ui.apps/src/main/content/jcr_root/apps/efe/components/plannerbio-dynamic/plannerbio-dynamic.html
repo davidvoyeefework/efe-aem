@@ -64,115 +64,56 @@
         </div>
     </div>  
 
-    <script>    
+    <script> 
 
-    // Planner method values
-    const firstName = '${planner.firstName @context="scriptString"}';
-    const lastName = '${planner.lastName @context="scriptString"}';
-    const firstNameAlias = '${planner.firstNameAlias @context="scriptString"}';
-    const plannerId = '${planner.id @context="scriptString"}';
-    const bio = '${planner.bio @context="scriptString"}';
-    const title = '${planner.title @context="scriptString"}';
+    const replacePlannerTokens = (values) => {
 
-    // String Tokens Text to replace
-    const plannerNameToken = '{planner.firstName}';
-    const plannerIdToken = '{planner.id}';
-    const plannerlastNameToken = '{planner.lastName}';
-    const plannerFirstNameAliasToken = '{planner.firstNameAlias}';
-    const plannerBioToken = '{planner.bio}';
-    const plannerTitleToken = '{planner.title}';
+    // --- 1. Replace tokens in text nodes ---
+    const walker = document.createTreeWalker(
+        document.body,
+        NodeFilter.SHOW_TEXT,
+        null,
+        false
+    );
 
-    // Token Class Names
-    const plannerNameClass = 'plannerName';
-    const plannerIdClass = 'plannerId';
-    const plannerLastNameClass = 'plannerLastName';
-    const plannerFirstNameAliasClass = 'plannerFirstNameAlias';
-    const plannerBioClass = 'plannerBio';
-    const plannerTitleClass = 'plannerTitle';
-
-        const findElementsByTextContent = (token, className) => {
-            const allElements = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6, input[type="hidden"]');
-            const matchingElements = [];
-
-            allElements.forEach(element => {
-                if (element.textContent.toLowerCase().includes(token.toLowerCase())) {
-                    element.classList.add(className);
-                    matchingElements.push(element);
-                }
-                if (element.value == token) {
-                    element.classList.add(className);
-                    matchingElements.push(element);
-
-                }
-            });
-
-            return matchingElements;
-        }
-
-        const replaceElementText = (className, newText, token) => {
-              const elements = document.querySelectorAll("."+className);
-              elements.forEach( element =>  {
-                if (element.tagName === 'INPUT') {
-                    let currentText = element.value;
-                    let updatedText = currentText.replace(token, newText);
-                    if (element) {
-                        element.value = updatedText;
-                    }
-                }
-                else {
-                    let currentText = element.innerText;
-                    let updatedText = currentText.replace(token, newText);
-                    if (element) {
-                        element.textContent = updatedText;
-                    }                     
-                }
-             });
-        }
-
-        document.addEventListener("DOMContentLoaded", function () {
-            const plannerNameTokens = findElementsByTextContent(plannerNameToken, plannerNameClass);
-            const plannerIdTokens = findElementsByTextContent(plannerIdToken, plannerIdClass);
-            const plannerLastNameTokens = findElementsByTextContent(plannerlastNameToken, plannerLastNameClass);
-            const plannerFirstNameAliasTokens = findElementsByTextContent(plannerFirstNameAliasToken, plannerFirstNameAliasClass); 
-            const plannerBioTokens = findElementsByTextContent(plannerBioToken, plannerBioClass);
-            const plannerTitleTokens = findElementsByTextContent(plannerTitleToken, plannerTitleClass);
-
-
-            plannerNameTokens.forEach( function(item){
-                replaceElementText( plannerNameClass, firstName, plannerNameToken);
-            });
-
-            plannerIdTokens.forEach( function(item){
-                replaceElementText(plannerIdClass, plannerId, plannerIdToken);
-            });
-
-            plannerLastNameTokens.forEach( function(item){
-                replaceElementText(plannerLastNameClass, lastName, plannerlastNameToken);
-            });
-
-            plannerFirstNameAliasTokens.forEach( function(item){
-                replaceElementText(plannerFirstNameAliasClass, firstNameAlias, plannerFirstNameAliasToken);
-            });   
-            
-            plannerBioTokens.forEach( function(item){
-                replaceElementText(plannerBioClass, bio, plannerBioToken);
-            });
-
-            plannerTitleTokens.forEach( function(item){
-                replaceElementText(plannerTitleClass, title, plannerTitleToken);
-            });            
-
+    let node;
+    while ((node = walker.nextNode())) {
+        let text = node.nodeValue;
+        text = text.replace(/\{planner\.([a-z0-9_]+)\}/gi, (match, key) => {
+        const lowerKey = key.toLowerCase();
+        return values.hasOwnProperty(lowerKey) ? values[lowerKey] : match;
         });
 
-        const updateFormTokens = () => {
-            const plannerIdTokens = findElementsByTextContent(plannerIdToken, plannerIdClass);
-            plannerIdTokens.forEach( function(item){
-                replaceElementText(plannerIdClass, plannerId, plannerIdToken);
-            });            
+        if (text !== node.nodeValue) {
+        node.nodeValue = text;
         }
+    }
+
+    // --- 2. Replace tokens in hidden input fields ---
+    const hiddenInputs = document.querySelectorAll('input[type="hidden"]');
+    hiddenInputs.forEach(input => {
+        let val = input.value;
+        val = val.replace(/\{planner\.([a-z0-9_]+)\}/gi, (match, key) => {
+        const lowerKey = key.toLowerCase();
+        return values.hasOwnProperty(lowerKey) ? values[lowerKey] : match;
+        });
+        input.value = val;
+    });
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        replacePlannerTokens({
+            firstname: '${planner.firstName @context="scriptString"}',
+            lastname: '${planner.lastName @context="scriptString"}',
+            firstnamealias: '${planner.firstNameAlias @context="scriptString"}',
+            id: '${planner.id @context="scriptString"}',
+            bio: '${planner.bio @context="scriptString"}',
+            title: '${planner.title @context="scriptString"}'
+        }); 
+    });
 
         document.addEventListener('pmapiFormLoaded', function (e) {
-            updateFormTokens();
+ 
         });
 
     </script>
