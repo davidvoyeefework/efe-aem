@@ -162,20 +162,18 @@
                 replaceElementText(plannerTitleClass, title, plannerTitleToken);
             });            
 
-
-
-
-
-
-
         });
 
-        const updateTokens = () => {
+        const updateFormTokens = () => {
             const plannerIdTokens = findElementsByTextContent(plannerIdToken, plannerIdClass);
             plannerIdTokens.forEach( function(item){
                 replaceElementText(plannerIdClass, plannerId, plannerIdToken);
             });            
         }
+
+        document.addEventListener('pmapiFormLoaded', function (e) {
+            updateFormTokens();
+        });
 
     </script>
 
