@@ -29,8 +29,8 @@
 						if (!isScriptLoaded) {
 							loadScript(jsonData.scriptUrl);
 						}
-                                                var formEvent = new CustomEvent("pmapiFormLoaded",{detail:{containerElement: element}});
-                                                document.dispatchEvent(formEvent);
+						var formEvent = new CustomEvent("pmapiFormLoaded",{detail:{containerElement: element}});
+						document.dispatchEvent(formEvent);
 					}
 				}
 			}).catch(err => {
