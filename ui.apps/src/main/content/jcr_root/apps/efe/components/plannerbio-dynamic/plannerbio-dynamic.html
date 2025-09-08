@@ -68,7 +68,7 @@
 
     const replacePlannerTokens = (values) => {
 
-    // --- 1. Replace tokens in text nodes ---
+    // Replace tokens in text nodes
     const walker = document.createTreeWalker(
         document.body,
         NodeFilter.SHOW_TEXT,
@@ -89,7 +89,7 @@
         }
     }
 
-    // --- 2. Replace tokens in hidden input fields ---
+    // Replace tokens in hidden input fields
     const hiddenInputs = document.querySelectorAll('input[type="hidden"]');
     hiddenInputs.forEach(input => {
         let val = input.value;
@@ -117,7 +117,6 @@
             id: '${planner.id @context="scriptString"}'
         });             
     });
-
     </script>
 
     <script data-sly-test="${model.jsonLd}" type="application/ld+json">
