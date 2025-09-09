@@ -4,14 +4,14 @@
         margin: auto;
     h2 {
         font-family: Source Serif Pro;
-        font-size: rem(44);
+        font-size: rem(36);
         font-style: italic;
         line-height: 112%;
         margin-bottom: 28px;
     }    
 
     h3 {
-        font-size: rem(44);
+        font-size: rem(36);
         line-height: 112%;
         font-weight: bold;
         margin-bottom: 12px;
@@ -26,6 +26,7 @@
         font-size: 24px;
         line-height: 112%;
         margin-bottom: 12px;
+        font-weight: 400;
     }
 
 
@@ -41,8 +42,8 @@
                 img {
                     margin-top: 24px;
                     border-top-left-radius: 40px;
-                    // width: 100%;
-                    // height: auto;
+                    width: 100%;
+                    max-width: rem(308);
                 }
             }    
             
@@ -52,7 +53,8 @@
                     margin-bottom: 12px;
                 }
 
-                span.location-item {
+                span.location-item { 
+
                     &:after {
                         display: inline-block;
                         content: "";
@@ -63,7 +65,7 @@
                         top: 2px;
                         margin: 0 5px;
                     }
-                    &:last-of-type {
+                    &:last-of-type{
                         &:after {
                             display: none;
                         }
@@ -133,6 +135,10 @@
     }
 
     @media screen and (min-width: $md) {
+        h2, h3 {
+            font-size: rem(44);
+        }        
+
         div.flex {
             div.get-to-know-section {
                 @include flexbox(
