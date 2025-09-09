@@ -38,12 +38,10 @@
                         <p>                    
                             <span class="heading-location-details" data-sly-test="${model.officeLocations}">
                                 <span data-sly-list.item="${model.officeLocations}">
-                                    <span class="location-item">
-                                        <span data-sly-test="${item.city != 'Phoenix'}">
-                                            <span data-sly-test="${item.city}">${item.externalName},</span>
-                                            <span data-sly-test="${item.state}">${item.state}</span>
-                                        <span>
-                                    </span>
+                                    <span data-sly-test="${item.city != 'Phoenix'}" class="location-item">
+                                        <span data-sly-test="${item.city}">${item.externalName},</span>
+                                        <span data-sly-test="${item.state}">${item.state}</span>
+                                    <span>
                                 </span>
                             </span>
                         </p>
