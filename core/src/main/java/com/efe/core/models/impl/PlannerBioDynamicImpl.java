@@ -54,7 +54,7 @@ import com.efe.core.utils.SeoUtil;
 public class PlannerBioDynamicImpl implements PlannerBioDynamic {
 
 	/** The Constant RESOURCE_TYPE. */
-	public static final String RESOURCE_TYPE = "efe/components/plannerbio";
+	public static final String RESOURCE_TYPE = "efe/components/plannerbio-dynamic";
 	
 	/** The Constant LOGGER. */
 	private static final Logger LOGGER = LoggerFactory.getLogger(PlannerBioImpl.class);
