@@ -30,7 +30,7 @@
 							loadScript(jsonData.scriptUrl);
 						}
 						var formEvent = new CustomEvent("pmapiFormLoaded", {detail:{containerElement:element}});
-						element.dispatchEvent(formEvent);
+						document.dispatchEvent(formEvent);
 					}
 				}
 			}).catch(err => {
