@@ -123,3 +123,33 @@ body { //Direct
         letter-spacing: 0;
     }
 }
+.theme-empower {//Empower
+    --primary-button-bg-color: #1C7FA7;
+    --primary-button-font-color:#FFFFFF;
+    --title-text-color: #670026;
+    --primary-button-border-radius: 80px;
+    --primary-button-bg-color-hover: #FFFFFF;
+    --primary-button-font-hover:#000000;
+    --font-family: 'Open Sans';
+    --fe-signup-form-header-font-size:22px;
+    --fe-signup-form-header-non-promo-font-size:28px;
+    --fe-signup-form-header-line-height:108%;
+    --fe-signup-form-header-letter-spacing:1.32px;
+    --fe-disclosures-font-size:11px;
+    --fe-disclosures-line-height:135%;
+    --fe-form-color : #670026;
+    --fe-form-promo-text : #670026;
+    --fe-form-discloser-anchor-color:#670026;
+    --fe-form-button-hover-background:#FFFFFF;
+    --fe-form-button-hover-color:#000000;
+    --fe-form-buttom-hover-border:2px solid #000;
+    --fe-modal-header-font-family:'Open Sans';
+    --fe-modal-header-font-weight: 700;
+    --fe-error-modal-body-font-weight: 400;
+    --fe-modal-letter-spacing:1px;
+    --fe-form-font-family:'Open Sans';
+    --fe-text-font-size: 32px;
+    --fe-text-transform: none;
+    --fe-text-list-icon: url("../resources/images/icons/van-check.svg") no-repeat left top;
+    --fe-check-list-icon: url("../resources/images/icons/van-rte-check.svg") no-repeat left top;
+}
