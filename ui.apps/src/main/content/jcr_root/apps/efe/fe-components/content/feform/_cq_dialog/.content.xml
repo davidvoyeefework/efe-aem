@@ -120,17 +120,31 @@
                                                         fieldLabel="Scheduler Button Text"
                                                         required="true"
                                                         name="./buttonText"/>
-                                                    <hasappointmentscheduler
-                                                        jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                                        fieldDescription="Scheduler Button displayed"
-                                                        name="./scheduleAppointment"
-                                                        text="Schedule Now button displayed"
-                                                        uncheckedValue="false"
-                                                        value="true"
-                                                        checked="true"/>
                                                 </items>
                                             </enrollmentformproperties>
+                                            <enrollmentformreqproperties
+                                                granite:class="hide formtype-option-listfrom-showhide-target foundation-layout-util-vmargin"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    showhidetargetvalue="Enrollment Form Required"/>
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <aboutsectionheading
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="Add Heading"
+                                                        fieldLabel="Add Heading"
+                                                        name="./description"/>
+                                                    <buttontext
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="Scheduler Button Text"
+                                                        fieldLabel="Scheduler Button Text"
+                                                        required="true"
+                                                        name="./buttonText"/>
+                                                </items>
+                                            </enrollmentformreqproperties>
                                         </items>
                                     </column>
                                 </items>
