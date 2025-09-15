@@ -4,10 +4,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
+import java.util.stream.Collectors;
+
 
 import javax.annotation.PostConstruct;
 
@@ -269,7 +272,7 @@ public class PlannerListImpl implements PlannerList {
 					String goodPlannerPath = badPlannerPath.substring(0, lastIndexofSlash1 + 1);
 					for (String officeFolderLocation : officeLocationsEncodedSubstring) {
 						String pathBuilder = goodPlannerPath + "officeslocations/" + officeFolderLocation + "/jcr:content/data/master";		
-						String cityProperty = ResourceUtil.getProperty(resourceResolver, pathBuilder, "city" );
+						String cityProperty = ResourceUtil.getProperty(resourceResolver, pathBuilder, "id" );
 						officeLocationsDecoded.add(cityProperty);
 					}
 				}
@@ -277,9 +280,10 @@ public class PlannerListImpl implements PlannerList {
 				// Clean the list, sort and remove duplicates and array brackets
 				Collections.sort(officeLocationsDecoded);
 				List<String> officeLocationsDecodedDuplicatesRemoved = removeDuplicates(officeLocationsDecoded);
-				String stringToRemove = "Phoenix";
+				String stringToRemove = "143"; // 143 is reference to national planner center in AZ.
 				officeLocationsDecodedDuplicatesRemoved.remove(stringToRemove);
-				plannerObj.setOfficeLocations(officeLocationsDecodedDuplicatesRemoved.toString().replace("[", "").replace("]", ""));
+				List<String> externalOfficeNames = officeIDtoExternalName(officeLocationsDecodedDuplicatesRemoved);
+				plannerObj.setOfficeLocations(externalOfficeNames.toString().replace("[", "").replace("]", ""));
 
 				if(StringUtils.isNotEmpty(firstNameAlias)) {
 					plannerObj.setFirstName(firstNameAlias);
@@ -300,6 +304,231 @@ public class PlannerListImpl implements PlannerList {
 			plannerDetails.add(plannerObj);
 		}
 	}
+
+private static final Map<String, String> OFFICE_ID_TO_NAME = Map.ofEntries(
+    // --- AL Alabama ---
+    Map.entry("28", "Birmingham"),
+    Map.entry("138", "Huntsville"),
+
+    // --- AZ Arizona ---
+    Map.entry("98", "Phoenix"),
+    Map.entry("207", "Emerging Investors"),
+    Map.entry("175", "Chandler"),
+
+    // --- CA California ---
+    Map.entry("15", "Walnut Creek"),
+    Map.entry("222", "Woodland"),
+    Map.entry("38", "Roseville"),
+    Map.entry("64", "Fresno"),
+    Map.entry("114", "Elk Grove"),
+    Map.entry("128", "San Rafael"),
+    Map.entry("135", "El Segundo"),
+    Map.entry("137", "Anaheim"),
+    Map.entry("159", "Orange County"),
+    Map.entry("160", "Pasadena"),
+    Map.entry("162", "Woodland Hills"),
+    Map.entry("178", "San Diego"),
+    Map.entry("179", "Santa Clara"),
+    Map.entry("223", "Seal Beach"),
+    Map.entry("224", "Danville"),
+
+    // --- CO Colorado ---
+    Map.entry("52", "Westminster"),
+    Map.entry("53", "Englewood"),
+    Map.entry("78", "Colorado Springs"),
+    Map.entry("121", "Loveland"),
+
+    // --- CT Connecticut ---
+    Map.entry("157", "Farmington"),
+
+    // --- FL Florida ---
+    Map.entry("24", "Tampa-East"),
+    Map.entry("35", "Melbourne"),
+    Map.entry("123", "Tampa-Westshore"),
+    Map.entry("163", "Boca Raton"),
+    Map.entry("164", "Miami-Coral Gables"),
+    Map.entry("172", "Orlando"),
+    Map.entry("142", "Naples"),
+    Map.entry("226", "Miami-Plantation"),
+    Map.entry("237", "St. Petersburg"),
+
+    // --- GA Georgia ---
+    Map.entry("72", "Duluth"),
+    Map.entry("84", "Vinings"),
+    Map.entry("94", "Alpharetta"),
+    Map.entry("129", "Atlanta"),
+
+    // --- IL Illinois ---
+    Map.entry("62", "Oak Brook"),
+    Map.entry("79", "Mokena"),
+    Map.entry("151", "Northbrook"),
+    Map.entry("48", "Fairview Heights"),
+
+    // --- IN Indiana ---
+    Map.entry("2", "Indianapolis"),
+    Map.entry("4", "Fort Wayne"),
+    Map.entry("119", "Greenwood"),
+
+    // --- IA Iowa ---
+    Map.entry("75", "Des Moines"),
+
+    // --- KS Kansas ---
+    Map.entry("1", "Overland Park"),
+    Map.entry("74", "Wichita"),
+
+    // --- KY Kentucky ---
+    Map.entry("19", "Louisville"),
+    Map.entry("65", "Lexington"),
+    Map.entry("90", "Florence"),
+
+    // --- LA Louisiana ---
+    Map.entry("11", "Metairie"),
+    Map.entry("32", "Baton Rouge"),
+    Map.entry("80", "Mandeville"),
+
+    // --- MA Massachusetts ---
+    Map.entry("22", "Springfield"),
+    Map.entry("148", "Burlington"),
+    Map.entry("238", "Quincy"),
+    Map.entry("243", "Norwood"),
+
+    // --- MD Maryland ---
+    Map.entry("145", "Annapolis"),
+    Map.entry("146", "Howard County"),
+    Map.entry("147", "Towson"),
+    Map.entry("185", "North Bethesda"),
+    Map.entry("186", "Silver Spring"),
+
+    // --- MI Michigan ---
+    Map.entry("10", "Grand Rapids"),
+    Map.entry("50", "Northville"),
+    Map.entry("105", "Ann Arbor"),
+    Map.entry("155", "Novi"),
+    Map.entry("156", "Troy"),
+    Map.entry("247", "Kalamazoo"),
+
+    // --- MN Minnesota ---
+    Map.entry("67", "Woodbury"),
+    Map.entry("125", "Rochester"),
+    Map.entry("31", "Minnetonka"),
+
+    // --- MO Missouri ---
+    Map.entry("6", "Chesterfield"),
+    Map.entry("47", "Liberty"),
+    Map.entry("81", "St. Louis"),
+    Map.entry("83", "Kansas City"),
+
+    // --- NE Nebraska ---
+    Map.entry("3", "Omaha"),
+
+    // --- NV Nevada ---
+    Map.entry("7", "Las Vegas"),
+
+    // --- NJ New Jersey ---
+    Map.entry("165", "Paramus"),
+    Map.entry("168", "Red Bank"),
+    Map.entry("169", "Short Hills"),
+    Map.entry("173", "Cherry Hill"),
+
+    // --- NM New Mexico ---
+    Map.entry("12", "Albuquerque"),
+
+    // --- NY New York ---
+    Map.entry("36", "Rochester"),
+    Map.entry("39", "Syracuse"),
+    Map.entry("40", "Albany"),
+    Map.entry("99", "Buffalo"),
+    Map.entry("166", "Grand Central"),
+    Map.entry("167", "Long Island"),
+    Map.entry("170", "Staten Island"),
+    Map.entry("171", "White Plains"),
+
+    // --- NC North Carolina ---
+    Map.entry("13", "Charlotte"),
+    Map.entry("44", "Greensboro"),
+    Map.entry("60", "Raleigh"),
+
+    // --- OH Ohio ---
+    Map.entry("8", "Cincinnati"),
+    Map.entry("16", "Westlake"),
+    Map.entry("29", "Toledo"),
+    Map.entry("57", "Dayton"),
+    Map.entry("89", "Beachwood"),
+    Map.entry("96", "Youngstown"),
+    Map.entry("100", "Akron"),
+    Map.entry("228", "Columbus"),
+
+    // --- OK Oklahoma ---
+    Map.entry("25", "Oklahoma City"),
+    Map.entry("91", "Norman"),
+    Map.entry("236", "Oklahoma City-North"),
+
+    // --- OR Oregon ---
+    Map.entry("37", "Portland"),
+
+    // --- PA Pennsylvania ---
+    Map.entry("34", "Sewickley"),
+    Map.entry("58", "Allentown"),
+    Map.entry("59", "Harrisburg"),
+    Map.entry("92", "South Hills"),
+    Map.entry("133", "Chadds Ford"),
+    Map.entry("33", "Conshohocken"),
+
+    // --- RI Rhode Island ---
+    Map.entry("54", "East Greenwich"),
+
+    // --- SC South Carolina ---
+    Map.entry("55", "Charleston"),
+    Map.entry("71", "Columbia"),
+
+    // --- TN Tennessee ---
+    Map.entry("14", "Brentwood"),
+    Map.entry("41", "Memphis"),
+    Map.entry("42", "Knoxville"),
+
+    // --- TX Texas ---
+    Map.entry("27", "San Antonio"),
+    Map.entry("46", "Houston-Clear Lake/League City"),
+    Map.entry("110", "The Woodlands"),
+    Map.entry("118", "Sugar Land"),
+    Map.entry("154", "Dallas"),
+    Map.entry("209", "Austin"),
+    Map.entry("158", "West Houston"),
+
+    // --- UT Utah ---
+    Map.entry("177", "Salt Lake City"),
+
+    // --- VA Virginia ---
+    Map.entry("20", "Virginia Beach"),
+    Map.entry("68", "Newport News"),
+    Map.entry("176", "Henrico"),
+    Map.entry("182", "Alexandria"),
+    Map.entry("183", "Fairfax"),
+    Map.entry("184", "Loudoun County"),
+    Map.entry("187", "Tysons Corner"),
+
+    // --- WA Washington ---
+    Map.entry("56", "Federal Way"),
+    Map.entry("61", "Lynnwood"),
+    Map.entry("76", "Bellevue"),
+    Map.entry("77", "Vancouver"),
+    Map.entry("241", "Kirkland"),
+
+    // --- WI Wisconsin ---
+    Map.entry("26", "Waukesha"),
+    Map.entry("70", "Madison"),
+    Map.entry("102", "Appleton"),
+    Map.entry("124", "Glendale")
+);
+
+private List<String> officeIDtoExternalName(List<String> officeIDlist) {
+    return officeIDlist.stream()
+            .map(OFFICE_ID_TO_NAME::get)
+            .filter(Objects::nonNull)
+            .distinct()
+            .sorted()
+            .collect(Collectors.toList()); 
+}
 
 	/**
 	 * Sets the cf list.
