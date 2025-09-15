@@ -3,6 +3,7 @@ package com.efe.core.models.impl;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -305,221 +306,228 @@ public class PlannerListImpl implements PlannerList {
 		}
 	}
 
-private static final Map<String, String> OFFICE_ID_TO_NAME = Map.ofEntries(
-    // --- AL Alabama ---
-    Map.entry("28", "Birmingham"),
-    Map.entry("138", "Huntsville"),
+    // --- Static map of office IDs to names ---
+    private static final Map<String, String> OFFICE_ID_TO_NAME = createOfficeMap();
 
-    // --- AZ Arizona ---
-    Map.entry("98", "Phoenix"),
-    Map.entry("207", "Emerging Investors"),
-    Map.entry("175", "Chandler"),
+	private static Map<String, String> createOfficeMap() {
+    	Map<String, String> map = new HashMap<>();
 
-    // --- CA California ---
-    Map.entry("15", "Walnut Creek"),
-    Map.entry("222", "Woodland"),
-    Map.entry("38", "Roseville"),
-    Map.entry("64", "Fresno"),
-    Map.entry("114", "Elk Grove"),
-    Map.entry("128", "San Rafael"),
-    Map.entry("135", "El Segundo"),
-    Map.entry("137", "Anaheim"),
-    Map.entry("159", "Orange County"),
-    Map.entry("160", "Pasadena"),
-    Map.entry("162", "Woodland Hills"),
-    Map.entry("178", "San Diego"),
-    Map.entry("179", "Santa Clara"),
-    Map.entry("223", "Seal Beach"),
-    Map.entry("224", "Danville"),
+        // --- AL Alabama ---
+        map.put("28", "Birmingham");
+        map.put("138", "Huntsville");
 
-    // --- CO Colorado ---
-    Map.entry("52", "Westminster"),
-    Map.entry("53", "Englewood"),
-    Map.entry("78", "Colorado Springs"),
-    Map.entry("121", "Loveland"),
+        // --- AZ Arizona ---
+        map.put("98", "Phoenix");
+        map.put("207", "Emerging Investors");
+        map.put("175", "Chandler");
 
-    // --- CT Connecticut ---
-    Map.entry("157", "Farmington"),
+        // --- CA California ---
+        map.put("15", "Walnut Creek");
+        map.put("222", "Woodland");
+        map.put("38", "Roseville");
+        map.put("64", "Fresno");
+        map.put("114", "Elk Grove");
+        map.put("128", "San Rafael");
+        map.put("135", "El Segundo");
+        map.put("137", "Anaheim");
+        map.put("159", "Orange County");
+        map.put("160", "Pasadena");
+        map.put("162", "Woodland Hills");
+        map.put("178", "San Diego");
+        map.put("179", "Santa Clara");
+        map.put("223", "Seal Beach");
+        map.put("224", "Danville");
 
-    // --- FL Florida ---
-    Map.entry("24", "Tampa-East"),
-    Map.entry("35", "Melbourne"),
-    Map.entry("123", "Tampa-Westshore"),
-    Map.entry("163", "Boca Raton"),
-    Map.entry("164", "Miami-Coral Gables"),
-    Map.entry("172", "Orlando"),
-    Map.entry("142", "Naples"),
-    Map.entry("226", "Miami-Plantation"),
-    Map.entry("237", "St. Petersburg"),
+        // --- CO Colorado ---
+        map.put("52", "Westminster");
+        map.put("53", "Englewood");
+        map.put("78", "Colorado Springs");
+        map.put("121", "Loveland");
 
-    // --- GA Georgia ---
-    Map.entry("72", "Duluth"),
-    Map.entry("84", "Vinings"),
-    Map.entry("94", "Alpharetta"),
-    Map.entry("129", "Atlanta"),
+        // --- CT Connecticut ---
+        map.put("157", "Farmington");
 
-    // --- IL Illinois ---
-    Map.entry("62", "Oak Brook"),
-    Map.entry("79", "Mokena"),
-    Map.entry("151", "Northbrook"),
-    Map.entry("48", "Fairview Heights"),
+        // --- FL Florida ---
+        map.put("24", "Tampa-East");
+        map.put("35", "Melbourne");
+        map.put("123", "Tampa-Westshore");
+        map.put("163", "Boca Raton");
+        map.put("164", "Miami-Coral Gables");
+        map.put("172", "Orlando");
+        map.put("142", "Naples");
+        map.put("226", "Miami-Plantation");
+        map.put("237", "St. Petersburg");
 
-    // --- IN Indiana ---
-    Map.entry("2", "Indianapolis"),
-    Map.entry("4", "Fort Wayne"),
-    Map.entry("119", "Greenwood"),
+        // --- GA Georgia ---
+        map.put("72", "Duluth");
+        map.put("84", "Vinings");
+        map.put("94", "Alpharetta");
+        map.put("129", "Atlanta");
 
-    // --- IA Iowa ---
-    Map.entry("75", "Des Moines"),
+        // --- IL Illinois ---
+        map.put("62", "Oak Brook");
+        map.put("79", "Mokena");
+        map.put("151", "Northbrook");
+        map.put("48", "Fairview Heights");
 
-    // --- KS Kansas ---
-    Map.entry("1", "Overland Park"),
-    Map.entry("74", "Wichita"),
+        // --- IN Indiana ---
+        map.put("2", "Indianapolis");
+        map.put("4", "Fort Wayne");
+        map.put("119", "Greenwood");
 
-    // --- KY Kentucky ---
-    Map.entry("19", "Louisville"),
-    Map.entry("65", "Lexington"),
-    Map.entry("90", "Florence"),
+        // --- IA Iowa ---
+        map.put("75", "Des Moines");
 
-    // --- LA Louisiana ---
-    Map.entry("11", "Metairie"),
-    Map.entry("32", "Baton Rouge"),
-    Map.entry("80", "Mandeville"),
+        // --- KS Kansas ---
+        map.put("1", "Overland Park");
+        map.put("74", "Wichita");
 
-    // --- MA Massachusetts ---
-    Map.entry("22", "Springfield"),
-    Map.entry("148", "Burlington"),
-    Map.entry("238", "Quincy"),
-    Map.entry("243", "Norwood"),
+        // --- KY Kentucky ---
+        map.put("19", "Louisville");
+        map.put("65", "Lexington");
+        map.put("90", "Florence");
 
-    // --- MD Maryland ---
-    Map.entry("145", "Annapolis"),
-    Map.entry("146", "Howard County"),
-    Map.entry("147", "Towson"),
-    Map.entry("185", "North Bethesda"),
-    Map.entry("186", "Silver Spring"),
+        // --- LA Louisiana ---
+        map.put("11", "Metairie");
+        map.put("32", "Baton Rouge");
+        map.put("80", "Mandeville");
 
-    // --- MI Michigan ---
-    Map.entry("10", "Grand Rapids"),
-    Map.entry("50", "Northville"),
-    Map.entry("105", "Ann Arbor"),
-    Map.entry("155", "Novi"),
-    Map.entry("156", "Troy"),
-    Map.entry("247", "Kalamazoo"),
+        // --- MA Massachusetts ---
+        map.put("22", "Springfield");
+        map.put("148", "Burlington");
+        map.put("238", "Quincy");
+        map.put("243", "Norwood");
 
-    // --- MN Minnesota ---
-    Map.entry("67", "Woodbury"),
-    Map.entry("125", "Rochester"),
-    Map.entry("31", "Minnetonka"),
+        // --- MD Maryland ---
+        map.put("145", "Annapolis");
+        map.put("146", "Howard County");
+        map.put("147", "Towson");
+        map.put("185", "North Bethesda");
+        map.put("186", "Silver Spring");
 
-    // --- MO Missouri ---
-    Map.entry("6", "Chesterfield"),
-    Map.entry("47", "Liberty"),
-    Map.entry("81", "St. Louis"),
-    Map.entry("83", "Kansas City"),
+        // --- MI Michigan ---
+        map.put("10", "Grand Rapids");
+        map.put("50", "Northville");
+        map.put("105", "Ann Arbor");
+        map.put("155", "Novi");
+        map.put("156", "Troy");
+        map.put("247", "Kalamazoo");
 
-    // --- NE Nebraska ---
-    Map.entry("3", "Omaha"),
+        // --- MN Minnesota ---
+        map.put("67", "Woodbury");
+        map.put("125", "Rochester");
+        map.put("31", "Minnetonka");
 
-    // --- NV Nevada ---
-    Map.entry("7", "Las Vegas"),
+        // --- MO Missouri ---
+        map.put("6", "Chesterfield");
+        map.put("47", "Liberty");
+        map.put("81", "St. Louis");
+        map.put("83", "Lee's Summit");
 
-    // --- NJ New Jersey ---
-    Map.entry("165", "Paramus"),
-    Map.entry("168", "Red Bank"),
-    Map.entry("169", "Short Hills"),
-    Map.entry("173", "Cherry Hill"),
+        // --- NE Nebraska ---
+        map.put("3", "Omaha");
 
-    // --- NM New Mexico ---
-    Map.entry("12", "Albuquerque"),
+        // --- NV Nevada ---
+        map.put("7", "Las Vegas");
 
-    // --- NY New York ---
-    Map.entry("36", "Rochester"),
-    Map.entry("39", "Syracuse"),
-    Map.entry("40", "Albany"),
-    Map.entry("99", "Buffalo"),
-    Map.entry("166", "Grand Central"),
-    Map.entry("167", "Long Island"),
-    Map.entry("170", "Staten Island"),
-    Map.entry("171", "White Plains"),
+        // --- NJ New Jersey ---
+        map.put("165", "Paramus");
+        map.put("168", "Red Bank");
+        map.put("169", "Short Hills");
+        map.put("173", "Cherry Hill");
 
-    // --- NC North Carolina ---
-    Map.entry("13", "Charlotte"),
-    Map.entry("44", "Greensboro"),
-    Map.entry("60", "Raleigh"),
+        // --- NM New Mexico ---
+        map.put("12", "Albuquerque");
 
-    // --- OH Ohio ---
-    Map.entry("8", "Cincinnati"),
-    Map.entry("16", "Westlake"),
-    Map.entry("29", "Toledo"),
-    Map.entry("57", "Dayton"),
-    Map.entry("89", "Beachwood"),
-    Map.entry("96", "Youngstown"),
-    Map.entry("100", "Akron"),
-    Map.entry("228", "Columbus"),
+        // --- NY New York ---
+        map.put("36", "Rochester");
+        map.put("39", "Syracuse");
+        map.put("40", "Albany");
+        map.put("99", "Buffalo");
+        map.put("166", "Grand Central");
+        map.put("167", "Long Island");
+        map.put("170", "Staten Island");
+        map.put("171", "White Plains");
 
-    // --- OK Oklahoma ---
-    Map.entry("25", "Oklahoma City"),
-    Map.entry("91", "Norman"),
-    Map.entry("236", "Oklahoma City-North"),
+        // --- NC North Carolina ---
+        map.put("13", "Charlotte");
+        map.put("44", "Greensboro");
+        map.put("60", "Raleigh");
 
-    // --- OR Oregon ---
-    Map.entry("37", "Portland"),
+        // --- OH Ohio ---
+        map.put("8", "Cincinnati");
+        map.put("16", "Westlake");
+        map.put("29", "Toledo");
+        map.put("57", "Dayton");
+        map.put("89", "Beachwood");
+        map.put("96", "Youngstown");
+        map.put("100", "Akron");
+        map.put("228", "Columbus");
 
-    // --- PA Pennsylvania ---
-    Map.entry("34", "Sewickley"),
-    Map.entry("58", "Allentown"),
-    Map.entry("59", "Harrisburg"),
-    Map.entry("92", "South Hills"),
-    Map.entry("133", "Chadds Ford"),
-    Map.entry("33", "Conshohocken"),
+        // --- OK Oklahoma ---
+        map.put("25", "Oklahoma City");
+        map.put("91", "Norman");
+        map.put("236", "Oklahoma City-North");
 
-    // --- RI Rhode Island ---
-    Map.entry("54", "East Greenwich"),
+        // --- OR Oregon ---
+        map.put("37", "Portland");
 
-    // --- SC South Carolina ---
-    Map.entry("55", "Charleston"),
-    Map.entry("71", "Columbia"),
+        // --- PA Pennsylvania ---
+        map.put("34", "Sewickley");
+        map.put("58", "Allentown");
+        map.put("59", "Harrisburg");
+        map.put("92", "South Hills");
+        map.put("133", "Chadds Ford");
+        map.put("33", "Conshohocken");
 
-    // --- TN Tennessee ---
-    Map.entry("14", "Brentwood"),
-    Map.entry("41", "Memphis"),
-    Map.entry("42", "Knoxville"),
+        // --- RI Rhode Island ---
+        map.put("54", "East Greenwich");
 
-    // --- TX Texas ---
-    Map.entry("27", "San Antonio"),
-    Map.entry("46", "Houston-Clear Lake/League City"),
-    Map.entry("110", "The Woodlands"),
-    Map.entry("118", "Sugar Land"),
-    Map.entry("154", "Dallas"),
-    Map.entry("209", "Austin"),
-    Map.entry("158", "West Houston"),
+        // --- SC South Carolina ---
+        map.put("55", "Charleston");
+        map.put("71", "Columbia");
 
-    // --- UT Utah ---
-    Map.entry("177", "Salt Lake City"),
+        // --- TN Tennessee ---
+        map.put("14", "Brentwood");
+        map.put("41", "Memphis");
+        map.put("42", "Knoxville");
 
-    // --- VA Virginia ---
-    Map.entry("20", "Virginia Beach"),
-    Map.entry("68", "Newport News"),
-    Map.entry("176", "Henrico"),
-    Map.entry("182", "Alexandria"),
-    Map.entry("183", "Fairfax"),
-    Map.entry("184", "Loudoun County"),
-    Map.entry("187", "Tysons Corner"),
+        // --- TX Texas ---
+        map.put("27", "San Antonio");
+        map.put("46", "Houston-Clear Lake/League City");
+        map.put("110", "The Woodlands");
+        map.put("118", "Sugar Land");
+        map.put("154", "Dallas");
+        map.put("209", "Austin");
+        map.put("158", "West Houston");
 
-    // --- WA Washington ---
-    Map.entry("56", "Federal Way"),
-    Map.entry("61", "Lynnwood"),
-    Map.entry("76", "Bellevue"),
-    Map.entry("77", "Vancouver"),
-    Map.entry("241", "Kirkland"),
+        // --- UT Utah ---
+        map.put("177", "Salt Lake City");
 
-    // --- WI Wisconsin ---
-    Map.entry("26", "Waukesha"),
-    Map.entry("70", "Madison"),
-    Map.entry("102", "Appleton"),
-    Map.entry("124", "Glendale")
-);
+        // --- VA Virginia ---
+        map.put("20", "Virginia Beach");
+        map.put("68", "Newport News");
+        map.put("176", "Henrico");
+        map.put("182", "Alexandria");
+        map.put("183", "Fairfax");
+        map.put("184", "Loudoun County");
+        map.put("187", "Tysons Corner");
+
+        // --- WA Washington ---
+        map.put("56", "Federal Way");
+        map.put("61", "Lynnwood");
+        map.put("76", "Bellevue");
+        map.put("77", "Vancouver");
+        map.put("241", "Kirkland");
+
+        // --- WI Wisconsin ---
+        map.put("26", "Waukesha");
+        map.put("70", "Madison");
+        map.put("102", "Appleton");
+        map.put("124", "Glendale");
+
+        return map;
+    }
 
 private List<String> officeIDtoExternalName(List<String> officeIDlist) {
     return officeIDlist.stream()
