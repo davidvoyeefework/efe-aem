@@ -8,6 +8,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
+import java.util.HashSet;
 
 import javax.annotation.PostConstruct;
 
@@ -280,6 +281,7 @@ public class PlannerListImpl implements PlannerList {
 				String stringToRemove = "143"; // 143 is reference to national planner center in AZ.
 				officeLocationsDecodedDuplicatesRemoved.remove(stringToRemove);
 				List<String> externalOfficeNames = officeIDtoExternalName(officeLocationsDecodedDuplicatesRemoved);
+				System.out.println(externalOfficeNames);
 				plannerObj.setOfficeLocations(externalOfficeNames.toString().replace("[", "").replace("]", ""));
 
 				if(StringUtils.isNotEmpty(firstNameAlias)) {
@@ -308,23 +310,514 @@ public class PlannerListImpl implements PlannerList {
 		List<String> externalOfficeNames = new ArrayList<>();
 		for (String item: officeIDlist) {
 			switch(item) {
-				case "129":
-					externalOfficeNames.add("Atlanta");
+				// --- AL Alabama ---
+				case "28":
+					externalOfficeNames.add("Birmingham");
 					break;
+				case "138":
+					externalOfficeNames.add("Huntsville");
+					break;
+
+				// --- AZ Arizona ---
+				case "98":
+					externalOfficeNames.add("Phoenix");
+					break;
+				case "207":
+					externalOfficeNames.add("Emerging Investors");
+					break;
+				case "175":
+					externalOfficeNames.add("Chandler");
+					break;
+
+				// --- CA California ---
+				case "15":
+					externalOfficeNames.add("Walnut Creek");
+					break;
+				case "222":
+					externalOfficeNames.add("Woodland");
+					break;
+				case "38":
+					externalOfficeNames.add("Roseville");
+					break;
+				case "64":
+					externalOfficeNames.add("Fresno");
+					break;
+				case "114":
+					externalOfficeNames.add("Elk Grove");
+					break;
+				case "128":
+					externalOfficeNames.add("San Rafael");
+					break;
+				case "135":
+					externalOfficeNames.add("El Segundo");
+					break;
+				case "137":
+					externalOfficeNames.add("Anaheim");
+					break;
+				case "159":
+					externalOfficeNames.add("Orange County");
+					break;
+				case "160":
+					externalOfficeNames.add("Pasadena");
+					break;
+				case "162":
+					externalOfficeNames.add("Woodland Hills");
+					break;
+				case "178":
+					externalOfficeNames.add("San Diego");
+					break;
+				case "179":
+					externalOfficeNames.add("Santa Clara");
+					break;
+				case "223":
+					externalOfficeNames.add("Seal Beach");
+					break;
+				case "224":
+					externalOfficeNames.add("Danville");
+					break;
+
+				// --- CO Colorado ---
+				case "52":
+					externalOfficeNames.add("Westminster");
+					break;
+				case "53":
+					externalOfficeNames.add("Englewood"); // duplicate IDs
+					break;
+				case "78":
+					externalOfficeNames.add("Colorado Springs");
+					break;
+				case "121":
+					externalOfficeNames.add("Loveland");
+					break;
+
+				// --- CT Connecticut ---
+				case "157":
+					externalOfficeNames.add("Farmington");
+					break;
+
+				// --- FL Florida ---
+				case "24":
+					externalOfficeNames.add("Tampa-East");
+					break;
+				case "35":
+					externalOfficeNames.add("Melbourne");
+					break;
+				case "123":
+					externalOfficeNames.add("Tampa-Westshore");
+					break;
+				case "163":
+					externalOfficeNames.add("Boca Raton");
+					break;
+				case "164":
+					externalOfficeNames.add("Miami-Coral Gables");
+					break;
+				case "172":
+					externalOfficeNames.add("Orlando");
+					break;
+				case "142":
+					externalOfficeNames.add("Naples");
+					break;
+				case "226":
+					externalOfficeNames.add("Miami-Plantation");
+					break;
+				case "237":
+					externalOfficeNames.add("St. Petersburg");
+					break;
+
+				// --- GA Georgia ---
 				case "72":
 					externalOfficeNames.add("Duluth");
 					break;
 				case "84":
 					externalOfficeNames.add("Vinings");
-					break;		
+					break;
 				case "94":
 					externalOfficeNames.add("Alpharetta");
-					break;													
+					break;
+				case "129":
+					externalOfficeNames.add("Atlanta");
+					break;
+
+				// --- IL Illinois ---
+				case "62":
+					externalOfficeNames.add("Oak Brook");
+					break;
+				case "79":
+					externalOfficeNames.add("Mokena");
+					break;
+				case "151":
+					externalOfficeNames.add("Northbrook");
+					break;
+				case "48":
+					externalOfficeNames.add("Fairview Heights");
+					break;
+
+				// --- IN Indiana ---
+				case "2":
+					externalOfficeNames.add("Indianapolis");
+					break;
+				case "4":
+					externalOfficeNames.add("Fort Wayne");
+					break;
+				case "119":
+					externalOfficeNames.add("Greenwood");
+					break;
+
+				// --- IA Iowa ---
+				case "75":
+					externalOfficeNames.add("Des Moines");
+					break;					
+
+				// --- KS Kansas ---
+				case "1":
+					externalOfficeNames.add("Overland Park");
+					break;
+				case "74":
+					externalOfficeNames.add("Wichita");
+					break;
+
+				// --- KY Kentucky ---
+				case "19":
+					externalOfficeNames.add("Louisville");
+					break;
+				case "65":
+					externalOfficeNames.add("Lexington");
+					break;
+				case "90":
+					externalOfficeNames.add("Florence");
+					break;
+
+				// --- LA Louisiana ---
+				case "11":
+					externalOfficeNames.add("Metairie");
+					break;
+				case "32":
+					externalOfficeNames.add("Baton Rouge");
+					break;
+				case "80":
+					externalOfficeNames.add("Mandeville");
+					break;	
+
+				// MA Massachusetts
+				case "22":
+					externalOfficeNames.add("Springfield");
+					break;
+				case "148":
+					externalOfficeNames.add("Burlington");
+					break;
+				case "238":
+					externalOfficeNames.add("Quincy");
+					break;
+				case "243":
+					externalOfficeNames.add("Norwood");
+					break;
+
+				// MD Maryland
+				case "145":
+					externalOfficeNames.add("Annapolis");
+					break;
+				case "146":
+					externalOfficeNames.add("Howard County");
+					break;
+				case "147":
+					externalOfficeNames.add("Towson");
+					break;
+				case "185":
+					externalOfficeNames.add("North Bethesda");
+					break;
+				case "186":
+					externalOfficeNames.add("Silver Spring");
+					break;
+
+				// MI Michigan
+				case "10":
+					externalOfficeNames.add("Grand Rapids");
+					break;
+				case "50":
+					externalOfficeNames.add("Northville");
+					break;
+				case "105":
+					externalOfficeNames.add("Ann Arbor");
+					break;
+				case "155":
+					externalOfficeNames.add("Novi");
+					break;
+				case "156":
+					externalOfficeNames.add("Troy");
+					break;
+				case "247":
+					externalOfficeNames.add("Kalamazoo");
+					// externalOfficeNames.add("Grand Rapids II - Portage");
+					break;
+
+				// MN Minnesota
+				case "67":
+					externalOfficeNames.add("Woodbury");
+					break;
+				case "125":
+					externalOfficeNames.add("Rochester");
+					break;
+				case "31":
+					externalOfficeNames.add("Minnetonka");
+					break;
+
+				// MO Missouri
+				case "6":
+					externalOfficeNames.add("Chesterfield");
+					break;
+				case "47":
+					externalOfficeNames.add("Liberty");
+					break;
+				case "81":
+					externalOfficeNames.add("St. Louis");
+					break;
+				case "83":
+					externalOfficeNames.add("Lee's Summit");
+					break;
+
+				// NE Nebraska
+				case "3":
+					externalOfficeNames.add("Omaha");
+					break;
+
+				// NV Nevada
+				case "7":
+					externalOfficeNames.add("Las Vegas");
+					break;					
+
+				// NJ New Jersey
+				case "165":
+					externalOfficeNames.add("Paramus");
+					break;
+				case "168":
+					externalOfficeNames.add("Red Bank");
+					break;
+				case "169":
+					externalOfficeNames.add("Short Hills");
+					break;
+				case "173":
+					externalOfficeNames.add("Cherry Hill");
+					break;
+
+				// NM New Mexico
+				case "12":
+					externalOfficeNames.add("Albuquerque");
+					break;
+
+				// NY New York
+				case "36":
+					externalOfficeNames.add("Rochester");
+					break;
+				case "39":
+					externalOfficeNames.add("Syracuse");
+					break;
+				case "40":
+					externalOfficeNames.add("Albany");
+					break;
+				case "99":
+					externalOfficeNames.add("Buffalo");
+					break;
+				case "166":
+					externalOfficeNames.add("Grand Central");
+					break;
+				case "167":
+					externalOfficeNames.add("Long Island");
+					break;
+				case "170":
+					externalOfficeNames.add("Staten Island");
+					break;
+				case "171":
+					externalOfficeNames.add("White Plains");
+					break;
+
+				// NC North Carolina
+				case "13":
+					externalOfficeNames.add("Charlotte");
+					break;
+				case "44":
+					externalOfficeNames.add("Greensboro");
+					break;
+				case "60":
+					externalOfficeNames.add("Raleigh");
+					break;					
+
+				// OH Ohio
+				case "8":
+					externalOfficeNames.add("Cincinnati");
+					break;
+				case "16":
+					externalOfficeNames.add("Westlake");
+					break;
+				case "29":
+					externalOfficeNames.add("Toledo");
+					break;
+				case "57":
+					externalOfficeNames.add("Dayton");
+					break;
+				case "89":
+					externalOfficeNames.add("Beachwood");
+					break;
+				case "96":
+					externalOfficeNames.add("Youngstown");
+					break;
+				case "100":
+					externalOfficeNames.add("Akron");
+					break;
+				case "228":
+					externalOfficeNames.add("Columbus");
+					break;
+
+				// OK Oklahoma
+				case "25":
+					externalOfficeNames.add("Oklahoma City");
+					break;
+				case "91":
+					externalOfficeNames.add("Norman");
+					break;
+				case "236":
+					externalOfficeNames.add("Oklahoma City-North");
+					break;
+
+				// OR Oregon
+				case "37":
+					externalOfficeNames.add("Portland");
+					break;
+
+				// PA Pennsylvania
+				case "34":
+					externalOfficeNames.add("Sewickley");
+					break;
+				case "58":
+					externalOfficeNames.add("Allentown");
+					break;
+				case "59":
+					externalOfficeNames.add("Harrisburg");
+					break;
+				case "92":
+					externalOfficeNames.add("South Hills");
+					break;
+				case "133":
+					externalOfficeNames.add("Chadds Ford");
+					break;
+				case "33":
+					externalOfficeNames.add("Conshohocken");
+					break;
+
+				// RI Rhode Island
+				case "54":
+					externalOfficeNames.add("East Greenwich");
+					break;
+
+				// SC South Carolina
+				case "55":
+					externalOfficeNames.add("Charleston");
+					break;
+				case "71":
+					externalOfficeNames.add("Columbia");
+					break;
+
+				// TN Tennessee
+				case "14":
+					externalOfficeNames.add("Brentwood");
+					break;
+				case "41":
+					externalOfficeNames.add("Memphis");
+					break;
+				case "42":
+					externalOfficeNames.add("Knoxville");
+					break;
+
+				// TX Texas
+				case "27":
+					externalOfficeNames.add("San Antonio");
+					break;
+				case "46":
+					externalOfficeNames.add("Houston-Clear Lake/League City");
+					break;
+				case "110":
+					externalOfficeNames.add("The Woodlands");
+					break;
+				case "118":
+					externalOfficeNames.add("Sugar Land");
+					break;
+				case "154":
+					externalOfficeNames.add("Dallas");
+					break;
+				case "209":
+					externalOfficeNames.add("Austin");
+					break;
+				case "158":
+					externalOfficeNames.add("West Houston");
+					break;
+
+				// UT Utah
+				case "177":
+					externalOfficeNames.add("Salt Lake City");
+					break;
+
+				// VA Virginia
+				case "20":
+					externalOfficeNames.add("Virginia Beach");
+					break;
+				case "68":
+					externalOfficeNames.add("Newport News");
+					break;
+				case "176":
+					externalOfficeNames.add("Henrico");
+					break;
+				case "182":
+					externalOfficeNames.add("Alexandria");
+					break;
+				case "183":
+					externalOfficeNames.add("Fairfax");
+					break;
+				case "184":
+					externalOfficeNames.add("Loudoun County");
+					break;
+				case "187":
+					externalOfficeNames.add("Tysons Corner");
+					break;
+				// case "246":
+				// 	externalOfficeNames.add("Washington DC - Client Development");
+				// 	break;
+
+				// WA Washington
+				case "56":
+					externalOfficeNames.add("Federal Way");
+					break;
+				case "61":
+					externalOfficeNames.add("Lynnwood");
+					break;
+				case "76":
+					externalOfficeNames.add("Bellevue");
+					break;
+				case "77":
+					externalOfficeNames.add("Vancouver");
+					break;
+				case "241":
+					externalOfficeNames.add("Kirkland");
+					break;
+
+				// WI Wisconsin
+				case "26":
+					externalOfficeNames.add("Waukesha");
+					break;
+				case "70":
+					externalOfficeNames.add("Madison");
+					break;
+				case "102":
+					externalOfficeNames.add("Appleton");
+					break;
+				case "124":
+					externalOfficeNames.add("Glendale");
+					break;					
 			}
+
 		}
 		Collections.sort(externalOfficeNames);
-		return externalOfficeNames;
-
+		Set<String> externalOfficeNamesWithoutDuplicates = new HashSet<>(externalOfficeNames);
+		List<String> cleanedOfficeNames = new ArrayList<>(externalOfficeNamesWithoutDuplicates);
+		return cleanedOfficeNames;
 	}
 
 	/**
