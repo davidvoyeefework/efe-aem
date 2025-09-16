@@ -31,3 +31,6 @@ $include "./default_filters.any"
 
 # Allow dynamic data variable servlet
 /0107 { /type "allow" /method "GET" /extension "json" /path "/content/fe/*" /selectors "dynamic"}
+
+# Allow Static HTML File for Akamai
+/0108 { /type "allow" /method 'GET' /url "/bin/statichtmlfile"}

@@ -33,6 +33,7 @@ module.exports = {
     wpitransamerica: SOURCE_ROOT + "/wpi-transamerica/site/main.ts",
     wpivanguard: SOURCE_ROOT + "/wpi-vanguard/site/main.ts",
     wpivoya: SOURCE_ROOT + "/wpi-voya/site/main.ts",
+    wpiempower: SOURCE_ROOT + "/wpi-empower/site/main.ts"
   },
   output: {
     filename: (chunkData) => {

@@ -13,11 +13,12 @@
                         <span data-sly-test="${!(model.officeLocations.size == 1 && model.officeLocations[0].city == 'Phoenix')}">Financial planner serving</span>
                         <span data-sly-test="${model.officeLocations.size == 1 && model.officeLocations[0].city == 'Phoenix'}">Financial planner</span>                        
                         <span data-sly-list.item="${model.officeLocations}">
-                            <span class="cityStatePair" data-sly-test="${item.city != 'Phoenix'}">
-                                <!-- <sly data-sly-test="${itemList.last && model.officeLocations.size > 1}">and</sly> -->
-                                <span data-sly-test="${item.city}">${item.city},</span>
-                                <span data-sly-test="${item.state}">${item.state}</span>
-                            </span>
+                                <span class="cityStatePair" data-sly-test="${item.city != 'Phoenix'}">
+
+                                    <span data-sly-test="${item.city}">${item.externalName},</span>
+                                    <span data-sly-test="${item.state}">${item.state}</span>
+                                </span>
+
 
                         </span>
                     </span>
@@ -74,7 +75,7 @@
                                 <span data-sly-list.item="${model.officeLocations}">
                                     <span class="location-item">
                                         <span data-sly-test="${item.city != 'Phoenix'}">
-                                            <span data-sly-test="${item.city}">${item.city},</span>
+                                            <span data-sly-test="${item.city}">${item.externalName},</span>
                                             <span data-sly-test="${item.state}">${item.state}</span>
                                         <span>
                                     </span>
