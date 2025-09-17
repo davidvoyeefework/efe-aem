@@ -26,18 +26,19 @@
             }
         }
         .minimal-header__vertical-line {
-            display: none;
+            display: none !important;
             height: 42px;
             width: 1px;
             background: #949494;
             margin: 0 12px;
         }
         /* show line only if BOTH logos are present  */
-        &:has(.cmp-image--efe-logo-primary):has(.cmp-image--efe-logo-secondary){
+        &:has(.cmp-image--efe-logo-primary + minimal-header__vertical-line + .cmp-image--efe-logo-secondary){
            .minimal-header__vertical-line {
-            display:block;
+            display:block !important;
            } 
         }
+
         #efe-nav-main #nav-list-cta-group #efe-global-nav-header {
             display: none;
         }
