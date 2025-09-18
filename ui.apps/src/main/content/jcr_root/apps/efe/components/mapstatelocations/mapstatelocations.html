@@ -14,15 +14,13 @@
             {  
                 "@context": "https://schema.org",  
                 "@type": "FinancialService",  
-                "name": "Edelman Financial Engines - ${model.stateName} Locations",
-                "url": "https://www.edelmanfinancialengines.com/locations/${model.stateName}",
+                "name": 'Edelman Financial Engines - ${model.stateName @context="scriptString"} Locations',
+                "url": 'https://www.edelmanfinancialengines.com/locations/${model.stateName @context="scriptString"}',
                 "logo": "https://www.edelmanfinancialengines.com/content/dam/efe/corporate-brand/Brand/Logos/EFE-Logos/Primary/_other/logo%20efe%20.svg",
-                "description": "Find Edelman Financial Engines offices in ${model.stateName} and connect with   
-                               experienced financial advisors to help plan your retirement, investment, and   
-                               wealth strategies.",  
+                "description": 'Find Edelman Financial Engines offices in ${model.stateName @context="scriptString"} and connect with experienced financial advisors to help plan your retirement, investment, and wealth strategies.',  
                 "address": {  
                     "@type": "PostalAddress",  
-                    "addressRegion": "${model.mapState}",  
+                    "addressRegion": '${model.mapState @context="scriptString"}',  
                     "addressCountry": "US"  
                 },  
                 "telephone": "+1-833-752-6333",  
