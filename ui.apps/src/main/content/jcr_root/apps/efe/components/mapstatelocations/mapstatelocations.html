@@ -1,4 +1,28 @@
 <sly data-sly-use.model="com.efe.core.models.MapStateLocations">
+    <script type="application/ld+json">
+            {  
+                "@context": "https://schema.org",  
+                "@type": "FinancialService",  
+                "name": "Edelman Financial Engines - ${model.stateName} Locations",
+                "url": "https://www.edelmanfinancialengines.com/locations/${model.stateName}",
+                "logo": "https://www.edelmanfinancialengines.com/content/dam/efe/corporate-brand/Brand/Logos/EFE-Logos/Primary/_other/logo%20efe%20.svg",
+                "description": "Find Edelman Financial Engines offices in ${model.stateName} and connect with   
+                               experienced financial advisors to help plan your retirement, investment, and   
+                               wealth strategies.",  
+                "address": {  
+                    "@type": "PostalAddress",  
+                    "addressRegion": "${model.mapState}",  
+                    "addressCountry": "US"  
+                },  
+                "telephone": "+1-833-752-6333",  
+                "sameAs": [  
+                    "https://www.facebook.com/EdelmanFinancialEngines",  
+                    "https://twitter.com/EFE",  
+                    "https://www.linkedin.com/company/edelman-financial-engines"  
+                    ]  
+               }  
+                
+    </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=${model.mapKey @ context='scriptToken'}&v=weekly&libraries=geometry,places"></script>
     <section id="${model.id}" data-component="location-map-state" class="cmp-location--state cmp-location--state-default"
         data-explorelink-label="${model.exploreLinkLabel}"
