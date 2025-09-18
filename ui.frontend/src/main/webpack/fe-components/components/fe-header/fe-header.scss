@@ -32,22 +32,11 @@
             background: #949494;
             margin: 0 12px;
         }
-        /* Show ONLY if both logos actually render an <img> */
-        /* If your Core Image uses lazy attrs or <picture>, this is even safer: */
-        .fepage .minimal-header:has(.cmp-image--efe-logo-primary :is(
-                              img.cmp-image__image[src]:not([src=""]),
-                              img.cmp-image__image[data-cmp-src],
-                              picture source[srcset]:not([srcset=""])
-                            ))
-                         :has(.cmp-image--efe-logo-secondary :is(
-                              img.cmp-image__image[src]:not([src=""]),
-                              img.cmp-image__image[data-cmp-src],
-                              picture source[srcset]:not([srcset=""])
-                            ))
-                 .minimal-header__vertical-line {
+            &:has(.cmp-image--efe-logo-primary.cmp-image--small + .minimal-header__vertical-line + .cmp-image--efe-logo-secondary.cmp-image--small){    
+            .minimal-header__vertical-line {
                     display: block !important;
                 }
-
+            }
         #efe-nav-main #nav-list-cta-group #efe-global-nav-header {
             display: none;
         }
