@@ -254,7 +254,7 @@ public class PlannerListImpl implements PlannerList {
 				String imageUrl = ResourceUtil.getProperty(resourceResolver, plannerMaster.getPath(),
 						"desktopImageurl");
 				String plannerId = ResourceUtil.getProperty(resourceResolver, plannerMaster.getPath(), "id");
-                                String bioVideo = ResourceUtil.getProperty(resourceResolver, plannerMaster.getPath(), "bioVideo");
+                String bioVideo = ResourceUtil.getProperty(resourceResolver, plannerMaster.getPath(), "bioVideo");
 
 				// Get all office locations folder names associated with Planner and isolate just array of folder names not whole path
 				officeLocationsEncoded = ResourceUtil.getProperties(resourceResolver, plannerMaster.getPath(), "officeslocations");
@@ -330,11 +330,11 @@ public class PlannerListImpl implements PlannerList {
         map.put("128", "San Rafael");
         map.put("135", "El Segundo");
         map.put("137", "Anaheim");
-        map.put("159", "Orange County");
+        map.put("159", "Costa Mesa");
         map.put("160", "Pasadena");
         map.put("162", "Woodland Hills");
         map.put("178", "San Diego");
-        map.put("179", "Santa Clara");
+        map.put("179", "Silicon Valley");
         map.put("223", "Seal Beach");
         map.put("224", "Danville");
 
@@ -381,6 +381,7 @@ public class PlannerListImpl implements PlannerList {
         // --- KS Kansas ---
         map.put("1", "Overland Park");
         map.put("74", "Wichita");
+		
 
         // --- KY Kentucky ---
         map.put("19", "Louisville");
@@ -443,7 +444,7 @@ public class PlannerListImpl implements PlannerList {
         map.put("36", "Rochester");
         map.put("39", "Syracuse");
         map.put("40", "Albany");
-        map.put("99", "Buffalo");
+        map.put("99", "Amherst");
         map.put("166", "Grand Central");
         map.put("167", "Long Island");
         map.put("170", "Staten Island");
@@ -529,7 +530,7 @@ public class PlannerListImpl implements PlannerList {
         return map;
     }
 
-private List<String> officeIDtoExternalName(List<String> officeIDlist) {
+	private List<String> officeIDtoExternalName(List<String> officeIDlist) {
     return officeIDlist.stream()
             .map(OFFICE_ID_TO_NAME::get)
             .filter(Objects::nonNull)
