@@ -33,9 +33,18 @@
             margin: 0 12px;
         }
         /* Show ONLY if both logos actually render an <img> */
-        .fepage .minimal-header:has(.cmp-image--efe-logo-primary img.cmp-image__image)
-            :has(.cmp-image--efe-logo-secondary img.cmp-image__image)
-                .minimal-header__vertical-line {
+        /* If your Core Image uses lazy attrs or <picture>, this is even safer: */
+        .fepage .minimal-header:has(.cmp-image--efe-logo-primary :is(
+                              img.cmp-image__image[src]:not([src=""]),
+                              img.cmp-image__image[data-cmp-src],
+                              picture source[srcset]:not([srcset=""])
+                            ))
+                         :has(.cmp-image--efe-logo-secondary :is(
+                              img.cmp-image__image[src]:not([src=""]),
+                              img.cmp-image__image[data-cmp-src],
+                              picture source[srcset]:not([srcset=""])
+                            ))
+                 .minimal-header__vertical-line {
                     display: block !important;
                 }
 
