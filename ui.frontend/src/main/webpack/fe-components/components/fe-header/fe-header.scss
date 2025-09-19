@@ -31,12 +31,11 @@
             width: 1px;
             background: #949494;
             margin: 0 12px;
-        }
-            &:has(.cmp-image--efe-logo-primary.cmp-image--small + .minimal-header__vertical-line + .cmp-image--efe-logo-secondary.cmp-image--small){    
-            .minimal-header__vertical-line {
+        }    
+            .minimal-header__vertical-line.is-active {
                     display: block !important;
                 }
-            }
+            
         #efe-nav-main #nav-list-cta-group #efe-global-nav-header {
             display: none;
         }

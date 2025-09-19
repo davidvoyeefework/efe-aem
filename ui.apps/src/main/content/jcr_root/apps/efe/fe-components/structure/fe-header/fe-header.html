@@ -41,3 +41,14 @@
     </header>
 </div>
 <sly data-sly-call="${template.placeholder @ isEmpty=!isNotEmpty, classAppend='enroll-form'}"></sly>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const header = document.querySelector('.fepage .minimal-header');
+        if (!header) return;
+            const hasPrimary  = !!header.querySelector('.cmp-image--efe-logo-primary img, .cmp-image--efe-logo-primary .cmp-image__image');
+            const hasSecondary = !!header.querySelector('.cmp-image--efe-logo-secondary img, .cmp-image--efe-logo-secondary .cmp-image__image');
+                header.querySelectorAll('.minimal-header__vertical-line').forEach(el => {
+                            el.classList.toggle('is-active', hasPrimary && hasSecondary);
+                 });
+            });
+</script>
