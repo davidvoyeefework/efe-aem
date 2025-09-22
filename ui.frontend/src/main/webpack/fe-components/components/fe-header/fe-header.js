@@ -1,5 +1,5 @@
 import * as utility from "../../site/js/utility";
-import { fetchData, handleLoader } from "../../site/js/helper";
+import { debounce,fetchData, handleLoader } from "../../site/js/helper";
 
 export default class FeHeader {
   constructor() {
@@ -12,6 +12,8 @@ export default class FeHeader {
       this.attributeParameterElem = document.querySelector("#fe-properties");
       this.init();
     });
+    window.addEventListener('resize', debounce(this.checkWrap,100));
+    window.addEventListener('load', this.checkWrap);
   }
 
   init() {
@@ -168,6 +170,32 @@ export default class FeHeader {
         return utility.getLoginLink();
       default:
         return "";
+    }
+  }
+  checkWrap() {
+    const container = document.querySelector('#efe-nav-main .cmp-container--1920.cmp-container--26');
+    if (!container) {
+      // exit early if container is null
+      return;
+    }
+    const secondaryLogo = container.querySelector('.cmp-image--efe-logo-secondary');
+    const verticleLine = container.querySelector('.minimal-header__vertical-line');
+    if (!verticleLine) {
+      // exit early if there's nothing to hide.
+      return;
+    }
+    if (!secondaryLogo) {
+      // no secondary logo, verticle line is not needed
+      verticleLine.remove();
+      // exit early if there's nothing to hide.
+      return;
+    }
+    const referenceTop = container.offsetTop;
+
+    if (secondaryLogo.offsetTop > referenceTop) {
+      verticleLine.classList.add('hidden');
+    } else {
+      verticleLine.classList.remove('hidden');
     }
   }
 }
