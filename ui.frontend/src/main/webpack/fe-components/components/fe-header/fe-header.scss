@@ -32,10 +32,10 @@
             background: #949494;
             margin: 0 12px;
         }    
-            &:has(.cmp-image--efe-logo-primary + .minimal-header__vertical-line + .cmp-image--efe-logo-secondary){ 
-                    .minimal-header__vertical-line {display: block !important;
+            .minimal-header__vertical-line.is-active {
+                    display: block !important;
                 }
-            }  
+            
         #efe-nav-main #nav-list-cta-group #efe-global-nav-header {
             display: none;
         }
@@ -118,7 +118,7 @@
             visibility: hidden;
         }
     }
-    &.fe-direct-sponsor {
+    &.fe-direct-sponsor {.cmp-image__image
         .minimal-header {
             .cmp-image--efe-logo-secondary {
                 .cmp-image .cmp-image__image {
