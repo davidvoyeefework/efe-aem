@@ -4,7 +4,7 @@ export default {
     title: "FE Components/form modal",
     argTypes: {
         variation: {
-            options: ["Default", "theme-vanguard" , "theme-aon", "theme-ssga"],
+            options: ["Default", "theme-vanguard" , "theme-aon", "theme-ssga", "theme-empower"],
             control: { type: "radio" },
         },
     },
