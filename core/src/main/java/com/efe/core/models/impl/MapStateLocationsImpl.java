@@ -146,7 +146,10 @@ public class MapStateLocationsImpl implements MapStateLocations {
 			LOGGER.debug("Locations CF Node not found.");
 		}
 		officeLocationJson = officeLocationArr.toString();
-                stateName = StatesEnum.valueOf(mapState).getStateName();
+                if(Objects.nonNull(mapState)) {
+                    stateName = StatesEnum.valueOf(mapState).getStateName();
+                }
+                
 	}
 
 	/**
