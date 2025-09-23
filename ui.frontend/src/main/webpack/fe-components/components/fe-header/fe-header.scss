@@ -24,19 +24,7 @@
                 padding-top: 0 !important;
                 padding-bottom: 30px !important;
             }
-        }
-        .minimal-header__vertical-line {
-            display: none !important;
-            height: 42px;
-            width: 1px;
-            background: #949494;
-            margin: 0 12px;
         }    
-        &:has(.cmp-image--efe-logo-primary + .minimal-header__vertical-line + .cmp-image--efe-logo-secondary){
-           .minimal-header__vertical-line {
-                    display: block !important;
-                }
-            }    
         #efe-nav-main #nav-list-cta-group #efe-global-nav-header {
             display: none;
         }
@@ -91,9 +79,45 @@
                 }
             }
         }
+        .minimal-header__vertical-line {
+            border-left: 1px;
+            display:block;
+            height: 42px;
+            width: 1px;
+            background: #949494;
+            &.hidden {
+              visibility: hidden;
+            }
+        }   
         * {
             font-family: var( --fe-footer-header-font-family) !important;
         }
+        &.subadvised {
+            header div.container:last-child > div.cmp-container {
+              padding: 10px 16px 16px 16px;
+            }
+        .minimal-header__vertical-line {
+            height: 44px !important;
+      }
+      .cmp-image--efe-logo-secondary {
+        &.cmp-image--small {
+          &::before {
+            // hides the inherited Powered By from common-fe.scss
+            content: none !important;
+          }
+            .cmp-image {
+              &::before {
+                content: "Powered by";
+                color: $efe-gray-primary;
+                font-size: 0.6rem;
+                font-style: normal;
+                font-weight: 300;
+                line-height: 16px;
+              }
+            }
+          }
+        }
+      }
     }
     &.theme-vanguard, &.theme-aon, &.theme-ssga, &.theme-empower {
         .minimal-header {
