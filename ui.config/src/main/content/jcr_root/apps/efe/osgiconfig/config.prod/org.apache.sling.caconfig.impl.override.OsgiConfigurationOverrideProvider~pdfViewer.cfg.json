@@ -1,7 +1,0 @@
-{
-  "enabled":true,
-  "description":"EFE PDF Viewer Config Override",
-  "overrides":[
-    "[/content/efe/us/en]com.adobe.cq.wcm.core.components.internal.services.pdfviewer.PdfViewerCaConfig/clientId=\"b570307347fc489980043fc612d52d37\""
-  ]
-}
