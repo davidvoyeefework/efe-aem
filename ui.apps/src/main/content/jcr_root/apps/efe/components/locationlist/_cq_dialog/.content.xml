@@ -20,6 +20,10 @@
                                     fieldLabel="State Selector"
                                     name="./state">
                                     <items jcr:primaryType="nt:unstructured">
+                                        <default
+                                            jcr:primaryType="nt:unstructured"
+                                            text="Show All States"
+                                            value="all"/>                                       
                                         <al
                                             jcr:primaryType="nt:unstructured"
                                             text="Alabama"
