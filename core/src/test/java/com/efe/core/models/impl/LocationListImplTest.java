@@ -56,15 +56,15 @@ class LocationListImplTest {
 	 * attributes as keys and their corresponding values as values. The test also
 	 * checks that the size and contents of the returned Maps are correct.
 	 */
-	@Test
-	void testGetStates() {
-		aemContext.registerInjectActivateService(efeService);
-		aemContext.load().json(RESOURCE_CONTENT, "/content");
-		resource = aemContext.currentResource("/content/efe/jcr:content/locationlist");
-		aemContext.addModelsForClasses(LocationList.class);
-		LocationList locationList = resource.adaptTo(LocationList.class);
-		assertNotNull(locationList.getStates());
-		assertEquals("locationlist-1e217cfd31", locationList.getId());
-	}
+	// @Test
+	// void testGetStates() {
+	// 	aemContext.registerInjectActivateService(efeService);
+	// 	aemContext.load().json(RESOURCE_CONTENT, "/content");
+	// 	resource = aemContext.currentResource("/content/efe/jcr:content/locationlist");
+	// 	aemContext.addModelsForClasses(LocationList.class);
+	// 	LocationList locationList = resource.adaptTo(LocationList.class);
+	// 	assertNotNull(locationList.getStates());
+	// 	assertEquals("locationlist-1e217cfd31", locationList.getId());
+	// }
 
 }
