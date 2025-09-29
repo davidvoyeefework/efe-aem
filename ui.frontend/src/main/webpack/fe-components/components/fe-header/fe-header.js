@@ -181,7 +181,7 @@ export default class FeHeader {
       return;
     }
 
-    const primaryLogo = container.querySelector('cmp-image--efe-logo-primary');
+    const primaryLogo = container.querySelector('.cmp-image--efe-logo-primary');
     const secondaryLogo = container.querySelector('.cmp-image--efe-logo-secondary');
     const verticleLine = container.querySelector('.minimal-header__vertical-line');
     if (!verticleLine) {
