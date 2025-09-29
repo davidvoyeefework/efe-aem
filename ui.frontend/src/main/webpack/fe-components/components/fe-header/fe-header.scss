@@ -86,6 +86,7 @@
             width: 1px;
             background: #949494;
             &.hidden {
+                display: none !important;
               visibility: hidden;
             }
         }   

@@ -12,14 +12,16 @@ export default class FeHeader {
       this.attributeParameterElem = document.querySelector("#fe-properties");
       this.init();
     });
-    window.addEventListener('resize', debounce(this.checkWrap,100));
+    
     window.addEventListener('load', this.checkWrap);
+    window.addEventListener('resize', debounce(() => this.checkWrap(), 100));
   }
 
   init() {
     if (window.aemfe.header) {
       console.log("Header init called");
       this.fetchHeaderDataVariables();
+      this.checkWrap();
     }
   }
 
@@ -178,24 +180,26 @@ export default class FeHeader {
       // exit early if container is null
       return;
     }
+
+    const primaryLogo = container.querySelector('cmp-image--efe-logo-primary');
     const secondaryLogo = container.querySelector('.cmp-image--efe-logo-secondary');
     const verticleLine = container.querySelector('.minimal-header__vertical-line');
     if (!verticleLine) {
       // exit early if there's nothing to hide.
       return;
     }
-    if (!secondaryLogo) {
+    if (!primaryLogo || !secondaryLogo) {
       // no secondary logo, verticle line is not needed
-      verticleLine.remove();
-      // exit early if there's nothing to hide.
-      return;
-    }
-    const referenceTop = container.offsetTop;
-
-    if (secondaryLogo.offsetTop > referenceTop) {
       verticleLine.classList.add('hidden');
-    } else {
-      verticleLine.classList.remove('hidden');
+     verticleLine.style.visibility = 'hidden';
+     return;
     }
+    const pTop = primaryLogo.getBoundingClientRect().top;
+    const sTop = secondaryLogo.getBoundingClientRect().top;
+
+    const sameRow = Math.abs(pTop - sTop) < 1.5;
+    verticleLine.classList.toggle('hidden', !sameRow);
+
+    verticleLine.style.visibility = sameRow ? 'visible' : 'hidden';
   }
 }
