@@ -176,7 +176,7 @@ export default class FeHeader {
   }
   // inside FeHeader class
 checkWrap = () => {
-    const container = document.querySelector('#efe-nav-main .cmp-container--26');
+    const container = document.querySelector('#efe-nav-main .cmp-container--1920.cmp-container--26');
       if (!container) return;
     const line = container.querySelector('.minimal-header__vertical-line');
       if (!line) return;
