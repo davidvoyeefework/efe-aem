@@ -174,32 +174,48 @@ export default class FeHeader {
         return "";
     }
   }
-  checkWrap() {
+  // inside FeHeader class
+checkWrap = () => {
     const container = document.querySelector('#efe-nav-main .cmp-container--1920.cmp-container--26');
-    if (!container) {
-      // exit early if container is null
+      if (!container) return;
+    const line = container.querySelector('.minimal-header__vertical-line');
+      if (!line) return;
+      // 1) Prefer explicit logo classes (add these classes in AEM if not already)
+      const getLogoWrapper = (sel) => {
+      const el = container.querySelector(sel);
+      return el ? (el.closest('.cmp-image') || el) : null;
+      }
+    let primary   = getLogoWrapper('.cmp-image--efe-logo-primary, [data-logo="primary"]');
+    let secondary = getLogoWrapper('.cmp-image--efe-logo-secondary, [data-logo="secondary"]');
+    // 2) Fallback: use the line's left/right siblings, but ignore CTAs and tiny icons
+    if (!primary || !secondary) {
+      const isLogoLike = (el) => {
+        if (!el || el.closest?.('#nav-list-cta-group')) return false; // ignore CTA area
+        const img = el.matches('.cmp-image')
+          ? el.querySelector('.cmp-image__image, img, picture img')
+          : el.querySelector?.('.cmp-image__image, img, picture img');
+        // treat as a logo only if it's visually substantial
+        if (!img) return false;
+        const r = img.getBoundingClientRect();
+        return r.width >= 80 && r.height >= 20; // tune thresholds as needed
+    }
+      const left  = line.previousElementSibling;
+      const right = line.nextElementSibling;
+        if (!primary && isLogoLike(left))  primary = left.closest('.cmp-image') || left;
+        if (!secondary && isLogoLike(right)) secondary = right.closest('.cmp-image') || right;
+    }
+      // 3) If we still don't have BOTH, hide the line and bail
+    if (!primary || !secondary) {
+      line.classList.add('hidden');
+      line.style.visibility = 'hidden';
       return;
     }
-
-    const primaryLogo = container.querySelector('.cmp-image--efe-logo-primary');
-    const secondaryLogo = container.querySelector('.cmp-image--efe-logo-secondary');
-    const verticleLine = container.querySelector('.minimal-header__vertical-line');
-    if (!verticleLine) {
-      // exit early if there's nothing to hide.
-      return;
-    }
-    if (!primaryLogo || !secondaryLogo) {
-      // no secondary logo, verticle line is not needed
-      verticleLine.classList.add('hidden');
-     verticleLine.style.visibility = 'hidden';
-     return;
-    }
-    const pTop = primaryLogo.getBoundingClientRect().top;
-    const sTop = secondaryLogo.getBoundingClientRect().top;
-
-    const sameRow = Math.abs(pTop - sTop) < 1.5;
-    verticleLine.classList.toggle('hidden', !sameRow);
-
-    verticleLine.style.visibility = sameRow ? 'visible' : 'hidden';
+    // 4) Same-row check (reliable across offset parents)
+    const aTop = primary.getBoundingClientRect().top;
+    const bTop = secondary.getBoundingClientRect().top;
+    const sameRow = Math.abs(aTop - bTop) < 1.5;
+    // Show only if both logos AND on the same row
+    line.classList.toggle('hidden', !sameRow);
+    line.style.visibility = sameRow ? 'visible' : 'hidden';
   }
 }
