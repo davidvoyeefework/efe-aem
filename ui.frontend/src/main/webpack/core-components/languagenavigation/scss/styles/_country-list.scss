@@ -59,4 +59,89 @@
             }
         }
     }
+
+    #single-state-selected {
+        max-width: rem(1273);
+        @include flexbox(
+            $flex-direction: row
+        );
+
+        h2 {
+            flex: 0 0 auto;
+            @include body-01;
+            font-size: rem(24);
+            font-weight: 400;
+            min-width: rem(169);
+
+        }
+        a {
+            font-size: rem(20);
+            color: $efe-red-primary;
+            transition: $std-transition;
+            position: relative;
+            &:hover {
+                color: $efe-red-hover !important;
+                transition: $std-transition;
+                text-underline-offset: 4px;
+            }
+            &:after {
+                content: "";
+                display: block;
+                width: 1px;
+                height: 16px;
+                background-color: $efe-gray-mid;
+                position: absolute;
+                right: -13px;
+                bottom: 2px;
+            }
+        }
+
+        .cmp-languagenavigation {
+            display: inline-block;
+            .cmp-languagenavigation__group {
+                margin-left: 12px;
+                @include flexbox(   
+                    $justify-content: left,
+                    $flex-direction: row,
+                    $flex-wrap: wrap,
+                    );
+                    column-gap: 25px;
+
+                ul {
+                    li {
+                        height: rem(34);
+                        &:last-of-type {
+                            a{
+                                &:after{
+                                   background-color: transparent;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        @media screen and (max-width: $lg) {
+            @include flexbox(
+                $flex-direction: column,
+            );
+
+            h2 {
+                margin-bottom: 10px;
+            }
+
+            .cmp-languagenavigation {
+                .cmp-languagenavigation__group {
+                    column-gap: 22px;
+                    margin-left: 0;
+                    a {
+                        &:after {
+                            right: -11px;
+                        }
+                    }
+                }
+            } 
+        }
+    }
 }
