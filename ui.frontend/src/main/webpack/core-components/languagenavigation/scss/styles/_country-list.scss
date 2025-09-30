@@ -121,6 +121,7 @@
 
         .cmp-languagenavigation {
             display: inline-block;
+            margin-top: 0 !important;
             .cmp-languagenavigation__group {
                 margin-left: 12px;
                 @include flexbox(   
