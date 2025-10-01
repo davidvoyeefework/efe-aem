@@ -93,32 +93,6 @@
         * {
             font-family: var( --fe-footer-header-font-family) !important;
         }
-        &.subadvised {
-            header div.container:last-child > div.cmp-container {
-              padding: 10px 16px 16px 16px;
-            }
-        .minimal-header__vertical-line {
-            height: 44px !important;
-      }
-      .cmp-image--efe-logo-secondary {
-        &.cmp-image--small {
-          &::before {
-            // hides the inherited Powered By from common-fe.scss
-            content: none !important;
-          }
-            .cmp-image {
-              &::before {
-                content: "Powered by";
-                color: $efe-gray-primary;
-                font-size: 0.6rem;
-                font-style: normal;
-                font-weight: 300;
-                line-height: 16px;
-              }
-            }
-          }
-        }
-      }
     }
     &.theme-vanguard, &.theme-aon, &.theme-ssga, &.theme-empower {
         .minimal-header {
