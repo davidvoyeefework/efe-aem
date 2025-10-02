@@ -115,6 +115,10 @@ public class LocationListImpl implements LocationList {
 		String allStates = "all";
 		if (Objects.nonNull(locationResource)) {
 
+			if (state == null) {
+				state="all";
+			}			
+
 			// Return list of all states and associated cities
 			if (state.equals(allStates)) {
 				for (Resource stateResource : locationResource.getChildren()) {
