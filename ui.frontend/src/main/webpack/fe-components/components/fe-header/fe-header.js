@@ -176,45 +176,69 @@ export default class FeHeader {
   }
   // inside FeHeader class
 checkWrap = () => {
-    const c = document.querySelector('#efe-nav-main .cmp-container--1920.cmp-container--26');
-      if (!c) return;
-    const line = c.querySelector('.minimal-header__vertical-line');
-    if (!line) return;
-  // 1) Require the explicit wrappers. If either missing -> hide.
-    const primaryWrap   = c.querySelector('.cmp-image--efe-logo-primary, [data-logo="primary"]');
-    const secondaryWrap = c.querySelector('.cmp-image--efe-logo-secondary, [data-logo="secondary"]');
-      if (!primaryWrap || !secondaryWrap) {
-          line.classList.remove('is-active');
-          line.style.visibility = 'hidden';
-      return;
+  const c = document.querySelector('#efe-nav-main .cmp-container--1920.cmp-container--26');
+  if (!c) return;
+  const line = c.querySelector('.minimal-header__vertical-line');
+  if (!line) return;
+  // Helpers
+  const show = () => { line.classList.add('is-active');  line.style.visibility = 'visible'; };
+  const hide = () => { line.classList.remove('is-active'); line.style.visibility = 'hidden'; };
+  const q = (sel) => c.querySelector(sel);
+  // Require explicit wrappers (add these classes / data-attrs in AEM)
+  const primaryWrap   = q('.cmp-image--efe-logo-primary, [data-logo="primary"]');
+  const secondaryWrap = q('.cmp-image--efe-logo-secondary, [data-logo="secondary"]');
+  if (!primaryWrap || !secondaryWrap) { hide(); return; }
+  // Find a real image inside each wrapper (handles AEM shapes)
+  const getImg = (wrap) =>
+    wrap.querySelector('img.cmp-image__image, picture img, img, svg, .cmp-image__image');
+  const pImg = getImg(primaryWrap);
+  const sImg = getImg(secondaryWrap);
+  // Strict boolean: returns true/false only
+  const hasRealImage = (img) => {
+    if (!img) return false;                 // <— important: false, not null
+    if (img.tagName === 'IMG') {
+      return img.complete && img.naturalWidth > 0 && img.naturalHeight > 0;
+    }
+    // svg or other non-IMG graphic
+    return true;
+  };
+  // If images not present/loaded yet, hide and re-check later
+  if (!hasRealImage(pImg) || !hasRealImage(sImg)) {
+    hide();
+    // Re-run when the images load or when DOM changes add them
+    [pImg, sImg].forEach(img => {
+      if (img && img.tagName === 'IMG' && !img.complete) {
+        img.addEventListener('load', () => this.checkWrap(), { once: true });
       }
-  // 2) Require a real, loaded image inside each wrapper (avoid placeholders/CTAs).
-      const getImg = (wrap) => wrap.querySelector('img, .cmp-image__image, picture img');
-      const pImg = getImg(primaryWrap);
-      const sImg = getImg(secondaryWrap);
-      const hasRealImage = (img) =>
-            img &&
-            (img.complete || img.getAttribute('loading') !== 'lazy') &&
-            (img.naturalWidth || img.width) >= 40 &&
-            (img.naturalHeight || img.height) >= 20;
-      if (!hasRealImage(pImg) || !hasRealImage(sImg)) {
-          line.classList.remove('is-active');
-          line.style.visibility = 'hidden';
-    // re-check when images finish loading (for lazy-load)
-        [pImg, sImg].forEach(img => img && img.addEventListener('load', () => this.checkWrap(), { once: true }));
-        return;
+    });
+    // Watch wrappers for a late-arriving <img>
+    [primaryWrap, secondaryWrap].forEach(wrap => {
+      const mo = new MutationObserver(() => {
+        const img = getImg(wrap);
+        if (img) {
+          if (img.tagName === 'IMG' && !img.complete) {
+            img.addEventListener('load', () => this.checkWrap(), { once: true });
+          }
+          this.checkWrap();
         }
-  // 3) Same-row check (tight tolerance to prevent false positives)
-      const aTop = primaryWrap.getBoundingClientRect().top;
-      const bTop = secondaryWrap.getBoundingClientRect().top;
-      const sameRow = Math.abs(aTop - bTop) < 0.5; // stricter than 1
-      // 4) Activate only if both logos + same row
-    if (sameRow) {
-      line.classList.add('is-active');
-      line.style.visibility = 'visible'; // defeat theme visibility:hidden
-    } else {
-      line.classList.remove('is-active');
-    line.style.visibility = 'hidden';
-   }
+      });
+      mo.observe(wrap, { childList: true, subtree: true });
+    });
+    return;
+  }
+  // Visible & substantial (avoid tiny icons)
+  const isVisible = (el) => {
+    const cs = getComputedStyle(el);
+    if (cs.display === 'none' || cs.visibility === 'hidden' || cs.opacity === '0') return false;
+    if (!el.offsetParent && cs.position !== 'fixed') return false;
+    const r = el.getBoundingClientRect();
+    return r.width >= 80 && r.height >= 20; // adjust thresholds if needed
+  };
+  if (!isVisible(primaryWrap) || !isVisible(secondaryWrap)) { hide(); return; }
+  // Same-row check with tight tolerance (prevents 1px false positives)
+  const sameRow = Math.abs(
+    primaryWrap.getBoundingClientRect().top - secondaryWrap.getBoundingClientRect().top
+  ) < 0.5;
+    if (sameRow) show(); else hide();
   }
 }
