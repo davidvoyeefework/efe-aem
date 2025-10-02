@@ -24,7 +24,7 @@
                                             jcr:primaryType="nt:unstructured"
                                             text="Show All States"
                                             value="all"
-                                            selected="true"
+                                            selected="{Boolean}true"                                            
                                             />                                       
                                         <al
                                             jcr:primaryType="nt:unstructured"
