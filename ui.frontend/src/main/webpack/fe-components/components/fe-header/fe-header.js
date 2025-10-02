@@ -176,54 +176,45 @@ export default class FeHeader {
   }
   // inside FeHeader class
 checkWrap = () => {
-  const container = document.querySelector('#efe-nav-main .cmp-container--1920.cmp-container--26');
-  if (!container) return;
-  const line = container.querySelector('.minimal-header__vertical-line');
-  if (!line) return;
-  // 1) Collect intended logo wrappers only.
-  //    Prefer explicit classes or data-attributes you control.
-  const candidates = Array.from(
-    container.querySelectorAll(
-      '.cmp-image--efe-logo-primary, .cmp-image--efe-logo-secondary, [data-logo="primary"], [data-logo="secondary"]'
-    )
-  ).map(el => el.closest('.cmp-image') || el);
-  // 2) Filter to visible, substantial elements (avoid tiny icons/CTAs).
-  const isVisible = (el) => {
-    if (!el) return false;
-    const cs = getComputedStyle(el);
-    if (cs.display === 'none' || cs.visibility === 'hidden' || cs.opacity === '0') return false;
-    // offsetParent is null for display:none (except fixed)
-    if (!el.offsetParent && cs.position !== 'fixed') return false;
-    const r = el.getBoundingClientRect();
-    return r.width >= 80 && r.height >= 20; // tune thresholds if needed
-  };
-  const logos = candidates.filter(isVisible);
-  // 3) Need at least two distinct logo elements.
-  if (logos.length < 2) {
-    line.classList.remove('is-active');      // hide
-    line.style.visibility = 'hidden';        // keep visibility in sync vs theme overrides
-    return;
-  }
-  // 4) Use the two leftmost visible logos (in case there are >2).
-  const [a, b] = logos
-    .map(el => ({ el, rect: el.getBoundingClientRect() }))
-    .sort((x, y) => x.rect.left - y.rect.left)
-    .slice(0, 2);
-  // Guard against picking the same node twice (paranoid, but safe):
-  if (a.el === b.el) {
-    line.classList.remove('is-active');
+    const c = document.querySelector('#efe-nav-main .cmp-container--1920.cmp-container--26');
+      if (!c) return;
+    const line = c.querySelector('.minimal-header__vertical-line');
+    if (!line) return;
+  // 1) Require the explicit wrappers. If either missing -> hide.
+    const primaryWrap   = c.querySelector('.cmp-image--efe-logo-primary, [data-logo="primary"]');
+    const secondaryWrap = c.querySelector('.cmp-image--efe-logo-secondary, [data-logo="secondary"]');
+      if (!primaryWrap || !secondaryWrap) {
+          line.classList.remove('is-active');
+          line.style.visibility = 'hidden';
+      return;
+      }
+  // 2) Require a real, loaded image inside each wrapper (avoid placeholders/CTAs).
+      const getImg = (wrap) => wrap.querySelector('img, .cmp-image__image, picture img');
+      const pImg = getImg(primaryWrap);
+      const sImg = getImg(secondaryWrap);
+      const hasRealImage = (img) =>
+            img &&
+            (img.complete || img.getAttribute('loading') !== 'lazy') &&
+            (img.naturalWidth || img.width) >= 40 &&
+            (img.naturalHeight || img.height) >= 20;
+      if (!hasRealImage(pImg) || !hasRealImage(sImg)) {
+          line.classList.remove('is-active');
+          line.style.visibility = 'hidden';
+    // re-check when images finish loading (for lazy-load)
+        [pImg, sImg].forEach(img => img && img.addEventListener('load', () => this.checkWrap(), { once: true }));
+        return;
+        }
+  // 3) Same-row check (tight tolerance to prevent false positives)
+      const aTop = primaryWrap.getBoundingClientRect().top;
+      const bTop = secondaryWrap.getBoundingClientRect().top;
+      const sameRow = Math.abs(aTop - bTop) < 0.5; // stricter than 1
+      // 4) Activate only if both logos + same row
+    if (sameRow) {
+      line.classList.add('is-active');
+      line.style.visibility = 'visible'; // defeat theme visibility:hidden
+    } else {
+      line.classList.remove('is-active');
     line.style.visibility = 'hidden';
-    return;
+   }
   }
-  // 5) Same-row check
-  const sameRow = Math.abs(a.rect.top - b.rect.top) < 1.5;
-  // 6) Toggle only when BOTH logos exist AND are on the same row
-  if (sameRow) {
-    line.classList.add('is-active');
-    line.style.visibility = 'visible';       // beat any theme visibility: hidden
-  } else {
-    line.classList.remove('is-active');
-    line.style.visibility = 'hidden';
-  }
-}
 }
