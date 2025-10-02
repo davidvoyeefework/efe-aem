@@ -112,6 +112,7 @@ public class LocationListImpl implements LocationList {
 		
 		HashMap<String, Map<String, String>> unsortedStates = new HashMap<String, Map<String, String>>();
 		Resource locationResource = resourceResolver.getResource(PlannerLocationConstants.LOCATION_PATH);
+		state = "all";
 		String allStates = "all";
 		if (Objects.nonNull(locationResource)) {
 
