@@ -18,9 +18,12 @@ export default class FeHeader {
     window.addEventListener('resize', debounce(() => this.checkWrap(), 100));
 
     const container = document.querySelector('#efe-nav-main .cmp-container--1920.cmp-container--26');
-    if (container) {
-      new MutationObserver(() => requestAnimationFrame(() => this.checkWrap())).observe(container, {childList: true, subtree:true});
-    }
+    if (!container) return;
+      
+    if (this.mo) this.mo.disconnect();
+    this.mo = new MutationObserver(() => this.checkWrap());
+    this.mo.observe(container, {childList: true, subtree:true});
+    
   }
 
   init() {
