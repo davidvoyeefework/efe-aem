@@ -12,15 +12,13 @@ export default class FeHeader {
       this.attributeParameterElem = document.querySelector("#fe-properties");
       this.init();
     });
-    const run = () => requestAnimationFrame(() => this.checkWrap());
-
-    window.addEventListener('load', run);
+    
+    window.addEventListener('load', () => setTimeout(() => this.checkWrap(), 0));
     window.addEventListener('resize', debounce(() => this.checkWrap(), 100));
 
     const container = document.querySelector('#efe-nav-main .cmp-container--1920.cmp-container--26');
     if (!container) return;
       
-    if (this.mo) this.mo.disconnect();
     this.mo = new MutationObserver(() => this.checkWrap());
     this.mo.observe(container, {childList: true, subtree:true});
     
@@ -228,7 +226,11 @@ checkWrap = () => {
           if (img.tagName === 'IMG' && !img.complete) {
             img.addEventListener('load', () => this.checkWrap(), { once: true });
           }
-          this.checkWrap();
+          const keep = this.checkWrap();
+          if (!keep){
+            mo.disconnect();
+            this.mo= null;
+          }
         }
       });
       mo.observe(wrap, { childList: true, subtree: true });
