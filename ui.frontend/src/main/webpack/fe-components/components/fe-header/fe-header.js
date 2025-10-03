@@ -12,9 +12,15 @@ export default class FeHeader {
       this.attributeParameterElem = document.querySelector("#fe-properties");
       this.init();
     });
-    
-    window.addEventListener('load', this.checkWrap);
+    const run = () => requestAnimationFrame(() => this.checkWrap());
+
+    window.addEventListener('load', run);
     window.addEventListener('resize', debounce(() => this.checkWrap(), 100));
+
+    const container = document.querySelector('#efe-nav-main .cmp-container--1920.cmp-container--26');
+    if (container) {
+      new MutationObserver(() => requestAnimationFrame(() => this.checkWrap())).observe(container, {childList: true, subtree:true});
+    }
   }
 
   init() {
