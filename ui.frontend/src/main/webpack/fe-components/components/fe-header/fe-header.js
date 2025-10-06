@@ -13,8 +13,20 @@ export default class FeHeader {
       this.init();
     });
     
-    window.addEventListener('load', this.checkWrap);
+    window.addEventListener('load', this.checkWrap());
     window.addEventListener('resize', debounce(() => this.checkWrap(), 100));
+
+    const container = document.querySelector('#efe-nav-main .cmp-container--1920.cmp-container--26');
+    if (!container) return;
+      
+    this.mo = new MutationObserver(this.checkWrap());
+    this.mo.observe(container, {childList: true, subtree:true});
+    setTimeout(() => {
+      if (this.mo){
+        this.mo.disconnect();
+        this.mo = null;
+      }
+    }, 3000);
   }
 
   init() {
@@ -219,7 +231,7 @@ checkWrap = () => {
           if (img.tagName === 'IMG' && !img.complete) {
             img.addEventListener('load', () => this.checkWrap(), { once: true });
           }
-          this.checkWrap();
+           this.checkWrap();
         }
       });
       mo.observe(wrap, { childList: true, subtree: true });
@@ -239,6 +251,13 @@ checkWrap = () => {
   const sameRow = Math.abs(
     primaryWrap.getBoundingClientRect().top - secondaryWrap.getBoundingClientRect().top
   ) < 0.5;
-    if (sameRow) show(); else hide();
+    if (sameRow) {
+      show(); 
+      if (this.mo){
+        this.mo.disconnect();
+        this.mo = null;
+      }
+    }
+    else hide();
   }
 }
