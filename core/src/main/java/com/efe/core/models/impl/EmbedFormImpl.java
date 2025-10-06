@@ -61,7 +61,7 @@ public class EmbedFormImpl implements EmbedForm {
         jsonObject.addProperty("desc", description);
         jsonObject.addProperty("buttonText", buttonText);
 
-        if(Objects.isNotNull(appointmentTypeId)) {      
+        if(Objects.nonNull(appointmentTypeId)) {      
         
             jsonObject.addProperty("initiationPoint", initiationPointCode);
             jsonObject.addProperty("appointmentTypeId", appointmentTypeId);
