@@ -27,9 +27,7 @@
 				},
 				"feForm2": {
 					"jcr:primaryType": "nt:unstructured",
-					"sling:resourceType": "efe/fe-components/structure/fe-footer",
-					"description": "",
-					"buttonText": ""
+					"sling:resourceType": "efe/fe-components/structure/fe-footer"
 				}
 			}
 		}
