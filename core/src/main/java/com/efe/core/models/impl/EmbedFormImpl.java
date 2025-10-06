@@ -56,16 +56,19 @@ public class EmbedFormImpl implements EmbedForm {
      */
     @PostConstruct
     protected void init() {
-        if(Objects.isNull(appointmentTypeId)) {
-            return ;
-        }
+
         JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("initiationPoint", initiationPointCode);
         jsonObject.addProperty("desc", description);
         jsonObject.addProperty("buttonText", buttonText);
-        jsonObject.addProperty("appointmentTypeId", appointmentTypeId);
-        jsonObject.addProperty("hasAppointmentScheduler", scheduleAppointment);
+
+        if(Objects.isNotNull(appointmentTypeId)) {      
+        
+            jsonObject.addProperty("initiationPoint", initiationPointCode);
+            jsonObject.addProperty("appointmentTypeId", appointmentTypeId);
+            jsonObject.addProperty("hasAppointmentScheduler", scheduleAppointment);
+        }
         dataOption = jsonObject.toString();
+        
     }
 
     /**
