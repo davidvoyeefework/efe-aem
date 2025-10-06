@@ -21,5 +21,5 @@ public interface LocationList {
 	 */
 	public Map<String, Map<String,String>> getStates();
 		
-	
+	public String getStateSelector();
 }

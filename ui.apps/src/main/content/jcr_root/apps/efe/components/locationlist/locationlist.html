@@ -1,17 +1,40 @@
 <sly data-sly-use.model="com.efe.core.models.LocationList"/>
 <div id="${model.id}" class="languagenavigation cmp-languagenavigation--country-list">
-<nav class="cmp-languagenavigation">
-<ul class="cmp-languagenavigation__group">
-<sly data-sly-list="${model.states.keySet.iterator}">
-      <li class="cmp-languagenavigation__item cmp-languagenavigation__item--countrycode-US cmp-languagenavigation__item--langcode-en-US cmp-languagenavigation__item--level-0 cmp-languagenavigation__item--active">
-          <span class="cmp-languagenavigation__item-title" lang="en-US"><a class = "primary-nav-link-red" href="${model.states[item]['stateURL']}">${item}</a></span>
-        <ul class="cmp-languagenavigation__group" data-sly-list.cityList="${model.states[item].keySet.iterator}">
-          <li data-sly-test="${cityList != 'stateURL'}" class="cmp-languagenavigation__item cmp-languagenavigation__item--countrycode-US cmp-languagenavigation__item--langcode-en-US cmp-languagenavigation__item--level-1 cmp-languagenavigation__item--active">
-            <a x-cq-linkchecker="valid" data-cmp-clickable="" class="cmp-languagenavigation__item-link" hreflang="en-US" lang="en-US" rel="alternate" href= "${model.states[item][cityList]}">${cityList}</a>
+
+<sly data-sly-test="${model.stateSelector == 'all'}">
+  <nav class="cmp-languagenavigation">
+  <ul class="cmp-languagenavigation__group">
+  <sly data-sly-list="${model.states.keySet.iterator}">
+        <li class="cmp-languagenavigation__item cmp-languagenavigation__item--countrycode-US cmp-languagenavigation__item--langcode-en-US cmp-languagenavigation__item--level-0 cmp-languagenavigation__item--active">
+          <span class="cmp-languagenavigation__item-title" lang="en-US">${item}</span>
+          <ul class="cmp-languagenavigation__group" data-sly-list.cityList="${model.states[item].keySet.iterator}">
+            <li class="cmp-languagenavigation__item cmp-languagenavigation__item--countrycode-US cmp-languagenavigation__item--langcode-en-US cmp-languagenavigation__item--level-1 cmp-languagenavigation__item--active">
+              <a x-cq-linkchecker="valid" data-cmp-clickable="" class="cmp-languagenavigation__item-link" hreflang="en-US" lang="en-US" rel="alternate" href= "${model.states[item][cityList]}">${cityList}</a>
+            </li>
+          </ul>
+        </li>
+  </sly>
+  </ul>
+  </nav>
+</sly>  
+
+<sly data-sly-test="${model.stateSelector != 'all'}">
+  <div id="single-state-selected">
+    <h2>Work with us in:</h2>
+    <nav class="cmp-languagenavigation">
+    <ul class="cmp-languagenavigation__group">
+    <sly data-sly-list="${model.states.keySet.iterator}">
+          <li class="cmp-languagenavigation__item cmp-languagenavigation__item--countrycode-US cmp-languagenavigation__item--langcode-en-US cmp-languagenavigation__item--level-0 cmp-languagenavigation__item--active">
+            <ul class="cmp-languagenavigation__group" data-sly-list.cityList="${model.states[item].keySet.iterator}">
+              <li class="cmp-languagenavigation__item cmp-languagenavigation__item--countrycode-US cmp-languagenavigation__item--langcode-en-US cmp-languagenavigation__item--level-1 cmp-languagenavigation__item--active">
+                <a x-cq-linkchecker="valid" data-cmp-clickable="" class="cmp-languagenavigation__item-link" hreflang="en-US" lang="en-US" rel="alternate" href= "${model.states[item][cityList]}">${cityList}</a>
+              </li>
+            </ul>
           </li>
-        </ul>
-      </li>
-</sly>
-</ul>
-</nav>
+    </sly>
+    </ul>
+    </nav>
+  </div>
+</sly> 
+
 </div>
