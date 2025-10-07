@@ -71,7 +71,7 @@ public class EmbedFormImpl implements EmbedForm {
             jsonObject.addProperty("appointmentTypeId", appointmentTypeId);
             jsonObject.addProperty("hasAppointmentScheduler", scheduleAppointment);
         }
-        dataOption = json.entrySet().isEmpty() ? StringUtils.EMPTY : jsonObject.toString();
+        dataOption = jsonObject.entrySet().isEmpty() ? StringUtils.EMPTY : jsonObject.toString();
         
     }
 
