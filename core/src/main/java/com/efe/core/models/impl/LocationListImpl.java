@@ -201,14 +201,4 @@ public class LocationListImpl implements LocationList {
 	public String getStateSelector() {	
 		return state;
 	}
-
-	public static String stateURL(String stateName) {
-		String stateReturn = stateName.trim().toLowerCase();
-		stateReturn = stateReturn.replace(' ', '-');
-		return "/locations/" + stateReturn;
-	}	
-
-	public String getStateURL(String stateName) {
-		return stateURL(stateName); // reuse your existing logic
-	}	
 }
