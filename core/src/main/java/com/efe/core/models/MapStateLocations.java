@@ -95,6 +95,8 @@ public interface MapStateLocations {
 	 * @return the mapState
 	 */
         String getMapState();
+        
+        String getStateName();
 
 	/**
 	 * Method to return National Advisor Details.

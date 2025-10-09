@@ -72,7 +72,7 @@
     .cmp-button--button-primary .cmp-button, .cmp-teaser__action-link {
         @include fe-primary-btn;
     }
-    &.theme-vanguard, &.theme-aon, &.theme-ssga { 
+    &.theme-vanguard, &.theme-aon, &.theme-ssga, &.theme-empower { 
         * {
             font-family: var(--font-family);
         }

@@ -10,13 +10,15 @@
             <div class="cmp-efe-plannerbio--container__hero-text">
                 <h1 class="cmp-efe-plannerbio--container__hero-text--first">${planner.firstName} <sly data-sly-test="${planner.lastName}">${planner.lastName}</sly>
                     <span class="heading-location-details" data-sly-test="${model.officeLocations}">
-                        <span data-sly-test="${!(model.officeLocations.size == 1 && model.officeLocations[0].city == 'Phoenix')}">Financial planner serving</span>
-                        <span data-sly-test="${model.officeLocations.size == 1 && model.officeLocations[0].city == 'Phoenix'}">Financial planner</span>                        
+                        <span data-sly-test="${model.officeLocations.size >= 1}">Financial planner serving</span>
+                        <span data-sly-test="${model.officeLocations.size == 0}">Financial planner</span>                        
                         <span data-sly-list.item="${model.officeLocations}">
                             <span class="cityStatePair" data-sly-test="${item.city != 'Phoenix'}">
                                 <!-- <sly data-sly-test="${itemList.last && model.officeLocations.size > 1}">and</sly> -->
-                                <span data-sly-test="${item.city}">${item.city},</span>
-                                <span data-sly-test="${item.state}">${item.state}</span>
+                                <a class="location-link" x-cq-linkchecker="valid" data-cmp-clickable="" hreflang="en-US" lang="en-US" href="/content/efe/us/en/location.${item.state}.${item.city}.html">                              
+                                    <span data-sly-test="${item.city}">${item.city},</span>
+                                    <span data-sly-test="${item.state}">${item.state}</span>
+                                </a>                                       
                             </span>
 
                         </span>
@@ -67,15 +69,17 @@
                         <h3 class="cmp-efe-plannerbio--aboutus__education--subtitle">Services</h3>
                         <p>Financial planning, retirement planning, investment management, insurance guidance, tax planning, estate planning</p>
                     </div>
-                    <div data-sly-test="${!(model.officeLocations.size == 1 && model.officeLocations[0].city == 'Phoenix')}" class="cmp-efe-plannerbio--aboutus__locations locations">
+                    <div data-sly-test="${model.officeLocations}" class="cmp-efe-plannerbio--aboutus__locations locations">
                         <h3 class="cmp-efe-plannerbio--aboutus__education--subtitle">Locations</h3>
                         <p>                    
                             <span class="heading-location-details" data-sly-test="${model.officeLocations}">
                                 <span data-sly-list.item="${model.officeLocations}">
                                     <span class="location-item">
                                         <span data-sly-test="${item.city != 'Phoenix'}">
-                                            <span data-sly-test="${item.city}">${item.city},</span>
-                                            <span data-sly-test="${item.state}">${item.state}</span>
+                                            <a class="location-link" x-cq-linkchecker="valid" data-cmp-clickable="" hreflang="en-US" lang="en-US" href="/content/efe/us/en/location.${item.state}.${item.city}.html">
+                                                <span data-sly-test="${item.city}">${item.city},</span>
+                                                <span data-sly-test="${item.state}">${item.state}</span>
+                                            </a>
                                         <span>
                                     </span>
                                 </span>
@@ -152,6 +156,22 @@
             }
         });
     }
+
+const updateLocationLinksHref = () => {
+    const links = document.querySelectorAll(".location-link");
+
+    links.forEach(link => {
+        const currentHref = link.href;
+
+        if (currentHref.includes("%20")) {
+            const updatedHref = currentHref.replace(/%20/g, "-");
+            link.href = updatedHref;
+        }
+    });
+};
+
+addEventListener("DOMContentLoaded", updateLocationLinksHref);
+
 
 
 </script>

@@ -1,34 +1,47 @@
 import { captureScIdFromUrl } from "./helper";
 
-export const availableThroughText = (key) => {
-  const windowDataObj = window.aemfe;
-  let availableThroughText =
-    windowDataObj["publicEnrollment.products.option.pm.availableThrough"];
-  if (availableThroughText) {
-    availableThroughText = availableThroughText.replace(
-      "{{ sponsor }}",
-      windowDataObj?.preferredName,
-    );
-    availableThroughText = availableThroughText.replace(
-      "{{ industryPercent }}",
-      lowerThanIndustryPercentValue(),
-    );
-    availableThroughText = availableThroughText.replace(
-      "{{ feePercent }}",
-      (
-        windowDataObj?.sponsoredFees[0]?.feeScheduleTiers[0].feeRate * 0.01
-      ).toPrecision(2) + "%",
-    );
-  }
-  if (availableThroughText.slice(-2) === "**") {
-    availableThroughText = availableThroughText.slice(0, -2);
-  }
-  return availableThroughText;
-};
 export const lowerThanIndustryPercentValue = () => {
-  return window.aemfe?.sponsoredFees[0]?.lowerThanIndustryPercentValue;
+  return sponsoredFeeObj()?.lowerThanIndustryPercentValue;
 };
-
+ 
+export const sponsoredFeeObj = () => {
+  const windowDataObj = window.aemfe;
+  let sponsoredFeeIndex = 0;
+  let feeTierIndex = 0;
+  let gotGood = false;
+  if (windowDataObj?.sponsoredFees) {
+    sponsoredFeeIndex = 0;
+    for (let a = 0; a < windowDataObj.sponsoredFees.length; a++) {
+      if (windowDataObj.sponsoredFees[a].feeScheduleTiers) {
+        let arrLen = windowDataObj.sponsoredFees[a].feeScheduleTiers.length;
+        for (let i = 0; i < arrLen; i++) {
+          if (windowDataObj?.sponsoredFees[a]?.feeScheduleTiers[i]?.feeRate) {
+            if (
+              windowDataObj?.sponsoredFees[sponsoredFeeIndex]?.feeScheduleTiers[
+                feeTierIndex
+              ]?.feeRate &&
+              windowDataObj.sponsoredFees[a].feeScheduleTiers[i].feeRate >
+                windowDataObj.sponsoredFees[sponsoredFeeIndex].feeScheduleTiers[
+                  feeTierIndex
+                ].feeRate
+            ) {
+              feeTierIndex = i;
+              sponsoredFeeIndex = a;
+              gotGood = true;
+            }
+          }
+        }
+      }
+    }
+  }
+  if (gotGood) {
+    return windowDataObj?.sponsoredFees[sponsoredFeeIndex]?.feeScheduleTiers[
+      feeTierIndex
+    ];
+  } else {
+    return null;
+  }
+};
 /**
  * 
  * @returns Object {
@@ -453,7 +466,7 @@ export const getProductChoiceButtonProspectsOnly = () => {
 
   const context = windowDataObj?.context;
   const isMember = context?.isMember;
-  if ((context?.userTier && context.userTier === "PROSPECT") && !isMember) {
+  if (context?.userTier && context.userTier === "PROSPECT" && !isMember) {
     if (userLoggedIn) {
       url =
         apiBaseUrl +
@@ -594,8 +607,8 @@ export const getDashboardButton = () => {
   let linkLabel = "LOGIN TO ONLINE ADVICE";
   if (context?.userTier) {
     if (context.userTier === "OA") {
-          console.log("context.userTier: OA");
-          return "";
+      console.log("context.userTier: OA");
+      return "";
     }
     linkLabel =
       context?.userTier === "OA"
@@ -641,8 +654,8 @@ export const getLoginDashboardButton = () => {
   } = windowDataObj;
   if (context?.userTier) {
     if (context.userTier === "OA") {
-          console.log("getLoginDashboardButton context.userTier: OA");
-          return `<div class="button cmp-button--button-primary" style="padding-top:30px">
+      console.log("getLoginDashboardButton context.userTier: OA");
+      return `<div class="button cmp-button--button-primary" style="padding-top:30px">
                                        <a class="cmp-button" href="https://www.financialengines.com/app/cx/#/overview">
                                            <span class="cmp-button__text">Log in</span>
                                        </a>
@@ -660,13 +673,10 @@ export const getLoginLink = () => {
 export const getPmAboutFeeText = () => {
   const windowDataObj = window?.aemfe;
   const FeeAndPervalue = monthlyFeeAndPervalue(windowDataObj?.sponsoredFees);
+  let FeeObj = sponsoredFeeObj();
   let pmAboutFeeText =
     "About {{ monthlyFee }} per month for each {{ perValue }} in your account";
-  if (
-    windowDataObj?.sponsoredFees[0]?.feeScheduleTiers[0]?.samplePeriod &&
-    windowDataObj?.sponsoredFees[0]?.feeScheduleTiers[0]?.samplePeriod ==
-      "Annually"
-  ) {
+  if (FeeObj?.samplePeriod && FeeObj?.samplePeriod === "Annually") {
     pmAboutFeeText = pmAboutFeeText.replace("per month", "per year");
   }
   pmAboutFeeText = pmAboutFeeText.replace(

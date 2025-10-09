@@ -161,6 +161,7 @@ public class PlannerBioImpl implements PlannerBio {
 			officeLocations = new ArrayList<>();
 			Resource plannerResource = LocationPlannerUtil.getPlannerResource(resourceResolver, selectors[0],
 					selectors[2]);
+					
 			if (null != plannerResource && null != plannerResource.adaptTo(ContentFragment.class)) {
 				plannerResponse = ArticleDetailUtil.getPlannerDetails(resourceResolver, plannerResource, efeService);
 				String firstNameAlias = plannerResponse.getFirstNameAlias();
