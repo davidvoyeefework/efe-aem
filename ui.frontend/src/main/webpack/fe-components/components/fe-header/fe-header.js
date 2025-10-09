@@ -188,13 +188,15 @@ export default class FeHeader {
   }
   // inside FeHeader class
 checkWrap = () => {
+  
   const c = document.querySelector('#efe-nav-main .cmp-container--1920.cmp-container--26');
   if (!c) return;
   const line = c.querySelector('.minimal-header__vertical-line');
   if (!line) return;
   // Helpers
-  const show = () => { line.classList.add('is-active');  line.style.visibility = 'visible'; };
-  const hide = () => { line.classList.remove('is-active'); line.style.visibility = 'hidden'; };
+  console.log("In checkWrap -begin");
+  const show = () => { line.classList.add('is-active');  };
+  const hide = () => { line.classList.remove('is-active'); };
   const q = (sel) => c.querySelector(sel);
   // Require explicit wrappers (add these classes / data-attrs in AEM)
   const primaryWrap   = q('.cmp-image--efe-logo-primary, [data-logo="primary"]');
@@ -217,6 +219,7 @@ checkWrap = () => {
   // If images not present/loaded yet, hide and re-check later
   if (!hasRealImage(pImg) || !hasRealImage(sImg)) {
     hide();
+    console.log("In checkWrap after checking for 2 logos");
     // Re-run when the images load or when DOM changes add them
     [pImg, sImg].forEach(img => {
       if (img && img.tagName === 'IMG' && !img.complete) {
@@ -238,10 +241,11 @@ checkWrap = () => {
     });
     return;
   }
+  console.log("In checkWrap : line 244");
   // Visible & substantial (avoid tiny icons)
   const isVisible = (el) => {
     const cs = getComputedStyle(el);
-    if (cs.display === 'none' || cs.visibility === 'hidden' || cs.opacity === '0') return false;
+    if (cs.display === 'none'  || cs.opacity === '0') return false;
     if (!el.offsetParent && cs.position !== 'fixed') return false;
     const r = el.getBoundingClientRect();
     return r.width >= 80 && r.height >= 20; // adjust thresholds if needed
@@ -252,6 +256,7 @@ checkWrap = () => {
     primaryWrap.getBoundingClientRect().top - secondaryWrap.getBoundingClientRect().top
   ) < 0.5;
     if (sameRow) {
+      console.log("In checkWrap :",sameRow);
       show(); 
       if (this.mo){
         this.mo.disconnect();
