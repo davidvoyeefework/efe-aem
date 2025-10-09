@@ -46,7 +46,7 @@
     const match = href?.match(/locations\/(.+)/);
     if (match) {
       const normalizedState = decodeURIComponent(match[1]).toLowerCase().replace(/\s+/g, '-');
-      const fullpath = "locations" + "/" + normalizedState;
+      const fullpath = "/locations" + "/" + normalizedState;
       link.setAttribute('href', fullpath);
     }
   });
