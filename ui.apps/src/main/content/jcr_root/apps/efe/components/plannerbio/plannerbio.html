@@ -10,8 +10,8 @@
             <div class="cmp-efe-plannerbio--container__hero-text">
                 <h1 class="cmp-efe-plannerbio--container__hero-text--first">${planner.firstName} <sly data-sly-test="${planner.lastName}">${planner.lastName}</sly>
                     <span class="heading-location-details" data-sly-test="${model.officeLocations}">
-                        <span data-sly-test="${!(model.officeLocations.size == 1 && model.officeLocations[0].city == 'Phoenix')}">Financial planner serving</span>
-                        <span data-sly-test="${model.officeLocations.size == 1 && model.officeLocations[0].city == 'Phoenix'}">Financial planner</span>                        
+                        <span data-sly-test="${model.officeLocations.size >= 1}">Financial planner serving</span>
+                        <span data-sly-test="${model.officeLocations.size == 0}">Financial planner</span>                        
                         <span data-sly-list.item="${model.officeLocations}">
                             <span class="cityStatePair" data-sly-test="${item.city != 'Phoenix'}">
                                 <!-- <sly data-sly-test="${itemList.last && model.officeLocations.size > 1}">and</sly> -->
@@ -69,7 +69,7 @@
                         <h3 class="cmp-efe-plannerbio--aboutus__education--subtitle">Services</h3>
                         <p>Financial planning, retirement planning, investment management, insurance guidance, tax planning, estate planning</p>
                     </div>
-                    <div data-sly-test="${!(model.officeLocations.size == 1 && model.officeLocations[0].city == 'Phoenix')}" class="cmp-efe-plannerbio--aboutus__locations locations">
+                    <div data-sly-test="${model.officeLocations}" class="cmp-efe-plannerbio--aboutus__locations locations">
                         <h3 class="cmp-efe-plannerbio--aboutus__education--subtitle">Locations</h3>
                         <p>                    
                             <span class="heading-location-details" data-sly-test="${model.officeLocations}">
@@ -156,6 +156,34 @@
             }
         });
     }
+
+// Special cases to accomidate
+// Florida
+// 1. St. Petersburg, change location.FL.St.-Petersburg/ to location.FL.St--Petersburg/
+// 2. Coral Gabels added Miami
+// 3. Florida Miami Plantation
+// 4. Florida Miami Gables. Both need a Miami such as miami-coral-gables vs coral-gables
+// 5. Tampa-East, you need to change the brought in map from tampa to tampa-east
+// 6. Tampa-Westshore , change from tampt in map to tampa-westshore
+
+// California
+// Roseville needs to be changed to Roseville-East
+// Change Santa Clara to Silicon Valley Silicon-Valley
+
+// 2. Houston-Clear Lake/League City
+// 3. Lee's summit MO
+
+All clear first column
+Alabama 
+Arizona
+Georgia
+Conneticut
+Colorado
+California
+Florida
+
+Second Column 
+
 
 const updateLocationLinksHref = () => {
     const links = document.querySelectorAll(".location-link");
