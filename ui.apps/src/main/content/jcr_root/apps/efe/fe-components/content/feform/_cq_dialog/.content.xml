@@ -99,6 +99,52 @@
                                                         checked="true"/>
                                                 </items>
                                             </callbackformproperties>
+                                            <enrollmentformproperties
+                                                granite:class="hide formtype-option-listfrom-showhide-target foundation-layout-util-vmargin"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    showhidetargetvalue="Enrollment Form"/>
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <aboutsectionheading
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="Add Heading"
+                                                        fieldLabel="Add Heading"
+                                                        name="./enrolldescription"/>
+                                                    <buttontext
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="Scheduler Button Text"
+                                                        fieldLabel="Scheduler Button Text"
+                                                        required="true"
+                                                        name="./enrollbuttonText"/>
+                                                </items>
+                                            </enrollmentformproperties>
+                                            <enrollmentformreqproperties
+                                                granite:class="hide formtype-option-listfrom-showhide-target foundation-layout-util-vmargin"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                <granite:data
+                                                    jcr:primaryType="nt:unstructured"
+                                                    showhidetargetvalue="Enrollment Form Required"/>
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <aboutsectionheading
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="Add Heading"
+                                                        fieldLabel="Add Heading"
+                                                        name="./enrollreqdescription"/>
+                                                    <buttontext
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldDescription="Scheduler Button Text"
+                                                        fieldLabel="Scheduler Button Text"
+                                                        required="true"
+                                                        name="./enrollreqbuttonText"/>
+                                                </items>
+                                            </enrollmentformreqproperties>
                                         </items>
                                     </column>
                                 </items>
