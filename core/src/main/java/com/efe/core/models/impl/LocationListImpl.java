@@ -207,4 +207,8 @@ public class LocationListImpl implements LocationList {
 		stateReturn = stateReturn.replace(' ', '-');
 		return "/locations/" + stateReturn;
 	}	
+
+	public String getStateURL(String stateName) {
+		return stateURL(stateName); // reuse your existing logic
+	}	
 }
