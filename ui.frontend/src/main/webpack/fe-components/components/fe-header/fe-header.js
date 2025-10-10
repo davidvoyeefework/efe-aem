@@ -16,10 +16,10 @@ export default class FeHeader {
     });
     
     this.checkWrap = this.checkWrap.bind(this);
-    this.onResize = debounce(this.checkWrap, 100);
-
+    console.log("Before load");
     window.addEventListener('load', this.checkWrap);
-    window.addEventListener('resize', this.onResize);
+    console.log("Before re-size");
+    window.addEventListener('resize', debounce(() => this.checkWrap(), 100));
 
     const container = document.querySelector('#efe-nav-main .cmp-container--1920.cmp-container--26');
     if (!container) return;
