@@ -6,20 +6,26 @@ export default class FeHeader {
     document.addEventListener("displayHeaderReplaced", this.executePageView);
     document.addEventListener("displayPropRetrieved", () => {
       this.attributeParameterElem = document.querySelector("#fe-properties");
+      console.log("Line 9");
       this.init();
     });
     document.addEventListener("messageFromfePage", () => {
       this.attributeParameterElem = document.querySelector("#fe-properties");
+      console.log("Line 14");
       this.init();
     });
     
-    window.addEventListener('load', this.checkWrap());
-    window.addEventListener('resize', debounce(() => this.checkWrap(), 100));
+    this.checkWrap = this.checkWrap.bind(this);
+    this.onResize = debounce(this.checkWrap, 100);
+
+    window.addEventListener('load', this.checkWrap);
+    window.addEventListener('resize', this.onResize);
 
     const container = document.querySelector('#efe-nav-main .cmp-container--1920.cmp-container--26');
     if (!container) return;
       
     this.mo = new MutationObserver(this.checkWrap());
+    console.log("Line 28");
     this.mo.observe(container, {childList: true, subtree:true});
     setTimeout(() => {
       if (this.mo){
