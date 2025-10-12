@@ -68,6 +68,10 @@ public class LocationListImpl implements LocationList {
 	/** The id. */
 	@ValueMapValue
 	private String id;
+
+	// State Selection Drop Down
+	@ValueMapValue
+	private String state;
 	
 	/** The Tree Map. */
 	private TreeMap<String, Map<String, String>> states = new TreeMap<>();
@@ -105,22 +109,47 @@ public class LocationListImpl implements LocationList {
 	 */
 	@PostConstruct
 	public void init() {
+		
 		HashMap<String, Map<String, String>> unsortedStates = new HashMap<String, Map<String, String>>();
 		Resource locationResource = resourceResolver.getResource(PlannerLocationConstants.LOCATION_PATH);
+		String allStates = "all";
 		if (Objects.nonNull(locationResource)) {
-			for (Resource stateResource : locationResource.getChildren()) {
-				if (stateResource.isResourceType(JcrResourceConstants.NT_SLING_ORDERED_FOLDER)) {
-					Map<String, String> unsortedCityMap = new HashMap<String, String>();
-					for (Resource cityResource : stateResource.getChildren()) {
-						createCityUrl(stateResource, cityResource, unsortedCityMap);
-					}
-					if(unsortedCityMap.size() > 0) {
-                                                unsortedCityMap.put("stateURL", stateURL(StatesEnum.valueOf(stateResource.getName().toUpperCase()).getStateName()));
-						StatesEnum stateEnum = StatesEnum.valueOf(stateResource.getName().toUpperCase());
-						unsortedStates.put(stateEnum.getStateName(),sortCity(unsortedCityMap));
+
+			if (state == null) {
+				state="all";
+			}			
+
+			// Return list of all states and associated cities
+			if (state.equals(allStates)) {
+				for (Resource stateResource : locationResource.getChildren()) {
+					if (stateResource.isResourceType(JcrResourceConstants.NT_SLING_ORDERED_FOLDER)) {
+						Map<String, String> unsortedCityMap = new HashMap<String, String>();
+						for (Resource cityResource : stateResource.getChildren()) {
+							createCityUrl(stateResource, cityResource, unsortedCityMap);
+						}
+						if(unsortedCityMap.size() > 0) {
+							StatesEnum stateEnum = StatesEnum.valueOf(stateResource.getName().toUpperCase());
+							unsortedStates.put(stateEnum.getStateName(),sortCity(unsortedCityMap));
+						}
 					}
 				}
 			}
+			// Return list of selected state and associated cities
+			else {
+				Resource locationResourceIsolatedState = resourceResolver.getResource(PlannerLocationConstants.LOCATION_PATH + PlannerLocationConstants.FORWARD_SLASH + state );
+				if (locationResourceIsolatedState.isResourceType(JcrResourceConstants.NT_SLING_ORDERED_FOLDER)) {
+						Map<String, String> unsortedCityMap = new HashMap<String, String>();
+						for (Resource cityResource : locationResourceIsolatedState.getChildren()) {
+							createCityUrl(locationResourceIsolatedState, cityResource, unsortedCityMap);
+						}
+						if(unsortedCityMap.size() > 0) {
+							StatesEnum stateEnum = StatesEnum.valueOf(locationResourceIsolatedState.getName().toUpperCase());
+							unsortedStates.put(stateEnum.getStateName(),sortCity(unsortedCityMap));
+						}					
+				}
+
+			}
+
 	        // Copy all data from hashMap into TreeMap
 	        states.putAll(unsortedStates);
 		}
@@ -168,10 +197,8 @@ public class LocationListImpl implements LocationList {
 		cities.putAll(map);
 		return  cities;
 	}
-        
-        public static String stateURL(String stateName) {
-            String stateReturn = stateName.trim().toLowerCase();
-            stateReturn = stateReturn.replace(' ', '-');
-            return "/locations/" + stateReturn;
-        }
+
+	public String getStateSelector() {	
+		return state;
+	}
 }

@@ -433,5 +433,25 @@ body {
     }
 }
 
-// 
+// RTE Overides for John
+
+a:has(> span.cmp-text--body-01) {
+    @include body-01-link;
+}
+a:has(> span.cmp-text--body-02) {
+    @include body-02-link;
+}
+a:has(> span.cmp-text--body-03) {
+    @include body-03-link;
+}
+a > span.cmp-text--body-03 {
+    @include body-03-link;
+}
+
+
+
+
+
+
+
 

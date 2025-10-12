@@ -6,7 +6,7 @@ export default {
     title: "pages/FePage",
     argTypes: {
         rkId: {
-            options: ["theme-aon", "theme-vanguard","theme-ssga"],
+            options: ["theme-aon", "theme-vanguard","theme-ssga", "theme-empower"],
             control: { type: "radio" },
         },
     },

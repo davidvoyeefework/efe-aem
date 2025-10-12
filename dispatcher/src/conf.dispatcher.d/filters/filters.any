@@ -9,8 +9,6 @@ $include "./default_filters.any"
 # Allow components JSON model
 /0101 { /type "allow" /extension "json" /selectors "model" /path "/content/*" }
 
-/0108 { /type "allow" /extension "json" /selectors "search" /path "/content/*" }
-
 # Allow manifest.webmanifest files located in the content
 /0102 { /type "allow" /extension "webmanifest" /path "/content/*/manifest" }
 
@@ -20,9 +18,6 @@ $include "./default_filters.any"
 # Allow form selector
 /0104 { /type "allow" /method "GET" /extension "json" /path "/content/efe/*/formselector*"}
 
-# Allow cdt scheduler
-/0104 { /type "allow" /method "GET" /extension "json" /path "/content/efe/*/cdtscheduler*"}
-
 # Allow number selector for planners
 /0105 { /type "allow" /method "GET" /extension "html" /path "/content/efe/*/financial-planner*" /selectors '([0-9-]+)'}
 
@@ -31,3 +26,11 @@ $include "./default_filters.any"
 
 # Allow dynamic data variable servlet
 /0107 { /type "allow" /method "GET" /extension "json" /path "/content/fe/*" /selectors "dynamic"}
+
+# Allow Static HTML File for Akamai
+/0108 { /type "allow" /method 'GET' /url "/bin/statichtmlfile"}
+
+/0109 { /type "allow" /extension "json" /selectors "search" /path "/content/*" }
+
+# Allow cdt scheduler
+/0110 { /type "allow" /method "GET" /extension "json" /path "/content/efe/*/cdtscheduler*"}

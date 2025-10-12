@@ -121,6 +121,9 @@ public class MapStateLocationsImpl implements MapStateLocations {
 	/** The office location json. */
 	private String officeLocationJson;
 
+        /** The States enum object */
+        private String stateName;
+        
 	/**
 	 * Inits the Model.
 	 */
@@ -143,6 +146,10 @@ public class MapStateLocationsImpl implements MapStateLocations {
 			LOGGER.debug("Locations CF Node not found.");
 		}
 		officeLocationJson = officeLocationArr.toString();
+                if(Objects.nonNull(mapState)) {
+                    stateName = StatesEnum.valueOf(mapState).getStateName();
+                }
+                
 	}
 
 	/**
@@ -312,6 +319,9 @@ public class MapStateLocationsImpl implements MapStateLocations {
             return mapState;
         }
 
+        public String getStateName() {
+            return stateName;
+        }
 	/**
 	 * Gets the national details.
 	 *

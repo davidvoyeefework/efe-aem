@@ -13,13 +13,11 @@
                         <span data-sly-test="${model.officeLocations.size >= 1}">Financial planner serving</span>
                         <span data-sly-test="${model.officeLocations.size == 0}">Financial planner</span>                        
                         <span data-sly-list.item="${model.officeLocations}">
-                            <span class="cityStatePair" data-sly-test="${item.city != 'Phoenix'}">
-                                <!-- <sly data-sly-test="${itemList.last && model.officeLocations.size > 1}">and</sly> -->
-                                <a class="location-link" x-cq-linkchecker="valid" data-cmp-clickable="" hreflang="en-US" lang="en-US" href="/content/efe/us/en/location.${item.state}.${item.city}.html">                              
-                                    <span data-sly-test="${item.city}">${item.city},</span>
+                                <span class="cityStatePair" data-sly-test="${item.externalName != 'National Advisor Center'}">
+                                    <span data-sly-test="${item.city}">${item.externalName},</span>
                                     <span data-sly-test="${item.state}">${item.state}</span>
-                                </a>                                       
-                            </span>
+                                </span>
+
 
                         </span>
                     </span>
@@ -74,12 +72,10 @@
                         <p>                    
                             <span class="heading-location-details" data-sly-test="${model.officeLocations}">
                                 <span data-sly-list.item="${model.officeLocations}">
-                                    <span class="location-item">
-                                        <span data-sly-test="${item.city != 'Phoenix'}">
-                                            <a class="location-link" x-cq-linkchecker="valid" data-cmp-clickable="" hreflang="en-US" lang="en-US" href="/content/efe/us/en/location.${item.state}.${item.city}.html">
-                                                <span data-sly-test="${item.city}">${item.city},</span>
-                                                <span data-sly-test="${item.state}">${item.state}</span>
-                                            </a>
+                                    <span class="location-item" data-sly-test="${item.externalName != 'National Advisor Center'}">
+                                        <span>
+                                            <span data-sly-test="${item.city}">${item.externalName},</span>
+                                            <span data-sly-test="${item.state}">${item.state}</span>
                                         <span>
                                     </span>
                                 </span>

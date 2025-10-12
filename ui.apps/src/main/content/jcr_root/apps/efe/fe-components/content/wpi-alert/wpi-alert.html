@@ -38,6 +38,11 @@
     <sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html"
          data-sly-call="${clientlib.css @ categories='fe.wpiafa'}"/>
 </sly>
+<sly data-sly-test="${properties.record == 'empower-wpi-theme'}">
+    <sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html"
+         data-sly-call="${clientlib.css @ categories='fe.wpiempower'}"/>
+</sly>
+
 
 <sly data-sly-use.model="com.efe.core.models.WpiAlert">
 

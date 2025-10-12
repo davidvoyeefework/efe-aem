@@ -361,5 +361,32 @@ module.exports = {
         },
       },
     },
+    {
+      ...libsBaseConfig,
+      name: "clientlib-wpiempower",
+      categories: ["fe.wpiempower"],
+      assets: {
+        // Copy entrypoint scripts and stylesheets into the respective ClientLib
+        // directories
+        js: {
+          cwd: "clientlib-wpiempower",
+          files: ["**/*.js"],
+          flatten: false,
+        },
+        css: {
+          cwd: "clientlib-wpiempower",
+          files: ["**/*.css"],
+          flatten: false,
+        },
+
+        // Copy all other files into the `resources` ClientLib directory
+        resources: {
+          cwd: "clientlib-wpiempower",
+          files: ["**/*.*"],
+          flatten: false,
+          ignore: ["**/*.js", "**/*.css"],
+        },
+      },
+    },
   ],
 };
