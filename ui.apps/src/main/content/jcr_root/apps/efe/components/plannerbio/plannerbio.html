@@ -14,11 +14,11 @@
                         <span data-sly-test="${model.officeLocations.size == 0}">Financial planner</span>                        
                         <span data-sly-list.item="${model.officeLocations}">
                                 <span class="cityStatePair" data-sly-test="${item.externalName != 'National Advisor Center'}">
-                                    <span data-sly-test="${item.city}">${item.externalName},</span>
-                                    <span data-sly-test="${item.state}">${item.state}</span>
+                                    <a class="location-link" x-cq-linkchecker="valid" data-cmp-clickable="" hreflang="en-US" lang="en-US" href="/content/efe/us/en/location.${item.state}.${item.externalName}.html">                                     
+                                        <span data-sly-test="${item.city}">${item.externalName},</span>
+                                        <span data-sly-test="${item.state}">${item.state}</span>
+                                    </a>                                    
                                 </span>
-
-
                         </span>
                     </span>
                 </h1>
@@ -73,10 +73,12 @@
                             <span class="heading-location-details" data-sly-test="${model.officeLocations}">
                                 <span data-sly-list.item="${model.officeLocations}">
                                     <span class="location-item" data-sly-test="${item.externalName != 'National Advisor Center'}">
-                                        <span>
-                                            <span data-sly-test="${item.city}">${item.externalName},</span>
-                                            <span data-sly-test="${item.state}">${item.state}</span>
-                                        <span>
+                                        <a class="location-link" x-cq-linkchecker="valid" data-cmp-clickable="" hreflang="en-US" lang="en-US" href="/content/efe/us/en/location.${item.state}.${item.externalName}.html">                                         
+                                            <span>
+                                                <span data-sly-test="${item.city}">${item.externalName},</span>
+                                                <span data-sly-test="${item.state}">${item.state}</span>
+                                            <span>
+                                        </a>
                                     </span>
                                 </span>
                             </span>
@@ -136,8 +138,6 @@
 </section>
 <sly data-sly-call="${template.placeholder @ isEmpty=!isNotEmpty, classAppend='cmp-plannerbio'}"></sly>
 
-
-
 <script>
     const video = document.getElementById("planner-video");
     const playButton = document.getElementById("playButton");
@@ -153,76 +153,23 @@
         });
     }
 
-// Special cases to accomidate
-// Florida
-// 1. St. Petersburg, change location.FL.St.-Petersburg/ to location.FL.St--Petersburg/
-// 2. Coral Gabels added Miami
-// 3. Florida Miami Plantation
-// 4. Florida Miami Gables. Both need a Miami such as miami-coral-gables vs coral-gables
-// 5. Tampa-East, you need to change the brought in map from tampa to tampa-east
-// 6. Tampa-Westshore , change from tampt in map to tampa-westshore
-
-// California
-// Roseville needs to be changed to Roseville-East
-// Change Santa Clara to Silicon Valley Silicon-Valley
-
-// 2. Houston-Clear Lake/League City
-
-
-// 3. Lee's summit MO
-
-// IOWA
-// Change West Des Moines to des moines
-
-// Maryland
-// Change Ellicott City to Howard County
-// Change Bethesda to North Bethesda
-// Change East Longmeadow to Springfield
-
-// Missuri
-// Change Kanasas City to Liberty
-
-// New Jersey
-// Change Paramus to Bergen County
-
-// New York
-// Change Clifton Park to Albany
-// Change New York to Grand Central
-// Change Uniondale to Long Island
-// Change East Syracuse to Syracuse
-
-// North Carolina
-// Change Charlotte to Perimter Woods. Should have 2 Charlottee's '
-
-// OHIO 
-// Change Dublin to Columbus Dublin
-// Change Miamisburg to Dayton 
-// Change Maumee to Toledo
-// Cahnge Boardman to Youngstown
-
-// Oklahoma
-// There are 2 Oklahomas. There should be a regular Oklahoma and Oklahoma City North
-
-// Pennsylvania
-// Change Pittsburgh to South Hills  
-
-// Texas 
-// Change Houston to Clear Lake League City 
-// Change Houston to Galleria 
-// Change Houston to West-Houston
-
-// Virgina 
-// Change Ashburn to Loudoun County 
-
 const updateLocationLinksHref = () => {
     const links = document.querySelectorAll(".location-link");
 
     links.forEach(link => {
         const currentHref = link.href;
-
         if (currentHref.includes("%20")) {
             const updatedHref = currentHref.replace(/%20/g, "-");
             link.href = updatedHref;
+        }
+        else if (currentHref.includes("location.FL.St.%20Petersburg.html")) {
+            link.href = currentHref.replace("location.FL.St.%20Petersburg.html", "location.FL.St--Petersburg.html");
+        }
+        else if (currentHref.includes("location.TX.Houston-Clear%20Lake/League%20City.html")) {
+            link.href = currentHref.replace("location.TX.Houston-Clear%20Lake/League%20City.html", "location.TX.Houston-Clear-Lake-League-City.html");
+        }
+        else if(currentHref.includes("location.TX.Clear%20Lake/League%20City.html")){
+            link.href = currentHref.replace("location.TX.Clear%20Lake/League%20City.html", "location.TX.Clear-Lake-League-City.html");
         }
     });
 };

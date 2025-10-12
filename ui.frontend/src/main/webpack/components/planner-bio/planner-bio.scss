@@ -56,11 +56,12 @@
                         a {
                             span {
                             color: $efe-gray-primary;
+                            @include body-01-link;
                             }
 
                             &:hover {
                                 span {
-                                    @include body-01-link;
+                                    @include body-01-link-red;
                                 }
                             }
                         }
@@ -290,10 +291,11 @@
                     a {
                         span {
                             color: $efe-gray-primary;
+                            @include body-02-link;
                         }
                         &:hover {
                             span {
-                                @include body-02-link;
+                                @include body-02-link-red;
                             }
                         }
                     }
