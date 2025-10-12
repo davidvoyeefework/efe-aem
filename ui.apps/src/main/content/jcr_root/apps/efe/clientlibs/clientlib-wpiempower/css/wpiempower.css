@@ -1,14 +1,14 @@
-/*!***************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/src/index.js??ruleSet[1].rules[2].use[2]!./node_modules/sass-loader/dist/cjs.js!./node_modules/glob-import-loader/index.js??ruleSet[1].rules[2].use[4]!./src/main/webpack/wpi-mellon/site/main.scss ***!
-  \***************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/src/index.js??ruleSet[1].rules[2].use[2]!./node_modules/sass-loader/dist/cjs.js!./node_modules/glob-import-loader/index.js??ruleSet[1].rules[2].use[4]!./src/main/webpack/wpi-empower/site/main.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************/
 @import url(https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap);
-/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/src/index.js??ruleSet[1].rules[2].use[2]!./node_modules/sass-loader/dist/cjs.js!./node_modules/glob-import-loader/index.js??ruleSet[1].rules[2].use[4]!./src/main/webpack/wpi-mellon/site/main.scss (1) ***!
-  \*******************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/src/index.js??ruleSet[1].rules[2].use[2]!./node_modules/sass-loader/dist/cjs.js!./node_modules/glob-import-loader/index.js??ruleSet[1].rules[2].use[4]!./src/main/webpack/wpi-empower/site/main.scss (1) ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************/
 @import url(https://use.typekit.net/ezq2lfa.css);
-/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/src/index.js??ruleSet[1].rules[2].use[2]!./node_modules/sass-loader/dist/cjs.js!./node_modules/glob-import-loader/index.js??ruleSet[1].rules[2].use[4]!./src/main/webpack/wpi-mellon/site/main.scss (2) ***!
-  \*******************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/src/index.js??ruleSet[1].rules[2].use[2]!./node_modules/sass-loader/dist/cjs.js!./node_modules/glob-import-loader/index.js??ruleSet[1].rules[2].use[4]!./src/main/webpack/wpi-empower/site/main.scss (2) ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*
 * ADOBE CONFIDENTIAL
 *
@@ -1916,6 +1916,10 @@ button {
   background: unset;
 }
 
+body.xf-web-container {
+  margin: 0;
+}
+
 section.wpi-alert {
   position: relative;
 }
@@ -1981,93 +1985,289 @@ section.wpi-alert .provided .provided-by {
   }
 }
 
-section.mellon-wpi-theme {
-  max-width: 17.5rem;
-  padding: 1px 0 17px 4px;
-}
-section.mellon-wpi-theme .copy h2 {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1rem;
-  line-height: 100%;
-  color: black;
-  padding: 8px 2.5px 2.5px;
-  background-color: #f5f5f5;
+section.empower-wpi-theme {
+  padding: 25px 5px 20px 0;
+  background-color: #002157;
   position: relative;
-  margin-bottom: 7px;
 }
-section.mellon-wpi-theme .copy h2:after {
-  content: "";
-  display: block;
-  height: 1px;
-  background-color: #cdcdcd;
-  position: absolute;
-  bottom: -1px;
-  right: 0px;
-  left: 2px;
+section.empower-wpi-theme .flex {
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 11px;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
-section.mellon-wpi-theme .copy h3, section.mellon-wpi-theme .copy p {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 0.6875rem;
-  line-height: 100%;
-  color: black;
-  margin-bottom: 9px;
+section.empower-wpi-theme .flex .button-block {
+  display: none;
+}
+section.empower-wpi-theme .flex .copy {
+  margin-top: 5px;
+}
+section.empower-wpi-theme .flex .copy h2 {
+  font-size: 0.75rem;
+  line-height: 130%;
+  font-family: Open Sans;
+  color: #002157;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+section.empower-wpi-theme .flex .copy h3 {
+  font-size: 0.8125rem;
+  line-height: 120%;
+  font-family: Open Sans;
+  color: #002157;
   font-weight: 400;
   -webkit-margin-before: 0;
           margin-block-start: 0;
   -webkit-margin-after: 0;
           margin-block-end: 0;
 }
-section.mellon-wpi-theme .copy h3 b, section.mellon-wpi-theme .copy h3 strong, section.mellon-wpi-theme .copy p b, section.mellon-wpi-theme .copy p strong {
+section.empower-wpi-theme .flex .copy h3 b, section.empower-wpi-theme .flex .copy h3 strong {
   font-weight: bold;
 }
-section.mellon-wpi-theme .flex {
-  gap: 11px !important;
-  margin-bottom: 0;
+section.empower-wpi-theme .flex .copy p {
+  margin: 7px 0 11px;
+  font-family: OpenSans;
+  font-size: 0.625rem;
+  line-height: 110%;
+  color: #002157;
 }
-section.mellon-wpi-theme .flex img.wpi-img {
-  width: 55px;
-  height: 55px;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 0 auto;
-          flex: 1 0 auto;
+section.empower-wpi-theme .wpi-img {
+  width: 3.375rem;
+  height: 3.375rem;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
 }
-section.mellon-wpi-theme .flex .copy {
-  margin-top: 7px;
-  max-width: 25ch;
-}
-section.mellon-wpi-theme .efe-lockup {
-  height: 11.67px;
-  width: 62px;
-  bottom: 6px;
-}
-section.mellon-wpi-theme .cmp-button--button-wpi {
-  height: 0;
+section.empower-wpi-theme .cmp-button--button-wpi {
+  -webkit-transition: all 250ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 250ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   text-decoration: none;
 }
-section.mellon-wpi-theme .cmp-button--button-wpi:hover, section.mellon-wpi-theme .cmp-button--button-wpi:active {
+section.empower-wpi-theme .cmp-button--button-wpi .cmp-button {
+  background-color: #002157;
+  border-radius: 30px;
+  color: #FFFFFF;
+  border: none;
+  -webkit-transition: all 250ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 250ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  text-align: center;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  height: 1.9375rem;
+  min-width: 115px;
+  text-decoration: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+section.empower-wpi-theme .cmp-button--button-wpi .cmp-button:hover, section.empower-wpi-theme .cmp-button--button-wpi .cmp-button:active {
   -webkit-transition: all 250ms cubic-bezier(0.165, 0.84, 0.44, 1);
   transition: all 250ms cubic-bezier(0.165, 0.84, 0.44, 1);
   border: none;
   text-decoration: none;
+  color: white;
   cursor: pointer;
 }
-section.mellon-wpi-theme .cmp-button--button-wpi a.cmp-button {
+section.empower-wpi-theme .cmp-button--button-wpi .cmp-button .cmp-button__text {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 100%;
+  font-weight: 700;
+  font-size: 0.75rem;
   text-decoration: none;
 }
-section.mellon-wpi-theme .cmp-button--button-wpi a.cmp-button span.cmp-button__text {
-  text-indent: -9999;
-  display: block;
-  text-decoration: none;
+section.empower-wpi-theme .mobile-button {
+  display: none !important;
 }
-@media screen and (max-width: 576px) {
-  section.mellon-wpi-theme .flex {
+section.empower-wpi-theme.empower-wpi-theme--update {
+  background-color: #F5F6F6;
+  padding: 16px 24px;
+  -webkit-box-shadow: 0px 0px 4px 1px rgba(4, 5, 5, 0.0588235294);
+          box-shadow: 0px 0px 4px 1px rgba(4, 5, 5, 0.0588235294);
+  -webkit-box-shadow: 0px 1px 1px 0px rgba(4, 5, 5, 0.1803921569);
+          box-shadow: 0px 1px 1px 0px rgba(4, 5, 5, 0.1803921569);
+}
+section.empower-wpi-theme.empower-wpi-theme--update .flex img.wpi-img {
+  width: 100px;
+  height: 100px;
+  display: none;
+}
+section.empower-wpi-theme.empower-wpi-theme--update .flex .copy {
+  margin: 0;
+}
+section.empower-wpi-theme.empower-wpi-theme--update .flex .copy h2 {
+  font-size: 23px;
+  line-height: 32px;
+  color: #040505;
+  font-family: "Mark Pro", sans-serif;
+  font-weight: 700;
+  margin: 0 0 4px;
+}
+section.empower-wpi-theme.empower-wpi-theme--update .flex .copy h3 {
+  font-size: 17px;
+  line-height: 24px;
+  color: #040505;
+  font-family: "Mark Pro", sans-serif;
+}
+section.empower-wpi-theme.empower-wpi-theme--update .flex .copy p {
+  font-size: 14px;
+  line-height: 100%;
+  color: #040505;
+  font-family: "Mark Pro", sans-serif;
+  margin: 8px 0 0;
+}
+section.empower-wpi-theme.empower-wpi-theme--update .flex .copy .cmp-button--button-wpi a.cmp-button {
+  height: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  background-color: transparent;
+  border: 2px solid #040505;
+  min-width: unset;
+  padding: 0 20px;
+  margin-top: 16px;
+}
+section.empower-wpi-theme.empower-wpi-theme--update .flex .copy .cmp-button--button-wpi a.cmp-button span.cmp-button__text {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: #040505;
+  font-family: "Mark Pro", sans-serif;
+  font-weight: 900;
+}
+@media screen and (min-width: 576px) {
+  section.empower-wpi-theme.empower-wpi-theme--update .flex {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    gap: 24px;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
     -ms-flex-direction: row;
     flex-direction: row;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: start;
+  }
+  section.empower-wpi-theme.empower-wpi-theme--update .flex img.wpi-img {
+    display: block;
+  }
+  section.empower-wpi-theme.empower-wpi-theme--update .flex .copy .cmp-button--button-wpi a.cmp-button {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+}
+@media screen and (max-width: 576px) {
+  section.empower-wpi-theme .mobile-button {
+    display: block !important;
+  }
+}
+@media screen and (min-width: 310px) {
+  section.empower-wpi-theme .flex .copy h2 {
+    font-size: 0.875rem;
+  }
+  section.empower-wpi-theme .flex .copy h3 {
+    font-size: 0.875rem;
+    line-height: 140%;
+  }
+  section.empower-wpi-theme .wpi-img {
+    width: 5rem;
+    height: 5rem;
+  }
+  section.empower-wpi-theme .cmp-button--button-wpi {
+    -webkit-transition: all 250ms cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: all 250ms cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+  section.empower-wpi-theme .cmp-button--button-wpi .cmp-button {
+    height: 2.875rem;
+    min-width: 166px;
+  }
+  section.empower-wpi-theme .cmp-button--button-wpi .cmp-button .cmp-button__text {
+    font-size: 1rem;
+  }
+}
+@media screen and (min-width: 576px) {
+  section.empower-wpi-theme {
+    padding: 35px 30px 60px 35px;
+  }
+  section.empower-wpi-theme .flex {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+  section.empower-wpi-theme .flex .button-block {
+    display: block;
+  }
+}
+@media screen and (min-width: 674px) {
+  section.empower-wpi-theme .copy {
+    margin-right: 30px;
+  }
+}
+@media screen and (min-width: 768px) {
+  section.empower-wpi-theme .flex {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    gap: 40px;
+  }
+  section.empower-wpi-theme .flex .copy {
+    margin-top: -5px;
+  }
+  section.empower-wpi-theme .flex .copy h2 {
+    font-size: 1.5rem;
+  }
+  section.empower-wpi-theme .flex .copy h3 {
+    font-size: 1rem;
+    line-height: 140%;
+  }
+  section.empower-wpi-theme .flex .copy p {
+    font-size: 0.875rem;
+  }
+  section.empower-wpi-theme .wpi-img {
+    width: 6.25rem;
+    height: 6.25rem;
   }
 }
 
