@@ -13,14 +13,12 @@
                         <span data-sly-test="${model.officeLocations.size >= 1}">Financial planner serving</span>
                         <span data-sly-test="${model.officeLocations.size == 0}">Financial planner</span>                        
                         <span data-sly-list.item="${model.officeLocations}">
-                            <span class="cityStatePair" data-sly-test="${item.city != 'Phoenix'}">
-                                <!-- <sly data-sly-test="${itemList.last && model.officeLocations.size > 1}">and</sly> -->
-                                <a class="location-link" x-cq-linkchecker="valid" data-cmp-clickable="" hreflang="en-US" lang="en-US" href="/content/efe/us/en/location.${item.state}.${item.city}.html">                              
-                                    <span data-sly-test="${item.city}">${item.city},</span>
-                                    <span data-sly-test="${item.state}">${item.state}</span>
-                                </a>                                       
-                            </span>
-
+                                <span class="cityStatePair" data-sly-test="${item.externalName != 'National Advisor Center'}">
+                                    <a class="location-link" x-cq-linkchecker="valid" data-cmp-clickable="" hreflang="en-US" lang="en-US" href="/content/efe/us/en/location.${item.state}.${item.externalName}.html">                                     
+                                        <span data-sly-test="${item.city}">${item.externalName},</span>
+                                        <span data-sly-test="${item.state}">${item.state}</span>
+                                    </a>                                    
+                                </span>
                         </span>
                     </span>
                 </h1>
@@ -74,13 +72,13 @@
                         <p>                    
                             <span class="heading-location-details" data-sly-test="${model.officeLocations}">
                                 <span data-sly-list.item="${model.officeLocations}">
-                                    <span class="location-item">
-                                        <span data-sly-test="${item.city != 'Phoenix'}">
-                                            <a class="location-link" x-cq-linkchecker="valid" data-cmp-clickable="" hreflang="en-US" lang="en-US" href="/content/efe/us/en/location.${item.state}.${item.city}.html">
-                                                <span data-sly-test="${item.city}">${item.city},</span>
+                                    <span class="location-item" data-sly-test="${item.externalName != 'National Advisor Center'}">
+                                        <a class="location-link" x-cq-linkchecker="valid" data-cmp-clickable="" hreflang="en-US" lang="en-US" href="/content/efe/us/en/location.${item.state}.${item.externalName}.html">                                         
+                                            <span>
+                                                <span data-sly-test="${item.city}">${item.externalName},</span>
                                                 <span data-sly-test="${item.state}">${item.state}</span>
-                                            </a>
-                                        <span>
+                                            <span>
+                                        </a>
                                     </span>
                                 </span>
                             </span>
@@ -140,8 +138,6 @@
 </section>
 <sly data-sly-call="${template.placeholder @ isEmpty=!isNotEmpty, classAppend='cmp-plannerbio'}"></sly>
 
-
-
 <script>
     const video = document.getElementById("planner-video");
     const playButton = document.getElementById("playButton");
@@ -162,10 +158,18 @@ const updateLocationLinksHref = () => {
 
     links.forEach(link => {
         const currentHref = link.href;
-
         if (currentHref.includes("%20")) {
             const updatedHref = currentHref.replace(/%20/g, "-");
             link.href = updatedHref;
+        }
+        else if (currentHref.includes("location.FL.St.%20Petersburg.html")) {
+            link.href = currentHref.replace("location.FL.St.%20Petersburg.html", "location.FL.St--Petersburg.html");
+        }
+        else if (currentHref.includes("location.TX.Houston-Clear%20Lake/League%20City.html")) {
+            link.href = currentHref.replace("location.TX.Houston-Clear%20Lake/League%20City.html", "location.TX.Houston-Clear-Lake-League-City.html");
+        }
+        else if(currentHref.includes("location.TX.Clear%20Lake/League%20City.html")){
+            link.href = currentHref.replace("location.TX.Clear%20Lake/League%20City.html", "location.TX.Clear-Lake-League-City.html");
         }
     });
 };

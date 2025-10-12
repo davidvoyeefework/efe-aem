@@ -48,6 +48,7 @@ export const sponsoredFeeObj = () => {
     promotionBannerFeeText,
     promotionBannerFeeTextLink
   } 
+    
  */
 export const promotionBannerFeeInfo = () => {
   let promotionBannerFeeText = "";
