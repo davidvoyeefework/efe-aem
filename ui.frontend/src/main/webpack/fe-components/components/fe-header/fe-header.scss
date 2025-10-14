@@ -83,12 +83,12 @@
         }
         .minimal-header__vertical-line {
             border-left: 1px;
-            display:none;
+            visibility:hidden;
             height: 42px;
             width: 1px;
             background: #949494;
             &.is-active {
-                display: block;
+                visibility: visible;
             }
         }   
         * {
