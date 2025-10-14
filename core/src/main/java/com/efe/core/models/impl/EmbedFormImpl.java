@@ -40,9 +40,25 @@ public class EmbedFormImpl implements EmbedForm {
     @ValueMapValue
     String description;
 
+     /** The description in Enrollment form. */
+    @ValueMapValue
+    String enrolldescription;
+
+     /** The description in Enrollment Required form. */
+    @ValueMapValue
+    String enrollreqdescription;
+
     /** The buttonText. */
     @ValueMapValue
     String buttonText;
+
+    /** The buttonText in Enrollment form. */
+    @ValueMapValue
+    String enrollbuttonText;
+
+    /** The buttonText in Enrollment Required form. */
+    @ValueMapValue
+    String enrollreqbuttonText;
 
     /** The scheduleAppointment. */
     @ValueMapValue
@@ -58,12 +74,31 @@ public class EmbedFormImpl implements EmbedForm {
     protected void init() {
 
         JsonObject jsonObject = new JsonObject();
+        
         if (StringUtils.isNotBlank(description)){
             jsonObject.addProperty("desc", description);
         }
+
+        if (StringUtils.isNotBlank(enrolldescription)){
+            jsonObject.addProperty("desc", enrolldescription);
+        }
+
+        if (StringUtils.isNotBlank(enrollreqdescription)){
+            jsonObject.addProperty("desc", enrollreqdescription);
+        }
+
         if (StringUtils.isNotBlank(buttonText)){
             jsonObject.addProperty("buttonText", buttonText);
         }
+
+        if (StringUtils.isNotBlank(enrollbuttonText)){
+            jsonObject.addProperty("buttonText", enrollbuttonText);
+        }
+
+        if (StringUtils.isNotBlank(enrollreqbuttonText)){
+            jsonObject.addProperty("buttonText", enrollreqbuttonText);
+        }
+        
 
         if(Objects.nonNull(appointmentTypeId)) {      
         
