@@ -38,8 +38,7 @@ export default class FeHeader {
     if (window.aemfe.header) {
       console.log("Header init called");
       this.fetchHeaderDataVariables();
-      this.checkWrap();
-    }
+      }
   }
 
   fetchHeaderDataVariables() {
@@ -193,81 +192,33 @@ export default class FeHeader {
   }
   // inside FeHeader class
 checkWrap = () => {
-  
-  const c = document.querySelector('#efe-nav-main .cmp-container--1920.cmp-container--26');
-  if (!c) return;
-  const line = c.querySelector('.minimal-header__vertical-line');
-  if (!line) return;
-  // Helpers
-  console.log("In checkWrap -begin");
-  const show = () => { line.classList.add('is-active');  };
-  const hide = () => { line.classList.remove('is-active'); };
-  const q = (sel) => c.querySelector(sel);
-  // Require explicit wrappers (add these classes / data-attrs in AEM)
-  const primaryWrap   = q('.cmp-image--efe-logo-primary, [data-logo="primary"]');
-  const secondaryWrap = q('.cmp-image--efe-logo-secondary, [data-logo="secondary"]');
-  if (!primaryWrap || !secondaryWrap) { hide(); return; }
-  // Find a real image inside each wrapper (handles AEM shapes)
-  const getImg = (wrap) =>
-    wrap.querySelector('img.cmp-image__image, picture img, img, svg, .cmp-image__image');
-  const pImg = getImg(primaryWrap);
-  const sImg = getImg(secondaryWrap);
-  // Strict boolean: returns true/false only
-  const hasRealImage = (img) => {
-    if (!img) return false;                 // <— important: false, not null
-    if (img.tagName === 'IMG') {
-      return img.complete && img.naturalWidth > 0 && img.naturalHeight > 0;
+  console.log("checkWrap()");
+  const container = document.querySelector('#efe-nav-main .cmp-container--1920.cmp-container--26');
+    if (!container) {
+      // exit early if container is null
+      return;
     }
-    // svg or other non-IMG graphic
-    return true;
-  };
-  // If images not present/loaded yet, hide and re-check later
-  if (!hasRealImage(pImg) || !hasRealImage(sImg)) {
-    hide();
-    console.log("In checkWrap after checking for 2 logos");
-    // Re-run when the images load or when DOM changes add them
-    [pImg, sImg].forEach(img => {
-      if (img && img.tagName === 'IMG' && !img.complete) {
-        img.addEventListener('load', () => this.checkWrap(), { once: true });
-      }
-    });
-    // Watch wrappers for a late-arriving <img>
-    [primaryWrap, secondaryWrap].forEach(wrap => {
-      const mo = new MutationObserver(() => {
-        const img = getImg(wrap);
-        if (img) {
-          if (img.tagName === 'IMG' && !img.complete) {
-            img.addEventListener('load', () => this.checkWrap(), { once: true });
-          }
-           this.checkWrap();
-        }
-      });
-      mo.observe(wrap, { childList: true, subtree: true });
-    });
-    return;
-  }
-  console.log("In checkWrap : line 244");
-  // Visible & substantial (avoid tiny icons)
-  const isVisible = (el) => {
-    const cs = getComputedStyle(el);
-    if (cs.display === 'none'  || cs.opacity === '0') return false;
-    if (!el.offsetParent && cs.position !== 'fixed') return false;
-    const r = el.getBoundingClientRect();
-    return r.width >= 80 && r.height >= 20; // adjust thresholds if needed
-  };
-  if (!isVisible(primaryWrap) || !isVisible(secondaryWrap)) { hide(); return; }
-  // Same-row check with tight tolerance (prevents 1px false positives)
-  const sameRow = Math.abs(
-    primaryWrap.getBoundingClientRect().top - secondaryWrap.getBoundingClientRect().top
-  ) < 0.5;
-    if (sameRow) {
-      console.log("In checkWrap :",sameRow);
-      show(); 
-      if (this.mo){
-        this.mo.disconnect();
-        this.mo = null;
-      }
+    const secondaryLogo = container.querySelector('.cmp-image--efe-logo-secondary');
+    const verticleLine = container.querySelector('.minimal-header__vertical-line');
+    if (!verticleLine) {
+      // exit early if there's nothing to hide.
+      return;
     }
-    else hide();
+    if (!secondaryLogo) {
+      // no secondary logo, verticle line is not needed
+      verticleLine.remove();
+      // exit early if there's nothing to hide.
+      return;
+    }
+    const referenceTop = container.offsetTop;
+    
+    console.log("checkWrap()", secondaryLogo);
+    console.log("checkWrap()",{offsetTop: secondaryLogo.offsetTop, referenceTop});
+
+    if (secondaryLogo.offsetTop > referenceTop) {
+      verticleLine.classList.add('hidden');
+    } else {
+      verticleLine.classList.remove('hidden');
+    }
   }
 }
