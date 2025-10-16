@@ -1,7 +1,7 @@
-// {
-//   "enabled":true,
-//   "description":"EFE PDF Viewer Config Override",
-//   "overrides":[
-//     "[/content/efe/us/en]com.adobe.cq.wcm.core.components.internal.services.pdfviewer.PdfViewerCaConfig/clientId=\"1962ee93e8904b7c90d94e264d04097c\""
-//   ]
-// }
+{
+  "enabled":true,
+  "description":"EFE PDF Viewer Config Override",
+  "overrides":[
+    "[/content/efe/us/en]com.adobe.cq.wcm.core.components.internal.services.pdfviewer.PdfViewerCaConfig/clientId=\"28e1ba764f6b40bf9e5319a2917f050c\""
+  ]
+}
