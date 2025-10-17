@@ -67,18 +67,6 @@ $fe-header-subadvised-vert-line-height: 44px;
                 }
             }
         }
-		@media screen and (max-width: $fe-header-direct-tablet-width) {
-			#efe-nav-main .cmp-container--26 {
-				gap: 8px;
-			}
-			.cmp-image--efe-logo-secondary,
-			.cmp-image--efe-logo-primary {
-				&.cmp-image--small {
-					padding-bottom: 0;
-					align-self: end;
-				}
-			}
-		}
         @media screen and (min-width: 1290px) {
             #efe-nav-main .cmp-container--26 {
                 padding: 18px 24px !important;
@@ -115,7 +103,7 @@ $fe-header-subadvised-vert-line-height: 44px;
 			.cmp-image--efe-logo-secondary,
 			.cmp-image--efe-logo-primary {
 				&.cmp-image--small {
-					padding-bottom: 0;
+					padding-bottom: 15px;
 					align-self: end;
 				}
 			}
@@ -207,7 +195,7 @@ $fe-header-subadvised-vert-line-height: 44px;
             }
         }
     }
-    &.theme-ssga ,&.theme-aon, &.theme-vanguard, &.theme-empower {
+    &.theme-ssga , &.theme-empower {
         .minimal-header .minimal-header__vertical-line {
             visibility: hidden;
         }
