@@ -12,15 +12,6 @@ $fe-header-subadvised-vert-line-height: 44px;
                 min-height: rem(34px);
                 padding: 35px 30px;
             }
-			.cmp-text {
-				display: flex;
-				flex-wrap: wrap;
-				justify-content: end;
-				gap: 12px;
-				a {
-				@include efe-gray-primary;
-				}
-			}
         }
         #efe-global-nav-header {
             display: block;
@@ -31,29 +22,7 @@ $fe-header-subadvised-vert-line-height: 44px;
                 display: none;
             }
         }
-		header div.container:last-child > div.cmp-container {
-			padding: 16px;
-		}
 		
-		#efe-nav-main {
-			max-width: 420px;
-			.cmp-container--26 {
-				gap: 16px;
-				justify-content: normal;
-				display: flex;
-				flex-wrap: wrap;
-				padding: 0 !important;
-				align-items: end !important;
-				position: relative;
-			.cmp-image--small {
-				max-width: 180px;
-			}
-		}
-			#nav-list-cta-group {
-				width: auto;
-				margin-left: auto;
-			}
-		}
         .minimal-header__vertical-line {
             display: none;
         }
@@ -238,7 +207,7 @@ $fe-header-subadvised-vert-line-height: 44px;
             }
         }
     }
-    &.theme-ssga {
+    &.theme-ssga ,&.theme-aon, &.theme-vanguard, &.theme-empower {
         .minimal-header .minimal-header__vertical-line {
             visibility: hidden;
         }
