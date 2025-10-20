@@ -123,15 +123,6 @@ $fe-header-subadvised-vert-line-height: 44px;
             * {
                 font-family: var(--font-family) !important;
             }
-            #efe-global-nav-header ,  #efe-nav-main #nav-list-cta-group {
-                align-self: baseline;
-                .cmp-text {
-                    p, span {
-                        font-size: 14px;
-                        font-weight: 300;
-                    }
-                }
-            }
         }
     }
     &.theme-ssga , &.theme-empower {
