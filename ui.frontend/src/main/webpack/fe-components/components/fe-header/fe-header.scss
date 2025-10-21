@@ -28,10 +28,15 @@
             }
         }
         .minimal-header__vertical-line {
-            border-left: 1px solid #949494;
-            display: block;
+            border-left: 1px;
+            display:block;
             height: 42px;
-        }
+            width: 1px;
+            background: #949494;
+           &.hidden {
+                visibility: hidden;
+            }
+        }   
         #efe-nav-main #nav-list-cta-group #efe-global-nav-header {
             display: none;
         }
@@ -86,6 +91,7 @@
                 }
             }
         }
+        
         * {
             font-family: var( --fe-footer-header-font-family) !important;
         }
@@ -109,7 +115,7 @@
             }
         }
     }
-    &.theme-ssga {
+    &.theme-ssga , &.theme-empower {
         .minimal-header .minimal-header__vertical-line {
             visibility: hidden;
         }
@@ -121,7 +127,6 @@
                     max-width:200px;
                     max-height:75px;
                     width: auto;
-                    height: auto;
                     object-fit: contain;
                 }
             }
