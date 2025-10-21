@@ -53,6 +53,20 @@
                     margin-top: 12px;
 
                     span.cityStatePair {
+                        a {
+                            span {
+                            color: $efe-gray-primary;
+                            @include body-01-link;
+                            }
+
+                            &:hover {
+                                span {
+                                    @include body-01-link-red;
+                                }
+                            }
+                        }
+
+
                         &:after {
                             content: "";
                             display: inline-block;
@@ -274,6 +288,17 @@
                     display: block;
                     margin-bottom: 10px;
                     text-transform: uppercase;
+                    a {
+                        span {
+                            color: $efe-gray-primary;
+                            @include body-02-link;
+                        }
+                        &:hover {
+                            span {
+                                @include body-02-link-red;
+                            }
+                        }
+                    }
                     &:last-of-type {
                         margin-bottom: 0;
                     }
