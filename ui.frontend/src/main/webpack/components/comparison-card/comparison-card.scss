@@ -1,4 +1,5 @@
 .comparisoncard {
+
     float: none;
     width: 100% !important;
     @include flexbox(
@@ -11,7 +12,7 @@
     // justify-content: stretch;
     // flex: 0 1 auto;
 
-    section#comparison-card {
+    section.comparison-card {
         max-width: rem(366);
         width: 100%;
         height: fit-content;
@@ -108,7 +109,7 @@
     }
 
     &.blue {
-        section#comparison-card {
+        section.comparison-card {
             .header {
                 background-color: $efe-blue;
             }
@@ -119,7 +120,7 @@
     }    
 
     &.teal {
-        section#comparison-card {
+        section.comparison-card {
             .header {
                 background-color: $efe-teal;
             }

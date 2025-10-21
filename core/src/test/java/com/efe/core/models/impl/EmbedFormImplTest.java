@@ -50,7 +50,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
         resource = aemContext.currentResource(RESOURCE);
         embedForm = resource.adaptTo(modelClass);
         assertEquals("Enroll Form", embedForm.getType());
-        assertEquals("{\"initiationPoint\":\"Appointment Type Id\",\"desc\":\"description\",\"buttonText\":\"Button Text\",\"appointmentTypeId\":\"Appointment Type Id\",\"hasAppointmentScheduler\":true}", embedForm.getDataOptions());
+        assertEquals("{\"desc\":\"description\",\"buttonText\":\"Button Text\",\"initiationPoint\":\"Appointment Type Id\",\"appointmentTypeId\":\"Appointment Type Id\",\"hasAppointmentScheduler\":true}", embedForm.getDataOptions());
     }
 
     @Test

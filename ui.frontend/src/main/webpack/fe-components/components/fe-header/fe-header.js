@@ -1,24 +1,44 @@
 import * as utility from "../../site/js/utility";
-import { fetchData, handleLoader } from "../../site/js/helper";
+import { debounce,fetchData, handleLoader } from "../../site/js/helper";
 
 export default class FeHeader {
   constructor() {
     document.addEventListener("displayHeaderReplaced", this.executePageView);
     document.addEventListener("displayPropRetrieved", () => {
       this.attributeParameterElem = document.querySelector("#fe-properties");
+      console.log("Line 9");
       this.init();
     });
     document.addEventListener("messageFromfePage", () => {
       this.attributeParameterElem = document.querySelector("#fe-properties");
+      console.log("Line 14");
       this.init();
     });
+    
+    console.log("Before load");
+    window.addEventListener('load', this.checkWrap());
+    console.log("Before re-size");
+    window.addEventListener('resize', this.checkWrap());
+
+    const container = document.querySelector('#efe-nav-main .cmp-container--1920.cmp-container--26');
+    if (!container) return;
+      
+    this.mo = new MutationObserver(this.checkWrap());
+    console.log("Line 28");
+    this.mo.observe(container, {childList: true, subtree:true});
+    setTimeout(() => {
+      if (this.mo){
+        this.mo.disconnect();
+        this.mo = null;
+      }
+    }, 3000);
   }
 
   init() {
     if (window.aemfe.header) {
       console.log("Header init called");
       this.fetchHeaderDataVariables();
-    }
+      }
   }
 
   fetchHeaderDataVariables() {
@@ -168,6 +188,37 @@ export default class FeHeader {
         return utility.getLoginLink();
       default:
         return "";
+    }
+  }
+  // inside FeHeader class
+checkWrap = () => {
+  console.log("checkWrap()");
+  const container = document.querySelector('#efe-nav-main .cmp-container--1920.cmp-container--26');
+    if (!container) {
+      // exit early if container is null
+      return;
+    }
+    const secondaryLogo = container.querySelector('.cmp-image--efe-logo-secondary');
+    const verticleLine = container.querySelector('.minimal-header__vertical-line');
+    if (!verticleLine) {
+      // exit early if there's nothing to hide.
+      return;
+    }
+    if (!secondaryLogo) {
+      // no secondary logo, verticle line is not needed
+      verticleLine.remove();
+      // exit early if there's nothing to hide.
+      return;
+    }
+    const referenceTop = container.offsetTop;
+    
+    console.log("checkWrap()", secondaryLogo);
+    console.log("checkWrap()",{offsetTop: secondaryLogo.offsetTop, referenceTop});
+
+    if (secondaryLogo.offsetTop > referenceTop) {
+      verticleLine.classList.add('hidden');
+    } else {
+      verticleLine.classList.remove('hidden');
     }
   }
 }

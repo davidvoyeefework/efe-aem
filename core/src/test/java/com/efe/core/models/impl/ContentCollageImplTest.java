@@ -57,8 +57,8 @@ public class ContentCollageImplTest {
     @Test
     public void modelGetterTest() {
         assertEquals("contentCollage-242e1d2d50", contentCollageModel.getId());
-        assertEquals("/content/dam/test1.png", contentCollageModel.getPrimaryImage());
-        assertEquals("/content/dam/test2.png", contentCollageModel.getSecondaryImage());
+        assertEquals("/content/dam/test1.png?fmt=png-alpha&bfc=on", contentCollageModel.getPrimaryImage());
+        assertEquals("/content/dam/test2.png?fmt=png-alpha&bfc=on", contentCollageModel.getSecondaryImage());
         assertEquals("alt text1", contentCollageModel.getPrimaryImageAltText());
         assertEquals("alt text2", contentCollageModel.getSecondaryImageAltText());
         assertEquals("test quote", contentCollageModel.getContentCard());

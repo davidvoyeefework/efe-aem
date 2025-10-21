@@ -26,6 +26,8 @@ public class Constants {
 	/** The Constant IMAGE. */
 	public static final String IMAGE = "/image";
 
+	public static final String FEATURED_IMAGE = "/cq:featuredimage";
+
 	/** The Constant DOT_STRING. */
 	public static final String DOT_STRING = ".";
 

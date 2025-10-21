@@ -197,6 +197,12 @@ public class LocationListImpl implements LocationList {
 		cities.putAll(map);
 		return  cities;
 	}
+        
+	public static String stateURL(String stateName) {
+		String stateReturn = stateName.trim().toLowerCase();
+		stateReturn = stateReturn.replace(' ', '-');
+		return "/locations/" + stateReturn;
+	}
 
 	public String getStateSelector() {	
 		return state;
