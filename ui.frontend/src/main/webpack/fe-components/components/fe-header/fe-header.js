@@ -39,7 +39,6 @@ export default class FeHeader {
     if (window.aemfe.header) {
       //console.log("Header init called");
       this.fetchHeaderDataVariables();
-      this.checkWrap();
     }
   }
 
