@@ -31,7 +31,7 @@
                         <p>                    
                             <span class="heading-location-details" data-sly-test="${model.officeLocations}">
                                 <span data-sly-list.item="${model.officeLocations}">
-                                    <span data-sly-test="${item.city != 'Phoenix'}" class="location-item">
+                                    <span data-sly-test="${item.externalName != 'National Advisor Center'}" class="location-item">
                                         <span data-sly-test="${item.city}">${item.externalName},</span>
                                         <span data-sly-test="${item.state}">${item.state}</span>
                                     <span>
