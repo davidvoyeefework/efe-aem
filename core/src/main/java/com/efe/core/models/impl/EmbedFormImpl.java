@@ -52,13 +52,14 @@ public class EmbedFormImpl implements EmbedForm {
     @ValueMapValue
     String buttonText;
 
-    /** The buttonText in Enrollment form. */
+     /** The buttonText in Enrollment form. */
     @ValueMapValue
     String enrollbuttonText;
 
     /** The buttonText in Enrollment Required form. */
     @ValueMapValue
     String enrollreqbuttonText;
+
 
     /** The scheduleAppointment. */
     @ValueMapValue
@@ -72,8 +73,7 @@ public class EmbedFormImpl implements EmbedForm {
      */
     @PostConstruct
     protected void init() {
-
-        JsonObject jsonObject = new JsonObject();
+       JsonObject jsonObject = new JsonObject();
         
         if (StringUtils.isNotBlank(description)){
             jsonObject.addProperty("desc", description);
@@ -107,7 +107,6 @@ public class EmbedFormImpl implements EmbedForm {
             jsonObject.addProperty("hasAppointmentScheduler", scheduleAppointment);
         }
         dataOption = jsonObject.entrySet().isEmpty() ? StringUtils.EMPTY : jsonObject.toString();
-        
     }
 
     /**
