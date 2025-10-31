@@ -13,21 +13,17 @@ import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
-import org.apache.sling.models.factory.ModelFactory;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.adobe.cq.wcm.core.components.util.AbstractComponentImpl;
-import com.adobe.cq.wcm.core.components.models.NavigationItem;
-import com.adobe.cq.wcm.core.components.models.datalayer.ComponentData;
 import com.day.cq.commons.Externalizer;
 import com.day.cq.wcm.api.Page;
 import com.efe.core.models.SundayskyModel;
 import com.efe.core.services.SeoService;
-import com.efe.core.utils.SeoUtil;
 
 /**
- * The Class SundayskyImpl.
+ * The Class SundayskyImpl.clean up code
  */
 @Model(adaptables = { Resource.class, SlingHttpServletRequest.class }, 
 				adapters = {SundayskyModel.class,ComponentExporter.class }, 
@@ -51,10 +47,6 @@ public class SundaySkyImpl extends AbstractComponentImpl implements SundayskyMod
 	@ScriptVariable
 	private Page currentPage;
 
-	/** The model factory. */
-	@OSGiService
-	private ModelFactory modelFactory;
-
 	/** The request. */
 	@Self
 	private SlingHttpServletRequest request;
@@ -70,9 +62,6 @@ public class SundaySkyImpl extends AbstractComponentImpl implements SundayskyMod
 
 	@ValueMapValue
 	private String title;
-
-	@ValueMapValue
-	private String path;
 
 	@ValueMapValue
 	private String height;
@@ -95,7 +84,7 @@ public class SundaySkyImpl extends AbstractComponentImpl implements SundayskyMod
 	}
 
 	public String getBaseUrl() {
-        return baseUrl;
+        return "https://myvideo.sundaysky.com/embed/";
     }
 
     public String getVideoUrl() {
@@ -117,13 +106,6 @@ public class SundaySkyImpl extends AbstractComponentImpl implements SundayskyMod
 	}
 
 	/**
-	 * @return path
-	 */
-	public String getPath() {
-		return path;
-	}
-
-	/**
 	 * @return height
 	 */
 	public String getHeight() {
@@ -136,14 +118,6 @@ public class SundaySkyImpl extends AbstractComponentImpl implements SundayskyMod
 	public String getWidth() {
 		return width;
 	}
-
-	/**
-	 * @return scrolling
-	 */
-	public String getScrolling() {
-		return scrolling;
-	}
-
 
 	/**
 	 * Gets the exported type.

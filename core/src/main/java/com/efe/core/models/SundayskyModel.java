@@ -17,12 +17,8 @@ public interface SundayskyModel {
 
 	public String getTitle(); 
 
-	public String getPath();
-
 	public String getHeight();
 
 	public String getWidth();
-
-	public String getScrolling();
 
 }
