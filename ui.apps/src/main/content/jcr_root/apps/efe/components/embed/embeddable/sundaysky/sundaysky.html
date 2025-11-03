@@ -1,10 +1,20 @@
 <sly data-sly-use.sundaysky="com.efe.core.models.SundayskyModel"
      data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
-     data-sly-test.hasContent="${sundaysky.baseUrl @ context='scriptString'}">
         <div id="sundaysky-video-container">
-            <iframe id="${sundaysky.programId @ context='scriptString'}" width="100%" height="100%" style="border:none; min-height:405px" allowfullscreen></iframe>
+            
+                <p>Program ID: ${sundaysky.programId}</p>
+                <p>Base URL: ${sundaysky.baseUrl}</p>
+
+            <iframe id="${sundaysky.programId @ context='scriptString'}" width="${sundaysky.width @ context='scriptString'}" height="${sundaysky.height @ context='scriptString'}" style="border:none; min-height:405px" allowfullscreen></iframe>
             <script>
-                    document.getElementById("${sundaysky.programId @ context='scriptString'}").src = "${sundaysky.baseUrl @ context='scriptString'}/?programId=${sundaysky.programId @ context='scriptString'}" + (window.location.search ? '&' + window.location.search.substring(1) : '')
+                    document.addEventListener("DOMContentLoaded", function () {
+    const iframe = document.getElementById("${sundaysky.programId @ context='scriptString'}");
+    if (iframe) {
+        iframe.src = "${sundaysky.baseUrl @ context='scriptString'}/?programId=${sundaysky.programId @ context='scriptString'}" + 
+                     (window.location.search ? '&' + window.location.search.substring(1) : '');
+    }
+});
+
             </script>
         </div>
      
