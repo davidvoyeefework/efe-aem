@@ -5,7 +5,7 @@
                 <p>Program ID: ${sundaysky.programId}</p>
                 <p>Base URL: ${sundaysky.baseUrl}</p>
 
-            <iframe id="${sundaysky.programId @ context='scriptString'}" width="${sundaysky.programId @ context='scriptString'}" height="${sundaysky.programId @ context='scriptString'}" style="border:none; min-height:405px" allowfullscreen></iframe>
+            <iframe id="${sundaysky.programId @ context='scriptString'}" width="${sundaysky.width @ context='scriptString'}" height="${sundaysky.height @ context='scriptString'}" style="border:none; min-height:405px" allowfullscreen></iframe>
             <script>
                     document.addEventListener("DOMContentLoaded", function () {
     const iframe = document.getElementById("${sundaysky.programId @ context='scriptString'}");
