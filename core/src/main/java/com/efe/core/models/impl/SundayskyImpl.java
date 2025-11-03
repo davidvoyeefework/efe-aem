@@ -14,7 +14,7 @@ import org.apache.sling.models.annotations.Exporter;
  */
 @Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
-public class SundaySkyImpl implements SundayskyModel {
+public class SundayskyImpl implements SundayskyModel {
 
     @ValueMapValue
     private final String baseUrl = "https://myvideo.sundaysky.com/embed/";
