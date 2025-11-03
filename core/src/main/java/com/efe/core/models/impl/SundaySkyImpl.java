@@ -57,9 +57,6 @@ public class SundaySkyImpl extends AbstractComponentImpl implements SundayskyMod
 	private SlingHttpServletRequest request;
 
 	@ValueMapValue
-	private String baseUrl;
-
-	@ValueMapValue
 	private String videoUrl;
 
 	@ValueMapValue
@@ -84,7 +81,7 @@ public class SundaySkyImpl extends AbstractComponentImpl implements SundayskyMod
 	protected void init() {
 
 		 // Placeholder for client-side personakey injection
-		videoUrl = baseUrl; // Will be completed in HTL with JS
+		videoUrl = getBaseUrl(); // Will be completed in HTL with JS
 
 	}
 
