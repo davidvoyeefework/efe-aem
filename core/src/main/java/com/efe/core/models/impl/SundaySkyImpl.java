@@ -13,6 +13,8 @@ import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
@@ -34,6 +36,9 @@ public class SundaySkyImpl extends AbstractComponentImpl implements SundayskyMod
 
 	/** The Constant RESOURCE_TYPE. */
 	protected static final String RESOURCE_TYPE = "efe/components/embed/embeddable/sundaysky";
+
+	/** The Constant LOGGER. */
+	private static final Logger LOGGER = LoggerFactory.getLogger(SundaySkyImpl.class);
 
 	/** The seo service. */
 	@OSGiService
@@ -84,6 +89,7 @@ public class SundaySkyImpl extends AbstractComponentImpl implements SundayskyMod
 	}
 
 	public String getBaseUrl() {
+		LOGGER.debug("in getBaseUrl");
         return "https://myvideo.sundaysky.com/embed/";
     }
 
