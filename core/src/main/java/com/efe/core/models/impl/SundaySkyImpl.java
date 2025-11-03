@@ -1,18 +1,15 @@
 package com.efe.core.models.impl;
 
-import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
-import com.adobe.cq.export.json.ComponentExporter;
 import com.efe.core.models.SundayskyModel;
 
 /**
  * The Class SundayskyImpl.clean up code
  */
-@Model(adaptables = { SlingHttpServletRequest.class,
-		Resource.class }, adapters = {SundayskyModel.class,ComponentExporter.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class SundaySkyImpl implements SundayskyModel {
 
     @ValueMapValue
