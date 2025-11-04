@@ -8,17 +8,44 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 @Model(adaptables = { SlingHttpServletRequest.class,
 		Resource.class }, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-public interface SundayskyModel {
+public class SundayskyModel {
 
-	
-	public String getVideoUrl();
-	
-	public String getProgramId();
+	@ValueMapValue
+	private String title;
 
-	public String getTitle(); 
+	@ValueMapValue
+	private String programId;
 
-	public String getHeight();
+	@ValueMapValue
+	private String minHeight;
 
-	public String getWidth();
+        private final String baseUrl = "https://myvideo.sundaysky.com/embed/";
 
+	/**
+	 * @return title
+	 */
+	public String getTitle() {
+		return title;
+	}
+
+	/**
+	 * @return path
+	 */
+	public String getProgramId() {
+		return programId;
+	}
+
+	/**
+	 * @return height
+	 */
+	public String getMinHeight() {
+		return minHeight;
+	}
+
+	/**
+	 * @return width
+	 */
+	public String getVideoUrl() {
+		return baseUrl + "?programId=" + programId;
+	}
 }
