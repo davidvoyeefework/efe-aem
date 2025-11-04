@@ -1,0 +1,80 @@
+#planner-bio-preview-card {
+        padding: 28px;  
+        max-width: rem(528);
+        border: 1px solid $efe-gray-mid;
+        border-radius: 18px;
+        background-color: white;
+        margin-bottom: 32px;
+
+    h2 {
+        @include body-01;
+        font-weight: 400;
+    }    
+
+    p#body-copy {
+        @include body-02;
+        margin-bottom: 32px;
+    }
+
+    h3 {
+        @include body-02;
+        font-weight: 700;
+        margin-top: 16px;
+        margin-bottom: 3px;
+    }
+
+        .get-to-know-section {
+            div.flex {
+            @include flexbox(
+                $flex-direction: row,
+                $gap: 16px,
+                $align-items: center
+            );
+            }
+
+
+            .img-container {
+                img {
+                    border-radius: 50%;
+                    width: 100%;
+                    height: 100%;
+                    max-width: rem(60);
+                    max-height: rem(60);
+                }
+            }    
+            
+            .block {
+                span.location-item { 
+
+                    &:after {
+                        display: inline-block;
+                        content: "";
+                        height: 16px;
+                        width: 1px;
+                        background-color: $efe-gray-primary;
+                        position: relative;
+                        top: 2px;
+                        margin: 0 5px;
+                    }
+                    &:last-of-type{
+                        &:after {
+                            display: none;
+                        }
+                    }
+                }
+            }     
+
+        };      
+
+
+    @media screen and (min-width: $md) {   
+        margin-top: 24px;
+        padding: 32px;
+        max-width: rem(528); 
+        margin-right: 32px;
+
+        h2 {
+            font-size: rem(32);
+        }
+    }
+}
