@@ -1,10 +1,10 @@
 <sly data-sly-use.sundaysky="com.efe.core.models.SundayskyModel"
      data-sly-use.templates="core/wcm/components/commons/v1/templates.html">
         <div id="sundaysky-video-container">
-            <iframe id="${sundaysky.programId @ context='scriptString'}" style="border:none; min-height: ${sundaysky.minHeight @ context='scriptString'}" allowfullscreen></iframe>
+            <iframe id="${sundaysky.programId @ context = 'attribute'}" style="border:none; min-height: ${sundaysky.minHeight @ context = 'styleToken'}" allowfullscreen></iframe>
             <script>
-                document.getElementById("${sundaysky.programId @ context='scriptString'}").src =
-                        "${sundaysky.videoUrl @ context='scriptString'}" + 
+                document.getElementById("${sundaysky.programId @ context='attribute'}").src =
+                        "${sundaysky.videoUrl @ context='uri'}" + 
                         (window.location.search ? '&' + window.location.search.substring(1) : '');
                     document.addEventListener("DOMContentLoaded", function () {
 });
