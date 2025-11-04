@@ -4,7 +4,7 @@
             <div class="cmp-embed__sundaysky">
             <iframe class="cmp-embed__sundaysky-iframe"
             id="${sundaysky.programId @ context = 'attribute'}" 
-            style="border:none; width:100%;  height:${sundaysky.minHeight || 'auto' @ context = 'styleToken'}" 
+            style="border:none; height:${sundaysky.minHeight || 'auto' @ context = 'styleToken'}" 
             allowfullscreen></iframe>
             <script>
                 document.getElementById("${sundaysky.programId @ context='attribute'}").src =
