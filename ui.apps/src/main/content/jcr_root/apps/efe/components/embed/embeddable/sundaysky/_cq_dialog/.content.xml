@@ -21,16 +21,10 @@
 			name="./title" />
 		<height 
 			jcr:primaryType="nt:unstructured"
-			sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
-			fieldDescription="Enter the iframe height (px)" 
-			fieldLabel="Height"
-			name="./height" />
-		<width 
-			jcr:primaryType="nt:unstructured"
-			sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
-			fieldDescription="Width of the Iframe (px)" 
-			fieldLabel="Width"
-			name="./width" />
+			sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+			fieldDescription="Enter the iframe min height. Include unit (px, pt, etc)" 
+			fieldLabel="Min Height"
+			name="./minHeight" />
 	</items>
 	<granite:data 
 		jcr:primaryType="nt:unstructured"
