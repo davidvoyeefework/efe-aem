@@ -39,8 +39,10 @@ $fe-header-subadvised-vert-line-height: 44px;
             display: block;
             height: 42px;
         }
-        #efe-nav-main #nav-list-cta-group #efe-global-nav-header {
+        #efe-nav-main #nav-list-cta-group .cmp-text {
+            @media screen and (max-width: 576px) {
             display: none;
+            }
         }
         #efe-nav-main #nav-list-cta-group .cmp-button--button-primary {
             display: block;
