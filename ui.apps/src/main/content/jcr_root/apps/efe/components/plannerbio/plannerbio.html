@@ -10,8 +10,9 @@
             <div class="cmp-efe-plannerbio--container__hero-text">
                 <h1 class="cmp-efe-plannerbio--container__hero-text--first">${planner.firstName} <sly data-sly-test="${planner.lastName}">${planner.lastName}</sly>
                     <span class="heading-location-details" data-sly-test="${model.officeLocations}">
-                        <span data-sly-test="${model.officeLocations.size >= 1}">Financial planner serving</span>
-                        <span data-sly-test="${model.officeLocations.size == 0}">Financial planner</span>                        
+                        <span data-sly-test="${model.officeLocations.size > 1}">Financial planner serving</span>
+                        <span data-sly-test="${model.officeLocations.size == 0}">Financial planner</span>       
+                        <span data-sly-test="${model.officeLocations.size == 1 && model.officeLocations[0].city == 'Phoenix' }">Financial planner</span>                                           
                         <span data-sly-list.item="${model.officeLocations}">
                                 <span class="cityStatePair" data-sly-test="${item.externalName != 'National Advisor Center'}">
                                     <span data-sly-test="${item.city}">${item.externalName},</span>
