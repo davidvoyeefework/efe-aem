@@ -124,12 +124,26 @@ $fe-header-subadvised-vert-line-height: 44px;
     }
     &.theme-vanguard {
         .minimal-header {
-            /* keep top strip sponsor text , hide duplicste in nav area for vanguard */
+           /*mobile: use top strip only */
+           @media (max-width:1289px) {
             #efe-nav-main #nav-list-cta-group .cmp-text {
                 display:none;
             }
         }
+
+            /* Desktop: use CTA area only */
+            @media (min-width: 1290px) {
+                #efe-global-nav-header .cmp-text {
+                display:none;
+                }
+
+            #efe-nav-main #nav-list-cta-group .cmp-text {
+                display:block;
+                }
+            }
+        }
     }
+    
     &.theme-ssga , &.theme-empower {
         .minimal-header .minimal-header__vertical-line {
             visibility: hidden;
