@@ -124,8 +124,8 @@ $fe-header-subadvised-vert-line-height: 44px;
     }
     &.theme-vanguard {
         .minimal-header {
-            /* hide top strip sponsor text for vanguard */
-            #efe-global-nav-header .cmp-text {
+            /* keep top strip sponsor text , hide duplicste in nav area for vanguard */
+            #efe-nav-main #nav-list-cta-group .cmp-text {
                 display:none;
             }
         }
