@@ -122,6 +122,14 @@ $fe-header-subadvised-vert-line-height: 44px;
             }
         }
     }
+    &.theme-vanguard {
+        .minimal-header {
+            /* hide top strip sponsor text for vanguard */
+            #efe-global-nav-header .cmp-text {
+                display:none;
+            }
+        }
+    }
     &.theme-ssga , &.theme-empower {
         .minimal-header .minimal-header__vertical-line {
             visibility: hidden;
