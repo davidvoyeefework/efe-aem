@@ -265,6 +265,8 @@ public class ArticleDetailUtil {
 
         plannerResponse.setUrl(url);
 
+        plannerResponse.setAdv2bUrl(plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.ADV2B_URL))
+            .map(ContentElement::getContent).orElse(StringUtils.EMPTY));
 
         plannerResponse.setBio(plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.BIO))
             .map(ContentElement::getContent).orElse(StringUtils.EMPTY));
