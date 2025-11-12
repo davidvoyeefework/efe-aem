@@ -23,17 +23,23 @@
             -ms-flex-pack: center;
             justify-content: center;
             align-items:center ; /* vertically center in container */
+            width: 100%;
+            aspect-ratio: 16 / 9;
 
         iframe.cmp-embed__sundaysky-iframe {
-            aspect-ratio: 16 / 9;
             width: 100%;
-            height:auto;
+            height: 100%;
             border:none;
-             }
+            }
         } 
-        .sundaysky-video-container {
+        #sundaysky-video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             aspect-ratio: 16 / 9;
-            width: 100%;
+            width: 100%;            
+            min-height: 300px;         /* optional: ensures some height */
+            padding: 1rem;             /* optional spacing */
             height:auto;
             border:none;
         }  
