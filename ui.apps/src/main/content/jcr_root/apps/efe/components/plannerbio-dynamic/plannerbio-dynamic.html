@@ -24,6 +24,8 @@
 
                     <p id="body-copy" data-sly-test="${planner.bio}">${planner.bio}</p>   
 
+                    <a class="body-02-link-red" href="${planner.adv2bUrl}" target="_blank">See ${planner.firstName}'s Full Bio</a>                    
+
                     <div data-sly-test="${!planner.education.empty}" class="block">
                         <h4 class="">Education</h3>
                         <p data-sly-repeat="${planner.education}" class="education-item">${item.degree}<span data-sly-test="${!item.major.empty}">, </span>${item.major} - <span class="university">${item.university}</span></p>                      

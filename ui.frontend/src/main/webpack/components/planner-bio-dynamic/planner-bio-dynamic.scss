@@ -19,6 +19,11 @@
 
     p#body-copy {
         @include body-02;
+        margin-bottom: 16px;
+    }
+
+    a.body-02-link-red {
+        display: block;
         margin-bottom: 32px;
     }
 
