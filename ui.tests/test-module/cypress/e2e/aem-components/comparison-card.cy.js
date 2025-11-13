@@ -6,7 +6,7 @@ describe(`Comparison Card: AEM Component - ${Cypress.config("baseUrl")}/ui-tests
     });
 
     it("Comparison Card", () => {
-        cy.get("#comparisoncards .comparisoncard").as("comparisonCards");
+        cy.get("#ui-test-comparison-cards .comparisoncard").as("comparisonCards");
 
         cy.get("@comparisonCards")
             .eq(0)
