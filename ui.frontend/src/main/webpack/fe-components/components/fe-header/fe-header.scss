@@ -1,3 +1,9 @@
+$fe-header-direct-tablet-width: 424px;
+$fe-header-subadvised-tablet-width: 400px;
+$fe-header-direct-mobile-width: 400px;
+$fe-header-subadvised-mobile-width: 368px;
+$fe-header-logo-height: 34px;
+$fe-header-subadvised-vert-line-height: 44px;
 .fepage {
     .minimal-header {
         #efe-global-nav-header .cmp-container--1920.efe-nav-header {
@@ -16,7 +22,10 @@
                 display: none;
             }
         }
-
+		
+        .minimal-header__vertical-line {
+            display: none;
+        }
         #efe-nav-main .cmp-container--26 {
             gap: 17.34px;
             justify-content: normal;
@@ -37,6 +46,7 @@
         }   
         #efe-nav-main #nav-list-cta-group #efe-global-nav-header {
             display: none;
+            }
         }
         #efe-nav-main #nav-list-cta-group .cmp-button--button-primary {
             display: block;
@@ -93,6 +103,19 @@
         * {
             font-family: var( --fe-footer-header-font-family) !important;
         }
+		@media screen and (max-width: $fe-header-direct-tablet-width) {
+			#efe-nav-main .cmp-container--26 {
+				gap: 8px;
+			}
+			.cmp-image--efe-logo-secondary,
+			.cmp-image--efe-logo-primary {
+				&.cmp-image--small {
+					padding-bottom: 15px;
+					align-self: end;
+				}
+			}
+		}
+		
     }
     &.theme-vanguard, &.theme-aon, &.theme-ssga, &.theme-empower {
         .minimal-header {
@@ -101,15 +124,6 @@
             }
             * {
                 font-family: var(--font-family) !important;
-            }
-            #efe-global-nav-header ,  #efe-nav-main #nav-list-cta-group {
-                align-self: baseline;
-                .cmp-text {
-                    p, span {
-                        font-size: 14px;
-                        font-weight: 300;
-                    }
-                }
             }
         }
     }

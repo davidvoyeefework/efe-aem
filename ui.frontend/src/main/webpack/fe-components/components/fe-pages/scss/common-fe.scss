@@ -46,17 +46,23 @@
     .minimal-header {
         &.subadvised {
             .cmp-image--efe-logo-secondary.cmp-image--small {
+                position: relative; //absolute positioning of ::before
                 &::before {
                     content: "Powered by";
                     color: #000;
                     font-size: 12px;
                     font-style: normal;
                     font-weight: 300;
-                    line-height: 32px; /* 266.667% */
-                    top: rem(5);
+                    line-height: 1.2; // relative lineheight
+                    top: -20px;
                     position: absolute;
+                    left: 50%;                    
+                    transform: translateX(-50%); // Centers text above logo
+                    z-index: 2;
+
                     @media screen and (max-width: 576px) { 
-                        top: -20px;
+                        font-size: 10px;
+                        top: -28px;
                     }
                 }
             }
