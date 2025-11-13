@@ -24,14 +24,15 @@
             justify-content: center;
             align-items:center ; /* vertically center in container */
             width: 100%;
+            max-width: 1200px;
             aspect-ratio: 16 / 9;
+            
 
         iframe.cmp-embed__sundaysky-iframe {
             width: 100%;
-            height: 100%;
             border:none;
             }
-        } 
+        }
         #sundaysky-video-container {
             display: flex;
             justify-content: center;
@@ -40,8 +41,13 @@
             width: 100%;            
             min-height: 300px;         /* optional: ensures some height */
             padding: 1rem;             /* optional spacing */
-            height:auto;
-            border:none;
+            position: relative;
         }  
     }
+}
+
+@media (max-width: 768px) {
+  .embed .cmp-embed .cmp-embed__sundaysky {
+    max-width: 100%;
+  }
 }
