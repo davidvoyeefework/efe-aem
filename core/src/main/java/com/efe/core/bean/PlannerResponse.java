@@ -261,8 +261,9 @@ public class PlannerResponse {
 	// Sets ADV URL
 	public void setAdv2bUrl (String adv2bUrl) {
 		this.adv2bUrl = adv2bUrl;
+	}
+		
 
-	
 	// Sets YouTube Id
 	public void setYoutubeID(String youtubeID) {
 		this.youtubeID = youtubeID;
