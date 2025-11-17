@@ -1,10 +1,9 @@
 <sly data-sly-use.sundaysky="com.efe.core.models.SundayskyModel"
      data-sly-use.templates="core/wcm/components/commons/v1/templates.html">
         <div id="sundaysky-video-container">
-            <div class="cmp-embed__sundaysky">
+            <div class="cmp-embed__sundaysky" style="border:none; height:${sundaysky.minHeight || 'auto' @ context = 'styleToken'}">
             <iframe class="cmp-embed__sundaysky-iframe"
             id="${sundaysky.programId @ context = 'attribute'}" 
-            style="border:none; height:${sundaysky.minHeight || 'auto' @ context = 'styleToken'}"
             title="${sundaysky.title}" 
             allowfullscreen></iframe>
             <script>
