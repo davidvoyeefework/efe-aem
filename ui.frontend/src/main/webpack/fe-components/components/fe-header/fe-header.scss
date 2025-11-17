@@ -75,6 +75,7 @@ $fe-header-subadvised-vert-line-height: 44px;
             }
         }
         .cmp-image--efe-logo-secondary, .cmp-image--efe-logo-primary {
+            display:flex;
             &.cmp-image--small {
                 width: 218px;
                 height: 45px;
@@ -110,6 +111,57 @@ $fe-header-subadvised-vert-line-height: 44px;
 				}
 			}
 		}
+
+    &.subadvised {
+      header div.container:last-child > div.cmp-container {
+        padding: 10px 16px 16px 16px;
+      }
+      .minimal-header__vertical-line {
+        height: $fe-header-subadvised-vert-line-height !important;
+      }
+      .cmp-image--efe-logo-secondary {
+        &.cmp-image--small {
+          &::before {
+            // hides the inherited Powered By from common-fe.scss
+            content: none !important;
+          }
+          .cmp-image {
+            &::before {
+              content: "Powered by";
+              color: $efe-gray-primary;
+              font-size: 0.6rem;
+              font-style: normal;
+              font-weight: 300;
+              line-height: 16px;
+            }
+          }
+        }
+      }
+      @media screen and (max-width: $fe-header-subadvised-tablet-width) {
+        #efe-nav-main .cmp-container--26 {
+          gap: 10px;
+        }
+        #efe-nav-main .cmp-container--26 > div:nth-child(odd) {
+          flex-basis: auto;
+        }
+      }
+      @media screen and (max-width: $fe-header-subadvised-mobile-width) {
+        #efe-nav-main .cmp-container--26 {
+          padding: 0 !important;
+          .minimal-header__vertical-line {
+            display: none;
+          }
+          .cmp-image--efe-logo-secondary.cmp-image--small {
+            &::before {
+              top: 3.375rem !important;
+            }
+          }
+        }
+        #efe-nav-main .cmp-container--26 > div:nth-child(odd) {
+          flex-basis: 100%;
+        }
+      }
+    }
 		
     }
     &.theme-vanguard, &.theme-aon, &.theme-ssga, &.theme-empower {
@@ -135,7 +187,6 @@ $fe-header-subadvised-vert-line-height: 44px;
                     max-width:200px;
                     max-height:75px;
                     width: auto;
-                    height: auto;
                     object-fit: contain;
                 }
             }
