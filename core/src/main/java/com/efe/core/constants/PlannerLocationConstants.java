@@ -40,7 +40,7 @@ public class PlannerLocationConstants {
 	public static final String BIO_VIDEO = "bioVideo";
 
 	// YouTubeID for Planner Bio Video
-	public static final String YOUTUBE_ID = "youTubeid";
+	public static final String YOUTUBE_ID = "youTubeId";
 
 	/**
 	 * RD in model
