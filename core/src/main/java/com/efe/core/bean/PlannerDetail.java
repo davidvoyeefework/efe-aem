@@ -1,4 +1,5 @@
-package com.efe.core.bean;
+package com.efe.core.bean; 
+
 
 
 /**
@@ -23,6 +24,9 @@ public class PlannerDetail {
     
     /** The bioVideo URL */
     String bioVideo;
+
+    // YouTube Vid ID
+    String youtubeID;
 
     String officeLocations;
 
@@ -88,6 +92,16 @@ public class PlannerDetail {
      */
     public void setBioVideo(String bioVideo) {
         this.bioVideo = bioVideo;
+    }
+
+    //Setter
+    public String getYoutubeID() {
+        return youtubeID;
+    }
+
+    //Getter
+    public void setYoutubeID(String youtubeID ) {
+        this.youtubeID = youtubeID;
     }
 
     /**
