@@ -31,7 +31,7 @@
         iframe.cmp-embed__sundaysky-iframe {
             width: 100%;
             border:none;
-            min-height: 300px;
+            height: 100%;
 
             html,
             body {
@@ -56,8 +56,12 @@
     }
 }
 
+
+// Responsive override
 @media (max-width: 768px) {
-  .embed .cmp-embed .cmp-embed__sundaysky {
-    max-width: 100%;
+  .cmp-embed__sundaysky iframe.cmp-embed__sundaysky-iframe {
+    min-height: auto; // remove fixed height
+    height: auto;     // let aspect ratio control height
   }
 }
+
