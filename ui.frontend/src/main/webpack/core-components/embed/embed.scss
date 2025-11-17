@@ -59,9 +59,16 @@
 
 // Responsive override
 @media (max-width: 768px) {
-  .cmp-embed__sundaysky iframe.cmp-embed__sundaysky-iframe {
-    min-height: auto; // remove fixed height
-    height: auto;     // let aspect ratio control height
+  .cmp-embed__sundaysky  {
+    min-height: 200px; // smaller height for mobile
+    height: auto !important;     // let aspect ratio control height
+  }
+}
+
+@media (max-width: 480px) {
+  .cmp-embed__sundaysky  {
+    min-height: 150px; // smaller height for mobile
+    height: auto !important;     // let aspect ratio control height
   }
 }
 
