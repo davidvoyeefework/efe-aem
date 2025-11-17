@@ -255,6 +255,7 @@ public class PlannerListImpl implements PlannerList {
 						"desktopImageurl");
 				String plannerId = ResourceUtil.getProperty(resourceResolver, plannerMaster.getPath(), "id");
                 String bioVideo = ResourceUtil.getProperty(resourceResolver, plannerMaster.getPath(), "bioVideo");
+				String youtubeID = ResourceUtil.getProperty(resourceResolver, plannerMaster.getPath(), "youTubeid");
 
 				// Get all office locations folder names associated with Planner and isolate just array of folder names not whole path
 				officeLocationsEncoded = ResourceUtil.getProperties(resourceResolver, plannerMaster.getPath(), "officeslocations");
@@ -291,9 +292,12 @@ public class PlannerListImpl implements PlannerList {
 				} else {
 					plannerObj.setFirstName(firstName);
 				}
-                                if(StringUtils.isNotEmpty(bioVideo)) {
-                                    plannerObj.setBioVideo(bioVideo);
-                                }
+				if(StringUtils.isNotEmpty(bioVideo)) {
+					plannerObj.setBioVideo(bioVideo);
+				}
+				if(StringUtils.isNotEmpty(youtubeID)) {
+					plannerObj.setYoutubeID(youtubeID);
+				}				
 				plannerObj.setLastName(lastName);
 				plannerObj.setTitle(title);
 				plannerObj.setDesktopUrl(imageUrl);
