@@ -255,7 +255,7 @@ public class PlannerListImpl implements PlannerList {
 						"desktopImageurl");
 				String plannerId = ResourceUtil.getProperty(resourceResolver, plannerMaster.getPath(), "id");
                 String bioVideo = ResourceUtil.getProperty(resourceResolver, plannerMaster.getPath(), "bioVideo");
-				String youtubeID = ResourceUtil.getProperty(resourceResolver, plannerMaster.getPath(), "youTubeid");
+				String youtubeID = ResourceUtil.getProperty(resourceResolver, plannerMaster.getPath(), "youTubeId");
 
 				// Get all office locations folder names associated with Planner and isolate just array of folder names not whole path
 				officeLocationsEncoded = ResourceUtil.getProperties(resourceResolver, plannerMaster.getPath(), "officeslocations");
