@@ -26,7 +26,7 @@ public class PlannerDetail {
     String bioVideo;
 
     // YouTube Vid ID
-    String youtubeID;
+    String youTubeId;
 
     String officeLocations;
 
@@ -95,13 +95,13 @@ public class PlannerDetail {
     }
 
     //Setter
-    public String getYoutubeID() {
-        return youtubeID;
+    public String getYouTubeId() {
+        return youTubeId;
     }
 
     //Getter
-    public void setYoutubeID(String youtubeID ) {
-        this.youtubeID = youtubeID;
+    public void setYouTubeId(String youTubeId ) {
+        this.youTubeId = youTubeId;
     }
 
     /**

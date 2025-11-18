@@ -133,7 +133,7 @@ public class PlannerResponse {
 	private String bioVideo;
 
 	//Youtube ID
-	private String youtubeID;
+	private String youTubeId;
 
 	/* favoriteSportsTeam */
 	private String favoriteSportsTeam;
@@ -263,10 +263,9 @@ public class PlannerResponse {
 		this.adv2bUrl = adv2bUrl;
 	}
 		
-
 	// Sets YouTube Id
-	public void setYoutubeID(String youtubeID) {
-		this.youtubeID = youtubeID;
+	public void setYouTubeId(String youTubeId) {
+		this.youTubeId = youTubeId;
 	}
 
 	/* Sets firstNameAlias */
@@ -629,8 +628,8 @@ public class PlannerResponse {
 	}
 
 	// YouTube Id Getter
-	public String getYoutubeID() {
-		return youtubeID;
+	public String getYouTubeId() {
+		return youTubeId;
 	}
 
         /**
