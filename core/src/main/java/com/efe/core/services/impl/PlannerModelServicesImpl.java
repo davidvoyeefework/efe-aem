@@ -169,7 +169,7 @@ public class PlannerModelServicesImpl implements PlannerModelServices {
 			jsonObj.getBioVideo());
 
 			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode, PlannerLocationConstants.YOUTUBE_ID,
-			jsonObj.getYoutubeID());			
+			jsonObj.getYouTubeId());			
 
 			NodePropertyManagerUtil.setPropertyIfNonNull(plannerMasterNode, PlannerLocationConstants.ID,
 					jsonObj.getId());

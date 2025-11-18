@@ -229,7 +229,7 @@ public class ArticleDetailUtil {
         String bioVideo = plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.BIO_VIDEO))
         .map(ContentElement::getContent).orElse(StringUtils.EMPTY);
 
-        String youtubeID = plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.YOUTUBE_ID))
+        String youTubeId = plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.YOUTUBE_ID))
         .map(ContentElement::getContent).orElse(StringUtils.EMPTY);
 
         plannerResponse.setTitle(plannerDetailsCF.map(cf -> cf.getElement(PlannerLocationConstants.TITLE))
@@ -247,7 +247,7 @@ public class ArticleDetailUtil {
 
         plannerResponse.setBioVideo(bioVideo);
 
-        plannerResponse.setYoutubeID(youtubeID);
+        plannerResponse.setYouTubeId(youTubeId);
         
         plannerResponse.setFirstName(firstName);
 
