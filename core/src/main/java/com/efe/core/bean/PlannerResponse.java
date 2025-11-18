@@ -254,6 +254,11 @@ public class PlannerResponse {
 		this.bioVideo = bioVideo;
 	}
 
+	// Sets ADV URL
+	public void setAdv2bUrl (String adv2bUrl) {
+		this.adv2bUrl = adv2bUrl;
+	}
+
 	/* Sets firstNameAlias */
 	public void setFirstNameAlias(String firstNameAlias) {
 		this.firstNameAlias = firstNameAlias;
