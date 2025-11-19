@@ -46,7 +46,6 @@ $fe-header-subadvised-vert-line-height: 44px;
         }   
         #efe-nav-main #nav-list-cta-group #efe-global-nav-header {
             display: none;
-            }
         }
         #efe-nav-main #nav-list-cta-group .cmp-button--button-primary {
             display: block;
@@ -122,9 +121,9 @@ $fe-header-subadvised-vert-line-height: 44px;
                 top: 2.5rem; 
             }
         }
-
-		
+        
     }
+    
     &.theme-vanguard, &.theme-aon, &.theme-ssga, &.theme-empower {
         .minimal-header {
             #efe-nav-main .cmp-container--26 {
@@ -152,5 +151,5 @@ $fe-header-subadvised-vert-line-height: 44px;
             }
         }
     }
-} 
 
+}
