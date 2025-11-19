@@ -168,9 +168,16 @@ addEventListener("DOMContentLoaded", updateLocationLinksHref);
           width: '640',
           videoId: vidId,
           playerVars: {
-            'rel': 0
-          },
-          events: {
+            // MULTIPLE videos to play after the first one, prevents unwanted ads. 
+            playlist: [
+              vidId,
+              vidId,
+              vidId,
+              vidId,
+            ].join(','),
+            rel: 0,
+            color: 'white',
+            loop: 1
           }
         });
       }
