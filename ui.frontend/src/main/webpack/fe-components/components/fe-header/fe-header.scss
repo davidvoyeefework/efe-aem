@@ -115,6 +115,14 @@ $fe-header-subadvised-vert-line-height: 44px;
 				}
 			}
 		}
+
+        
+        @media screen and (min-width: $fe-header-subadvised-tablet-width) and (max-width: 1200px) {
+            .cmp-image--efe-logo-secondary.cmp-image--small::before {
+                top: 2.5rem; 
+            }
+        }
+
 		
     }
     &.theme-vanguard, &.theme-aon, &.theme-ssga, &.theme-empower {
