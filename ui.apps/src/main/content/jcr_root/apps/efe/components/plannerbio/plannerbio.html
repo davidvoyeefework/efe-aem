@@ -37,11 +37,16 @@
     </div>
     <div class="cmp-efe--full-width primary" data-sly-test="${planner.bio}">
         <div class="cmp-efe-plannerbio--aboutus">
-            <!-- <h2 class="cmp-efe-plannerbio--aboutus__title">${model.aboutSectionHeading}</h2> -->
             <div class="cmp-efe-plannerbio--aboutus__container">
                 <div class="cmp-efe-plannerbio--aboutus__aboutme">
 
-                    <div id="player"></div>
+                    <sly data-sly-test="${planner.youTubeId}">
+                        <div class="video-container">
+                            <div id="player"></div>
+                            <button id="custom-play-button"><span class="visually-hidden">Play Video</span></button>   
+                            <div id="efe-logo"></div>                                                          
+                        </div>                            
+                    </sly>
                     
                     <h2 class="cmp-efe-plannerbio--aboutus__aboutme--subtitle">${model.aboutMeHeading}</h2>
                     <p>${planner.bio}</p>
@@ -80,51 +85,8 @@
 
                 </div>
             </div>
-            <!-- <div class="button cmp-efe-plannerbio--container__hero-text--cta cmp-button--button-primary cmp-button--unset cmp-button--default cmp-button--default cmp-efe-plannerbio--aboutus__cta">
-                <a type="button" id="button-5487aab983" class="cmp-button" href="${model.appointmentCta}">
-                    <span class="cmp-button__text">${model.appointmentCtaLabel}</span>
-                </a>
-            </div> -->
         </div>
     </div>
-
-    <!-- <div class="cmp-efe--full-width secondary" data-sly-test="${model.officeLocations}">
-        <div class="cmp-efe-plannerbio--locations">
-            <h2 class="cmp-efe-plannerbio--locations__title">${model.locationSectionHeading}</h2>
-            <div class="cmp-efe-plannerbio--locations__container" data-sly-list="${model.officeLocations}">
-                <div class="cmp-efe-plannerbio--locations__location">
-                    <h3 data-sly-test="${item.officeName}">${item.officeName}</h3>
-                    <p data-sly-test="${item.address1}">${item.address1}</p>
-                    <p data-sly-test="${item.address2}">${item.address2}</p>
-                    <p><span data-sly-test="${item.city}">${item.city}, </span><span data-sly-test="${item.state}">${item.state} </span><span data-sly-test="${item.zip}">${item.zip}</span></p>
-                    <div class="button cmp-button--primary-nav-link cmp-button--efe-red-primary">
-                        <a  href="${item.url}">
-                            <span class="cmp-button__text">${model.exploreLinkLabel}</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <!--
-    <div class="cmp-efe--full-width secondary cmp-efe-plannerbio--locations" data-sly-test="${!planner.supportStaff.empty}">
-        <div class="cmp-efe-plannerbio--locations__container" data-sly-list="${planner.supportStaff}">
-            <div  class="teaser cmp-teaser--thumbnail cmp-teaser">
-              <div class="cmp-teaser__content">
-                <h2 class="cmp-teaser__title"> ${item.firstName} ${item.lastName}</h2>
-              </div>
-              <div class="cmp-teaser__image" data-sly-test="${!item.photo.empty}">
-                <div data-cmp-hook-image="imageV3" class="cmp-image">
-                  <img srcset="${item.photo}"
-                       src="${item.photo}"
-                       loading="lazy" class="cmp-image__image" itemprop="contentUrl"
-                       alt="Planner detail" title="Planner detail" />
-                  <meta itemprop="caption" content="Planner Details">
-                </div>
-              </div>
-            </div>
-        </div>
-    </div> -->
     <script data-sly-test="${model.jsonLd}" type="application/ld+json">
         ${model.jsonLd @context ='unsafe'}
     </script>
@@ -156,30 +118,54 @@ addEventListener("DOMContentLoaded", updateLocationLinksHref);
 </script>
 
 <script> 
-      var tag = document.createElement('script');
-      tag.src = "https://www.youtube.com/iframe_api";
-      var firstScriptTag = document.getElementsByTagName('script')[0];
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-      var player;
       var vidId = "${planner.youTubeId @context='html'}";
-      function onYouTubeIframeAPIReady() {
-        player = new YT.Player('player', {
-          height: '390',
-          width: '640',
-          videoId: vidId,
-          playerVars: {
-            // MULTIPLE videos to play after the first one, prevents unwanted ads. 
-            playlist: [
-              vidId,
-              vidId,
-              vidId,
-              vidId,
-            ].join(','),
-            rel: 0,
-            color: 'white',
-            loop: 1
-          }
-        });
-      }
+      if (vidId) {
+            var tag = document.createElement('script');
+            tag.src = "https://www.youtube.com/iframe_api";
+            var firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+            var player;
+            var vidId = "${planner.youTubeId @context='html'}";
+            let hasPlayedOnce = false;
+            window.onYouTubeIframeAPIReady = () => {
+                player = new YT.Player('player', {
+                height: '100%',
+                width: '100%',
+                videoId: vidId,
+                playerVars: {
+                    // playlist: [
+                    // vidId,
+                    // vidId,
+                    // vidId,
+                    // vidId,
+                    // ].join(','),
+                    rel: 0,
+                    color: 'white',
+                    modestbranding: 1
+                },
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+                });
+            }
 
+            const onPlayerStateChange = (event) => {
+                if (event.data === YT.PlayerState.ENDED) {
+                    player.stopVideo();
+                }
+            };
+
+            const onPlayerReady = (event) => {
+                const efeLogo = document.getElementById("efe-logo");
+                const playButton = document.getElementById("custom-play-button");
+                ['custom-play-button', 'efe-logo'].forEach(id => {
+                    document.getElementById(id).addEventListener('click', function () {
+                        player.playVideo();
+                        efeLogo.style.display = 'none';
+                        playButton.style.display = 'none';
+                    });
+                });
+            }
+      }
 </script>
