@@ -19,7 +19,7 @@ import org.apache.sling.models.annotations.injectorspecific.SlingObject;
  * The Class FormsSelectorImpl.
  */
 @Model(adaptables = { Resource.class,
-		SlingHttpServletRequest.class }, adapters = ECScheduler.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, resourceType = CDTSchedulerImpl.RESOURCE_TYPE)
+		SlingHttpServletRequest.class }, adapters = ECScheduler.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL, resourceType = ECSchedulerImpl.RESOURCE_TYPE)
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
 public class ECSchedulerImpl implements ECScheduler {
 
