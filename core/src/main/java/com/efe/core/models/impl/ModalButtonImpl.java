@@ -14,7 +14,7 @@ import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
-
+import com.adobe.cq.wcm.core.components.models.ExperienceFragment;
 /**
  *
  * @author jrodriquez
