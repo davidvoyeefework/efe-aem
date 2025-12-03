@@ -1,6 +1,9 @@
-/* 
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/JavaScript.js to edit this template
- */
+function showButtonModal(e) {
+    var modalComponent = document.getElementById(e.target.dataset.modalId);
+    modalComponent.classList.remove("d-none");
+}
 
+function hideButtonModal(e) {
+    var modalComponent = document.getElementById(e.target.dataset.modalId);
+}
 
