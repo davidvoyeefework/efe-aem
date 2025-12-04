@@ -1,12 +1,12 @@
 <div data-sly-test ="${wcmmode.edit}" class="cq-placeholder cq-marker-start" data-emptytext="${component.title}"></div>
-<sly data-sly-use.model="com.efe.core.models.ModalButton"/>
+<sly data-sly-use.modal="com.efe.core.models.ModalButton"/>
 
 <div class='button cmp-button--button-primary cmp-button--center cmp-button--default cmp-button--default'>
-    <button class='cmp-button' onclick="showButtonModal(event);" data-modal-id = "${model.id}">
-        <span class='cmp-button__text'>${model.buttonText}</span>
+    <button class='cmp-button' onclick="showButtonModal(event);" data-modal-id = "${modal.id}" value="${modal.buttonText}">
+        <span class='cmp-button__text'>${modal.buttonText}</span>
     </button>
  </div>
-<div class="dialog-container cmp-modal--button d-none" id="${model.id}" aria-hidden="true" data-component="modal-button">
+<div class="dialog-container cmp-modal--button d-none" id="${modal.id}" aria-hidden="true" data-component="modal-button">
     <div class="dialog-overlay" data-ally-dialog-hide></div><!-- comment -->
     <div class="cmp-modal" role="document"><!-- comment -->
         <div class="cmp-modal__container responsivegrid"><!-- comment -->
@@ -18,7 +18,7 @@
                           stroke="#7A7D82" stroke-width="2" />
                 </svg>
             </button>
-            <sly data-sly-resource="${model.embedFragment @ resourceType='wcm/core/components/experiencefragment'}"></sly>
+            <sly data-sly-text="${modal.embedFragment}" data-sly-resource="${modal.embedFragment @ resourceType='wcm/core/components/experiencefragment'}"></sly>
         </div>
     </div>
 </div>
