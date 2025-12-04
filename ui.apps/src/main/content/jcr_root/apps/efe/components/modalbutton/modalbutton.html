@@ -1,16 +1,15 @@
-<div data-sly-test ="${wcmmode.edit}" class="cq-placeholder cq-marker-start" data-emptytext="${component.title}"></div>
 <sly data-sly-use.modal="com.efe.core.models.ModalButton"/>
 
 <div class='button cmp-button--button-primary cmp-button--center cmp-button--default cmp-button--default'>
-    <button class='cmp-button' onclick="showButtonModal(event);" data-modal-id = "${modal.id}" value="${modal.buttonText}">
+    <button class='cmp-button cmp-modal--button' data-modal-id = "${modal.id}" value="${modal.buttonText}">
         <span class='cmp-button__text'>${modal.buttonText}</span>
     </button>
  </div>
-<div class="dialog-container cmp-modal--button d-none" id="${modal.id}" aria-hidden="true" data-component="modal-button">
+<div class="dialog-container cmp-button--modal d-none" id="${modal.id}" aria-hidden="true" data-component="modal-button">
     <div class="dialog-overlay" data-ally-dialog-hide></div><!-- comment -->
     <div class="cmp-modal" role="document"><!-- comment -->
         <div class="cmp-modal__container responsivegrid"><!-- comment -->
-            <button data-a11y-dialog-hide class="cmp-modal__close" aria-label="Close this dialog window" onclick="hideButtonModal(event);">
+            <button data-a11y-dialog-hide class="cmp-button-modal__close" aria-label="Close this dialog window">
                 <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <line y1="-1" x2="23.9943" y2="-1" transform="matrix(0.705714 0.708497 -0.705714 0.708497 0 2)" stroke="#7A7D82"
                           stroke-width="2" />
