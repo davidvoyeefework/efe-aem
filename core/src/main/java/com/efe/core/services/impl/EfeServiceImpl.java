@@ -32,6 +32,7 @@ public class EfeServiceImpl implements EfeService {
 	private String authHeader;
         
         private String CDTEmbedURL;
+        private String ECEmbedURL;
         
         private String printClientId;
         private String printClientSecret;
@@ -348,6 +349,14 @@ public class EfeServiceImpl implements EfeService {
 		 */
 		@AttributeDefinition(name = "CDT Embed URL", description = "CDT Embed URL")
 		String CDTEmbedURL();
+                
+                /**
+		 * EC Scheduler Embed URL.
+		 *
+		 * @return the string
+		 */
+		@AttributeDefinition(name = "EC Scheduler Embed URL", description = "EC Scheduler Embed URL")
+		String ECEmbedURL();
 	}
 
 	/**
@@ -374,6 +383,7 @@ public class EfeServiceImpl implements EfeService {
 		this.formJsUrl = config.formJsUrl();
 		this.formAuthHeader = config.formAuthHeader();
                 this.CDTEmbedURL = config.CDTEmbedURL();
+                this.ECEmbedURL = config.ECEmbedURL();
                 this.printClientId = config.printClientId();
                 this.printClientSecret = config.printClientSecret();
                 this.partnerAPIAuthURL = config.partnerAPIAuthURL();
@@ -570,6 +580,16 @@ public class EfeServiceImpl implements EfeService {
         @Override
 	public String getCDTEmbedURL() {
             return CDTEmbedURL;
+        }
+        
+                /**
+	 * Gets the EC Scheduler Embed URL.
+	 *
+	 * @return the EC Scheduler Embed URL
+	 */
+        @Override
+	public String getECEmbedURL() {
+            return ECEmbedURL;
         }
 
 

@@ -313,6 +313,10 @@ b {
     @include buildLink($efe-red-primary, $efe-red-hover);
 }
 
+.body-01-link-red {
+    @include body-01-link-red();
+}
+
 @mixin body-02-link {
     @include body-02;
     @include buildLink;
@@ -321,6 +325,10 @@ b {
 @mixin body-02-link-red {
     @include body-02;
     @include buildLink($efe-red-primary, $efe-red-hover);
+}
+
+.body-02-link-red {
+    @include body-02-link-red;
 }
 
 @mixin body-03-link {

@@ -55,6 +55,13 @@ public class LocationPlannerUtil {
 		return resourceResolver.getResource(plannerPath);
 	}
 
+	public static Resource getPlannerMasterResource(ResourceResolver resourceResolver, String firstName, String id) {
+		String plannerMasterPath = PlannerLocationConstants.ROOT_FOLDER_PATH + PlannerLocationConstants.FORWARD_SLASH
+				+ PlannerLocationConstants.PLANNERS + PlannerLocationConstants.FORWARD_SLASH + id + PlannerLocationConstants.FORWARD_SLASH + "fragment_"+ firstName.toLowerCase() + "_" + id + PlannerLocationConstants.MASTER_NODE ;
+		
+		return resourceResolver.getResource(plannerMasterPath);
+	}
+
 	/**
 	 * Method to return the location info from the location content fragment
 	 * 

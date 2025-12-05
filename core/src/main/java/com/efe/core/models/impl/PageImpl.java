@@ -59,6 +59,8 @@ public class PageImpl implements PageModel {
 	@SlingObject
 	private ResourceResolver resourceResolver;
 
+	private String socialSharingImage;
+
 	/** Thumbnail Image Path. */
 	private String thumbnail;
 	
@@ -168,6 +170,21 @@ public class PageImpl implements PageModel {
                     }
                 } 
 		return canonicalUrl;
+	}
+
+	public String getSocialSharingImage() {
+		if (Objects.nonNull(resourceResolver.getResource(resource.getPath() + Constants.FEATURED_IMAGE))) {
+			socialSharingImage = getThumbnailUrl(currentPage, 800, 480);
+		}
+		if (StringUtils.isNotBlank(socialSharingImage)) {
+			socialSharingImage = externalizer.publishLink(resourceResolver, socialSharingImage);
+		} else if (Objects.nonNull(resourceResolver.getResource(resource.getPath() + Constants.IMAGE))) {
+			socialSharingImage = getThumbnailUrl(currentPage, 800, 480);
+			if (StringUtils.isNotBlank(socialSharingImage)) {
+				socialSharingImage = externalizer.publishLink(resourceResolver, socialSharingImage);
+			}
+		}
+		return socialSharingImage;
 	}
 
 	/**
