@@ -1,6 +1,7 @@
-<sly data-sly-use.ecschedule="com.efe.core.models.ECScheduler"
+<div data-sly-test ="${wcmmode.edit}">ECScheduler Component</div>
+<sly data-sly-test="${ecschedule.ContainerID}" data-sly-use.ecschedule="com.efe.core.models.ECScheduler"
      data-sly-use.templates="core/wcm/components/commons/v1/templates.html">
-    <script src="${scheduler.ECEmbedURL}"></script>
+    <script src="${ecschedule.ECEmbedURL}"></script>
     <div id="${ecschedule.ContainerID ? ecschedule.ContainerID : 'ecscheduler-container' @ context='attribute'}"></div>
     <script>
         window.efeSelfSchedulerEc.inject({ id: "${ecschedule.ContainerID ? ecschedule.ContainerID : 'ecscheduler-container' @ context='attribute'}" });
