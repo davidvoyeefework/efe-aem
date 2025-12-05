@@ -70,6 +70,7 @@
 
 </style>
 
+
 <sly data-sly-use.modal="com.efe.core.models.ModalButton"/>
 
 <div class='button cmp-button--button-primary cmp-button--center cmp-button--default cmp-button--default'>
@@ -91,9 +92,22 @@
             </button>
         </div>
         <div class="cmp-button-modal__xfcontent">
-            <div data-sly-resource="${@path=modal.embedFragment, wcmmode='disabled'}"
-            class="cmp-experiencefragment">
-            </div>
+            <sly data-sly-resource="${@path=modal.embedFragment, selectors='content', wcmmode='disabled'}"></sly>
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    const modalButtons = document.querySelectorAll('.cmp-modal--button');
+    const modalCloseButtons = document.querySelectorAll('.cmp-button-modal__close');
+
+    modalButtons.forEach(el => el.addEventListener('click', event => {
+      var modalComponent = document.getElementById(event.target.dataset.modalId);
+        modalComponent.classList.remove("d-none");
+    }));
+
+    modalCloseButtons.forEach(el => el.addEventListener('click', event => {
+      var modalComponent = document.getElementById(event.target.dataset.modalId);
+        modalComponent.classList.add("d-none");
+    }));
+</script>
