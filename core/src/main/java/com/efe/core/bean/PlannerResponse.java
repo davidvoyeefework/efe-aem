@@ -1,6 +1,5 @@
 package com.efe.core.bean; 
 
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -132,9 +131,6 @@ public class PlannerResponse {
 	/* bioVideo */
 	private String bioVideo;
 
-	//Youtube ID
-	private String youTubeId;
-
 	/* favoriteSportsTeam */
 	private String favoriteSportsTeam;
 
@@ -256,16 +252,6 @@ public class PlannerResponse {
 	// Sets Bio Video
 	public void setBioVideo(String bioVideo) {
 		this.bioVideo = bioVideo;
-	}
-
-	// Sets ADV URL
-	public void setAdv2bUrl (String adv2bUrl) {
-		this.adv2bUrl = adv2bUrl;
-	}
-		
-	// Sets YouTube Id
-	public void setYouTubeId(String youTubeId) {
-		this.youTubeId = youTubeId;
 	}
 
 	/* Sets firstNameAlias */
@@ -622,14 +608,13 @@ public class PlannerResponse {
 		return Collections.emptyList();
 	}
 
-	// Bio Vid Getter
+	/**
+	 * Returns the Favorite Sport.
+	 *
+	 * @return the Favorite Sport
+	 */
 	public String getBioVideo() {
 		return bioVideo;
-	}
-
-	// YouTube Id Getter
-	public String getYouTubeId() {
-		return youTubeId;
 	}
 
         /**

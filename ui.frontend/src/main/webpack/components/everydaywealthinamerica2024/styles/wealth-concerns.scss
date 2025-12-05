@@ -47,7 +47,7 @@
                 &.stat-icon {
                     &.stat-icon-globe {
                         position: relative;
-                        top: 2px;
+                        top: 3px;
                     }
                 }
             }
@@ -128,39 +128,9 @@
 
                     }
 
-                    &.orange-lightest-bg {
-                        .flex {
-                            p.stat-text {
-                                bottom: 20px;
-                            }
-                        }
-                    }
-
-                    &.orange-even-lighter-bg {
-                        .flex {
-                            p.stat-text {
-                                bottom: 17px;
-                            }
-                        }
-                    }
-
-                    &.orange-lighter-bg {
-                        .flex {
-                            p.stat-text {
-                                bottom: 0px;
-                            }
-                        }
-                    }                    
-
-
-
                     &.orange-lighter-bg, &.orange-even-lighter-bg, .orange-lightest-bg  {
                         .flex {
                             .stat-icon {
-
-                                &.stat-icon-globe {
-                                    top: -4px;
-                                }
 
                             }
                             p.bebas {
@@ -198,7 +168,7 @@
                         p.stat-text {
                             font-size: rem(32);
                             line-height: 110%;
-                            bottom: 5px;
+                            bottom: 5;
                             right: 15px;
 
 

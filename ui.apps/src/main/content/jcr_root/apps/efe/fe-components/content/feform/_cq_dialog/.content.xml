@@ -112,14 +112,14 @@
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                         fieldDescription="Add Heading"
                                                         fieldLabel="Add Heading"
-                                                        name="./enrolldescription"/>
+                                                        name="./description"/>
                                                     <buttontext
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                         fieldDescription="Scheduler Button Text"
                                                         fieldLabel="Scheduler Button Text"
                                                         required="true"
-                                                        name="./enrollbuttonText"/>
+                                                        name="./buttonText"/>
                                                 </items>
                                             </enrollmentformproperties>
                                             <enrollmentformreqproperties
@@ -135,14 +135,14 @@
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                         fieldDescription="Add Heading"
                                                         fieldLabel="Add Heading"
-                                                        name="./enrollreqdescription"/>
+                                                        name="./description"/>
                                                     <buttontext
                                                         jcr:primaryType="nt:unstructured"
                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                         fieldDescription="Scheduler Button Text"
                                                         fieldLabel="Scheduler Button Text"
                                                         required="true"
-                                                        name="./enrollreqbuttonText"/>
+                                                        name="./buttonText"/>
                                                 </items>
                                             </enrollmentformreqproperties>
                                         </items>

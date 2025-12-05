@@ -1,6 +1,6 @@
 package com.efe.core.constants; 
 
-public class PlannerLocationConstants { 
+public class PlannerLocationConstants {
 
 	/**
 	 * Instantiates a new PlannerLocationConstants.
@@ -34,13 +34,10 @@ public class PlannerLocationConstants {
 	 */
 	public static final String RD_FROM_JSON = "RD";
         
-	/**
-	 * Planner bio video
-	 */
-	public static final String BIO_VIDEO = "bioVideo";
-
-	// YouTubeID for Planner Bio Video
-	public static final String YOUTUBE_ID = "youTubeId";
+        /**
+         * Planner bio video
+         */
+        public static final String BIO_VIDEO = "bioVideo";
 
 	/**
 	 * RD in model

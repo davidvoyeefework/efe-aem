@@ -44,7 +44,6 @@ import com.efe.core.utils.EFEUtil;
 import com.efe.core.utils.LinkUtil;
 import com.efe.core.utils.LocationPlannerUtil;
 import com.efe.core.utils.SeoUtil;
-import com.efe.core.utils.ResourceUtil;
 
 /**
  * The Class PlannerBioImpl.
@@ -152,7 +151,6 @@ public class PlannerBioImpl implements PlannerBio {
 	/** The filter. */
 	private String[] filter;
 
-
 	/**
 	 * Inits the model.
 	 */
@@ -166,13 +164,6 @@ public class PlannerBioImpl implements PlannerBio {
 					
 			if (null != plannerResource && null != plannerResource.adaptTo(ContentFragment.class)) {
 				plannerResponse = ArticleDetailUtil.getPlannerDetails(resourceResolver, plannerResource, efeService);
-				Resource plannerMasterResource = LocationPlannerUtil.getPlannerMasterResource(resourceResolver, selectors[0], selectors[2]);
-				String plannerMasterResourcePath = plannerMasterResource.getPath();
-				String youTubeIdPropertyName = "youTubeId";
-				String youTubeId =  ResourceUtil.getProperty(resourceResolver, plannerMasterResourcePath, youTubeIdPropertyName);
-				if(StringUtils.isNotEmpty(youTubeId)) {
-					plannerResponse.setYouTubeId(youTubeId);
-				}
 				String firstNameAlias = plannerResponse.getFirstNameAlias();
 				if(StringUtils.isNotEmpty(firstNameAlias)) {
 					plannerResponse.setFirstName(firstNameAlias);

@@ -22,7 +22,6 @@
   "partnerAPIAuthKID":"$[env:partner_api_auth_kid;default=aem-test-2024]",
   "enableGA":"$[env:enable_ga;default=false]",
   "CDTEmbedURL":"$[env:cdt_embed_url]",
-  "ECEmbedURL":"$[env:ec_embed_url]",
   "gaTagValue":"$[env:ga_tag_value;default=GTM-MCQB6LQ]",
   "omnyPlaylistApi":"$[env:omny_playlist_api;default=https://api.omny.fm/orgs/{orgid}/playlists/{playlistid}/clips/v2]",
   "omnyEpisodeApi":"$[env:omny_episode_api;default=https://api.omny.fm/orgs/{orgid}/clips/{episodeid}]",

@@ -1,7 +1,4 @@
-<sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html" />
-<sly data-sly-call="${clientLib.js @ categories='efe.plannerbio'}" />  
-  
-  <section   
+<section 
     data-sly-use.model="com.efe.core.models.PlannerBio"
     data-sly-use.template="core/wcm/components/commons/v1/templates.html"
     data-sly-set.planner="${model.plannerResponse}"
@@ -13,8 +10,8 @@
             <div class="cmp-efe-plannerbio--container__hero-text">
                 <h1 class="cmp-efe-plannerbio--container__hero-text--first">${planner.firstName} <sly data-sly-test="${planner.lastName}">${planner.lastName}</sly>
                     <span class="heading-location-details" data-sly-test="${model.officeLocations}">
-                        <span data-sly-test="${model.officeLocations.size >= 1 && !(model.officeLocations.size == 1  && model.officeLocations[0].city == 'Phoenix')}">Financial planner serving</span>
-                        <span data-sly-test="${model.officeLocations.size == 0 || (model.officeLocations.size == 1 && model.officeLocations[0].city == 'Phoenix')}">Financial planner</span>                                             
+                        <span data-sly-test="${model.officeLocations.size >= 1}">Financial planner serving</span>
+                        <span data-sly-test="${model.officeLocations.size == 0}">Financial planner</span>                        
                         <span data-sly-list.item="${model.officeLocations}">
                                 <span class="cityStatePair" data-sly-test="${item.externalName != 'National Advisor Center'}">
                                     <a class="location-link" x-cq-linkchecker="valid" data-cmp-clickable="" hreflang="en-US" lang="en-US" href="/content/efe/us/en/location.${item.state}.${item.externalName}.html">                                     
@@ -40,20 +37,22 @@
     </div>
     <div class="cmp-efe--full-width primary" data-sly-test="${planner.bio}">
         <div class="cmp-efe-plannerbio--aboutus">
+            <!-- <h2 class="cmp-efe-plannerbio--aboutus__title">${model.aboutSectionHeading}</h2> -->
             <div class="cmp-efe-plannerbio--aboutus__container">
-                <div class="cmp-efe-plannerbio--aboutus__aboutme">  
-                    
-                <sly data-sly-test="${planner.youTubeId}">
-                    <div class="video-container" id="player-container" data-youtube-id="${planner.youTubeId}">
-                        <div id="player"></div>
-                        <button id="custom-play-button"><span class="visually-hidden">Play Video</span></button>   
-                        <div id="efe-logo"></div>                                                          
-                    </div>                            
-                </sly>
+                <div class="cmp-efe-plannerbio--aboutus__aboutme">
+
+                    <div class="video-container">
+                        <sly data-sly-test="${planner.bioVideo}">
+                            <video id="planner-video" controls width="320" height="240" controls>
+                                <source src="${planner.bioVideo}" type="video/mp4">
+                                Your browser does not support the video tag. Here is a  <a target="_blank" href="${planner.bioVideo}">link to the video</a> instead.
+                            </video>
+                            <button aria-label="Play Planner Biography Video" id="playButton" class="play-button"><span class="visually-hidden">Play</span></button>
+                        </sly>
+                    </div>
                     
                     <h2 class="cmp-efe-plannerbio--aboutus__aboutme--subtitle">${model.aboutMeHeading}</h2>
                     <p>${planner.bio}</p>
-                    <a class="body-01-link-red" href="${planner.adv2bUrl}" target="_blank">See ${planner.firstName}'s Full Bio</a>
                 </div>
                 <div class="cmp-efe-plannerbio--aboutus__block">
                     <div data-sly-test="${!planner.certifications.empty}" class="cmp-efe-plannerbio--aboutus__certification">
@@ -88,15 +87,72 @@
 
                 </div>
             </div>
-        </div>     
+            <!-- <div class="button cmp-efe-plannerbio--container__hero-text--cta cmp-button--button-primary cmp-button--unset cmp-button--default cmp-button--default cmp-efe-plannerbio--aboutus__cta">
+                <a type="button" id="button-5487aab983" class="cmp-button" href="${model.appointmentCta}">
+                    <span class="cmp-button__text">${model.appointmentCtaLabel}</span>
+                </a>
+            </div> -->
+        </div>
     </div>
+
+    <!-- <div class="cmp-efe--full-width secondary" data-sly-test="${model.officeLocations}">
+        <div class="cmp-efe-plannerbio--locations">
+            <h2 class="cmp-efe-plannerbio--locations__title">${model.locationSectionHeading}</h2>
+            <div class="cmp-efe-plannerbio--locations__container" data-sly-list="${model.officeLocations}">
+                <div class="cmp-efe-plannerbio--locations__location">
+                    <h3 data-sly-test="${item.officeName}">${item.officeName}</h3>
+                    <p data-sly-test="${item.address1}">${item.address1}</p>
+                    <p data-sly-test="${item.address2}">${item.address2}</p>
+                    <p><span data-sly-test="${item.city}">${item.city}, </span><span data-sly-test="${item.state}">${item.state} </span><span data-sly-test="${item.zip}">${item.zip}</span></p>
+                    <div class="button cmp-button--primary-nav-link cmp-button--efe-red-primary">
+                        <a  href="${item.url}">
+                            <span class="cmp-button__text">${model.exploreLinkLabel}</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!--
+    <div class="cmp-efe--full-width secondary cmp-efe-plannerbio--locations" data-sly-test="${!planner.supportStaff.empty}">
+        <div class="cmp-efe-plannerbio--locations__container" data-sly-list="${planner.supportStaff}">
+            <div  class="teaser cmp-teaser--thumbnail cmp-teaser">
+              <div class="cmp-teaser__content">
+                <h2 class="cmp-teaser__title"> ${item.firstName} ${item.lastName}</h2>
+              </div>
+              <div class="cmp-teaser__image" data-sly-test="${!item.photo.empty}">
+                <div data-cmp-hook-image="imageV3" class="cmp-image">
+                  <img srcset="${item.photo}"
+                       src="${item.photo}"
+                       loading="lazy" class="cmp-image__image" itemprop="contentUrl"
+                       alt="Planner detail" title="Planner detail" />
+                  <meta itemprop="caption" content="Planner Details">
+                </div>
+              </div>
+            </div>
+        </div>
+    </div> -->
     <script data-sly-test="${model.jsonLd}" type="application/ld+json">
         ${model.jsonLd @context ='unsafe'}
-    </script> 
+    </script>
 </section>
 <sly data-sly-call="${template.placeholder @ isEmpty=!isNotEmpty, classAppend='cmp-plannerbio'}"></sly>
 
 <script>
+    const video = document.getElementById("planner-video");
+    const playButton = document.getElementById("playButton");
+
+    if (video != null) {
+        playButton.addEventListener("click", function() {
+            if (video.paused) {
+                video.play();
+                playButton.style.display = "none";
+            } else {
+                video.pause();
+            }
+        });
+    }
+
 const updateLocationLinksHref = () => {
     const links = document.querySelectorAll(".location-link");
 
@@ -117,7 +173,9 @@ const updateLocationLinksHref = () => {
         }
     });
 };
+
 addEventListener("DOMContentLoaded", updateLocationLinksHref);
+
+
+
 </script>
-
-

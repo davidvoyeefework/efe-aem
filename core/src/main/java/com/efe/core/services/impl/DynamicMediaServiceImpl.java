@@ -40,7 +40,6 @@ public class DynamicMediaServiceImpl implements DynamicMediaService {
 	 */
 	@Override
 	public String getDmImagePath(ResourceResolver resourceResolver, String imagePath) {
-		String originalImagePath = imagePath;
 		if (Objects.nonNull(resourceResolver) && StringUtils.isNotBlank(imagePath) && !(imagePath.endsWith(".svg"))) {
 			Resource imageRes = resourceResolver.getResource(imagePath + PlannerLocationConstants.FORWARD_SLASH + JcrConstants.JCR_CONTENT
 					+ PlannerLocationConstants.FORWARD_SLASH + METADATA);
@@ -60,9 +59,6 @@ public class DynamicMediaServiceImpl implements DynamicMediaService {
 				LOGGER.debug("Image Resource not found for Dynamic Media : {}", imagePath);
 			}
 		}
-		if (originalImagePath.endsWith(".png"))
-			return imagePath+"?fmt=png-alpha&bfc=on";
-		else
-			return imagePath;
+		return imagePath;
 	}
 }

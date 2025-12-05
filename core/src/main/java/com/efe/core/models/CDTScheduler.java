@@ -11,7 +11,7 @@ public interface CDTScheduler {
 	 * @return the SalesForce lead ID.
 	 */
 	String getSFLeadId();
-
+        
         /**
          * Gets flag to determine whether to display the header
          * 
@@ -25,7 +25,7 @@ public interface CDTScheduler {
          * @return the showDisclosure flag
          */
         String getShowDisclosure();
-
+        
         /**
 	 * Gets the CDT scheduler embed URL.
 	 *

@@ -40,13 +40,13 @@ class RestServiceImplTest {
 	void testGetData() throws IOException {
 		String apiUrl = "https://jsonplaceholder.typicode.com/todos/1";
 		String result = restService.getData(apiUrl, null);
-		// assertNotNull(result);
+		assertNotNull(result);
 	}
 
 	@Test
 	void testGetDataNotNull() {
 		String apiUrl = "https://jsonplaceholder.typicode.com/todos/1";
 		String result = restService.getData(apiUrl, "header");
-		// assertNotNull(result);
+		assertNotNull(result);
 	}
 }
