@@ -5,9 +5,10 @@ section.vanguard-wpi-theme {
 
     .flex {
         margin: 0;
+        display: flex;
         @include flexbox(
-            $flex-direction: row,
-            $gap: 11px
+            $flex-direction: column,
+            $gap: 11px,
         );
 
         .button-block{
@@ -16,6 +17,8 @@ section.vanguard-wpi-theme {
 
         .copy {
             margin-top: 5px;
+            width: 100%;
+            text-align: left;
             h2 {
                 font-size: rem(12);
                 line-height: 130%;
@@ -273,6 +276,7 @@ section.vanguard-wpi-theme {
             gap: 40px;    
             
             .copy {
+                width: auto;
                 margin-top: -5px;
             }
         }
