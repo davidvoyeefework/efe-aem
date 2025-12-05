@@ -34,3 +34,4 @@ $include "./default_filters.any"
 
 # Allow cdt scheduler
 /0110 { /type "allow" /method "GET" /extension "json" /path "/content/efe/*/cdtscheduler*"}
+

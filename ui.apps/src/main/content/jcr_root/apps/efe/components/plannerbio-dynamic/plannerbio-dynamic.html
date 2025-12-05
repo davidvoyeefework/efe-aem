@@ -24,6 +24,8 @@
 
                     <p id="body-copy" data-sly-test="${planner.bio}">${planner.bio}</p>   
 
+                    <a class="body-02-link-red" href="${planner.adv2bUrl}" target="_blank">See ${planner.firstName}'s Full Bio</a>                    
+
                     <div data-sly-test="${!planner.education.empty}" class="block">
                         <h4 class="">Education</h3>
                         <p data-sly-repeat="${planner.education}" class="education-item">${item.degree}<span data-sly-test="${!item.major.empty}">, </span>${item.major} - <span class="university">${item.university}</span></p>                      
@@ -50,14 +52,15 @@
 
                 </div>
             </div>
-
-            <div data-sly-test="${planner.bioVideo}" class="video-container">
-                <video id="planner-video" controls width="320" height="240" controls>
-                    <source src="${planner.bioVideo}" type="video/mp4">
-                    Your browser does not support the video tag. Here is a  <a target="_blank" href="${planner.bioVideo}">link to the video</a> instead.
-                </video>
-                <button aria-label="Play Planner Biography Video" id="playButton" class="play-button"><span class="visually-hidden">Play</span></button>
-            </div>            
+            
+            <sly data-sly-test="${planner.youTubeId}">
+                <div class="video-container">
+                    <div id="player"></div>
+                    <button id="custom-play-button"><span class="visually-hidden">Play Video</span></button>   
+                    <div id="efe-logo"></div>                                                          
+                </div>                            
+            </sly>            
+                 
 
 
         </div>
@@ -124,23 +127,56 @@
 </section>
 <sly data-sly-call="${template.placeholder @ isEmpty=!isNotEmpty, classAppend='cmp-plannerbio'}"></sly>
 
-
-
-<script>
-    const video = document.getElementById("planner-video");
-    const playButton = document.getElementById("playButton");
-
-    if (video != null) {
-        playButton.addEventListener("click", function() {
-            if (video.paused) {
-                video.play();
-                playButton.style.display = "none";
-            } else {
-                video.pause();
+<script> 
+      var vidId = "${planner.youTubeId @context='html'}";
+      if (vidId) {
+            var tag = document.createElement('script');
+            tag.src = "https://www.youtube.com/iframe_api";
+            var firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+            var player;
+            var vidId = "${planner.youTubeId @context='html'}";
+            let hasPlayedOnce = false;
+            window.onYouTubeIframeAPIReady = () => {
+                player = new YT.Player('player', {
+                height: '100%',
+                width: '100%',
+                videoId: vidId,
+                playerVars: {
+                    // playlist: [
+                    // vidId,
+                    // vidId,
+                    // vidId,
+                    // vidId,
+                    // ].join(','),
+                    rel: 0,
+                    color: 'white',
+                    modestbranding: 1
+                },
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+                });
             }
-        });
-    }
 
+            const onPlayerStateChange = (event) => {
+                if (event.data === YT.PlayerState.ENDED) {
+                    player.stopVideo();
+                }
+            };
 
+            const onPlayerReady = (event) => {
+                const efeLogo = document.getElementById("efe-logo");
+                const playButton = document.getElementById("custom-play-button");
+                ['custom-play-button', 'efe-logo'].forEach(id => {
+                    document.getElementById(id).addEventListener('click', function () {
+                        player.playVideo();
+                        efeLogo.style.display = 'none';
+                        playButton.style.display = 'none';
+                    });
+                });
+            }
+      }
 </script>
 

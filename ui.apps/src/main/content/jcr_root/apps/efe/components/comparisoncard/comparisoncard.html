@@ -1,6 +1,6 @@
 
 <sly data-sly-use.model="com.efe.core.models.ComparisonCard" class="default">
-    <section aria-role="content-info" aria-label="${model.title @context='html'}" class="comparison-card">
+    <section role="contentinfo" aria-label="${model.title @context='html'}" class="comparison-card">
         <div class="header">
             <h2>${model.title @context='html'}<h2>
         </div>
@@ -18,6 +18,10 @@
 
 
 <script>
-    const cccomponent = document.getElementById('comparison-card');
-    cccomponent.parentNode.parentNode.parentNode.setAttribute('id', 'comparisoncards');
+    const cccomponents = document.getElementsByClassName('comparison-card');
+
+    for (const card of cccomponents ) {
+        card.parentNode.parentNode.parentNode.classList.add("comparisoncards");
+    }
+
 </script>
