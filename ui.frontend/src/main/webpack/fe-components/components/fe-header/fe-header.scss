@@ -102,7 +102,7 @@ $fe-header-subadvised-vert-line-height: 44px;
         * {
             font-family: var( --fe-footer-header-font-family) !important;
         }
-		@media screen and (max-width: #{$fe-header-direct-tablet-width}) {
+		@media screen and (max-width: $fe-header-direct-tablet-width) {
 			#efe-nav-main .cmp-container--26 {
 				gap: 8px;
 			}
@@ -116,7 +116,7 @@ $fe-header-subadvised-vert-line-height: 44px;
 		}
 
         
-        @media screen and (min-width: #{$fe-header-subadvised-tablet-width}) and (max-width: 1200px) {
+        @media screen and (min-width: $fe-header-subadvised-tablet-width) and (max-width: 1200px) {
             .cmp-image--efe-logo-secondary.cmp-image--small::before {
                 top: 2.5rem; 
             }
