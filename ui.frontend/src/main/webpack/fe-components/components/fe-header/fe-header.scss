@@ -42,6 +42,7 @@ $fe-header-subadvised-vert-line-height: 44px;
         #efe-nav-main #nav-list-cta-group .cmp-text {
             @media screen and (max-width: 576px) {
             display: none;
+            }
         }
         #efe-nav-main #nav-list-cta-group .cmp-button--button-primary {
             display: block;
@@ -148,6 +149,4 @@ $fe-header-subadvised-vert-line-height: 44px;
             }
         }
     }
-
- }
 }
