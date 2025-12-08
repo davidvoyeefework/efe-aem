@@ -42,7 +42,7 @@ public class ECSchedulerImpl implements ECScheduler {
 
 	/** The Container div ID. */
 	@ValueMapValue
-	private String ContainerID;
+	private String containerID;
         
         /**
 	 * Inits the model.
@@ -59,7 +59,7 @@ public class ECSchedulerImpl implements ECScheduler {
 	 */
         @Override
 	public String getContainerID() {
-            return ContainerID;
+            return containerID;
 	}
 
         /**
