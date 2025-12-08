@@ -72,20 +72,18 @@
 
 
 <sly data-sly-use.modal="com.efe.core.models.ModalButton"/>
-<div data-sly-test="${modal.embedFragment}">
-    ${modal.embedFragment}
-</div>
-${modal.embedFragment}
+
+
 <div class='button cmp-button--button-primary cmp-button--center cmp-button--default cmp-button--default'>
     <button class='cmp-button cmp-modal--button' data-modal-id = "${modal.id}" value="${modal.buttonText}">
         <span class='cmp-button__text'>${modal.buttonText}</span>
     </button>
- </div>
+</div>
 <div class="cmp-button--modal d-none" id="${modal.id}" data-component="modal-button">
     <div class="dialog-overlay"></div><!-- comment -->
-    <div class="cmp-button-modal--content" role="document"><!-- comment -->
-        <div class="cmp-button-modal__container responsivegrid"><!-- comment -->
-            <button class="cmp-button-modal__close" aria-label="Close this dialog window">
+    <div class="cmp-button-modal-content" role="document"><!-- comment -->
+        <div class="cmp-button-modal-content__container responsivegrid"><!-- comment -->
+            <button class="cmp-button-modal-content__close" aria-label="Close this dialog window" data-modal-id = "${modal.id}">
                 <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <line y1="-1" x2="23.9943" y2="-1" transform="matrix(0.705714 0.708497 -0.705714 0.708497 0 2)" stroke="#7A7D82"
                           stroke-width="2" />
@@ -94,7 +92,7 @@ ${modal.embedFragment}
                 </svg>
             </button>
         </div>
-        <div class="cmp-button-modal__xfcontent">
+        <div class="cmp-button-modal-content__xfcontent">
             <sly data-sly-resource="${@path=modal.embedFragment, selectors='content'}"></sly>
         </div>
     </div>
