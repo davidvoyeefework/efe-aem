@@ -72,13 +72,16 @@
 
 
 <sly data-sly-use.modal="com.efe.core.models.ModalButton"/>
-
+<div data-sly-test="${modal.embedFragment}">
+    ${modal.embedFragment}
+</div>
+${modal.embedFragment}
 <div class='button cmp-button--button-primary cmp-button--center cmp-button--default cmp-button--default'>
     <button class='cmp-button cmp-modal--button' data-modal-id = "${modal.id}" value="${modal.buttonText}">
         <span class='cmp-button__text'>${modal.buttonText}</span>
     </button>
  </div>
-<div class="cmp-button--modal d-none" id="$modal.id}" data-component="modal-button">
+<div class="cmp-button--modal d-none" id="${modal.id}" data-component="modal-button">
     <div class="dialog-overlay"></div><!-- comment -->
     <div class="cmp-button-modal--content" role="document"><!-- comment -->
         <div class="cmp-button-modal__container responsivegrid"><!-- comment -->
@@ -92,7 +95,7 @@
             </button>
         </div>
         <div class="cmp-button-modal__xfcontent">
-            <sly data-sly-resource="${@path=modal.embedFragment, selectors='content', wcmmode='disabled'}"></sly>
+            <sly data-sly-resource="${@path=modal.embedFragment, selectors='content'}"></sly>
         </div>
     </div>
 </div>
