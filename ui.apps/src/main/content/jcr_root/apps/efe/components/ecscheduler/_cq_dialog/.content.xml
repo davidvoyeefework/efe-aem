@@ -11,15 +11,15 @@
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="granite/ui/components/coral/foundation/container">
                 <items jcr:primaryType="nt:unstructured">
-                    <ContainerID 
+                    <containerID 
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                         fieldDescription="Container ID"
                         fieldLabel="Container ID"
-                        name="./title"
+                        name="./containerID"
                         emptyText="ec_scheduler"
                         required="{Boolean}false">
-                    </ContainerID>
+                    </containerID>
                 </items>
             </column>
         </items>
