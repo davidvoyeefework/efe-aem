@@ -18,6 +18,7 @@ section.voya-wpi-theme {
     .flex {
         @include flexbox(
             $flex-direction: row,
+            $align-items: center, //Align CTA with heading
             $gap: 20px,
 
         );
@@ -40,6 +41,7 @@ section.voya-wpi-theme {
             display: -webkit-box;
             display: -moz-box;
             max-height: rem(50);
+            flex: 1 1 auto; // aloow text area to take remaining space
 
             h3, p {
                 font-size: rem(14);
@@ -55,44 +57,45 @@ section.voya-wpi-theme {
                 }
             }
         }
-    }
 
-    .cmp-button--button-wpi {
-        width: rem(118);
-        height: rem(36);
-        border: 2px solid #145a7b;
-        border-radius: 20px;    
-        margin: 15px auto 0;  
-        background-color: white;
-        width: fit-content;
-        padding: 0 16px;
-        color: #145a7b;
-        @include flexbox(
-            $align-items:center,
-        );
-        text-align: center;
-        a.cmp-button {
-            flex-basis: 100%;
-            border-radius: 20px;   
+        .cmp-button--button-wpi {
+            width: rem(118);
+            height: rem(36);
+            border: 2px solid #145a7b;
+            border-radius: 20px;    
+            margin: 15px auto 0;  
             background-color: white;
-            text-decoration: none;
+            width: fit-content;
+            padding: 0 16px;
+            color: #145a7b;
+            flex: 0 0 auto; // not to shrink
+            margin: 0; // remove auto-centering
+            @include flexbox(
+                $align-items:center,
+            );
+            text-align: center;
+            a.cmp-button {
+                flex-basis: 100%;
+                border-radius: 20px;   
+                background-color: white;
+                text-decoration: none;
 
-            &:hover {
+                &:hover {
+                    text-decoration: none;
+                }
+
+            }
+            .cmp-button__text {
+                font-size: rem(16);
+                letter-spacing: .0125em;
+                font-family: "Proxima Nova", sans-serif;
+                font-weight: 600;
+                color: #145a7b;
+                line-height: 100%;
                 text-decoration: none;
             }
-
-        }
-        .cmp-button__text {
-            font-size: rem(16);
-            letter-spacing: .0125em;
-            font-family: "Proxima Nova", sans-serif;
-            font-weight: 600;
-            color: #145a7b;
-            line-height: 100%;
-            text-decoration: none;
         }
     }
-
     // For accordion placement 
     @media screen and (max-width: 260px) {
         padding: 10px;
