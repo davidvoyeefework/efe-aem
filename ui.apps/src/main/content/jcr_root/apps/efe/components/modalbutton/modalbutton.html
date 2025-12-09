@@ -30,14 +30,14 @@
 
 
 .cmp-button--modal {
-  .cmp-button-modal--content {
+  .cmp-button-modal-content {
     height: auto;
     padding-bottom: 44px;
     max-height: 495px;
   }
 }
 
-.cmp-button-modal--content {
+.cmp-button-modal-content {
   margin: auto; 
   z-index: 2; 
   position: relative; 
@@ -100,7 +100,7 @@
 
 <script type="text/javascript">
     const modalButtons = document.querySelectorAll('button.cmp-modal--button');
-    const modalCloseButtons = document.querySelectorAll('button.cmp-button-modal__close');
+    const modalCloseButtons = document.querySelectorAll('button.cmp-button-modal-content__close');
 
     modalButtons.forEach(el => el.addEventListener('click', event => {
       var modalComponent = document.getElementById(event.target.dataset.modalId);
