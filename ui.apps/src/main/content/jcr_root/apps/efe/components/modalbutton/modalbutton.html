@@ -79,7 +79,7 @@
         <span class='cmp-button__text'>${modal.buttonText}</span>
     </button>
 </div>
-<div class="cmp-button--modal d-none" id="${modal.id}" data-component="modal-button">
+<div class="cmp-button--modal d-none" id="${modal.id}">
     <div class="dialog-overlay"></div><!-- comment -->
     <div class="cmp-button-modal-content" role="document"><!-- comment -->
         <div class="cmp-button-modal-content__container responsivegrid"><!-- comment -->
@@ -93,14 +93,14 @@
             </button>
         </div>
         <div class="cmp-button-modal-content__xfcontent">
-            <sly data-sly-resource="${@path=modal.embedFragment, selectors='content'}"></sly>
+            Verifying this works by itself.
         </div>
     </div>
 </div>
 
 <script type="text/javascript">
-    const modalButtons = document.querySelectorAll('.cmp-modal--button');
-    const modalCloseButtons = document.querySelectorAll('.cmp-button-modal__close');
+    const modalButtons = document.querySelectorAll('button.cmp-modal--button');
+    const modalCloseButtons = document.querySelectorAll('button.cmp-button-modal__close');
 
     modalButtons.forEach(el => el.addEventListener('click', event => {
       var modalComponent = document.getElementById(event.target.dataset.modalId);
