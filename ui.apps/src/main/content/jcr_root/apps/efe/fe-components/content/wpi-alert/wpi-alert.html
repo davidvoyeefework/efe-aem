@@ -438,13 +438,13 @@
                         <div class="copy">
                             ${model.subheadline @context='html'}
                         </div>
+                        <div class="button cmp-button--button-wpi">
+                            <a type="button" class="cmp-button" x-cq-linkchecker="valid" data-destination-token=${model.destination} target="_parent" id="wpi-anchor">
+                                <span class="cmp-button__text">${model.cta @context='html'}</span>
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <div class="button cmp-button--button-wpi">
-                    <a type="button" class="cmp-button" x-cq-linkchecker="valid" data-destination-token=${model.destination} target="_parent" id="wpi-anchor">
-                        <span class="cmp-button__text">${model.cta @context='html'}</span>
-                    </a>
-                </div>
+                </div> 
         </section>
     </sly>
 
