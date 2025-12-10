@@ -20,7 +20,6 @@ import com.efe.core.constants.Constants;
 import com.efe.core.models.FormsSelector;
 import com.efe.core.services.EfeService;
 import com.efe.core.utils.EFEUtil;
-import javax.annotation.PostConstruct;
 
 /**
  *
@@ -68,15 +67,6 @@ public class ModalButtonImpl implements ModalButton {
      */
     @OSGiService
     private DynamicMediaService dynamicMediaService;
-    
-    /**
-     * Inits the Model.
-     */
-    @PostConstruct
-    public void init() {
-        xfragment = resourceResolver.getResource(embedFragment);
-        expFragment = xfragment.adaptTo(ExperienceFragmentVariation.class);
-    }
 
     /**
      * Gets the Button Text.
@@ -95,7 +85,7 @@ public class ModalButtonImpl implements ModalButton {
      */
     @Override
     public String getEmbedFragment() {
-        return xfragment.getPath();
+        return embedFragment;
     }
     
         /**
@@ -105,7 +95,7 @@ public class ModalButtonImpl implements ModalButton {
      */
     @Override
     public ExperienceFragmentVariation getExpFragment() {
-        return expFragment;
+        return resourceResolver.resolve(embedFragment).adaptTo(ExperienceFragmentVariation.class);
     }
 
     /**
