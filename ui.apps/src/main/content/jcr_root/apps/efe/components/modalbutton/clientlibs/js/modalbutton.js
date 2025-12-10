@@ -1,12 +1,12 @@
-const modalButtons = document.querySelectorAll('.cmp-modal--button');
-const modalCloseButtons = document.querySelectorAll('.cmp-button-modal__close');
+const modalButtons = document.querySelectorAll('button.cmp-modal--button');
+const modalCloseButtons = document.querySelectorAll('button.cmp-button-modal-content__close');
 
 modalButtons.forEach(el => el.addEventListener('click', event => {
-  var modalComponent = document.getElementById(event.target.dataset.modalId);
+    var modalComponent = document.getElementById(el.dataset.modalId);
     modalComponent.classList.remove("d-none");
 }));
 
 modalCloseButtons.forEach(el => el.addEventListener('click', event => {
-  var modalComponent = document.getElementById(event.target.dataset.modalId);
+    var modalComponent = document.getElementById(el.dataset.modalId);
     modalComponent.classList.add("d-none");
 }));

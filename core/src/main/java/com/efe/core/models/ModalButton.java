@@ -1,5 +1,5 @@
 package com.efe.core.models;
-
+import com.adobe.cq.xf.ExperienceFragmentVariation;
 /**
  *
  * @author jrodriquez
@@ -18,6 +18,13 @@ public interface ModalButton {
      * @return the experience fragment location
     */
     String getEmbedFragment();
+    
+        /**
+     * Gets the experience fragment reference.
+     *
+     * @return the experience fragment location
+    */
+    ExperienceFragmentVariation getExpFragment();
     
     /**
      * Gets the button text.

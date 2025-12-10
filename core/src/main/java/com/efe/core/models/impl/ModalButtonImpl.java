@@ -14,13 +14,13 @@ import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
-import com.adobe.cq.wcm.core.components.models.ExperienceFragment;
+import com.adobe.cq.xf.ExperienceFragmentVariation;
 import org.apache.sling.api.SlingHttpServletRequest;
-
 import com.efe.core.constants.Constants;
 import com.efe.core.models.FormsSelector;
 import com.efe.core.services.EfeService;
 import com.efe.core.utils.EFEUtil;
+import javax.annotation.PostConstruct;
 
 /**
  *
@@ -42,6 +42,9 @@ public class ModalButtonImpl implements ModalButton {
      */
     @Self
     private Resource resource;
+    
+    @ValueMapValue
+    private Resource xfragment;
 
     /** The button text. */
     @ValueMapValue
@@ -54,6 +57,10 @@ public class ModalButtonImpl implements ModalButton {
     /** The id. */
     @ValueMapValue
     private String id;
+    
+    /** The experience fragment. */
+    @ValueMapValue
+    private ExperienceFragmentVariation expFragment;
 
     /**
      * Injecting dynamicMediaService
@@ -61,6 +68,15 @@ public class ModalButtonImpl implements ModalButton {
      */
     @OSGiService
     private DynamicMediaService dynamicMediaService;
+    
+    /**
+     * Inits the Model.
+     */
+    @PostConstruct
+    public void init() {
+        xfragment = resourceResolver.getResource(embedFragment);
+        expFragment = xfragment.adaptTo(ExperienceFragmentVariation.class);
+    }
 
     /**
      * Gets the Button Text.
@@ -79,7 +95,17 @@ public class ModalButtonImpl implements ModalButton {
      */
     @Override
     public String getEmbedFragment() {
-        return LinkUtil.getFormattedLink(embedFragment, resourceResolver);
+        return xfragment.getPath();
+    }
+    
+        /**
+     * Gets the Experience Fragment.
+     *
+     * @return the Experience Fragment
+     */
+    @Override
+    public ExperienceFragmentVariation getExpFragment() {
+        return expFragment;
     }
 
     /**
