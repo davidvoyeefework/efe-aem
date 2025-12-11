@@ -18,14 +18,7 @@ public interface ModalButton {
      * @return the experience fragment location
     */
     String getEmbedFragment();
-    
-        /**
-     * Gets the experience fragment reference.
-     *
-     * @return the experience fragment location
-    */
-    ExperienceFragmentVariation getExpFragment();
-    
+
     /**
      * Gets the button text.
      *
