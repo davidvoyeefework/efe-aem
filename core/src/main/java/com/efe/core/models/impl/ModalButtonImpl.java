@@ -41,9 +41,6 @@ public class ModalButtonImpl implements ModalButton {
      */
     @Self
     private Resource resource;
-    
-    @ValueMapValue
-    private Resource xfragment;
 
     /** The button text. */
     @ValueMapValue
@@ -56,10 +53,6 @@ public class ModalButtonImpl implements ModalButton {
     /** The id. */
     @ValueMapValue
     private String id;
-    
-    /** The experience fragment. */
-    @ValueMapValue
-    private ExperienceFragmentVariation expFragment;
 
     /**
      * Injecting dynamicMediaService
@@ -86,16 +79,6 @@ public class ModalButtonImpl implements ModalButton {
     @Override
     public String getEmbedFragment() {
         return embedFragment;
-    }
-    
-        /**
-     * Gets the Experience Fragment.
-     *
-     * @return the Experience Fragment
-     */
-    @Override
-    public ExperienceFragmentVariation getExpFragment() {
-        return resourceResolver.resolve(embedFragment).adaptTo(ExperienceFragmentVariation.class);
     }
 
     /**
