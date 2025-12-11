@@ -126,6 +126,10 @@ section.voya-wpi-theme {
 
 
         .flex {
+            flex-wrap: wrap;
+            column-gap: 10px;
+            row-gap: 8px;
+            align-items: flex-start;
             .copy {
                 max-height: rem(40);
 
@@ -139,6 +143,12 @@ section.voya-wpi-theme {
                     line-height: rem(13);
                 }
             }
+            .cmp-button--button-wpi {
+                flex: 0 0 100%;
+                margin-top:8px;
+                justify-content: flex-start;
+            }
+    
         }
     }
 
