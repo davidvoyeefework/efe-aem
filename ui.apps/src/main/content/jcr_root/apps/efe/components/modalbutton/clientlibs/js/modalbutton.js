@@ -1,3 +1,4 @@
+/*
 const modalButtons = document.querySelectorAll('button.cmp-modal--button');
 const modalCloseButtons = document.querySelectorAll('button.cmp-button-modal-content__close');
 
@@ -10,3 +11,5 @@ modalCloseButtons.forEach(el => el.addEventListener('click', event => {
     var modalComponent = document.getElementById(event.currentTarget.dataset.modalId);
     modalComponent.classList.add("d-none");
 }));
+ 
+ */
