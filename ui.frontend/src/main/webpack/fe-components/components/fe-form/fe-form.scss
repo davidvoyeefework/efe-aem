@@ -359,12 +359,12 @@
     .fe-form__group--enrollment-disclosure {
         font-size: rem(14px); // smaller for all pronsors other that sap, newsaic, unionpac
         line-height: 1.2;
-        }
 
-     &.sponsor-sap, &.sponsor-newsaic , &.sponsor-unionpac{
-        .fe-form__group--enrollment-disclosure {
-        font-size: rem(18px);
-        line-height: 1.2; 
+        &.sponsor-sap, &.sponsor-newsaic , &.sponsor-unionpac{
+            .fe-form__group--enrollment-disclosure {
+            font-size: rem(18px);
+            line-height: 1.2; 
+            }
         }
-     }
+    }
 }
