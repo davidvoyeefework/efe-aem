@@ -1,5 +1,4 @@
 package com.efe.core.models;
-import com.adobe.cq.xf.ExperienceFragmentVariation;
 /**
  *
  * @author jrodriquez
