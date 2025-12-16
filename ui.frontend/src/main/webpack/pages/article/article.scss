@@ -104,6 +104,11 @@
                 list-style-position: outside;
                 li {
                     padding-left: 0;
+
+                > ul {
+                    padding: 0; 
+                }
+
                     a{
                        color: $efe-gray-primary;
                        @include buildLink;
