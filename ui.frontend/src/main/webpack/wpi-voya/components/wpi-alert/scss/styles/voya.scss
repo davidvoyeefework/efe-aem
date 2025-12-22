@@ -10,7 +10,7 @@ section.voya-wpi-theme {
             letter-spacing: .15px;
             font-family: "Proxima Nova", sans-serif;
             color: #333;
-            margin-bottom: 10px;
+            margin-bottom: 4px;
             margin-top: 0;
         }
     }
@@ -19,7 +19,7 @@ section.voya-wpi-theme {
         @include flexbox(
             $flex-direction: row,
             $align-items: center, //Align CTA with heading
-            $gap: 20px,
+            $gap: 12px,
 
         );
         margin-bottom: 0;
@@ -60,13 +60,13 @@ section.voya-wpi-theme {
 
         .cmp-button--button-wpi {
             width: rem(118);
-            height: rem(36);
+            height: rem(32);
             border: 2px solid #145a7b;
             border-radius: 20px;    
             margin: 15px auto 0;  
             background-color: white;
             width: fit-content;
-            padding: 0 16px;
+            padding: 0 12px;
             color: #145a7b;
             flex: 0 0 auto; // not to shrink
             margin: 0; // remove auto-centering
@@ -86,12 +86,12 @@ section.voya-wpi-theme {
 
             }
             .cmp-button__text {
-                font-size: rem(16);
+                font-size: rem(14);
                 letter-spacing: .0125em;
                 font-family: "Proxima Nova", sans-serif;
                 font-weight: 600;
                 color: #145a7b;
-                line-height: 100%;
+                line-height: 1;
                 text-decoration: none;
             }
         }
@@ -128,7 +128,7 @@ section.voya-wpi-theme {
         .flex {
             flex-wrap: wrap;
             column-gap: 10px;
-            row-gap: 8px;
+            row-gap: 6px;
             align-items: flex-start;
             .copy {
                 max-height: rem(40);
@@ -144,8 +144,12 @@ section.voya-wpi-theme {
                 }
             }
             .cmp-button--button-wpi {
+                position: static;
                 flex: 0 0 100%;
-                margin-top:8px;
+                margin-top:4px;
+                margin-left: 0; 
+                height: rem(36);
+                padding: 0 16px;
                 justify-content: flex-start;
             }
     
