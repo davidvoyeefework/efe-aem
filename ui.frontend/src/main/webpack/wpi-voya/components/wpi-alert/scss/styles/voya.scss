@@ -145,14 +145,28 @@ section.voya-wpi-theme {
             }
             .cmp-button--button-wpi {
                 position: static;
-                flex: 0 0 100%;
+                flex: 0 0 auto;
                 margin-top:4px;
                 margin-left: 0; 
-                height: rem(36);
-                padding: 0 16px;
-                justify-content: flex-start;
+                height: rem(32);
+                padding: 0 10px;
+                border-radius: 16px;
+                align-self: flex-start;
+                max-width: max-content;
             }
-    
+            a.cmp-button {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                min-height: rem(32);
+                text-decoration: none;
+            }
+
+            .cmp-button__text {
+                font-size: rem(14);   /* a bit smaller on small mobile */
+                line-height: 1;
+                letter-spacing: 0.0125em;
+            }
         }
     }
 
