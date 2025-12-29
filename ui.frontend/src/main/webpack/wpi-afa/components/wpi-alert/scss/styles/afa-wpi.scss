@@ -103,6 +103,20 @@ section.afa-wpi-theme {
                 line-height: rem(16);
             }
         }
+
+        /* Icon centered on its own line */
+        img.wpi-img {
+            margin: 0 auto;         /* center horizontally */
+        }
+        
+        /* CTA centered on its own line */
+        .cmp-button--button-wpi {
+            margin: 8px auto 12px;  /* auto centers horizontally on mobile */
+            justify-content: center;/* ensure text centers inside pill */
+            text-align: center;
+            width: rem(111);        /* keep target size tight on mobile */
+            height: rem(39);
+        }
     }
 }
 
