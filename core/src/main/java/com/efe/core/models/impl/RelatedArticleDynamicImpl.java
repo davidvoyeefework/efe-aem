@@ -13,6 +13,8 @@ import org.apache.sling.api.wrappers.ValueMapDecorator;
 import org.apache.sling.models.annotations.*;
 import org.apache.sling.models.annotations.injectorspecific.*;
 
+import com.adobe.cq.dam.cfm.ContentElement;
+import com.adobe.cq.dam.cfm.ContentFragment;
 import com.day.cq.search.*;
 import com.day.cq.search.result.*;
 import com.day.cq.wcm.api.Page;
@@ -33,6 +35,11 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
     private static final String TEASER_RT = "core/wcm/components/teaser/v1/teaser";
     private static final String STATE_TAG_PREFIX = "efe:content-type/location/us-state/";
 
+    // Confirmed in your CRXDE screenshot
+    private static final String ARTICLE_DETAILS_NODE_NAME = "articledetails";
+    private static final String ARTICLE_DETAILS_RESOURCE_TYPE = "efe/components/articledetails";
+    private static final String ARTICLE_FRAGMENT_PROP = "articleFragmentPath";
+
     @Self
     private SlingHttpServletRequest request;
 
@@ -44,10 +51,12 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
 
     private List<String> relatedArticlePagePaths = Collections.emptyList();
 
+    // Map key must match what HTL uses: teaser.valueMap.linkURL (may be /path OR /path.html)
+    private final Map<String, String> heroImageByLinkUrl = new HashMap<>();
 
     @PostConstruct
     protected void init() {
-        Session session = resourceResolver.adaptTo(Session.class);
+        Session session = resourceResolver != null ? resourceResolver.adaptTo(Session.class) : null;
         if (session == null || queryBuilder == null) {
             return;
         }
@@ -73,6 +82,9 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
         }
 
         List<Resource> teasers = new ArrayList<>();
+        int i = 0;
+
+        heroImageByLinkUrl.clear();
 
         for (String path : relatedArticlePagePaths) {
             Page page = pageManager.getPage(path);
@@ -80,9 +92,18 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
 
             ValueMap teaserProps = buildTeaserProps(page);
 
+            // Read CF heroImage and store using BOTH /path and /path.html keys (covers mapping differences)
+            String fragmentPath = getArticleFragmentPathFromArticleDetails(page);
+            String hero = getHeroImageFromContentFragment(fragmentPath);
+            if (StringUtils.isNotBlank(hero)) {
+                String key = page.getPath();
+                heroImageByLinkUrl.put(key, hero);
+                heroImageByLinkUrl.put(key + ".html", hero);
+            }
+
             Resource syntheticTeaser = new SyntheticResource(
                 resourceResolver,
-                path + "/_syntheticTeaser",
+                path + "/_syntheticTeaser_" + (i++),
                 TEASER_RT
             ) {
                 @Override
@@ -103,6 +124,11 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
     }
 
     @Override
+    public Map<String, String> getTeaserHeroImages() {
+        return heroImageByLinkUrl;
+    }
+
+    @Override
     public String getLinkText() {
         return null;
     }
@@ -112,8 +138,11 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
         return null;
     }
 
-    // Helpers 
     private String resolveStateCode() {
+        if (request == null || request.getRequestPathInfo() == null) {
+            return request != null ? request.getParameter("state") : null;
+        }
+
         String[] selectors = request.getRequestPathInfo().getSelectors();
         if (selectors != null && selectors.length > 0 && StringUtils.isNotBlank(selectors[0])) {
             return selectors[0];
@@ -143,7 +172,7 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
                 String contentPath = hit.getPath(); // /page/jcr:content
                 pages.add(StringUtils.substringBefore(contentPath, "/jcr:content"));
             } catch (RepositoryException e) {
-                
+                // ignore invalid hit
             }
         }
 
@@ -158,23 +187,74 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
             StringUtils.defaultIfBlank(page.getPageTitle(), page.getTitle())
         );
 
+        // IMPORTANT: keep linkURL consistent with hero image map keys
         props.put("jcr:title", title);
-        props.put("description", page.getDescription());
         props.put("linkURL", page.getPath());
 
-        Resource content = page.getContentResource();
-        if (content != null) {
-            ValueMap c = content.getValueMap();
+        String fragmentPath = getArticleFragmentPathFromArticleDetails(page);
+        String subtitleHtml = getSubtitleFromContentFragment(fragmentPath);
 
-            String fileRef = c.get("image/fileReference", String.class);
-            if (StringUtils.isBlank(fileRef)) {
-                fileRef = c.get("featuredImage", String.class);
-            }
-            if (StringUtils.isNotBlank(fileRef)) {
-                props.put("fileReference", fileRef);
-            }
-        }
+        String teaserText = StringUtils.defaultIfBlank(stripHtml(subtitleHtml), page.getDescription());
+
+        props.put("text", teaserText);
+        props.put("description", teaserText);
+        props.put("jcr:description", teaserText);
+        props.put("textFromPage", false);
+        props.put("descriptionFromPage", false);
 
         return new ValueMapDecorator(props);
     }
+
+    private String getArticleFragmentPathFromArticleDetails(Page page) {
+        if (page == null) return null;
+
+        Resource content = page.getContentResource();
+        if (content == null) return null;
+
+        Resource articleDetails = findArticleDetailsComponent(content);
+        if (articleDetails == null) return null;
+
+        return articleDetails.getValueMap().get(ARTICLE_FRAGMENT_PROP, String.class);
+    }
+
+    private Resource findArticleDetailsComponent(Resource root) {
+        if (root == null) return null;
+
+        for (Resource child : root.getChildren()) {
+            if (ARTICLE_DETAILS_NODE_NAME.equals(child.getName())) return child;
+            if (ARTICLE_DETAILS_RESOURCE_TYPE.equals(child.getResourceType())) return child;
+
+            Resource found = findArticleDetailsComponent(child);
+            if (found != null) return found;
+        }
+        return null;
+    }
+
+    private String getSubtitleFromContentFragment(String fragmentPath) {
+        return getElementFromContentFragment(fragmentPath, "subtitle");
+    }
+
+    private String getHeroImageFromContentFragment(String fragmentPath) {
+        return getElementFromContentFragment(fragmentPath, "heroImage");
+    }
+
+    private String getElementFromContentFragment(String fragmentPath, String elementName) {
+        if (StringUtils.isBlank(fragmentPath) || StringUtils.isBlank(elementName) || resourceResolver == null) {
+            return null;
+        }
+
+        Resource cfResource = resourceResolver.getResource(fragmentPath);
+        if (cfResource == null) return null;
+
+        ContentFragment cf = cfResource.adaptTo(ContentFragment.class);
+        if (cf == null) return null;
+
+        ContentElement el = cf.getElement(elementName);
+        return el != null ? StringUtils.trimToNull(el.getContent()) : null;
+    }
+
+    private String stripHtml(String html) {
+        return html != null ? html.replaceAll("<[^>]*>", "").trim() : null;
+    }
 }
+ 

@@ -1,4 +1,48 @@
-<ul data-sly-use.article="com.efe.core.models.RelatedArticleDynamic"
-    data-sly-list.teaser="${article.relatedTeasers}">
-  <li data-sly-resource="${teaser}"></li>
-</ul>
+<div class="relatedarticle-ed-center">
+  <sly data-sly-use.article="com.efe.core.models.RelatedArticleDynamic"
+       data-sly-list.teaser="${article.relatedTeasers}">
+
+    <ul class="cmp-list">
+      <li class="teaser cmp-teaser--thumbnail">
+        <div class="cmp-teaser">
+
+          <!-- Use teaser linkURL as the key into the hero image map -->
+          <sly data-sly-set.pagePath="${teaser.valueMap.linkURL}" />
+          <sly data-sly-set.hero="${article.teaserHeroImages[pagePath]}" />
+
+          <!-- Hero image -->
+          <sly data-sly-test="${hero}">
+            <div class="cmp-teaser__image">
+              <img class="cmp-image__image"
+                  src="${hero}"
+                  alt="${teaser.valueMap['jcr:title']}"
+                  loading="lazy" />
+            </div>
+          </sly>
+
+          <!-- Title + link -->
+          <div class="cmp-teaser__content">
+            <h2 class="cmp-teaser__title cmp-title--subhead-01">
+              <a href="${teaser.valueMap.linkURL}">
+                ${teaser.valueMap['jcr:title']}
+              </a>
+            </h2>
+
+            <!-- Description -->
+            <sly data-sly-test="${teaser.valueMap.text}">
+              <p class="relatedarticle-ed-center__description">
+                ${teaser.valueMap.text}
+              </p>
+            </sly>
+
+            <!-- Content Type Icon --> 
+          </div>
+
+
+
+        </div>
+      </li>
+    </ul>
+
+  </sly>
+</div>
