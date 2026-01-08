@@ -19,7 +19,6 @@ section.voya-wpi-theme {
         @include flexbox(
             $flex-direction: row,
             $align-items: center, //Align CTA with heading
-            $gap: 12px,
 
         );
         margin-bottom: 0;
