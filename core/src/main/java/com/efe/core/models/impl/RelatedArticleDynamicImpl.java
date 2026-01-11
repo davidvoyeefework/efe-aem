@@ -186,7 +186,7 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
         );
 
         props.put("jcr:title", title);
-        props.put("linkURL", page.getPath());
+        props.put("linkURL", page.getPath() + ".html");
 
         // Subtitle from CF -> teaser text
         String fragmentPath = getArticleFragmentPathFromArticleDetails(page);
