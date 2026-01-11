@@ -16,9 +16,7 @@ public interface RelatedArticleDynamic {
     List<Resource> getRelatedTeasers();
 
     /**
-     * Map of article page path -> hero image DAM path from the referenced Content Fragment.
-     * Example key: /content/efe/us/en/education/tax/capital-gains-tax-iowa
-     * Example value: /content/dam/efe/corporate-brand/.../AdobeStock_444752352.jpeg
+     * Map of linkURL/page-path variants -> hero image src (mapped for the current env)
      */
     Map<String, String> getTeaserHeroImages();
 }
