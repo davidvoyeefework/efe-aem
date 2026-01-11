@@ -6,17 +6,9 @@
     <li class="teaser cmp-teaser--thumbnail">
       <div class="cmp-teaser">
 
-        <!-- Normalize linkURL so hero lookup works for /path/ and /path.html -->
-        <sly data-sly-set.rawLink="${teaser.valueMap.linkURL}" />
-
-        <!-- Remove trailing slash (if present) -->
-        <sly data-sly-set.normalizedLink="${rawLink.endsWith('/') ? rawLink.substring(0, rawLink.length - 1) : rawLink}" />
-
-        <!-- Ensure .html -->
-        <sly data-sly-set.lookupKey="${normalizedLink.endsWith('.html') ? normalizedLink : normalizedLink + '.html'}" />
-
-        <!-- Lookup hero image using normalized key -->
-        <sly data-sly-set.hero="${article.teaserHeroImages[lookupKey]}" />
+        <!-- Lookup hero by linkURL directly (Java stores both / and .html variants) -->
+        <sly data-sly-set.pagePath="${teaser.valueMap.linkURL}" />
+        <sly data-sly-set.hero="${article.teaserHeroImages[pagePath]}" />
 
         <div class="cmp-teaser__content">
           <!-- Teaser Title -->
@@ -34,51 +26,33 @@
           </sly>
 
           <!-- ✅ Asset Type button (single, prioritized, with fallback) -->
-
-          <!-- Initialize flags -->
           <sly data-sly-set.hasArticle="${false}" />
           <sly data-sly-set.hasVideo="${false}" />
           <sly data-sly-set.hasPodcast="${false}" />
 
-          <!-- If we have asset type tag IDs, detect which ones exist -->
           <sly data-sly-test="${teaser.valueMap.assetTypeTagIds}">
             <sly data-sly-list.tid="${teaser.valueMap.assetTypeTagIds}">
-
-              <sly data-sly-test="${tid == 'efe:asset-type/article'}">
-                <sly data-sly-set.hasArticle="${true}" />
-              </sly>
-
-              <sly data-sly-test="${tid == 'efe:asset-type/video'}">
-                <sly data-sly-set.hasVideo="${true}" />
-              </sly>
-
-              <sly data-sly-test="${tid == 'efe:asset-type/podcast'}">
-                <sly data-sly-set.hasPodcast="${true}" />
-              </sly>
-
+              <sly data-sly-test="${tid == 'efe:asset-type/article'}"><sly data-sly-set.hasArticle="${true}" /></sly>
+              <sly data-sly-test="${tid == 'efe:asset-type/video'}"><sly data-sly-set.hasVideo="${true}" /></sly>
+              <sly data-sly-test="${tid == 'efe:asset-type/podcast'}"><sly data-sly-set.hasPodcast="${true}" /></sly>
             </sly>
           </sly>
 
-          <!-- Render ONE button (priority order) -->
           <sly data-sly-test="${hasArticle}">
             <div class="cmp-button--article"></div>
           </sly>
-
           <sly data-sly-test="${!hasArticle && hasVideo}">
             <div class="cmp-button--video"></div>
           </sly>
-
           <sly data-sly-test="${!hasArticle && !hasVideo && hasPodcast}">
             <div class="cmp-button--podcast"></div>
           </sly>
-
-          <!-- Fallback: no asset-type tags OR none of the known values -->
           <sly data-sly-test="${!hasArticle && !hasVideo && !hasPodcast}">
             <div class="cmp-button--article"></div>
           </sly>
         </div>
 
-        <!-- ✅ Hero image exists -->
+        <!-- ✅ Hero image exists (DM URL will be WebP) -->
         <sly data-sly-test="${hero}">
           <div class="cmp-teaser__image">
             <img class="cmp-image__image"
