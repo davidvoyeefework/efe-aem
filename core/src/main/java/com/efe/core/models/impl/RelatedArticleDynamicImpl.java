@@ -41,7 +41,6 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
     private static final String ARTICLE_DETAILS_RESOURCE_TYPE = "efe/components/articledetails";
     private static final String ARTICLE_FRAGMENT_PROP = "articleFragmentPath";
 
-    // ✅ Only tags under this namespace
     private static final String ASSET_TYPE_TAG_PREFIX = "efe:asset-type/";
 
     @Self
@@ -55,7 +54,7 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
 
     private List<String> relatedArticlePagePaths = Collections.emptyList();
 
-    // linkURL -> hero image (supports /path and /path.html)
+    // linkURL/page-path variants -> hero image src
     private final Map<String, String> heroImageByLinkUrl = new HashMap<>();
 
     @PostConstruct
@@ -92,13 +91,18 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
 
             ValueMap teaserProps = buildTeaserProps(page);
 
-            // Store CF hero image for HTL <img>
+            // Pull hero from Content Fragment
             String fragmentPath = getArticleFragmentPathFromArticleDetails(page);
             String hero = getHeroImageFromContentFragment(fragmentPath);
+
+            // ✅ Map DAM URL for Dev/Dispatcher environments
+            if (StringUtils.isNotBlank(hero) && resourceResolver != null) {
+                hero = resourceResolver.map(hero);
+            }
+
+            // ✅ Store hero under multiple key variants so HTL lookup never misses
             if (StringUtils.isNotBlank(hero)) {
-                String key = page.getPath();
-                heroImageByLinkUrl.put(key, hero);
-                heroImageByLinkUrl.put(key + ".html", hero);
+                storeHeroForAllKeys(page, teaserProps, hero);
             }
 
             Resource syntheticTeaser = new SyntheticResource(
@@ -138,7 +142,50 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
         return null;
     }
 
-    /* ---------------- Helpers ---------------- */
+    /* ---------------- Dev-safe hero map helpers ---------------- */
+
+    private void storeHeroForAllKeys(Page page, ValueMap teaserProps, String hero) {
+        if (page == null || StringUtils.isBlank(hero)) return;
+
+        // This is the exact key HTL uses:
+        // pagePath = teaser.valueMap.linkURL
+        String linkUrl = teaserProps != null ? teaserProps.get("linkURL", String.class) : null;
+
+        String rawPagePath = page.getPath();              // /content/.../page
+        String rawPagePathHtml = rawPagePath + ".html";   // /content/.../page.html
+
+        String mappedPagePath = resourceResolver != null ? resourceResolver.map(rawPagePath) : rawPagePath;
+        String mappedPagePathHtml = mappedPagePath.endsWith(".html") ? mappedPagePath : mappedPagePath + ".html";
+
+        putHero(rawPagePath, hero);
+        putHero(rawPagePathHtml, hero);
+
+        putHero(mappedPagePath, hero);
+        putHero(mappedPagePathHtml, hero);
+
+        // Also store under the actual linkURL (what HTL uses)
+        if (StringUtils.isNotBlank(linkUrl)) {
+            putHero(linkUrl, hero);
+
+            // Store mapped linkURL too (some envs map /content away)
+            if (resourceResolver != null) {
+                String mappedLinkUrl = resourceResolver.map(linkUrl);
+                if (StringUtils.isNotBlank(mappedLinkUrl)) {
+                    putHero(mappedLinkUrl, hero);
+                    if (!mappedLinkUrl.endsWith(".html")) {
+                        putHero(mappedLinkUrl + ".html", hero);
+                    }
+                }
+            }
+        }
+    }
+
+    private void putHero(String key, String hero) {
+        if (StringUtils.isBlank(key) || StringUtils.isBlank(hero)) return;
+        heroImageByLinkUrl.put(key, hero);
+    }
+
+    /* ---------------- Existing helpers ---------------- */
 
     private String resolveStateCode() {
         if (request == null || request.getRequestPathInfo() == null) {
@@ -199,7 +246,7 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
         props.put("textFromPage", false);
         props.put("descriptionFromPage", false);
 
-        // ✅ NEW: only efe:asset-type/* tags
+        // Only efe:asset-type/* tags
         addAssetTypeTagsToProps(page, props);
 
         return new ValueMapDecorator(props);
@@ -208,7 +255,7 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
     private void addAssetTypeTagsToProps(Page page, Map<String, Object> props) {
         if (page == null || props == null) return;
 
-        Resource content = page.getContentResource(); // /.../jcr:content
+        Resource content = page.getContentResource();
         if (content == null) return;
 
         String[] allTagIds = content.getValueMap().get("cq:tags", String[].class);
@@ -224,7 +271,6 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
 
         props.put("assetTypeTagIds", assetTagIds.toArray(new String[0]));
 
-        // Resolve titles (optional but nice)
         TagManager tagManager = resourceResolver != null ? resourceResolver.adaptTo(TagManager.class) : null;
         if (tagManager == null) return;
 
@@ -232,7 +278,7 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
         for (String id : assetTagIds) {
             Tag t = tagManager.resolve(id);
             if (t != null && StringUtils.isNotBlank(t.getTitle())) {
-                assetTagTitles.add(t.getTitle()); // typically "Asset Type / Video"
+                assetTagTitles.add(t.getTitle());
             }
         }
         if (!assetTagTitles.isEmpty()) {
