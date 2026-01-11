@@ -15,8 +15,5 @@ public interface RelatedArticleDynamic {
 
     List<Resource> getRelatedTeasers();
 
-    /**
-     * Map of linkURL/page-path variants -> hero image src (mapped for the current env)
-     */
     Map<String, String> getTeaserHeroImages();
 }
