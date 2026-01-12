@@ -15,5 +15,9 @@ public interface RelatedArticleDynamic {
 
     List<Resource> getRelatedTeasers();
 
+    /**
+     * Map of canonical page path -> hero image URL.
+     * Key is canonicalized to: /content/.../page (no trailing slash, no .html)
+     */
     Map<String, String> getTeaserHeroImages();
 }

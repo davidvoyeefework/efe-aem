@@ -41,13 +41,13 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
     private static final String ARTICLE_DETAILS_RESOURCE_TYPE = "efe/components/articledetails";
     private static final String ARTICLE_FRAGMENT_PROP = "articleFragmentPath";
 
+    // Only tags under this namespace
     private static final String ASSET_TYPE_TAG_PREFIX = "efe:asset-type/";
 
-    // ✅ Dynamic Media config (from your prod example)
-    private static final String DM_DOMAIN = "https://s7d9.scene7.com";
-    private static final int DM_WID = 800;      // adjust if your card is smaller/larger
-    private static final int DM_QLT = 60;       // adjust 50–70 to tune size/quality
-    private static final boolean DM_SHARPEN = true;
+    // Optional: if you have a known DM host, set this and it will be used.
+    // Example: "https://s7d9.scene7.com"
+    @ValueMapValue(name = "dynamicMediaHost")
+    private String dynamicMediaHost;
 
     @Self
     private SlingHttpServletRequest request;
@@ -60,8 +60,8 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
 
     private List<String> relatedArticlePagePaths = Collections.emptyList();
 
-    // key: many page URL variants -> value: hero image URL (Dynamic Media WebP preferred)
-    private final Map<String, String> heroImageByLinkUrl = new HashMap<>();
+    // canonical page path -> hero image URL (DM webp if possible)
+    private final Map<String, String> heroImageByCanonicalPagePath = new HashMap<>();
 
     @PostConstruct
     protected void init() {
@@ -86,30 +86,30 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
             return Collections.emptyList();
         }
 
-        heroImageByLinkUrl.clear();
+        heroImageByCanonicalPagePath.clear();
 
         List<Resource> teasers = new ArrayList<>();
         int i = 0;
 
-        for (String path : relatedArticlePagePaths) {
-            Page page = pageManager.getPage(path);
+        for (String pagePath : relatedArticlePagePaths) {
+            Page page = pageManager.getPage(pagePath);
             if (page == null) continue;
 
+            // Build teaser props
             ValueMap teaserProps = buildTeaserProps(page);
 
-            // ---- Hero from Content Fragment -> DM WebP URL
+            // Build hero image map entry
             String fragmentPath = getArticleFragmentPathFromArticleDetails(page);
-            String heroDamPath = getHeroImageFromContentFragment(fragmentPath);
+            String heroDamPath = getHeroImageFromContentFragment(fragmentPath); // often /content/dam/...jpg
             String heroUrl = toDynamicMediaWebpUrl(heroDamPath);
-
             if (StringUtils.isNotBlank(heroUrl)) {
-                // Store under canonical & mapped variants (including trailing slash)
-                storeHeroKeysForPage(page, heroUrl);
+                heroImageByCanonicalPagePath.put(canonicalPageKey(page.getPath()), heroUrl);
             }
 
+            // Synthetic resource for Core Teaser
             Resource syntheticTeaser = new SyntheticResource(
                 resourceResolver,
-                path + "/_syntheticTeaser_" + (i++),
+                page.getPath() + "/_syntheticTeaser_" + (i++),
                 TEASER_RT
             ) {
                 @Override
@@ -131,64 +131,39 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
 
     @Override
     public Map<String, String> getTeaserHeroImages() {
-        return heroImageByLinkUrl;
+        return heroImageByCanonicalPagePath;
     }
 
     @Override
-    public String getLinkText() { return null; }
+    public String getLinkText() {
+        return null;
+    }
 
     @Override
-    public String getRequestText() { return null; }
-
-    /* ---------------- Key storage (fixes / vs .html without HTL string ops) ---------------- */
-
-    private void storeHeroKeysForPage(Page page, String heroUrl) {
-        if (page == null || StringUtils.isBlank(heroUrl)) return;
-
-        // Canonical keys: /content/... and /content/....html
-        String contentPath = page.getPath();
-        putHero(contentPath, heroUrl);
-        putHero(contentPath + ".html", heroUrl);
-        putHero(contentPath + "/", heroUrl);
-        putHero(contentPath + ".html/", heroUrl);
-
-        // Mapped keys: /education/... etc (Publish-friendly URLs)
-        String mapped = resourceResolver != null ? resourceResolver.map(contentPath) : null;
-        if (StringUtils.isNotBlank(mapped)) {
-            // mapped might already be .html or not
-            putHero(mapped, heroUrl);
-            putHero(mapped + "/", heroUrl);
-
-            if (!mapped.endsWith(".html")) {
-                putHero(mapped + ".html", heroUrl);
-                putHero(mapped + ".html/", heroUrl);
-            } else {
-                putHero(mapped.substring(0, mapped.length() - 5), heroUrl); // remove ".html"
-                putHero(mapped.substring(0, mapped.length() - 5) + "/", heroUrl);
-            }
-        }
+    public String getRequestText() {
+        return null;
     }
 
-    private void putHero(String key, String heroUrl) {
-        if (StringUtils.isBlank(key) || StringUtils.isBlank(heroUrl)) return;
-        heroImageByLinkUrl.put(key, heroUrl);
-    }
-
-    /* ---------------- Query / Teaser props ---------------- */
+    /* ------------------------------------------------------------
+       State / Query
+       ------------------------------------------------------------ */
 
     private String resolveStateCode() {
         if (request == null || request.getRequestPathInfo() == null) {
             return request != null ? request.getParameter("state") : null;
         }
+
         String[] selectors = request.getRequestPathInfo().getSelectors();
         if (selectors != null && selectors.length > 0 && StringUtils.isNotBlank(selectors[0])) {
             return selectors[0];
         }
+
         return request.getParameter("state");
     }
 
     private List<String> findEducationPagesByStateTag(String stateTagId, Session session) {
         Map<String, String> p = new HashMap<>();
+
         p.put("path", EDUCATION_ROOT);
         p.put("type", "cq:PageContent");
         p.put("property", "cq:tags");
@@ -207,11 +182,15 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
                 String contentPath = hit.getPath(); // /page/jcr:content
                 pages.add(StringUtils.substringBefore(contentPath, "/jcr:content"));
             } catch (RepositoryException e) {
-                // ignore
+                // ignore invalid hit
             }
         }
         return pages;
     }
+
+    /* ------------------------------------------------------------
+       Teaser Props
+       ------------------------------------------------------------ */
 
     private ValueMap buildTeaserProps(Page page) {
         Map<String, Object> props = new HashMap<>();
@@ -221,30 +200,31 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
             StringUtils.defaultIfBlank(page.getPageTitle(), page.getTitle())
         );
 
+        // IMPORTANT: linkURL should include .html, but hero lookup should use canonical key
         props.put("jcr:title", title);
-
-        // ✅ Always use canonical .html for link
         props.put("linkURL", page.getPath() + ".html");
 
-        // Subtitle from CF -> teaser text
+        // Subtitle from CF
         String fragmentPath = getArticleFragmentPathFromArticleDetails(page);
         String subtitleHtml = getSubtitleFromContentFragment(fragmentPath);
         String teaserText = StringUtils.defaultIfBlank(stripHtml(subtitleHtml), page.getDescription());
+        teaserText = StringUtils.trimToNull(teaserText);
 
+        // Core Teaser often reads description/text; we set both to be safe
         props.put("text", teaserText);
         props.put("description", teaserText);
         props.put("jcr:description", teaserText);
-
         props.put("textFromPage", false);
         props.put("descriptionFromPage", false);
 
+        // Asset type tags
         addAssetTypeTagsToProps(page, props);
 
         return new ValueMapDecorator(props);
     }
 
     private void addAssetTypeTagsToProps(Page page, Map<String, Object> props) {
-        if (page == null || props == null) return;
+        if (page == null || props == null || resourceResolver == null) return;
 
         Resource content = page.getContentResource();
         if (content == null) return;
@@ -252,7 +232,8 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
         String[] allTagIds = content.getValueMap().get("cq:tags", String[].class);
         if (allTagIds == null || allTagIds.length == 0) return;
 
-        List<String> assetTagIds = new ArrayList<>();
+        // Filter only efe:asset-type/*
+        LinkedHashSet<String> assetTagIds = new LinkedHashSet<>();
         for (String id : allTagIds) {
             if (StringUtils.startsWith(id, ASSET_TYPE_TAG_PREFIX)) {
                 assetTagIds.add(id);
@@ -262,22 +243,25 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
 
         props.put("assetTypeTagIds", assetTagIds.toArray(new String[0]));
 
-        TagManager tagManager = resourceResolver != null ? resourceResolver.adaptTo(TagManager.class) : null;
+        // Resolve to titles (optional)
+        TagManager tagManager = resourceResolver.adaptTo(TagManager.class);
         if (tagManager == null) return;
 
-        List<String> assetTagTitles = new ArrayList<>();
+        List<String> titles = new ArrayList<>();
         for (String id : assetTagIds) {
             Tag t = tagManager.resolve(id);
             if (t != null && StringUtils.isNotBlank(t.getTitle())) {
-                assetTagTitles.add(t.getTitle());
+                titles.add(t.getTitle());
             }
         }
-        if (!assetTagTitles.isEmpty()) {
-            props.put("assetTypeTagTitles", assetTagTitles.toArray(new String[0]));
+        if (!titles.isEmpty()) {
+            props.put("assetTypeTagTitles", titles.toArray(new String[0]));
         }
     }
 
-    /* ---------------- ArticleDetails + Content Fragment ---------------- */
+    /* ------------------------------------------------------------
+       Article Details lookup
+       ------------------------------------------------------------ */
 
     private String getArticleFragmentPathFromArticleDetails(Page page) {
         if (page == null) return null;
@@ -304,6 +288,10 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
         return null;
     }
 
+    /* ------------------------------------------------------------
+       Content Fragment
+       ------------------------------------------------------------ */
+
     private String getSubtitleFromContentFragment(String fragmentPath) {
         return getElementFromContentFragment(fragmentPath, "subtitle");
     }
@@ -313,7 +301,8 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
     }
 
     private String getElementFromContentFragment(String fragmentPath, String elementName) {
-        if (StringUtils.isBlank(fragmentPath) || StringUtils.isBlank(elementName) || resourceResolver == null) return null;
+        if (resourceResolver == null) return null;
+        if (StringUtils.isBlank(fragmentPath) || StringUtils.isBlank(elementName)) return null;
 
         Resource cfResource = resourceResolver.getResource(fragmentPath);
         if (cfResource == null) return null;
@@ -325,51 +314,134 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
         return el != null ? StringUtils.trimToNull(el.getContent()) : null;
     }
 
-    private String stripHtml(String html) {
-        return html != null ? html.replaceAll("<[^>]*>", "").trim() : null;
+    /* ------------------------------------------------------------
+       Canonical key + Dynamic Media WebP
+       ------------------------------------------------------------ */
+
+    /**
+     * Canonicalize: remove trailing slash and .html
+     * so /page, /page/, /page.html all map to same key.
+     */
+    private String canonicalPageKey(String pathOrUrl) {
+        if (StringUtils.isBlank(pathOrUrl)) return null;
+
+        String v = pathOrUrl.trim();
+
+        // If someone passed an absolute URL, strip to path portion
+        int idx = v.indexOf("://");
+        if (idx > -1) {
+            int slash = v.indexOf('/', idx + 3);
+            if (slash > -1) {
+                v = v.substring(slash);
+            }
+        }
+
+        // Strip query/hash
+        int q = v.indexOf('?');
+        if (q > -1) v = v.substring(0, q);
+        int h = v.indexOf('#');
+        if (h > -1) v = v.substring(0, h);
+
+        if (v.endsWith(".html")) {
+            v = v.substring(0, v.length() - 5);
+        }
+        while (v.endsWith("/")) {
+            v = v.substring(0, v.length() - 1);
+        }
+        return v;
     }
 
-    /* ---------------- Dynamic Media WebP URL builder ---------------- */
+    /**
+     * Turn a DAM file path OR an existing DM image URL into a DM webp URL.
+     *
+     * Supported inputs:
+     *  - /content/dam/.../file.jpg  => returns a DM URL only if we can infer a DM "public ID" (see notes)
+     *  - https://s7d9.scene7.com/is/image/financialengines/someId?... => returns same with fmt=webp, size params
+     *
+     * If we cannot convert, returns the original path (so at least author/local works).
+     */
+    private String toDynamicMediaWebpUrl(String heroValue) {
+        if (StringUtils.isBlank(heroValue)) return null;
 
-    private String toDynamicMediaWebpUrl(String damPath) {
-        if (StringUtils.isBlank(damPath) || resourceResolver == null) return null;
+        String v = heroValue.trim();
 
-        // Only handle DAM paths; otherwise return as-is
-        if (!StringUtils.startsWith(damPath, "/content/dam/")) {
-            return damPath;
+        // Case 1: already a Scene7 is/image URL
+        if (StringUtils.startsWithIgnoreCase(v, "http") && v.contains("/is/image/")) {
+            return ensureWebpAndSize(v);
         }
 
-        Resource asset = resourceResolver.getResource(damPath);
-        if (asset == null) return damPath;
-
-        Resource jcr = asset.getChild("jcr:content");
-        if (jcr == null) return damPath;
-
-        // Try metadata first (common on publish)
-        String scene7File = null;
-
-        Resource meta = jcr.getChild("metadata");
-        if (meta != null) {
-            scene7File = meta.getValueMap().get("dam:scene7File", String.class);
-        }
-        if (StringUtils.isBlank(scene7File)) {
-            scene7File = jcr.getValueMap().get("dam:scene7File", String.class);
+        // Case 2: DAM path: if you *also* store a DM public ID somewhere, swap here.
+        // Many setups store heroImage as DAM path; converting that to Scene7 requires the Scene7 file / public ID.
+        // If you cannot resolve to DM, we fallback to DAM path (may be heavy).
+        //
+        // If your CF "heroImage" can instead be authored as the DM URL or DM public ID, do that and this will work.
+        //
+        // Optional: If dynamicMediaHost is set AND heroValue looks like a Scene7 public ID (no slashes), build URL.
+        if (StringUtils.isNotBlank(dynamicMediaHost) && !v.startsWith("/") && !v.contains(" ")) {
+            String url = dynamicMediaHost;
+            if (url.endsWith("/")) url = url.substring(0, url.length() - 1);
+            // Assumes "financialengines" company name; change if different
+            url = url + "/is/image/financialengines/" + v;
+            return ensureWebpAndSize(url);
         }
 
-        // If DM not enabled / metadata missing -> fallback to DAM
-        if (StringUtils.isBlank(scene7File)) {
-            return damPath;
+        // Fallback: return DAM path as-is
+        return v;
+    }
+
+    /**
+     * Adds DM params to target webp and reduce size.
+     * You can tune wid/qlt to hit <200kb.
+     */
+    private String ensureWebpAndSize(String url) {
+        // Strip existing fmt if present; then append our params
+        String base = url;
+        String query = "";
+
+        int q = url.indexOf('?');
+        if (q > -1) {
+            base = url.substring(0, q);
+            query = url.substring(q + 1);
         }
 
-        // Build DM WebP URL
-        StringBuilder sb = new StringBuilder();
-        sb.append(DM_DOMAIN).append("/is/image/").append(scene7File);
-        sb.append("?fmt=webp");
-        sb.append("&wid=").append(DM_WID);
-        sb.append("&qlt=").append(DM_QLT);
-        if (DM_SHARPEN) sb.append("&op_sharpen=1");
-        sb.append("&dpr=off");
+        // Remove any existing fmt= in query to avoid duplicates
+        Map<String, String> params = new LinkedHashMap<>();
+        if (StringUtils.isNotBlank(query)) {
+            for (String part : query.split("&")) {
+                if (StringUtils.isBlank(part)) continue;
+                int eq = part.indexOf('=');
+                String k = eq > -1 ? part.substring(0, eq) : part;
+                String val = eq > -1 ? part.substring(eq + 1) : "";
+                if (!"fmt".equalsIgnoreCase(k)) {
+                    params.put(k, val);
+                }
+            }
+        }
 
+        // Tune these to your needs
+        params.put("fmt", "webp");
+        params.put("qlt", "70");
+        params.put("wid", "720");
+        params.put("fit", "constrain");
+        params.put("dpr", "off");
+
+        StringBuilder sb = new StringBuilder(base);
+        sb.append('?');
+
+        boolean first = true;
+        for (Map.Entry<String, String> e : params.entrySet()) {
+            if (!first) sb.append('&');
+            first = false;
+            sb.append(e.getKey());
+            if (StringUtils.isNotBlank(e.getValue())) {
+                sb.append('=').append(e.getValue());
+            }
+        }
         return sb.toString();
+    }
+
+    private String stripHtml(String html) {
+        if (html == null) return null;
+        return html.replaceAll("<[^>]*>", "").trim();
     }
 }
