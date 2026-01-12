@@ -10,7 +10,6 @@
 <div class="cmp-button--modal d-none" id="${modal.id}">
     <div class="dialog-overlay"></div><!-- comment -->
     <div class="cmp-button-modal-content" role="document"><!-- comment -->
-        <template id="${modal.id}-template">
         <div class="cmp-button-modal-content__container responsivegrid"><!-- comment -->
             <button class="cmp-button-modal-content__close" aria-label="Close this dialog window" data-modal-id = "${modal.id}">
                 <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -21,90 +20,26 @@
                 </svg>
             </button>
         </div>
-        <div class="cmp-button-modal-content__xfcontent">
-            <sly data-sly-test='${wcmmode.disabled}'
-                data-sly-resource="${modal.embedFragment @ selectors='content', wcmmode='disabled'}">
-            </sly>
-        </div>
-        </template>
+        <sly data-sly-test='${wcmmode.disabled}'>
+            <div class="cmp-button-modal-content__xfcontent" 
+                 data-sly-resource="${modal.embedFragment @ 
+                 selectors='content', 
+                 wcmmode='disabled'}">
+            </div>
+        </sly>
     </div>
 </div>
-<script>
-(function () {
-  // Event delegation helpers
-  function closestMatch(el, selector) {
-    return el && (el.closest ? el.closest(selector) : null);
-  }
+<script type="text/javascript"><!-- comment -->
+    const modalButtons = document.querySelectorAll('button.cmp-modal--button');
+    const modalCloseButtons = document.querySelectorAll('button.cmp-button-modal-content__close');
 
-  // Mount the modal content fresh each time from <template>
-  function mountModal(modal) {
-    const modalId = '${modal.id @ context="scriptString"}';
-    const tmpl = `${modalId}-template`;
-    if (!tmpl) {
-      console.warn(`Template not found for modal: modalId`);
-      return;
-    }
-    const clone = tmpl.content.cloneNode(true);
-    const contentRoot = modal.querySelector('.cmp-button-modal-content');
+    modalButtons.forEach(el => el.addEventListener('click', event => {
+        var modalComponent = document.getElementById(event.currentTarget.dataset.modalId);
+        modalComponent.classList.remove("d-none");
+    }));
 
-    // Clear previous DOM and insert fresh content
-    contentRoot.innerHTML = '';
-    contentRoot.appendChild(clone);
-
-    // Open and manage focus
-    modal.classList.remove('d-none');
-    const closeBtn = modal.querySelector('.cmp-button-modal-content__close');
-    closeBtn?.focus();
-  }
-
-  // Track the last opener to restore focus after close
-  let lastOpener = null;
-
-  // Open modal: click handler on trigger buttons
-  document.addEventListener('click', function (e) {
-    const openBtn = closestMatch(e.target, 'button.cmp-modal--button');
-    if (!openBtn) return;
-
-    const modalId = openBtn.dataset.modalId;
-    const modal = document.getElementById(modalId);
-    if (!modal) return;
-
-    lastOpener = openBtn;
-    mountModal(modal);
-  });
-
-  // Close modal: event delegation for close button and overlay
-  document.addEventListener('click', function (e) {
-    // Close via close button
-    const closeBtn = closestMatch(e.target, 'button.cmp-button-modal-content__close');
-    if (closeBtn) {
-      const modalId = closeBtn.dataset.modalId;
-      const modal = document.getElementById(modalId) || closestMatch(closeBtn, '.cmp-button--modal');
-      if (modal) {
-        modal.classList.add('d-none');
-        // Restore focus to the opener button
-        lastOpener?.focus();
-      }
-      return;
-    }
-
-    // Close via overlay click
-    const overlay = closestMatch(e.target, '.cmp-button--modal .dialog-overlay');
-    if (overlay) {
-      const modal = closestMatch(overlay, '.cmp-button--modal');
-      if (modal) {
-        modal.classList.add('d-none');
-        lastOpener?.focus();
-      }
-    }
-  });
-
-  // Close on Escape
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') {
-      document.querySelectorAll('.cmp-button--modal').forEach(m => m.classList.add('d-none'));
-      lastOpener?.focus();
-    }
-  });
-})();
+    modalCloseButtons.forEach(el => el.addEventListener('click', event => {
+        var modalComponent = document.getElementById(event.currentTarget.dataset.modalId);
+        modalComponent.classList.add("d-none");
+    }));
 </script>
