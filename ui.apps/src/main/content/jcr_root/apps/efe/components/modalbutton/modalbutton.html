@@ -38,9 +38,10 @@
 
   // Mount the modal content fresh each time from <template>
   function mountModal(modal) {
-    const tmpl = document.getElementById(`${modal.id}-template`);
+    const modalId = '${modal.id @ context="scriptString"}';
+    const tmpl = `${modalId}-template`;
     if (!tmpl) {
-      console.warn(`Template not found for modal: ${modal.id}`);
+      console.warn(`Template not found for modal: modalId`);
       return;
     }
     const clone = tmpl.content.cloneNode(true);
