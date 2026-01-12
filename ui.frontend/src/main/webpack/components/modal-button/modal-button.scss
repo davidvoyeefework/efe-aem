@@ -47,10 +47,10 @@
   /* Tablet/Desktop */
   @media (min-width: 545px) {
     width: 80vw;
-    height: 80vh;
     max-width: 820px;
-    max-height: 615px;
+    max-height: 80vh;
     border-radius: 4px;
+    overflow-y: auto; /* scroll inside modal if content exceeds max-height */
 
     .cmp-button-modal-content__container {
       padding: 1px;
