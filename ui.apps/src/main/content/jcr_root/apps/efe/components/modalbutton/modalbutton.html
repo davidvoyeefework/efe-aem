@@ -21,13 +21,13 @@
                 </svg>
             </button>
         </div>
-        <div class="cmp-button-modal-content__xfcontent" data-scheduler-container-id="${ecschedule.containerID}">
-            <div class="scheduler-host" data-container-id="${ecschedule.containerID}">
-                <div id="${ecschedule.containerID}"></div>
+        <sly data-sly-test='${wcmmode.disabled}'>
+            <div class="cmp-button-modal-content__xfcontent"  data-scheduler-container-id="${ecschedule.containerID}" 
+                 data-sly-resource="${modal.embedFragment @ 
+                 selectors='content', 
+                 wcmmode='disabled'}">
             </div>
-            <sly data-sly-test="${wcmmode.disabled}"
-                data-sly-resource="${modal.embedFragment @ selectors='content', wcmmode='disabled'}"></sly>      
-        </div>
+        </sly>
         </template>
     </div>
 </div>
