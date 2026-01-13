@@ -7,10 +7,9 @@
         <span class='cmp-button__text'>${modal.buttonText}</span>
     </button>
 </div>
-<div class="cmp-button--modal d-none" id="${modal.id}" data-template-id="${modal.id}-template">
+<div class="cmp-button--modal d-none" id="${modal.id}" >
     <div class="dialog-overlay"></div><!-- comment -->
     <div class="cmp-button-modal-content" role="document"><!-- comment -->
-        <template id="${modal.id}-template">
         <div class="cmp-button-modal-content__container responsivegrid"><!-- comment -->
             <button class="cmp-button-modal-content__close" aria-label="Close this dialog window" data-modal-id = "${modal.id}">
                 <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -22,13 +21,12 @@
             </button>
         </div>
         <sly data-sly-test='${wcmmode.disabled}'>
-            <div class="cmp-button-modal-content__xfcontent"  data-scheduler-container-id="${ecschedule.containerID}" 
+            <div class="cmp-button-modal-content__xfcontent"
                  data-sly-resource="${modal.embedFragment @ 
                  selectors='content', 
                  wcmmode='disabled'}">
             </div>
         </sly>
-        </template>
     </div>
 </div>
 <script type="text/javascript"><!-- comment -->
