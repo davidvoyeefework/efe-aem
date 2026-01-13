@@ -29,110 +29,17 @@
         </template>
     </div>
 </div>
+<script type="text/javascript"><!-- comment -->
+    const modalButtons = document.querySelectorAll('button.cmp-modal--button');
+    const modalCloseButtons = document.querySelectorAll('button.cmp-button-modal-content__close');
 
-<script>
-(function () {
-  function closestMatch(el, selector) {
-    return el && (el.closest ? el.closest(selector) : null);
-  }
+    modalButtons.forEach(el => el.addEventListener('click', event => {
+        var modalComponent = document.getElementById(event.currentTarget.dataset.modalId);
+        modalComponent.classList.remove("d-none");
+    }));
 
-  function mountModal(modal) {
-    const templateId = modal.dataset.templateId || (modal.id + '-template');
-    const tmpl = document.getElementById(templateId);
-    const contentRoot = modal.querySelector('.cmp-button-modal-content');
-
-    contentRoot.innerHTML = '';
-    if (tmpl) {
-      const clone = tmpl.content.cloneNode(true);
-      contentRoot.appendChild(clone);
-    }
-
-    modal.classList.remove('d-none');
-    modal.querySelector('.cmp-button-modal-content__close')?.focus();
-
-   
-    // Look for the attribute anywhere inside the modal:
-    const elWithData = modal.querySelector('[data-scheduler-container-id]');
-    const containerId = elWithData?.dataset.schedulerContainerId;
-
-    // As a fallback, try to find the actual mount element
-    const containerEl = containerId
-      ? document.getElementById(containerId)
-      : modal.querySelector('.cmp-button-modal-content__xfcontent [id]');
-
-    if (!containerId) {
-      console.warn('data-scheduler-container-id missing on modal wrapper:', modal.id);
-    }
-    if (!containerEl) {
-      console.error('Scheduler container element not found. Check template <div id="...">.');
-      return;
-    }
-
-  }
-
-  function cleanupModal(modal) {
-    // Try to destroy/unmount widget if API exists; else clear container
-    const containerId = modal.dataset.schedulerContainerId;
-    const api = window.efeSelfSchedulerEc;
-    if (containerId) {
-      try {
-        if (api?.destroy) api.destroy(containerId);
-        else if (api?.unmount) api.unmount(containerId);
-        else {
-          const el = document.getElementById(containerId);
-          if (el) el.innerHTML = '';
-        }
-      } catch (e) {
-        console.warn('Scheduler cleanup error:', e);
-      }
-    }
-
-    // Clear modal content
-    const contentRoot = modal.querySelector('.cmp-button-modal-content');
-    if (contentRoot) contentRoot.innerHTML = '';
-  }
-
-  // Delegated open
-  document.addEventListener('click', function (e) {
-    const openBtn = closestMatch(e.target, 'button.cmp-modal--button');
-    if (!openBtn) return;
-
-    const modalId = openBtn.dataset.modalId;
-    const modal = document.getElementById(modalId);
-    if (!modal) return;
-
-    mountModal(modal);
-  });
-
-  // Delegated close: close button and overlay
-  document.addEventListener('click', function (e) {
-    const closeBtn = closestMatch(e.target, 'button.cmp-button-modal-content__close');
-    if (closeBtn) {
-      const modal = document.getElementById(closeBtn.dataset.modalId) || closestMatch(closeBtn, '.cmp-button--modal');
-      if (modal) {
-        cleanupModal(modal);
-        modal.classList.add('d-none');
-      }
-      return;
-    }
-
-    const overlay = closestMatch(e.target, '.cmp-button--modal .dialog-overlay');
-    if (overlay) {
-      const modal = closestMatch(overlay, '.cmp-button--modal');
-      if (modal) {
-        cleanupModal(modal);
-        modal.classList.add('d-none');
-      }
-    }
-  });
-
-  // Esc to close all
-  document.addEventListener('keydown', function (e) {
-    if (e.key !== 'Escape') return;
-    document.querySelectorAll('.cmp-button--modal').forEach(modal => {
-      cleanupModal(modal);
-      modal.classList.add('d-none');
-    });
-  });
-})();
+    modalCloseButtons.forEach(el => el.addEventListener('click', event => {
+        var modalComponent = document.getElementById(event.currentTarget.dataset.modalId);
+        modalComponent.classList.add("d-none");
+    }));
 </script>
