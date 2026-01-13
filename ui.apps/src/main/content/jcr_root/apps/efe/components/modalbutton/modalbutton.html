@@ -31,59 +31,17 @@
         </template>
     </div>
 </div>
-<script>
-(function () {
-  function clearScheduler(modalEl) {
-    if (!modalEl) return;
+<script type="text/javascript"><!-- comment -->
+    const modalButtons = document.querySelectorAll('button.cmp-modal--button');
+    const modalCloseButtons = document.querySelectorAll('button.cmp-button-modal-content__close');
 
-    const xf = modalEl.querySelector(".cmp-button-modal-content__xfcontent");
-    if (!xf) return;
-
-    const containerId = xf.getAttribute("data-scheduler-container-id");
-    if (!containerId) return;
-
-    const schedulerContainer = modalEl.querySelector("#" + CSS.escape(containerId));
-    if (!schedulerContainer) return;
-
-    // Remove all injected content
-    schedulerContainer.innerHTML = "";
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    const modalButtons = document.querySelectorAll("button.cmp-modal--button");
-    const modalCloseButtons = document.querySelectorAll("button.cmp-button-modal-content__close");
-
-    // OPEN MODAL
-    modalButtons.forEach(el => el.addEventListener("click", event => {
-        const modalComponent = document.getElementById(event.currentTarget.dataset.modalId);
-        if (!modalComponent) return;
-
+    modalButtons.forEach(el => el.addEventListener('click', event => {
+        var modalComponent = document.getElementById(event.currentTarget.dataset.modalId);
         modalComponent.classList.remove("d-none");
-
-        // Re-inject scheduler on open
-        const xf = modalComponent.querySelector(".cmp-button-modal-content__xfcontent");
-        if (!xf) return;
-
-        const containerId = xf.getAttribute("data-scheduler-container-id");
-        if (!containerId) return;
-
-        if (window.efeSelfSchedulerEc && typeof window.efeSelfSchedulerEc.inject === "function") {
-            window.efeSelfSchedulerEc.inject({ id: containerId });
-        }
     }));
 
-     // CLOSE MODAL
-    modalCloseButtons.forEach(el => el.addEventListener("click", event => {
-        const modalComponent = document.getElementById(event.currentTarget.dataset.modalId);
-        if (!modalComponent) return;
-
-        clearScheduler(modalComponent);
-
+    modalCloseButtons.forEach(el => el.addEventListener('click', event => {
+        var modalComponent = document.getElementById(event.currentTarget.dataset.modalId);
         modalComponent.classList.add("d-none");
     }));
-
-});
-
-})();
 </script>
