@@ -31,6 +31,7 @@
         </template>
     </div>
 </div>
+<script>
 (function () {
   function clearScheduler(modalEl) {
     if (!modalEl) return;
@@ -77,7 +78,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const modalComponent = document.getElementById(event.currentTarget.dataset.modalId);
         if (!modalComponent) return;
 
-        // 🔥 Clear scheduler before hiding
         clearScheduler(modalComponent);
 
         modalComponent.classList.add("d-none");
