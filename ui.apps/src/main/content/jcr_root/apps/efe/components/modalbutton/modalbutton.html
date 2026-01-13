@@ -7,7 +7,7 @@
         <span class='cmp-button__text'>${modal.buttonText}</span>
     </button>
 </div>
-<div class="cmp-button--modal d-none" id="${modal.id}" data-template-id="${modal.id}-template" data-scheduler-container-id="${ecschedule.containerID}">
+<div class="cmp-button--modal d-none" id="${modal.id}" data-template-id="${modal.id}-template">
     <div class="dialog-overlay"></div><!-- comment -->
     <div class="cmp-button-modal-content" role="document"><!-- comment -->
         <template id="${modal.id}-template">
@@ -21,11 +21,10 @@
                 </svg>
             </button>
         </div>
-        <div class="cmp-button-modal-content__xfcontent">
-            <!-- Server-side XF on publish (optional) -->
+        <div class="cmp-button-modal-content__xfcontent" data-scheduler-container-id="${ecschedule.containerID}">
+            <div id="${ecschedule.containerID}"></div>
             <sly data-sly-test="${wcmmode.disabled}"
-                data-sly-resource="${modal.embedFragment @ selectors='content', wcmmode='disabled'}"></sly>
-                <div id="${ecschedule.containerID}"></div>
+                data-sly-resource="${modal.embedFragment @ selectors='content', wcmmode='disabled'}"></sly>      
         </div>
         </template>
     </div>
@@ -51,11 +50,16 @@
     modal.classList.remove('d-none');
     modal.querySelector('.cmp-button-modal-content__close')?.focus();
 
-    // Now safely read the container id from the wrapper
-    const containerId = modal.dataset.schedulerContainerId;
-    // Defensive fallback: try to find the element inside by id if dataset is missing
-    const containerEl = containerId ? document.getElementById(containerId)
-                                    : contentRoot.querySelector('[id]');
+   
+    // Look for the attribute anywhere inside the modal:
+    const elWithData = modal.querySelector('[data-scheduler-container-id]');
+    const containerId = elWithData?.dataset.schedulerContainerId;
+
+    // As a fallback, try to find the actual mount element
+    const containerEl = containerId
+      ? document.getElementById(containerId)
+      : modal.querySelector('.cmp-button-modal-content__xfcontent [id]');
+
     if (!containerId) {
       console.warn('data-scheduler-container-id missing on modal wrapper:', modal.id);
     }
@@ -64,25 +68,6 @@
       return;
     }
 
-    // Feature-detect the third-party API before calling
-    const api = window.efeSelfSchedulerEc;
-    if (!api || typeof api.inject !== 'function') {
-      console.warn('efeSelfSchedulerEc.inject() not available yet.');
-      // Optional: show a friendly message rather than blank content
-      if (!containerEl.innerHTML) {
-        containerEl.innerHTML = '<p class="scheduler-unavailable">Scheduler unavailable. Please try again.</p>';
-      }
-      return;
-    }
-
-    try {
-      const result = api.inject({ id: containerEl.id });
-      if (result && typeof result.then === 'function') {
-        result.catch(err => console.error('Scheduler inject failed:', err));
-      }
-    } catch (err) {
-      console.error('Scheduler inject threw:', err);
-    }
   }
 
   function cleanupModal(modal) {
