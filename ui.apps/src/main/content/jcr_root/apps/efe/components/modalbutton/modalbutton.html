@@ -31,91 +31,65 @@
     </div>
 </div>
 
-
 <script>
 (function () {
-  function closestMatch(el, selector) { return el && (el.closest ? el.closest(selector) : null); }
-
-  // Optional: wait for global to become available (polling with timeout)
-  function waitForScheduler(maxMs = 3000, intervalMs = 100) {
-    return new Promise((resolve, reject) => {
-      const start = Date.now();
-      const tick = () => {
-        const api = window.efeSelfSchedulerEc;
-        if (api && typeof api.inject === 'function') return resolve(api);
-        if (Date.now() - start >= maxMs) return reject(new Error('Scheduler API not available'));
-        setTimeout(tick, intervalMs);
-      };
-      tick();
-    });
-  }
-
-  async function injectScheduler(modal) {
-    const containerId = modal.dataset.schedulerContainerId;
-    if (!containerId) return; // nothing to do
-
-    // Try to get API immediately; if missing, wait briefly (handles async loading)
-    let api = window.efeSelfSchedulerEc;
-    if (!api || typeof api.inject !== 'function') {
-      try {
-        api = await waitForScheduler(1500, 100);
-      } catch (e) {
-        // Fallback: inform user or log, but don't leave blank
-        console.warn('Scheduler API unavailable:', e.message);
-        const el = document.getElementById(containerId);
-        if (el && !el.innerHTML) {
-          el.innerHTML = '<p class="scheduler-unavailable">Scheduler temporarily unavailable. Please try again.</p>';
-        }
-        return;
-      }
-    }
-
-    try {
-      const res = api.inject({ id: containerId });
-      if (res && typeof res.then === 'function') {
-        await res; // if inject returns a promise
-      }
-    } catch (e) {
-      console.error('Inject failed:', e);
-      const el = document.getElementById(containerId);
-      if (el && !el.innerHTML) {
-        el.innerHTML = '<p class="scheduler-error">Unable to load scheduler.</p>';
-      }
-    }
+  function closestMatch(el, selector) {
+    return el && (el.closest ? el.closest(selector) : null);
   }
 
   function mountModal(modal) {
     const templateId = modal.dataset.templateId || (modal.id + '-template');
     const tmpl = document.getElementById(templateId);
-    if (!tmpl) {
-      console.warn('Missing template for modal:', modal.id, 'expected:', templateId);
-      // Minimal fallback: keep existing content if any
-    }
-
     const contentRoot = modal.querySelector('.cmp-button-modal-content');
 
-    // Clear previous DOM so we start fresh
     contentRoot.innerHTML = '';
-
-    // Reinsert from template (if present)
     if (tmpl) {
       const clone = tmpl.content.cloneNode(true);
       contentRoot.appendChild(clone);
     }
 
-    // Show the modal and focus close
     modal.classList.remove('d-none');
     modal.querySelector('.cmp-button-modal-content__close')?.focus();
 
-    // Initialize third-party widget (guarded)
-    injectScheduler(modal);
+    // Now safely read the container id from the wrapper
+    const containerId = modal.dataset.schedulerContainerId;
+    // Defensive fallback: try to find the element inside by id if dataset is missing
+    const containerEl = containerId ? document.getElementById(containerId)
+                                    : contentRoot.querySelector('[id]');
+    if (!containerId) {
+      console.warn('data-scheduler-container-id missing on modal wrapper:', modal.id);
+    }
+    if (!containerEl) {
+      console.error('Scheduler container element not found. Check template <div id="...">.');
+      return;
+    }
+
+    // Feature-detect the third-party API before calling
+    const api = window.efeSelfSchedulerEc;
+    if (!api || typeof api.inject !== 'function') {
+      console.warn('efeSelfSchedulerEc.inject() not available yet.');
+      // Optional: show a friendly message rather than blank content
+      if (!containerEl.innerHTML) {
+        containerEl.innerHTML = '<p class="scheduler-unavailable">Scheduler unavailable. Please try again.</p>';
+      }
+      return;
+    }
+
+    try {
+      const result = api.inject({ id: containerEl.id });
+      if (result && typeof result.then === 'function') {
+        result.catch(err => console.error('Scheduler inject failed:', err));
+      }
+    } catch (err) {
+      console.error('Scheduler inject threw:', err);
+    }
   }
 
   function cleanupModal(modal) {
-    // Try vendor destroy/unmount; else clear DOM
+    // Try to destroy/unmount widget if API exists; else clear container
     const containerId = modal.dataset.schedulerContainerId;
+    const api = window.efeSelfSchedulerEc;
     if (containerId) {
-      const api = window.efeSelfSchedulerEc;
       try {
         if (api?.destroy) api.destroy(containerId);
         else if (api?.unmount) api.unmount(containerId);
@@ -128,27 +102,25 @@
       }
     }
 
-    // Clear modal inner DOM
+    // Clear modal content
     const contentRoot = modal.querySelector('.cmp-button-modal-content');
     if (contentRoot) contentRoot.innerHTML = '';
-
-    // Optional: reset forms/media if present
-    modal.querySelectorAll('form').forEach(f => f.reset());
-    modal.querySelectorAll('video').forEach(v => { v.pause(); v.currentTime = 0; });
-    modal.querySelectorAll('iframe').forEach(ifr => {
-      const src = ifr.getAttribute('src'); if (src) ifr.setAttribute('src', src);
-    });
   }
 
-  // Delegated open/close
+  // Delegated open
   document.addEventListener('click', function (e) {
     const openBtn = closestMatch(e.target, 'button.cmp-modal--button');
-    if (openBtn) {
-      const modal = document.getElementById(openBtn.dataset.modalId);
-      if (modal) mountModal(modal);
-      return;
-    }
+    if (!openBtn) return;
 
+    const modalId = openBtn.dataset.modalId;
+    const modal = document.getElementById(modalId);
+    if (!modal) return;
+
+    mountModal(modal);
+  });
+
+  // Delegated close: close button and overlay
+  document.addEventListener('click', function (e) {
     const closeBtn = closestMatch(e.target, 'button.cmp-button-modal-content__close');
     if (closeBtn) {
       const modal = document.getElementById(closeBtn.dataset.modalId) || closestMatch(closeBtn, '.cmp-button--modal');
@@ -169,13 +141,13 @@
     }
   });
 
+  // Esc to close all
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') {
-      document.querySelectorAll('.cmp-button--modal').forEach(modal => {
-        cleanupModal(modal);
-        modal.classList.add('d-none');
-      });
-    }
+    if (e.key !== 'Escape') return;
+    document.querySelectorAll('.cmp-button--modal').forEach(modal => {
+      cleanupModal(modal);
+      modal.classList.add('d-none');
+    });
   });
 })();
 </script>
