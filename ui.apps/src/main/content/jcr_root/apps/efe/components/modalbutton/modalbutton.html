@@ -22,24 +22,68 @@
             </button>
         </div>
         <div class="cmp-button-modal-content__xfcontent" data-scheduler-container-id="${ecschedule.containerID}">
-            <div id="${ecschedule.containerID}"></div>
+            <div class="scheduler-host" data-container-id="${ecschedule.containerID}">
+                <div id="${ecschedule.containerID}"></div>
+            </div>
             <sly data-sly-test="${wcmmode.disabled}"
                 data-sly-resource="${modal.embedFragment @ selectors='content', wcmmode='disabled'}"></sly>      
         </div>
         </template>
     </div>
 </div>
-<script type="text/javascript"><!-- comment -->
-    const modalButtons = document.querySelectorAll('button.cmp-modal--button');
-    const modalCloseButtons = document.querySelectorAll('button.cmp-button-modal-content__close');
+(function () {
+  function clearScheduler(modalEl) {
+    if (!modalEl) return;
 
-    modalButtons.forEach(el => el.addEventListener('click', event => {
-        var modalComponent = document.getElementById(event.currentTarget.dataset.modalId);
+    const xf = modalEl.querySelector(".cmp-button-modal-content__xfcontent");
+    if (!xf) return;
+
+    const containerId = xf.getAttribute("data-scheduler-container-id");
+    if (!containerId) return;
+
+    const schedulerContainer = modalEl.querySelector("#" + CSS.escape(containerId));
+    if (!schedulerContainer) return;
+
+    // Remove all injected content
+    schedulerContainer.innerHTML = "";
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const modalButtons = document.querySelectorAll("button.cmp-modal--button");
+    const modalCloseButtons = document.querySelectorAll("button.cmp-button-modal-content__close");
+
+    // OPEN MODAL
+    modalButtons.forEach(el => el.addEventListener("click", event => {
+        const modalComponent = document.getElementById(event.currentTarget.dataset.modalId);
+        if (!modalComponent) return;
+
         modalComponent.classList.remove("d-none");
+
+        // Re-inject scheduler on open
+        const xf = modalComponent.querySelector(".cmp-button-modal-content__xfcontent");
+        if (!xf) return;
+
+        const containerId = xf.getAttribute("data-scheduler-container-id");
+        if (!containerId) return;
+
+        if (window.efeSelfSchedulerEc && typeof window.efeSelfSchedulerEc.inject === "function") {
+            window.efeSelfSchedulerEc.inject({ id: containerId });
+        }
     }));
 
-    modalCloseButtons.forEach(el => el.addEventListener('click', event => {
-        var modalComponent = document.getElementById(event.currentTarget.dataset.modalId);
+     // CLOSE MODAL
+    modalCloseButtons.forEach(el => el.addEventListener("click", event => {
+        const modalComponent = document.getElementById(event.currentTarget.dataset.modalId);
+        if (!modalComponent) return;
+
+        // 🔥 Clear scheduler before hiding
+        clearScheduler(modalComponent);
+
         modalComponent.classList.add("d-none");
     }));
+
+});
+
+})();
 </script>
