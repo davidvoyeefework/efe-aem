@@ -1,0 +1,102 @@
+<div class="relatedarticle-ed-center">
+  <ul data-sly-use.article="com.efe.core.models.RelatedArticleDynamic"
+      data-sly-list.teaser="${article.relatedTeasers}"
+      class="cmp-list">
+
+    <li class="teaser cmp-teaser--thumbnail">
+      <div class="cmp-teaser">
+
+        <!-- linkURL is /path/to/page.html -->
+        <sly data-sly-set.linkUrl="${teaser.valueMap.linkURL}" />
+
+        <!-- canonicalKey becomes /path/to/page (no .html) -->
+        <sly data-sly-set.canonicalKey="${linkUrl @ extension=''}" />
+
+        <!-- look up hero by canonical page key -->
+        <sly data-sly-set.hero="${article.teaserHeroImages[canonicalKey]}" />
+
+        <!-- ================= DEBUG (TEMPORARY) ================= -->
+        <!-- DEBUG: linkUrl=${linkUrl} -->
+        <!-- DEBUG: canonicalKey=${canonicalKey} -->
+        <!-- DEBUG: heroFromMap=${hero} -->
+        <!-- ====================================================== -->
+
+        <div class="cmp-teaser__content">
+
+          <!-- Title -->
+          <h2 class="title cmp-title--subhead-01">
+            <a href="${linkUrl}">
+              ${teaser.valueMap['jcr:title']}
+            </a>
+          </h2>
+
+          <!-- Description (p tag + class) -->
+          <sly data-sly-test="${teaser.valueMap.text}">
+            <p class="cmp-text--body-02">
+              ${teaser.valueMap.text}
+            </p>
+          </sly>
+
+          <!-- Asset Type button (single, prioritized, with fallback) -->
+          <sly data-sly-set.hasArticle="${false}" />
+          <sly data-sly-set.hasVideo="${false}" />
+          <sly data-sly-set.hasPodcast="${false}" />
+
+          <sly data-sly-test="${teaser.valueMap.assetTypeTagIds}">
+            <sly data-sly-list.tid="${teaser.valueMap.assetTypeTagIds}">
+
+              <sly data-sly-test="${tid == 'efe:asset-type/article'}">
+                <sly data-sly-set.hasArticle="${true}" />
+              </sly>
+
+              <sly data-sly-test="${tid == 'efe:asset-type/video'}">
+                <sly data-sly-set.hasVideo="${true}" />
+              </sly>
+
+              <sly data-sly-test="${tid == 'efe:asset-type/podcast'}">
+                <sly data-sly-set.hasPodcast="${true}" />
+              </sly>
+
+            </sly>
+          </sly>
+
+          <sly data-sly-test="${hasArticle}">
+            <div class="cmp-button--article"></div>
+          </sly>
+
+          <sly data-sly-test="${!hasArticle && hasVideo}">
+            <div class="cmp-button--video"></div>
+          </sly>
+
+          <sly data-sly-test="${!hasArticle && !hasVideo && hasPodcast}">
+            <div class="cmp-button--podcast"></div>
+          </sly>
+
+          <sly data-sly-test="${!hasArticle && !hasVideo && !hasPodcast}">
+            <div class="cmp-button--article"></div>
+          </sly>
+
+        </div>
+
+        <!-- Hero image exists -->
+        <sly data-sly-test="${hero}">
+          <div class="cmp-teaser__image">
+            <img class="cmp-image__image"
+                 src="${hero}"
+                 alt="${teaser.valueMap['jcr:title']}"
+                 loading="lazy" />
+          </div>
+        </sly>
+
+        <!-- Fallback: no hero image -->
+        <sly data-sly-test="${!hero}">
+          <div class="cmp-teaser__image thumbnail-placeholder">
+            <div class="cmp-image__image"></div>
+          </div>
+        </sly>
+
+      </div>
+    </li>
+
+  </ul>
+</div>
