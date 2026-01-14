@@ -3,7 +3,6 @@ pipeline {
   agent {
     kubernetes {
       cloud 'fngn-k8s-core-west-1'
-      yaml libraryResource ('agents/java11.yaml')
     }
   }
   options {
@@ -15,7 +14,6 @@ pipeline {
   }
   environment {
     project = "aem"
-    emailRecipients = "cfoon@edelmanfinancialengines.com"
     branchName = "develop"
   }
   stages {
@@ -72,7 +70,7 @@ pipeline {
           subject: "FAILED: Job '${env.JOB_NAME} [Build #${env.BUILD_NUMBER}]'",
           body: """<p>FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
             <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
-          to: "${env.EMAIL_RECIPIENTS}",
+          to: "devtools@edelmanfinancialengines.com",
           from: "devtools@edelmanfinancialengines.com",
           mimeType: 'text/html'
         )
