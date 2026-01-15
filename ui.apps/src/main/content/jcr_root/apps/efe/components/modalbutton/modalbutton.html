@@ -29,19 +29,145 @@
         </sly>
     </div>
 </div>
-<script type="text/javascript"><!-- comment -->
-if ( window.efeSelfSchedulerEc) {
-        const modalButtons = document.querySelectorAll('button.cmp-modal--button');
-        const modalCloseButtons = document.querySelectorAll('button.cmp-button-modal-content__close');
+<script type="text/javascript">
+(() => {
+  'use strict';
 
-        modalButtons.forEach(el => el.addEventListener('click', event => {
-            var modalComponent = document.getElementById(event.currentTarget.dataset.modalId);
-            modalComponent.classList.remove("d-none");
-        }));
+  // Utility: safely select elements
+  const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
 
-        modalCloseButtons.forEach(el => el.addEventListener('click', event => {
-            var modalComponent = document.getElementById(event.currentTarget.dataset.modalId);
-            modalComponent.classList.add("d-none");
-        }));
+  // Manage body scroll lock when modals are open
+  const lockScroll = () => document.documentElement.classList.add('modal-open');
+  const unlockScroll = () => document.documentElement.classList.remove('modal-open');
+
+  // Optional: focus management (basic)
+  const focusFirstFocusable = (container) => {
+    const focusables = container.querySelectorAll(
+      'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
+    );
+    if (focusables.length) focusables[0].focus();
+  };
+
+  // Open modal by ID
+  const openModal = (modalId) => {
+    if (!modalId) return;
+    const modal = document.getElementById(modalId);
+    if (!modal) {
+      console.warn(`[modal] Missing modal element with id="${modalId}"`);
+      return;
     }
+    modal.classList.remove('d-none');
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    lockScroll();
+
+    // If you need to (re)inject the scheduler when opening:
+    const containerId = modal.dataset.schedulerContainerId;
+    if (containerId && window.efeSelfSchedulerEc && typeof window.efeSelfSchedulerEc.inject === 'function') {
+      // Clear previous state before re-inject
+      const target = document.getElementById(containerId);
+      if (target) {
+        target.innerHTML = '';
+      } else {
+        console.warn(`[modal] data-scheduler-container-id="${containerId}" not found in DOM.`);
+      }
+      try {
+        window.efeSelfSchedulerEc.inject({ id: containerId });
+      } catch (e) {
+        console.error('[modal] Scheduler inject failed:', e);
+      }
+    }
+
+    // Optional: focus management
+    focusFirstFocusable(modal);
+  };
+
+  // Close modal by ID
+  const closeModal = (modalId) => {
+    if (!modalId) return;
+    const modal = document.getElementById(modalId);
+    if (!modal) return;
+    modal.classList.add('d-none');
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+
+    // If using scheduler, clean up content so each open starts fresh
+    const containerId = modal.dataset.schedulerContainerId;
+    if (containerId) {
+      const target = document.getElementById(containerId);
+      if (target) target.innerHTML = '';
+    }
+
+    // If no other modals are open, unlock scroll
+    const anyOpen = document.querySelector('.cmp-button-modal-content.is-open');
+    if (!anyOpen) unlockScroll();
+  };
+
+  // Register click handlers (idempotent)
+  const registerHandlers = () => {
+    // Open buttons
+    $$('.cmp-modal--button').forEach((btn) => {
+      if (btn.dataset.modalBound === '1') return;
+      btn.dataset.modalBound = '1';
+      btn.setAttribute('type', btn.getAttribute('type') || 'button'); // prevent form submit
+      btn.addEventListener('click', (e) => {
+        const modalId = e.currentTarget.dataset.modalId;
+        if (!modalId) {
+          console.warn('[modal] Missing data-modal-id on open button');
+          return;
+        }
+        openModal(modalId);
+      });
+    });
+
+    // Close buttons
+    $$('.cmp-button-modal-content__close').forEach((btn) => {
+      if (btn.dataset.modalBound === '1') return;
+      btn.dataset.modalBound = '1';
+      btn.setAttribute('type', btn.getAttribute('type') || 'button');
+      btn.addEventListener('click', (e) => {
+        const modalId = e.currentTarget.dataset.modalId;
+        if (!modalId) {
+          // If not provided, infer from closest modal wrapper
+          const modal = e.currentTarget.closest('.cmp-button-modal-content');
+          closeModal(modal && modal.id);
+          return;
+        }
+        closeModal(modalId);
+      });
+    });
+
+    // Close on backdrop click (if you have a backdrop area inside modal)
+    $$('.cmp-button-modal-content').forEach((modal) => {
+      if (modal.dataset.modalBound === '1') return;
+      modal.dataset.modalBound = '1';
+
+      modal.addEventListener('click', (e) => {
+        // Only when clicking the backdrop, not inner content
+        if (e.target === modal) {
+          closeModal(modal.id);
+        }
+      });
+    });
+
+    // ESC to close the active modal
+    if (!document.body.dataset.modalKeyBound) {
+      document.body.dataset.modalKeyBound = '1';
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          const open = document.querySelector('.cmp-button-modal-content.is-open');
+          if (open && open.id) closeModal(open.id);
+        }
+      });
+    }
+  };
+
+  // Initial setup
+  registerHandlers();
+
+  // If elements can be injected later (e.g., AEM async edits), observe DOM changes
+  const observer = new MutationObserver(() => registerHandlers());
+  observer.observe(document.documentElement, { childList: true, subtree: true });
+})();
 </script>
+
