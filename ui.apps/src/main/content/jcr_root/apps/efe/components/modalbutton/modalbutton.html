@@ -64,11 +64,11 @@
 
     const p = new Promise((resolve, reject) => {
       // If already in DOM, assume it is (or will be) loaded by browser
-      const existing = document.querySelector(`script[src="${url}"]`);
+       const existing = document.querySelector(`script[src="' + url + '"]`);
       if (existing) {
         if (existing.dataset.loaded === '1') return resolve();
         existing.addEventListener('load', () => resolve(), { once: true });
-        existing.addEventListener('error', () => reject(new Error(`[scheduler] Failed to load ${url}`)), { once: true });
+        existing.addEventListener('error', () => reject(new Error(`[scheduler] Failed to load url`)), { once: true });
         return;
       }
 
@@ -80,7 +80,7 @@
         s.dataset.loaded = '1';
         resolve();
       }, { once: true });
-      s.addEventListener('error', () => reject(new Error(`[scheduler] Failed to load ${url}`)), { once: true });
+      s.addEventListener('error', () => reject(new Error(`[scheduler] Failed to load url `)), { once: true });
       document.head.appendChild(s);
     });
 
