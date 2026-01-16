@@ -200,6 +200,24 @@ section.empower-wpi-theme {
             display: block !important;
         }
 
+        .flex {
+            .copy {
+                h2 {
+                    margin-bottom: rem(6);
+                }
+                h3 {
+                    margin-bottom: rem(6);
+                    line-height: 140%;
+                }
+                p {
+                    margin-bottom: rem(10);
+                    line-height: 140%;
+                    word-wrap:break-word;
+                    overflow-wrap:anywhere;
+                }
+            }
+        }
+
     }
     @media screen and (min-width: 310px) {
         .flex {
@@ -216,6 +234,8 @@ section.empower-wpi-theme {
         .wpi-img {
             width: rem(80);
             height: rem(80);
+            display:block;
+            overflow:hidden;
         }    
         .cmp-button--button-wpi {
             transition: $std-transition;
@@ -273,7 +293,7 @@ section.empower-wpi-theme {
             gap: 40px;    
             
             .copy {
-                margin-top: -5px;
+                margin-top: 0;
             }
         }
         
@@ -297,6 +317,8 @@ section.empower-wpi-theme {
         .wpi-img {
             width: rem(100);
             height: rem(100);
+            display:block;
+            overflow:hidden;
         }
      
     }
@@ -305,5 +327,5 @@ section.empower-wpi-theme {
 
 body.xf-web-container, body, #fe-iframe {
     margin: 0;
-    overflow: hidden;
+    overflow: visible;
 }
