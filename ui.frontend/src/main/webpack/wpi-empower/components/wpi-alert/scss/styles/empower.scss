@@ -210,10 +210,7 @@ section.empower-wpi-theme {
                     line-height: 140%;
                 }
                 p {
-                    margin-bottom: rem(10);
-                    line-height: 140%;
-                    word-wrap:break-word;
-                    overflow-wrap:anywhere;
+                    display: none !important;
                 }
             }
         }
