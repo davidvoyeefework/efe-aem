@@ -209,9 +209,6 @@ section.empower-wpi-theme {
                     margin-bottom: rem(6);
                     line-height: 140%;
                 }
-                p {
-                    display: none !important;
-                }
             }
         }
 
@@ -324,5 +321,5 @@ section.empower-wpi-theme {
 
 body.xf-web-container, body, #fe-iframe {
     margin: 0;
-    overflow: visible;
+    overflow: hidden;
 }
