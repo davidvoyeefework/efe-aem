@@ -86,4 +86,27 @@
             }
         }
     }
+    &.theme-empower {
+    .cmp-teaser--hero {
+      .cmp-teaser__description {
+        @media screen and (max-width: $sm) {
+          font-size: 16px;
+          line-height: 24px;
+
+          // Paragraphs inside description
+          p {
+            font-size: 16px;
+            line-height: 24px;
+          }
+
+          // Any h1 that might be authored in the description
+          h1 {
+            font-size: 32px;
+            line-height: 36px;
+            font-weight: 600; // optional: improve readability at smaller sizes
+          }
+        }
+      }
+    }
+  }
 }
