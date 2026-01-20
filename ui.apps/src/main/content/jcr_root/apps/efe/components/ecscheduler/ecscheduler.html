@@ -1,0 +1,10 @@
+<div data-sly-test = "${wcmmode.edit}">ECScheduler Component</div>
+<sly data-sly-use.ecschedule="com.efe.core.models.ECScheduler"
+     data-sly-use.templates="core/wcm/components/commons/v1/templates.html">
+
+    <div class="efe-ec-scheduler" data-ec-embed-url="${ecschedule.ECEmbedURL @ context='attribute'}" data-container-id="${ecschedule.containerID @ context='attribute'}">
+        <div id="${ecschedule.containerID @ context='attribute'}"></div>
+        
+    </div>
+
+</sly>

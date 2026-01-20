@@ -163,6 +163,13 @@ public interface EfeService {
 	 */
 	String getCDTEmbedURL();
         
+        /**
+	 * Gets the EC Scheduler Embed URL.
+	 *
+	 * @return the EC Scheduler Embed URL
+	 */
+	String getECEmbedURL();
+        
         String getFPIDLibraryURL();
 
 	/**
