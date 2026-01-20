@@ -51,7 +51,16 @@ section.empower-wpi-theme {
         width: rem(54);
         height: rem(54);
         flex: 0 0 auto;
-    }    
+    }  
+    
+    .cmp-image__image {
+        width: 100%;
+        height: auto;
+        max-height: 100%;
+        object-fit: contain;
+        display: block;
+    }
+
 
     .cmp-button--button-wpi {
         transition: $std-transition;
