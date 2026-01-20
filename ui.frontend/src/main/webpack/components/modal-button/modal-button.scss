@@ -1,0 +1,96 @@
+    /* 
+    Created on : Dec 3, 2025, 12:18:33 PM
+    Author     : jrodriquez
+*/
+
+/**
+ * 1. Make the dialog container, and its child overlay spread across
+ *    the entire window.
+ */
+.cmp-button--modal {
+    position: fixed;
+    inset: 0; /* top/right/bottom/left: 0 */
+    z-index: 99;
+    display: flex;            /* centers the modal content box */
+}
+.dialog-overlay {
+    position: absolute;
+    inset: 0;
+}
+
+/**
+   * 1. Make sure the dialog container and all its descendants sits on
+   *    top of the rest of the page.
+   * 2. Make the dialog container a flex container to easily center the
+   *    dialog.
+   */
+
+.cmp-button-modal-content {
+  margin: auto;             /* center within flex container */
+  position: relative;       /* anchor for absolute close button */
+  z-index: 2;
+  background-color: #fff;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+
+  /* Mobile */
+  @media (max-width: 544px) {
+    width: 100vw;
+    height: 100vh;
+    max-width: 544px;
+    overflow-y: auto;
+
+    .cmp-button-modal-content__container {
+      padding: 11px;
+    }
+  }
+
+  /* Tablet/Desktop */
+  @media (min-width: 545px) {
+    width: 80vw;
+    max-width: 820px;
+    max-height: 80vh;
+    border-radius: 4px;
+    overflow-y: auto; /* scroll inside modal if content exceeds max-height */
+
+    .cmp-button-modal-content__container {
+      padding: 1px;
+    }
+  }
+
+  /* Close button pinned to top-right of modal box */
+  .cmp-button-modal-content__close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.06);
+    color: #222;
+    cursor: pointer;
+
+    @media (max-width: 544px) {
+      top: 8px;
+      right: 8px;
+      width: 40px; /* larger tap target */
+      height: 40px;
+    }
+
+    &:hover { background: rgba(0,0,0,0.10); }
+    &:focus {
+      outline: 2px solid #005fcc;
+      outline-offset: 2px;
+    }
+
+    svg {
+      width: 18px;
+      height: 18px;
+      pointer-events: none;
+    }
+  }
+}
