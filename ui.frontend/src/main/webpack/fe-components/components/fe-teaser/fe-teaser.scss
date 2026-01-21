@@ -106,7 +106,7 @@
             font-weight: 600; // optional: improve readability at smaller sizes
           }
         }
-        @include media('>phone', '<tablet') {
+        @media screen and (min-width : 577px) and (max-width: 1288px) {
             position: relative;
             top: auto;
             padding: 40px 30px;
