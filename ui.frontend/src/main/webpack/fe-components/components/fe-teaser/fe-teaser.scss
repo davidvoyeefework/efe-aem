@@ -89,7 +89,7 @@
     &.theme-empower {
     .cmp-teaser--hero {
       .cmp-teaser__description {
-        @media screen and (max-width: $sm) {
+       @include media('>phone-m', '<tablet-lg') {
           font-size: 16px;
           line-height: 24px;
 
