@@ -51,7 +51,7 @@
                     font-size: 54px;
                     line-height: 59.4px;
                 }
-                @include media('>tablet', '<desktop') {
+                @include media('>phone-m', '<tablet-lg') {
                     font-size: 34px;
                     line-height: 59.4px;
                 }
