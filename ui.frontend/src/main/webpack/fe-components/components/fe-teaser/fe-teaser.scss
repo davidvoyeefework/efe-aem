@@ -112,13 +112,6 @@
         }
         
       }
-      .cmp-teaser__content{
-         @include media('>=tablet', '<desktop') {
-            position: relative;
-            top: auto;
-            padding: 40px 30px;
-        }
-      }
     }
   }
 }
