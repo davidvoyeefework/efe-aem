@@ -51,6 +51,10 @@
                     font-size: 54px;
                     line-height: 59.4px;
                 }
+                @include media('>tablet', '<desktop') {
+                    font-size: 34px;
+                    line-height: 59.4px;
+                }
                 color: #FFFFFF;
                 text-transform: capitalize;
                 letter-spacing: unset;
