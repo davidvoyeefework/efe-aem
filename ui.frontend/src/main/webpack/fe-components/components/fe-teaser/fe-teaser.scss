@@ -106,7 +106,10 @@
             font-weight: 600; // optional: improve readability at smaller sizes
           }
         }
-        @media screen and (min-width : 577px) and (max-width: 1288px) {
+        
+      }
+      .cmp-teaser__content{
+         @include media('>=tablet', '<desktop') {
             position: relative;
             top: auto;
             padding: 40px 30px;
