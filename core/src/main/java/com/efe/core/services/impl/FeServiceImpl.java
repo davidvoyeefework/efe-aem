@@ -50,12 +50,6 @@ public class FeServiceImpl implements FeService {
     /** The is fe gtm enabled. */
     private boolean isFeGtmEnabled;
 
-    /** The onetrust script. */
-	private String onetrustFEScript;
-
-	/** The onetrust script id. */
-	private String onetrustFEScriptId;
-
 
     /**
      * The Interface Config.
@@ -135,21 +129,6 @@ public class FeServiceImpl implements FeService {
         @AttributeDefinition(name = "Enable FE GTM", description = "Config to enable / disable FE GTM")
         boolean feGtmEnabled();
 
-        /**
-		 * Onetrust FE script.
-		 *
-		 * @return the string
-		 */
-		@AttributeDefinition(name = "One Trust FE Script Url", description = "One Trust FE JS SDK Script URL")
-		String onetrustFEScript();
-
-		/**
-		 * Onetrust FE script id.
-		 *
-		 * @return the string
-		 */
-		@AttributeDefinition(name = "One Trust FE Script Domain Key", description = "One Trust FE JS SDK Domain Key")
-		String onetrustFEScriptId();
     }
 
     /**
@@ -170,8 +149,6 @@ public class FeServiceImpl implements FeService {
         this.apiDomain = config.apiDomain();
         this.feGtmTagId = config.feGtmTagId();
         this.isFeGtmEnabled = config.feGtmEnabled();
-        this.onetrustFEScript = config.onetrustFEScript();
-		this.onetrustFEScriptId = config.onetrustFEScriptId();
     }
 
     /**
@@ -268,23 +245,4 @@ public class FeServiceImpl implements FeService {
 		return isFeGtmEnabled;
 	}
 
-    /**
-	 * Gets the FE one trust script.
-	 *
-	 * @return the FE one trust script
-	 */
-	@Override
-	public String getFEOneTrustScript() {
-		return onetrustFEScript;
-	}
-
-	/**
-	 * Gets the FE one trust script id.
-	 *
-	 * @return the FE one trust script id
-	 */
-	@Override
-	public String getFEOneTrustScriptId() {
-		return onetrustFEScriptId;
-	}
 }

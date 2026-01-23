@@ -61,6 +61,12 @@ public class EfeServiceImpl implements EfeService {
 	/** The onetrust script id. */
 	private String onetrustScriptId;
 
+    /** The onetrust FE script. */
+	private String onetrustFEScript;
+
+	/** The onetrust FE script id. */
+	private String onetrustFEScriptId;
+
 	/** The analytics site root level. */
 	private int analyticsSiteRootLevel;
 
@@ -357,6 +363,23 @@ public class EfeServiceImpl implements EfeService {
 		 */
 		@AttributeDefinition(name = "EC Scheduler Embed URL", description = "EC Scheduler Embed URL")
 		String ECEmbedURL();
+
+		
+        /**
+		 * Onetrust FE script.
+		 *
+		 * @return the string
+		 */
+		@AttributeDefinition(name = "One Trust FE Script Url", description = "One Trust FE JS SDK Script URL")
+		String onetrustFEScript();
+
+		/**
+		 * Onetrust FE script id.
+		 *
+		 * @return the string
+		 */
+		@AttributeDefinition(name = "One Trust FE Script Domain Key", description = "One Trust FE JS SDK Domain Key")
+		String onetrustFEScriptId();
 	}
 
 	/**
@@ -377,6 +400,8 @@ public class EfeServiceImpl implements EfeService {
 		this.googleDirectionPrefixUrl = config.googleDirectionPrefixUrl();
 		this.onetrustScript = config.onetrustScript();
 		this.onetrustScriptId = config.onetrustScriptId();
+		this.onetrustFEScript = config.onetrustFEScript();
+		this.onetrustFEScriptId = config.onetrustFEScriptId();
 		this.analyticsSiteRootLevel = config.analyticsSiteRootLevel();
 		this.linkTrackingListPath = config.linkTrackingListPath();
 		this.formBaseUrl = config.formBaseUrl();
@@ -677,4 +702,26 @@ public class EfeServiceImpl implements EfeService {
 	public String getNationalAdvisorCenter() {
 		return nationalAdvisorCenter;
 	}
+
+	 /**
+	 * Gets the FE one trust script.
+	 *
+	 * @return the FE one trust script
+	 */
+	@Override
+	public String getOnetrustFEScript() {
+		return onetrustFEScript;
+	}
+
+	/**
+	 * Gets the FE one trust script id.
+	 *
+	 * @return the FE one trust script id
+	 */
+	@Override
+	public String getOnetrustFEScriptId() {
+		return onetrustFEScriptId;
+	}
+
+	
 }
