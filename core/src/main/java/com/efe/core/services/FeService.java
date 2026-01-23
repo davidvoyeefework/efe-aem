@@ -60,6 +60,20 @@ public interface FeService {
      * @return the FE gtm tag id
      */
     String getFeGtmTagId();
+
+    /**
+	 * Gets the FE one trust script.
+	 *
+	 * @return the FE one trust script
+	 */
+	String getFEOneTrustScript();
+
+	/**
+	 * Gets the FE one trust script id.
+	 *
+	 * @return the FE one trust script id
+	 */
+	String getFEOneTrustScriptId();
     
     /**
      * Enable fe gtm.
