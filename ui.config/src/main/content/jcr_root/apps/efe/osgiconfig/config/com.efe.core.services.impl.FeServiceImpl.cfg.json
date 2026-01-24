@@ -9,7 +9,5 @@
   "sponsorLogoPath": "$[env:sponsor_logo_path;default=https://s7d9.scene7.com/is/image/financialengines/${sponsorId}?wid=200&hei=75&fit=constrain&fmt=png-alpha]",
   "apiDomain": "$[env:FE_API_DOMAIN;default=https://www.feitest.com/]",
   "feGtmEnabled": "$[env:ENABLE_FE_GA;default=false]",
-  "feGtmTagId" : "$[env:FE_GA_TAG_VALUE;default=GTM-P57D3K]",
-  "onetrustFEScript":"$[env:onetrustfe_script;default=https://cdn.cookielaw.org/scripttemplates/otSDKStub.js]",
-  "onetrustFEScriptId":"$[env:onetrustfe_script_id;default=1f903639-98cf-412a-8aba-943b574ecef4-test]"
+  "feGtmTagId" : "$[env:FE_GA_TAG_VALUE;default=GTM-P57D3K]"
 }
