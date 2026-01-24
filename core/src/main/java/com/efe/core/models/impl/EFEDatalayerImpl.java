@@ -129,8 +129,8 @@ public class EFEDatalayerImpl implements EFEDatalayer {
 	 * @return the FE one trust script
 	 */
 	@Override
-	public String getOnetrustFEScript() {
-		return efeService.getOnetrustFEScript();
+	public String getOneTrustFEScript() {
+		return efeService.getOneTrustFEScript();
 	}
 
 	/**
@@ -139,8 +139,8 @@ public class EFEDatalayerImpl implements EFEDatalayer {
 	 * @return the FE one trust script id
 	 */
 	@Override
-	public String getOnetrustFEScriptId() {
-		return efeService.getOnetrustFEScriptId();
+	public String getOneTrustFEScriptId() {
+		return efeService.getOneTrustFEScriptId();
 	}
 
 	/**
