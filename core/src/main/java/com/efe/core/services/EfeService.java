@@ -191,14 +191,15 @@ public interface EfeService {
      *
      * @return the FE one trust script
      */
-    String getOnetrustFEScript();
+    String getOneTrustFEScript();
 
 	/**
 	 * Gets the FE one trust script id.
 	 *
 	 * @return the FE one trust script id
 	 */
-	String getOnetrustFEScriptId();
+
+    String getOneTrustFEScriptId();
     
 
 }

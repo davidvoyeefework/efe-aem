@@ -709,7 +709,7 @@ public class EfeServiceImpl implements EfeService {
 	 * @return the FE one trust script
 	 */
 	@Override
-	public String getOnetrustFEScript() {
+	public String getOneTrustFEScript() {
 		return onetrustFEScript;
 	}
 
@@ -719,7 +719,7 @@ public class EfeServiceImpl implements EfeService {
 	 * @return the FE one trust script id
 	 */
 	@Override
-	public String getOnetrustFEScriptId() {
+	public String getOneTrustFEScriptId() {
 		return onetrustFEScriptId;
 	}
 
