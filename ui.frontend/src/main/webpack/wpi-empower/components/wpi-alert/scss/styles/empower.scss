@@ -325,27 +325,6 @@ section.empower-wpi-theme {
         }
      
     }
-
-    @media screen and (max-width: 540px) {
-        .cmp-teaser {
-            display: flow-root;
-            margin-bottom: 16px; // space from next component
-        }
-        .cmp-teaser__content,
-        .cmp-teaser__description,
-        .cmp-teaser__title {
-            overflow-wrap: anywhere;
-            word-break: break-word;
-        }
-        .cmp-teaser__content,
-        .cmp-teaser__description {
-            height: auto !important;
-            max-height: none;
-            overflow: visible;
-        }
-    }
-
-
 }
 
 body.xf-web-container, body, #fe-iframe {
