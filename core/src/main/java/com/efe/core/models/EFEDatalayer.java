@@ -54,4 +54,18 @@ public interface EFEDatalayer {
 	 */
 	boolean isEnableGA();
 
+	/**
+	 * Gets the FE one trust script.
+	 *
+	 * @return the FE one trust script
+	 */
+	String getOneTrustFEScript();
+
+    /**
+     * Gets the FE one trust script id.
+     *
+     * @return the FE one trust script id
+     */
+    String getOneTrustFEScriptId();
+
 }
