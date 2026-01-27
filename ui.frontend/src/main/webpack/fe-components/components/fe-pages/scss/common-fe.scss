@@ -56,8 +56,8 @@
                     line-height: 1.2; // relative lineheight
                     top: -20px;
                     position: absolute;
-					left: 50%;                    
-                    transform: translateX(-50%); // Centers text above logo
+					left: 0;                    
+                    transform: none; // Centers text above logo
                     z-index: 2;
                     @media screen and (max-width: 360px) {
                     font-size: 10px;					
