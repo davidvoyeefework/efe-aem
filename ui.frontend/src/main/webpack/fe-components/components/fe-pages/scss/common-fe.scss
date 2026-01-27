@@ -59,10 +59,9 @@
                     left: 50%;                    
                     transform: translateX(-50%); // Centers text above logo
                     z-index: 2;
-
-                    @media screen and (max-width: 576px) { 
-                        font-size: 10px;
-                        top: -28px;
+                    @media screen and (max-width: 360px) {
+                    font-size: 10px;					
+                        top: -20px;
                     }
                 }
             }
