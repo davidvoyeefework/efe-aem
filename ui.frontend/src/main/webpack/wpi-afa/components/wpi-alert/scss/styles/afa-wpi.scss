@@ -5,7 +5,8 @@ section.afa-wpi-theme {
     .wpi-alert__inner {
         display: flex;
         align-items: flex-start;
-        gap: 10px;
+        padding-left: rem(12);
+        gap: rem(14);
     }
 
     .copy {
@@ -91,6 +92,8 @@ section.afa-wpi-theme {
         .wpi-alert__inner {
         flex-direction: column;
         align-items: flex-start;
+        padding-left: rem(10);
+        gap: rem(12);
         }
 
         .copy {
