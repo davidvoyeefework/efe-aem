@@ -364,15 +364,6 @@ public class EfeServiceImpl implements EfeService {
 		@AttributeDefinition(name = "EC Scheduler Embed URL", description = "EC Scheduler Embed URL")
 		String ECEmbedURL();
 
-		 /**
-		 * EC Scheduler Embed URL.
-		 *
-		 * @return the string
-		 */
-		@AttributeDefinition(name = "EC Scheduler Embed URL", description = "EC Scheduler Embed URL")
-		String ECEmbedURL();
-
-		
         /**
 		 * Onetrust FE script.
 		 *
