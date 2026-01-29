@@ -47,7 +47,7 @@
         .cmp-teaser--hero {
             .cmp-teaser__title {
                 font-family:'Open Sans';
-                @include media('>phone-m', '<tablet') {
+                @include media('>=phone-m', '<tablet') {
                     font-size: 28px;
                     line-height: 36px;
                 }
