@@ -46,7 +46,7 @@
     &.theme-vanguard, &.theme-aon, &.theme-ssga, &.theme-empower {
         .cmp-teaser--hero {
             .cmp-teaser__title {
-                font-family:'Open Sans';
+                font-family: inherit;
                 @include media('>=phone-m', '<tablet') {
                     font-size: 28px;
                     line-height: 36px;
@@ -60,20 +60,20 @@
                 letter-spacing: unset;
             }
             .cmp-teaser__description {
-                font-family:'Open Sans';
+                font-family: inherit;
                 color: #FFFFFF;
                 p {
                     font-size: 20px;
                     font-weight: 400;
                     line-height: 28px;
-                    font-family:'Open Sans';
+                    font-family: inherit;
                     color: #FFFFFF;
                 }
                 h1 {
                     font-size: 54px;
                     font-weight: 400;
                     line-height: 59.4px;
-                    font-family:'Open Sans';
+                    font-family: inherit;
                     color: #FFFFFF;
                 }
             }
