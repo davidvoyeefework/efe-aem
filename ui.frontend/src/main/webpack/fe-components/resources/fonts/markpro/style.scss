@@ -1,5 +1,20 @@
 @import "variables";
 
+@font-face {
+  font-family: "#{$markpro-font-family}";
+  src: url("#{$markpro-font-path}/#{$markpro-font-family}.eot?vqyiiz");
+  src: url("#{$markpro-font-path}/#{$markpro-font-family}.eot?vqyiiz#iefix")
+      format("embedded-opentype"),
+    url("#{$markpro-font-path}/#{$markpro-font-family}.otf?vqyiiz")
+      format("opentype"),
+    url("#{$markpro-font-path}/#{$markpro-font-family}.woff?vqyiiz")
+      format("woff"),
+    url("#{$markpro-font-path}/#{$markpro-font-family}.svg?vqyiiz##{$markpro-font-family}")
+      format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
 
 /* Regular (400) */
 @font-face {
