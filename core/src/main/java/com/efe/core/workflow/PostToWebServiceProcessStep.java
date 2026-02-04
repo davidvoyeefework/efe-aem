@@ -143,13 +143,13 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
             }
 
             try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
-                HttpPost httpPost = new HttpPost(efeService.getPartnerAPIAuthURL().trim() + "?grant_type=" + "urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer" +
-                        "&id_token=" + getJWTHeader());
+                HttpPost httpPost = new HttpPost(efeService.getPartnerAPIAuthURL().trim() + "?grant_type=" + "urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer");
                 httpPost.setHeader("Accept", "application/json");
                 httpPost.setHeader("Content-Type", "application/x-www-form-urlencoded");
                 List<NameValuePair> formParams = new ArrayList();
                 formParams.add(new BasicNameValuePair("client_id", efeService.getPrintClientId().trim()));
                 formParams.add(new BasicNameValuePair("client_secret",efeService.getPrintClientSecret().trim()));
+                formParams.add(new BasicNameValuePair("id_token", getJWTHeader()));
                 UrlEncodedFormEntity formValues = new UrlEncodedFormEntity(formParams);
                 httpPost.setEntity(formValues);
                 // Execute the request and get the response
