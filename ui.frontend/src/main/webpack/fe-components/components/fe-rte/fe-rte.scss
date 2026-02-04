@@ -96,7 +96,7 @@ sup {
     .cmp-text{
         & *{
             text-transform: none;
-            font-family: 'Open Sans';
+            font-family: var(--font-family);
         }
 
         b{
