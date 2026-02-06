@@ -19,7 +19,7 @@
 /* Regular (400) */
 @font-face {
   font-family: "Mark Pro";
-  src: url("./fonts/MarkPro-Regular.otf") format("opentype");
+  src: url("../resources/fonts/MarkPro-Regular.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -28,7 +28,7 @@
 /* Bold (700) */
 @font-face {
   font-family: "Mark Pro";
-  src: url("./fonts/MarkPro-Bold.otf") format("opentype");
+  src: url("../resources/fonts/MarkPro-Bold.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -37,7 +37,7 @@
 /* Italic (400 italic) — include only if you actually use italics */
 @font-face {
   font-family: "Mark Pro";
-  src: url("./fonts/MarkPro-Italic.otf") format("opentype");
+  src: url("../resources/fonts/MarkPro-Italic.otf") format("opentype");
   font-weight: 400;
   font-style: italic;
   font-display: swap;
@@ -46,7 +46,7 @@
 /* Bold Italic (700 italic) — include only if needed */
 @font-face {
   font-family: "Mark Pro";
-  src: url("./fonts/MarkPro-BoldItalic.otf") format("opentype");
+  src: url("../resources/fonts/MarkPro-BoldItalic.otf") format("opentype");
   font-weight: 700;
   font-style: italic;
   font-display: swap;
