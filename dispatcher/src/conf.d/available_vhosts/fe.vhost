@@ -13,6 +13,7 @@ Include conf.d/variables/custom.vars
 	ServerAlias	 "*.fe.com"
 	ServerAlias	 "*.financialengines.com"
 	ServerAlias	 "*.feitest.com"
+	ServerAlias	 "*.landingpages.feitest.com"
 	ServerAlias  "preview*.adobeaemcloud.com"
 	ServerAlias  "preview*.adobeaemcloud.net"
 
