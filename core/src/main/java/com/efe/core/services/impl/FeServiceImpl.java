@@ -128,6 +128,7 @@ public class FeServiceImpl implements FeService {
          */
         @AttributeDefinition(name = "Enable FE GTM", description = "Config to enable / disable FE GTM")
         boolean feGtmEnabled();
+
     }
 
     /**
@@ -243,4 +244,5 @@ public class FeServiceImpl implements FeService {
 	public boolean enableFeGtm() {
 		return isFeGtmEnabled;
 	}
+
 }

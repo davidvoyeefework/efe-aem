@@ -124,6 +124,26 @@ public class EFEDatalayerImpl implements EFEDatalayer {
 	}
 
 	/**
+	 * Gets the FE one trust script.
+	 *
+	 * @return the FE one trust script
+	 */
+	@Override
+	public String getOneTrustFEScript() {
+		return efeService.getOneTrustFEScript();
+	}
+
+	/**
+	 * Gets the FE one trust script id.
+	 *
+	 * @return the FE one trust script id
+	 */
+	@Override
+	public String getOneTrustFEScriptId() {
+		return efeService.getOneTrustFEScriptId();
+	}
+
+	/**
 	 * Gets the tracking links json.
 	 *
 	 * @return the trackingLinksJson

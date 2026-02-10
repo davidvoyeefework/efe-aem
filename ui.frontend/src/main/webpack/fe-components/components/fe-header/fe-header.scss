@@ -1,5 +1,5 @@
 $fe-header-direct-tablet-width: 424px;
-$fe-header-subadvised-tablet-width: 400px;
+$fe-header-subadvised-tablet-width: 577px;
 $fe-header-direct-mobile-width: 400px;
 $fe-header-subadvised-mobile-width: 368px;
 $fe-header-logo-height: 34px;
@@ -80,6 +80,16 @@ $fe-header-subadvised-vert-line-height: 44px;
                 width: 218px;
                 height: 45px;
                 padding-bottom: 40px;
+
+                // Mid-range: keep consistent size and spacing
+                @media (min-width: 577px) and (max-width: 1290px) {
+                    .cmp-image__image {
+                        width: 218px;
+                        height: 45px;
+                        object-fit: contain;
+                    }
+                }
+                
                 @media screen and (min-width: 1290px) {
                     .cmp-image__image {
                         width: 218px;
@@ -99,7 +109,7 @@ $fe-header-subadvised-vert-line-height: 44px;
         * {
             font-family: var( --fe-footer-header-font-family) !important;
         }
-		@media screen and (max-width: $fe-header-direct-tablet-width) {
+		@media screen and (max-width: #{$fe-header-direct-tablet-width}) {
 			#efe-nav-main .cmp-container--26 {
 				gap: 8px;
 			}
@@ -112,13 +122,15 @@ $fe-header-subadvised-vert-line-height: 44px;
 			}
 		}
 
-    @media screen and (min-width: #{$fe-header-subadvised-tablet-width}) and (max-width: 1200px) {
+        
+        @media screen and (min-width: #{$fe-header-subadvised-tablet-width}) and (max-width: 1200px) {
             .cmp-image--efe-logo-secondary.cmp-image--small::before {
                 top: 2.5rem; 
             }
         }
-		
+        
     }
+    
     &.theme-vanguard, &.theme-aon, &.theme-ssga, &.theme-empower {
         .minimal-header {
             #efe-nav-main .cmp-container--26 {
@@ -147,5 +159,4 @@ $fe-header-subadvised-vert-line-height: 44px;
             }
         }
     }
-} 
-
+}
