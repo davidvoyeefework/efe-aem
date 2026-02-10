@@ -46,34 +46,30 @@
     &.theme-vanguard, &.theme-aon, &.theme-ssga, &.theme-empower {
         .cmp-teaser--hero {
             .cmp-teaser__title {
-                font-family:'Open Sans';
-                @include media('>phone-m', '<tablet') {
-                    font-size: 28px;
-                    line-height: 36px;
-                }
-                @include media('<phone-m') {
-                    font-size: 22px;
-                    line-height: 28px;
+                font-family: var(--font-family);
+                @include media('>=tablet') {
+                    font-size: 54px;
+                    line-height: 59.4px;
                 }
                 color: #FFFFFF;
                 text-transform: capitalize;
                 letter-spacing: unset;
             }
             .cmp-teaser__description {
-                font-family:'Open Sans';
+                font-family: var(--font-family);
                 color: #FFFFFF;
                 p {
                     font-size: 20px;
                     font-weight: 400;
                     line-height: 28px;
-                    font-family:'Open Sans';
+                    font-family: var(--font-family);
                     color: #FFFFFF;
                 }
                 h1 {
                     font-size: 54px;
                     font-weight: 400;
                     line-height: 59.4px;
-                    font-family:'Open Sans';
+                    font-family: var(--font-family);
                     color: #FFFFFF;
                 }
             }

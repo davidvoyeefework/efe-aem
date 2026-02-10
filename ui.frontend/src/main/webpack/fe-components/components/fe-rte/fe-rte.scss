@@ -96,7 +96,7 @@ sup {
     .cmp-text{
         & *{
             text-transform: none;
-            font-family: 'Open Sans';
+            font-family: var(--font-family);
         }
 
         b{
@@ -108,6 +108,13 @@ sup {
             font-style: normal;
             line-height: 110%;
         }
+
+        &--heading-02{
+            font-size: rem(48px);
+            font-style: normal;
+            line-height: 110%;
+        }
+
         &--subhead-00{
             font-weight: 700;
             line-height: 118%;
