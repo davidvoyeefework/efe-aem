@@ -10,7 +10,7 @@
         window.efeSelfSchedulerEc.inject({ id: "${ecschedule.containerID @ context='attribute'}" });
 
         // Dynamic reset event from dialog
-        const resetEvent = "${ecschedule.resetEC}";
+        const resetEvent = "${ecschedule.resetEC @ context='attribute'}";
 
         if (resetEvent) {
             document.addEventListener(resetEvent, function() {
