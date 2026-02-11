@@ -14,6 +14,7 @@ import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import com.efe.core.constants.Constants;
 import com.efe.core.models.FormsSelector;
@@ -53,6 +54,14 @@ public class ModalButtonImpl implements ModalButton {
     @ValueMapValue
     private String id;
 
+    /** The OPEN Button */
+    @ValueMapValue
+    private String openModalButton;
+
+    /** The CLOSE Button */
+    @ValueMapValue
+    private String closeModalButton;
+
     /**
      * Injecting dynamicMediaService
      *
@@ -89,4 +98,27 @@ public class ModalButtonImpl implements ModalButton {
     public String getId() {
         return EFEUtil.getId(resource);
     }
+
+    @Override
+    public String getOpenModalButton() {
+        return openModalButton;
+    }
+
+    @Override
+    public String getCloseModalButton() {
+        return closeModalButton;
+    }
+
+    
+    @Override
+    public String getOpenModalEvent() {
+        // empty/blank/whitespace → null
+        return StringUtils.trimToNull(openModalButton);
+    }
+
+    @Override
+    public String getCloseModalEvent() {
+        return StringUtils.trimToNull(closeModalButton);
+    }
+
 }
