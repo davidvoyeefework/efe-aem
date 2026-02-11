@@ -6,6 +6,21 @@
         <div id="${ecschedule.containerID @ context='attribute'}"></div>
     </div>
     <script>
+        //Inject scheduler
         window.efeSelfSchedulerEc.inject({ id: "${ecschedule.containerID @ context='attribute'}" });
+
+        // Dynamic reset event from dialog
+        const resetEvent = "${ecschedule.resetEC}";
+
+        if (resetEvent) {
+            document.addEventListener(resetEvent, function() {
+                console.log("Reset event triggered:", resetEvent);
+
+                // Re-inject the scheduler 
+                window.efeSelfSchedulerEc.inject({
+                    id: "${ecschedule.containerID @ context='attribute'}"
+                });
+            });
+        }
     </script>
 </sly>

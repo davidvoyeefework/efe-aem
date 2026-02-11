@@ -24,4 +24,16 @@ public interface ModalButton {
      * @return button text/
     */
     String getButtonText();
+
+    /* Get open Button event*/
+
+    String getOpenModalButton();
+
+    /* Get close Button event*/
+
+    String getCloseModalButton();
+
+    String getOpenModalEvent();
+
+    String getCloseModalEvent();
 }

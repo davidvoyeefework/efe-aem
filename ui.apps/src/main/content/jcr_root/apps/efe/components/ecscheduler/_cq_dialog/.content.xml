@@ -20,6 +20,12 @@
                         emptyText="ec_scheduler"
                         required="{Boolean}false">
                     </containerID>
+                    <resetEC 
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldDescription="Reset EC Scheduler" 
+                        fieldLabel="Reset EC Scheduler"
+                        name="./resetEC" />
                 </items>
             </column>
         </items>
