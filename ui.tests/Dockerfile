@@ -13,19 +13,22 @@
 # limitations under the License.
 
 FROM cypress/included:13.17.0
-
+ 
 ENV APP_PATH /usr/src/app
-RUN apt -qqy update \
-    # Generic dependencies
-    && apt -qqy --no-install-recommends install \
-    curl \
-    build-essential
-# <<< End EAAS Convention \
-
+ 
+# Avoid broken/unsigned browser apt repos baked into the Cypress image
+RUN rm -f /etc/apt/sources.list.d/google-chrome.list \
+          /etc/apt/sources.list.d/microsoft-edge.list \
+          /etc/apt/sources.list.d/microsoft-edge-stable.list \
+&& apt-get -qqy update \
+&& apt-get -qqy --no-install-recommends install \
+        curl \
+        build-essential \
+&& rm -rf /var/lib/apt/lists/*
+ 
 # Set Application Environment
 WORKDIR ${APP_PATH}
 COPY ./test-module ./
 RUN npm install
-# no need to wait for selenium
+ 
 ENTRYPOINT ["bash","run.sh"]
-
