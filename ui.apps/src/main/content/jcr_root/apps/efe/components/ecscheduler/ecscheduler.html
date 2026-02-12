@@ -27,12 +27,7 @@
         }
 
         if (resetEvent) {
-            document.addEventListener(resetEvent, function() {
-                console.log("Reset event triggered:", resetEvent);
-
-                // Re-inject the scheduler 
-                reinjectEcScheduler();
-            } , {once: false});
+            document.addEventListener(resetEvent, reinjectEcScheduler);
         }
     </script>
 </sly>

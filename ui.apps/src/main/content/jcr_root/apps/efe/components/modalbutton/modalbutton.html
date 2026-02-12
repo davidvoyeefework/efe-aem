@@ -7,7 +7,7 @@
         <span class='cmp-button__text'>${modal.buttonText}</span>
     </button>
 </div>
-<div class="cmp-button--modal d-none" id="${modal.id}" data-open-event="${modal.openModalEvent}" data-close-event="${modal.closeModalEvent}" data-reset-event="${modal.resetEvent}" >
+<div class="cmp-button--modal d-none" id="${modal.id}" data-open-event="${modal.openModalEvent}" data-close-event="${modal.closeModalEvent}" >
     <div class="dialog-overlay"></div><!-- comment -->
     <div class="cmp-button-modal-content" role="document"><!-- comment -->
         <div class="cmp-button-modal-content__container responsivegrid"><!-- comment -->
@@ -36,25 +36,33 @@
     modalButtons.forEach(el => el.addEventListener('click', event => {
         var modalComponent = document.getElementById(event.currentTarget.dataset.modalId);
         modalComponent.classList.remove("d-none");
+
+        const openEventName = modalComponent.dataset.openEvent;
+        if (openEventName) {
+            document.dispatchEvent(new CustomEvent(openEventName, {
+            detail: {
+                modalId: modalComponent.id,
+                component: 'modalbutton',
+                source: 'modal-open'
+            }
+            }));
+        }
     }));
 
     modalCloseButtons.forEach(el => el.addEventListener('click', event => {
         var modalComponent = document.getElementById(event.currentTarget.dataset.modalId);
         modalComponent.classList.add("d-none");
 
-        //    (ECScheduler listens: document.addEventListener(resetEvent, ...))
-      var resetEventName = modalComponent.dataset.resetEvent; // from data-reset-event
-      if (resetEventName) {
-          // Dispatch Event so your ECScheduler listener picks it up
-          document.dispatchEvent(new CustomEvent(resetEventName, {
-              detail: {
-                  modalId: modalComponent.id,
-                  component: 'modalbutton',
-                  source: 'modal-close'
-              }
-          }));
-
-      }
+       const closeEventName = modalComponent.dataset.closeEvent;
+        if (closeEventName) {
+            document.dispatchEvent(new CustomEvent(closeEventName, {
+            detail: {
+                modalId: modalComponent.id,
+                component: 'modalbutton',
+                source: 'modal-close'
+            }
+            }));
+        }
     }));
 </script>
 
