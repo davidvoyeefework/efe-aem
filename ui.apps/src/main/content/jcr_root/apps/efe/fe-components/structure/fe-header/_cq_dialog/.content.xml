@@ -62,6 +62,21 @@
                                                 fieldDescription="Add primary logo alt text here"
                                                 fieldLabel="Alt Text for Primary Logo"
                                                 name="./primaryLogoAltText"/>
+                                            <secondarylogod
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                allowUpload="{Boolean}false"
+                                                fieldDescription="Add secondary header logo here"
+                                                fieldLabel="Secondary Logo"
+                                                fileReferenceParameter="./secondaryLogod"
+                                                name="./logo2"
+                                                rootPath="/content/dam/efe"/>
+                                            <secondarylogodalt
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="Add secondary logo alt text here"
+                                                fieldLabel="Alt Text for Secondary Logo"
+                                                name="./secondaryLogodAltText"/>
                                             <secondaryproperties
                                                 granite:class="hide header-option-listfrom-showhide-target foundation-layout-util-vmargin"
                                                 jcr:primaryType="nt:unstructured"
