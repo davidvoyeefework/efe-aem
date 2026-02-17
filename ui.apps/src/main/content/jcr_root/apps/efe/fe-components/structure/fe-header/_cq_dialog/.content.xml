@@ -76,14 +76,14 @@
                                                 allowUpload="{Boolean}false"
                                                 fieldDescription="Add secondary header logo here (Direct)"
                                                 fieldLabel="Secondary Logo (Direct)"
-                                                name="./secondaryLogoDirect"
+                                                name="./secondaryLogo"
                                                 rootPath="/content/dam/efe"/>
                                             <secondarylogodalt
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 fieldDescription="Add alt text for Direct secondary logo"
                                                 fieldLabel="Alt Text (Direct Secondary Logo)"
-                                                name="./secondaryLogoDirectAltText"/>
+                                                name="./secondaryLogoAltText"/>
                                             </items>
                                             </secondaryproperties-direct>
                                             <secondaryproperties
