@@ -10,6 +10,14 @@ public interface ModalButton {
      * @return the id
     */
     String getId();
+
+    /**
+     * Gets the Button id.
+     *
+     * @return the id
+    */
+
+    String getButtonId();
     
     /**
      * Gets the experience fragment reference.

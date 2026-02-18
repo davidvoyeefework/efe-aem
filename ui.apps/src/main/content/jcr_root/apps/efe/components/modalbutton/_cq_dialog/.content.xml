@@ -42,12 +42,12 @@
                         variant="web"
                         fieldDescription="Choose the experience fragment to use as modal content"
                         />
-                    <id
+                    <buttonId
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                        fieldDescription="HTML ID attribute to apply to the component."
-                        fieldLabel="ID"
-                        name="./id"/>
+                        fieldDescription="Button HTML ID attribute to apply to the component."
+                        fieldLabel="Button ID"
+                        name="./buttonId"/>
                 </items>
             </column>
         </items>

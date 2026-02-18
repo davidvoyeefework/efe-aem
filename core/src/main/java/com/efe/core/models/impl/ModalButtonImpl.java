@@ -54,6 +54,10 @@ public class ModalButtonImpl implements ModalButton {
     @ValueMapValue
     private String id;
 
+    /** The Button id. */
+    @ValueMapValue
+    private String buttonId;
+
     /** The OPEN Button */
     @ValueMapValue
     private String openModalButton;
@@ -77,6 +81,16 @@ public class ModalButtonImpl implements ModalButton {
     @Override
     public String getButtonText() {
         return buttonText;
+    }
+
+    /**
+     * Gets the Button Id.
+     *
+     * @return the Button Id
+     */
+    @Override
+    public String getButtonId() {
+        return buttonId;
     }
 
     /**
