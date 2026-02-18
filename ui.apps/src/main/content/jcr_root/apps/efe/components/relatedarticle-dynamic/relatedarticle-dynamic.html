@@ -1,6 +1,17 @@
-<div class="relatedarticle-ed-center">
-  <ul data-sly-use.article="com.efe.core.models.RelatedArticleDynamic"
-      data-sly-list.teaser="${article.relatedTeasers}"
+<div class="relatedarticle-ed-center"
+     data-sly-use.article="com.efe.core.models.RelatedArticleDynamic">
+
+  <!-- DEBUG (safe + always renders on author) -->
+  <sly data-sly-test="${wcmmode.edit || wcmmode.preview}">
+    <div class="rad-debug"
+         style="display:none"
+         data-wcmmode-edit="${wcmmode.edit}"
+         data-wcmmode-preview="${wcmmode.preview}"
+         data-teasercount="${article.relatedTeasers.size}">
+    </div>
+  </sly>
+
+  <ul data-sly-list.teaser="${article.relatedTeasers}"
       class="cmp-list">
 
     <li class="teaser cmp-teaser--thumbnail">
@@ -15,22 +26,14 @@
         <!-- look up hero by canonical page key -->
         <sly data-sly-set.hero="${article.teaserHeroImages[canonicalKey]}" />
 
-        <!-- ================= DEBUG (TEMPORARY) ================= -->
-        <!-- DEBUG: linkUrl=${linkUrl} -->
-        <!-- DEBUG: canonicalKey=${canonicalKey} -->
-        <!-- DEBUG: heroFromMap=${hero} -->
-        <!-- ====================================================== -->
-
         <div class="cmp-teaser__content">
 
-          <!-- Title -->
           <h2 class="title cmp-title--subhead-01">
             <a href="${linkUrl}">
               ${teaser.valueMap['jcr:title']}
             </a>
           </h2>
 
-          <!-- Description (p tag + class) -->
           <sly data-sly-test="${teaser.valueMap.text}">
             <p class="cmp-text--body-02">
               ${teaser.valueMap.text}
@@ -44,34 +47,27 @@
 
           <sly data-sly-test="${teaser.valueMap.assetTypeTagIds}">
             <sly data-sly-list.tid="${teaser.valueMap.assetTypeTagIds}">
-
               <sly data-sly-test="${tid == 'efe:asset-type/article'}">
                 <sly data-sly-set.hasArticle="${true}" />
               </sly>
-
               <sly data-sly-test="${tid == 'efe:asset-type/video'}">
                 <sly data-sly-set.hasVideo="${true}" />
               </sly>
-
               <sly data-sly-test="${tid == 'efe:asset-type/podcast'}">
                 <sly data-sly-set.hasPodcast="${true}" />
               </sly>
-
             </sly>
           </sly>
 
           <sly data-sly-test="${hasArticle}">
             <div class="cmp-button--article"></div>
           </sly>
-
           <sly data-sly-test="${!hasArticle && hasVideo}">
             <div class="cmp-button--video"></div>
           </sly>
-
           <sly data-sly-test="${!hasArticle && !hasVideo && hasPodcast}">
             <div class="cmp-button--podcast"></div>
           </sly>
-
           <sly data-sly-test="${!hasArticle && !hasVideo && !hasPodcast}">
             <div class="cmp-button--article"></div>
           </sly>
@@ -99,4 +95,12 @@
     </li>
 
   </ul>
+
+  <!-- Optional: author-visible message when 0 results -->
+  <sly data-sly-test="${(wcmmode.edit || wcmmode.preview) && article.relatedTeasers.size == 0}">
+    <div style="margin-top:10px; font-size:12px; opacity:.7;">
+      RelatedArticleDynamic: 0 items returned.
+    </div>
+  </sly>
+
 </div>

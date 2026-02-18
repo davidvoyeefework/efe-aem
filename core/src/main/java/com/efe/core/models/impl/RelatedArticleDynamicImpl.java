@@ -1,7 +1,6 @@
 package com.efe.core.models.impl;
 
 import java.util.*;
-
 import javax.annotation.PostConstruct;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
@@ -24,7 +23,7 @@ import com.day.cq.wcm.api.PageManager;
 import com.efe.core.models.RelatedArticleDynamic;
 
 @Model(
-    adaptables = { SlingHttpServletRequest.class },
+    adaptables = SlingHttpServletRequest.class,
     adapters = RelatedArticleDynamic.class,
     resourceType = RelatedArticleDynamicImpl.RESOURCE_TYPE,
     defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL
@@ -34,14 +33,13 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
     public static final String RESOURCE_TYPE = "efe/components/relatedarticle-dynamic";
 
     private static final String EDUCATION_ROOT = "/content/efe/us/en/education";
+    private static final String ARTICLES_CF_ROOT = "/content/dam/efe/cf/corporate/articles";
+
     private static final String TEASER_RT = "core/wcm/components/teaser/v1/teaser";
     private static final String STATE_TAG_PREFIX = "efe:content-type/location/us-state/";
-
     private static final String ARTICLE_DETAILS_NODE_NAME = "articledetails";
     private static final String ARTICLE_DETAILS_RESOURCE_TYPE = "efe/components/articledetails";
     private static final String ARTICLE_FRAGMENT_PROP = "articleFragmentPath";
-
-    private static final String ASSET_TYPE_TAG_PREFIX = "efe:asset-type/";
 
     @Self
     private SlingHttpServletRequest request;
@@ -52,47 +50,52 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
     @OSGiService
     private QueryBuilder queryBuilder;
 
-    /**
-     * Dialog field: name="./maxItems"
-     * blank or 0 => unlimited
-     */
+    /** Dialog field */
     @ValueMapValue(name = "maxItems")
     private Integer maxItems;
 
     private List<String> relatedArticlePagePaths = Collections.emptyList();
-
-    // canonical page path (no .html) -> hero image (from CF)
     private final Map<String, String> heroImageByPagePath = new HashMap<>();
+
+    private enum Mode {
+        LOCATION,
+        PLANNER
+    }
+
+    /* ===================== INIT ===================== */
 
     @PostConstruct
     protected void init() {
-        Session session = resourceResolver != null ? resourceResolver.adaptTo(Session.class) : null;
+        Session session = resourceResolver.adaptTo(Session.class);
         if (session == null || queryBuilder == null) return;
 
-        String stateCode = resolveStateCode();
-        if (StringUtils.isBlank(stateCode)) return;
-
-        String stateTagId = STATE_TAG_PREFIX + stateCode.toLowerCase(Locale.US);
-
-        // null => unlimited
+        Mode mode = resolveMode();
         Integer limit = resolveLimitOrNull();
 
-        this.relatedArticlePagePaths = findEducationPagesByStateTag(stateTagId, session, limit);
+        if (mode == Mode.LOCATION) {
+            String stateCode = resolveSelector(0);
+            if (StringUtils.isBlank(stateCode)) return;
+
+            String stateTagId = STATE_TAG_PREFIX + stateCode.toLowerCase(Locale.US);
+            relatedArticlePagePaths = findEducationPagesByStateTag(stateTagId, session, limit);
+        }
+
+        if (mode == Mode.PLANNER) {
+            String plannerId = resolveSelector(2);
+            if (StringUtils.isBlank(plannerId)) return;
+
+            relatedArticlePagePaths = findEducationPagesByPlanner(plannerId, session, limit);
+        }
     }
+
+    /* ===================== PUBLIC API ===================== */
 
     @Override
     public List<Resource> getRelatedTeasers() {
-        if (resourceResolver == null || relatedArticlePagePaths == null) {
-            return Collections.emptyList();
-        }
-
         PageManager pageManager = resourceResolver.adaptTo(PageManager.class);
-        if (pageManager == null) {
-            return Collections.emptyList();
-        }
+        if (pageManager == null) return Collections.emptyList();
 
         heroImageByPagePath.clear();
-
         List<Resource> teasers = new ArrayList<>();
         int i = 0;
 
@@ -100,35 +103,27 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
             Page page = pageManager.getPage(path);
             if (page == null) continue;
 
-            ValueMap teaserProps = buildTeaserProps(page);
+            ValueMap props = buildTeaserProps(page);
 
-            // populate hero map using canonical page path key (no .html)
             String fragmentPath = getArticleFragmentPathFromArticleDetails(page);
             String hero = getHeroImageFromContentFragment(fragmentPath);
             if (StringUtils.isNotBlank(hero)) {
                 heroImageByPagePath.put(page.getPath(), hero);
             }
 
-            Resource syntheticTeaser = new SyntheticResource(
+            teasers.add(new SyntheticResource(
                 resourceResolver,
-                path + "/_syntheticTeaser_" + (i++),
+                path + "/_synthetic_" + (i++),
                 TEASER_RT
             ) {
                 @Override
                 public ValueMap getValueMap() {
-                    return teaserProps;
+                    return props;
                 }
-            };
-
-            teasers.add(syntheticTeaser);
+            });
         }
 
         return teasers;
-    }
-
-    @Override
-    public List<String> getRelatedArticlePagePaths() {
-        return relatedArticlePagePaths;
     }
 
     @Override
@@ -137,84 +132,125 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
     }
 
     @Override
-    public String getLinkText() {
-        return null;
+    public List<String> getRelatedArticlePagePaths() {
+        return relatedArticlePagePaths;
     }
 
-    @Override
-    public String getRequestText() {
-        return null;
-    }
-
-    /**
-     * Returns 0 when unlimited (blank or 0 in dialog).
-     */
     @Override
     public int getMaxItems() {
         Integer limit = resolveLimitOrNull();
         return limit != null ? limit : 0;
     }
 
-    /* ---------------- Helpers ---------------- */
+    /* ===================== MODE ===================== */
 
-    /**
-     * @return Integer limit when maxItems > 0, otherwise null (unlimited)
-     */
-    private Integer resolveLimitOrNull() {
-        if (maxItems == null || maxItems.intValue() <= 0) {
-            return null; // unlimited
-        }
-        return maxItems.intValue();
-    }
-
-    private String resolveStateCode() {
-        if (request == null || request.getRequestPathInfo() == null) {
-            return request != null ? request.getParameter("state") : null;
-        }
+    private Mode resolveMode() {
         String[] selectors = request.getRequestPathInfo().getSelectors();
-        if (selectors != null && selectors.length > 0 && StringUtils.isNotBlank(selectors[0])) {
-            return selectors[0];
+        if (selectors != null && selectors.length >= 3) {
+            return Mode.PLANNER;
         }
-        return request.getParameter("state");
+        return Mode.LOCATION;
     }
 
-    private List<String> findEducationPagesByStateTag(String stateTagId, Session session, Integer limitOrNull) {
-        Map<String, String> p = new HashMap<>();
+    private String resolveSelector(int index) {
+        String[] selectors = request.getRequestPathInfo().getSelectors();
+        if (selectors != null && selectors.length > index) {
+            return selectors[index];
+        }
+        return null;
+    }
 
+    private Integer resolveLimitOrNull() {
+        return (maxItems == null || maxItems <= 0) ? null : maxItems;
+    }
+
+    /* ===================== LOCATION QUERY ===================== */
+
+    private List<String> findEducationPagesByStateTag(String tagId, Session session, Integer limit) {
+        Map<String, String> p = new HashMap<>();
         p.put("path", EDUCATION_ROOT);
         p.put("type", "cq:PageContent");
         p.put("property", "cq:tags");
-        p.put("property.value", stateTagId);
-
+        p.put("property.value", tagId);
         p.put("orderby", "@cq:lastModified");
         p.put("orderby.sort", "desc");
 
-        // ✅ Only set p.limit when author specified maxItems > 0
-        if (limitOrNull != null) {
-            p.put("p.limit", String.valueOf(limitOrNull));
-        }
+        if (limit != null) p.put("p.limit", limit.toString());
 
-        Query query = queryBuilder.createQuery(PredicateGroup.create(p), session);
-        SearchResult result = query.getResult();
+        return executePageQuery(p, session, limit);
+    }
+
+    /* ===================== PLANNER QUERY ===================== */
+
+    private List<String> findEducationPagesByPlanner(String plannerId, Session session, Integer limit) {
+        Map<String, String> p = new HashMap<>();
+        p.put("path", ARTICLES_CF_ROOT);
+        p.put("type", "dam:Asset");
+        p.put("property", "jcr:content/data/master/planner");
+        p.put("property.operation", "like");
+        p.put("property.value", "%/planners/" + plannerId + "/%");
+        p.put("orderby", "@jcr:content/jcr:lastModified");
+        p.put("orderby.sort", "desc");
+
+        if (limit != null) p.put("p.limit", limit.toString());
+
+        Query q = queryBuilder.createQuery(PredicateGroup.create(p), session);
+        SearchResult result = q.getResult();
 
         List<String> pages = new ArrayList<>();
 
         for (Hit hit : result.getHits()) {
             try {
-                String contentPath = hit.getPath(); // /page/jcr:content
-                pages.add(StringUtils.substringBefore(contentPath, "/jcr:content"));
-            } catch (RepositoryException e) {
-                // ignore
-            }
+                Resource cf = resourceResolver.getResource(hit.getPath());
+                if (cf == null) continue;
+
+                String articlePage = resolveArticlePageFromFragment(cf);
+                if (articlePage != null) {
+                    pages.add(articlePage);
+                }
+            } catch (RepositoryException ignore) {}
         }
 
-        // ✅ Safety trim ONLY when a limit was specified
-        if (limitOrNull != null && pages.size() > limitOrNull) {
-            return new ArrayList<>(pages.subList(0, limitOrNull));
-        }
-
-        return pages;
+        return limit != null && pages.size() > limit
+            ? pages.subList(0, limit)
+            : pages;
     }
+
+    /* ===================== SHARED HELPERS ===================== */
+
+    private List<String> executePageQuery(Map<String, String> predicates, Session session, Integer limit) {
+        Query q = queryBuilder.createQuery(PredicateGroup.create(predicates), session);
+        SearchResult result = q.getResult();
+
+        List<String> pages = new ArrayList<>();
+        for (Hit hit : result.getHits()) {
+            try {
+                pages.add(StringUtils.substringBefore(hit.getPath(), "/jcr:content"));
+            } catch (RepositoryException ignore) {}
+        }
+
+        return limit != null && pages.size() > limit
+            ? pages.subList(0, limit)
+            : pages;
+    }
+
+    private String resolveArticlePageFromFragment(Resource cf) {
+        ResourceResolver rr = cf.getResourceResolver();
+        String fragmentPath = cf.getPath();
+
+        Iterator<Resource> refs = rr.findResources(
+            "SELECT * FROM [nt:unstructured] AS s WHERE s.[articleFragmentPath] = '" + fragmentPath + "'",
+            javax.jcr.query.Query.JCR_SQL2
+        );
+
+        if (refs.hasNext()) {
+            Resource articleDetails = refs.next();
+            return StringUtils.substringBefore(articleDetails.getPath(), "/jcr:content");
+        }
+        return null;
+    }
+
+    /* ===================== TEASER BUILD ===================== */
 
     private ValueMap buildTeaserProps(Page page) {
         Map<String, Object> props = new HashMap<>();
@@ -225,105 +261,53 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
         );
 
         props.put("jcr:title", title);
-
-        // ✅ Always link to .html
         props.put("linkURL", page.getPath() + ".html");
 
-        // Subtitle from CF -> teaser text
         String fragmentPath = getArticleFragmentPathFromArticleDetails(page);
-        String subtitleHtml = getSubtitleFromContentFragment(fragmentPath);
-        String teaserText = StringUtils.defaultIfBlank(stripHtml(subtitleHtml), page.getDescription());
+        String subtitle = stripHtml(getElementFromContentFragment(fragmentPath, "subtitle"));
 
-        props.put("text", teaserText);
-        props.put("description", teaserText);
-        props.put("jcr:description", teaserText);
+        props.put("text", StringUtils.defaultIfBlank(subtitle, page.getDescription()));
         props.put("textFromPage", false);
-        props.put("descriptionFromPage", false);
-
-        // asset type tags
-        addAssetTypeTagsToProps(page, props);
 
         return new ValueMapDecorator(props);
     }
 
-    private void addAssetTypeTagsToProps(Page page, Map<String, Object> props) {
-        if (page == null || props == null) return;
-
-        Resource content = page.getContentResource();
-        if (content == null) return;
-
-        String[] allTagIds = content.getValueMap().get("cq:tags", String[].class);
-        if (allTagIds == null || allTagIds.length == 0) return;
-
-        List<String> assetTagIds = new ArrayList<>();
-        for (String id : allTagIds) {
-            if (StringUtils.startsWith(id, ASSET_TYPE_TAG_PREFIX)) {
-                assetTagIds.add(id);
-            }
-        }
-        if (assetTagIds.isEmpty()) return;
-
-        props.put("assetTypeTagIds", assetTagIds.toArray(new String[0]));
-
-        TagManager tagManager = resourceResolver != null ? resourceResolver.adaptTo(TagManager.class) : null;
-        if (tagManager == null) return;
-
-        List<String> assetTagTitles = new ArrayList<>();
-        for (String id : assetTagIds) {
-            Tag t = tagManager.resolve(id);
-            if (t != null && StringUtils.isNotBlank(t.getTitle())) {
-                assetTagTitles.add(t.getTitle());
-            }
-        }
-        if (!assetTagTitles.isEmpty()) {
-            props.put("assetTypeTagTitles", assetTagTitles.toArray(new String[0]));
-        }
-    }
-
     private String getArticleFragmentPathFromArticleDetails(Page page) {
-        if (page == null) return null;
-
         Resource content = page.getContentResource();
         if (content == null) return null;
 
-        Resource articleDetails = findArticleDetailsComponent(content);
-        if (articleDetails == null) return null;
-
-        return articleDetails.getValueMap().get(ARTICLE_FRAGMENT_PROP, String.class);
+        Resource details = findArticleDetailsComponent(content);
+        return details != null
+            ? details.getValueMap().get(ARTICLE_FRAGMENT_PROP, String.class)
+            : null;
     }
 
     private Resource findArticleDetailsComponent(Resource root) {
-        if (root == null) return null;
-
         for (Resource child : root.getChildren()) {
-            if (ARTICLE_DETAILS_NODE_NAME.equals(child.getName())) return child;
-            if (ARTICLE_DETAILS_RESOURCE_TYPE.equals(child.getResourceType())) return child;
-
+            if (ARTICLE_DETAILS_NODE_NAME.equals(child.getName()) ||
+                ARTICLE_DETAILS_RESOURCE_TYPE.equals(child.getResourceType())) {
+                return child;
+            }
             Resource found = findArticleDetailsComponent(child);
             if (found != null) return found;
         }
         return null;
     }
 
-    private String getSubtitleFromContentFragment(String fragmentPath) {
-        return getElementFromContentFragment(fragmentPath, "subtitle");
-    }
-
     private String getHeroImageFromContentFragment(String fragmentPath) {
         return getElementFromContentFragment(fragmentPath, "heroImage");
     }
 
-    private String getElementFromContentFragment(String fragmentPath, String elementName) {
-        if (StringUtils.isBlank(fragmentPath) || StringUtils.isBlank(elementName) || resourceResolver == null) return null;
+    private String getElementFromContentFragment(String fragmentPath, String name) {
+        if (StringUtils.isBlank(fragmentPath)) return null;
+        Resource cfRes = resourceResolver.getResource(fragmentPath);
+        if (cfRes == null) return null;
 
-        Resource cfResource = resourceResolver.getResource(fragmentPath);
-        if (cfResource == null) return null;
-
-        ContentFragment cf = cfResource.adaptTo(ContentFragment.class);
+        ContentFragment cf = cfRes.adaptTo(ContentFragment.class);
         if (cf == null) return null;
 
-        ContentElement el = cf.getElement(elementName);
-        return el != null ? StringUtils.trimToNull(el.getContent()) : null;
+        ContentElement el = cf.getElement(name);
+        return el != null ? el.getContent() : null;
     }
 
     private String stripHtml(String html) {
