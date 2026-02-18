@@ -2,7 +2,7 @@
 <sly data-sly-use.clientLib="core/wcm/components/commons/v1/templates/clientlib.html">
 <sly data-sly-call="${clientLib.js @ categories='efe.modalbutton'}" />  
 
-<div class='button cmp-button--button-primary cmp-button--center cmp-button--default cmp-button--default'>
+<div id = "${modal.buttonId}" class='button cmp-button--button-primary cmp-button--center cmp-button--default cmp-button--default'>
     <button class='cmp-button cmp-modal--button' data-modal-id = "${modal.id}" value="${modal.buttonText}">
         <span class='cmp-button__text'>${modal.buttonText}</span>
     </button>
