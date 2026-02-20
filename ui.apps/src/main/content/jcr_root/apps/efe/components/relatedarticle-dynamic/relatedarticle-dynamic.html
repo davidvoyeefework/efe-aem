@@ -1,16 +1,6 @@
 <div class="relatedarticle-ed-center"
      data-sly-use.article="com.efe.core.models.RelatedArticleDynamic">
 
-  <!-- DEBUG (safe + always renders on author) -->
-  <sly data-sly-test="${wcmmode.edit || wcmmode.preview}">
-    <div class="rad-debug"
-         style="display:none"
-         data-wcmmode-edit="${wcmmode.edit}"
-         data-wcmmode-preview="${wcmmode.preview}"
-         data-teasercount="${article.relatedTeasers.size}">
-    </div>
-  </sly>
-
   <ul data-sly-list.teaser="${article.relatedTeasers}"
       class="cmp-list">
 
@@ -95,12 +85,5 @@
     </li>
 
   </ul>
-
-  <!-- Optional: author-visible message when 0 results -->
-  <sly data-sly-test="${(wcmmode.edit || wcmmode.preview) && article.relatedTeasers.size == 0}">
-    <div style="margin-top:10px; font-size:12px; opacity:.7;">
-      RelatedArticleDynamic: 0 items returned.
-    </div>
-  </sly>
 
 </div>

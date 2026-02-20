@@ -29,7 +29,7 @@
                                 <helpText
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/text"
-                                    text="This component only works if there are URL params present and a state selector such as CA for California is in the 1st param position."/>
+                                    text="This component only works if there are URL params present on page. It is desgined to work on Location and Planner Bio pages."/>
                             </items>
                             </componentHelp>                       
                             <columns
