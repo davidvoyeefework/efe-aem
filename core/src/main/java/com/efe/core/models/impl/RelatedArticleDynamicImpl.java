@@ -28,20 +28,16 @@ import com.efe.core.models.RelatedArticleDynamic;
 )
 public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
 
+    // Constants 
     public static final String RESOURCE_TYPE = "efe/components/relatedarticle-dynamic";
-
     private static final String EDUCATION_ROOT = "/content/efe/us/en/education";
     private static final String ARTICLES_CF_ROOT = "/content/dam/efe/cf/corporate/articles";
-
     private static final String PLANNER_CF_ROOT = "/content/dam/efe/cf/plannerlocation/planners";
-
     private static final String TEASER_RT = "core/wcm/components/teaser/v1/teaser";
     private static final String STATE_TAG_PREFIX = "efe:content-type/location/us-state/";
     private static final String ARTICLE_DETAILS_NODE_NAME = "articledetails";
     private static final String ARTICLE_DETAILS_RESOURCE_TYPE = "efe/components/articledetails";
     private static final String ARTICLE_FRAGMENT_PROP = "articleFragmentPath";
-
-    private static final String ASSET_TYPE_TAG_PREFIX = "efe:asset-type/";
 
     @Self
     private SlingHttpServletRequest request;
@@ -52,11 +48,12 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
     @OSGiService
     private QueryBuilder queryBuilder;
 
-    /** Dialog field */
+    /** Dialog field: name="./maxItems" ; blank or 0 => unlimited */
     @ValueMapValue(name = "maxItems")
     private Integer maxItems;
 
     private List<String> relatedArticlePagePaths = Collections.emptyList();
+
     private final Map<String, String> heroImageByPagePath = new HashMap<>();
 
     private enum Mode {
@@ -68,13 +65,14 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
 
     @PostConstruct
     protected void init() {
-        if (resourceResolver == null || queryBuilder == null || request == null || request.getRequestPathInfo() == null) {
+        if (resourceResolver == null || queryBuilder == null || request == null) {
             return;
         }
 
         Session session = resourceResolver.adaptTo(Session.class);
         if (session == null) return;
 
+        // Determins if on location or planner page based on selectors, then runs the appropriate query to find related article pages.
         Mode mode = resolveMode();
         Integer limit = resolveLimitOrNull();
 
@@ -87,24 +85,23 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
             return;
         }
 
-        if (mode == Mode.PLANNER) {
-            String plannerId = resolveSelector(2); // 3rd selector
-            if (StringUtils.isBlank(plannerId)) return;
+        // PLANNER mode:
+        // 1) authored-by-planner articles first
+        // 2) then state-based articles for planner primaryOffice state
+        // 3) dedupe and apply maxItems at the end
+        String plannerId = resolveSelector(2);
+        if (StringUtils.isBlank(plannerId)) return;
 
-            // 1) Primary attempt: authored articles (CF planner property)
-            List<String> pages = findEducationPagesByPlanner(plannerId, session, limit);
+        List<String> authored = findEducationPagesByPlanner(plannerId, session, null); 
 
-            // 2) Fallback: if 0 results, use planner primary office state => treat like location state
-            if (pages == null || pages.isEmpty()) {
-                String stateFromPrimaryOffice = resolvePlannerPrimaryOfficeState(plannerId);
-                if (StringUtils.isNotBlank(stateFromPrimaryOffice)) {
-                    String stateTagId = STATE_TAG_PREFIX + stateFromPrimaryOffice.toLowerCase(Locale.US);
-                    pages = findEducationPagesByStateTag(stateTagId, session, limit);
-                }
-            }
-
-            relatedArticlePagePaths = (pages != null) ? pages : Collections.emptyList();
+        String primaryState = resolvePlannerPrimaryOfficeState(plannerId);
+        List<String> stateBased = Collections.emptyList();
+        if (StringUtils.isNotBlank(primaryState)) {
+            String stateTagId = STATE_TAG_PREFIX + primaryState.toLowerCase(Locale.US);
+            stateBased = findEducationPagesByStateTag(stateTagId, session, null); // don't limit yet; limit after merge
         }
+
+        relatedArticlePagePaths = mergeAuthoredThenState(authored, stateBased, limit);
     }
 
     /* ===================== PUBLIC API ===================== */
@@ -119,6 +116,7 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
         if (pageManager == null) return Collections.emptyList();
 
         heroImageByPagePath.clear();
+
         List<Resource> teasers = new ArrayList<>();
         int i = 0;
 
@@ -131,7 +129,6 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
             String fragmentPath = getArticleFragmentPathFromArticleDetails(page);
             String hero = getHeroImageFromContentFragment(fragmentPath);
             if (StringUtils.isNotBlank(hero)) {
-                // Key MUST match the HTL canonicalKey logic (page path with no .html)
                 heroImageByPagePath.put(page.getPath(), hero);
             }
 
@@ -160,9 +157,6 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
         return relatedArticlePagePaths;
     }
 
-    /**
-     * Returns 0 when unlimited (blank or 0 in dialog).
-     */
     @Override
     public int getMaxItems() {
         Integer limit = resolveLimitOrNull();
@@ -172,15 +166,14 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
     /* ===================== MODE ===================== */
 
     private Mode resolveMode() {
-        String[] selectors = request.getRequestPathInfo().getSelectors();
-        // planner URLs have at least 3 selectors: First.Last.ID
-        if (selectors != null && selectors.length >= 3) {
-            return Mode.PLANNER;
-        }
+        // planner pages have 3 selectors: First.Last.ID
+        String[] selectors = request.getRequestPathInfo() != null ? request.getRequestPathInfo().getSelectors() : null;
+        if (selectors != null && selectors.length >= 3) return Mode.PLANNER;
         return Mode.LOCATION;
     }
 
     private String resolveSelector(int index) {
+        if (request.getRequestPathInfo() == null) return null;
         String[] selectors = request.getRequestPathInfo().getSelectors();
         if (selectors != null && selectors.length > index) {
             return selectors[index];
@@ -188,11 +181,8 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
         return null;
     }
 
-    /**
-     * @return Integer limit when maxItems > 0, otherwise null (unlimited)
-     */
     private Integer resolveLimitOrNull() {
-        return (maxItems == null || maxItems.intValue() <= 0) ? null : maxItems.intValue();
+        return (maxItems == null || maxItems <= 0) ? null : maxItems;
     }
 
     /* ===================== LOCATION QUERY ===================== */
@@ -214,145 +204,99 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
     /* ===================== PLANNER QUERY ===================== */
 
     /**
-     * Planner mode:
-     * 1) Find article CFs under /content/dam/efe/cf/corporate/articles where master node has "planner" containing /planners/{id}/
-     * 2) Convert those CF paths into education pages by matching articledetails.articleFragmentPath == CF path
+     * Finds education pages whose *article content fragment* has a multi-value property "planner"
+     * containing a reference to the planner CF folder path with the given plannerId.
+     *
+     * Example CF property value:
+     *   /content/dam/efe/cf/plannerlocation/planners/581/fragment_carrington_581
      */
     private List<String> findEducationPagesByPlanner(String plannerId, Session session, Integer limit) {
-        List<String> articleCfPaths = findArticleCfPathsForPlanner(plannerId, session, limit);
-        if (articleCfPaths.isEmpty()) return Collections.emptyList();
-        return findEducationPagesByArticleFragmentPaths(articleCfPaths, session, limit);
-    }
-
-    /**
-     * Query master nodes directly: /.../jcr:content/data/master
-     * planner is a String[] on master node.
-     */
-    private List<String> findArticleCfPathsForPlanner(String plannerId, Session session, Integer limit) {
         Map<String, String> p = new HashMap<>();
-
         p.put("path", ARTICLES_CF_ROOT);
-        // master nodes are nt:unstructured
-        p.put("type", "nt:unstructured");
+        p.put("type", "dam:Asset");
 
-        // planner must exist + contain /planners/{id}/
-        p.put("1_property", "planner");
-        p.put("1_property.operation", "exists");
+        // CF master node property path
+        p.put("property", "jcr:content/data/master/planner");
+        p.put("property.operation", "like");
+        p.put("property.value", "%/planners/" + plannerId + "/%");
 
-        p.put("2_property", "planner");
-        p.put("2_property.operation", "like");
-        p.put("2_property.value", "%/planners/" + plannerId + "/%");
-
-        // order newest-ish (if datePublished exists on CF master)
-        p.put("orderby", "@datePublished");
+        p.put("orderby", "@jcr:content/jcr:lastModified");
         p.put("orderby.sort", "desc");
 
-        if (limit != null) {
-            p.put("p.limit", limit.toString());
-        }
+        if (limit != null) p.put("p.limit", limit.toString());
 
         Query q = queryBuilder.createQuery(PredicateGroup.create(p), session);
         SearchResult result = q.getResult();
 
-        Set<String> cfPaths = new LinkedHashSet<>();
+        List<String> pages = new ArrayList<>();
 
         for (Hit hit : result.getHits()) {
             try {
-                String masterPath = hit.getPath(); // .../jcr:content/data/master
-                if (!StringUtils.endsWith(masterPath, "/jcr:content/data/master")) {
-                    continue;
+                Resource cfAsset = resourceResolver.getResource(hit.getPath());
+                if (cfAsset == null) continue;
+
+                String articlePage = resolveArticlePageFromFragment(cfAsset);
+                if (StringUtils.isNotBlank(articlePage)) {
+                    pages.add(articlePage);
                 }
-                String cfAssetPath = StringUtils.substringBefore(masterPath, "/jcr:content/data/master");
-                if (StringUtils.isNotBlank(cfAssetPath)) {
-                    cfPaths.add(cfAssetPath);
-                }
-            } catch (RepositoryException ignore) {}
+            } catch (RepositoryException ignore) {
+                // ignore
+            }
         }
 
-        List<String> out = new ArrayList<>(cfPaths);
-        if (limit != null && out.size() > limit) {
-            return out.subList(0, limit);
-        }
-        return out;
+        return (limit != null && pages.size() > limit)
+            ? new ArrayList<>(pages.subList(0, limit))
+            : pages;
     }
 
     /**
-     * Find education pages that reference any of the CF paths in articledetails.articleFragmentPath.
-     */
-    private List<String> findEducationPagesByArticleFragmentPaths(List<String> cfPaths, Session session, Integer limit) {
-        if (cfPaths == null || cfPaths.isEmpty()) return Collections.emptyList();
-
-        Map<String, String> p = new HashMap<>();
-        p.put("path", EDUCATION_ROOT);
-        p.put("type", "nt:unstructured");
-
-        // OR group over articleFragmentPath equals cfPath
-        p.put("group.p.or", "true");
-
-        int idx = 1;
-        for (String cfPath : cfPaths) {
-            if (StringUtils.isBlank(cfPath)) continue;
-            p.put("group." + idx + "_property", ARTICLE_FRAGMENT_PROP);
-            p.put("group." + idx + "_property.value", cfPath);
-            idx++;
-        }
-
-        if (idx == 1) return Collections.emptyList();
-
-        Query q = queryBuilder.createQuery(PredicateGroup.create(p), session);
-        SearchResult r = q.getResult();
-
-        Set<String> pagePaths = new LinkedHashSet<>();
-
-        for (Hit hit : r.getHits()) {
-            try {
-                String nodePath = hit.getPath();
-                String pagePath = StringUtils.substringBefore(nodePath, "/jcr:content");
-                if (StringUtils.isNotBlank(pagePath)) {
-                    pagePaths.add(pagePath);
-                }
-            } catch (RepositoryException ignore) {}
-        }
-
-        List<String> out = new ArrayList<>(pagePaths);
-        if (limit != null && out.size() > limit) {
-            return out.subList(0, limit);
-        }
-        return out;
-    }
-
-    /* ===================== PLANNER PRIMARY OFFICE FALLBACK ===================== */
-
-    /**
-     * If a planner has no authored articles, determine their primaryOffice state.
-     *
-     * Example path shape:
-     * /content/dam/efe/cf/plannerlocation/planners/581/fragment_*_581_primaryoffice/jcr:content/data/master
-     *
-     * We do NOT hardcode the fragment name; we search under planners/{id} for a child whose name ends with "_primaryoffice".
-     */
+     * If the planner has a primary office CF, pull its "state" property from:
+     * /content/dam/efe/cf/plannerlocation/planners/{id}/primaryofficejcr:content/data/master
+     **/
     private String resolvePlannerPrimaryOfficeState(String plannerId) {
         if (resourceResolver == null || StringUtils.isBlank(plannerId)) return null;
 
-        Resource plannerFolder = resourceResolver.getResource(PLANNER_CF_ROOT + "/" + plannerId);
+        String plannerFolderPath = PLANNER_CF_ROOT + "/" + plannerId;
+        Resource plannerFolder = resourceResolver.getResource(plannerFolderPath);
         if (plannerFolder == null) return null;
 
         for (Resource child : plannerFolder.getChildren()) {
             String name = child.getName();
-            if (!StringUtils.endsWithIgnoreCase(name, "_primaryoffice")) {
-                continue;
+            if (StringUtils.containsIgnoreCase(name, "primaryoffice")) {
+                Resource master = resourceResolver.getResource(child.getPath() + "/jcr:content/data/master");
+                if (master == null) continue;
+
+                String state = master.getValueMap().get("state", String.class);
+                if (StringUtils.isNotBlank(state)) {
+                    return state.trim();
+                }
             }
+        }
+        return null;
+    }
 
-            Resource master = resourceResolver.getResource(child.getPath() + "/jcr:content/data/master");
-            if (master == null) continue;
+    /**
+     * Merge authored first, then append state list (minus duplicates),
+     * finally apply maxItems overall.
+     */
+    private List<String> mergeAuthoredThenState(List<String> authored, List<String> stateBased, Integer limitOrNull) {
+        LinkedHashSet<String> merged = new LinkedHashSet<>();
 
-            String state = master.getValueMap().get("state", String.class);
-            if (StringUtils.isNotBlank(state)) {
-                return StringUtils.trimToNull(state);
+        if (authored != null) merged.addAll(authored);
+
+        if (stateBased != null) {
+            for (String p : stateBased) {
+                // only append if not already present
+                merged.add(p);
             }
         }
 
-        return null;
+        List<String> out = new ArrayList<>(merged);
+
+        if (limitOrNull != null && out.size() > limitOrNull) {
+            return new ArrayList<>(out.subList(0, limitOrNull));
+        }
+        return out;
     }
 
     /* ===================== SHARED HELPERS ===================== */
@@ -361,15 +305,45 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
         Query q = queryBuilder.createQuery(PredicateGroup.create(predicates), session);
         SearchResult result = q.getResult();
 
-        Set<String> pages = new LinkedHashSet<>();
+        List<String> pages = new ArrayList<>();
         for (Hit hit : result.getHits()) {
             try {
                 pages.add(StringUtils.substringBefore(hit.getPath(), "/jcr:content"));
-            } catch (RepositoryException ignore) {}
+            } catch (RepositoryException ignore) {
+                // ignore
+            }
         }
 
-        List<String> out = new ArrayList<>(pages);
-        return (limit != null && out.size() > limit) ? out.subList(0, limit) : out;
+        return (limit != null && pages.size() > limit)
+            ? new ArrayList<>(pages.subList(0, limit))
+            : pages;
+    }
+
+    /**
+     * Given a CF asset at /content/dam/.../some-article,
+     * find the education page which has an articledetails node with articleFragmentPath == that CF asset path.
+     *
+     * NOTE: Use javax.jcr.query.Query.JCR_SQL2 (NOT com.day.cq.search.Query)
+     */
+    private String resolveArticlePageFromFragment(Resource cfAsset) {
+        if (cfAsset == null) return null;
+
+        String fragmentPath = cfAsset.getPath();
+
+        // escape single quotes for SQL2 safety
+        String safePath = fragmentPath.replace("'", "''");
+
+        String sql2 =
+            "SELECT * FROM [nt:unstructured] AS s " +
+            "WHERE s.[" + ARTICLE_FRAGMENT_PROP + "] = '" + safePath + "'";
+
+        Iterator<Resource> refs = resourceResolver.findResources(sql2, javax.jcr.query.Query.JCR_SQL2);
+
+        if (refs.hasNext()) {
+            Resource articleDetails = refs.next();
+            return StringUtils.substringBefore(articleDetails.getPath(), "/jcr:content");
+        }
+        return null;
     }
 
     /* ===================== TEASER BUILD ===================== */
@@ -387,38 +361,11 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
 
         String fragmentPath = getArticleFragmentPathFromArticleDetails(page);
         String subtitle = stripHtml(getElementFromContentFragment(fragmentPath, "subtitle"));
-        String teaserText = StringUtils.defaultIfBlank(subtitle, page.getDescription());
 
-        props.put("text", teaserText);
-        props.put("description", teaserText);
-        props.put("jcr:description", teaserText);
-
+        props.put("text", StringUtils.defaultIfBlank(subtitle, page.getDescription()));
         props.put("textFromPage", false);
-        props.put("descriptionFromPage", false);
-
-        addAssetTypeTagsToProps(page, props);
 
         return new ValueMapDecorator(props);
-    }
-
-    private void addAssetTypeTagsToProps(Page page, Map<String, Object> props) {
-        if (page == null || props == null || resourceResolver == null) return;
-
-        Resource content = page.getContentResource();
-        if (content == null) return;
-
-        String[] allTagIds = content.getValueMap().get("cq:tags", String[].class);
-        if (allTagIds == null || allTagIds.length == 0) return;
-
-        List<String> assetTagIds = new ArrayList<>();
-        for (String id : allTagIds) {
-            if (StringUtils.startsWith(id, ASSET_TYPE_TAG_PREFIX)) {
-                assetTagIds.add(id);
-            }
-        }
-        if (assetTagIds.isEmpty()) return;
-
-        props.put("assetTypeTagIds", assetTagIds.toArray(new String[0]));
     }
 
     private String getArticleFragmentPathFromArticleDetails(Page page) {
@@ -428,7 +375,9 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
         if (content == null) return null;
 
         Resource details = findArticleDetailsComponent(content);
-        return details != null ? details.getValueMap().get(ARTICLE_FRAGMENT_PROP, String.class) : null;
+        return details != null
+            ? details.getValueMap().get(ARTICLE_FRAGMENT_PROP, String.class)
+            : null;
     }
 
     private Resource findArticleDetailsComponent(Resource root) {
