@@ -2,12 +2,12 @@
 <sly data-sly-use.clientLib="core/wcm/components/commons/v1/templates/clientlib.html">
 <sly data-sly-call="${clientLib.js @ categories='efe.modalbutton'}" />  
 
-<div class='button cmp-button--button-primary cmp-button--center cmp-button--default cmp-button--default'>
+<div id = "${modal.buttonId}" class='button cmp-button--button-primary cmp-button--center cmp-button--default cmp-button--default'>
     <button class='cmp-button cmp-modal--button' data-modal-id = "${modal.id}" value="${modal.buttonText}">
         <span class='cmp-button__text'>${modal.buttonText}</span>
     </button>
 </div>
-<div class="cmp-button--modal d-none" id="${modal.id}" >
+<div class="cmp-button--modal d-none" id="${modal.id}" data-open-event="${modal.openModalEvent}" data-close-event="${modal.closeModalEvent}" >
     <div class="dialog-overlay"></div><!-- comment -->
     <div class="cmp-button-modal-content" role="document"><!-- comment -->
         <div class="cmp-button-modal-content__container responsivegrid"><!-- comment -->
@@ -30,208 +30,39 @@
     </div>
 </div>
 <script type="text/javascript">
-(() => {
-  'use strict';
+    const modalButtons = document.querySelectorAll('button.cmp-modal--button');
+    const modalCloseButtons = document.querySelectorAll('button.cmp-button-modal-content__close');
 
-  // -----------------------------
-  // Utilities
-  // -----------------------------
-  const $ = (sel, ctx = document) => ctx.querySelector(sel);
-  const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
-  const byId = (id) => document.getElementById(id);
+    modalButtons.forEach(el => el.addEventListener('click', event => {
+        var modalComponent = document.getElementById(event.currentTarget.dataset.modalId);
+        modalComponent.classList.remove("d-none");
 
-  const lockScroll = () => document.documentElement.classList.add('modal-open');
-  const unlockScroll = () => document.documentElement.classList.remove('modal-open');
+        const openEventName = modalComponent.dataset.openEvent;
+        if (openEventName) {
+            document.dispatchEvent(new CustomEvent(openEventName, {
+            detail: {
+                modalId: modalComponent.id,
+                component: 'modalbutton',
+                source: 'modal-open'
+            }
+            }));
+        }
+    }));
 
-  const focusFirstFocusable = (container) => {
-    if (!container) return;
-    const focusables = container.querySelectorAll(
-      'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
-    );
-    if (focusables.length) focusables[0].focus();
-  };
+    modalCloseButtons.forEach(el => el.addEventListener('click', event => {
+        var modalComponent = document.getElementById(event.currentTarget.dataset.modalId);
+        modalComponent.classList.add("d-none");
 
-  // -----------------------------
-  // Scheduler reinjection
-  // -----------------------------
-  const scriptLoadCache = new Map();   // url -> Promise<void>
-  const injectInFlight = new Map();    // containerId -> Promise<void>
-
-  const loadScriptOnce = (url) => {
-    if (!url) return Promise.reject(new Error('[scheduler] Missing embed URL'));
-
-    if (scriptLoadCache.has(url)) return scriptLoadCache.get(url);
-
-    const p = new Promise((resolve, reject) => {
-      // If already in DOM, assume it is (or will be) loaded by browser
-       const existing = document.querySelector(`script[src="' + url + '"]`);
-      if (existing) {
-        if (existing.dataset.loaded === '1') return resolve();
-        existing.addEventListener('load', () => resolve(), { once: true });
-        existing.addEventListener('error', () => reject(new Error(`[scheduler] Failed to load url`)), { once: true });
-        return;
-      }
-
-      const s = document.createElement('script');
-      s.src = url;
-      s.async = true;
-      s.dataset.ecScheduler = 'true';
-      s.addEventListener('load', () => {
-        s.dataset.loaded = '1';
-        resolve();
-      }, { once: true });
-      s.addEventListener('error', () => reject(new Error(`[scheduler] Failed to load url `)), { once: true });
-      document.head.appendChild(s);
-    });
-
-    scriptLoadCache.set(url, p);
-    return p;
-  };
-
-  const waitForInjectApi = (timeoutMs = 8000) => {
-    const start = Date.now();
-    return new Promise((resolve, reject) => {
-      const tick = () => {
-        const ok = window.efeSelfSchedulerEc && typeof window.efeSelfSchedulerEc.inject === 'function';
-        if (ok) return resolve();
-        if (Date.now() - start > timeoutMs) return reject(new Error('[scheduler] inject API not available'));
-        requestAnimationFrame(tick);
-      };
-      tick();
-    });
-  };
-
-  const refreshSchedulerInWrapper = async (wrapper) => {
-    if (!wrapper) return;
-
-    const scheduler = wrapper.querySelector('.efe-ec-scheduler');
-    if (!scheduler) return; // modal may not contain scheduler
-
-    const embedUrl = scheduler.getAttribute('data-ec-embed-url');
-    const containerId = scheduler.getAttribute('data-container-id');
-
-    if (!embedUrl || !containerId) {
-      console.warn('[scheduler] Missing data-ec-embed-url or data-container-id');
-      return;
-    }
-
-    // Coalesce rapid clicks / multiple open attempts for the same container
-    if (injectInFlight.has(containerId)) return injectInFlight.get(containerId);
-
-    const job = (async () => {
-      // Clear any previously injected markup (iframes, etc.)
-      const target = byId(containerId);
-      if (target) target.innerHTML = '';
-
-      // Ensure library is present, then inject every time
-      await loadScriptOnce(embedUrl);
-      await waitForInjectApi();
-
-      window.efeSelfSchedulerEc.inject({ id: containerId });
-    })();
-
-    injectInFlight.set(containerId, job);
-
-    try {
-      await job;
-    } finally {
-      injectInFlight.delete(containerId);
-    }
-  };
-
-  const clearSchedulerInWrapper = (wrapper) => {
-    const scheduler = wrapper?.querySelector('.efe-ec-scheduler');
-    const containerId = scheduler?.getAttribute('data-container-id');
-    if (!containerId) return;
-
-    const target = byId(containerId);
-    if (target) target.innerHTML = '';
-  };
-
-  // -----------------------------
-  // Modal open/close
-  // -----------------------------
-  const openModal = (modalId) => {
-    const wrapper = byId(modalId);
-    if (!wrapper) return console.warn(`[modal] Wrapper not found for id= modalId`);
-
-    wrapper.classList.remove('d-none');
-    wrapper.classList.add('is-open');
-    wrapper.setAttribute('aria-hidden', 'false');
-    lockScroll();
-
-    // Reinjection-only: refresh scheduler on every open
-    refreshSchedulerInWrapper(wrapper).catch((e) => console.error('[modal] Scheduler refresh failed:', e));
-
-    // Focus management
-    const inner = wrapper.querySelector('.cmp-button-modal-content') || wrapper;
-    focusFirstFocusable(inner);
-  };
-
-  const closeModal = (wrapper) => {
-    if (!wrapper) return;
-
-    wrapper.classList.add('d-none');
-    wrapper.classList.remove('is-open');
-    wrapper.setAttribute('aria-hidden', 'true');
-
-    // Optional but recommended: clear injected content on close to avoid stale UI
-    clearSchedulerInWrapper(wrapper);
-
-    if (!document.querySelector('.cmp-button--modal.is-open')) unlockScroll();
-  };
-
-  // -----------------------------
-  // Event delegation (AEM-friendly)
-  // -----------------------------
-  document.addEventListener('click', (e) => {
-    // Openers
-    const opener = e.target.closest('button.cmp-modal--button');
-    if (opener) {
-      opener.setAttribute('type', opener.getAttribute('type') || 'button');
-      const id = opener.dataset.modalId;
-      if (id) openModal(id);
-      else console.warn('[modal] Missing data-modal-id on opener');
-      return;
-    }
-
-    // Close button
-    const closeBtn = e.target.closest('button.cmp-button-modal-content__close');
-    if (closeBtn) {
-      closeBtn.setAttribute('type', closeBtn.getAttribute('type') || 'button');
-      const wrapper = closeBtn.closest('.cmp-button--modal');
-      closeModal(wrapper);
-      return;
-    }
-
-    // Overlay click
-    const overlay = e.target.closest('.cmp-button--modal .dialog-overlay');
-    if (overlay) {
-      const wrapper = overlay.closest('.cmp-button--modal');
-      closeModal(wrapper);
-    }
-  });
-
-  // ESC close
-  document.addEventListener('keydown', (e) => {
-    if (e.key !== 'Escape') return;
-    const open = document.querySelector('.cmp-button--modal.is-open');
-    if (open) closeModal(open);
-  });
-
-  // Optional public API
-  window.cmpModal = {
-    open: openModal,
-    close: (id) => closeModal(byId(id)),
-    refresh: (id) => {
-      const wrapper = byId(id);
-      if (!wrapper) return;
-      // If open, re-run injection; if closed, do nothing
-      if (wrapper.classList.contains('is-open')) {
-        refreshSchedulerInWrapper(wrapper).catch((e) => console.error('[modal] Scheduler refresh failed:', e));
-      }
-    }
-  };
-})();
+       const closeEventName = modalComponent.dataset.closeEvent;
+        if (closeEventName) {
+            document.dispatchEvent(new CustomEvent(closeEventName, {
+            detail: {
+                modalId: modalComponent.id,
+                component: 'modalbutton',
+                source: 'modal-close'
+            }
+            }));
+        }
+    }));
 </script>
 

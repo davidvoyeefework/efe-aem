@@ -18,4 +18,8 @@ public interface ECScheduler {
 	 * @return the CDT scheduler embed URL.
 	 */
         String getECEmbedURL();
+
+		/* Get Dynamic variable to Reset/Reload EC Scheduler */
+
+		String getResetEC();
 }

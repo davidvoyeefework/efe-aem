@@ -43,6 +43,10 @@ public class ECSchedulerImpl implements ECScheduler {
 	/** The Container div ID. */
 	@ValueMapValue
 	private String containerID;
+
+	/** The ResetEC  */
+	@ValueMapValue
+	private String resetEC;
         
         /**
 	 * Inits the model.
@@ -71,4 +75,10 @@ public class ECSchedulerImpl implements ECScheduler {
         public String getECEmbedURL() {
             return efeService.getECEmbedURL();
         }
+
+		/* return resetEC */
+		@Override
+	public String getResetEC() {
+            return resetEC;
+	}
 }
