@@ -1,6 +1,26 @@
 <div class="relatedarticle-ed-center"
      data-sly-use.article="com.efe.core.models.RelatedArticleDynamic">
 
+  <!-- =========================================================
+       DEBUG: Always safe on AUTHOR (hidden)
+       ========================================================= -->
+  <sly data-sly-test="${wcmmode.edit || wcmmode.preview}">
+    <div class="rad-debug"
+         style="display:none"
+         data-debug-scope="author"
+         data-wcmmode-edit="${wcmmode.edit}"
+         data-wcmmode-preview="${wcmmode.preview}"
+         data-requesturi="${request.requestURI}"
+         data-querystring="${request.queryString}"
+         data-selectors="${request.requestPathInfo.selectors}"
+         data-teasercount="${article.relatedTeasers.size}"
+         data-maxitems="${article.maxItems}">
+    </div>
+  </sly>
+
+  <!-- =========================================================
+       MAIN LIST
+       ========================================================= -->
   <ul data-sly-list.teaser="${article.relatedTeasers}"
       class="cmp-list">
 
@@ -85,5 +105,48 @@
     </li>
 
   </ul>
+
+  <!-- =========================================================
+       DEBUG: Publish-friendly (only shows when radDebug=1)
+       ========================================================= -->
+
+  <!-- radDebugEnabled = request parameter radDebug equals "1" -->
+  <sly data-sly-set.radDebugParam="${request.parameterMap['radDebug']}" />
+  <sly data-sly-set.radDebugEnabled="${radDebugParam && radDebugParam[0] == '1'}" />
+
+  <sly data-sly-test="${radDebugEnabled}">
+    <div class="rad-debug"
+         style="display:block; margin-top:16px; font-size:12px; opacity:.85;"
+         data-debug-scope="publish"
+         data-requesturi="${request.requestURI}"
+         data-querystring="${request.queryString}"
+         data-selectors="${request.requestPathInfo.selectors}"
+         data-teasercount="${article.relatedTeasers.size}"
+         data-maxitems="${article.maxItems}">
+
+      <div><strong>RelatedArticleDynamic Debug</strong></div>
+      <div>requestURI: ${request.requestURI}</div>
+      <div>queryString: ${request.queryString}</div>
+      <div>selectors: ${request.requestPathInfo.selectors}</div>
+      <div>maxItems: ${article.maxItems}</div>
+      <div>teasers returned: ${article.relatedTeasers.size}</div>
+
+      <sly data-sly-test="${article.relatedArticlePagePaths}">
+        <div style="margin-top:10px;"><strong>First returned page paths:</strong></div>
+
+        <!-- show up to first 10 paths -->
+        <sly data-sly-list.p="${article.relatedArticlePagePaths}">
+          <sly data-sly-test="${pList.index < 10}">
+            <div>${p}</div>
+          </sly>
+        </sly>
+      </sly>
+
+      <sly data-sly-test="${!article.relatedArticlePagePaths || article.relatedArticlePagePaths.size == 0}">
+        <div style="margin-top:10px;"><strong>No relatedArticlePagePaths returned.</strong></div>
+      </sly>
+
+    </div>
+  </sly>
 
 </div>
