@@ -7,15 +7,14 @@ import org.apache.sling.api.resource.Resource;
 
 public interface RelatedArticleDynamic {
 
-    List<String> getRelatedArticlePagePaths();
-
     List<Resource> getRelatedTeasers();
 
     Map<String, String> getTeaserHeroImages();
 
+    List<String> getRelatedArticlePagePaths();
+
     /**
-     * Max items configured in dialog (./maxItems).
-     * Returns 0 when unlimited (blank or 0 in dialog).
+     * 0 means unlimited.
      */
     int getMaxItems();
 }

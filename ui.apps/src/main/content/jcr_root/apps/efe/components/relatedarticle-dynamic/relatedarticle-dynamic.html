@@ -1,49 +1,51 @@
 <div class="relatedarticle-ed-center"
      data-sly-use.article="com.efe.core.models.RelatedArticleDynamic">
 
-  <!-- =========================================================
-       DEBUG: Always safe on AUTHOR (hidden)
-       ========================================================= -->
-  <sly data-sly-test="${wcmmode.edit || wcmmode.preview}">
-    <div class="rad-debug"
-         style="display:none"
-         data-debug-scope="author"
-         data-wcmmode-edit="${wcmmode.edit}"
-         data-wcmmode-preview="${wcmmode.preview}"
-         data-requesturi="${request.requestURI}"
-         data-querystring="${request.queryString}"
-         data-selectors="${request.requestPathInfo.selectors}"
-         data-teasercount="${article.relatedTeasers.size}"
-         data-maxitems="${article.maxItems}">
-    </div>
-  </sly>
+       <div style="background:yellow;color:black;padding:8px;font-size:14px;">
+    RAD HTL LOADED | teasers=${article.relatedTeasers.size}
+  </div>
 
-  <!-- =========================================================
-       MAIN LIST
-       ========================================================= -->
+
+  <!-- ===================== DEBUG (Option B: always render, HTL-safe) ===================== -->
+  <div class="rad-debug"
+       style="display:none"
+       data-requesturi="${request.requestURI}"
+       data-querystring="${request.queryString}"
+       data-selectors="${request.requestPathInfo.selectors}"
+       data-selectorstring="${request.requestPathInfo.selectorString}"
+       data-teasercount="${article.relatedTeasers.size}">
+  </div>
+
+  <!-- ===================== LIST ===================== -->
   <ul data-sly-list.teaser="${article.relatedTeasers}"
       class="cmp-list">
 
     <li class="teaser cmp-teaser--thumbnail">
       <div class="cmp-teaser">
 
-        <!-- linkURL is /path/to/page.html -->
         <sly data-sly-set.linkUrl="${teaser.valueMap.linkURL}" />
-
-        <!-- canonicalKey becomes /path/to/page (no .html) -->
         <sly data-sly-set.canonicalKey="${linkUrl @ extension=''}" />
-
-        <!-- look up hero by canonical page key -->
         <sly data-sly-set.hero="${article.teaserHeroImages[canonicalKey]}" />
+
+        <!-- Per-teaser debug (always present, HTL-safe) -->
+        <div class="rad-debug"
+             style="display:none"
+             data-debug-scope="teaser"
+             data-linkurl="${linkUrl}"
+             data-canonicalkey="${canonicalKey}"
+             data-herofrommap="${hero}">
+        </div>
 
         <div class="cmp-teaser__content">
 
+          <!-- Title -->
           <h2 class="title cmp-title--subhead-01">
             <a href="${linkUrl}">
               ${teaser.valueMap['jcr:title']}
             </a>
           </h2>
 
+          <!-- Description -->
           <sly data-sly-test="${teaser.valueMap.text}">
             <p class="cmp-text--body-02">
               ${teaser.valueMap.text}
@@ -57,27 +59,34 @@
 
           <sly data-sly-test="${teaser.valueMap.assetTypeTagIds}">
             <sly data-sly-list.tid="${teaser.valueMap.assetTypeTagIds}">
+
               <sly data-sly-test="${tid == 'efe:asset-type/article'}">
                 <sly data-sly-set.hasArticle="${true}" />
               </sly>
+
               <sly data-sly-test="${tid == 'efe:asset-type/video'}">
                 <sly data-sly-set.hasVideo="${true}" />
               </sly>
+
               <sly data-sly-test="${tid == 'efe:asset-type/podcast'}">
                 <sly data-sly-set.hasPodcast="${true}" />
               </sly>
+
             </sly>
           </sly>
 
           <sly data-sly-test="${hasArticle}">
             <div class="cmp-button--article"></div>
           </sly>
+
           <sly data-sly-test="${!hasArticle && hasVideo}">
             <div class="cmp-button--video"></div>
           </sly>
+
           <sly data-sly-test="${!hasArticle && !hasVideo && hasPodcast}">
             <div class="cmp-button--podcast"></div>
           </sly>
+
           <sly data-sly-test="${!hasArticle && !hasVideo && !hasPodcast}">
             <div class="cmp-button--article"></div>
           </sly>
@@ -105,48 +114,5 @@
     </li>
 
   </ul>
-
-  <!-- =========================================================
-       DEBUG: Publish-friendly (only shows when radDebug=1)
-       ========================================================= -->
-
-  <!-- radDebugEnabled = request parameter radDebug equals "1" -->
-  <sly data-sly-set.radDebugParam="${request.parameterMap['radDebug']}" />
-  <sly data-sly-set.radDebugEnabled="${radDebugParam && radDebugParam[0] == '1'}" />
-
-  <sly data-sly-test="${radDebugEnabled}">
-    <div class="rad-debug"
-         style="display:block; margin-top:16px; font-size:12px; opacity:.85;"
-         data-debug-scope="publish"
-         data-requesturi="${request.requestURI}"
-         data-querystring="${request.queryString}"
-         data-selectors="${request.requestPathInfo.selectors}"
-         data-teasercount="${article.relatedTeasers.size}"
-         data-maxitems="${article.maxItems}">
-
-      <div><strong>RelatedArticleDynamic Debug</strong></div>
-      <div>requestURI: ${request.requestURI}</div>
-      <div>queryString: ${request.queryString}</div>
-      <div>selectors: ${request.requestPathInfo.selectors}</div>
-      <div>maxItems: ${article.maxItems}</div>
-      <div>teasers returned: ${article.relatedTeasers.size}</div>
-
-      <sly data-sly-test="${article.relatedArticlePagePaths}">
-        <div style="margin-top:10px;"><strong>First returned page paths:</strong></div>
-
-        <!-- show up to first 10 paths -->
-        <sly data-sly-list.p="${article.relatedArticlePagePaths}">
-          <sly data-sly-test="${pList.index < 10}">
-            <div>${p}</div>
-          </sly>
-        </sly>
-      </sly>
-
-      <sly data-sly-test="${!article.relatedArticlePagePaths || article.relatedArticlePagePaths.size == 0}">
-        <div style="margin-top:10px;"><strong>No relatedArticlePagePaths returned.</strong></div>
-      </sly>
-
-    </div>
-  </sly>
 
 </div>
