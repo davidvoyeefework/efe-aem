@@ -1,21 +1,6 @@
 <div class="relatedarticle-ed-center"
      data-sly-use.article="com.efe.core.models.RelatedArticleDynamic">
 
-       <div style="background:yellow;color:black;padding:8px;font-size:14px;">
-    RAD HTL LOADED | teasers=${article.relatedTeasers.size}
-  </div>
-
-
-  <!-- ===================== DEBUG (Option B: always render, HTL-safe) ===================== -->
-  <div class="rad-debug"
-       style="display:none"
-       data-requesturi="${request.requestURI}"
-       data-querystring="${request.queryString}"
-       data-selectors="${request.requestPathInfo.selectors}"
-       data-selectorstring="${request.requestPathInfo.selectorString}"
-       data-teasercount="${article.relatedTeasers.size}">
-  </div>
-
   <!-- ===================== LIST ===================== -->
   <ul data-sly-list.teaser="${article.relatedTeasers}"
       class="cmp-list">
@@ -26,15 +11,6 @@
         <sly data-sly-set.linkUrl="${teaser.valueMap.linkURL}" />
         <sly data-sly-set.canonicalKey="${linkUrl @ extension=''}" />
         <sly data-sly-set.hero="${article.teaserHeroImages[canonicalKey]}" />
-
-        <!-- Per-teaser debug (always present, HTL-safe) -->
-        <div class="rad-debug"
-             style="display:none"
-             data-debug-scope="teaser"
-             data-linkurl="${linkUrl}"
-             data-canonicalkey="${canonicalKey}"
-             data-herofrommap="${hero}">
-        </div>
 
         <div class="cmp-teaser__content">
 
