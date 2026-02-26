@@ -1,7 +1,6 @@
 package com.efe.core.models.impl;
 
 import java.util.*;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.annotation.PostConstruct;
@@ -57,7 +56,7 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
     // Planner Primary Office CF “state” property location
     private static final String PLANNER_OFFICE_STATE_PROP = "jcr:content/data/master/state";
 
-    // Optional: used to extract planner id from a full planner CF reference path
+    // Used to extract planner id from a full planner CF reference path
     private static final Pattern PLANNER_ID_IN_PATH = Pattern.compile("/planners/(\\d+)/");
 
     @Self
