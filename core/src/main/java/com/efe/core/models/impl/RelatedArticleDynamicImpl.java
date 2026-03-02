@@ -192,7 +192,7 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
 
     @Override
     public Map<String, String> getTeaserHeroImages() {
-        if (heroImageByPagePath == null || heroImageByPagePath.isEmpty()) {
+        if (heroImageByPagePath.isEmpty()) {
             return Collections.emptyMap();
         }
         return Collections.unmodifiableMap(new HashMap<>(heroImageByPagePath));
