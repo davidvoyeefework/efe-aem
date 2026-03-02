@@ -41,12 +41,7 @@ import com.efe.core.models.RelatedArticleDynamic;
 )
 public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
 
-    private static final Logger log = LoggerFactory.getLogger(RelatedArticleDynamicImpl.class);
-    public static final String NT_UNSTRUCTURED = "nt:unstructured";
-    public static final String SLING_RESOURCE_TYPE_PROPERTY = "sling:resourceType";
-    public static final String NT_DAM_ASSET = "dam:Asset";    
-    public static final String JCR_TITLE = "jcr:title";    
-    public static final String JCR_DESCRIPTION = "jcr:description";    
+    private static final Logger log = LoggerFactory.getLogger(RelatedArticleDynamicImpl.class);  
 
     public static final String RESOURCE_TYPE = "efe/components/relatedarticle-dynamic";
 
