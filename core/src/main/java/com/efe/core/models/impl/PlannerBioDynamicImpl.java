@@ -168,9 +168,8 @@ public class PlannerBioDynamicImpl implements PlannerBioDynamic {
 				}
 				jsonLd = SeoUtil.getPlannerSchema(seoService, efeService, externalizer, resourceResolver, plannerResponse);	
 			} else {
-					throw new RuntimeException();
-			}
-
+				throw new IllegalStateException("Unexpected planner bio state");
+			} 
 		}
 	}
 
