@@ -2,6 +2,8 @@ package com.efe.core.models.impl;
 
 import java.util.*;
 import java.util.regex.Pattern;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.PostConstruct;
 import javax.jcr.RepositoryException;
@@ -24,6 +26,7 @@ import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageManager;
 import com.efe.core.models.RelatedArticleDynamic;
 
+
 @Model(
     adaptables = SlingHttpServletRequest.class,
     adapters = RelatedArticleDynamic.class,
@@ -31,6 +34,8 @@ import com.efe.core.models.RelatedArticleDynamic;
     defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL
 )
 public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
+
+    private static final Logger log = LoggerFactory.getLogger(RelatedArticleDynamicImpl.class);
 
     public static final String RESOURCE_TYPE = "efe/components/relatedarticle-dynamic";
 
@@ -245,9 +250,9 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
         for (Hit hit : result.getHits()) {
             try {
                 pages.add(StringUtils.substringBefore(hit.getPath(), "/jcr:content"));
-            } catch (RepositoryException ignore) {
-                // ignore
-            }
+                } catch (RepositoryException e) {
+                    log.warn("Failed to access repository node", e);
+                }
         }
 
         return applyFinalLimit(pages, limitOrNull);
@@ -303,9 +308,9 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
         for (Hit hit : result.getHits()) {
             try {
                 cfPaths.add(hit.getPath());
-            } catch (RepositoryException ignore) {
-                // ignore
-            }
+                } catch (RepositoryException e) {
+                    log.warn("Failed to access repository node", e);
+                }
         }
         return cfPaths;
     }
@@ -339,9 +344,9 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
             try {
                 String articledetailsPath = hit.getPath(); // /content/.../jcr:content/.../articledetails
                 return StringUtils.substringBefore(articledetailsPath, "/jcr:content");
-            } catch (RepositoryException ignore) {
-                // ignore
-            }
+                } catch (RepositoryException e) {
+                    log.warn("Failed to access repository node", e);
+                }
         }
         return null;
     }
