@@ -2,15 +2,22 @@ package com.efe.core.models.impl;
 
 import java.util.*;
 import java.util.regex.Pattern;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.PostConstruct;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 
 import org.apache.commons.lang3.StringUtils;
+import com.day.cq.commons.jcr.JcrConstants;
+import com.day.cq.dam.api.DamConstants;
+
+
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.*;
 import org.apache.sling.api.wrappers.ValueMapDecorator;
+import org.apache.sling.jcr.resource.api.JcrResourceConstants;
 import org.apache.sling.models.annotations.*;
 import org.apache.sling.models.annotations.injectorspecific.*;
 
@@ -20,9 +27,11 @@ import com.day.cq.search.*;
 import com.day.cq.search.result.*;
 import com.day.cq.tagging.Tag;
 import com.day.cq.tagging.TagManager;
+import com.day.cq.tagging.TagConstants;
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageManager;
 import com.efe.core.models.RelatedArticleDynamic;
+
 
 @Model(
     adaptables = SlingHttpServletRequest.class,
@@ -31,6 +40,13 @@ import com.efe.core.models.RelatedArticleDynamic;
     defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL
 )
 public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
+
+    private static final Logger log = LoggerFactory.getLogger(RelatedArticleDynamicImpl.class);
+    public static final String NT_UNSTRUCTURED = "nt:unstructured";
+    public static final String SLING_RESOURCE_TYPE_PROPERTY = "sling:resourceType";
+    public static final String NT_DAM_ASSET = "dam:Asset";    
+    public static final String JCR_TITLE = "jcr:title";    
+    public static final String JCR_DESCRIPTION = "jcr:description";    
 
     public static final String RESOURCE_TYPE = "efe/components/relatedarticle-dynamic";
 
@@ -181,12 +197,18 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
 
     @Override
     public Map<String, String> getTeaserHeroImages() {
-        return heroImageByPagePath;
+        if (heroImageByPagePath == null || heroImageByPagePath.isEmpty()) {
+            return Collections.emptyMap();
+        }
+        return Collections.unmodifiableMap(new HashMap<>(heroImageByPagePath));
     }
 
     @Override
     public List<String> getRelatedArticlePagePaths() {
-        return relatedArticlePagePaths;
+        if (relatedArticlePagePaths == null) {
+            return Collections.emptyList();
+        }
+        return Collections.unmodifiableList(new ArrayList<>(relatedArticlePagePaths));
     }
 
     @Override
@@ -225,7 +247,7 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
         Map<String, String> p = new HashMap<>();
         p.put("path", EDUCATION_ROOT);
         p.put("type", "cq:PageContent");
-        p.put("property", "cq:tags");
+        p.put("property", TagConstants.PN_TAGS);
         p.put("property.value", tagId);
         p.put("orderby", "@cq:lastModified");
         p.put("orderby.sort", "desc");
@@ -245,9 +267,9 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
         for (Hit hit : result.getHits()) {
             try {
                 pages.add(StringUtils.substringBefore(hit.getPath(), "/jcr:content"));
-            } catch (RepositoryException ignore) {
-                // ignore
-            }
+                } catch (RepositoryException e) {
+                    log.warn("Failed to access repository node", e);
+                }
         }
 
         return applyFinalLimit(pages, limitOrNull);
@@ -281,7 +303,7 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
     private List<String> findArticleCFPathsByPlanner(String plannerId, Session session) {
         Map<String, String> p = new HashMap<>();
         p.put("path", ARTICLES_CF_ROOT);
-        p.put("type", "dam:Asset");
+        p.put("type", DamConstants.NT_DAM_ASSET);
 
         // planner is String[] at jcr:content/data/master/planner
         // Use like to match any element containing /planners/{id}/
@@ -303,9 +325,9 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
         for (Hit hit : result.getHits()) {
             try {
                 cfPaths.add(hit.getPath());
-            } catch (RepositoryException ignore) {
-                // ignore
-            }
+                } catch (RepositoryException e) {
+                    log.warn("Failed to access repository node", e);
+                }
         }
         return cfPaths;
     }
@@ -319,10 +341,10 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
         p.put("path", EDUCATION_ROOT);
 
         // We only care about the articledetails component nodes
-        p.put("type", "nt:unstructured");
+        p.put("type", JcrConstants.NT_UNSTRUCTURED);
 
         // Ensure it's an articledetails component
-        p.put("1_property", "sling:resourceType");
+        p.put("1_property", JcrResourceConstants.SLING_RESOURCE_TYPE_PROPERTY);
         p.put("1_property.value", ARTICLE_DETAILS_RESOURCE_TYPE);
 
         // Match fragment path exactly
@@ -339,9 +361,9 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
             try {
                 String articledetailsPath = hit.getPath(); // /content/.../jcr:content/.../articledetails
                 return StringUtils.substringBefore(articledetailsPath, "/jcr:content");
-            } catch (RepositoryException ignore) {
-                // ignore
-            }
+                } catch (RepositoryException e) {
+                    log.warn("Failed to access repository node", e);
+                }
         }
         return null;
     }
@@ -359,7 +381,7 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
         // Find a child dam:Asset whose name contains "primaryoffice"
         Resource primaryOfficeAsset = null;
         for (Resource child : plannerFolder.getChildren()) {
-            if (!"dam:Asset".equals(child.getResourceType()) && !child.isResourceType("dam:Asset")) {
+            if (!child.isResourceType(DamConstants.NT_DAM_ASSET)) {
                 // isResourceType may not work reliably here; keep it simple:
             }
             String name = child.getName();
@@ -409,7 +431,7 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
             StringUtils.defaultIfBlank(page.getPageTitle(), page.getTitle())
         );
 
-        props.put("jcr:title", title);
+        props.put(JcrConstants.JCR_TITLE, title);
         props.put("linkURL", page.getPath() + ".html");
 
         String fragmentPath = getArticleFragmentPathFromArticleDetails(page);
@@ -418,7 +440,7 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
         String teaserText = StringUtils.defaultIfBlank(subtitle, page.getDescription());
         props.put("text", teaserText);
         props.put("description", teaserText);
-        props.put("jcr:description", teaserText);
+        props.put(JcrConstants.JCR_DESCRIPTION, teaserText);
         props.put("textFromPage", false);
         props.put("descriptionFromPage", false);
 
@@ -434,7 +456,7 @@ public class RelatedArticleDynamicImpl implements RelatedArticleDynamic {
         Resource content = page.getContentResource();
         if (content == null) return;
 
-        String[] allTagIds = content.getValueMap().get("cq:tags", String[].class);
+        String[] allTagIds = content.getValueMap().get(TagConstants.PN_TAGS, String[].class);
         if (allTagIds == null || allTagIds.length == 0) return;
 
         // Only keep efe:asset-type/*
