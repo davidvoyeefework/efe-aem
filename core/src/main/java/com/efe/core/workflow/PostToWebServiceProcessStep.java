@@ -157,7 +157,7 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
                     // Process the response
                     int statusCode = response.getStatusLine().getStatusCode();
                     if(statusCode >= 400) {
-                        throw new Exception("PartnerAPI auth connection failure, HTTP Status - " + statusCode);
+                        throw new IllegalStateException("PartnerAPI auth connection failure, HTTP Status - " + statusCode); 
                     }
                     if(statusCode == 200) {
                         HttpEntity responseEntity = response.getEntity();

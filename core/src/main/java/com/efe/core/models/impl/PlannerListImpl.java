@@ -180,7 +180,7 @@ public class PlannerListImpl implements PlannerList {
 					try {
 						response.sendRedirect(getDefaultRedirectPagePath());
 					} catch (IOException e) {
-						throw new RuntimeException(e);
+						throw new java.io.UncheckedIOException("Failed to redirect to default page", e);
 					}
 				}
 			}
