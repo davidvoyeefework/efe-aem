@@ -15,8 +15,10 @@ import com.efe.core.services.EfeService;
 import java.util.Date;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpEntity;
+import org.apache.http.HttpHeaders;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
@@ -30,6 +32,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ResourceResolverFactory;
 
+import java.nio.charset.StandardCharsets;
 import java.security.KeyPair;
 import com.adobe.granite.keystore.KeyStoreService;
 import com.adobe.granite.workflow.WorkflowException;
@@ -182,10 +185,15 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
                     
                     // Set the request headers, if needed
                     httpPost.setHeader("Authorization", "Bearer " + accessToken);
-                    httpPost.setHeader("Content-Type", "application/json");
+                    httpPost.setHeader("Content-Type", "application/json; charset=UTF-8");
+
+                    
+                    httpPost.setHeader(HttpHeaders.ACCEPT, "application/json");
+                    httpPost.setHeader(HttpHeaders.ACCEPT_CHARSET, StandardCharsets.UTF_8.name());
+
 
                     // Set the request body with the JSON data
-                    StringEntity requestEntity = new StringEntity(jsonOut);
+                    StringEntity requestEntity = new StringEntity(jsonOut , ContentType.APPLICATION_JSON.withCharset(StandardCharsets.UTF_8));
                     httpPost.setEntity(requestEntity);
                     // Execute the request and get the response
                     try (CloseableHttpResponse response = httpClient.execute(httpPost)) {
