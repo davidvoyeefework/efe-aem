@@ -54,9 +54,9 @@ section.afa-wpi-theme {
     .cmp-button--button-wpi {
         text-decoration: none;
         margin: 0 0 12px;
-        width: rem(111);
+        width: rem(130);
         height: rem(39);
-        background-color: #f4f4f4;
+        background-color: #ffffff;
         border: 1px solid #276de2;
         border-radius: 60px;       
         z-index: 999;
@@ -71,6 +71,7 @@ section.afa-wpi-theme {
             transition: $std-transition;
             text-decoration: none;
             cursor: pointer;
+            box-shadow: 0px 6px 24px 0px rgba(0, 0, 0, 0.12);
         }
         
         a.cmp-button {
