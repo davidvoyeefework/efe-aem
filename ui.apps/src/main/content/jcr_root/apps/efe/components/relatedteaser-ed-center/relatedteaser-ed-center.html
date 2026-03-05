@@ -30,15 +30,13 @@
         <sly data-sly-test="${teaser.pagePreviewText && properties.pagePreviewVariantSelect == 'yes'}">
             <p id="body-copy" class="cmp-text--body-03">${teaser.pagePreviewText}</p>
         </sly>
-        
-		<sly data-sly-test="${properties.pagePreviewVariantSelect != 'yes'}" >
-            <div data-sly-test="${teaser.tags.size > 0}" data-sly-list="${teaser.tags}">
-                <sly data-sly-test="${item.tagLabel == 'Podcast'}"><div data-sly-call="${videoButton.actions @ teaser=teaser, article=article, class='cmp-button--podcast'}"></div></sly>
-                <sly data-sly-test="${item.tagLabel == 'Video'}"><div data-sly-call="${videoButton.actions @ teaser=teaser, article=article, class='cmp-button--video'}"></div></sly>
-                <sly data-sly-test="${item.tagLabel == 'Article'}"><div data-sly-call="${videoButton.actions @ teaser=teaser, article=article, class='cmp-button--article'}"></div></sly>
-            </div>
-        </sly>
-        <div data-sly-test="${properties.pagePreviewVariantSelect == 'yes'}" class="cmp-button--article"></div>
+
+        <div data-sly-test="${teaser.tags.size > 0}" data-sly-list="${teaser.tags}">
+            <sly data-sly-test="${item.tagLabel == 'Podcast'}"><div data-sly-call="${videoButton.actions @ teaser=teaser, article=article, class='cmp-button--podcast'}"></div></sly>
+            <sly data-sly-test="${item.tagLabel == 'Video'}"><div data-sly-call="${videoButton.actions @ teaser=teaser, article=article, class='cmp-button--video'}"></div></sly>
+            <sly data-sly-test="${item.tagLabel == 'Article'}"><div data-sly-call="${videoButton.actions @ teaser=teaser, article=article, class='cmp-button--article'}"></div></sly>
+        </div>
+
     </div>
 
     <sly data-sly-call="${imageTemplate.image @ teaser=teaser}"></sly>
