@@ -30,6 +30,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ResourceResolverFactory;
 
+import java.nio.charset.StandardCharsets;
 import java.security.KeyPair;
 import com.adobe.granite.keystore.KeyStoreService;
 import com.adobe.granite.workflow.WorkflowException;
@@ -186,7 +187,11 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
 
 
                     // Set the request body with the JSON data
-                    StringEntity requestEntity = new StringEntity(jsonOut);
+                    StringEntity requestEntity = new StringEntity(jsonOut, StandardCharsets.UTF_8);
+                    
+                    requestEntity.setContentType("application/json");
+                    requestEntity.setContentEncoding("UTF-8");
+
                     httpPost.setEntity(requestEntity);
                     // Execute the request and get the response
                     try (CloseableHttpResponse response = httpClient.execute(httpPost)) {
