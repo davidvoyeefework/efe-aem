@@ -29,7 +29,6 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ResourceResolverFactory;
-
 import java.security.KeyPair;
 import com.adobe.granite.keystore.KeyStoreService;
 import com.adobe.granite.workflow.WorkflowException;
@@ -44,6 +43,7 @@ import com.adobe.granite.workflow.metadata.MetaDataMap;
 import com.adobe.cq.dam.cfm.FragmentData;
 import com.efe.core.utils.ResourceUtil;
 import org.osgi.service.component.annotations.Reference;
+import static java.nio.charset.StandardCharsets.*;
 
 /**
  * The Class InboxNotificationSenderImpl.
@@ -182,10 +182,12 @@ public class PostToWebServiceProcessStep implements WorkflowProcess {
                     
                     // Set the request headers, if needed
                     httpPost.setHeader("Authorization", "Bearer " + accessToken);
-                    httpPost.setHeader("Content-Type", "application/json");
+                    httpPost.setHeader("Content-Type", "application/json; charset=UTF-8");
+
 
                     // Set the request body with the JSON data
-                    StringEntity requestEntity = new StringEntity(jsonOut);
+                    StringEntity requestEntity = new StringEntity(jsonOut, UTF_8);
+
                     httpPost.setEntity(requestEntity);
                     // Execute the request and get the response
                     try (CloseableHttpResponse response = httpClient.execute(httpPost)) {

@@ -47,9 +47,13 @@
         .cmp-teaser--hero {
             .cmp-teaser__title {
                 font-family: var(--font-family);
-                @include media('>=tablet') {
-                    font-size: 54px;
-                    line-height: 59.4px;
+                @include media('>=phone-m', '<tablet') {
+                    font-size: 28px;
+                    line-height: 36px;
+                }
+                @include media('<phone-m') {
+                    font-size: 22px;
+                    line-height: 28px;
                 }
                 color: #FFFFFF;
                 text-transform: capitalize;
@@ -89,7 +93,7 @@
     &.theme-empower {
     .cmp-teaser--hero {
       .cmp-teaser__description {
-       @include media('>phone-m', '<tablet-lg') {
+       @include media('>=phone-m', '<tablet-lg') {
           font-size: 16px;
           line-height: 24px;
 

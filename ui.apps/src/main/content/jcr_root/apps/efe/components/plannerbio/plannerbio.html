@@ -97,20 +97,6 @@
 <sly data-sly-call="${template.placeholder @ isEmpty=!isNotEmpty, classAppend='cmp-plannerbio'}"></sly>
 
 <script>
-    const video = document.getElementById("planner-video");
-    const playButton = document.getElementById("playButton");
-
-    if (video != null) {
-        playButton.addEventListener("click", function() {
-            if (video.paused) {
-                video.play();
-                playButton.style.display = "none";
-            } else {
-                video.pause();
-            }
-        });
-    }
-
 const updateLocationLinksHref = () => {
     const links = document.querySelectorAll(".location-link");
 
@@ -131,9 +117,5 @@ const updateLocationLinksHref = () => {
         }
     });
 };
-
 addEventListener("DOMContentLoaded", updateLocationLinksHref);
-
-
-
 </script>

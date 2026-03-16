@@ -355,8 +355,8 @@ public class EfeServiceImpl implements EfeService {
 		 */
 		@AttributeDefinition(name = "CDT Embed URL", description = "CDT Embed URL")
 		String CDTEmbedURL();
-
-		 /**
+                
+                /**
 		 * EC Scheduler Embed URL.
 		 *
 		 * @return the string
@@ -364,7 +364,6 @@ public class EfeServiceImpl implements EfeService {
 		@AttributeDefinition(name = "EC Scheduler Embed URL", description = "EC Scheduler Embed URL")
 		String ECEmbedURL();
 
-		
         /**
 		 * Onetrust FE script.
 		 *

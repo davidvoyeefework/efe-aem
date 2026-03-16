@@ -46,7 +46,7 @@
     .minimal-header {
         &.subadvised {
             .cmp-image--efe-logo-secondary.cmp-image--small {
-			position: relative; //absolute positioning of ::before
+                position: relative; //absolute positioning of ::before
                 &::before {
                     content: "Powered by";
                     color: #000;
@@ -104,7 +104,7 @@
         #efe-global-nav-header ,  #efe-nav-main #nav-list-cta-group {
             .cmp-text {
                 p, span {
-                    color: #000 !important;
+                    color: #000000 !important;
                 }
             }
         }
