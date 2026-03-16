@@ -186,7 +186,7 @@ public class PlannerBioImpl implements PlannerBio {
 				try {
 					response.sendRedirect(getDefaultRedirectPagePath());
 				} catch (IOException e) {
-					throw new RuntimeException(e);
+					throw new IllegalStateException("Failed to process planner bio content", e);
 				}
 			}
 

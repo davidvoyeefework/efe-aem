@@ -1,25 +1,16 @@
-<div class="relatedarticle-ed-center">
-  <ul data-sly-use.article="com.efe.core.models.RelatedArticleDynamic"
-      data-sly-list.teaser="${article.relatedTeasers}"
+<div class="relatedarticle-ed-center"
+     data-sly-use.article="com.efe.core.models.RelatedArticleDynamic">
+
+  <!-- ===================== LIST ===================== -->
+  <ul data-sly-list.teaser="${article.relatedTeasers}"
       class="cmp-list">
 
     <li class="teaser cmp-teaser--thumbnail">
       <div class="cmp-teaser">
 
-        <!-- linkURL is /path/to/page.html -->
         <sly data-sly-set.linkUrl="${teaser.valueMap.linkURL}" />
-
-        <!-- canonicalKey becomes /path/to/page (no .html) -->
         <sly data-sly-set.canonicalKey="${linkUrl @ extension=''}" />
-
-        <!-- look up hero by canonical page key -->
         <sly data-sly-set.hero="${article.teaserHeroImages[canonicalKey]}" />
-
-        <!-- ================= DEBUG (TEMPORARY) ================= -->
-        <!-- DEBUG: linkUrl=${linkUrl} -->
-        <!-- DEBUG: canonicalKey=${canonicalKey} -->
-        <!-- DEBUG: heroFromMap=${hero} -->
-        <!-- ====================================================== -->
 
         <div class="cmp-teaser__content">
 
@@ -30,7 +21,7 @@
             </a>
           </h2>
 
-          <!-- Description (p tag + class) -->
+          <!-- Description -->
           <sly data-sly-test="${teaser.valueMap.text}">
             <p class="cmp-text--body-02">
               ${teaser.valueMap.text}
@@ -99,4 +90,5 @@
     </li>
 
   </ul>
+
 </div>
